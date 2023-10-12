@@ -4466,6 +4466,10 @@ namespace Google.Apis.Recommender.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cost")]
         public virtual GoogleTypeMoney Cost { get; set; }
 
+        /// <summary>The approximate cost savings in the billing account's local currency.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("costInLocalCurrency")]
+        public virtual GoogleTypeMoney CostInLocalCurrency { get; set; }
+
         /// <summary>Duration for which this cost applies.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("duration")]
         public virtual object Duration { get; set; }
@@ -5085,6 +5089,10 @@ namespace Google.Apis.Recommender.v1beta1.Data
         /// <summary>Information for state. Contains state and metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stateInfo")]
         public virtual GoogleCloudRecommenderV1beta1RecommendationStateInfo StateInfo { get; set; }
+
+        /// <summary>Fully qualified resource names that this recommendation is targeting.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetResources")]
+        public virtual System.Collections.Generic.IList<string> TargetResources { get; set; }
 
         /// <summary>
         /// Corresponds to a mutually exclusive group ID within a recommender. A non-empty ID indicates that the

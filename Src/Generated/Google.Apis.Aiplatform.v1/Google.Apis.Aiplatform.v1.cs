@@ -34685,10 +34685,6 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("annotationsFilter")]
         public virtual string AnnotationsFilter { get; set; }
 
-        /// <summary>Split based on the provided filters for each set.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("filterSplit")]
-        public virtual GoogleCloudAiplatformV1ExportFilterSplit FilterSplit { get; set; }
-
         /// <summary>Split based on fractions defining the size of each set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fractionSplit")]
         public virtual GoogleCloudAiplatformV1ExportFractionSplit FractionSplit { get; set; }
@@ -34967,45 +34963,6 @@ namespace Google.Apis.Aiplatform.v1.Data
     /// <summary>Response message for FeaturestoreService.ExportFeatureValues.</summary>
     public class GoogleCloudAiplatformV1ExportFeatureValuesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Assigns input data to training, validation, and test sets based on the given filters, data pieces not matched by
-    /// any filter are ignored. Currently only supported for Datasets containing DataItems. If any of the filters in
-    /// this message are to match nothing, then they can be set as '-' (the minus sign). Supported only for unstructured
-    /// Datasets.
-    /// </summary>
-    public class GoogleCloudAiplatformV1ExportFilterSplit : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Required. A filter on DataItems of the Dataset. DataItems that match this filter are used to test the Model.
-        /// A filter with same syntax as the one used in DatasetService.ListDataItems may be used. If a single DataItem
-        /// is matched by more than one of the FilterSplit filters, then it is assigned to the first set that applies to
-        /// it in the training, validation, test order.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("testFilter")]
-        public virtual string TestFilter { get; set; }
-
-        /// <summary>
-        /// Required. A filter on DataItems of the Dataset. DataItems that match this filter are used to train the
-        /// Model. A filter with same syntax as the one used in DatasetService.ListDataItems may be used. If a single
-        /// DataItem is matched by more than one of the FilterSplit filters, then it is assigned to the first set that
-        /// applies to it in the training, validation, test order.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("trainingFilter")]
-        public virtual string TrainingFilter { get; set; }
-
-        /// <summary>
-        /// Required. A filter on DataItems of the Dataset. DataItems that match this filter are used to validate the
-        /// Model. A filter with same syntax as the one used in DatasetService.ListDataItems may be used. If a single
-        /// DataItem is matched by more than one of the FilterSplit filters, then it is assigned to the first set that
-        /// applies to it in the training, validation, test order.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("validationFilter")]
-        public virtual string ValidationFilter { get; set; }
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -38083,6 +38040,13 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
         public virtual string MachineType { get; set; }
+
+        /// <summary>
+        /// Immutable. The topology of the TPUs. Corresponds to the TPU topologies available from GKE. (Example:
+        /// tpu_topology: "2x2x1").
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tpuTopology")]
+        public virtual string TpuTopology { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

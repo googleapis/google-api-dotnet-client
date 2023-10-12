@@ -13702,6 +13702,43 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Payload associated with Governance related log events.</summary>
+    public class GoogleCloudDataplexV1GovernanceEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Entity resource information if the log event is associated with a specific entity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entity")]
+        public virtual GoogleCloudDataplexV1GovernanceEventEntity Entity { get; set; }
+
+        /// <summary>The type of the event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventType")]
+        public virtual string EventType { get; set; }
+
+        /// <summary>The log message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information about Entity resource that the log event is associated with.</summary>
+    public class GoogleCloudDataplexV1GovernanceEventEntity : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The Entity resource the log event is associated with. Format:
+        /// projects/{project_number}/locations/{location_id}/lakes/{lake_id}/zones/{zone_id}/entities/{entity_id}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entity")]
+        public virtual string Entity { get; set; }
+
+        /// <summary>Type of entity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityType")]
+        public virtual string EntityType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A job represents an instance of a task.</summary>
     public class GoogleCloudDataplexV1Job : Google.Apis.Requests.IDirectResponseSchema
     {

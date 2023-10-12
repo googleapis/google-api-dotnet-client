@@ -2309,6 +2309,10 @@ namespace Google.Apis.YouTube.v3
             [Google.Apis.Util.RequestParameterAttribute("categoryId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string CategoryId { get; set; }
 
+            /// <summary>Return the channel associated with a YouTube handle. UNIMPLEMENTED.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("forHandle", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ForHandle { get; set; }
+
             /// <summary>Return the channel associated with a YouTube username.</summary>
             [Google.Apis.Util.RequestParameterAttribute("forUsername", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ForUsername { get; set; }
@@ -2389,6 +2393,14 @@ namespace Google.Apis.YouTube.v3
                 RequestParameters.Add("categoryId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "categoryId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("forHandle", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "forHandle",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,

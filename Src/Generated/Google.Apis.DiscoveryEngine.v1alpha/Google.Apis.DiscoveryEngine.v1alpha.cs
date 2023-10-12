@@ -3605,6 +3605,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     {
                         this.service = service;
                         Operations = new OperationsResource(service);
+                        ServingConfigs = new ServingConfigsResource(service);
                     }
 
                     /// <summary>Gets the Operations resource.</summary>
@@ -3758,6 +3759,149 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                                     ParameterType = "query",
                                     DefaultValue = null,
                                     Pattern = null,
+                                });
+                            }
+                        }
+                    }
+
+                    /// <summary>Gets the ServingConfigs resource.</summary>
+                    public virtual ServingConfigsResource ServingConfigs { get; }
+
+                    /// <summary>The "servingConfigs" collection of methods.</summary>
+                    public class ServingConfigsResource
+                    {
+                        private const string Resource = "servingConfigs";
+
+                        /// <summary>The service which this resource belongs to.</summary>
+                        private readonly Google.Apis.Services.IClientService service;
+
+                        /// <summary>Constructs a new resource.</summary>
+                        public ServingConfigsResource(Google.Apis.Services.IClientService service)
+                        {
+                            this.service = service;
+                        }
+
+                        /// <summary>Makes a recommendation, which requires a contextual user event.</summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="servingConfig">
+                        /// Required. Full resource name of the format:
+                        /// `projects/*/locations/global/collections/*/dataStores/*/servingConfigs/*` Before you can
+                        /// request recommendations from your model, you must create at least one serving config for it.
+                        /// </param>
+                        public virtual RecommendRequest Recommend(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaRecommendRequest body, string servingConfig)
+                        {
+                            return new RecommendRequest(service, body, servingConfig);
+                        }
+
+                        /// <summary>Makes a recommendation, which requires a contextual user event.</summary>
+                        public class RecommendRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaRecommendResponse>
+                        {
+                            /// <summary>Constructs a new Recommend request.</summary>
+                            public RecommendRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaRecommendRequest body, string servingConfig) : base(service)
+                            {
+                                ServingConfig = servingConfig;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. Full resource name of the format:
+                            /// `projects/*/locations/global/collections/*/dataStores/*/servingConfigs/*` Before you can
+                            /// request recommendations from your model, you must create at least one serving config for
+                            /// it.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("servingConfig", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string ServingConfig { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaRecommendRequest Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "recommend";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1alpha/{+servingConfig}:recommend";
+
+                            /// <summary>Initializes Recommend parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("servingConfig", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "servingConfig",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/servingConfigs/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>Performs a search.</summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="servingConfig">
+                        /// Required. The resource name of the Search serving config, such as
+                        /// `projects/*/locations/global/collections/default_collection/dataStores/default_data_store/servingConfigs/default_serving_config`.
+                        /// This field is used to identify the serving configuration name, set of models used to make
+                        /// the search.
+                        /// </param>
+                        public virtual SearchRequest Search(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaSearchRequest body, string servingConfig)
+                        {
+                            return new SearchRequest(service, body, servingConfig);
+                        }
+
+                        /// <summary>Performs a search.</summary>
+                        public class SearchRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaSearchResponse>
+                        {
+                            /// <summary>Constructs a new Search request.</summary>
+                            public SearchRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaSearchRequest body, string servingConfig) : base(service)
+                            {
+                                ServingConfig = servingConfig;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The resource name of the Search serving config, such as
+                            /// `projects/*/locations/global/collections/default_collection/dataStores/default_data_store/servingConfigs/default_serving_config`.
+                            /// This field is used to identify the serving configuration name, set of models used to
+                            /// make the search.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("servingConfig", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string ServingConfig { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaSearchRequest Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "search";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1alpha/{+servingConfig}:search";
+
+                            /// <summary>Initializes Search parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("servingConfig", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "servingConfig",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/servingConfigs/[^/]+$",
                                 });
                             }
                         }
@@ -11102,6 +11246,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>Output only. Whether LLM is enabled in the corresponding data store.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("llmEnabled")]
         public virtual System.Nullable<bool> LlmEnabled { get; set; }
+
+        /// <summary>Output only. Whether the customer accepted data use terms.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minimumDataTermAccepted")]
+        public virtual System.Nullable<bool> MinimumDataTermAccepted { get; set; }
 
         /// <summary>
         /// Immutable. The full resource name of the widget config. Format:

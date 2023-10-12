@@ -303,7 +303,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
             /// Required. The resource name of the Assessment, in the format
-            /// "projects/{project}/assessments/{assessment}".
+            /// `projects/{project}/assessments/{assessment}`.
             /// </param>
             public virtual AnnotateRequest Annotate(Google.Apis.RecaptchaEnterprise.v1.Data.GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequest body, string name)
             {
@@ -326,7 +326,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1
 
                 /// <summary>
                 /// Required. The resource name of the Assessment, in the format
-                /// "projects/{project}/assessments/{assessment}".
+                /// `projects/{project}/assessments/{assessment}`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -365,7 +365,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
             /// Required. The name of the project in which the assessment will be created, in the format
-            /// "projects/{project}".
+            /// `projects/{project}`.
             /// </param>
             public virtual CreateRequest Create(Google.Apis.RecaptchaEnterprise.v1.Data.GoogleCloudRecaptchaenterpriseV1Assessment body, string parent)
             {
@@ -385,7 +385,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1
 
                 /// <summary>
                 /// Required. The name of the project in which the assessment will be created, in the format
-                /// "projects/{project}".
+                /// `projects/{project}`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -444,7 +444,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
-            /// Required. The name of the project this policy will apply to, in the format "projects/{project}".
+            /// Required. The name of the project this policy will apply to, in the format `projects/{project}`.
             /// </param>
             public virtual CreateRequest Create(Google.Apis.RecaptchaEnterprise.v1.Data.GoogleCloudRecaptchaenterpriseV1FirewallPolicy body, string parent)
             {
@@ -466,7 +466,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1
                 }
 
                 /// <summary>
-                /// Required. The name of the project this policy will apply to, in the format "projects/{project}".
+                /// Required. The name of the project this policy will apply to, in the format `projects/{project}`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -504,7 +504,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1
             /// <summary>Deletes the specified firewall policy.</summary>
             /// <param name="name">
             /// Required. The name of the policy to be deleted, in the format
-            /// "projects/{project}/firewallpolicies/{firewallpolicy}".
+            /// `projects/{project}/firewallpolicies/{firewallpolicy}`.
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
@@ -523,7 +523,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1
 
                 /// <summary>
                 /// Required. The name of the policy to be deleted, in the format
-                /// "projects/{project}/firewallpolicies/{firewallpolicy}".
+                /// `projects/{project}/firewallpolicies/{firewallpolicy}`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -555,7 +555,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1
             /// <summary>Returns the specified firewall policy.</summary>
             /// <param name="name">
             /// Required. The name of the requested policy, in the format
-            /// "projects/{project}/firewallpolicies/{firewallpolicy}".
+            /// `projects/{project}/firewallpolicies/{firewallpolicy}`.
             /// </param>
             public virtual GetRequest Get(string name)
             {
@@ -574,7 +574,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1
 
                 /// <summary>
                 /// Required. The name of the requested policy, in the format
-                /// "projects/{project}/firewallpolicies/{firewallpolicy}".
+                /// `projects/{project}/firewallpolicies/{firewallpolicy}`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -605,7 +605,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1
 
             /// <summary>Returns the list of all firewall policies that belong to a project.</summary>
             /// <param name="parent">
-            /// Required. The name of the project to list the policies for, in the format "projects/{project}".
+            /// Required. The name of the project to list the policies for, in the format `projects/{project}`.
             /// </param>
             public virtual ListRequest List(string parent)
             {
@@ -623,7 +623,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1
                 }
 
                 /// <summary>
-                /// Required. The name of the project to list the policies for, in the format "projects/{project}".
+                /// Required. The name of the project to list the policies for, in the format `projects/{project}`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -684,7 +684,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
             /// The resource name for the FirewallPolicy in the format
-            /// "projects/{project}/firewallpolicies/{firewallpolicy}".
+            /// `projects/{project}/firewallpolicies/{firewallpolicy}`.
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.RecaptchaEnterprise.v1.Data.GoogleCloudRecaptchaenterpriseV1FirewallPolicy body, string name)
             {
@@ -704,7 +704,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1
 
                 /// <summary>
                 /// The resource name for the FirewallPolicy in the format
-                /// "projects/{project}/firewallpolicies/{firewallpolicy}".
+                /// `projects/{project}/firewallpolicies/{firewallpolicy}`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -775,7 +775,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1
             /// <summary>Creates a new reCAPTCHA Enterprise key.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
-            /// Required. The name of the project in which the key will be created, in the format "projects/{project}".
+            /// Required. The name of the project in which the key will be created, in the format `projects/{project}`.
             /// </param>
             public virtual CreateRequest Create(Google.Apis.RecaptchaEnterprise.v1.Data.GoogleCloudRecaptchaenterpriseV1Key body, string parent)
             {
@@ -795,7 +795,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1
 
                 /// <summary>
                 /// Required. The name of the project in which the key will be created, in the format
-                /// "projects/{project}".
+                /// `projects/{project}`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -832,7 +832,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1
 
             /// <summary>Deletes the specified key.</summary>
             /// <param name="name">
-            /// Required. The name of the key to be deleted, in the format "projects/{project}/keys/{key}".
+            /// Required. The name of the key to be deleted, in the format `projects/{project}/keys/{key}`.
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
@@ -850,7 +850,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1
                 }
 
                 /// <summary>
-                /// Required. The name of the key to be deleted, in the format "projects/{project}/keys/{key}".
+                /// Required. The name of the key to be deleted, in the format `projects/{project}/keys/{key}`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -881,7 +881,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1
 
             /// <summary>Returns the specified key.</summary>
             /// <param name="name">
-            /// Required. The name of the requested key, in the format "projects/{project}/keys/{key}".
+            /// Required. The name of the requested key, in the format `projects/{project}/keys/{key}`.
             /// </param>
             public virtual GetRequest Get(string name)
             {
@@ -899,7 +899,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1
                 }
 
                 /// <summary>
-                /// Required. The name of the requested key, in the format "projects/{project}/keys/{key}".
+                /// Required. The name of the requested key, in the format `projects/{project}/keys/{key}`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -930,7 +930,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1
 
             /// <summary>Get some aggregated metrics for a Key. This data can be used to build dashboards.</summary>
             /// <param name="name">
-            /// Required. The name of the requested metrics, in the format "projects/{project}/keys/{key}/metrics".
+            /// Required. The name of the requested metrics, in the format `projects/{project}/keys/{key}/metrics`.
             /// </param>
             public virtual GetMetricsRequest GetMetrics(string name)
             {
@@ -948,7 +948,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1
                 }
 
                 /// <summary>
-                /// Required. The name of the requested metrics, in the format "projects/{project}/keys/{key}/metrics".
+                /// Required. The name of the requested metrics, in the format `projects/{project}/keys/{key}/metrics`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -980,7 +980,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1
             /// <summary>Returns the list of all keys that belong to a project.</summary>
             /// <param name="parent">
             /// Required. The name of the project that contains the keys that will be listed, in the format
-            /// "projects/{project}".
+            /// `projects/{project}`.
             /// </param>
             public virtual ListRequest List(string parent)
             {
@@ -999,7 +999,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1
 
                 /// <summary>
                 /// Required. The name of the project that contains the keys that will be listed, in the format
-                /// "projects/{project}".
+                /// `projects/{project}`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -1062,7 +1062,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
-            /// Required. The name of the key to be migrated, in the format "projects/{project}/keys/{key}".
+            /// Required. The name of the key to be migrated, in the format `projects/{project}/keys/{key}`.
             /// </param>
             public virtual MigrateRequest Migrate(Google.Apis.RecaptchaEnterprise.v1.Data.GoogleCloudRecaptchaenterpriseV1MigrateKeyRequest body, string name)
             {
@@ -1086,7 +1086,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1
                 }
 
                 /// <summary>
-                /// Required. The name of the key to be migrated, in the format "projects/{project}/keys/{key}".
+                /// Required. The name of the key to be migrated, in the format `projects/{project}/keys/{key}`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -1123,7 +1123,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1
 
             /// <summary>Updates the specified key.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">The resource name for the Key in the format "projects/{project}/keys/{key}".</param>
+            /// <param name="name">The resource name for the Key in the format `projects/{project}/keys/{key}`.</param>
             public virtual PatchRequest Patch(Google.Apis.RecaptchaEnterprise.v1.Data.GoogleCloudRecaptchaenterpriseV1Key body, string name)
             {
                 return new PatchRequest(service, body, name);
@@ -1140,7 +1140,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1
                     InitParameters();
                 }
 
-                /// <summary>The resource name for the Key in the format "projects/{project}/keys/{key}".</summary>
+                /// <summary>The resource name for the Key in the format `projects/{project}/keys/{key}`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -1195,7 +1195,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1
             /// </summary>
             /// <param name="key">
             /// Required. The public key name linked to the requested secret key in the format
-            /// "projects/{project}/keys/{key}".
+            /// `projects/{project}/keys/{key}`.
             /// </param>
             public virtual RetrieveLegacySecretKeyRequest RetrieveLegacySecretKey(string key)
             {
@@ -1217,7 +1217,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1
 
                 /// <summary>
                 /// Required. The public key name linked to the requested secret key in the format
-                /// "projects/{project}/keys/{key}".
+                /// `projects/{project}/keys/{key}`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Key { get; private set; }
@@ -1268,7 +1268,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1
             /// <param name="body">The body of the request.</param>
             /// <param name="project">
             /// Required. The name of the project to search related account group memberships from. Specify the project
-            /// name in the following format: "projects/{project}".
+            /// name in the following format: `projects/{project}`.
             /// </param>
             public virtual SearchRequest Search(Google.Apis.RecaptchaEnterprise.v1.Data.GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsRequest body, string project)
             {
@@ -1288,7 +1288,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1
 
                 /// <summary>
                 /// Required. The name of the project to search related account group memberships from. Specify the
-                /// project name in the following format: "projects/{project}".
+                /// project name in the following format: `projects/{project}`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Project { get; private set; }
@@ -1446,7 +1446,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1
             /// <summary>List groups of related accounts.</summary>
             /// <param name="parent">
             /// Required. The name of the project to list related account groups from, in the format
-            /// "projects/{project}".
+            /// `projects/{project}`.
             /// </param>
             public virtual ListRequest List(string parent)
             {
@@ -1465,7 +1465,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1
 
                 /// <summary>
                 /// Required. The name of the project to list related account groups from, in the format
-                /// "projects/{project}".
+                /// `projects/{project}`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -1533,7 +1533,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
     /// <summary>Account defender risk assessment.</summary>
     public class GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Labels for this request.</summary>
+        /// <summary>Output only. Labels for this request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IList<string> Labels { get; set; }
 
@@ -1544,12 +1544,12 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
     /// <summary>Information about account verification, used for identity verification.</summary>
     public class GoogleCloudRecaptchaenterpriseV1AccountVerificationInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Endpoints that can be used for identity verification.</summary>
+        /// <summary>Optional. Endpoints that can be used for identity verification.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endpoints")]
         public virtual System.Collections.Generic.IList<GoogleCloudRecaptchaenterpriseV1EndpointVerificationInfo> Endpoints { get; set; }
 
         /// <summary>
-        /// Language code preference for the verification message, set as a IETF BCP 47 language code.
+        /// Optional. Language code preference for the verification message, set as a IETF BCP 47 language code.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
         public virtual string LanguageCode { get; set; }
@@ -1572,17 +1572,19 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
     /// <summary>Settings specific to keys that can be used by Android apps.</summary>
     public class GoogleCloudRecaptchaenterpriseV1AndroidKeySettings : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If set to true, allowed_package_names are not enforced.</summary>
+        /// <summary>Optional. If set to true, allowed_package_names are not enforced.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowAllPackageNames")]
         public virtual System.Nullable<bool> AllowAllPackageNames { get; set; }
 
-        /// <summary>Android package names of apps allowed to use the key. Example: 'com.companyname.appname'</summary>
+        /// <summary>
+        /// Optional. Android package names of apps allowed to use the key. Example: 'com.companyname.appname'
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowedPackageNames")]
         public virtual System.Collections.Generic.IList<string> AllowedPackageNames { get; set; }
 
         /// <summary>
-        /// Set to true for keys that are used in an Android application that is available for download in app stores in
-        /// addition to the Google Play Store.
+        /// Optional. Set to true for keys that are used in an Android application that is available for download in app
+        /// stores in addition to the Google Play Store.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("supportNonGoogleAppStoreDistribution")]
         public virtual System.Nullable<bool> SupportNonGoogleAppStoreDistribution { get; set; }
@@ -1659,29 +1661,31 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
     /// <summary>A reCAPTCHA Enterprise assessment resource.</summary>
     public class GoogleCloudRecaptchaenterpriseV1Assessment : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Assessment returned by account defender when a hashed_account_id is provided.</summary>
+        /// <summary>
+        /// Output only. Assessment returned by account defender when a hashed_account_id is provided.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountDefenderAssessment")]
         public virtual GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment AccountDefenderAssessment { get; set; }
 
         /// <summary>
-        /// Account verification information for identity verification. The assessment event must include a token and
-        /// site key to use this feature.
+        /// Optional. Account verification information for identity verification. The assessment event must include a
+        /// token and site key to use this feature.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountVerification")]
         public virtual GoogleCloudRecaptchaenterpriseV1AccountVerificationInfo AccountVerification { get; set; }
 
-        /// <summary>The event being assessed.</summary>
+        /// <summary>Optional. The event being assessed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("event")]
         public virtual GoogleCloudRecaptchaenterpriseV1Event Event__ { get; set; }
 
         /// <summary>
-        /// Assessment returned when firewall policies belonging to the project are evaluated using the field
-        /// firewall_policy_evaluation.
+        /// Output only. Assessment returned when firewall policies belonging to the project are evaluated using the
+        /// field firewall_policy_evaluation.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("firewallPolicyAssessment")]
         public virtual GoogleCloudRecaptchaenterpriseV1FirewallPolicyAssessment FirewallPolicyAssessment { get; set; }
 
-        /// <summary>Assessment returned by Fraud Prevention when TransactionData is provided.</summary>
+        /// <summary>Output only. Assessment returned by Fraud Prevention when TransactionData is provided.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fraudPreventionAssessment")]
         public virtual GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessment FraudPreventionAssessment { get; set; }
 
@@ -1691,14 +1695,14 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
 
         /// <summary>
         /// Output only. The resource name for the Assessment in the format
-        /// "projects/{project}/assessments/{assessment}".
+        /// `projects/{project}/assessments/{assessment}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// The private password leak verification field contains the parameters that are used to to check for leaks
-        /// privately without sharing user credentials.
+        /// Optional. The private password leak verification field contains the parameters that are used to to check for
+        /// leaks privately without sharing user credentials.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privatePasswordLeakVerification")]
         public virtual GoogleCloudRecaptchaenterpriseV1PrivatePasswordLeakVerification PrivatePasswordLeakVerification { get; set; }
@@ -1845,7 +1849,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("headers")]
         public virtual System.Collections.Generic.IList<string> Headers { get; set; }
 
-        /// <summary>Optional. Optional JA3 fingerprint for SSL clients.</summary>
+        /// <summary>Optional. JA3 fingerprint for SSL clients.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ja3")]
         public virtual string Ja3 { get; set; }
 
@@ -1954,11 +1958,11 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
     /// </summary>
     public class GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The header key to set in the request to the backend server.</summary>
+        /// <summary>Optional. The header key to set in the request to the backend server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
         public virtual string Key { get; set; }
 
-        /// <summary>The header value to set in the request to the backend server.</summary>
+        /// <summary>Optional. The header value to set in the request to the backend server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
 
@@ -1970,7 +1974,8 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
     public class GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The address to redirect to. The target is a relative path in the current host. Example: "/blog/404.html".
+        /// Optional. The address to redirect to. The target is a relative path in the current host. Example:
+        /// "/blog/404.html".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
         public virtual string Path { get; set; }
@@ -1983,42 +1988,43 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
     public class GoogleCloudRecaptchaenterpriseV1FirewallPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The actions that the caller should take regarding user access. There should be at most one terminal action.
-        /// A terminal action is any action that forces a response, such as AllowAction, BlockAction or
-        /// SubstituteAction. Zero or more non-terminal actions such as SetHeader might be specified. A single policy
-        /// can contain up to 16 actions.
+        /// Optional. The actions that the caller should take regarding user access. There should be at most one
+        /// terminal action. A terminal action is any action that forces a response, such as `AllowAction`,
+        /// `BlockAction` or `SubstituteAction`. Zero or more non-terminal actions such as `SetHeader` might be
+        /// specified. A single policy can contain up to 16 actions.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("actions")]
         public virtual System.Collections.Generic.IList<GoogleCloudRecaptchaenterpriseV1FirewallAction> Actions { get; set; }
 
         /// <summary>
-        /// A CEL (Common Expression Language) conditional expression that specifies if this policy applies to an
-        /// incoming user request. If this condition evaluates to true and the requested path matched the path pattern,
-        /// the associated actions should be executed by the caller. The condition string is checked for CEL syntax
-        /// correctness on creation. For more information, see the [CEL spec](https://github.com/google/cel-spec) and
-        /// its [language definition](https://github.com/google/cel-spec/blob/master/doc/langdef.md). A condition has a
-        /// max length of 500 characters.
+        /// Optional. A CEL (Common Expression Language) conditional expression that specifies if this policy applies to
+        /// an incoming user request. If this condition evaluates to true and the requested path matched the path
+        /// pattern, the associated actions should be executed by the caller. The condition string is checked for CEL
+        /// syntax correctness on creation. For more information, see the [CEL spec](https://github.com/google/cel-spec)
+        /// and its [language definition](https://github.com/google/cel-spec/blob/master/doc/langdef.md). A condition
+        /// has a max length of 500 characters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
         public virtual string Condition { get; set; }
 
         /// <summary>
-        /// A description of what this policy aims to achieve, for convenience purposes. The description can at most
-        /// include 256 UTF-8 characters.
+        /// Optional. A description of what this policy aims to achieve, for convenience purposes. The description can
+        /// at most include 256 UTF-8 characters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
         /// <summary>
         /// The resource name for the FirewallPolicy in the format
-        /// "projects/{project}/firewallpolicies/{firewallpolicy}".
+        /// `projects/{project}/firewallpolicies/{firewallpolicy}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// The path for which this policy applies, specified as a glob pattern. For more information on glob, see the
-        /// [manual page](https://man7.org/linux/man-pages/man7/glob.7.html). A path has a max length of 200 characters.
+        /// Optional. The path for which this policy applies, specified as a glob pattern. For more information on glob,
+        /// see the [manual page](https://man7.org/linux/man-pages/man7/glob.7.html). A path has a max length of 200
+        /// characters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
         public virtual string Path { get; set; }
@@ -2031,8 +2037,8 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
     public class GoogleCloudRecaptchaenterpriseV1FirewallPolicyAssessment : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// If the processing of a policy config fails, an error will be populated and the firewall_policy will be left
-        /// empty.
+        /// Output only. If the processing of a policy config fails, an error will be populated and the firewall_policy
+        /// will be left empty.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual GoogleRpcStatus Error { get; set; }
@@ -2051,21 +2057,23 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
     /// <summary>Assessment for Fraud Prevention.</summary>
     public class GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessment : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Assessment of this transaction for behavioral trust.</summary>
+        /// <summary>Output only. Assessment of this transaction for behavioral trust.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("behavioralTrustVerdict")]
         public virtual GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentBehavioralTrustVerdict BehavioralTrustVerdict { get; set; }
 
-        /// <summary>Assessment of this transaction for risk of being part of a card testing attack.</summary>
+        /// <summary>
+        /// Output only. Assessment of this transaction for risk of being part of a card testing attack.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cardTestingVerdict")]
         public virtual GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentCardTestingVerdict CardTestingVerdict { get; set; }
 
-        /// <summary>Assessment of this transaction for risk of a stolen instrument.</summary>
+        /// <summary>Output only. Assessment of this transaction for risk of a stolen instrument.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stolenInstrumentVerdict")]
         public virtual GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentStolenInstrumentVerdict StolenInstrumentVerdict { get; set; }
 
         /// <summary>
-        /// Probability of this transaction being fraudulent. Summarizes the combined risk of attack vectors below.
-        /// Values are from 0.0 (lowest) to 1.0 (highest).
+        /// Output only. Probability of this transaction being fraudulent. Summarizes the combined risk of attack
+        /// vectors below. Values are from 0.0 (lowest) to 1.0 (highest).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transactionRisk")]
         public virtual System.Nullable<float> TransactionRisk { get; set; }
@@ -2078,8 +2086,8 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
     public class GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentBehavioralTrustVerdict : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Probability of this transaction attempt being executed in a behaviorally trustworthy way. Values are from
-        /// 0.0 (lowest) to 1.0 (highest).
+        /// Output only. Probability of this transaction attempt being executed in a behaviorally trustworthy way.
+        /// Values are from 0.0 (lowest) to 1.0 (highest).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trust")]
         public virtual System.Nullable<float> Trust { get; set; }
@@ -2095,8 +2103,8 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
     public class GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentCardTestingVerdict : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Probability of this transaction attempt being part of a card testing attack. Values are from 0.0 (lowest) to
-        /// 1.0 (highest).
+        /// Output only. Probability of this transaction attempt being part of a card testing attack. Values are from
+        /// 0.0 (lowest) to 1.0 (highest).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("risk")]
         public virtual System.Nullable<float> Risk { get; set; }
@@ -2112,8 +2120,8 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
     public class GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentStolenInstrumentVerdict : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Probability of this transaction being executed with a stolen instrument. Values are from 0.0 (lowest) to 1.0
-        /// (highest).
+        /// Output only. Probability of this transaction being executed with a stolen instrument. Values are from 0.0
+        /// (lowest) to 1.0 (highest).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("risk")]
         public virtual System.Nullable<float> Risk { get; set; }
@@ -2172,21 +2180,21 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
     /// <summary>Settings specific to keys that can be used by iOS apps.</summary>
     public class GoogleCloudRecaptchaenterpriseV1IOSKeySettings : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If set to true, allowed_bundle_ids are not enforced.</summary>
+        /// <summary>Optional. If set to true, allowed_bundle_ids are not enforced.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowAllBundleIds")]
         public virtual System.Nullable<bool> AllowAllBundleIds { get; set; }
 
         /// <summary>
-        /// iOS bundle ids of apps allowed to use the key. Example: 'com.companyname.productname.appname'
+        /// Optional. iOS bundle ids of apps allowed to use the key. Example: 'com.companyname.productname.appname'
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowedBundleIds")]
         public virtual System.Collections.Generic.IList<string> AllowedBundleIds { get; set; }
 
         /// <summary>
-        /// Apple Developer account details for the app that is protected by the reCAPTCHA Key. reCAPTCHA Enterprise
-        /// leverages platform-specific checks like Apple App Attest and Apple DeviceCheck to protect your app from
-        /// abuse. Providing these fields allows reCAPTCHA Enterprise to get a better assessment of the integrity of
-        /// your app.
+        /// Optional. Apple Developer account details for the app that is protected by the reCAPTCHA Key. reCAPTCHA
+        /// Enterprise leverages platform-specific checks like Apple App Attest and Apple DeviceCheck to protect your
+        /// app from abuse. Providing these fields allows reCAPTCHA Enterprise to get a better assessment of the
+        /// integrity of your app.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appleDeveloperId")]
         public virtual GoogleCloudRecaptchaenterpriseV1AppleDeveloperId AppleDeveloperId { get; set; }
@@ -2241,7 +2249,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
             set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
         }
 
-        /// <summary>Human-readable display name of this key. Modifiable by user.</summary>
+        /// <summary>Required. Human-readable display name of this key. Modifiable by user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
@@ -2249,19 +2257,21 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("iosSettings")]
         public virtual GoogleCloudRecaptchaenterpriseV1IOSKeySettings IosSettings { get; set; }
 
-        /// <summary>See Creating and managing labels.</summary>
+        /// <summary>
+        /// Optional. See [Creating and managing labels] (https://cloud.google.com/recaptcha-enterprise/docs/labels).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
-        /// <summary>The resource name for the Key in the format "projects/{project}/keys/{key}".</summary>
+        /// <summary>The resource name for the Key in the format `projects/{project}/keys/{key}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Options for user acceptance testing.</summary>
+        /// <summary>Optional. Options for user acceptance testing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testingOptions")]
         public virtual GoogleCloudRecaptchaenterpriseV1TestingOptions TestingOptions { get; set; }
 
-        /// <summary>Settings for WAF</summary>
+        /// <summary>Optional. Settings for WAF</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("wafSettings")]
         public virtual GoogleCloudRecaptchaenterpriseV1WafSettings WafSettings { get; set; }
 
@@ -2354,7 +2364,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         public virtual System.Collections.Generic.IList<GoogleCloudRecaptchaenterpriseV1ChallengeMetrics> ChallengeMetrics { get; set; }
 
         /// <summary>
-        /// Output only. The name of the metrics, in the format "projects/{project}/keys/{key}/metrics".
+        /// Output only. The name of the metrics, in the format `projects/{project}/keys/{key}/metrics`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -2443,7 +2453,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         public virtual string EncryptedUserCredentialsHash { get; set; }
 
         /// <summary>
-        /// Optional. Exactly 26-bit prefix of the SHA-256 hash of the canonicalized username. It is used to look up
+        /// Required. Exactly 26-bit prefix of the SHA-256 hash of the canonicalized username. It is used to look up
         /// password leaks associated with that hash prefix.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lookupHashPrefix")]
@@ -2516,19 +2526,19 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
     public class GoogleCloudRecaptchaenterpriseV1RiskAnalysis : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Extended verdict reasons to be used for experimentation only. The set of possible reasons is subject to
-        /// change.
+        /// Output only. Extended verdict reasons to be used for experimentation only. The set of possible reasons is
+        /// subject to change.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("extendedVerdictReasons")]
         public virtual System.Collections.Generic.IList<string> ExtendedVerdictReasons { get; set; }
 
-        /// <summary>Reasons contributing to the risk analysis verdict.</summary>
+        /// <summary>Output only. Reasons contributing to the risk analysis verdict.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reasons")]
         public virtual System.Collections.Generic.IList<string> Reasons { get; set; }
 
         /// <summary>
-        /// Legitimate event score from 0.0 to 1.0. (1.0 means very likely legitimate traffic while 0.0 means very
-        /// likely non-legitimate traffic).
+        /// Output only. Legitimate event score from 0.0 to 1.0. (1.0 means very likely legitimate traffic while 0.0
+        /// means very likely non-legitimate traffic).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("score")]
         public virtual System.Nullable<float> Score { get; set; }
@@ -2621,15 +2631,15 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
     public class GoogleCloudRecaptchaenterpriseV1TestingOptions : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// For challenge-based keys only (CHECKBOX, INVISIBLE), all challenge requests for this site will return
-        /// nocaptcha if NOCAPTCHA, or an unsolvable challenge if CHALLENGE.
+        /// Optional. For challenge-based keys only (CHECKBOX, INVISIBLE), all challenge requests for this site will
+        /// return nocaptcha if NOCAPTCHA, or an unsolvable challenge if CHALLENGE.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testingChallenge")]
         public virtual string TestingChallenge { get; set; }
 
         /// <summary>
-        /// All assessments for this Key will return this score. Must be between 0 (likely not legitimate) and 1 (likely
-        /// legitimate) inclusive.
+        /// Optional. All assessments for this Key will return this score. Must be between 0 (likely not legitimate) and
+        /// 1 (likely legitimate) inclusive.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testingScore")]
         public virtual System.Nullable<float> TestingScore { get; set; }
@@ -2641,11 +2651,13 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
     /// <summary>Properties of the provided event token.</summary>
     public class GoogleCloudRecaptchaenterpriseV1TokenProperties : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Action name provided at token generation.</summary>
+        /// <summary>Output only. Action name provided at token generation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("action")]
         public virtual string Action { get; set; }
 
-        /// <summary>The name of the Android package with which the token was generated (Android keys only).</summary>
+        /// <summary>
+        /// Output only. The name of the Android package with which the token was generated (Android keys only).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("androidPackageName")]
         public virtual string AndroidPackageName { get; set; }
 
@@ -2653,7 +2665,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
 
         private object _createTime;
 
-        /// <summary>The timestamp corresponding to the generation of the token.</summary>
+        /// <summary>Output only. The timestamp corresponding to the generation of the token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual string CreateTimeRaw
         {
@@ -2686,22 +2698,23 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
             set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
         }
 
-        /// <summary>The hostname of the page on which the token was generated (Web keys only).</summary>
+        /// <summary>Output only. The hostname of the page on which the token was generated (Web keys only).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hostname")]
         public virtual string Hostname { get; set; }
 
-        /// <summary>Reason associated with the response when valid = false.</summary>
+        /// <summary>Output only. Reason associated with the response when valid = false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("invalidReason")]
         public virtual string InvalidReason { get; set; }
 
-        /// <summary>The ID of the iOS bundle with which the token was generated (iOS keys only).</summary>
+        /// <summary>Output only. The ID of the iOS bundle with which the token was generated (iOS keys only).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iosBundleId")]
         public virtual string IosBundleId { get; set; }
 
         /// <summary>
-        /// Whether the provided user response token is valid. When valid = false, the reason could be specified in
-        /// invalid_reason or it could also be due to a user failing to solve a challenge or a sitekey mismatch (i.e the
-        /// sitekey used to generate the token was different than the one specified in the assessment).
+        /// Output only. Whether the provided user response token is valid. When valid = false, the reason could be
+        /// specified in invalid_reason or it could also be due to a user failing to solve a challenge or a sitekey
+        /// mismatch (i.e the sitekey used to generate the token was different than the one specified in the
+        /// assessment).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valid")]
         public virtual System.Nullable<bool> Valid { get; set; }
@@ -2710,52 +2723,50 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Transaction data associated with a payment protected by reCAPTCHA Enterprise. All fields are optional.
-    /// </summary>
+    /// <summary>Transaction data associated with a payment protected by reCAPTCHA Enterprise.</summary>
     public class GoogleCloudRecaptchaenterpriseV1TransactionData : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Address associated with the payment method when applicable.</summary>
+        /// <summary>Optional. Address associated with the payment method when applicable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("billingAddress")]
         public virtual GoogleCloudRecaptchaenterpriseV1TransactionDataAddress BillingAddress { get; set; }
 
-        /// <summary>The Bank Identification Number - generally the first 6 or 8 digits of the card.</summary>
+        /// <summary>Optional. The Bank Identification Number - generally the first 6 or 8 digits of the card.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cardBin")]
         public virtual string CardBin { get; set; }
 
-        /// <summary>The last four digits of the card.</summary>
+        /// <summary>Optional. The last four digits of the card.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cardLastFour")]
         public virtual string CardLastFour { get; set; }
 
-        /// <summary>The currency code in ISO-4217 format.</summary>
+        /// <summary>Optional. The currency code in ISO-4217 format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currencyCode")]
         public virtual string CurrencyCode { get; set; }
 
-        /// <summary>Information about the payment gateway's response to the transaction.</summary>
+        /// <summary>Optional. Information about the payment gateway's response to the transaction.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gatewayInfo")]
         public virtual GoogleCloudRecaptchaenterpriseV1TransactionDataGatewayInfo GatewayInfo { get; set; }
 
-        /// <summary>Items purchased in this transaction.</summary>
+        /// <summary>Optional. Items purchased in this transaction.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<GoogleCloudRecaptchaenterpriseV1TransactionDataItem> Items { get; set; }
 
-        /// <summary>Information about the user or users fulfilling the transaction.</summary>
+        /// <summary>Optional. Information about the user or users fulfilling the transaction.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("merchants")]
         public virtual System.Collections.Generic.IList<GoogleCloudRecaptchaenterpriseV1TransactionDataUser> Merchants { get; set; }
 
         /// <summary>
-        /// The payment method for the transaction. The allowed values are: * credit-card * debit-card * gift-card *
-        /// processor-{name} (If a third-party is used, for example, processor-paypal) * custom-{name} (If an
-        /// alternative method is used, for example, custom-crypto)
+        /// Optional. The payment method for the transaction. The allowed values are: * credit-card * debit-card *
+        /// gift-card * processor-{name} (If a third-party is used, for example, processor-paypal) * custom-{name} (If
+        /// an alternative method is used, for example, custom-crypto)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("paymentMethod")]
         public virtual string PaymentMethod { get; set; }
 
-        /// <summary>Destination address if this transaction involves shipping a physical item.</summary>
+        /// <summary>Optional. Destination address if this transaction involves shipping a physical item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shippingAddress")]
         public virtual GoogleCloudRecaptchaenterpriseV1TransactionDataAddress ShippingAddress { get; set; }
 
-        /// <summary>The value of shipping in the specified currency. 0 for free or no shipping.</summary>
+        /// <summary>Optional. The value of shipping in the specified currency. 0 for free or no shipping.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shippingValue")]
         public virtual System.Nullable<double> ShippingValue { get; set; }
 
@@ -2767,11 +2778,11 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("transactionId")]
         public virtual string TransactionId { get; set; }
 
-        /// <summary>Information about the user paying/initiating the transaction.</summary>
+        /// <summary>Optional. Information about the user paying/initiating the transaction.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("user")]
         public virtual GoogleCloudRecaptchaenterpriseV1TransactionDataUser User { get; set; }
 
-        /// <summary>The decimal value of the transaction in the specified currency.</summary>
+        /// <summary>Optional. The decimal value of the transaction in the specified currency.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual System.Nullable<double> Value { get; set; }
 
@@ -2783,29 +2794,29 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
     public class GoogleCloudRecaptchaenterpriseV1TransactionDataAddress : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The first lines of the address. The first line generally contains the street name and number, and further
-        /// lines may include information such as an apartment number.
+        /// Optional. The first lines of the address. The first line generally contains the street name and number, and
+        /// further lines may include information such as an apartment number.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("address")]
         public virtual System.Collections.Generic.IList<string> Address { get; set; }
 
-        /// <summary>The state, province, or otherwise administrative area of the address.</summary>
+        /// <summary>Optional. The state, province, or otherwise administrative area of the address.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("administrativeArea")]
         public virtual string AdministrativeArea { get; set; }
 
-        /// <summary>The town/city of the address.</summary>
+        /// <summary>Optional. The town/city of the address.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locality")]
         public virtual string Locality { get; set; }
 
-        /// <summary>The postal or ZIP code of the address.</summary>
+        /// <summary>Optional. The postal or ZIP code of the address.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("postalCode")]
         public virtual string PostalCode { get; set; }
 
-        /// <summary>The recipient name, potentially including information such as "care of".</summary>
+        /// <summary>Optional. The recipient name, potentially including information such as "care of".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recipient")]
         public virtual string Recipient { get; set; }
 
-        /// <summary>The CLDR country/region of the address.</summary>
+        /// <summary>Optional. The CLDR country/region of the address.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
         public virtual string RegionCode { get; set; }
 
@@ -2817,22 +2828,24 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
     public class GoogleCloudRecaptchaenterpriseV1TransactionDataGatewayInfo : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// AVS response code from the gateway (available only when reCAPTCHA Enterprise is called after authorization).
+        /// Optional. AVS response code from the gateway (available only when reCAPTCHA Enterprise is called after
+        /// authorization).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("avsResponseCode")]
         public virtual string AvsResponseCode { get; set; }
 
         /// <summary>
-        /// CVV response code from the gateway (available only when reCAPTCHA Enterprise is called after authorization).
+        /// Optional. CVV response code from the gateway (available only when reCAPTCHA Enterprise is called after
+        /// authorization).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cvvResponseCode")]
         public virtual string CvvResponseCode { get; set; }
 
-        /// <summary>Gateway response code describing the state of the transaction.</summary>
+        /// <summary>Optional. Gateway response code describing the state of the transaction.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gatewayResponseCode")]
         public virtual string GatewayResponseCode { get; set; }
 
-        /// <summary>Name of the gateway service (for example, stripe, square, paypal).</summary>
+        /// <summary>Optional. Name of the gateway service (for example, stripe, square, paypal).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -2844,21 +2857,23 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
     public class GoogleCloudRecaptchaenterpriseV1TransactionDataItem : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// When a merchant is specified, its corresponding account_id. Necessary to populate marketplace-style
-        /// transactions.
+        /// Optional. When a merchant is specified, its corresponding account_id. Necessary to populate
+        /// marketplace-style transactions.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("merchantAccountId")]
         public virtual string MerchantAccountId { get; set; }
 
-        /// <summary>The full name of the item.</summary>
+        /// <summary>Optional. The full name of the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>The quantity of this item that is being purchased.</summary>
+        /// <summary>Optional. The quantity of this item that is being purchased.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quantity")]
         public virtual System.Nullable<long> Quantity { get; set; }
 
-        /// <summary>The value per item that the user is paying, in the transaction currency, after discounts.</summary>
+        /// <summary>
+        /// Optional. The value per item that the user is paying, in the transaction currency, after discounts.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual System.Nullable<double> Value { get; set; }
 
@@ -2870,29 +2885,33 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
     public class GoogleCloudRecaptchaenterpriseV1TransactionDataUser : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Unique account identifier for this user. If using account defender, this should match the hashed_account_id
-        /// field. Otherwise, a unique and persistent identifier for this account.
+        /// Optional. Unique account identifier for this user. If using account defender, this should match the
+        /// hashed_account_id field. Otherwise, a unique and persistent identifier for this account.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
         public virtual string AccountId { get; set; }
 
-        /// <summary>The epoch milliseconds of the user's account creation.</summary>
+        /// <summary>Optional. The epoch milliseconds of the user's account creation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationMs")]
         public virtual System.Nullable<long> CreationMs { get; set; }
 
-        /// <summary>The email address of the user.</summary>
+        /// <summary>Optional. The email address of the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("email")]
         public virtual string Email { get; set; }
 
-        /// <summary>Whether the email has been verified to be accessible by the user (OTP or similar).</summary>
+        /// <summary>
+        /// Optional. Whether the email has been verified to be accessible by the user (OTP or similar).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("emailVerified")]
         public virtual System.Nullable<bool> EmailVerified { get; set; }
 
-        /// <summary>The phone number of the user, with country code.</summary>
+        /// <summary>Optional. The phone number of the user, with country code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phoneNumber")]
         public virtual string PhoneNumber { get; set; }
 
-        /// <summary>Whether the phone number has been verified to be accessible by the user (OTP or similar).</summary>
+        /// <summary>
+        /// Optional. Whether the phone number has been verified to be accessible by the user (OTP or similar).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phoneVerified")]
         public virtual System.Nullable<bool> PhoneVerified { get; set; }
 
@@ -2982,19 +3001,19 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
     /// <summary>Settings specific to keys that can be used by websites.</summary>
     public class GoogleCloudRecaptchaenterpriseV1WebKeySettings : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If set to true, it means allowed_domains will not be enforced.</summary>
+        /// <summary>Optional. If set to true, it means allowed_domains will not be enforced.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowAllDomains")]
         public virtual System.Nullable<bool> AllowAllDomains { get; set; }
 
         /// <summary>
-        /// If set to true, the key can be used on AMP (Accelerated Mobile Pages) websites. This is supported only for
-        /// the SCORE integration type.
+        /// Optional. If set to true, the key can be used on AMP (Accelerated Mobile Pages) websites. This is supported
+        /// only for the SCORE integration type.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowAmpTraffic")]
         public virtual System.Nullable<bool> AllowAmpTraffic { get; set; }
 
         /// <summary>
-        /// Domains or subdomains of websites allowed to use the key. All subdomains of an allowed domain are
+        /// Optional. Domains or subdomains of websites allowed to use the key. All subdomains of an allowed domain are
         /// automatically allowed. A valid domain requires a host and must not include any path, port, query or
         /// fragment. Examples: 'example.com' or 'subdomain.example.com'
         /// </summary>
@@ -3002,8 +3021,8 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         public virtual System.Collections.Generic.IList<string> AllowedDomains { get; set; }
 
         /// <summary>
-        /// Settings for the frequency and difficulty at which this key triggers captcha challenges. This should only be
-        /// specified for IntegrationTypes CHECKBOX and INVISIBLE.
+        /// Optional. Settings for the frequency and difficulty at which this key triggers captcha challenges. This
+        /// should only be specified for IntegrationTypes CHECKBOX and INVISIBLE.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("challengeSecurityPreference")]
         public virtual string ChallengeSecurityPreference { get; set; }

@@ -2200,6 +2200,14 @@ namespace Google.Apis.SQLAdmin.v1
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
 
+            /// <summary>
+            /// Set to true if the promote operation should attempt to re-add the original primary as a replica when it
+            /// comes back online. Otherwise, if this value is false or not set, the original primary will be a
+            /// standalone instance.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("failover", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> Failover { get; set; }
+
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "promoteReplica";
 
@@ -2226,6 +2234,14 @@ namespace Google.Apis.SQLAdmin.v1
                     Name = "instance",
                     IsRequired = true,
                     ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("failover", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "failover",
+                    IsRequired = false,
+                    ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
                 });
@@ -2677,6 +2693,80 @@ namespace Google.Apis.SQLAdmin.v1
                     Name = "instance",
                     IsRequired = true,
                     ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Switches over from the primary instance to the replica instance.</summary>
+        /// <param name="project">ID of the project that contains the replica.</param>
+        /// <param name="instance">Cloud SQL read replica instance name.</param>
+        public virtual SwitchoverRequest Switchover(string project, string instance)
+        {
+            return new SwitchoverRequest(service, project, instance);
+        }
+
+        /// <summary>Switches over from the primary instance to the replica instance.</summary>
+        public class SwitchoverRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1.Data.Operation>
+        {
+            /// <summary>Constructs a new Switchover request.</summary>
+            public SwitchoverRequest(Google.Apis.Services.IClientService service, string project, string instance) : base(service)
+            {
+                Project = project;
+                Instance = instance;
+                InitParameters();
+            }
+
+            /// <summary>ID of the project that contains the replica.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Cloud SQL read replica instance name.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Instance { get; private set; }
+
+            /// <summary>
+            /// Optional. (MySQL only) Cloud SQL instance operations timeout, which is a sum of all database operations.
+            /// Default value is 10 minutes and can be modified to a maximum value of 24 hours.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("dbTimeout", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object DbTimeout { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "switchover";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/projects/{project}/instances/{instance}/switchover";
+
+            /// <summary>Initializes Switchover parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("instance", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "instance",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("dbTimeout", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "dbTimeout",
+                    IsRequired = false,
+                    ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
                 });
@@ -5211,7 +5301,7 @@ namespace Google.Apis.SQLAdmin.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("outOfDiskReport")]
         public virtual SqlOutOfDiskReport OutOfDiskReport { get; set; }
 
-        /// <summary>Output only. The dns name of the primary instance in a replication group.</summary>
+        /// <summary>Output only. DEPRECATED: please use write_endpoint instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("primaryDnsName")]
         public virtual string PrimaryDnsName { get; set; }
 
@@ -5288,6 +5378,10 @@ namespace Google.Apis.SQLAdmin.v1.Data
         /// <summary>If the instance state is SUSPENDED, the reason for the suspension.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suspensionReason")]
         public virtual System.Collections.Generic.IList<string> SuspensionReason { get; set; }
+
+        /// <summary>Output only. The dns name of the primary instance in a replication group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("writeEndpoint")]
+        public virtual string WriteEndpoint { get; set; }
 
         /// <summary>The name and status of the failover replica.</summary>
         public class FailoverReplicaData
@@ -6216,15 +6310,37 @@ namespace Google.Apis.SQLAdmin.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pscConfig")]
         public virtual PscConfig PscConfig { get; set; }
 
-        /// <summary>Whether SSL connections over IP are enforced or not.</summary>
+        /// <summary>
+        /// LINT.IfChange(require_ssl_deprecate) Whether SSL/TLS connections over IP are enforced or not. If set to
+        /// false, allow both non-SSL/non-TLS and SSL/TLS connections. For SSL/TLS connections, the client certificate
+        /// will not be verified. If set to true, only allow connections encrypted with SSL/TLS and with valid client
+        /// certificates. If you want to enforce SSL/TLS without enforcing the requirement for valid client
+        /// certificates, use the `ssl_mode` flag instead of the legacy `require_ssl` flag.
+        /// LINT.ThenChange(//depot/google3/java/com/google/storage/speckle/boss/admin/actions/InstanceUpdateAction.java:update_api_temp_fix)
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requireSsl")]
         public virtual System.Nullable<bool> RequireSsl { get; set; }
+
+        /// <summary>
+        /// Specify how SSL/TLS will be enforced in database connections. This flag is only supported for PostgreSQL.
+        /// Use the legacy `require_ssl` flag for enforcing SSL/TLS in MySQL and SQL Server. But, for PostgreSQL, it is
+        /// recommended to use the `ssl_mode` flag instead of the legacy `require_ssl` flag. To avoid the conflict
+        /// between those flags in PostgreSQL, only the following value pairs are valid:
+        /// ssl_mode=ALLOW_UNENCRYPTED_AND_ENCRYPTED, require_ssl=false; ssl_mode=ENCRYPTED_ONLY, require_ssl=false;
+        /// ssl_mode=TRUSTED_CLIENT_CERTIFICATE_REQUIRED, require_ssl=true; Note that the value of `ssl_mode` gets
+        /// priority over the value of the legacy `require_ssl`. For example, for the pair `ssl_mode=ENCRYPTED_ONLY,
+        /// require_ssl=false`, the `ssl_mode=ENCRYPTED_ONLY` means "only accepts SSL connection", while the
+        /// `require_ssl=false` means "both non-SSL and SSL connections are allowed". The database will respect
+        /// `ssl_mode` in this case and only accept SSL connections.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sslMode")]
+        public virtual string SslMode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Database instance IP Mapping.</summary>
+    /// <summary>Database instance IP mapping</summary>
     public class IpMapping : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The IP address assigned.</summary>
@@ -6872,6 +6988,10 @@ namespace Google.Apis.SQLAdmin.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("complexity")]
         public virtual string Complexity { get; set; }
 
+        /// <summary>Disallow credentials that have been previously compromised by a public data breach.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disallowCompromisedCredentials")]
+        public virtual System.Nullable<bool> DisallowCompromisedCredentials { get; set; }
+
         /// <summary>Disallow username as a part of the password.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disallowUsernameSubstring")]
         public virtual System.Nullable<bool> DisallowUsernameSubstring { get; set; }
@@ -6913,9 +7033,9 @@ namespace Google.Apis.SQLAdmin.v1.Data
     public class PscConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// List of consumer projects that are allow-listed for PSC connections to this instance. This instance can be
-        /// connected to with PSC from any network in these projects. Each consumer project in this list may be
-        /// represented by a project number (numeric) or by a project id (alphanumeric).
+        /// Optional. The list of consumer projects that are allow-listed for PSC connections to this instance. This
+        /// instance can be connected to with PSC from any network in these projects. Each consumer project in this list
+        /// may be represented by a project number (numeric) or by a project id (alphanumeric).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowedConsumerProjects")]
         public virtual System.Collections.Generic.IList<string> AllowedConsumerProjects { get; set; }
@@ -6931,6 +7051,13 @@ namespace Google.Apis.SQLAdmin.v1.Data
     /// <summary>Read-replica configuration for connecting to the primary instance.</summary>
     public class ReplicaConfiguration : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Specifies if a SQL Server replica is a cascadable replica. A cascadable replica is a SQL Server
+        /// cross region replica that supports replica(s) under it.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cascadableReplica")]
+        public virtual System.Nullable<bool> CascadableReplica { get; set; }
+
         /// <summary>
         /// Specifies if the replica is the failover target. If the field is set to `true`, the replica will be
         /// designated as a failover replica. In case the primary instance fails, the replica instance will be promoted

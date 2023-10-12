@@ -275,6 +275,7 @@ namespace Google.Apis.Adsense.v2
             Adclients = new AdclientsResource(service);
             Alerts = new AlertsResource(service);
             Payments = new PaymentsResource(service);
+            PolicyIssues = new PolicyIssuesResource(service);
             Reports = new ReportsResource(service);
             Sites = new SitesResource(service);
         }
@@ -1663,6 +1664,154 @@ namespace Google.Apis.Adsense.v2
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^accounts/[^/]+$",
+                    });
+                }
+            }
+        }
+
+        /// <summary>Gets the PolicyIssues resource.</summary>
+        public virtual PolicyIssuesResource PolicyIssues { get; }
+
+        /// <summary>The "policyIssues" collection of methods.</summary>
+        public class PolicyIssuesResource
+        {
+            private const string Resource = "policyIssues";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public PolicyIssuesResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>Gets information about the selected policy issue.</summary>
+            /// <param name="name">
+            /// Required. Name of the policy issue. Format: accounts/{account}/policyIssues/{policy_issue}
+            /// </param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(service, name);
+            }
+
+            /// <summary>Gets information about the selected policy issue.</summary>
+            public class GetRequest : AdsenseBaseServiceRequest<Google.Apis.Adsense.v2.Data.PolicyIssue>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Name of the policy issue. Format: accounts/{account}/policyIssues/{policy_issue}
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v2/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^accounts/[^/]+/policyIssues/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Lists all the policy issues for the specified account.</summary>
+            /// <param name="parent">
+            /// Required. The account for which policy issues are being retrieved. Format: accounts/{account}
+            /// </param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(service, parent);
+            }
+
+            /// <summary>Lists all the policy issues for the specified account.</summary>
+            public class ListRequest : AdsenseBaseServiceRequest<Google.Apis.Adsense.v2.Data.ListPolicyIssuesResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The account for which policy issues are being retrieved. Format: accounts/{account}
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// The maximum number of policy issues to include in the response, used for paging. If unspecified, at
+                /// most 10000 policy issues will be returned. The maximum value is 10000; values above 10000 will be
+                /// coerced to 10000.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// A page token, received from a previous `ListPolicyIssues` call. Provide this to retrieve the
+                /// subsequent page. When paginating, all other parameters provided to `ListPolicyIssues` must match the
+                /// call that provided the page token.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v2/{+parent}/policyIssues";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^accounts/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                 }
             }
@@ -4933,6 +5082,28 @@ namespace Google.Apis.Adsense.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Response definition for the policy issues list rpc. Policy issues are reported only if the publisher has at
+    /// least one AFC ad client in READY or GETTING_READY state. If the publisher has no such AFC ad client, the
+    /// response will be an empty list.
+    /// </summary>
+    public class ListPolicyIssuesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Continuation token used to page through policy issues. To retrieve the next page of the results, set the
+        /// next request's "page_token" value to this.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The policy issues returned in the list response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyIssues")]
+        public virtual System.Collections.Generic.IList<PolicyIssue> PolicyIssues { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response definition for the saved reports list rpc.</summary>
     public class ListSavedReportsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5017,6 +5188,119 @@ namespace Google.Apis.Adsense.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Representation of a policy issue for a single entity (site, site-section, or page). All issues for a single
+    /// entity are represented by a single PolicyIssue resource, though that PolicyIssue can have multiple causes (or
+    /// "topics") that can change over time. Policy issues are removed if there are no issues detected recently or if
+    /// there's a recent successful appeal for the entity.
+    /// </summary>
+    public class PolicyIssue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The most severe action taken on the entity over the past seven days.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("action")]
+        public virtual string Action { get; set; }
+
+        /// <summary>
+        /// Optional. List of ad clients associated with the policy issue (either as the primary ad client or an
+        /// associated host/secondary ad client). In the latter case, this will be an ad client that is not owned by the
+        /// current account.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adClients")]
+        public virtual System.Collections.Generic.IList<string> AdClients { get; set; }
+
+        /// <summary>
+        /// Required. Total number of ad requests affected by the policy violations over the past seven days.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adRequestCount")]
+        public virtual System.Nullable<long> AdRequestCount { get; set; }
+
+        /// <summary>Required. Type of the entity indicating if the entity is a site, site-section, or page.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityType")]
+        public virtual string EntityType { get; set; }
+
+        /// <summary>
+        /// Required. The date (in the America/Los_Angeles timezone) when policy violations were first detected on the
+        /// entity.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("firstDetectedDate")]
+        public virtual Date FirstDetectedDate { get; set; }
+
+        /// <summary>
+        /// Required. The date (in the America/Los_Angeles timezone) when policy violations were last detected on the
+        /// entity.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastDetectedDate")]
+        public virtual Date LastDetectedDate { get; set; }
+
+        /// <summary>
+        /// Required. Resource name of the entity with policy issues. Format:
+        /// accounts/{account}/policyIssues/{policy_issue}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Required. Unordered list. The policy topics that this entity was found to violate over the past seven days.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyTopics")]
+        public virtual System.Collections.Generic.IList<PolicyTopic> PolicyTopics { get; set; }
+
+        /// <summary>
+        /// Required. Hostname/domain of the entity (for example "foo.com" or "www.foo.com"). This _should_ be a bare
+        /// domain/host name without any protocol. This will be present for all policy issues.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("site")]
+        public virtual string Site { get; set; }
+
+        /// <summary>
+        /// Optional. Prefix of the site-section having policy issues (For example "foo.com/bar-section"). This will be
+        /// present if the `entity_type` is `SITE_SECTION` and will be absent for other entity types.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("siteSection")]
+        public virtual string SiteSection { get; set; }
+
+        /// <summary>
+        /// Optional. URI of the page having policy violations (for example "foo.com/bar" or "www.foo.com/bar"). This
+        /// will be present if the `entity_type` is `PAGE` and will be absent for other entity types.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>
+        /// Optional. The date (in the America/Los_Angeles timezone) when the entity will have ad serving demand
+        /// restricted or ad serving disabled. This is present only for issues with a `WARNED` enforcement action. See
+        /// https://support.google.com/adsense/answer/11066888.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("warningEscalationDate")]
+        public virtual Date WarningEscalationDate { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Information about a particular policy topic. A policy topic represents a single class of policy issue that can
+    /// impact ad serving for your site. For example, sexual content or having ads that obscure your content. A single
+    /// policy issue can have multiple policy topics for a single entity.
+    /// </summary>
+    public class PolicyTopic : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Indicates if this is a policy violation or not. When the value is true, issues that are instances
+        /// of this topic must be addressed to remain in compliance with the partner's agreements with Google. A false
+        /// value indicates that it's not mandatory to fix the issues but advertising demand might be restricted.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mustFix")]
+        public virtual System.Nullable<bool> MustFix { get; set; }
+
+        /// <summary>Required. The policy topic. For example, "sexual-content" or "ads-obscuring-content"."</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("topic")]
+        public virtual string Topic { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

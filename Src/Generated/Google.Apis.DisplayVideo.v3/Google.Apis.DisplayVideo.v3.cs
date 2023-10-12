@@ -14,13 +14,13 @@
 
 // Generated code. DO NOT EDIT!
 
-namespace Google.Apis.DisplayVideo.v1
+namespace Google.Apis.DisplayVideo.v3
 {
     /// <summary>The DisplayVideo Service.</summary>
     public class DisplayVideoService : Google.Apis.Services.BaseClientService
     {
         /// <summary>The API version.</summary>
-        public const string Version = "v1";
+        public const string Version = "v3";
 
         /// <summary>The discovery version used to generate this service.</summary>
         public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
@@ -348,6 +348,8 @@ namespace Google.Apis.DisplayVideo.v1
         public AdvertisersResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
+            AdGroupAds = new AdGroupAdsResource(service);
+            AdGroups = new AdGroupsResource(service);
             Assets = new AssetsResource(service);
             Campaigns = new CampaignsResource(service);
             Channels = new ChannelsResource(service);
@@ -356,9 +358,1360 @@ namespace Google.Apis.DisplayVideo.v1
             Invoices = new InvoicesResource(service);
             LineItems = new LineItemsResource(service);
             LocationLists = new LocationListsResource(service);
-            ManualTriggers = new ManualTriggersResource(service);
             NegativeKeywordLists = new NegativeKeywordListsResource(service);
             TargetingTypes = new TargetingTypesResource(service);
+        }
+
+        /// <summary>Gets the AdGroupAds resource.</summary>
+        public virtual AdGroupAdsResource AdGroupAds { get; }
+
+        /// <summary>The "adGroupAds" collection of methods.</summary>
+        public class AdGroupAdsResource
+        {
+            private const string Resource = "adGroupAds";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public AdGroupAdsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>Gets an ad group ad.</summary>
+            /// <param name="advertiserId">Required. The ID of the advertiser this ad group ad belongs to.</param>
+            /// <param name="adGroupAdId">Required. The ID of the ad group ad to fetch.</param>
+            public virtual GetRequest Get(long advertiserId, long adGroupAdId)
+            {
+                return new GetRequest(service, advertiserId, adGroupAdId);
+            }
+
+            /// <summary>Gets an ad group ad.</summary>
+            public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.AdGroupAd>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, long advertiserId, long adGroupAdId) : base(service)
+                {
+                    AdvertiserId = advertiserId;
+                    AdGroupAdId = adGroupAdId;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The ID of the advertiser this ad group ad belongs to.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long AdvertiserId { get; private set; }
+
+                /// <summary>Required. The ID of the ad group ad to fetch.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("adGroupAdId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long AdGroupAdId { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v3/advertisers/{+advertiserId}/adGroupAds/{+adGroupAdId}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("adGroupAdId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "adGroupAdId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Lists ad group ads.</summary>
+            /// <param name="advertiserId">Required. The ID of the advertiser the ad groups belongs to.</param>
+            public virtual ListRequest List(long advertiserId)
+            {
+                return new ListRequest(service, advertiserId);
+            }
+
+            /// <summary>Lists ad group ads.</summary>
+            public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.ListAdGroupAdsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, long advertiserId) : base(service)
+                {
+                    AdvertiserId = advertiserId;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The ID of the advertiser the ad groups belongs to.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long AdvertiserId { get; private set; }
+
+                /// <summary>
+                /// Optional. Allows filtering by custom ad group ad fields. Supported syntax: * Filter expressions are
+                /// made up of one or more restrictions. * Restrictions can be combined by `AND` and `OR`. A sequence of
+                /// restrictions implicitly uses `AND`. * A restriction has the form of `{field} {operator} {value}`. *
+                /// All fields must use the `EQUALS (=)` operator. Supported fields: * `adGroupId` * `displayName` *
+                /// `entityStatus` * `adGroupAdId` Examples: * All ad group ads under an ad group: `adGroupId="1234"` *
+                /// All ad group ads under an ad group with an entityStatus of `ENTITY_STATUS_ACTIVE` or
+                /// `ENTITY_STATUS_PAUSED`: `(entityStatus="ENTITY_STATUS_ACTIVE" OR
+                /// entityStatus="ENTITY_STATUS_PAUSED") AND adGroupId="12345"` The length of this field should be no
+                /// more than 500 characters. Reference our [filter `LIST`
+                /// requests](/display-video/api/guides/how-tos/filters) guide for more information.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
+                /// <summary>
+                /// Optional. Field by which to sort the list. Acceptable values are: * `displayName` (default) *
+                /// `entityStatus` The default sorting order is ascending. To specify descending order for a field, a
+                /// suffix "desc" should be added to the field name. Example: `displayName desc`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string OrderBy { get; set; }
+
+                /// <summary>
+                /// Optional. Requested page size. Must be between `1` and `100`. If unspecified will default to `100`.
+                /// Returns error code `INVALID_ARGUMENT` if an invalid value is specified.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// Optional. A token identifying a page of results the server should return. Typically, this is the
+                /// value of next_page_token returned from the previous call to `ListAdGroupAds` method. If not
+                /// specified, the first page of results will be returned.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v3/advertisers/{+advertiserId}/adGroupAds";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderBy",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+        }
+
+        /// <summary>Gets the AdGroups resource.</summary>
+        public virtual AdGroupsResource AdGroups { get; }
+
+        /// <summary>The "adGroups" collection of methods.</summary>
+        public class AdGroupsResource
+        {
+            private const string Resource = "adGroups";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public AdGroupsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+                TargetingTypes = new TargetingTypesResource(service);
+            }
+
+            /// <summary>Gets the TargetingTypes resource.</summary>
+            public virtual TargetingTypesResource TargetingTypes { get; }
+
+            /// <summary>The "targetingTypes" collection of methods.</summary>
+            public class TargetingTypesResource
+            {
+                private const string Resource = "targetingTypes";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public TargetingTypesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    AssignedTargetingOptions = new AssignedTargetingOptionsResource(service);
+                }
+
+                /// <summary>Gets the AssignedTargetingOptions resource.</summary>
+                public virtual AssignedTargetingOptionsResource AssignedTargetingOptions { get; }
+
+                /// <summary>The "assignedTargetingOptions" collection of methods.</summary>
+                public class AssignedTargetingOptionsResource
+                {
+                    private const string Resource = "assignedTargetingOptions";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public AssignedTargetingOptionsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>
+                    /// Gets a single targeting option assigned to an ad group. Inherited assigned targeting options are
+                    /// not included.
+                    /// </summary>
+                    /// <param name="advertiserId">Required. The ID of the advertiser the ad group belongs to.</param>
+                    /// <param name="adGroupId">
+                    /// Required. The ID of the ad group the assigned targeting option belongs to.
+                    /// </param>
+                    /// <param name="targetingType">
+                    /// Required. Identifies the type of this assigned targeting option. Supported targeting types
+                    /// include: * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_APP` * `TARGETING_TYPE_APP_CATEGORY` *
+                    /// `TARGETING_TYPE_AUDIENCE_GROUP` * `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_GENDER` *
+                    /// `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_PARENTAL_STATUS`
+                    /// * `TARGETING_TYPE_SESSION_POSITION` * `TARGETING_TYPE_URL` * `TARGETING_TYPE_YOUTUBE_CHANNEL` *
+                    /// `TARGETING_TYPE_YOUTUBE_VIDEO`
+                    /// </param>
+                    /// <param name="assignedTargetingOptionId">
+                    /// Required. An identifier unique to the targeting type in this line item that identifies the
+                    /// assigned targeting option being requested.
+                    /// </param>
+                    public virtual GetRequest Get(long advertiserId, long adGroupId, GetRequest.TargetingTypeEnum targetingType, string assignedTargetingOptionId)
+                    {
+                        return new GetRequest(service, advertiserId, adGroupId, targetingType, assignedTargetingOptionId);
+                    }
+
+                    /// <summary>
+                    /// Gets a single targeting option assigned to an ad group. Inherited assigned targeting options are
+                    /// not included.
+                    /// </summary>
+                    public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.AssignedTargetingOption>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, long advertiserId, long adGroupId, TargetingTypeEnum targetingType, string assignedTargetingOptionId) : base(service)
+                        {
+                            AdvertiserId = advertiserId;
+                            AdGroupId = adGroupId;
+                            TargetingType = targetingType;
+                            AssignedTargetingOptionId = assignedTargetingOptionId;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The ID of the advertiser the ad group belongs to.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual long AdvertiserId { get; private set; }
+
+                        /// <summary>
+                        /// Required. The ID of the ad group the assigned targeting option belongs to.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("adGroupId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual long AdGroupId { get; private set; }
+
+                        /// <summary>
+                        /// Required. Identifies the type of this assigned targeting option. Supported targeting types
+                        /// include: * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_APP` * `TARGETING_TYPE_APP_CATEGORY`
+                        /// * `TARGETING_TYPE_AUDIENCE_GROUP` * `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_GENDER` *
+                        /// `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_KEYWORD` *
+                        /// `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_SESSION_POSITION` * `TARGETING_TYPE_URL`
+                        /// * `TARGETING_TYPE_YOUTUBE_CHANNEL` * `TARGETING_TYPE_YOUTUBE_VIDEO`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("targetingType", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual TargetingTypeEnum TargetingType { get; private set; }
+
+                        /// <summary>
+                        /// Required. Identifies the type of this assigned targeting option. Supported targeting types
+                        /// include: * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_APP` * `TARGETING_TYPE_APP_CATEGORY`
+                        /// * `TARGETING_TYPE_AUDIENCE_GROUP` * `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_GENDER` *
+                        /// `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_KEYWORD` *
+                        /// `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_SESSION_POSITION` * `TARGETING_TYPE_URL`
+                        /// * `TARGETING_TYPE_YOUTUBE_CHANNEL` * `TARGETING_TYPE_YOUTUBE_VIDEO`
+                        /// </summary>
+                        public enum TargetingTypeEnum
+                        {
+                            /// <summary>
+                            /// Default value when type is not specified or is unknown in this version.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_UNSPECIFIED")]
+                            TARGETINGTYPEUNSPECIFIED = 0,
+
+                            /// <summary>Target a channel (a custom group of related websites or apps).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CHANNEL")]
+                            TARGETINGTYPECHANNEL = 1,
+
+                            /// <summary>Target an app category (for example, education or puzzle games).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_APP_CATEGORY")]
+                            TARGETINGTYPEAPPCATEGORY = 2,
+
+                            /// <summary>Target a specific app (for example, Angry Birds).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_APP")]
+                            TARGETINGTYPEAPP = 3,
+
+                            /// <summary>Target a specific url (for example, quora.com).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_URL")]
+                            TARGETINGTYPEURL = 4,
+
+                            /// <summary>Target ads during a chosen time period on a specific day.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DAY_AND_TIME")]
+                            TARGETINGTYPEDAYANDTIME = 5,
+
+                            /// <summary>Target ads to a specific age range (for example, 18-24).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AGE_RANGE")]
+                            TARGETINGTYPEAGERANGE = 6,
+
+                            /// <summary>Target ads to the specified regions on a regional location list.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_REGIONAL_LOCATION_LIST")]
+                            TARGETINGTYPEREGIONALLOCATIONLIST = 7,
+
+                            /// <summary>
+                            /// Target ads to the specified points of interest on a proximity location list.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_PROXIMITY_LOCATION_LIST")]
+                            TARGETINGTYPEPROXIMITYLOCATIONLIST = 8,
+
+                            /// <summary>Target ads to a specific gender (for example, female or male).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_GENDER")]
+                            TARGETINGTYPEGENDER = 9,
+
+                            /// <summary>Target a specific video player size for video ads.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_VIDEO_PLAYER_SIZE")]
+                            TARGETINGTYPEVIDEOPLAYERSIZE = 10,
+
+                            /// <summary>Target user rewarded content for video ads.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_USER_REWARDED_CONTENT")]
+                            TARGETINGTYPEUSERREWARDEDCONTENT = 11,
+
+                            /// <summary>
+                            /// Target ads to a specific parental status (for example, parent or not a parent).
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_PARENTAL_STATUS")]
+                            TARGETINGTYPEPARENTALSTATUS = 12,
+
+                            /// <summary>
+                            /// Target video or audio ads in a specific content instream position (for example,
+                            /// pre-roll, mid-roll, or post-roll).
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_INSTREAM_POSITION")]
+                            TARGETINGTYPECONTENTINSTREAMPOSITION = 13,
+
+                            /// <summary>Target ads in a specific content outstream position.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION")]
+                            TARGETINGTYPECONTENTOUTSTREAMPOSITION = 14,
+
+                            /// <summary>
+                            /// Target ads to a specific device type (for example, tablet or connected TV).
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DEVICE_TYPE")]
+                            TARGETINGTYPEDEVICETYPE = 15,
+
+                            /// <summary>
+                            /// Target ads to an audience or groups of audiences. Singleton field, at most one can exist
+                            /// on a single Lineitem at a time.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIENCE_GROUP")]
+                            TARGETINGTYPEAUDIENCEGROUP = 16,
+
+                            /// <summary>Target ads to specific web browsers (for example, Chrome).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BROWSER")]
+                            TARGETINGTYPEBROWSER = 17,
+
+                            /// <summary>
+                            /// Target ads to a specific household income range (for example, top 10%).
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_HOUSEHOLD_INCOME")]
+                            TARGETINGTYPEHOUSEHOLDINCOME = 18,
+
+                            /// <summary>Target ads in a specific on screen position.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ON_SCREEN_POSITION")]
+                            TARGETINGTYPEONSCREENPOSITION = 19,
+
+                            /// <summary>
+                            /// Filter web sites through third party verification (for example, IAS or DoubleVerify).
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_THIRD_PARTY_VERIFIER")]
+                            TARGETINGTYPETHIRDPARTYVERIFIER = 20,
+
+                            /// <summary>
+                            /// Filter web sites by specific digital content label ratings (for example, DL-MA: suitable
+                            /// only for mature audiences).
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION")]
+                            TARGETINGTYPEDIGITALCONTENTLABELEXCLUSION = 21,
+
+                            /// <summary>Filter website content by sensitive categories (for example, adult).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION")]
+                            TARGETINGTYPESENSITIVECATEGORYEXCLUSION = 22,
+
+                            /// <summary>Target ads to a specific environment (for example, web or app).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ENVIRONMENT")]
+                            TARGETINGTYPEENVIRONMENT = 23,
+
+                            /// <summary>
+                            /// Target ads to a specific network carrier or internet service provider (ISP) (for
+                            /// example, Comcast or Orange).
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CARRIER_AND_ISP")]
+                            TARGETINGTYPECARRIERANDISP = 24,
+
+                            /// <summary>Target ads to a specific operating system (for example, macOS).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_OPERATING_SYSTEM")]
+                            TARGETINGTYPEOPERATINGSYSTEM = 25,
+
+                            /// <summary>
+                            /// Target ads to a specific device make or model (for example, Roku or Samsung).
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DEVICE_MAKE_MODEL")]
+                            TARGETINGTYPEDEVICEMAKEMODEL = 26,
+
+                            /// <summary>Target ads to a specific keyword (for example, dog or retriever).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_KEYWORD")]
+                            TARGETINGTYPEKEYWORD = 27,
+
+                            /// <summary>Target ads to a specific negative keyword list.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NEGATIVE_KEYWORD_LIST")]
+                            TARGETINGTYPENEGATIVEKEYWORDLIST = 28,
+
+                            /// <summary>Target ads to a specific viewability (for example, 80% viewable).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_VIEWABILITY")]
+                            TARGETINGTYPEVIEWABILITY = 29,
+
+                            /// <summary>
+                            /// Target ads to a specific content category (for example, arts &amp;amp; entertainment).
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CATEGORY")]
+                            TARGETINGTYPECATEGORY = 30,
+
+                            /// <summary>Purchase impressions from specific deals and auction packages.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE")]
+                            TARGETINGTYPEINVENTORYSOURCE = 31,
+
+                            /// <summary>Target ads to a specific language (for example, English or Japanese).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_LANGUAGE")]
+                            TARGETINGTYPELANGUAGE = 32,
+
+                            /// <summary>
+                            /// Target ads to ads.txt authorized sellers. If no targeting option of this type is
+                            /// assigned, the resource uses the "Authorized Direct Sellers and Resellers" option by
+                            /// default.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUTHORIZED_SELLER_STATUS")]
+                            TARGETINGTYPEAUTHORIZEDSELLERSTATUS = 33,
+
+                            /// <summary>
+                            /// Target ads to a specific regional location (for example, a city or state).
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_GEO_REGION")]
+                            TARGETINGTYPEGEOREGION = 34,
+
+                            /// <summary>Purchase impressions from a group of deals and auction packages.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE_GROUP")]
+                            TARGETINGTYPEINVENTORYSOURCEGROUP = 35,
+
+                            /// <summary>Purchase impressions from specific exchanges.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_EXCHANGE")]
+                            TARGETINGTYPEEXCHANGE = 36,
+
+                            /// <summary>Purchase impressions from specific sub-exchanges.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SUB_EXCHANGE")]
+                            TARGETINGTYPESUBEXCHANGE = 37,
+
+                            /// <summary>
+                            /// Target ads around a specific point of interest, such as a notable building, a street
+                            /// address, or latitude/longitude coordinates.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_POI")]
+                            TARGETINGTYPEPOI = 38,
+
+                            /// <summary>
+                            /// Target ads around locations of a business chain within a specific geo region.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BUSINESS_CHAIN")]
+                            TARGETINGTYPEBUSINESSCHAIN = 39,
+
+                            /// <summary>Target ads to a specific video content duration.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_DURATION")]
+                            TARGETINGTYPECONTENTDURATION = 40,
+
+                            /// <summary>Target ads to a specific video content stream type.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_STREAM_TYPE")]
+                            TARGETINGTYPECONTENTSTREAMTYPE = 41,
+
+                            /// <summary>Target ads to a specific native content position.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NATIVE_CONTENT_POSITION")]
+                            TARGETINGTYPENATIVECONTENTPOSITION = 42,
+
+                            /// <summary>Target ads in an Open Measurement enabled inventory.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_OMID")]
+                            TARGETINGTYPEOMID = 43,
+
+                            /// <summary>Target ads to a specific audio content type.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIO_CONTENT_TYPE")]
+                            TARGETINGTYPEAUDIOCONTENTTYPE = 44,
+
+                            /// <summary>Target ads to a specific content genre.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_GENRE")]
+                            TARGETINGTYPECONTENTGENRE = 45,
+
+                            /// <summary>
+                            /// Target ads to a specific YouTube video. Targeting of this type cannot be created or
+                            /// updated using the API. Although this targeting is inherited by child resources,
+                            /// **inherited targeting of this type will not be retrieveable**.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_YOUTUBE_VIDEO")]
+                            TARGETINGTYPEYOUTUBEVIDEO = 46,
+
+                            /// <summary>
+                            /// Target ads to a specific YouTube channel. Targeting of this type cannot be created or
+                            /// updated using the API. Although this targeting is inherited by child resources,
+                            /// **inherited targeting of this type will not be retrieveable**.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_YOUTUBE_CHANNEL")]
+                            TARGETINGTYPEYOUTUBECHANNEL = 47,
+
+                            /// <summary>
+                            /// Target ads to a serve it in a certain position of a session. Only supported for Ad Group
+                            /// resources under YouTube Programmatic Reservation line items. Targeting of this type
+                            /// cannot be created or updated using the API.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SESSION_POSITION")]
+                            TARGETINGTYPESESSIONPOSITION = 48,
+                        }
+
+                        /// <summary>
+                        /// Required. An identifier unique to the targeting type in this line item that identifies the
+                        /// assigned targeting option being requested.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("assignedTargetingOptionId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string AssignedTargetingOptionId { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v3/advertisers/{+advertiserId}/adGroups/{+adGroupId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "advertiserId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
+                            RequestParameters.Add("adGroupId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "adGroupId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
+                            RequestParameters.Add("targetingType", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "targetingType",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
+                            RequestParameters.Add("assignedTargetingOptionId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "assignedTargetingOptionId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Lists the targeting options assigned to an ad group. Inherited assigned targeting options are
+                    /// not included.
+                    /// </summary>
+                    /// <param name="advertiserId">Required. The ID of the advertiser the ad group belongs to.</param>
+                    /// <param name="adGroupId">
+                    /// Required. The ID of the ad group to list assigned targeting options for.
+                    /// </param>
+                    /// <param name="targetingType">
+                    /// Required. Identifies the type of assigned targeting options to list. Supported targeting types
+                    /// include: * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_APP` * `TARGETING_TYPE_APP_CATEGORY` *
+                    /// `TARGETING_TYPE_AUDIENCE_GROUP` * `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_GENDER` *
+                    /// `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_PARENTAL_STATUS`
+                    /// * `TARGETING_TYPE_SESSION_POSITION` * `TARGETING_TYPE_URL` * `TARGETING_TYPE_YOUTUBE_CHANNEL` *
+                    /// `TARGETING_TYPE_YOUTUBE_VIDEO`
+                    /// </param>
+                    public virtual ListRequest List(long advertiserId, long adGroupId, ListRequest.TargetingTypeEnum targetingType)
+                    {
+                        return new ListRequest(service, advertiserId, adGroupId, targetingType);
+                    }
+
+                    /// <summary>
+                    /// Lists the targeting options assigned to an ad group. Inherited assigned targeting options are
+                    /// not included.
+                    /// </summary>
+                    public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.ListAdGroupAssignedTargetingOptionsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, long advertiserId, long adGroupId, TargetingTypeEnum targetingType) : base(service)
+                        {
+                            AdvertiserId = advertiserId;
+                            AdGroupId = adGroupId;
+                            TargetingType = targetingType;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The ID of the advertiser the ad group belongs to.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual long AdvertiserId { get; private set; }
+
+                        /// <summary>Required. The ID of the ad group to list assigned targeting options for.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("adGroupId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual long AdGroupId { get; private set; }
+
+                        /// <summary>
+                        /// Required. Identifies the type of assigned targeting options to list. Supported targeting
+                        /// types include: * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_APP` *
+                        /// `TARGETING_TYPE_APP_CATEGORY` * `TARGETING_TYPE_AUDIENCE_GROUP` * `TARGETING_TYPE_CATEGORY`
+                        /// * `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_KEYWORD` *
+                        /// `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_SESSION_POSITION` * `TARGETING_TYPE_URL`
+                        /// * `TARGETING_TYPE_YOUTUBE_CHANNEL` * `TARGETING_TYPE_YOUTUBE_VIDEO`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("targetingType", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual TargetingTypeEnum TargetingType { get; private set; }
+
+                        /// <summary>
+                        /// Required. Identifies the type of assigned targeting options to list. Supported targeting
+                        /// types include: * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_APP` *
+                        /// `TARGETING_TYPE_APP_CATEGORY` * `TARGETING_TYPE_AUDIENCE_GROUP` * `TARGETING_TYPE_CATEGORY`
+                        /// * `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_KEYWORD` *
+                        /// `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_SESSION_POSITION` * `TARGETING_TYPE_URL`
+                        /// * `TARGETING_TYPE_YOUTUBE_CHANNEL` * `TARGETING_TYPE_YOUTUBE_VIDEO`
+                        /// </summary>
+                        public enum TargetingTypeEnum
+                        {
+                            /// <summary>
+                            /// Default value when type is not specified or is unknown in this version.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_UNSPECIFIED")]
+                            TARGETINGTYPEUNSPECIFIED = 0,
+
+                            /// <summary>Target a channel (a custom group of related websites or apps).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CHANNEL")]
+                            TARGETINGTYPECHANNEL = 1,
+
+                            /// <summary>Target an app category (for example, education or puzzle games).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_APP_CATEGORY")]
+                            TARGETINGTYPEAPPCATEGORY = 2,
+
+                            /// <summary>Target a specific app (for example, Angry Birds).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_APP")]
+                            TARGETINGTYPEAPP = 3,
+
+                            /// <summary>Target a specific url (for example, quora.com).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_URL")]
+                            TARGETINGTYPEURL = 4,
+
+                            /// <summary>Target ads during a chosen time period on a specific day.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DAY_AND_TIME")]
+                            TARGETINGTYPEDAYANDTIME = 5,
+
+                            /// <summary>Target ads to a specific age range (for example, 18-24).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AGE_RANGE")]
+                            TARGETINGTYPEAGERANGE = 6,
+
+                            /// <summary>Target ads to the specified regions on a regional location list.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_REGIONAL_LOCATION_LIST")]
+                            TARGETINGTYPEREGIONALLOCATIONLIST = 7,
+
+                            /// <summary>
+                            /// Target ads to the specified points of interest on a proximity location list.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_PROXIMITY_LOCATION_LIST")]
+                            TARGETINGTYPEPROXIMITYLOCATIONLIST = 8,
+
+                            /// <summary>Target ads to a specific gender (for example, female or male).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_GENDER")]
+                            TARGETINGTYPEGENDER = 9,
+
+                            /// <summary>Target a specific video player size for video ads.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_VIDEO_PLAYER_SIZE")]
+                            TARGETINGTYPEVIDEOPLAYERSIZE = 10,
+
+                            /// <summary>Target user rewarded content for video ads.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_USER_REWARDED_CONTENT")]
+                            TARGETINGTYPEUSERREWARDEDCONTENT = 11,
+
+                            /// <summary>
+                            /// Target ads to a specific parental status (for example, parent or not a parent).
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_PARENTAL_STATUS")]
+                            TARGETINGTYPEPARENTALSTATUS = 12,
+
+                            /// <summary>
+                            /// Target video or audio ads in a specific content instream position (for example,
+                            /// pre-roll, mid-roll, or post-roll).
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_INSTREAM_POSITION")]
+                            TARGETINGTYPECONTENTINSTREAMPOSITION = 13,
+
+                            /// <summary>Target ads in a specific content outstream position.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION")]
+                            TARGETINGTYPECONTENTOUTSTREAMPOSITION = 14,
+
+                            /// <summary>
+                            /// Target ads to a specific device type (for example, tablet or connected TV).
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DEVICE_TYPE")]
+                            TARGETINGTYPEDEVICETYPE = 15,
+
+                            /// <summary>
+                            /// Target ads to an audience or groups of audiences. Singleton field, at most one can exist
+                            /// on a single Lineitem at a time.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIENCE_GROUP")]
+                            TARGETINGTYPEAUDIENCEGROUP = 16,
+
+                            /// <summary>Target ads to specific web browsers (for example, Chrome).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BROWSER")]
+                            TARGETINGTYPEBROWSER = 17,
+
+                            /// <summary>
+                            /// Target ads to a specific household income range (for example, top 10%).
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_HOUSEHOLD_INCOME")]
+                            TARGETINGTYPEHOUSEHOLDINCOME = 18,
+
+                            /// <summary>Target ads in a specific on screen position.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ON_SCREEN_POSITION")]
+                            TARGETINGTYPEONSCREENPOSITION = 19,
+
+                            /// <summary>
+                            /// Filter web sites through third party verification (for example, IAS or DoubleVerify).
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_THIRD_PARTY_VERIFIER")]
+                            TARGETINGTYPETHIRDPARTYVERIFIER = 20,
+
+                            /// <summary>
+                            /// Filter web sites by specific digital content label ratings (for example, DL-MA: suitable
+                            /// only for mature audiences).
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION")]
+                            TARGETINGTYPEDIGITALCONTENTLABELEXCLUSION = 21,
+
+                            /// <summary>Filter website content by sensitive categories (for example, adult).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION")]
+                            TARGETINGTYPESENSITIVECATEGORYEXCLUSION = 22,
+
+                            /// <summary>Target ads to a specific environment (for example, web or app).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ENVIRONMENT")]
+                            TARGETINGTYPEENVIRONMENT = 23,
+
+                            /// <summary>
+                            /// Target ads to a specific network carrier or internet service provider (ISP) (for
+                            /// example, Comcast or Orange).
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CARRIER_AND_ISP")]
+                            TARGETINGTYPECARRIERANDISP = 24,
+
+                            /// <summary>Target ads to a specific operating system (for example, macOS).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_OPERATING_SYSTEM")]
+                            TARGETINGTYPEOPERATINGSYSTEM = 25,
+
+                            /// <summary>
+                            /// Target ads to a specific device make or model (for example, Roku or Samsung).
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DEVICE_MAKE_MODEL")]
+                            TARGETINGTYPEDEVICEMAKEMODEL = 26,
+
+                            /// <summary>Target ads to a specific keyword (for example, dog or retriever).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_KEYWORD")]
+                            TARGETINGTYPEKEYWORD = 27,
+
+                            /// <summary>Target ads to a specific negative keyword list.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NEGATIVE_KEYWORD_LIST")]
+                            TARGETINGTYPENEGATIVEKEYWORDLIST = 28,
+
+                            /// <summary>Target ads to a specific viewability (for example, 80% viewable).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_VIEWABILITY")]
+                            TARGETINGTYPEVIEWABILITY = 29,
+
+                            /// <summary>
+                            /// Target ads to a specific content category (for example, arts &amp;amp; entertainment).
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CATEGORY")]
+                            TARGETINGTYPECATEGORY = 30,
+
+                            /// <summary>Purchase impressions from specific deals and auction packages.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE")]
+                            TARGETINGTYPEINVENTORYSOURCE = 31,
+
+                            /// <summary>Target ads to a specific language (for example, English or Japanese).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_LANGUAGE")]
+                            TARGETINGTYPELANGUAGE = 32,
+
+                            /// <summary>
+                            /// Target ads to ads.txt authorized sellers. If no targeting option of this type is
+                            /// assigned, the resource uses the "Authorized Direct Sellers and Resellers" option by
+                            /// default.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUTHORIZED_SELLER_STATUS")]
+                            TARGETINGTYPEAUTHORIZEDSELLERSTATUS = 33,
+
+                            /// <summary>
+                            /// Target ads to a specific regional location (for example, a city or state).
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_GEO_REGION")]
+                            TARGETINGTYPEGEOREGION = 34,
+
+                            /// <summary>Purchase impressions from a group of deals and auction packages.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE_GROUP")]
+                            TARGETINGTYPEINVENTORYSOURCEGROUP = 35,
+
+                            /// <summary>Purchase impressions from specific exchanges.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_EXCHANGE")]
+                            TARGETINGTYPEEXCHANGE = 36,
+
+                            /// <summary>Purchase impressions from specific sub-exchanges.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SUB_EXCHANGE")]
+                            TARGETINGTYPESUBEXCHANGE = 37,
+
+                            /// <summary>
+                            /// Target ads around a specific point of interest, such as a notable building, a street
+                            /// address, or latitude/longitude coordinates.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_POI")]
+                            TARGETINGTYPEPOI = 38,
+
+                            /// <summary>
+                            /// Target ads around locations of a business chain within a specific geo region.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BUSINESS_CHAIN")]
+                            TARGETINGTYPEBUSINESSCHAIN = 39,
+
+                            /// <summary>Target ads to a specific video content duration.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_DURATION")]
+                            TARGETINGTYPECONTENTDURATION = 40,
+
+                            /// <summary>Target ads to a specific video content stream type.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_STREAM_TYPE")]
+                            TARGETINGTYPECONTENTSTREAMTYPE = 41,
+
+                            /// <summary>Target ads to a specific native content position.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NATIVE_CONTENT_POSITION")]
+                            TARGETINGTYPENATIVECONTENTPOSITION = 42,
+
+                            /// <summary>Target ads in an Open Measurement enabled inventory.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_OMID")]
+                            TARGETINGTYPEOMID = 43,
+
+                            /// <summary>Target ads to a specific audio content type.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIO_CONTENT_TYPE")]
+                            TARGETINGTYPEAUDIOCONTENTTYPE = 44,
+
+                            /// <summary>Target ads to a specific content genre.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_GENRE")]
+                            TARGETINGTYPECONTENTGENRE = 45,
+
+                            /// <summary>
+                            /// Target ads to a specific YouTube video. Targeting of this type cannot be created or
+                            /// updated using the API. Although this targeting is inherited by child resources,
+                            /// **inherited targeting of this type will not be retrieveable**.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_YOUTUBE_VIDEO")]
+                            TARGETINGTYPEYOUTUBEVIDEO = 46,
+
+                            /// <summary>
+                            /// Target ads to a specific YouTube channel. Targeting of this type cannot be created or
+                            /// updated using the API. Although this targeting is inherited by child resources,
+                            /// **inherited targeting of this type will not be retrieveable**.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_YOUTUBE_CHANNEL")]
+                            TARGETINGTYPEYOUTUBECHANNEL = 47,
+
+                            /// <summary>
+                            /// Target ads to a serve it in a certain position of a session. Only supported for Ad Group
+                            /// resources under YouTube Programmatic Reservation line items. Targeting of this type
+                            /// cannot be created or updated using the API.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SESSION_POSITION")]
+                            TARGETINGTYPESESSIONPOSITION = 48,
+                        }
+
+                        /// <summary>
+                        /// Optional. Allows filtering by assigned targeting option fields. Supported syntax: * Filter
+                        /// expressions are made up of one or more restrictions. * Restrictions can be combined by the
+                        /// logical operator `OR`. * A restriction has the form of `{field} {operator} {value}`. * All
+                        /// fields must use the `EQUALS (=)` operator. Supported fields: * `assignedTargetingOptionId`
+                        /// Examples: * `AssignedTargetingOption` resources with ID 1 or 2:
+                        /// `assignedTargetingOptionId="1" OR assignedTargetingOptionId="2"` The length of this field
+                        /// should be no more than 500 characters. Reference our [filter `LIST`
+                        /// requests](/display-video/api/guides/how-tos/filters) guide for more information.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+                        /// <summary>
+                        /// Optional. Field by which to sort the list. Acceptable values are: *
+                        /// `assignedTargetingOptionId` (default) The default sorting order is ascending. To specify
+                        /// descending order for a field, a suffix "desc" should be added to the field name. Example:
+                        /// `assignedTargetingOptionId desc`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string OrderBy { get; set; }
+
+                        /// <summary>
+                        /// Optional. Requested page size. Must be between `1` and `5000`. If unspecified will default
+                        /// to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// Optional. A token identifying a page of results the server should return. Typically, this is
+                        /// the value of next_page_token returned from the previous call to
+                        /// `ListAdGroupAssignedTargetingOptions` method. If not specified, the first page of results
+                        /// will be returned.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v3/advertisers/{+advertiserId}/adGroups/{+adGroupId}/targetingTypes/{+targetingType}/assignedTargetingOptions";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "advertiserId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
+                            RequestParameters.Add("adGroupId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "adGroupId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
+                            RequestParameters.Add("targetingType", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "targetingType",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "orderBy",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+                }
+            }
+
+            /// <summary>
+            /// Lists assigned targeting options for multiple ad groups across targeting types. Inherited assigned
+            /// targeting options are not included.
+            /// </summary>
+            /// <param name="advertiserId">Required. The ID of the advertiser the line items belongs to.</param>
+            public virtual BulkListAdGroupAssignedTargetingOptionsRequest BulkListAdGroupAssignedTargetingOptions(long advertiserId)
+            {
+                return new BulkListAdGroupAssignedTargetingOptionsRequest(service, advertiserId);
+            }
+
+            /// <summary>
+            /// Lists assigned targeting options for multiple ad groups across targeting types. Inherited assigned
+            /// targeting options are not included.
+            /// </summary>
+            public class BulkListAdGroupAssignedTargetingOptionsRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.BulkListAdGroupAssignedTargetingOptionsResponse>
+            {
+                /// <summary>Constructs a new BulkListAdGroupAssignedTargetingOptions request.</summary>
+                public BulkListAdGroupAssignedTargetingOptionsRequest(Google.Apis.Services.IClientService service, long advertiserId) : base(service)
+                {
+                    AdvertiserId = advertiserId;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The ID of the advertiser the line items belongs to.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long AdvertiserId { get; private set; }
+
+                /// <summary>Required. The IDs of the ad groups to list assigned targeting options for.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("adGroupIds", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<string> AdGroupIds { get; set; }
+
+                /// <summary>
+                /// Optional. Allows filtering by assigned targeting option fields. Supported syntax: * Filter
+                /// expressions are made up of one or more restrictions. * Restrictions can be combined by the logical
+                /// operator `OR`. * A restriction has the form of `{field} {operator} {value}`. * All fields must use
+                /// the `EQUALS (=)` operator. Supported fields: * `targetingType` Examples: * `AssignedTargetingOption`
+                /// resources of targeting type `TARGETING_TYPE_YOUTUBE_VIDEO` or `TARGETING_TYPE_YOUTUBE_CHANNEL`:
+                /// `targetingType="TARGETING_TYPE_YOUTUBE_VIDEO" OR targetingType="TARGETING_TYPE_YOUTUBE_CHANNEL"` The
+                /// length of this field should be no more than 500 characters. Reference our [filter `LIST`
+                /// requests](/display-video/api/guides/how-tos/filters) guide for more information.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
+                /// <summary>
+                /// Optional. Field by which to sort the list. Acceptable values are: * `adGroupId` (default) *
+                /// `assignedTargetingOption.targetingType` The default sorting order is ascending. To specify
+                /// descending order for a field, a suffix "desc" should be added to the field name. Example:
+                /// `targetingType desc`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string OrderBy { get; set; }
+
+                /// <summary>
+                /// Optional. Requested page size. The size must be an integer between `1` and `5000`. If unspecified,
+                /// the default is `5000`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// Optional. A token that lets the client fetch the next page of results. Typically, this is the value
+                /// of next_page_token returned from the previous call to the `BulkListAdGroupAssignedTargetingOptions`
+                /// method. If not specified, the first page of results will be returned.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "bulkListAdGroupAssignedTargetingOptions";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v3/advertisers/{+advertiserId}/adGroups:bulkListAdGroupAssignedTargetingOptions";
+
+                /// <summary>Initializes BulkListAdGroupAssignedTargetingOptions parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("adGroupIds", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "adGroupIds",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderBy",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Gets an ad group.</summary>
+            /// <param name="advertiserId">Required. The ID of the advertiser this ad group belongs to.</param>
+            /// <param name="adGroupId">Required. The ID of the ad group to fetch.</param>
+            public virtual GetRequest Get(long advertiserId, long adGroupId)
+            {
+                return new GetRequest(service, advertiserId, adGroupId);
+            }
+
+            /// <summary>Gets an ad group.</summary>
+            public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.AdGroup>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, long advertiserId, long adGroupId) : base(service)
+                {
+                    AdvertiserId = advertiserId;
+                    AdGroupId = adGroupId;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The ID of the advertiser this ad group belongs to.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long AdvertiserId { get; private set; }
+
+                /// <summary>Required. The ID of the ad group to fetch.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("adGroupId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long AdGroupId { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v3/advertisers/{+advertiserId}/adGroups/{+adGroupId}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("adGroupId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "adGroupId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Lists ad groups.</summary>
+            /// <param name="advertiserId">Required. The ID of the advertiser the ad groups belongs to.</param>
+            public virtual ListRequest List(long advertiserId)
+            {
+                return new ListRequest(service, advertiserId);
+            }
+
+            /// <summary>Lists ad groups.</summary>
+            public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.ListAdGroupsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, long advertiserId) : base(service)
+                {
+                    AdvertiserId = advertiserId;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The ID of the advertiser the ad groups belongs to.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long AdvertiserId { get; private set; }
+
+                /// <summary>
+                /// Optional. Allows filtering by custom ad group fields. Supported syntax: * Filter expressions are
+                /// made up of one or more restrictions. * Restrictions can be combined by `AND` and `OR`. A sequence of
+                /// restrictions implicitly uses `AND`. * A restriction has the form of `{field} {operator} {value}`. *
+                /// All fields must use the `EQUALS (=)` operator. Supported properties: * `adGroupId` * `displayName` *
+                /// `entityStatus` * `lineItemId` * `adGroupFormat` Examples: * All ad groups under an line item:
+                /// `lineItemId="1234"` * All `ENTITY_STATUS_ACTIVE` or `ENTITY_STATUS_PAUSED`
+                /// `AD_GROUP_FORMAT_IN_STREAM` ad groups under an advertiser: `(entityStatus="ENTITY_STATUS_ACTIVE" OR
+                /// entityStatus="ENTITY_STATUS_PAUSED") AND adGroupFormat="AD_GROUP_FORMAT_IN_STREAM"` The length of
+                /// this field should be no more than 500 characters. Reference our [filter `LIST`
+                /// requests](/display-video/api/guides/how-tos/filters) guide for more information.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
+                /// <summary>
+                /// Optional. Field by which to sort the list. Acceptable values are: * `displayName` (default) *
+                /// `entityStatus` The default sorting order is ascending. To specify descending order for a field, a
+                /// suffix "desc" should be added to the field name. Example: `displayName desc`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string OrderBy { get; set; }
+
+                /// <summary>
+                /// Optional. Requested page size. Must be between `1` and `200`. If unspecified will default to `100`.
+                /// Returns error code `INVALID_ARGUMENT` if an invalid value is specified.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// Optional. A token identifying a page of results the server should return. Typically, this is the
+                /// value of next_page_token returned from the previous call to `ListAdGroups` method. If not specified,
+                /// the first page of results will be returned.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v3/advertisers/{+advertiserId}/adGroups";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderBy",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
         }
 
         /// <summary>Gets the Assets resource.</summary>
@@ -387,7 +1740,7 @@ namespace Google.Apis.DisplayVideo.v1
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="advertiserId">Required. The ID of the advertiser this asset belongs to.</param>
-            public virtual UploadRequest Upload(Google.Apis.DisplayVideo.v1.Data.CreateAssetRequest body, long advertiserId)
+            public virtual UploadRequest Upload(Google.Apis.DisplayVideo.v3.Data.CreateAssetRequest body, long advertiserId)
             {
                 return new UploadRequest(service, body, advertiserId);
             }
@@ -399,10 +1752,10 @@ namespace Google.Apis.DisplayVideo.v1
             /// provided client libraries can be found in our [Creating Creatives
             /// guide](/display-video/api/guides/creating-creatives/overview#upload_an_asset).
             /// </summary>
-            public class UploadRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.CreateAssetResponse>
+            public class UploadRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.CreateAssetResponse>
             {
                 /// <summary>Constructs a new Upload request.</summary>
-                public UploadRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.CreateAssetRequest body, long advertiserId) : base(service)
+                public UploadRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v3.Data.CreateAssetRequest body, long advertiserId) : base(service)
                 {
                     AdvertiserId = advertiserId;
                     Body = body;
@@ -414,7 +1767,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public virtual long AdvertiserId { get; private set; }
 
                 /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.DisplayVideo.v1.Data.CreateAssetRequest Body { get; set; }
+                Google.Apis.DisplayVideo.v3.Data.CreateAssetRequest Body { get; set; }
 
                 /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
@@ -426,7 +1779,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public override string HttpMethod => "POST";
 
                 /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1/advertisers/{+advertiserId}/assets";
+                public override string RestPath => "v3/advertisers/{+advertiserId}/assets";
 
                 /// <summary>Initializes Upload parameter list.</summary>
                 protected override void InitParameters()
@@ -472,13 +1825,13 @@ namespace Google.Apis.DisplayVideo.v1
             /// <param name="advertiserId">Required. The ID of the advertiser this asset belongs to.</param>
             /// <param name="stream">The stream to upload. See remarks for further information.</param>
             /// <param name="contentType">The content type of the stream to upload.</param>
-            public virtual UploadMediaUpload Upload(Google.Apis.DisplayVideo.v1.Data.CreateAssetRequest body, long advertiserId, System.IO.Stream stream, string contentType)
+            public virtual UploadMediaUpload Upload(Google.Apis.DisplayVideo.v3.Data.CreateAssetRequest body, long advertiserId, System.IO.Stream stream, string contentType)
             {
                 return new UploadMediaUpload(service, body, advertiserId, stream, contentType);
             }
 
             /// <summary>Upload media upload which supports resumable upload.</summary>
-            public class UploadMediaUpload : Google.Apis.Upload.ResumableUpload<Google.Apis.DisplayVideo.v1.Data.CreateAssetRequest, Google.Apis.DisplayVideo.v1.Data.CreateAssetResponse>
+            public class UploadMediaUpload : Google.Apis.Upload.ResumableUpload<Google.Apis.DisplayVideo.v3.Data.CreateAssetRequest, Google.Apis.DisplayVideo.v3.Data.CreateAssetResponse>
             {
                 /// <summary>V1 error format.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("$.xgafv", Google.Apis.Util.RequestParameterType.Query)]
@@ -584,8 +1937,8 @@ namespace Google.Apis.DisplayVideo.v1
                 /// </item>
                 /// </list>
                 /// </remarks>
-                public UploadMediaUpload(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.CreateAssetRequest body, long advertiserId, System.IO.Stream stream, string contentType)
-                    : base(service, string.Format("/{0}/{1}{2}", "upload", service.BasePath, "v1/advertisers/{+advertiserId}/assets"), "POST", stream, contentType)
+                public UploadMediaUpload(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v3.Data.CreateAssetRequest body, long advertiserId, System.IO.Stream stream, string contentType)
+                    : base(service, string.Format("/{0}/{1}{2}", "upload", service.BasePath, "v3/advertisers/{+advertiserId}/assets"), "POST", stream, contentType)
                 {
                     AdvertiserId = advertiserId;
                     Body = body;
@@ -673,7 +2026,7 @@ namespace Google.Apis.DisplayVideo.v1
                     }
 
                     /// <summary>Gets a single targeting option assigned to a campaign.</summary>
-                    public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.AssignedTargetingOption>
+                    public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.AssignedTargetingOption>
                     {
                         /// <summary>Constructs a new Get request.</summary>
                         public GetRequest(Google.Apis.Services.IClientService service, long advertiserId, long campaignId, TargetingTypeEnum targetingType, string assignedTargetingOptionId) : base(service)
@@ -915,37 +2268,61 @@ namespace Google.Apis.DisplayVideo.v1
                             /// address, or latitude/longitude coordinates.
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_POI")]
-                            TARGETINGTYPEPOI = 39,
+                            TARGETINGTYPEPOI = 38,
 
                             /// <summary>
                             /// Target ads around locations of a business chain within a specific geo region.
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BUSINESS_CHAIN")]
-                            TARGETINGTYPEBUSINESSCHAIN = 40,
+                            TARGETINGTYPEBUSINESSCHAIN = 39,
 
                             /// <summary>Target ads to a specific video content duration.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_DURATION")]
-                            TARGETINGTYPECONTENTDURATION = 43,
+                            TARGETINGTYPECONTENTDURATION = 40,
 
                             /// <summary>Target ads to a specific video content stream type.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_STREAM_TYPE")]
-                            TARGETINGTYPECONTENTSTREAMTYPE = 44,
+                            TARGETINGTYPECONTENTSTREAMTYPE = 41,
 
                             /// <summary>Target ads to a specific native content position.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NATIVE_CONTENT_POSITION")]
-                            TARGETINGTYPENATIVECONTENTPOSITION = 38,
+                            TARGETINGTYPENATIVECONTENTPOSITION = 42,
 
                             /// <summary>Target ads in an Open Measurement enabled inventory.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_OMID")]
-                            TARGETINGTYPEOMID = 41,
+                            TARGETINGTYPEOMID = 43,
 
                             /// <summary>Target ads to a specific audio content type.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIO_CONTENT_TYPE")]
-                            TARGETINGTYPEAUDIOCONTENTTYPE = 42,
+                            TARGETINGTYPEAUDIOCONTENTTYPE = 44,
 
                             /// <summary>Target ads to a specific content genre.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_GENRE")]
                             TARGETINGTYPECONTENTGENRE = 45,
+
+                            /// <summary>
+                            /// Target ads to a specific YouTube video. Targeting of this type cannot be created or
+                            /// updated using the API. Although this targeting is inherited by child resources,
+                            /// **inherited targeting of this type will not be retrieveable**.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_YOUTUBE_VIDEO")]
+                            TARGETINGTYPEYOUTUBEVIDEO = 46,
+
+                            /// <summary>
+                            /// Target ads to a specific YouTube channel. Targeting of this type cannot be created or
+                            /// updated using the API. Although this targeting is inherited by child resources,
+                            /// **inherited targeting of this type will not be retrieveable**.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_YOUTUBE_CHANNEL")]
+                            TARGETINGTYPEYOUTUBECHANNEL = 47,
+
+                            /// <summary>
+                            /// Target ads to a serve it in a certain position of a session. Only supported for Ad Group
+                            /// resources under YouTube Programmatic Reservation line items. Targeting of this type
+                            /// cannot be created or updated using the API.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SESSION_POSITION")]
+                            TARGETINGTYPESESSIONPOSITION = 48,
                         }
 
                         /// <summary>
@@ -962,7 +2339,7 @@ namespace Google.Apis.DisplayVideo.v1
                         public override string HttpMethod => "GET";
 
                         /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v1/advertisers/{+advertiserId}/campaigns/{+campaignId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}";
+                        public override string RestPath => "v3/advertisers/{+advertiserId}/campaigns/{+campaignId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}";
 
                         /// <summary>Initializes Get parameter list.</summary>
                         protected override void InitParameters()
@@ -1030,7 +2407,7 @@ namespace Google.Apis.DisplayVideo.v1
                     /// <summary>
                     /// Lists the targeting options assigned to a campaign for a specified targeting type.
                     /// </summary>
-                    public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ListCampaignAssignedTargetingOptionsResponse>
+                    public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.ListCampaignAssignedTargetingOptionsResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
                         public ListRequest(Google.Apis.Services.IClientService service, long advertiserId, long campaignId, TargetingTypeEnum targetingType) : base(service)
@@ -1269,37 +2646,61 @@ namespace Google.Apis.DisplayVideo.v1
                             /// address, or latitude/longitude coordinates.
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_POI")]
-                            TARGETINGTYPEPOI = 39,
+                            TARGETINGTYPEPOI = 38,
 
                             /// <summary>
                             /// Target ads around locations of a business chain within a specific geo region.
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BUSINESS_CHAIN")]
-                            TARGETINGTYPEBUSINESSCHAIN = 40,
+                            TARGETINGTYPEBUSINESSCHAIN = 39,
 
                             /// <summary>Target ads to a specific video content duration.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_DURATION")]
-                            TARGETINGTYPECONTENTDURATION = 43,
+                            TARGETINGTYPECONTENTDURATION = 40,
 
                             /// <summary>Target ads to a specific video content stream type.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_STREAM_TYPE")]
-                            TARGETINGTYPECONTENTSTREAMTYPE = 44,
+                            TARGETINGTYPECONTENTSTREAMTYPE = 41,
 
                             /// <summary>Target ads to a specific native content position.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NATIVE_CONTENT_POSITION")]
-                            TARGETINGTYPENATIVECONTENTPOSITION = 38,
+                            TARGETINGTYPENATIVECONTENTPOSITION = 42,
 
                             /// <summary>Target ads in an Open Measurement enabled inventory.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_OMID")]
-                            TARGETINGTYPEOMID = 41,
+                            TARGETINGTYPEOMID = 43,
 
                             /// <summary>Target ads to a specific audio content type.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIO_CONTENT_TYPE")]
-                            TARGETINGTYPEAUDIOCONTENTTYPE = 42,
+                            TARGETINGTYPEAUDIOCONTENTTYPE = 44,
 
                             /// <summary>Target ads to a specific content genre.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_GENRE")]
                             TARGETINGTYPECONTENTGENRE = 45,
+
+                            /// <summary>
+                            /// Target ads to a specific YouTube video. Targeting of this type cannot be created or
+                            /// updated using the API. Although this targeting is inherited by child resources,
+                            /// **inherited targeting of this type will not be retrieveable**.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_YOUTUBE_VIDEO")]
+                            TARGETINGTYPEYOUTUBEVIDEO = 46,
+
+                            /// <summary>
+                            /// Target ads to a specific YouTube channel. Targeting of this type cannot be created or
+                            /// updated using the API. Although this targeting is inherited by child resources,
+                            /// **inherited targeting of this type will not be retrieveable**.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_YOUTUBE_CHANNEL")]
+                            TARGETINGTYPEYOUTUBECHANNEL = 47,
+
+                            /// <summary>
+                            /// Target ads to a serve it in a certain position of a session. Only supported for Ad Group
+                            /// resources under YouTube Programmatic Reservation line items. Targeting of this type
+                            /// cannot be created or updated using the API.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SESSION_POSITION")]
+                            TARGETINGTYPESESSIONPOSITION = 48,
                         }
 
                         /// <summary>
@@ -1347,7 +2748,7 @@ namespace Google.Apis.DisplayVideo.v1
                         public override string HttpMethod => "GET";
 
                         /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v1/advertisers/{+advertiserId}/campaigns/{+campaignId}/targetingTypes/{+targetingType}/assignedTargetingOptions";
+                        public override string RestPath => "v3/advertisers/{+advertiserId}/campaigns/{+campaignId}/targetingTypes/{+targetingType}/assignedTargetingOptions";
 
                         /// <summary>Initializes List parameter list.</summary>
                         protected override void InitParameters()
@@ -1414,150 +2815,19 @@ namespace Google.Apis.DisplayVideo.v1
                 }
             }
 
-            /// <summary>Lists assigned targeting options of a campaign across targeting types.</summary>
-            /// <param name="advertiserId">Required. The ID of the advertiser the campaign belongs to.</param>
-            /// <param name="campaignId">
-            /// Required. The ID of the campaign to list assigned targeting options for.
-            /// </param>
-            public virtual BulkListCampaignAssignedTargetingOptionsRequest BulkListCampaignAssignedTargetingOptions(long advertiserId, long campaignId)
-            {
-                return new BulkListCampaignAssignedTargetingOptionsRequest(service, advertiserId, campaignId);
-            }
-
-            /// <summary>Lists assigned targeting options of a campaign across targeting types.</summary>
-            public class BulkListCampaignAssignedTargetingOptionsRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.BulkListCampaignAssignedTargetingOptionsResponse>
-            {
-                /// <summary>Constructs a new BulkListCampaignAssignedTargetingOptions request.</summary>
-                public BulkListCampaignAssignedTargetingOptionsRequest(Google.Apis.Services.IClientService service, long advertiserId, long campaignId) : base(service)
-                {
-                    AdvertiserId = advertiserId;
-                    CampaignId = campaignId;
-                    InitParameters();
-                }
-
-                /// <summary>Required. The ID of the advertiser the campaign belongs to.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual long AdvertiserId { get; private set; }
-
-                /// <summary>Required. The ID of the campaign to list assigned targeting options for.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("campaignId", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual long CampaignId { get; private set; }
-
-                /// <summary>
-                /// Allows filtering by assigned targeting option fields. Supported syntax: * Filter expressions are
-                /// made up of one or more restrictions. * Restrictions can be combined by the `OR` logical operator. *
-                /// A restriction has the form of `{field} {operator} {value}`. * All fields must use the `EQUALS (=)`
-                /// operator. Supported fields: * `targetingType` * `inheritance` Examples: * `AssignedTargetingOption`
-                /// resources of targeting type `TARGETING_TYPE_LANGUAGE` or `TARGETING_TYPE_GENDER`:
-                /// `targetingType="TARGETING_TYPE_LANGUAGE" OR targetingType="TARGETING_TYPE_GENDER"` *
-                /// `AssignedTargetingOption` resources with inheritance status of `NOT_INHERITED` or
-                /// `INHERITED_FROM_PARTNER`: `inheritance="NOT_INHERITED" OR inheritance="INHERITED_FROM_PARTNER"` The
-                /// length of this field should be no more than 500 characters. Reference our [filter `LIST`
-                /// requests](/display-video/api/guides/how-tos/filters) guide for more information.
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
-
-                /// <summary>
-                /// Field by which to sort the list. Acceptable values are: * `targetingType` (default) The default
-                /// sorting order is ascending. To specify descending order for a field, a suffix "desc" should be added
-                /// to the field name. Example: `targetingType desc`.
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string OrderBy { get; set; }
-
-                /// <summary>
-                /// Requested page size. The size must be an integer between `1` and `5000`. If unspecified, the default
-                /// is `5000`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified.
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>
-                /// A token that lets the client fetch the next page of results. Typically, this is the value of
-                /// next_page_token returned from the previous call to `BulkListCampaignAssignedTargetingOptions`
-                /// method. If not specified, the first page of results will be returned.
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
-                /// <summary>Gets the method name.</summary>
-                public override string MethodName => "bulkListCampaignAssignedTargetingOptions";
-
-                /// <summary>Gets the HTTP method.</summary>
-                public override string HttpMethod => "GET";
-
-                /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1/advertisers/{+advertiserId}/campaigns/{+campaignId}:bulkListCampaignAssignedTargetingOptions";
-
-                /// <summary>Initializes BulkListCampaignAssignedTargetingOptions parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "advertiserId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+$",
-                    });
-                    RequestParameters.Add("campaignId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "campaignId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+$",
-                    });
-                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                    RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "orderBy",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                }
-            }
-
             /// <summary>Creates a new campaign. Returns the newly created campaign if successful.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="advertiserId">Output only. The unique ID of the advertiser the campaign belongs to.</param>
-            public virtual CreateRequest Create(Google.Apis.DisplayVideo.v1.Data.Campaign body, long advertiserId)
+            public virtual CreateRequest Create(Google.Apis.DisplayVideo.v3.Data.Campaign body, long advertiserId)
             {
                 return new CreateRequest(service, body, advertiserId);
             }
 
             /// <summary>Creates a new campaign. Returns the newly created campaign if successful.</summary>
-            public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Campaign>
+            public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.Campaign>
             {
                 /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.Campaign body, long advertiserId) : base(service)
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v3.Data.Campaign body, long advertiserId) : base(service)
                 {
                     AdvertiserId = advertiserId;
                     Body = body;
@@ -1569,7 +2839,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public virtual long AdvertiserId { get; private set; }
 
                 /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.DisplayVideo.v1.Data.Campaign Body { get; set; }
+                Google.Apis.DisplayVideo.v3.Data.Campaign Body { get; set; }
 
                 /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
@@ -1581,7 +2851,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public override string HttpMethod => "POST";
 
                 /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1/advertisers/{+advertiserId}/campaigns";
+                public override string RestPath => "v3/advertisers/{+advertiserId}/campaigns";
 
                 /// <summary>Initializes Create parameter list.</summary>
                 protected override void InitParameters()
@@ -1613,7 +2883,7 @@ namespace Google.Apis.DisplayVideo.v1
             /// Permanently deletes a campaign. A deleted campaign cannot be recovered. The campaign should be archived
             /// first, i.e. set entity_status to `ENTITY_STATUS_ARCHIVED`, to be able to delete it.
             /// </summary>
-            public class DeleteRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Empty>
+            public class DeleteRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
                 public DeleteRequest(Google.Apis.Services.IClientService service, long advertiserId, long campaignId) : base(service)
@@ -1638,7 +2908,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public override string HttpMethod => "DELETE";
 
                 /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1/advertisers/{+advertiserId}/campaigns/{+campaignId}";
+                public override string RestPath => "v3/advertisers/{+advertiserId}/campaigns/{+campaignId}";
 
                 /// <summary>Initializes Delete parameter list.</summary>
                 protected override void InitParameters()
@@ -1672,7 +2942,7 @@ namespace Google.Apis.DisplayVideo.v1
             }
 
             /// <summary>Gets a campaign.</summary>
-            public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Campaign>
+            public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.Campaign>
             {
                 /// <summary>Constructs a new Get request.</summary>
                 public GetRequest(Google.Apis.Services.IClientService service, long advertiserId, long campaignId) : base(service)
@@ -1697,7 +2967,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public override string HttpMethod => "GET";
 
                 /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1/advertisers/{+advertiserId}/campaigns/{+campaignId}";
+                public override string RestPath => "v3/advertisers/{+advertiserId}/campaigns/{+campaignId}";
 
                 /// <summary>Initializes Get parameter list.</summary>
                 protected override void InitParameters()
@@ -1738,7 +3008,7 @@ namespace Google.Apis.DisplayVideo.v1
             /// entity_status is not specified, campaigns with `ENTITY_STATUS_ARCHIVED` will not be included in the
             /// results.
             /// </summary>
-            public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ListCampaignsResponse>
+            public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.ListCampaignsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
                 public ListRequest(Google.Apis.Services.IClientService service, long advertiserId) : base(service)
@@ -1798,7 +3068,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public override string HttpMethod => "GET";
 
                 /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1/advertisers/{+advertiserId}/campaigns";
+                public override string RestPath => "v3/advertisers/{+advertiserId}/campaigns";
 
                 /// <summary>Initializes List parameter list.</summary>
                 protected override void InitParameters()
@@ -1847,20 +3117,151 @@ namespace Google.Apis.DisplayVideo.v1
                 }
             }
 
+            /// <summary>Lists assigned targeting options of a campaign across targeting types.</summary>
+            /// <param name="advertiserId">Required. The ID of the advertiser the campaign belongs to.</param>
+            /// <param name="campaignId">
+            /// Required. The ID of the campaign to list assigned targeting options for.
+            /// </param>
+            public virtual ListAssignedTargetingOptionsRequest ListAssignedTargetingOptions(long advertiserId, long campaignId)
+            {
+                return new ListAssignedTargetingOptionsRequest(service, advertiserId, campaignId);
+            }
+
+            /// <summary>Lists assigned targeting options of a campaign across targeting types.</summary>
+            public class ListAssignedTargetingOptionsRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.BulkListCampaignAssignedTargetingOptionsResponse>
+            {
+                /// <summary>Constructs a new ListAssignedTargetingOptions request.</summary>
+                public ListAssignedTargetingOptionsRequest(Google.Apis.Services.IClientService service, long advertiserId, long campaignId) : base(service)
+                {
+                    AdvertiserId = advertiserId;
+                    CampaignId = campaignId;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The ID of the advertiser the campaign belongs to.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long AdvertiserId { get; private set; }
+
+                /// <summary>Required. The ID of the campaign to list assigned targeting options for.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("campaignId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long CampaignId { get; private set; }
+
+                /// <summary>
+                /// Allows filtering by assigned targeting option fields. Supported syntax: * Filter expressions are
+                /// made up of one or more restrictions. * Restrictions can be combined by the `OR` logical operator. *
+                /// A restriction has the form of `{field} {operator} {value}`. * All fields must use the `EQUALS (=)`
+                /// operator. Supported fields: * `targetingType` * `inheritance` Examples: * `AssignedTargetingOption`
+                /// resources of targeting type `TARGETING_TYPE_LANGUAGE` or `TARGETING_TYPE_GENDER`:
+                /// `targetingType="TARGETING_TYPE_LANGUAGE" OR targetingType="TARGETING_TYPE_GENDER"` *
+                /// `AssignedTargetingOption` resources with inheritance status of `NOT_INHERITED` or
+                /// `INHERITED_FROM_PARTNER`: `inheritance="NOT_INHERITED" OR inheritance="INHERITED_FROM_PARTNER"` The
+                /// length of this field should be no more than 500 characters. Reference our [filter `LIST`
+                /// requests](/display-video/api/guides/how-tos/filters) guide for more information.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
+                /// <summary>
+                /// Field by which to sort the list. Acceptable values are: * `targetingType` (default) The default
+                /// sorting order is ascending. To specify descending order for a field, a suffix "desc" should be added
+                /// to the field name. Example: `targetingType desc`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string OrderBy { get; set; }
+
+                /// <summary>
+                /// Requested page size. The size must be an integer between `1` and `5000`. If unspecified, the default
+                /// is `5000`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// A token that lets the client fetch the next page of results. Typically, this is the value of
+                /// next_page_token returned from the previous call to `BulkListCampaignAssignedTargetingOptions`
+                /// method. If not specified, the first page of results will be returned.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "listAssignedTargetingOptions";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v3/advertisers/{+advertiserId}/campaigns/{+campaignId}:listAssignedTargetingOptions";
+
+                /// <summary>Initializes ListAssignedTargetingOptions parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("campaignId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "campaignId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderBy",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
             /// <summary>Updates an existing campaign. Returns the updated campaign if successful.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="advertiserId">Output only. The unique ID of the advertiser the campaign belongs to.</param>
             /// <param name="campaignId">Output only. The unique ID of the campaign. Assigned by the system.</param>
-            public virtual PatchRequest Patch(Google.Apis.DisplayVideo.v1.Data.Campaign body, long advertiserId, long campaignId)
+            public virtual PatchRequest Patch(Google.Apis.DisplayVideo.v3.Data.Campaign body, long advertiserId, long campaignId)
             {
                 return new PatchRequest(service, body, advertiserId, campaignId);
             }
 
             /// <summary>Updates an existing campaign. Returns the updated campaign if successful.</summary>
-            public class PatchRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Campaign>
+            public class PatchRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.Campaign>
             {
                 /// <summary>Constructs a new Patch request.</summary>
-                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.Campaign body, long advertiserId, long campaignId) : base(service)
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v3.Data.Campaign body, long advertiserId, long campaignId) : base(service)
                 {
                     AdvertiserId = advertiserId;
                     CampaignId = campaignId;
@@ -1881,7 +3282,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public virtual object UpdateMask { get; set; }
 
                 /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.DisplayVideo.v1.Data.Campaign Body { get; set; }
+                Google.Apis.DisplayVideo.v3.Data.Campaign Body { get; set; }
 
                 /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
@@ -1893,7 +3294,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public override string HttpMethod => "PATCH";
 
                 /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1/advertisers/{+advertiserId}/campaigns/{+campaignId}";
+                public override string RestPath => "v3/advertisers/{+advertiserId}/campaigns/{+campaignId}";
 
                 /// <summary>Initializes Patch parameter list.</summary>
                 protected override void InitParameters()
@@ -1970,7 +3371,7 @@ namespace Google.Apis.DisplayVideo.v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="advertiserId">The ID of the advertiser that owns the parent channel.</param>
                 /// <param name="channelId">Required. The ID of the parent channel to which the sites belong.</param>
-                public virtual BulkEditRequest BulkEdit(Google.Apis.DisplayVideo.v1.Data.BulkEditSitesRequest body, long advertiserId, long channelId)
+                public virtual BulkEditRequest BulkEdit(Google.Apis.DisplayVideo.v3.Data.BulkEditSitesRequest body, long advertiserId, long channelId)
                 {
                     return new BulkEditRequest(service, body, advertiserId, channelId);
                 }
@@ -1980,10 +3381,10 @@ namespace Google.Apis.DisplayVideo.v1
                 /// BulkEditSitesRequest.deleted_sites and then create the sites provided in
                 /// BulkEditSitesRequest.created_sites.
                 /// </summary>
-                public class BulkEditRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.BulkEditSitesResponse>
+                public class BulkEditRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.BulkEditSitesResponse>
                 {
                     /// <summary>Constructs a new BulkEdit request.</summary>
-                    public BulkEditRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.BulkEditSitesRequest body, long advertiserId, long channelId) : base(service)
+                    public BulkEditRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v3.Data.BulkEditSitesRequest body, long advertiserId, long channelId) : base(service)
                     {
                         AdvertiserId = advertiserId;
                         ChannelId = channelId;
@@ -2000,7 +3401,7 @@ namespace Google.Apis.DisplayVideo.v1
                     public virtual long ChannelId { get; private set; }
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.DisplayVideo.v1.Data.BulkEditSitesRequest Body { get; set; }
+                    Google.Apis.DisplayVideo.v3.Data.BulkEditSitesRequest Body { get; set; }
 
                     /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
@@ -2012,7 +3413,7 @@ namespace Google.Apis.DisplayVideo.v1
                     public override string HttpMethod => "POST";
 
                     /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1/advertisers/{advertiserId}/channels/{+channelId}/sites:bulkEdit";
+                    public override string RestPath => "v3/advertisers/{advertiserId}/channels/{+channelId}/sites:bulkEdit";
 
                     /// <summary>Initializes BulkEdit parameter list.</summary>
                     protected override void InitParameters()
@@ -2043,16 +3444,16 @@ namespace Google.Apis.DisplayVideo.v1
                 /// <param name="channelId">
                 /// Required. The ID of the parent channel in which the site will be created.
                 /// </param>
-                public virtual CreateRequest Create(Google.Apis.DisplayVideo.v1.Data.Site body, long advertiserId, long channelId)
+                public virtual CreateRequest Create(Google.Apis.DisplayVideo.v3.Data.Site body, long advertiserId, long channelId)
                 {
                     return new CreateRequest(service, body, advertiserId, channelId);
                 }
 
                 /// <summary>Creates a site in a channel.</summary>
-                public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Site>
+                public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.Site>
                 {
                     /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.Site body, long advertiserId, long channelId) : base(service)
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v3.Data.Site body, long advertiserId, long channelId) : base(service)
                     {
                         AdvertiserId = advertiserId;
                         ChannelId = channelId;
@@ -2073,7 +3474,7 @@ namespace Google.Apis.DisplayVideo.v1
                     public virtual System.Nullable<long> PartnerId { get; set; }
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.DisplayVideo.v1.Data.Site Body { get; set; }
+                    Google.Apis.DisplayVideo.v3.Data.Site Body { get; set; }
 
                     /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
@@ -2085,7 +3486,7 @@ namespace Google.Apis.DisplayVideo.v1
                     public override string HttpMethod => "POST";
 
                     /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1/advertisers/{advertiserId}/channels/{+channelId}/sites";
+                    public override string RestPath => "v3/advertisers/{advertiserId}/channels/{+channelId}/sites";
 
                     /// <summary>Initializes Create parameter list.</summary>
                     protected override void InitParameters()
@@ -2128,7 +3529,7 @@ namespace Google.Apis.DisplayVideo.v1
                 }
 
                 /// <summary>Deletes a site from a channel.</summary>
-                public class DeleteRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Empty>
+                public class DeleteRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.Empty>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
                     public DeleteRequest(Google.Apis.Services.IClientService service, long advertiserId, long channelId, string urlOrAppId) : base(service)
@@ -2162,7 +3563,7 @@ namespace Google.Apis.DisplayVideo.v1
                     public override string HttpMethod => "DELETE";
 
                     /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1/advertisers/{advertiserId}/channels/{+channelId}/sites/{+urlOrAppId}";
+                    public override string RestPath => "v3/advertisers/{advertiserId}/channels/{+channelId}/sites/{+urlOrAppId}";
 
                     /// <summary>Initializes Delete parameter list.</summary>
                     protected override void InitParameters()
@@ -2214,7 +3615,7 @@ namespace Google.Apis.DisplayVideo.v1
                 }
 
                 /// <summary>Lists sites in a channel.</summary>
-                public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ListSitesResponse>
+                public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.ListSitesResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
                     public ListRequest(Google.Apis.Services.IClientService service, long advertiserId, long channelId) : base(service)
@@ -2277,7 +3678,7 @@ namespace Google.Apis.DisplayVideo.v1
                     public override string HttpMethod => "GET";
 
                     /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1/advertisers/{+advertiserId}/channels/{+channelId}/sites";
+                    public override string RestPath => "v3/advertisers/{+advertiserId}/channels/{+channelId}/sites";
 
                     /// <summary>Initializes List parameter list.</summary>
                     protected override void InitParameters()
@@ -2349,7 +3750,7 @@ namespace Google.Apis.DisplayVideo.v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="advertiserId">The ID of the advertiser that owns the parent channel.</param>
                 /// <param name="channelId">Required. The ID of the parent channel whose sites will be replaced.</param>
-                public virtual ReplaceRequest Replace(Google.Apis.DisplayVideo.v1.Data.ReplaceSitesRequest body, long advertiserId, long channelId)
+                public virtual ReplaceRequest Replace(Google.Apis.DisplayVideo.v3.Data.ReplaceSitesRequest body, long advertiserId, long channelId)
                 {
                     return new ReplaceRequest(service, body, advertiserId, channelId);
                 }
@@ -2358,10 +3759,10 @@ namespace Google.Apis.DisplayVideo.v1
                 /// Replaces all of the sites under a single channel. The operation will replace the sites under a
                 /// channel with the sites provided in ReplaceSitesRequest.new_sites.
                 /// </summary>
-                public class ReplaceRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ReplaceSitesResponse>
+                public class ReplaceRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.ReplaceSitesResponse>
                 {
                     /// <summary>Constructs a new Replace request.</summary>
-                    public ReplaceRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.ReplaceSitesRequest body, long advertiserId, long channelId) : base(service)
+                    public ReplaceRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v3.Data.ReplaceSitesRequest body, long advertiserId, long channelId) : base(service)
                     {
                         AdvertiserId = advertiserId;
                         ChannelId = channelId;
@@ -2378,7 +3779,7 @@ namespace Google.Apis.DisplayVideo.v1
                     public virtual long ChannelId { get; private set; }
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.DisplayVideo.v1.Data.ReplaceSitesRequest Body { get; set; }
+                    Google.Apis.DisplayVideo.v3.Data.ReplaceSitesRequest Body { get; set; }
 
                     /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
@@ -2390,7 +3791,7 @@ namespace Google.Apis.DisplayVideo.v1
                     public override string HttpMethod => "POST";
 
                     /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1/advertisers/{advertiserId}/channels/{+channelId}/sites:replace";
+                    public override string RestPath => "v3/advertisers/{advertiserId}/channels/{+channelId}/sites:replace";
 
                     /// <summary>Initializes Replace parameter list.</summary>
                     protected override void InitParameters()
@@ -2419,16 +3820,16 @@ namespace Google.Apis.DisplayVideo.v1
             /// <summary>Creates a new channel. Returns the newly created channel if successful.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="advertiserId">The ID of the advertiser that owns the created channel.</param>
-            public virtual CreateRequest Create(Google.Apis.DisplayVideo.v1.Data.Channel body, long advertiserId)
+            public virtual CreateRequest Create(Google.Apis.DisplayVideo.v3.Data.Channel body, long advertiserId)
             {
                 return new CreateRequest(service, body, advertiserId);
             }
 
             /// <summary>Creates a new channel. Returns the newly created channel if successful.</summary>
-            public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Channel>
+            public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.Channel>
             {
                 /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.Channel body, long advertiserId) : base(service)
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v3.Data.Channel body, long advertiserId) : base(service)
                 {
                     AdvertiserId = advertiserId;
                     Body = body;
@@ -2444,7 +3845,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public virtual System.Nullable<long> PartnerId { get; set; }
 
                 /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.DisplayVideo.v1.Data.Channel Body { get; set; }
+                Google.Apis.DisplayVideo.v3.Data.Channel Body { get; set; }
 
                 /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
@@ -2456,7 +3857,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public override string HttpMethod => "POST";
 
                 /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1/advertisers/{+advertiserId}/channels";
+                public override string RestPath => "v3/advertisers/{+advertiserId}/channels";
 
                 /// <summary>Initializes Create parameter list.</summary>
                 protected override void InitParameters()
@@ -2490,7 +3891,7 @@ namespace Google.Apis.DisplayVideo.v1
             }
 
             /// <summary>Gets a channel for a partner or advertiser.</summary>
-            public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Channel>
+            public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.Channel>
             {
                 /// <summary>Constructs a new Get request.</summary>
                 public GetRequest(Google.Apis.Services.IClientService service, long advertiserId, long channelId) : base(service)
@@ -2519,7 +3920,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public override string HttpMethod => "GET";
 
                 /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1/advertisers/{+advertiserId}/channels/{+channelId}";
+                public override string RestPath => "v3/advertisers/{+advertiserId}/channels/{+channelId}";
 
                 /// <summary>Initializes Get parameter list.</summary>
                 protected override void InitParameters()
@@ -2560,7 +3961,7 @@ namespace Google.Apis.DisplayVideo.v1
             }
 
             /// <summary>Lists channels for a partner or advertiser.</summary>
-            public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ListChannelsResponse>
+            public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.ListChannelsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
                 public ListRequest(Google.Apis.Services.IClientService service, long advertiserId) : base(service)
@@ -2618,7 +4019,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public override string HttpMethod => "GET";
 
                 /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1/advertisers/{+advertiserId}/channels";
+                public override string RestPath => "v3/advertisers/{+advertiserId}/channels";
 
                 /// <summary>Initializes List parameter list.</summary>
                 protected override void InitParameters()
@@ -2679,16 +4080,16 @@ namespace Google.Apis.DisplayVideo.v1
             /// <param name="body">The body of the request.</param>
             /// <param name="advertiserId">The ID of the advertiser that owns the created channel.</param>
             /// <param name="channelId">Output only. The unique ID of the channel. Assigned by the system.</param>
-            public virtual PatchRequest Patch(Google.Apis.DisplayVideo.v1.Data.Channel body, long advertiserId, long channelId)
+            public virtual PatchRequest Patch(Google.Apis.DisplayVideo.v3.Data.Channel body, long advertiserId, long channelId)
             {
                 return new PatchRequest(service, body, advertiserId, channelId);
             }
 
             /// <summary>Updates a channel. Returns the updated channel if successful.</summary>
-            public class PatchRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Channel>
+            public class PatchRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.Channel>
             {
                 /// <summary>Constructs a new Patch request.</summary>
-                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.Channel body, long advertiserId, long channelId) : base(service)
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v3.Data.Channel body, long advertiserId, long channelId) : base(service)
                 {
                     AdvertiserId = advertiserId;
                     ChannelId = channelId;
@@ -2713,7 +4114,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public virtual object UpdateMask { get; set; }
 
                 /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.DisplayVideo.v1.Data.Channel Body { get; set; }
+                Google.Apis.DisplayVideo.v3.Data.Channel Body { get; set; }
 
                 /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
@@ -2725,7 +4126,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public override string HttpMethod => "PATCH";
 
                 /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1/advertisers/{+advertiserId}/channels/{channelId}";
+                public override string RestPath => "v3/advertisers/{+advertiserId}/channels/{channelId}";
 
                 /// <summary>Initializes Patch parameter list.</summary>
                 protected override void InitParameters()
@@ -2787,16 +4188,16 @@ namespace Google.Apis.DisplayVideo.v1
             /// <summary>Creates a new creative. Returns the newly created creative if successful.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="advertiserId">Output only. The unique ID of the advertiser the creative belongs to.</param>
-            public virtual CreateRequest Create(Google.Apis.DisplayVideo.v1.Data.Creative body, long advertiserId)
+            public virtual CreateRequest Create(Google.Apis.DisplayVideo.v3.Data.Creative body, long advertiserId)
             {
                 return new CreateRequest(service, body, advertiserId);
             }
 
             /// <summary>Creates a new creative. Returns the newly created creative if successful.</summary>
-            public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Creative>
+            public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.Creative>
             {
                 /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.Creative body, long advertiserId) : base(service)
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v3.Data.Creative body, long advertiserId) : base(service)
                 {
                     AdvertiserId = advertiserId;
                     Body = body;
@@ -2808,7 +4209,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public virtual long AdvertiserId { get; private set; }
 
                 /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.DisplayVideo.v1.Data.Creative Body { get; set; }
+                Google.Apis.DisplayVideo.v3.Data.Creative Body { get; set; }
 
                 /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
@@ -2820,7 +4221,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public override string HttpMethod => "POST";
 
                 /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1/advertisers/{+advertiserId}/creatives";
+                public override string RestPath => "v3/advertisers/{+advertiserId}/creatives";
 
                 /// <summary>Initializes Create parameter list.</summary>
                 protected override void InitParameters()
@@ -2852,7 +4253,7 @@ namespace Google.Apis.DisplayVideo.v1
             /// Deletes a creative. Returns error code `NOT_FOUND` if the creative does not exist. The creative should
             /// be archived first, i.e. set entity_status to `ENTITY_STATUS_ARCHIVED`, before it can be deleted.
             /// </summary>
-            public class DeleteRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Empty>
+            public class DeleteRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
                 public DeleteRequest(Google.Apis.Services.IClientService service, long advertiserId, long creativeId) : base(service)
@@ -2877,7 +4278,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public override string HttpMethod => "DELETE";
 
                 /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1/advertisers/{+advertiserId}/creatives/{+creativeId}";
+                public override string RestPath => "v3/advertisers/{+advertiserId}/creatives/{+creativeId}";
 
                 /// <summary>Initializes Delete parameter list.</summary>
                 protected override void InitParameters()
@@ -2911,7 +4312,7 @@ namespace Google.Apis.DisplayVideo.v1
             }
 
             /// <summary>Gets a creative.</summary>
-            public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Creative>
+            public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.Creative>
             {
                 /// <summary>Constructs a new Get request.</summary>
                 public GetRequest(Google.Apis.Services.IClientService service, long advertiserId, long creativeId) : base(service)
@@ -2936,7 +4337,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public override string HttpMethod => "GET";
 
                 /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1/advertisers/{+advertiserId}/creatives/{+creativeId}";
+                public override string RestPath => "v3/advertisers/{+advertiserId}/creatives/{+creativeId}";
 
                 /// <summary>Initializes Get parameter list.</summary>
                 protected override void InitParameters()
@@ -2977,7 +4378,7 @@ namespace Google.Apis.DisplayVideo.v1
             /// entity_status is not specified, creatives with `ENTITY_STATUS_ARCHIVED` will not be included in the
             /// results.
             /// </summary>
-            public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ListCreativesResponse>
+            public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.ListCreativesResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
                 public ListRequest(Google.Apis.Services.IClientService service, long advertiserId) : base(service)
@@ -3052,7 +4453,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public override string HttpMethod => "GET";
 
                 /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1/advertisers/{+advertiserId}/creatives";
+                public override string RestPath => "v3/advertisers/{+advertiserId}/creatives";
 
                 /// <summary>Initializes List parameter list.</summary>
                 protected override void InitParameters()
@@ -3105,16 +4506,16 @@ namespace Google.Apis.DisplayVideo.v1
             /// <param name="body">The body of the request.</param>
             /// <param name="advertiserId">Output only. The unique ID of the advertiser the creative belongs to.</param>
             /// <param name="creativeId">Output only. The unique ID of the creative. Assigned by the system.</param>
-            public virtual PatchRequest Patch(Google.Apis.DisplayVideo.v1.Data.Creative body, long advertiserId, long creativeId)
+            public virtual PatchRequest Patch(Google.Apis.DisplayVideo.v3.Data.Creative body, long advertiserId, long creativeId)
             {
                 return new PatchRequest(service, body, advertiserId, creativeId);
             }
 
             /// <summary>Updates an existing creative. Returns the updated creative if successful.</summary>
-            public class PatchRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Creative>
+            public class PatchRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.Creative>
             {
                 /// <summary>Constructs a new Patch request.</summary>
-                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.Creative body, long advertiserId, long creativeId) : base(service)
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v3.Data.Creative body, long advertiserId, long creativeId) : base(service)
                 {
                     AdvertiserId = advertiserId;
                     CreativeId = creativeId;
@@ -3135,7 +4536,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public virtual object UpdateMask { get; set; }
 
                 /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.DisplayVideo.v1.Data.Creative Body { get; set; }
+                Google.Apis.DisplayVideo.v3.Data.Creative Body { get; set; }
 
                 /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
@@ -3147,7 +4548,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public override string HttpMethod => "PATCH";
 
                 /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1/advertisers/{+advertiserId}/creatives/{+creativeId}";
+                public override string RestPath => "v3/advertisers/{+advertiserId}/creatives/{+creativeId}";
 
                 /// <summary>Initializes Patch parameter list.</summary>
                 protected override void InitParameters()
@@ -3234,6 +4635,780 @@ namespace Google.Apis.DisplayVideo.v1
                         this.service = service;
                     }
 
+                    /// <summary>
+                    /// Assigns a targeting option to an insertion order. Returns the assigned targeting option if
+                    /// successful. Supported targeting types: * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_BROWSER` *
+                    /// `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DEVICE_MAKE_MODEL` *
+                    /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_ENVIRONMENT` *
+                    /// `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_LANGUAGE` *
+                    /// `TARGETING_TYPE_NEGATIVE_KEYWORD_LIST` * `TARGETING_TYPE_OPERATING_SYSTEM` *
+                    /// `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` *
+                    /// `TARGETING_TYPE_VIEWABILITY`
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="advertiserId">
+                    /// Required. The ID of the advertiser the insertion order belongs to.
+                    /// </param>
+                    /// <param name="insertionOrderId">
+                    /// Required. The ID of the insertion order the assigned targeting option will belong to.
+                    /// </param>
+                    /// <param name="targetingType">
+                    /// Required. Identifies the type of this assigned targeting option. Supported targeting types: *
+                    /// `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_BROWSER` * `TARGETING_TYPE_CATEGORY` *
+                    /// `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DEVICE_MAKE_MODEL` *
+                    /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_ENVIRONMENT` *
+                    /// `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_LANGUAGE` *
+                    /// `TARGETING_TYPE_NEGATIVE_KEYWORD_LIST` * `TARGETING_TYPE_OPERATING_SYSTEM` *
+                    /// `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` *
+                    /// `TARGETING_TYPE_VIEWABILITY`
+                    /// </param>
+                    public virtual CreateRequest Create(Google.Apis.DisplayVideo.v3.Data.AssignedTargetingOption body, long advertiserId, long insertionOrderId, CreateRequest.TargetingTypeEnum targetingType)
+                    {
+                        return new CreateRequest(service, body, advertiserId, insertionOrderId, targetingType);
+                    }
+
+                    /// <summary>
+                    /// Assigns a targeting option to an insertion order. Returns the assigned targeting option if
+                    /// successful. Supported targeting types: * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_BROWSER` *
+                    /// `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DEVICE_MAKE_MODEL` *
+                    /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_ENVIRONMENT` *
+                    /// `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_LANGUAGE` *
+                    /// `TARGETING_TYPE_NEGATIVE_KEYWORD_LIST` * `TARGETING_TYPE_OPERATING_SYSTEM` *
+                    /// `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` *
+                    /// `TARGETING_TYPE_VIEWABILITY`
+                    /// </summary>
+                    public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.AssignedTargetingOption>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v3.Data.AssignedTargetingOption body, long advertiserId, long insertionOrderId, TargetingTypeEnum targetingType) : base(service)
+                        {
+                            AdvertiserId = advertiserId;
+                            InsertionOrderId = insertionOrderId;
+                            TargetingType = targetingType;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The ID of the advertiser the insertion order belongs to.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual long AdvertiserId { get; private set; }
+
+                        /// <summary>
+                        /// Required. The ID of the insertion order the assigned targeting option will belong to.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("insertionOrderId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual long InsertionOrderId { get; private set; }
+
+                        /// <summary>
+                        /// Required. Identifies the type of this assigned targeting option. Supported targeting types:
+                        /// * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_BROWSER` * `TARGETING_TYPE_CATEGORY` *
+                        /// `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DEVICE_MAKE_MODEL` *
+                        /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_ENVIRONMENT` *
+                        /// `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_LANGUAGE` *
+                        /// `TARGETING_TYPE_NEGATIVE_KEYWORD_LIST` * `TARGETING_TYPE_OPERATING_SYSTEM` *
+                        /// `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` *
+                        /// `TARGETING_TYPE_VIEWABILITY`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("targetingType", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual TargetingTypeEnum TargetingType { get; private set; }
+
+                        /// <summary>
+                        /// Required. Identifies the type of this assigned targeting option. Supported targeting types:
+                        /// * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_BROWSER` * `TARGETING_TYPE_CATEGORY` *
+                        /// `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DEVICE_MAKE_MODEL` *
+                        /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_ENVIRONMENT` *
+                        /// `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_LANGUAGE` *
+                        /// `TARGETING_TYPE_NEGATIVE_KEYWORD_LIST` * `TARGETING_TYPE_OPERATING_SYSTEM` *
+                        /// `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` *
+                        /// `TARGETING_TYPE_VIEWABILITY`
+                        /// </summary>
+                        public enum TargetingTypeEnum
+                        {
+                            /// <summary>
+                            /// Default value when type is not specified or is unknown in this version.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_UNSPECIFIED")]
+                            TARGETINGTYPEUNSPECIFIED = 0,
+
+                            /// <summary>Target a channel (a custom group of related websites or apps).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CHANNEL")]
+                            TARGETINGTYPECHANNEL = 1,
+
+                            /// <summary>Target an app category (for example, education or puzzle games).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_APP_CATEGORY")]
+                            TARGETINGTYPEAPPCATEGORY = 2,
+
+                            /// <summary>Target a specific app (for example, Angry Birds).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_APP")]
+                            TARGETINGTYPEAPP = 3,
+
+                            /// <summary>Target a specific url (for example, quora.com).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_URL")]
+                            TARGETINGTYPEURL = 4,
+
+                            /// <summary>Target ads during a chosen time period on a specific day.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DAY_AND_TIME")]
+                            TARGETINGTYPEDAYANDTIME = 5,
+
+                            /// <summary>Target ads to a specific age range (for example, 18-24).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AGE_RANGE")]
+                            TARGETINGTYPEAGERANGE = 6,
+
+                            /// <summary>Target ads to the specified regions on a regional location list.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_REGIONAL_LOCATION_LIST")]
+                            TARGETINGTYPEREGIONALLOCATIONLIST = 7,
+
+                            /// <summary>
+                            /// Target ads to the specified points of interest on a proximity location list.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_PROXIMITY_LOCATION_LIST")]
+                            TARGETINGTYPEPROXIMITYLOCATIONLIST = 8,
+
+                            /// <summary>Target ads to a specific gender (for example, female or male).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_GENDER")]
+                            TARGETINGTYPEGENDER = 9,
+
+                            /// <summary>Target a specific video player size for video ads.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_VIDEO_PLAYER_SIZE")]
+                            TARGETINGTYPEVIDEOPLAYERSIZE = 10,
+
+                            /// <summary>Target user rewarded content for video ads.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_USER_REWARDED_CONTENT")]
+                            TARGETINGTYPEUSERREWARDEDCONTENT = 11,
+
+                            /// <summary>
+                            /// Target ads to a specific parental status (for example, parent or not a parent).
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_PARENTAL_STATUS")]
+                            TARGETINGTYPEPARENTALSTATUS = 12,
+
+                            /// <summary>
+                            /// Target video or audio ads in a specific content instream position (for example,
+                            /// pre-roll, mid-roll, or post-roll).
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_INSTREAM_POSITION")]
+                            TARGETINGTYPECONTENTINSTREAMPOSITION = 13,
+
+                            /// <summary>Target ads in a specific content outstream position.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION")]
+                            TARGETINGTYPECONTENTOUTSTREAMPOSITION = 14,
+
+                            /// <summary>
+                            /// Target ads to a specific device type (for example, tablet or connected TV).
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DEVICE_TYPE")]
+                            TARGETINGTYPEDEVICETYPE = 15,
+
+                            /// <summary>
+                            /// Target ads to an audience or groups of audiences. Singleton field, at most one can exist
+                            /// on a single Lineitem at a time.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIENCE_GROUP")]
+                            TARGETINGTYPEAUDIENCEGROUP = 16,
+
+                            /// <summary>Target ads to specific web browsers (for example, Chrome).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BROWSER")]
+                            TARGETINGTYPEBROWSER = 17,
+
+                            /// <summary>
+                            /// Target ads to a specific household income range (for example, top 10%).
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_HOUSEHOLD_INCOME")]
+                            TARGETINGTYPEHOUSEHOLDINCOME = 18,
+
+                            /// <summary>Target ads in a specific on screen position.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ON_SCREEN_POSITION")]
+                            TARGETINGTYPEONSCREENPOSITION = 19,
+
+                            /// <summary>
+                            /// Filter web sites through third party verification (for example, IAS or DoubleVerify).
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_THIRD_PARTY_VERIFIER")]
+                            TARGETINGTYPETHIRDPARTYVERIFIER = 20,
+
+                            /// <summary>
+                            /// Filter web sites by specific digital content label ratings (for example, DL-MA: suitable
+                            /// only for mature audiences).
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION")]
+                            TARGETINGTYPEDIGITALCONTENTLABELEXCLUSION = 21,
+
+                            /// <summary>Filter website content by sensitive categories (for example, adult).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION")]
+                            TARGETINGTYPESENSITIVECATEGORYEXCLUSION = 22,
+
+                            /// <summary>Target ads to a specific environment (for example, web or app).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ENVIRONMENT")]
+                            TARGETINGTYPEENVIRONMENT = 23,
+
+                            /// <summary>
+                            /// Target ads to a specific network carrier or internet service provider (ISP) (for
+                            /// example, Comcast or Orange).
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CARRIER_AND_ISP")]
+                            TARGETINGTYPECARRIERANDISP = 24,
+
+                            /// <summary>Target ads to a specific operating system (for example, macOS).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_OPERATING_SYSTEM")]
+                            TARGETINGTYPEOPERATINGSYSTEM = 25,
+
+                            /// <summary>
+                            /// Target ads to a specific device make or model (for example, Roku or Samsung).
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DEVICE_MAKE_MODEL")]
+                            TARGETINGTYPEDEVICEMAKEMODEL = 26,
+
+                            /// <summary>Target ads to a specific keyword (for example, dog or retriever).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_KEYWORD")]
+                            TARGETINGTYPEKEYWORD = 27,
+
+                            /// <summary>Target ads to a specific negative keyword list.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NEGATIVE_KEYWORD_LIST")]
+                            TARGETINGTYPENEGATIVEKEYWORDLIST = 28,
+
+                            /// <summary>Target ads to a specific viewability (for example, 80% viewable).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_VIEWABILITY")]
+                            TARGETINGTYPEVIEWABILITY = 29,
+
+                            /// <summary>
+                            /// Target ads to a specific content category (for example, arts &amp;amp; entertainment).
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CATEGORY")]
+                            TARGETINGTYPECATEGORY = 30,
+
+                            /// <summary>Purchase impressions from specific deals and auction packages.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE")]
+                            TARGETINGTYPEINVENTORYSOURCE = 31,
+
+                            /// <summary>Target ads to a specific language (for example, English or Japanese).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_LANGUAGE")]
+                            TARGETINGTYPELANGUAGE = 32,
+
+                            /// <summary>
+                            /// Target ads to ads.txt authorized sellers. If no targeting option of this type is
+                            /// assigned, the resource uses the "Authorized Direct Sellers and Resellers" option by
+                            /// default.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUTHORIZED_SELLER_STATUS")]
+                            TARGETINGTYPEAUTHORIZEDSELLERSTATUS = 33,
+
+                            /// <summary>
+                            /// Target ads to a specific regional location (for example, a city or state).
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_GEO_REGION")]
+                            TARGETINGTYPEGEOREGION = 34,
+
+                            /// <summary>Purchase impressions from a group of deals and auction packages.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE_GROUP")]
+                            TARGETINGTYPEINVENTORYSOURCEGROUP = 35,
+
+                            /// <summary>Purchase impressions from specific exchanges.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_EXCHANGE")]
+                            TARGETINGTYPEEXCHANGE = 36,
+
+                            /// <summary>Purchase impressions from specific sub-exchanges.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SUB_EXCHANGE")]
+                            TARGETINGTYPESUBEXCHANGE = 37,
+
+                            /// <summary>
+                            /// Target ads around a specific point of interest, such as a notable building, a street
+                            /// address, or latitude/longitude coordinates.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_POI")]
+                            TARGETINGTYPEPOI = 38,
+
+                            /// <summary>
+                            /// Target ads around locations of a business chain within a specific geo region.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BUSINESS_CHAIN")]
+                            TARGETINGTYPEBUSINESSCHAIN = 39,
+
+                            /// <summary>Target ads to a specific video content duration.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_DURATION")]
+                            TARGETINGTYPECONTENTDURATION = 40,
+
+                            /// <summary>Target ads to a specific video content stream type.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_STREAM_TYPE")]
+                            TARGETINGTYPECONTENTSTREAMTYPE = 41,
+
+                            /// <summary>Target ads to a specific native content position.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NATIVE_CONTENT_POSITION")]
+                            TARGETINGTYPENATIVECONTENTPOSITION = 42,
+
+                            /// <summary>Target ads in an Open Measurement enabled inventory.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_OMID")]
+                            TARGETINGTYPEOMID = 43,
+
+                            /// <summary>Target ads to a specific audio content type.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIO_CONTENT_TYPE")]
+                            TARGETINGTYPEAUDIOCONTENTTYPE = 44,
+
+                            /// <summary>Target ads to a specific content genre.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_GENRE")]
+                            TARGETINGTYPECONTENTGENRE = 45,
+
+                            /// <summary>
+                            /// Target ads to a specific YouTube video. Targeting of this type cannot be created or
+                            /// updated using the API. Although this targeting is inherited by child resources,
+                            /// **inherited targeting of this type will not be retrieveable**.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_YOUTUBE_VIDEO")]
+                            TARGETINGTYPEYOUTUBEVIDEO = 46,
+
+                            /// <summary>
+                            /// Target ads to a specific YouTube channel. Targeting of this type cannot be created or
+                            /// updated using the API. Although this targeting is inherited by child resources,
+                            /// **inherited targeting of this type will not be retrieveable**.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_YOUTUBE_CHANNEL")]
+                            TARGETINGTYPEYOUTUBECHANNEL = 47,
+
+                            /// <summary>
+                            /// Target ads to a serve it in a certain position of a session. Only supported for Ad Group
+                            /// resources under YouTube Programmatic Reservation line items. Targeting of this type
+                            /// cannot be created or updated using the API.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SESSION_POSITION")]
+                            TARGETINGTYPESESSIONPOSITION = 48,
+                        }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.DisplayVideo.v3.Data.AssignedTargetingOption Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "create";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v3/advertisers/{+advertiserId}/insertionOrders/{+insertionOrderId}/targetingTypes/{+targetingType}/assignedTargetingOptions";
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "advertiserId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
+                            RequestParameters.Add("insertionOrderId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "insertionOrderId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
+                            RequestParameters.Add("targetingType", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "targetingType",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Deletes an assigned targeting option from an insertion order. Supported targeting types: *
+                    /// `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_BROWSER` * `TARGETING_TYPE_CATEGORY` *
+                    /// `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DEVICE_MAKE_MODEL` *
+                    /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_ENVIRONMENT` *
+                    /// `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_LANGUAGE` *
+                    /// `TARGETING_TYPE_NEGATIVE_KEYWORD_LIST` * `TARGETING_TYPE_OPERATING_SYSTEM` *
+                    /// `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` *
+                    /// `TARGETING_TYPE_VIEWABILITY`
+                    /// </summary>
+                    /// <param name="advertiserId">
+                    /// Required. The ID of the advertiser the insertion order belongs to.
+                    /// </param>
+                    /// <param name="insertionOrderId">
+                    /// Required. The ID of the insertion order the assigned targeting option belongs to.
+                    /// </param>
+                    /// <param name="targetingType">
+                    /// Required. Identifies the type of this assigned targeting option. Supported targeting types: *
+                    /// `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_BROWSER` * `TARGETING_TYPE_CATEGORY` *
+                    /// `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DEVICE_MAKE_MODEL` *
+                    /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_ENVIRONMENT` *
+                    /// `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_LANGUAGE` *
+                    /// `TARGETING_TYPE_NEGATIVE_KEYWORD_LIST` * `TARGETING_TYPE_OPERATING_SYSTEM` *
+                    /// `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` *
+                    /// `TARGETING_TYPE_VIEWABILITY`
+                    /// </param>
+                    /// <param name="assignedTargetingOptionId">
+                    /// Required. The ID of the assigned targeting option to delete.
+                    /// </param>
+                    public virtual DeleteRequest Delete(long advertiserId, long insertionOrderId, DeleteRequest.TargetingTypeEnum targetingType, string assignedTargetingOptionId)
+                    {
+                        return new DeleteRequest(service, advertiserId, insertionOrderId, targetingType, assignedTargetingOptionId);
+                    }
+
+                    /// <summary>
+                    /// Deletes an assigned targeting option from an insertion order. Supported targeting types: *
+                    /// `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_BROWSER` * `TARGETING_TYPE_CATEGORY` *
+                    /// `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DEVICE_MAKE_MODEL` *
+                    /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_ENVIRONMENT` *
+                    /// `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_LANGUAGE` *
+                    /// `TARGETING_TYPE_NEGATIVE_KEYWORD_LIST` * `TARGETING_TYPE_OPERATING_SYSTEM` *
+                    /// `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` *
+                    /// `TARGETING_TYPE_VIEWABILITY`
+                    /// </summary>
+                    public class DeleteRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.Empty>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, long advertiserId, long insertionOrderId, TargetingTypeEnum targetingType, string assignedTargetingOptionId) : base(service)
+                        {
+                            AdvertiserId = advertiserId;
+                            InsertionOrderId = insertionOrderId;
+                            TargetingType = targetingType;
+                            AssignedTargetingOptionId = assignedTargetingOptionId;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The ID of the advertiser the insertion order belongs to.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual long AdvertiserId { get; private set; }
+
+                        /// <summary>
+                        /// Required. The ID of the insertion order the assigned targeting option belongs to.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("insertionOrderId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual long InsertionOrderId { get; private set; }
+
+                        /// <summary>
+                        /// Required. Identifies the type of this assigned targeting option. Supported targeting types:
+                        /// * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_BROWSER` * `TARGETING_TYPE_CATEGORY` *
+                        /// `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DEVICE_MAKE_MODEL` *
+                        /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_ENVIRONMENT` *
+                        /// `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_LANGUAGE` *
+                        /// `TARGETING_TYPE_NEGATIVE_KEYWORD_LIST` * `TARGETING_TYPE_OPERATING_SYSTEM` *
+                        /// `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` *
+                        /// `TARGETING_TYPE_VIEWABILITY`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("targetingType", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual TargetingTypeEnum TargetingType { get; private set; }
+
+                        /// <summary>
+                        /// Required. Identifies the type of this assigned targeting option. Supported targeting types:
+                        /// * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_BROWSER` * `TARGETING_TYPE_CATEGORY` *
+                        /// `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DEVICE_MAKE_MODEL` *
+                        /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_ENVIRONMENT` *
+                        /// `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_LANGUAGE` *
+                        /// `TARGETING_TYPE_NEGATIVE_KEYWORD_LIST` * `TARGETING_TYPE_OPERATING_SYSTEM` *
+                        /// `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` *
+                        /// `TARGETING_TYPE_VIEWABILITY`
+                        /// </summary>
+                        public enum TargetingTypeEnum
+                        {
+                            /// <summary>
+                            /// Default value when type is not specified or is unknown in this version.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_UNSPECIFIED")]
+                            TARGETINGTYPEUNSPECIFIED = 0,
+
+                            /// <summary>Target a channel (a custom group of related websites or apps).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CHANNEL")]
+                            TARGETINGTYPECHANNEL = 1,
+
+                            /// <summary>Target an app category (for example, education or puzzle games).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_APP_CATEGORY")]
+                            TARGETINGTYPEAPPCATEGORY = 2,
+
+                            /// <summary>Target a specific app (for example, Angry Birds).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_APP")]
+                            TARGETINGTYPEAPP = 3,
+
+                            /// <summary>Target a specific url (for example, quora.com).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_URL")]
+                            TARGETINGTYPEURL = 4,
+
+                            /// <summary>Target ads during a chosen time period on a specific day.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DAY_AND_TIME")]
+                            TARGETINGTYPEDAYANDTIME = 5,
+
+                            /// <summary>Target ads to a specific age range (for example, 18-24).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AGE_RANGE")]
+                            TARGETINGTYPEAGERANGE = 6,
+
+                            /// <summary>Target ads to the specified regions on a regional location list.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_REGIONAL_LOCATION_LIST")]
+                            TARGETINGTYPEREGIONALLOCATIONLIST = 7,
+
+                            /// <summary>
+                            /// Target ads to the specified points of interest on a proximity location list.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_PROXIMITY_LOCATION_LIST")]
+                            TARGETINGTYPEPROXIMITYLOCATIONLIST = 8,
+
+                            /// <summary>Target ads to a specific gender (for example, female or male).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_GENDER")]
+                            TARGETINGTYPEGENDER = 9,
+
+                            /// <summary>Target a specific video player size for video ads.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_VIDEO_PLAYER_SIZE")]
+                            TARGETINGTYPEVIDEOPLAYERSIZE = 10,
+
+                            /// <summary>Target user rewarded content for video ads.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_USER_REWARDED_CONTENT")]
+                            TARGETINGTYPEUSERREWARDEDCONTENT = 11,
+
+                            /// <summary>
+                            /// Target ads to a specific parental status (for example, parent or not a parent).
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_PARENTAL_STATUS")]
+                            TARGETINGTYPEPARENTALSTATUS = 12,
+
+                            /// <summary>
+                            /// Target video or audio ads in a specific content instream position (for example,
+                            /// pre-roll, mid-roll, or post-roll).
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_INSTREAM_POSITION")]
+                            TARGETINGTYPECONTENTINSTREAMPOSITION = 13,
+
+                            /// <summary>Target ads in a specific content outstream position.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION")]
+                            TARGETINGTYPECONTENTOUTSTREAMPOSITION = 14,
+
+                            /// <summary>
+                            /// Target ads to a specific device type (for example, tablet or connected TV).
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DEVICE_TYPE")]
+                            TARGETINGTYPEDEVICETYPE = 15,
+
+                            /// <summary>
+                            /// Target ads to an audience or groups of audiences. Singleton field, at most one can exist
+                            /// on a single Lineitem at a time.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIENCE_GROUP")]
+                            TARGETINGTYPEAUDIENCEGROUP = 16,
+
+                            /// <summary>Target ads to specific web browsers (for example, Chrome).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BROWSER")]
+                            TARGETINGTYPEBROWSER = 17,
+
+                            /// <summary>
+                            /// Target ads to a specific household income range (for example, top 10%).
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_HOUSEHOLD_INCOME")]
+                            TARGETINGTYPEHOUSEHOLDINCOME = 18,
+
+                            /// <summary>Target ads in a specific on screen position.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ON_SCREEN_POSITION")]
+                            TARGETINGTYPEONSCREENPOSITION = 19,
+
+                            /// <summary>
+                            /// Filter web sites through third party verification (for example, IAS or DoubleVerify).
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_THIRD_PARTY_VERIFIER")]
+                            TARGETINGTYPETHIRDPARTYVERIFIER = 20,
+
+                            /// <summary>
+                            /// Filter web sites by specific digital content label ratings (for example, DL-MA: suitable
+                            /// only for mature audiences).
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION")]
+                            TARGETINGTYPEDIGITALCONTENTLABELEXCLUSION = 21,
+
+                            /// <summary>Filter website content by sensitive categories (for example, adult).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION")]
+                            TARGETINGTYPESENSITIVECATEGORYEXCLUSION = 22,
+
+                            /// <summary>Target ads to a specific environment (for example, web or app).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ENVIRONMENT")]
+                            TARGETINGTYPEENVIRONMENT = 23,
+
+                            /// <summary>
+                            /// Target ads to a specific network carrier or internet service provider (ISP) (for
+                            /// example, Comcast or Orange).
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CARRIER_AND_ISP")]
+                            TARGETINGTYPECARRIERANDISP = 24,
+
+                            /// <summary>Target ads to a specific operating system (for example, macOS).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_OPERATING_SYSTEM")]
+                            TARGETINGTYPEOPERATINGSYSTEM = 25,
+
+                            /// <summary>
+                            /// Target ads to a specific device make or model (for example, Roku or Samsung).
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DEVICE_MAKE_MODEL")]
+                            TARGETINGTYPEDEVICEMAKEMODEL = 26,
+
+                            /// <summary>Target ads to a specific keyword (for example, dog or retriever).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_KEYWORD")]
+                            TARGETINGTYPEKEYWORD = 27,
+
+                            /// <summary>Target ads to a specific negative keyword list.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NEGATIVE_KEYWORD_LIST")]
+                            TARGETINGTYPENEGATIVEKEYWORDLIST = 28,
+
+                            /// <summary>Target ads to a specific viewability (for example, 80% viewable).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_VIEWABILITY")]
+                            TARGETINGTYPEVIEWABILITY = 29,
+
+                            /// <summary>
+                            /// Target ads to a specific content category (for example, arts &amp;amp; entertainment).
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CATEGORY")]
+                            TARGETINGTYPECATEGORY = 30,
+
+                            /// <summary>Purchase impressions from specific deals and auction packages.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE")]
+                            TARGETINGTYPEINVENTORYSOURCE = 31,
+
+                            /// <summary>Target ads to a specific language (for example, English or Japanese).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_LANGUAGE")]
+                            TARGETINGTYPELANGUAGE = 32,
+
+                            /// <summary>
+                            /// Target ads to ads.txt authorized sellers. If no targeting option of this type is
+                            /// assigned, the resource uses the "Authorized Direct Sellers and Resellers" option by
+                            /// default.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUTHORIZED_SELLER_STATUS")]
+                            TARGETINGTYPEAUTHORIZEDSELLERSTATUS = 33,
+
+                            /// <summary>
+                            /// Target ads to a specific regional location (for example, a city or state).
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_GEO_REGION")]
+                            TARGETINGTYPEGEOREGION = 34,
+
+                            /// <summary>Purchase impressions from a group of deals and auction packages.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE_GROUP")]
+                            TARGETINGTYPEINVENTORYSOURCEGROUP = 35,
+
+                            /// <summary>Purchase impressions from specific exchanges.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_EXCHANGE")]
+                            TARGETINGTYPEEXCHANGE = 36,
+
+                            /// <summary>Purchase impressions from specific sub-exchanges.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SUB_EXCHANGE")]
+                            TARGETINGTYPESUBEXCHANGE = 37,
+
+                            /// <summary>
+                            /// Target ads around a specific point of interest, such as a notable building, a street
+                            /// address, or latitude/longitude coordinates.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_POI")]
+                            TARGETINGTYPEPOI = 38,
+
+                            /// <summary>
+                            /// Target ads around locations of a business chain within a specific geo region.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BUSINESS_CHAIN")]
+                            TARGETINGTYPEBUSINESSCHAIN = 39,
+
+                            /// <summary>Target ads to a specific video content duration.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_DURATION")]
+                            TARGETINGTYPECONTENTDURATION = 40,
+
+                            /// <summary>Target ads to a specific video content stream type.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_STREAM_TYPE")]
+                            TARGETINGTYPECONTENTSTREAMTYPE = 41,
+
+                            /// <summary>Target ads to a specific native content position.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NATIVE_CONTENT_POSITION")]
+                            TARGETINGTYPENATIVECONTENTPOSITION = 42,
+
+                            /// <summary>Target ads in an Open Measurement enabled inventory.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_OMID")]
+                            TARGETINGTYPEOMID = 43,
+
+                            /// <summary>Target ads to a specific audio content type.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIO_CONTENT_TYPE")]
+                            TARGETINGTYPEAUDIOCONTENTTYPE = 44,
+
+                            /// <summary>Target ads to a specific content genre.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_GENRE")]
+                            TARGETINGTYPECONTENTGENRE = 45,
+
+                            /// <summary>
+                            /// Target ads to a specific YouTube video. Targeting of this type cannot be created or
+                            /// updated using the API. Although this targeting is inherited by child resources,
+                            /// **inherited targeting of this type will not be retrieveable**.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_YOUTUBE_VIDEO")]
+                            TARGETINGTYPEYOUTUBEVIDEO = 46,
+
+                            /// <summary>
+                            /// Target ads to a specific YouTube channel. Targeting of this type cannot be created or
+                            /// updated using the API. Although this targeting is inherited by child resources,
+                            /// **inherited targeting of this type will not be retrieveable**.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_YOUTUBE_CHANNEL")]
+                            TARGETINGTYPEYOUTUBECHANNEL = 47,
+
+                            /// <summary>
+                            /// Target ads to a serve it in a certain position of a session. Only supported for Ad Group
+                            /// resources under YouTube Programmatic Reservation line items. Targeting of this type
+                            /// cannot be created or updated using the API.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SESSION_POSITION")]
+                            TARGETINGTYPESESSIONPOSITION = 48,
+                        }
+
+                        /// <summary>Required. The ID of the assigned targeting option to delete.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("assignedTargetingOptionId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string AssignedTargetingOptionId { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v3/advertisers/{+advertiserId}/insertionOrders/{+insertionOrderId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "advertiserId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
+                            RequestParameters.Add("insertionOrderId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "insertionOrderId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
+                            RequestParameters.Add("targetingType", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "targetingType",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
+                            RequestParameters.Add("assignedTargetingOptionId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "assignedTargetingOptionId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
+                        }
+                    }
+
                     /// <summary>Gets a single targeting option assigned to an insertion order.</summary>
                     /// <param name="advertiserId">
                     /// Required. The ID of the advertiser the insertion order belongs to.
@@ -3274,7 +5449,7 @@ namespace Google.Apis.DisplayVideo.v1
                     }
 
                     /// <summary>Gets a single targeting option assigned to an insertion order.</summary>
-                    public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.AssignedTargetingOption>
+                    public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.AssignedTargetingOption>
                     {
                         /// <summary>Constructs a new Get request.</summary>
                         public GetRequest(Google.Apis.Services.IClientService service, long advertiserId, long insertionOrderId, TargetingTypeEnum targetingType, string assignedTargetingOptionId) : base(service)
@@ -3540,37 +5715,61 @@ namespace Google.Apis.DisplayVideo.v1
                             /// address, or latitude/longitude coordinates.
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_POI")]
-                            TARGETINGTYPEPOI = 39,
+                            TARGETINGTYPEPOI = 38,
 
                             /// <summary>
                             /// Target ads around locations of a business chain within a specific geo region.
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BUSINESS_CHAIN")]
-                            TARGETINGTYPEBUSINESSCHAIN = 40,
+                            TARGETINGTYPEBUSINESSCHAIN = 39,
 
                             /// <summary>Target ads to a specific video content duration.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_DURATION")]
-                            TARGETINGTYPECONTENTDURATION = 43,
+                            TARGETINGTYPECONTENTDURATION = 40,
 
                             /// <summary>Target ads to a specific video content stream type.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_STREAM_TYPE")]
-                            TARGETINGTYPECONTENTSTREAMTYPE = 44,
+                            TARGETINGTYPECONTENTSTREAMTYPE = 41,
 
                             /// <summary>Target ads to a specific native content position.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NATIVE_CONTENT_POSITION")]
-                            TARGETINGTYPENATIVECONTENTPOSITION = 38,
+                            TARGETINGTYPENATIVECONTENTPOSITION = 42,
 
                             /// <summary>Target ads in an Open Measurement enabled inventory.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_OMID")]
-                            TARGETINGTYPEOMID = 41,
+                            TARGETINGTYPEOMID = 43,
 
                             /// <summary>Target ads to a specific audio content type.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIO_CONTENT_TYPE")]
-                            TARGETINGTYPEAUDIOCONTENTTYPE = 42,
+                            TARGETINGTYPEAUDIOCONTENTTYPE = 44,
 
                             /// <summary>Target ads to a specific content genre.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_GENRE")]
                             TARGETINGTYPECONTENTGENRE = 45,
+
+                            /// <summary>
+                            /// Target ads to a specific YouTube video. Targeting of this type cannot be created or
+                            /// updated using the API. Although this targeting is inherited by child resources,
+                            /// **inherited targeting of this type will not be retrieveable**.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_YOUTUBE_VIDEO")]
+                            TARGETINGTYPEYOUTUBEVIDEO = 46,
+
+                            /// <summary>
+                            /// Target ads to a specific YouTube channel. Targeting of this type cannot be created or
+                            /// updated using the API. Although this targeting is inherited by child resources,
+                            /// **inherited targeting of this type will not be retrieveable**.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_YOUTUBE_CHANNEL")]
+                            TARGETINGTYPEYOUTUBECHANNEL = 47,
+
+                            /// <summary>
+                            /// Target ads to a serve it in a certain position of a session. Only supported for Ad Group
+                            /// resources under YouTube Programmatic Reservation line items. Targeting of this type
+                            /// cannot be created or updated using the API.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SESSION_POSITION")]
+                            TARGETINGTYPESESSIONPOSITION = 48,
                         }
 
                         /// <summary>
@@ -3587,7 +5786,7 @@ namespace Google.Apis.DisplayVideo.v1
                         public override string HttpMethod => "GET";
 
                         /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v1/advertisers/{+advertiserId}/insertionOrders/{+insertionOrderId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}";
+                        public override string RestPath => "v3/advertisers/{+advertiserId}/insertionOrders/{+insertionOrderId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}";
 
                         /// <summary>Initializes Get parameter list.</summary>
                         protected override void InitParameters()
@@ -3664,7 +5863,7 @@ namespace Google.Apis.DisplayVideo.v1
                     }
 
                     /// <summary>Lists the targeting options assigned to an insertion order.</summary>
-                    public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ListInsertionOrderAssignedTargetingOptionsResponse>
+                    public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.ListInsertionOrderAssignedTargetingOptionsResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
                         public ListRequest(Google.Apis.Services.IClientService service, long advertiserId, long insertionOrderId, TargetingTypeEnum targetingType) : base(service)
@@ -3931,37 +6130,61 @@ namespace Google.Apis.DisplayVideo.v1
                             /// address, or latitude/longitude coordinates.
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_POI")]
-                            TARGETINGTYPEPOI = 39,
+                            TARGETINGTYPEPOI = 38,
 
                             /// <summary>
                             /// Target ads around locations of a business chain within a specific geo region.
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BUSINESS_CHAIN")]
-                            TARGETINGTYPEBUSINESSCHAIN = 40,
+                            TARGETINGTYPEBUSINESSCHAIN = 39,
 
                             /// <summary>Target ads to a specific video content duration.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_DURATION")]
-                            TARGETINGTYPECONTENTDURATION = 43,
+                            TARGETINGTYPECONTENTDURATION = 40,
 
                             /// <summary>Target ads to a specific video content stream type.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_STREAM_TYPE")]
-                            TARGETINGTYPECONTENTSTREAMTYPE = 44,
+                            TARGETINGTYPECONTENTSTREAMTYPE = 41,
 
                             /// <summary>Target ads to a specific native content position.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NATIVE_CONTENT_POSITION")]
-                            TARGETINGTYPENATIVECONTENTPOSITION = 38,
+                            TARGETINGTYPENATIVECONTENTPOSITION = 42,
 
                             /// <summary>Target ads in an Open Measurement enabled inventory.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_OMID")]
-                            TARGETINGTYPEOMID = 41,
+                            TARGETINGTYPEOMID = 43,
 
                             /// <summary>Target ads to a specific audio content type.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIO_CONTENT_TYPE")]
-                            TARGETINGTYPEAUDIOCONTENTTYPE = 42,
+                            TARGETINGTYPEAUDIOCONTENTTYPE = 44,
 
                             /// <summary>Target ads to a specific content genre.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_GENRE")]
                             TARGETINGTYPECONTENTGENRE = 45,
+
+                            /// <summary>
+                            /// Target ads to a specific YouTube video. Targeting of this type cannot be created or
+                            /// updated using the API. Although this targeting is inherited by child resources,
+                            /// **inherited targeting of this type will not be retrieveable**.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_YOUTUBE_VIDEO")]
+                            TARGETINGTYPEYOUTUBEVIDEO = 46,
+
+                            /// <summary>
+                            /// Target ads to a specific YouTube channel. Targeting of this type cannot be created or
+                            /// updated using the API. Although this targeting is inherited by child resources,
+                            /// **inherited targeting of this type will not be retrieveable**.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_YOUTUBE_CHANNEL")]
+                            TARGETINGTYPEYOUTUBECHANNEL = 47,
+
+                            /// <summary>
+                            /// Target ads to a serve it in a certain position of a session. Only supported for Ad Group
+                            /// resources under YouTube Programmatic Reservation line items. Targeting of this type
+                            /// cannot be created or updated using the API.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SESSION_POSITION")]
+                            TARGETINGTYPESESSIONPOSITION = 48,
                         }
 
                         /// <summary>
@@ -4010,7 +6233,7 @@ namespace Google.Apis.DisplayVideo.v1
                         public override string HttpMethod => "GET";
 
                         /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v1/advertisers/{+advertiserId}/insertionOrders/{+insertionOrderId}/targetingTypes/{+targetingType}/assignedTargetingOptions";
+                        public override string RestPath => "v3/advertisers/{+advertiserId}/insertionOrders/{+insertionOrderId}/targetingTypes/{+targetingType}/assignedTargetingOptions";
 
                         /// <summary>Initializes List parameter list.</summary>
                         protected override void InitParameters()
@@ -4077,137 +6300,6 @@ namespace Google.Apis.DisplayVideo.v1
                 }
             }
 
-            /// <summary>Lists assigned targeting options of an insertion order across targeting types.</summary>
-            /// <param name="advertiserId">Required. The ID of the advertiser the insertion order belongs to.</param>
-            /// <param name="insertionOrderId">
-            /// Required. The ID of the insertion order to list assigned targeting options for.
-            /// </param>
-            public virtual BulkListInsertionOrderAssignedTargetingOptionsRequest BulkListInsertionOrderAssignedTargetingOptions(long advertiserId, long insertionOrderId)
-            {
-                return new BulkListInsertionOrderAssignedTargetingOptionsRequest(service, advertiserId, insertionOrderId);
-            }
-
-            /// <summary>Lists assigned targeting options of an insertion order across targeting types.</summary>
-            public class BulkListInsertionOrderAssignedTargetingOptionsRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.BulkListInsertionOrderAssignedTargetingOptionsResponse>
-            {
-                /// <summary>Constructs a new BulkListInsertionOrderAssignedTargetingOptions request.</summary>
-                public BulkListInsertionOrderAssignedTargetingOptionsRequest(Google.Apis.Services.IClientService service, long advertiserId, long insertionOrderId) : base(service)
-                {
-                    AdvertiserId = advertiserId;
-                    InsertionOrderId = insertionOrderId;
-                    InitParameters();
-                }
-
-                /// <summary>Required. The ID of the advertiser the insertion order belongs to.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual long AdvertiserId { get; private set; }
-
-                /// <summary>Required. The ID of the insertion order to list assigned targeting options for.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("insertionOrderId", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual long InsertionOrderId { get; private set; }
-
-                /// <summary>
-                /// Allows filtering by assigned targeting option fields. Supported syntax: * Filter expressions are
-                /// made up of one or more restrictions. * Restrictions can be combined by the logical operator `OR`. *
-                /// A restriction has the form of `{field} {operator} {value}`. * All fields must use the `EQUALS (=)`
-                /// operator. Supported fields: * `targetingType` * `inheritance` Examples: * `AssignedTargetingOption`
-                /// resources of targeting type `TARGETING_TYPE_PROXIMITY_LOCATION_LIST` or `TARGETING_TYPE_CHANNEL`:
-                /// `targetingType="TARGETING_TYPE_PROXIMITY_LOCATION_LIST" OR targetingType="TARGETING_TYPE_CHANNEL"` *
-                /// `AssignedTargetingOption` resources with inheritance status of `NOT_INHERITED` or
-                /// `INHERITED_FROM_PARTNER`: `inheritance="NOT_INHERITED" OR inheritance="INHERITED_FROM_PARTNER"` The
-                /// length of this field should be no more than 500 characters. Reference our [filter `LIST`
-                /// requests](/display-video/api/guides/how-tos/filters) guide for more information.
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
-
-                /// <summary>
-                /// Field by which to sort the list. Acceptable values are: * `targetingType` (default) The default
-                /// sorting order is ascending. To specify descending order for a field, a suffix "desc" should be added
-                /// to the field name. Example: `targetingType desc`.
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string OrderBy { get; set; }
-
-                /// <summary>
-                /// Requested page size. The size must be an integer between `1` and `5000`. If unspecified, the default
-                /// is `5000`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified.
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>
-                /// A token that lets the client fetch the next page of results. Typically, this is the value of
-                /// next_page_token returned from the previous call to `BulkListInsertionOrderAssignedTargetingOptions`
-                /// method. If not specified, the first page of results will be returned.
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
-                /// <summary>Gets the method name.</summary>
-                public override string MethodName => "bulkListInsertionOrderAssignedTargetingOptions";
-
-                /// <summary>Gets the HTTP method.</summary>
-                public override string HttpMethod => "GET";
-
-                /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1/advertisers/{+advertiserId}/insertionOrders/{+insertionOrderId}:bulkListInsertionOrderAssignedTargetingOptions";
-
-                /// <summary>Initializes BulkListInsertionOrderAssignedTargetingOptions parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "advertiserId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+$",
-                    });
-                    RequestParameters.Add("insertionOrderId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "insertionOrderId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+$",
-                    });
-                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                    RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "orderBy",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                }
-            }
-
             /// <summary>
             /// Creates a new insertion order. Returns the newly created insertion order if successful.
             /// </summary>
@@ -4215,7 +6307,7 @@ namespace Google.Apis.DisplayVideo.v1
             /// <param name="advertiserId">
             /// Output only. The unique ID of the advertiser the insertion order belongs to.
             /// </param>
-            public virtual CreateRequest Create(Google.Apis.DisplayVideo.v1.Data.InsertionOrder body, long advertiserId)
+            public virtual CreateRequest Create(Google.Apis.DisplayVideo.v3.Data.InsertionOrder body, long advertiserId)
             {
                 return new CreateRequest(service, body, advertiserId);
             }
@@ -4223,10 +6315,10 @@ namespace Google.Apis.DisplayVideo.v1
             /// <summary>
             /// Creates a new insertion order. Returns the newly created insertion order if successful.
             /// </summary>
-            public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.InsertionOrder>
+            public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.InsertionOrder>
             {
                 /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.InsertionOrder body, long advertiserId) : base(service)
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v3.Data.InsertionOrder body, long advertiserId) : base(service)
                 {
                     AdvertiserId = advertiserId;
                     Body = body;
@@ -4238,7 +6330,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public virtual long AdvertiserId { get; private set; }
 
                 /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.DisplayVideo.v1.Data.InsertionOrder Body { get; set; }
+                Google.Apis.DisplayVideo.v3.Data.InsertionOrder Body { get; set; }
 
                 /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
@@ -4250,7 +6342,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public override string HttpMethod => "POST";
 
                 /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1/advertisers/{+advertiserId}/insertionOrders";
+                public override string RestPath => "v3/advertisers/{+advertiserId}/insertionOrders";
 
                 /// <summary>Initializes Create parameter list.</summary>
                 protected override void InitParameters()
@@ -4284,7 +6376,7 @@ namespace Google.Apis.DisplayVideo.v1
             /// insertion order should be archived first, i.e. set entity_status to `ENTITY_STATUS_ARCHIVED`, to be able
             /// to delete it.
             /// </summary>
-            public class DeleteRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Empty>
+            public class DeleteRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
                 public DeleteRequest(Google.Apis.Services.IClientService service, long advertiserId, long insertionOrderId) : base(service)
@@ -4309,7 +6401,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public override string HttpMethod => "DELETE";
 
                 /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1/advertisers/{+advertiserId}/insertionOrders/{+insertionOrderId}";
+                public override string RestPath => "v3/advertisers/{+advertiserId}/insertionOrders/{+insertionOrderId}";
 
                 /// <summary>Initializes Delete parameter list.</summary>
                 protected override void InitParameters()
@@ -4347,7 +6439,7 @@ namespace Google.Apis.DisplayVideo.v1
             /// <summary>
             /// Gets an insertion order. Returns error code `NOT_FOUND` if the insertion order does not exist.
             /// </summary>
-            public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.InsertionOrder>
+            public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.InsertionOrder>
             {
                 /// <summary>Constructs a new Get request.</summary>
                 public GetRequest(Google.Apis.Services.IClientService service, long advertiserId, long insertionOrderId) : base(service)
@@ -4372,7 +6464,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public override string HttpMethod => "GET";
 
                 /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1/advertisers/{+advertiserId}/insertionOrders/{+insertionOrderId}";
+                public override string RestPath => "v3/advertisers/{+advertiserId}/insertionOrders/{+insertionOrderId}";
 
                 /// <summary>Initializes Get parameter list.</summary>
                 protected override void InitParameters()
@@ -4413,7 +6505,7 @@ namespace Google.Apis.DisplayVideo.v1
             /// entity_status is not specified, insertion orders with `ENTITY_STATUS_ARCHIVED` will not be included in
             /// the results.
             /// </summary>
-            public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ListInsertionOrdersResponse>
+            public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.ListInsertionOrdersResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
                 public ListRequest(Google.Apis.Services.IClientService service, long advertiserId) : base(service)
@@ -4475,7 +6567,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public override string HttpMethod => "GET";
 
                 /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1/advertisers/{+advertiserId}/insertionOrders";
+                public override string RestPath => "v3/advertisers/{+advertiserId}/insertionOrders";
 
                 /// <summary>Initializes List parameter list.</summary>
                 protected override void InitParameters()
@@ -4484,6 +6576,137 @@ namespace Google.Apis.DisplayVideo.v1
                     RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "advertiserId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderBy",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Lists assigned targeting options of an insertion order across targeting types.</summary>
+            /// <param name="advertiserId">Required. The ID of the advertiser the insertion order belongs to.</param>
+            /// <param name="insertionOrderId">
+            /// Required. The ID of the insertion order to list assigned targeting options for.
+            /// </param>
+            public virtual ListAssignedTargetingOptionsRequest ListAssignedTargetingOptions(long advertiserId, long insertionOrderId)
+            {
+                return new ListAssignedTargetingOptionsRequest(service, advertiserId, insertionOrderId);
+            }
+
+            /// <summary>Lists assigned targeting options of an insertion order across targeting types.</summary>
+            public class ListAssignedTargetingOptionsRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.BulkListInsertionOrderAssignedTargetingOptionsResponse>
+            {
+                /// <summary>Constructs a new ListAssignedTargetingOptions request.</summary>
+                public ListAssignedTargetingOptionsRequest(Google.Apis.Services.IClientService service, long advertiserId, long insertionOrderId) : base(service)
+                {
+                    AdvertiserId = advertiserId;
+                    InsertionOrderId = insertionOrderId;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The ID of the advertiser the insertion order belongs to.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long AdvertiserId { get; private set; }
+
+                /// <summary>Required. The ID of the insertion order to list assigned targeting options for.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("insertionOrderId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long InsertionOrderId { get; private set; }
+
+                /// <summary>
+                /// Allows filtering by assigned targeting option fields. Supported syntax: * Filter expressions are
+                /// made up of one or more restrictions. * Restrictions can be combined by the logical operator `OR`. *
+                /// A restriction has the form of `{field} {operator} {value}`. * All fields must use the `EQUALS (=)`
+                /// operator. Supported fields: * `targetingType` * `inheritance` Examples: * `AssignedTargetingOption`
+                /// resources of targeting type `TARGETING_TYPE_PROXIMITY_LOCATION_LIST` or `TARGETING_TYPE_CHANNEL`:
+                /// `targetingType="TARGETING_TYPE_PROXIMITY_LOCATION_LIST" OR targetingType="TARGETING_TYPE_CHANNEL"` *
+                /// `AssignedTargetingOption` resources with inheritance status of `NOT_INHERITED` or
+                /// `INHERITED_FROM_PARTNER`: `inheritance="NOT_INHERITED" OR inheritance="INHERITED_FROM_PARTNER"` The
+                /// length of this field should be no more than 500 characters. Reference our [filter `LIST`
+                /// requests](/display-video/api/guides/how-tos/filters) guide for more information.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
+                /// <summary>
+                /// Field by which to sort the list. Acceptable values are: * `targetingType` (default) The default
+                /// sorting order is ascending. To specify descending order for a field, a suffix "desc" should be added
+                /// to the field name. Example: `targetingType desc`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string OrderBy { get; set; }
+
+                /// <summary>
+                /// Requested page size. The size must be an integer between `1` and `5000`. If unspecified, the default
+                /// is `5000`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// A token that lets the client fetch the next page of results. Typically, this is the value of
+                /// next_page_token returned from the previous call to `BulkListInsertionOrderAssignedTargetingOptions`
+                /// method. If not specified, the first page of results will be returned.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "listAssignedTargetingOptions";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v3/advertisers/{+advertiserId}/insertionOrders/{+insertionOrderId}:listAssignedTargetingOptions";
+
+                /// <summary>Initializes ListAssignedTargetingOptions parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("insertionOrderId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "insertionOrderId",
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
@@ -4534,7 +6757,7 @@ namespace Google.Apis.DisplayVideo.v1
             /// <param name="insertionOrderId">
             /// Output only. The unique ID of the insertion order. Assigned by the system.
             /// </param>
-            public virtual PatchRequest Patch(Google.Apis.DisplayVideo.v1.Data.InsertionOrder body, long advertiserId, long insertionOrderId)
+            public virtual PatchRequest Patch(Google.Apis.DisplayVideo.v3.Data.InsertionOrder body, long advertiserId, long insertionOrderId)
             {
                 return new PatchRequest(service, body, advertiserId, insertionOrderId);
             }
@@ -4542,10 +6765,10 @@ namespace Google.Apis.DisplayVideo.v1
             /// <summary>
             /// Updates an existing insertion order. Returns the updated insertion order if successful.
             /// </summary>
-            public class PatchRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.InsertionOrder>
+            public class PatchRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.InsertionOrder>
             {
                 /// <summary>Constructs a new Patch request.</summary>
-                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.InsertionOrder body, long advertiserId, long insertionOrderId) : base(service)
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v3.Data.InsertionOrder body, long advertiserId, long insertionOrderId) : base(service)
                 {
                     AdvertiserId = advertiserId;
                     InsertionOrderId = insertionOrderId;
@@ -4566,7 +6789,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public virtual object UpdateMask { get; set; }
 
                 /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.DisplayVideo.v1.Data.InsertionOrder Body { get; set; }
+                Google.Apis.DisplayVideo.v3.Data.InsertionOrder Body { get; set; }
 
                 /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
@@ -4578,7 +6801,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public override string HttpMethod => "PATCH";
 
                 /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1/advertisers/{+advertiserId}/insertionOrders/{+insertionOrderId}";
+                public override string RestPath => "v3/advertisers/{+advertiserId}/insertionOrders/{+insertionOrderId}";
 
                 /// <summary>Initializes Patch parameter list.</summary>
                 protected override void InitParameters()
@@ -4643,7 +6866,7 @@ namespace Google.Apis.DisplayVideo.v1
             /// Lists invoices posted for an advertiser in a given month. Invoices generated by billing profiles with a
             /// "Partner" invoice level are not retrievable through this method.
             /// </summary>
-            public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ListInvoicesResponse>
+            public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.ListInvoicesResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
                 public ListRequest(Google.Apis.Services.IClientService service, long advertiserId) : base(service)
@@ -4711,7 +6934,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public override string HttpMethod => "GET";
 
                 /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1/advertisers/{+advertiserId}/invoices";
+                public override string RestPath => "v3/advertisers/{+advertiserId}/invoices";
 
                 /// <summary>Initializes List parameter list.</summary>
                 protected override void InitParameters()
@@ -4768,7 +6991,7 @@ namespace Google.Apis.DisplayVideo.v1
             }
 
             /// <summary>Retrieves the invoice currency used by an advertiser in a given month.</summary>
-            public class LookupInvoiceCurrencyRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.LookupInvoiceCurrencyResponse>
+            public class LookupInvoiceCurrencyRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.LookupInvoiceCurrencyResponse>
             {
                 /// <summary>Constructs a new LookupInvoiceCurrency request.</summary>
                 public LookupInvoiceCurrencyRequest(Google.Apis.Services.IClientService service, long advertiserId) : base(service)
@@ -4795,7 +7018,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public override string HttpMethod => "GET";
 
                 /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1/advertisers/{+advertiserId}/invoices:lookupInvoiceCurrency";
+                public override string RestPath => "v3/advertisers/{+advertiserId}/invoices:lookupInvoiceCurrency";
 
                 /// <summary>Initializes LookupInvoiceCurrency parameter list.</summary>
                 protected override void InitParameters()
@@ -4908,7 +7131,7 @@ namespace Google.Apis.DisplayVideo.v1
                     /// `TARGETING_TYPE_USER_REWARDED_CONTENT` * `TARGETING_TYPE_VIDEO_PLAYER_SIZE` *
                     /// `TARGETING_TYPE_VIEWABILITY`
                     /// </param>
-                    public virtual CreateRequest Create(Google.Apis.DisplayVideo.v1.Data.AssignedTargetingOption body, long advertiserId, long lineItemId, CreateRequest.TargetingTypeEnum targetingType)
+                    public virtual CreateRequest Create(Google.Apis.DisplayVideo.v3.Data.AssignedTargetingOption body, long advertiserId, long lineItemId, CreateRequest.TargetingTypeEnum targetingType)
                     {
                         return new CreateRequest(service, body, advertiserId, lineItemId, targetingType);
                     }
@@ -4919,10 +7142,10 @@ namespace Google.Apis.DisplayVideo.v1
                     /// same line item: * lineItems.bulkEditAssignedTargetingOptions * lineItems.bulkUpdate *
                     /// lineItems.patch * DeleteLineItemAssignedTargetingOption
                     /// </summary>
-                    public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.AssignedTargetingOption>
+                    public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.AssignedTargetingOption>
                     {
                         /// <summary>Constructs a new Create request.</summary>
-                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.AssignedTargetingOption body, long advertiserId, long lineItemId, TargetingTypeEnum targetingType) : base(service)
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v3.Data.AssignedTargetingOption body, long advertiserId, long lineItemId, TargetingTypeEnum targetingType) : base(service)
                         {
                             AdvertiserId = advertiserId;
                             LineItemId = lineItemId;
@@ -5185,41 +7408,65 @@ namespace Google.Apis.DisplayVideo.v1
                             /// address, or latitude/longitude coordinates.
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_POI")]
-                            TARGETINGTYPEPOI = 39,
+                            TARGETINGTYPEPOI = 38,
 
                             /// <summary>
                             /// Target ads around locations of a business chain within a specific geo region.
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BUSINESS_CHAIN")]
-                            TARGETINGTYPEBUSINESSCHAIN = 40,
+                            TARGETINGTYPEBUSINESSCHAIN = 39,
 
                             /// <summary>Target ads to a specific video content duration.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_DURATION")]
-                            TARGETINGTYPECONTENTDURATION = 43,
+                            TARGETINGTYPECONTENTDURATION = 40,
 
                             /// <summary>Target ads to a specific video content stream type.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_STREAM_TYPE")]
-                            TARGETINGTYPECONTENTSTREAMTYPE = 44,
+                            TARGETINGTYPECONTENTSTREAMTYPE = 41,
 
                             /// <summary>Target ads to a specific native content position.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NATIVE_CONTENT_POSITION")]
-                            TARGETINGTYPENATIVECONTENTPOSITION = 38,
+                            TARGETINGTYPENATIVECONTENTPOSITION = 42,
 
                             /// <summary>Target ads in an Open Measurement enabled inventory.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_OMID")]
-                            TARGETINGTYPEOMID = 41,
+                            TARGETINGTYPEOMID = 43,
 
                             /// <summary>Target ads to a specific audio content type.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIO_CONTENT_TYPE")]
-                            TARGETINGTYPEAUDIOCONTENTTYPE = 42,
+                            TARGETINGTYPEAUDIOCONTENTTYPE = 44,
 
                             /// <summary>Target ads to a specific content genre.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_GENRE")]
                             TARGETINGTYPECONTENTGENRE = 45,
+
+                            /// <summary>
+                            /// Target ads to a specific YouTube video. Targeting of this type cannot be created or
+                            /// updated using the API. Although this targeting is inherited by child resources,
+                            /// **inherited targeting of this type will not be retrieveable**.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_YOUTUBE_VIDEO")]
+                            TARGETINGTYPEYOUTUBEVIDEO = 46,
+
+                            /// <summary>
+                            /// Target ads to a specific YouTube channel. Targeting of this type cannot be created or
+                            /// updated using the API. Although this targeting is inherited by child resources,
+                            /// **inherited targeting of this type will not be retrieveable**.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_YOUTUBE_CHANNEL")]
+                            TARGETINGTYPEYOUTUBECHANNEL = 47,
+
+                            /// <summary>
+                            /// Target ads to a serve it in a certain position of a session. Only supported for Ad Group
+                            /// resources under YouTube Programmatic Reservation line items. Targeting of this type
+                            /// cannot be created or updated using the API.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SESSION_POSITION")]
+                            TARGETINGTYPESESSIONPOSITION = 48,
                         }
 
                         /// <summary>Gets or sets the body of this request.</summary>
-                        Google.Apis.DisplayVideo.v1.Data.AssignedTargetingOption Body { get; set; }
+                        Google.Apis.DisplayVideo.v3.Data.AssignedTargetingOption Body { get; set; }
 
                         /// <summary>Returns the body of the request.</summary>
                         protected override object GetBody() => Body;
@@ -5231,7 +7478,7 @@ namespace Google.Apis.DisplayVideo.v1
                         public override string HttpMethod => "POST";
 
                         /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v1/advertisers/{+advertiserId}/lineItems/{+lineItemId}/targetingTypes/{+targetingType}/assignedTargetingOptions";
+                        public override string RestPath => "v3/advertisers/{+advertiserId}/lineItems/{+lineItemId}/targetingTypes/{+targetingType}/assignedTargetingOptions";
 
                         /// <summary>Initializes Create parameter list.</summary>
                         protected override void InitParameters()
@@ -5311,7 +7558,7 @@ namespace Google.Apis.DisplayVideo.v1
                     /// lineItems.bulkEditAssignedTargetingOptions * lineItems.bulkUpdate * lineItems.patch *
                     /// CreateLineItemAssignedTargetingOption
                     /// </summary>
-                    public class DeleteRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Empty>
+                    public class DeleteRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.Empty>
                     {
                         /// <summary>Constructs a new Delete request.</summary>
                         public DeleteRequest(Google.Apis.Services.IClientService service, long advertiserId, long lineItemId, TargetingTypeEnum targetingType, string assignedTargetingOptionId) : base(service)
@@ -5577,37 +7824,61 @@ namespace Google.Apis.DisplayVideo.v1
                             /// address, or latitude/longitude coordinates.
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_POI")]
-                            TARGETINGTYPEPOI = 39,
+                            TARGETINGTYPEPOI = 38,
 
                             /// <summary>
                             /// Target ads around locations of a business chain within a specific geo region.
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BUSINESS_CHAIN")]
-                            TARGETINGTYPEBUSINESSCHAIN = 40,
+                            TARGETINGTYPEBUSINESSCHAIN = 39,
 
                             /// <summary>Target ads to a specific video content duration.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_DURATION")]
-                            TARGETINGTYPECONTENTDURATION = 43,
+                            TARGETINGTYPECONTENTDURATION = 40,
 
                             /// <summary>Target ads to a specific video content stream type.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_STREAM_TYPE")]
-                            TARGETINGTYPECONTENTSTREAMTYPE = 44,
+                            TARGETINGTYPECONTENTSTREAMTYPE = 41,
 
                             /// <summary>Target ads to a specific native content position.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NATIVE_CONTENT_POSITION")]
-                            TARGETINGTYPENATIVECONTENTPOSITION = 38,
+                            TARGETINGTYPENATIVECONTENTPOSITION = 42,
 
                             /// <summary>Target ads in an Open Measurement enabled inventory.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_OMID")]
-                            TARGETINGTYPEOMID = 41,
+                            TARGETINGTYPEOMID = 43,
 
                             /// <summary>Target ads to a specific audio content type.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIO_CONTENT_TYPE")]
-                            TARGETINGTYPEAUDIOCONTENTTYPE = 42,
+                            TARGETINGTYPEAUDIOCONTENTTYPE = 44,
 
                             /// <summary>Target ads to a specific content genre.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_GENRE")]
                             TARGETINGTYPECONTENTGENRE = 45,
+
+                            /// <summary>
+                            /// Target ads to a specific YouTube video. Targeting of this type cannot be created or
+                            /// updated using the API. Although this targeting is inherited by child resources,
+                            /// **inherited targeting of this type will not be retrieveable**.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_YOUTUBE_VIDEO")]
+                            TARGETINGTYPEYOUTUBEVIDEO = 46,
+
+                            /// <summary>
+                            /// Target ads to a specific YouTube channel. Targeting of this type cannot be created or
+                            /// updated using the API. Although this targeting is inherited by child resources,
+                            /// **inherited targeting of this type will not be retrieveable**.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_YOUTUBE_CHANNEL")]
+                            TARGETINGTYPEYOUTUBECHANNEL = 47,
+
+                            /// <summary>
+                            /// Target ads to a serve it in a certain position of a session. Only supported for Ad Group
+                            /// resources under YouTube Programmatic Reservation line items. Targeting of this type
+                            /// cannot be created or updated using the API.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SESSION_POSITION")]
+                            TARGETINGTYPESESSIONPOSITION = 48,
                         }
 
                         /// <summary>Required. The ID of the assigned targeting option to delete.</summary>
@@ -5621,7 +7892,7 @@ namespace Google.Apis.DisplayVideo.v1
                         public override string HttpMethod => "DELETE";
 
                         /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v1/advertisers/{+advertiserId}/lineItems/{+lineItemId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}";
+                        public override string RestPath => "v3/advertisers/{+advertiserId}/lineItems/{+lineItemId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}";
 
                         /// <summary>Initializes Delete parameter list.</summary>
                         protected override void InitParameters()
@@ -5703,7 +7974,7 @@ namespace Google.Apis.DisplayVideo.v1
                     }
 
                     /// <summary>Gets a single targeting option assigned to a line item.</summary>
-                    public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.AssignedTargetingOption>
+                    public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.AssignedTargetingOption>
                     {
                         /// <summary>Constructs a new Get request.</summary>
                         public GetRequest(Google.Apis.Services.IClientService service, long advertiserId, long lineItemId, TargetingTypeEnum targetingType, string assignedTargetingOptionId) : base(service)
@@ -5975,37 +8246,61 @@ namespace Google.Apis.DisplayVideo.v1
                             /// address, or latitude/longitude coordinates.
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_POI")]
-                            TARGETINGTYPEPOI = 39,
+                            TARGETINGTYPEPOI = 38,
 
                             /// <summary>
                             /// Target ads around locations of a business chain within a specific geo region.
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BUSINESS_CHAIN")]
-                            TARGETINGTYPEBUSINESSCHAIN = 40,
+                            TARGETINGTYPEBUSINESSCHAIN = 39,
 
                             /// <summary>Target ads to a specific video content duration.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_DURATION")]
-                            TARGETINGTYPECONTENTDURATION = 43,
+                            TARGETINGTYPECONTENTDURATION = 40,
 
                             /// <summary>Target ads to a specific video content stream type.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_STREAM_TYPE")]
-                            TARGETINGTYPECONTENTSTREAMTYPE = 44,
+                            TARGETINGTYPECONTENTSTREAMTYPE = 41,
 
                             /// <summary>Target ads to a specific native content position.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NATIVE_CONTENT_POSITION")]
-                            TARGETINGTYPENATIVECONTENTPOSITION = 38,
+                            TARGETINGTYPENATIVECONTENTPOSITION = 42,
 
                             /// <summary>Target ads in an Open Measurement enabled inventory.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_OMID")]
-                            TARGETINGTYPEOMID = 41,
+                            TARGETINGTYPEOMID = 43,
 
                             /// <summary>Target ads to a specific audio content type.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIO_CONTENT_TYPE")]
-                            TARGETINGTYPEAUDIOCONTENTTYPE = 42,
+                            TARGETINGTYPEAUDIOCONTENTTYPE = 44,
 
                             /// <summary>Target ads to a specific content genre.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_GENRE")]
                             TARGETINGTYPECONTENTGENRE = 45,
+
+                            /// <summary>
+                            /// Target ads to a specific YouTube video. Targeting of this type cannot be created or
+                            /// updated using the API. Although this targeting is inherited by child resources,
+                            /// **inherited targeting of this type will not be retrieveable**.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_YOUTUBE_VIDEO")]
+                            TARGETINGTYPEYOUTUBEVIDEO = 46,
+
+                            /// <summary>
+                            /// Target ads to a specific YouTube channel. Targeting of this type cannot be created or
+                            /// updated using the API. Although this targeting is inherited by child resources,
+                            /// **inherited targeting of this type will not be retrieveable**.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_YOUTUBE_CHANNEL")]
+                            TARGETINGTYPEYOUTUBECHANNEL = 47,
+
+                            /// <summary>
+                            /// Target ads to a serve it in a certain position of a session. Only supported for Ad Group
+                            /// resources under YouTube Programmatic Reservation line items. Targeting of this type
+                            /// cannot be created or updated using the API.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SESSION_POSITION")]
+                            TARGETINGTYPESESSIONPOSITION = 48,
                         }
 
                         /// <summary>
@@ -6022,7 +8317,7 @@ namespace Google.Apis.DisplayVideo.v1
                         public override string HttpMethod => "GET";
 
                         /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v1/advertisers/{+advertiserId}/lineItems/{+lineItemId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}";
+                        public override string RestPath => "v3/advertisers/{+advertiserId}/lineItems/{+lineItemId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}";
 
                         /// <summary>Initializes Get parameter list.</summary>
                         protected override void InitParameters()
@@ -6100,7 +8395,7 @@ namespace Google.Apis.DisplayVideo.v1
                     }
 
                     /// <summary>Lists the targeting options assigned to a line item.</summary>
-                    public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ListLineItemAssignedTargetingOptionsResponse>
+                    public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.ListLineItemAssignedTargetingOptionsResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
                         public ListRequest(Google.Apis.Services.IClientService service, long advertiserId, long lineItemId, TargetingTypeEnum targetingType) : base(service)
@@ -6371,37 +8666,61 @@ namespace Google.Apis.DisplayVideo.v1
                             /// address, or latitude/longitude coordinates.
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_POI")]
-                            TARGETINGTYPEPOI = 39,
+                            TARGETINGTYPEPOI = 38,
 
                             /// <summary>
                             /// Target ads around locations of a business chain within a specific geo region.
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BUSINESS_CHAIN")]
-                            TARGETINGTYPEBUSINESSCHAIN = 40,
+                            TARGETINGTYPEBUSINESSCHAIN = 39,
 
                             /// <summary>Target ads to a specific video content duration.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_DURATION")]
-                            TARGETINGTYPECONTENTDURATION = 43,
+                            TARGETINGTYPECONTENTDURATION = 40,
 
                             /// <summary>Target ads to a specific video content stream type.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_STREAM_TYPE")]
-                            TARGETINGTYPECONTENTSTREAMTYPE = 44,
+                            TARGETINGTYPECONTENTSTREAMTYPE = 41,
 
                             /// <summary>Target ads to a specific native content position.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NATIVE_CONTENT_POSITION")]
-                            TARGETINGTYPENATIVECONTENTPOSITION = 38,
+                            TARGETINGTYPENATIVECONTENTPOSITION = 42,
 
                             /// <summary>Target ads in an Open Measurement enabled inventory.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_OMID")]
-                            TARGETINGTYPEOMID = 41,
+                            TARGETINGTYPEOMID = 43,
 
                             /// <summary>Target ads to a specific audio content type.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIO_CONTENT_TYPE")]
-                            TARGETINGTYPEAUDIOCONTENTTYPE = 42,
+                            TARGETINGTYPEAUDIOCONTENTTYPE = 44,
 
                             /// <summary>Target ads to a specific content genre.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_GENRE")]
                             TARGETINGTYPECONTENTGENRE = 45,
+
+                            /// <summary>
+                            /// Target ads to a specific YouTube video. Targeting of this type cannot be created or
+                            /// updated using the API. Although this targeting is inherited by child resources,
+                            /// **inherited targeting of this type will not be retrieveable**.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_YOUTUBE_VIDEO")]
+                            TARGETINGTYPEYOUTUBEVIDEO = 46,
+
+                            /// <summary>
+                            /// Target ads to a specific YouTube channel. Targeting of this type cannot be created or
+                            /// updated using the API. Although this targeting is inherited by child resources,
+                            /// **inherited targeting of this type will not be retrieveable**.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_YOUTUBE_CHANNEL")]
+                            TARGETINGTYPEYOUTUBECHANNEL = 47,
+
+                            /// <summary>
+                            /// Target ads to a serve it in a certain position of a session. Only supported for Ad Group
+                            /// resources under YouTube Programmatic Reservation line items. Targeting of this type
+                            /// cannot be created or updated using the API.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SESSION_POSITION")]
+                            TARGETINGTYPESESSIONPOSITION = 48,
                         }
 
                         /// <summary>
@@ -6449,7 +8768,7 @@ namespace Google.Apis.DisplayVideo.v1
                         public override string HttpMethod => "GET";
 
                         /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v1/advertisers/{+advertiserId}/lineItems/{+lineItemId}/targetingTypes/{+targetingType}/assignedTargetingOptions";
+                        public override string RestPath => "v3/advertisers/{+advertiserId}/lineItems/{+lineItemId}/targetingTypes/{+targetingType}/assignedTargetingOptions";
 
                         /// <summary>Initializes List parameter list.</summary>
                         protected override void InitParameters()
@@ -6517,64 +8836,58 @@ namespace Google.Apis.DisplayVideo.v1
             }
 
             /// <summary>
-            /// Bulk edits targeting options under a single line item. The operation will delete the assigned targeting
-            /// options provided in BulkEditLineItemAssignedTargetingOptionsRequest.delete_requests and then create the
-            /// assigned targeting options provided in BulkEditLineItemAssignedTargetingOptionsRequest.create_requests.
-            /// Requests to this endpoint cannot be made concurrently with the following requests updating the same line
-            /// item: * lineItems.patch * assignedTargetingOptions.create * assignedTargetingOptions.delete
+            /// Bulk edits targeting options under multiple line items. The operation will delete the assigned targeting
+            /// options provided in BulkEditAssignedTargetingOptionsRequest.delete_requests and then create the assigned
+            /// targeting options provided in BulkEditAssignedTargetingOptionsRequest.create_requests. Requests to this
+            /// endpoint cannot be made concurrently with the following requests updating the same line item: *
+            /// lineItems.bulkUpdate * lineItems.patch * assignedTargetingOptions.create *
+            /// assignedTargetingOptions.delete
             /// </summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="advertiserId">Required. The ID of the advertiser the line item belongs to.</param>
-            /// <param name="lineItemId">
-            /// Required. The ID of the line item the assigned targeting option will belong to.
-            /// </param>
-            public virtual BulkEditLineItemAssignedTargetingOptionsRequest BulkEditLineItemAssignedTargetingOptions(Google.Apis.DisplayVideo.v1.Data.BulkEditLineItemAssignedTargetingOptionsRequest body, long advertiserId, long lineItemId)
+            /// <param name="advertiserId">Required. The ID of the advertiser the line items belong to.</param>
+            public virtual BulkEditAssignedTargetingOptionsRequest BulkEditAssignedTargetingOptions(Google.Apis.DisplayVideo.v3.Data.BulkEditAssignedTargetingOptionsRequest body, long advertiserId)
             {
-                return new BulkEditLineItemAssignedTargetingOptionsRequest(service, body, advertiserId, lineItemId);
+                return new BulkEditAssignedTargetingOptionsRequest(service, body, advertiserId);
             }
 
             /// <summary>
-            /// Bulk edits targeting options under a single line item. The operation will delete the assigned targeting
-            /// options provided in BulkEditLineItemAssignedTargetingOptionsRequest.delete_requests and then create the
-            /// assigned targeting options provided in BulkEditLineItemAssignedTargetingOptionsRequest.create_requests.
-            /// Requests to this endpoint cannot be made concurrently with the following requests updating the same line
-            /// item: * lineItems.patch * assignedTargetingOptions.create * assignedTargetingOptions.delete
+            /// Bulk edits targeting options under multiple line items. The operation will delete the assigned targeting
+            /// options provided in BulkEditAssignedTargetingOptionsRequest.delete_requests and then create the assigned
+            /// targeting options provided in BulkEditAssignedTargetingOptionsRequest.create_requests. Requests to this
+            /// endpoint cannot be made concurrently with the following requests updating the same line item: *
+            /// lineItems.bulkUpdate * lineItems.patch * assignedTargetingOptions.create *
+            /// assignedTargetingOptions.delete
             /// </summary>
-            public class BulkEditLineItemAssignedTargetingOptionsRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.BulkEditLineItemAssignedTargetingOptionsResponse>
+            public class BulkEditAssignedTargetingOptionsRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.BulkEditAssignedTargetingOptionsResponse>
             {
-                /// <summary>Constructs a new BulkEditLineItemAssignedTargetingOptions request.</summary>
-                public BulkEditLineItemAssignedTargetingOptionsRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.BulkEditLineItemAssignedTargetingOptionsRequest body, long advertiserId, long lineItemId) : base(service)
+                /// <summary>Constructs a new BulkEditAssignedTargetingOptions request.</summary>
+                public BulkEditAssignedTargetingOptionsRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v3.Data.BulkEditAssignedTargetingOptionsRequest body, long advertiserId) : base(service)
                 {
                     AdvertiserId = advertiserId;
-                    LineItemId = lineItemId;
                     Body = body;
                     InitParameters();
                 }
 
-                /// <summary>Required. The ID of the advertiser the line item belongs to.</summary>
+                /// <summary>Required. The ID of the advertiser the line items belong to.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual long AdvertiserId { get; private set; }
 
-                /// <summary>Required. The ID of the line item the assigned targeting option will belong to.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("lineItemId", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual long LineItemId { get; private set; }
-
                 /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.DisplayVideo.v1.Data.BulkEditLineItemAssignedTargetingOptionsRequest Body { get; set; }
+                Google.Apis.DisplayVideo.v3.Data.BulkEditAssignedTargetingOptionsRequest Body { get; set; }
 
                 /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
                 /// <summary>Gets the method name.</summary>
-                public override string MethodName => "bulkEditLineItemAssignedTargetingOptions";
+                public override string MethodName => "bulkEditAssignedTargetingOptions";
 
                 /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
                 /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1/advertisers/{+advertiserId}/lineItems/{+lineItemId}:bulkEditLineItemAssignedTargetingOptions";
+                public override string RestPath => "v3/advertisers/{+advertiserId}/lineItems:bulkEditAssignedTargetingOptions";
 
-                /// <summary>Initializes BulkEditLineItemAssignedTargetingOptions parameter list.</summary>
+                /// <summary>Initializes BulkEditAssignedTargetingOptions parameter list.</summary>
                 protected override void InitParameters()
                 {
                     base.InitParameters();
@@ -6586,65 +8899,55 @@ namespace Google.Apis.DisplayVideo.v1
                         DefaultValue = null,
                         Pattern = @"^[^/]+$",
                     });
-                    RequestParameters.Add("lineItemId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "lineItemId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+$",
-                    });
                 }
             }
 
-            /// <summary>Lists assigned targeting options of a line item across targeting types.</summary>
-            /// <param name="advertiserId">Required. The ID of the advertiser the line item belongs to.</param>
-            /// <param name="lineItemId">
-            /// Required. The ID of the line item to list assigned targeting options for.
-            /// </param>
-            public virtual BulkListLineItemAssignedTargetingOptionsRequest BulkListLineItemAssignedTargetingOptions(long advertiserId, long lineItemId)
+            /// <summary>Lists assigned targeting options for multiple line items across targeting types.</summary>
+            /// <param name="advertiserId">Required. The ID of the advertiser the line items belongs to.</param>
+            public virtual BulkListAssignedTargetingOptionsRequest BulkListAssignedTargetingOptions(long advertiserId)
             {
-                return new BulkListLineItemAssignedTargetingOptionsRequest(service, advertiserId, lineItemId);
+                return new BulkListAssignedTargetingOptionsRequest(service, advertiserId);
             }
 
-            /// <summary>Lists assigned targeting options of a line item across targeting types.</summary>
-            public class BulkListLineItemAssignedTargetingOptionsRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.BulkListLineItemAssignedTargetingOptionsResponse>
+            /// <summary>Lists assigned targeting options for multiple line items across targeting types.</summary>
+            public class BulkListAssignedTargetingOptionsRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.BulkListAssignedTargetingOptionsResponse>
             {
-                /// <summary>Constructs a new BulkListLineItemAssignedTargetingOptions request.</summary>
-                public BulkListLineItemAssignedTargetingOptionsRequest(Google.Apis.Services.IClientService service, long advertiserId, long lineItemId) : base(service)
+                /// <summary>Constructs a new BulkListAssignedTargetingOptions request.</summary>
+                public BulkListAssignedTargetingOptionsRequest(Google.Apis.Services.IClientService service, long advertiserId) : base(service)
                 {
                     AdvertiserId = advertiserId;
-                    LineItemId = lineItemId;
                     InitParameters();
                 }
 
-                /// <summary>Required. The ID of the advertiser the line item belongs to.</summary>
+                /// <summary>Required. The ID of the advertiser the line items belongs to.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual long AdvertiserId { get; private set; }
 
-                /// <summary>Required. The ID of the line item to list assigned targeting options for.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("lineItemId", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual long LineItemId { get; private set; }
-
                 /// <summary>
                 /// Allows filtering by assigned targeting option fields. Supported syntax: * Filter expressions are
-                /// made up of one or more restrictions. * Restrictions can be combined by the logical operator `OR`. *
-                /// A restriction has the form of `{field} {operator} {value}`. * All fields must use the `EQUALS (=)`
-                /// operator. Supported fields: * `targetingType` * `inheritance` Examples: * `AssignedTargetingOption`
-                /// resources of targeting type `TARGETING_TYPE_PROXIMITY_LOCATION_LIST` or `TARGETING_TYPE_CHANNEL`:
-                /// `targetingType="TARGETING_TYPE_PROXIMITY_LOCATION_LIST" OR targetingType="TARGETING_TYPE_CHANNEL"` *
-                /// `AssignedTargetingOption` resources with inheritance status of `NOT_INHERITED` or
-                /// `INHERITED_FROM_PARTNER`: `inheritance="NOT_INHERITED" OR inheritance="INHERITED_FROM_PARTNER"` The
-                /// length of this field should be no more than 500 characters. Reference our [filter `LIST`
-                /// requests](/display-video/api/guides/how-tos/filters) guide for more information.
+                /// made up of one or more restrictions. * Restrictions can be combined by the logical operator `OR` on
+                /// the same field. * A restriction has the form of `{field} {operator} {value}`. * All fields must use
+                /// the `EQUALS (=)` operator. Supported fields: * `targetingType` * `inheritance` Examples: *
+                /// `AssignedTargetingOption` resources of targeting type `TARGETING_TYPE_PROXIMITY_LOCATION_LIST` or
+                /// `TARGETING_TYPE_CHANNEL`: `targetingType="TARGETING_TYPE_PROXIMITY_LOCATION_LIST" OR
+                /// targetingType="TARGETING_TYPE_CHANNEL"` * `AssignedTargetingOption` resources with inheritance
+                /// status of `NOT_INHERITED` or `INHERITED_FROM_PARTNER`: `inheritance="NOT_INHERITED" OR
+                /// inheritance="INHERITED_FROM_PARTNER"` The length of this field should be no more than 500
+                /// characters. Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide
+                /// for more information.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
+                /// <summary>Required. The IDs of the line items to list assigned targeting options for.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("lineItemIds", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<string> LineItemIds { get; set; }
+
                 /// <summary>
-                /// Field by which to sort the list. Acceptable values are: * `targetingType` (default) The default
-                /// sorting order is ascending. To specify descending order for a field, a suffix "desc" should be added
-                /// to the field name. Example: `targetingType desc`.
+                /// Field by which to sort the list. Acceptable values are: * `lineItemId` (default) *
+                /// `assignedTargetingOption.targetingType` The default sorting order is ascending. To specify
+                /// descending order for a field, a suffix "desc" should be added to the field name. Example:
+                /// `targetingType desc`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string OrderBy { get; set; }
@@ -6658,22 +8961,22 @@ namespace Google.Apis.DisplayVideo.v1
 
                 /// <summary>
                 /// A token that lets the client fetch the next page of results. Typically, this is the value of
-                /// next_page_token returned from the previous call to `BulkListLineItemAssignedTargetingOptions`
-                /// method. If not specified, the first page of results will be returned.
+                /// next_page_token returned from the previous call to the `BulkListAssignedTargetingOptions` method. If
+                /// not specified, the first page of results will be returned.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
                 /// <summary>Gets the method name.</summary>
-                public override string MethodName => "bulkListLineItemAssignedTargetingOptions";
+                public override string MethodName => "bulkListAssignedTargetingOptions";
 
                 /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
                 /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1/advertisers/{+advertiserId}/lineItems/{+lineItemId}:bulkListLineItemAssignedTargetingOptions";
+                public override string RestPath => "v3/advertisers/{+advertiserId}/lineItems:bulkListAssignedTargetingOptions";
 
-                /// <summary>Initializes BulkListLineItemAssignedTargetingOptions parameter list.</summary>
+                /// <summary>Initializes BulkListAssignedTargetingOptions parameter list.</summary>
                 protected override void InitParameters()
                 {
                     base.InitParameters();
@@ -6685,17 +8988,17 @@ namespace Google.Apis.DisplayVideo.v1
                         DefaultValue = null,
                         Pattern = @"^[^/]+$",
                     });
-                    RequestParameters.Add("lineItemId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "lineItemId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+$",
-                    });
                     RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
                     {
                         Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("lineItemIds", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "lineItemIds",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -6728,21 +9031,82 @@ namespace Google.Apis.DisplayVideo.v1
                 }
             }
 
+            /// <summary>
+            /// Updates multiple line items. Requests to this endpoint cannot be made concurrently with the following
+            /// requests updating the same line item: * BulkEditAssignedTargetingOptions * UpdateLineItem *
+            /// assignedTargetingOptions.create * assignedTargetingOptions.delete
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="advertiserId">Required. The ID of the advertiser this line item belongs to.</param>
+            public virtual BulkUpdateRequest BulkUpdate(Google.Apis.DisplayVideo.v3.Data.BulkUpdateLineItemsRequest body, long advertiserId)
+            {
+                return new BulkUpdateRequest(service, body, advertiserId);
+            }
+
+            /// <summary>
+            /// Updates multiple line items. Requests to this endpoint cannot be made concurrently with the following
+            /// requests updating the same line item: * BulkEditAssignedTargetingOptions * UpdateLineItem *
+            /// assignedTargetingOptions.create * assignedTargetingOptions.delete
+            /// </summary>
+            public class BulkUpdateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.BulkUpdateLineItemsResponse>
+            {
+                /// <summary>Constructs a new BulkUpdate request.</summary>
+                public BulkUpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v3.Data.BulkUpdateLineItemsRequest body, long advertiserId) : base(service)
+                {
+                    AdvertiserId = advertiserId;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The ID of the advertiser this line item belongs to.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long AdvertiserId { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.DisplayVideo.v3.Data.BulkUpdateLineItemsRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "bulkUpdate";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v3/advertisers/{+advertiserId}/lineItems:bulkUpdate";
+
+                /// <summary>Initializes BulkUpdate parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                }
+            }
+
             /// <summary>Creates a new line item. Returns the newly created line item if successful.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="advertiserId">
             /// Output only. The unique ID of the advertiser the line item belongs to.
             /// </param>
-            public virtual CreateRequest Create(Google.Apis.DisplayVideo.v1.Data.LineItem body, long advertiserId)
+            public virtual CreateRequest Create(Google.Apis.DisplayVideo.v3.Data.LineItem body, long advertiserId)
             {
                 return new CreateRequest(service, body, advertiserId);
             }
 
             /// <summary>Creates a new line item. Returns the newly created line item if successful.</summary>
-            public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.LineItem>
+            public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.LineItem>
             {
                 /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.LineItem body, long advertiserId) : base(service)
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v3.Data.LineItem body, long advertiserId) : base(service)
                 {
                     AdvertiserId = advertiserId;
                     Body = body;
@@ -6754,7 +9118,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public virtual long AdvertiserId { get; private set; }
 
                 /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.DisplayVideo.v1.Data.LineItem Body { get; set; }
+                Google.Apis.DisplayVideo.v3.Data.LineItem Body { get; set; }
 
                 /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
@@ -6766,7 +9130,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public override string HttpMethod => "POST";
 
                 /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1/advertisers/{+advertiserId}/lineItems";
+                public override string RestPath => "v3/advertisers/{+advertiserId}/lineItems";
 
                 /// <summary>Initializes Create parameter list.</summary>
                 protected override void InitParameters()
@@ -6798,7 +9162,7 @@ namespace Google.Apis.DisplayVideo.v1
             /// Deletes a line item. Returns error code `NOT_FOUND` if the line item does not exist. The line item
             /// should be archived first, i.e. set entity_status to `ENTITY_STATUS_ARCHIVED`, to be able to delete it.
             /// </summary>
-            public class DeleteRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Empty>
+            public class DeleteRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
                 public DeleteRequest(Google.Apis.Services.IClientService service, long advertiserId, long lineItemId) : base(service)
@@ -6823,9 +9187,76 @@ namespace Google.Apis.DisplayVideo.v1
                 public override string HttpMethod => "DELETE";
 
                 /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1/advertisers/{+advertiserId}/lineItems/{+lineItemId}";
+                public override string RestPath => "v3/advertisers/{+advertiserId}/lineItems/{+lineItemId}";
 
                 /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("lineItemId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "lineItemId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Duplicates a line item. Returns the ID of the created line item if successful.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="advertiserId">Required. The ID of the advertiser this line item belongs to.</param>
+            /// <param name="lineItemId">Required. The ID of the line item to duplicate.</param>
+            public virtual DuplicateRequest Duplicate(Google.Apis.DisplayVideo.v3.Data.DuplicateLineItemRequest body, long advertiserId, long lineItemId)
+            {
+                return new DuplicateRequest(service, body, advertiserId, lineItemId);
+            }
+
+            /// <summary>Duplicates a line item. Returns the ID of the created line item if successful.</summary>
+            public class DuplicateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.DuplicateLineItemResponse>
+            {
+                /// <summary>Constructs a new Duplicate request.</summary>
+                public DuplicateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v3.Data.DuplicateLineItemRequest body, long advertiserId, long lineItemId) : base(service)
+                {
+                    AdvertiserId = advertiserId;
+                    LineItemId = lineItemId;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The ID of the advertiser this line item belongs to.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long AdvertiserId { get; private set; }
+
+                /// <summary>Required. The ID of the line item to duplicate.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("lineItemId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long LineItemId { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.DisplayVideo.v3.Data.DuplicateLineItemRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "duplicate";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v3/advertisers/{+advertiserId}/lineItems/{+lineItemId}:duplicate";
+
+                /// <summary>Initializes Duplicate parameter list.</summary>
                 protected override void InitParameters()
                 {
                     base.InitParameters();
@@ -6856,7 +9287,7 @@ namespace Google.Apis.DisplayVideo.v1
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="advertiserId">Required. The ID of the advertiser this line item belongs to.</param>
-            public virtual GenerateDefaultRequest GenerateDefault(Google.Apis.DisplayVideo.v1.Data.GenerateDefaultLineItemRequest body, long advertiserId)
+            public virtual GenerateDefaultRequest GenerateDefault(Google.Apis.DisplayVideo.v3.Data.GenerateDefaultLineItemRequest body, long advertiserId)
             {
                 return new GenerateDefaultRequest(service, body, advertiserId);
             }
@@ -6867,10 +9298,10 @@ namespace Google.Apis.DisplayVideo.v1
             /// default values based on the three fields: * The insertion order's insertion_order_type * The insertion
             /// order's automation_type * The given line_item_type
             /// </summary>
-            public class GenerateDefaultRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.LineItem>
+            public class GenerateDefaultRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.LineItem>
             {
                 /// <summary>Constructs a new GenerateDefault request.</summary>
-                public GenerateDefaultRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.GenerateDefaultLineItemRequest body, long advertiserId) : base(service)
+                public GenerateDefaultRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v3.Data.GenerateDefaultLineItemRequest body, long advertiserId) : base(service)
                 {
                     AdvertiserId = advertiserId;
                     Body = body;
@@ -6882,7 +9313,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public virtual long AdvertiserId { get; private set; }
 
                 /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.DisplayVideo.v1.Data.GenerateDefaultLineItemRequest Body { get; set; }
+                Google.Apis.DisplayVideo.v3.Data.GenerateDefaultLineItemRequest Body { get; set; }
 
                 /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
@@ -6894,7 +9325,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public override string HttpMethod => "POST";
 
                 /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1/advertisers/{+advertiserId}/lineItems:generateDefault";
+                public override string RestPath => "v3/advertisers/{+advertiserId}/lineItems:generateDefault";
 
                 /// <summary>Initializes GenerateDefault parameter list.</summary>
                 protected override void InitParameters()
@@ -6920,7 +9351,7 @@ namespace Google.Apis.DisplayVideo.v1
             }
 
             /// <summary>Gets a line item.</summary>
-            public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.LineItem>
+            public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.LineItem>
             {
                 /// <summary>Constructs a new Get request.</summary>
                 public GetRequest(Google.Apis.Services.IClientService service, long advertiserId, long lineItemId) : base(service)
@@ -6945,7 +9376,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public override string HttpMethod => "GET";
 
                 /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1/advertisers/{+advertiserId}/lineItems/{+lineItemId}";
+                public override string RestPath => "v3/advertisers/{+advertiserId}/lineItems/{+lineItemId}";
 
                 /// <summary>Initializes Get parameter list.</summary>
                 protected override void InitParameters()
@@ -6986,7 +9417,7 @@ namespace Google.Apis.DisplayVideo.v1
             /// entity_status is not specified, line items with `ENTITY_STATUS_ARCHIVED` will not be included in the
             /// results.
             /// </summary>
-            public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ListLineItemsResponse>
+            public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.ListLineItemsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
                 public ListRequest(Google.Apis.Services.IClientService service, long advertiserId) : base(service)
@@ -7050,7 +9481,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public override string HttpMethod => "GET";
 
                 /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1/advertisers/{+advertiserId}/lineItems";
+                public override string RestPath => "v3/advertisers/{+advertiserId}/lineItems";
 
                 /// <summary>Initializes List parameter list.</summary>
                 protected override void InitParameters()
@@ -7110,7 +9541,7 @@ namespace Google.Apis.DisplayVideo.v1
             /// Output only. The unique ID of the advertiser the line item belongs to.
             /// </param>
             /// <param name="lineItemId">Output only. The unique ID of the line item. Assigned by the system.</param>
-            public virtual PatchRequest Patch(Google.Apis.DisplayVideo.v1.Data.LineItem body, long advertiserId, long lineItemId)
+            public virtual PatchRequest Patch(Google.Apis.DisplayVideo.v3.Data.LineItem body, long advertiserId, long lineItemId)
             {
                 return new PatchRequest(service, body, advertiserId, lineItemId);
             }
@@ -7121,10 +9552,10 @@ namespace Google.Apis.DisplayVideo.v1
             /// BulkEditAssignedTargetingOptions * BulkUpdateLineItems * assignedTargetingOptions.create *
             /// assignedTargetingOptions.delete
             /// </summary>
-            public class PatchRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.LineItem>
+            public class PatchRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.LineItem>
             {
                 /// <summary>Constructs a new Patch request.</summary>
-                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.LineItem body, long advertiserId, long lineItemId) : base(service)
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v3.Data.LineItem body, long advertiserId, long lineItemId) : base(service)
                 {
                     AdvertiserId = advertiserId;
                     LineItemId = lineItemId;
@@ -7145,7 +9576,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public virtual object UpdateMask { get; set; }
 
                 /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.DisplayVideo.v1.Data.LineItem Body { get; set; }
+                Google.Apis.DisplayVideo.v3.Data.LineItem Body { get; set; }
 
                 /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
@@ -7157,7 +9588,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public override string HttpMethod => "PATCH";
 
                 /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1/advertisers/{+advertiserId}/lineItems/{+lineItemId}";
+                public override string RestPath => "v3/advertisers/{+advertiserId}/lineItems/{+lineItemId}";
 
                 /// <summary>Initializes Patch parameter list.</summary>
                 protected override void InitParameters()
@@ -7238,7 +9669,7 @@ namespace Google.Apis.DisplayVideo.v1
                 /// <param name="locationListId">
                 /// Required. The ID of the location list to which these assignments are assigned.
                 /// </param>
-                public virtual BulkEditRequest BulkEdit(Google.Apis.DisplayVideo.v1.Data.BulkEditAssignedLocationsRequest body, long advertiserId, long locationListId)
+                public virtual BulkEditRequest BulkEdit(Google.Apis.DisplayVideo.v3.Data.BulkEditAssignedLocationsRequest body, long advertiserId, long locationListId)
                 {
                     return new BulkEditRequest(service, body, advertiserId, locationListId);
                 }
@@ -7248,10 +9679,10 @@ namespace Google.Apis.DisplayVideo.v1
                 /// delete the assigned locations provided in deletedAssignedLocations and then create the assigned
                 /// locations provided in createdAssignedLocations.
                 /// </summary>
-                public class BulkEditRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.BulkEditAssignedLocationsResponse>
+                public class BulkEditRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.BulkEditAssignedLocationsResponse>
                 {
                     /// <summary>Constructs a new BulkEdit request.</summary>
-                    public BulkEditRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.BulkEditAssignedLocationsRequest body, long advertiserId, long locationListId) : base(service)
+                    public BulkEditRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v3.Data.BulkEditAssignedLocationsRequest body, long advertiserId, long locationListId) : base(service)
                     {
                         AdvertiserId = advertiserId;
                         LocationListId = locationListId;
@@ -7270,7 +9701,7 @@ namespace Google.Apis.DisplayVideo.v1
                     public virtual long LocationListId { get; private set; }
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.DisplayVideo.v1.Data.BulkEditAssignedLocationsRequest Body { get; set; }
+                    Google.Apis.DisplayVideo.v3.Data.BulkEditAssignedLocationsRequest Body { get; set; }
 
                     /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
@@ -7282,7 +9713,7 @@ namespace Google.Apis.DisplayVideo.v1
                     public override string HttpMethod => "POST";
 
                     /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1/advertisers/{advertiserId}/locationLists/{+locationListId}/assignedLocations:bulkEdit";
+                    public override string RestPath => "v3/advertisers/{advertiserId}/locationLists/{+locationListId}/assignedLocations:bulkEdit";
 
                     /// <summary>Initializes BulkEdit parameter list.</summary>
                     protected override void InitParameters()
@@ -7315,16 +9746,16 @@ namespace Google.Apis.DisplayVideo.v1
                 /// <param name="locationListId">
                 /// Required. The ID of the location list for which the assignment will be created.
                 /// </param>
-                public virtual CreateRequest Create(Google.Apis.DisplayVideo.v1.Data.AssignedLocation body, long advertiserId, long locationListId)
+                public virtual CreateRequest Create(Google.Apis.DisplayVideo.v3.Data.AssignedLocation body, long advertiserId, long locationListId)
                 {
                     return new CreateRequest(service, body, advertiserId, locationListId);
                 }
 
                 /// <summary>Creates an assignment between a location and a location list.</summary>
-                public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.AssignedLocation>
+                public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.AssignedLocation>
                 {
                     /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.AssignedLocation body, long advertiserId, long locationListId) : base(service)
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v3.Data.AssignedLocation body, long advertiserId, long locationListId) : base(service)
                     {
                         AdvertiserId = advertiserId;
                         LocationListId = locationListId;
@@ -7343,7 +9774,7 @@ namespace Google.Apis.DisplayVideo.v1
                     public virtual long LocationListId { get; private set; }
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.DisplayVideo.v1.Data.AssignedLocation Body { get; set; }
+                    Google.Apis.DisplayVideo.v3.Data.AssignedLocation Body { get; set; }
 
                     /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
@@ -7355,7 +9786,7 @@ namespace Google.Apis.DisplayVideo.v1
                     public override string HttpMethod => "POST";
 
                     /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1/advertisers/{advertiserId}/locationLists/{locationListId}/assignedLocations";
+                    public override string RestPath => "v3/advertisers/{advertiserId}/locationLists/{locationListId}/assignedLocations";
 
                     /// <summary>Initializes Create parameter list.</summary>
                     protected override void InitParameters()
@@ -7394,7 +9825,7 @@ namespace Google.Apis.DisplayVideo.v1
                 }
 
                 /// <summary>Deletes the assignment between a location and a location list.</summary>
-                public class DeleteRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Empty>
+                public class DeleteRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.Empty>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
                     public DeleteRequest(Google.Apis.Services.IClientService service, long advertiserId, long locationListId, long assignedLocationId) : base(service)
@@ -7424,7 +9855,7 @@ namespace Google.Apis.DisplayVideo.v1
                     public override string HttpMethod => "DELETE";
 
                     /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1/advertisers/{advertiserId}/locationLists/{locationListId}/assignedLocations/{+assignedLocationId}";
+                    public override string RestPath => "v3/advertisers/{advertiserId}/locationLists/{locationListId}/assignedLocations/{+assignedLocationId}";
 
                     /// <summary>Initializes Delete parameter list.</summary>
                     protected override void InitParameters()
@@ -7470,7 +9901,7 @@ namespace Google.Apis.DisplayVideo.v1
                 }
 
                 /// <summary>Lists locations assigned to a location list.</summary>
-                public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ListAssignedLocationsResponse>
+                public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.ListAssignedLocationsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
                     public ListRequest(Google.Apis.Services.IClientService service, long advertiserId, long locationListId) : base(service)
@@ -7531,7 +9962,7 @@ namespace Google.Apis.DisplayVideo.v1
                     public override string HttpMethod => "GET";
 
                     /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1/advertisers/{advertiserId}/locationLists/{locationListId}/assignedLocations";
+                    public override string RestPath => "v3/advertisers/{advertiserId}/locationLists/{locationListId}/assignedLocations";
 
                     /// <summary>Initializes List parameter list.</summary>
                     protected override void InitParameters()
@@ -7594,16 +10025,16 @@ namespace Google.Apis.DisplayVideo.v1
             /// <param name="advertiserId">
             /// Required. The ID of the DV360 advertiser to which the location list belongs.
             /// </param>
-            public virtual CreateRequest Create(Google.Apis.DisplayVideo.v1.Data.LocationList body, long advertiserId)
+            public virtual CreateRequest Create(Google.Apis.DisplayVideo.v3.Data.LocationList body, long advertiserId)
             {
                 return new CreateRequest(service, body, advertiserId);
             }
 
             /// <summary>Creates a new location list. Returns the newly created location list if successful.</summary>
-            public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.LocationList>
+            public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.LocationList>
             {
                 /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.LocationList body, long advertiserId) : base(service)
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v3.Data.LocationList body, long advertiserId) : base(service)
                 {
                     AdvertiserId = advertiserId;
                     Body = body;
@@ -7615,7 +10046,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public virtual long AdvertiserId { get; private set; }
 
                 /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.DisplayVideo.v1.Data.LocationList Body { get; set; }
+                Google.Apis.DisplayVideo.v3.Data.LocationList Body { get; set; }
 
                 /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
@@ -7627,7 +10058,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public override string HttpMethod => "POST";
 
                 /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1/advertisers/{+advertiserId}/locationLists";
+                public override string RestPath => "v3/advertisers/{+advertiserId}/locationLists";
 
                 /// <summary>Initializes Create parameter list.</summary>
                 protected override void InitParameters()
@@ -7655,7 +10086,7 @@ namespace Google.Apis.DisplayVideo.v1
             }
 
             /// <summary>Gets a location list.</summary>
-            public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.LocationList>
+            public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.LocationList>
             {
                 /// <summary>Constructs a new Get request.</summary>
                 public GetRequest(Google.Apis.Services.IClientService service, long advertiserId, long locationListId) : base(service)
@@ -7682,7 +10113,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public override string HttpMethod => "GET";
 
                 /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1/advertisers/{+advertiserId}/locationLists/{+locationListId}";
+                public override string RestPath => "v3/advertisers/{+advertiserId}/locationLists/{+locationListId}";
 
                 /// <summary>Initializes Get parameter list.</summary>
                 protected override void InitParameters()
@@ -7717,7 +10148,7 @@ namespace Google.Apis.DisplayVideo.v1
             }
 
             /// <summary>Lists location lists based on a given advertiser id.</summary>
-            public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ListLocationListsResponse>
+            public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.ListLocationListsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
                 public ListRequest(Google.Apis.Services.IClientService service, long advertiserId) : base(service)
@@ -7775,7 +10206,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public override string HttpMethod => "GET";
 
                 /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1/advertisers/{+advertiserId}/locationLists";
+                public override string RestPath => "v3/advertisers/{+advertiserId}/locationLists";
 
                 /// <summary>Initializes List parameter list.</summary>
                 protected override void InitParameters()
@@ -7832,16 +10263,16 @@ namespace Google.Apis.DisplayVideo.v1
             /// <param name="locationListId">
             /// Output only. The unique ID of the location list. Assigned by the system.
             /// </param>
-            public virtual PatchRequest Patch(Google.Apis.DisplayVideo.v1.Data.LocationList body, long advertiserId, long locationListId)
+            public virtual PatchRequest Patch(Google.Apis.DisplayVideo.v3.Data.LocationList body, long advertiserId, long locationListId)
             {
                 return new PatchRequest(service, body, advertiserId, locationListId);
             }
 
             /// <summary>Updates a location list. Returns the updated location list if successful.</summary>
-            public class PatchRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.LocationList>
+            public class PatchRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.LocationList>
             {
                 /// <summary>Constructs a new Patch request.</summary>
-                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.LocationList body, long advertiserId, long locationListId) : base(service)
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v3.Data.LocationList body, long advertiserId, long locationListId) : base(service)
                 {
                     AdvertiserId = advertiserId;
                     LocationListId = locationListId;
@@ -7862,7 +10293,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public virtual object UpdateMask { get; set; }
 
                 /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.DisplayVideo.v1.Data.LocationList Body { get; set; }
+                Google.Apis.DisplayVideo.v3.Data.LocationList Body { get; set; }
 
                 /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
@@ -7874,7 +10305,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public override string HttpMethod => "PATCH";
 
                 /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1/advertisers/{+advertiserId}/locationLists/{locationListId}";
+                public override string RestPath => "v3/advertisers/{+advertiserId}/locationLists/{locationListId}";
 
                 /// <summary>Initializes Patch parameter list.</summary>
                 protected override void InitParameters()
@@ -7895,528 +10326,6 @@ namespace Google.Apis.DisplayVideo.v1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = null,
-                    });
-                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "updateMask",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                }
-            }
-        }
-
-        /// <summary>Gets the ManualTriggers resource.</summary>
-        public virtual ManualTriggersResource ManualTriggers { get; }
-
-        /// <summary>The "manualTriggers" collection of methods.</summary>
-        public class ManualTriggersResource
-        {
-            private const string Resource = "manualTriggers";
-
-            /// <summary>The service which this resource belongs to.</summary>
-            private readonly Google.Apis.Services.IClientService service;
-
-            /// <summary>Constructs a new resource.</summary>
-            public ManualTriggersResource(Google.Apis.Services.IClientService service)
-            {
-                this.service = service;
-            }
-
-            /// <summary>
-            /// Activates a manual trigger. Each activation of the manual trigger must be at least 5 minutes apart,
-            /// otherwise an error will be returned. **Warning:** Line Items using manual triggers no longer serve in
-            /// Display &amp;amp; Video 360. This method will sunset on August 1, 2023. Read our [feature deprecation
-            /// announcement](/display-video/api/deprecations#features.manual_triggers) for more information.
-            /// </summary>
-            /// <param name="body">The body of the request.</param>
-            /// <param name="advertiserId">Required. The ID of the advertiser that the manual trigger belongs.</param>
-            /// <param name="triggerId">Required. The ID of the manual trigger to activate.</param>
-            public virtual ActivateRequest Activate(Google.Apis.DisplayVideo.v1.Data.ActivateManualTriggerRequest body, long advertiserId, long triggerId)
-            {
-                return new ActivateRequest(service, body, advertiserId, triggerId);
-            }
-
-            /// <summary>
-            /// Activates a manual trigger. Each activation of the manual trigger must be at least 5 minutes apart,
-            /// otherwise an error will be returned. **Warning:** Line Items using manual triggers no longer serve in
-            /// Display &amp;amp; Video 360. This method will sunset on August 1, 2023. Read our [feature deprecation
-            /// announcement](/display-video/api/deprecations#features.manual_triggers) for more information.
-            /// </summary>
-            public class ActivateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ManualTrigger>
-            {
-                /// <summary>Constructs a new Activate request.</summary>
-                public ActivateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.ActivateManualTriggerRequest body, long advertiserId, long triggerId) : base(service)
-                {
-                    AdvertiserId = advertiserId;
-                    TriggerId = triggerId;
-                    Body = body;
-                    InitParameters();
-                }
-
-                /// <summary>Required. The ID of the advertiser that the manual trigger belongs.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual long AdvertiserId { get; private set; }
-
-                /// <summary>Required. The ID of the manual trigger to activate.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("triggerId", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual long TriggerId { get; private set; }
-
-                /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.DisplayVideo.v1.Data.ActivateManualTriggerRequest Body { get; set; }
-
-                /// <summary>Returns the body of the request.</summary>
-                protected override object GetBody() => Body;
-
-                /// <summary>Gets the method name.</summary>
-                public override string MethodName => "activate";
-
-                /// <summary>Gets the HTTP method.</summary>
-                public override string HttpMethod => "POST";
-
-                /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1/advertisers/{+advertiserId}/manualTriggers/{+triggerId}:activate";
-
-                /// <summary>Initializes Activate parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "advertiserId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+$",
-                    });
-                    RequestParameters.Add("triggerId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "triggerId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+$",
-                    });
-                }
-            }
-
-            /// <summary>
-            /// Creates a new manual trigger. Returns the newly created manual trigger if successful. **Warning:** Line
-            /// Items using manual triggers no longer serve in Display &amp;amp; Video 360. This method will sunset on
-            /// August 1, 2023. Read our [feature deprecation
-            /// announcement](/display-video/api/deprecations#features.manual_triggers) for more information.
-            /// </summary>
-            /// <param name="body">The body of the request.</param>
-            /// <param name="advertiserId">
-            /// Required. Immutable. The unique ID of the advertiser that the manual trigger belongs to.
-            /// </param>
-            public virtual CreateRequest Create(Google.Apis.DisplayVideo.v1.Data.ManualTrigger body, long advertiserId)
-            {
-                return new CreateRequest(service, body, advertiserId);
-            }
-
-            /// <summary>
-            /// Creates a new manual trigger. Returns the newly created manual trigger if successful. **Warning:** Line
-            /// Items using manual triggers no longer serve in Display &amp;amp; Video 360. This method will sunset on
-            /// August 1, 2023. Read our [feature deprecation
-            /// announcement](/display-video/api/deprecations#features.manual_triggers) for more information.
-            /// </summary>
-            public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ManualTrigger>
-            {
-                /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.ManualTrigger body, long advertiserId) : base(service)
-                {
-                    AdvertiserId = advertiserId;
-                    Body = body;
-                    InitParameters();
-                }
-
-                /// <summary>
-                /// Required. Immutable. The unique ID of the advertiser that the manual trigger belongs to.
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual long AdvertiserId { get; private set; }
-
-                /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.DisplayVideo.v1.Data.ManualTrigger Body { get; set; }
-
-                /// <summary>Returns the body of the request.</summary>
-                protected override object GetBody() => Body;
-
-                /// <summary>Gets the method name.</summary>
-                public override string MethodName => "create";
-
-                /// <summary>Gets the HTTP method.</summary>
-                public override string HttpMethod => "POST";
-
-                /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1/advertisers/{+advertiserId}/manualTriggers";
-
-                /// <summary>Initializes Create parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "advertiserId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+$",
-                    });
-                }
-            }
-
-            /// <summary>
-            /// Deactivates a manual trigger. **Warning:** Line Items using manual triggers no longer serve in Display
-            /// &amp;amp; Video 360. This method will sunset on August 1, 2023. Read our [feature deprecation
-            /// announcement](/display-video/api/deprecations#features.manual_triggers) for more information.
-            /// </summary>
-            /// <param name="body">The body of the request.</param>
-            /// <param name="advertiserId">Required. The ID of the advertiser that the manual trigger belongs.</param>
-            /// <param name="triggerId">Required. The ID of the manual trigger to deactivate.</param>
-            public virtual DeactivateRequest Deactivate(Google.Apis.DisplayVideo.v1.Data.DeactivateManualTriggerRequest body, long advertiserId, long triggerId)
-            {
-                return new DeactivateRequest(service, body, advertiserId, triggerId);
-            }
-
-            /// <summary>
-            /// Deactivates a manual trigger. **Warning:** Line Items using manual triggers no longer serve in Display
-            /// &amp;amp; Video 360. This method will sunset on August 1, 2023. Read our [feature deprecation
-            /// announcement](/display-video/api/deprecations#features.manual_triggers) for more information.
-            /// </summary>
-            public class DeactivateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ManualTrigger>
-            {
-                /// <summary>Constructs a new Deactivate request.</summary>
-                public DeactivateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.DeactivateManualTriggerRequest body, long advertiserId, long triggerId) : base(service)
-                {
-                    AdvertiserId = advertiserId;
-                    TriggerId = triggerId;
-                    Body = body;
-                    InitParameters();
-                }
-
-                /// <summary>Required. The ID of the advertiser that the manual trigger belongs.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual long AdvertiserId { get; private set; }
-
-                /// <summary>Required. The ID of the manual trigger to deactivate.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("triggerId", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual long TriggerId { get; private set; }
-
-                /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.DisplayVideo.v1.Data.DeactivateManualTriggerRequest Body { get; set; }
-
-                /// <summary>Returns the body of the request.</summary>
-                protected override object GetBody() => Body;
-
-                /// <summary>Gets the method name.</summary>
-                public override string MethodName => "deactivate";
-
-                /// <summary>Gets the HTTP method.</summary>
-                public override string HttpMethod => "POST";
-
-                /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1/advertisers/{+advertiserId}/manualTriggers/{+triggerId}:deactivate";
-
-                /// <summary>Initializes Deactivate parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "advertiserId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+$",
-                    });
-                    RequestParameters.Add("triggerId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "triggerId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+$",
-                    });
-                }
-            }
-
-            /// <summary>
-            /// Gets a manual trigger. **Warning:** Line Items using manual triggers no longer serve in Display
-            /// &amp;amp; Video 360. This method will sunset on August 1, 2023. Read our [feature deprecation
-            /// announcement](/display-video/api/deprecations#features.manual_triggers) for more information.
-            /// </summary>
-            /// <param name="advertiserId">Required. The ID of the advertiser this manual trigger belongs to.</param>
-            /// <param name="triggerId">Required. The ID of the manual trigger to fetch.</param>
-            public virtual GetRequest Get(long advertiserId, long triggerId)
-            {
-                return new GetRequest(service, advertiserId, triggerId);
-            }
-
-            /// <summary>
-            /// Gets a manual trigger. **Warning:** Line Items using manual triggers no longer serve in Display
-            /// &amp;amp; Video 360. This method will sunset on August 1, 2023. Read our [feature deprecation
-            /// announcement](/display-video/api/deprecations#features.manual_triggers) for more information.
-            /// </summary>
-            public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ManualTrigger>
-            {
-                /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, long advertiserId, long triggerId) : base(service)
-                {
-                    AdvertiserId = advertiserId;
-                    TriggerId = triggerId;
-                    InitParameters();
-                }
-
-                /// <summary>Required. The ID of the advertiser this manual trigger belongs to.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual long AdvertiserId { get; private set; }
-
-                /// <summary>Required. The ID of the manual trigger to fetch.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("triggerId", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual long TriggerId { get; private set; }
-
-                /// <summary>Gets the method name.</summary>
-                public override string MethodName => "get";
-
-                /// <summary>Gets the HTTP method.</summary>
-                public override string HttpMethod => "GET";
-
-                /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1/advertisers/{+advertiserId}/manualTriggers/{+triggerId}";
-
-                /// <summary>Initializes Get parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "advertiserId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+$",
-                    });
-                    RequestParameters.Add("triggerId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "triggerId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+$",
-                    });
-                }
-            }
-
-            /// <summary>
-            /// Lists manual triggers that are accessible to the current user for a given advertiser ID. The order is
-            /// defined by the order_by parameter. A single advertiser_id is required. **Warning:** Line Items using
-            /// manual triggers no longer serve in Display &amp;amp; Video 360. This method will sunset on August 1,
-            /// 2023. Read our [feature deprecation
-            /// announcement](/display-video/api/deprecations#features.manual_triggers) for more information.
-            /// </summary>
-            /// <param name="advertiserId">
-            /// Required. The ID of the advertiser that the fetched manual triggers belong to.
-            /// </param>
-            public virtual ListRequest List(long advertiserId)
-            {
-                return new ListRequest(service, advertiserId);
-            }
-
-            /// <summary>
-            /// Lists manual triggers that are accessible to the current user for a given advertiser ID. The order is
-            /// defined by the order_by parameter. A single advertiser_id is required. **Warning:** Line Items using
-            /// manual triggers no longer serve in Display &amp;amp; Video 360. This method will sunset on August 1,
-            /// 2023. Read our [feature deprecation
-            /// announcement](/display-video/api/deprecations#features.manual_triggers) for more information.
-            /// </summary>
-            public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ListManualTriggersResponse>
-            {
-                /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, long advertiserId) : base(service)
-                {
-                    AdvertiserId = advertiserId;
-                    InitParameters();
-                }
-
-                /// <summary>Required. The ID of the advertiser that the fetched manual triggers belong to.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual long AdvertiserId { get; private set; }
-
-                /// <summary>
-                /// Allows filtering by manual trigger fields. Supported syntax: * Filter expressions are made up of one
-                /// or more restrictions. * Restrictions can be combined by `AND` or `OR` logical operators. A sequence
-                /// of restrictions implicitly uses `AND`. * A restriction has the form of `{field} {operator} {value}`.
-                /// * All fields must use the `EQUALS (=)` operator. Supported fields: * `displayName` * `state`
-                /// Examples: * All active manual triggers under an advertiser: `state="ACTIVE"` The length of this
-                /// field should be no more than 500 characters. Reference our [filter `LIST`
-                /// requests](/display-video/api/guides/how-tos/filters) guide for more information.
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
-
-                /// <summary>
-                /// Field by which to sort the list. Acceptable values are: * `displayName` (default) * `state` The
-                /// default sorting order is ascending. To specify descending order for a field, a suffix "desc" should
-                /// be added to the field name. For example, `displayName desc`.
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string OrderBy { get; set; }
-
-                /// <summary>
-                /// Requested page size. Must be between `1` and `200`. If unspecified will default to `100`.
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>
-                /// A token identifying a page of results the server should return. Typically, this is the value of
-                /// next_page_token returned from the previous call to `ListManualTriggers` method. If not specified,
-                /// the first page of results will be returned.
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
-                /// <summary>Gets the method name.</summary>
-                public override string MethodName => "list";
-
-                /// <summary>Gets the HTTP method.</summary>
-                public override string HttpMethod => "GET";
-
-                /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1/advertisers/{+advertiserId}/manualTriggers";
-
-                /// <summary>Initializes List parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "advertiserId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+$",
-                    });
-                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                    RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "orderBy",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                }
-            }
-
-            /// <summary>
-            /// Updates a manual trigger. Returns the updated manual trigger if successful. **Warning:** Line Items
-            /// using manual triggers no longer serve in Display &amp;amp; Video 360. This method will sunset on August
-            /// 1, 2023. Read our [feature deprecation
-            /// announcement](/display-video/api/deprecations#features.manual_triggers) for more information.
-            /// </summary>
-            /// <param name="body">The body of the request.</param>
-            /// <param name="advertiserId">
-            /// Required. Immutable. The unique ID of the advertiser that the manual trigger belongs to.
-            /// </param>
-            /// <param name="triggerId">Output only. The unique ID of the manual trigger.</param>
-            public virtual PatchRequest Patch(Google.Apis.DisplayVideo.v1.Data.ManualTrigger body, long advertiserId, long triggerId)
-            {
-                return new PatchRequest(service, body, advertiserId, triggerId);
-            }
-
-            /// <summary>
-            /// Updates a manual trigger. Returns the updated manual trigger if successful. **Warning:** Line Items
-            /// using manual triggers no longer serve in Display &amp;amp; Video 360. This method will sunset on August
-            /// 1, 2023. Read our [feature deprecation
-            /// announcement](/display-video/api/deprecations#features.manual_triggers) for more information.
-            /// </summary>
-            public class PatchRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ManualTrigger>
-            {
-                /// <summary>Constructs a new Patch request.</summary>
-                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.ManualTrigger body, long advertiserId, long triggerId) : base(service)
-                {
-                    AdvertiserId = advertiserId;
-                    TriggerId = triggerId;
-                    Body = body;
-                    InitParameters();
-                }
-
-                /// <summary>
-                /// Required. Immutable. The unique ID of the advertiser that the manual trigger belongs to.
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual long AdvertiserId { get; private set; }
-
-                /// <summary>Output only. The unique ID of the manual trigger.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("triggerId", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual long TriggerId { get; private set; }
-
-                /// <summary>Required. The mask to control which fields to update.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual object UpdateMask { get; set; }
-
-                /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.DisplayVideo.v1.Data.ManualTrigger Body { get; set; }
-
-                /// <summary>Returns the body of the request.</summary>
-                protected override object GetBody() => Body;
-
-                /// <summary>Gets the method name.</summary>
-                public override string MethodName => "patch";
-
-                /// <summary>Gets the HTTP method.</summary>
-                public override string HttpMethod => "PATCH";
-
-                /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1/advertisers/{+advertiserId}/manualTriggers/{+triggerId}";
-
-                /// <summary>Initializes Patch parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "advertiserId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+$",
-                    });
-                    RequestParameters.Add("triggerId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "triggerId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+$",
                     });
                     RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
                     {
@@ -8479,7 +10388,7 @@ namespace Google.Apis.DisplayVideo.v1
                 /// <param name="negativeKeywordListId">
                 /// Required. The ID of the parent negative keyword list to which the negative keywords belong.
                 /// </param>
-                public virtual BulkEditRequest BulkEdit(Google.Apis.DisplayVideo.v1.Data.BulkEditNegativeKeywordsRequest body, long advertiserId, long negativeKeywordListId)
+                public virtual BulkEditRequest BulkEdit(Google.Apis.DisplayVideo.v3.Data.BulkEditNegativeKeywordsRequest body, long advertiserId, long negativeKeywordListId)
                 {
                     return new BulkEditRequest(service, body, advertiserId, negativeKeywordListId);
                 }
@@ -8491,10 +10400,10 @@ namespace Google.Apis.DisplayVideo.v1
                 /// This operation is guaranteed to be atomic and will never result in a partial success or partial
                 /// failure.
                 /// </summary>
-                public class BulkEditRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.BulkEditNegativeKeywordsResponse>
+                public class BulkEditRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.BulkEditNegativeKeywordsResponse>
                 {
                     /// <summary>Constructs a new BulkEdit request.</summary>
-                    public BulkEditRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.BulkEditNegativeKeywordsRequest body, long advertiserId, long negativeKeywordListId) : base(service)
+                    public BulkEditRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v3.Data.BulkEditNegativeKeywordsRequest body, long advertiserId, long negativeKeywordListId) : base(service)
                     {
                         AdvertiserId = advertiserId;
                         NegativeKeywordListId = negativeKeywordListId;
@@ -8515,7 +10424,7 @@ namespace Google.Apis.DisplayVideo.v1
                     public virtual long NegativeKeywordListId { get; private set; }
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.DisplayVideo.v1.Data.BulkEditNegativeKeywordsRequest Body { get; set; }
+                    Google.Apis.DisplayVideo.v3.Data.BulkEditNegativeKeywordsRequest Body { get; set; }
 
                     /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
@@ -8527,7 +10436,7 @@ namespace Google.Apis.DisplayVideo.v1
                     public override string HttpMethod => "POST";
 
                     /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1/advertisers/{advertiserId}/negativeKeywordLists/{+negativeKeywordListId}/negativeKeywords:bulkEdit";
+                    public override string RestPath => "v3/advertisers/{advertiserId}/negativeKeywordLists/{+negativeKeywordListId}/negativeKeywords:bulkEdit";
 
                     /// <summary>Initializes BulkEdit parameter list.</summary>
                     protected override void InitParameters()
@@ -8560,16 +10469,16 @@ namespace Google.Apis.DisplayVideo.v1
                 /// <param name="negativeKeywordListId">
                 /// Required. The ID of the parent negative keyword list in which the negative keyword will be created.
                 /// </param>
-                public virtual CreateRequest Create(Google.Apis.DisplayVideo.v1.Data.NegativeKeyword body, long advertiserId, long negativeKeywordListId)
+                public virtual CreateRequest Create(Google.Apis.DisplayVideo.v3.Data.NegativeKeyword body, long advertiserId, long negativeKeywordListId)
                 {
                     return new CreateRequest(service, body, advertiserId, negativeKeywordListId);
                 }
 
                 /// <summary>Creates a negative keyword in a negative keyword list.</summary>
-                public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.NegativeKeyword>
+                public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.NegativeKeyword>
                 {
                     /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.NegativeKeyword body, long advertiserId, long negativeKeywordListId) : base(service)
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v3.Data.NegativeKeyword body, long advertiserId, long negativeKeywordListId) : base(service)
                     {
                         AdvertiserId = advertiserId;
                         NegativeKeywordListId = negativeKeywordListId;
@@ -8591,7 +10500,7 @@ namespace Google.Apis.DisplayVideo.v1
                     public virtual long NegativeKeywordListId { get; private set; }
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.DisplayVideo.v1.Data.NegativeKeyword Body { get; set; }
+                    Google.Apis.DisplayVideo.v3.Data.NegativeKeyword Body { get; set; }
 
                     /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
@@ -8603,7 +10512,7 @@ namespace Google.Apis.DisplayVideo.v1
                     public override string HttpMethod => "POST";
 
                     /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1/advertisers/{advertiserId}/negativeKeywordLists/{+negativeKeywordListId}/negativeKeywords";
+                    public override string RestPath => "v3/advertisers/{advertiserId}/negativeKeywordLists/{+negativeKeywordListId}/negativeKeywords";
 
                     /// <summary>Initializes Create parameter list.</summary>
                     protected override void InitParameters()
@@ -8642,7 +10551,7 @@ namespace Google.Apis.DisplayVideo.v1
                 }
 
                 /// <summary>Deletes a negative keyword from a negative keyword list.</summary>
-                public class DeleteRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Empty>
+                public class DeleteRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.Empty>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
                     public DeleteRequest(Google.Apis.Services.IClientService service, long advertiserId, long negativeKeywordListId, string keywordValue) : base(service)
@@ -8676,7 +10585,7 @@ namespace Google.Apis.DisplayVideo.v1
                     public override string HttpMethod => "DELETE";
 
                     /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1/advertisers/{advertiserId}/negativeKeywordLists/{+negativeKeywordListId}/negativeKeywords/{+keywordValue}";
+                    public override string RestPath => "v3/advertisers/{advertiserId}/negativeKeywordLists/{+negativeKeywordListId}/negativeKeywords/{+keywordValue}";
 
                     /// <summary>Initializes Delete parameter list.</summary>
                     protected override void InitParameters()
@@ -8723,7 +10632,7 @@ namespace Google.Apis.DisplayVideo.v1
                 }
 
                 /// <summary>Lists negative keywords in a negative keyword list.</summary>
-                public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ListNegativeKeywordsResponse>
+                public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.ListNegativeKeywordsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
                     public ListRequest(Google.Apis.Services.IClientService service, long advertiserId, long negativeKeywordListId) : base(service)
@@ -8788,7 +10697,7 @@ namespace Google.Apis.DisplayVideo.v1
                     public override string HttpMethod => "GET";
 
                     /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1/advertisers/{+advertiserId}/negativeKeywordLists/{+negativeKeywordListId}/negativeKeywords";
+                    public override string RestPath => "v3/advertisers/{+advertiserId}/negativeKeywordLists/{+negativeKeywordListId}/negativeKeywords";
 
                     /// <summary>Initializes List parameter list.</summary>
                     protected override void InitParameters()
@@ -8857,7 +10766,7 @@ namespace Google.Apis.DisplayVideo.v1
                 /// <param name="negativeKeywordListId">
                 /// Required. The ID of the parent negative keyword list to which the negative keywords belong.
                 /// </param>
-                public virtual ReplaceRequest Replace(Google.Apis.DisplayVideo.v1.Data.ReplaceNegativeKeywordsRequest body, long advertiserId, long negativeKeywordListId)
+                public virtual ReplaceRequest Replace(Google.Apis.DisplayVideo.v3.Data.ReplaceNegativeKeywordsRequest body, long advertiserId, long negativeKeywordListId)
                 {
                     return new ReplaceRequest(service, body, advertiserId, negativeKeywordListId);
                 }
@@ -8867,10 +10776,10 @@ namespace Google.Apis.DisplayVideo.v1
                 /// keywords in a negative keyword list with keywords provided in
                 /// ReplaceNegativeKeywordsRequest.new_negative_keywords.
                 /// </summary>
-                public class ReplaceRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ReplaceNegativeKeywordsResponse>
+                public class ReplaceRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.ReplaceNegativeKeywordsResponse>
                 {
                     /// <summary>Constructs a new Replace request.</summary>
-                    public ReplaceRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.ReplaceNegativeKeywordsRequest body, long advertiserId, long negativeKeywordListId) : base(service)
+                    public ReplaceRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v3.Data.ReplaceNegativeKeywordsRequest body, long advertiserId, long negativeKeywordListId) : base(service)
                     {
                         AdvertiserId = advertiserId;
                         NegativeKeywordListId = negativeKeywordListId;
@@ -8891,7 +10800,7 @@ namespace Google.Apis.DisplayVideo.v1
                     public virtual long NegativeKeywordListId { get; private set; }
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.DisplayVideo.v1.Data.ReplaceNegativeKeywordsRequest Body { get; set; }
+                    Google.Apis.DisplayVideo.v3.Data.ReplaceNegativeKeywordsRequest Body { get; set; }
 
                     /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
@@ -8903,7 +10812,7 @@ namespace Google.Apis.DisplayVideo.v1
                     public override string HttpMethod => "POST";
 
                     /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1/advertisers/{advertiserId}/negativeKeywordLists/{+negativeKeywordListId}/negativeKeywords:replace";
+                    public override string RestPath => "v3/advertisers/{advertiserId}/negativeKeywordLists/{+negativeKeywordListId}/negativeKeywords:replace";
 
                     /// <summary>Initializes Replace parameter list.</summary>
                     protected override void InitParameters()
@@ -8936,7 +10845,7 @@ namespace Google.Apis.DisplayVideo.v1
             /// <param name="advertiserId">
             /// Required. The ID of the DV360 advertiser to which the negative keyword list will belong.
             /// </param>
-            public virtual CreateRequest Create(Google.Apis.DisplayVideo.v1.Data.NegativeKeywordList body, long advertiserId)
+            public virtual CreateRequest Create(Google.Apis.DisplayVideo.v3.Data.NegativeKeywordList body, long advertiserId)
             {
                 return new CreateRequest(service, body, advertiserId);
             }
@@ -8944,10 +10853,10 @@ namespace Google.Apis.DisplayVideo.v1
             /// <summary>
             /// Creates a new negative keyword list. Returns the newly created negative keyword list if successful.
             /// </summary>
-            public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.NegativeKeywordList>
+            public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.NegativeKeywordList>
             {
                 /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.NegativeKeywordList body, long advertiserId) : base(service)
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v3.Data.NegativeKeywordList body, long advertiserId) : base(service)
                 {
                     AdvertiserId = advertiserId;
                     Body = body;
@@ -8961,7 +10870,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public virtual long AdvertiserId { get; private set; }
 
                 /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.DisplayVideo.v1.Data.NegativeKeywordList Body { get; set; }
+                Google.Apis.DisplayVideo.v3.Data.NegativeKeywordList Body { get; set; }
 
                 /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
@@ -8973,7 +10882,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public override string HttpMethod => "POST";
 
                 /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1/advertisers/{+advertiserId}/negativeKeywordLists";
+                public override string RestPath => "v3/advertisers/{+advertiserId}/negativeKeywordLists";
 
                 /// <summary>Initializes Create parameter list.</summary>
                 protected override void InitParameters()
@@ -9005,7 +10914,7 @@ namespace Google.Apis.DisplayVideo.v1
             /// <summary>
             /// Deletes a negative keyword list given an advertiser ID and a negative keyword list ID.
             /// </summary>
-            public class DeleteRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Empty>
+            public class DeleteRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
                 public DeleteRequest(Google.Apis.Services.IClientService service, long advertiserId, long negativeKeywordListId) : base(service)
@@ -9032,7 +10941,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public override string HttpMethod => "DELETE";
 
                 /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1/advertisers/{+advertiserId}/negativeKeywordLists/{+negativeKeywordListId}";
+                public override string RestPath => "v3/advertisers/{+advertiserId}/negativeKeywordLists/{+negativeKeywordListId}";
 
                 /// <summary>Initializes Delete parameter list.</summary>
                 protected override void InitParameters()
@@ -9068,7 +10977,7 @@ namespace Google.Apis.DisplayVideo.v1
             }
 
             /// <summary>Gets a negative keyword list given an advertiser ID and a negative keyword list ID.</summary>
-            public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.NegativeKeywordList>
+            public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.NegativeKeywordList>
             {
                 /// <summary>Constructs a new Get request.</summary>
                 public GetRequest(Google.Apis.Services.IClientService service, long advertiserId, long negativeKeywordListId) : base(service)
@@ -9095,7 +11004,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public override string HttpMethod => "GET";
 
                 /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1/advertisers/{+advertiserId}/negativeKeywordLists/{+negativeKeywordListId}";
+                public override string RestPath => "v3/advertisers/{+advertiserId}/negativeKeywordLists/{+negativeKeywordListId}";
 
                 /// <summary>Initializes Get parameter list.</summary>
                 protected override void InitParameters()
@@ -9130,7 +11039,7 @@ namespace Google.Apis.DisplayVideo.v1
             }
 
             /// <summary>Lists negative keyword lists based on a given advertiser id.</summary>
-            public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ListNegativeKeywordListsResponse>
+            public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.ListNegativeKeywordListsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
                 public ListRequest(Google.Apis.Services.IClientService service, long advertiserId) : base(service)
@@ -9167,7 +11076,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public override string HttpMethod => "GET";
 
                 /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1/advertisers/{+advertiserId}/negativeKeywordLists";
+                public override string RestPath => "v3/advertisers/{+advertiserId}/negativeKeywordLists";
 
                 /// <summary>Initializes List parameter list.</summary>
                 protected override void InitParameters()
@@ -9210,7 +11119,7 @@ namespace Google.Apis.DisplayVideo.v1
             /// <param name="negativeKeywordListId">
             /// Output only. The unique ID of the negative keyword list. Assigned by the system.
             /// </param>
-            public virtual PatchRequest Patch(Google.Apis.DisplayVideo.v1.Data.NegativeKeywordList body, long advertiserId, long negativeKeywordListId)
+            public virtual PatchRequest Patch(Google.Apis.DisplayVideo.v3.Data.NegativeKeywordList body, long advertiserId, long negativeKeywordListId)
             {
                 return new PatchRequest(service, body, advertiserId, negativeKeywordListId);
             }
@@ -9218,10 +11127,10 @@ namespace Google.Apis.DisplayVideo.v1
             /// <summary>
             /// Updates a negative keyword list. Returns the updated negative keyword list if successful.
             /// </summary>
-            public class PatchRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.NegativeKeywordList>
+            public class PatchRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.NegativeKeywordList>
             {
                 /// <summary>Constructs a new Patch request.</summary>
-                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.NegativeKeywordList body, long advertiserId, long negativeKeywordListId) : base(service)
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v3.Data.NegativeKeywordList body, long advertiserId, long negativeKeywordListId) : base(service)
                 {
                     AdvertiserId = advertiserId;
                     NegativeKeywordListId = negativeKeywordListId;
@@ -9244,7 +11153,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public virtual object UpdateMask { get; set; }
 
                 /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.DisplayVideo.v1.Data.NegativeKeywordList Body { get; set; }
+                Google.Apis.DisplayVideo.v3.Data.NegativeKeywordList Body { get; set; }
 
                 /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
@@ -9256,7 +11165,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public override string HttpMethod => "PATCH";
 
                 /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1/advertisers/{+advertiserId}/negativeKeywordLists/{negativeKeywordListId}";
+                public override string RestPath => "v3/advertisers/{+advertiserId}/negativeKeywordLists/{negativeKeywordListId}";
 
                 /// <summary>Initializes Patch parameter list.</summary>
                 protected override void InitParameters()
@@ -9335,7 +11244,7 @@ namespace Google.Apis.DisplayVideo.v1
                 /// `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID`
                 /// * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`
                 /// </param>
-                public virtual CreateRequest Create(Google.Apis.DisplayVideo.v1.Data.AssignedTargetingOption body, long advertiserId, CreateRequest.TargetingTypeEnum targetingType)
+                public virtual CreateRequest Create(Google.Apis.DisplayVideo.v3.Data.AssignedTargetingOption body, long advertiserId, CreateRequest.TargetingTypeEnum targetingType)
                 {
                     return new CreateRequest(service, body, advertiserId, targetingType);
                 }
@@ -9343,10 +11252,10 @@ namespace Google.Apis.DisplayVideo.v1
                 /// <summary>
                 /// Assigns a targeting option to an advertiser. Returns the assigned targeting option if successful.
                 /// </summary>
-                public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.AssignedTargetingOption>
+                public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.AssignedTargetingOption>
                 {
                     /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.AssignedTargetingOption body, long advertiserId, TargetingTypeEnum targetingType) : base(service)
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v3.Data.AssignedTargetingOption body, long advertiserId, TargetingTypeEnum targetingType) : base(service)
                     {
                         AdvertiserId = advertiserId;
                         TargetingType = targetingType;
@@ -9559,41 +11468,65 @@ namespace Google.Apis.DisplayVideo.v1
                         /// address, or latitude/longitude coordinates.
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_POI")]
-                        TARGETINGTYPEPOI = 39,
+                        TARGETINGTYPEPOI = 38,
 
                         /// <summary>
                         /// Target ads around locations of a business chain within a specific geo region.
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BUSINESS_CHAIN")]
-                        TARGETINGTYPEBUSINESSCHAIN = 40,
+                        TARGETINGTYPEBUSINESSCHAIN = 39,
 
                         /// <summary>Target ads to a specific video content duration.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_DURATION")]
-                        TARGETINGTYPECONTENTDURATION = 43,
+                        TARGETINGTYPECONTENTDURATION = 40,
 
                         /// <summary>Target ads to a specific video content stream type.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_STREAM_TYPE")]
-                        TARGETINGTYPECONTENTSTREAMTYPE = 44,
+                        TARGETINGTYPECONTENTSTREAMTYPE = 41,
 
                         /// <summary>Target ads to a specific native content position.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NATIVE_CONTENT_POSITION")]
-                        TARGETINGTYPENATIVECONTENTPOSITION = 38,
+                        TARGETINGTYPENATIVECONTENTPOSITION = 42,
 
                         /// <summary>Target ads in an Open Measurement enabled inventory.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_OMID")]
-                        TARGETINGTYPEOMID = 41,
+                        TARGETINGTYPEOMID = 43,
 
                         /// <summary>Target ads to a specific audio content type.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIO_CONTENT_TYPE")]
-                        TARGETINGTYPEAUDIOCONTENTTYPE = 42,
+                        TARGETINGTYPEAUDIOCONTENTTYPE = 44,
 
                         /// <summary>Target ads to a specific content genre.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_GENRE")]
                         TARGETINGTYPECONTENTGENRE = 45,
+
+                        /// <summary>
+                        /// Target ads to a specific YouTube video. Targeting of this type cannot be created or updated
+                        /// using the API. Although this targeting is inherited by child resources, **inherited
+                        /// targeting of this type will not be retrieveable**.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_YOUTUBE_VIDEO")]
+                        TARGETINGTYPEYOUTUBEVIDEO = 46,
+
+                        /// <summary>
+                        /// Target ads to a specific YouTube channel. Targeting of this type cannot be created or
+                        /// updated using the API. Although this targeting is inherited by child resources, **inherited
+                        /// targeting of this type will not be retrieveable**.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_YOUTUBE_CHANNEL")]
+                        TARGETINGTYPEYOUTUBECHANNEL = 47,
+
+                        /// <summary>
+                        /// Target ads to a serve it in a certain position of a session. Only supported for Ad Group
+                        /// resources under YouTube Programmatic Reservation line items. Targeting of this type cannot
+                        /// be created or updated using the API.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SESSION_POSITION")]
+                        TARGETINGTYPESESSIONPOSITION = 48,
                     }
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.DisplayVideo.v1.Data.AssignedTargetingOption Body { get; set; }
+                    Google.Apis.DisplayVideo.v3.Data.AssignedTargetingOption Body { get; set; }
 
                     /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
@@ -9605,7 +11538,7 @@ namespace Google.Apis.DisplayVideo.v1
                     public override string HttpMethod => "POST";
 
                     /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1/advertisers/{+advertiserId}/targetingTypes/{+targetingType}/assignedTargetingOptions";
+                    public override string RestPath => "v3/advertisers/{+advertiserId}/targetingTypes/{+targetingType}/assignedTargetingOptions";
 
                     /// <summary>Initializes Create parameter list.</summary>
                     protected override void InitParameters()
@@ -9646,7 +11579,7 @@ namespace Google.Apis.DisplayVideo.v1
                 }
 
                 /// <summary>Deletes an assigned targeting option from an advertiser.</summary>
-                public class DeleteRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Empty>
+                public class DeleteRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.Empty>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
                     public DeleteRequest(Google.Apis.Services.IClientService service, long advertiserId, TargetingTypeEnum targetingType, string assignedTargetingOptionId) : base(service)
@@ -9862,37 +11795,61 @@ namespace Google.Apis.DisplayVideo.v1
                         /// address, or latitude/longitude coordinates.
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_POI")]
-                        TARGETINGTYPEPOI = 39,
+                        TARGETINGTYPEPOI = 38,
 
                         /// <summary>
                         /// Target ads around locations of a business chain within a specific geo region.
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BUSINESS_CHAIN")]
-                        TARGETINGTYPEBUSINESSCHAIN = 40,
+                        TARGETINGTYPEBUSINESSCHAIN = 39,
 
                         /// <summary>Target ads to a specific video content duration.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_DURATION")]
-                        TARGETINGTYPECONTENTDURATION = 43,
+                        TARGETINGTYPECONTENTDURATION = 40,
 
                         /// <summary>Target ads to a specific video content stream type.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_STREAM_TYPE")]
-                        TARGETINGTYPECONTENTSTREAMTYPE = 44,
+                        TARGETINGTYPECONTENTSTREAMTYPE = 41,
 
                         /// <summary>Target ads to a specific native content position.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NATIVE_CONTENT_POSITION")]
-                        TARGETINGTYPENATIVECONTENTPOSITION = 38,
+                        TARGETINGTYPENATIVECONTENTPOSITION = 42,
 
                         /// <summary>Target ads in an Open Measurement enabled inventory.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_OMID")]
-                        TARGETINGTYPEOMID = 41,
+                        TARGETINGTYPEOMID = 43,
 
                         /// <summary>Target ads to a specific audio content type.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIO_CONTENT_TYPE")]
-                        TARGETINGTYPEAUDIOCONTENTTYPE = 42,
+                        TARGETINGTYPEAUDIOCONTENTTYPE = 44,
 
                         /// <summary>Target ads to a specific content genre.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_GENRE")]
                         TARGETINGTYPECONTENTGENRE = 45,
+
+                        /// <summary>
+                        /// Target ads to a specific YouTube video. Targeting of this type cannot be created or updated
+                        /// using the API. Although this targeting is inherited by child resources, **inherited
+                        /// targeting of this type will not be retrieveable**.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_YOUTUBE_VIDEO")]
+                        TARGETINGTYPEYOUTUBEVIDEO = 46,
+
+                        /// <summary>
+                        /// Target ads to a specific YouTube channel. Targeting of this type cannot be created or
+                        /// updated using the API. Although this targeting is inherited by child resources, **inherited
+                        /// targeting of this type will not be retrieveable**.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_YOUTUBE_CHANNEL")]
+                        TARGETINGTYPEYOUTUBECHANNEL = 47,
+
+                        /// <summary>
+                        /// Target ads to a serve it in a certain position of a session. Only supported for Ad Group
+                        /// resources under YouTube Programmatic Reservation line items. Targeting of this type cannot
+                        /// be created or updated using the API.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SESSION_POSITION")]
+                        TARGETINGTYPESESSIONPOSITION = 48,
                     }
 
                     /// <summary>Required. The ID of the assigned targeting option to delete.</summary>
@@ -9906,7 +11863,7 @@ namespace Google.Apis.DisplayVideo.v1
                     public override string HttpMethod => "DELETE";
 
                     /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1/advertisers/{+advertiserId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}";
+                    public override string RestPath => "v3/advertisers/{+advertiserId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}";
 
                     /// <summary>Initializes Delete parameter list.</summary>
                     protected override void InitParameters()
@@ -9957,7 +11914,7 @@ namespace Google.Apis.DisplayVideo.v1
                 }
 
                 /// <summary>Gets a single targeting option assigned to an advertiser.</summary>
-                public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.AssignedTargetingOption>
+                public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.AssignedTargetingOption>
                 {
                     /// <summary>Constructs a new Get request.</summary>
                     public GetRequest(Google.Apis.Services.IClientService service, long advertiserId, TargetingTypeEnum targetingType, string assignedTargetingOptionId) : base(service)
@@ -10175,37 +12132,61 @@ namespace Google.Apis.DisplayVideo.v1
                         /// address, or latitude/longitude coordinates.
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_POI")]
-                        TARGETINGTYPEPOI = 39,
+                        TARGETINGTYPEPOI = 38,
 
                         /// <summary>
                         /// Target ads around locations of a business chain within a specific geo region.
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BUSINESS_CHAIN")]
-                        TARGETINGTYPEBUSINESSCHAIN = 40,
+                        TARGETINGTYPEBUSINESSCHAIN = 39,
 
                         /// <summary>Target ads to a specific video content duration.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_DURATION")]
-                        TARGETINGTYPECONTENTDURATION = 43,
+                        TARGETINGTYPECONTENTDURATION = 40,
 
                         /// <summary>Target ads to a specific video content stream type.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_STREAM_TYPE")]
-                        TARGETINGTYPECONTENTSTREAMTYPE = 44,
+                        TARGETINGTYPECONTENTSTREAMTYPE = 41,
 
                         /// <summary>Target ads to a specific native content position.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NATIVE_CONTENT_POSITION")]
-                        TARGETINGTYPENATIVECONTENTPOSITION = 38,
+                        TARGETINGTYPENATIVECONTENTPOSITION = 42,
 
                         /// <summary>Target ads in an Open Measurement enabled inventory.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_OMID")]
-                        TARGETINGTYPEOMID = 41,
+                        TARGETINGTYPEOMID = 43,
 
                         /// <summary>Target ads to a specific audio content type.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIO_CONTENT_TYPE")]
-                        TARGETINGTYPEAUDIOCONTENTTYPE = 42,
+                        TARGETINGTYPEAUDIOCONTENTTYPE = 44,
 
                         /// <summary>Target ads to a specific content genre.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_GENRE")]
                         TARGETINGTYPECONTENTGENRE = 45,
+
+                        /// <summary>
+                        /// Target ads to a specific YouTube video. Targeting of this type cannot be created or updated
+                        /// using the API. Although this targeting is inherited by child resources, **inherited
+                        /// targeting of this type will not be retrieveable**.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_YOUTUBE_VIDEO")]
+                        TARGETINGTYPEYOUTUBEVIDEO = 46,
+
+                        /// <summary>
+                        /// Target ads to a specific YouTube channel. Targeting of this type cannot be created or
+                        /// updated using the API. Although this targeting is inherited by child resources, **inherited
+                        /// targeting of this type will not be retrieveable**.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_YOUTUBE_CHANNEL")]
+                        TARGETINGTYPEYOUTUBECHANNEL = 47,
+
+                        /// <summary>
+                        /// Target ads to a serve it in a certain position of a session. Only supported for Ad Group
+                        /// resources under YouTube Programmatic Reservation line items. Targeting of this type cannot
+                        /// be created or updated using the API.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SESSION_POSITION")]
+                        TARGETINGTYPESESSIONPOSITION = 48,
                     }
 
                     /// <summary>
@@ -10222,7 +12203,7 @@ namespace Google.Apis.DisplayVideo.v1
                     public override string HttpMethod => "GET";
 
                     /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1/advertisers/{+advertiserId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}";
+                    public override string RestPath => "v3/advertisers/{+advertiserId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}";
 
                     /// <summary>Initializes Get parameter list.</summary>
                     protected override void InitParameters()
@@ -10269,7 +12250,7 @@ namespace Google.Apis.DisplayVideo.v1
                 }
 
                 /// <summary>Lists the targeting options assigned to an advertiser.</summary>
-                public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ListAdvertiserAssignedTargetingOptionsResponse>
+                public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.ListAdvertiserAssignedTargetingOptionsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
                     public ListRequest(Google.Apis.Services.IClientService service, long advertiserId, TargetingTypeEnum targetingType) : base(service)
@@ -10486,37 +12467,61 @@ namespace Google.Apis.DisplayVideo.v1
                         /// address, or latitude/longitude coordinates.
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_POI")]
-                        TARGETINGTYPEPOI = 39,
+                        TARGETINGTYPEPOI = 38,
 
                         /// <summary>
                         /// Target ads around locations of a business chain within a specific geo region.
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BUSINESS_CHAIN")]
-                        TARGETINGTYPEBUSINESSCHAIN = 40,
+                        TARGETINGTYPEBUSINESSCHAIN = 39,
 
                         /// <summary>Target ads to a specific video content duration.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_DURATION")]
-                        TARGETINGTYPECONTENTDURATION = 43,
+                        TARGETINGTYPECONTENTDURATION = 40,
 
                         /// <summary>Target ads to a specific video content stream type.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_STREAM_TYPE")]
-                        TARGETINGTYPECONTENTSTREAMTYPE = 44,
+                        TARGETINGTYPECONTENTSTREAMTYPE = 41,
 
                         /// <summary>Target ads to a specific native content position.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NATIVE_CONTENT_POSITION")]
-                        TARGETINGTYPENATIVECONTENTPOSITION = 38,
+                        TARGETINGTYPENATIVECONTENTPOSITION = 42,
 
                         /// <summary>Target ads in an Open Measurement enabled inventory.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_OMID")]
-                        TARGETINGTYPEOMID = 41,
+                        TARGETINGTYPEOMID = 43,
 
                         /// <summary>Target ads to a specific audio content type.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIO_CONTENT_TYPE")]
-                        TARGETINGTYPEAUDIOCONTENTTYPE = 42,
+                        TARGETINGTYPEAUDIOCONTENTTYPE = 44,
 
                         /// <summary>Target ads to a specific content genre.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_GENRE")]
                         TARGETINGTYPECONTENTGENRE = 45,
+
+                        /// <summary>
+                        /// Target ads to a specific YouTube video. Targeting of this type cannot be created or updated
+                        /// using the API. Although this targeting is inherited by child resources, **inherited
+                        /// targeting of this type will not be retrieveable**.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_YOUTUBE_VIDEO")]
+                        TARGETINGTYPEYOUTUBEVIDEO = 46,
+
+                        /// <summary>
+                        /// Target ads to a specific YouTube channel. Targeting of this type cannot be created or
+                        /// updated using the API. Although this targeting is inherited by child resources, **inherited
+                        /// targeting of this type will not be retrieveable**.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_YOUTUBE_CHANNEL")]
+                        TARGETINGTYPEYOUTUBECHANNEL = 47,
+
+                        /// <summary>
+                        /// Target ads to a serve it in a certain position of a session. Only supported for Ad Group
+                        /// resources under YouTube Programmatic Reservation line items. Targeting of this type cannot
+                        /// be created or updated using the API.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SESSION_POSITION")]
+                        TARGETINGTYPESESSIONPOSITION = 48,
                     }
 
                     /// <summary>
@@ -10561,7 +12566,7 @@ namespace Google.Apis.DisplayVideo.v1
                     public override string HttpMethod => "GET";
 
                     /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1/advertisers/{+advertiserId}/targetingTypes/{+targetingType}/assignedTargetingOptions";
+                    public override string RestPath => "v3/advertisers/{+advertiserId}/targetingTypes/{+targetingType}/assignedTargetingOptions";
 
                     /// <summary>Initializes List parameter list.</summary>
                     protected override void InitParameters()
@@ -10636,7 +12641,7 @@ namespace Google.Apis.DisplayVideo.v1
         /// Used entities count towards their respective resource limit. See
         /// https://support.google.com/displayvideo/answer/6071450.
         /// </summary>
-        public class AuditRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.AuditAdvertiserResponse>
+        public class AuditRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.AuditAdvertiserResponse>
         {
             /// <summary>Constructs a new Audit request.</summary>
             public AuditRequest(Google.Apis.Services.IClientService service, long advertiserId) : base(service)
@@ -10665,7 +12670,7 @@ namespace Google.Apis.DisplayVideo.v1
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1/advertisers/{+advertiserId}:audit";
+            public override string RestPath => "v3/advertisers/{+advertiserId}:audit";
 
             /// <summary>Initializes Audit parameter list.</summary>
             protected override void InitParameters()
@@ -10691,184 +12696,11 @@ namespace Google.Apis.DisplayVideo.v1
         }
 
         /// <summary>
-        /// Bulk edits targeting options under a single advertiser. The operation will delete the assigned targeting
-        /// options provided in BulkEditAdvertiserAssignedTargetingOptionsRequest.delete_requests and then create the
-        /// assigned targeting options provided in BulkEditAdvertiserAssignedTargetingOptionsRequest.create_requests .
-        /// </summary>
-        /// <param name="body">The body of the request.</param>
-        /// <param name="advertiserId">Required. The ID of the advertiser.</param>
-        public virtual BulkEditAdvertiserAssignedTargetingOptionsRequest BulkEditAdvertiserAssignedTargetingOptions(Google.Apis.DisplayVideo.v1.Data.BulkEditAdvertiserAssignedTargetingOptionsRequest body, long advertiserId)
-        {
-            return new BulkEditAdvertiserAssignedTargetingOptionsRequest(service, body, advertiserId);
-        }
-
-        /// <summary>
-        /// Bulk edits targeting options under a single advertiser. The operation will delete the assigned targeting
-        /// options provided in BulkEditAdvertiserAssignedTargetingOptionsRequest.delete_requests and then create the
-        /// assigned targeting options provided in BulkEditAdvertiserAssignedTargetingOptionsRequest.create_requests .
-        /// </summary>
-        public class BulkEditAdvertiserAssignedTargetingOptionsRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.BulkEditAdvertiserAssignedTargetingOptionsResponse>
-        {
-            /// <summary>Constructs a new BulkEditAdvertiserAssignedTargetingOptions request.</summary>
-            public BulkEditAdvertiserAssignedTargetingOptionsRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.BulkEditAdvertiserAssignedTargetingOptionsRequest body, long advertiserId) : base(service)
-            {
-                AdvertiserId = advertiserId;
-                Body = body;
-                InitParameters();
-            }
-
-            /// <summary>Required. The ID of the advertiser.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual long AdvertiserId { get; private set; }
-
-            /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.DisplayVideo.v1.Data.BulkEditAdvertiserAssignedTargetingOptionsRequest Body { get; set; }
-
-            /// <summary>Returns the body of the request.</summary>
-            protected override object GetBody() => Body;
-
-            /// <summary>Gets the method name.</summary>
-            public override string MethodName => "bulkEditAdvertiserAssignedTargetingOptions";
-
-            /// <summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "POST";
-
-            /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1/advertisers/{+advertiserId}:bulkEditAdvertiserAssignedTargetingOptions";
-
-            /// <summary>Initializes BulkEditAdvertiserAssignedTargetingOptions parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-                RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "advertiserId",
-                    IsRequired = true,
-                    ParameterType = "path",
-                    DefaultValue = null,
-                    Pattern = @"^[^/]+$",
-                });
-            }
-        }
-
-        /// <summary>Lists assigned targeting options of an advertiser across targeting types.</summary>
-        /// <param name="advertiserId">Required. The ID of the advertiser the line item belongs to.</param>
-        public virtual BulkListAdvertiserAssignedTargetingOptionsRequest BulkListAdvertiserAssignedTargetingOptions(long advertiserId)
-        {
-            return new BulkListAdvertiserAssignedTargetingOptionsRequest(service, advertiserId);
-        }
-
-        /// <summary>Lists assigned targeting options of an advertiser across targeting types.</summary>
-        public class BulkListAdvertiserAssignedTargetingOptionsRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.BulkListAdvertiserAssignedTargetingOptionsResponse>
-        {
-            /// <summary>Constructs a new BulkListAdvertiserAssignedTargetingOptions request.</summary>
-            public BulkListAdvertiserAssignedTargetingOptionsRequest(Google.Apis.Services.IClientService service, long advertiserId) : base(service)
-            {
-                AdvertiserId = advertiserId;
-                InitParameters();
-            }
-
-            /// <summary>Required. The ID of the advertiser the line item belongs to.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual long AdvertiserId { get; private set; }
-
-            /// <summary>
-            /// Allows filtering by assigned targeting option fields. Supported syntax: * Filter expressions are made up
-            /// of one or more restrictions. * Restrictions can be combined by the `OR` logical operator. * A
-            /// restriction has the form of `{field} {operator} {value}`. * All fields must use the `EQUALS (=)
-            /// operator`. Supported fields: * `targetingType` Examples: * targetingType with value
-            /// TARGETING_TYPE_CHANNEL `targetingType="TARGETING_TYPE_CHANNEL"` The length of this field should be no
-            /// more than 500 characters. Reference our [filter `LIST`
-            /// requests](/display-video/api/guides/how-tos/filters) guide for more information.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Filter { get; set; }
-
-            /// <summary>
-            /// Field by which to sort the list. Acceptable values are: * `targetingType` (default) The default sorting
-            /// order is ascending. To specify descending order for a field, a suffix "desc" should be added to the
-            /// field name. Example: `targetingType desc`.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string OrderBy { get; set; }
-
-            /// <summary>
-            /// Requested page size. The size must be an integer between `1` and `5000`. If unspecified, the default is
-            /// '5000'. Returns error code `INVALID_ARGUMENT` if an invalid value is specified.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
-
-            /// <summary>
-            /// A token that lets the client fetch the next page of results. Typically, this is the value of
-            /// next_page_token returned from the previous call to `BulkListAdvertiserAssignedTargetingOptions` method.
-            /// If not specified, the first page of results will be returned.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
-
-            /// <summary>Gets the method name.</summary>
-            public override string MethodName => "bulkListAdvertiserAssignedTargetingOptions";
-
-            /// <summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "GET";
-
-            /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1/advertisers/{+advertiserId}:bulkListAdvertiserAssignedTargetingOptions";
-
-            /// <summary>Initializes BulkListAdvertiserAssignedTargetingOptions parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-                RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "advertiserId",
-                    IsRequired = true,
-                    ParameterType = "path",
-                    DefaultValue = null,
-                    Pattern = @"^[^/]+$",
-                });
-                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "filter",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-                RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "orderBy",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "pageSize",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "pageToken",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            }
-        }
-
-        /// <summary>
         /// Creates a new advertiser. Returns the newly created advertiser if successful. This method can take up to 180
         /// seconds to complete.
         /// </summary>
         /// <param name="body">The body of the request.</param>
-        public virtual CreateRequest Create(Google.Apis.DisplayVideo.v1.Data.Advertiser body)
+        public virtual CreateRequest Create(Google.Apis.DisplayVideo.v3.Data.Advertiser body)
         {
             return new CreateRequest(service, body);
         }
@@ -10877,17 +12709,17 @@ namespace Google.Apis.DisplayVideo.v1
         /// Creates a new advertiser. Returns the newly created advertiser if successful. This method can take up to 180
         /// seconds to complete.
         /// </summary>
-        public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Advertiser>
+        public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.Advertiser>
         {
             /// <summary>Constructs a new Create request.</summary>
-            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.Advertiser body) : base(service)
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v3.Data.Advertiser body) : base(service)
             {
                 Body = body;
                 InitParameters();
             }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.DisplayVideo.v1.Data.Advertiser Body { get; set; }
+            Google.Apis.DisplayVideo.v3.Data.Advertiser Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -10899,7 +12731,7 @@ namespace Google.Apis.DisplayVideo.v1
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1/advertisers";
+            public override string RestPath => "v3/advertisers";
 
             /// <summary>Initializes Create parameter list.</summary>
             protected override void InitParameters()
@@ -10922,7 +12754,7 @@ namespace Google.Apis.DisplayVideo.v1
         /// Deletes an advertiser. Deleting an advertiser will delete all of its child resources, for example,
         /// campaigns, insertion orders and line items. A deleted advertiser cannot be recovered.
         /// </summary>
-        public class DeleteRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Empty>
+        public class DeleteRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.Empty>
         {
             /// <summary>Constructs a new Delete request.</summary>
             public DeleteRequest(Google.Apis.Services.IClientService service, long advertiserId) : base(service)
@@ -10942,9 +12774,70 @@ namespace Google.Apis.DisplayVideo.v1
             public override string HttpMethod => "DELETE";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1/advertisers/{+advertiserId}";
+            public override string RestPath => "v3/advertisers/{+advertiserId}";
 
             /// <summary>Initializes Delete parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "advertiserId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>
+        /// Edits targeting options under a single advertiser. The operation will delete the assigned targeting options
+        /// provided in BulkEditAdvertiserAssignedTargetingOptionsRequest.delete_requests and then create the assigned
+        /// targeting options provided in BulkEditAdvertiserAssignedTargetingOptionsRequest.create_requests .
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="advertiserId">Required. The ID of the advertiser.</param>
+        public virtual EditAssignedTargetingOptionsRequest EditAssignedTargetingOptions(Google.Apis.DisplayVideo.v3.Data.BulkEditAdvertiserAssignedTargetingOptionsRequest body, long advertiserId)
+        {
+            return new EditAssignedTargetingOptionsRequest(service, body, advertiserId);
+        }
+
+        /// <summary>
+        /// Edits targeting options under a single advertiser. The operation will delete the assigned targeting options
+        /// provided in BulkEditAdvertiserAssignedTargetingOptionsRequest.delete_requests and then create the assigned
+        /// targeting options provided in BulkEditAdvertiserAssignedTargetingOptionsRequest.create_requests .
+        /// </summary>
+        public class EditAssignedTargetingOptionsRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.BulkEditAdvertiserAssignedTargetingOptionsResponse>
+        {
+            /// <summary>Constructs a new EditAssignedTargetingOptions request.</summary>
+            public EditAssignedTargetingOptionsRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v3.Data.BulkEditAdvertiserAssignedTargetingOptionsRequest body, long advertiserId) : base(service)
+            {
+                AdvertiserId = advertiserId;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Required. The ID of the advertiser.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long AdvertiserId { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.DisplayVideo.v3.Data.BulkEditAdvertiserAssignedTargetingOptionsRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "editAssignedTargetingOptions";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v3/advertisers/{+advertiserId}:editAssignedTargetingOptions";
+
+            /// <summary>Initializes EditAssignedTargetingOptions parameter list.</summary>
             protected override void InitParameters()
             {
                 base.InitParameters();
@@ -10967,7 +12860,7 @@ namespace Google.Apis.DisplayVideo.v1
         }
 
         /// <summary>Gets an advertiser.</summary>
-        public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Advertiser>
+        public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.Advertiser>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, long advertiserId) : base(service)
@@ -10987,7 +12880,7 @@ namespace Google.Apis.DisplayVideo.v1
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1/advertisers/{+advertiserId}";
+            public override string RestPath => "v3/advertisers/{+advertiserId}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -11017,7 +12910,7 @@ namespace Google.Apis.DisplayVideo.v1
         /// Lists advertisers that are accessible to the current user. The order is defined by the order_by parameter. A
         /// single partner_id is required. Cross-partner listing is not supported.
         /// </summary>
-        public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ListAdvertisersResponse>
+        public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.ListAdvertisersResponse>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service) : base(service)
@@ -11078,7 +12971,7 @@ namespace Google.Apis.DisplayVideo.v1
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1/advertisers";
+            public override string RestPath => "v3/advertisers";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -11127,19 +13020,131 @@ namespace Google.Apis.DisplayVideo.v1
             }
         }
 
+        /// <summary>Lists assigned targeting options of an advertiser across targeting types.</summary>
+        /// <param name="advertiserId">Required. The ID of the advertiser the line item belongs to.</param>
+        public virtual ListAssignedTargetingOptionsRequest ListAssignedTargetingOptions(long advertiserId)
+        {
+            return new ListAssignedTargetingOptionsRequest(service, advertiserId);
+        }
+
+        /// <summary>Lists assigned targeting options of an advertiser across targeting types.</summary>
+        public class ListAssignedTargetingOptionsRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.BulkListAdvertiserAssignedTargetingOptionsResponse>
+        {
+            /// <summary>Constructs a new ListAssignedTargetingOptions request.</summary>
+            public ListAssignedTargetingOptionsRequest(Google.Apis.Services.IClientService service, long advertiserId) : base(service)
+            {
+                AdvertiserId = advertiserId;
+                InitParameters();
+            }
+
+            /// <summary>Required. The ID of the advertiser the line item belongs to.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long AdvertiserId { get; private set; }
+
+            /// <summary>
+            /// Allows filtering by assigned targeting option fields. Supported syntax: * Filter expressions are made up
+            /// of one or more restrictions. * Restrictions can be combined by the `OR` logical operator. * A
+            /// restriction has the form of `{field} {operator} {value}`. * All fields must use the `EQUALS (=)
+            /// operator`. Supported fields: * `targetingType` Examples: * targetingType with value
+            /// TARGETING_TYPE_CHANNEL `targetingType="TARGETING_TYPE_CHANNEL"` The length of this field should be no
+            /// more than 500 characters. Reference our [filter `LIST`
+            /// requests](/display-video/api/guides/how-tos/filters) guide for more information.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
+            /// <summary>
+            /// Field by which to sort the list. Acceptable values are: * `targetingType` (default) The default sorting
+            /// order is ascending. To specify descending order for a field, a suffix "desc" should be added to the
+            /// field name. Example: `targetingType desc`.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OrderBy { get; set; }
+
+            /// <summary>
+            /// Requested page size. The size must be an integer between `1` and `5000`. If unspecified, the default is
+            /// '5000'. Returns error code `INVALID_ARGUMENT` if an invalid value is specified.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>
+            /// A token that lets the client fetch the next page of results. Typically, this is the value of
+            /// next_page_token returned from the previous call to `BulkListAdvertiserAssignedTargetingOptions` method.
+            /// If not specified, the first page of results will be returned.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "listAssignedTargetingOptions";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v3/advertisers/{+advertiserId}:listAssignedTargetingOptions";
+
+            /// <summary>Initializes ListAssignedTargetingOptions parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "advertiserId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
+                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "filter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "orderBy",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
         /// <summary>Updates an existing advertiser. Returns the updated advertiser if successful.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="advertiserId">Output only. The unique ID of the advertiser. Assigned by the system.</param>
-        public virtual PatchRequest Patch(Google.Apis.DisplayVideo.v1.Data.Advertiser body, long advertiserId)
+        public virtual PatchRequest Patch(Google.Apis.DisplayVideo.v3.Data.Advertiser body, long advertiserId)
         {
             return new PatchRequest(service, body, advertiserId);
         }
 
         /// <summary>Updates an existing advertiser. Returns the updated advertiser if successful.</summary>
-        public class PatchRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Advertiser>
+        public class PatchRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.Advertiser>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.Advertiser body, long advertiserId) : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v3.Data.Advertiser body, long advertiserId) : base(service)
             {
                 AdvertiserId = advertiserId;
                 Body = body;
@@ -11155,7 +13160,7 @@ namespace Google.Apis.DisplayVideo.v1
             public virtual object UpdateMask { get; set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.DisplayVideo.v1.Data.Advertiser Body { get; set; }
+            Google.Apis.DisplayVideo.v3.Data.Advertiser Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -11167,7 +13172,7 @@ namespace Google.Apis.DisplayVideo.v1
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1/advertisers/{+advertiserId}";
+            public override string RestPath => "v3/advertisers/{+advertiserId}";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -11215,7 +13220,7 @@ namespace Google.Apis.DisplayVideo.v1
         }
 
         /// <summary>Gets a combined audience.</summary>
-        public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.CombinedAudience>
+        public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.CombinedAudience>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, long combinedAudienceId) : base(service)
@@ -11243,7 +13248,7 @@ namespace Google.Apis.DisplayVideo.v1
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1/combinedAudiences/{+combinedAudienceId}";
+            public override string RestPath => "v3/combinedAudiences/{+combinedAudienceId}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -11283,7 +13288,7 @@ namespace Google.Apis.DisplayVideo.v1
         }
 
         /// <summary>Lists combined audiences. The order is defined by the order_by parameter.</summary>
-        public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ListCombinedAudiencesResponse>
+        public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.ListCombinedAudiencesResponse>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service) : base(service)
@@ -11340,7 +13345,7 @@ namespace Google.Apis.DisplayVideo.v1
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1/combinedAudiences";
+            public override string RestPath => "v3/combinedAudiences";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -11410,7 +13415,317 @@ namespace Google.Apis.DisplayVideo.v1
         public CustomBiddingAlgorithmsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
+            Rules = new RulesResource(service);
             Scripts = new ScriptsResource(service);
+        }
+
+        /// <summary>Gets the Rules resource.</summary>
+        public virtual RulesResource Rules { get; }
+
+        /// <summary>The "rules" collection of methods.</summary>
+        public class RulesResource
+        {
+            private const string Resource = "rules";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public RulesResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>Creates a new rules resource. Returns the newly created rules resource if successful.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="customBiddingAlgorithmId">
+            /// Required. The ID of the custom bidding algorithm that owns the rules resource.
+            /// </param>
+            public virtual CreateRequest Create(Google.Apis.DisplayVideo.v3.Data.CustomBiddingAlgorithmRules body, long customBiddingAlgorithmId)
+            {
+                return new CreateRequest(service, body, customBiddingAlgorithmId);
+            }
+
+            /// <summary>Creates a new rules resource. Returns the newly created rules resource if successful.</summary>
+            public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.CustomBiddingAlgorithmRules>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v3.Data.CustomBiddingAlgorithmRules body, long customBiddingAlgorithmId) : base(service)
+                {
+                    CustomBiddingAlgorithmId = customBiddingAlgorithmId;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The ID of the custom bidding algorithm that owns the rules resource.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("customBiddingAlgorithmId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long CustomBiddingAlgorithmId { get; private set; }
+
+                /// <summary>The ID of the advertiser that owns the parent custom bidding algorithm.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<long> AdvertiserId { get; set; }
+
+                /// <summary>
+                /// The ID of the partner that owns the parent custom bidding algorithm. Only this partner will have
+                /// write access to this rules resource.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("partnerId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<long> PartnerId { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.DisplayVideo.v3.Data.CustomBiddingAlgorithmRules Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "create";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v3/customBiddingAlgorithms/{+customBiddingAlgorithmId}/rules";
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("customBiddingAlgorithmId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "customBiddingAlgorithmId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("partnerId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "partnerId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Retrieves a rules resource.</summary>
+            /// <param name="customBiddingAlgorithmId">
+            /// Required. The ID of the custom bidding algorithm that owns the rules resource.
+            /// </param>
+            /// <param name="customBiddingAlgorithmRulesId">Required. The ID of the rules resource to fetch.</param>
+            public virtual GetRequest Get(long customBiddingAlgorithmId, long customBiddingAlgorithmRulesId)
+            {
+                return new GetRequest(service, customBiddingAlgorithmId, customBiddingAlgorithmRulesId);
+            }
+
+            /// <summary>Retrieves a rules resource.</summary>
+            public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.CustomBiddingAlgorithmRules>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, long customBiddingAlgorithmId, long customBiddingAlgorithmRulesId) : base(service)
+                {
+                    CustomBiddingAlgorithmId = customBiddingAlgorithmId;
+                    CustomBiddingAlgorithmRulesId = customBiddingAlgorithmRulesId;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The ID of the custom bidding algorithm that owns the rules resource.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("customBiddingAlgorithmId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long CustomBiddingAlgorithmId { get; private set; }
+
+                /// <summary>Required. The ID of the rules resource to fetch.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("customBiddingAlgorithmRulesId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long CustomBiddingAlgorithmRulesId { get; private set; }
+
+                /// <summary>The ID of the advertiser that owns the parent custom bidding algorithm.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<long> AdvertiserId { get; set; }
+
+                /// <summary>The ID of the partner that owns the parent custom bidding algorithm.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("partnerId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<long> PartnerId { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v3/customBiddingAlgorithms/{+customBiddingAlgorithmId}/rules/{+customBiddingAlgorithmRulesId}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("customBiddingAlgorithmId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "customBiddingAlgorithmId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("customBiddingAlgorithmRulesId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "customBiddingAlgorithmRulesId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("partnerId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "partnerId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Lists rules resources that belong to the given algorithm. The order is defined by the order_by
+            /// parameter.
+            /// </summary>
+            /// <param name="customBiddingAlgorithmId">
+            /// Required. The ID of the custom bidding algorithm that owns the rules resource.
+            /// </param>
+            public virtual ListRequest List(long customBiddingAlgorithmId)
+            {
+                return new ListRequest(service, customBiddingAlgorithmId);
+            }
+
+            /// <summary>
+            /// Lists rules resources that belong to the given algorithm. The order is defined by the order_by
+            /// parameter.
+            /// </summary>
+            public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.ListCustomBiddingAlgorithmRulesResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, long customBiddingAlgorithmId) : base(service)
+                {
+                    CustomBiddingAlgorithmId = customBiddingAlgorithmId;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The ID of the custom bidding algorithm that owns the rules resource.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("customBiddingAlgorithmId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long CustomBiddingAlgorithmId { get; private set; }
+
+                /// <summary>The ID of the advertiser that owns the parent custom bidding algorithm.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<long> AdvertiserId { get; set; }
+
+                /// <summary>
+                /// Field by which to sort the list. Acceptable values are: * `createTime desc` (default) The default
+                /// sorting order is descending. To specify ascending order for a field, the suffix "desc" should be
+                /// removed. Example: `createTime`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string OrderBy { get; set; }
+
+                /// <summary>
+                /// Requested page size. Must be between `1` and `200`. If unspecified will default to `100`. Returns
+                /// error code `INVALID_ARGUMENT` if an invalid value is specified.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// A token identifying a page of results the server should return. Typically, this is the value of
+                /// next_page_token returned from the previous call to `ListCustomBiddingAlgorithmRules` method. If not
+                /// specified, the first page of results will be returned.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>The ID of the partner that owns the parent custom bidding algorithm.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("partnerId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<long> PartnerId { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v3/customBiddingAlgorithms/{+customBiddingAlgorithmId}/rules";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("customBiddingAlgorithmId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "customBiddingAlgorithmId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderBy",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("partnerId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "partnerId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
         }
 
         /// <summary>Gets the Scripts resource.</summary>
@@ -11435,16 +13750,16 @@ namespace Google.Apis.DisplayVideo.v1
             /// <param name="customBiddingAlgorithmId">
             /// Required. The ID of the custom bidding algorithm that owns the script.
             /// </param>
-            public virtual CreateRequest Create(Google.Apis.DisplayVideo.v1.Data.CustomBiddingScript body, long customBiddingAlgorithmId)
+            public virtual CreateRequest Create(Google.Apis.DisplayVideo.v3.Data.CustomBiddingScript body, long customBiddingAlgorithmId)
             {
                 return new CreateRequest(service, body, customBiddingAlgorithmId);
             }
 
             /// <summary>Creates a new custom bidding script. Returns the newly created script if successful.</summary>
-            public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.CustomBiddingScript>
+            public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.CustomBiddingScript>
             {
                 /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.CustomBiddingScript body, long customBiddingAlgorithmId) : base(service)
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v3.Data.CustomBiddingScript body, long customBiddingAlgorithmId) : base(service)
                 {
                     CustomBiddingAlgorithmId = customBiddingAlgorithmId;
                     Body = body;
@@ -11467,7 +13782,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public virtual System.Nullable<long> PartnerId { get; set; }
 
                 /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.DisplayVideo.v1.Data.CustomBiddingScript Body { get; set; }
+                Google.Apis.DisplayVideo.v3.Data.CustomBiddingScript Body { get; set; }
 
                 /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
@@ -11479,7 +13794,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public override string HttpMethod => "POST";
 
                 /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1/customBiddingAlgorithms/{+customBiddingAlgorithmId}/scripts";
+                public override string RestPath => "v3/customBiddingAlgorithms/{+customBiddingAlgorithmId}/scripts";
 
                 /// <summary>Initializes Create parameter list.</summary>
                 protected override void InitParameters()
@@ -11523,7 +13838,7 @@ namespace Google.Apis.DisplayVideo.v1
             }
 
             /// <summary>Gets a custom bidding script.</summary>
-            public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.CustomBiddingScript>
+            public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.CustomBiddingScript>
             {
                 /// <summary>Constructs a new Get request.</summary>
                 public GetRequest(Google.Apis.Services.IClientService service, long customBiddingAlgorithmId, long customBiddingScriptId) : base(service)
@@ -11559,7 +13874,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public override string HttpMethod => "GET";
 
                 /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1/customBiddingAlgorithms/{+customBiddingAlgorithmId}/scripts/{+customBiddingScriptId}";
+                public override string RestPath => "v3/customBiddingAlgorithms/{+customBiddingAlgorithmId}/scripts/{+customBiddingScriptId}";
 
                 /// <summary>Initializes Get parameter list.</summary>
                 protected override void InitParameters()
@@ -11616,7 +13931,7 @@ namespace Google.Apis.DisplayVideo.v1
             /// Lists custom bidding scripts that belong to the given algorithm. The order is defined by the order_by
             /// parameter.
             /// </summary>
-            public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ListCustomBiddingScriptsResponse>
+            public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.ListCustomBiddingScriptsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
                 public ListRequest(Google.Apis.Services.IClientService service, long customBiddingAlgorithmId) : base(service)
@@ -11670,7 +13985,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public override string HttpMethod => "GET";
 
                 /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1/customBiddingAlgorithms/{+customBiddingAlgorithmId}/scripts";
+                public override string RestPath => "v3/customBiddingAlgorithms/{+customBiddingAlgorithmId}/scripts";
 
                 /// <summary>Initializes List parameter list.</summary>
                 protected override void InitParameters()
@@ -11732,7 +14047,7 @@ namespace Google.Apis.DisplayVideo.v1
         /// Creates a new custom bidding algorithm. Returns the newly created custom bidding algorithm if successful.
         /// </summary>
         /// <param name="body">The body of the request.</param>
-        public virtual CreateRequest Create(Google.Apis.DisplayVideo.v1.Data.CustomBiddingAlgorithm body)
+        public virtual CreateRequest Create(Google.Apis.DisplayVideo.v3.Data.CustomBiddingAlgorithm body)
         {
             return new CreateRequest(service, body);
         }
@@ -11740,17 +14055,17 @@ namespace Google.Apis.DisplayVideo.v1
         /// <summary>
         /// Creates a new custom bidding algorithm. Returns the newly created custom bidding algorithm if successful.
         /// </summary>
-        public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.CustomBiddingAlgorithm>
+        public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.CustomBiddingAlgorithm>
         {
             /// <summary>Constructs a new Create request.</summary>
-            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.CustomBiddingAlgorithm body) : base(service)
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v3.Data.CustomBiddingAlgorithm body) : base(service)
             {
                 Body = body;
                 InitParameters();
             }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.DisplayVideo.v1.Data.CustomBiddingAlgorithm Body { get; set; }
+            Google.Apis.DisplayVideo.v3.Data.CustomBiddingAlgorithm Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -11762,7 +14077,7 @@ namespace Google.Apis.DisplayVideo.v1
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1/customBiddingAlgorithms";
+            public override string RestPath => "v3/customBiddingAlgorithms";
 
             /// <summary>Initializes Create parameter list.</summary>
             protected override void InitParameters()
@@ -11779,7 +14094,7 @@ namespace Google.Apis.DisplayVideo.v1
         }
 
         /// <summary>Gets a custom bidding algorithm.</summary>
-        public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.CustomBiddingAlgorithm>
+        public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.CustomBiddingAlgorithm>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, long customBiddingAlgorithmId) : base(service)
@@ -11807,7 +14122,7 @@ namespace Google.Apis.DisplayVideo.v1
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1/customBiddingAlgorithms/{+customBiddingAlgorithmId}";
+            public override string RestPath => "v3/customBiddingAlgorithms/{+customBiddingAlgorithmId}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -11853,7 +14168,7 @@ namespace Google.Apis.DisplayVideo.v1
         /// Lists custom bidding algorithms that are accessible to the current user and can be used in bidding
         /// stratgies. The order is defined by the order_by parameter.
         /// </summary>
-        public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ListCustomBiddingAlgorithmsResponse>
+        public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.ListCustomBiddingAlgorithmsResponse>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service) : base(service)
@@ -11914,7 +14229,7 @@ namespace Google.Apis.DisplayVideo.v1
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1/customBiddingAlgorithms";
+            public override string RestPath => "v3/customBiddingAlgorithms";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -11978,7 +14293,7 @@ namespace Google.Apis.DisplayVideo.v1
         /// <param name="customBiddingAlgorithmId">
         /// Output only. The unique ID of the custom bidding algorithm. Assigned by the system.
         /// </param>
-        public virtual PatchRequest Patch(Google.Apis.DisplayVideo.v1.Data.CustomBiddingAlgorithm body, long customBiddingAlgorithmId)
+        public virtual PatchRequest Patch(Google.Apis.DisplayVideo.v3.Data.CustomBiddingAlgorithm body, long customBiddingAlgorithmId)
         {
             return new PatchRequest(service, body, customBiddingAlgorithmId);
         }
@@ -11986,10 +14301,10 @@ namespace Google.Apis.DisplayVideo.v1
         /// <summary>
         /// Updates an existing custom bidding algorithm. Returns the updated custom bidding algorithm if successful.
         /// </summary>
-        public class PatchRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.CustomBiddingAlgorithm>
+        public class PatchRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.CustomBiddingAlgorithm>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.CustomBiddingAlgorithm body, long customBiddingAlgorithmId) : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v3.Data.CustomBiddingAlgorithm body, long customBiddingAlgorithmId) : base(service)
             {
                 CustomBiddingAlgorithmId = customBiddingAlgorithmId;
                 Body = body;
@@ -12005,7 +14320,7 @@ namespace Google.Apis.DisplayVideo.v1
             public virtual object UpdateMask { get; set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.DisplayVideo.v1.Data.CustomBiddingAlgorithm Body { get; set; }
+            Google.Apis.DisplayVideo.v3.Data.CustomBiddingAlgorithm Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -12017,7 +14332,7 @@ namespace Google.Apis.DisplayVideo.v1
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1/customBiddingAlgorithms/{+customBiddingAlgorithmId}";
+            public override string RestPath => "v3/customBiddingAlgorithms/{+customBiddingAlgorithmId}";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -12034,6 +14349,85 @@ namespace Google.Apis.DisplayVideo.v1
                 RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
                 {
                     Name = "updateMask",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>
+        /// Creates a rules reference object for an AlgorithmRules file. The resulting reference object provides a
+        /// resource path where the AlgorithmRules file should be uploaded. This reference object should be included
+        /// when creating a new CustomBiddingAlgorithmRules resource.
+        /// </summary>
+        /// <param name="customBiddingAlgorithmId">
+        /// Required. The ID of the custom bidding algorithm that owns the rules resource.
+        /// </param>
+        public virtual UploadRulesRequest UploadRules(long customBiddingAlgorithmId)
+        {
+            return new UploadRulesRequest(service, customBiddingAlgorithmId);
+        }
+
+        /// <summary>
+        /// Creates a rules reference object for an AlgorithmRules file. The resulting reference object provides a
+        /// resource path where the AlgorithmRules file should be uploaded. This reference object should be included
+        /// when creating a new CustomBiddingAlgorithmRules resource.
+        /// </summary>
+        public class UploadRulesRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.CustomBiddingAlgorithmRulesRef>
+        {
+            /// <summary>Constructs a new UploadRules request.</summary>
+            public UploadRulesRequest(Google.Apis.Services.IClientService service, long customBiddingAlgorithmId) : base(service)
+            {
+                CustomBiddingAlgorithmId = customBiddingAlgorithmId;
+                InitParameters();
+            }
+
+            /// <summary>Required. The ID of the custom bidding algorithm that owns the rules resource.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("customBiddingAlgorithmId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long CustomBiddingAlgorithmId { get; private set; }
+
+            /// <summary>The ID of the advertiser that owns the parent custom bidding algorithm.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> AdvertiserId { get; set; }
+
+            /// <summary>The ID of the partner that owns the parent custom bidding algorithm.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("partnerId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> PartnerId { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "uploadRules";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v3/customBiddingAlgorithms/{+customBiddingAlgorithmId}:uploadRules";
+
+            /// <summary>Initializes UploadRules parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("customBiddingAlgorithmId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "customBiddingAlgorithmId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
+                RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "advertiserId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("partnerId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "partnerId",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -12060,7 +14454,7 @@ namespace Google.Apis.DisplayVideo.v1
         /// a resource path to which the script file should be uploaded. This reference object should be included in
         /// when creating a new custom bidding script object.
         /// </summary>
-        public class UploadScriptRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.CustomBiddingScriptRef>
+        public class UploadScriptRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.CustomBiddingScriptRef>
         {
             /// <summary>Constructs a new UploadScript request.</summary>
             public UploadScriptRequest(Google.Apis.Services.IClientService service, long customBiddingAlgorithmId) : base(service)
@@ -12091,7 +14485,7 @@ namespace Google.Apis.DisplayVideo.v1
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1/customBiddingAlgorithms/{+customBiddingAlgorithmId}:uploadScript";
+            public override string RestPath => "v3/customBiddingAlgorithms/{+customBiddingAlgorithmId}:uploadScript";
 
             /// <summary>Initializes UploadScript parameter list.</summary>
             protected override void InitParameters()
@@ -12147,7 +14541,7 @@ namespace Google.Apis.DisplayVideo.v1
         }
 
         /// <summary>Gets a custom list.</summary>
-        public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.CustomList>
+        public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.CustomList>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, long customListId) : base(service)
@@ -12171,7 +14565,7 @@ namespace Google.Apis.DisplayVideo.v1
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1/customLists/{+customListId}";
+            public override string RestPath => "v3/customLists/{+customListId}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -12203,7 +14597,7 @@ namespace Google.Apis.DisplayVideo.v1
         }
 
         /// <summary>Lists custom lists. The order is defined by the order_by parameter.</summary>
-        public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ListCustomListsResponse>
+        public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.ListCustomListsResponse>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service) : base(service)
@@ -12256,7 +14650,7 @@ namespace Google.Apis.DisplayVideo.v1
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1/customLists";
+            public override string RestPath => "v3/customLists";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -12325,7 +14719,7 @@ namespace Google.Apis.DisplayVideo.v1
         /// `CUSTOMER_MATCH_CONTACT_INFO` * `CUSTOMER_MATCH_DEVICE_ID`
         /// </summary>
         /// <param name="body">The body of the request.</param>
-        public virtual CreateRequest Create(Google.Apis.DisplayVideo.v1.Data.FirstAndThirdPartyAudience body)
+        public virtual CreateRequest Create(Google.Apis.DisplayVideo.v3.Data.FirstAndThirdPartyAudience body)
         {
             return new CreateRequest(service, body);
         }
@@ -12334,10 +14728,10 @@ namespace Google.Apis.DisplayVideo.v1
         /// Creates a FirstAndThirdPartyAudience. Only supported for the following audience_type: *
         /// `CUSTOMER_MATCH_CONTACT_INFO` * `CUSTOMER_MATCH_DEVICE_ID`
         /// </summary>
-        public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.FirstAndThirdPartyAudience>
+        public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.FirstAndThirdPartyAudience>
         {
             /// <summary>Constructs a new Create request.</summary>
-            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.FirstAndThirdPartyAudience body) : base(service)
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v3.Data.FirstAndThirdPartyAudience body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -12350,7 +14744,7 @@ namespace Google.Apis.DisplayVideo.v1
             public virtual System.Nullable<long> AdvertiserId { get; set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.DisplayVideo.v1.Data.FirstAndThirdPartyAudience Body { get; set; }
+            Google.Apis.DisplayVideo.v3.Data.FirstAndThirdPartyAudience Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -12362,7 +14756,7 @@ namespace Google.Apis.DisplayVideo.v1
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1/firstAndThirdPartyAudiences";
+            public override string RestPath => "v3/firstAndThirdPartyAudiences";
 
             /// <summary>Initializes Create parameter list.</summary>
             protected override void InitParameters()
@@ -12387,7 +14781,7 @@ namespace Google.Apis.DisplayVideo.v1
         /// <param name="firstAndThirdPartyAudienceId">
         /// Required. The ID of the Customer Match FirstAndThirdPartyAudience whose members will be edited.
         /// </param>
-        public virtual EditCustomerMatchMembersRequest EditCustomerMatchMembers(Google.Apis.DisplayVideo.v1.Data.EditCustomerMatchMembersRequest body, long firstAndThirdPartyAudienceId)
+        public virtual EditCustomerMatchMembersRequest EditCustomerMatchMembers(Google.Apis.DisplayVideo.v3.Data.EditCustomerMatchMembersRequest body, long firstAndThirdPartyAudienceId)
         {
             return new EditCustomerMatchMembersRequest(service, body, firstAndThirdPartyAudienceId);
         }
@@ -12396,10 +14790,10 @@ namespace Google.Apis.DisplayVideo.v1
         /// Updates the member list of a Customer Match audience. Only supported for the following audience_type: *
         /// `CUSTOMER_MATCH_CONTACT_INFO` * `CUSTOMER_MATCH_DEVICE_ID`
         /// </summary>
-        public class EditCustomerMatchMembersRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.EditCustomerMatchMembersResponse>
+        public class EditCustomerMatchMembersRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.EditCustomerMatchMembersResponse>
         {
             /// <summary>Constructs a new EditCustomerMatchMembers request.</summary>
-            public EditCustomerMatchMembersRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.EditCustomerMatchMembersRequest body, long firstAndThirdPartyAudienceId) : base(service)
+            public EditCustomerMatchMembersRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v3.Data.EditCustomerMatchMembersRequest body, long firstAndThirdPartyAudienceId) : base(service)
             {
                 FirstAndThirdPartyAudienceId = firstAndThirdPartyAudienceId;
                 Body = body;
@@ -12413,7 +14807,7 @@ namespace Google.Apis.DisplayVideo.v1
             public virtual long FirstAndThirdPartyAudienceId { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.DisplayVideo.v1.Data.EditCustomerMatchMembersRequest Body { get; set; }
+            Google.Apis.DisplayVideo.v3.Data.EditCustomerMatchMembersRequest Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -12425,7 +14819,7 @@ namespace Google.Apis.DisplayVideo.v1
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1/firstAndThirdPartyAudiences/{+firstAndThirdPartyAudienceId}:editCustomerMatchMembers";
+            public override string RestPath => "v3/firstAndThirdPartyAudiences/{+firstAndThirdPartyAudienceId}:editCustomerMatchMembers";
 
             /// <summary>Initializes EditCustomerMatchMembers parameter list.</summary>
             protected override void InitParameters()
@@ -12452,7 +14846,7 @@ namespace Google.Apis.DisplayVideo.v1
         }
 
         /// <summary>Gets a first and third party audience.</summary>
-        public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.FirstAndThirdPartyAudience>
+        public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.FirstAndThirdPartyAudience>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, long firstAndThirdPartyAudienceId) : base(service)
@@ -12482,7 +14876,7 @@ namespace Google.Apis.DisplayVideo.v1
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1/firstAndThirdPartyAudiences/{+firstAndThirdPartyAudienceId}";
+            public override string RestPath => "v3/firstAndThirdPartyAudiences/{+firstAndThirdPartyAudienceId}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -12522,7 +14916,7 @@ namespace Google.Apis.DisplayVideo.v1
         }
 
         /// <summary>Lists first and third party audiences. The order is defined by the order_by parameter.</summary>
-        public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ListFirstAndThirdPartyAudiencesResponse>
+        public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.ListFirstAndThirdPartyAudiencesResponse>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service) : base(service)
@@ -12582,7 +14976,7 @@ namespace Google.Apis.DisplayVideo.v1
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1/firstAndThirdPartyAudiences";
+            public override string RestPath => "v3/firstAndThirdPartyAudiences";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -12647,7 +15041,7 @@ namespace Google.Apis.DisplayVideo.v1
         /// <param name="firstAndThirdPartyAudienceId">
         /// Output only. The unique ID of the first and third party audience. Assigned by the system.
         /// </param>
-        public virtual PatchRequest Patch(Google.Apis.DisplayVideo.v1.Data.FirstAndThirdPartyAudience body, long firstAndThirdPartyAudienceId)
+        public virtual PatchRequest Patch(Google.Apis.DisplayVideo.v3.Data.FirstAndThirdPartyAudience body, long firstAndThirdPartyAudienceId)
         {
             return new PatchRequest(service, body, firstAndThirdPartyAudienceId);
         }
@@ -12656,10 +15050,10 @@ namespace Google.Apis.DisplayVideo.v1
         /// Updates an existing FirstAndThirdPartyAudience. Only supported for the following audience_type: *
         /// `CUSTOMER_MATCH_CONTACT_INFO` * `CUSTOMER_MATCH_DEVICE_ID`
         /// </summary>
-        public class PatchRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.FirstAndThirdPartyAudience>
+        public class PatchRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.FirstAndThirdPartyAudience>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.FirstAndThirdPartyAudience body, long firstAndThirdPartyAudienceId) : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v3.Data.FirstAndThirdPartyAudience body, long firstAndThirdPartyAudienceId) : base(service)
             {
                 FirstAndThirdPartyAudienceId = firstAndThirdPartyAudienceId;
                 Body = body;
@@ -12684,7 +15078,7 @@ namespace Google.Apis.DisplayVideo.v1
             public virtual object UpdateMask { get; set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.DisplayVideo.v1.Data.FirstAndThirdPartyAudience Body { get; set; }
+            Google.Apis.DisplayVideo.v3.Data.FirstAndThirdPartyAudience Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -12696,7 +15090,7 @@ namespace Google.Apis.DisplayVideo.v1
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1/firstAndThirdPartyAudiences/{+firstAndThirdPartyAudienceId}";
+            public override string RestPath => "v3/firstAndThirdPartyAudiences/{+firstAndThirdPartyAudienceId}";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -12752,7 +15146,7 @@ namespace Google.Apis.DisplayVideo.v1
         }
 
         /// <summary>Gets a Floodlight group.</summary>
-        public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.FloodlightGroup>
+        public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.FloodlightGroup>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, long floodlightGroupId) : base(service)
@@ -12776,7 +15170,7 @@ namespace Google.Apis.DisplayVideo.v1
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1/floodlightGroups/{+floodlightGroupId}";
+            public override string RestPath => "v3/floodlightGroups/{+floodlightGroupId}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -12806,16 +15200,16 @@ namespace Google.Apis.DisplayVideo.v1
         /// <param name="floodlightGroupId">
         /// Output only. The unique ID of the Floodlight group. Assigned by the system.
         /// </param>
-        public virtual PatchRequest Patch(Google.Apis.DisplayVideo.v1.Data.FloodlightGroup body, long floodlightGroupId)
+        public virtual PatchRequest Patch(Google.Apis.DisplayVideo.v3.Data.FloodlightGroup body, long floodlightGroupId)
         {
             return new PatchRequest(service, body, floodlightGroupId);
         }
 
         /// <summary>Updates an existing Floodlight group. Returns the updated Floodlight group if successful.</summary>
-        public class PatchRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.FloodlightGroup>
+        public class PatchRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.FloodlightGroup>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.FloodlightGroup body, long floodlightGroupId) : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v3.Data.FloodlightGroup body, long floodlightGroupId) : base(service)
             {
                 FloodlightGroupId = floodlightGroupId;
                 Body = body;
@@ -12835,7 +15229,7 @@ namespace Google.Apis.DisplayVideo.v1
             public virtual object UpdateMask { get; set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.DisplayVideo.v1.Data.FloodlightGroup Body { get; set; }
+            Google.Apis.DisplayVideo.v3.Data.FloodlightGroup Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -12847,7 +15241,7 @@ namespace Google.Apis.DisplayVideo.v1
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1/floodlightGroups/{floodlightGroupId}";
+            public override string RestPath => "v3/floodlightGroups/{floodlightGroupId}";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -12903,7 +15297,7 @@ namespace Google.Apis.DisplayVideo.v1
         }
 
         /// <summary>Gets a Google audience.</summary>
-        public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.GoogleAudience>
+        public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.GoogleAudience>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, long googleAudienceId) : base(service)
@@ -12931,7 +15325,7 @@ namespace Google.Apis.DisplayVideo.v1
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1/googleAudiences/{+googleAudienceId}";
+            public override string RestPath => "v3/googleAudiences/{+googleAudienceId}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -12971,7 +15365,7 @@ namespace Google.Apis.DisplayVideo.v1
         }
 
         /// <summary>Lists Google audiences. The order is defined by the order_by parameter.</summary>
-        public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ListGoogleAudiencesResponse>
+        public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.ListGoogleAudiencesResponse>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service) : base(service)
@@ -13028,7 +15422,7 @@ namespace Google.Apis.DisplayVideo.v1
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1/googleAudiences";
+            public override string RestPath => "v3/googleAudiences";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -13102,16 +15496,16 @@ namespace Google.Apis.DisplayVideo.v1
 
         /// <summary>Creates a new guaranteed order. Returns the newly created guaranteed order if successful.</summary>
         /// <param name="body">The body of the request.</param>
-        public virtual CreateRequest Create(Google.Apis.DisplayVideo.v1.Data.GuaranteedOrder body)
+        public virtual CreateRequest Create(Google.Apis.DisplayVideo.v3.Data.GuaranteedOrder body)
         {
             return new CreateRequest(service, body);
         }
 
         /// <summary>Creates a new guaranteed order. Returns the newly created guaranteed order if successful.</summary>
-        public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.GuaranteedOrder>
+        public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.GuaranteedOrder>
         {
             /// <summary>Constructs a new Create request.</summary>
-            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.GuaranteedOrder body) : base(service)
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v3.Data.GuaranteedOrder body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -13126,7 +15520,7 @@ namespace Google.Apis.DisplayVideo.v1
             public virtual System.Nullable<long> PartnerId { get; set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.DisplayVideo.v1.Data.GuaranteedOrder Body { get; set; }
+            Google.Apis.DisplayVideo.v3.Data.GuaranteedOrder Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -13138,7 +15532,7 @@ namespace Google.Apis.DisplayVideo.v1
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1/guaranteedOrders";
+            public override string RestPath => "v3/guaranteedOrders";
 
             /// <summary>Initializes Create parameter list.</summary>
             protected override void InitParameters()
@@ -13169,16 +15563,16 @@ namespace Google.Apis.DisplayVideo.v1
         /// Required. The ID of the guaranteed order to edit. The ID is of the format
         /// `{exchange}-{legacy_guaranteed_order_id}`
         /// </param>
-        public virtual EditGuaranteedOrderReadAccessorsRequest EditGuaranteedOrderReadAccessors(Google.Apis.DisplayVideo.v1.Data.EditGuaranteedOrderReadAccessorsRequest body, string guaranteedOrderId)
+        public virtual EditGuaranteedOrderReadAccessorsRequest EditGuaranteedOrderReadAccessors(Google.Apis.DisplayVideo.v3.Data.EditGuaranteedOrderReadAccessorsRequest body, string guaranteedOrderId)
         {
             return new EditGuaranteedOrderReadAccessorsRequest(service, body, guaranteedOrderId);
         }
 
         /// <summary>Edits read advertisers of a guaranteed order.</summary>
-        public class EditGuaranteedOrderReadAccessorsRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.EditGuaranteedOrderReadAccessorsResponse>
+        public class EditGuaranteedOrderReadAccessorsRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.EditGuaranteedOrderReadAccessorsResponse>
         {
             /// <summary>Constructs a new EditGuaranteedOrderReadAccessors request.</summary>
-            public EditGuaranteedOrderReadAccessorsRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.EditGuaranteedOrderReadAccessorsRequest body, string guaranteedOrderId) : base(service)
+            public EditGuaranteedOrderReadAccessorsRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v3.Data.EditGuaranteedOrderReadAccessorsRequest body, string guaranteedOrderId) : base(service)
             {
                 GuaranteedOrderId = guaranteedOrderId;
                 Body = body;
@@ -13193,7 +15587,7 @@ namespace Google.Apis.DisplayVideo.v1
             public virtual string GuaranteedOrderId { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.DisplayVideo.v1.Data.EditGuaranteedOrderReadAccessorsRequest Body { get; set; }
+            Google.Apis.DisplayVideo.v3.Data.EditGuaranteedOrderReadAccessorsRequest Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -13205,7 +15599,7 @@ namespace Google.Apis.DisplayVideo.v1
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1/guaranteedOrders/{+guaranteedOrderId}:editGuaranteedOrderReadAccessors";
+            public override string RestPath => "v3/guaranteedOrders/{+guaranteedOrderId}:editGuaranteedOrderReadAccessors";
 
             /// <summary>Initializes EditGuaranteedOrderReadAccessors parameter list.</summary>
             protected override void InitParameters()
@@ -13233,7 +15627,7 @@ namespace Google.Apis.DisplayVideo.v1
         }
 
         /// <summary>Gets a guaranteed order.</summary>
-        public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.GuaranteedOrder>
+        public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.GuaranteedOrder>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, string guaranteedOrderId) : base(service)
@@ -13264,7 +15658,7 @@ namespace Google.Apis.DisplayVideo.v1
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1/guaranteedOrders/{+guaranteedOrderId}";
+            public override string RestPath => "v3/guaranteedOrders/{+guaranteedOrderId}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -13312,7 +15706,7 @@ namespace Google.Apis.DisplayVideo.v1
         /// parameter. If a filter by entity_status is not specified, guaranteed orders with entity status
         /// `ENTITY_STATUS_ARCHIVED` will not be included in the results.
         /// </summary>
-        public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ListGuaranteedOrdersResponse>
+        public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.ListGuaranteedOrdersResponse>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service) : base(service)
@@ -13371,7 +15765,7 @@ namespace Google.Apis.DisplayVideo.v1
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1/guaranteedOrders";
+            public override string RestPath => "v3/guaranteedOrders";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -13434,16 +15828,16 @@ namespace Google.Apis.DisplayVideo.v1
         /// Output only. The unique identifier of the guaranteed order. The guaranteed order IDs have the format
         /// `{exchange}-{legacy_guaranteed_order_id}`.
         /// </param>
-        public virtual PatchRequest Patch(Google.Apis.DisplayVideo.v1.Data.GuaranteedOrder body, string guaranteedOrderId)
+        public virtual PatchRequest Patch(Google.Apis.DisplayVideo.v3.Data.GuaranteedOrder body, string guaranteedOrderId)
         {
             return new PatchRequest(service, body, guaranteedOrderId);
         }
 
         /// <summary>Updates an existing guaranteed order. Returns the updated guaranteed order if successful.</summary>
-        public class PatchRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.GuaranteedOrder>
+        public class PatchRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.GuaranteedOrder>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.GuaranteedOrder body, string guaranteedOrderId) : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v3.Data.GuaranteedOrder body, string guaranteedOrderId) : base(service)
             {
                 GuaranteedOrderId = guaranteedOrderId;
                 Body = body;
@@ -13470,7 +15864,7 @@ namespace Google.Apis.DisplayVideo.v1
             public virtual object UpdateMask { get; set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.DisplayVideo.v1.Data.GuaranteedOrder Body { get; set; }
+            Google.Apis.DisplayVideo.v3.Data.GuaranteedOrder Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -13482,7 +15876,7 @@ namespace Google.Apis.DisplayVideo.v1
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1/guaranteedOrders/{+guaranteedOrderId}";
+            public override string RestPath => "v3/guaranteedOrders/{+guaranteedOrderId}";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -13567,7 +15961,7 @@ namespace Google.Apis.DisplayVideo.v1
             /// <param name="inventorySourceGroupId">
             /// Required. The ID of the inventory source group to which the assignments are assigned.
             /// </param>
-            public virtual BulkEditRequest BulkEdit(Google.Apis.DisplayVideo.v1.Data.BulkEditAssignedInventorySourcesRequest body, long inventorySourceGroupId)
+            public virtual BulkEditRequest BulkEdit(Google.Apis.DisplayVideo.v3.Data.BulkEditAssignedInventorySourcesRequest body, long inventorySourceGroupId)
             {
                 return new BulkEditRequest(service, body, inventorySourceGroupId);
             }
@@ -13579,10 +15973,10 @@ namespace Google.Apis.DisplayVideo.v1
             /// inventory sources provided in
             /// BulkEditAssignedInventorySourcesRequest.created_assigned_inventory_sources.
             /// </summary>
-            public class BulkEditRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.BulkEditAssignedInventorySourcesResponse>
+            public class BulkEditRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.BulkEditAssignedInventorySourcesResponse>
             {
                 /// <summary>Constructs a new BulkEdit request.</summary>
-                public BulkEditRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.BulkEditAssignedInventorySourcesRequest body, long inventorySourceGroupId) : base(service)
+                public BulkEditRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v3.Data.BulkEditAssignedInventorySourcesRequest body, long inventorySourceGroupId) : base(service)
                 {
                     InventorySourceGroupId = inventorySourceGroupId;
                     Body = body;
@@ -13596,7 +15990,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public virtual long InventorySourceGroupId { get; private set; }
 
                 /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.DisplayVideo.v1.Data.BulkEditAssignedInventorySourcesRequest Body { get; set; }
+                Google.Apis.DisplayVideo.v3.Data.BulkEditAssignedInventorySourcesRequest Body { get; set; }
 
                 /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
@@ -13608,7 +16002,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public override string HttpMethod => "POST";
 
                 /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1/inventorySourceGroups/{+inventorySourceGroupId}/assignedInventorySources:bulkEdit";
+                public override string RestPath => "v3/inventorySourceGroups/{+inventorySourceGroupId}/assignedInventorySources:bulkEdit";
 
                 /// <summary>Initializes BulkEdit parameter list.</summary>
                 protected override void InitParameters()
@@ -13630,16 +16024,16 @@ namespace Google.Apis.DisplayVideo.v1
             /// <param name="inventorySourceGroupId">
             /// Required. The ID of the inventory source group to which the assignment will be assigned.
             /// </param>
-            public virtual CreateRequest Create(Google.Apis.DisplayVideo.v1.Data.AssignedInventorySource body, long inventorySourceGroupId)
+            public virtual CreateRequest Create(Google.Apis.DisplayVideo.v3.Data.AssignedInventorySource body, long inventorySourceGroupId)
             {
                 return new CreateRequest(service, body, inventorySourceGroupId);
             }
 
             /// <summary>Creates an assignment between an inventory source and an inventory source group.</summary>
-            public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.AssignedInventorySource>
+            public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.AssignedInventorySource>
             {
                 /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.AssignedInventorySource body, long inventorySourceGroupId) : base(service)
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v3.Data.AssignedInventorySource body, long inventorySourceGroupId) : base(service)
                 {
                     InventorySourceGroupId = inventorySourceGroupId;
                     Body = body;
@@ -13667,7 +16061,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public virtual System.Nullable<long> PartnerId { get; set; }
 
                 /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.DisplayVideo.v1.Data.AssignedInventorySource Body { get; set; }
+                Google.Apis.DisplayVideo.v3.Data.AssignedInventorySource Body { get; set; }
 
                 /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
@@ -13679,7 +16073,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public override string HttpMethod => "POST";
 
                 /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1/inventorySourceGroups/{+inventorySourceGroupId}/assignedInventorySources";
+                public override string RestPath => "v3/inventorySourceGroups/{+inventorySourceGroupId}/assignedInventorySources";
 
                 /// <summary>Initializes Create parameter list.</summary>
                 protected override void InitParameters()
@@ -13725,7 +16119,7 @@ namespace Google.Apis.DisplayVideo.v1
             }
 
             /// <summary>Deletes the assignment between an inventory source and an inventory source group.</summary>
-            public class DeleteRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Empty>
+            public class DeleteRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
                 public DeleteRequest(Google.Apis.Services.IClientService service, long inventorySourceGroupId, long assignedInventorySourceId) : base(service)
@@ -13766,7 +16160,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public override string HttpMethod => "DELETE";
 
                 /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1/inventorySourceGroups/{+inventorySourceGroupId}/assignedInventorySources/{+assignedInventorySourceId}";
+                public override string RestPath => "v3/inventorySourceGroups/{+inventorySourceGroupId}/assignedInventorySources/{+assignedInventorySourceId}";
 
                 /// <summary>Initializes Delete parameter list.</summary>
                 protected override void InitParameters()
@@ -13817,7 +16211,7 @@ namespace Google.Apis.DisplayVideo.v1
             }
 
             /// <summary>Lists inventory sources assigned to an inventory source group.</summary>
-            public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ListAssignedInventorySourcesResponse>
+            public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.ListAssignedInventorySourcesResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
                 public ListRequest(Google.Apis.Services.IClientService service, long inventorySourceGroupId) : base(service)
@@ -13888,7 +16282,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public override string HttpMethod => "GET";
 
                 /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1/inventorySourceGroups/{+inventorySourceGroupId}/assignedInventorySources";
+                public override string RestPath => "v3/inventorySourceGroups/{+inventorySourceGroupId}/assignedInventorySources";
 
                 /// <summary>Initializes List parameter list.</summary>
                 protected override void InitParameters()
@@ -13958,7 +16352,7 @@ namespace Google.Apis.DisplayVideo.v1
         /// Creates a new inventory source group. Returns the newly created inventory source group if successful.
         /// </summary>
         /// <param name="body">The body of the request.</param>
-        public virtual CreateRequest Create(Google.Apis.DisplayVideo.v1.Data.InventorySourceGroup body)
+        public virtual CreateRequest Create(Google.Apis.DisplayVideo.v3.Data.InventorySourceGroup body)
         {
             return new CreateRequest(service, body);
         }
@@ -13966,10 +16360,10 @@ namespace Google.Apis.DisplayVideo.v1
         /// <summary>
         /// Creates a new inventory source group. Returns the newly created inventory source group if successful.
         /// </summary>
-        public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.InventorySourceGroup>
+        public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.InventorySourceGroup>
         {
             /// <summary>Constructs a new Create request.</summary>
-            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.InventorySourceGroup body) : base(service)
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v3.Data.InventorySourceGroup body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -13991,7 +16385,7 @@ namespace Google.Apis.DisplayVideo.v1
             public virtual System.Nullable<long> PartnerId { get; set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.DisplayVideo.v1.Data.InventorySourceGroup Body { get; set; }
+            Google.Apis.DisplayVideo.v3.Data.InventorySourceGroup Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -14003,7 +16397,7 @@ namespace Google.Apis.DisplayVideo.v1
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1/inventorySourceGroups";
+            public override string RestPath => "v3/inventorySourceGroups";
 
             /// <summary>Initializes Create parameter list.</summary>
             protected override void InitParameters()
@@ -14036,7 +16430,7 @@ namespace Google.Apis.DisplayVideo.v1
         }
 
         /// <summary>Deletes an inventory source group.</summary>
-        public class DeleteRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Empty>
+        public class DeleteRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.Empty>
         {
             /// <summary>Constructs a new Delete request.</summary>
             public DeleteRequest(Google.Apis.Services.IClientService service, long inventorySourceGroupId) : base(service)
@@ -14070,7 +16464,7 @@ namespace Google.Apis.DisplayVideo.v1
             public override string HttpMethod => "DELETE";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1/inventorySourceGroups/{+inventorySourceGroupId}";
+            public override string RestPath => "v3/inventorySourceGroups/{+inventorySourceGroupId}";
 
             /// <summary>Initializes Delete parameter list.</summary>
             protected override void InitParameters()
@@ -14111,7 +16505,7 @@ namespace Google.Apis.DisplayVideo.v1
         }
 
         /// <summary>Gets an inventory source group.</summary>
-        public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.InventorySourceGroup>
+        public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.InventorySourceGroup>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, long inventorySourceGroupId) : base(service)
@@ -14145,7 +16539,7 @@ namespace Google.Apis.DisplayVideo.v1
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1/inventorySourceGroups/{+inventorySourceGroupId}";
+            public override string RestPath => "v3/inventorySourceGroups/{+inventorySourceGroupId}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -14191,7 +16585,7 @@ namespace Google.Apis.DisplayVideo.v1
         /// Lists inventory source groups that are accessible to the current user. The order is defined by the order_by
         /// parameter.
         /// </summary>
-        public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ListInventorySourceGroupsResponse>
+        public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.ListInventorySourceGroupsResponse>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service) : base(service)
@@ -14253,7 +16647,7 @@ namespace Google.Apis.DisplayVideo.v1
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1/inventorySourceGroups";
+            public override string RestPath => "v3/inventorySourceGroups";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -14317,7 +16711,7 @@ namespace Google.Apis.DisplayVideo.v1
         /// <param name="inventorySourceGroupId">
         /// Output only. The unique ID of the inventory source group. Assigned by the system.
         /// </param>
-        public virtual PatchRequest Patch(Google.Apis.DisplayVideo.v1.Data.InventorySourceGroup body, long inventorySourceGroupId)
+        public virtual PatchRequest Patch(Google.Apis.DisplayVideo.v3.Data.InventorySourceGroup body, long inventorySourceGroupId)
         {
             return new PatchRequest(service, body, inventorySourceGroupId);
         }
@@ -14325,10 +16719,10 @@ namespace Google.Apis.DisplayVideo.v1
         /// <summary>
         /// Updates an inventory source group. Returns the updated inventory source group if successful.
         /// </summary>
-        public class PatchRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.InventorySourceGroup>
+        public class PatchRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.InventorySourceGroup>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.InventorySourceGroup body, long inventorySourceGroupId) : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v3.Data.InventorySourceGroup body, long inventorySourceGroupId) : base(service)
             {
                 InventorySourceGroupId = inventorySourceGroupId;
                 Body = body;
@@ -14358,7 +16752,7 @@ namespace Google.Apis.DisplayVideo.v1
             public virtual object UpdateMask { get; set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.DisplayVideo.v1.Data.InventorySourceGroup Body { get; set; }
+            Google.Apis.DisplayVideo.v3.Data.InventorySourceGroup Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -14370,7 +16764,7 @@ namespace Google.Apis.DisplayVideo.v1
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1/inventorySourceGroups/{inventorySourceGroupId}";
+            public override string RestPath => "v3/inventorySourceGroups/{inventorySourceGroupId}";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -14428,16 +16822,16 @@ namespace Google.Apis.DisplayVideo.v1
 
         /// <summary>Creates a new inventory source. Returns the newly created inventory source if successful.</summary>
         /// <param name="body">The body of the request.</param>
-        public virtual CreateRequest Create(Google.Apis.DisplayVideo.v1.Data.InventorySource body)
+        public virtual CreateRequest Create(Google.Apis.DisplayVideo.v3.Data.InventorySource body)
         {
             return new CreateRequest(service, body);
         }
 
         /// <summary>Creates a new inventory source. Returns the newly created inventory source if successful.</summary>
-        public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.InventorySource>
+        public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.InventorySource>
         {
             /// <summary>Constructs a new Create request.</summary>
-            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.InventorySource body) : base(service)
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v3.Data.InventorySource body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -14452,7 +16846,7 @@ namespace Google.Apis.DisplayVideo.v1
             public virtual System.Nullable<long> PartnerId { get; set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.DisplayVideo.v1.Data.InventorySource Body { get; set; }
+            Google.Apis.DisplayVideo.v3.Data.InventorySource Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -14464,7 +16858,7 @@ namespace Google.Apis.DisplayVideo.v1
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1/inventorySources";
+            public override string RestPath => "v3/inventorySources";
 
             /// <summary>Initializes Create parameter list.</summary>
             protected override void InitParameters()
@@ -14495,7 +16889,7 @@ namespace Google.Apis.DisplayVideo.v1
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="inventorySourceId">Required. The ID of inventory source to update.</param>
-        public virtual EditInventorySourceReadWriteAccessorsRequest EditInventorySourceReadWriteAccessors(Google.Apis.DisplayVideo.v1.Data.EditInventorySourceReadWriteAccessorsRequest body, long inventorySourceId)
+        public virtual EditInventorySourceReadWriteAccessorsRequest EditInventorySourceReadWriteAccessors(Google.Apis.DisplayVideo.v3.Data.EditInventorySourceReadWriteAccessorsRequest body, long inventorySourceId)
         {
             return new EditInventorySourceReadWriteAccessorsRequest(service, body, inventorySourceId);
         }
@@ -14504,10 +16898,10 @@ namespace Google.Apis.DisplayVideo.v1
         /// Edits read/write accessors of an inventory source. Returns the updated read_write_accessors for the
         /// inventory source.
         /// </summary>
-        public class EditInventorySourceReadWriteAccessorsRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.InventorySourceAccessors>
+        public class EditInventorySourceReadWriteAccessorsRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.InventorySourceAccessors>
         {
             /// <summary>Constructs a new EditInventorySourceReadWriteAccessors request.</summary>
-            public EditInventorySourceReadWriteAccessorsRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.EditInventorySourceReadWriteAccessorsRequest body, long inventorySourceId) : base(service)
+            public EditInventorySourceReadWriteAccessorsRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v3.Data.EditInventorySourceReadWriteAccessorsRequest body, long inventorySourceId) : base(service)
             {
                 InventorySourceId = inventorySourceId;
                 Body = body;
@@ -14519,7 +16913,7 @@ namespace Google.Apis.DisplayVideo.v1
             public virtual long InventorySourceId { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.DisplayVideo.v1.Data.EditInventorySourceReadWriteAccessorsRequest Body { get; set; }
+            Google.Apis.DisplayVideo.v3.Data.EditInventorySourceReadWriteAccessorsRequest Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -14531,7 +16925,7 @@ namespace Google.Apis.DisplayVideo.v1
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1/inventorySources/{+inventorySourceId}:editInventorySourceReadWriteAccessors";
+            public override string RestPath => "v3/inventorySources/{+inventorySourceId}:editInventorySourceReadWriteAccessors";
 
             /// <summary>Initializes EditInventorySourceReadWriteAccessors parameter list.</summary>
             protected override void InitParameters()
@@ -14556,7 +16950,7 @@ namespace Google.Apis.DisplayVideo.v1
         }
 
         /// <summary>Gets an inventory source.</summary>
-        public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.InventorySource>
+        public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.InventorySource>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, long inventorySourceId) : base(service)
@@ -14568,6 +16962,14 @@ namespace Google.Apis.DisplayVideo.v1
             /// <summary>Required. The ID of the inventory source to fetch.</summary>
             [Google.Apis.Util.RequestParameterAttribute("inventorySourceId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual long InventorySourceId { get; private set; }
+
+            /// <summary>
+            /// Optional. The ID of the DV360 advertiser to which the fetched inventory source is permissioned. If the
+            /// user only has access to the advertiser and not the parent partner, use this field to specify the
+            /// relevant advertiser.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> AdvertiserId { get; set; }
 
             /// <summary>
             /// Required. The ID of the DV360 partner to which the fetched inventory source is permissioned.
@@ -14582,7 +16984,7 @@ namespace Google.Apis.DisplayVideo.v1
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1/inventorySources/{+inventorySourceId}";
+            public override string RestPath => "v3/inventorySources/{+inventorySourceId}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -14595,6 +16997,14 @@ namespace Google.Apis.DisplayVideo.v1
                     ParameterType = "path",
                     DefaultValue = null,
                     Pattern = @"^[^/]+$",
+                });
+                RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "advertiserId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
                 });
                 RequestParameters.Add("partnerId", new Google.Apis.Discovery.Parameter
                 {
@@ -14622,7 +17032,7 @@ namespace Google.Apis.DisplayVideo.v1
         /// parameter. If a filter by entity_status is not specified, inventory sources with entity status
         /// `ENTITY_STATUS_ARCHIVED` will not be included in the results.
         /// </summary>
-        public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ListInventorySourcesResponse>
+        public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.ListInventorySourcesResponse>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service) : base(service)
@@ -14681,7 +17091,7 @@ namespace Google.Apis.DisplayVideo.v1
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1/inventorySources";
+            public override string RestPath => "v3/inventorySources";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -14743,16 +17153,16 @@ namespace Google.Apis.DisplayVideo.v1
         /// <param name="inventorySourceId">
         /// Output only. The unique ID of the inventory source. Assigned by the system.
         /// </param>
-        public virtual PatchRequest Patch(Google.Apis.DisplayVideo.v1.Data.InventorySource body, long inventorySourceId)
+        public virtual PatchRequest Patch(Google.Apis.DisplayVideo.v3.Data.InventorySource body, long inventorySourceId)
         {
             return new PatchRequest(service, body, inventorySourceId);
         }
 
         /// <summary>Updates an existing inventory source. Returns the updated inventory source if successful.</summary>
-        public class PatchRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.InventorySource>
+        public class PatchRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.InventorySource>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.InventorySource body, long inventorySourceId) : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v3.Data.InventorySource body, long inventorySourceId) : base(service)
             {
                 InventorySourceId = inventorySourceId;
                 Body = body;
@@ -14776,7 +17186,7 @@ namespace Google.Apis.DisplayVideo.v1
             public virtual object UpdateMask { get; set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.DisplayVideo.v1.Data.InventorySource Body { get; set; }
+            Google.Apis.DisplayVideo.v3.Data.InventorySource Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -14788,7 +17198,7 @@ namespace Google.Apis.DisplayVideo.v1
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1/inventorySources/{+inventorySourceId}";
+            public override string RestPath => "v3/inventorySources/{+inventorySourceId}";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -14860,7 +17270,7 @@ namespace Google.Apis.DisplayVideo.v1
         /// Downloads media. Download is supported on the URI `/download/{resource_name=**}?alt=media.` **Note**:
         /// Download requests will not be successful without including `alt=media` query string.
         /// </summary>
-        public class DownloadRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.GoogleBytestreamMedia>
+        public class DownloadRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.GoogleBytestreamMedia>
         {
             /// <summary>Constructs a new Download request.</summary>
             public DownloadRequest(Google.Apis.Services.IClientService service, string resourceName) : base(service)
@@ -14991,7 +17401,7 @@ namespace Google.Apis.DisplayVideo.v1
         /// <param name="resourceName">
         /// Name of the media that is being downloaded. See ReadRequest.resource_name.
         /// </param>
-        public virtual UploadRequest Upload(Google.Apis.DisplayVideo.v1.Data.GoogleBytestreamMedia body, string resourceName)
+        public virtual UploadRequest Upload(Google.Apis.DisplayVideo.v3.Data.GoogleBytestreamMedia body, string resourceName)
         {
             return new UploadRequest(service, body, resourceName);
         }
@@ -15000,10 +17410,10 @@ namespace Google.Apis.DisplayVideo.v1
         /// Uploads media. Upload is supported on the URI `/upload/media/{resource_name=**}?upload_type=media.`
         /// **Note**: Upload requests will not be successful without including `upload_type=media` query string.
         /// </summary>
-        public class UploadRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.GoogleBytestreamMedia>
+        public class UploadRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.GoogleBytestreamMedia>
         {
             /// <summary>Constructs a new Upload request.</summary>
-            public UploadRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.GoogleBytestreamMedia body, string resourceName) : base(service)
+            public UploadRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v3.Data.GoogleBytestreamMedia body, string resourceName) : base(service)
             {
                 ResourceName = resourceName;
                 Body = body;
@@ -15015,7 +17425,7 @@ namespace Google.Apis.DisplayVideo.v1
             public virtual string ResourceName { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.DisplayVideo.v1.Data.GoogleBytestreamMedia Body { get; set; }
+            Google.Apis.DisplayVideo.v3.Data.GoogleBytestreamMedia Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -15071,13 +17481,13 @@ namespace Google.Apis.DisplayVideo.v1
         /// </param>
         /// <param name="stream">The stream to upload. See remarks for further information.</param>
         /// <param name="contentType">The content type of the stream to upload.</param>
-        public virtual UploadMediaUpload Upload(Google.Apis.DisplayVideo.v1.Data.GoogleBytestreamMedia body, string resourceName, System.IO.Stream stream, string contentType)
+        public virtual UploadMediaUpload Upload(Google.Apis.DisplayVideo.v3.Data.GoogleBytestreamMedia body, string resourceName, System.IO.Stream stream, string contentType)
         {
             return new UploadMediaUpload(service, body, resourceName, stream, contentType);
         }
 
         /// <summary>Upload media upload which supports resumable upload.</summary>
-        public class UploadMediaUpload : Google.Apis.Upload.ResumableUpload<Google.Apis.DisplayVideo.v1.Data.GoogleBytestreamMedia, Google.Apis.DisplayVideo.v1.Data.GoogleBytestreamMedia>
+        public class UploadMediaUpload : Google.Apis.Upload.ResumableUpload<Google.Apis.DisplayVideo.v3.Data.GoogleBytestreamMedia, Google.Apis.DisplayVideo.v3.Data.GoogleBytestreamMedia>
         {
             /// <summary>V1 error format.</summary>
             [Google.Apis.Util.RequestParameterAttribute("$.xgafv", Google.Apis.Util.RequestParameterType.Query)]
@@ -15180,7 +17590,7 @@ namespace Google.Apis.DisplayVideo.v1
             /// <item><description>Caller is responsible for closing the <paramref name="stream"/></description></item>
             /// </list>
             /// </remarks>
-            public UploadMediaUpload(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.GoogleBytestreamMedia body, string resourceName, System.IO.Stream stream, string contentType)
+            public UploadMediaUpload(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v3.Data.GoogleBytestreamMedia body, string resourceName, System.IO.Stream stream, string contentType)
                 : base(service, string.Format("/{0}/{1}{2}", "upload", service.BasePath, "media/{+resourceName}"), "POST", stream, contentType)
             {
                 ResourceName = resourceName;
@@ -15248,7 +17658,7 @@ namespace Google.Apis.DisplayVideo.v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="partnerId">The ID of the partner that owns the parent channel.</param>
                 /// <param name="channelId">Required. The ID of the parent channel to which the sites belong.</param>
-                public virtual BulkEditRequest BulkEdit(Google.Apis.DisplayVideo.v1.Data.BulkEditSitesRequest body, long partnerId, long channelId)
+                public virtual BulkEditRequest BulkEdit(Google.Apis.DisplayVideo.v3.Data.BulkEditSitesRequest body, long partnerId, long channelId)
                 {
                     return new BulkEditRequest(service, body, partnerId, channelId);
                 }
@@ -15258,10 +17668,10 @@ namespace Google.Apis.DisplayVideo.v1
                 /// BulkEditSitesRequest.deleted_sites and then create the sites provided in
                 /// BulkEditSitesRequest.created_sites.
                 /// </summary>
-                public class BulkEditRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.BulkEditSitesResponse>
+                public class BulkEditRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.BulkEditSitesResponse>
                 {
                     /// <summary>Constructs a new BulkEdit request.</summary>
-                    public BulkEditRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.BulkEditSitesRequest body, long partnerId, long channelId) : base(service)
+                    public BulkEditRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v3.Data.BulkEditSitesRequest body, long partnerId, long channelId) : base(service)
                     {
                         PartnerId = partnerId;
                         ChannelId = channelId;
@@ -15278,7 +17688,7 @@ namespace Google.Apis.DisplayVideo.v1
                     public virtual long ChannelId { get; private set; }
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.DisplayVideo.v1.Data.BulkEditSitesRequest Body { get; set; }
+                    Google.Apis.DisplayVideo.v3.Data.BulkEditSitesRequest Body { get; set; }
 
                     /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
@@ -15290,7 +17700,7 @@ namespace Google.Apis.DisplayVideo.v1
                     public override string HttpMethod => "POST";
 
                     /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1/partners/{partnerId}/channels/{+channelId}/sites:bulkEdit";
+                    public override string RestPath => "v3/partners/{partnerId}/channels/{+channelId}/sites:bulkEdit";
 
                     /// <summary>Initializes BulkEdit parameter list.</summary>
                     protected override void InitParameters()
@@ -15321,16 +17731,16 @@ namespace Google.Apis.DisplayVideo.v1
                 /// <param name="channelId">
                 /// Required. The ID of the parent channel in which the site will be created.
                 /// </param>
-                public virtual CreateRequest Create(Google.Apis.DisplayVideo.v1.Data.Site body, long partnerId, long channelId)
+                public virtual CreateRequest Create(Google.Apis.DisplayVideo.v3.Data.Site body, long partnerId, long channelId)
                 {
                     return new CreateRequest(service, body, partnerId, channelId);
                 }
 
                 /// <summary>Creates a site in a channel.</summary>
-                public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Site>
+                public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.Site>
                 {
                     /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.Site body, long partnerId, long channelId) : base(service)
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v3.Data.Site body, long partnerId, long channelId) : base(service)
                     {
                         PartnerId = partnerId;
                         ChannelId = channelId;
@@ -15351,7 +17761,7 @@ namespace Google.Apis.DisplayVideo.v1
                     public virtual System.Nullable<long> AdvertiserId { get; set; }
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.DisplayVideo.v1.Data.Site Body { get; set; }
+                    Google.Apis.DisplayVideo.v3.Data.Site Body { get; set; }
 
                     /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
@@ -15363,7 +17773,7 @@ namespace Google.Apis.DisplayVideo.v1
                     public override string HttpMethod => "POST";
 
                     /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1/partners/{partnerId}/channels/{+channelId}/sites";
+                    public override string RestPath => "v3/partners/{partnerId}/channels/{+channelId}/sites";
 
                     /// <summary>Initializes Create parameter list.</summary>
                     protected override void InitParameters()
@@ -15406,7 +17816,7 @@ namespace Google.Apis.DisplayVideo.v1
                 }
 
                 /// <summary>Deletes a site from a channel.</summary>
-                public class DeleteRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Empty>
+                public class DeleteRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.Empty>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
                     public DeleteRequest(Google.Apis.Services.IClientService service, long partnerId, long channelId, string urlOrAppId) : base(service)
@@ -15440,7 +17850,7 @@ namespace Google.Apis.DisplayVideo.v1
                     public override string HttpMethod => "DELETE";
 
                     /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1/partners/{partnerId}/channels/{+channelId}/sites/{+urlOrAppId}";
+                    public override string RestPath => "v3/partners/{partnerId}/channels/{+channelId}/sites/{+urlOrAppId}";
 
                     /// <summary>Initializes Delete parameter list.</summary>
                     protected override void InitParameters()
@@ -15492,7 +17902,7 @@ namespace Google.Apis.DisplayVideo.v1
                 }
 
                 /// <summary>Lists sites in a channel.</summary>
-                public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ListSitesResponse>
+                public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.ListSitesResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
                     public ListRequest(Google.Apis.Services.IClientService service, long partnerId, long channelId) : base(service)
@@ -15555,7 +17965,7 @@ namespace Google.Apis.DisplayVideo.v1
                     public override string HttpMethod => "GET";
 
                     /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1/partners/{+partnerId}/channels/{+channelId}/sites";
+                    public override string RestPath => "v3/partners/{+partnerId}/channels/{+channelId}/sites";
 
                     /// <summary>Initializes List parameter list.</summary>
                     protected override void InitParameters()
@@ -15627,7 +18037,7 @@ namespace Google.Apis.DisplayVideo.v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="partnerId">The ID of the partner that owns the parent channel.</param>
                 /// <param name="channelId">Required. The ID of the parent channel whose sites will be replaced.</param>
-                public virtual ReplaceRequest Replace(Google.Apis.DisplayVideo.v1.Data.ReplaceSitesRequest body, long partnerId, long channelId)
+                public virtual ReplaceRequest Replace(Google.Apis.DisplayVideo.v3.Data.ReplaceSitesRequest body, long partnerId, long channelId)
                 {
                     return new ReplaceRequest(service, body, partnerId, channelId);
                 }
@@ -15636,10 +18046,10 @@ namespace Google.Apis.DisplayVideo.v1
                 /// Replaces all of the sites under a single channel. The operation will replace the sites under a
                 /// channel with the sites provided in ReplaceSitesRequest.new_sites.
                 /// </summary>
-                public class ReplaceRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ReplaceSitesResponse>
+                public class ReplaceRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.ReplaceSitesResponse>
                 {
                     /// <summary>Constructs a new Replace request.</summary>
-                    public ReplaceRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.ReplaceSitesRequest body, long partnerId, long channelId) : base(service)
+                    public ReplaceRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v3.Data.ReplaceSitesRequest body, long partnerId, long channelId) : base(service)
                     {
                         PartnerId = partnerId;
                         ChannelId = channelId;
@@ -15656,7 +18066,7 @@ namespace Google.Apis.DisplayVideo.v1
                     public virtual long ChannelId { get; private set; }
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.DisplayVideo.v1.Data.ReplaceSitesRequest Body { get; set; }
+                    Google.Apis.DisplayVideo.v3.Data.ReplaceSitesRequest Body { get; set; }
 
                     /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
@@ -15668,7 +18078,7 @@ namespace Google.Apis.DisplayVideo.v1
                     public override string HttpMethod => "POST";
 
                     /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1/partners/{partnerId}/channels/{+channelId}/sites:replace";
+                    public override string RestPath => "v3/partners/{partnerId}/channels/{+channelId}/sites:replace";
 
                     /// <summary>Initializes Replace parameter list.</summary>
                     protected override void InitParameters()
@@ -15697,16 +18107,16 @@ namespace Google.Apis.DisplayVideo.v1
             /// <summary>Creates a new channel. Returns the newly created channel if successful.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="partnerId">The ID of the partner that owns the created channel.</param>
-            public virtual CreateRequest Create(Google.Apis.DisplayVideo.v1.Data.Channel body, long partnerId)
+            public virtual CreateRequest Create(Google.Apis.DisplayVideo.v3.Data.Channel body, long partnerId)
             {
                 return new CreateRequest(service, body, partnerId);
             }
 
             /// <summary>Creates a new channel. Returns the newly created channel if successful.</summary>
-            public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Channel>
+            public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.Channel>
             {
                 /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.Channel body, long partnerId) : base(service)
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v3.Data.Channel body, long partnerId) : base(service)
                 {
                     PartnerId = partnerId;
                     Body = body;
@@ -15722,7 +18132,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public virtual System.Nullable<long> AdvertiserId { get; set; }
 
                 /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.DisplayVideo.v1.Data.Channel Body { get; set; }
+                Google.Apis.DisplayVideo.v3.Data.Channel Body { get; set; }
 
                 /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
@@ -15734,7 +18144,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public override string HttpMethod => "POST";
 
                 /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1/partners/{+partnerId}/channels";
+                public override string RestPath => "v3/partners/{+partnerId}/channels";
 
                 /// <summary>Initializes Create parameter list.</summary>
                 protected override void InitParameters()
@@ -15768,7 +18178,7 @@ namespace Google.Apis.DisplayVideo.v1
             }
 
             /// <summary>Gets a channel for a partner or advertiser.</summary>
-            public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Channel>
+            public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.Channel>
             {
                 /// <summary>Constructs a new Get request.</summary>
                 public GetRequest(Google.Apis.Services.IClientService service, long partnerId, long channelId) : base(service)
@@ -15797,7 +18207,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public override string HttpMethod => "GET";
 
                 /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1/partners/{+partnerId}/channels/{+channelId}";
+                public override string RestPath => "v3/partners/{+partnerId}/channels/{+channelId}";
 
                 /// <summary>Initializes Get parameter list.</summary>
                 protected override void InitParameters()
@@ -15838,7 +18248,7 @@ namespace Google.Apis.DisplayVideo.v1
             }
 
             /// <summary>Lists channels for a partner or advertiser.</summary>
-            public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ListChannelsResponse>
+            public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.ListChannelsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
                 public ListRequest(Google.Apis.Services.IClientService service, long partnerId) : base(service)
@@ -15896,7 +18306,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public override string HttpMethod => "GET";
 
                 /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1/partners/{+partnerId}/channels";
+                public override string RestPath => "v3/partners/{+partnerId}/channels";
 
                 /// <summary>Initializes List parameter list.</summary>
                 protected override void InitParameters()
@@ -15957,16 +18367,16 @@ namespace Google.Apis.DisplayVideo.v1
             /// <param name="body">The body of the request.</param>
             /// <param name="partnerId">The ID of the partner that owns the created channel.</param>
             /// <param name="channelId">Output only. The unique ID of the channel. Assigned by the system.</param>
-            public virtual PatchRequest Patch(Google.Apis.DisplayVideo.v1.Data.Channel body, long partnerId, long channelId)
+            public virtual PatchRequest Patch(Google.Apis.DisplayVideo.v3.Data.Channel body, long partnerId, long channelId)
             {
                 return new PatchRequest(service, body, partnerId, channelId);
             }
 
             /// <summary>Updates a channel. Returns the updated channel if successful.</summary>
-            public class PatchRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Channel>
+            public class PatchRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.Channel>
             {
                 /// <summary>Constructs a new Patch request.</summary>
-                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.Channel body, long partnerId, long channelId) : base(service)
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v3.Data.Channel body, long partnerId, long channelId) : base(service)
                 {
                     PartnerId = partnerId;
                     ChannelId = channelId;
@@ -15991,7 +18401,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public virtual object UpdateMask { get; set; }
 
                 /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.DisplayVideo.v1.Data.Channel Body { get; set; }
+                Google.Apis.DisplayVideo.v3.Data.Channel Body { get; set; }
 
                 /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
@@ -16003,7 +18413,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public override string HttpMethod => "PATCH";
 
                 /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1/partners/{+partnerId}/channels/{channelId}";
+                public override string RestPath => "v3/partners/{+partnerId}/channels/{channelId}";
 
                 /// <summary>Initializes Patch parameter list.</summary>
                 protected override void InitParameters()
@@ -16089,7 +18499,7 @@ namespace Google.Apis.DisplayVideo.v1
                 /// Required. Identifies the type of this assigned targeting option. Supported targeting types: *
                 /// `TARGETING_TYPE_CHANNEL`
                 /// </param>
-                public virtual CreateRequest Create(Google.Apis.DisplayVideo.v1.Data.AssignedTargetingOption body, long partnerId, CreateRequest.TargetingTypeEnum targetingType)
+                public virtual CreateRequest Create(Google.Apis.DisplayVideo.v3.Data.AssignedTargetingOption body, long partnerId, CreateRequest.TargetingTypeEnum targetingType)
                 {
                     return new CreateRequest(service, body, partnerId, targetingType);
                 }
@@ -16097,10 +18507,10 @@ namespace Google.Apis.DisplayVideo.v1
                 /// <summary>
                 /// Assigns a targeting option to a partner. Returns the assigned targeting option if successful.
                 /// </summary>
-                public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.AssignedTargetingOption>
+                public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.AssignedTargetingOption>
                 {
                     /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.AssignedTargetingOption body, long partnerId, TargetingTypeEnum targetingType) : base(service)
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v3.Data.AssignedTargetingOption body, long partnerId, TargetingTypeEnum targetingType) : base(service)
                     {
                         PartnerId = partnerId;
                         TargetingType = targetingType;
@@ -16311,41 +18721,65 @@ namespace Google.Apis.DisplayVideo.v1
                         /// address, or latitude/longitude coordinates.
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_POI")]
-                        TARGETINGTYPEPOI = 39,
+                        TARGETINGTYPEPOI = 38,
 
                         /// <summary>
                         /// Target ads around locations of a business chain within a specific geo region.
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BUSINESS_CHAIN")]
-                        TARGETINGTYPEBUSINESSCHAIN = 40,
+                        TARGETINGTYPEBUSINESSCHAIN = 39,
 
                         /// <summary>Target ads to a specific video content duration.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_DURATION")]
-                        TARGETINGTYPECONTENTDURATION = 43,
+                        TARGETINGTYPECONTENTDURATION = 40,
 
                         /// <summary>Target ads to a specific video content stream type.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_STREAM_TYPE")]
-                        TARGETINGTYPECONTENTSTREAMTYPE = 44,
+                        TARGETINGTYPECONTENTSTREAMTYPE = 41,
 
                         /// <summary>Target ads to a specific native content position.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NATIVE_CONTENT_POSITION")]
-                        TARGETINGTYPENATIVECONTENTPOSITION = 38,
+                        TARGETINGTYPENATIVECONTENTPOSITION = 42,
 
                         /// <summary>Target ads in an Open Measurement enabled inventory.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_OMID")]
-                        TARGETINGTYPEOMID = 41,
+                        TARGETINGTYPEOMID = 43,
 
                         /// <summary>Target ads to a specific audio content type.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIO_CONTENT_TYPE")]
-                        TARGETINGTYPEAUDIOCONTENTTYPE = 42,
+                        TARGETINGTYPEAUDIOCONTENTTYPE = 44,
 
                         /// <summary>Target ads to a specific content genre.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_GENRE")]
                         TARGETINGTYPECONTENTGENRE = 45,
+
+                        /// <summary>
+                        /// Target ads to a specific YouTube video. Targeting of this type cannot be created or updated
+                        /// using the API. Although this targeting is inherited by child resources, **inherited
+                        /// targeting of this type will not be retrieveable**.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_YOUTUBE_VIDEO")]
+                        TARGETINGTYPEYOUTUBEVIDEO = 46,
+
+                        /// <summary>
+                        /// Target ads to a specific YouTube channel. Targeting of this type cannot be created or
+                        /// updated using the API. Although this targeting is inherited by child resources, **inherited
+                        /// targeting of this type will not be retrieveable**.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_YOUTUBE_CHANNEL")]
+                        TARGETINGTYPEYOUTUBECHANNEL = 47,
+
+                        /// <summary>
+                        /// Target ads to a serve it in a certain position of a session. Only supported for Ad Group
+                        /// resources under YouTube Programmatic Reservation line items. Targeting of this type cannot
+                        /// be created or updated using the API.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SESSION_POSITION")]
+                        TARGETINGTYPESESSIONPOSITION = 48,
                     }
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.DisplayVideo.v1.Data.AssignedTargetingOption Body { get; set; }
+                    Google.Apis.DisplayVideo.v3.Data.AssignedTargetingOption Body { get; set; }
 
                     /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
@@ -16357,7 +18791,7 @@ namespace Google.Apis.DisplayVideo.v1
                     public override string HttpMethod => "POST";
 
                     /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1/partners/{+partnerId}/targetingTypes/{+targetingType}/assignedTargetingOptions";
+                    public override string RestPath => "v3/partners/{+partnerId}/targetingTypes/{+targetingType}/assignedTargetingOptions";
 
                     /// <summary>Initializes Create parameter list.</summary>
                     protected override void InitParameters()
@@ -16397,7 +18831,7 @@ namespace Google.Apis.DisplayVideo.v1
                 }
 
                 /// <summary>Deletes an assigned targeting option from a partner.</summary>
-                public class DeleteRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Empty>
+                public class DeleteRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.Empty>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
                     public DeleteRequest(Google.Apis.Services.IClientService service, long partnerId, TargetingTypeEnum targetingType, string assignedTargetingOptionId) : base(service)
@@ -16611,37 +19045,61 @@ namespace Google.Apis.DisplayVideo.v1
                         /// address, or latitude/longitude coordinates.
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_POI")]
-                        TARGETINGTYPEPOI = 39,
+                        TARGETINGTYPEPOI = 38,
 
                         /// <summary>
                         /// Target ads around locations of a business chain within a specific geo region.
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BUSINESS_CHAIN")]
-                        TARGETINGTYPEBUSINESSCHAIN = 40,
+                        TARGETINGTYPEBUSINESSCHAIN = 39,
 
                         /// <summary>Target ads to a specific video content duration.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_DURATION")]
-                        TARGETINGTYPECONTENTDURATION = 43,
+                        TARGETINGTYPECONTENTDURATION = 40,
 
                         /// <summary>Target ads to a specific video content stream type.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_STREAM_TYPE")]
-                        TARGETINGTYPECONTENTSTREAMTYPE = 44,
+                        TARGETINGTYPECONTENTSTREAMTYPE = 41,
 
                         /// <summary>Target ads to a specific native content position.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NATIVE_CONTENT_POSITION")]
-                        TARGETINGTYPENATIVECONTENTPOSITION = 38,
+                        TARGETINGTYPENATIVECONTENTPOSITION = 42,
 
                         /// <summary>Target ads in an Open Measurement enabled inventory.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_OMID")]
-                        TARGETINGTYPEOMID = 41,
+                        TARGETINGTYPEOMID = 43,
 
                         /// <summary>Target ads to a specific audio content type.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIO_CONTENT_TYPE")]
-                        TARGETINGTYPEAUDIOCONTENTTYPE = 42,
+                        TARGETINGTYPEAUDIOCONTENTTYPE = 44,
 
                         /// <summary>Target ads to a specific content genre.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_GENRE")]
                         TARGETINGTYPECONTENTGENRE = 45,
+
+                        /// <summary>
+                        /// Target ads to a specific YouTube video. Targeting of this type cannot be created or updated
+                        /// using the API. Although this targeting is inherited by child resources, **inherited
+                        /// targeting of this type will not be retrieveable**.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_YOUTUBE_VIDEO")]
+                        TARGETINGTYPEYOUTUBEVIDEO = 46,
+
+                        /// <summary>
+                        /// Target ads to a specific YouTube channel. Targeting of this type cannot be created or
+                        /// updated using the API. Although this targeting is inherited by child resources, **inherited
+                        /// targeting of this type will not be retrieveable**.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_YOUTUBE_CHANNEL")]
+                        TARGETINGTYPEYOUTUBECHANNEL = 47,
+
+                        /// <summary>
+                        /// Target ads to a serve it in a certain position of a session. Only supported for Ad Group
+                        /// resources under YouTube Programmatic Reservation line items. Targeting of this type cannot
+                        /// be created or updated using the API.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SESSION_POSITION")]
+                        TARGETINGTYPESESSIONPOSITION = 48,
                     }
 
                     /// <summary>Required. The ID of the assigned targeting option to delete.</summary>
@@ -16655,7 +19113,7 @@ namespace Google.Apis.DisplayVideo.v1
                     public override string HttpMethod => "DELETE";
 
                     /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1/partners/{+partnerId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}";
+                    public override string RestPath => "v3/partners/{+partnerId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}";
 
                     /// <summary>Initializes Delete parameter list.</summary>
                     protected override void InitParameters()
@@ -16704,7 +19162,7 @@ namespace Google.Apis.DisplayVideo.v1
                 }
 
                 /// <summary>Gets a single targeting option assigned to a partner.</summary>
-                public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.AssignedTargetingOption>
+                public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.AssignedTargetingOption>
                 {
                     /// <summary>Constructs a new Get request.</summary>
                     public GetRequest(Google.Apis.Services.IClientService service, long partnerId, TargetingTypeEnum targetingType, string assignedTargetingOptionId) : base(service)
@@ -16918,37 +19376,61 @@ namespace Google.Apis.DisplayVideo.v1
                         /// address, or latitude/longitude coordinates.
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_POI")]
-                        TARGETINGTYPEPOI = 39,
+                        TARGETINGTYPEPOI = 38,
 
                         /// <summary>
                         /// Target ads around locations of a business chain within a specific geo region.
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BUSINESS_CHAIN")]
-                        TARGETINGTYPEBUSINESSCHAIN = 40,
+                        TARGETINGTYPEBUSINESSCHAIN = 39,
 
                         /// <summary>Target ads to a specific video content duration.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_DURATION")]
-                        TARGETINGTYPECONTENTDURATION = 43,
+                        TARGETINGTYPECONTENTDURATION = 40,
 
                         /// <summary>Target ads to a specific video content stream type.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_STREAM_TYPE")]
-                        TARGETINGTYPECONTENTSTREAMTYPE = 44,
+                        TARGETINGTYPECONTENTSTREAMTYPE = 41,
 
                         /// <summary>Target ads to a specific native content position.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NATIVE_CONTENT_POSITION")]
-                        TARGETINGTYPENATIVECONTENTPOSITION = 38,
+                        TARGETINGTYPENATIVECONTENTPOSITION = 42,
 
                         /// <summary>Target ads in an Open Measurement enabled inventory.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_OMID")]
-                        TARGETINGTYPEOMID = 41,
+                        TARGETINGTYPEOMID = 43,
 
                         /// <summary>Target ads to a specific audio content type.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIO_CONTENT_TYPE")]
-                        TARGETINGTYPEAUDIOCONTENTTYPE = 42,
+                        TARGETINGTYPEAUDIOCONTENTTYPE = 44,
 
                         /// <summary>Target ads to a specific content genre.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_GENRE")]
                         TARGETINGTYPECONTENTGENRE = 45,
+
+                        /// <summary>
+                        /// Target ads to a specific YouTube video. Targeting of this type cannot be created or updated
+                        /// using the API. Although this targeting is inherited by child resources, **inherited
+                        /// targeting of this type will not be retrieveable**.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_YOUTUBE_VIDEO")]
+                        TARGETINGTYPEYOUTUBEVIDEO = 46,
+
+                        /// <summary>
+                        /// Target ads to a specific YouTube channel. Targeting of this type cannot be created or
+                        /// updated using the API. Although this targeting is inherited by child resources, **inherited
+                        /// targeting of this type will not be retrieveable**.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_YOUTUBE_CHANNEL")]
+                        TARGETINGTYPEYOUTUBECHANNEL = 47,
+
+                        /// <summary>
+                        /// Target ads to a serve it in a certain position of a session. Only supported for Ad Group
+                        /// resources under YouTube Programmatic Reservation line items. Targeting of this type cannot
+                        /// be created or updated using the API.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SESSION_POSITION")]
+                        TARGETINGTYPESESSIONPOSITION = 48,
                     }
 
                     /// <summary>
@@ -16965,7 +19447,7 @@ namespace Google.Apis.DisplayVideo.v1
                     public override string HttpMethod => "GET";
 
                     /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1/partners/{+partnerId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}";
+                    public override string RestPath => "v3/partners/{+partnerId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}";
 
                     /// <summary>Initializes Get parameter list.</summary>
                     protected override void InitParameters()
@@ -17010,7 +19492,7 @@ namespace Google.Apis.DisplayVideo.v1
                 }
 
                 /// <summary>Lists the targeting options assigned to a partner.</summary>
-                public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ListPartnerAssignedTargetingOptionsResponse>
+                public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.ListPartnerAssignedTargetingOptionsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
                     public ListRequest(Google.Apis.Services.IClientService service, long partnerId, TargetingTypeEnum targetingType) : base(service)
@@ -17223,37 +19705,61 @@ namespace Google.Apis.DisplayVideo.v1
                         /// address, or latitude/longitude coordinates.
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_POI")]
-                        TARGETINGTYPEPOI = 39,
+                        TARGETINGTYPEPOI = 38,
 
                         /// <summary>
                         /// Target ads around locations of a business chain within a specific geo region.
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BUSINESS_CHAIN")]
-                        TARGETINGTYPEBUSINESSCHAIN = 40,
+                        TARGETINGTYPEBUSINESSCHAIN = 39,
 
                         /// <summary>Target ads to a specific video content duration.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_DURATION")]
-                        TARGETINGTYPECONTENTDURATION = 43,
+                        TARGETINGTYPECONTENTDURATION = 40,
 
                         /// <summary>Target ads to a specific video content stream type.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_STREAM_TYPE")]
-                        TARGETINGTYPECONTENTSTREAMTYPE = 44,
+                        TARGETINGTYPECONTENTSTREAMTYPE = 41,
 
                         /// <summary>Target ads to a specific native content position.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NATIVE_CONTENT_POSITION")]
-                        TARGETINGTYPENATIVECONTENTPOSITION = 38,
+                        TARGETINGTYPENATIVECONTENTPOSITION = 42,
 
                         /// <summary>Target ads in an Open Measurement enabled inventory.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_OMID")]
-                        TARGETINGTYPEOMID = 41,
+                        TARGETINGTYPEOMID = 43,
 
                         /// <summary>Target ads to a specific audio content type.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIO_CONTENT_TYPE")]
-                        TARGETINGTYPEAUDIOCONTENTTYPE = 42,
+                        TARGETINGTYPEAUDIOCONTENTTYPE = 44,
 
                         /// <summary>Target ads to a specific content genre.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_GENRE")]
                         TARGETINGTYPECONTENTGENRE = 45,
+
+                        /// <summary>
+                        /// Target ads to a specific YouTube video. Targeting of this type cannot be created or updated
+                        /// using the API. Although this targeting is inherited by child resources, **inherited
+                        /// targeting of this type will not be retrieveable**.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_YOUTUBE_VIDEO")]
+                        TARGETINGTYPEYOUTUBEVIDEO = 46,
+
+                        /// <summary>
+                        /// Target ads to a specific YouTube channel. Targeting of this type cannot be created or
+                        /// updated using the API. Although this targeting is inherited by child resources, **inherited
+                        /// targeting of this type will not be retrieveable**.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_YOUTUBE_CHANNEL")]
+                        TARGETINGTYPEYOUTUBECHANNEL = 47,
+
+                        /// <summary>
+                        /// Target ads to a serve it in a certain position of a session. Only supported for Ad Group
+                        /// resources under YouTube Programmatic Reservation line items. Targeting of this type cannot
+                        /// be created or updated using the API.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SESSION_POSITION")]
+                        TARGETINGTYPESESSIONPOSITION = 48,
                     }
 
                     /// <summary>
@@ -17298,7 +19804,7 @@ namespace Google.Apis.DisplayVideo.v1
                     public override string HttpMethod => "GET";
 
                     /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1/partners/{+partnerId}/targetingTypes/{+targetingType}/assignedTargetingOptions";
+                    public override string RestPath => "v3/partners/{+partnerId}/targetingTypes/{+targetingType}/assignedTargetingOptions";
 
                     /// <summary>Initializes List parameter list.</summary>
                     protected override void InitParameters()
@@ -17358,26 +19864,26 @@ namespace Google.Apis.DisplayVideo.v1
         }
 
         /// <summary>
-        /// Bulk edits targeting options under a single partner. The operation will delete the assigned targeting
-        /// options provided in BulkEditPartnerAssignedTargetingOptionsRequest.deleteRequests and then create the
-        /// assigned targeting options provided in BulkEditPartnerAssignedTargetingOptionsRequest.createRequests .
+        /// Edits targeting options under a single partner. The operation will delete the assigned targeting options
+        /// provided in BulkEditPartnerAssignedTargetingOptionsRequest.deleteRequests and then create the assigned
+        /// targeting options provided in BulkEditPartnerAssignedTargetingOptionsRequest.createRequests .
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="partnerId">Required. The ID of the partner.</param>
-        public virtual BulkEditPartnerAssignedTargetingOptionsRequest BulkEditPartnerAssignedTargetingOptions(Google.Apis.DisplayVideo.v1.Data.BulkEditPartnerAssignedTargetingOptionsRequest body, long partnerId)
+        public virtual EditAssignedTargetingOptionsRequest EditAssignedTargetingOptions(Google.Apis.DisplayVideo.v3.Data.BulkEditPartnerAssignedTargetingOptionsRequest body, long partnerId)
         {
-            return new BulkEditPartnerAssignedTargetingOptionsRequest(service, body, partnerId);
+            return new EditAssignedTargetingOptionsRequest(service, body, partnerId);
         }
 
         /// <summary>
-        /// Bulk edits targeting options under a single partner. The operation will delete the assigned targeting
-        /// options provided in BulkEditPartnerAssignedTargetingOptionsRequest.deleteRequests and then create the
-        /// assigned targeting options provided in BulkEditPartnerAssignedTargetingOptionsRequest.createRequests .
+        /// Edits targeting options under a single partner. The operation will delete the assigned targeting options
+        /// provided in BulkEditPartnerAssignedTargetingOptionsRequest.deleteRequests and then create the assigned
+        /// targeting options provided in BulkEditPartnerAssignedTargetingOptionsRequest.createRequests .
         /// </summary>
-        public class BulkEditPartnerAssignedTargetingOptionsRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.BulkEditPartnerAssignedTargetingOptionsResponse>
+        public class EditAssignedTargetingOptionsRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.BulkEditPartnerAssignedTargetingOptionsResponse>
         {
-            /// <summary>Constructs a new BulkEditPartnerAssignedTargetingOptions request.</summary>
-            public BulkEditPartnerAssignedTargetingOptionsRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.BulkEditPartnerAssignedTargetingOptionsRequest body, long partnerId) : base(service)
+            /// <summary>Constructs a new EditAssignedTargetingOptions request.</summary>
+            public EditAssignedTargetingOptionsRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v3.Data.BulkEditPartnerAssignedTargetingOptionsRequest body, long partnerId) : base(service)
             {
                 PartnerId = partnerId;
                 Body = body;
@@ -17389,21 +19895,21 @@ namespace Google.Apis.DisplayVideo.v1
             public virtual long PartnerId { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.DisplayVideo.v1.Data.BulkEditPartnerAssignedTargetingOptionsRequest Body { get; set; }
+            Google.Apis.DisplayVideo.v3.Data.BulkEditPartnerAssignedTargetingOptionsRequest Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
             /// <summary>Gets the method name.</summary>
-            public override string MethodName => "bulkEditPartnerAssignedTargetingOptions";
+            public override string MethodName => "editAssignedTargetingOptions";
 
             /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1/partners/{+partnerId}:bulkEditPartnerAssignedTargetingOptions";
+            public override string RestPath => "v3/partners/{+partnerId}:editAssignedTargetingOptions";
 
-            /// <summary>Initializes BulkEditPartnerAssignedTargetingOptions parameter list.</summary>
+            /// <summary>Initializes EditAssignedTargetingOptions parameter list.</summary>
             protected override void InitParameters()
             {
                 base.InitParameters();
@@ -17426,7 +19932,7 @@ namespace Google.Apis.DisplayVideo.v1
         }
 
         /// <summary>Gets a partner.</summary>
-        public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Partner>
+        public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.Partner>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, long partnerId) : base(service)
@@ -17446,7 +19952,7 @@ namespace Google.Apis.DisplayVideo.v1
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1/partners/{+partnerId}";
+            public override string RestPath => "v3/partners/{+partnerId}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -17474,7 +19980,7 @@ namespace Google.Apis.DisplayVideo.v1
         /// <summary>
         /// Lists partners that are accessible to the current user. The order is defined by the order_by parameter.
         /// </summary>
-        public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ListPartnersResponse>
+        public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.ListPartnersResponse>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service) : base(service)
@@ -17523,7 +20029,7 @@ namespace Google.Apis.DisplayVideo.v1
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1/partners";
+            public override string RestPath => "v3/partners";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -17611,7 +20117,7 @@ namespace Google.Apis.DisplayVideo.v1
             /// Gets the latest state of an asynchronous SDF download task operation. Clients should poll this method at
             /// intervals of 30 seconds.
             /// </summary>
-            public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Operation>
+            public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.Operation>
             {
                 /// <summary>Constructs a new Get request.</summary>
                 public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
@@ -17631,7 +20137,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public override string HttpMethod => "GET";
 
                 /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1/{+name}";
+                public override string RestPath => "v3/{+name}";
 
                 /// <summary>Initializes Get parameter list.</summary>
                 protected override void InitParameters()
@@ -17658,7 +20164,7 @@ namespace Google.Apis.DisplayVideo.v1
         /// expected to be empty.
         /// </summary>
         /// <param name="body">The body of the request.</param>
-        public virtual CreateRequest Create(Google.Apis.DisplayVideo.v1.Data.CreateSdfDownloadTaskRequest body)
+        public virtual CreateRequest Create(Google.Apis.DisplayVideo.v3.Data.CreateSdfDownloadTaskRequest body)
         {
             return new CreateRequest(service, body);
         }
@@ -17671,17 +20177,17 @@ namespace Google.Apis.DisplayVideo.v1
         /// sdfdownloadtask.operations.get. Any errors can be found in the error.message. Note that error.details is
         /// expected to be empty.
         /// </summary>
-        public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Operation>
+        public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.Operation>
         {
             /// <summary>Constructs a new Create request.</summary>
-            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.CreateSdfDownloadTaskRequest body) : base(service)
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v3.Data.CreateSdfDownloadTaskRequest body) : base(service)
             {
                 Body = body;
                 InitParameters();
             }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.DisplayVideo.v1.Data.CreateSdfDownloadTaskRequest Body { get; set; }
+            Google.Apis.DisplayVideo.v3.Data.CreateSdfDownloadTaskRequest Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -17693,7 +20199,7 @@ namespace Google.Apis.DisplayVideo.v1
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1/sdfdownloadtasks";
+            public override string RestPath => "v3/sdfdownloadtasks";
 
             /// <summary>Initializes Create parameter list.</summary>
             protected override void InitParameters()
@@ -17757,7 +20263,7 @@ namespace Google.Apis.DisplayVideo.v1
             }
 
             /// <summary>Gets a single targeting option.</summary>
-            public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.TargetingOption>
+            public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.TargetingOption>
             {
                 /// <summary>Constructs a new Get request.</summary>
                 public GetRequest(Google.Apis.Services.IClientService service, TargetingTypeEnum targetingType, string targetingOptionId) : base(service)
@@ -17978,35 +20484,59 @@ namespace Google.Apis.DisplayVideo.v1
                     /// latitude/longitude coordinates.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_POI")]
-                    TARGETINGTYPEPOI = 39,
+                    TARGETINGTYPEPOI = 38,
 
                     /// <summary>Target ads around locations of a business chain within a specific geo region.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BUSINESS_CHAIN")]
-                    TARGETINGTYPEBUSINESSCHAIN = 40,
+                    TARGETINGTYPEBUSINESSCHAIN = 39,
 
                     /// <summary>Target ads to a specific video content duration.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_DURATION")]
-                    TARGETINGTYPECONTENTDURATION = 43,
+                    TARGETINGTYPECONTENTDURATION = 40,
 
                     /// <summary>Target ads to a specific video content stream type.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_STREAM_TYPE")]
-                    TARGETINGTYPECONTENTSTREAMTYPE = 44,
+                    TARGETINGTYPECONTENTSTREAMTYPE = 41,
 
                     /// <summary>Target ads to a specific native content position.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NATIVE_CONTENT_POSITION")]
-                    TARGETINGTYPENATIVECONTENTPOSITION = 38,
+                    TARGETINGTYPENATIVECONTENTPOSITION = 42,
 
                     /// <summary>Target ads in an Open Measurement enabled inventory.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_OMID")]
-                    TARGETINGTYPEOMID = 41,
+                    TARGETINGTYPEOMID = 43,
 
                     /// <summary>Target ads to a specific audio content type.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIO_CONTENT_TYPE")]
-                    TARGETINGTYPEAUDIOCONTENTTYPE = 42,
+                    TARGETINGTYPEAUDIOCONTENTTYPE = 44,
 
                     /// <summary>Target ads to a specific content genre.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_GENRE")]
                     TARGETINGTYPECONTENTGENRE = 45,
+
+                    /// <summary>
+                    /// Target ads to a specific YouTube video. Targeting of this type cannot be created or updated
+                    /// using the API. Although this targeting is inherited by child resources, **inherited targeting of
+                    /// this type will not be retrieveable**.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_YOUTUBE_VIDEO")]
+                    TARGETINGTYPEYOUTUBEVIDEO = 46,
+
+                    /// <summary>
+                    /// Target ads to a specific YouTube channel. Targeting of this type cannot be created or updated
+                    /// using the API. Although this targeting is inherited by child resources, **inherited targeting of
+                    /// this type will not be retrieveable**.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_YOUTUBE_CHANNEL")]
+                    TARGETINGTYPEYOUTUBECHANNEL = 47,
+
+                    /// <summary>
+                    /// Target ads to a serve it in a certain position of a session. Only supported for Ad Group
+                    /// resources under YouTube Programmatic Reservation line items. Targeting of this type cannot be
+                    /// created or updated using the API.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SESSION_POSITION")]
+                    TARGETINGTYPESESSIONPOSITION = 48,
                 }
 
                 /// <summary>Required. The ID of the of targeting option to retrieve.</summary>
@@ -18024,7 +20554,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public override string HttpMethod => "GET";
 
                 /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1/targetingTypes/{+targetingType}/targetingOptions/{+targetingOptionId}";
+                public override string RestPath => "v3/targetingTypes/{+targetingType}/targetingOptions/{+targetingOptionId}";
 
                 /// <summary>Initializes Get parameter list.</summary>
                 protected override void InitParameters()
@@ -18078,7 +20608,7 @@ namespace Google.Apis.DisplayVideo.v1
             }
 
             /// <summary>Lists targeting options of a given type.</summary>
-            public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ListTargetingOptionsResponse>
+            public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.ListTargetingOptionsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
                 public ListRequest(Google.Apis.Services.IClientService service, TargetingTypeEnum targetingType) : base(service)
@@ -18298,35 +20828,59 @@ namespace Google.Apis.DisplayVideo.v1
                     /// latitude/longitude coordinates.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_POI")]
-                    TARGETINGTYPEPOI = 39,
+                    TARGETINGTYPEPOI = 38,
 
                     /// <summary>Target ads around locations of a business chain within a specific geo region.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BUSINESS_CHAIN")]
-                    TARGETINGTYPEBUSINESSCHAIN = 40,
+                    TARGETINGTYPEBUSINESSCHAIN = 39,
 
                     /// <summary>Target ads to a specific video content duration.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_DURATION")]
-                    TARGETINGTYPECONTENTDURATION = 43,
+                    TARGETINGTYPECONTENTDURATION = 40,
 
                     /// <summary>Target ads to a specific video content stream type.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_STREAM_TYPE")]
-                    TARGETINGTYPECONTENTSTREAMTYPE = 44,
+                    TARGETINGTYPECONTENTSTREAMTYPE = 41,
 
                     /// <summary>Target ads to a specific native content position.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NATIVE_CONTENT_POSITION")]
-                    TARGETINGTYPENATIVECONTENTPOSITION = 38,
+                    TARGETINGTYPENATIVECONTENTPOSITION = 42,
 
                     /// <summary>Target ads in an Open Measurement enabled inventory.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_OMID")]
-                    TARGETINGTYPEOMID = 41,
+                    TARGETINGTYPEOMID = 43,
 
                     /// <summary>Target ads to a specific audio content type.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIO_CONTENT_TYPE")]
-                    TARGETINGTYPEAUDIOCONTENTTYPE = 42,
+                    TARGETINGTYPEAUDIOCONTENTTYPE = 44,
 
                     /// <summary>Target ads to a specific content genre.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_GENRE")]
                     TARGETINGTYPECONTENTGENRE = 45,
+
+                    /// <summary>
+                    /// Target ads to a specific YouTube video. Targeting of this type cannot be created or updated
+                    /// using the API. Although this targeting is inherited by child resources, **inherited targeting of
+                    /// this type will not be retrieveable**.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_YOUTUBE_VIDEO")]
+                    TARGETINGTYPEYOUTUBEVIDEO = 46,
+
+                    /// <summary>
+                    /// Target ads to a specific YouTube channel. Targeting of this type cannot be created or updated
+                    /// using the API. Although this targeting is inherited by child resources, **inherited targeting of
+                    /// this type will not be retrieveable**.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_YOUTUBE_CHANNEL")]
+                    TARGETINGTYPEYOUTUBECHANNEL = 47,
+
+                    /// <summary>
+                    /// Target ads to a serve it in a certain position of a session. Only supported for Ad Group
+                    /// resources under YouTube Programmatic Reservation line items. Targeting of this type cannot be
+                    /// created or updated using the API.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SESSION_POSITION")]
+                    TARGETINGTYPESESSIONPOSITION = 48,
                 }
 
                 /// <summary>Required. The Advertiser this request is being made in the context of.</summary>
@@ -18380,7 +20934,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public override string HttpMethod => "GET";
 
                 /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1/targetingTypes/{+targetingType}/targetingOptions";
+                public override string RestPath => "v3/targetingTypes/{+targetingType}/targetingOptions";
 
                 /// <summary>Initializes List parameter list.</summary>
                 protected override void InitParameters()
@@ -18443,16 +20997,16 @@ namespace Google.Apis.DisplayVideo.v1
             /// Required. The type of targeting options to retrieve. Accepted values are: * `TARGETING_TYPE_GEO_REGION`
             /// * `TARGETING_TYPE_POI` * `TARGETING_TYPE_BUSINESS_CHAIN`
             /// </param>
-            public virtual SearchRequest Search(Google.Apis.DisplayVideo.v1.Data.SearchTargetingOptionsRequest body, SearchRequest.TargetingTypeEnum targetingType)
+            public virtual SearchRequest Search(Google.Apis.DisplayVideo.v3.Data.SearchTargetingOptionsRequest body, SearchRequest.TargetingTypeEnum targetingType)
             {
                 return new SearchRequest(service, body, targetingType);
             }
 
             /// <summary>Searches for targeting options of a given type based on the given search terms.</summary>
-            public class SearchRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.SearchTargetingOptionsResponse>
+            public class SearchRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.SearchTargetingOptionsResponse>
             {
                 /// <summary>Constructs a new Search request.</summary>
-                public SearchRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.SearchTargetingOptionsRequest body, TargetingTypeEnum targetingType) : base(service)
+                public SearchRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v3.Data.SearchTargetingOptionsRequest body, TargetingTypeEnum targetingType) : base(service)
                 {
                     TargetingType = targetingType;
                     Body = body;
@@ -18650,39 +21204,63 @@ namespace Google.Apis.DisplayVideo.v1
                     /// latitude/longitude coordinates.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_POI")]
-                    TARGETINGTYPEPOI = 39,
+                    TARGETINGTYPEPOI = 38,
 
                     /// <summary>Target ads around locations of a business chain within a specific geo region.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BUSINESS_CHAIN")]
-                    TARGETINGTYPEBUSINESSCHAIN = 40,
+                    TARGETINGTYPEBUSINESSCHAIN = 39,
 
                     /// <summary>Target ads to a specific video content duration.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_DURATION")]
-                    TARGETINGTYPECONTENTDURATION = 43,
+                    TARGETINGTYPECONTENTDURATION = 40,
 
                     /// <summary>Target ads to a specific video content stream type.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_STREAM_TYPE")]
-                    TARGETINGTYPECONTENTSTREAMTYPE = 44,
+                    TARGETINGTYPECONTENTSTREAMTYPE = 41,
 
                     /// <summary>Target ads to a specific native content position.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NATIVE_CONTENT_POSITION")]
-                    TARGETINGTYPENATIVECONTENTPOSITION = 38,
+                    TARGETINGTYPENATIVECONTENTPOSITION = 42,
 
                     /// <summary>Target ads in an Open Measurement enabled inventory.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_OMID")]
-                    TARGETINGTYPEOMID = 41,
+                    TARGETINGTYPEOMID = 43,
 
                     /// <summary>Target ads to a specific audio content type.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIO_CONTENT_TYPE")]
-                    TARGETINGTYPEAUDIOCONTENTTYPE = 42,
+                    TARGETINGTYPEAUDIOCONTENTTYPE = 44,
 
                     /// <summary>Target ads to a specific content genre.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_GENRE")]
                     TARGETINGTYPECONTENTGENRE = 45,
+
+                    /// <summary>
+                    /// Target ads to a specific YouTube video. Targeting of this type cannot be created or updated
+                    /// using the API. Although this targeting is inherited by child resources, **inherited targeting of
+                    /// this type will not be retrieveable**.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_YOUTUBE_VIDEO")]
+                    TARGETINGTYPEYOUTUBEVIDEO = 46,
+
+                    /// <summary>
+                    /// Target ads to a specific YouTube channel. Targeting of this type cannot be created or updated
+                    /// using the API. Although this targeting is inherited by child resources, **inherited targeting of
+                    /// this type will not be retrieveable**.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_YOUTUBE_CHANNEL")]
+                    TARGETINGTYPEYOUTUBECHANNEL = 47,
+
+                    /// <summary>
+                    /// Target ads to a serve it in a certain position of a session. Only supported for Ad Group
+                    /// resources under YouTube Programmatic Reservation line items. Targeting of this type cannot be
+                    /// created or updated using the API.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SESSION_POSITION")]
+                    TARGETINGTYPESESSIONPOSITION = 48,
                 }
 
                 /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.DisplayVideo.v1.Data.SearchTargetingOptionsRequest Body { get; set; }
+                Google.Apis.DisplayVideo.v3.Data.SearchTargetingOptionsRequest Body { get; set; }
 
                 /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
@@ -18694,7 +21272,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public override string HttpMethod => "POST";
 
                 /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1/targetingTypes/{+targetingType}/targetingOptions:search";
+                public override string RestPath => "v3/targetingTypes/{+targetingType}/targetingOptions:search";
 
                 /// <summary>Initializes Search parameter list.</summary>
                 protected override void InitParameters()
@@ -18737,7 +21315,7 @@ namespace Google.Apis.DisplayVideo.v1
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="userId">Required. The ID of the user to which the assigned user roles belong.</param>
-        public virtual BulkEditAssignedUserRolesRequest BulkEditAssignedUserRoles(Google.Apis.DisplayVideo.v1.Data.BulkEditAssignedUserRolesRequest body, long userId)
+        public virtual BulkEditAssignedUserRolesRequest BulkEditAssignedUserRoles(Google.Apis.DisplayVideo.v3.Data.BulkEditAssignedUserRolesRequest body, long userId)
         {
             return new BulkEditAssignedUserRolesRequest(service, body, userId);
         }
@@ -18750,10 +21328,10 @@ namespace Google.Apis.DisplayVideo.v1
         /// guide](/display-video/api/guides/users/overview#prerequisites) before using this method. The "Try this
         /// method" feature does not work for this method.
         /// </summary>
-        public class BulkEditAssignedUserRolesRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.BulkEditAssignedUserRolesResponse>
+        public class BulkEditAssignedUserRolesRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.BulkEditAssignedUserRolesResponse>
         {
             /// <summary>Constructs a new BulkEditAssignedUserRoles request.</summary>
-            public BulkEditAssignedUserRolesRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.BulkEditAssignedUserRolesRequest body, long userId) : base(service)
+            public BulkEditAssignedUserRolesRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v3.Data.BulkEditAssignedUserRolesRequest body, long userId) : base(service)
             {
                 UserId = userId;
                 Body = body;
@@ -18765,7 +21343,7 @@ namespace Google.Apis.DisplayVideo.v1
             public virtual long UserId { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.DisplayVideo.v1.Data.BulkEditAssignedUserRolesRequest Body { get; set; }
+            Google.Apis.DisplayVideo.v3.Data.BulkEditAssignedUserRolesRequest Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -18777,7 +21355,7 @@ namespace Google.Apis.DisplayVideo.v1
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1/users/{+userId}:bulkEditAssignedUserRoles";
+            public override string RestPath => "v3/users/{+userId}:bulkEditAssignedUserRoles";
 
             /// <summary>Initializes BulkEditAssignedUserRoles parameter list.</summary>
             protected override void InitParameters()
@@ -18801,7 +21379,7 @@ namespace Google.Apis.DisplayVideo.v1
         /// method" feature does not work for this method.
         /// </summary>
         /// <param name="body">The body of the request.</param>
-        public virtual CreateRequest Create(Google.Apis.DisplayVideo.v1.Data.User body)
+        public virtual CreateRequest Create(Google.Apis.DisplayVideo.v3.Data.User body)
         {
             return new CreateRequest(service, body);
         }
@@ -18812,17 +21390,17 @@ namespace Google.Apis.DisplayVideo.v1
         /// guide](/display-video/api/guides/users/overview#prerequisites) before using this method. The "Try this
         /// method" feature does not work for this method.
         /// </summary>
-        public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.User>
+        public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.User>
         {
             /// <summary>Constructs a new Create request.</summary>
-            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.User body) : base(service)
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v3.Data.User body) : base(service)
             {
                 Body = body;
                 InitParameters();
             }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.DisplayVideo.v1.Data.User Body { get; set; }
+            Google.Apis.DisplayVideo.v3.Data.User Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -18834,7 +21412,7 @@ namespace Google.Apis.DisplayVideo.v1
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1/users";
+            public override string RestPath => "v3/users";
 
             /// <summary>Initializes Create parameter list.</summary>
             protected override void InitParameters()
@@ -18859,7 +21437,7 @@ namespace Google.Apis.DisplayVideo.v1
         /// Users guide](/display-video/api/guides/users/overview#prerequisites) before using this method. The "Try this
         /// method" feature does not work for this method.
         /// </summary>
-        public class DeleteRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Empty>
+        public class DeleteRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.Empty>
         {
             /// <summary>Constructs a new Delete request.</summary>
             public DeleteRequest(Google.Apis.Services.IClientService service, long userId) : base(service)
@@ -18879,7 +21457,7 @@ namespace Google.Apis.DisplayVideo.v1
             public override string HttpMethod => "DELETE";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1/users/{+userId}";
+            public override string RestPath => "v3/users/{+userId}";
 
             /// <summary>Initializes Delete parameter list.</summary>
             protected override void InitParameters()
@@ -18912,7 +21490,7 @@ namespace Google.Apis.DisplayVideo.v1
         /// Users guide](/display-video/api/guides/users/overview#prerequisites) before using this method. The "Try this
         /// method" feature does not work for this method.
         /// </summary>
-        public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.User>
+        public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.User>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, long userId) : base(service)
@@ -18932,7 +21510,7 @@ namespace Google.Apis.DisplayVideo.v1
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1/users/{+userId}";
+            public override string RestPath => "v3/users/{+userId}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -18966,7 +21544,7 @@ namespace Google.Apis.DisplayVideo.v1
         /// prerequisites in our [Managing Users guide](/display-video/api/guides/users/overview#prerequisites) before
         /// using this method. The "Try this method" feature does not work for this method.
         /// </summary>
-        public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ListUsersResponse>
+        public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.ListUsersResponse>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service) : base(service)
@@ -19025,7 +21603,7 @@ namespace Google.Apis.DisplayVideo.v1
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1/users";
+            public override string RestPath => "v3/users";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -19074,7 +21652,7 @@ namespace Google.Apis.DisplayVideo.v1
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="userId">Output only. The unique ID of the user. Assigned by the system.</param>
-        public virtual PatchRequest Patch(Google.Apis.DisplayVideo.v1.Data.User body, long userId)
+        public virtual PatchRequest Patch(Google.Apis.DisplayVideo.v3.Data.User body, long userId)
         {
             return new PatchRequest(service, body, userId);
         }
@@ -19085,10 +21663,10 @@ namespace Google.Apis.DisplayVideo.v1
         /// guide](/display-video/api/guides/users/overview#prerequisites) before using this method. The "Try this
         /// method" feature does not work for this method.
         /// </summary>
-        public class PatchRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.User>
+        public class PatchRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.User>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.User body, long userId) : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v3.Data.User body, long userId) : base(service)
             {
                 UserId = userId;
                 Body = body;
@@ -19104,7 +21682,7 @@ namespace Google.Apis.DisplayVideo.v1
             public virtual object UpdateMask { get; set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.DisplayVideo.v1.Data.User Body { get; set; }
+            Google.Apis.DisplayVideo.v3.Data.User Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -19116,7 +21694,7 @@ namespace Google.Apis.DisplayVideo.v1
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1/users/{+userId}";
+            public override string RestPath => "v3/users/{+userId}";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -19142,15 +21720,8 @@ namespace Google.Apis.DisplayVideo.v1
         }
     }
 }
-namespace Google.Apis.DisplayVideo.v1.Data
+namespace Google.Apis.DisplayVideo.v3.Data
 {
-    /// <summary>Request message for ManualTriggerService.ActivateManualTrigger.</summary>
-    public class ActivateManualTriggerRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Configuration for custom Active View video viewability metrics.</summary>
     public class ActiveViewVideoViewabilityMetricConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -19192,6 +21763,181 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A single ad group associated with a line item.</summary>
+    public class AdGroup : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The format of the ads in the ad group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adGroupFormat")]
+        public virtual string AdGroupFormat { get; set; }
+
+        /// <summary>The unique ID of the ad group. Assigned by the system.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adGroupId")]
+        public virtual System.Nullable<long> AdGroupId { get; set; }
+
+        /// <summary>The unique ID of the advertiser the ad group belongs to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("advertiserId")]
+        public virtual System.Nullable<long> AdvertiserId { get; set; }
+
+        /// <summary>
+        /// The bidding strategy used by the ad group. Only the youtubeAndPartnersBid field can be used in the bidding
+        /// strategy.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bidStrategy")]
+        public virtual BiddingStrategy BidStrategy { get; set; }
+
+        /// <summary>The display name of the ad group. Must be UTF-8 encoded with a maximum size of 255 bytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Controls whether or not the ad group can spend its budget and bid on inventory. If the ad group's parent
+        /// line item is not active, the ad group can't spend its budget even if its own status is
+        /// `ENTITY_STATUS_ACTIVE`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityStatus")]
+        public virtual string EntityStatus { get; set; }
+
+        /// <summary>The unique ID of the line item that the ad group belongs to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lineItemId")]
+        public virtual System.Nullable<long> LineItemId { get; set; }
+
+        /// <summary>The resource name of the ad group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The settings of the product feed in this ad group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productFeedData")]
+        public virtual ProductFeedData ProductFeedData { get; set; }
+
+        /// <summary>
+        /// The [optimized targeting](//support.google.com/displayvideo/answer/12060859) settings of the ad group.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetingExpansion")]
+        public virtual TargetingExpansionConfig TargetingExpansion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A single ad associated with an ad group.</summary>
+    public class AdGroupAd : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The unique ID of the ad. Assigned by the system.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adGroupAdId")]
+        public virtual System.Nullable<long> AdGroupAdId { get; set; }
+
+        /// <summary>The unique ID of the ad group that the ad belongs to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adGroupId")]
+        public virtual System.Nullable<long> AdGroupId { get; set; }
+
+        /// <summary>List of URLs used by the ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adUrls")]
+        public virtual System.Collections.Generic.IList<AdUrl> AdUrls { get; set; }
+
+        /// <summary>The unique ID of the advertiser the ad belongs to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("advertiserId")]
+        public virtual System.Nullable<long> AdvertiserId { get; set; }
+
+        /// <summary>
+        /// Details of an [audio ad](//support.google.com/displayvideo/answer/6274216) used for reach marketing
+        /// objectives.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audioAd")]
+        public virtual AudioAd AudioAd { get; set; }
+
+        /// <summary>
+        /// Details of a [non-skippable short video ad](//support.google.com/displayvideo/answer/6274216), equal to or
+        /// less than 6 seconds, used for reach.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bumperAd")]
+        public virtual BumperAd BumperAd { get; set; }
+
+        /// <summary>The display name of the ad. Must be UTF-8 encoded with a maximum size of 255 bytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Details of an ad sourced from a Display &amp; Video 360 creative.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayVideoSourceAd")]
+        public virtual DisplayVideoSourceAd DisplayVideoSourceAd { get; set; }
+
+        /// <summary>The entity status of the ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityStatus")]
+        public virtual string EntityStatus { get; set; }
+
+        /// <summary>
+        /// Details of an [in-stream ad skippable after 5 seconds](//support.google.com/displayvideo/answer/6274216),
+        /// used for brand awareness or reach marketing objectives.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inStreamAd")]
+        public virtual InStreamAd InStreamAd { get; set; }
+
+        /// <summary>
+        /// Details of an [ad served on the YouTube Home feed](//support.google.com/google-ads/answer/9709826).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mastheadAd")]
+        public virtual MastheadAd MastheadAd { get; set; }
+
+        /// <summary>The resource name of the ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Details of a [non-skippable short in-stream video ad](//support.google.com/displayvideo/answer/6274216),
+        /// between 6 and 15 seconds, used for reach marketing objectives.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nonSkippableAd")]
+        public virtual NonSkippableAd NonSkippableAd { get; set; }
+
+        /// <summary>
+        /// Details of an [ad promoting a video](//support.google.com/displayvideo/answer/6274216) that shows in places
+        /// of discovery.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("videoDiscoverAd")]
+        public virtual VideoDiscoveryAd VideoDiscoverAd { get; set; }
+
+        /// <summary>
+        /// Details of an [ad used in a video action campaign](//support.google.com/google-ads/answer/10147229) to drive
+        /// actions to the business, service or product.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("videoPerformanceAd")]
+        public virtual VideoPerformanceAd VideoPerformanceAd { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Wrapper object associating an AssignedTargetingOption resource and the ad group it is assigned to.
+    /// </summary>
+    public class AdGroupAssignedTargetingOption : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ID of the ad group the assigned targeting option is assigned to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adGroupId")]
+        public virtual System.Nullable<long> AdGroupId { get; set; }
+
+        /// <summary>The assigned targeting option resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assignedTargetingOption")]
+        public virtual AssignedTargetingOption AssignedTargetingOption { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Additional URLs related to the ad, including beacons.</summary>
+    public class AdUrl : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The type of the Ad URL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The URL string value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("url")]
+        public virtual string Url { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Details of Adloox settings.</summary>
     public class Adloox : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -19213,6 +21959,10 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>Output only. The unique ID of the advertiser. Assigned by the system.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserId")]
         public virtual System.Nullable<long> AdvertiserId { get; set; }
+
+        /// <summary>Required. Billing related settings of the advertiser.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("billingConfig")]
+        public virtual AdvertiserBillingConfig BillingConfig { get; set; }
 
         /// <summary>Required. Creative related settings of the advertiser.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creativeConfig")]
@@ -19322,6 +22072,17 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>The configuration for advertisers that use third-party ad servers only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thirdPartyOnlyConfig")]
         public virtual ThirdPartyOnlyConfig ThirdPartyOnlyConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Billing related settings of an advertiser.</summary>
+    public class AdvertiserBillingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ID of a billing profile assigned to the advertiser.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("billingProfileId")]
+        public virtual System.Nullable<long> BillingProfileId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -19466,12 +22227,6 @@ namespace Google.Apis.DisplayVideo.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ageRange")]
         public virtual string AgeRange { get; set; }
 
-        /// <summary>
-        /// Required. The targeting_option_id of a TargetingOption of type `TARGETING_TYPE_AGE_RANGE`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("targetingOptionId")]
-        public virtual string TargetingOptionId { get; set; }
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -19485,6 +22240,169 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>Output only. The age range of an audience.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ageRange")]
         public virtual string AgeRange { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Rule-based algorithm.</summary>
+    public class AlgorithmRules : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Rules for the impression signals.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("impressionSignalRuleset")]
+        public virtual AlgorithmRulesRuleset ImpressionSignalRuleset { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A value to compare the signal to.</summary>
+    public class AlgorithmRulesComparisonValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Boolean value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boolValue")]
+        public virtual System.Nullable<bool> BoolValue { get; set; }
+
+        /// <summary>Creative dimension value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creativeDimensionValue")]
+        public virtual Dimensions CreativeDimensionValue { get; set; }
+
+        /// <summary>Day and time value. Only `TIME_ZONE_RESOLUTION_END_USER` is supported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dayAndTimeValue")]
+        public virtual DayAndTime DayAndTimeValue { get; set; }
+
+        /// <summary>Device type value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceTypeValue")]
+        public virtual string DeviceTypeValue { get; set; }
+
+        /// <summary>Double value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("doubleValue")]
+        public virtual System.Nullable<double> DoubleValue { get; set; }
+
+        /// <summary>Environment value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("environmentValue")]
+        public virtual string EnvironmentValue { get; set; }
+
+        /// <summary>Exchange value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exchangeValue")]
+        public virtual string ExchangeValue { get; set; }
+
+        /// <summary>Integer value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("int64Value")]
+        public virtual System.Nullable<long> Int64Value { get; set; }
+
+        /// <summary>Ad position value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("onScreenPositionValue")]
+        public virtual string OnScreenPositionValue { get; set; }
+
+        /// <summary>String value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stringValue")]
+        public virtual string StringValue { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Set of conditions. The return value of the rule is either: * The return value for single met condition or * The
+    /// defined default return value if no conditions are met.
+    /// </summary>
+    public class AlgorithmRulesRule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// List of conditions in this rule. The criteria among conditions should be mutually exclusive.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conditions")]
+        public virtual System.Collections.Generic.IList<AlgorithmRulesRuleCondition> Conditions { get; set; }
+
+        /// <summary>The default return value applied when none of the conditions are met.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultReturnValue")]
+        public virtual AlgorithmRulesSignalValue DefaultReturnValue { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Set of signal comparisons. Equivalent of an `if` statement.</summary>
+    public class AlgorithmRulesRuleCondition : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The value returned if the `signalComparisons` condition evaluates to `TRUE`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("returnValue")]
+        public virtual AlgorithmRulesSignalValue ReturnValue { get; set; }
+
+        /// <summary>
+        /// List of comparisons that build `if` statement condition. The comparisons are combined into a single
+        /// condition with `AND` logical operators.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signalComparisons")]
+        public virtual System.Collections.Generic.IList<AlgorithmRulesSignalComparison> SignalComparisons { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A ruleset consisting of a list of rules and how to aggregate the resulting values.</summary>
+    public class AlgorithmRulesRuleset : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>How to aggregate values of evaluated rules.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aggregationType")]
+        public virtual string AggregationType { get; set; }
+
+        /// <summary>Maximum value the ruleset can evaluate to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxValue")]
+        public virtual System.Nullable<double> MaxValue { get; set; }
+
+        /// <summary>List of rules to generate the impression value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rules")]
+        public virtual System.Collections.Generic.IList<AlgorithmRulesRule> Rules { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Signal used to evaluate rules.</summary>
+    public class AlgorithmRulesSignal : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Signal based on impressions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("impressionSignal")]
+        public virtual string ImpressionSignal { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A single comparison. The comparison compares the `signal` to the `comparisonValue`. The comparison of
+    /// `siteId==123` is represented with the following field values: * `signal` has an `impressionSignal` of `SITE_ID`.
+    /// * `comparisonOperator` is set to `EQUAL`. * `comparisonValue` is set to 123.
+    /// </summary>
+    public class AlgorithmRulesSignalComparison : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Operator used to compare the two values. In the resulting experession, the `signal` will be the first value
+        /// and the `comparisonValue will be the second.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("comparisonOperator")]
+        public virtual string ComparisonOperator { get; set; }
+
+        /// <summary>Value to compare signal to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("comparisonValue")]
+        public virtual AlgorithmRulesComparisonValue ComparisonValue { get; set; }
+
+        /// <summary>Signal to compare.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signal")]
+        public virtual AlgorithmRulesSignal Signal { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Adjusted value of the signal used for rule evaluation.</summary>
+    public class AlgorithmRulesSignalValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Value to use as result.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("number")]
+        public virtual System.Nullable<double> Number { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -19670,6 +22588,21 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assignedTargetingOptionId")]
         public virtual string AssignedTargetingOptionId { get; set; }
+
+        /// <summary>
+        /// Output only. An alias for the assigned_targeting_option_id. This value can be used in place of
+        /// `assignedTargetingOptionId` when retrieving or deleting existing targeting. This field will only be
+        /// supported for all assigned targeting options of the following targeting types: * `TARGETING_TYPE_AGE_RANGE`
+        /// * `TARGETING_TYPE_DEVICE_TYPE` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` *
+        /// `TARGETING_TYPE_ENVIRONMENT` * `TARGETING_TYPE_EXCHANGE` * `TARGETING_TYPE_GENDER` *
+        /// `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_NATIVE_CONTENT_POSITION` * `TARGETING_TYPE_OMID` *
+        /// `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` *
+        /// `TARGETING_TYPE_VIDEO_PLAYER_SIZE` * `TARGETING_TYPE_VIEWABILITY` This field is also supported for line item
+        /// assigned targeting options of the following targeting types: * `TARGETING_TYPE_CONTENT_INSTREAM_POSITION` *
+        /// `TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assignedTargetingOptionIdAlias")]
+        public virtual string AssignedTargetingOptionIdAlias { get; set; }
 
         /// <summary>
         /// Audience targeting details. This field will be populated when the targeting_type is
@@ -19933,6 +22866,13 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual SensitiveCategoryAssignedTargetingOptionDetails SensitiveCategoryExclusionDetails { get; set; }
 
         /// <summary>
+        /// Session position details. This field will be populated when the targeting_type is
+        /// `TARGETING_TYPE_SESSION_POSITION`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sessionPositionDetails")]
+        public virtual SessionPositionAssignedTargetingOptionDetails SessionPositionDetails { get; set; }
+
+        /// <summary>
         /// Sub-exchange details. This field will be populated when the targeting_type is `TARGETING_TYPE_SUB_EXCHANGE`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subExchangeDetails")]
@@ -19975,6 +22915,20 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("viewabilityDetails")]
         public virtual ViewabilityAssignedTargetingOptionDetails ViewabilityDetails { get; set; }
+
+        /// <summary>
+        /// YouTube channel details. This field will be populated when the targeting_type is
+        /// `TARGETING_TYPE_YOUTUBE_CHANNEL`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("youtubeChannelDetails")]
+        public virtual YoutubeChannelAssignedTargetingOptionDetails YoutubeChannelDetails { get; set; }
+
+        /// <summary>
+        /// YouTube video details. This field will be populated when the targeting_type is
+        /// `TARGETING_TYPE_YOUTUBE_VIDEO`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("youtubeVideoDetails")]
+        public virtual YoutubeVideoAssignedTargetingOptionDetails YoutubeVideoDetails { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -20060,6 +23014,29 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Details for an audio ad.</summary>
+    public class AudioAd : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The webpage address that appears with the ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayUrl")]
+        public virtual string DisplayUrl { get; set; }
+
+        /// <summary>The URL address of the webpage that people reach after they click the ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("finalUrl")]
+        public virtual string FinalUrl { get; set; }
+
+        /// <summary>The URL address loaded in the background for tracking purposes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trackingUrl")]
+        public virtual string TrackingUrl { get; set; }
+
+        /// <summary>The YouTube video of the ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("video")]
+        public virtual YoutubeVideoDetails Video { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Details for audio content type assigned targeting option. This will be populated in the
     /// audio_content_type_details field when targeting_type is `TARGETING_TYPE_AUDIO_CONTENT_TYPE`. Explicitly
@@ -20070,12 +23047,6 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>Required. The audio content type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audioContentType")]
         public virtual string AudioContentType { get; set; }
-
-        /// <summary>
-        /// Required. The targeting_option_id field when targeting_type is `TARGETING_TYPE_AUDIO_CONTENT_TYPE`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("targetingOptionId")]
-        public virtual string TargetingOptionId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -20242,6 +23213,13 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("performanceGoalAutoBid")]
         public virtual PerformanceGoalBidStrategy PerformanceGoalAutoBid { get; set; }
+
+        /// <summary>
+        /// A bid strategy used by YouTube and Partners resources. It can only be used for a YouTube and Partners line
+        /// item or ad group entity.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("youtubeAndPartnersBid")]
+        public virtual YoutubeAndPartnersBiddingStrategy YoutubeAndPartnersBid { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -20445,6 +23423,81 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for BulkEditLineItemsAssignedTargetingOptions.</summary>
+    public class BulkEditAssignedTargetingOptionsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The assigned targeting options to create in batch, specified as a list of
+        /// CreateAssignedTargetingOptionsRequest. Supported targeting types include: * `TARGETING_TYPE_AGE_RANGE` *
+        /// `TARGETING_TYPE_APP` * `TARGETING_TYPE_APP_CATEGORY` * `TARGETING_TYPE_AUDIENCE_GROUP` *
+        /// `TARGETING_TYPE_AUDIO_CONTENT_TYPE` * `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS` * `TARGETING_TYPE_BROWSER` *
+        /// `TARGETING_TYPE_BUSINESS_CHAIN` * `TARGETING_TYPE_CARRIER_AND_ISP` * `TARGETING_TYPE_CATEGORY` *
+        /// `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_CONTENT_DURATION` * `TARGETING_TYPE_CONTENT_GENRE` *
+        /// `TARGETING_TYPE_CONTENT_INSTREAM_POSITION` * `TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION` *
+        /// `TARGETING_TYPE_CONTENT_STREAM_TYPE` * `TARGETING_TYPE_DAY_AND_TIME` * `TARGETING_TYPE_DEVICE_MAKE_MODEL` *
+        /// `TARGETING_TYPE_DEVICE_TYPE` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` *
+        /// `TARGETING_TYPE_ENVIRONMENT` * `TARGETING_TYPE_EXCHANGE` * `TARGETING_TYPE_GENDER` *
+        /// `TARGETING_TYPE_GEO_REGION` * `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_INVENTORY_SOURCE` *
+        /// `TARGETING_TYPE_INVENTORY_SOURCE_GROUP` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_LANGUAGE` *
+        /// `TARGETING_TYPE_NATIVE_CONTENT_POSITION` * `TARGETING_TYPE_NEGATIVE_KEYWORD_LIST` * `TARGETING_TYPE_OMID` *
+        /// `TARGETING_TYPE_ON_SCREEN_POSITION` * `TARGETING_TYPE_OPERATING_SYSTEM` * `TARGETING_TYPE_PARENTAL_STATUS` *
+        /// `TARGETING_TYPE_POI` * `TARGETING_TYPE_PROXIMITY_LOCATION_LIST` * `TARGETING_TYPE_REGIONAL_LOCATION_LIST` *
+        /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_SUB_EXCHANGE` *
+        /// `TARGETING_TYPE_THIRD_PARTY_VERIFIER` * `TARGETING_TYPE_URL` * `TARGETING_TYPE_USER_REWARDED_CONTENT` *
+        /// `TARGETING_TYPE_VIDEO_PLAYER_SIZE` * `TARGETING_TYPE_VIEWABILITY`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createRequests")]
+        public virtual System.Collections.Generic.IList<CreateAssignedTargetingOptionsRequest> CreateRequests { get; set; }
+
+        /// <summary>
+        /// The assigned targeting options to delete in batch, specified as a list of
+        /// DeleteAssignedTargetingOptionsRequest. Supported targeting types include: * `TARGETING_TYPE_AGE_RANGE` *
+        /// `TARGETING_TYPE_APP` * `TARGETING_TYPE_APP_CATEGORY` * `TARGETING_TYPE_AUDIENCE_GROUP` *
+        /// `TARGETING_TYPE_AUDIO_CONTENT_TYPE` * `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS` * `TARGETING_TYPE_BROWSER` *
+        /// `TARGETING_TYPE_BUSINESS_CHAIN` * `TARGETING_TYPE_CARRIER_AND_ISP` * `TARGETING_TYPE_CATEGORY` *
+        /// `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_CONTENT_DURATION` * `TARGETING_TYPE_CONTENT_GENRE` *
+        /// `TARGETING_TYPE_CONTENT_INSTREAM_POSITION` * `TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION` *
+        /// `TARGETING_TYPE_CONTENT_STREAM_TYPE` * `TARGETING_TYPE_DAY_AND_TIME` * `TARGETING_TYPE_DEVICE_MAKE_MODEL` *
+        /// `TARGETING_TYPE_DEVICE_TYPE` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` *
+        /// `TARGETING_TYPE_ENVIRONMENT` * `TARGETING_TYPE_EXCHANGE` * `TARGETING_TYPE_GENDER` *
+        /// `TARGETING_TYPE_GEO_REGION` * `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_INVENTORY_SOURCE` *
+        /// `TARGETING_TYPE_INVENTORY_SOURCE_GROUP` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_LANGUAGE` *
+        /// `TARGETING_TYPE_NATIVE_CONTENT_POSITION` * `TARGETING_TYPE_NEGATIVE_KEYWORD_LIST` * `TARGETING_TYPE_OMID` *
+        /// `TARGETING_TYPE_ON_SCREEN_POSITION` * `TARGETING_TYPE_OPERATING_SYSTEM` * `TARGETING_TYPE_PARENTAL_STATUS` *
+        /// `TARGETING_TYPE_POI` * `TARGETING_TYPE_PROXIMITY_LOCATION_LIST` * `TARGETING_TYPE_REGIONAL_LOCATION_LIST` *
+        /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_SUB_EXCHANGE` *
+        /// `TARGETING_TYPE_THIRD_PARTY_VERIFIER` * `TARGETING_TYPE_URL` * `TARGETING_TYPE_USER_REWARDED_CONTENT` *
+        /// `TARGETING_TYPE_VIDEO_PLAYER_SIZE` * `TARGETING_TYPE_VIEWABILITY`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deleteRequests")]
+        public virtual System.Collections.Generic.IList<DeleteAssignedTargetingOptionsRequest> DeleteRequests { get; set; }
+
+        /// <summary>Required. The ID of the line items whose targeting is being updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lineItemIds")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> LineItemIds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class BulkEditAssignedTargetingOptionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The error information for each line item that failed to update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errors")]
+        public virtual System.Collections.Generic.IList<Status> Errors { get; set; }
+
+        /// <summary>Output only. The IDs of the line items which failed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failedLineItemIds")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> FailedLineItemIds { get; set; }
+
+        /// <summary>Output only. The IDs of the line items which successfully updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updatedLineItemIds")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> UpdatedLineItemIds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for BulkEditAssignedUserRoles.</summary>
     public class BulkEditAssignedUserRolesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -20470,40 +23523,6 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createdAssignedUserRoles")]
         public virtual System.Collections.Generic.IList<AssignedUserRole> CreatedAssignedUserRoles { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Request message for BulkEditLineItemAssignedTargetingOptions.</summary>
-    public class BulkEditLineItemAssignedTargetingOptionsRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The assigned targeting options to create in batch, specified as a list of
-        /// `CreateAssignedTargetingOptionsRequest`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("createRequests")]
-        public virtual System.Collections.Generic.IList<CreateAssignedTargetingOptionsRequest> CreateRequests { get; set; }
-
-        /// <summary>
-        /// The assigned targeting options to delete in batch, specified as a list of
-        /// `DeleteAssignedTargetingOptionsRequest`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("deleteRequests")]
-        public virtual System.Collections.Generic.IList<DeleteAssignedTargetingOptionsRequest> DeleteRequests { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class BulkEditLineItemAssignedTargetingOptionsResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The list of assigned targeting options that have been successfully created. This list will be absent if
-        /// empty.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("createdAssignedTargetingOptions")]
-        public virtual System.Collections.Generic.IList<AssignedTargetingOption> CreatedAssignedTargetingOptions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -20605,6 +23624,27 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    public class BulkListAdGroupAssignedTargetingOptionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The list of wrapper objects, each providing an assigned targeting option and the ad group it is assigned to.
+        /// This list will be absent if empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adGroupAssignedTargetingOptions")]
+        public virtual System.Collections.Generic.IList<AdGroupAssignedTargetingOption> AdGroupAssignedTargetingOptions { get; set; }
+
+        /// <summary>
+        /// A token identifying the next page of results. This value should be specified as the pageToken in a
+        /// subsequent call to `BulkListAdGroupAssignedTargetingOptions` to fetch the next page of results. This token
+        /// will be absent if there are no more AdGroupAssignedTargetingOption resources to return.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class BulkListAdvertiserAssignedTargetingOptionsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The list of assigned targeting options. This list will be absent if empty.</summary>
@@ -20615,6 +23655,27 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// A token identifying the next page of results. This value should be specified as the pageToken in a
         /// subsequent BulkListAdvertiserAssignedTargetingOptionsRequest to fetch the next page of results. This token
         /// will be absent if there are no more assigned_targeting_options to return.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class BulkListAssignedTargetingOptionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The list of wrapper objects, each providing an assigned targeting option and the line item it is assigned
+        /// to. This list will be absent if empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lineItemAssignedTargetingOptions")]
+        public virtual System.Collections.Generic.IList<LineItemAssignedTargetingOption> LineItemAssignedTargetingOptions { get; set; }
+
+        /// <summary>
+        /// A token identifying the next page of results. This value should be specified as the pageToken in a
+        /// subsequent call to `BulkListAssignedTargetingOptions` to fetch the next page of results. This token will be
+        /// absent if there are no more line_item_assigned_targeting_options to return.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
@@ -20659,19 +23720,63 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    public class BulkListLineItemAssignedTargetingOptionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    /// <summary>Request message for LineItemService.BulkUpdateLineItems.</summary>
+    public class BulkUpdateLineItemsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of assigned targeting options. This list will be absent if empty.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("assignedTargetingOptions")]
-        public virtual System.Collections.Generic.IList<AssignedTargetingOption> AssignedTargetingOptions { get; set; }
+        /// <summary>Required. IDs of line items to update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lineItemIds")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> LineItemIds { get; set; }
 
         /// <summary>
-        /// A token identifying the next page of results. This value should be specified as the pageToken in a
-        /// subsequent BulkListLineItemAssignedTargetingOptionsRequest to fetch the next page of results. This token
-        /// will be absent if there are no more assigned_targeting_options to return.
+        /// Required. A line item object containing the fields to be updated and the new values to assign to all line
+        /// items specified in line_item_ids."
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("targetLineItem")]
+        public virtual LineItem TargetLineItem { get; set; }
+
+        /// <summary>
+        /// Required. A field mask identifying which fields to update. Only the following fields are currently
+        /// supported: * entityStatus
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
+        public virtual object UpdateMask { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for LineItemService.BulkUpdateLineItems.</summary>
+    public class BulkUpdateLineItemsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Errors returned by line items that failed to update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errors")]
+        public virtual System.Collections.Generic.IList<Status> Errors { get; set; }
+
+        /// <summary>The IDs of line items that failed to update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failedLineItemIds")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> FailedLineItemIds { get; set; }
+
+        /// <summary>
+        /// The IDs of line items that are skipped for updates. For example, unnecessary mutates that will result in
+        /// effectively no changes to line items will be skipped and corresponding line item IDs can be tracked here.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("skippedLineItemIds")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> SkippedLineItemIds { get; set; }
+
+        /// <summary>The IDs of successfully updated line items.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updatedLineItemIds")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> UpdatedLineItemIds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details for a bumper ad.</summary>
+    public class BumperAd : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Common ad attributes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commonInStreamAttribute")]
+        public virtual CommonInStreamAttribute CommonInStreamAttribute { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -21209,6 +24314,41 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Common attributes for in-stream, non-skippable and bumper ads.</summary>
+    public class CommonInStreamAttribute : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The text on the call-to-action button.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("actionButtonLabel")]
+        public virtual string ActionButtonLabel { get; set; }
+
+        /// <summary>The headline of the call-to-action banner.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("actionHeadline")]
+        public virtual string ActionHeadline { get; set; }
+
+        /// <summary>The image which shows next to the video ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("companionBanner")]
+        public virtual ImageAsset CompanionBanner { get; set; }
+
+        /// <summary>The webpage address that appears with the ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayUrl")]
+        public virtual string DisplayUrl { get; set; }
+
+        /// <summary>The URL address of the webpage that people reach after they click the ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("finalUrl")]
+        public virtual string FinalUrl { get; set; }
+
+        /// <summary>The URL address loaded in the background for tracking purposes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trackingUrl")]
+        public virtual string TrackingUrl { get; set; }
+
+        /// <summary>The YouTube video of the ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("video")]
+        public virtual YoutubeVideoDetails Video { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Contact information defining a Customer Match audience member.</summary>
     public class ContactInfo : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -21366,12 +24506,6 @@ namespace Google.Apis.DisplayVideo.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("contentInstreamPosition")]
         public virtual string ContentInstreamPosition { get; set; }
 
-        /// <summary>
-        /// Required. The targeting_option_id field when targeting_type is `TARGETING_TYPE_CONTENT_INSTREAM_POSITION`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("targetingOptionId")]
-        public virtual string TargetingOptionId { get; set; }
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -21410,12 +24544,6 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>Required. The content outstream position.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentOutstreamPosition")]
         public virtual string ContentOutstreamPosition { get; set; }
-
-        /// <summary>
-        /// Required. The targeting_option_id field when targeting_type is `TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("targetingOptionId")]
-        public virtual string TargetingOptionId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -22040,10 +25168,6 @@ namespace Google.Apis.DisplayVideo.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("customBiddingAlgorithmId")]
         public virtual System.Nullable<long> CustomBiddingAlgorithmId { get; set; }
 
-        /// <summary>Output only. The status of custom bidding algorithm.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("customBiddingAlgorithmState")]
-        public virtual string CustomBiddingAlgorithmState { get; set; }
-
         /// <summary>Required. Immutable. The type of custom bidding algorithm.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customBiddingAlgorithmType")]
         public virtual string CustomBiddingAlgorithmType { get; set; }
@@ -22063,14 +25187,14 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual string EntityStatus { get; set; }
 
         /// <summary>
-        /// Output only. The state of custom bidding model readiness for each advertiser who has access. This field may
-        /// only include the state of the queried advertiser if the algorithm
+        /// Output only. The details of custom bidding models for each advertiser who has access. This field may only
+        /// include the details of the queried advertiser if the algorithm
         /// [`owner`](/display-video/api/reference/rest/v1/customBiddingAlgorithms#CustomBiddingAlgorithm.FIELDS.oneof_owner)
         /// is a partner and is being retrieved using an advertiser
         /// [`accessor`](/display-video/api/reference/rest/v1/customBiddingAlgorithms/list#body.QUERY_PARAMETERS.oneof_accessor).
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("modelReadiness")]
-        public virtual System.Collections.Generic.IList<CustomBiddingModelReadinessState> ModelReadiness { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("modelDetails")]
+        public virtual System.Collections.Generic.IList<CustomBiddingModelDetails> ModelDetails { get; set; }
 
         /// <summary>Output only. The resource name of the custom bidding algorithm.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -22094,8 +25218,116 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The custom bidding algorithm model readiness state for a single shared advertiser.</summary>
-    public class CustomBiddingModelReadinessState : Google.Apis.Requests.IDirectResponseSchema
+    /// <summary>A single custom bidding algorithm rules.</summary>
+    public class CustomBiddingAlgorithmRules : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Whether the rules resource is currently being used for scoring by the parent algorithm.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("active")]
+        public virtual System.Nullable<bool> Active { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time when the rules resource was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>
+        /// Output only. The unique ID of the custom bidding algorithm that the rules resource belongs to.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customBiddingAlgorithmId")]
+        public virtual System.Nullable<long> CustomBiddingAlgorithmId { get; set; }
+
+        /// <summary>Output only. The unique ID of the rules resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customBiddingAlgorithmRulesId")]
+        public virtual System.Nullable<long> CustomBiddingAlgorithmRulesId { get; set; }
+
+        /// <summary>
+        /// Output only. Error code of the rejected rules resource. This field will only be populated when the state is
+        /// `REJECTED`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual CustomBiddingAlgorithmRulesError Error { get; set; }
+
+        /// <summary>Output only. The resource name of the rules resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Required. Immutable. The reference to the uploaded AlgorithmRules file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rules")]
+        public virtual CustomBiddingAlgorithmRulesRef Rules { get; set; }
+
+        /// <summary>Output only. The state of the rules resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An error message for a CustomBiddingAlgorithmRules resource.</summary>
+    public class CustomBiddingAlgorithmRulesError : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The type of error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorCode")]
+        public virtual string ErrorCode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The reference to the uploaded AlgorithmRules file. Retrieve the location to upload new AlgorithmRules file to
+    /// using customBiddingAlgorithms.uploadRules.
+    /// </summary>
+    public class CustomBiddingAlgorithmRulesRef : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A resource name to be used in media.download to download the rules files. Or media.upload to upload the
+        /// rules files. Resource names have the format
+        /// `customBiddingAlgorithms/{custom_bidding_algorithm_id}/rulesRef/{ref_id}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
+        public virtual string ResourceName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The details of a custom bidding algorithm model for a single shared advertiser.</summary>
+    public class CustomBiddingModelDetails : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The unique ID of the relevant advertiser.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserId")]
@@ -22104,6 +25336,10 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>The readiness state of custom bidding model.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("readinessState")]
         public virtual string ReadinessState { get; set; }
+
+        /// <summary>Output only. The suspension state of custom bidding model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suspensionState")]
+        public virtual string SuspensionState { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -22196,6 +25432,21 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
         public virtual string ResourceName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The key and value of a custom label.</summary>
+    public class CustomLabel : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The key of the label.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; }
+
+        /// <summary>The value of the label.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -22295,6 +25546,25 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Representation of time defined by day of the week and hour of the day.</summary>
+    public class DayAndTime : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Day of the week.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dayOfWeek")]
+        public virtual string DayOfWeek { get; set; }
+
+        /// <summary>Required. Hour of the day.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hourOfDay")]
+        public virtual System.Nullable<int> HourOfDay { get; set; }
+
+        /// <summary>Required. The mechanism used to determine the relevant timezone.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeZoneResolution")]
+        public virtual string TimeZoneResolution { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Representation of a segment of time defined on a specific day of the week and with a start and end time. The
     /// time represented by `start_hour` must be before the time represented by `end_hour`.
@@ -22325,13 +25595,6 @@ namespace Google.Apis.DisplayVideo.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("timeZoneResolution")]
         public virtual string TimeZoneResolution { get; set; }
 
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Request message for ManualTriggerService.DeactivateManualTrigger.</summary>
-    public class DeactivateManualTriggerRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -22401,9 +25664,15 @@ namespace Google.Apis.DisplayVideo.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deviceType")]
         public virtual string DeviceType { get; set; }
 
-        /// <summary>Required. ID of the device type.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("targetingOptionId")]
-        public virtual string TargetingOptionId { get; set; }
+        /// <summary>
+        /// Output only. Bid multiplier allows you to show your ads more or less frequently based on the device type. It
+        /// will apply a multiplier on the original bid price. When this field is 0, it indicates this field is not
+        /// applicable instead of multiplying 0 on the original bid price. For example, if the bid price without
+        /// multiplier is $10.0 and the multiplier is 1.5 for Tablet, the resulting bid price for Tablet will be $15.0.
+        /// Only applicable to YouTube and Partners line items.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("youtubeAndPartnersBidMultiplier")]
+        public virtual System.Nullable<double> YoutubeAndPartnersBidMultiplier { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -22429,13 +25698,9 @@ namespace Google.Apis.DisplayVideo.v1.Data
     /// </summary>
     public class DigitalContentLabelAssignedTargetingOptionDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. The display name of the digital content label rating tier.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("contentRatingTier")]
-        public virtual string ContentRatingTier { get; set; }
-
-        /// <summary>Required. ID of the digital content label to be EXCLUDED.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("excludedTargetingOptionId")]
-        public virtual string ExcludedTargetingOptionId { get; set; }
+        /// <summary>Required. The display name of the digital content label rating tier to be EXCLUDED.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("excludedContentRatingTier")]
+        public virtual string ExcludedContentRatingTier { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -22466,6 +25731,17 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>The width in pixels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("widthPixels")]
         public virtual System.Nullable<int> WidthPixels { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The ad sourced from a DV360 creative.</summary>
+    public class DisplayVideoSourceAd : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ID of the source creative.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creativeId")]
+        public virtual System.Nullable<long> CreativeId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -22588,6 +25864,29 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>Target web inventory to maximize fully viewable rate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("videoViewableRate")]
         public virtual string VideoViewableRate { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for LineItemService.DuplicateLineItem.</summary>
+    public class DuplicateLineItemRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The display name of the new line item. Must be UTF-8 encoded with a maximum size of 240 bytes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetDisplayName")]
+        public virtual string TargetDisplayName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class DuplicateLineItemResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ID of the created line item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("duplicateLineItemId")]
+        public virtual System.Nullable<long> DuplicateLineItemId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -22728,13 +26027,6 @@ namespace Google.Apis.DisplayVideo.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("environment")]
         public virtual string Environment { get; set; }
 
-        /// <summary>
-        /// Required. The targeting_option_id of a TargetingOption of type `TARGETING_TYPE_ENVIRONMENT` (e.g., "508010"
-        /// for targeting the `ENVIRONMENT_WEB_OPTIMIZED` option).
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("targetingOptionId")]
-        public virtual string TargetingOptionId { get; set; }
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -22759,9 +26051,9 @@ namespace Google.Apis.DisplayVideo.v1.Data
     /// </summary>
     public class ExchangeAssignedTargetingOptionDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The targeting_option_id of a TargetingOption of type `TARGETING_TYPE_EXCHANGE`.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("targetingOptionId")]
-        public virtual string TargetingOptionId { get; set; }
+        /// <summary>Required. The enum value for the exchange.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exchange")]
+        public virtual string Exchange { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -23111,6 +26403,14 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual System.Nullable<int> MaxImpressions { get; set; }
 
         /// <summary>
+        /// The maximum number of times a user may click-through or fully view an ad during this period until it is no
+        /// longer served to them. Must be greater than 0. Only applicable to YouTube and Partners resources. Required
+        /// when unlimited is `false` and max_impressions is not set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxViews")]
+        public virtual System.Nullable<int> MaxViews { get; set; }
+
+        /// <summary>
         /// The time unit in which the frequency cap will be applied. Required when unlimited is `false`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeUnit")]
@@ -23146,10 +26446,6 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>Required. The gender of the audience.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gender")]
         public virtual string Gender { get; set; }
-
-        /// <summary>Required. The targeting_option_id of a TargetingOption of type `TARGETING_TYPE_GENDER`.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("targetingOptionId")]
-        public virtual string TargetingOptionId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -23490,12 +26786,6 @@ namespace Google.Apis.DisplayVideo.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("householdIncome")]
         public virtual string HouseholdIncome { get; set; }
 
-        /// <summary>
-        /// Required. The targeting_option_id of a TargetingOption of type `TARGETING_TYPE_HOUSEHOLD_INCOME`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("targetingOptionId")]
-        public virtual string TargetingOptionId { get; set; }
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -23563,6 +26853,40 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Meta data of an image asset.</summary>
+    public class ImageAsset : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>File size of the image asset in bytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileSize")]
+        public virtual System.Nullable<long> FileSize { get; set; }
+
+        /// <summary>Metadata for this image at its original size.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fullSize")]
+        public virtual Dimensions FullSize { get; set; }
+
+        /// <summary>MIME type of the image asset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
+        public virtual string MimeType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details for an in-stream ad.</summary>
+    public class InStreamAd : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Common ad attributes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commonInStreamAttribute")]
+        public virtual CommonInStreamAttribute CommonInStreamAttribute { get; set; }
+
+        /// <summary>The custom parameters to pass custom values to tracking URL template.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customParameters")]
+        public virtual System.Collections.Generic.IDictionary<string, string> CustomParameters { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A single insertion order.</summary>
     public class InsertionOrder : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -23573,13 +26897,6 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>The bidding strategy of the insertion order. By default, fixed_bid is set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bidStrategy")]
         public virtual BiddingStrategy BidStrategy { get; set; }
-
-        /// <summary>
-        /// Immutable. The billable outcome of the insertion order. Outcome based buying is deprecated.
-        /// `BILLABLE_OUTCOME_PAY_PER_IMPRESSION` is the only valid value.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("billableOutcome")]
-        public virtual string BillableOutcome { get; set; }
 
         /// <summary>Required. The budget allocation settings of the insertion order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("budget")]
@@ -23623,6 +26940,13 @@ namespace Google.Apis.DisplayVideo.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("integrationDetails")]
         public virtual IntegrationDetails IntegrationDetails { get; set; }
 
+        /// <summary>
+        /// Required. The key performance indicator (KPI) of the insertion order. This is represented as referred to as
+        /// the "Goal" in the Display &amp;amp; Video 360 interface.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kpi")]
+        public virtual Kpi Kpi { get; set; }
+
         /// <summary>Output only. The resource name of the insertion order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -23637,10 +26961,6 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partnerCosts")]
         public virtual System.Collections.Generic.IList<PartnerCost> PartnerCosts { get; set; }
-
-        /// <summary>Required. Performance goal of the insertion order.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("performanceGoal")]
-        public virtual PerformanceGoal PerformanceGoal { get; set; }
 
         /// <summary>Output only. The reservation type of the insertion order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reservationType")]
@@ -24305,6 +27625,41 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Settings that control the key performance indicator, or KPI, of an insertion order.</summary>
+    public class Kpi : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The goal amount, in micros of the advertiser's currency. Applicable when kpi_type is one of: *
+        /// `KPI_TYPE_CPM` * `KPI_TYPE_CPC` * `KPI_TYPE_CPA` * `KPI_TYPE_CPIAVC` * `KPI_TYPE_VCPM` For example: 1500000
+        /// represents 1.5 standard units of the currency.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kpiAmountMicros")]
+        public virtual System.Nullable<long> KpiAmountMicros { get; set; }
+
+        /// <summary>
+        /// The decimal representation of the goal percentage in micros. Applicable when kpi_type is one of: *
+        /// `KPI_TYPE_CTR` * `KPI_TYPE_VIEWABILITY` * `KPI_TYPE_CLICK_CVR` * `KPI_TYPE_IMPRESSION_CVR` * `KPI_TYPE_VTR`
+        /// * `KPI_TYPE_AUDIO_COMPLETION_RATE` * `KPI_TYPE_VIDEO_COMPLETION_RATE` For example: 70000 represents 7%
+        /// (decimal 0.07).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kpiPercentageMicros")]
+        public virtual System.Nullable<long> KpiPercentageMicros { get; set; }
+
+        /// <summary>
+        /// A KPI string, which can be empty. Must be UTF-8 encoded with a length of no more than 100 characters.
+        /// Applicable when kpi_type is `KPI_TYPE_OTHER`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kpiString")]
+        public virtual string KpiString { get; set; }
+
+        /// <summary>Required. The type of KPI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kpiType")]
+        public virtual string KpiType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Details for assigned language targeting option. This will be populated in the details field of an
     /// AssignedTargetingOption when targeting_type is `TARGETING_TYPE_LANGUAGE`.
@@ -24413,10 +27768,6 @@ namespace Google.Apis.DisplayVideo.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("integrationDetails")]
         public virtual IntegrationDetails IntegrationDetails { get; set; }
 
-        /// <summary>The IDs of the private inventory sources assigned to the line item.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("inventorySourceIds")]
-        public virtual System.Collections.Generic.IList<System.Nullable<long>> InventorySourceIds { get; set; }
-
         /// <summary>Output only. The unique ID of the line item. Assigned by the system.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lineItemId")]
         public virtual System.Nullable<long> LineItemId { get; set; }
@@ -24507,6 +27858,27 @@ namespace Google.Apis.DisplayVideo.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("warningMessages")]
         public virtual System.Collections.Generic.IList<string> WarningMessages { get; set; }
 
+        /// <summary>Output only. Settings specific to YouTube and Partners line items.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("youtubeAndPartnersSettings")]
+        public virtual YoutubeAndPartnersSettings YoutubeAndPartnersSettings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Wrapper object associating an assigned_targeting_option resource and the line item it is assigned to.
+    /// </summary>
+    public class LineItemAssignedTargetingOption : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The assigned targeting option resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assignedTargetingOption")]
+        public virtual AssignedTargetingOption AssignedTargetingOption { get; set; }
+
+        /// <summary>The ID of the line item the assigned targeting option is assigned to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lineItemId")]
+        public virtual System.Nullable<long> LineItemId { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -24561,16 +27933,58 @@ namespace Google.Apis.DisplayVideo.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("flightDateType")]
         public virtual string FlightDateType { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class ListAdGroupAdsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of ad group ads. This list will be absent if empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adGroupAds")]
+        public virtual System.Collections.Generic.IList<AdGroupAd> AdGroupAds { get; set; }
+
         /// <summary>
-        /// The ID of the manual trigger associated with the line item. * Required when flight_date_type is
-        /// `LINE_ITEM_FLIGHT_DATE_TYPE_TRIGGER`. Must not be set otherwise. * When set, the line item's flight dates
-        /// are inherited from its parent insertion order. * Active line items will spend when the selected trigger is
-        /// activated within the parent insertion order's flight dates. **Warning:** Line Items using manual triggers no
-        /// longer serve in Display &amp;amp; Video 360. This field will sunset on August 1, 2023. Read our [feature
-        /// deprecation announcement](/display-video/api/deprecations#features.manual_triggers) for more information.
+        /// A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call
+        /// to `ListAdGroupAds` method to retrieve the next page of results.
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("triggerId")]
-        public virtual System.Nullable<long> TriggerId { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for ListAdGroupAssignedTargetingOptions.</summary>
+    public class ListAdGroupAssignedTargetingOptionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of assigned targeting options. This list will be absent if empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assignedTargetingOptions")]
+        public virtual System.Collections.Generic.IList<AssignedTargetingOption> AssignedTargetingOptions { get; set; }
+
+        /// <summary>
+        /// A token identifying the next page of results. This value should be specified as the pageToken in a
+        /// subsequent ListAdGroupAssignedTargetingOptionsRequest to fetch the next page of results. This token will be
+        /// absent if there are no more AssignedTargetingOption resources to return.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class ListAdGroupsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of ad groups. This list will be absent if empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adGroups")]
+        public virtual System.Collections.Generic.IList<AdGroup> AdGroups { get; set; }
+
+        /// <summary>
+        /// A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call
+        /// to `ListAdGroups` method to retrieve the next page of results.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -24728,6 +28142,24 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call
         /// to `ListCreativesRequest` method to retrieve the next page of results. If this field is null, it means this
         /// is the last page.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class ListCustomBiddingAlgorithmRulesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of CustomBiddingAlgorithmRules resources. This list will be absent if empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customBiddingRules")]
+        public virtual System.Collections.Generic.IList<CustomBiddingAlgorithmRules> CustomBiddingRules { get; set; }
+
+        /// <summary>
+        /// A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call
+        /// to `ListCustomBiddingAlgorithmRulesRequest` method to retrieve the next page of results. If this field is
+        /// null, it means this is the last page.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
@@ -24984,23 +28416,6 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    public class ListManualTriggersResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The list of manual triggers. This list will be absent if empty.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("manualTriggers")]
-        public virtual System.Collections.Generic.IList<ManualTrigger> ManualTriggers { get; set; }
-
-        /// <summary>
-        /// A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call
-        /// to `ListManualTriggers` method to retrieve the next page of results.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Response message for NegativeKeywordListService.ListNegativeKeywordLists.</summary>
     public class ListNegativeKeywordListsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -25184,82 +28599,52 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// A single manual trigger in Display &amp;amp; Video 360. **Warning:** Line Items using manual triggers no longer
-    /// serve in Display &amp;amp; Video 360. This resource will sunset on August 1, 2023. Read our [feature deprecation
-    /// announcement](/display-video/api/deprecations#features.manual_triggers) for more information.
-    /// </summary>
-    public class ManualTrigger : Google.Apis.Requests.IDirectResponseSchema
+    /// <summary>Details for a Masthead Ad.</summary>
+    public class MastheadAd : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Required. The maximum duration of each activation in minutes. Must be between 1 and 360 inclusive. After
-        /// this duration, the trigger will be automatically deactivated.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("activationDurationMinutes")]
-        public virtual System.Nullable<long> ActivationDurationMinutes { get; set; }
+        /// <summary>The duration of time the video will autoplay.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoplayVideoDuration")]
+        public virtual object AutoplayVideoDuration { get; set; }
 
-        /// <summary>Required. Immutable. The unique ID of the advertiser that the manual trigger belongs to.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("advertiserId")]
-        public virtual System.Nullable<long> AdvertiserId { get; set; }
+        /// <summary>The amount of time in milliseconds after which the video will start to play.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoplayVideoStartMillisecond")]
+        public virtual System.Nullable<long> AutoplayVideoStartMillisecond { get; set; }
 
-        /// <summary>
-        /// Required. The display name of the manual trigger. Must be UTF-8 encoded with a maximum size of 240 bytes.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; }
+        /// <summary>The text on the call-to-action button.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("callToActionButtonLabel")]
+        public virtual string CallToActionButtonLabel { get; set; }
 
-        private string _latestActivationTimeRaw;
+        /// <summary>The destination URL for the call-to-action button.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("callToActionFinalUrl")]
+        public virtual string CallToActionFinalUrl { get; set; }
 
-        private object _latestActivationTime;
+        /// <summary>The tracking URL for the call-to-action button.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("callToActionTrackingUrl")]
+        public virtual string CallToActionTrackingUrl { get; set; }
 
-        /// <summary>Output only. The timestamp of the trigger's latest activation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("latestActivationTime")]
-        public virtual string LatestActivationTimeRaw
-        {
-            get => _latestActivationTimeRaw;
-            set
-            {
-                _latestActivationTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _latestActivationTimeRaw = value;
-            }
-        }
+        /// <summary>The videos that appear next to the Masthead Ad on desktop. Can be no more than two.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("companionYoutubeVideos")]
+        public virtual System.Collections.Generic.IList<YoutubeVideoDetails> CompanionYoutubeVideos { get; set; }
 
-        /// <summary><seealso cref="object"/> representation of <see cref="LatestActivationTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LatestActivationTimeDateTimeOffset instead.")]
-        public virtual object LatestActivationTime
-        {
-            get => _latestActivationTime;
-            set
-            {
-                _latestActivationTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _latestActivationTime = value;
-            }
-        }
+        /// <summary>The description of the ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
 
-        /// <summary>
-        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LatestActivationTimeRaw"/>.
-        /// </summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? LatestActivationTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LatestActivationTimeRaw);
-            set => LatestActivationTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        /// <summary>The headline of the ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("headline")]
+        public virtual string Headline { get; set; }
 
-        /// <summary>Output only. The resource name of the manual trigger.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
+        /// <summary>Whether to show a background or banner that appears at the top of a YouTube page.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("showChannelArt")]
+        public virtual System.Nullable<bool> ShowChannelArt { get; set; }
 
-        /// <summary>
-        /// Output only. The state of the manual trigger. Will be set to the `INACTIVE` state upon creation.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; }
+        /// <summary>The YouTube video used by the ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("video")]
+        public virtual YoutubeVideoDetails Video { get; set; }
 
-        /// <summary>Output only. The unique ID of the manual trigger.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("triggerId")]
-        public virtual System.Nullable<long> TriggerId { get; set; }
+        /// <summary>The aspect ratio of the autoplaying YouTube video on the Masthead.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("videoAspectRatio")]
+        public virtual string VideoAspectRatio { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -25395,12 +28780,6 @@ namespace Google.Apis.DisplayVideo.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("contentPosition")]
         public virtual string ContentPosition { get; set; }
 
-        /// <summary>
-        /// Required. The targeting_option_id field when targeting_type is `TARGETING_TYPE_NATIVE_CONTENT_POSITION`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("targetingOptionId")]
-        public virtual string TargetingOptionId { get; set; }
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -25486,6 +28865,21 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Details for a non-skippable ad.</summary>
+    public class NonSkippableAd : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Common ad attributes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commonInStreamAttribute")]
+        public virtual CommonInStreamAttribute CommonInStreamAttribute { get; set; }
+
+        /// <summary>The custom parameters to pass custom values to tracking URL template.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customParameters")]
+        public virtual System.Collections.Generic.IDictionary<string, string> CustomParameters { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>OBA Icon for a Creative</summary>
     public class ObaIcon : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -25543,10 +28937,6 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>Required. The type of Open Measurement enabled inventory.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("omid")]
         public virtual string Omid { get; set; }
-
-        /// <summary>Required. The targeting_option_id of a TargetingOption of type `TARGETING_TYPE_OMID`.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("targetingOptionId")]
-        public virtual string TargetingOptionId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -25766,12 +29156,6 @@ namespace Google.Apis.DisplayVideo.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("parentalStatus")]
         public virtual string ParentalStatus { get; set; }
 
-        /// <summary>
-        /// Required. The targeting_option_id of a TargetingOption of type `TARGETING_TYPE_PARENTAL_STATUS`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("targetingOptionId")]
-        public virtual string TargetingOptionId { get; set; }
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -25796,6 +29180,10 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>Ad server related settings of the partner.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adServerConfig")]
         public virtual PartnerAdServerConfig AdServerConfig { get; set; }
+
+        /// <summary>Billing related settings of the partner.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("billingConfig")]
+        public virtual PartnerBillingConfig BillingConfig { get; set; }
 
         /// <summary>Settings that control how partner data may be accessed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataAccessConfig")]
@@ -25872,6 +29260,17 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>Measurement settings of a partner.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("measurementConfig")]
         public virtual MeasurementConfig MeasurementConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Billing related settings of a partner.</summary>
+    public class PartnerBillingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ID of a partner default billing profile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("billingProfileId")]
+        public virtual System.Nullable<long> BillingProfileId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -26184,6 +29583,40 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The details of product feed.</summary>
+    public class ProductFeedData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether the product feed has opted-out of showing products.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isFeedDisabled")]
+        public virtual System.Nullable<bool> IsFeedDisabled { get; set; }
+
+        /// <summary>A list of dimensions used to match products.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productMatchDimensions")]
+        public virtual System.Collections.Generic.IList<ProductMatchDimension> ProductMatchDimensions { get; set; }
+
+        /// <summary>How products are selected by the product feed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productMatchType")]
+        public virtual string ProductMatchType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A dimension used to match products.</summary>
+    public class ProductMatchDimension : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The custom label to match all the products with the label.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customLabel")]
+        public virtual CustomLabel CustomLabel { get; set; }
+
+        /// <summary>The ID of the product offer to match with a product with the same offer ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productOfferId")]
+        public virtual string ProductOfferId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Targeting details for proximity location list. This will be populated in the details field of an
     /// AssignedTargetingOption when targeting_type is `TARGETING_TYPE_PROXIMITY_LOCATION_LIST`.
@@ -26198,13 +29631,16 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual System.Nullable<long> ProximityLocationListId { get; set; }
 
         /// <summary>
-        /// Required. Radius range for proximity location list. This represents the size of the area around a chosen
-        /// location that will be targeted. `All` proximity location targeting under a single resource must have the
-        /// same radius range value. Set this value to match any existing targeting. If updated, this field will change
-        /// the radius range for all proximity targeting under the resource.
+        /// Required. Radius expressed in the distance units set in proximity_radius_unit. This represents the size of
+        /// the area around a chosen location that will be targeted. Radius should be between 1 and 500 miles or 800
+        /// kilometers.
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("proximityRadiusRange")]
-        public virtual string ProximityRadiusRange { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("proximityRadius")]
+        public virtual System.Nullable<double> ProximityRadius { get; set; }
+
+        /// <summary>Required. Radius distance units.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("proximityRadiusUnit")]
+        public virtual string ProximityRadiusUnit { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -26574,13 +30010,9 @@ namespace Google.Apis.DisplayVideo.v1.Data
     /// </summary>
     public class SensitiveCategoryAssignedTargetingOptionDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. ID of the sensitive category to be EXCLUDED.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("excludedTargetingOptionId")]
-        public virtual string ExcludedTargetingOptionId { get; set; }
-
-        /// <summary>Output only. An enum for the DV360 Sensitive category content classifier.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sensitiveCategory")]
-        public virtual string SensitiveCategory { get; set; }
+        /// <summary>Required. An enum for the DV360 Sensitive category content classified to be EXCLUDED.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("excludedSensitiveCategory")]
+        public virtual string ExcludedSensitiveCategory { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -26595,6 +30027,20 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>Output only. An enum for the DV360 Sensitive category content classifier.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sensitiveCategory")]
         public virtual string SensitiveCategory { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Details for session position assigned targeting option. This will be populated in the session_position_details
+    /// field when targeting_type is `TARGETING_TYPE_SESSION_POSITION`.
+    /// </summary>
+    public class SessionPositionAssignedTargetingOptionDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The position where the ad will show in a session.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sessionPosition")]
+        public virtual string SessionPosition { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -26677,29 +30123,59 @@ namespace Google.Apis.DisplayVideo.v1.Data
     }
 
     /// <summary>
+    /// Setting that controls the average number of times the ads will show to the same person over a certain period of
+    /// time.
+    /// </summary>
+    public class TargetFrequency : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The target number of times, on average, the ads will be shown to the same person in the timespan dictated by
+        /// time_unit and time_unit_count.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetCount")]
+        public virtual System.Nullable<long> TargetCount { get; set; }
+
+        /// <summary>
+        /// The unit of time in which the target frequency will be applied. The following time unit is applicable: *
+        /// `TIME_UNIT_WEEKS`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeUnit")]
+        public virtual string TimeUnit { get; set; }
+
+        /// <summary>
+        /// The number of time_unit the target frequency will last. The following restrictions apply based on the value
+        /// of time_unit: * `TIME_UNIT_WEEKS` - must be 1
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeUnitCount")]
+        public virtual System.Nullable<int> TimeUnitCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Settings that control the [optimized targeting](//support.google.com/displayvideo/answer/12060859) settings of
     /// the line item.
     /// </summary>
     public class TargetingExpansionConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Whether to exclude first-party audiences from use in targeting expansion. This field was deprecated with the
-        /// launch of [optimized targeting](//support.google.com/displayvideo/answer/12060859). This field will be set
-        /// to `false`. If this field is set to `true` when deprecated, all positive first-party audience targeting
-        /// assigned to this line item will be replaced with negative targeting of the same first-party audiences to
-        /// ensure the continued exclusion of those audiences.
+        /// Output only. Magnitude of expansion for eligible first-party user lists under this ad group. This field only
+        /// applies to YouTube and Partners line item and ad group resources.
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("excludeFirstPartyAudience")]
-        public virtual System.Nullable<bool> ExcludeFirstPartyAudience { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("audienceExpansionLevel")]
+        public virtual string AudienceExpansionLevel { get; set; }
 
         /// <summary>
-        /// Required. Whether optimized targeting is turned on. This field supports the following values: *
-        /// `NO_EXPANSION`: optimized targeting is turned off * `LEAST_EXPANSION`: optimized targeting is turned on If
-        /// this field is set to any other value, it will automatically be set to `LEAST_EXPANSION`. `NO_EXPANSION` will
-        /// be the default value for the field and will be automatically assigned if you do not set the field.
+        /// Output only. Whether to exclude seed list for audience expansion. This field only applies to YouTube and
+        /// Partners line item and ad group resources.
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("targetingExpansionLevel")]
-        public virtual string TargetingExpansionLevel { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("audienceExpansionSeedListExcluded")]
+        public virtual System.Nullable<bool> AudienceExpansionSeedListExcluded { get; set; }
+
+        /// <summary>Required. Whether to enable Optimized Targeting for the line item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableOptimizedTargeting")]
+        public virtual System.Nullable<bool> EnableOptimizedTargeting { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -26859,6 +30335,42 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Settings that control what third-party vendors are measuring specific line item metrics.</summary>
+    public class ThirdPartyMeasurementConfigs : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The third-party vendors measuring brand lift. The following third-party vendors are applicable: *
+        /// `THIRD_PARTY_VENDOR_DYNATA` * `THIRD_PARTY_VENDOR_KANTAR`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("brandLiftVendorConfigs")]
+        public virtual System.Collections.Generic.IList<ThirdPartyVendorConfig> BrandLiftVendorConfigs { get; set; }
+
+        /// <summary>
+        /// Optional. The third-party vendors measuring brand safety. The following third-party vendors are applicable:
+        /// * `THIRD_PARTY_VENDOR_ZERF` * `THIRD_PARTY_VENDOR_DOUBLE_VERIFY` * `THIRD_PARTY_VENDOR_INTEGRAL_AD_SCIENCE`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("brandSafetyVendorConfigs")]
+        public virtual System.Collections.Generic.IList<ThirdPartyVendorConfig> BrandSafetyVendorConfigs { get; set; }
+
+        /// <summary>
+        /// Optional. The third-party vendors measuring reach. The following third-party vendors are applicable: *
+        /// `THIRD_PARTY_VENDOR_NIELSEN` * `THIRD_PARTY_VENDOR_COMSCORE` * `THIRD_PARTY_VENDOR_KANTAR`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reachVendorConfigs")]
+        public virtual System.Collections.Generic.IList<ThirdPartyVendorConfig> ReachVendorConfigs { get; set; }
+
+        /// <summary>
+        /// Optional. The third-party vendors measuring viewability. The following third-party vendors are applicable: *
+        /// `THIRD_PARTY_VENDOR_MOAT` * `THIRD_PARTY_VENDOR_DOUBLE_VERIFY` * `THIRD_PARTY_VENDOR_INTEGRAL_AD_SCIENCE` *
+        /// `THIRD_PARTY_VENDOR_COMSCORE` * `THIRD_PARTY_VENDOR_TELEMETRY` * `THIRD_PARTY_VENDOR_MEETRICS`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("viewabilityVendorConfigs")]
+        public virtual System.Collections.Generic.IList<ThirdPartyVendorConfig> ViewabilityVendorConfigs { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Settings for advertisers that use third-party ad servers only.</summary>
     public class ThirdPartyOnlyConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -26885,6 +30397,21 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
         public virtual string Url { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Settings that control how third-party measurement vendors are configured.</summary>
+    public class ThirdPartyVendorConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ID used by the platform of the third-party vendor to identify the line item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("placementId")]
+        public virtual string PlacementId { get; set; }
+
+        /// <summary>The third-party measurement vendor.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vendor")]
+        public virtual string Vendor { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -27188,6 +30715,129 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Settings related to VideoAdSequence.</summary>
+    public class VideoAdSequenceSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The minimum time interval before the same user sees this sequence again.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minimumDuration")]
+        public virtual string MinimumDuration { get; set; }
+
+        /// <summary>The steps of which the sequence consists.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("steps")]
+        public virtual System.Collections.Generic.IList<VideoAdSequenceStep> Steps { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The detail of a single step in a VideoAdSequence.</summary>
+    public class VideoAdSequenceStep : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ID of the corresponding ad group of the step.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adGroupId")]
+        public virtual System.Nullable<long> AdGroupId { get; set; }
+
+        /// <summary>
+        /// The interaction on the previous step that will lead the viewer to this step. The first step does not have
+        /// interaction_type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("interactionType")]
+        public virtual string InteractionType { get; set; }
+
+        /// <summary>The ID of the previous step. The first step does not have previous step.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("previousStepId")]
+        public virtual System.Nullable<long> PreviousStepId { get; set; }
+
+        /// <summary>The ID of the step.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stepId")]
+        public virtual System.Nullable<long> StepId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details for a video discovery ad.</summary>
+    public class VideoDiscoveryAd : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>First text line for the ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description1")]
+        public virtual string Description1 { get; set; }
+
+        /// <summary>Second text line for the ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description2")]
+        public virtual string Description2 { get; set; }
+
+        /// <summary>The headline of ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("headline")]
+        public virtual string Headline { get; set; }
+
+        /// <summary>Thumbnail image used in the ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("thumbnail")]
+        public virtual string Thumbnail { get; set; }
+
+        /// <summary>The YouTube video the ad promotes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("video")]
+        public virtual YoutubeVideoDetails Video { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details for a video performance ad.</summary>
+    public class VideoPerformanceAd : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of text assets shown on the call-to-action button.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("actionButtonLabels")]
+        public virtual System.Collections.Generic.IList<string> ActionButtonLabels { get; set; }
+
+        /// <summary>The list of companion banners used by this ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("companionBanners")]
+        public virtual System.Collections.Generic.IList<ImageAsset> CompanionBanners { get; set; }
+
+        /// <summary>The custom parameters to pass custom values to tracking URL template.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customParameters")]
+        public virtual System.Collections.Generic.IDictionary<string, string> CustomParameters { get; set; }
+
+        /// <summary>The list of descriptions shown on the call-to-action banner.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("descriptions")]
+        public virtual System.Collections.Generic.IList<string> Descriptions { get; set; }
+
+        /// <summary>The first piece after the domain in the display URL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayUrlBreadcrumb1")]
+        public virtual string DisplayUrlBreadcrumb1 { get; set; }
+
+        /// <summary>The second piece after the domain in the display URL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayUrlBreadcrumb2")]
+        public virtual string DisplayUrlBreadcrumb2 { get; set; }
+
+        /// <summary>The domain of the display URL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("domain")]
+        public virtual string Domain { get; set; }
+
+        /// <summary>The URL address of the webpage that people reach after they click the ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("finalUrl")]
+        public virtual string FinalUrl { get; set; }
+
+        /// <summary>The list of headlines shown on the call-to-action banner.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("headlines")]
+        public virtual System.Collections.Generic.IList<string> Headlines { get; set; }
+
+        /// <summary>The list of lone headlines shown on the call-to-action banner.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("longHeadlines")]
+        public virtual System.Collections.Generic.IList<string> LongHeadlines { get; set; }
+
+        /// <summary>The URL address loaded in the background for tracking purposes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trackingUrl")]
+        public virtual string TrackingUrl { get; set; }
+
+        /// <summary>The list of YouTube video assets used by this ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("videos")]
+        public virtual System.Collections.Generic.IList<YoutubeVideoDetails> Videos { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Video player size targeting option details. This will be populated in the video_player_size_details field when
     /// targeting_type is `TARGETING_TYPE_VIDEO_PLAYER_SIZE`. Explicitly targeting all options is not supported. Remove
@@ -27195,12 +30845,6 @@ namespace Google.Apis.DisplayVideo.v1.Data
     /// </summary>
     public class VideoPlayerSizeAssignedTargetingOptionDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Required. The targeting_option_id field when targeting_type is `TARGETING_TYPE_VIDEO_PLAYER_SIZE`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("targetingOptionId")]
-        public virtual string TargetingOptionId { get; set; }
-
         /// <summary>Required. The video player size.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("videoPlayerSize")]
         public virtual string VideoPlayerSize { get; set; }
@@ -27229,13 +30873,6 @@ namespace Google.Apis.DisplayVideo.v1.Data
     /// </summary>
     public class ViewabilityAssignedTargetingOptionDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Required. The targeting_option_id of a TargetingOption of type `TARGETING_TYPE_VIEWABILITY` (e.g., "509010"
-        /// for targeting the `VIEWABILITY_10_PERCENT_OR_MORE` option).
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("targetingOptionId")]
-        public virtual string TargetingOptionId { get; set; }
-
         /// <summary>Required. The predicted viewability percentage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("viewability")]
         public virtual string Viewability { get; set; }
@@ -27253,6 +30890,171 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>Output only. The predicted viewability percentage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("viewability")]
         public virtual string Viewability { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Settings that control the bid strategy for YouTube and Partners resources.</summary>
+    public class YoutubeAndPartnersBiddingStrategy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Source of the effective target CPA value for ad group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adGroupEffectiveTargetCpaSource")]
+        public virtual string AdGroupEffectiveTargetCpaSource { get; set; }
+
+        /// <summary>Output only. The effective target CPA for ad group, in micros of advertiser's currency.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adGroupEffectiveTargetCpaValue")]
+        public virtual System.Nullable<long> AdGroupEffectiveTargetCpaValue { get; set; }
+
+        /// <summary>The type of the bidding strategy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>
+        /// The value used by the bidding strategy. When the bidding strategy is assigned at the line item level, this
+        /// field is only applicable for the following strategy types: *
+        /// `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_CPA` *
+        /// `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_ROAS` When the bidding strategy is assigned at the ad
+        /// group level, this field is only applicable for the following strategy types: *
+        /// `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_MANUAL_CPM` *
+        /// `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_MANUAL_CPV` *
+        /// `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_CPA` *
+        /// `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_CPM` *
+        /// `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_ROAS` If not using an applicable strategy, the value of
+        /// this field will be 0.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual System.Nullable<long> Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Settings that control what YouTube related inventories the YouTube and Partners line item will target.
+    /// </summary>
+    public class YoutubeAndPartnersInventorySourceConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether to target inventory on YouTube. This includes both search, channels and videos.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includeYoutube")]
+        public virtual System.Nullable<bool> IncludeYoutube { get; set; }
+
+        /// <summary>
+        /// Whether to target inventory on a collection of partner sites and apps that follow the same brand safety
+        /// standards as YouTube.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includeYoutubeVideoPartners")]
+        public virtual System.Nullable<bool> IncludeYoutubeVideoPartners { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Settings for YouTube and Partners line items.</summary>
+    public class YoutubeAndPartnersSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The kind of content on which the YouTube and Partners ads will be shown.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentCategory")]
+        public virtual string ContentCategory { get; set; }
+
+        /// <summary>
+        /// Output only. The content category which takes effect when serving the line item. When content category is
+        /// set in both line item and advertiser, the stricter one will take effect when serving the line item.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effectiveContentCategory")]
+        public virtual string EffectiveContentCategory { get; set; }
+
+        /// <summary>Settings that control what YouTube and Partners inventories the line item will target.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inventorySourceSettings")]
+        public virtual YoutubeAndPartnersInventorySourceConfig InventorySourceSettings { get; set; }
+
+        /// <summary>The ID of the form to generate leads.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("leadFormId")]
+        public virtual System.Nullable<long> LeadFormId { get; set; }
+
+        /// <summary>The ID of the merchant which is linked to the line item for product feed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("linkedMerchantId")]
+        public virtual System.Nullable<long> LinkedMerchantId { get; set; }
+
+        /// <summary>
+        /// The IDs of the videos appear below the primary video ad when the ad is playing in the YouTube app on mobile
+        /// devices.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("relatedVideoIds")]
+        public virtual System.Collections.Generic.IList<string> RelatedVideoIds { get; set; }
+
+        /// <summary>
+        /// The average number of times you want ads from this line item to show to the same person over a certain
+        /// period of time.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetFrequency")]
+        public virtual TargetFrequency TargetFrequency { get; set; }
+
+        /// <summary>Optional. The third-party measurement configs of the line item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("thirdPartyMeasurementConfigs")]
+        public virtual ThirdPartyMeasurementConfigs ThirdPartyMeasurementConfigs { get; set; }
+
+        /// <summary>The settings related to VideoAdSequence.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("videoAdSequenceSettings")]
+        public virtual VideoAdSequenceSettings VideoAdSequenceSettings { get; set; }
+
+        /// <summary>
+        /// The view frequency cap settings of the line item. The max_views field in this settings object must be used
+        /// if assigning a limited cap.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("viewFrequencyCap")]
+        public virtual FrequencyCap ViewFrequencyCap { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Details for YouTube channel assigned targeting option. This will be populated in the youtube_channel_details
+    /// field when targeting_type is `TARGETING_TYPE_YOUTUBE_CHANNEL`.
+    /// </summary>
+    public class YoutubeChannelAssignedTargetingOptionDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The YouTube uploader channel id or the channel code of a YouTube channel.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("channelId")]
+        public virtual string ChannelId { get; set; }
+
+        /// <summary>Indicates if this option is being negatively targeted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("negative")]
+        public virtual System.Nullable<bool> Negative { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Details for YouTube video assigned targeting option. This will be populated in the youtube_video_details field
+    /// when targeting_type is `TARGETING_TYPE_YOUTUBE_VIDEO`.
+    /// </summary>
+    public class YoutubeVideoAssignedTargetingOptionDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Indicates if this option is being negatively targeted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("negative")]
+        public virtual System.Nullable<bool> Negative { get; set; }
+
+        /// <summary>YouTube video id as it appears on the YouTube watch page.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("videoId")]
+        public virtual string VideoId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details of a YouTube video.</summary>
+    public class YoutubeVideoDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The YouTube video ID which can be searched on YouTube webpage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>The reason why the video data is not available.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unavailableReason")]
+        public virtual string UnavailableReason { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

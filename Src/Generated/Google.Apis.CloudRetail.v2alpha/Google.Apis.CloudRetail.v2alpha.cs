@@ -5633,6 +5633,55 @@ namespace Google.Apis.CloudRetail.v2alpha
             }
         }
 
+        /// <summary>Gets the LoggingConfig of the requested project.</summary>
+        /// <param name="name">
+        /// Required. Full LoggingConfig resource name. Format: projects/{project_number}/loggingConfig
+        /// </param>
+        public virtual GetLoggingConfigRequest GetLoggingConfig(string name)
+        {
+            return new GetLoggingConfigRequest(service, name);
+        }
+
+        /// <summary>Gets the LoggingConfig of the requested project.</summary>
+        public class GetLoggingConfigRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2alpha.Data.GoogleCloudRetailV2alphaLoggingConfig>
+        {
+            /// <summary>Constructs a new GetLoggingConfig request.</summary>
+            public GetLoggingConfigRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. Full LoggingConfig resource name. Format: projects/{project_number}/loggingConfig
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "getLoggingConfig";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v2alpha/{+name}";
+
+            /// <summary>Initializes GetLoggingConfig parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^projects/[^/]+/loggingConfig$",
+                });
+            }
+        }
+
         /// <summary>
         /// Gets the project. Throws `NOT_FOUND` if the project wasn't initialized for the Retail API service.
         /// </summary>
@@ -5729,6 +5778,79 @@ namespace Google.Apis.CloudRetail.v2alpha
                     ParameterType = "path",
                     DefaultValue = null,
                     Pattern = @"^projects/[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>Updates the LoggingConfig of the requested project.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="name">
+        /// Required. Immutable. The name of the LoggingConfig singleton resource. Format: projects/*/loggingConfig
+        /// </param>
+        public virtual UpdateLoggingConfigRequest UpdateLoggingConfig(Google.Apis.CloudRetail.v2alpha.Data.GoogleCloudRetailV2alphaLoggingConfig body, string name)
+        {
+            return new UpdateLoggingConfigRequest(service, body, name);
+        }
+
+        /// <summary>Updates the LoggingConfig of the requested project.</summary>
+        public class UpdateLoggingConfigRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2alpha.Data.GoogleCloudRetailV2alphaLoggingConfig>
+        {
+            /// <summary>Constructs a new UpdateLoggingConfig request.</summary>
+            public UpdateLoggingConfigRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRetail.v2alpha.Data.GoogleCloudRetailV2alphaLoggingConfig body, string name) : base(service)
+            {
+                Name = name;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. Immutable. The name of the LoggingConfig singleton resource. Format: projects/*/loggingConfig
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>
+            /// Indicates which fields in the provided LoggingConfig to update. The following are the only supported
+            /// fields: * default_log_generation_rule * per_service_log_generation_rules If not set, all supported
+            /// fields are updated.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object UpdateMask { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.CloudRetail.v2alpha.Data.GoogleCloudRetailV2alphaLoggingConfig Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "updateLoggingConfig";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "PATCH";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v2alpha/{+name}";
+
+            /// <summary>Initializes UpdateLoggingConfig parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^projects/[^/]+/loggingConfig$",
+                });
+                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "updateMask",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
                 });
             }
         }
@@ -8693,6 +8815,75 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priceInfo")]
         public virtual GoogleCloudRetailV2alphaPriceInfo PriceInfo { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Project level logging config to control what level of log will be generated and written to Cloud Logging.
+    /// </summary>
+    public class GoogleCloudRetailV2alphaLoggingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The log generation rule that applies by default to all services supporting log generation. It can be
+        /// overridden by ServiceLogGenerationRule for service level control.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultLogGenerationRule")]
+        public virtual GoogleCloudRetailV2alphaLoggingConfigLogGenerationRule DefaultLogGenerationRule { get; set; }
+
+        /// <summary>
+        /// Required. Immutable. The name of the LoggingConfig singleton resource. Format: projects/*/loggingConfig
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Controls logging configurations more granularly for each supported service. This overrides the
+        /// default_log_generation_rule for the services specified. For those not mentioned, they will fallback to the
+        /// default log generation rule.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceLogGenerationRules")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRetailV2alphaLoggingConfigServiceLogGenerationRule> ServiceLogGenerationRules { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The logging configurations for services supporting log generation.</summary>
+    public class GoogleCloudRetailV2alphaLoggingConfigLogGenerationRule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The log sample rate for INFO level log entries. You can use this to reduce the number of entries generated
+        /// for INFO level logs. DO NOT set this field if the logging_level is not LoggingLevel.LOG_ALL. Otherwise, an
+        /// INVALID_ARGUMENT error is returned. Sample rate for INFO logs defaults to 1 when unset (generate and send
+        /// all INFO logs to Cloud Logging). Its value must be greater than 0 and less than or equal to 1.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("infoLogSampleRate")]
+        public virtual System.Nullable<float> InfoLogSampleRate { get; set; }
+
+        /// <summary>The logging level. By default it is set to `LOG_WARNINGS_AND_ABOVE`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("loggingLevel")]
+        public virtual string LoggingLevel { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The granular logging configurations for supported services.</summary>
+    public class GoogleCloudRetailV2alphaLoggingConfigServiceLogGenerationRule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The log generation rule that applies to this service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logGenerationRule")]
+        public virtual GoogleCloudRetailV2alphaLoggingConfigLogGenerationRule LogGenerationRule { get; set; }
+
+        /// <summary>
+        /// Required. Supported service names: "CatalogService", "CompletionService", "ControlService",
+        /// "MerchantCenterStreaming", "ModelService", "PredictionService", "ProductService", "ServingConfigService",
+        /// "UserEventService",
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceName")]
+        public virtual string ServiceName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
