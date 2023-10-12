@@ -6736,8 +6736,8 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
     }
 
     /// <summary>
-    /// A resource value config is a mapping configuration of user's tag values to resource values. Used by the attack
-    /// path simulation.
+    /// A resource value config (RVC) is a mapping configuration of user's resources to resource values. Used in Attack
+    /// path simulations.
     /// </summary>
     public class GoogleCloudSecuritycenterV1ResourceValueConfig : Google.Apis.Requests.IDirectResponseSchema
     {

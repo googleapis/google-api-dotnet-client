@@ -13023,7 +13023,8 @@ namespace Google.Apis.AndroidPublisher.v3.Data
 
         /// <summary>
         /// The renewal time at which the price change will become effective for the user. This is subject to change(to
-        /// a future time) due to cases where the renewal time shifts like pause.
+        /// a future time) due to cases where the renewal time shifts like pause. This field is only populated if the
+        /// price change has not taken effect.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expectedNewPriceChargeTime")]
         public virtual string ExpectedNewPriceChargeTimeRaw

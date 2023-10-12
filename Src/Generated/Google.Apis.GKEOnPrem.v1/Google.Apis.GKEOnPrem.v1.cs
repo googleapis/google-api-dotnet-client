@@ -7196,7 +7196,7 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>## Resource that represents a bare metal admin cluster.</summary>
+    /// <summary>Resource that represents a bare metal admin cluster. LINT.IfChange</summary>
     public class BareMetalAdminCluster : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -7836,7 +7836,7 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Resource that represents a bare metal user cluster.</summary>
+    /// <summary>Resource that represents a bare metal user cluster. LINT.IfChange</summary>
     public class BareMetalCluster : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -10177,6 +10177,10 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("platformConfig")]
         public virtual VmwarePlatformConfig PlatformConfig { get; set; }
 
+        /// <summary>The VMware admin cluster prepared secrets configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("preparedSecrets")]
+        public virtual VmwareAdminPreparedSecretsConfig PreparedSecrets { get; set; }
+
         /// <summary>Output only. If set, there are currently changes in flight to the VMware admin cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reconciling")]
         public virtual System.Nullable<bool> Reconciling { get; set; }
@@ -10399,6 +10403,17 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         /// <summary>vcenter_network specifies vCenter network name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vcenterNetwork")]
         public virtual string VcenterNetwork { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>VmwareAdminPreparedSecretsConfig represents configuration for admin cluster prepared secrets.</summary>
+    public class VmwareAdminPreparedSecretsConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether prepared secrets is enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

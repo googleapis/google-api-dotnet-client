@@ -2299,11 +2299,13 @@ namespace Google.Apis.CloudTasks.v2beta2
             /// be encrypted at-rest with the KMS-key provided in the config.
             /// </summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="projectsId"><c>null</c></param>
-            /// <param name="locationsId"><c>null</c></param>
-            public virtual UpdateCmekConfigRequest UpdateCmekConfig(Google.Apis.CloudTasks.v2beta2.Data.CmekConfig body, string projectsId, string locationsId)
+            /// <param name="name">
+            /// Output only. The config resource name which includes the project and location and must end in
+            /// 'cmekConfig', in the format projects/PROJECT_ID/locations/LOCATION_ID/cmekConfig`
+            /// </param>
+            public virtual UpdateCmekConfigRequest UpdateCmekConfig(Google.Apis.CloudTasks.v2beta2.Data.CmekConfig body, string name)
             {
-                return new UpdateCmekConfigRequest(service, body, projectsId, locationsId);
+                return new UpdateCmekConfigRequest(service, body, name);
             }
 
             /// <summary>
@@ -2314,19 +2316,19 @@ namespace Google.Apis.CloudTasks.v2beta2
             public class UpdateCmekConfigRequest : CloudTasksBaseServiceRequest<Google.Apis.CloudTasks.v2beta2.Data.CmekConfig>
             {
                 /// <summary>Constructs a new UpdateCmekConfig request.</summary>
-                public UpdateCmekConfigRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudTasks.v2beta2.Data.CmekConfig body, string projectsId, string locationsId) : base(service)
+                public UpdateCmekConfigRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudTasks.v2beta2.Data.CmekConfig body, string name) : base(service)
                 {
-                    ProjectsId = projectsId;
-                    LocationsId = locationsId;
+                    Name = name;
                     Body = body;
                     InitParameters();
                 }
 
-                [Google.Apis.Util.RequestParameterAttribute("projectsId", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string ProjectsId { get; private set; }
-
-                [Google.Apis.Util.RequestParameterAttribute("locationsId", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string LocationsId { get; private set; }
+                /// <summary>
+                /// Output only. The config resource name which includes the project and location and must end in
+                /// 'cmekConfig', in the format projects/PROJECT_ID/locations/LOCATION_ID/cmekConfig`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
 
                 /// <summary>List of fields to be updated in this request.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
@@ -2345,27 +2347,19 @@ namespace Google.Apis.CloudTasks.v2beta2
                 public override string HttpMethod => "PATCH";
 
                 /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v2beta2/projects/{projectsId}/locations/{locationsId}/cmekConfig";
+                public override string RestPath => "v2beta2/{+name}";
 
                 /// <summary>Initializes UpdateCmekConfig parameter list.</summary>
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-                    RequestParameters.Add("projectsId", new Google.Apis.Discovery.Parameter
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "projectsId",
+                        Name = "name",
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = null,
-                    });
-                    RequestParameters.Add("locationsId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "locationsId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+/cmekConfig$",
                     });
                     RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
                     {

@@ -8308,9 +8308,8 @@ namespace Google.Apis.DisplayVideo.v2
 
                 /// <summary>
                 /// Bulk edits multiple assignments between locations and a single location list. The operation will
-                /// delete the assigned locations provided in
-                /// BulkEditAssignedLocationsRequest.deleted_assigned_locations and then create the assigned locations
-                /// provided in BulkEditAssignedLocationsRequest.created_assigned_locations.
+                /// delete the assigned locations provided in deletedAssignedLocations and then create the assigned
+                /// locations provided in createdAssignedLocations.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="advertiserId">
@@ -8326,9 +8325,8 @@ namespace Google.Apis.DisplayVideo.v2
 
                 /// <summary>
                 /// Bulk edits multiple assignments between locations and a single location list. The operation will
-                /// delete the assigned locations provided in
-                /// BulkEditAssignedLocationsRequest.deleted_assigned_locations and then create the assigned locations
-                /// provided in BulkEditAssignedLocationsRequest.created_assigned_locations.
+                /// delete the assigned locations provided in deletedAssignedLocations and then create the assigned
+                /// locations provided in createdAssignedLocations.
                 /// </summary>
                 public class BulkEditRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v2.Data.BulkEditAssignedLocationsResponse>
                 {
@@ -12843,7 +12841,7 @@ namespace Google.Apis.DisplayVideo.v2
             }
 
             /// <summary>
-            /// Lists assigned targeting options for multiple YouTube ad groups across targeting types. Inherieted
+            /// Lists assigned targeting options for multiple YouTube ad groups across targeting types. Inherited
             /// assigned targeting options are not included.
             /// </summary>
             /// <param name="advertiserId">Required. The ID of the advertiser the line items belongs to.</param>
@@ -12853,7 +12851,7 @@ namespace Google.Apis.DisplayVideo.v2
             }
 
             /// <summary>
-            /// Lists assigned targeting options for multiple YouTube ad groups across targeting types. Inherieted
+            /// Lists assigned targeting options for multiple YouTube ad groups across targeting types. Inherited
             /// assigned targeting options are not included.
             /// </summary>
             public class BulkListAdGroupAssignedTargetingOptionsRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v2.Data.BulkListAdGroupAssignedTargetingOptionsResponse>
@@ -12883,10 +12881,10 @@ namespace Google.Apis.DisplayVideo.v2
                 public virtual string Filter { get; set; }
 
                 /// <summary>
-                /// Optional. Field by which to sort the list. Acceptable values are: * `youtubeAdGroupId` (acceptable
-                /// in v2) * `adGroupId` (acceptable in v3) * `assignedTargetingOption.targetingType` The default
-                /// sorting order is ascending. To specify descending order for a field, a suffix "desc" should be added
-                /// to the field name. Example: `targetingType desc`.
+                /// Optional. Field by which to sort the list. Acceptable values are: * `adGroupId` (default) *
+                /// `assignedTargetingOption.targetingType` The default sorting order is ascending. To specify
+                /// descending order for a field, a suffix "desc" should be added to the field name. Example:
+                /// `targetingType desc`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string OrderBy { get; set; }
@@ -21929,7 +21927,7 @@ namespace Google.Apis.DisplayVideo.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserId")]
         public virtual System.Nullable<long> AdvertiserId { get; set; }
 
-        /// <summary>Billing related settings of the advertiser.</summary>
+        /// <summary>Required. Billing related settings of the advertiser.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("billingConfig")]
         public virtual AdvertiserBillingConfig BillingConfig { get; set; }
 
@@ -22049,10 +22047,7 @@ namespace Google.Apis.DisplayVideo.v2.Data
     /// <summary>Billing related settings of an advertiser.</summary>
     public class AdvertiserBillingConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// The ID of a billing profile assigned to the advertiser. This field will default to the default billing
-        /// profile ID of the advertiser's parent partner if a value is not provided.
-        /// </summary>
+        /// <summary>The ID of a billing profile assigned to the advertiser.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("billingProfileId")]
         public virtual System.Nullable<long> BillingProfileId { get; set; }
 
@@ -22191,10 +22186,10 @@ namespace Google.Apis.DisplayVideo.v2.Data
     public class AgeRangeAssignedTargetingOptionDetails : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The age range of an audience. We only support targeting a continuous age range of an audience. Thus, the age
-        /// range represented in this field can be 1) targeted solely, or, 2) part of a larger continuous age range. The
-        /// reach of a continuous age range targeting can be expanded by also targeting an audience of an unknown age.
-        /// Output only in v1. Required in v2.
+        /// Required. The age range of an audience. We only support targeting a continuous age range of an audience.
+        /// Thus, the age range represented in this field can be 1) targeted solely, or, 2) part of a larger continuous
+        /// age range. The reach of a continuous age range targeting can be expanded by also targeting an audience of an
+        /// unknown age.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ageRange")]
         public virtual string AgeRange { get; set; }
@@ -22345,10 +22340,7 @@ namespace Google.Apis.DisplayVideo.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// An assignment between a location list and a relevant targeting option. Currently, geo region targeting options
-    /// are the only supported option for assignment.
-    /// </summary>
+    /// <summary>An assignment between a location list and a relevant targeting option.</summary>
     public class AssignedLocation : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -22362,11 +22354,7 @@ namespace Google.Apis.DisplayVideo.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>
-        /// Required. The ID of the targeting option assigned to the location list. Assigned locations can only be
-        /// modified in TARGETING_LOCATION_TYPE_REGIONAL location lists. When creating or deleting assigned locations,
-        /// this value must be of type TARGETING_TYPE_GEO_REGION.
-        /// </summary>
+        /// <summary>Required. The ID of the targeting option assigned to the location list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetingOptionId")]
         public virtual string TargetingOptionId { get; set; }
 
@@ -22860,7 +22848,7 @@ namespace Google.Apis.DisplayVideo.v2.Data
     /// </summary>
     public class AudioContentTypeAssignedTargetingOptionDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The audio content type. Output only in v1. Required in v2.</summary>
+        /// <summary>Required. The audio content type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audioContentType")]
         public virtual string AudioContentType { get; set; }
 
@@ -23204,12 +23192,14 @@ namespace Google.Apis.DisplayVideo.v2.Data
     /// <summary>Request message for AssignedLocationService.BulkEditAssignedLocations.</summary>
     public class BulkEditAssignedLocationsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The assigned locations to create in bulk, specified as a list of AssignedLocations.</summary>
+        /// <summary>
+        /// The assigned locations to create in bulk, specified as a list of AssignedLocation resources.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createdAssignedLocations")]
         public virtual System.Collections.Generic.IList<AssignedLocation> CreatedAssignedLocations { get; set; }
 
         /// <summary>
-        /// The IDs of the assigned locations to delete in bulk, specified as a list of assigned_location_ids.
+        /// The IDs of the assigned locations to delete in bulk, specified as a list of assignedLocationId values.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deletedAssignedLocations")]
         public virtual System.Collections.Generic.IList<System.Nullable<long>> DeletedAssignedLocations { get; set; }
@@ -23218,7 +23208,6 @@ namespace Google.Apis.DisplayVideo.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response message for AssignedLocationService.BulkEditAssignedLocations.</summary>
     public class BulkEditAssignedLocationsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -23437,8 +23426,7 @@ namespace Google.Apis.DisplayVideo.v2.Data
         /// <summary>
         /// A token identifying the next page of results. This value should be specified as the pageToken in a
         /// subsequent call to `BulkListAdGroupAssignedTargetingOptions` to fetch the next page of results. This token
-        /// will be absent if there are no more youtube_ad_group_assigned_targeting_options or
-        /// ad_group_assigned_targeting_options to return.
+        /// will be absent if there are no more AdGroupAssignedTargetingOption resources to return.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
@@ -24311,7 +24299,7 @@ namespace Google.Apis.DisplayVideo.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("adType")]
         public virtual string AdType { get; set; }
 
-        /// <summary>The content instream position for video or audio ads. Output only in v1. Required in v2.</summary>
+        /// <summary>Required. The content instream position for video or audio ads.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentInstreamPosition")]
         public virtual string ContentInstreamPosition { get; set; }
 
@@ -24350,7 +24338,7 @@ namespace Google.Apis.DisplayVideo.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("adType")]
         public virtual string AdType { get; set; }
 
-        /// <summary>The content outstream position. Output only in v1. Required in v2.</summary>
+        /// <summary>Required. The content outstream position.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentOutstreamPosition")]
         public virtual string ContentOutstreamPosition { get; set; }
 
@@ -25101,8 +25089,8 @@ namespace Google.Apis.DisplayVideo.v2.Data
         public virtual System.Nullable<long> CustomBiddingScriptId { get; set; }
 
         /// <summary>
-        /// Output only. Error details of a rejected custom bidding script. This field will only be populated when
-        /// Script.state is REJECTED.
+        /// Output only. Error details of a rejected custom bidding script. This field will only be populated when state
+        /// is REJECTED.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errors")]
         public virtual System.Collections.Generic.IList<ScriptError> Errors { get; set; }
@@ -25349,7 +25337,7 @@ namespace Google.Apis.DisplayVideo.v2.Data
     /// </summary>
     public class DeviceTypeAssignedTargetingOptionDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The display name of the device type. Output only in v1. Required in v2.</summary>
+        /// <summary>Required. The display name of the device type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceType")]
         public virtual string DeviceType { get; set; }
 
@@ -25712,7 +25700,7 @@ namespace Google.Apis.DisplayVideo.v2.Data
     /// </summary>
     public class EnvironmentAssignedTargetingOptionDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The serving environment. Output only in v1. Required in v2.</summary>
+        /// <summary>Required. The serving environment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("environment")]
         public virtual string Environment { get; set; }
 
@@ -26132,7 +26120,7 @@ namespace Google.Apis.DisplayVideo.v2.Data
     /// </summary>
     public class GenderAssignedTargetingOptionDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The gender of the audience. Output only in v1. Required in v2.</summary>
+        /// <summary>Required. The gender of the audience.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gender")]
         public virtual string Gender { get; set; }
 
@@ -26471,7 +26459,7 @@ namespace Google.Apis.DisplayVideo.v2.Data
     /// </summary>
     public class HouseholdIncomeAssignedTargetingOptionDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The household income of the audience. Output only in v1. Required in v2.</summary>
+        /// <summary>Required. The household income of the audience.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("householdIncome")]
         public virtual string HouseholdIncome { get; set; }
 
@@ -28514,7 +28502,7 @@ namespace Google.Apis.DisplayVideo.v2.Data
     /// </summary>
     public class NativeContentPositionAssignedTargetingOptionDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The content position. Output only in v1. Required in v2.</summary>
+        /// <summary>Required. The content position.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentPosition")]
         public virtual string ContentPosition { get; set; }
 
@@ -28672,7 +28660,7 @@ namespace Google.Apis.DisplayVideo.v2.Data
     /// </summary>
     public class OmidAssignedTargetingOptionDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The type of Open Measurement enabled inventory. Output only in v1. Required in v2.</summary>
+        /// <summary>Required. The type of Open Measurement enabled inventory.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("omid")]
         public virtual string Omid { get; set; }
 
@@ -28844,7 +28832,7 @@ namespace Google.Apis.DisplayVideo.v2.Data
 
         /// <summary>
         /// Required. The time period in which the pacing budget will be spent. When automatic budget allocation is
-        /// enabled at the insertion order via auto_budget_allocation, this field is output only and defaults to
+        /// enabled at the insertion order via automationType, this field is output only and defaults to
         /// `PACING_PERIOD_FLIGHT`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pacingPeriod")]
@@ -28890,7 +28878,7 @@ namespace Google.Apis.DisplayVideo.v2.Data
     /// </summary>
     public class ParentalStatusAssignedTargetingOptionDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The parental status of the audience. Output only in v1. Required in v2.</summary>
+        /// <summary>Required. The parental status of the audience.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parentalStatus")]
         public virtual string ParentalStatus { get; set; }
 
@@ -29095,7 +29083,7 @@ namespace Google.Apis.DisplayVideo.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Settings that control the performance goal of a campaign or insertion order.</summary>
+    /// <summary>Settings that control the performance goal of a campaign.</summary>
     public class PerformanceGoal : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -30533,7 +30521,7 @@ namespace Google.Apis.DisplayVideo.v2.Data
     /// </summary>
     public class VideoPlayerSizeAssignedTargetingOptionDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The video player size. Output only in v1. Required in v2.</summary>
+        /// <summary>Required. The video player size.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("videoPlayerSize")]
         public virtual string VideoPlayerSize { get; set; }
 
@@ -30561,7 +30549,7 @@ namespace Google.Apis.DisplayVideo.v2.Data
     /// </summary>
     public class ViewabilityAssignedTargetingOptionDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The predicted viewability percentage. Output only in v1. Required in v2.</summary>
+        /// <summary>Required. The predicted viewability percentage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("viewability")]
         public virtual string Viewability { get; set; }
 
@@ -30729,7 +30717,7 @@ namespace Google.Apis.DisplayVideo.v2.Data
     }
 
     /// <summary>
-    /// Wrapper object associating an assigned_targeting_option resource and the youtube ad group it is assigned to.
+    /// Wrapper object associating an AssignedTargetingOption resource and the youtube ad group it is assigned to.
     /// </summary>
     public class YoutubeAdGroupAssignedTargetingOption : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -30748,11 +30736,11 @@ namespace Google.Apis.DisplayVideo.v2.Data
     /// <summary>Settings that control the bid strategy for YouTube and Partners resources.</summary>
     public class YoutubeAndPartnersBiddingStrategy : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. Source of the effective targetCpa value for AdGroup.</summary>
+        /// <summary>Output only. Source of the effective target CPA value for ad group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adGroupEffectiveTargetCpaSource")]
         public virtual string AdGroupEffectiveTargetCpaSource { get; set; }
 
-        /// <summary>Output only. The effective targetCpa for AdGroup, in micros of advertiser's currency.</summary>
+        /// <summary>Output only. The effective target CPA for ad group, in micros of advertiser's currency.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adGroupEffectiveTargetCpaValue")]
         public virtual System.Nullable<long> AdGroupEffectiveTargetCpaValue { get; set; }
 

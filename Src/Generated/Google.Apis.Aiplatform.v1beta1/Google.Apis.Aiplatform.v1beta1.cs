@@ -42133,10 +42133,6 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("annotationsFilter")]
         public virtual string AnnotationsFilter { get; set; }
 
-        /// <summary>Split based on the provided filters for each set.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("filterSplit")]
-        public virtual GoogleCloudAiplatformV1beta1ExportFilterSplit FilterSplit { get; set; }
-
         /// <summary>Split based on fractions defining the size of each set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fractionSplit")]
         public virtual GoogleCloudAiplatformV1beta1ExportFractionSplit FractionSplit { get; set; }
@@ -42455,45 +42451,6 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
     }
 
     /// <summary>
-    /// Assigns input data to training, validation, and test sets based on the given filters, data pieces not matched by
-    /// any filter are ignored. Currently only supported for Datasets containing DataItems. If any of the filters in
-    /// this message are to match nothing, then they can be set as '-' (the minus sign). Supported only for unstructured
-    /// Datasets.
-    /// </summary>
-    public class GoogleCloudAiplatformV1beta1ExportFilterSplit : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Required. A filter on DataItems of the Dataset. DataItems that match this filter are used to test the Model.
-        /// A filter with same syntax as the one used in DatasetService.ListDataItems may be used. If a single DataItem
-        /// is matched by more than one of the FilterSplit filters, then it is assigned to the first set that applies to
-        /// it in the training, validation, test order.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("testFilter")]
-        public virtual string TestFilter { get; set; }
-
-        /// <summary>
-        /// Required. A filter on DataItems of the Dataset. DataItems that match this filter are used to train the
-        /// Model. A filter with same syntax as the one used in DatasetService.ListDataItems may be used. If a single
-        /// DataItem is matched by more than one of the FilterSplit filters, then it is assigned to the first set that
-        /// applies to it in the training, validation, test order.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("trainingFilter")]
-        public virtual string TrainingFilter { get; set; }
-
-        /// <summary>
-        /// Required. A filter on DataItems of the Dataset. DataItems that match this filter are used to validate the
-        /// Model. A filter with same syntax as the one used in DatasetService.ListDataItems may be used. If a single
-        /// DataItem is matched by more than one of the FilterSplit filters, then it is assigned to the first set that
-        /// applies to it in the training, validation, test order.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("validationFilter")]
-        public virtual string ValidationFilter { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
     /// Assigns the input data to training, validation, and test sets as per the given fractions. Any of
     /// `training_fraction`, `validation_fraction` and `test_fraction` may optionally be provided, they must sum to up
     /// to 1. If the provided ones sum to less than 1, the remainder is assigned to sets as decided by Vertex AI. If
@@ -42804,7 +42761,11 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
     /// <summary>Vertex AI Feature Group.</summary>
     public class GoogleCloudAiplatformV1beta1FeatureGroup : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Indicates that features for this group come from BigQuery.</summary>
+        /// <summary>
+        /// Indicates that features for this group come from BigQuery Table/View. By default treats the source as a
+        /// sparse time series source, which is required to have an entity_id and a feature_timestamp column in the
+        /// source.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bigQuery")]
         public virtual GoogleCloudAiplatformV1beta1FeatureGroupBigQuery BigQuery { get; set; }
 
@@ -43600,7 +43561,7 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         public virtual System.Collections.Generic.IList<string> EntityIdColumns { get; set; }
 
         /// <summary>
-        /// Required. The Bigquery View URI that will be materialized on each sync trigger based on
+        /// Required. The BigQuery view URI that will be materialized on each sync trigger based on
         /// FeatureView.SyncConfig.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
@@ -46486,6 +46447,13 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
         public virtual string MachineType { get; set; }
+
+        /// <summary>
+        /// Immutable. The topology of the TPUs. Corresponds to the TPU topologies available from GKE. (Example:
+        /// tpu_topology: "2x2x1").
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tpuTopology")]
+        public virtual string TpuTopology { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -3571,10 +3571,7 @@ namespace Google.Apis.AccessContextManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Currently, a completed operation means nothing. In the future, this metadata and a completed operation may
-    /// indicate that the binding has taken effect and is affecting access decisions for all users.
-    /// </summary>
+    /// <summary>Metadata of GCP Access Binding Long Running Operations.</summary>
     public class GcpUserAccessBindingOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>

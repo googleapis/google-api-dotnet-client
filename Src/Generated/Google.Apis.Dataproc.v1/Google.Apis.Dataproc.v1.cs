@@ -3596,6 +3596,10 @@ namespace Google.Apis.Dataproc.v1
                         [Google.Apis.Util.RequestParameterAttribute("nodeGroupId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string NodeGroupId { get; set; }
 
+                        /// <summary>Optional. operation id of the parent operation sending the create request</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parentOperationId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string ParentOperationId { get; set; }
+
                         /// <summary>
                         /// Optional. A unique ID used to identify the request. If the server receives two
                         /// CreateNodeGroupRequest
@@ -3639,6 +3643,14 @@ namespace Google.Apis.Dataproc.v1
                             RequestParameters.Add("nodeGroupId", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "nodeGroupId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("parentOperationId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parentOperationId",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -10754,6 +10766,10 @@ namespace Google.Apis.Dataproc.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gracefulDecommissionTimeout")]
         public virtual object GracefulDecommissionTimeout { get; set; }
+
+        /// <summary>Optional. operation id of the parent operation sending the resize request</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parentOperationId")]
+        public virtual string ParentOperationId { get; set; }
 
         /// <summary>
         /// Optional. A unique ID used to identify the request. If the server receives two ResizeNodeGroupRequest

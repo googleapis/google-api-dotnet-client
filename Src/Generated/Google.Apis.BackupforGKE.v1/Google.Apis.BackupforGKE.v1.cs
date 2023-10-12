@@ -4879,7 +4879,8 @@ namespace Google.Apis.BackupforGKE.v1.Data
         public virtual string ResourceGroup { get; set; }
 
         /// <summary>
-        /// Optional. Kind of a Kubernetes resource, e.g. "CustomResourceDefinition", "StorageClass", etc.
+        /// Optional. Kind of a Kubernetes resource, must be in UpperCamelCase (PascalCase) and singular form. E.g.
+        /// "CustomResourceDefinition", "StorageClass", etc.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceKind")]
         public virtual string ResourceKind { get; set; }
@@ -5311,7 +5312,7 @@ namespace Google.Apis.BackupforGKE.v1.Data
 
     /// <summary>
     /// Represents both a request to Restore some portion of a Backup into a target GKE cluster and a record of the
-    /// restore operation itself. Next id: 18
+    /// restore operation itself. Next id: 19
     /// </summary>
     public class Restore : Google.Apis.Requests.IDirectResponseSchema
     {

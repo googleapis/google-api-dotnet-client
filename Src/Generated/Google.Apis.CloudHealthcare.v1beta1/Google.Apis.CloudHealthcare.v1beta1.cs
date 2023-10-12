@@ -4196,7 +4196,166 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     public DicomStoresResource(Google.Apis.Services.IClientService service)
                     {
                         this.service = service;
+                        DicomWeb = new DicomWebResource(service);
                         Studies = new StudiesResource(service);
+                    }
+
+                    /// <summary>Gets the DicomWeb resource.</summary>
+                    public virtual DicomWebResource DicomWeb { get; }
+
+                    /// <summary>The "dicomWeb" collection of methods.</summary>
+                    public class DicomWebResource
+                    {
+                        private const string Resource = "dicomWeb";
+
+                        /// <summary>The service which this resource belongs to.</summary>
+                        private readonly Google.Apis.Services.IClientService service;
+
+                        /// <summary>Constructs a new resource.</summary>
+                        public DicomWebResource(Google.Apis.Services.IClientService service)
+                        {
+                            this.service = service;
+                            Studies = new StudiesResource(service);
+                        }
+
+                        /// <summary>Gets the Studies resource.</summary>
+                        public virtual StudiesResource Studies { get; }
+
+                        /// <summary>The "studies" collection of methods.</summary>
+                        public class StudiesResource
+                        {
+                            private const string Resource = "studies";
+
+                            /// <summary>The service which this resource belongs to.</summary>
+                            private readonly Google.Apis.Services.IClientService service;
+
+                            /// <summary>Constructs a new resource.</summary>
+                            public StudiesResource(Google.Apis.Services.IClientService service)
+                            {
+                                this.service = service;
+                                Series = new SeriesResource(service);
+                            }
+
+                            /// <summary>Gets the Series resource.</summary>
+                            public virtual SeriesResource Series { get; }
+
+                            /// <summary>The "series" collection of methods.</summary>
+                            public class SeriesResource
+                            {
+                                private const string Resource = "series";
+
+                                /// <summary>The service which this resource belongs to.</summary>
+                                private readonly Google.Apis.Services.IClientService service;
+
+                                /// <summary>Constructs a new resource.</summary>
+                                public SeriesResource(Google.Apis.Services.IClientService service)
+                                {
+                                    this.service = service;
+                                }
+
+                                /// <summary>GetSeriesMetrics returns metrics for a series.</summary>
+                                /// <param name="series">
+                                /// The series resource path. For example,
+                                /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}/dicomWeb/studies/{study_uid}/series/{series_uid}`.
+                                /// </param>
+                                public virtual GetSeriesMetricsRequest GetSeriesMetrics(string series)
+                                {
+                                    return new GetSeriesMetricsRequest(service, series);
+                                }
+
+                                /// <summary>GetSeriesMetrics returns metrics for a series.</summary>
+                                public class GetSeriesMetricsRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.SeriesMetrics>
+                                {
+                                    /// <summary>Constructs a new GetSeriesMetrics request.</summary>
+                                    public GetSeriesMetricsRequest(Google.Apis.Services.IClientService service, string series) : base(service)
+                                    {
+                                        Series = series;
+                                        InitParameters();
+                                    }
+
+                                    /// <summary>
+                                    /// The series resource path. For example,
+                                    /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}/dicomWeb/studies/{study_uid}/series/{series_uid}`.
+                                    /// </summary>
+                                    [Google.Apis.Util.RequestParameterAttribute("series", Google.Apis.Util.RequestParameterType.Path)]
+                                    public virtual string Series { get; private set; }
+
+                                    /// <summary>Gets the method name.</summary>
+                                    public override string MethodName => "getSeriesMetrics";
+
+                                    /// <summary>Gets the HTTP method.</summary>
+                                    public override string HttpMethod => "GET";
+
+                                    /// <summary>Gets the REST path.</summary>
+                                    public override string RestPath => "v1beta1/{+series}:getSeriesMetrics";
+
+                                    /// <summary>Initializes GetSeriesMetrics parameter list.</summary>
+                                    protected override void InitParameters()
+                                    {
+                                        base.InitParameters();
+                                        RequestParameters.Add("series", new Google.Apis.Discovery.Parameter
+                                        {
+                                            Name = "series",
+                                            IsRequired = true,
+                                            ParameterType = "path",
+                                            DefaultValue = null,
+                                            Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+/dicomWeb/studies/[^/]+/series/[^/]+$",
+                                        });
+                                    }
+                                }
+                            }
+
+                            /// <summary>GetStudyMetrics returns metrics for a study.</summary>
+                            /// <param name="study">
+                            /// The study resource path. For example,
+                            /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}/dicomWeb/studies/{study_uid}`.
+                            /// </param>
+                            public virtual GetStudyMetricsRequest GetStudyMetrics(string study)
+                            {
+                                return new GetStudyMetricsRequest(service, study);
+                            }
+
+                            /// <summary>GetStudyMetrics returns metrics for a study.</summary>
+                            public class GetStudyMetricsRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.StudyMetrics>
+                            {
+                                /// <summary>Constructs a new GetStudyMetrics request.</summary>
+                                public GetStudyMetricsRequest(Google.Apis.Services.IClientService service, string study) : base(service)
+                                {
+                                    Study = study;
+                                    InitParameters();
+                                }
+
+                                /// <summary>
+                                /// The study resource path. For example,
+                                /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}/dicomWeb/studies/{study_uid}`.
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("study", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string Study { get; private set; }
+
+                                /// <summary>Gets the method name.</summary>
+                                public override string MethodName => "getStudyMetrics";
+
+                                /// <summary>Gets the HTTP method.</summary>
+                                public override string HttpMethod => "GET";
+
+                                /// <summary>Gets the REST path.</summary>
+                                public override string RestPath => "v1beta1/{+study}:getStudyMetrics";
+
+                                /// <summary>Initializes GetStudyMetrics parameter list.</summary>
+                                protected override void InitParameters()
+                                {
+                                    base.InitParameters();
+                                    RequestParameters.Add("study", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "study",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+/dicomWeb/studies/[^/]+$",
+                                    });
+                                }
+                            }
+                        }
                     }
 
                     /// <summary>Gets the Studies resource.</summary>
@@ -5971,6 +6130,51 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         public override string RestPath => "v1beta1/{+name}";
 
                         /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Gets metrics associated with the DICOM store.</summary>
+                    /// <param name="name">The resource name of the DICOM store to get metrics for.</param>
+                    public virtual GetDICOMStoreMetricsRequest GetDICOMStoreMetrics(string name)
+                    {
+                        return new GetDICOMStoreMetricsRequest(service, name);
+                    }
+
+                    /// <summary>Gets metrics associated with the DICOM store.</summary>
+                    public class GetDICOMStoreMetricsRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.DicomStoreMetrics>
+                    {
+                        /// <summary>Constructs a new GetDICOMStoreMetrics request.</summary>
+                        public GetDICOMStoreMetricsRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>The resource name of the DICOM store to get metrics for.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "getDICOMStoreMetrics";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+name}:getDICOMStoreMetrics";
+
+                        /// <summary>Initializes GetDICOMStoreMetrics parameter list.</summary>
                         protected override void InitParameters()
                         {
                             base.InitParameters();
@@ -11449,6 +11653,57 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         }
                     }
 
+                    /// <summary>Gets metrics asssociated with the HL7v2 store.</summary>
+                    /// <param name="name">
+                    /// The resource name of the HL7v2 store to get metrics for, in the format
+                    /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/hl7V2Stores/{hl7v2_store_id}`.
+                    /// </param>
+                    public virtual GetHL7v2StoreMetricsRequest GetHL7v2StoreMetrics(string name)
+                    {
+                        return new GetHL7v2StoreMetricsRequest(service, name);
+                    }
+
+                    /// <summary>Gets metrics asssociated with the HL7v2 store.</summary>
+                    public class GetHL7v2StoreMetricsRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.Hl7V2StoreMetrics>
+                    {
+                        /// <summary>Constructs a new GetHL7v2StoreMetrics request.</summary>
+                        public GetHL7v2StoreMetricsRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// The resource name of the HL7v2 store to get metrics for, in the format
+                        /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/hl7V2Stores/{hl7v2_store_id}`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "getHL7v2StoreMetrics";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+name}:getHL7v2StoreMetrics";
+
+                        /// <summary>Initializes GetHL7v2StoreMetrics parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/hl7V2Stores/[^/]+$",
+                            });
+                        }
+                    }
+
                     /// <summary>
                     /// Gets the access control policy for a resource. Returns an empty policy if the resource exists
                     /// and does not have a policy set.
@@ -14582,6 +14837,40 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>DicomStoreMetrics contains metrics describing a DICOM store.</summary>
+    public class DicomStoreMetrics : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Total blob storage bytes for all instances in the store.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blobStorageSizeBytes")]
+        public virtual System.Nullable<long> BlobStorageSizeBytes { get; set; }
+
+        /// <summary>Number of instances in the store.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceCount")]
+        public virtual System.Nullable<long> InstanceCount { get; set; }
+
+        /// <summary>
+        /// Resource name of the DICOM store, of the form
+        /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Number of series in the store.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("seriesCount")]
+        public virtual System.Nullable<long> SeriesCount { get; set; }
+
+        /// <summary>Total structured storage bytes for all instances in the store.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("structuredStorageSizeBytes")]
+        public virtual System.Nullable<long> StructuredStorageSizeBytes { get; set; }
+
+        /// <summary>Number of studies in the store.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("studyCount")]
+        public virtual System.Nullable<long> StudyCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Specifies the parameters needed for the de-identification of DICOM stores.</summary>
     public class DicomTagConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -16174,6 +16463,45 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rejectDuplicateMessage")]
         public virtual System.Nullable<bool> RejectDuplicateMessage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Count of messages and total storage size by type for a given HL7 store.</summary>
+    public class Hl7V2StoreMetric : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The total count of HL7v2 messages in the store for the given message type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("count")]
+        public virtual System.Nullable<long> Count { get; set; }
+
+        /// <summary>The Hl7v2 message type this metric applies to, such as `ADT` or `ORU`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("messageType")]
+        public virtual string MessageType { get; set; }
+
+        /// <summary>
+        /// The total amount of structured storage used by HL7v2 messages of this message type in the store.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("structuredStorageSizeBytes")]
+        public virtual System.Nullable<long> StructuredStorageSizeBytes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>List of metrics for a given HL7v2 store.</summary>
+    public class Hl7V2StoreMetrics : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of HL7v2 store metrics by message type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
+        public virtual System.Collections.Generic.IList<Hl7V2StoreMetric> Metrics { get; set; }
+
+        /// <summary>
+        /// The resource name of the HL7v2 store to get metrics for, in the format
+        /// `projects/{project_id}/datasets/{dataset_id}/hl7V2Stores/{hl7v2_store_id}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -17774,6 +18102,32 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>SeriesMetrics contains metrics describing a DICOM series.</summary>
+    public class SeriesMetrics : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Total blob storage bytes for all instances in the series.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blobStorageSizeBytes")]
+        public virtual System.Nullable<long> BlobStorageSizeBytes { get; set; }
+
+        /// <summary>Number of instances in the series.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceCount")]
+        public virtual System.Nullable<long> InstanceCount { get; set; }
+
+        /// <summary>
+        /// The series resource path. For example,
+        /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}/dicomWeb/studies/{study_uid}/series/{series_uid}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("series")]
+        public virtual string Series { get; set; }
+
+        /// <summary>Total structured storage bytes for all instances in the series.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("structuredStorageSizeBytes")]
+        public virtual System.Nullable<long> StructuredStorageSizeBytes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for `SetIamPolicy` method.</summary>
     public class SetIamPolicyRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -17935,6 +18289,36 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceTypes")]
         public virtual System.Collections.Generic.IList<string> ResourceTypes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>StudyMetrics contains metrics describing a DICOM study.</summary>
+    public class StudyMetrics : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Total blob storage bytes for all instances in the study.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blobStorageSizeBytes")]
+        public virtual System.Nullable<long> BlobStorageSizeBytes { get; set; }
+
+        /// <summary>Number of instances in the study.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceCount")]
+        public virtual System.Nullable<long> InstanceCount { get; set; }
+
+        /// <summary>Number of series in the study.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("seriesCount")]
+        public virtual System.Nullable<long> SeriesCount { get; set; }
+
+        /// <summary>Total structured storage bytes for all instances in the study.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("structuredStorageSizeBytes")]
+        public virtual System.Nullable<long> StructuredStorageSizeBytes { get; set; }
+
+        /// <summary>
+        /// The study resource path. For example,
+        /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}/dicomWeb/studies/{study_uid}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("study")]
+        public virtual string Study { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
