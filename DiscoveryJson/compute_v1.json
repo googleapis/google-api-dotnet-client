@@ -13668,6 +13668,56 @@
       "https://www.googleapis.com/auth/compute.readonly"
      ]
     },
+    "patch": {
+     "description": "Patches the specified NetworkAttachment resource with the data included in the request. This method supports PATCH semantics and uses JSON merge patch format and processing rules.",
+     "flatPath": "projects/{project}/regions/{region}/networkAttachments/{networkAttachment}",
+     "httpMethod": "PATCH",
+     "id": "compute.networkAttachments.patch",
+     "parameterOrder": [
+      "project",
+      "region",
+      "networkAttachment"
+     ],
+     "parameters": {
+      "networkAttachment": {
+       "description": "Name of the NetworkAttachment resource to patch.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+       "required": true,
+       "type": "string"
+      },
+      "project": {
+       "description": "Project ID for this request.",
+       "location": "path",
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "required": true,
+       "type": "string"
+      },
+      "region": {
+       "description": "Name of the region for this request.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "required": true,
+       "type": "string"
+      },
+      "requestId": {
+       "description": "An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). end_interface: MixerMutationRequestBuilder",
+       "location": "query",
+       "type": "string"
+      }
+     },
+     "path": "projects/{project}/regions/{region}/networkAttachments/{networkAttachment}",
+     "request": {
+      "$ref": "NetworkAttachment"
+     },
+     "response": {
+      "$ref": "Operation"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
+     ]
+    },
     "setIamPolicy": {
      "description": "Sets the access control policy on the specified resource. Replaces any existing policy.",
      "flatPath": "projects/{project}/regions/{region}/networkAttachments/{resource}/setIamPolicy",
@@ -34780,7 +34830,7 @@
    }
   }
  },
- "revision": "20230923",
+ "revision": "20231003",
  "rootUrl": "https://compute.googleapis.com/",
  "schemas": {
   "AWSV4Signature": {
@@ -53746,6 +53796,10 @@
      "$ref": "ManagedInstanceLastAttempt",
      "description": "[Output Only] Information about the last attempt to create or delete the instance."
     },
+    "name": {
+     "description": "[Output Only] The name of the instance. The name always exists even if the instance has not yet been created.",
+     "type": "string"
+    },
     "preservedStateFromConfig": {
      "$ref": "PreservedState",
      "description": "[Output Only] Preserved state applied from per-instance config for this instance."
@@ -54392,6 +54446,10 @@
      "description": "The IPv4 address assigned to the producer instance network interface. This value will be a range in case of Serverless.",
      "type": "string"
     },
+    "ipv6Address": {
+     "description": "The IPv6 address assigned to the producer instance network interface. This is only assigned when the stack types of both the instance network interface and the consumer subnet are IPv4_IPv6.",
+     "type": "string"
+    },
     "projectIdOrNum": {
      "description": "The project id or number of the interface to which the IP was assigned.",
      "type": "string"
@@ -54425,6 +54483,10 @@
     },
     "subnetwork": {
      "description": "The subnetwork used to assign the IP to the producer instance network interface.",
+     "type": "string"
+    },
+    "subnetworkCidrRange": {
+     "description": "[Output Only] The CIDR range of the subnet from which the IPv4 internal IP was allocated from.",
      "type": "string"
     }
    },

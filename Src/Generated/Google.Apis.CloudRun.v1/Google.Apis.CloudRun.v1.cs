@@ -7626,6 +7626,13 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual System.Collections.Generic.IList<GoogleCloudRunV1Condition> Conditions { get; set; }
 
         /// <summary>
+        /// Output only. The desired number of instances running this revision. For Cloud Run, this only includes
+        /// instances provisioned using the minScale annotation. It does not include instances created by autoscaling.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredReplicas")]
+        public virtual System.Nullable<int> DesiredReplicas { get; set; }
+
+        /// <summary>
         /// ImageDigest holds the resolved digest for the image specified within .Spec.Container.Image. The digest is
         /// resolved during the creation of Revision. This field holds the digest value regardless of whether a tag or
         /// digest was originally specified in the Container object.

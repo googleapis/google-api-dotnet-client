@@ -51,6 +51,7 @@ namespace Google.Apis.YouTube.v3
             LiveStreams = new LiveStreamsResource(this);
             Members = new MembersResource(this);
             MembershipsLevels = new MembershipsLevelsResource(this);
+            PlaylistImages = new PlaylistImagesResource(this);
             PlaylistItems = new PlaylistItemsResource(this);
             Playlists = new PlaylistsResource(this);
             Search = new SearchResource(this);
@@ -194,6 +195,9 @@ namespace Google.Apis.YouTube.v3
 
         /// <summary>Gets the MembershipsLevels resource.</summary>
         public virtual MembershipsLevelsResource MembershipsLevels { get; }
+
+        /// <summary>Gets the PlaylistImages resource.</summary>
+        public virtual PlaylistImagesResource PlaylistImages { get; }
 
         /// <summary>Gets the PlaylistItems resource.</summary>
         public virtual PlaylistItemsResource PlaylistItems { get; }
@@ -2309,10 +2313,6 @@ namespace Google.Apis.YouTube.v3
             [Google.Apis.Util.RequestParameterAttribute("categoryId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string CategoryId { get; set; }
 
-            /// <summary>Return the channel associated with a YouTube handle. UNIMPLEMENTED.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("forHandle", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string ForHandle { get; set; }
-
             /// <summary>Return the channel associated with a YouTube username.</summary>
             [Google.Apis.Util.RequestParameterAttribute("forUsername", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ForUsername { get; set; }
@@ -2393,14 +2393,6 @@ namespace Google.Apis.YouTube.v3
                 RequestParameters.Add("categoryId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "categoryId",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-                RequestParameters.Add("forHandle", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "forHandle",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -5691,6 +5683,384 @@ namespace Google.Apis.YouTube.v3
         }
     }
 
+    /// <summary>The "playlistImages" collection of methods.</summary>
+    public class PlaylistImagesResource
+    {
+        private const string Resource = "playlistImages";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public PlaylistImagesResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>Deletes a resource.</summary>
+        public virtual DeleteRequest Delete()
+        {
+            return new DeleteRequest(service);
+        }
+
+        /// <summary>Deletes a resource.</summary>
+        public class DeleteRequest : YouTubeBaseServiceRequest<string>
+        {
+            /// <summary>Constructs a new Delete request.</summary>
+            public DeleteRequest(Google.Apis.Services.IClientService service) : base(service)
+            {
+                InitParameters();
+            }
+
+            /// <summary>Id to identify this image. This is returned from by the List method.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Id { get; set; }
+
+            /// <summary>
+            /// *Note:* This parameter is intended exclusively for YouTube content partners. The
+            /// *onBehalfOfContentOwner* parameter indicates that the request's authorization credentials identify a
+            /// YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This
+            /// parameter is intended for YouTube content partners that own and manage many different YouTube channels.
+            /// It allows content owners to authenticate once and get access to all their video and channel data,
+            /// without having to provide authentication credentials for each individual channel. The CMS account that
+            /// the user authenticates with must be linked to the specified YouTube content owner.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("onBehalfOfContentOwner", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OnBehalfOfContentOwner { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "delete";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "DELETE";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "youtube/v3/playlistImages";
+
+            /// <summary>Initializes Delete parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "id",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("onBehalfOfContentOwner", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "onBehalfOfContentOwner",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Inserts a new resource into this collection.</summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual InsertRequest Insert(Google.Apis.YouTube.v3.Data.PlaylistImage body)
+        {
+            return new InsertRequest(service, body);
+        }
+
+        /// <summary>Inserts a new resource into this collection.</summary>
+        public class InsertRequest : YouTubeBaseServiceRequest<Google.Apis.YouTube.v3.Data.PlaylistImage>
+        {
+            /// <summary>Constructs a new Insert request.</summary>
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.YouTube.v3.Data.PlaylistImage body) : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// *Note:* This parameter is intended exclusively for YouTube content partners. The
+            /// *onBehalfOfContentOwner* parameter indicates that the request's authorization credentials identify a
+            /// YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This
+            /// parameter is intended for YouTube content partners that own and manage many different YouTube channels.
+            /// It allows content owners to authenticate once and get access to all their video and channel data,
+            /// without having to provide authentication credentials for each individual channel. The CMS account that
+            /// the user authenticates with must be linked to the specified YouTube content owner.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("onBehalfOfContentOwner", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OnBehalfOfContentOwner { get; set; }
+
+            /// <summary>
+            /// This parameter can only be used in a properly authorized request. *Note:* This parameter is intended
+            /// exclusively for YouTube content partners. The *onBehalfOfContentOwnerChannel* parameter specifies the
+            /// YouTube channel ID of the channel to which a video is being added. This parameter is required when a
+            /// request specifies a value for the onBehalfOfContentOwner parameter, and it can only be used in
+            /// conjunction with that parameter. In addition, the request must be authorized using a CMS account that is
+            /// linked to the content owner that the onBehalfOfContentOwner parameter specifies. Finally, the channel
+            /// that the onBehalfOfContentOwnerChannel parameter value specifies must be linked to the content owner
+            /// that the onBehalfOfContentOwner parameter specifies. This parameter is intended for YouTube content
+            /// partners that own and manage many different YouTube channels. It allows content owners to authenticate
+            /// once and perform actions on behalf of the channel specified in the parameter value, without having to
+            /// provide authentication credentials for each separate channel.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("onBehalfOfContentOwnerChannel", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OnBehalfOfContentOwnerChannel { get; set; }
+
+            /// <summary>The *part* parameter specifies the properties that the API response will include.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("part", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<string> Part { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.YouTube.v3.Data.PlaylistImage Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "insert";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "youtube/v3/playlistImages";
+
+            /// <summary>Initializes Insert parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("onBehalfOfContentOwner", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "onBehalfOfContentOwner",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("onBehalfOfContentOwnerChannel", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "onBehalfOfContentOwnerChannel",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("part", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "part",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Retrieves a list of resources, possibly filtered.</summary>
+        public virtual ListRequest List()
+        {
+            return new ListRequest(service);
+        }
+
+        /// <summary>Retrieves a list of resources, possibly filtered.</summary>
+        public class ListRequest : YouTubeBaseServiceRequest<Google.Apis.YouTube.v3.Data.PlaylistImageListResponse>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service) : base(service)
+            {
+                InitParameters();
+            }
+
+            /// <summary>
+            /// The *maxResults* parameter specifies the maximum number of items that should be returned in the result
+            /// set.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> MaxResults { get; set; }
+
+            /// <summary>
+            /// *Note:* This parameter is intended exclusively for YouTube content partners. The
+            /// *onBehalfOfContentOwner* parameter indicates that the request's authorization credentials identify a
+            /// YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This
+            /// parameter is intended for YouTube content partners that own and manage many different YouTube channels.
+            /// It allows content owners to authenticate once and get access to all their video and channel data,
+            /// without having to provide authentication credentials for each individual channel. The CMS account that
+            /// the user authenticates with must be linked to the specified YouTube content owner.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("onBehalfOfContentOwner", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OnBehalfOfContentOwner { get; set; }
+
+            /// <summary>
+            /// This parameter can only be used in a properly authorized request. *Note:* This parameter is intended
+            /// exclusively for YouTube content partners. The *onBehalfOfContentOwnerChannel* parameter specifies the
+            /// YouTube channel ID of the channel to which a video is being added. This parameter is required when a
+            /// request specifies a value for the onBehalfOfContentOwner parameter, and it can only be used in
+            /// conjunction with that parameter. In addition, the request must be authorized using a CMS account that is
+            /// linked to the content owner that the onBehalfOfContentOwner parameter specifies. Finally, the channel
+            /// that the onBehalfOfContentOwnerChannel parameter value specifies must be linked to the content owner
+            /// that the onBehalfOfContentOwner parameter specifies. This parameter is intended for YouTube content
+            /// partners that own and manage many different YouTube channels. It allows content owners to authenticate
+            /// once and perform actions on behalf of the channel specified in the parameter value, without having to
+            /// provide authentication credentials for each separate channel.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("onBehalfOfContentOwnerChannel", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OnBehalfOfContentOwnerChannel { get; set; }
+
+            /// <summary>
+            /// The *pageToken* parameter identifies a specific page in the result set that should be returned. In an
+            /// API response, the nextPageToken and prevPageToken properties identify other pages that could be
+            /// retrieved.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>Return PlaylistImages for this playlist id.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Parent { get; set; }
+
+            /// <summary>
+            /// The *part* parameter specifies a comma-separated list of one or more playlistImage resource properties
+            /// that the API response will include. If the parameter identifies a property that contains child
+            /// properties, the child properties will be included in the response.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("part", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<string> Part { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "list";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "youtube/v3/playlistImages";
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "5",
+                    Pattern = null,
+                });
+                RequestParameters.Add("onBehalfOfContentOwner", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "onBehalfOfContentOwner",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("onBehalfOfContentOwnerChannel", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "onBehalfOfContentOwnerChannel",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "parent",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("part", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "part",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Updates an existing resource.</summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual UpdateRequest Update(Google.Apis.YouTube.v3.Data.PlaylistImage body)
+        {
+            return new UpdateRequest(service, body);
+        }
+
+        /// <summary>Updates an existing resource.</summary>
+        public class UpdateRequest : YouTubeBaseServiceRequest<Google.Apis.YouTube.v3.Data.PlaylistImage>
+        {
+            /// <summary>Constructs a new Update request.</summary>
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.YouTube.v3.Data.PlaylistImage body) : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// *Note:* This parameter is intended exclusively for YouTube content partners. The
+            /// *onBehalfOfContentOwner* parameter indicates that the request's authorization credentials identify a
+            /// YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This
+            /// parameter is intended for YouTube content partners that own and manage many different YouTube channels.
+            /// It allows content owners to authenticate once and get access to all their video and channel data,
+            /// without having to provide authentication credentials for each individual channel. The CMS account that
+            /// the user authenticates with must be linked to the specified YouTube content owner.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("onBehalfOfContentOwner", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OnBehalfOfContentOwner { get; set; }
+
+            /// <summary>The *part* parameter specifies the properties that the API response will include.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("part", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<string> Part { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.YouTube.v3.Data.PlaylistImage Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "update";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "PUT";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "youtube/v3/playlistImages";
+
+            /// <summary>Initializes Update parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("onBehalfOfContentOwner", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "onBehalfOfContentOwner",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("part", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "part",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+    }
+
     /// <summary>The "playlistItems" collection of methods.</summary>
     public class PlaylistItemsResource
     {
@@ -6730,10 +7100,6 @@ namespace Google.Apis.YouTube.v3
             [Google.Apis.Util.RequestParameterAttribute("regionCode", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RegionCode { get; set; }
 
-            /// <summary>Search related to a resource.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("relatedToVideoId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string RelatedToVideoId { get; set; }
-
             /// <summary>Return results relevant to this language.</summary>
             [Google.Apis.Util.RequestParameterAttribute("relevanceLanguage", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RelevanceLanguage { get; set; }
@@ -7130,14 +7496,6 @@ namespace Google.Apis.YouTube.v3
                 RequestParameters.Add("regionCode", new Google.Apis.Discovery.Parameter
                 {
                     Name = "regionCode",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-                RequestParameters.Add("relatedToVideoId", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "relatedToVideoId",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -14056,6 +14414,91 @@ namespace Google.Apis.YouTube.v3.Data
         /// <summary>The number of videos in the playlist.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("itemCount")]
         public virtual System.Nullable<long> ItemCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class PlaylistImage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Identifies this resource (playlist id and image type).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>
+        /// Identifies what kind of resource this is. Value: the fixed string "youtube#playlistImages".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("snippet")]
+        public virtual PlaylistImageSnippet Snippet { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class PlaylistImageListResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual System.Collections.Generic.IList<PlaylistImage> Items { get; set; }
+
+        /// <summary>
+        /// Identifies what kind of resource this is. Value: the fixed string "youtube#playlistImageListResponse".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        /// <summary>
+        /// The token that can be used as the value of the pageToken parameter to retrieve the next page in the result
+        /// set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>General pagination information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageInfo")]
+        public virtual PageInfo PageInfo { get; set; }
+
+        /// <summary>
+        /// The token that can be used as the value of the pageToken parameter to retrieve the previous page in the
+        /// result set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("prevPageToken")]
+        public virtual string PrevPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A *playlistImage* resource identifies another resource, such as a image, that is associated with a playlist. In
+    /// addition, the playlistImage resource contains details about the included resource that pertain specifically to
+    /// how that resource is used in that playlist. YouTube uses playlists to identify special collections of videos for
+    /// a channel, such as: - uploaded videos - favorite videos - positively rated (liked) videos - watch history To be
+    /// more specific, these lists are associated with a channel, which is a collection of a person, group, or company's
+    /// videos, playlists, and other YouTube information. You can retrieve the playlist IDs for each of these lists from
+    /// the channel resource for a given channel. You can then use the playlistImages.list method to retrieve image data
+    /// for any of those playlists. You can also add or remove images from those lists by calling the
+    /// playlistImages.insert and playlistImages.delete methods.
+    /// </summary>
+    public class PlaylistImageSnippet : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The image height.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("height")]
+        public virtual System.Nullable<int> Height { get; set; }
+
+        /// <summary>The Playlist ID of the playlist this image is associated with.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("playlistId")]
+        public virtual string PlaylistId { get; set; }
+
+        /// <summary>The image type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The image width.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("width")]
+        public virtual System.Nullable<int> Width { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -3837,6 +3837,55 @@ namespace Google.Apis.Connectors.v1
             }
 
             /// <summary>
+            /// GetRegionalSettings gets settings of a region. RegionalSettings is a singleton resource.
+            /// </summary>
+            /// <param name="name">Required. The resource name of the Regional Settings.</param>
+            public virtual GetRegionalSettingsRequest GetRegionalSettings(string name)
+            {
+                return new GetRegionalSettingsRequest(service, name);
+            }
+
+            /// <summary>
+            /// GetRegionalSettings gets settings of a region. RegionalSettings is a singleton resource.
+            /// </summary>
+            public class GetRegionalSettingsRequest : ConnectorsBaseServiceRequest<Google.Apis.Connectors.v1.Data.RegionalSettings>
+            {
+                /// <summary>Constructs a new GetRegionalSettings request.</summary>
+                public GetRegionalSettingsRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The resource name of the Regional Settings.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "getRegionalSettings";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes GetRegionalSettings parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+/regionalSettings$",
+                    });
+                }
+            }
+
+            /// <summary>
             /// Gets the runtimeConfig of a location. RuntimeConfig is a singleton resource for each location.
             /// </summary>
             /// <param name="name">Required. Resource name of the form: `projects/*/locations/*/runtimeConfig`</param>
@@ -3966,6 +4015,77 @@ namespace Google.Apis.Connectors.v1
                     RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Update the settings of a region.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Output only. Resource name of the Connection. Format:
+            /// projects/{project}/locations/{location}/regionalSettings
+            /// </param>
+            public virtual UpdateRegionalSettingsRequest UpdateRegionalSettings(Google.Apis.Connectors.v1.Data.RegionalSettings body, string name)
+            {
+                return new UpdateRegionalSettingsRequest(service, body, name);
+            }
+
+            /// <summary>Update the settings of a region.</summary>
+            public class UpdateRegionalSettingsRequest : ConnectorsBaseServiceRequest<Google.Apis.Connectors.v1.Data.Operation>
+            {
+                /// <summary>Constructs a new UpdateRegionalSettings request.</summary>
+                public UpdateRegionalSettingsRequest(Google.Apis.Services.IClientService service, Google.Apis.Connectors.v1.Data.RegionalSettings body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Output only. Resource name of the Connection. Format:
+                /// projects/{project}/locations/{location}/regionalSettings
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Required. The list of fields to update.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Connectors.v1.Data.RegionalSettings Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "updateRegionalSettings";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes UpdateRegionalSettings parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+/regionalSettings$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -4740,6 +4860,10 @@ namespace Google.Apis.Connectors.v1.Data
         /// <summary>The window used for ratelimiting runtime requests to connections.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("connectionRatelimitWindowSeconds")]
         public virtual System.Nullable<long> ConnectionRatelimitWindowSeconds { get; set; }
+
+        /// <summary>Indicate whether connector is deployed on GKE/CloudRun</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deploymentModel")]
+        public virtual string DeploymentModel { get; set; }
 
         /// <summary>HPA autoscaling config.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hpaConfig")]
@@ -6306,6 +6430,21 @@ namespace Google.Apis.Connectors.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Regional Network Config.</summary>
+    public class NetworkConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Egress IPs</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("egressIps")]
+        public virtual System.Collections.Generic.IList<string> EgressIps { get; set; }
+
+        /// <summary>Optional. Egress mode for the network.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("egressMode")]
+        public virtual string EgressMode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Node configuration for the connection.</summary>
     public class NodeConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6751,6 +6890,24 @@ namespace Google.Apis.Connectors.v1.Data
     /// <summary>Request message for ConnectorsService.RefreshConnectionSchemaMetadata.</summary>
     public class RefreshConnectionSchemaMetadataRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Regional Settings details.</summary>
+    public class RegionalSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Resource name of the Connection. Format:
+        /// projects/{project}/locations/{location}/regionalSettings
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Optional. Regional network config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkConfig")]
+        public virtual NetworkConfig NetworkConfig { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

@@ -3125,9 +3125,10 @@ namespace Google.Apis.Logging.v2
                 public virtual string SinkName { get; private set; }
 
                 /// <summary>
-                /// Optional. A service account provided by the caller that will be used to write the log entries. Must
-                /// be of format serviceAccount:some@email. This can only be specified if writing to a destination
-                /// outside the sink's project. If not specified, a p4 service account will automatically be generated.
+                /// Optional. A service account provided by the caller that will be used to write the log entries. The
+                /// format must be serviceAccount:some@email. This field can only be specified if you are routing logs
+                /// to a destination outside this sink's project. If not specified, a Logging service account will
+                /// automatically be generated.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("customWriterIdentity", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string CustomWriterIdentity { get; set; }
@@ -3254,9 +3255,10 @@ namespace Google.Apis.Logging.v2
                 public virtual string SinkName { get; private set; }
 
                 /// <summary>
-                /// Optional. A service account provided by the caller that will be used to write the log entries. Must
-                /// be of format serviceAccount:some@email. This can only be specified if writing to a destination
-                /// outside the sink's project. If not specified, a p4 service account will automatically be generated.
+                /// Optional. A service account provided by the caller that will be used to write the log entries. The
+                /// format must be serviceAccount:some@email. This field can only be specified if you are routing logs
+                /// to a destination outside this sink's project. If not specified, a Logging service account will
+                /// automatically be generated.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("customWriterIdentity", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string CustomWriterIdentity { get; set; }
@@ -6834,9 +6836,10 @@ namespace Google.Apis.Logging.v2
                 public virtual string SinkName { get; private set; }
 
                 /// <summary>
-                /// Optional. A service account provided by the caller that will be used to write the log entries. Must
-                /// be of format serviceAccount:some@email. This can only be specified if writing to a destination
-                /// outside the sink's project. If not specified, a p4 service account will automatically be generated.
+                /// Optional. A service account provided by the caller that will be used to write the log entries. The
+                /// format must be serviceAccount:some@email. This field can only be specified if you are routing logs
+                /// to a destination outside this sink's project. If not specified, a Logging service account will
+                /// automatically be generated.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("customWriterIdentity", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string CustomWriterIdentity { get; set; }
@@ -6963,9 +6966,10 @@ namespace Google.Apis.Logging.v2
                 public virtual string SinkName { get; private set; }
 
                 /// <summary>
-                /// Optional. A service account provided by the caller that will be used to write the log entries. Must
-                /// be of format serviceAccount:some@email. This can only be specified if writing to a destination
-                /// outside the sink's project. If not specified, a p4 service account will automatically be generated.
+                /// Optional. A service account provided by the caller that will be used to write the log entries. The
+                /// format must be serviceAccount:some@email. This field can only be specified if you are routing logs
+                /// to a destination outside this sink's project. If not specified, a Logging service account will
+                /// automatically be generated.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("customWriterIdentity", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string CustomWriterIdentity { get; set; }
@@ -12053,9 +12057,10 @@ namespace Google.Apis.Logging.v2
                 public virtual string SinkName { get; private set; }
 
                 /// <summary>
-                /// Optional. A service account provided by the caller that will be used to write the log entries. Must
-                /// be of format serviceAccount:some@email. This can only be specified if writing to a destination
-                /// outside the sink's project. If not specified, a p4 service account will automatically be generated.
+                /// Optional. A service account provided by the caller that will be used to write the log entries. The
+                /// format must be serviceAccount:some@email. This field can only be specified if you are routing logs
+                /// to a destination outside this sink's project. If not specified, a Logging service account will
+                /// automatically be generated.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("customWriterIdentity", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string CustomWriterIdentity { get; set; }
@@ -12182,9 +12187,10 @@ namespace Google.Apis.Logging.v2
                 public virtual string SinkName { get; private set; }
 
                 /// <summary>
-                /// Optional. A service account provided by the caller that will be used to write the log entries. Must
-                /// be of format serviceAccount:some@email. This can only be specified if writing to a destination
-                /// outside the sink's project. If not specified, a p4 service account will automatically be generated.
+                /// Optional. A service account provided by the caller that will be used to write the log entries. The
+                /// format must be serviceAccount:some@email. This field can only be specified if you are routing logs
+                /// to a destination outside this sink's project. If not specified, a Logging service account will
+                /// automatically be generated.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("customWriterIdentity", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string CustomWriterIdentity { get; set; }
@@ -15713,9 +15719,10 @@ namespace Google.Apis.Logging.v2
                 public virtual string SinkName { get; private set; }
 
                 /// <summary>
-                /// Optional. A service account provided by the caller that will be used to write the log entries. Must
-                /// be of format serviceAccount:some@email. This can only be specified if writing to a destination
-                /// outside the sink's project. If not specified, a p4 service account will automatically be generated.
+                /// Optional. A service account provided by the caller that will be used to write the log entries. The
+                /// format must be serviceAccount:some@email. This field can only be specified if you are routing logs
+                /// to a destination outside this sink's project. If not specified, a Logging service account will
+                /// automatically be generated.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("customWriterIdentity", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string CustomWriterIdentity { get; set; }
@@ -15842,9 +15849,10 @@ namespace Google.Apis.Logging.v2
                 public virtual string SinkName { get; private set; }
 
                 /// <summary>
-                /// Optional. A service account provided by the caller that will be used to write the log entries. Must
-                /// be of format serviceAccount:some@email. This can only be specified if writing to a destination
-                /// outside the sink's project. If not specified, a p4 service account will automatically be generated.
+                /// Optional. A service account provided by the caller that will be used to write the log entries. The
+                /// format must be serviceAccount:some@email. This field can only be specified if you are routing logs
+                /// to a destination outside this sink's project. If not specified, a Logging service account will
+                /// automatically be generated.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("customWriterIdentity", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string CustomWriterIdentity { get; set; }
@@ -16425,9 +16433,10 @@ namespace Google.Apis.Logging.v2
             public virtual string SinkName { get; private set; }
 
             /// <summary>
-            /// Optional. A service account provided by the caller that will be used to write the log entries. Must be
-            /// of format serviceAccount:some@email. This can only be specified if writing to a destination outside the
-            /// sink's project. If not specified, a p4 service account will automatically be generated.
+            /// Optional. A service account provided by the caller that will be used to write the log entries. The
+            /// format must be serviceAccount:some@email. This field can only be specified if you are routing logs to a
+            /// destination outside this sink's project. If not specified, a Logging service account will automatically
+            /// be generated.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("customWriterIdentity", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string CustomWriterIdentity { get; set; }

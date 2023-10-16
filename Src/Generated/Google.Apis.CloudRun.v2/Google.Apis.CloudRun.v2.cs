@@ -4264,6 +4264,10 @@ namespace Google.Apis.CloudRun.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("scaling")]
         public virtual GoogleCloudRunV2RevisionScaling Scaling { get; set; }
 
+        /// <summary>Output only. The current effective scaling settings for the revision.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scalingStatus")]
+        public virtual GoogleCloudRunV2RevisionScalingStatus ScalingStatus { get; set; }
+
         /// <summary>Output only. The name of the parent service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("service")]
         public virtual string Service { get; set; }
@@ -4349,6 +4353,17 @@ namespace Google.Apis.CloudRun.v2.Data
         /// <summary>Minimum number of serving instances that this resource should have.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minInstanceCount")]
         public virtual System.Nullable<int> MinInstanceCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Effective settings for the current revision</summary>
+    public class GoogleCloudRunV2RevisionScalingStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The current number of min instances provisioned for this revision.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredMinInstanceCount")]
+        public virtual System.Nullable<int> DesiredMinInstanceCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

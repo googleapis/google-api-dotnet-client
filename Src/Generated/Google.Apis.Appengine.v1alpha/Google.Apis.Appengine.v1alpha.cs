@@ -2138,6 +2138,40 @@ namespace Google.Apis.Appengine.v1alpha.Data
     }
 
     /// <summary>
+    /// ContainerState contains the externally-visible container state that is used to communicate the state and
+    /// reasoning for that state to the CLH. This data is not persisted by CCFE, but is instead derived from CCFE's
+    /// internal representation of the container state.
+    /// </summary>
+    public class ContainerState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("currentReasons")]
+        public virtual Reasons CurrentReasons { get; set; }
+
+        /// <summary>
+        /// The previous and current reasons for a container state will be sent for a container event. CLHs that need to
+        /// know the signal that caused the container event to trigger (edges) as opposed to just knowing the state can
+        /// act upon differences in the previous and current reasons.Reasons will be provided for every system: service
+        /// management, data governance, abuse, and billing.If this is a CCFE-triggered event used for reconciliation
+        /// then the current reasons will be set to their *_CONTROL_PLANE_SYNC state. The previous reasons will contain
+        /// the last known set of non-unknown non-control_plane_sync reasons for the state.Reasons fields are
+        /// deprecated. New tenants should only use the state field. If you must know the reason(s) behind a specific
+        /// state, please consult with CCFE team first (cloud-ccfe-discuss@google.com).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("previousReasons")]
+        public virtual Reasons PreviousReasons { get; set; }
+
+        /// <summary>
+        /// The current state of the container. This state is the culmination of all of the opinions from external
+        /// systems that CCFE knows about of the container.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Metadata for the given google.longrunning.Operation during a google.appengine.v1.CreateVersionRequest.
     /// </summary>
     public class CreateVersionMetadataV1 : Google.Apis.Requests.IDirectResponseSchema
@@ -2811,41 +2845,7 @@ namespace Google.Apis.Appengine.v1alpha.Data
 
         /// <summary>The state of the project that led to this event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual ProjectState State { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// ProjectState contains the externally-visible project state that is used to communicate the state and reasoning
-    /// for that state to the CLH. This data is not persisted by CCFE, but is instead derived from CCFE's internal
-    /// representation of the project state.
-    /// </summary>
-    public class ProjectState : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("currentReasons")]
-        public virtual Reasons CurrentReasons { get; set; }
-
-        /// <summary>
-        /// The previous and current reasons for a project state will be sent for a project event. CLHs that need to
-        /// know the signal that caused the project event to trigger (edges) as opposed to just knowing the state can
-        /// act upon differences in the previous and current reasons.Reasons will be provided for every system: service
-        /// management, data governance, abuse, and billing.If this is a CCFE-triggered event used for reconciliation
-        /// then the current reasons will be set to their *_CONTROL_PLANE_SYNC state. The previous reasons will contain
-        /// the last known set of non-unknown non-control_plane_sync reasons for the state.Reasons fields are
-        /// deprecated. New tenants should only use the state field. If you must know the reason(s) behind a specific
-        /// state, please consult with CCFE team first (cloud-ccfe-discuss@google.com).
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("previousReasons")]
-        public virtual Reasons PreviousReasons { get; set; }
-
-        /// <summary>
-        /// The current state of the project. This state is the culmination of all of the opinions from external systems
-        /// that CCFE knows about of the project.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; }
+        public virtual ContainerState State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2900,9 +2900,9 @@ namespace Google.Apis.Appengine.v1alpha.Data
     }
 
     /// <summary>
-    /// Projects transition between and within states based on reasons sent from various systems. CCFE will provide the
-    /// CLH with reasons for the current state per system.The current systems that CCFE supports are: Service Management
-    /// (Inception) Data Governance (Wipeout) Abuse (Ares) Billing (Internal Cloud Billing API)
+    /// Containers transition between and within states based on reasons sent from various systems. CCFE will provide
+    /// the CLH with reasons for the current state per system.The current systems that CCFE supports are: Service
+    /// Management (Inception) Data Governance (Wipeout) Abuse (Ares) Billing (Internal Cloud Billing API)
     /// </summary>
     public class Reasons : Google.Apis.Requests.IDirectResponseSchema
     {
