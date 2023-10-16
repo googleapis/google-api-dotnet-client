@@ -4965,6 +4965,10 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("object")]
         public virtual string Object__ { get; set; }
 
+        /// <summary>Optional. Option to specify the tool to fetch the source file for the build.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceFetcher")]
+        public virtual string SourceFetcher { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

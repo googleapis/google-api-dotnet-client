@@ -11908,7 +11908,10 @@ namespace Google.Apis.ShoppingContent.v2_1
                 this.service = service;
             }
 
-            /// <summary>Lists the metrics report for a given Repricing rule.</summary>
+            /// <summary>
+            /// *Deprecated*: New merchants can't start using this service. Lists the metrics report for a given
+            /// Repricing rule.
+            /// </summary>
             /// <param name="merchantId">Required. Id of the merchant who owns the Repricing rule.</param>
             /// <param name="ruleId">Required. Id of the Repricing rule.</param>
             public virtual ListRequest List(long merchantId, string ruleId)
@@ -11916,7 +11919,10 @@ namespace Google.Apis.ShoppingContent.v2_1
                 return new ListRequest(service, merchantId, ruleId);
             }
 
-            /// <summary>Lists the metrics report for a given Repricing rule.</summary>
+            /// <summary>
+            /// *Deprecated*: New merchants can't start using this service. Lists the metrics report for a given
+            /// Repricing rule.
+            /// </summary>
             public class ListRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.ListRepricingRuleReportsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -12235,8 +12241,8 @@ namespace Google.Apis.ShoppingContent.v2_1
             public virtual long MerchantId { get; private set; }
 
             /// <summary>
-            /// [CLDR country code](http://www.unicode.org/repos/cldr/tags/latest/common/main/en.xml) (e.g. "US"), used
-            /// as a filter on repricing rules.
+            /// [CLDR country code](http://www.unicode.org/repos/cldr/tags/latest/common/main/en.xml) (for example,
+            /// "US"), used as a filter on repricing rules.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("countryCode", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string CountryCode { get; set; }
@@ -24982,8 +24988,8 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     }
 
     /// <summary>
-    /// Represents a repricing rule. A repricing rule is used by shopping serving to adjust transactable offer prices if
-    /// conditions are met.
+    /// *Deprecated*: New merchants can't start using this resource. Represents a repricing rule. A repricing rule is
+    /// used by shopping serving to adjust transactable offer prices if conditions are met.
     /// </summary>
     public class RepricingRule : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -24993,7 +24999,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
         /// <summary>
         /// Required. Immutable. [CLDR country code](http://www.unicode.org/repos/cldr/tags/latest/common/main/en.xml)
-        /// (e.g. "US").
+        /// (for example, "US").
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("countryCode")]
         public virtual string CountryCode { get; set; }
@@ -25059,7 +25065,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("percentageDelta")]
         public virtual System.Nullable<int> PercentageDelta { get; set; }
 
-        /// <summary>The price delta against the COGS. E.g. 2 means $2 more of the COGS.</summary>
+        /// <summary>The price delta against the COGS. For example, 2 means $2 more of the COGS.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priceDelta")]
         public virtual string PriceDelta { get; set; }
 
@@ -25203,7 +25209,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>
         /// String attributes, as long as such attribute of an offer is one of the string attribute values, the offer is
         /// considered as passing the matcher. The string matcher checks an offer for inclusivity in the string
-        /// attributes, not equality. Only literal string matching is supported, no regex.
+        /// attributes, not equality. Only literal string matching is supported, no regular expressions.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("strAttributes")]
         public virtual System.Collections.Generic.IList<string> StrAttributes { get; set; }
@@ -26319,7 +26325,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
         /// <summary>
         /// Type of locations this service ships orders to. Acceptable values are: - "`delivery`" - "`pickup`" -
-        /// "`local_delivery`"
+        /// "`local_delivery`" - "`collection_point`"
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shipmentType")]
         public virtual string ShipmentType { get; set; }

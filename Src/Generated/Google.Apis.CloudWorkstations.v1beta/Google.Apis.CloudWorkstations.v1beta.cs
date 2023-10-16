@@ -1117,7 +1117,7 @@ namespace Google.Apis.CloudWorkstations.v1beta
 
                         /// <summary>Updates an existing workstation.</summary>
                         /// <param name="body">The body of the request.</param>
-                        /// <param name="name">Full name of this workstation.</param>
+                        /// <param name="name">Identifier. Full name of this workstation.</param>
                         public virtual PatchRequest Patch(Google.Apis.CloudWorkstations.v1beta.Data.Workstation body, string name)
                         {
                             return new PatchRequest(service, body, name);
@@ -1134,7 +1134,7 @@ namespace Google.Apis.CloudWorkstations.v1beta
                                 InitParameters();
                             }
 
-                            /// <summary>Full name of this workstation.</summary>
+                            /// <summary>Identifier. Full name of this workstation.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
 
@@ -1902,7 +1902,7 @@ namespace Google.Apis.CloudWorkstations.v1beta
 
                     /// <summary>Updates an existing workstation configuration.</summary>
                     /// <param name="body">The body of the request.</param>
-                    /// <param name="name">Full name of this workstation configuration.</param>
+                    /// <param name="name">Identifier. Full name of this workstation configuration.</param>
                     public virtual PatchRequest Patch(Google.Apis.CloudWorkstations.v1beta.Data.WorkstationConfig body, string name)
                     {
                         return new PatchRequest(service, body, name);
@@ -1919,7 +1919,7 @@ namespace Google.Apis.CloudWorkstations.v1beta
                             InitParameters();
                         }
 
-                        /// <summary>Full name of this workstation configuration.</summary>
+                        /// <summary>Identifier. Full name of this workstation configuration.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
@@ -2422,7 +2422,7 @@ namespace Google.Apis.CloudWorkstations.v1beta
 
                 /// <summary>Updates an existing workstation cluster.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">Full name of this workstation cluster.</param>
+                /// <param name="name">Identifier. Full name of this workstation cluster.</param>
                 public virtual PatchRequest Patch(Google.Apis.CloudWorkstations.v1beta.Data.WorkstationCluster body, string name)
                 {
                     return new PatchRequest(service, body, name);
@@ -2439,7 +2439,7 @@ namespace Google.Apis.CloudWorkstations.v1beta
                         InitParameters();
                     }
 
-                    /// <summary>Full name of this workstation cluster.</summary>
+                    /// <summary>Identifier. Full name of this workstation cluster.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -2921,9 +2921,9 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         public virtual string SourceImage { get; set; }
 
         /// <summary>
-        /// Optional. Name of the snapshot to use as the source for the disk. Must be empty if source_image is set.
-        /// Updating source_snapshot will update content in the ephemeral directory after the workstation is restarted.
-        /// This field is mutable.
+        /// Optional. Name of the snapshot to use as the source for the disk. Must be empty if source_image is set. Must
+        /// be empty if read_only is false. Updating source_snapshot will update content in the ephemeral directory
+        /// after the workstation is restarted. This field is mutable.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceSnapshot")]
         public virtual string SourceSnapshot { get; set; }
@@ -3754,7 +3754,7 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
-        /// <summary>Full name of this workstation.</summary>
+        /// <summary>Identifier. Full name of this workstation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -3971,7 +3971,7 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
-        /// <summary>Full name of this workstation cluster.</summary>
+        /// <summary>Identifier. Full name of this workstation cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -4204,7 +4204,7 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
-        /// <summary>Full name of this workstation configuration.</summary>
+        /// <summary>Identifier. Full name of this workstation configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 

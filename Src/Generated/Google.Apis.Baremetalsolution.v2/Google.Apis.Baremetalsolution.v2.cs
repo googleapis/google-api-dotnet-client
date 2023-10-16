@@ -639,7 +639,7 @@ namespace Google.Apis.Baremetalsolution.v2
 
                     /// <summary>
                     /// The list of fields to update. The currently supported fields are: `labels`
-                    /// `hyperthreading_enabled` `os_image` `ssh_keys`
+                    /// `hyperthreading_enabled` `os_image` `ssh_keys` `kms_key_version`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }

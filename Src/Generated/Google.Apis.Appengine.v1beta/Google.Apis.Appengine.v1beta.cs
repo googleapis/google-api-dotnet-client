@@ -298,7 +298,6 @@ namespace Google.Apis.Appengine.v1beta
             Firewall = new FirewallResource(service);
             Locations = new LocationsResource(service);
             Operations = new OperationsResource(service);
-            Runtimes = new RuntimesResource(service);
             Services = new ServicesResource(service);
         }
 
@@ -2033,101 +2032,6 @@ namespace Google.Apis.Appengine.v1beta
             }
         }
 
-        /// <summary>Gets the Runtimes resource.</summary>
-        public virtual RuntimesResource Runtimes { get; }
-
-        /// <summary>The "runtimes" collection of methods.</summary>
-        public class RuntimesResource
-        {
-            private const string Resource = "runtimes";
-
-            /// <summary>The service which this resource belongs to.</summary>
-            private readonly Google.Apis.Services.IClientService service;
-
-            /// <summary>Constructs a new resource.</summary>
-            public RuntimesResource(Google.Apis.Services.IClientService service)
-            {
-                this.service = service;
-            }
-
-            /// <summary>Lists all the available runtimes for the application.</summary>
-            /// <param name="appsId">
-            /// Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp.
-            /// </param>
-            public virtual ListRequest List(string appsId)
-            {
-                return new ListRequest(service, appsId);
-            }
-
-            /// <summary>Lists all the available runtimes for the application.</summary>
-            public class ListRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1beta.Data.ListRuntimesResponse>
-            {
-                /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string appsId) : base(service)
-                {
-                    AppsId = appsId;
-                    InitParameters();
-                }
-
-                /// <summary>
-                /// Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp.
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("appsId", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string AppsId { get; private set; }
-
-                /// <summary>Optional. The environment of the Application.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("environment", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<EnvironmentEnum> Environment { get; set; }
-
-                /// <summary>Optional. The environment of the Application.</summary>
-                public enum EnvironmentEnum
-                {
-                    /// <summary>Default value.</summary>
-                    [Google.Apis.Util.StringValueAttribute("ENVIRONMENT_UNSPECIFIED")]
-                    ENVIRONMENTUNSPECIFIED = 0,
-
-                    /// <summary>App Engine Standard.</summary>
-                    [Google.Apis.Util.StringValueAttribute("STANDARD")]
-                    STANDARD = 1,
-
-                    /// <summary>App Engine Flexible</summary>
-                    [Google.Apis.Util.StringValueAttribute("FLEXIBLE")]
-                    FLEXIBLE = 2,
-                }
-
-                /// <summary>Gets the method name.</summary>
-                public override string MethodName => "list";
-
-                /// <summary>Gets the HTTP method.</summary>
-                public override string HttpMethod => "GET";
-
-                /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1beta/apps/{appsId}/runtimes";
-
-                /// <summary>Initializes List parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-                    RequestParameters.Add("appsId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "appsId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                    RequestParameters.Add("environment", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "environment",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                }
-            }
-        }
-
         /// <summary>Gets the Services resource.</summary>
         public virtual ServicesResource Services { get; }
 
@@ -3645,6 +3549,83 @@ namespace Google.Apis.Appengine.v1beta
             }
         }
 
+        /// <summary>Lists all the available runtimes for the application.</summary>
+        /// <param name="appsId">
+        /// Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp.
+        /// </param>
+        public virtual ListRuntimesRequest ListRuntimes(string appsId)
+        {
+            return new ListRuntimesRequest(service, appsId);
+        }
+
+        /// <summary>Lists all the available runtimes for the application.</summary>
+        public class ListRuntimesRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1beta.Data.ListRuntimesResponse>
+        {
+            /// <summary>Constructs a new ListRuntimes request.</summary>
+            public ListRuntimesRequest(Google.Apis.Services.IClientService service, string appsId) : base(service)
+            {
+                AppsId = appsId;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("appsId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string AppsId { get; private set; }
+
+            /// <summary>Optional. The environment of the Application.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("environment", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<EnvironmentEnum> Environment { get; set; }
+
+            /// <summary>Optional. The environment of the Application.</summary>
+            public enum EnvironmentEnum
+            {
+                /// <summary>Default value.</summary>
+                [Google.Apis.Util.StringValueAttribute("ENVIRONMENT_UNSPECIFIED")]
+                ENVIRONMENTUNSPECIFIED = 0,
+
+                /// <summary>App Engine Standard.</summary>
+                [Google.Apis.Util.StringValueAttribute("STANDARD")]
+                STANDARD = 1,
+
+                /// <summary>App Engine Flexible</summary>
+                [Google.Apis.Util.StringValueAttribute("FLEXIBLE")]
+                FLEXIBLE = 2,
+            }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "listRuntimes";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1beta/apps/{appsId}:listRuntimes";
+
+            /// <summary>Initializes ListRuntimes parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("appsId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "appsId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("environment", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "environment",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
         /// <summary>
         /// Updates the specified Application resource. You can update the following fields: auth_domain - Google
         /// authentication domain for controlling user access to the application. default_cookie_expiration - Cookie
@@ -4649,6 +4630,40 @@ namespace Google.Apis.Appengine.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("image")]
         public virtual string Image { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// ContainerState contains the externally-visible container state that is used to communicate the state and
+    /// reasoning for that state to the CLH. This data is not persisted by CCFE, but is instead derived from CCFE's
+    /// internal representation of the container state.
+    /// </summary>
+    public class ContainerState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("currentReasons")]
+        public virtual Reasons CurrentReasons { get; set; }
+
+        /// <summary>
+        /// The previous and current reasons for a container state will be sent for a container event. CLHs that need to
+        /// know the signal that caused the container event to trigger (edges) as opposed to just knowing the state can
+        /// act upon differences in the previous and current reasons.Reasons will be provided for every system: service
+        /// management, data governance, abuse, and billing.If this is a CCFE-triggered event used for reconciliation
+        /// then the current reasons will be set to their *_CONTROL_PLANE_SYNC state. The previous reasons will contain
+        /// the last known set of non-unknown non-control_plane_sync reasons for the state.Reasons fields are
+        /// deprecated. New tenants should only use the state field. If you must know the reason(s) behind a specific
+        /// state, please consult with CCFE team first (cloud-ccfe-discuss@google.com).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("previousReasons")]
+        public virtual Reasons PreviousReasons { get; set; }
+
+        /// <summary>
+        /// The current state of the container. This state is the culmination of all of the opinions from external
+        /// systems that CCFE knows about of the container.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6088,41 +6103,7 @@ namespace Google.Apis.Appengine.v1beta.Data
 
         /// <summary>The state of the project that led to this event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual ProjectState State { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// ProjectState contains the externally-visible project state that is used to communicate the state and reasoning
-    /// for that state to the CLH. This data is not persisted by CCFE, but is instead derived from CCFE's internal
-    /// representation of the project state.
-    /// </summary>
-    public class ProjectState : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("currentReasons")]
-        public virtual Reasons CurrentReasons { get; set; }
-
-        /// <summary>
-        /// The previous and current reasons for a project state will be sent for a project event. CLHs that need to
-        /// know the signal that caused the project event to trigger (edges) as opposed to just knowing the state can
-        /// act upon differences in the previous and current reasons.Reasons will be provided for every system: service
-        /// management, data governance, abuse, and billing.If this is a CCFE-triggered event used for reconciliation
-        /// then the current reasons will be set to their *_CONTROL_PLANE_SYNC state. The previous reasons will contain
-        /// the last known set of non-unknown non-control_plane_sync reasons for the state.Reasons fields are
-        /// deprecated. New tenants should only use the state field. If you must know the reason(s) behind a specific
-        /// state, please consult with CCFE team first (cloud-ccfe-discuss@google.com).
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("previousReasons")]
-        public virtual Reasons PreviousReasons { get; set; }
-
-        /// <summary>
-        /// The current state of the project. This state is the culmination of all of the opinions from external systems
-        /// that CCFE knows about of the project.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; }
+        public virtual ContainerState State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6217,9 +6198,9 @@ namespace Google.Apis.Appengine.v1beta.Data
     }
 
     /// <summary>
-    /// Projects transition between and within states based on reasons sent from various systems. CCFE will provide the
-    /// CLH with reasons for the current state per system.The current systems that CCFE supports are: Service Management
-    /// (Inception) Data Governance (Wipeout) Abuse (Ares) Billing (Internal Cloud Billing API)
+    /// Containers transition between and within states based on reasons sent from various systems. CCFE will provide
+    /// the CLH with reasons for the current state per system.The current systems that CCFE supports are: Service
+    /// Management (Inception) Data Governance (Wipeout) Abuse (Ares) Billing (Internal Cloud Billing API)
     /// </summary>
     public class Reasons : Google.Apis.Requests.IDirectResponseSchema
     {

@@ -1117,7 +1117,7 @@ namespace Google.Apis.CloudWorkstations.v1
 
                         /// <summary>Updates an existing workstation.</summary>
                         /// <param name="body">The body of the request.</param>
-                        /// <param name="name">Full name of this workstation.</param>
+                        /// <param name="name">Identifier. Full name of this workstation.</param>
                         public virtual PatchRequest Patch(Google.Apis.CloudWorkstations.v1.Data.Workstation body, string name)
                         {
                             return new PatchRequest(service, body, name);
@@ -1134,7 +1134,7 @@ namespace Google.Apis.CloudWorkstations.v1
                                 InitParameters();
                             }
 
-                            /// <summary>Full name of this workstation.</summary>
+                            /// <summary>Identifier. Full name of this workstation.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
 
@@ -1902,7 +1902,7 @@ namespace Google.Apis.CloudWorkstations.v1
 
                     /// <summary>Updates an existing workstation configuration.</summary>
                     /// <param name="body">The body of the request.</param>
-                    /// <param name="name">Full name of this workstation configuration.</param>
+                    /// <param name="name">Identifier. Full name of this workstation configuration.</param>
                     public virtual PatchRequest Patch(Google.Apis.CloudWorkstations.v1.Data.WorkstationConfig body, string name)
                     {
                         return new PatchRequest(service, body, name);
@@ -1919,7 +1919,7 @@ namespace Google.Apis.CloudWorkstations.v1
                             InitParameters();
                         }
 
-                        /// <summary>Full name of this workstation configuration.</summary>
+                        /// <summary>Identifier. Full name of this workstation configuration.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
@@ -2422,7 +2422,7 @@ namespace Google.Apis.CloudWorkstations.v1
 
                 /// <summary>Updates an existing workstation cluster.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">Full name of this workstation cluster.</param>
+                /// <param name="name">Identifier. Full name of this workstation cluster.</param>
                 public virtual PatchRequest Patch(Google.Apis.CloudWorkstations.v1.Data.WorkstationCluster body, string name)
                 {
                     return new PatchRequest(service, body, name);
@@ -2439,7 +2439,7 @@ namespace Google.Apis.CloudWorkstations.v1
                         InitParameters();
                     }
 
-                    /// <summary>Full name of this workstation cluster.</summary>
+                    /// <summary>Identifier. Full name of this workstation cluster.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -3858,7 +3858,7 @@ namespace Google.Apis.CloudWorkstations.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
-        /// <summary>Full name of this workstation.</summary>
+        /// <summary>Identifier. Full name of this workstation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -4075,7 +4075,7 @@ namespace Google.Apis.CloudWorkstations.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
-        /// <summary>Full name of this workstation cluster.</summary>
+        /// <summary>Identifier. Full name of this workstation cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -4296,7 +4296,7 @@ namespace Google.Apis.CloudWorkstations.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
-        /// <summary>Full name of this workstation configuration.</summary>
+        /// <summary>Identifier. Full name of this workstation configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 

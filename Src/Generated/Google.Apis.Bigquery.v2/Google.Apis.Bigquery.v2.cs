@@ -390,6 +390,13 @@ namespace Google.Apis.Bigquery.v2
             [Google.Apis.Util.RequestParameterAttribute("datasetId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string DatasetId { get; private set; }
 
+            /// <summary>
+            /// Specifies the view that determines which dataset information is returned. By default, metadata and ACL
+            /// information are returned. Allowed values: METADATA, ACL, FULL.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("datasetView", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string DatasetView { get; set; }
+
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
@@ -416,6 +423,14 @@ namespace Google.Apis.Bigquery.v2
                     Name = "datasetId",
                     IsRequired = true,
                     ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("datasetView", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "datasetView",
+                    IsRequired = false,
+                    ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
                 });
@@ -3735,6 +3750,26 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Represents privacy policy associated with "aggregation threshold" method.</summary>
+    public class AggregationThresholdPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The privacy unit column(s) associated with this policy. For now, only one column per data source
+        /// object (table, view) is allowed as a privacy unit column. Representing as a repeated field in metadata for
+        /// extensibility to multiple columns in future. Duplicates and Repeated struct fields are not allowed. For
+        /// nested fields, use dot notation ("outer.inner")
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privacyUnitColumns")]
+        public virtual System.Collections.Generic.IList<string> PrivacyUnitColumns { get; set; }
+
+        /// <summary>Optional. The threshold for the "aggregation threshold" policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("threshold")]
+        public virtual System.Nullable<long> Threshold { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Input/output argument of a function or a stored procedure.</summary>
     public class Argument : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3745,6 +3780,14 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>Required unless argument_kind = ANY_TYPE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataType")]
         public virtual StandardSqlDataType DataType { get; set; }
+
+        /// <summary>
+        /// Optional. Whether the argument is an aggregate function parameter. Must be Unset for routine types other
+        /// than AGGREGATE_FUNCTION. For AGGREGATE_FUNCTION, if set to false, it is equivalent to adding "NOT AGGREGATE"
+        /// clause in DDL; Otherwise, it is equivalent to omitting "NOT AGGREGATE" clause in DDL.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isAggregate")]
+        public virtual System.Nullable<bool> IsAggregate { get; set; }
 
         /// <summary>
         /// Optional. Specifies whether the argument is input or output. Can be set for procedures only.
@@ -4703,7 +4746,7 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string FieldDelimiter { get; set; }
 
         /// <summary>[Optional] An custom string that will represent a NULL value in CSV import data.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("null_marker")]
+        [Newtonsoft.Json.JsonPropertyAttribute("nullMarker")]
         public virtual string NullMarker { get; set; }
 
         /// <summary>
@@ -6197,6 +6240,13 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
+        /// <summary>
+        /// [Output-only] If set, it provides the reason why a Job was created. If not set, it should be treated as the
+        /// default: REQUESTED. This feature is not yet available. Jobs will always be created.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jobCreationReason")]
+        public virtual object JobCreationReason { get; set; }
+
         /// <summary>[Optional] Reference describing the unique-per-user name of the job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobReference")]
         public virtual JobReference JobReference { get; set; }
@@ -6870,6 +6920,23 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Reason about why a Job was created from a
+    /// [`jobs.query`](https://cloud.google.com/bigquery/docs/reference/rest/v2/jobs/query) method when used with
+    /// `JOB_CREATION_OPTIONAL` Job creation mode. For
+    /// [`jobs.insert`](https://cloud.google.com/bigquery/docs/reference/rest/v2/jobs/insert) method calls it will
+    /// always be `REQUESTED`. This feature is not yet available. Jobs will always be created.
+    /// </summary>
+    public class JobCreationReason : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Specifies the high level reason why a Job was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual string Code { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class JobList : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A hash of this page of results.</summary>
@@ -7110,7 +7177,9 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ddlOperationPerformed")]
         public virtual string DdlOperationPerformed { get; set; }
 
-        /// <summary>[Output only] The DDL target dataset. Present only for CREATE/ALTER/DROP SCHEMA queries.</summary>
+        /// <summary>
+        /// [Output only] The DDL target dataset. Present only for CREATE/ALTER/DROP/UNDROP SCHEMA queries.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ddlTargetDataset")]
         public virtual DatasetReference DdlTargetDataset { get; set; }
 
@@ -7387,6 +7456,7 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response format for a single page when listing BigQuery ML models.</summary>
     public class ListModelsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -7404,6 +7474,7 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Describes the format of a single result page when listing routines.</summary>
     public class ListRoutinesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A token to request the next page of results.</summary>
@@ -7841,6 +7912,20 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Represents privacy policy that contains the privacy requirements specified by the data owner. Currently, this is
+    /// only supported on views.
+    /// </summary>
+    public class PrivacyPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Policy used for aggregation thresholds.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aggregationThresholdPolicy")]
+        public virtual AggregationThresholdPolicy AggregationThresholdPolicy { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class ProjectList : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A hash of the page of results</summary>
@@ -8006,6 +8091,13 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dryRun")]
         public virtual System.Nullable<bool> DryRun { get; set; }
 
+        /// <summary>
+        /// Optional. If not set, jobs are always required. If set, the query request will follow the behavior described
+        /// JobCreationMode. This feature is not yet available. Jobs will always be created.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jobCreationMode")]
+        public virtual string JobCreationMode { get; set; }
+
         /// <summary>The resource type of the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
@@ -8142,6 +8234,15 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual System.Nullable<bool> JobComplete { get; set; }
 
         /// <summary>
+        /// Optional. Only relevant when a job_reference is present in the response. If job_reference is not present it
+        /// will always be unset. When job_reference is present, this field should be interpreted as follows: If set, it
+        /// will provide the reason of why a Job was created. If not set, it should be treated as the default:
+        /// REQUESTED. This feature is not yet available. Jobs will always be created.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jobCreationReason")]
+        public virtual object JobCreationReason { get; set; }
+
+        /// <summary>
         /// Reference to the Job that was created to run the query. This field will be present even if the original
         /// request timed out, in which case GetQueryResults can be used to read the results once the query has
         /// completed. Since this API only returns the first page of results, subsequent pages can be fetched via the
@@ -8164,6 +8265,13 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>A token used for paging results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageToken")]
         public virtual string PageToken { get; set; }
+
+        /// <summary>
+        /// Query ID for the completed query. This ID will be auto-generated. This field is not yet available and it is
+        /// currently not guaranteed to be populated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryId")]
+        public virtual string QueryId { get; set; }
 
         /// <summary>
         /// An object with as many results as can be contained within the maximum permitted reply size. To get any
@@ -8421,8 +8529,9 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual System.Nullable<long> CreationTime { get; set; }
 
         /// <summary>
-        /// Optional. Data governance specific option, if the value is DATA_MASKING, the function will be validated as
-        /// masking functions.
+        /// Optional. If set to `DATA_MASKING`, the function is validated and made available as a masking function. For
+        /// more information, see [Create custom masking
+        /// routines](https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataGovernanceType")]
         public virtual string DataGovernanceType { get; set; }
@@ -8504,6 +8613,13 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>Required. The type of routine.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("routineType")]
         public virtual string RoutineType { get; set; }
+
+        /// <summary>
+        /// Optional. The security mode of the routine, if defined. If not defined, the security mode is automatically
+        /// determined from the routine's configuration.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("securityMode")]
+        public virtual string SecurityMode { get; set; }
 
         /// <summary>Optional. Spark specific options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sparkOptions")]
@@ -8826,11 +8942,11 @@ namespace Google.Apis.Bigquery.v2.Data
     public class SparkLoggingInfo : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output-only] Project ID used for logging</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("project_id")]
+        [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
 
         /// <summary>[Output-only] Resource type used for logging</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("resource_type")]
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
         public virtual string ResourceType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
@@ -8984,8 +9100,10 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The representation of a SQL STRUCT type.</summary>
     public class StandardSqlStructType : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Fields within the struct.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fields")]
         public virtual System.Collections.Generic.IList<StandardSqlField> Fields { get; set; }
 
@@ -9235,6 +9353,15 @@ namespace Google.Apis.Bigquery.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requirePartitionFilter")]
         public virtual System.Nullable<bool> RequirePartitionFilter { get; set; }
+
+        /// <summary>
+        /// [Optional] The tags associated with this table. Tag keys are globally unique. See additional information on
+        /// [tags](https://cloud.google.com/iam/docs/tags-access-control#definitions). An object containing a list of
+        /// "key": value pairs. The key is the namespaced friendly name of the tag key, e.g. "12345/environment" where
+        /// 12345 is parent id. The value is the friendly short name of the tag value, e.g. "production".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceTags")]
+        public virtual System.Collections.Generic.IDictionary<string, string> ResourceTags { get; set; }
 
         /// <summary>[Optional] Describes the schema of this table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schema")]

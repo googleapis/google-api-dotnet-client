@@ -4808,7 +4808,9 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("queryInsightsConfig")]
         public virtual QueryInsightsInstanceConfig QueryInsightsConfig { get; set; }
 
-        /// <summary>Read pool specific config.</summary>
+        /// <summary>
+        /// Read pool instance configuration. This is required if the value of instanceType is READ_POOL.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("readPoolConfig")]
         public virtual ReadPoolConfig ReadPoolConfig { get; set; }
 
@@ -5044,8 +5046,8 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         /// Optional. Name of the allocated IP range for the private IP AlloyDB cluster, for example:
         /// "google-managed-services-default". If set, the instance IPs for this cluster will be created in the
         /// allocated range. The range name must comply with RFC 1035. Specifically, the name must be 1-63 characters
-        /// long and match the regular expression [a-z]([-a-z0-9]*[a-z0-9])?. Field name is intended to be consistent
-        /// with CloudSQL.
+        /// long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. Field name is intended to be consistent
+        /// with Cloud SQL.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allocatedIpRange")]
         public virtual string AllocatedIpRange { get; set; }
@@ -5736,7 +5738,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
 
         private object _eventTime;
 
-        /// <summary>The last time at which the event described by this signal took place</summary>
+        /// <summary>Required. The last time at which the event described by this signal took place</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventTime")]
         public virtual string EventTimeRaw
         {
@@ -5776,7 +5778,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("externalUri")]
         public virtual string ExternalUri { get; set; }
 
-        /// <summary>The name of the signal, ex: PUBLIC_SQL_INSTANCE, SQL_LOG_ERROR_VERBOSITY etc.</summary>
+        /// <summary>Required. The name of the signal, ex: PUBLIC_SQL_INSTANCE, SQL_LOG_ERROR_VERBOSITY etc.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -5793,22 +5795,28 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         public virtual string ResourceContainer { get; set; }
 
         /// <summary>
-        /// Database resource name associated with the signal. Resource name to follow CAIS resource_name format as
-        /// noted here go/condor-common-datamodel
+        /// Required. Database resource name associated with the signal. Resource name to follow CAIS resource_name
+        /// format as noted here go/condor-common-datamodel
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
         public virtual string ResourceName { get; set; }
 
-        /// <summary>The class of the signal, such as if it's a THREAT or VULNERABILITY.</summary>
+        /// <summary>Required. The class of the signal, such as if it's a THREAT or VULNERABILITY.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signalClass")]
         public virtual string SignalClass { get; set; }
 
         /// <summary>
-        /// Unique identifier for the signal. This is an unique id which would be mainatined by partner to identify a
-        /// signal.
+        /// Required. Unique identifier for the signal. This is an unique id which would be mainatined by partner to
+        /// identify a signal.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signalId")]
         public virtual string SignalId { get; set; }
+
+        /// <summary>
+        /// Required. Type of signal, for example, `AVAILABLE_IN_MULTIPLE_ZONES`, `LOGGING_MOST_ERRORS`, etc.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signalType")]
+        public virtual string SignalType { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
