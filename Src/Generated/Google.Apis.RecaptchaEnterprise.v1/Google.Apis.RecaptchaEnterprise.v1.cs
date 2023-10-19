@@ -1611,7 +1611,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("hashedAccountId")]
         public virtual string HashedAccountId { get; set; }
 
-        /// <summary>Optional. Optional reasons for the annotation that will be assigned to the Event.</summary>
+        /// <summary>Optional. Reasons for the annotation that are assigned to the event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reasons")]
         public virtual System.Collections.Generic.IList<string> Reasons { get; set; }
 

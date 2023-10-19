@@ -7680,7 +7680,7 @@ namespace Google.Apis.VMMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>The target project ID (number) or project name.</summary>
+        /// <summary>Required. The target project ID (number) or project name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("project")]
         public virtual string Project { get; set; }
 

@@ -4542,6 +4542,10 @@ namespace Google.Apis.GKEHub.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("configmanagement")]
         public virtual ConfigManagementMembershipSpec Configmanagement { get; set; }
 
+        /// <summary>Policy Controller spec.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policycontroller")]
+        public virtual PolicyControllerMembershipSpec Policycontroller { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -6945,6 +6949,10 @@ namespace Google.Apis.GKEHub.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("origin")]
         public virtual Origin Origin { get; set; }
 
+        /// <summary>Policy Controller spec.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policycontroller")]
+        public virtual PolicyControllerMembershipSpec Policycontroller { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -6967,6 +6975,10 @@ namespace Google.Apis.GKEHub.v1.Data
         /// <summary>Identity Service-specific state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("identityservice")]
         public virtual IdentityServiceMembershipState Identityservice { get; set; }
+
+        /// <summary>Policycontroller-specific state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policycontroller")]
+        public virtual PolicyControllerMembershipState Policycontroller { get; set; }
 
         /// <summary>Service Mesh-specific state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("servicemesh")]
@@ -7496,6 +7508,286 @@ namespace Google.Apis.GKEHub.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; }
+    }
+
+    /// <summary>BundleInstallSpec is the specification configuration for a single managed bundle.</summary>
+    public class PolicyControllerBundleInstallSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The set of namespaces to be exempted from the bundle.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exemptedNamespaces")]
+        public virtual System.Collections.Generic.IList<string> ExemptedNamespaces { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for Policy Controller</summary>
+    public class PolicyControllerHubConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Sets the interval for Policy Controller Audit Scans (in seconds). When set to 0, this disables audit
+        /// functionality altogether.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("auditIntervalSeconds")]
+        public virtual System.Nullable<long> AuditIntervalSeconds { get; set; }
+
+        /// <summary>
+        /// The maximum number of audit violations to be stored in a constraint. If not set, the internal default
+        /// (currently 20) will be used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("constraintViolationLimit")]
+        public virtual System.Nullable<long> ConstraintViolationLimit { get; set; }
+
+        /// <summary>Map of deployment configs to deployments ("admission", "audit", "mutation').</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deploymentConfigs")]
+        public virtual System.Collections.Generic.IDictionary<string, PolicyControllerPolicyControllerDeploymentConfig> DeploymentConfigs { get; set; }
+
+        /// <summary>
+        /// The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently
+        /// exist on the cluster.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exemptableNamespaces")]
+        public virtual System.Collections.Generic.IList<string> ExemptableNamespaces { get; set; }
+
+        /// <summary>
+        /// The install_spec represents the intended state specified by the latest request that mutated install_spec in
+        /// the feature spec, not the lifecycle state of the feature observed by the Hub feature controller that is
+        /// reported in the feature state.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("installSpec")]
+        public virtual string InstallSpec { get; set; }
+
+        /// <summary>Logs all denies and dry run failures.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logDeniesEnabled")]
+        public virtual System.Nullable<bool> LogDeniesEnabled { get; set; }
+
+        /// <summary>Monitoring specifies the configuration of monitoring.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("monitoring")]
+        public virtual PolicyControllerMonitoringConfig Monitoring { get; set; }
+
+        /// <summary>Enables the ability to mutate resources using Policy Controller.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mutationEnabled")]
+        public virtual System.Nullable<bool> MutationEnabled { get; set; }
+
+        /// <summary>Specifies the desired policy content on the cluster</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyContent")]
+        public virtual PolicyControllerPolicyContentSpec PolicyContent { get; set; }
+
+        /// <summary>
+        /// Enables the ability to use Constraint Templates that reference to objects other than the object currently
+        /// being evaluated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("referentialRulesEnabled")]
+        public virtual System.Nullable<bool> ReferentialRulesEnabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// **Policy Controller**: Configuration for a single cluster. Intended to parallel the PolicyController CR.
+    /// </summary>
+    public class PolicyControllerMembershipSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Policy Controller configuration for the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyControllerHubConfig")]
+        public virtual PolicyControllerHubConfig PolicyControllerHubConfig { get; set; }
+
+        /// <summary>Version of Policy Controller installed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>**Policy Controller**: State for a single cluster.</summary>
+    public class PolicyControllerMembershipState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Currently these include (also serving as map keys): 1. "admission" 2. "audit" 3. "mutation"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("componentStates")]
+        public virtual System.Collections.Generic.IDictionary<string, PolicyControllerOnClusterState> ComponentStates { get; set; }
+
+        /// <summary>The overall content state observed by the Hub Feature controller.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyContentState")]
+        public virtual PolicyControllerPolicyContentState PolicyContentState { get; set; }
+
+        /// <summary>The overall Policy Controller lifecycle state observed by the Hub Feature controller.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// MonitoringConfig specifies the backends Policy Controller should export metrics to. For example, to specify
+    /// metrics should be exported to Cloud Monitoring and Prometheus, specify backends: ["cloudmonitoring",
+    /// "prometheus"]
+    /// </summary>
+    public class PolicyControllerMonitoringConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Specifies the list of backends Policy Controller will export to. An empty list would effectively disable
+        /// metrics export.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backends")]
+        public virtual System.Collections.Generic.IList<string> Backends { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>OnClusterState represents the state of a sub-component of Policy Controller.</summary>
+    public class PolicyControllerOnClusterState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Surface potential errors or information logs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("details")]
+        public virtual string Details { get; set; }
+
+        /// <summary>The lifecycle state of this component.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>PolicyContentSpec defines the user's desired content configuration on the cluster.</summary>
+    public class PolicyControllerPolicyContentSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// map of bundle name to BundleInstallSpec. The bundle name maps to the `bundleName` key in the
+        /// `policycontroller.gke.io/constraintData` annotation on a constraint.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bundles")]
+        public virtual System.Collections.Generic.IDictionary<string, PolicyControllerBundleInstallSpec> Bundles { get; set; }
+
+        /// <summary>Configures the installation of the Template Library.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("templateLibrary")]
+        public virtual PolicyControllerTemplateLibraryConfig TemplateLibrary { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The state of the policy controller policy content</summary>
+    public class PolicyControllerPolicyContentState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The state of the any bundles included in the chosen version of the manifest</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bundleStates")]
+        public virtual System.Collections.Generic.IDictionary<string, PolicyControllerOnClusterState> BundleStates { get; set; }
+
+        /// <summary>
+        /// The state of the referential data sync configuration. This could represent the state of either the syncSet
+        /// object(s) or the config object, depending on the version of PoCo configured by the user.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("referentialSyncConfigState")]
+        public virtual PolicyControllerOnClusterState ReferentialSyncConfigState { get; set; }
+
+        /// <summary>The state of the template library</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("templateLibraryState")]
+        public virtual PolicyControllerOnClusterState TemplateLibraryState { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Deployment-specific configuration.</summary>
+    public class PolicyControllerPolicyControllerDeploymentConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Container resource requirements.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("containerResources")]
+        public virtual PolicyControllerResourceRequirements ContainerResources { get; set; }
+
+        /// <summary>Pod affinity configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("podAffinity")]
+        public virtual string PodAffinity { get; set; }
+
+        /// <summary>Pod anti-affinity enablement.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("podAntiAffinity")]
+        public virtual System.Nullable<bool> PodAntiAffinity { get; set; }
+
+        /// <summary>Pod tolerations of node taints.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("podTolerations")]
+        public virtual System.Collections.Generic.IList<PolicyControllerToleration> PodTolerations { get; set; }
+
+        /// <summary>Pod replica count.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("replicaCount")]
+        public virtual System.Nullable<long> ReplicaCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>ResourceList contains container resource requirements.</summary>
+    public class PolicyControllerResourceList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>CPU requirement expressed in Kubernetes resource units.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cpu")]
+        public virtual string Cpu { get; set; }
+
+        /// <summary>Memory requirement expressed in Kubernetes resource units.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("memory")]
+        public virtual string Memory { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>ResourceRequirements describes the compute resource requirements.</summary>
+    public class PolicyControllerResourceRequirements : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Limits describes the maximum amount of compute resources allowed for use by the running container.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("limits")]
+        public virtual PolicyControllerResourceList Limits { get; set; }
+
+        /// <summary>
+        /// Requests describes the amount of compute resources reserved for the container by the kube-scheduler.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requests")]
+        public virtual PolicyControllerResourceList Requests { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The config specifying which default library templates to install.</summary>
+    public class PolicyControllerTemplateLibraryConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Configures the manner in which the template library is installed on the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("installation")]
+        public virtual string Installation { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Toleration of a node taint.</summary>
+    public class PolicyControllerToleration : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Matches a taint effect.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effect")]
+        public virtual string Effect { get; set; }
+
+        /// <summary>Matches a taint key (not necessarily unique).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; }
+
+        /// <summary>Matches a taint operator.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operator")]
+        public virtual string Operator__ { get; set; }
+
+        /// <summary>Matches a taint value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 
     /// <summary>RBACRoleBinding represents a rbacrolebinding across the Fleet</summary>

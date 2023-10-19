@@ -3125,8 +3125,9 @@ namespace Google.Apis.Batch.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Max number of tasks that can run in parallel. Default to min(task_count, 1000). Field parallelism must be 1
-        /// if the scheduling_policy is IN_ORDER.
+        /// Max number of tasks that can run in parallel. Default to min(task_count, parallel tasks per job limit). See:
+        /// [Job Limits](https://cloud.google.com/batch/quotas#job_limits). Field parallelism must be 1 if the
+        /// scheduling_policy is IN_ORDER.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parallelism")]
         public virtual System.Nullable<long> Parallelism { get; set; }

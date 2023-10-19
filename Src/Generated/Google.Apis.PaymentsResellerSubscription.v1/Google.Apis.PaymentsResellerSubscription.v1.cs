@@ -2428,7 +2428,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
         public virtual string LanguageCode { get; set; }
 
-        /// <summary>Localized string in the language corresponding to `language_code' below.</summary>
+        /// <summary>Localized string in the language corresponding to language_code below.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual string Text { get; set; }
 

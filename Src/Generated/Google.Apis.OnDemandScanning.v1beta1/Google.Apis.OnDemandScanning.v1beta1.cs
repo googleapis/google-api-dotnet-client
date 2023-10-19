@@ -2765,6 +2765,15 @@ namespace Google.Apis.OnDemandScanning.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("hashDigest")]
         public virtual string HashDigest { get; set; }
 
+        /// <summary>
+        /// The list of licenses found that are related to a given package. Note that licenses may also be stored on the
+        /// BinarySourceInfo. If there is no BinarySourceInfo (because there's no concept of source vs binary), then it
+        /// will be stored here, while if there are BinarySourceInfos, it will be stored there, as one source can have
+        /// multiple binaries with different licenses.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("licenses")]
+        public virtual System.Collections.Generic.IList<string> Licenses { get; set; }
+
         /// <summary>The maintainer of the package.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maintainer")]
         public virtual Maintainer Maintainer { get; set; }
@@ -2915,6 +2924,14 @@ namespace Google.Apis.OnDemandScanning.v1beta1.Data
 
     public class PackageVersion : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// The licenses associated with this package. Note that this has to go on the PackageVersion level, because we
+        /// can have cases with images with the same source having different licences. E.g. in Alpine, musl and
+        /// musl-utils both have the same origin musl, but have different sets of licenses.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("licenses")]
+        public virtual System.Collections.Generic.IList<string> Licenses { get; set; }
+
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 

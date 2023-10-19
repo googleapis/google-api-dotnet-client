@@ -9136,8 +9136,21 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// retrieve the next page. Resources with a total size larger than 5MB or a field count larger
                         /// than 50,000 might not be fully searchable as the server might trim its generated search
                         /// index in those cases. Note: FHIR resources are indexed asynchronously, so there might be a
-                        /// slight delay between the time a resource is created or changes and when the change is
-                        /// reflected in search results. For samples and detailed information, see [Searching for FHIR
+                        /// slight delay between the time a resource is created or changed, and the time when the change
+                        /// reflects in search results. The only exception is resource identifier data, which is indexed
+                        /// synchronously as a special index. As a result, searching using resource identifier is not
+                        /// subject to indexing delay. To use the special synchronous index, the search term for
+                        /// identifier should be in the pattern `identifier=[system]|[value]` or `identifier=[value]`,
+                        /// and any of the following search result parameters can be used: * `_count` * `_include` *
+                        /// `_revinclude` * `_summary` * `_elements` If your query contains any other search parameters,
+                        /// the standard asynchronous index will be used instead. Note that searching against the
+                        /// special index is optimized for resolving a small number of matches. The search isn't
+                        /// optimized if your identifier search criteria matches a large number (i.e. more than 2,000)
+                        /// of resources. For a search query that will match a large number of resources, you can
+                        /// avoiding using the special synchronous index by including an additional `_sort` parameter in
+                        /// your query. Use `_sort=-_lastUpdated` if you want to keep the default sorting order. Note:
+                        /// The special synchronous identifier index are currently disabled for DocumentReference and
+                        /// DocumentManifest searches. For samples and detailed information, see [Searching for FHIR
                         /// resources](https://cloud.google.com/healthcare/docs/how-tos/fhir-search) and [Advanced FHIR
                         /// search features](https://cloud.google.com/healthcare/docs/how-tos/fhir-advanced-search).
                         /// </summary>
@@ -9186,8 +9199,21 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// retrieve the next page. Resources with a total size larger than 5MB or a field count larger
                         /// than 50,000 might not be fully searchable as the server might trim its generated search
                         /// index in those cases. Note: FHIR resources are indexed asynchronously, so there might be a
-                        /// slight delay between the time a resource is created or changes and when the change is
-                        /// reflected in search results. For samples and detailed information, see [Searching for FHIR
+                        /// slight delay between the time a resource is created or changed, and the time when the change
+                        /// reflects in search results. The only exception is resource identifier data, which is indexed
+                        /// synchronously as a special index. As a result, searching using resource identifier is not
+                        /// subject to indexing delay. To use the special synchronous index, the search term for
+                        /// identifier should be in the pattern `identifier=[system]|[value]` or `identifier=[value]`,
+                        /// and any of the following search result parameters can be used: * `_count` * `_include` *
+                        /// `_revinclude` * `_summary` * `_elements` If your query contains any other search parameters,
+                        /// the standard asynchronous index will be used instead. Note that searching against the
+                        /// special index is optimized for resolving a small number of matches. The search isn't
+                        /// optimized if your identifier search criteria matches a large number (i.e. more than 2,000)
+                        /// of resources. For a search query that will match a large number of resources, you can
+                        /// avoiding using the special synchronous index by including an additional `_sort` parameter in
+                        /// your query. Use `_sort=-_lastUpdated` if you want to keep the default sorting order. Note:
+                        /// The special synchronous identifier index are currently disabled for DocumentReference and
+                        /// DocumentManifest searches. For samples and detailed information, see [Searching for FHIR
                         /// resources](https://cloud.google.com/healthcare/docs/how-tos/fhir-search) and [Advanced FHIR
                         /// search features](https://cloud.google.com/healthcare/docs/how-tos/fhir-advanced-search).
                         /// </summary>
@@ -9273,8 +9299,21 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// retrieve the next page. Resources with a total size larger than 5MB or a field count larger
                         /// than 50,000 might not be fully searchable as the server might trim its generated search
                         /// index in those cases. Note: FHIR resources are indexed asynchronously, so there might be a
-                        /// slight delay between the time a resource is created or changes and when the change is
-                        /// reflected in search results. For samples and detailed information, see [Searching for FHIR
+                        /// slight delay between the time a resource is created or changed, and the time when the change
+                        /// reflects in search results. The only exception is resource identifier data, which is indexed
+                        /// synchronously as a special index. As a result, searching using resource identifier is not
+                        /// subject to indexing delay. To use the special synchronous index, the search term for
+                        /// identifier should be in the pattern `identifier=[system]|[value]` or `identifier=[value]`,
+                        /// and any of the following search result parameters can be used: * `_count` * `_include` *
+                        /// `_revinclude` * `_summary` * `_elements` If your query contains any other search parameters,
+                        /// the standard asynchronous index will be used instead. Note that searching against the
+                        /// special index is optimized for resolving a small number of matches. The search isn't
+                        /// optimized if your identifier search criteria matches a large number (i.e. more than 2,000)
+                        /// of resources. For a search query that will match a large number of resources, you can
+                        /// avoiding using the special synchronous index by including an additional `_sort` parameter in
+                        /// your query. Use `_sort=-_lastUpdated` if you want to keep the default sorting order. Note:
+                        /// The special synchronous identifier index are currently disabled for DocumentReference and
+                        /// DocumentManifest searches. For samples and detailed information, see [Searching for FHIR
                         /// resources](https://cloud.google.com/healthcare/docs/how-tos/fhir-search) and [Advanced FHIR
                         /// search features](https://cloud.google.com/healthcare/docs/how-tos/fhir-advanced-search).
                         /// </summary>
@@ -9330,8 +9369,21 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// retrieve the next page. Resources with a total size larger than 5MB or a field count larger
                         /// than 50,000 might not be fully searchable as the server might trim its generated search
                         /// index in those cases. Note: FHIR resources are indexed asynchronously, so there might be a
-                        /// slight delay between the time a resource is created or changes and when the change is
-                        /// reflected in search results. For samples and detailed information, see [Searching for FHIR
+                        /// slight delay between the time a resource is created or changed, and the time when the change
+                        /// reflects in search results. The only exception is resource identifier data, which is indexed
+                        /// synchronously as a special index. As a result, searching using resource identifier is not
+                        /// subject to indexing delay. To use the special synchronous index, the search term for
+                        /// identifier should be in the pattern `identifier=[system]|[value]` or `identifier=[value]`,
+                        /// and any of the following search result parameters can be used: * `_count` * `_include` *
+                        /// `_revinclude` * `_summary` * `_elements` If your query contains any other search parameters,
+                        /// the standard asynchronous index will be used instead. Note that searching against the
+                        /// special index is optimized for resolving a small number of matches. The search isn't
+                        /// optimized if your identifier search criteria matches a large number (i.e. more than 2,000)
+                        /// of resources. For a search query that will match a large number of resources, you can
+                        /// avoiding using the special synchronous index by including an additional `_sort` parameter in
+                        /// your query. Use `_sort=-_lastUpdated` if you want to keep the default sorting order. Note:
+                        /// The special synchronous identifier index are currently disabled for DocumentReference and
+                        /// DocumentManifest searches. For samples and detailed information, see [Searching for FHIR
                         /// resources](https://cloud.google.com/healthcare/docs/how-tos/fhir-search) and [Advanced FHIR
                         /// search features](https://cloud.google.com/healthcare/docs/how-tos/fhir-advanced-search).
                         /// </summary>
@@ -10548,6 +10600,81 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Rolls back resources from the FHIR store to the specified time. This method returns an Operation
+                    /// that can be used to track the status of the rollback by calling GetOperation. Immediate fatal
+                    /// errors appear in the error field, errors are also logged to Cloud Logging (see [Viewing error
+                    /// logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)). Otherwise,
+                    /// when the operation finishes, a detailed response of type RollbackFhirResourcesResponse is
+                    /// returned in the response field. The metadata field type for this operation is OperationMetadata.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Required. The name of the FHIR store to rollback, in the format of
+                    /// "projects/{project_id}/locations/{location_id}/datasets/{dataset_id}
+                    /// /fhirStores/{fhir_store_id}".
+                    /// </param>
+                    public virtual RollbackRequest Rollback(Google.Apis.CloudHealthcare.v1beta1.Data.RollbackFhirResourcesRequest body, string name)
+                    {
+                        return new RollbackRequest(service, body, name);
+                    }
+
+                    /// <summary>
+                    /// Rolls back resources from the FHIR store to the specified time. This method returns an Operation
+                    /// that can be used to track the status of the rollback by calling GetOperation. Immediate fatal
+                    /// errors appear in the error field, errors are also logged to Cloud Logging (see [Viewing error
+                    /// logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)). Otherwise,
+                    /// when the operation finishes, a detailed response of type RollbackFhirResourcesResponse is
+                    /// returned in the response field. The metadata field type for this operation is OperationMetadata.
+                    /// </summary>
+                    public class RollbackRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Rollback request.</summary>
+                        public RollbackRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1beta1.Data.RollbackFhirResourcesRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the FHIR store to rollback, in the format of
+                        /// "projects/{project_id}/locations/{location_id}/datasets/{dataset_id}
+                        /// /fhirStores/{fhir_store_id}".
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudHealthcare.v1beta1.Data.RollbackFhirResourcesRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "rollback";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+name}:rollback";
+
+                        /// <summary>Initializes Rollback parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+$",
                             });
                         }
                     }
@@ -15263,34 +15390,34 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         }
 
         /// <summary>
-        /// Restricts messages exported to those matching a filter, only applicable to PubsubDestination and
-        /// GcsDestination. The following syntax is available: * A string field value can be written as text inside
-        /// quotation marks, for example `"query text"`. The only valid relational operation for text fields is equality
-        /// (`=`), where text is searched within the field, rather than having the field be equal to the text. For
-        /// example, `"Comment = great"` returns messages with `great` in the comment field. * A number field value can
-        /// be written as an integer, a decimal, or an exponential. The valid relational operators for number fields are
-        /// the equality operator (`=`), along with the less than/greater than operators (`&amp;lt;`, `&amp;lt;=`,
-        /// `&amp;gt;`, `&amp;gt;=`). Note that there is no inequality (`!=`) operator. You can prepend the `NOT`
-        /// operator to an expression to negate it. * A date field value must be written in the `yyyy-mm-dd` format.
-        /// Fields with date and time use the RFC3339 time format. Leading zeros are required for one-digit months and
-        /// days. The valid relational operators for date fields are the equality operator (`=`) , along with the less
-        /// than/greater than operators (`&amp;lt;`, `&amp;lt;=`, `&amp;gt;`, `&amp;gt;=`). Note that there is no
-        /// inequality (`!=`) operator. You can prepend the `NOT` operator to an expression to negate it. * Multiple
-        /// field query expressions can be combined in one query by adding `AND` or `OR` operators between the
-        /// expressions. If a boolean operator appears within a quoted string, it is not treated as special, and is just
-        /// another part of the character string to be matched. You can prepend the `NOT` operator to an expression to
-        /// negate it. The following fields and functions are available for filtering: * `message_type`, from the
-        /// MSH-9.1 field. For example, `NOT message_type = "ADT"`. * `send_date` or `sendDate`, the YYYY-MM-DD date the
-        /// message was sent in the dataset's time_zone, from the MSH-7 segment. For example, `send_date &amp;lt;
-        /// "2017-01-02"`. * `send_time`, the timestamp when the message was sent, using the RFC3339 time format for
-        /// comparisons, from the MSH-7 segment. For example, `send_time &amp;lt; "2017-01-02T00:00:00-05:00"`. *
-        /// `create_time`, the timestamp when the message was created in the HL7v2 store. Use the RFC3339 time format
-        /// for comparisons. For example, `create_time &amp;lt; "2017-01-02T00:00:00-05:00"`. * `send_facility`, the
-        /// care center that the message came from, from the MSH-4 segment. For example, `send_facility = "ABC"`. Note:
-        /// The filter will be applied to every message in the HL7v2 store whose `send_time` lies in the range defined
-        /// by the `start_time` and the `end_time`. Even if the filter only matches a small set of messages, the export
-        /// operation can still take a long time to finish when a lot of messages are between the specified `start_time`
-        /// and `end_time` range.
+        /// Restricts messages exported to those matching a filter, only applicable to PubsubDestination. The following
+        /// syntax is available: * A string field value can be written as text inside quotation marks, for example
+        /// `"query text"`. The only valid relational operation for text fields is equality (`=`), where text is
+        /// searched within the field, rather than having the field be equal to the text. For example, `"Comment =
+        /// great"` returns messages with `great` in the comment field. * A number field value can be written as an
+        /// integer, a decimal, or an exponential. The valid relational operators for number fields are the equality
+        /// operator (`=`), along with the less than/greater than operators (`&amp;lt;`, `&amp;lt;=`, `&amp;gt;`,
+        /// `&amp;gt;=`). Note that there is no inequality (`!=`) operator. You can prepend the `NOT` operator to an
+        /// expression to negate it. * A date field value must be written in the `yyyy-mm-dd` format. Fields with date
+        /// and time use the RFC3339 time format. Leading zeros are required for one-digit months and days. The valid
+        /// relational operators for date fields are the equality operator (`=`) , along with the less than/greater than
+        /// operators (`&amp;lt;`, `&amp;lt;=`, `&amp;gt;`, `&amp;gt;=`). Note that there is no inequality (`!=`)
+        /// operator. You can prepend the `NOT` operator to an expression to negate it. * Multiple field query
+        /// expressions can be combined in one query by adding `AND` or `OR` operators between the expressions. If a
+        /// boolean operator appears within a quoted string, it is not treated as special, and is just another part of
+        /// the character string to be matched. You can prepend the `NOT` operator to an expression to negate it. The
+        /// following fields and functions are available for filtering: * `message_type`, from the MSH-9.1 field. For
+        /// example, `NOT message_type = "ADT"`. * `send_date` or `sendDate`, the YYYY-MM-DD date the message was sent
+        /// in the dataset's time_zone, from the MSH-7 segment. For example, `send_date &amp;lt; "2017-01-02"`. *
+        /// `send_time`, the timestamp when the message was sent, using the RFC3339 time format for comparisons, from
+        /// the MSH-7 segment. For example, `send_time &amp;lt; "2017-01-02T00:00:00-05:00"`. * `create_time`, the
+        /// timestamp when the message was created in the HL7v2 store. Use the RFC3339 time format for comparisons. For
+        /// example, `create_time &amp;lt; "2017-01-02T00:00:00-05:00"`. * `send_facility`, the care center that the
+        /// message came from, from the MSH-4 segment. For example, `send_facility = "ABC"`. Note: The filter will be
+        /// applied to every message in the HL7v2 store whose `send_time` lies in the range defined by the `start_time`
+        /// and the `end_time`. Even if the filter only matches a small set of messages, the export operation can still
+        /// take a long time to finish when a lot of messages are between the specified `start_time` and `end_time`
+        /// range.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; }
@@ -17874,6 +18001,121 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("consentArtifact")]
         public virtual string ConsentArtifact { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Filters to select resources that need to be rolled back.</summary>
+    public class RollbackFhirResourceFilteringFields : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. A string to use for filtering resource metadata. Complies with AIP-160 except without the has
+        /// operator. Additionally, supports 2 functions: hastag("system") = "code" for tag filtering and
+        /// extension_ts_value("uri") = timestamp for filtering extensions with timestamp, which is given as a unix
+        /// timestamp. extension_ts_url can be used with &amp;gt;, &amp;lt;, &amp;lt;=, &amp;gt;=, != comparisons as
+        /// well.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadataFilter")]
+        public virtual string MetadataFilter { get; set; }
+
+        /// <summary>
+        /// Optional. A list of operation IDs to roll back. Only changes made by these operations will be rolled back.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operationIds")]
+        public virtual System.Collections.Generic.IList<System.Nullable<ulong>> OperationIds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request to roll back resources.</summary>
+    public class RollbackFhirResourcesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. CREATE/UPDATE/DELETE/ALL for reverting all txns of a certain type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("changeType")]
+        public virtual string ChangeType { get; set; }
+
+        /// <summary>Optional. Specifies whether to exclude earlier rollbacks.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("excludeRollbacks")]
+        public virtual System.Nullable<bool> ExcludeRollbacks { get; set; }
+
+        /// <summary>
+        /// Optional. Tag represents fields that HDE needs to identify resources that will be reverted. Parameters for
+        /// filtering resources
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filteringFields")]
+        public virtual RollbackFhirResourceFilteringFields FilteringFields { get; set; }
+
+        /// <summary>Optional. When enabled, changes will be reverted without explicit confirmation</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("force")]
+        public virtual System.Nullable<bool> Force { get; set; }
+
+        /// <summary>
+        /// Optional. Cloud Storage object containing list of {resourceType}/{resourceId} lines, identifying resources
+        /// to be reverted
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inputGcsObject")]
+        public virtual string InputGcsObject { get; set; }
+
+        /// <summary>Required. Bucket to deposit result</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resultGcsBucket")]
+        public virtual string ResultGcsBucket { get; set; }
+
+        private string _rollbackTimeRaw;
+
+        private object _rollbackTime;
+
+        /// <summary>Required. Time point to rollback to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rollbackTime")]
+        public virtual string RollbackTimeRaw
+        {
+            get => _rollbackTimeRaw;
+            set
+            {
+                _rollbackTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _rollbackTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="RollbackTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use RollbackTimeDateTimeOffset instead.")]
+        public virtual object RollbackTime
+        {
+            get => _rollbackTime;
+            set
+            {
+                _rollbackTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _rollbackTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="RollbackTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? RollbackTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(RollbackTimeRaw);
+            set => RollbackTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>Optional. If specified, revert only resources of these types</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual System.Collections.Generic.IList<string> Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Final response of rollback FIHR resources request.</summary>
+    public class RollbackFhirResourcesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The name of the FHIR store to rollback, in the format of
+        /// "projects/{project_id}/locations/{location_id}/datasets/{dataset_id} /fhirStores/{fhir_store_id}".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fhirStore")]
+        public virtual string FhirStore { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

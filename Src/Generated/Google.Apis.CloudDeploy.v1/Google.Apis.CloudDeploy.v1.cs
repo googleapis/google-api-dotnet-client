@@ -3927,6 +3927,13 @@ namespace Google.Apis.CloudDeploy.v1.Data
     /// <summary>CloudRunMetadata contains information from a Cloud Run deployment.</summary>
     public class CloudRunMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Output only. The name of the Cloud Run job that is associated with a `Rollout`. Format is
+        /// projects/{project}/locations/{location}/jobs/{job_name}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("job")]
+        public virtual string Job { get; set; }
+
         /// <summary>Output only. The Cloud Run Revision id associated with a `Rollout`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("revision")]
         public virtual string Revision { get; set; }

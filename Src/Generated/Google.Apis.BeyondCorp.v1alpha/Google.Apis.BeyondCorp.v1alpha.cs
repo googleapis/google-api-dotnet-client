@@ -950,8 +950,8 @@ namespace Google.Apis.BeyondCorp.v1alpha
                         /// </summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="parent">
-                        /// Required. The resource name of the Tenant using the form:
-                        /// `organizations/{organization_id}/locations/global/tenants/{tenant_id}`
+                        /// Required. The resource name of the parent PartnerTenant using the form:
+                        /// `organizations/{organization_id}/locations/global/partnerTenants/{partner_tenant_id}`
                         /// </param>
                         public virtual CreateRequest Create(Google.Apis.BeyondCorp.v1alpha.Data.GoogleCloudBeyondcorpPartnerservicesV1alphaProxyConfig body, string parent)
                         {
@@ -973,8 +973,8 @@ namespace Google.Apis.BeyondCorp.v1alpha
                             }
 
                             /// <summary>
-                            /// Required. The resource name of the Tenant using the form:
-                            /// `organizations/{organization_id}/locations/global/tenants/{tenant_id}`
+                            /// Required. The resource name of the parent PartnerTenant using the form:
+                            /// `organizations/{organization_id}/locations/global/partnerTenants/{partner_tenant_id}`
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
@@ -1101,7 +1101,7 @@ namespace Google.Apis.BeyondCorp.v1alpha
                         /// <summary>Gets details of a single ProxyConfig.</summary>
                         /// <param name="name">
                         /// Required. The resource name of the ProxyConfig using the form:
-                        /// `organizations/{organization_id}/locations/global/tenants/{tenant_id}/proxyConfigs/{proxy_config_id}`
+                        /// `organizations/{organization_id}/locations/global/partnerTenants/{partner_tenant_id}/proxyConfigs/{proxy_config_id}`
                         /// </param>
                         public virtual GetRequest Get(string name)
                         {
@@ -1120,7 +1120,7 @@ namespace Google.Apis.BeyondCorp.v1alpha
 
                             /// <summary>
                             /// Required. The resource name of the ProxyConfig using the form:
-                            /// `organizations/{organization_id}/locations/global/tenants/{tenant_id}/proxyConfigs/{proxy_config_id}`
+                            /// `organizations/{organization_id}/locations/global/partnerTenants/{partner_tenant_id}/proxyConfigs/{proxy_config_id}`
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
@@ -1894,7 +1894,8 @@ namespace Google.Apis.BeyondCorp.v1alpha
                         /// Required. Field mask is used to specify the fields to be overwritten in the PartnerTenant
                         /// resource by the update. The fields specified in the update_mask are relative to the
                         /// resource, not the full request. A field will be overwritten if it is in the mask. If the
-                        /// user does not provide a mask then all fields will be overwritten.
+                        /// user does not provide a mask then all fields will be overwritten. Mutable fields:
+                        /// display_name, partner_metadata, group_information.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual object UpdateMask { get; set; }
@@ -11490,7 +11491,7 @@ namespace Google.Apis.BeyondCorp.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Proxy Configuration of a Tenant.</summary>
+    /// <summary>Proxy Configuration of a PartnerTenant.</summary>
     public class GoogleCloudBeyondcorpPartnerservicesV1alphaProxyConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         private string _createTimeRaw;
@@ -11544,10 +11545,6 @@ namespace Google.Apis.BeyondCorp.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Optional. Protocol config data for the Proxy.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("proxyProtocolConfig")]
-        public virtual GoogleCloudBeyondcorpPartnerservicesV1alphaProxyProtocolConfig ProxyProtocolConfig { get; set; }
-
         /// <summary>Required. The URI of the proxy server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("proxyUri")]
         public virtual string ProxyUri { get; set; }
@@ -11596,19 +11593,6 @@ namespace Google.Apis.BeyondCorp.v1alpha.Data
             get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
         }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>The protocol data that specifies how to communicate with Partner's Proxy.</summary>
-    public class GoogleCloudBeyondcorpPartnerservicesV1alphaProxyProtocolConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Optional. Untyped property bag to be sent back to the proxy using client specific mechanism.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual System.Collections.Generic.IDictionary<string, string> Metadata { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -38,6 +38,7 @@ namespace Google.Apis.Storage.v1
             Buckets = new BucketsResource(this);
             Channels = new ChannelsResource(this);
             DefaultObjectAccessControls = new DefaultObjectAccessControlsResource(this);
+            ManagedFolders = new ManagedFoldersResource(this);
             Notifications = new NotificationsResource(this);
             ObjectAccessControls = new ObjectAccessControlsResource(this);
             Objects = new ObjectsResource(this);
@@ -112,6 +113,9 @@ namespace Google.Apis.Storage.v1
 
         /// <summary>Gets the DefaultObjectAccessControls resource.</summary>
         public virtual DefaultObjectAccessControlsResource DefaultObjectAccessControls { get; }
+
+        /// <summary>Gets the ManagedFolders resource.</summary>
+        public virtual ManagedFoldersResource ManagedFolders { get; }
 
         /// <summary>Gets the Notifications resource.</summary>
         public virtual NotificationsResource Notifications { get; }
@@ -2460,6 +2464,585 @@ namespace Google.Apis.Storage.v1
                     Name = "entity",
                     IsRequired = true,
                     ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+    }
+
+    /// <summary>The "managedFolders" collection of methods.</summary>
+    public class ManagedFoldersResource
+    {
+        private const string Resource = "managedFolders";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public ManagedFoldersResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>Permanently deletes a managed folder.</summary>
+        /// <param name="bucket">Name of the bucket containing the managed folder.</param>
+        /// <param name="managedFolder">The managed folder name/path.</param>
+        public virtual DeleteRequest Delete(string bucket, string managedFolder)
+        {
+            return new DeleteRequest(service, bucket, managedFolder);
+        }
+
+        /// <summary>Permanently deletes a managed folder.</summary>
+        public class DeleteRequest : StorageBaseServiceRequest<string>
+        {
+            /// <summary>Constructs a new Delete request.</summary>
+            public DeleteRequest(Google.Apis.Services.IClientService service, string bucket, string managedFolder) : base(service)
+            {
+                Bucket = bucket;
+                ManagedFolder = managedFolder;
+                InitParameters();
+            }
+
+            /// <summary>Name of the bucket containing the managed folder.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("bucket", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Bucket { get; private set; }
+
+            /// <summary>The managed folder name/path.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("managedFolder", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ManagedFolder { get; private set; }
+
+            /// <summary>If set, only deletes the managed folder if its metageneration matches this value.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("ifMetagenerationMatch", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> IfMetagenerationMatch { get; set; }
+
+            /// <summary>
+            /// If set, only deletes the managed folder if its metageneration does not match this value.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("ifMetagenerationNotMatch", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> IfMetagenerationNotMatch { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "delete";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "DELETE";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "b/{bucket}/managedFolders/{managedFolder}";
+
+            /// <summary>Initializes Delete parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("bucket", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "bucket",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("managedFolder", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "managedFolder",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ifMetagenerationMatch", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ifMetagenerationMatch",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ifMetagenerationNotMatch", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ifMetagenerationNotMatch",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Returns metadata of the specified managed folder.</summary>
+        /// <param name="bucket">Name of the bucket containing the managed folder.</param>
+        /// <param name="managedFolder">The managed folder name/path.</param>
+        public virtual GetRequest Get(string bucket, string managedFolder)
+        {
+            return new GetRequest(service, bucket, managedFolder);
+        }
+
+        /// <summary>Returns metadata of the specified managed folder.</summary>
+        public class GetRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.ManagedFolder>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string bucket, string managedFolder) : base(service)
+            {
+                Bucket = bucket;
+                ManagedFolder = managedFolder;
+                InitParameters();
+            }
+
+            /// <summary>Name of the bucket containing the managed folder.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("bucket", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Bucket { get; private set; }
+
+            /// <summary>The managed folder name/path.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("managedFolder", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ManagedFolder { get; private set; }
+
+            /// <summary>
+            /// Makes the return of the managed folder metadata conditional on whether the managed folder's current
+            /// metageneration matches the given value.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("ifMetagenerationMatch", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> IfMetagenerationMatch { get; set; }
+
+            /// <summary>
+            /// Makes the return of the managed folder metadata conditional on whether the managed folder's current
+            /// metageneration does not match the given value.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("ifMetagenerationNotMatch", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> IfMetagenerationNotMatch { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "get";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "b/{bucket}/managedFolders/{managedFolder}";
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("bucket", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "bucket",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("managedFolder", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "managedFolder",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ifMetagenerationMatch", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ifMetagenerationMatch",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ifMetagenerationNotMatch", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ifMetagenerationNotMatch",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Returns an IAM policy for the specified managed folder.</summary>
+        /// <param name="bucket">Name of the bucket containing the managed folder.</param>
+        /// <param name="managedFolder">The managed folder name/path.</param>
+        public virtual GetIamPolicyRequest GetIamPolicy(string bucket, string managedFolder)
+        {
+            return new GetIamPolicyRequest(service, bucket, managedFolder);
+        }
+
+        /// <summary>Returns an IAM policy for the specified managed folder.</summary>
+        public class GetIamPolicyRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.Policy>
+        {
+            /// <summary>Constructs a new GetIamPolicy request.</summary>
+            public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string bucket, string managedFolder) : base(service)
+            {
+                Bucket = bucket;
+                ManagedFolder = managedFolder;
+                InitParameters();
+            }
+
+            /// <summary>Name of the bucket containing the managed folder.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("bucket", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Bucket { get; private set; }
+
+            /// <summary>The managed folder name/path.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("managedFolder", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ManagedFolder { get; private set; }
+
+            /// <summary>
+            /// The IAM policy format version to be returned. If the optionsRequestedPolicyVersion is for an older
+            /// version that doesn't support part of the requested IAM policy, the request fails.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("optionsRequestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
+
+            /// <summary>The project to be billed for this request. Required for Requester Pays buckets.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string UserProject { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "getIamPolicy";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "b/{bucket}/managedFolders/{managedFolder}/iam";
+
+            /// <summary>Initializes GetIamPolicy parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("bucket", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "bucket",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("managedFolder", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "managedFolder",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("optionsRequestedPolicyVersion", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "optionsRequestedPolicyVersion",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Creates a new managed folder.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="bucket">Name of the bucket containing the managed folder.</param>
+        public virtual InsertRequest Insert(Google.Apis.Storage.v1.Data.ManagedFolder body, string bucket)
+        {
+            return new InsertRequest(service, body, bucket);
+        }
+
+        /// <summary>Creates a new managed folder.</summary>
+        public class InsertRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.ManagedFolder>
+        {
+            /// <summary>Constructs a new Insert request.</summary>
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Storage.v1.Data.ManagedFolder body, string bucket) : base(service)
+            {
+                Bucket = bucket;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Name of the bucket containing the managed folder.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("bucket", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Bucket { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Storage.v1.Data.ManagedFolder Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "insert";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "b/{bucket}/managedFolders";
+
+            /// <summary>Initializes Insert parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("bucket", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "bucket",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Lists managed folders in the given bucket.</summary>
+        /// <param name="bucket">Name of the bucket containing the managed folder.</param>
+        public virtual ListRequest List(string bucket)
+        {
+            return new ListRequest(service, bucket);
+        }
+
+        /// <summary>Lists managed folders in the given bucket.</summary>
+        public class ListRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.ManagedFolders>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service, string bucket) : base(service)
+            {
+                Bucket = bucket;
+                InitParameters();
+            }
+
+            /// <summary>Name of the bucket containing the managed folder.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("bucket", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Bucket { get; private set; }
+
+            /// <summary>Maximum number of items return in a single page of responses.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>
+            /// A previously-returned page token representing part of the larger set of results to view.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>The managed folder name/path prefix to filter the output list of results.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("prefix", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Prefix { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "list";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "b/{bucket}/managedFolders";
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("bucket", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "bucket",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("prefix", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "prefix",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Updates an IAM policy for the specified managed folder.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="bucket">Name of the bucket containing the managed folder.</param>
+        /// <param name="managedFolder">The managed folder name/path.</param>
+        public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Storage.v1.Data.Policy body, string bucket, string managedFolder)
+        {
+            return new SetIamPolicyRequest(service, body, bucket, managedFolder);
+        }
+
+        /// <summary>Updates an IAM policy for the specified managed folder.</summary>
+        public class SetIamPolicyRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.Policy>
+        {
+            /// <summary>Constructs a new SetIamPolicy request.</summary>
+            public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Storage.v1.Data.Policy body, string bucket, string managedFolder) : base(service)
+            {
+                Bucket = bucket;
+                ManagedFolder = managedFolder;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Name of the bucket containing the managed folder.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("bucket", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Bucket { get; private set; }
+
+            /// <summary>The managed folder name/path.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("managedFolder", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ManagedFolder { get; private set; }
+
+            /// <summary>The project to be billed for this request. Required for Requester Pays buckets.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string UserProject { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Storage.v1.Data.Policy Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "setIamPolicy";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "PUT";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "b/{bucket}/managedFolders/{managedFolder}/iam";
+
+            /// <summary>Initializes SetIamPolicy parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("bucket", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "bucket",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("managedFolder", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "managedFolder",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>
+        /// Tests a set of permissions on the given managed folder to see which, if any, are held by the caller.
+        /// </summary>
+        /// <param name="bucket">Name of the bucket containing the managed folder.</param>
+        /// <param name="managedFolder">The managed folder name/path.</param>
+        /// <param name="permissions">Permissions to test.</param>
+        public virtual TestIamPermissionsRequest TestIamPermissions(string bucket, string managedFolder, Google.Apis.Util.Repeatable<string> permissions)
+        {
+            return new TestIamPermissionsRequest(service, bucket, managedFolder, permissions);
+        }
+
+        /// <summary>
+        /// Tests a set of permissions on the given managed folder to see which, if any, are held by the caller.
+        /// </summary>
+        public class TestIamPermissionsRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.TestIamPermissionsResponse>
+        {
+            /// <summary>Constructs a new TestIamPermissions request.</summary>
+            public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, string bucket, string managedFolder, Google.Apis.Util.Repeatable<string> permissions) : base(service)
+            {
+                Bucket = bucket;
+                ManagedFolder = managedFolder;
+                Permissions = permissions;
+                InitParameters();
+            }
+
+            /// <summary>Name of the bucket containing the managed folder.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("bucket", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Bucket { get; private set; }
+
+            /// <summary>The managed folder name/path.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("managedFolder", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ManagedFolder { get; private set; }
+
+            /// <summary>Permissions to test.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("permissions", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<string> Permissions { get; private set; }
+
+            /// <summary>The project to be billed for this request. Required for Requester Pays buckets.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string UserProject { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "testIamPermissions";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "b/{bucket}/managedFolders/{managedFolder}/iam/testPermissions";
+
+            /// <summary>Initializes TestIamPermissions parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("bucket", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "bucket",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("managedFolder", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "managedFolder",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("permissions", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "permissions",
+                    IsRequired = true,
+                    ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
                 });
@@ -5050,6 +5633,13 @@ namespace Google.Apis.Storage.v1
             public virtual string EndOffset { get; set; }
 
             /// <summary>
+            /// Only applicable if delimiter is set to '/'. If true, will also include folders and managed folders
+            /// (besides objects) in the returned prefixes.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("includeFoldersAsPrefixes", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> IncludeFoldersAsPrefixes { get; set; }
+
+            /// <summary>
             /// If true, objects that end in exactly one instance of delimiter will have their metadata included in
             /// items in addition to prefixes.
             /// </summary>
@@ -5152,6 +5742,14 @@ namespace Google.Apis.Storage.v1
                 RequestParameters.Add("endOffset", new Google.Apis.Discovery.Parameter
                 {
                     Name = "endOffset",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("includeFoldersAsPrefixes", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "includeFoldersAsPrefixes",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -8726,6 +9324,106 @@ namespace Google.Apis.Storage.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A managed folder.</summary>
+    public class ManagedFolder : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the bucket containing this managed folder.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bucket")]
+        public virtual string Bucket { get; set; }
+
+        /// <summary>The creation time of the managed folder in RFC 3339 format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw { get; set; }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary><seealso cref="System.DateTime"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual System.DateTime? CreateTime
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+        }
+
+        /// <summary>The ID of the managed folder, including the bucket name and managed folder name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>The kind of item this is. For managed folders, this is always storage#managedFolder.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        /// <summary>
+        /// The version of the metadata for this managed folder. Used for preconditions and for detecting changes in
+        /// metadata.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metageneration")]
+        public virtual System.Nullable<long> Metageneration { get; set; }
+
+        /// <summary>The name of the managed folder. Required if not specified by URL parameter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The link to this managed folder.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
+        public virtual string SelfLink { get; set; }
+
+        /// <summary>The last update time of the managed folder metadata in RFC 3339 format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw { get; set; }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary><seealso cref="System.DateTime"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual System.DateTime? UpdateTime
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A list of managed folders.</summary>
+    public class ManagedFolders : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of items.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual System.Collections.Generic.IList<ManagedFolder> Items { get; set; }
+
+        /// <summary>
+        /// The kind of item this is. For lists of managed folders, this is always storage#managedFolders.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        /// <summary>
+        /// The continuation token, used to page through large result sets. Provide this value in a subsequent request
+        /// to return the next page of results.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A subscription to receive Google PubSub notifications.</summary>
     public class Notification : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9318,7 +10016,7 @@ namespace Google.Apis.Storage.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A bucket/object IAM policy.</summary>
+    /// <summary>A bucket/object/managedFolder IAM policy.</summary>
     public class Policy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -9339,10 +10037,10 @@ namespace Google.Apis.Storage.v1.Data
 
         /// <summary>
         /// The ID of the resource to which this policy belongs. Will be of the form projects/_/buckets/bucket for
-        /// buckets, and projects/_/buckets/bucket/objects/object for objects. A specific generation may be specified by
-        /// appending #generationNumber to the end of the object name, e.g.
-        /// projects/_/buckets/my-bucket/objects/data.txt#17. The current generation can be denoted with #0. This field
-        /// is ignored on input.
+        /// buckets, projects/_/buckets/bucket/objects/object for objects, and
+        /// projects/_/buckets/bucket/managedFolders/managedFolder. A specific generation may be specified by appending
+        /// #generationNumber to the end of the object name, e.g. projects/_/buckets/my-bucket/objects/data.txt#17. The
+        /// current generation can be denoted with #0. This field is ignored on input.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
         public virtual string ResourceId { get; set; }
@@ -9463,7 +10161,7 @@ namespace Google.Apis.Storage.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A storage.(buckets|objects).testIamPermissions response.</summary>
+    /// <summary>A storage.(buckets|objects|managedFolders).testIamPermissions response.</summary>
     public class TestIamPermissionsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The kind of item this is.</summary>
@@ -9472,14 +10170,18 @@ namespace Google.Apis.Storage.v1.Data
 
         /// <summary>
         /// The permissions held by the caller. Permissions are always of the format storage.resource.capability, where
-        /// resource is one of buckets or objects. The supported permissions are as follows:   - storage.buckets.delete
-        /// — Delete bucket.   - storage.buckets.get — Read bucket metadata.   - storage.buckets.getIamPolicy — Read
-        /// bucket IAM policy.   - storage.buckets.create — Create bucket.   - storage.buckets.list — List buckets.   -
-        /// storage.buckets.setIamPolicy — Update bucket IAM policy.   - storage.buckets.update — Update bucket
-        /// metadata.   - storage.objects.delete — Delete object.   - storage.objects.get — Read object data and
-        /// metadata.   - storage.objects.getIamPolicy — Read object IAM policy.   - storage.objects.create — Create
-        /// object.   - storage.objects.list — List objects.   - storage.objects.setIamPolicy — Update object IAM
-        /// policy.   - storage.objects.update — Update object metadata.
+        /// resource is one of buckets, objects, or managedFolders. The supported permissions are as follows:   -
+        /// storage.buckets.delete — Delete bucket.   - storage.buckets.get — Read bucket metadata.   -
+        /// storage.buckets.getIamPolicy — Read bucket IAM policy.   - storage.buckets.create — Create bucket.   -
+        /// storage.buckets.list — List buckets.   - storage.buckets.setIamPolicy — Update bucket IAM policy.   -
+        /// storage.buckets.update — Update bucket metadata.   - storage.objects.delete — Delete object.   -
+        /// storage.objects.get — Read object data and metadata.   - storage.objects.getIamPolicy — Read object IAM
+        /// policy.   - storage.objects.create — Create object.   - storage.objects.list — List objects.   -
+        /// storage.objects.setIamPolicy — Update object IAM policy.   - storage.objects.update — Update object
+        /// metadata.  - storage.managedFolders.delete — Delete managed folder.   - storage.managedFolders.get — Read
+        /// managed folder metadata.   - storage.managedFolders.getIamPolicy — Read managed folder IAM policy.   -
+        /// storage.managedFolders.create — Create managed folder.   - storage.managedFolders.list — List managed
+        /// folders.   - storage.managedFolders.setIamPolicy — Update managed folder IAM policy.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
         public virtual System.Collections.Generic.IList<string> Permissions { get; set; }

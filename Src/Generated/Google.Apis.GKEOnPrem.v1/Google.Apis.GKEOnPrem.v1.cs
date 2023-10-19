@@ -10177,7 +10177,10 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("platformConfig")]
         public virtual VmwarePlatformConfig PlatformConfig { get; set; }
 
-        /// <summary>The VMware admin cluster prepared secrets configuration.</summary>
+        /// <summary>
+        /// Output only. The VMware admin cluster prepared secrets configuration. It should always be enabled by the
+        /// Central API, instead of letting users set it.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("preparedSecrets")]
         public virtual VmwareAdminPreparedSecretsConfig PreparedSecrets { get; set; }
 
