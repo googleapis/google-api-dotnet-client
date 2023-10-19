@@ -5762,11 +5762,11 @@ namespace Google.Apis.MigrationCenterAPI.v1.Data
             set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
         }
 
-        /// <summary>The description of the resource.</summary>
+        /// <summary>Optional. The description of the group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
-        /// <summary>User-friendly display name.</summary>
+        /// <summary>Optional. User-friendly display name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
@@ -8163,6 +8163,10 @@ namespace Google.Apis.MigrationCenterAPI.v1.Data
     /// <summary>Describes the Migration Center settings related to the project.</summary>
     public class Settings : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Disable Cloud Logging for the Migration Center API. Users are billed for the logs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disableCloudLogging")]
+        public virtual System.Nullable<bool> DisableCloudLogging { get; set; }
+
         /// <summary>Output only. The name of the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }

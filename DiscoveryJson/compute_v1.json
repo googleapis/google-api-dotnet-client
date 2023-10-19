@@ -1184,6 +1184,47 @@
       "https://www.googleapis.com/auth/compute.readonly"
      ]
     },
+    "getIamPolicy": {
+     "description": "Gets the access control policy for a resource. May be empty if no such policy or resource exists.",
+     "flatPath": "projects/{project}/global/backendBuckets/{resource}/getIamPolicy",
+     "httpMethod": "GET",
+     "id": "compute.backendBuckets.getIamPolicy",
+     "parameterOrder": [
+      "project",
+      "resource"
+     ],
+     "parameters": {
+      "optionsRequestedPolicyVersion": {
+       "description": "Requested IAM Policy version.",
+       "format": "int32",
+       "location": "query",
+       "type": "integer"
+      },
+      "project": {
+       "description": "Project ID for this request.",
+       "location": "path",
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "required": true,
+       "type": "string"
+      },
+      "resource": {
+       "description": "Name or id of the resource for this request.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+       "required": true,
+       "type": "string"
+      }
+     },
+     "path": "projects/{project}/global/backendBuckets/{resource}/getIamPolicy",
+     "response": {
+      "$ref": "Policy"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute",
+      "https://www.googleapis.com/auth/compute.readonly"
+     ]
+    },
     "insert": {
      "description": "Creates a BackendBucket resource in the specified project using the data included in the request.",
      "flatPath": "projects/{project}/global/backendBuckets",
@@ -1354,6 +1395,81 @@
      "scopes": [
       "https://www.googleapis.com/auth/cloud-platform",
       "https://www.googleapis.com/auth/compute"
+     ]
+    },
+    "setIamPolicy": {
+     "description": "Sets the access control policy on the specified resource. Replaces any existing policy.",
+     "flatPath": "projects/{project}/global/backendBuckets/{resource}/setIamPolicy",
+     "httpMethod": "POST",
+     "id": "compute.backendBuckets.setIamPolicy",
+     "parameterOrder": [
+      "project",
+      "resource"
+     ],
+     "parameters": {
+      "project": {
+       "description": "Project ID for this request.",
+       "location": "path",
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "required": true,
+       "type": "string"
+      },
+      "resource": {
+       "description": "Name or id of the resource for this request.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+       "required": true,
+       "type": "string"
+      }
+     },
+     "path": "projects/{project}/global/backendBuckets/{resource}/setIamPolicy",
+     "request": {
+      "$ref": "GlobalSetPolicyRequest"
+     },
+     "response": {
+      "$ref": "Policy"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
+     ]
+    },
+    "testIamPermissions": {
+     "description": "Returns permissions that a caller has on the specified resource.",
+     "flatPath": "projects/{project}/global/backendBuckets/{resource}/testIamPermissions",
+     "httpMethod": "POST",
+     "id": "compute.backendBuckets.testIamPermissions",
+     "parameterOrder": [
+      "project",
+      "resource"
+     ],
+     "parameters": {
+      "project": {
+       "description": "Project ID for this request.",
+       "location": "path",
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "required": true,
+       "type": "string"
+      },
+      "resource": {
+       "description": "Name or id of the resource for this request.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+       "required": true,
+       "type": "string"
+      }
+     },
+     "path": "projects/{project}/global/backendBuckets/{resource}/testIamPermissions",
+     "request": {
+      "$ref": "TestPermissionsRequest"
+     },
+     "response": {
+      "$ref": "TestPermissionsResponse"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute",
+      "https://www.googleapis.com/auth/compute.readonly"
      ]
     },
     "update": {
@@ -2008,6 +2124,44 @@
      "scopes": [
       "https://www.googleapis.com/auth/cloud-platform",
       "https://www.googleapis.com/auth/compute"
+     ]
+    },
+    "testIamPermissions": {
+     "description": "Returns permissions that a caller has on the specified resource.",
+     "flatPath": "projects/{project}/global/backendServices/{resource}/testIamPermissions",
+     "httpMethod": "POST",
+     "id": "compute.backendServices.testIamPermissions",
+     "parameterOrder": [
+      "project",
+      "resource"
+     ],
+     "parameters": {
+      "project": {
+       "description": "Project ID for this request.",
+       "location": "path",
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "required": true,
+       "type": "string"
+      },
+      "resource": {
+       "description": "Name or id of the resource for this request.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+       "required": true,
+       "type": "string"
+      }
+     },
+     "path": "projects/{project}/global/backendServices/{resource}/testIamPermissions",
+     "request": {
+      "$ref": "TestPermissionsRequest"
+     },
+     "response": {
+      "$ref": "TestPermissionsResponse"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute",
+      "https://www.googleapis.com/auth/compute.readonly"
      ]
     },
     "update": {
@@ -12292,7 +12446,7 @@
      ]
     },
     "getDiagnostics": {
-     "description": "Returns the interconnectDiagnostics for the specified Interconnect.",
+     "description": "Returns the interconnectDiagnostics for the specified Interconnect. In the event of a global outage, do not use this API to make decisions about where to redirect your network traffic. Unlike a VLAN attachment, which is regional, a Cloud Interconnect connection is a global resource. A global outage can prevent this API from functioning properly.",
      "flatPath": "projects/{project}/global/interconnects/{interconnect}/getDiagnostics",
      "httpMethod": "GET",
      "id": "compute.interconnects.getDiagnostics",
@@ -19190,6 +19344,52 @@
      "scopes": [
       "https://www.googleapis.com/auth/cloud-platform",
       "https://www.googleapis.com/auth/compute"
+     ]
+    },
+    "testIamPermissions": {
+     "description": "Returns permissions that a caller has on the specified resource.",
+     "flatPath": "projects/{project}/regions/{region}/backendServices/{resource}/testIamPermissions",
+     "httpMethod": "POST",
+     "id": "compute.regionBackendServices.testIamPermissions",
+     "parameterOrder": [
+      "project",
+      "region",
+      "resource"
+     ],
+     "parameters": {
+      "project": {
+       "description": "Project ID for this request.",
+       "location": "path",
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "required": true,
+       "type": "string"
+      },
+      "region": {
+       "description": "The name of the region for this request.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "required": true,
+       "type": "string"
+      },
+      "resource": {
+       "description": "Name or id of the resource for this request.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+       "required": true,
+       "type": "string"
+      }
+     },
+     "path": "projects/{project}/regions/{region}/backendServices/{resource}/testIamPermissions",
+     "request": {
+      "$ref": "TestPermissionsRequest"
+     },
+     "response": {
+      "$ref": "TestPermissionsResponse"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute",
+      "https://www.googleapis.com/auth/compute.readonly"
      ]
     },
     "update": {
@@ -34830,7 +35030,7 @@
    }
   }
  },
- "revision": "20231003",
+ "revision": "20231011",
  "rootUrl": "https://compute.googleapis.com/",
  "schemas": {
   "AWSV4Signature": {

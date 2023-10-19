@@ -7513,7 +7513,13 @@ namespace Google.Apis.Aiplatform.v1
 
                         /// <summary>Creates a new Feature in a given EntityType.</summary>
                         /// <param name="body">The body of the request.</param>
-                        /// <param name="parent"><c>null</c></param>
+                        /// <param name="parent">
+                        /// Required. The resource name of the EntityType or FeatureGroup to create a Feature. Format
+                        /// for entity_type as parent:
+                        /// `projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entity_type}`
+                        /// Format for feature_group as parent:
+                        /// `projects/{project}/locations/{location}/featureGroups/{feature_group}`
+                        /// </param>
                         public virtual CreateRequest Create(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1Feature body, string parent)
                         {
                             return new CreateRequest(service, body, parent);
@@ -7530,6 +7536,13 @@ namespace Google.Apis.Aiplatform.v1
                                 InitParameters();
                             }
 
+                            /// <summary>
+                            /// Required. The resource name of the EntityType or FeatureGroup to create a Feature.
+                            /// Format for entity_type as parent:
+                            /// `projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entity_type}`
+                            /// Format for feature_group as parent:
+                            /// `projects/{project}/locations/{location}/featureGroups/{feature_group}`
+                            /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
 
@@ -7635,8 +7648,9 @@ namespace Google.Apis.Aiplatform.v1
 
                         /// <summary>Gets details of a single Feature.</summary>
                         /// <param name="name">
-                        /// Required. The name of the Feature resource. Format:
+                        /// Required. The name of the Feature resource. Format for entity_type as parent:
                         /// `projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entity_type}`
+                        /// Format for feature_group as parent:
                         /// `projects/{project}/locations/{location}/featureGroups/{feature_group}`
                         /// </param>
                         public virtual GetRequest Get(string name)
@@ -7655,8 +7669,9 @@ namespace Google.Apis.Aiplatform.v1
                             }
 
                             /// <summary>
-                            /// Required. The name of the Feature resource. Format:
+                            /// Required. The name of the Feature resource. Format for entity_type as parent:
                             /// `projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entity_type}`
+                            /// Format for feature_group as parent:
                             /// `projects/{project}/locations/{location}/featureGroups/{feature_group}`
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -7688,8 +7703,10 @@ namespace Google.Apis.Aiplatform.v1
 
                         /// <summary>Lists Features in a given EntityType.</summary>
                         /// <param name="parent">
-                        /// Required. The resource name of the Location to list Features. Format:
+                        /// Required. The resource name of the Location to list Features. Format for entity_type as
+                        /// parent:
                         /// `projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entity_type}`
+                        /// Format for feature_group as parent:
                         /// `projects/{project}/locations/{location}/featureGroups/{feature_group}`
                         /// </param>
                         public virtual ListRequest List(string parent)
@@ -7708,8 +7725,10 @@ namespace Google.Apis.Aiplatform.v1
                             }
 
                             /// <summary>
-                            /// Required. The resource name of the Location to list Features. Format:
+                            /// Required. The resource name of the Location to list Features. Format for entity_type as
+                            /// parent:
                             /// `projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entity_type}`
+                            /// Format for feature_group as parent:
                             /// `projects/{project}/locations/{location}/featureGroups/{feature_group}`
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -7732,8 +7751,9 @@ namespace Google.Apis.Aiplatform.v1
                             public virtual string Filter { get; set; }
 
                             /// <summary>
-                            /// If set, return the most recent ListFeaturesRequest.latest_stats_count of stats for each
-                            /// Feature in response. Valid value is [0, 10]. If number of stats exists &amp;lt;
+                            /// Only applicable for Vertex AI Feature Store (Legacy). If set, return the most recent
+                            /// ListFeaturesRequest.latest_stats_count of stats for each Feature in response. Valid
+                            /// value is [0, 10]. If number of stats exists &amp;lt;
                             /// ListFeaturesRequest.latest_stats_count, return all existing stats.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("latestStatsCount", Google.Apis.Util.RequestParameterType.Query)]
@@ -7756,9 +7776,10 @@ namespace Google.Apis.Aiplatform.v1
                             public virtual System.Nullable<int> PageSize { get; set; }
 
                             /// <summary>
-                            /// A page token, received from a previous FeaturestoreService.ListFeatures call. Provide
-                            /// this to retrieve the subsequent page. When paginating, all other parameters provided to
-                            /// FeaturestoreService.ListFeatures must match the call that provided the page token.
+                            /// A page token, received from a previous FeaturestoreService.ListFeatures call or
+                            /// FeatureRegistryService.ListFeatures call. Provide this to retrieve the subsequent page.
+                            /// When paginating, all other parameters provided to FeaturestoreService.ListFeatures or or
+                            /// FeatureRegistryService.ListFeatures must match the call that provided the page token.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string PageToken { get; set; }
@@ -7844,6 +7865,7 @@ namespace Google.Apis.Aiplatform.v1
                         /// <param name="name">
                         /// Immutable. Name of the Feature. Format:
                         /// `projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entity_type}/features/{feature}`
+                        /// `projects/{project}/locations/{location}/featureGroups/{feature_group}/features/{feature}`
                         /// The last part feature is assigned by the client. The feature can be up to 64 characters long
                         /// and can consist only of ASCII Latin letters A-Z and a-z, underscore(_), and ASCII digits 0-9
                         /// starting with a letter. The value will be unique given an entity type.
@@ -7867,6 +7889,7 @@ namespace Google.Apis.Aiplatform.v1
                             /// <summary>
                             /// Immutable. Name of the Feature. Format:
                             /// `projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entity_type}/features/{feature}`
+                            /// `projects/{project}/locations/{location}/featureGroups/{feature_group}/features/{feature}`
                             /// The last part feature is assigned by the client. The feature can be up to 64 characters
                             /// long and can consist only of ASCII Latin letters A-Z and a-z, underscore(_), and ASCII
                             /// digits 0-9 starting with a letter. The value will be unique given an entity type.
@@ -7880,7 +7903,8 @@ namespace Google.Apis.Aiplatform.v1
                             /// the full request. A field will be overwritten if it is in the mask. If the user does not
                             /// provide a mask then only the non-empty fields present in the request will be
                             /// overwritten. Set the update_mask to `*` to override all fields. Updatable fields: *
-                            /// `description` * `labels` * `disable_monitoring`
+                            /// `description` * `labels` * `disable_monitoring` (Not supported for FeatureRegistry
+                            /// Feature)
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual object UpdateMask { get; set; }
@@ -31669,6 +31693,11 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("featureId")]
         public virtual string FeatureId { get; set; }
 
+        /// <summary>
+        /// Required. The resource name of the EntityType or FeatureGroup to create a Feature. Format for entity_type as
+        /// parent: `projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entity_type}`
+        /// Format for feature_group as parent: `projects/{project}/locations/{location}/featureGroups/{feature_group}`
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
         public virtual string Parent { get; set; }
 
@@ -32128,6 +32157,14 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; }
+
+        /// <summary>
+        /// The ID of the location to store protected artifacts. e.g. us-central1. Populate only when the location is
+        /// different than CustomJob location. For unprotected artifacts, the value of this field is ignored. List of
+        /// supported locations: https://cloud.google.com/vertex-ai/docs/general/locations
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("protectedArtifactLocationId")]
+        public virtual string ProtectedArtifactLocationId { get; set; }
 
         /// <summary>
         /// Optional. A list of names for the reserved ip ranges under the VPC network that can be used for this job. If
@@ -35130,17 +35167,17 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Feature Metadata information that describes an attribute of an entity type. For example, apple is an entity
-    /// type, and color is a feature that describes apple.
-    /// </summary>
+    /// <summary>Feature Metadata information. For example, color is a feature that describes an apple.</summary>
     public class GoogleCloudAiplatformV1Feature : Google.Apis.Requests.IDirectResponseSchema
     {
         private string _createTimeRaw;
 
         private object _createTime;
 
-        /// <summary>Output only. Timestamp when this EntityType was created.</summary>
+        /// <summary>
+        /// Output only. Only applicable for Vertex AI Feature Store (Legacy). Timestamp when this EntityType was
+        /// created.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual string CreateTimeRaw
         {
@@ -35178,9 +35215,10 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string Description { get; set; }
 
         /// <summary>
-        /// Optional. If not set, use the monitoring_config defined for the EntityType this Feature belongs to. Only
-        /// Features with type (Feature.ValueType) BOOL, STRING, DOUBLE or INT64 can enable monitoring. If set to true,
-        /// all types of data monitoring are disabled despite the config on EntityType.
+        /// Optional. Only applicable for Vertex AI Feature Store (Legacy). If not set, use the monitoring_config
+        /// defined for the EntityType this Feature belongs to. Only Features with type (Feature.ValueType) BOOL,
+        /// STRING, DOUBLE or INT64 can enable monitoring. If set to true, all types of data monitoring are disabled
+        /// despite the config on EntityType.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disableMonitoring")]
         public virtual System.Nullable<bool> DisableMonitoring { get; set; }
@@ -35201,16 +35239,20 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
-        /// <summary>Output only. The list of historical stats and anomalies with specified objectives.</summary>
+        /// <summary>
+        /// Output only. Only applicable for Vertex AI Feature Store (Legacy). The list of historical stats and
+        /// anomalies with specified objectives.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("monitoringStatsAnomalies")]
         public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1FeatureMonitoringStatsAnomaly> MonitoringStatsAnomalies { get; set; }
 
         /// <summary>
         /// Immutable. Name of the Feature. Format:
         /// `projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entity_type}/features/{feature}`
-        /// The last part feature is assigned by the client. The feature can be up to 64 characters long and can consist
-        /// only of ASCII Latin letters A-Z and a-z, underscore(_), and ASCII digits 0-9 starting with a letter. The
-        /// value will be unique given an entity type.
+        /// `projects/{project}/locations/{location}/featureGroups/{feature_group}/features/{feature}` The last part
+        /// feature is assigned by the client. The feature can be up to 64 characters long and can consist only of ASCII
+        /// Latin letters A-Z and a-z, underscore(_), and ASCII digits 0-9 starting with a letter. The value will be
+        /// unique given an entity type.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -35219,7 +35261,10 @@ namespace Google.Apis.Aiplatform.v1.Data
 
         private object _updateTime;
 
-        /// <summary>Output only. Timestamp when this EntityType was most recently updated.</summary>
+        /// <summary>
+        /// Output only. Only applicable for Vertex AI Feature Store (Legacy). Timestamp when this EntityType was most
+        /// recently updated.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual string UpdateTimeRaw
         {
@@ -35252,7 +35297,7 @@ namespace Google.Apis.Aiplatform.v1.Data
             set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
         }
 
-        /// <summary>Immutable. Type of Feature value.</summary>
+        /// <summary>Immutable. Only applicable for Vertex AI Feature Store (Legacy). Type of Feature value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valueType")]
         public virtual string ValueType { get; set; }
     }

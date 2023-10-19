@@ -758,7 +758,11 @@ namespace Google.Apis.Workflows.v1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Filter to restrict results to specific workflows.</summary>
+                    /// <summary>
+                    /// Filter to restrict results to specific workflows. For details, see AIP-160. For example, if you
+                    /// are using the Google APIs Explorer: `state="SUCCEEDED"` or `createTime&amp;gt;"2023-08-01" AND
+                    /// state="FAILED"`
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 

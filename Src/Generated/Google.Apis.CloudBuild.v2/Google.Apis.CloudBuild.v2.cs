@@ -2088,7 +2088,7 @@ namespace Google.Apis.CloudBuild.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A connection to a SCM like GitHub, GitHub Enterprise, Bitbucket Server or GitLab.</summary>
+    /// <summary>A connection to a SCM like GitHub, GitHub Enterprise, Bitbucket Data Center or GitLab.</summary>
     public class Connection : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Allows clients to store small amounts of arbitrary data.</summary>
@@ -3285,7 +3285,7 @@ namespace Google.Apis.CloudBuild.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pipelineRef")]
         public virtual PipelineRef PipelineRef { get; set; }
 
-        /// <summary>Status of the PipelineRun.</summary>
+        /// <summary>Pipelinerun status the user can provide. Used for cancellation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pipelineRunStatus")]
         public virtual string PipelineRunStatus { get; set; }
 

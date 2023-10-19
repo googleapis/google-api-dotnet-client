@@ -2229,8 +2229,8 @@ namespace Google.Apis.CloudIAP.v1.Data
         public virtual string Method { get; set; }
 
         /// <summary>
-        /// How IAP determines the effective policy in cases of hierarchial policies. Policies are merged from higher in
-        /// the hierarchy to lower in the hierarchy.
+        /// How IAP determines the effective policy in cases of hierarchical policies. Policies are merged from higher
+        /// in the hierarchy to lower in the hierarchy.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policyType")]
         public virtual string PolicyType { get; set; }

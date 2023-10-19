@@ -5456,6 +5456,21 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Information about software detected on an asset.</summary>
+    public class DetectedSoftware : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Software family of the detected software, e.g. Database, SAP family.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("softwareFamily")]
+        public virtual string SoftwareFamily { get; set; }
+
+        /// <summary>Output only. Software's name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("softwareName")]
+        public virtual string SoftwareName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Single disk entry.</summary>
     public class DiskEntry : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5872,11 +5887,11 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
             set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
         }
 
-        /// <summary>The description of the resource.</summary>
+        /// <summary>Optional. The description of the group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
-        /// <summary>User-friendly display name.</summary>
+        /// <summary>Optional. User-friendly display name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
@@ -6355,6 +6370,10 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         /// <summary>Output only. An insight about potential migrations for an asset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("migrationInsight")]
         public virtual MigrationInsight MigrationInsight { get; set; }
+
+        /// <summary>Output only. An insight regarding software detected on an asset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("softwareInsight")]
+        public virtual SoftwareInsight SoftwareInsight { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8101,6 +8120,17 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         /// <summary>The preference set used by default for a project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("preferenceSet")]
         public virtual string PreferenceSet { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An insight regarding software detected on an asset.</summary>
+    public class SoftwareInsight : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Information about the detected software.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detectedSoftware")]
+        public virtual DetectedSoftware DetectedSoftware { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

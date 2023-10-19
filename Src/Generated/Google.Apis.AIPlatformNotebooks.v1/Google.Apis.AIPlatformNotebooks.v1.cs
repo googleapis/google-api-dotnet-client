@@ -1387,6 +1387,63 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                     }
                 }
 
+                /// <summary>Migrates an existing User-Managed Notebook to Workbench Instances.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}`
+                /// </param>
+                public virtual MigrateRequest Migrate(Google.Apis.AIPlatformNotebooks.v1.Data.MigrateInstanceRequest body, string name)
+                {
+                    return new MigrateRequest(service, body, name);
+                }
+
+                /// <summary>Migrates an existing User-Managed Notebook to Workbench Instances.</summary>
+                public class MigrateRequest : AIPlatformNotebooksBaseServiceRequest<Google.Apis.AIPlatformNotebooks.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Migrate request.</summary>
+                    public MigrateRequest(Google.Apis.Services.IClientService service, Google.Apis.AIPlatformNotebooks.v1.Data.MigrateInstanceRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.AIPlatformNotebooks.v1.Data.MigrateInstanceRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "migrate";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:migrate";
+
+                    /// <summary>Initializes Migrate parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>
                 /// Registers an existing legacy notebook instance to the Notebooks API server. Legacy instances are
                 /// instances created with the legacy Compute Engine calls. They are not manageable by the Notebooks API
@@ -3113,6 +3170,63 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Migrate an existing Runtime to a new Workbench Instance.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. Format: `projects/{project_id}/locations/{location}/runtimes/{runtime_id}`
+                /// </param>
+                public virtual MigrateRequest Migrate(Google.Apis.AIPlatformNotebooks.v1.Data.MigrateRuntimeRequest body, string name)
+                {
+                    return new MigrateRequest(service, body, name);
+                }
+
+                /// <summary>Migrate an existing Runtime to a new Workbench Instance.</summary>
+                public class MigrateRequest : AIPlatformNotebooksBaseServiceRequest<Google.Apis.AIPlatformNotebooks.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Migrate request.</summary>
+                    public MigrateRequest(Google.Apis.Services.IClientService service, Google.Apis.AIPlatformNotebooks.v1.Data.MigrateRuntimeRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Format: `projects/{project_id}/locations/{location}/runtimes/{runtime_id}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.AIPlatformNotebooks.v1.Data.MigrateRuntimeRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "migrate";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:migrate";
+
+                    /// <summary>Initializes Migrate parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/runtimes/[^/]+$",
                         });
                     }
                 }
@@ -5641,6 +5755,58 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request for migrating a User-Managed Notebook to Workbench Instances.</summary>
+    public class MigrateInstanceRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Specifies the behavior of post startup script during migration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("postStartupScriptOption")]
+        public virtual string PostStartupScriptOption { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request for migrating a Runtime to a Workbench Instance.</summary>
+    public class MigrateRuntimeRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Name of the VPC that the new Instance is in. This is required if the Runtime uses google-managed
+        /// network. If the Runtime uses customer-owned network, it will reuse the same VPC, and this field must be
+        /// empty. Format: `projects/{project_id}/global/networks/{network_id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("network")]
+        public virtual string Network { get; set; }
+
+        /// <summary>Optional. Specifies the behavior of post startup script during migration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("postStartupScriptOption")]
+        public virtual string PostStartupScriptOption { get; set; }
+
+        /// <summary>Optional. Idempotent request UUID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
+        public virtual string RequestId { get; set; }
+
+        /// <summary>
+        /// Optional. The service account to be included in the Compute Engine instance of the new Workbench Instance
+        /// when the Runtime uses "single user only" mode for permission. If not specified, the [Compute Engine default
+        /// service account](https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is
+        /// used. When the Runtime uses service account mode for permission, it will reuse the same service account, and
+        /// this field must be empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
+        public virtual string ServiceAccount { get; set; }
+
+        /// <summary>
+        /// Optional. Name of the subnet that the new Instance is in. This is required if the Runtime uses
+        /// google-managed network. If the Runtime uses customer-owned network, it will reuse the same subnet, and this
+        /// field must be empty. Format: `projects/{project_id}/regions/{region}/subnetworks/{subnetwork_id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subnet")]
+        public virtual string Subnet { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

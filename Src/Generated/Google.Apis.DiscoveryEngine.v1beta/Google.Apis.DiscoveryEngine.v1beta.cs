@@ -7147,17 +7147,6 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response message for SiteSearchEngineService.BatchCreateTargetSites method.</summary>
-    public class GoogleCloudDiscoveryengineV1alphaBatchCreateTargetSitesResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>TargetSites created.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("targetSites")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaTargetSite> TargetSites { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Metadata for Create Schema LRO.</summary>
     public class GoogleCloudDiscoveryengineV1alphaCreateSchemaMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9657,8 +9646,11 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// Filter for restricting recommendation results with a length limit of 5,000 characters. Currently, only
         /// filter expressions on the `filter_tags` attribute is supported. Examples: * `(filter_tags: ANY("Red",
         /// "Blue") OR filter_tags: ANY("Hot", "Cold"))` * `(filter_tags: ANY("Red", "Blue")) AND NOT (filter_tags:
-        /// ANY("Green"))` If your filter blocks all results, the API will return generic (unfiltered) popular
-        /// Documents. If you only want results strictly matching the filters, set `strictFiltering` to True in
+        /// ANY("Green"))` If `attributeFilteringSyntax` is set to true under the `params` field, then attribute-based
+        /// expressions are expected instead of the above described tag-based syntax. Examples: * (launguage: ANY("en",
+        /// "es")) AND NOT (categories: ANY("Movie")) * (available: true) AND (launguage: ANY("en", "es")) OR
+        /// (categories: ANY("Movie")) If your filter blocks all results, the API will return generic (unfiltered)
+        /// popular Documents. If you only want results strictly matching the filters, set `strictFiltering` to True in
         /// RecommendRequest.params to receive empty results instead. Note that the API will never return Documents with
         /// `storageStatus` of `EXPIRED` or `DELETED` regardless of filter choices.
         /// </summary>
@@ -9683,7 +9675,9 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// false, the service will return generic (unfiltered) popular Documents instead of empty if your filter blocks
         /// all recommendation results. * `diversityLevel`: String. Default empty. If set to be non-empty, then it needs
         /// to be one of: * `no-diversity` * `low-diversity` * `medium-diversity` * `high-diversity` * `auto-diversity`
-        /// This gives request-level control and adjusts recommendation results based on Document category.
+        /// This gives request-level control and adjusts recommendation results based on Document category. *
+        /// `attributeFilteringSyntax`: Boolean. False by default. If set to true, the `filter` field is interpreted
+        /// according to the new, attribute-based syntax.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("params")]
         public virtual System.Collections.Generic.IDictionary<string, object> Params__ { get; set; }
@@ -9881,7 +9875,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     /// <summary>Request message for SearchService.Search method.</summary>
     public class GoogleCloudDiscoveryengineV1betaSearchRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Boost specification to boost certain documents.</summary>
+        /// <summary>
+        /// Boost specification to boost certain documents. For more information on boosting, see
+        /// [Boosting](https://cloud.google.com/retail/docs/boosting#boost)
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boostSpec")]
         public virtual GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpec BoostSpec { get; set; }
 
@@ -9917,7 +9914,12 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// <summary>
         /// The filter syntax consists of an expression language for constructing a predicate from one or more fields of
         /// the documents being filtered. Filter expression is case-sensitive. If this field is unrecognizable, an
-        /// `INVALID_ARGUMENT` is returned.
+        /// `INVALID_ARGUMENT` is returned. Filtering in Vertex AI Search is done by mapping the LHS filter key to a key
+        /// property defined in the Vertex AI Search backend -- this mapping is defined by the customer in their schema.
+        /// For example a media customer might have a field 'name' in their schema. In this case the filter would look
+        /// like this: filter --&amp;gt; name:'ANY("king kong")' For more information about filtering including syntax
+        /// and filter operators, see
+        /// [Filter](https://cloud.google.com/generative-ai-app-builder/docs/filter-search-metadata)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; }
@@ -9936,7 +9938,8 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
 
         /// <summary>
         /// The order in which documents are returned. Documents can be ordered by a field in an Document object. Leave
-        /// it unset if ordered by relevance. `order_by` expression is case-sensitive. If this field is unrecognizable,
+        /// it unset if ordered by relevance. `order_by` expression is case-sensitive. For more information on ordering,
+        /// see [Ordering](https://cloud.google.com/retail/docs/filter-and-order#order) If this field is unrecognizable,
         /// an `INVALID_ARGUMENT` is returned.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orderBy")]

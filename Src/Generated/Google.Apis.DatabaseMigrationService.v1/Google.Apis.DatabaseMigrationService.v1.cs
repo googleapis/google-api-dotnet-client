@@ -5870,7 +5870,7 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("engine")]
         public virtual string Engine { get; set; }
 
-        /// <summary>Required. Engine named version, for example 12.c.1.</summary>
+        /// <summary>Required. Engine version, for example "12.c.1".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
 

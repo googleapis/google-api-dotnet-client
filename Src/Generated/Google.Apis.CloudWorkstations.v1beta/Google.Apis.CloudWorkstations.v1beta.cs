@@ -2716,6 +2716,17 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration options for a custom domain.</summary>
+    public class DomainConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Immutable. Domain used by Workstations for HTTP ingress.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("domain")]
+        public virtual string Domain { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// An ephemeral directory which won't persist across workstation sessions. It is freshly created on every
     /// workstation start operation.
@@ -3956,6 +3967,10 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         /// <summary>Optional. Human-readable name for this workstation cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
+
+        /// <summary>Optional. Configuration options for a custom domain.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("domainConfig")]
+        public virtual DomainConfig DomainConfig { get; set; }
 
         /// <summary>
         /// Optional. Checksum computed by the server. May be sent on update and delete requests to make sure that the

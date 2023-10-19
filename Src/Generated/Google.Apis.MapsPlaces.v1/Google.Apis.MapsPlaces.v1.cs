@@ -395,203 +395,215 @@ namespace Google.Apis.MapsPlaces.v1.Data
     /// <summary>All the information representing a Place.</summary>
     public class GoogleMapsPlacesV1Place : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. Information about the accessibility options a place offers.</summary>
+        /// <summary>Information about the accessibility options a place offers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accessibilityOptions")]
         public virtual GoogleMapsPlacesV1PlaceAccessibilityOptions AccessibilityOptions { get; set; }
 
-        /// <summary>Output only. Repeated components for each locality level.</summary>
+        /// <summary>
+        /// Repeated components for each locality level. Note the following facts about the address_components[] array:
+        /// - The array of address components may contain more components than the formatted_address. - The array does
+        /// not necessarily include all the political entities that contain an address, apart from those included in the
+        /// formatted_address. To retrieve all the political entities that contain a specific address, you should use
+        /// reverse geocoding, passing the latitude/longitude of the address as a parameter to the request. - The format
+        /// of the response is not guaranteed to remain the same between requests. In particular, the number of
+        /// address_components varies based on the address requested and can change over time for the same address. A
+        /// component can change position in the array. The type of the component can change. A particular component may
+        /// be missing in a later response.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("addressComponents")]
         public virtual System.Collections.Generic.IList<GoogleMapsPlacesV1PlaceAddressComponent> AddressComponents { get; set; }
 
-        /// <summary>Output only. The place's address in adr microformat: http://microformats.org/wiki/adr.</summary>
+        /// <summary>The place's address in adr microformat: http://microformats.org/wiki/adr.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adrFormatAddress")]
         public virtual string AdrFormatAddress { get; set; }
 
-        /// <summary>Output only. A set of data provider that must be shown with this result.</summary>
+        /// <summary>A set of data provider that must be shown with this result.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributions")]
         public virtual System.Collections.Generic.IList<GoogleMapsPlacesV1PlaceAttribution> Attributions { get; set; }
 
-        /// <summary>Output only. The business status for the place.</summary>
+        /// <summary>The business status for the place.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("businessStatus")]
         public virtual string BusinessStatus { get; set; }
 
-        /// <summary>Output only. Specifies if the business supports curbside pickup.</summary>
+        /// <summary>Specifies if the business supports curbside pickup.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("curbsidePickup")]
         public virtual System.Nullable<bool> CurbsidePickup { get; set; }
 
         /// <summary>
-        /// Output only. The hours of operation for the next seven days (including today). The time period starts at
-        /// midnight on the date of the request and ends at 11:59 pm six days later. This field includes the
-        /// special_days subfield of all hours, set for dates that have exceptional hours.
+        /// The hours of operation for the next seven days (including today). The time period starts at midnight on the
+        /// date of the request and ends at 11:59 pm six days later. This field includes the special_days subfield of
+        /// all hours, set for dates that have exceptional hours.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currentOpeningHours")]
         public virtual GoogleMapsPlacesV1PlaceOpeningHours CurrentOpeningHours { get; set; }
 
         /// <summary>
-        /// Output only. Contains an array of entries for the next seven days including information about secondary
-        /// hours of a business. Secondary hours are different from a business's main hours. For example, a restaurant
-        /// can specify drive through hours or delivery hours as its secondary hours. This field populates the type
-        /// subfield, which draws from a predefined list of opening hours types (such as DRIVE_THROUGH, PICKUP, or
-        /// TAKEOUT) based on the types of the place. This field includes the special_days subfield of all hours, set
-        /// for dates that have exceptional hours.
+        /// Contains an array of entries for the next seven days including information about secondary hours of a
+        /// business. Secondary hours are different from a business's main hours. For example, a restaurant can specify
+        /// drive through hours or delivery hours as its secondary hours. This field populates the type subfield, which
+        /// draws from a predefined list of opening hours types (such as DRIVE_THROUGH, PICKUP, or TAKEOUT) based on the
+        /// types of the place. This field includes the special_days subfield of all hours, set for dates that have
+        /// exceptional hours.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currentSecondaryOpeningHours")]
         public virtual System.Collections.Generic.IList<GoogleMapsPlacesV1PlaceOpeningHours> CurrentSecondaryOpeningHours { get; set; }
 
-        /// <summary>Output only. Specifies if the business supports delivery.</summary>
+        /// <summary>Specifies if the business supports delivery.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("delivery")]
         public virtual System.Nullable<bool> Delivery { get; set; }
 
-        /// <summary>Output only. Specifies if the business supports indoor or outdoor seating options.</summary>
+        /// <summary>Specifies if the business supports indoor or outdoor seating options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dineIn")]
         public virtual System.Nullable<bool> DineIn { get; set; }
 
         /// <summary>
-        /// Output only. The localized name of the place, suitable as a short human-readable description. For example,
-        /// "Google Sydney", "Starbucks", "Pyrmont", etc.
+        /// The localized name of the place, suitable as a short human-readable description. For example, "Google
+        /// Sydney", "Starbucks", "Pyrmont", etc.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual GoogleTypeLocalizedText DisplayName { get; set; }
 
         /// <summary>
-        /// Output only. Contains a summary of the place. A summary is comprised of a textual overview, and also
-        /// includes the language code for these if applicable. Summary text must be presented as-is and can not be
-        /// modified or altered.
+        /// Contains a summary of the place. A summary is comprised of a textual overview, and also includes the
+        /// language code for these if applicable. Summary text must be presented as-is and can not be modified or
+        /// altered.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("editorialSummary")]
         public virtual GoogleTypeLocalizedText EditorialSummary { get; set; }
 
-        /// <summary>Output only. A full, human-readable address for this place.</summary>
+        /// <summary>A full, human-readable address for this place.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("formattedAddress")]
         public virtual string FormattedAddress { get; set; }
 
-        /// <summary>Output only. A URL providing more information about this place.</summary>
+        /// <summary>A URL providing more information about this place.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googleMapsUri")]
         public virtual string GoogleMapsUri { get; set; }
 
-        /// <summary>Output only. Background color for icon_mask in hex format, e.g. #909CE1.</summary>
+        /// <summary>Background color for icon_mask in hex format, e.g. #909CE1.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iconBackgroundColor")]
         public virtual string IconBackgroundColor { get; set; }
 
         /// <summary>
-        /// Output only. A truncated URL to an v2 icon mask. User can access different icon type by appending type
-        /// suffix to the end (eg, ".svg" or ".png").
+        /// A truncated URL to an v2 icon mask. User can access different icon type by appending type suffix to the end
+        /// (eg, ".svg" or ".png").
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iconMaskBaseUri")]
         public virtual string IconMaskBaseUri { get; set; }
 
-        /// <summary>Output only. The unique identifier of a place.</summary>
+        /// <summary>The unique identifier of a place.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
-        /// <summary>Output only. A human-readable phone number for the place, in international format.</summary>
+        /// <summary>A human-readable phone number for the place, in international format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("internationalPhoneNumber")]
         public virtual string InternationalPhoneNumber { get; set; }
 
-        /// <summary>Output only. The position of this place.</summary>
+        /// <summary>The position of this place.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual GoogleTypeLatLng Location { get; set; }
 
         /// <summary>
-        /// Output only. An ID representing this place which may be used to look up this place again (a.k.a. the API
-        /// "resource" name: places/).
+        /// An ID representing this place which may be used to look up this place again (a.k.a. the API "resource" name:
+        /// places/place_id).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Output only. A human-readable phone number for the place, in national format.</summary>
+        /// <summary>A human-readable phone number for the place, in national format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nationalPhoneNumber")]
         public virtual string NationalPhoneNumber { get; set; }
 
-        /// <summary>Output only. Plus code of the place location lat/long.</summary>
+        /// <summary>Plus code of the place location lat/long.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("plusCode")]
         public virtual GoogleMapsPlacesV1PlacePlusCode PlusCode { get; set; }
 
-        /// <summary>Output only. Price level of the place.</summary>
+        /// <summary>Price level of the place.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priceLevel")]
         public virtual string PriceLevel { get; set; }
 
-        /// <summary>Output only. A rating between 1.0 and 5.0, based on user reviews of this place.</summary>
+        /// <summary>A rating between 1.0 and 5.0, based on user reviews of this place.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rating")]
         public virtual System.Nullable<double> Rating { get; set; }
 
-        /// <summary>Output only. The regular hours of operation.</summary>
+        /// <summary>The regular hours of operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regularOpeningHours")]
         public virtual GoogleMapsPlacesV1PlaceOpeningHours RegularOpeningHours { get; set; }
 
         /// <summary>
-        /// Output only. Contains an array of entries for information about regular secondary hours of a business.
-        /// Secondary hours are different from a business's main hours. For example, a restaurant can specify drive
-        /// through hours or delivery hours as its secondary hours. This field populates the type subfield, which draws
-        /// from a predefined list of opening hours types (such as DRIVE_THROUGH, PICKUP, or TAKEOUT) based on the types
-        /// of the place.
+        /// Contains an array of entries for information about regular secondary hours of a business. Secondary hours
+        /// are different from a business's main hours. For example, a restaurant can specify drive through hours or
+        /// delivery hours as its secondary hours. This field populates the type subfield, which draws from a predefined
+        /// list of opening hours types (such as DRIVE_THROUGH, PICKUP, or TAKEOUT) based on the types of the place.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regularSecondaryOpeningHours")]
         public virtual System.Collections.Generic.IList<GoogleMapsPlacesV1PlaceOpeningHours> RegularSecondaryOpeningHours { get; set; }
 
-        /// <summary>Output only. Specifies if the place supports reservations.</summary>
+        /// <summary>Specifies if the place supports reservations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reservable")]
         public virtual System.Nullable<bool> Reservable { get; set; }
 
-        /// <summary>Output only. List of reviews about this place.</summary>
+        /// <summary>List of reviews about this place.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reviews")]
         public virtual System.Collections.Generic.IList<GoogleMapsPlacesV1Review> Reviews { get; set; }
 
-        /// <summary>Output only. Specifies if the place serves beer.</summary>
+        /// <summary>Specifies if the place serves beer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("servesBeer")]
         public virtual System.Nullable<bool> ServesBeer { get; set; }
 
-        /// <summary>Output only. Specifies if the place serves breakfast.</summary>
+        /// <summary>Specifies if the place serves breakfast.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("servesBreakfast")]
         public virtual System.Nullable<bool> ServesBreakfast { get; set; }
 
-        /// <summary>Output only. Specifies if the place serves brunch.</summary>
+        /// <summary>Specifies if the place serves brunch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("servesBrunch")]
         public virtual System.Nullable<bool> ServesBrunch { get; set; }
 
-        /// <summary>Output only. Specifies if the place serves dinner.</summary>
+        /// <summary>Specifies if the place serves dinner.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("servesDinner")]
         public virtual System.Nullable<bool> ServesDinner { get; set; }
 
-        /// <summary>Output only. Specifies if the place serves lunch.</summary>
+        /// <summary>Specifies if the place serves lunch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("servesLunch")]
         public virtual System.Nullable<bool> ServesLunch { get; set; }
 
-        /// <summary>Output only. Specifies if the place serves vegetarian food.</summary>
+        /// <summary>Specifies if the place serves vegetarian food.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("servesVegetarianFood")]
         public virtual System.Nullable<bool> ServesVegetarianFood { get; set; }
 
-        /// <summary>Output only. Specifies if the place serves wine.</summary>
+        /// <summary>Specifies if the place serves wine.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("servesWine")]
         public virtual System.Nullable<bool> ServesWine { get; set; }
 
-        /// <summary>Output only. Specifies if the business supports takeout.</summary>
+        /// <summary>Specifies if the business supports takeout.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("takeout")]
         public virtual System.Nullable<bool> Takeout { get; set; }
 
-        /// <summary>Output only. A set of type tags for this result. For example, "political" and "locality".</summary>
+        /// <summary>
+        /// A set of type tags for this result. For example, "political" and "locality". See:
+        /// https://developers.google.com/maps/documentation/places/web-service/place-types
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("types")]
         public virtual System.Collections.Generic.IList<string> Types { get; set; }
 
-        /// <summary>Output only. The total number of reviews (with or without text) for this place.</summary>
+        /// <summary>The total number of reviews (with or without text) for this place.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userRatingCount")]
         public virtual System.Nullable<int> UserRatingCount { get; set; }
 
         /// <summary>
-        /// Output only. Number of minutes this place's timezone is currently offset from UTC. This is expressed in
-        /// minutes to support timezones that are offset by fractions of an hour, e.g. X hours and 15 minutes.
+        /// Number of minutes this place's timezone is currently offset from UTC. This is expressed in minutes to
+        /// support timezones that are offset by fractions of an hour, e.g. X hours and 15 minutes.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("utcOffsetMinutes")]
         public virtual System.Nullable<int> UtcOffsetMinutes { get; set; }
 
-        /// <summary>Output only. A viewport suitable for displaying the place on an average-sized map.</summary>
+        /// <summary>A viewport suitable for displaying the place on an average-sized map.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("viewport")]
         public virtual GoogleGeoTypeViewport Viewport { get; set; }
 
         /// <summary>
-        /// Output only. The authoritative website for this place, e.g. a business' homepage. Note that for places that
-        /// are part of a chain (e.g. an IKEA store), this will usually be the website for the individual store, not the
-        /// overall chain.
+        /// The authoritative website for this place, e.g. a business' homepage. Note that for places that are part of a
+        /// chain (e.g. an IKEA store), this will usually be the website for the individual store, not the overall
+        /// chain.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("websiteUri")]
         public virtual string WebsiteUri { get; set; }
@@ -614,25 +626,25 @@ namespace Google.Apis.MapsPlaces.v1.Data
     /// <summary>The structured components that form the formatted address, if this information is available.</summary>
     public class GoogleMapsPlacesV1PlaceAddressComponent : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. The language used to format this components, in CLDR notation.</summary>
+        /// <summary>The language used to format this components, in CLDR notation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
         public virtual string LanguageCode { get; set; }
 
         /// <summary>
-        /// Output only. The full text description or name of the address component. For example, an address component
-        /// for the country Australia may have a long_name of "Australia".
+        /// The full text description or name of the address component. For example, an address component for the
+        /// country Australia may have a long_name of "Australia".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("longText")]
         public virtual string LongText { get; set; }
 
         /// <summary>
-        /// Output only. An abbreviated textual name for the address component, if available. For example, an address
-        /// component for the country of Australia may have a short_name of "AU".
+        /// An abbreviated textual name for the address component, if available. For example, an address component for
+        /// the country of Australia may have a short_name of "AU".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shortText")]
         public virtual string ShortText { get; set; }
 
-        /// <summary>Output only. An array indicating the type(s) of the address component.</summary>
+        /// <summary>An array indicating the type(s) of the address component.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("types")]
         public virtual System.Collections.Generic.IList<string> Types { get; set; }
 
@@ -643,11 +655,11 @@ namespace Google.Apis.MapsPlaces.v1.Data
     /// <summary>Information about data providers of this place.</summary>
     public class GoogleMapsPlacesV1PlaceAttribution : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. Name of the Place's data provider.</summary>
+        /// <summary>Name of the Place's data provider.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("provider")]
         public virtual string Provider { get; set; }
 
-        /// <summary>Output only. URI to the Place's data provider.</summary>
+        /// <summary>URI to the Place's data provider.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("providerUri")]
         public virtual string ProviderUri { get; set; }
 
@@ -659,36 +671,35 @@ namespace Google.Apis.MapsPlaces.v1.Data
     public class GoogleMapsPlacesV1PlaceOpeningHours : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Output only. Is this place open right now? Always present unless we lack time-of-day or timezone data for
-        /// these opening hours.
+        /// Is this place open right now? Always present unless we lack time-of-day or timezone data for these opening
+        /// hours.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("openNow")]
         public virtual System.Nullable<bool> OpenNow { get; set; }
 
         /// <summary>
-        /// Output only. The periods that this place is open during the week. The periods are in chronological order,
-        /// starting with Sunday in the place-local timezone. An empty (but not absent) value indicates a place that is
-        /// never open, e.g. because it is closed temporarily for renovations.
+        /// The periods that this place is open during the week. The periods are in chronological order, starting with
+        /// Sunday in the place-local timezone. An empty (but not absent) value indicates a place that is never open,
+        /// e.g. because it is closed temporarily for renovations.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("periods")]
         public virtual System.Collections.Generic.IList<GoogleMapsPlacesV1PlaceOpeningHoursPeriod> Periods { get; set; }
 
-        /// <summary>Output only. A type string used to identify the type of secondary hours.</summary>
+        /// <summary>A type string used to identify the type of secondary hours.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secondaryHoursType")]
         public virtual string SecondaryHoursType { get; set; }
 
         /// <summary>
-        /// Output only. Structured information for special days that fall within the period that the returned opening
-        /// hours cover. Special days are days that could impact the business hours of a place, e.g. Christmas day. Set
-        /// for current_opening_hours and current_secondary_opening_hours if there are exceptional hours.
+        /// Structured information for special days that fall within the period that the returned opening hours cover.
+        /// Special days are days that could impact the business hours of a place, e.g. Christmas day. Set for
+        /// current_opening_hours and current_secondary_opening_hours if there are exceptional hours.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("specialDays")]
         public virtual System.Collections.Generic.IList<GoogleMapsPlacesV1PlaceOpeningHoursSpecialDay> SpecialDays { get; set; }
 
         /// <summary>
-        /// Output only. Localized strings describing the opening hours of this place, one string for each day of the
-        /// week. Will be empty if the hours are unknown or could not be converted to localized text. Example: "Sun:
-        /// 18:00–06:00"
+        /// Localized strings describing the opening hours of this place, one string for each day of the week. Will be
+        /// empty if the hours are unknown or could not be converted to localized text. Example: "Sun: 18:00–06:00"
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("weekdayDescriptions")]
         public virtual System.Collections.Generic.IList<string> WeekdayDescriptions { get; set; }
@@ -700,11 +711,11 @@ namespace Google.Apis.MapsPlaces.v1.Data
     /// <summary>A period the place remains in open_now status.</summary>
     public class GoogleMapsPlacesV1PlaceOpeningHoursPeriod : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. The time that the place starts to be closed.</summary>
+        /// <summary>The time that the place starts to be closed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("close")]
         public virtual GoogleMapsPlacesV1PlaceOpeningHoursPeriodPoint Close { get; set; }
 
-        /// <summary>Output only. The time that the place starts to be open.</summary>
+        /// <summary>The time that the place starts to be open.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("open")]
         public virtual GoogleMapsPlacesV1PlaceOpeningHoursPeriodPoint Open { get; set; }
 
@@ -715,28 +726,26 @@ namespace Google.Apis.MapsPlaces.v1.Data
     /// <summary>Status changing points.</summary>
     public class GoogleMapsPlacesV1PlaceOpeningHoursPeriodPoint : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. Date in the local timezone for the place.</summary>
+        /// <summary>Date in the local timezone for the place.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("date")]
         public virtual GoogleTypeDate Date { get; set; }
 
-        /// <summary>
-        /// Output only. A day of the week, as an integer in the range 0-6. 0 is Sunday, 1 is Monday, etc.
-        /// </summary>
+        /// <summary>A day of the week, as an integer in the range 0-6. 0 is Sunday, 1 is Monday, etc.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("day")]
         public virtual System.Nullable<int> Day { get; set; }
 
-        /// <summary>Output only. The hour in 2 digits. Ranges from 00 to 23.</summary>
+        /// <summary>The hour in 2 digits. Ranges from 00 to 23.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hour")]
         public virtual System.Nullable<int> Hour { get; set; }
 
-        /// <summary>Output only. The minute in 2 digits. Ranges from 00 to 59.</summary>
+        /// <summary>The minute in 2 digits. Ranges from 00 to 59.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minute")]
         public virtual System.Nullable<int> Minute { get; set; }
 
         /// <summary>
-        /// Output only. Whether or not this endpoint was truncated. Truncation occurs when the real hours are outside
-        /// the times we are willing to return hours between, so we truncate the hours back to these boundaries. This
-        /// ensures that at most 24 * 7 hours from midnight of the day of the request are returned.
+        /// Whether or not this endpoint was truncated. Truncation occurs when the real hours are outside the times we
+        /// are willing to return hours between, so we truncate the hours back to these boundaries. This ensures that at
+        /// most 24 * 7 hours from midnight of the day of the request are returned.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("truncated")]
         public virtual System.Nullable<bool> Truncated { get; set; }
@@ -751,7 +760,7 @@ namespace Google.Apis.MapsPlaces.v1.Data
     /// </summary>
     public class GoogleMapsPlacesV1PlaceOpeningHoursSpecialDay : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. The date of this special day.</summary>
+        /// <summary>The date of this special day.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("date")]
         public virtual GoogleTypeDate Date { get; set; }
 
@@ -766,15 +775,15 @@ namespace Google.Apis.MapsPlaces.v1.Data
     public class GoogleMapsPlacesV1PlacePlusCode : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Output only. Place's compound code, such as "33GV+HQ, Ramberg, Norway", containing the suffix of the global
-        /// code and replacing the prefix with a formatted name of a reference entity.
+        /// Place's compound code, such as "33GV+HQ, Ramberg, Norway", containing the suffix of the global code and
+        /// replacing the prefix with a formatted name of a reference entity.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("compoundCode")]
         public virtual string CompoundCode { get; set; }
 
         /// <summary>
-        /// Output only. Place's global (full) code, such as "9FWM33GV+HQ", representing an 1/8000 by 1/8000 degree area
-        /// (~14 by 14 meters).
+        /// Place's global (full) code, such as "9FWM33GV+HQ", representing an 1/8000 by 1/8000 degree area (~14 by 14
+        /// meters).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("globalCode")]
         public virtual string GlobalCode { get; set; }
@@ -855,7 +864,8 @@ namespace Google.Apis.MapsPlaces.v1.Data
     {
         /// <summary>
         /// The requested place type. Full list of types supported:
-        /// https://developers.google.com/places/supported_types. Only support one included type.
+        /// https://developers.google.com/maps/documentation/places/web-service/place-types. Only support one included
+        /// type.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includedType")]
         public virtual string IncludedType { get; set; }
@@ -900,10 +910,7 @@ namespace Google.Apis.MapsPlaces.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("minRating")]
         public virtual System.Nullable<double> MinRating { get; set; }
 
-        /// <summary>
-        /// Used to restrict the search to places that are open at a specific time. open_now marks if a business is
-        /// currently open.
-        /// </summary>
+        /// <summary>Used to restrict the search to places that are currently open.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("openNow")]
         public virtual System.Nullable<bool> OpenNow { get; set; }
 
@@ -1044,7 +1051,7 @@ namespace Google.Apis.MapsPlaces.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
         public virtual string LanguageCode { get; set; }
 
-        /// <summary>Localized string in the language corresponding to `language_code' below.</summary>
+        /// <summary>Localized string in the language corresponding to language_code below.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual string Text { get; set; }
 
