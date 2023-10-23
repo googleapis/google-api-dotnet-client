@@ -2235,6 +2235,38 @@ namespace Google.Apis.Monitoring.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A widget that displays a list of error groups.</summary>
+    public class ErrorReportingPanel : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The resource name of the Google Cloud Platform project. Written as projects/{projectID} or
+        /// projects/{projectNumber}, where {projectID} and {projectNumber} can be found in the Google Cloud console
+        /// (https://support.google.com/cloud/answer/6158840).Examples: projects/my-project-123, projects/5551234.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectNames")]
+        public virtual System.Collections.Generic.IList<string> ProjectNames { get; set; }
+
+        /// <summary>
+        /// An identifier of the service, such as the name of the executable, job, or Google App Engine service name.
+        /// This field is expected to have a low number of values that are relatively stable over time, as opposed to
+        /// version, which can be changed whenever new code is deployed.Contains the service name for error reports
+        /// extracted from Google App Engine logs or default if the App Engine default service is used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("services")]
+        public virtual System.Collections.Generic.IList<string> Services { get; set; }
+
+        /// <summary>
+        /// Represents the source code version that the developer provided, which could represent a version label or a
+        /// Git SHA-1 hash, for example. For App Engine standard environment, the version is set to the version of the
+        /// app.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("versions")]
+        public virtual System.Collections.Generic.IList<string> Versions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A single field of a message type.</summary>
     public class Field : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2885,16 +2917,6 @@ namespace Google.Apis.Monitoring.v1.Data
         /// <summary>Optional. Indicates whether or not the pie chart should show slices' labels</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("showLabels")]
         public virtual System.Nullable<bool> ShowLabels { get; set; }
-
-        /// <summary>Optional. Indicates whether or not donut chart should show the total in the middle</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("showTotal")]
-        public virtual System.Nullable<bool> ShowTotal { get; set; }
-
-        /// <summary>
-        /// Optional. If slices's values are smaller than this value, they will be combined into other category
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sliceAggregatedThreshold")]
-        public virtual System.Nullable<float> SliceAggregatedThreshold { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3648,6 +3670,17 @@ namespace Google.Apis.Monitoring.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("collapsibleGroup")]
         public virtual CollapsibleGroup CollapsibleGroup { get; set; }
+
+        /// <summary>A widget that displays a list of error groups.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorReportingPanel")]
+        public virtual ErrorReportingPanel ErrorReportingPanel { get; set; }
+
+        /// <summary>
+        /// Optional. The widget id. Ids may be made up of alphanumerics, dashes and underscores. Widget ids are
+        /// optional.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
 
         /// <summary>A widget that shows list of incidents.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("incidentList")]

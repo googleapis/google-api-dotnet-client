@@ -4079,9 +4079,20 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>
+        /// This field has been deprecated in favor of `standard_isolation.priority`. If you set this field,
+        /// `standard_isolation.priority` will be set instead. The priority of requests sent using this app profile.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("priority")]
+        public virtual string Priority { get; set; }
+
         /// <summary>Use a single-cluster routing policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("singleClusterRouting")]
         public virtual SingleClusterRouting SingleClusterRouting { get; set; }
+
+        /// <summary>The standard options used for isolating this app profile's traffic from other use cases.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("standardIsolation")]
+        public virtual StandardIsolation StandardIsolation { get; set; }
     }
 
     /// <summary>
@@ -5759,10 +5770,6 @@ namespace Google.Apis.BigtableAdmin.v2.Data
     /// <summary>Request message for google.bigtable.admin.v2.BigtableTableAdmin.ModifyColumnFamilies</summary>
     public class ModifyColumnFamiliesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If true, ignore safety checks when modifying the column families.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("ignoreWarnings")]
-        public virtual System.Nullable<bool> IgnoreWarnings { get; set; }
-
         /// <summary>
         /// Required. Modifications to be atomically applied to the specified table's families. Entries are applied in
         /// order, meaning that earlier modifications can be masked by later ones (in the case of repeated updates to
@@ -6251,6 +6258,17 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         /// <summary>Row key to use as an initial tablet boundary.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
         public virtual string Key { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Standard options for isolating this app profile's traffic from other use cases.</summary>
+    public class StandardIsolation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The priority of requests sent using this app profile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("priority")]
+        public virtual string Priority { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

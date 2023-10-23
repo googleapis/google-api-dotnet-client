@@ -7152,11 +7152,14 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     /// </summary>
     public class Permission : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A longer description of the Permissions resource, giving more details of what it affects.</summary>
+        /// <summary>
+        /// A longer description of the Permissions resource, giving more details of what it affects. This field may be
+        /// absent.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
-        /// <summary>The name of the permission.</summary>
+        /// <summary>The name of the permission. This field may be absent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 

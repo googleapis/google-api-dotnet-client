@@ -2096,6 +2096,14 @@ namespace Google.Apis.Assuredworkloads.v1.Data
         public virtual string ProvisionedResourcesParent { get; set; }
 
         /// <summary>
+        /// Output only. Indicates whether resource monitoring is enabled for workload or not. It is true when Resource
+        /// feed is subscribed to AWM topic and AWM Service Agent Role is binded to AW Service Account for resource
+        /// Assured workload.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceMonitoringEnabled")]
+        public virtual System.Nullable<bool> ResourceMonitoringEnabled { get; set; }
+
+        /// <summary>
         /// Input only. Resource properties that are used to customize workload resources. These properties (such as
         /// custom project id) will be used to create workload resources if possible. This field is optional.
         /// </summary>

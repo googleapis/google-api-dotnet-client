@@ -14154,13 +14154,6 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("automaticLabelIds")]
         public virtual System.Collections.Generic.IList<System.Nullable<ulong>> AutomaticLabelIds { get; set; }
 
-        /// <summary>
-        /// The business identity attributes can be used to self-declare attributes that let customers know more about
-        /// your business.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("businessIdentity")]
-        public virtual AccountBusinessIdentity BusinessIdentity { get; set; }
-
         /// <summary>The business information of the account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("businessInformation")]
         public virtual AccountBusinessInformation BusinessInformation { get; set; }
@@ -14320,65 +14313,6 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// The [business identity attributes](https://support.google.com/merchants/answer/10342414) can be used to
-    /// self-declare attributes that let customers know more about your business. NEXT ID: 7.
-    /// </summary>
-    public class AccountBusinessIdentity : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Specifies whether the business identifies itself as being black-owned. This optional field is only available
-        /// for merchants with a business country set to "US". This field is not allowed for marketplaces or marketplace
-        /// sellers.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("blackOwned")]
-        public virtual AccountIdentityType BlackOwned { get; set; }
-
-        /// <summary>
-        /// Required. By setting this field, your business may be included in promotions for all the selected
-        /// attributes. If you clear this option, it won't affect your identification with any of the attributes. For
-        /// this field to be set, the merchant must self identify with at least one of the `AccountIdentityType`. If
-        /// none are included, the request will be considered invalid.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("includeForPromotions")]
-        public virtual System.Nullable<bool> IncludeForPromotions { get; set; }
-
-        /// <summary>
-        /// Specifies whether the business identifies itself as being latino-owned. This optional field is only
-        /// available for merchants with a business country set to "US". This field is not allowed for marketplaces or
-        /// marketplace sellers.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("latinoOwned")]
-        public virtual AccountIdentityType LatinoOwned { get; set; }
-
-        /// <summary>
-        /// Specifies whether the business identifies itself as a small business. This optional field is only available
-        /// for merchants with a business country set to "US". This field is not allowed for marketplaces or marketplace
-        /// sellers.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("smallBusiness")]
-        public virtual AccountIdentityType SmallBusiness { get; set; }
-
-        /// <summary>
-        /// Specifies whether the business identifies itself as being veteran-owned. This optional field is only
-        /// available for merchants with a business country set to "US". This field is not allowed for marketplaces or
-        /// marketplace sellers.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("veteranOwned")]
-        public virtual AccountIdentityType VeteranOwned { get; set; }
-
-        /// <summary>
-        /// Specifies whether the business identifies itself as being women-owned. This optional field is only available
-        /// for merchants with a business country set to "US". This field is not allowed for marketplaces or marketplace
-        /// sellers.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("womenOwned")]
-        public virtual AccountIdentityType WomenOwned { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     public class AccountBusinessInformation : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The address of the business. Use `\n` to add a second address line.</summary>
@@ -14506,13 +14440,6 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("merchantId")]
         public virtual System.Nullable<ulong> MerchantId { get; set; }
 
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>The account identity type used to specify attributes.</summary>
-    public class AccountIdentityType : Google.Apis.Requests.IDirectResponseSchema
-    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -18573,7 +18500,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     public class LocalInventory : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The availability of the product. For accepted attribute values, see the local product inventory feed
+        /// Availability of the product. For accepted attribute values, see the local product inventory feed
         /// specification.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("availability")]
@@ -18586,7 +18513,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("customAttributes")]
         public virtual System.Collections.Generic.IList<CustomAttribute> CustomAttributes { get; set; }
 
-        /// <summary>The in-store product location.</summary>
+        /// <summary>In-store product location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instoreProductLocation")]
         public virtual string InstoreProductLocation { get; set; }
 
@@ -18597,30 +18524,29 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string Kind { get; set; }
 
         /// <summary>
-        /// The supported pickup method for this offer. Unless the value is "not supported", this field must be
-        /// submitted together with `pickupSla`. For accepted attribute values, see the local product inventory feed
+        /// Supported pickup method for this offer. Unless the value is "not supported", this field must be submitted
+        /// together with `pickupSla`. For accepted attribute values, see the local product inventory feed
         /// specification.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pickupMethod")]
         public virtual string PickupMethod { get; set; }
 
         /// <summary>
-        /// The expected date that an order will be ready for pickup relative to the order date. Must be submitted
-        /// together with `pickupMethod`. For accepted attribute values, see the local product inventory feed
-        /// specification.
+        /// Expected date that an order will be ready for pickup relative to the order date. Must be submitted together
+        /// with `pickupMethod`. For accepted attribute values, see the local product inventory feed specification.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pickupSla")]
         public virtual string PickupSla { get; set; }
 
-        /// <summary>The price of the product.</summary>
+        /// <summary>Price of the product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("price")]
         public virtual Price Price { get; set; }
 
-        /// <summary>The quantity of the product. Must be nonnegative.</summary>
+        /// <summary>Quantity of the product. Must be nonnegative.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quantity")]
         public virtual System.Nullable<long> Quantity { get; set; }
 
-        /// <summary>The sale price of the product. Mandatory if `sale_price_effective_date` is defined.</summary>
+        /// <summary>Sale price of the product. Mandatory if `sale_price_effective_date` is defined.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("salePrice")]
         public virtual Price SalePrice { get; set; }
 
@@ -18631,7 +18557,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("salePriceEffectiveDate")]
         public virtual string SalePriceEffectiveDate { get; set; }
 
-        /// <summary>Required. The store code of this local inventory resource.</summary>
+        /// <summary>Required. Store code of this local inventory resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storeCode")]
         public virtual string StoreCode { get; set; }
 

@@ -4334,9 +4334,15 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("vlanId")]
         public virtual string VlanId { get; set; }
 
-        /// <summary>The vrf for the Network.</summary>
+        /// <summary>The Vrf for the Network. Use this only if a new Vrf needs to be created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vrf")]
         public virtual VRF Vrf { get; set; }
+
+        /// <summary>
+        /// Optional. The name of a pre-existing Vrf that the network should be attached to. Format is `vrfs/{vrf}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vrfAttachment")]
+        public virtual string VrfAttachment { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
