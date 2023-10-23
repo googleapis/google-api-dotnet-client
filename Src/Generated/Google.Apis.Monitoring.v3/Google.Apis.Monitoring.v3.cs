@@ -6535,7 +6535,7 @@ namespace Google.Apis.Monitoring.v3
 
                 /// <summary>
                 /// Optional. The ServiceLevelObjective id to use for this ServiceLevelObjective. If omitted, an id will
-                /// be generated instead. Must match the pattern [a-z0-9\-]+
+                /// be generated instead. Must match the pattern ^[a-zA-Z0-9-_:.]+$
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("serviceLevelObjectiveId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string ServiceLevelObjectiveId { get; set; }

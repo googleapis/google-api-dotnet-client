@@ -5685,7 +5685,9 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("resourceHealthSignalData")]
         public virtual StorageDatabasecenterPartnerapiV1mainDatabaseResourceHealthSignalData ResourceHealthSignalData { get; set; }
 
-        /// <summary>Required. Primary key associated with the Resource</summary>
+        /// <summary>
+        /// Primary key associated with the Resource. resource_id is available in individual feed level as well.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
         public virtual StorageDatabasecenterPartnerapiV1mainDatabaseResourceId ResourceId { get; set; }
 
@@ -5771,7 +5773,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         /// <summary>
         /// Closest parent container of this resource. In GCP, 'container' refers to a Cloud Resource Manager project.
         /// It must be resource name of a Cloud Resource Manager project with the format of "provider//", such as
-        /// "gcp/projects/123".
+        /// "gcp/projects/123". For GCP provided resources, number should be project number.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceContainer")]
         public virtual string ResourceContainer { get; set; }
@@ -5932,7 +5934,8 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
 
         /// <summary>
         /// Closest parent Cloud Resource Manager container of this resource. It must be resource name of a Cloud
-        /// Resource Manager project with the format of "provider//", such as "gcp/projects/123".
+        /// Resource Manager project with the format of "provider//", such as "gcp/projects/123". For GCP provided
+        /// resources, number should be project number.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceContainer")]
         public virtual string ResourceContainer { get; set; }

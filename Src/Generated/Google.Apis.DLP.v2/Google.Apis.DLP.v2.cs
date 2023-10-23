@@ -1353,6 +1353,7 @@ namespace Google.Apis.DLP.v2
             {
                 this.service = service;
                 DeidentifyTemplates = new DeidentifyTemplatesResource(service);
+                DiscoveryConfigs = new DiscoveryConfigsResource(service);
                 DlpJobs = new DlpJobsResource(service);
                 InspectTemplates = new InspectTemplatesResource(service);
                 JobTriggers = new JobTriggersResource(service);
@@ -1766,6 +1767,348 @@ namespace Google.Apis.DLP.v2
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^organizations/[^/]+/locations/[^/]+/deidentifyTemplates/[^/]+$",
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the DiscoveryConfigs resource.</summary>
+            public virtual DiscoveryConfigsResource DiscoveryConfigs { get; }
+
+            /// <summary>The "discoveryConfigs" collection of methods.</summary>
+            public class DiscoveryConfigsResource
+            {
+                private const string Resource = "discoveryConfigs";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public DiscoveryConfigsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Creates a config for Discovery to scan and profile storage.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. Parent resource name. The format of this value is as follows:
+                /// `projects/`PROJECT_ID`/locations/`LOCATION_ID The following example `parent` string specifies a
+                /// parent project with the identifier `example-project`, and specifies the `europe-west3` location for
+                /// processing data: parent=projects/example-project/locations/europe-west3
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateDiscoveryConfigRequest body, string parent)
+                {
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>Creates a config for Discovery to scan and profile storage.</summary>
+                public class CreateRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2DiscoveryConfig>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateDiscoveryConfigRequest body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Parent resource name. The format of this value is as follows:
+                    /// `projects/`PROJECT_ID`/locations/`LOCATION_ID The following example `parent` string specifies a
+                    /// parent project with the identifier `example-project`, and specifies the `europe-west3` location
+                    /// for processing data: parent=projects/example-project/locations/europe-west3
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateDiscoveryConfigRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+parent}/discoveryConfigs";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/locations/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Deletes a Discovery configuration.</summary>
+                /// <param name="name">
+                /// Required. Resource name of the project and the config, for example
+                /// `projects/dlp-test-project/discoveryConfigs/53234423`.
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(service, name);
+                }
+
+                /// <summary>Deletes a Discovery configuration.</summary>
+                public class DeleteRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GoogleProtobufEmpty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Resource name of the project and the config, for example
+                    /// `projects/dlp-test-project/discoveryConfigs/53234423`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/locations/[^/]+/discoveryConfigs/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Gets a Discovery configuration.</summary>
+                /// <param name="name">
+                /// Required. Resource name of the project and the configuration, for example
+                /// `projects/dlp-test-project/discoveryConfigs/53234423`.
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Gets a Discovery configuration.</summary>
+                public class GetRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2DiscoveryConfig>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Resource name of the project and the configuration, for example
+                    /// `projects/dlp-test-project/discoveryConfigs/53234423`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/locations/[^/]+/discoveryConfigs/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists Discovery configurations.</summary>
+                /// <param name="parent">
+                /// Required. Parent resource name. The format of this value is as follows:
+                /// `projects/`PROJECT_ID`/locations/`LOCATION_ID The following example `parent` string specifies a
+                /// parent project with the identifier `example-project`, and specifies the `europe-west3` location for
+                /// processing data: parent=projects/example-project/locations/europe-west3
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>Lists Discovery configurations.</summary>
+                public class ListRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ListDiscoveryConfigsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Parent resource name. The format of this value is as follows:
+                    /// `projects/`PROJECT_ID`/locations/`LOCATION_ID The following example `parent` string specifies a
+                    /// parent project with the identifier `example-project`, and specifies the `europe-west3` location
+                    /// for processing data: parent=projects/example-project/locations/europe-west3
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Comma separated list of config fields to order by, followed by `asc` or `desc` postfix. This
+                    /// list is case-insensitive, default sorting order is ascending, redundant space characters are
+                    /// insignificant. Example: `name asc,update_time, create_time desc` Supported fields are: -
+                    /// `last_run_time`: corresponds to the last time the DiscoveryConfig ran. - `name`: corresponds to
+                    /// the DiscoveryConfig's name. - `status`: corresponds to DiscoveryConfig's status.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>Size of the page, can be limited by a server.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Page token to continue retrieval. Comes from previous call to ListDiscoveryConfigs. `order_by`
+                    /// field must not change for subsequent calls.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+parent}/discoveryConfigs";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates a Discovery configuration.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. Resource name of the project and the configuration, for example
+                /// `projects/dlp-test-project/discoveryConfigs/53234423`.
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2UpdateDiscoveryConfigRequest body, string name)
+                {
+                    return new PatchRequest(service, body, name);
+                }
+
+                /// <summary>Updates a Discovery configuration.</summary>
+                public class PatchRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2DiscoveryConfig>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2UpdateDiscoveryConfigRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Resource name of the project and the configuration, for example
+                    /// `projects/dlp-test-project/discoveryConfigs/53234423`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2UpdateDiscoveryConfigRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/locations/[^/]+/discoveryConfigs/[^/]+$",
                         });
                     }
                 }
@@ -5761,6 +6104,7 @@ namespace Google.Apis.DLP.v2
                 this.service = service;
                 Content = new ContentResource(service);
                 DeidentifyTemplates = new DeidentifyTemplatesResource(service);
+                DiscoveryConfigs = new DiscoveryConfigsResource(service);
                 DlpJobs = new DlpJobsResource(service);
                 Image = new ImageResource(service);
                 InspectTemplates = new InspectTemplatesResource(service);
@@ -6431,6 +6775,348 @@ namespace Google.Apis.DLP.v2
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/deidentifyTemplates/[^/]+$",
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the DiscoveryConfigs resource.</summary>
+            public virtual DiscoveryConfigsResource DiscoveryConfigs { get; }
+
+            /// <summary>The "discoveryConfigs" collection of methods.</summary>
+            public class DiscoveryConfigsResource
+            {
+                private const string Resource = "discoveryConfigs";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public DiscoveryConfigsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Creates a config for Discovery to scan and profile storage.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. Parent resource name. The format of this value is as follows:
+                /// `projects/`PROJECT_ID`/locations/`LOCATION_ID The following example `parent` string specifies a
+                /// parent project with the identifier `example-project`, and specifies the `europe-west3` location for
+                /// processing data: parent=projects/example-project/locations/europe-west3
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateDiscoveryConfigRequest body, string parent)
+                {
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>Creates a config for Discovery to scan and profile storage.</summary>
+                public class CreateRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2DiscoveryConfig>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateDiscoveryConfigRequest body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Parent resource name. The format of this value is as follows:
+                    /// `projects/`PROJECT_ID`/locations/`LOCATION_ID The following example `parent` string specifies a
+                    /// parent project with the identifier `example-project`, and specifies the `europe-west3` location
+                    /// for processing data: parent=projects/example-project/locations/europe-west3
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateDiscoveryConfigRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+parent}/discoveryConfigs";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Deletes a Discovery configuration.</summary>
+                /// <param name="name">
+                /// Required. Resource name of the project and the config, for example
+                /// `projects/dlp-test-project/discoveryConfigs/53234423`.
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(service, name);
+                }
+
+                /// <summary>Deletes a Discovery configuration.</summary>
+                public class DeleteRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GoogleProtobufEmpty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Resource name of the project and the config, for example
+                    /// `projects/dlp-test-project/discoveryConfigs/53234423`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/discoveryConfigs/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Gets a Discovery configuration.</summary>
+                /// <param name="name">
+                /// Required. Resource name of the project and the configuration, for example
+                /// `projects/dlp-test-project/discoveryConfigs/53234423`.
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Gets a Discovery configuration.</summary>
+                public class GetRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2DiscoveryConfig>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Resource name of the project and the configuration, for example
+                    /// `projects/dlp-test-project/discoveryConfigs/53234423`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/discoveryConfigs/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists Discovery configurations.</summary>
+                /// <param name="parent">
+                /// Required. Parent resource name. The format of this value is as follows:
+                /// `projects/`PROJECT_ID`/locations/`LOCATION_ID The following example `parent` string specifies a
+                /// parent project with the identifier `example-project`, and specifies the `europe-west3` location for
+                /// processing data: parent=projects/example-project/locations/europe-west3
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>Lists Discovery configurations.</summary>
+                public class ListRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ListDiscoveryConfigsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Parent resource name. The format of this value is as follows:
+                    /// `projects/`PROJECT_ID`/locations/`LOCATION_ID The following example `parent` string specifies a
+                    /// parent project with the identifier `example-project`, and specifies the `europe-west3` location
+                    /// for processing data: parent=projects/example-project/locations/europe-west3
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Comma separated list of config fields to order by, followed by `asc` or `desc` postfix. This
+                    /// list is case-insensitive, default sorting order is ascending, redundant space characters are
+                    /// insignificant. Example: `name asc,update_time, create_time desc` Supported fields are: -
+                    /// `last_run_time`: corresponds to the last time the DiscoveryConfig ran. - `name`: corresponds to
+                    /// the DiscoveryConfig's name. - `status`: corresponds to DiscoveryConfig's status.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>Size of the page, can be limited by a server.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Page token to continue retrieval. Comes from previous call to ListDiscoveryConfigs. `order_by`
+                    /// field must not change for subsequent calls.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+parent}/discoveryConfigs";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates a Discovery configuration.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. Resource name of the project and the configuration, for example
+                /// `projects/dlp-test-project/discoveryConfigs/53234423`.
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2UpdateDiscoveryConfigRequest body, string name)
+                {
+                    return new PatchRequest(service, body, name);
+                }
+
+                /// <summary>Updates a Discovery configuration.</summary>
+                public class PatchRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2DiscoveryConfig>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2UpdateDiscoveryConfigRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Resource name of the project and the configuration, for example
+                    /// `projects/dlp-test-project/discoveryConfigs/53234423`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2UpdateDiscoveryConfigRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/discoveryConfigs/[^/]+$",
                         });
                     }
                 }
@@ -8959,6 +9645,16 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Catch-all for all other tables not specified by other filters. Should always be last, except for single-table
+    /// configurations, which will only have a TableReference target.
+    /// </summary>
+    public class GooglePrivacyDlpV2AllOtherBigQueryTables : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Apply to all text.</summary>
     public class GooglePrivacyDlpV2AllText : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9031,6 +9727,37 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>Required. Auxiliary table location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("table")]
         public virtual GooglePrivacyDlpV2BigQueryTable Table { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Target used to match against for Discovery with BigQuery tables</summary>
+    public class GooglePrivacyDlpV2BigQueryDiscoveryTarget : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// How often and when to update profiles. New tables that match both the filter and conditions are scanned as
+        /// quickly as possible depending on system capacity.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cadence")]
+        public virtual GooglePrivacyDlpV2DiscoveryGenerationCadence Cadence { get; set; }
+
+        /// <summary>
+        /// In addition to matching the filter, these conditions must be true before a profile is generated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conditions")]
+        public virtual GooglePrivacyDlpV2DiscoveryBigQueryConditions Conditions { get; set; }
+
+        /// <summary>Tables that match this filter will not have profiles created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
+        public virtual GooglePrivacyDlpV2Disabled Disabled { get; set; }
+
+        /// <summary>
+        /// Required. The tables the Discovery cadence applies to. The first target with a matching filter will be the
+        /// one to apply to a table.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual GooglePrivacyDlpV2DiscoveryBigQueryFilter Filter { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9125,6 +9852,46 @@ namespace Google.Apis.DLP.v2.Data
     }
 
     /// <summary>
+    /// A pattern to match against one or more tables, datasets, or projects that contain BigQuery tables. At least one
+    /// pattern must be specified. Regular expressions use RE2 [syntax](https://github.com/google/re2/wiki/Syntax); a
+    /// guide can be found under the google/re2 repository on GitHub.
+    /// </summary>
+    public class GooglePrivacyDlpV2BigQueryRegex : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If unset, this property matches all datasets.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("datasetIdRegex")]
+        public virtual string DatasetIdRegex { get; set; }
+
+        /// <summary>
+        /// For organizations, if unset, will match all projects. Has no effect for data profile configurations created
+        /// within a project.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectIdRegex")]
+        public virtual string ProjectIdRegex { get; set; }
+
+        /// <summary>If unset, this property matches all tables.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableIdRegex")]
+        public virtual string TableIdRegex { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A collection of regular expressions to determine what tables to match against.</summary>
+    public class GooglePrivacyDlpV2BigQueryRegexes : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A single BigQuery regular expression pattern to match against one or more tables, datasets, or projects that
+        /// contain BigQuery tables.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("patterns")]
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2BigQueryRegex> Patterns { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Message defining the location of a BigQuery table. A table is uniquely identified by its project_id, dataset_id,
     /// and table_name. Within a query a table is often referenced with a string in the format of: `:.` or `..`.
     /// </summary>
@@ -9144,6 +9911,28 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>Name of the table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tableId")]
         public virtual string TableId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specifies a collection of BigQuery tables. Used for Discovery.</summary>
+    public class GooglePrivacyDlpV2BigQueryTableCollection : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A collection of regular expressions to match a BigQuery table against.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includeRegexes")]
+        public virtual GooglePrivacyDlpV2BigQueryRegexes IncludeRegexes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The types of bigquery tables supported by Cloud DLP.</summary>
+    public class GooglePrivacyDlpV2BigQueryTableTypes : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A set of bigquery table types.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("types")]
+        public virtual System.Collections.Generic.IList<string> Types { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9875,6 +10664,25 @@ namespace Google.Apis.DLP.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("templateId")]
         public virtual string TemplateId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for CreateDiscoveryConfig.</summary>
+    public class GooglePrivacyDlpV2CreateDiscoveryConfigRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The config id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the
+        /// regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system
+        /// to generate one.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("configId")]
+        public virtual string ConfigId { get; set; }
+
+        /// <summary>Required. The DiscoveryConfig to create.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("discoveryConfig")]
+        public virtual GooglePrivacyDlpV2DiscoveryConfig DiscoveryConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10866,6 +11674,349 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>List of words or phrases to search for.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("wordList")]
         public virtual GooglePrivacyDlpV2WordList WordList { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Do nothing.</summary>
+    public class GooglePrivacyDlpV2Disabled : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Requirements that must be true before a table is scanned in Discovery for the first time. There is an AND
+    /// relationship between the top-level attributes.
+    /// </summary>
+    public class GooglePrivacyDlpV2DiscoveryBigQueryConditions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createdAfterRaw;
+
+        private object _createdAfter;
+
+        /// <summary>BigQuery table must have been created after this date. Used to avoid backfilling.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createdAfter")]
+        public virtual string CreatedAfterRaw
+        {
+            get => _createdAfterRaw;
+            set
+            {
+                _createdAfter = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createdAfterRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreatedAfterRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreatedAfterDateTimeOffset instead.")]
+        public virtual object CreatedAfter
+        {
+            get => _createdAfter;
+            set
+            {
+                _createdAfterRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createdAfter = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreatedAfterRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreatedAfterDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreatedAfterRaw);
+            set => CreatedAfterRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>At least one of the conditions must be true for a table to be scanned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("orConditions")]
+        public virtual GooglePrivacyDlpV2OrConditions OrConditions { get; set; }
+
+        /// <summary>Restrict Discovery to categories of table types.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("typeCollection")]
+        public virtual string TypeCollection { get; set; }
+
+        /// <summary>Restrict Discovery to specific table types.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("types")]
+        public virtual GooglePrivacyDlpV2BigQueryTableTypes Types { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Determines what tables will have profiles generated within an organization or project. Includes the ability to
+    /// filter by regular expression patterns on project ID, dataset ID, and table ID. Also lets you set minimum
+    /// conditions that must be met before Cloud DLP scans a table (like a minimum row count or a minimum table age).
+    /// </summary>
+    public class GooglePrivacyDlpV2DiscoveryBigQueryFilter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Catch-all. This should always be the last filter in the list because anything above it will apply first.
+        /// Should only appear once in a configuration. If none is specified, a default one will be added automatically.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("otherTables")]
+        public virtual GooglePrivacyDlpV2AllOtherBigQueryTables OtherTables { get; set; }
+
+        /// <summary>
+        /// A specific set of tables for this filter to apply to. A table collection must be specified in only one
+        /// filter per config. If a table id or dataset is empty, Cloud DLP assumes all tables in that collection must
+        /// be profiled. Must specify a project ID.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tables")]
+        public virtual GooglePrivacyDlpV2BigQueryTableCollection Tables { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Configuration for Discovery to scan resources for profile generation. Only one Discovery configuration may exist
+    /// per organization, folder, or project. The generated data profiles are retained according to the [data retention
+    /// policy] (https://cloud.google.com/dlp/docs/data-profiles#retention).
+    /// </summary>
+    public class GooglePrivacyDlpV2DiscoveryConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Actions to execute at the completion of scanning.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("actions")]
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2DataProfileAction> Actions { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The creation timestamp of a DiscoveryConfig.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>Display name (max 100 chars)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Output only. A stream of errors encountered when the config was activated. Repeated errors may result in the
+        /// config automatically being paused. Output only field. Will return the last 100 errors. Whenever the config
+        /// is modified this list will be cleared.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errors")]
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2Error> Errors { get; set; }
+
+        /// <summary>
+        /// Detection logic for profile generation. Not all template features are used by Discovery. FindingLimits,
+        /// include_quote and exclude_info_types have no impact on Discovery. Multiple templates may be provided if
+        /// there is data in multiple regions. At most one template must be specified per-region (including "global").
+        /// Each region is scanned using the applicable template. If no region-specific template is specified, but a
+        /// "global" template is specified, it will be copied to that region and used instead. If no global or
+        /// region-specific template is provided for a region with data, that region's data will not be scanned. For
+        /// more information, see https://cloud.google.com/dlp/docs/data-profiles#data_residency.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inspectTemplates")]
+        public virtual System.Collections.Generic.IList<string> InspectTemplates { get; set; }
+
+        private string _lastRunTimeRaw;
+
+        private object _lastRunTime;
+
+        /// <summary>Output only. The timestamp of the last time this config was executed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastRunTime")]
+        public virtual string LastRunTimeRaw
+        {
+            get => _lastRunTimeRaw;
+            set
+            {
+                _lastRunTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastRunTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastRunTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastRunTimeDateTimeOffset instead.")]
+        public virtual object LastRunTime
+        {
+            get => _lastRunTime;
+            set
+            {
+                _lastRunTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastRunTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="LastRunTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastRunTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastRunTimeRaw);
+            set => LastRunTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>
+        /// Unique resource name for the DiscoveryConfig, assigned by the service when the DiscoveryConfig is created,
+        /// for example `projects/dlp-test-project/locations/global/discoveryConfigs/53234423`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Only set when the parent is an org.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("orgConfig")]
+        public virtual GooglePrivacyDlpV2OrgConfig OrgConfig { get; set; }
+
+        /// <summary>Required. A status for this configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; }
+
+        /// <summary>Target to match against for determining what to scan and how frequently.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targets")]
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2DiscoveryTarget> Targets { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The last update timestamp of a DiscoveryConfig.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// What must take place for a profile to be updated and how frequently it should occur. New tables are scanned as
+    /// quickly as possible depending on system capacity.
+    /// </summary>
+    public class GooglePrivacyDlpV2DiscoveryGenerationCadence : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Governs when to update data profiles when a schema is modified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schemaModifiedCadence")]
+        public virtual GooglePrivacyDlpV2DiscoverySchemaModifiedCadence SchemaModifiedCadence { get; set; }
+
+        /// <summary>Governs when to update data profiles when a table is modified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableModifiedCadence")]
+        public virtual GooglePrivacyDlpV2DiscoveryTableModifiedCadence TableModifiedCadence { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The cadence at which to update data profiles when a schema is modified.</summary>
+    public class GooglePrivacyDlpV2DiscoverySchemaModifiedCadence : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>How frequently profiles may be updated when schemas are modified. Defaults to monthly.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("frequency")]
+        public virtual string Frequency { get; set; }
+
+        /// <summary>
+        /// The type of events to consider when deciding if the table's schema has been modified and should have the
+        /// profile updated. Defaults to NEW_COLUMNS.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("types")]
+        public virtual System.Collections.Generic.IList<string> Types { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The location to begin a Discovery scan. Denotes an organization ID or folder ID within an organization.
+    /// </summary>
+    public class GooglePrivacyDlpV2DiscoveryStartingLocation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ID of the Folder within an organization to scan.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("folderId")]
+        public virtual System.Nullable<long> FolderId { get; set; }
+
+        /// <summary>The ID of an organization to scan.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("organizationId")]
+        public virtual System.Nullable<long> OrganizationId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The cadence at which to update data profiles when a table is modified.</summary>
+    public class GooglePrivacyDlpV2DiscoveryTableModifiedCadence : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>How frequently data profiles can be updated when tables are modified. Defaults to never.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("frequency")]
+        public virtual string Frequency { get; set; }
+
+        /// <summary>
+        /// The type of events to consider when deciding if the table has been modified and should have the profile
+        /// updated. Defaults to MODIFIED_TIMESTAMP.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("types")]
+        public virtual System.Collections.Generic.IList<string> Types { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Target used to match against for Discovery.</summary>
+    public class GooglePrivacyDlpV2DiscoveryTarget : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>BigQuery target for Discovery. The first target to match a table will be the one applied.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bigQueryTarget")]
+        public virtual GooglePrivacyDlpV2BigQueryDiscoveryTarget BigQueryTarget { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12864,6 +14015,23 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for ListDiscoveryConfigs.</summary>
+    public class GooglePrivacyDlpV2ListDiscoveryConfigsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of configs, up to page_size in ListDiscoveryConfigsRequest.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("discoveryConfigs")]
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2DiscoveryConfig> DiscoveryConfigs { get; set; }
+
+        /// <summary>
+        /// If the next page is available then the next page token to be used in following ListDiscoveryConfigs request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The response message for listing DLP jobs.</summary>
     public class GooglePrivacyDlpV2ListDlpJobsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -13022,6 +14190,44 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>List of 99 values that partition the set of field values into 100 equal sized buckets.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quantileValues")]
         public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2Value> QuantileValues { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// There is an OR relationship between these attributes. They are used to determine if a table should be scanned or
+    /// not in Discovery.
+    /// </summary>
+    public class GooglePrivacyDlpV2OrConditions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Minimum age a table must have before Cloud DLP can profile it. Value must be 1 hour or greater.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minAge")]
+        public virtual object MinAge { get; set; }
+
+        /// <summary>Minimum number of rows that should be present before Cloud DLP profiles a table</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minRowCount")]
+        public virtual System.Nullable<int> MinRowCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Project and scan location information. Only set when the parent is an org.</summary>
+    public class GooglePrivacyDlpV2OrgConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The data to scan: folder, org, or project</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual GooglePrivacyDlpV2DiscoveryStartingLocation Location { get; set; }
+
+        /// <summary>
+        /// The project that will run the scan. The DLP service account that exists within this project must have access
+        /// to all resources that are profiled, and the Cloud DLP API must be enabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
+        public virtual string ProjectId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15065,6 +16271,21 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>New DeidentifyTemplate value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deidentifyTemplate")]
         public virtual GooglePrivacyDlpV2DeidentifyTemplate DeidentifyTemplate { get; set; }
+
+        /// <summary>Mask to control which fields get updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
+        public virtual object UpdateMask { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for UpdateDiscoveryConfig.</summary>
+    public class GooglePrivacyDlpV2UpdateDiscoveryConfigRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>New DiscoveryConfig value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("discoveryConfig")]
+        public virtual GooglePrivacyDlpV2DiscoveryConfig DiscoveryConfig { get; set; }
 
         /// <summary>Mask to control which fields get updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]

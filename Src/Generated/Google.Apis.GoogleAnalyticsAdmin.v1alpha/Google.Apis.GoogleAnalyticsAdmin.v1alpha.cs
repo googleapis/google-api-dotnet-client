@@ -10841,7 +10841,10 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Output only. Default Channel Group defined by Google, which cannot be updated.</summary>
+        /// <summary>
+        /// Output only. If true, then this channel group is the Default Channel Group predefined by Google Analytics.
+        /// Display name and grouping rules cannot be updated for this channel group.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("systemDefined")]
         public virtual System.Nullable<bool> SystemDefined { get; set; }
 

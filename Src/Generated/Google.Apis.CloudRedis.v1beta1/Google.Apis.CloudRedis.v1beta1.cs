@@ -1979,6 +1979,13 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("managedServerCa")]
         public virtual ManagedCertificateAuthority ManagedServerCa { get; set; }
 
+        /// <summary>
+        /// Identifier. Unique name of the resource in this scope including project, location and cluster using the
+        /// form: `projects/{project}/locations/{location}/clusters/{cluster}/certificateAuthority`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

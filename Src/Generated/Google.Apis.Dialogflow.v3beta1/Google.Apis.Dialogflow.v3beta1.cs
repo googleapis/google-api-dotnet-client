@@ -15650,6 +15650,18 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         public virtual System.Nullable<bool> DisableWebhook { get; set; }
 
         /// <summary>
+        /// Optional. Information about the end-user to improve the relevance and accuracy of generative answers. This
+        /// will be interpreted and used by a language model, so, for good results, the data should be self-descriptive,
+        /// and in a simple structure. Example:
+        /// ```
+        /// json { "subscription plan": "Business Premium Plus", "devices owned":
+        /// [ {"model": "Google Pixel 7"}, {"model": "Google Pixel Tablet"} ] }
+        /// ```
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endUserMetadata")]
+        public virtual System.Collections.Generic.IDictionary<string, object> EndUserMetadata { get; set; }
+
+        /// <summary>
         /// A list of flow versions to override for the request. Format:
         /// `projects//locations//agents//flows//versions/`. If version 1 of flow X is included in this list, the
         /// traffic of flow X will go through version 1 regardless of the version configuration in the environment. Each

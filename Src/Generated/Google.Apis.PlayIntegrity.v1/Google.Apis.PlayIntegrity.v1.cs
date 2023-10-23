@@ -510,7 +510,7 @@ namespace Google.Apis.PlayIntegrity.v1.Data
     /// <summary>Contains details of remediation guidance that the user can perform.</summary>
     public class UserRemediationDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Description of the user remediation action. Required.</summary>
+        /// <summary>Description of the user remediation action.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("remediation")]
         public virtual string Remediation { get; set; }
 

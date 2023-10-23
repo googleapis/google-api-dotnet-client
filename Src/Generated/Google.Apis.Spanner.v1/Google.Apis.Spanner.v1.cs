@@ -8107,6 +8107,24 @@ namespace Google.Apis.Spanner.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Recommendation to add new indexes to run queries more efficiently.</summary>
+    public class IndexAdvice : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. DDL statements to add new indexes that will improve the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ddl")]
+        public virtual System.Collections.Generic.IList<string> Ddl { get; set; }
+
+        /// <summary>
+        /// Optional. Estimated latency improvement factor. For example if the query currently takes 500 ms to run and
+        /// the estimated latency with new indexes is 100 ms this field will be 5.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("improvementFactor")]
+        public virtual System.Nullable<double> ImprovementFactor { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A message representing a (sparse) collection of hot keys for specific key buckets.</summary>
     public class IndexedHotKey : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9535,6 +9553,20 @@ namespace Google.Apis.Spanner.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Output of query advisor analysis.</summary>
+    public class QueryAdvisorResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Index Recommendation for a query. This is an optional field and the recommendation will only be
+        /// available when the recommendation guarantees significant improvement in query performance.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("indexAdvice")]
+        public virtual System.Collections.Generic.IList<IndexAdvice> IndexAdvice { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Query optimizer configuration.</summary>
     public class QueryOptions : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9583,6 +9615,13 @@ namespace Google.Apis.Spanner.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("planNodes")]
         public virtual System.Collections.Generic.IList<PlanNode> PlanNodes { get; set; }
+
+        /// <summary>
+        /// Optional. The advices/recommendations for a query. Currently this field will be serving index
+        /// recommendations for a query.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryAdvice")]
+        public virtual QueryAdvisorResult QueryAdvice { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

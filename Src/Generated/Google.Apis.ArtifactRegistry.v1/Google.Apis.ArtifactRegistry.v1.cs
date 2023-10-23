@@ -6025,6 +6025,10 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pythonRepository")]
         public virtual PythonRepository PythonRepository { get; set; }
 
+        /// <summary>Optional. The credentials used to access the remote repository.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("upstreamCredentials")]
+        public virtual UpstreamCredentials UpstreamCredentials { get; set; }
+
         /// <summary>Specific settings for a Yum remote repository.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("yumRepository")]
         public virtual YumRepository YumRepository { get; set; }
@@ -6464,6 +6468,17 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The credentials to access the remote repository.</summary>
+    public class UpstreamCredentials : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Use username and password to access the remote repository.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("usernamePasswordCredentials")]
+        public virtual UsernamePasswordCredentials UsernamePasswordCredentials { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Artifact policy configuration for the repository contents.</summary>
     public class UpstreamPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6480,6 +6495,24 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("repository")]
         public virtual string Repository { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Username and password credentials.</summary>
+    public class UsernamePasswordCredentials : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The Secret Manager key version that holds the password to access the remote repository. Must be in the
+        /// format of `projects/{project}/secrets/{secret}/versions/{version}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("passwordSecretVersion")]
+        public virtual string PasswordSecretVersion { get; set; }
+
+        /// <summary>The username to access the remote repository.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("username")]
+        public virtual string Username { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

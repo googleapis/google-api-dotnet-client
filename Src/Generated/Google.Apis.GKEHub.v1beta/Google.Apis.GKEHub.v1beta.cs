@@ -5718,6 +5718,10 @@ namespace Google.Apis.GKEHub.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("identityservice")]
         public virtual IdentityServiceMembershipSpec Identityservice { get; set; }
 
+        /// <summary>Policy Controller spec.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policycontroller")]
+        public virtual PolicyControllerMembershipSpec Policycontroller { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
