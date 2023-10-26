@@ -7455,6 +7455,10 @@ namespace Google.Apis.Gmail.v1.Data
     /// <summary>Metadata for a private key instance.</summary>
     public class CsePrivateKeyMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Metadata for hardware keys.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hardwareKeyMetadata")]
+        public virtual HardwareKeyMetadata HardwareKeyMetadata { get; set; }
+
         /// <summary>
         /// Metadata for a private key instance managed by an external key access control list service.
         /// </summary>
@@ -7624,6 +7628,17 @@ namespace Google.Apis.Gmail.v1.Data
         /// <summary>Indicates whether this address has been verified and is usable for forwarding. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verificationStatus")]
         public virtual string VerificationStatus { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for hardware keys.</summary>
+    public class HardwareKeyMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Description about the hardware key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

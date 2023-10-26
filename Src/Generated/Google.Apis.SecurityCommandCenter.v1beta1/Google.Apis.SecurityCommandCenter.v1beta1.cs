@@ -3343,6 +3343,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextSteps")]
         public virtual string NextSteps { get; set; }
 
+        /// <summary>Contains information about the org policies associated with the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("orgPolicies")]
+        public virtual System.Collections.Generic.IList<OrgPolicy> OrgPolicies { get; set; }
+
         /// <summary>
         /// The relative resource name of the source the finding belongs to. See:
         /// https://cloud.google.com/apis/design/resource_names#relative_resource_name This field is immutable after
@@ -3888,6 +3892,9 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         /// This field will be ignored if provided on config creation. Format
         /// "organizations/{organization}/muteConfigs/{mute_config}" "folders/{folder}/muteConfigs/{mute_config}"
         /// "projects/{project}/muteConfigs/{mute_config}"
+        /// "organizations/{organization}/locations/global/muteConfigs/{mute_config}"
+        /// "folders/{folder}/locations/global/muteConfigs/{mute_config}"
+        /// "projects/{project}/locations/global/muteConfigs/{mute_config}"
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -5554,6 +5561,19 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
         public virtual System.Collections.Generic.IDictionary<string, object> Response { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains information about the org policies associated with the finding.</summary>
+    public class OrgPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The resource name of the org policy. Example: "organizations/{organization_id}/policies/{constraint_name}"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

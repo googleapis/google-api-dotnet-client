@@ -1330,6 +1330,10 @@ namespace Google.Apis.Doubleclicksearch.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("adId")]
         public virtual System.Nullable<long> AdId { get; set; }
 
+        /// <summary>Ad user data consent for this conversion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adUserDataConsent")]
+        public virtual string AdUserDataConsent { get; set; }
+
         /// <summary>DS advertiser ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserId")]
         public virtual System.Nullable<long> AdvertiserId { get; set; }

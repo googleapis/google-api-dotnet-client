@@ -914,7 +914,6 @@ namespace Google.Apis.HangoutsChat.v1
             /// membership](https://developers.google.com/chat/api/guides/v1/members/get). Requires
             /// [authentication](https://developers.google.com/chat/api/guides/auth). Fully supports [service account
             /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts) and [user
-            /// authentication](https://developers.google.com/chat/api/guides/auth/users). [User
             /// authentication](https://developers.google.com/chat/api/guides/auth/users).
             /// </summary>
             /// <param name="name">
@@ -935,7 +934,6 @@ namespace Google.Apis.HangoutsChat.v1
             /// membership](https://developers.google.com/chat/api/guides/v1/members/get). Requires
             /// [authentication](https://developers.google.com/chat/api/guides/auth). Fully supports [service account
             /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts) and [user
-            /// authentication](https://developers.google.com/chat/api/guides/auth/users). [User
             /// authentication](https://developers.google.com/chat/api/guides/auth/users).
             /// </summary>
             public class GetRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.Membership>
@@ -992,7 +990,6 @@ namespace Google.Apis.HangoutsChat.v1
             /// that the authenticated user has access to. Requires
             /// [authentication](https://developers.google.com/chat/api/guides/auth). Fully supports [service account
             /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts) and [user
-            /// authentication](https://developers.google.com/chat/api/guides/auth/users). [User
             /// authentication](https://developers.google.com/chat/api/guides/auth/users).
             /// </summary>
             /// <param name="parent">
@@ -1013,7 +1010,6 @@ namespace Google.Apis.HangoutsChat.v1
             /// that the authenticated user has access to. Requires
             /// [authentication](https://developers.google.com/chat/api/guides/auth). Fully supports [service account
             /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts) and [user
-            /// authentication](https://developers.google.com/chat/api/guides/auth/users). [User
             /// authentication](https://developers.google.com/chat/api/guides/auth/users).
             /// </summary>
             public class ListRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.ListMembershipsResponse>
@@ -1681,7 +1677,6 @@ namespace Google.Apis.HangoutsChat.v1
             /// message](https://developers.google.com/chat/api/guides/v1/messages/delete). Requires
             /// [authentication](https://developers.google.com/chat/api/guides/auth). Fully supports [service account
             /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts) and [user
-            /// authentication](https://developers.google.com/chat/api/guides/auth/users). [User
             /// authentication](https://developers.google.com/chat/api/guides/auth/users). Requests authenticated with
             /// service accounts can only delete messages created by the calling Chat app.
             /// </summary>
@@ -1699,7 +1694,6 @@ namespace Google.Apis.HangoutsChat.v1
             /// message](https://developers.google.com/chat/api/guides/v1/messages/delete). Requires
             /// [authentication](https://developers.google.com/chat/api/guides/auth). Fully supports [service account
             /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts) and [user
-            /// authentication](https://developers.google.com/chat/api/guides/auth/users). [User
             /// authentication](https://developers.google.com/chat/api/guides/auth/users). Requests authenticated with
             /// service accounts can only delete messages created by the calling Chat app.
             /// </summary>
@@ -1765,7 +1759,6 @@ namespace Google.Apis.HangoutsChat.v1
             /// message](https://developers.google.com/chat/api/guides/v1/messages/get). Requires
             /// [authentication](https://developers.google.com/chat/api/guides/auth). Fully supports [service account
             /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts) and [user
-            /// authentication](https://developers.google.com/chat/api/guides/auth/users). [User
             /// authentication](https://developers.google.com/chat/api/guides/auth/users). Note: Might return a message
             /// from a blocked member or space.
             /// </summary>
@@ -1786,7 +1779,6 @@ namespace Google.Apis.HangoutsChat.v1
             /// message](https://developers.google.com/chat/api/guides/v1/messages/get). Requires
             /// [authentication](https://developers.google.com/chat/api/guides/auth). Fully supports [service account
             /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts) and [user
-            /// authentication](https://developers.google.com/chat/api/guides/auth/users). [User
             /// authentication](https://developers.google.com/chat/api/guides/auth/users). Note: Might return a message
             /// from a blocked member or space.
             /// </summary>
@@ -1992,7 +1984,6 @@ namespace Google.Apis.HangoutsChat.v1
             /// message](https://developers.google.com/chat/api/guides/v1/messages/update). Requires
             /// [authentication](https://developers.google.com/chat/api/guides/auth). Fully supports [service account
             /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts) and [user
-            /// authentication](https://developers.google.com/chat/api/guides/auth/users). [User
             /// authentication](https://developers.google.com/chat/api/guides/auth/users). Requests authenticated with
             /// service accounts can only update messages created by the calling Chat app.
             /// </summary>
@@ -2013,7 +2004,6 @@ namespace Google.Apis.HangoutsChat.v1
             /// message](https://developers.google.com/chat/api/guides/v1/messages/update). Requires
             /// [authentication](https://developers.google.com/chat/api/guides/auth). Fully supports [service account
             /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts) and [user
-            /// authentication](https://developers.google.com/chat/api/guides/auth/users). [User
             /// authentication](https://developers.google.com/chat/api/guides/auth/users). Requests authenticated with
             /// service accounts can only update messages created by the calling Chat app.
             /// </summary>
@@ -2105,7 +2095,6 @@ namespace Google.Apis.HangoutsChat.v1
             /// message](https://developers.google.com/chat/api/guides/v1/messages/update). Requires
             /// [authentication](https://developers.google.com/chat/api/guides/auth). Fully supports [service account
             /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts) and [user
-            /// authentication](https://developers.google.com/chat/api/guides/auth/users). [User
             /// authentication](https://developers.google.com/chat/api/guides/auth/users). Requests authenticated with
             /// service accounts can only update messages created by the calling Chat app.
             /// </summary>
@@ -2126,7 +2115,6 @@ namespace Google.Apis.HangoutsChat.v1
             /// message](https://developers.google.com/chat/api/guides/v1/messages/update). Requires
             /// [authentication](https://developers.google.com/chat/api/guides/auth). Fully supports [service account
             /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts) and [user
-            /// authentication](https://developers.google.com/chat/api/guides/auth/users). [User
             /// authentication](https://developers.google.com/chat/api/guides/auth/users). Requests authenticated with
             /// service accounts can only update messages created by the calling Chat app.
             /// </summary>
@@ -3068,16 +3056,13 @@ namespace Google.Apis.HangoutsChat.v1.Data
     }
 
     /// <summary>
-    /// Chat apps only. For a `SelectionInput` widget that uses a multi-select menu, a data source from Google Chat. For
-    /// example, a list of Google Chat spaces of which the user is a member. [Developer
-    /// Preview](https://developers.google.com/workspace/preview).
+    /// Chat apps only. For a `SelectionInput` widget that uses a multiselect menu, a data source from Google Chat. The
+    /// data source populates selection items for the multiselect menu. For example, a user can select Google Chat
+    /// spaces that they're a member of.
     /// </summary>
     public class ChatClientDataSourceMarkup : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// A data source representing a Google Chat space. Format: spaces/{space} [Developer
-        /// Preview](https://developers.google.com/workspace/preview).
-        /// </summary>
+        /// <summary>Google Chat spaces that the user is a member of.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spaceDataSource")]
         public virtual SpaceDataSource SpaceDataSource { get; set; }
 
@@ -4272,23 +4257,19 @@ namespace Google.Apis.HangoutsChat.v1.Data
     }
 
     /// <summary>
-    /// Chat apps only. For a `SelectionInput` widget that uses a multi-select menu, the data from a [Google Workspace
-    /// host application](https://developers.google.com/chat/api/reference/rest/v1/HostApp). Used to populate the items
-    /// in the multi-select menu. [Developer Preview](https://developers.google.com/workspace/preview).
+    /// Chat apps only. For a `SelectionInput` widget that uses a multiselect menu, a data source from Google Workspace.
+    /// Used to populate items in a multiselect menu.
     /// </summary>
     public class GoogleAppsCardV1PlatformDataSource : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// For a `SelectionInput` widget that uses a multi-select menu, a data source shared by all Google Workspace
-        /// host applications, such as users in a Google Workspace organization. [Developer
-        /// Preview](https://developers.google.com/workspace/preview).
+        /// A data source shared by all Google Workspace applications, such as users in a Google Workspace organization.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commonDataSource")]
         public virtual string CommonDataSource { get; set; }
 
         /// <summary>
-        /// A data source that's unique to a Google Workspace host application, such as Gmail emails, Google Calendar
-        /// events, or Google Chat messages. [Developer Preview](https://developers.google.com/workspace/preview).
+        /// A data source that's unique to a Google Workspace host application, such spaces in Google Chat.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hostAppDataSource")]
         public virtual HostAppDataSourceMarkup HostAppDataSource { get; set; }
@@ -4346,10 +4327,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// </summary>
     public class GoogleAppsCardV1SelectionInput : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// An external data source, such as a relational data base. [Developer
-        /// Preview](https://developers.google.com/workspace/preview).
-        /// </summary>
+        /// <summary>An external data source, such as a relational data base.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("externalDataSource")]
         public virtual GoogleAppsCardV1Action ExternalDataSource { get; set; }
 
@@ -4369,17 +4347,16 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string Label { get; set; }
 
         /// <summary>
-        /// For multi-select menus, the maximum number of items that a user can select. Minimum value is 1 item. If
-        /// unspecified, set to 3 items. [Developer Preview](https://developers.google.com/workspace/preview).
+        /// For multiselect menus, the maximum number of items that a user can select. Minimum value is 1 item. If
+        /// unspecified, defaults to 3 items.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("multiSelectMaxSelectedItems")]
         public virtual System.Nullable<int> MultiSelectMaxSelectedItems { get; set; }
 
         /// <summary>
-        /// For multi-select menus, the number of text characters that a user inputs before the Chat app queries
-        /// autocomplete and displays suggested items on the card. If unspecified, set to 0 characters for static data
-        /// sources and 3 characters for external data sources. [Developer
-        /// Preview](https://developers.google.com/workspace/preview).
+        /// For multiselect menus, the number of text characters that a user inputs before the Chat app queries
+        /// autocomplete and displays suggested items in the menu. If unspecified, defaults to 0 characters for static
+        /// data sources and 3 characters for external data sources.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("multiSelectMinQueryLength")]
         public virtual System.Nullable<int> MultiSelectMinQueryLength { get; set; }
@@ -4399,11 +4376,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("onChangeAction")]
         public virtual GoogleAppsCardV1Action OnChangeAction { get; set; }
 
-        /// <summary>
-        /// A data source from a [Google Workspace host
-        /// application](https://developers.google.com/chat/api/reference/rest/v1/HostApp). [Developer
-        /// Preview](https://developers.google.com/workspace/preview).
-        /// </summary>
+        /// <summary>A data source from Google Workspace.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("platformDataSource")]
         public virtual GoogleAppsCardV1PlatformDataSource PlatformDataSource { get; set; }
 
@@ -4423,8 +4396,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
     public class GoogleAppsCardV1SelectionItem : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// For multi-select menus, a text description or label that's displayed below the item's `text` field.
-        /// [Developer Preview](https://developers.google.com/workspace/preview).
+        /// For multiselect menus, a text description or label that's displayed below the item's `text` field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bottomText")]
         public virtual string BottomText { get; set; }
@@ -4437,10 +4409,9 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual System.Nullable<bool> Selected { get; set; }
 
         /// <summary>
-        /// For multi-select menus, the URL for the icon displayed next to the item's `text` field. Supports PNG and
-        /// JPEG files. Must be an `HTTPS` URL. For example,
-        /// `https://developers.google.com/chat/images/quickstart-app-avatar.png`. [Developer
-        /// Preview](https://developers.google.com/workspace/preview).
+        /// For multiselect menus, the URL for the icon displayed next to the item's `text` field. Supports PNG and JPEG
+        /// files. Must be an `HTTPS` URL. For example,
+        /// `https://developers.google.com/chat/images/quickstart-app-avatar.png`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startIconUri")]
         public virtual string StartIconUri { get; set; }
@@ -4811,14 +4782,12 @@ namespace Google.Apis.HangoutsChat.v1.Data
     }
 
     /// <summary>
-    /// Chat apps only. For a `SelectionInput` widget that uses a multi-select menu, a data source from a Google
-    /// Workspace host application. [Developer Preview](https://developers.google.com/workspace/preview).
+    /// Chat apps only. For a `SelectionInput` widget that uses a multiselect menu, a data source from a Google
+    /// Workspace application. The data source populates selection items for the multiselect menu.
     /// </summary>
     public class HostAppDataSourceMarkup : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// The data source is Google Chat. [Developer Preview](https://developers.google.com/workspace/preview).
-        /// </summary>
+        /// <summary>A data source from Google Chat.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("chatDataSource")]
         public virtual ChatClientDataSourceMarkup ChatDataSource { get; set; }
 
@@ -5693,14 +5662,13 @@ namespace Google.Apis.HangoutsChat.v1.Data
     }
 
     /// <summary>
-    /// A data source representing a Google Chat space. Format: spaces/{space} [Developer
-    /// Preview](https://developers.google.com/workspace/preview).
+    /// A data source that populates Google Chat spaces as selection items for a multiselect menu. Only populates spaces
+    /// that the user is a member of.
     /// </summary>
     public class SpaceDataSource : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// When `true`, uses the card's Google Chat space as the default selection. The default value is `false`.
-        /// [Developer Preview](https://developers.google.com/workspace/preview).
+        /// If set to `true`, the multiselect menu selects the current Google Chat space as an item by default.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultToCurrentSpace")]
         public virtual System.Nullable<bool> DefaultToCurrentSpace { get; set; }

@@ -699,7 +699,7 @@ namespace Google.Apis.Texttospeech.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("model")]
         public virtual string Model { get; set; }
 
-        /// <summary>Optional. The usage of the synthesized audio to be reported.</summary>
+        /// <summary>Optional. Deprecated. The usage of the synthesized audio to be reported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reportedUsage")]
         public virtual string ReportedUsage { get; set; }
 

@@ -11902,7 +11902,10 @@ namespace Google.Apis.CloudDataplex.v1.Data
     /// <summary>The output of a DataQualityScan.</summary>
     public class GoogleCloudDataplexV1DataQualityResult : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A list of results at the dimension level.</summary>
+        /// <summary>
+        /// A list of results at the dimension level.A dimension will have a corresponding DataQualityDimensionResult if
+        /// and only if there is at least one rule with the 'dimension' field set to it.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dimensions")]
         public virtual System.Collections.Generic.IList<GoogleCloudDataplexV1DataQualityDimensionResult> Dimensions { get; set; }
 

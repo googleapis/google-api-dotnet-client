@@ -4886,6 +4886,10 @@ namespace Google.Apis.VMMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("diskType")]
         public virtual string DiskType { get; set; }
 
+        /// <summary>Optional. The encryption to apply to the boot disk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryption")]
+        public virtual Encryption Encryption { get; set; }
+
         /// <summary>The image to use when creating the disk.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("image")]
         public virtual DiskImageDefaults Image { get; set; }
@@ -5256,6 +5260,10 @@ namespace Google.Apis.VMMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("diskType")]
         public virtual string DiskType { get; set; }
 
+        /// <summary>Optional. Immutable. The encryption to apply to the VM disks.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryption")]
+        public virtual Encryption Encryption { get; set; }
+
         /// <summary>The hostname to assign to the VM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hostname")]
         public virtual string Hostname { get; set; }
@@ -5342,6 +5350,10 @@ namespace Google.Apis.VMMigrationService.v1.Data
         /// <summary>The disk type to use in the VM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diskType")]
         public virtual string DiskType { get; set; }
+
+        /// <summary>Optional. The encryption to apply to the VM disks.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryption")]
+        public virtual Encryption Encryption { get; set; }
 
         /// <summary>The hostname to assign to the VM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hostname")]
@@ -6040,6 +6052,10 @@ namespace Google.Apis.VMMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("computeScheduling")]
         public virtual ComputeScheduling ComputeScheduling { get; set; }
 
+        /// <summary>Optional. The encryption to apply to the VM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryption")]
+        public virtual Encryption Encryption { get; set; }
+
         /// <summary>Optional. The hostname to assign to the VM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hostname")]
         public virtual string Hostname { get; set; }
@@ -6105,6 +6121,17 @@ namespace Google.Apis.VMMigrationService.v1.Data
     /// </summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Encryption message describes the details of the applied encryption.</summary>
+    public class Encryption : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The name of the encryption key that is stored in Google Cloud KMS.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKey")]
+        public virtual string KmsKey { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -7193,6 +7220,10 @@ namespace Google.Apis.VMMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("diskType")]
         public virtual string DiskType { get; set; }
 
+        /// <summary>Optional. The encryption to apply to the disk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryption")]
+        public virtual Encryption Encryption { get; set; }
+
         /// <summary>Required. The ordinal number of the source VM disk.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceDiskNumber")]
         public virtual System.Nullable<int> SourceDiskNumber { get; set; }
@@ -7524,6 +7555,10 @@ namespace Google.Apis.VMMigrationService.v1.Data
         /// <summary>User-provided description of the source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
+
+        /// <summary>Optional. Immutable. The encryption details of the source data stored by the service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryption")]
+        public virtual Encryption Encryption { get; set; }
 
         /// <summary>The labels of the source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]

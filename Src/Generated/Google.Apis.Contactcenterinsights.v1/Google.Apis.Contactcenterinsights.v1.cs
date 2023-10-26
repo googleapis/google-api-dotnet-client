@@ -3341,6 +3341,12 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("failedAnalysesCount")]
         public virtual System.Nullable<int> FailedAnalysesCount { get; set; }
 
+        /// <summary>
+        /// Output only. Partial errors during ingest operation that might cause the operation output to be incomplete.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partialErrors")]
+        public virtual System.Collections.Generic.IList<GoogleRpcStatus> PartialErrors { get; set; }
+
         /// <summary>The original request for bulk analyze.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("request")]
         public virtual GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsRequest Request { get; set; }
@@ -3841,7 +3847,7 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The conversation source, which is a combination of transcript and audio.</summary>
+    /// <summary>The conversation source, which is a combination of transcript, audio, and metadata.</summary>
     public class GoogleCloudContactcenterinsightsV1ConversationDataSource : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The source when the conversation comes from Dialogflow.</summary>
@@ -6825,6 +6831,12 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("failedAnalysesCount")]
         public virtual System.Nullable<int> FailedAnalysesCount { get; set; }
 
+        /// <summary>
+        /// Output only. Partial errors during ingest operation that might cause the operation output to be incomplete.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partialErrors")]
+        public virtual System.Collections.Generic.IList<GoogleRpcStatus> PartialErrors { get; set; }
+
         /// <summary>The original request for bulk analyze.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("request")]
         public virtual GoogleCloudContactcenterinsightsV1alpha1BulkAnalyzeConversationsRequest Request { get; set; }
@@ -7187,7 +7199,7 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The conversation source, which is a combination of transcript and audio.</summary>
+    /// <summary>The conversation source, which is a combination of transcript, audio, and metadata.</summary>
     public class GoogleCloudContactcenterinsightsV1alpha1ConversationDataSource : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The source when the conversation comes from Dialogflow.</summary>

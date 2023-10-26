@@ -1,0 +1,16 @@
+{
+  "Google.Apis.BigLakeService.v1.BigLakeServiceBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.BigLakeService.v1.BigLakeServiceBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.BigLakeService.v1.ProjectsResource+LocationsResource+CatalogsResource+DatabasesResource+TablesResource+ListRequest.ViewEnum": [
+    "TABLE_VIEW_UNSPECIFIED",
+    "BASIC",
+    "FULL"
+  ]
+}

@@ -387,7 +387,7 @@ namespace Google.Apis.Pubsub.v1
 
                 /// <summary>
                 /// The ID to use for the schema, which will become the final component of the schema's resource name.
-                /// See https://cloud.google.com/pubsub/docs/admin#resource_names for resource name constraints.
+                /// See https://cloud.google.com/pubsub/docs/pubsub-basics#resource_names for resource name constraints.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("schemaId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string SchemaId { get; set; }
@@ -1254,15 +1254,15 @@ namespace Google.Apis.Pubsub.v1
             /// `FAILED_PRECONDITION` is returned. See also the `Snapshot.expire_time` field. If the name is not
             /// provided in the request, the server will assign a random name for this snapshot on the same project as
             /// the subscription, conforming to the [resource name format]
-            /// (https://cloud.google.com/pubsub/docs/admin#resource_names). The generated name is populated in the
-            /// returned Snapshot object. Note that for REST API requests, you must specify a name in the request.
+            /// (https://cloud.google.com/pubsub/docs/pubsub-basics#resource_names). The generated name is populated in
+            /// the returned Snapshot object. Note that for REST API requests, you must specify a name in the request.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
             /// Required. User-provided name for this snapshot. If the name is not provided in the request, the server
             /// will assign a random name for this snapshot on the same project as the subscription. Note that for REST
             /// API requests, you must specify a name. See the [resource name
-            /// rules](https://cloud.google.com/pubsub/docs/admin#resource_names). Format is
+            /// rules](https://cloud.google.com/pubsub/docs/pubsub-basics#resource_names). Format is
             /// `projects/{project}/snapshots/{snap}`.
             /// </param>
             public virtual CreateRequest Create(Google.Apis.Pubsub.v1.Data.CreateSnapshotRequest body, string name)
@@ -1280,8 +1280,8 @@ namespace Google.Apis.Pubsub.v1
             /// `FAILED_PRECONDITION` is returned. See also the `Snapshot.expire_time` field. If the name is not
             /// provided in the request, the server will assign a random name for this snapshot on the same project as
             /// the subscription, conforming to the [resource name format]
-            /// (https://cloud.google.com/pubsub/docs/admin#resource_names). The generated name is populated in the
-            /// returned Snapshot object. Note that for REST API requests, you must specify a name in the request.
+            /// (https://cloud.google.com/pubsub/docs/pubsub-basics#resource_names). The generated name is populated in
+            /// the returned Snapshot object. Note that for REST API requests, you must specify a name in the request.
             /// </summary>
             public class CreateRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1.Data.Snapshot>
             {
@@ -1297,7 +1297,7 @@ namespace Google.Apis.Pubsub.v1
                 /// Required. User-provided name for this snapshot. If the name is not provided in the request, the
                 /// server will assign a random name for this snapshot on the same project as the subscription. Note
                 /// that for REST API requests, you must specify a name. See the [resource name
-                /// rules](https://cloud.google.com/pubsub/docs/admin#resource_names). Format is
+                /// rules](https://cloud.google.com/pubsub/docs/pubsub-basics#resource_names). Format is
                 /// `projects/{project}/snapshots/{snap}`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -1911,12 +1911,13 @@ namespace Google.Apis.Pubsub.v1
 
             /// <summary>
             /// Creates a subscription to a given topic. See the [resource name rules]
-            /// (https://cloud.google.com/pubsub/docs/admin#resource_names). If the subscription already exists, returns
-            /// `ALREADY_EXISTS`. If the corresponding topic doesn't exist, returns `NOT_FOUND`. If the name is not
-            /// provided in the request, the server will assign a random name for this subscription on the same project
-            /// as the topic, conforming to the [resource name format]
-            /// (https://cloud.google.com/pubsub/docs/admin#resource_names). The generated name is populated in the
-            /// returned Subscription object. Note that for REST API requests, you must specify a name in the request.
+            /// (https://cloud.google.com/pubsub/docs/pubsub-basics#resource_names). If the subscription already exists,
+            /// returns `ALREADY_EXISTS`. If the corresponding topic doesn't exist, returns `NOT_FOUND`. If the name is
+            /// not provided in the request, the server will assign a random name for this subscription on the same
+            /// project as the topic, conforming to the [resource name format]
+            /// (https://cloud.google.com/pubsub/docs/pubsub-basics#resource_names). The generated name is populated in
+            /// the returned Subscription object. Note that for REST API requests, you must specify a name in the
+            /// request.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
@@ -1933,12 +1934,13 @@ namespace Google.Apis.Pubsub.v1
 
             /// <summary>
             /// Creates a subscription to a given topic. See the [resource name rules]
-            /// (https://cloud.google.com/pubsub/docs/admin#resource_names). If the subscription already exists, returns
-            /// `ALREADY_EXISTS`. If the corresponding topic doesn't exist, returns `NOT_FOUND`. If the name is not
-            /// provided in the request, the server will assign a random name for this subscription on the same project
-            /// as the topic, conforming to the [resource name format]
-            /// (https://cloud.google.com/pubsub/docs/admin#resource_names). The generated name is populated in the
-            /// returned Subscription object. Note that for REST API requests, you must specify a name in the request.
+            /// (https://cloud.google.com/pubsub/docs/pubsub-basics#resource_names). If the subscription already exists,
+            /// returns `ALREADY_EXISTS`. If the corresponding topic doesn't exist, returns `NOT_FOUND`. If the name is
+            /// not provided in the request, the server will assign a random name for this subscription on the same
+            /// project as the topic, conforming to the [resource name format]
+            /// (https://cloud.google.com/pubsub/docs/pubsub-basics#resource_names). The generated name is populated in
+            /// the returned Subscription object. Note that for REST API requests, you must specify a name in the
+            /// request.
             /// </summary>
             public class CreateRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1.Data.Subscription>
             {
@@ -3002,7 +3004,7 @@ namespace Google.Apis.Pubsub.v1
 
             /// <summary>
             /// Creates the given topic with the given name. See the [resource name rules]
-            /// (https://cloud.google.com/pubsub/docs/admin#resource_names).
+            /// (https://cloud.google.com/pubsub/docs/pubsub-basics#resource_names).
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
@@ -3018,7 +3020,7 @@ namespace Google.Apis.Pubsub.v1
 
             /// <summary>
             /// Creates the given topic with the given name. See the [resource name rules]
-            /// (https://cloud.google.com/pubsub/docs/admin#resource_names).
+            /// (https://cloud.google.com/pubsub/docs/pubsub-basics#resource_names).
             /// </summary>
             public class CreateRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1.Data.Topic>
             {
@@ -4062,10 +4064,10 @@ namespace Google.Apis.Pubsub.v1.Data
     public class MessageStoragePolicy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. A list of IDs of GCP regions where messages that are published to the topic may be persisted in
-        /// storage. Messages published by publishers running in non-allowed GCP regions (or running outside of GCP
-        /// altogether) will be routed for storage in one of the allowed regions. An empty list means that no regions
-        /// are allowed, and is not a valid configuration.
+        /// Optional. A list of IDs of Google Cloud regions where messages that are published to the topic may be
+        /// persisted in storage. Messages published by publishers running in non-allowed Google Cloud regions (or
+        /// running outside of Google Cloud altogether) are routed for storage in one of the allowed regions. An empty
+        /// list means that no regions are allowed, and is not a valid configuration.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowedPersistenceRegions")]
         public virtual System.Collections.Generic.IList<string> AllowedPersistenceRegions { get; set; }

@@ -32160,8 +32160,8 @@ namespace Google.Apis.Aiplatform.v1.Data
 
         /// <summary>
         /// The ID of the location to store protected artifacts. e.g. us-central1. Populate only when the location is
-        /// different than CustomJob location. For unprotected artifacts, the value of this field is ignored. List of
-        /// supported locations: https://cloud.google.com/vertex-ai/docs/general/locations
+        /// different than CustomJob location. List of supported locations:
+        /// https://cloud.google.com/vertex-ai/docs/general/locations
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("protectedArtifactLocationId")]
         public virtual string ProtectedArtifactLocationId { get; set; }
@@ -48049,7 +48049,7 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A message representing a Study.</summary>
+    /// <summary>A message representing a Study. Next id: 12</summary>
     public class GoogleCloudAiplatformV1Study : Google.Apis.Requests.IDirectResponseSchema
     {
         private string _createTimeRaw;
@@ -48156,6 +48156,13 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// <summary>Required. The set of parameters to tune.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
         public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1StudySpecParameterSpec> Parameters { get; set; }
+
+        /// <summary>
+        /// Conditions for automated stopping of a Study. Enable automated stopping by configuring at least one
+        /// condition.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("studyStoppingConfig")]
+        public virtual GoogleCloudAiplatformV1StudySpecStudyStoppingConfig StudyStoppingConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -48504,6 +48511,116 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// <summary>Required. Inclusive minimum value of the parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minValue")]
         public virtual System.Nullable<long> MinValue { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The configuration (stopping conditions) for automated stopping of a Study. Conditions include trial budgets,
+    /// time budgets, and convergence detection.
+    /// </summary>
+    public class GoogleCloudAiplatformV1StudySpecStudyStoppingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If the objective value has not improved for this much time, stop the study. WARNING: Effective only for
+        /// single-objective studies.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxDurationNoProgress")]
+        public virtual object MaxDurationNoProgress { get; set; }
+
+        /// <summary>If there are more than this many trials, stop the study.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxNumTrials")]
+        public virtual System.Nullable<int> MaxNumTrials { get; set; }
+
+        /// <summary>
+        /// If the objective value has not improved for this many consecutive trials, stop the study. WARNING: Effective
+        /// only for single-objective studies.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxNumTrialsNoProgress")]
+        public virtual System.Nullable<int> MaxNumTrialsNoProgress { get; set; }
+
+        /// <summary>If the specified time or duration has passed, stop the study.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maximumRuntimeConstraint")]
+        public virtual GoogleCloudAiplatformV1StudyTimeConstraint MaximumRuntimeConstraint { get; set; }
+
+        /// <summary>If there are fewer than this many COMPLETED trials, do not stop the study.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minNumTrials")]
+        public virtual System.Nullable<int> MinNumTrials { get; set; }
+
+        /// <summary>
+        /// Each "stopping rule" in this proto specifies an "if" condition. Before Vizier would generate a new
+        /// suggestion, it first checks each specified stopping rule, from top to bottom in this list. Note that the
+        /// first few rules (e.g. minimum_runtime_constraint, min_num_trials) will prevent other stopping rules from
+        /// being evaluated until they are met. For example, setting `min_num_trials=5` and `always_stop_after= 1 hour`
+        /// means that the Study will ONLY stop after it has 5 COMPLETED trials, even if more than an hour has passed
+        /// since its creation. It follows the first applicable rule (whose "if" condition is satisfied) to make a
+        /// stopping decision. If none of the specified rules are applicable, then Vizier decides that the study should
+        /// not stop. If Vizier decides that the study should stop, the study enters STOPPING state (or STOPPING_ASAP if
+        /// should_stop_asap = true). IMPORTANT: The automatic study state transition happens precisely as described
+        /// above; that is, deleting trials or updating StudyConfig NEVER automatically moves the study state back to
+        /// ACTIVE. If you want to _resume_ a Study that was stopped, 1) change the stopping conditions if necessary, 2)
+        /// activate the study, and then 3) ask for suggestions. If the specified time or duration has not passed, do
+        /// not stop the study.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minimumRuntimeConstraint")]
+        public virtual GoogleCloudAiplatformV1StudyTimeConstraint MinimumRuntimeConstraint { get; set; }
+
+        /// <summary>
+        /// If true, a Study enters STOPPING_ASAP whenever it would normally enters STOPPING state. The bottom line is:
+        /// set to true if you want to interrupt on-going evaluations of Trials as soon as the study stopping condition
+        /// is met. (Please see Study.State documentation for the source of truth).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shouldStopAsap")]
+        public virtual System.Nullable<bool> ShouldStopAsap { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Time-based Constraint for Study</summary>
+    public class GoogleCloudAiplatformV1StudyTimeConstraint : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>Compares the wallclock time to this time. Must use UTC timezone.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>Counts the wallclock time passed since the creation of this Study.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxDuration")]
+        public virtual object MaxDuration { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
