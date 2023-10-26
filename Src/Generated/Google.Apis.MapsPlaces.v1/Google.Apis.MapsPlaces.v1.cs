@@ -67,6 +67,12 @@ namespace Google.Apis.MapsPlaces.v1
             /// <summary>Private Service: https://www.googleapis.com/auth/maps-platform.places</summary>
             public static string MapsPlatformPlaces = "https://www.googleapis.com/auth/maps-platform.places";
 
+            /// <summary>Private Service: https://www.googleapis.com/auth/maps-platform.places.details</summary>
+            public static string MapsPlatformPlacesDetails = "https://www.googleapis.com/auth/maps-platform.places.details";
+
+            /// <summary>Private Service: https://www.googleapis.com/auth/maps-platform.places.nearbysearch</summary>
+            public static string MapsPlatformPlacesNearbysearch = "https://www.googleapis.com/auth/maps-platform.places.nearbysearch";
+
             /// <summary>Private Service: https://www.googleapis.com/auth/maps-platform.places.textsearch</summary>
             public static string MapsPlatformPlacesTextsearch = "https://www.googleapis.com/auth/maps-platform.places.textsearch";
         }
@@ -82,6 +88,12 @@ namespace Google.Apis.MapsPlaces.v1
 
             /// <summary>Private Service: https://www.googleapis.com/auth/maps-platform.places</summary>
             public const string MapsPlatformPlaces = "https://www.googleapis.com/auth/maps-platform.places";
+
+            /// <summary>Private Service: https://www.googleapis.com/auth/maps-platform.places.details</summary>
+            public const string MapsPlatformPlacesDetails = "https://www.googleapis.com/auth/maps-platform.places.details";
+
+            /// <summary>Private Service: https://www.googleapis.com/auth/maps-platform.places.nearbysearch</summary>
+            public const string MapsPlatformPlacesNearbysearch = "https://www.googleapis.com/auth/maps-platform.places.nearbysearch";
 
             /// <summary>Private Service: https://www.googleapis.com/auth/maps-platform.places.textsearch</summary>
             public const string MapsPlatformPlacesTextsearch = "https://www.googleapis.com/auth/maps-platform.places.textsearch";
@@ -284,6 +296,255 @@ namespace Google.Apis.MapsPlaces.v1
         public PlacesResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
+            Photos = new PhotosResource(service);
+        }
+
+        /// <summary>Gets the Photos resource.</summary>
+        public virtual PhotosResource Photos { get; }
+
+        /// <summary>The "photos" collection of methods.</summary>
+        public class PhotosResource
+        {
+            private const string Resource = "photos";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public PhotosResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>Get a photo media with a photo reference string.</summary>
+            /// <param name="name">
+            /// Required. The resource name of a photo as returned in a Place object's photos.name field. Format:
+            /// places/place_id/photos/photo_reference.
+            /// </param>
+            public virtual GetMediaRequest GetMedia(string name)
+            {
+                return new GetMediaRequest(service, name);
+            }
+
+            /// <summary>Get a photo media with a photo reference string.</summary>
+            public class GetMediaRequest : MapsPlacesBaseServiceRequest<Google.Apis.MapsPlaces.v1.Data.GoogleMapsPlacesV1PhotoMedia>
+            {
+                /// <summary>Constructs a new GetMedia request.</summary>
+                public GetMediaRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The resource name of a photo as returned in a Place object's photos.name field. Format:
+                /// places/place_id/photos/photo_reference.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>
+                /// Optional. Specifies the maximum desired height, in pixels, of the image. If the image is smaller
+                /// than the values specified, the original image will be returned. If the image is larger in either
+                /// dimension, it will be scaled to match the smaller of the two dimensions, restricted to its original
+                /// aspect ratio. Both the max_height_px and max_width_px properties accept an integer between 1 and
+                /// 4800, inclusively. If the value is not within the allowed range, an INVALID_ARGUMENT error will be
+                /// returned. At least one of max_height_px or max_width_px needs to be specified. If neither
+                /// max_height_px nor max_width_px is specified, an INVALID_ARGUMENT error will be returned.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("maxHeightPx", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> MaxHeightPx { get; set; }
+
+                /// <summary>
+                /// Optional. Specifies the maximum desired width, in pixels, of the image. If the image is smaller than
+                /// the values specified, the original image will be returned. If the image is larger in either
+                /// dimension, it will be scaled to match the smaller of the two dimensions, restricted to its original
+                /// aspect ratio. Both the max_height_px and max_width_px properties accept an integer between 1 and
+                /// 4800, inclusively. If the value is not within the allowed range, an INVALID_ARGUMENT error will be
+                /// returned. At least one of max_height_px or max_width_px needs to be specified. If neither
+                /// max_height_px nor max_width_px is specified, an INVALID_ARGUMENT error will be returned.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("maxWidthPx", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> MaxWidthPx { get; set; }
+
+                /// <summary>
+                /// Optional. If set, skip the default HTTP redirect behavior and render a text format (for example, in
+                /// JSON format for HTTP use case) response. If not set, an HTTP redirect will be issued to redirect the
+                /// call to the image midea. This option is ignored for non-HTTP requests.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("skipHttpRedirect", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> SkipHttpRedirect { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "getMedia";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes GetMedia parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^places/[^/]+/photos/[^/]+/media$",
+                    });
+                    RequestParameters.Add("maxHeightPx", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "maxHeightPx",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("maxWidthPx", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "maxWidthPx",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("skipHttpRedirect", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "skipHttpRedirect",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+        }
+
+        /// <summary>Get a Place with a place id (in a name) string.</summary>
+        /// <param name="name">
+        /// Required. A place ID returned in a Place (with "places/" prefix), or equivalently the name in the same
+        /// Place. Format: places/place_id.
+        /// </param>
+        public virtual GetRequest Get(string name)
+        {
+            return new GetRequest(service, name);
+        }
+
+        /// <summary>Get a Place with a place id (in a name) string.</summary>
+        public class GetRequest : MapsPlacesBaseServiceRequest<Google.Apis.MapsPlaces.v1.Data.GoogleMapsPlacesV1Place>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. A place ID returned in a Place (with "places/" prefix), or equivalently the name in the same
+            /// Place. Format: places/place_id.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>
+            /// Optional. Place details will be displayed with the preferred language if available. Current list of
+            /// supported languages: https://developers.google.com/maps/faq#languagesupport.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string LanguageCode { get; set; }
+
+            /// <summary>
+            /// Optional. The Unicode country/region code (CLDR) of the location where the request is coming from. This
+            /// parameter is used to display the place details, like region-specific place name, if available. The
+            /// parameter can affect results based on applicable law. For more information, see
+            /// https://www.unicode.org/cldr/charts/latest/supplemental/territory_language_information.html. Note that
+            /// 3-digit region codes are not currently supported.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("regionCode", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RegionCode { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "get";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+name}";
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^places/[^/]+$",
+                });
+                RequestParameters.Add("languageCode", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "languageCode",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("regionCode", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "regionCode",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Search for places near locations.</summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual SearchNearbyRequest SearchNearby(Google.Apis.MapsPlaces.v1.Data.GoogleMapsPlacesV1SearchNearbyRequest body)
+        {
+            return new SearchNearbyRequest(service, body);
+        }
+
+        /// <summary>Search for places near locations.</summary>
+        public class SearchNearbyRequest : MapsPlacesBaseServiceRequest<Google.Apis.MapsPlaces.v1.Data.GoogleMapsPlacesV1SearchNearbyResponse>
+        {
+            /// <summary>Constructs a new SearchNearby request.</summary>
+            public SearchNearbyRequest(Google.Apis.Services.IClientService service, Google.Apis.MapsPlaces.v1.Data.GoogleMapsPlacesV1SearchNearbyRequest body) : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.MapsPlaces.v1.Data.GoogleMapsPlacesV1SearchNearbyRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "searchNearby";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/places:searchNearby";
+
+            /// <summary>Initializes SearchNearby parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+            }
         }
 
         /// <summary>Text query based place search.</summary>
@@ -358,15 +619,15 @@ namespace Google.Apis.MapsPlaces.v1.Data
     /// <summary>Information about the author of the UGC data. Used in Photo, and Review.</summary>
     public class GoogleMapsPlacesV1AuthorAttribution : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. Name of the author of the Photo or Review.</summary>
+        /// <summary>Name of the author of the Photo or Review.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
-        /// <summary>Output only. Profile photo URI of the author of the Photo or Review.</summary>
+        /// <summary>Profile photo URI of the author of the Photo or Review.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("photoUri")]
         public virtual string PhotoUri { get; set; }
 
-        /// <summary>Output only. URI of the author of the Photo or Review.</summary>
+        /// <summary>URI of the author of the Photo or Review.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
 
@@ -387,6 +648,211 @@ namespace Google.Apis.MapsPlaces.v1.Data
         /// <summary>Required. Radius measured in meters. The radius must be within [0.0, 50000.0].</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("radius")]
         public virtual System.Nullable<double> Radius { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Information about the EV Charge Station hosted in Place. Terminology follows
+    /// https://afdc.energy.gov/fuels/electricity_infrastructure.html One port could charge one car at a time. One port
+    /// has one or more connectors. One station has one or more ports.
+    /// </summary>
+    public class GoogleMapsPlacesV1EVChargeOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A list of EV charging connector aggregations that contain connectors of the same type and same charge rate.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectorAggregation")]
+        public virtual System.Collections.Generic.IList<GoogleMapsPlacesV1EVChargeOptionsConnectorAggregation> ConnectorAggregation { get; set; }
+
+        /// <summary>
+        /// Number of connectors at this station. However, because some ports can have multiple connectors but only be
+        /// able to charge one car at a time (e.g.) the number of connectors may be greater than the total number of
+        /// cars which can charge simultaneously.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectorCount")]
+        public virtual System.Nullable<int> ConnectorCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// EV charging information grouped by [type, max_charge_rate_kw]. Shows EV charge aggregation of connectors that
+    /// have the same type and max charge rate in kw.
+    /// </summary>
+    public class GoogleMapsPlacesV1EVChargeOptionsConnectorAggregation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _availabilityLastUpdateTimeRaw;
+
+        private object _availabilityLastUpdateTime;
+
+        /// <summary>
+        /// The timestamp when the connector availability information in this aggregation was last updated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("availabilityLastUpdateTime")]
+        public virtual string AvailabilityLastUpdateTimeRaw
+        {
+            get => _availabilityLastUpdateTimeRaw;
+            set
+            {
+                _availabilityLastUpdateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _availabilityLastUpdateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="AvailabilityLastUpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use AvailabilityLastUpdateTimeDateTimeOffset instead.")]
+        public virtual object AvailabilityLastUpdateTime
+        {
+            get => _availabilityLastUpdateTime;
+            set
+            {
+                _availabilityLastUpdateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _availabilityLastUpdateTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="AvailabilityLastUpdateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? AvailabilityLastUpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(AvailabilityLastUpdateTimeRaw);
+            set => AvailabilityLastUpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>Number of connectors in this aggregation that are currently available.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("availableCount")]
+        public virtual System.Nullable<int> AvailableCount { get; set; }
+
+        /// <summary>Number of connectors in this aggregation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("count")]
+        public virtual System.Nullable<int> Count { get; set; }
+
+        /// <summary>The static max charging rate in kw of each connector in the aggregation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxChargeRateKw")]
+        public virtual System.Nullable<double> MaxChargeRateKw { get; set; }
+
+        /// <summary>Number of connectors in this aggregation that are currently out of service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outOfServiceCount")]
+        public virtual System.Nullable<int> OutOfServiceCount { get; set; }
+
+        /// <summary>The connector type of this aggregation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The most recent information about fuel options in a gas station. This information is updated regularly.
+    /// </summary>
+    public class GoogleMapsPlacesV1FuelOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The last known fuel price for each type of fuel this station has. There is one entry per fuel type this
+        /// station has. Order is not important.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fuelPrices")]
+        public virtual System.Collections.Generic.IList<GoogleMapsPlacesV1FuelOptionsFuelPrice> FuelPrices { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Fuel price information for a given type.</summary>
+    public class GoogleMapsPlacesV1FuelOptionsFuelPrice : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The price of the fuel.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("price")]
+        public virtual GoogleTypeMoney Price { get; set; }
+
+        /// <summary>The type of fuel.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>The time the fuel price was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information about a photo of a place.</summary>
+    public class GoogleMapsPlacesV1Photo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>This photo's authors.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authorAttributions")]
+        public virtual System.Collections.Generic.IList<GoogleMapsPlacesV1AuthorAttribution> AuthorAttributions { get; set; }
+
+        /// <summary>The maximum available height, in pixels.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("heightPx")]
+        public virtual System.Nullable<int> HeightPx { get; set; }
+
+        /// <summary>
+        /// Identifier. A reference representing this place photo which may be used to look up this place photo again
+        /// (a.k.a. the API "resource" name: places/{place_id}/photos/{photo}).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The maximum available width, in pixels.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("widthPx")]
+        public virtual System.Nullable<int> WidthPx { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A photo media from Places API.</summary>
+    public class GoogleMapsPlacesV1PhotoMedia : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The resource name of a photo in the format: places/place_id/photos/photo_reference.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>A short-lived uri that can be used to render the photo.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("photoUri")]
+        public virtual string PhotoUri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -416,6 +882,10 @@ namespace Google.Apis.MapsPlaces.v1.Data
         /// <summary>The place's address in adr microformat: http://microformats.org/wiki/adr.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adrFormatAddress")]
         public virtual string AdrFormatAddress { get; set; }
+
+        /// <summary>Place allows dogs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowsDogs")]
+        public virtual System.Nullable<bool> AllowsDogs { get; set; }
 
         /// <summary>A set of data provider that must be shown with this result.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributions")]
@@ -471,9 +941,31 @@ namespace Google.Apis.MapsPlaces.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("editorialSummary")]
         public virtual GoogleTypeLocalizedText EditorialSummary { get; set; }
 
+        /// <summary>Information of ev charging options.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("evChargeOptions")]
+        public virtual GoogleMapsPlacesV1EVChargeOptions EvChargeOptions { get; set; }
+
         /// <summary>A full, human-readable address for this place.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("formattedAddress")]
         public virtual string FormattedAddress { get; set; }
+
+        /// <summary>
+        /// The most recent information about fuel options in a gas station. This information is updated regularly.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fuelOptions")]
+        public virtual GoogleMapsPlacesV1FuelOptions FuelOptions { get; set; }
+
+        /// <summary>Place is good for children.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("goodForChildren")]
+        public virtual System.Nullable<bool> GoodForChildren { get; set; }
+
+        /// <summary>Place accommodates groups.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("goodForGroups")]
+        public virtual System.Nullable<bool> GoodForGroups { get; set; }
+
+        /// <summary>Place is suitable for watching sports.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("goodForWatchingSports")]
+        public virtual System.Nullable<bool> GoodForWatchingSports { get; set; }
 
         /// <summary>A URL providing more information about this place.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googleMapsUri")]
@@ -498,9 +990,17 @@ namespace Google.Apis.MapsPlaces.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("internationalPhoneNumber")]
         public virtual string InternationalPhoneNumber { get; set; }
 
+        /// <summary>Place provides live music.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("liveMusic")]
+        public virtual System.Nullable<bool> LiveMusic { get; set; }
+
         /// <summary>The position of this place.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual GoogleTypeLatLng Location { get; set; }
+
+        /// <summary>Place has a children's menu.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("menuForChildren")]
+        public virtual System.Nullable<bool> MenuForChildren { get; set; }
 
         /// <summary>
         /// An ID representing this place which may be used to look up this place again (a.k.a. the API "resource" name:
@@ -513,6 +1013,25 @@ namespace Google.Apis.MapsPlaces.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nationalPhoneNumber")]
         public virtual string NationalPhoneNumber { get; set; }
 
+        /// <summary>Place provides outdoor seating.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outdoorSeating")]
+        public virtual System.Nullable<bool> OutdoorSeating { get; set; }
+
+        /// <summary>Options of parking provided by the place.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parkingOptions")]
+        public virtual GoogleMapsPlacesV1PlaceParkingOptions ParkingOptions { get; set; }
+
+        /// <summary>
+        /// Payment options the place accepts. If a payment option data is not available, the payment option field will
+        /// be unset.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("paymentOptions")]
+        public virtual GoogleMapsPlacesV1PlacePaymentOptions PaymentOptions { get; set; }
+
+        /// <summary>Information (including references) about photos of this place.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("photos")]
+        public virtual System.Collections.Generic.IList<GoogleMapsPlacesV1Photo> Photos { get; set; }
+
         /// <summary>Plus code of the place location lat/long.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("plusCode")]
         public virtual GoogleMapsPlacesV1PlacePlusCode PlusCode { get; set; }
@@ -520,6 +1039,23 @@ namespace Google.Apis.MapsPlaces.v1.Data
         /// <summary>Price level of the place.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priceLevel")]
         public virtual string PriceLevel { get; set; }
+
+        /// <summary>
+        /// The primary type of the given result. This type must one of the Places API supported types. For example,
+        /// "restaurant", "cafe", "airport", etc. A place can only have a single primary type. For the complete list of
+        /// possible values, see Table A and Table B at
+        /// https://developers.google.com/maps/documentation/places/web-service/place-types
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("primaryType")]
+        public virtual string PrimaryType { get; set; }
+
+        /// <summary>
+        /// The display name of the primary type, localized to the request language if applicable. For the complete list
+        /// of possible values, see Table A and Table B at
+        /// https://developers.google.com/maps/documentation/places/web-service/place-types
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("primaryTypeDisplayName")]
+        public virtual GoogleTypeLocalizedText PrimaryTypeDisplayName { get; set; }
 
         /// <summary>A rating between 1.0 and 5.0, based on user reviews of this place.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rating")]
@@ -542,7 +1078,11 @@ namespace Google.Apis.MapsPlaces.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("reservable")]
         public virtual System.Nullable<bool> Reservable { get; set; }
 
-        /// <summary>List of reviews about this place.</summary>
+        /// <summary>Place has restroom.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("restroom")]
+        public virtual System.Nullable<bool> Restroom { get; set; }
+
+        /// <summary>List of reviews about this place, sorted by relevance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reviews")]
         public virtual System.Collections.Generic.IList<GoogleMapsPlacesV1Review> Reviews { get; set; }
 
@@ -557,6 +1097,18 @@ namespace Google.Apis.MapsPlaces.v1.Data
         /// <summary>Specifies if the place serves brunch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("servesBrunch")]
         public virtual System.Nullable<bool> ServesBrunch { get; set; }
+
+        /// <summary>Place serves cocktails.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("servesCocktails")]
+        public virtual System.Nullable<bool> ServesCocktails { get; set; }
+
+        /// <summary>Place serves coffee.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("servesCoffee")]
+        public virtual System.Nullable<bool> ServesCoffee { get; set; }
+
+        /// <summary>Place serves dessert.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("servesDessert")]
+        public virtual System.Nullable<bool> ServesDessert { get; set; }
 
         /// <summary>Specifies if the place serves dinner.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("servesDinner")]
@@ -574,12 +1126,21 @@ namespace Google.Apis.MapsPlaces.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("servesWine")]
         public virtual System.Nullable<bool> ServesWine { get; set; }
 
+        /// <summary>A short, human-readable address for this place.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shortFormattedAddress")]
+        public virtual string ShortFormattedAddress { get; set; }
+
+        /// <summary>A list of sub destinations related to the place.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subDestinations")]
+        public virtual System.Collections.Generic.IList<GoogleMapsPlacesV1PlaceSubDestination> SubDestinations { get; set; }
+
         /// <summary>Specifies if the business supports takeout.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("takeout")]
         public virtual System.Nullable<bool> Takeout { get; set; }
 
         /// <summary>
-        /// A set of type tags for this result. For example, "political" and "locality". See:
+        /// A set of type tags for this result. For example, "political" and "locality". For the complete list of
+        /// possible values, see Table A and Table B at
         /// https://developers.google.com/maps/documentation/places/web-service/place-types
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("types")]
@@ -618,6 +1179,18 @@ namespace Google.Apis.MapsPlaces.v1.Data
         /// <summary>Places has wheelchair accessible entrance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("wheelchairAccessibleEntrance")]
         public virtual System.Nullable<bool> WheelchairAccessibleEntrance { get; set; }
+
+        /// <summary>Place offers wheelchair accessible parking.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wheelchairAccessibleParking")]
+        public virtual System.Nullable<bool> WheelchairAccessibleParking { get; set; }
+
+        /// <summary>Place has wheelchair accessible restroom.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wheelchairAccessibleRestroom")]
+        public virtual System.Nullable<bool> WheelchairAccessibleRestroom { get; set; }
+
+        /// <summary>Place has wheelchair accessible seating.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wheelchairAccessibleSeating")]
+        public virtual System.Nullable<bool> WheelchairAccessibleSeating { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -769,6 +1342,69 @@ namespace Google.Apis.MapsPlaces.v1.Data
     }
 
     /// <summary>
+    /// Information about parking options for the place. A parking lot could support more than one option at the same
+    /// time.
+    /// </summary>
+    public class GoogleMapsPlacesV1PlaceParkingOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Place offers free garage parking.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("freeGarageParking")]
+        public virtual System.Nullable<bool> FreeGarageParking { get; set; }
+
+        /// <summary>Place offers free parking lots.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("freeParkingLot")]
+        public virtual System.Nullable<bool> FreeParkingLot { get; set; }
+
+        /// <summary>Place offers free street parking.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("freeStreetParking")]
+        public virtual System.Nullable<bool> FreeStreetParking { get; set; }
+
+        /// <summary>Place offers paid garage parking.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("paidGarageParking")]
+        public virtual System.Nullable<bool> PaidGarageParking { get; set; }
+
+        /// <summary>Place offers paid parking lots.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("paidParkingLot")]
+        public virtual System.Nullable<bool> PaidParkingLot { get; set; }
+
+        /// <summary>Place offers paid street parking.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("paidStreetParking")]
+        public virtual System.Nullable<bool> PaidStreetParking { get; set; }
+
+        /// <summary>Place offers valet parking.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("valetParking")]
+        public virtual System.Nullable<bool> ValetParking { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Payment options the place accepts.</summary>
+    public class GoogleMapsPlacesV1PlacePaymentOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Place accepts cash only as payment. Places with this attribute may still accept other payment methods.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("acceptsCashOnly")]
+        public virtual System.Nullable<bool> AcceptsCashOnly { get; set; }
+
+        /// <summary>Place accepts credit cards as payment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("acceptsCreditCards")]
+        public virtual System.Nullable<bool> AcceptsCreditCards { get; set; }
+
+        /// <summary>Place accepts debit cards as payment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("acceptsDebitCards")]
+        public virtual System.Nullable<bool> AcceptsDebitCards { get; set; }
+
+        /// <summary>Place accepts NFC payments.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("acceptsNfc")]
+        public virtual System.Nullable<bool> AcceptsNfc { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Plus code (http://plus.codes) is a location reference with two formats: global code defining a 14mx14m (1/8000th
     /// of a degree) or smaller rectangle, and compound code, replacing the prefix with a reference location.
     /// </summary>
@@ -792,14 +1428,39 @@ namespace Google.Apis.MapsPlaces.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Place resource name and id of sub destinations that relate to the place. For example, different terminals are
+    /// different destinations of an airport.
+    /// </summary>
+    public class GoogleMapsPlacesV1PlaceSubDestination : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The place id of the sub destination.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>The resource name of the sub destination.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Information about a review of a place.</summary>
     public class GoogleMapsPlacesV1Review : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. This review's author.</summary>
+        /// <summary>This review's author.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authorAttribution")]
         public virtual GoogleMapsPlacesV1AuthorAttribution AuthorAttribution { get; set; }
 
-        /// <summary>Output only. The review text in its original language.</summary>
+        /// <summary>
+        /// A reference representing this place review which may be used to look up this place review again (also called
+        /// the API "resource" name: places/place_id/reviews/review).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The review text in its original language.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("originalText")]
         public virtual GoogleTypeLocalizedText OriginalText { get; set; }
 
@@ -807,7 +1468,7 @@ namespace Google.Apis.MapsPlaces.v1.Data
 
         private object _publishTime;
 
-        /// <summary>Output only. Timestamp for the review.</summary>
+        /// <summary>Timestamp for the review.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publishTime")]
         public virtual string PublishTimeRaw
         {
@@ -840,20 +1501,138 @@ namespace Google.Apis.MapsPlaces.v1.Data
             set => PublishTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
         }
 
-        /// <summary>Output only. A number between 1.0 and 5.0, a.k.a. the number of stars.</summary>
+        /// <summary>A number between 1.0 and 5.0, also called the number of stars.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rating")]
         public virtual System.Nullable<double> Rating { get; set; }
 
         /// <summary>
-        /// Output only. A string of formatted recent time, expressing the review time relative to the current time in a
-        /// form appropriate for the language and country.
+        /// A string of formatted recent time, expressing the review time relative to the current time in a form
+        /// appropriate for the language and country.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relativePublishTimeDescription")]
         public virtual string RelativePublishTimeDescription { get; set; }
 
-        /// <summary>Output only. The localized text of the review.</summary>
+        /// <summary>The localized text of the review.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual GoogleTypeLocalizedText Text { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request proto for Search Nearby. </summary>
+    public class GoogleMapsPlacesV1SearchNearbyRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Excluded primary Place type (e.g. "restaurant" or "gas_station") from
+        /// https://developers.google.com/maps/documentation/places/web-service/place-types. If there are any
+        /// conflicting primary types, i.e. a type appears in both included_primary_types and excluded_primary_types, an
+        /// INVALID_ARGUMENT error is returned. If a Place type is specified with multiple type restrictions, only
+        /// places that satisfy all of the restrictions are returned. For example, if we have {included_types =
+        /// ["restaurant"], excluded_primary_types = ["restaurant"]}, the returned places provide "restaurant" related
+        /// services but do not operate primarily as "restaurants".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("excludedPrimaryTypes")]
+        public virtual System.Collections.Generic.IList<string> ExcludedPrimaryTypes { get; set; }
+
+        /// <summary>
+        /// Excluded Place type (eg, "restaurant" or "gas_station") from
+        /// https://developers.google.com/maps/documentation/places/web-service/place-types. If the client provides both
+        /// included_types (e.g. restaurant) and excluded_types (e.g. cafe), then the response should include places
+        /// that are restaurant but not cafe. The response includes places that match at least one of the included_types
+        /// and none of the excluded_types. If there are any conflicting types, i.e. a type appears in both
+        /// included_types and excluded_types, an INVALID_ARGUMENT error is returned. If a Place type is specified with
+        /// multiple type restrictions, only places that satisfy all of the restrictions are returned. For example, if
+        /// we have {included_types = ["restaurant"], excluded_primary_types = ["restaurant"]}, the returned places
+        /// provide "restaurant" related services but do not operate primarily as "restaurants".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("excludedTypes")]
+        public virtual System.Collections.Generic.IList<string> ExcludedTypes { get; set; }
+
+        /// <summary>
+        /// Included primary Place type (e.g. "restaurant" or "gas_station") from
+        /// https://developers.google.com/maps/documentation/places/web-service/place-types. A place can only have a
+        /// single primary type from the supported types table associated with it. If there are any conflicting primary
+        /// types, i.e. a type appears in both included_primary_types and excluded_primary_types, an INVALID_ARGUMENT
+        /// error is returned. If a Place type is specified with multiple type restrictions, only places that satisfy
+        /// all of the restrictions are returned. For example, if we have {included_types = ["restaurant"],
+        /// excluded_primary_types = ["restaurant"]}, the returned places provide "restaurant" related services but do
+        /// not operate primarily as "restaurants".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includedPrimaryTypes")]
+        public virtual System.Collections.Generic.IList<string> IncludedPrimaryTypes { get; set; }
+
+        /// <summary>
+        /// Included Place type (eg, "restaurant" or "gas_station") from
+        /// https://developers.google.com/maps/documentation/places/web-service/place-types. If there are any
+        /// conflicting types, i.e. a type appears in both included_types and excluded_types, an INVALID_ARGUMENT error
+        /// is returned. If a Place type is specified with multiple type restrictions, only places that satisfy all of
+        /// the restrictions are returned. For example, if we have {included_types = ["restaurant"],
+        /// excluded_primary_types = ["restaurant"]}, the returned places provide "restaurant" related services but do
+        /// not operate primarily as "restaurants".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includedTypes")]
+        public virtual System.Collections.Generic.IList<string> IncludedTypes { get; set; }
+
+        /// <summary>
+        /// Place details will be displayed with the preferred language if available. If the language code is
+        /// unspecified or unrecognized, place details of any language may be returned, with a preference for English if
+        /// such details exist. Current list of supported languages:
+        /// https://developers.google.com/maps/faq#languagesupport.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; }
+
+        /// <summary>Required. The region to search.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locationRestriction")]
+        public virtual GoogleMapsPlacesV1SearchNearbyRequestLocationRestriction LocationRestriction { get; set; }
+
+        /// <summary>
+        /// Maximum number of results to return. It must be between 1 and 20 (default), inclusively. If the number is
+        /// unset, it falls back to the upper limit. If the number is set to negative or exceeds the upper limit, an
+        /// INVALID_ARGUMENT error is returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxResultCount")]
+        public virtual System.Nullable<int> MaxResultCount { get; set; }
+
+        /// <summary>How results will be ranked in the response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rankPreference")]
+        public virtual string RankPreference { get; set; }
+
+        /// <summary>
+        /// The Unicode country/region code (CLDR) of the location where the request is coming from. This parameter is
+        /// used to display the place details, like region-specific place name, if available. The parameter can affect
+        /// results based on applicable law. For more information, see
+        /// https://www.unicode.org/cldr/charts/latest/supplemental/territory_language_information.html. Note that
+        /// 3-digit region codes are not currently supported.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
+        public virtual string RegionCode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The region to search.</summary>
+    public class GoogleMapsPlacesV1SearchNearbyRequestLocationRestriction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A circle defined by center point and radius.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("circle")]
+        public virtual GoogleMapsPlacesV1Circle Circle { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response proto for Search Nearby. </summary>
+    public class GoogleMapsPlacesV1SearchNearbyResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A list of places that meets user's requirements like places types, number of places and specific location
+        /// restriction.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("places")]
+        public virtual System.Collections.Generic.IList<GoogleMapsPlacesV1Place> Places { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -929,8 +1708,8 @@ namespace Google.Apis.MapsPlaces.v1.Data
         /// The Unicode country/region code (CLDR) of the location where the request is coming from. This parameter is
         /// used to display the place details, like region-specific place name, if available. The parameter can affect
         /// results based on applicable law. For more information, see
-        /// http://www.unicode.org/reports/tr35/#unicode_region_subtag. Note that 3-digit region codes are not currently
-        /// supported.
+        /// https://www.unicode.org/cldr/charts/latest/supplemental/territory_language_information.html. Note that
+        /// 3-digit region codes are not currently supported.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
         public virtual string RegionCode { get; set; }
@@ -1054,6 +1833,32 @@ namespace Google.Apis.MapsPlaces.v1.Data
         /// <summary>Localized string in the language corresponding to language_code below.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual string Text { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents an amount of money with its currency type.</summary>
+    public class GoogleTypeMoney : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The three-letter currency code defined in ISO 4217.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("currencyCode")]
+        public virtual string CurrencyCode { get; set; }
+
+        /// <summary>
+        /// Number of nano (10^-9) units of the amount. The value must be between -999,999,999 and +999,999,999
+        /// inclusive. If `units` is positive, `nanos` must be positive or zero. If `units` is zero, `nanos` can be
+        /// positive, zero, or negative. If `units` is negative, `nanos` must be negative or zero. For example $-1.75 is
+        /// represented as `units`=-1 and `nanos`=-750,000,000.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nanos")]
+        public virtual System.Nullable<int> Nanos { get; set; }
+
+        /// <summary>
+        /// The whole units of the amount. For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("units")]
+        public virtual System.Nullable<long> Units { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

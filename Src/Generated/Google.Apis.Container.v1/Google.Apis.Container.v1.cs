@@ -7428,6 +7428,13 @@ namespace Google.Apis.Container.v1.Data
         public virtual NetworkTags DesiredNodePoolAutoConfigNetworkTags { get; set; }
 
         /// <summary>
+        /// The desired resource manager tags that apply to all auto-provisioned node pools in autopilot clusters and
+        /// node auto-provisioning enabled clusters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredNodePoolAutoConfigResourceManagerTags")]
+        public virtual ResourceManagerTags DesiredNodePoolAutoConfigResourceManagerTags { get; set; }
+
+        /// <summary>
         /// Autoscaler configuration for the node pool specified in desired_node_pool_id. If there is only one pool in
         /// the cluster and desired_node_pool_id is not provided then the change applies to that single node pool.
         /// </summary>
@@ -9043,6 +9050,10 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("resourceLabels")]
         public virtual System.Collections.Generic.IDictionary<string, string> ResourceLabels { get; set; }
 
+        /// <summary>A map of resource manager tag keys and values to be attached to the nodes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceManagerTags")]
+        public virtual ResourceManagerTags ResourceManagerTags { get; set; }
+
         /// <summary>Sandbox configuration for this node.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sandboxConfig")]
         public virtual SandboxConfig SandboxConfig { get; set; }
@@ -9408,6 +9419,13 @@ namespace Google.Apis.Container.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkTags")]
         public virtual NetworkTags NetworkTags { get; set; }
+
+        /// <summary>
+        /// Resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using
+        /// Network Firewall Policies.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceManagerTags")]
+        public virtual ResourceManagerTags ResourceManagerTags { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9939,6 +9957,26 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>Resource name "cpu", "memory" or gpu-specific string.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
         public virtual string ResourceType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls
+    /// using Network Firewall Policies. Tags must be according to specifications in
+    /// https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications. A maximum of 5 tag key-value pairs can
+    /// be specified. Existing tags will be replaced with new values.
+    /// </summary>
+    public class ResourceManagerTags : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// TagKeyValue must be in one of the following formats ([KEY]=[VALUE]) 1.
+        /// `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3.
+        /// `{project_id}/{tag_key_name}={tag_value_name}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Tags { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11179,6 +11217,13 @@ namespace Google.Apis.Container.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceLabels")]
         public virtual ResourceLabels ResourceLabels { get; set; }
+
+        /// <summary>
+        /// Desired resource manager tag keys and values to be attached to the nodes for managing Compute Engine
+        /// firewalls using Network Firewall Policies. Existing tags will be replaced with new values.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceManagerTags")]
+        public virtual ResourceManagerTags ResourceManagerTags { get; set; }
 
         /// <summary>
         /// The desired network tags to be applied to all nodes in the node pool. If this field is not present, the tags

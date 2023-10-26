@@ -6763,6 +6763,13 @@ namespace Google.Apis.Dataflow.v1b3.Data
         public virtual RuntimeUpdatableParams RuntimeUpdatableParams { get; set; }
 
         /// <summary>
+        /// Output only. Reserved for future use. This field is set only in responses from the server; it is ignored if
+        /// it is set in any requests.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
+        public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
+
+        /// <summary>
         /// Reserved for future use. This field is set only in responses from the server; it is ignored if it is set in
         /// any requests.
         /// </summary>

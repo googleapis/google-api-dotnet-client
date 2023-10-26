@@ -1955,71 +1955,6 @@ namespace Google.Apis.ServiceNetworking.v1
                     }
 
                     /// <summary>
-                    /// Consumers use this method to find out the state of VPC Service Controls. The controls could be
-                    /// enabled or disabled for a connection.
-                    /// </summary>
-                    /// <param name="name">
-                    /// Required. Name of the VPC Service Controls config to retrieve in the format:
-                    /// `services/{service}/projects/{project}/global/networks/{network}`. {service} is the peering
-                    /// service that is managing connectivity for the service producer's organization. For Google
-                    /// services that support this functionality, this value is `servicenetworking.googleapis.com`.
-                    /// {project} is a project number e.g. `12345` that contains the service consumer's VPC network.
-                    /// {network} is the name of the service consumer's VPC network.
-                    /// </param>
-                    public virtual GetVpcScControlsRequest GetVpcScControls(string name)
-                    {
-                        return new GetVpcScControlsRequest(service, name);
-                    }
-
-                    /// <summary>
-                    /// Consumers use this method to find out the state of VPC Service Controls. The controls could be
-                    /// enabled or disabled for a connection.
-                    /// </summary>
-                    public class GetVpcScControlsRequest : ServiceNetworkingBaseServiceRequest<Google.Apis.ServiceNetworking.v1.Data.VpcServiceControls>
-                    {
-                        /// <summary>Constructs a new GetVpcScControls request.</summary>
-                        public GetVpcScControlsRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-                        {
-                            Name = name;
-                            InitParameters();
-                        }
-
-                        /// <summary>
-                        /// Required. Name of the VPC Service Controls config to retrieve in the format:
-                        /// `services/{service}/projects/{project}/global/networks/{network}`. {service} is the peering
-                        /// service that is managing connectivity for the service producer's organization. For Google
-                        /// services that support this functionality, this value is `servicenetworking.googleapis.com`.
-                        /// {project} is a project number e.g. `12345` that contains the service consumer's VPC network.
-                        /// {network} is the name of the service consumer's VPC network.
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Name { get; private set; }
-
-                        /// <summary>Gets the method name.</summary>
-                        public override string MethodName => "getVpcScControls";
-
-                        /// <summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod => "GET";
-
-                        /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v1/{+name}/vpcScControls";
-
-                        /// <summary>Initializes GetVpcScControls parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^services/[^/]+/projects/[^/]+/global/networks/[^/]+$",
-                            });
-                        }
-                    }
-
-                    /// <summary>
                     /// Service producers use this method to update the configuration of their connection including the
                     /// import/export of custom routes and subnetwork routes with public IP.
                     /// </summary>
@@ -6166,21 +6101,6 @@ namespace Google.Apis.ServiceNetworking.v1.Data
         /// <summary>The first validation which failed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validationError")]
         public virtual string ValidationError { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Response for the get VPC Service Controls request.</summary>
-    public class VpcServiceControls : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Output only. Indicates whether the VPC Service Controls are enabled or disabled for the connection. If the
-        /// consumer called the EnableVpcServiceControls method, then this is true. If the consumer called
-        /// DisableVpcServiceControls, then this is false. The default is false.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
-        public virtual System.Nullable<bool> Enabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -18338,6 +18338,32 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     }
 
     /// <summary>
+    /// A customer-managed encryption key specification that can be applied to all created resources (e.g.
+    /// Conversation).
+    /// </summary>
+    public class GoogleCloudDialogflowV2EncryptionSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The name of customer-managed encryption key that is used to secure a resource and its
+        /// sub-resources. If empty, the resource is secured by the default Google encryption key. Only the key in the
+        /// same location as this resource is allowed to be used for encryption. Format:
+        /// `projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{key}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKey")]
+        public virtual string KmsKey { get; set; }
+
+        /// <summary>
+        /// Immutable. The resource name of the encryption key specification resource. Format:
+        /// projects/{project}/locations/{location}/encryptionSpec
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Each intent parameter has a type, called the entity type, which dictates exactly how data from an end-user
     /// expression is extracted. Dialogflow provides predefined system entities that can match many common types of
     /// data. For example, there are system entities for matching dates, times, colors, email addresses, and so on. You
@@ -18627,6 +18653,32 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>Includes details about skipped documents or any other warnings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
         public virtual System.Collections.Generic.IList<GoogleRpcStatus> Warnings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for initializing a location-level encryption specification.</summary>
+    public class GoogleCloudDialogflowV2InitializeEncryptionSpecMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The original request for initialization.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("request")]
+        public virtual GoogleCloudDialogflowV2InitializeEncryptionSpecRequest Request { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request to initialize a location-level encryption specification.</summary>
+    public class GoogleCloudDialogflowV2InitializeEncryptionSpecRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The encryption spec used for CMEK encryption. It is required that the kms key is in the same
+        /// region as the endpoint. The same key will be used for all provisioned resources, if encryption is available.
+        /// If the kms_key_name is left empty, no encryption will be enforced.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionSpec")]
+        public virtual GoogleCloudDialogflowV2EncryptionSpec EncryptionSpec { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -20466,6 +20518,32 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     }
 
     /// <summary>
+    /// A customer-managed encryption key specification that can be applied to all created resources (e.g.
+    /// Conversation).
+    /// </summary>
+    public class GoogleCloudDialogflowV2beta1EncryptionSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The name of customer-managed encryption key that is used to secure a resource and its
+        /// sub-resources. If empty, the resource is secured by the default Google encryption key. Only the key in the
+        /// same location as this resource is allowed to be used for encryption. Format:
+        /// `projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{key}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKey")]
+        public virtual string KmsKey { get; set; }
+
+        /// <summary>
+        /// Immutable. The resource name of the encryption key specification resource. Format:
+        /// projects/{project}/locations/{location}/encryptionSpec
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Each intent parameter has a type, called the entity type, which dictates exactly how data from an end-user
     /// expression is extracted. Dialogflow provides predefined system entities that can match many common types of
     /// data. For example, there are system entities for matching dates, times, colors, email addresses, and so on. You
@@ -20684,6 +20762,32 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>Includes details about skipped documents or any other warnings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
         public virtual System.Collections.Generic.IList<GoogleRpcStatus> Warnings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for initializing a location-level encryption specification.</summary>
+    public class GoogleCloudDialogflowV2beta1InitializeEncryptionSpecMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The original request for initialization.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("request")]
+        public virtual GoogleCloudDialogflowV2beta1InitializeEncryptionSpecRequest Request { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request to initialize a location-level encryption specification.</summary>
+    public class GoogleCloudDialogflowV2beta1InitializeEncryptionSpecRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The encryption spec used for CMEK encryption. It is required that the kms key is in the same
+        /// region as the endpoint. The same key will be used for all provisioned resources, if encryption is available.
+        /// If the kms_key_name is left empty, no encryption will be enforced.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionSpec")]
+        public virtual GoogleCloudDialogflowV2beta1EncryptionSpec EncryptionSpec { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

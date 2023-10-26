@@ -1597,6 +1597,14 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
     public class GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. A stable account identifier to apply to the assessment. This is an alternative to setting
+        /// `account_id` in `CreateAssessment`, for example when a stable account identifier is not yet known in the
+        /// initial request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
+        public virtual string AccountId { get; set; }
+
+        /// <summary>
         /// Optional. The annotation that will be assigned to the Event. This field can be left empty to provide reasons
         /// that apply to an event without concluding whether the event is legitimate or fraudulent.
         /// </summary>
@@ -1604,9 +1612,9 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         public virtual string Annotation { get; set; }
 
         /// <summary>
-        /// Optional. Unique stable hashed user identifier to apply to the assessment. This is an alternative to setting
-        /// the hashed_account_id in CreateAssessment, for example when the account identifier is not yet known in the
-        /// initial request. It is recommended that the identifier is hashed using hmac-sha256 with stable secret.
+        /// Optional. A stable hashed account identifier to apply to the assessment. This is an alternative to setting
+        /// `hashed_account_id` in `CreateAssessment`, for example when a stable account identifier is not yet known in
+        /// the initial request.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hashedAccountId")]
         public virtual string HashedAccountId { get; set; }
@@ -1662,7 +1670,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
     public class GoogleCloudRecaptchaenterpriseV1Assessment : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Output only. Assessment returned by account defender when a hashed_account_id is provided.
+        /// Output only. Assessment returned by account defender when an account identifier is provided.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountDefenderAssessment")]
         public virtual GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment AccountDefenderAssessment { get; set; }
@@ -1839,8 +1847,8 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         public virtual System.Nullable<bool> FirewallPolicyEvaluation { get; set; }
 
         /// <summary>
-        /// Optional. Unique stable hashed user identifier for the request. The identifier must be hashed using
-        /// hmac-sha256 with stable secret.
+        /// Optional. Deprecated: use `user_info.account_id` instead. Unique stable hashed user identifier for the
+        /// request. The identifier must be hashed using hmac-sha256 with stable secret.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hashedAccountId")]
         public virtual string HashedAccountId { get; set; }
@@ -1881,6 +1889,14 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userAgent")]
         public virtual string UserAgent { get; set; }
+
+        /// <summary>
+        /// Optional. Information about the user that generates this event, when they can be identified. They are often
+        /// identified through the use of an account for logged-in requests or login/registration requests, or by
+        /// providing user identifiers for guest actions like checkout.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userInfo")]
+        public virtual GoogleCloudRecaptchaenterpriseV1UserInfo UserInfo { get; set; }
 
         /// <summary>Optional. The IP address in the request from the user's device related to this event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userIpAddress")]
@@ -2978,6 +2994,90 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual System.Nullable<double> Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An identifier associated with a user.</summary>
+    public class GoogleCloudRecaptchaenterpriseV1UserId : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. An email address.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("email")]
+        public virtual string Email { get; set; }
+
+        /// <summary>Optional. A phone number. Should use the E.164 format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phoneNumber")]
+        public virtual string PhoneNumber { get; set; }
+
+        /// <summary>
+        /// Optional. A unique username, if different from all the other identifiers and `account_id` that are provided.
+        /// Can be a unique login handle or display name for a user.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("username")]
+        public virtual string Username { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>User information associated with a request protected by reCAPTCHA Enterprise.</summary>
+    public class GoogleCloudRecaptchaenterpriseV1UserInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. For logged-in requests or login/registration requests, the unique account identifier associated
+        /// with this user. You can use the username if it is stable (meaning it is the same for every request
+        /// associated with the same user), or any stable user ID of your choice. Leave blank for non logged-in actions
+        /// or guest checkout.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
+        public virtual string AccountId { get; set; }
+
+        private string _createAccountTimeRaw;
+
+        private object _createAccountTime;
+
+        /// <summary>
+        /// Optional. Creation time for this account associated with this user. Leave blank for non logged-in actions,
+        /// guest checkout, or when there is no account associated with the current user.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createAccountTime")]
+        public virtual string CreateAccountTimeRaw
+        {
+            get => _createAccountTimeRaw;
+            set
+            {
+                _createAccountTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createAccountTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateAccountTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateAccountTimeDateTimeOffset instead.")]
+        public virtual object CreateAccountTime
+        {
+            get => _createAccountTime;
+            set
+            {
+                _createAccountTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createAccountTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateAccountTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateAccountTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateAccountTimeRaw);
+            set => CreateAccountTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>Optional. Identifiers associated with this user or request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userIds")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRecaptchaenterpriseV1UserId> UserIds { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

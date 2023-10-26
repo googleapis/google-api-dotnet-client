@@ -3838,19 +3838,4 @@ namespace Google.Apis.ServiceNetworking.v1beta.Data
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
-
-    /// <summary>Response for the get VPC Service Controls request.</summary>
-    public class VpcServiceControls : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Output only. Indicates whether the VPC Service Controls are enabled or disabled for the connection. If the
-        /// consumer called the EnableVpcServiceControls method, then this is true. If the consumer called
-        /// DisableVpcServiceControls, then this is false. The default is false.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
-        public virtual System.Nullable<bool> Enabled { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
 }
