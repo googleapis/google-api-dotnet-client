@@ -21,9 +21,12 @@ using Google.Apis.Util;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -46,8 +49,7 @@ namespace Google.Apis.Auth.OAuth2
         public const string MetadataServerUrl = GoogleAuthConsts.DefaultMetadataServerUrl;
 
         /// <summary>Caches result from first call to <c>IsRunningOnComputeEngine</c> </summary>
-        private readonly static Lazy<Task<bool>> isRunningOnComputeEngineCached = new Lazy<Task<bool>>(
-            () => IsRunningOnComputeEngineNoCache());
+        private readonly static Lazy<Task<bool>> isRunningOnComputeEngineCached = new Lazy<Task<bool>>(IsRunningOnComputeEngineNoCacheAsync);
 
         /// <summary>
         /// Originally 1000ms was used without a retry. This proved inadequate; even 2000ms without
@@ -295,7 +297,11 @@ namespace Google.Apis.Auth.OAuth2
             return isRunningOnComputeEngineCached.Value;
         }
 
-        private static async Task<bool> IsRunningOnComputeEngineNoCache()
+        private static async Task<bool> IsRunningOnComputeEngineNoCacheAsync() =>
+            await IsMetadataServerAvailableAsync().ConfigureAwait(false)
+            || await IsGoogleBiosAsync().ConfigureAwait(false);
+
+        private static async Task<bool> IsMetadataServerAvailableAsync()
         {
             Logger.Info("Checking connectivity to ComputeEngine metadata server.");
 
@@ -337,8 +343,123 @@ namespace Google.Apis.Auth.OAuth2
                 }
             }
             // Only log after all attempts have failed.
-            Logger.Debug("Could not reach the Google Compute Engine metadata service. That is expected if this application is not running on GCE.");
+            Logger.Debug("Could not reach the Google Compute Engine metadata service. " +
+                "That is expected if this application is not running on GCE " +
+                "or on some cases where the metadata service is not available during application startup.");
             return false;
+        }
+
+        private static async Task<bool> IsGoogleBiosAsync()
+        {
+            Logger.Info("Checking BIOS values to determine GCE residency.");
+            try
+            {
+                if (IsLinux())
+                {
+                    return await IsLinuxGoogleBiosAsync().ConfigureAwait(false);
+                }
+                else if (IsWindows())
+                {
+                    return IsWindowsGoogleBios();
+                }
+                else
+                {
+                    Logger.Info("GCE residency detection through BIOS checking is only supported on Windows and Linux platforms.");
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Debug($"Could not read BIOS: {ex}");
+                return false;
+            }
+
+            // Some of these will be simpler once we have acted on
+            // https://github.com/googleapis/google-api-dotnet-client/issues/2561.
+
+            bool IsWindows()
+            {
+#if NET45
+                // RuntimeInformation.IsOsPlatform is not available for NET45.
+                // We are probably on Windows, unless we are using Mono which means we might be
+                // elsewhere. But we don't have a reliable way to determine that, so let's
+                // return false, always.
+                // Note that this check will go away after
+                // https://github.com/googleapis/google-api-dotnet-client/issues/2561.
+                return false;
+#else
+                return RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
+#endif
+            }
+
+            bool IsLinux()
+            {
+#if NET45
+                // RuntimeInformation.IsOsPlatform is not available for NET45.
+                // There's a chance we are on Linux if we are using Mono.
+                // But we don't have a reliable way to determine that, so let's
+                // return false, always.
+                // Note that this check will go away after
+                // https://github.com/googleapis/google-api-dotnet-client/issues/2561.
+                return false;
+#else
+                return RuntimeInformation.IsOSPlatform(OSPlatform.Linux);
+#endif
+            }
+
+            bool IsWindowsGoogleBios()
+            {
+                Logger.Info("Checking BIOS values on Windows.");
+#if NET45 || NETSTANDARD1_3
+                Logger.Debug("System.Management is not supported in net45 and netstandard1.3");
+                return false;
+#else
+                System.Management.ManagementClass biosClass = new ("Win32_BIOS");
+                using var instances = biosClass.GetInstances();
+
+                bool isGoogle = false;
+                foreach(var instance in instances)
+                {
+                    // We should only find one instance for Win32_BIOS class.
+                    using (instance)
+                    {
+                        try
+                        {
+                            isGoogle = isGoogle || instance["Manufacturer"]?.ToString() == "Google";
+                        }
+                        catch (Exception ex)
+                        {
+                            Logger.Debug($"Error checking Win32_BIOS management object: {ex}.");
+                        }
+                    }
+                }
+                if (!isGoogle)
+                {
+                    Logger.Debug("No Win32_BIOS management object found.");
+                }
+                return isGoogle;
+#endif
+            }
+
+            async Task<bool> IsLinuxGoogleBiosAsync()
+            {
+                Logger.Info("Checking BIOS values on Linux.");
+
+                string fileName = "/sys/class/dmi/id/product_name";
+                if (!File.Exists(fileName))
+                {
+                    Logger.Debug($"Couldn't read file {fileName} containing BIOS mapped values.");
+                    return false;
+                }
+
+                string productName;
+                using (var streamReader = new StreamReader(new FileStream("/sys/class/dmi/id/product_name", FileMode.Open, FileAccess.Read)))
+                {
+                    productName = await streamReader.ReadLineAsync().ConfigureAwait(false);
+                }
+                productName = productName?.Trim();
+                return productName == "Google" || productName == "Google Compute Engine";
+            }
         }
     }
 }
