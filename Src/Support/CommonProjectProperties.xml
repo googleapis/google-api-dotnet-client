@@ -2,7 +2,7 @@
 
   <!-- common nupkg information -->
   <PropertyGroup>
-    <Version>1.62.1</Version>
+    <Version>1.63.0</Version>
     <Authors>Google LLC</Authors>
     <Copyright>Copyright 2021 Google LLC</Copyright>
     <PackageTags>Google</PackageTags>
