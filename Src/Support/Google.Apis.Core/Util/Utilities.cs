@@ -183,6 +183,7 @@ namespace Google.Apis.Util
             {
                 date = date.ToUniversalTime();
             }
+            // TODO: Handle finer precision than milliseconds?
             return date.ToString("yyyy-MM-dd'T'HH:mm:ss.fffK", DateTimeFormatInfo.InvariantInfo);
         }
 
@@ -211,28 +212,89 @@ namespace Google.Apis.Util
         }
 
         /// <summary>
-        /// Parses the input string and returns <see cref="System.DateTimeOffset"/> if the input is
-        /// of the format "yyyy-MM-ddTHH:mm:ss.FFFZ" or "yyyy-MM-ddTHH:mm:ssZ". If the input is null,
-        /// this method returns <c>null</c>. Otherwise, <see cref="FormatException"/> is thrown.
+        /// Parses the input string and returns <see cref="System.DateTimeOffset"/> if the input has 0, 3, 6 or 9
+        /// subsecond digits. If the input is null, this method returns <c>null</c>. Otherwise, <see cref="FormatException"/> is thrown.
+        /// If 9 subsecond digits are present, the result is truncated as if the final two digits are 0 (as the "tick"
+        /// precision of DateTimeOffset is 100 nanoseconds).
         /// </summary>
-        public static DateTimeOffset? GetDateTimeOffsetFromString(string raw) =>
-            raw is null
-            ? (DateTimeOffset?) null
-            : DateTimeOffset.ParseExact(raw, "yyyy-MM-dd'T'HH:mm:ss.FFF'Z'", CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal);
+        public static DateTimeOffset? GetDateTimeOffsetFromString(string raw)
+        {
+            // Date part is 10 characters; time to seconds is 8.
+            // We need to take account of the "T" separator, the decimal separator for subseconds, and the trailing 'Z'.
+            const int SecondsOnlyLength = 20;
+            const int MillisecondsLength = SecondsOnlyLength + 4;
+            const int MicrosecondsLength = MillisecondsLength + 3;
+            const int NanosecondsLength = MicrosecondsLength + 3;
+            const int NanosecondsBeyondTicksIndex = NanosecondsLength - 3;
+            if (raw is null)
+            {
+                return null;
+            }
+            return raw.Length switch
+            {
+                SecondsOnlyLength => DateTimeOffset.ParseExact(raw, "yyyy-MM-dd'T'HH:mm:ss'Z'", CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal),
+                MillisecondsLength => DateTimeOffset.ParseExact(raw, "yyyy-MM-dd'T'HH:mm:ss.fff'Z'", CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal),
+                MicrosecondsLength => DateTimeOffset.ParseExact(raw, "yyyy-MM-dd'T'HH:mm:ss.ffffff'Z'", CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal),
+                // Note: deliberately no Z here.
+                NanosecondsLength => DateTimeOffset.ParseExact(AdjustForNanoseconds(raw), "yyyy-MM-dd'T'HH:mm:ss.fffffff", CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal),
+                _ => ThrowFormatException()
+            };
+
+            // If we receive "2023-10-2713:45:00.123456789Z" we need to parse it
+            // as "2023-10-2713:45:00.1234567Z" (i.e. to tick precision) as .NET doesn't support
+            // parsing and automatically truncating nanoseconds.
+            static string AdjustForNanoseconds(string raw)
+            {
+                ValidateDigit(raw[NanosecondsBeyondTicksIndex]);
+                ValidateDigit(raw[NanosecondsBeyondTicksIndex + 1]);
+                // This avoids us having to concatenate the substring with "Z".
+                if (raw[NanosecondsBeyondTicksIndex + 2] != 'Z')
+                {
+                    ThrowFormatException();
+                }
+                return raw.Substring(0, NanosecondsBeyondTicksIndex);
+            }
+
+            static void ValidateDigit(char c)
+            {
+                if (c < '0' || c > '9')
+                {
+                    ThrowFormatException();
+                }
+            }
+
+            // Note: this returns DateTimeOffset so we can use it in the switch...
+            static DateTimeOffset ThrowFormatException() =>
+                throw new FormatException("String was not recognized as a valid DateTime");
+        }
 
         /// <summary>
         /// Returns a string from the input <see cref="DateTimeOffset"/> instance, or <c>null</c> if
-        /// <paramref name="date"/> is null. The string is always in the format "yyyy-MM-ddTHH:mm:ss.fffZ" or
-        /// "yyyy-MM-ddTHH:mm:ssZ" - always UTC, always either second or millisecond precision, and always using the
-        /// invariant culture.
+        /// <paramref name="date"/> is null. The string is always in the format "yyyy-MM-ddTHH:mm:ssZ" or
+        /// "yyyy-MM-ddTHH:mm:ss.Z" or
+        /// "yyyy-MM-ddTHH:mm:ssZ". It is always UTC, always either second, millisecond, microsecond or nanosecond precision,
+        /// and always using the invariant culture. When using nanosecond precision, the last two digits will always be 0
+        /// as 
         /// </summary>
-        public static string GetStringFromDateTimeOffset(DateTimeOffset? date) =>
-            date is null
-            ? null
-            // While FFF sounds like it should work, we really want to produce no subsecond parts or 3 digits.
-            : date.Value.Millisecond == 0 ? date.Value.ToUniversalTime().ToString("yyyy-MM-dd'T'HH:mm:ss'Z'")
-            : date.Value.ToUniversalTime().ToString("yyyy-MM-dd'T'HH:mm:ss.fff'Z'", CultureInfo.InvariantCulture);
-
+        public static string GetStringFromDateTimeOffset(DateTimeOffset? date)
+        {
+            const int TicksPerMicrosecond = 10;
+            if (date is not DateTimeOffset dto)
+            {
+                return null;
+            }
+            dto = dto.ToUniversalTime();
+            // Note: DateTimeOffset.Ticks is always non-negative, which makes things simpler.
+            long tickOfSecond = dto.Ticks % TimeSpan.TicksPerSecond;
+            string pattern = tickOfSecond switch
+            {
+                0 => "yyyy-MM-dd'T'HH:mm:ss'Z'",
+                _ when tickOfSecond % TimeSpan.TicksPerMillisecond == 0 => "yyyy-MM-dd'T'HH:mm:ss.fff'Z'",
+                _ when tickOfSecond % TicksPerMicrosecond == 0 => "yyyy-MM-dd'T'HH:mm:ss.ffffff'Z'",
+                _ => "yyyy-MM-dd'T'HH:mm:ss.fffffff'00Z'"
+            };
+            return date.Value.ToUniversalTime().ToString(pattern, CultureInfo.InvariantCulture);
+        }
         /// <summary>
         /// Deserializes the given raw value to an object using <see cref="NewtonsoftJsonSerializer.Instance"/>,
         /// as if it were a JSON string value.

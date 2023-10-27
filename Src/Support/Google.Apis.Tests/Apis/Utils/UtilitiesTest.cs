@@ -15,7 +15,6 @@ limitations under the License.
 */
 
 using Google.Apis.Util;
-using Newtonsoft.Json.Linq;
 using System;
 using System.Globalization;
 using System.Threading;
@@ -89,38 +88,51 @@ namespace Google.Apis.Tests.Apis.Util
         [InlineData("broken")]
         [InlineData("")]
         [InlineData("2023-13-01T00:00:00Z")]
+        [InlineData("2023-06-14T12:23:45.5Z")] // Subsecond digit count must be a multiple of 3
         [InlineData("2023-13-01T00:00:00+00")] // We require the Z
         [InlineData("2023-13-01T00:00:00+01")] // We require the Z
-        [InlineData("2023-12-01T00:00:00.000000Z")] // We only support millisecond precision
+        [InlineData("2023-06-14T12:23:45.0000000x0Z")] // Broken past ticks
+        [InlineData("2023-06-14T12:23:45.00000000xZ")] // Broken past ticks
+        [InlineData("2023-06-14T12:23:45.000000000z")] // Broken past ticks
         public void GetDateTimeOffsetFromString_Invalid(string input) =>
             Assert.Throws<FormatException>(() => Utilities.GetDateTimeOffsetFromString(input));
+
+        // Note on formatting for tick-of-second for the theory data in the following tests:
+        // ticks are 100ns, so xxx_yyy_z is "xxx milliseconds, yyy microseconds, z ticks within the microsecond"
 
         [Theory]
         [InlineData("2023-12-01T00:00:00Z", 2023, 12, 1, 0, 0, 0, 0)]
         [InlineData("0001-01-01T00:00:00Z", 1, 1, 1, 0, 0, 0, 0)]
-        [InlineData("9999-12-31T23:59:59.999Z", 9999, 12, 31, 23, 59, 59, 999)]
-        [InlineData("2023-06-14T12:23:45.5Z", 2023, 6, 14, 12,23, 45, 500)] // This is slightly unfortunate, but not actively harmful.
-        [InlineData("2023-06-14T12:23:45.123Z", 2023, 6, 14, 12, 23, 45, 123)]
+        [InlineData("9999-12-31T23:59:59.999Z", 9999, 12, 31, 23, 59, 59, 999_000_0)]
+        [InlineData("9999-12-31T23:59:59.999999Z", 9999, 12, 31, 23, 59, 59, 999_999_0)]
+        [InlineData("9999-12-31T23:59:59.999999999Z", 9999, 12, 31, 23, 59, 59, 999_999_9)]
+        
+        [InlineData("2023-06-14T12:23:45.123Z", 2023, 6, 14, 12, 23, 45, 123_000_0)]
+        [InlineData("2023-06-14T12:23:45.123456Z", 2023, 6, 14, 12, 23, 45, 123_456_0)]
+        [InlineData("2023-06-14T12:23:45.123456789Z", 2023, 6, 14, 12, 23, 45, 123_456_7)]
         [InlineData("2023-06-14T12:23:45.000Z", 2023, 6, 14, 12, 23, 45, 0)] // .000 is redundant but valid
+        [InlineData("2023-06-14T12:23:45.000000Z", 2023, 6, 14, 12, 23, 45, 0)] // .000 is redundant but valid
+        [InlineData("2023-06-14T12:23:45.000000000Z", 2023, 6, 14, 12, 23, 45, 0)] // .000 is redundant but valid
         [InlineData("2023-06-14T12:23:45Z", 2023, 6, 14, 12, 23, 45, 0)]
-        public void GetDateTimeOffsetFromString_Valid(string input, int year, int month, int day, int hour, int minute, int second, int millisecond)
+        public void GetDateTimeOffsetFromString_Valid(string input, int year, int month, int day, int hour, int minute, int second, int tickOfSecond)
         {
             var actual = Utilities.GetDateTimeOffsetFromString(input).Value;
-            var expected = new DateTimeOffset(year, month, day, hour, minute, second, millisecond, TimeSpan.Zero);
+            var expected = new DateTimeOffset(year, month, day, hour, minute, second, TimeSpan.Zero).AddTicks(tickOfSecond);
             Assert.Equal(expected, actual);
             // Be explicit about this, as DateTimeOffset.Equals only compares instants in time, not offsets.
             Assert.Equal(TimeSpan.Zero, actual.Offset);
         }
 
         [Theory]
-        [InlineData(5000000, "2023-06-13T15:54:13.500Z")]
-        [InlineData(1234567, "2023-06-13T15:54:13.123Z")]
-        [InlineData(1239999, "2023-06-13T15:54:13.123Z")]
-        [InlineData(9999999, "2023-06-13T15:54:13.999Z")]
-        [InlineData(10000, "2023-06-13T15:54:13.001Z")]
-        [InlineData(100000, "2023-06-13T15:54:13.010Z")]
+        [InlineData(500_000_0, "2023-06-13T15:54:13.500Z")]
+        [InlineData(123_456_0, "2023-06-13T15:54:13.123456Z")]
+        [InlineData(123_456_7, "2023-06-13T15:54:13.123456700Z")]
+        [InlineData(123_999_9, "2023-06-13T15:54:13.123999900Z")]
+        [InlineData(999_999_9, "2023-06-13T15:54:13.999999900Z")]
+        [InlineData(1_000_0, "2023-06-13T15:54:13.001Z")]
+        [InlineData(10_000_0, "2023-06-13T15:54:13.010Z")]
         [InlineData(0, "2023-06-13T15:54:13Z")]
-        public void GetStringFromDateTimeOffset_MillisecondHandling(int tickOfSecond, string expectedResult)
+        public void GetStringFromDateTimeOffset_SubsecondHandling(int tickOfSecond, string expectedResult)
         {
             var value = new DateTimeOffset(2023, 6, 13, 15, 54, 13, TimeSpan.Zero).AddTicks(tickOfSecond);
             Assert.Equal(expectedResult, Utilities.GetStringFromDateTimeOffset(value));
