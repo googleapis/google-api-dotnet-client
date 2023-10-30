@@ -2074,6 +2074,12 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
     /// <summary>Request message to claim a device on behalf of a customer.</summary>
     public class ClaimDeviceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. The unique identifier of the configuration (internally known as profile) to set for the section.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("configurationId")]
+        public virtual System.Nullable<long> ConfigurationId { get; set; }
+
         /// <summary>The ID of the customer for whom the device is being claimed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customerId")]
         public virtual System.Nullable<long> CustomerId { get; set; }
@@ -2098,10 +2104,7 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sectionType")]
         public virtual string SectionType { get; set; }
 
-        /// <summary>
-        /// Optional. Must and can only be set when DeviceProvisioningSectionType is SECTION_TYPE_SIM_LOCK. The unique
-        /// identifier of the SimLock profile.
-        /// </summary>
+        /// <summary>Optional. </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("simlockProfileId")]
         public virtual System.Nullable<long> SimlockProfileId { get; set; }
 
@@ -3026,6 +3029,12 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
     /// <summary>Identifies one claim request.</summary>
     public class PartnerClaim : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. The unique identifier of the configuration (internally known as profile) to set for the section.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("configurationId")]
+        public virtual System.Nullable<long> ConfigurationId { get; set; }
+
         /// <summary>The ID of the customer for whom the device is being claimed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customerId")]
         public virtual System.Nullable<long> CustomerId { get; set; }
@@ -3050,10 +3059,7 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sectionType")]
         public virtual string SectionType { get; set; }
 
-        /// <summary>
-        /// Optional. Must and can only be set when DeviceProvisioningSectionType is SECTION_TYPE_SIM_LOCK. The unique
-        /// identifier of the SimLock profile.
-        /// </summary>
+        /// <summary>Optional. </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("simlockProfileId")]
         public virtual System.Nullable<long> SimlockProfileId { get; set; }
 
