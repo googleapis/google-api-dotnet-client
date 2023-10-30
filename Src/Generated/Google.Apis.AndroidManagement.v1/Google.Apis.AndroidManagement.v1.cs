@@ -3371,7 +3371,11 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("errorCode")]
         public virtual string ErrorCode { get; set; }
 
-        /// <summary>For commands of type RESET_PASSWORD, optionally specifies the new password.</summary>
+        /// <summary>
+        /// For commands of type RESET_PASSWORD, optionally specifies the new password. Note: The new password must be
+        /// at least 6 characters long if it is numeric in case of Android 14 devices. Else the command will fail with
+        /// INVALID_VALUE.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("newPassword")]
         public virtual string NewPassword { get; set; }
 

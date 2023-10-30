@@ -1257,6 +1257,43 @@ namespace Google.Apis.BeyondCorp.v1alpha
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
 
+                            /// <summary>
+                            /// Optional. A filter specifying constraints of a list operation. All fields in the
+                            /// ProxyConfig message are supported. For example, the following query will return the
+                            /// ProxyConfigs with displayName "test-config"
+                            /// organizations/${ORG_ID}/locations/global/partnerTenants/${PARTNER_TENANT_ID}/proxyConfigs?filter=displayName="test-config"
+                            /// Nested fields are also supported. The follow query will return ProxyConfigs with pacUri
+                            /// "example.com/pac.pac"
+                            /// organizations/${ORG_ID}/locations/global/partnerTenants/${PARTNER_TENANT_ID}/proxyConfigs?filter=routingInfo.pacUri="example.com/pac.pac"
+                            /// For more information, please refer to https://google.aip.dev/160.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string Filter { get; set; }
+
+                            /// <summary>
+                            /// Optional. Specifies the ordering of results. See [Sorting
+                            /// order](https://cloud.google.com/apis/design/design_patterns#sorting_order) for more
+                            /// information.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string OrderBy { get; set; }
+
+                            /// <summary>
+                            /// Optional. The maximum number of items to return. If not specified, a default value of 50
+                            /// will be used by the service. Regardless of the page_size value, the response may include
+                            /// a partial list and a caller should only rely on response's next_page_token to determine
+                            /// if there are more instances left to be queried.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<int> PageSize { get; set; }
+
+                            /// <summary>
+                            /// Optional. The next_page_token value returned from a previous ListProxyConfigsRequest, if
+                            /// any.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string PageToken { get; set; }
+
                             /// <summary>Gets the method name.</summary>
                             public override string MethodName => "list";
 
@@ -1277,6 +1314,38 @@ namespace Google.Apis.BeyondCorp.v1alpha
                                     ParameterType = "path",
                                     DefaultValue = null,
                                     Pattern = @"^organizations/[^/]+/locations/global/partnerTenants/[^/]+$",
+                                });
+                                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "filter",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "orderBy",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
                                 });
                             }
                         }
@@ -1823,6 +1892,43 @@ namespace Google.Apis.BeyondCorp.v1alpha
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
+                        /// <summary>
+                        /// Optional. A filter specifying constraints of a list operation. All fields in the
+                        /// PartnerTenant message are supported. For example, the following query will return the
+                        /// PartnerTenants with displayName "test-tenant"
+                        /// organizations/${ORG_ID}/locations/${LOCATION}/partnerTenants?filter=displayName="test-tenant"
+                        /// Nested fields are also supported. The follow query will return PartnerTenants with
+                        /// internal_tenant_id "1234"
+                        /// organizations/${ORG_ID}/locations/${LOCATION}/partnerTenants?filter=partnerMetadata.internalTenantId="1234"
+                        /// For more information, please refer to https://google.aip.dev/160.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+                        /// <summary>
+                        /// Optional. Specifies the ordering of results. See [Sorting
+                        /// order](https://cloud.google.com/apis/design/design_patterns#sorting_order) for more
+                        /// information.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string OrderBy { get; set; }
+
+                        /// <summary>
+                        /// Optional. The maximum number of items to return. If not specified, a default value of 50
+                        /// will be used by the service. Regardless of the page_size value, the response may include a
+                        /// partial list and a caller should only rely on response's next_page_token to determine if
+                        /// there are more instances left to be queried.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// Optional. The next_page_token value returned from a previous ListPartnerTenantsResponse, if
+                        /// any.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
                         /// <summary>Gets the method name.</summary>
                         public override string MethodName => "list";
 
@@ -1843,6 +1949,38 @@ namespace Google.Apis.BeyondCorp.v1alpha
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = @"^organizations/[^/]+/locations/global$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "orderBy",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
                             });
                         }
                     }
@@ -11244,6 +11382,12 @@ namespace Google.Apis.BeyondCorp.v1alpha.Data
     /// <summary>Message for response to listing PartnerTenants.</summary>
     public class GoogleCloudBeyondcorpPartnerservicesV1alphaListPartnerTenantsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// A token to retrieve the next page of results, or empty if there are no more results in the list.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
         /// <summary>The list of PartnerTenant objects.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partnerTenants")]
         public virtual System.Collections.Generic.IList<GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerTenant> PartnerTenants { get; set; }
@@ -11255,6 +11399,12 @@ namespace Google.Apis.BeyondCorp.v1alpha.Data
     /// <summary>Message for response to listing ProxyConfigs.</summary>
     public class GoogleCloudBeyondcorpPartnerservicesV1alphaListProxyConfigsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// A token to retrieve the next page of results, or empty if there are no more results in the list.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
         /// <summary>The list of ProxyConfig objects.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("proxyConfigs")]
         public virtual System.Collections.Generic.IList<GoogleCloudBeyondcorpPartnerservicesV1alphaProxyConfig> ProxyConfigs { get; set; }
@@ -12165,7 +12315,7 @@ namespace Google.Apis.BeyondCorp.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Output only. Number of seats in the subscription.</summary>
+        /// <summary>Optional. Number of seats in the subscription.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("seatCount")]
         public virtual System.Nullable<long> SeatCount { get; set; }
 
