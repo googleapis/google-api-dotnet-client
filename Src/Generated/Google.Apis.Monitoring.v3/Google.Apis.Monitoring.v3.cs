@@ -4951,7 +4951,8 @@ namespace Google.Apis.Monitoring.v3
             /// <summary>
             /// Creates or adds data to one or more time series. The response is empty if all time series in the request
             /// were written. If any time series could not be written, a corresponding failure message is included in
-            /// the error response.
+            /// the error response. This method does not support resource locations constraint of an organization policy
+            /// (https://cloud.google.com/resource-manager/docs/organization-policy/defining-locations#setting_the_organization_policy).
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
@@ -4966,7 +4967,8 @@ namespace Google.Apis.Monitoring.v3
             /// <summary>
             /// Creates or adds data to one or more time series. The response is empty if all time series in the request
             /// were written. If any time series could not be written, a corresponding failure message is included in
-            /// the error response.
+            /// the error response. This method does not support resource locations constraint of an organization policy
+            /// (https://cloud.google.com/resource-manager/docs/organization-policy/defining-locations#setting_the_organization_policy).
             /// </summary>
             public class CreateRequest : MonitoringBaseServiceRequest<Google.Apis.Monitoring.v3.Data.Empty>
             {
@@ -8520,7 +8522,8 @@ namespace Google.Apis.Monitoring.v3.Data
         /// <summary>
         /// Required. The length of time into the future to forecast whether a time series will violate the threshold.
         /// If the predicted value is found to violate the threshold, and the violation is observed in all forecasts
-        /// made for the configured duration, then the time series is considered to be failing.
+        /// made for the configured duration, then the time series is considered to be failing. The forecast horizon can
+        /// range from 1 hour to 60 hours.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("forecastHorizon")]
         public virtual object ForecastHorizon { get; set; }

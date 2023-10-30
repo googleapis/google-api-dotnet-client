@@ -506,9 +506,7 @@ namespace Google.Apis.CloudTasks.v2beta2
                     /// TASK_ID to your desired ID:
                     /// projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID:buffer To create the
                     /// task with an automatically generated ID, use the following format:
-                    /// projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks:buffer. Note: This feature is in
-                    /// its experimental stage. You must request access to the API through the [Cloud Tasks BufferTask
-                    /// Experiment Signup form](https://forms.gle/X8Zr5hiXH5tTGFqh8).
+                    /// projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks:buffer.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="queue">
@@ -530,9 +528,7 @@ namespace Google.Apis.CloudTasks.v2beta2
                     /// TASK_ID to your desired ID:
                     /// projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID:buffer To create the
                     /// task with an automatically generated ID, use the following format:
-                    /// projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks:buffer. Note: This feature is in
-                    /// its experimental stage. You must request access to the API through the [Cloud Tasks BufferTask
-                    /// Experiment Signup form](https://forms.gle/X8Zr5hiXH5tTGFqh8).
+                    /// projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks:buffer.
                     /// </summary>
                     public class BufferRequest : CloudTasksBaseServiceRequest<Google.Apis.CloudTasks.v2beta2.Data.BufferTaskResponse>
                     {
@@ -2868,8 +2864,7 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
     }
 
     /// <summary>
-    /// CMEK, or Customer Managed Encryption Keys, enables GCP products to put control over encryption and key
-    /// management in their customer’s hands.
+    /// Describes the customer-managed encryption key (CMEK) configuration associated with a project and location.
     /// </summary>
     public class CmekConfig : Google.Apis.Requests.IDirectResponseSchema
     {

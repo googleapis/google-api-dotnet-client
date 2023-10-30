@@ -424,17 +424,17 @@ namespace Google.Apis.MapsPlaces.v1
             }
         }
 
-        /// <summary>Get a Place with a place id (in a name) string.</summary>
+        /// <summary>Get place details with a place id (in a name) string.</summary>
         /// <param name="name">
         /// Required. A place ID returned in a Place (with "places/" prefix), or equivalently the name in the same
-        /// Place. Format: places/place_id.
+        /// Place. Format: places/*place_id*.
         /// </param>
         public virtual GetRequest Get(string name)
         {
             return new GetRequest(service, name);
         }
 
-        /// <summary>Get a Place with a place id (in a name) string.</summary>
+        /// <summary>Get place details with a place id (in a name) string.</summary>
         public class GetRequest : MapsPlacesBaseServiceRequest<Google.Apis.MapsPlaces.v1.Data.GoogleMapsPlacesV1Place>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -446,7 +446,7 @@ namespace Google.Apis.MapsPlaces.v1
 
             /// <summary>
             /// Required. A place ID returned in a Place (with "places/" prefix), or equivalently the name in the same
-            /// Place. Format: places/place_id.
+            /// Place. Format: places/*place_id*.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
@@ -645,7 +645,9 @@ namespace Google.Apis.MapsPlaces.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("center")]
         public virtual GoogleTypeLatLng Center { get; set; }
 
-        /// <summary>Required. Radius measured in meters. The radius must be within [0.0, 50000.0].</summary>
+        /// <summary>
+        /// Required. Radius measured in meters. The radius must be within [0.0, 50000.0]. The default radius is 0.0.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("radius")]
         public virtual System.Nullable<double> Radius { get; set; }
 
@@ -976,7 +978,7 @@ namespace Google.Apis.MapsPlaces.v1.Data
         public virtual string IconBackgroundColor { get; set; }
 
         /// <summary>
-        /// A truncated URL to an v2 icon mask. User can access different icon type by appending type suffix to the end
+        /// A truncated URL to an icon mask. User can access different icon type by appending type suffix to the end
         /// (eg, ".svg" or ".png").
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iconMaskBaseUri")]
@@ -1673,9 +1675,9 @@ namespace Google.Apis.MapsPlaces.v1.Data
         public virtual GoogleMapsPlacesV1SearchTextRequestLocationRestriction LocationRestriction { get; set; }
 
         /// <summary>
-        /// Maximum number of results to return. It must be between 1 and 20, inclusively. If the number is unset, it
-        /// falls back to the upper limit. If the number is set to negative or exceeds the upper limit, an
-        /// INVALID_ARGUMENT error is returned.
+        /// Maximum number of results to return. It must be between 1 and 20, inclusively. The default is 20. If the
+        /// number is unset, it falls back to the upper limit. If the number is set to negative or exceeds the upper
+        /// limit, an INVALID_ARGUMENT error is returned.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxResultCount")]
         public virtual System.Nullable<int> MaxResultCount { get; set; }
@@ -1689,7 +1691,7 @@ namespace Google.Apis.MapsPlaces.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("minRating")]
         public virtual System.Nullable<double> MinRating { get; set; }
 
-        /// <summary>Used to restrict the search to places that are currently open.</summary>
+        /// <summary>Used to restrict the search to places that are currently open. The default is false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("openNow")]
         public virtual System.Nullable<bool> OpenNow { get; set; }
 

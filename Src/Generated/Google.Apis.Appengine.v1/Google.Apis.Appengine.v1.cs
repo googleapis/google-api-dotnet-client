@@ -6126,6 +6126,13 @@ namespace Google.Apis.Appengine.v1.Data
         public virtual FlexibleRuntimeSettings FlexibleRuntimeSettings { get; set; }
 
         /// <summary>
+        /// Additional Google Generated Customer Metadata, this field won't be provided by default and can be requested
+        /// by setting the IncludeExtraData field in GetVersionRequest
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generatedCustomerMetadata")]
+        public virtual System.Collections.Generic.IDictionary<string, object> GeneratedCustomerMetadata { get; set; }
+
+        /// <summary>
         /// An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL
         /// handles the request and other request handlers are not attempted.Only returned in GET requests if view=FULL
         /// is set.

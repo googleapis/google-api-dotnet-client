@@ -1988,7 +1988,7 @@ namespace Google.Apis.Assuredworkloads.v1.Data
         /// <summary>
         /// Output only. Urls for services which are compliant for this Assured Workload, but which are currently
         /// disallowed by the ResourceUsageRestriction org policy. Invoke RestrictAllowedResources endpoint to allow
-        /// your project developers to use these services in their environment."
+        /// your project developers to use these services in their environment.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("compliantButDisallowedServices")]
         public virtual System.Collections.Generic.IList<string> CompliantButDisallowedServices { get; set; }
@@ -2038,7 +2038,7 @@ namespace Google.Apis.Assuredworkloads.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
-        /// <summary>Optional. Represents the Ekm Provisioning State of the given workload.</summary>
+        /// <summary>Output only. Represents the Ekm Provisioning State of the given workload.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ekmProvisioningResponse")]
         public virtual GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponse EkmProvisioningResponse { get; set; }
 

@@ -7439,7 +7439,7 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         public virtual System.Collections.Generic.IList<ExtensionChain> ExtensionChains { get; set; }
 
         /// <summary>
-        /// Required. A list of references to the forwarding rules to which this service extension is attach to. At
+        /// Required. A list of references to the forwarding rules to which this service extension is attached to. At
         /// least one forwarding rule is required. There can be only one `LbRouteExtension` resource per forwarding
         /// rule.
         /// </summary>
@@ -7455,7 +7455,8 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
 
         /// <summary>
         /// Required. All backend services and forwarding rules referenced by this extension must share the same load
-        /// balancing scheme. Supported values: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
+        /// balancing scheme. Supported values: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`. For more information, refer to
+        /// [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("loadBalancingScheme")]
         public virtual string LoadBalancingScheme { get; set; }
@@ -7566,7 +7567,7 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         public virtual System.Collections.Generic.IList<ExtensionChain> ExtensionChains { get; set; }
 
         /// <summary>
-        /// Required. A list of references to the forwarding rules to which this service extension is attach to. At
+        /// Required. A list of references to the forwarding rules to which this service extension is attached to. At
         /// least one forwarding rule is required. There can be only one `LBTrafficExtension` resource per forwarding
         /// rule.
         /// </summary>
