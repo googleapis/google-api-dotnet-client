@@ -790,8 +790,8 @@ namespace Google.Apis.DLP.v2
                 public virtual string LocationId { get; set; }
 
                 /// <summary>
-                /// Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This list is
-                /// case-insensitive, default sorting order is ascending, redundant space characters are insignificant.
+                /// Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This list is case
+                /// insensitive. The default sorting order is ascending. Redundant space characters are insignificant.
                 /// Example: `name asc,update_time, create_time desc` Supported fields are: - `create_time`: corresponds
                 /// to the time the template was created. - `update_time`: corresponds to the time the template was last
                 /// updated. - `name`: corresponds to the template's name. - `display_name`: corresponds to the
@@ -801,13 +801,14 @@ namespace Google.Apis.DLP.v2
                 public virtual string OrderBy { get; set; }
 
                 /// <summary>
-                /// Size of the page, can be limited by the server. If zero server returns a page of max size 100.
+                /// Size of the page. This value can be limited by the server. If zero server returns a page of max size
+                /// 100.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
                 /// <summary>
-                /// Page token to continue retrieval. Comes from previous call to `ListDeidentifyTemplates`.
+                /// Page token to continue retrieval. Comes from the previous call to `ListDeidentifyTemplates`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -1194,8 +1195,8 @@ namespace Google.Apis.DLP.v2
                 public virtual string LocationId { get; set; }
 
                 /// <summary>
-                /// Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This list is
-                /// case-insensitive, default sorting order is ascending, redundant space characters are insignificant.
+                /// Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This list is case
+                /// insensitive. The default sorting order is ascending. Redundant space characters are insignificant.
                 /// Example: `name asc,update_time, create_time desc` Supported fields are: - `create_time`: corresponds
                 /// to the time the template was created. - `update_time`: corresponds to the time the template was last
                 /// updated. - `name`: corresponds to the template's name. - `display_name`: corresponds to the
@@ -1205,13 +1206,14 @@ namespace Google.Apis.DLP.v2
                 public virtual string OrderBy { get; set; }
 
                 /// <summary>
-                /// Size of the page, can be limited by the server. If zero server returns a page of max size 100.
+                /// Size of the page. This value can be limited by the server. If zero server returns a page of max size
+                /// 100.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
                 /// <summary>
-                /// Page token to continue retrieval. Comes from previous call to `ListInspectTemplates`.
+                /// Page token to continue retrieval. Comes from the previous call to `ListInspectTemplates`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -1627,7 +1629,7 @@ namespace Google.Apis.DLP.v2
 
                     /// <summary>
                     /// Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This list is
-                    /// case-insensitive, default sorting order is ascending, redundant space characters are
+                    /// case insensitive. The default sorting order is ascending. Redundant space characters are
                     /// insignificant. Example: `name asc,update_time, create_time desc` Supported fields are: -
                     /// `create_time`: corresponds to the time the template was created. - `update_time`: corresponds to
                     /// the time the template was last updated. - `name`: corresponds to the template's name. -
@@ -1637,13 +1639,14 @@ namespace Google.Apis.DLP.v2
                     public virtual string OrderBy { get; set; }
 
                     /// <summary>
-                    /// Size of the page, can be limited by the server. If zero server returns a page of max size 100.
+                    /// Size of the page. This value can be limited by the server. If zero server returns a page of max
+                    /// size 100.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
                     /// <summary>
-                    /// Page token to continue retrieval. Comes from previous call to `ListDeidentifyTemplates`.
+                    /// Page token to continue retrieval. Comes from the previous call to `ListDeidentifyTemplates`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -1789,7 +1792,7 @@ namespace Google.Apis.DLP.v2
                     this.service = service;
                 }
 
-                /// <summary>Creates a config for Discovery to scan and profile storage.</summary>
+                /// <summary>Creates a config for discovery to scan and profile storage.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. Parent resource name. The format of this value is as follows:
@@ -1802,7 +1805,7 @@ namespace Google.Apis.DLP.v2
                     return new CreateRequest(service, body, parent);
                 }
 
-                /// <summary>Creates a config for Discovery to scan and profile storage.</summary>
+                /// <summary>Creates a config for discovery to scan and profile storage.</summary>
                 public class CreateRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2DiscoveryConfig>
                 {
                     /// <summary>Constructs a new Create request.</summary>
@@ -1852,7 +1855,7 @@ namespace Google.Apis.DLP.v2
                     }
                 }
 
-                /// <summary>Deletes a Discovery configuration.</summary>
+                /// <summary>Deletes a discovery configuration.</summary>
                 /// <param name="name">
                 /// Required. Resource name of the project and the config, for example
                 /// `projects/dlp-test-project/discoveryConfigs/53234423`.
@@ -1862,7 +1865,7 @@ namespace Google.Apis.DLP.v2
                     return new DeleteRequest(service, name);
                 }
 
-                /// <summary>Deletes a Discovery configuration.</summary>
+                /// <summary>Deletes a discovery configuration.</summary>
                 public class DeleteRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GoogleProtobufEmpty>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
@@ -1903,7 +1906,7 @@ namespace Google.Apis.DLP.v2
                     }
                 }
 
-                /// <summary>Gets a Discovery configuration.</summary>
+                /// <summary>Gets a discovery configuration.</summary>
                 /// <param name="name">
                 /// Required. Resource name of the project and the configuration, for example
                 /// `projects/dlp-test-project/discoveryConfigs/53234423`.
@@ -1913,7 +1916,7 @@ namespace Google.Apis.DLP.v2
                     return new GetRequest(service, name);
                 }
 
-                /// <summary>Gets a Discovery configuration.</summary>
+                /// <summary>Gets a discovery configuration.</summary>
                 public class GetRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2DiscoveryConfig>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -1954,7 +1957,7 @@ namespace Google.Apis.DLP.v2
                     }
                 }
 
-                /// <summary>Lists Discovery configurations.</summary>
+                /// <summary>Lists discovery configurations.</summary>
                 /// <param name="parent">
                 /// Required. Parent resource name. The format of this value is as follows:
                 /// `projects/`PROJECT_ID`/locations/`LOCATION_ID The following example `parent` string specifies a
@@ -1966,7 +1969,7 @@ namespace Google.Apis.DLP.v2
                     return new ListRequest(service, parent);
                 }
 
-                /// <summary>Lists Discovery configurations.</summary>
+                /// <summary>Lists discovery configurations.</summary>
                 public class ListRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ListDiscoveryConfigsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -1987,7 +1990,7 @@ namespace Google.Apis.DLP.v2
 
                     /// <summary>
                     /// Comma separated list of config fields to order by, followed by `asc` or `desc` postfix. This
-                    /// list is case-insensitive, default sorting order is ascending, redundant space characters are
+                    /// list is case insensitive. The default sorting order is ascending. Redundant space characters are
                     /// insignificant. Example: `name asc,update_time, create_time desc` Supported fields are: -
                     /// `last_run_time`: corresponds to the last time the DiscoveryConfig ran. - `name`: corresponds to
                     /// the DiscoveryConfig's name. - `status`: corresponds to DiscoveryConfig's status.
@@ -1995,13 +1998,13 @@ namespace Google.Apis.DLP.v2
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
 
-                    /// <summary>Size of the page, can be limited by a server.</summary>
+                    /// <summary>Size of the page. This value can be limited by a server.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
                     /// <summary>
-                    /// Page token to continue retrieval. Comes from previous call to ListDiscoveryConfigs. `order_by`
-                    /// field must not change for subsequent calls.
+                    /// Page token to continue retrieval. Comes from the previous call to ListDiscoveryConfigs.
+                    /// `order_by` field must not change for subsequent calls.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -2054,7 +2057,7 @@ namespace Google.Apis.DLP.v2
                     }
                 }
 
-                /// <summary>Updates a Discovery configuration.</summary>
+                /// <summary>Updates a discovery configuration.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
                 /// Required. Resource name of the project and the configuration, for example
@@ -2065,7 +2068,7 @@ namespace Google.Apis.DLP.v2
                     return new PatchRequest(service, body, name);
                 }
 
-                /// <summary>Updates a Discovery configuration.</summary>
+                /// <summary>Updates a discovery configuration.</summary>
                 public class PatchRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2DiscoveryConfig>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
@@ -2200,7 +2203,7 @@ namespace Google.Apis.DLP.v2
 
                     /// <summary>
                     /// Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This list is
-                    /// case-insensitive, default sorting order is ascending, redundant space characters are
+                    /// case insensitive. The default sorting order is ascending. Redundant space characters are
                     /// insignificant. Example: `name asc, end_time asc, create_time desc` Supported fields are: -
                     /// `create_time`: corresponds to the time the job was created. - `end_time`: corresponds to the
                     /// time the job ended. - `name`: corresponds to the job's name. - `state`: corresponds to `state`
@@ -2570,7 +2573,7 @@ namespace Google.Apis.DLP.v2
 
                     /// <summary>
                     /// Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This list is
-                    /// case-insensitive, default sorting order is ascending, redundant space characters are
+                    /// case insensitive. The default sorting order is ascending. Redundant space characters are
                     /// insignificant. Example: `name asc,update_time, create_time desc` Supported fields are: -
                     /// `create_time`: corresponds to the time the template was created. - `update_time`: corresponds to
                     /// the time the template was last updated. - `name`: corresponds to the template's name. -
@@ -2580,13 +2583,14 @@ namespace Google.Apis.DLP.v2
                     public virtual string OrderBy { get; set; }
 
                     /// <summary>
-                    /// Size of the page, can be limited by the server. If zero server returns a page of max size 100.
+                    /// Size of the page. This value can be limited by the server. If zero server returns a page of max
+                    /// size 100.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
                     /// <summary>
-                    /// Page token to continue retrieval. Comes from previous call to `ListInspectTemplates`.
+                    /// Page token to continue retrieval. Comes from the previous call to `ListInspectTemplates`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -2976,23 +2980,23 @@ namespace Google.Apis.DLP.v2
 
                     /// <summary>
                     /// Comma separated list of triggeredJob fields to order by, followed by `asc` or `desc` postfix.
-                    /// This list is case-insensitive, default sorting order is ascending, redundant space characters
-                    /// are insignificant. Example: `name asc,update_time, create_time desc` Supported fields are: -
-                    /// `create_time`: corresponds to the time the JobTrigger was created. - `update_time`: corresponds
-                    /// to the time the JobTrigger was last updated. - `last_run_time`: corresponds to the last time the
-                    /// JobTrigger ran. - `name`: corresponds to the JobTrigger's name. - `display_name`: corresponds to
-                    /// the JobTrigger's display name. - `status`: corresponds to JobTrigger's status.
+                    /// This list is case insensitive. The default sorting order is ascending. Redundant space
+                    /// characters are insignificant. Example: `name asc,update_time, create_time desc` Supported fields
+                    /// are: - `create_time`: corresponds to the time the JobTrigger was created. - `update_time`:
+                    /// corresponds to the time the JobTrigger was last updated. - `last_run_time`: corresponds to the
+                    /// last time the JobTrigger ran. - `name`: corresponds to the JobTrigger's name. - `display_name`:
+                    /// corresponds to the JobTrigger's display name. - `status`: corresponds to JobTrigger's status.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
 
-                    /// <summary>Size of the page, can be limited by a server.</summary>
+                    /// <summary>Size of the page. This value can be limited by a server.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
                     /// <summary>
-                    /// Page token to continue retrieval. Comes from previous call to ListJobTriggers. `order_by` field
-                    /// must not change for subsequent calls.
+                    /// Page token to continue retrieval. Comes from the previous call to ListJobTriggers. `order_by`
+                    /// field must not change for subsequent calls.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -3416,7 +3420,7 @@ namespace Google.Apis.DLP.v2
 
                     /// <summary>
                     /// Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This list is
-                    /// case-insensitive, default sorting order is ascending, redundant space characters are
+                    /// case insensitive. The default sorting order is ascending. Redundant space characters are
                     /// insignificant. Example: `name asc, display_name, create_time desc` Supported fields are: -
                     /// `create_time`: corresponds to the time the most recent version of the resource was created. -
                     /// `state`: corresponds to the state of the resource. - `name`: corresponds to resource name. -
@@ -3426,13 +3430,14 @@ namespace Google.Apis.DLP.v2
                     public virtual string OrderBy { get; set; }
 
                     /// <summary>
-                    /// Size of the page, can be limited by the server. If zero server returns a page of max size 100.
+                    /// Size of the page. This value can be limited by the server. If zero server returns a page of max
+                    /// size 100.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
                     /// <summary>
-                    /// Page token to continue retrieval. Comes from previous call to `ListStoredInfoTypes`.
+                    /// Page token to continue retrieval. Comes from the previous call to `ListStoredInfoTypes`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -3820,8 +3825,8 @@ namespace Google.Apis.DLP.v2
                 public virtual string LocationId { get; set; }
 
                 /// <summary>
-                /// Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This list is
-                /// case-insensitive, default sorting order is ascending, redundant space characters are insignificant.
+                /// Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This list is case
+                /// insensitive. The default sorting order is ascending. Redundant space characters are insignificant.
                 /// Example: `name asc, display_name, create_time desc` Supported fields are: - `create_time`:
                 /// corresponds to the time the most recent version of the resource was created. - `state`: corresponds
                 /// to the state of the resource. - `name`: corresponds to resource name. - `display_name`: corresponds
@@ -3831,13 +3836,14 @@ namespace Google.Apis.DLP.v2
                 public virtual string OrderBy { get; set; }
 
                 /// <summary>
-                /// Size of the page, can be limited by the server. If zero server returns a page of max size 100.
+                /// Size of the page. This value can be limited by the server. If zero server returns a page of max size
+                /// 100.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
                 /// <summary>
-                /// Page token to continue retrieval. Comes from previous call to `ListStoredInfoTypes`.
+                /// Page token to continue retrieval. Comes from the previous call to `ListStoredInfoTypes`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -4501,8 +4507,8 @@ namespace Google.Apis.DLP.v2
                 public virtual string LocationId { get; set; }
 
                 /// <summary>
-                /// Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This list is
-                /// case-insensitive, default sorting order is ascending, redundant space characters are insignificant.
+                /// Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This list is case
+                /// insensitive. The default sorting order is ascending. Redundant space characters are insignificant.
                 /// Example: `name asc,update_time, create_time desc` Supported fields are: - `create_time`: corresponds
                 /// to the time the template was created. - `update_time`: corresponds to the time the template was last
                 /// updated. - `name`: corresponds to the template's name. - `display_name`: corresponds to the
@@ -4512,13 +4518,14 @@ namespace Google.Apis.DLP.v2
                 public virtual string OrderBy { get; set; }
 
                 /// <summary>
-                /// Size of the page, can be limited by the server. If zero server returns a page of max size 100.
+                /// Size of the page. This value can be limited by the server. If zero server returns a page of max size
+                /// 100.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
                 /// <summary>
-                /// Page token to continue retrieval. Comes from previous call to `ListDeidentifyTemplates`.
+                /// Page token to continue retrieval. Comes from the previous call to `ListDeidentifyTemplates`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -4976,8 +4983,8 @@ namespace Google.Apis.DLP.v2
                 public virtual string LocationId { get; set; }
 
                 /// <summary>
-                /// Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This list is
-                /// case-insensitive, default sorting order is ascending, redundant space characters are insignificant.
+                /// Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This list is case
+                /// insensitive. The default sorting order is ascending. Redundant space characters are insignificant.
                 /// Example: `name asc, end_time asc, create_time desc` Supported fields are: - `create_time`:
                 /// corresponds to the time the job was created. - `end_time`: corresponds to the time the job ended. -
                 /// `name`: corresponds to the job's name. - `state`: corresponds to `state`
@@ -5441,8 +5448,8 @@ namespace Google.Apis.DLP.v2
                 public virtual string LocationId { get; set; }
 
                 /// <summary>
-                /// Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This list is
-                /// case-insensitive, default sorting order is ascending, redundant space characters are insignificant.
+                /// Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This list is case
+                /// insensitive. The default sorting order is ascending. Redundant space characters are insignificant.
                 /// Example: `name asc,update_time, create_time desc` Supported fields are: - `create_time`: corresponds
                 /// to the time the template was created. - `update_time`: corresponds to the time the template was last
                 /// updated. - `name`: corresponds to the template's name. - `display_name`: corresponds to the
@@ -5452,13 +5459,14 @@ namespace Google.Apis.DLP.v2
                 public virtual string OrderBy { get; set; }
 
                 /// <summary>
-                /// Size of the page, can be limited by the server. If zero server returns a page of max size 100.
+                /// Size of the page. This value can be limited by the server. If zero server returns a page of max size
+                /// 100.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
                 /// <summary>
-                /// Page token to continue retrieval. Comes from previous call to `ListInspectTemplates`.
+                /// Page token to continue retrieval. Comes from the previous call to `ListInspectTemplates`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -5910,7 +5918,7 @@ namespace Google.Apis.DLP.v2
 
                 /// <summary>
                 /// Comma separated list of triggeredJob fields to order by, followed by `asc` or `desc` postfix. This
-                /// list is case-insensitive, default sorting order is ascending, redundant space characters are
+                /// list is case insensitive. The default sorting order is ascending. Redundant space characters are
                 /// insignificant. Example: `name asc,update_time, create_time desc` Supported fields are: -
                 /// `create_time`: corresponds to the time the JobTrigger was created. - `update_time`: corresponds to
                 /// the time the JobTrigger was last updated. - `last_run_time`: corresponds to the last time the
@@ -5920,13 +5928,13 @@ namespace Google.Apis.DLP.v2
                 [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string OrderBy { get; set; }
 
-                /// <summary>Size of the page, can be limited by a server.</summary>
+                /// <summary>Size of the page. This value can be limited by a server.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
                 /// <summary>
-                /// Page token to continue retrieval. Comes from previous call to ListJobTriggers. `order_by` field must
-                /// not change for subsequent calls.
+                /// Page token to continue retrieval. Comes from the previous call to ListJobTriggers. `order_by` field
+                /// must not change for subsequent calls.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -6635,7 +6643,7 @@ namespace Google.Apis.DLP.v2
 
                     /// <summary>
                     /// Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This list is
-                    /// case-insensitive, default sorting order is ascending, redundant space characters are
+                    /// case insensitive. The default sorting order is ascending. Redundant space characters are
                     /// insignificant. Example: `name asc,update_time, create_time desc` Supported fields are: -
                     /// `create_time`: corresponds to the time the template was created. - `update_time`: corresponds to
                     /// the time the template was last updated. - `name`: corresponds to the template's name. -
@@ -6645,13 +6653,14 @@ namespace Google.Apis.DLP.v2
                     public virtual string OrderBy { get; set; }
 
                     /// <summary>
-                    /// Size of the page, can be limited by the server. If zero server returns a page of max size 100.
+                    /// Size of the page. This value can be limited by the server. If zero server returns a page of max
+                    /// size 100.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
                     /// <summary>
-                    /// Page token to continue retrieval. Comes from previous call to `ListDeidentifyTemplates`.
+                    /// Page token to continue retrieval. Comes from the previous call to `ListDeidentifyTemplates`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -6797,7 +6806,7 @@ namespace Google.Apis.DLP.v2
                     this.service = service;
                 }
 
-                /// <summary>Creates a config for Discovery to scan and profile storage.</summary>
+                /// <summary>Creates a config for discovery to scan and profile storage.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. Parent resource name. The format of this value is as follows:
@@ -6810,7 +6819,7 @@ namespace Google.Apis.DLP.v2
                     return new CreateRequest(service, body, parent);
                 }
 
-                /// <summary>Creates a config for Discovery to scan and profile storage.</summary>
+                /// <summary>Creates a config for discovery to scan and profile storage.</summary>
                 public class CreateRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2DiscoveryConfig>
                 {
                     /// <summary>Constructs a new Create request.</summary>
@@ -6860,7 +6869,7 @@ namespace Google.Apis.DLP.v2
                     }
                 }
 
-                /// <summary>Deletes a Discovery configuration.</summary>
+                /// <summary>Deletes a discovery configuration.</summary>
                 /// <param name="name">
                 /// Required. Resource name of the project and the config, for example
                 /// `projects/dlp-test-project/discoveryConfigs/53234423`.
@@ -6870,7 +6879,7 @@ namespace Google.Apis.DLP.v2
                     return new DeleteRequest(service, name);
                 }
 
-                /// <summary>Deletes a Discovery configuration.</summary>
+                /// <summary>Deletes a discovery configuration.</summary>
                 public class DeleteRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GoogleProtobufEmpty>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
@@ -6911,7 +6920,7 @@ namespace Google.Apis.DLP.v2
                     }
                 }
 
-                /// <summary>Gets a Discovery configuration.</summary>
+                /// <summary>Gets a discovery configuration.</summary>
                 /// <param name="name">
                 /// Required. Resource name of the project and the configuration, for example
                 /// `projects/dlp-test-project/discoveryConfigs/53234423`.
@@ -6921,7 +6930,7 @@ namespace Google.Apis.DLP.v2
                     return new GetRequest(service, name);
                 }
 
-                /// <summary>Gets a Discovery configuration.</summary>
+                /// <summary>Gets a discovery configuration.</summary>
                 public class GetRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2DiscoveryConfig>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -6962,7 +6971,7 @@ namespace Google.Apis.DLP.v2
                     }
                 }
 
-                /// <summary>Lists Discovery configurations.</summary>
+                /// <summary>Lists discovery configurations.</summary>
                 /// <param name="parent">
                 /// Required. Parent resource name. The format of this value is as follows:
                 /// `projects/`PROJECT_ID`/locations/`LOCATION_ID The following example `parent` string specifies a
@@ -6974,7 +6983,7 @@ namespace Google.Apis.DLP.v2
                     return new ListRequest(service, parent);
                 }
 
-                /// <summary>Lists Discovery configurations.</summary>
+                /// <summary>Lists discovery configurations.</summary>
                 public class ListRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ListDiscoveryConfigsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -6995,7 +7004,7 @@ namespace Google.Apis.DLP.v2
 
                     /// <summary>
                     /// Comma separated list of config fields to order by, followed by `asc` or `desc` postfix. This
-                    /// list is case-insensitive, default sorting order is ascending, redundant space characters are
+                    /// list is case insensitive. The default sorting order is ascending. Redundant space characters are
                     /// insignificant. Example: `name asc,update_time, create_time desc` Supported fields are: -
                     /// `last_run_time`: corresponds to the last time the DiscoveryConfig ran. - `name`: corresponds to
                     /// the DiscoveryConfig's name. - `status`: corresponds to DiscoveryConfig's status.
@@ -7003,13 +7012,13 @@ namespace Google.Apis.DLP.v2
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
 
-                    /// <summary>Size of the page, can be limited by a server.</summary>
+                    /// <summary>Size of the page. This value can be limited by a server.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
                     /// <summary>
-                    /// Page token to continue retrieval. Comes from previous call to ListDiscoveryConfigs. `order_by`
-                    /// field must not change for subsequent calls.
+                    /// Page token to continue retrieval. Comes from the previous call to ListDiscoveryConfigs.
+                    /// `order_by` field must not change for subsequent calls.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -7062,7 +7071,7 @@ namespace Google.Apis.DLP.v2
                     }
                 }
 
-                /// <summary>Updates a Discovery configuration.</summary>
+                /// <summary>Updates a discovery configuration.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
                 /// Required. Resource name of the project and the configuration, for example
@@ -7073,7 +7082,7 @@ namespace Google.Apis.DLP.v2
                     return new PatchRequest(service, body, name);
                 }
 
-                /// <summary>Updates a Discovery configuration.</summary>
+                /// <summary>Updates a discovery configuration.</summary>
                 public class PatchRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2DiscoveryConfig>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
@@ -7581,7 +7590,7 @@ namespace Google.Apis.DLP.v2
 
                     /// <summary>
                     /// Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This list is
-                    /// case-insensitive, default sorting order is ascending, redundant space characters are
+                    /// case insensitive. The default sorting order is ascending. Redundant space characters are
                     /// insignificant. Example: `name asc, end_time asc, create_time desc` Supported fields are: -
                     /// `create_time`: corresponds to the time the job was created. - `end_time`: corresponds to the
                     /// time the job ended. - `name`: corresponds to the job's name. - `state`: corresponds to `state`
@@ -8049,7 +8058,7 @@ namespace Google.Apis.DLP.v2
 
                     /// <summary>
                     /// Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This list is
-                    /// case-insensitive, default sorting order is ascending, redundant space characters are
+                    /// case insensitive. The default sorting order is ascending. Redundant space characters are
                     /// insignificant. Example: `name asc,update_time, create_time desc` Supported fields are: -
                     /// `create_time`: corresponds to the time the template was created. - `update_time`: corresponds to
                     /// the time the template was last updated. - `name`: corresponds to the template's name. -
@@ -8059,13 +8068,14 @@ namespace Google.Apis.DLP.v2
                     public virtual string OrderBy { get; set; }
 
                     /// <summary>
-                    /// Size of the page, can be limited by the server. If zero server returns a page of max size 100.
+                    /// Size of the page. This value can be limited by the server. If zero server returns a page of max
+                    /// size 100.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
                     /// <summary>
-                    /// Page token to continue retrieval. Comes from previous call to `ListInspectTemplates`.
+                    /// Page token to continue retrieval. Comes from the previous call to `ListInspectTemplates`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -8585,23 +8595,23 @@ namespace Google.Apis.DLP.v2
 
                     /// <summary>
                     /// Comma separated list of triggeredJob fields to order by, followed by `asc` or `desc` postfix.
-                    /// This list is case-insensitive, default sorting order is ascending, redundant space characters
-                    /// are insignificant. Example: `name asc,update_time, create_time desc` Supported fields are: -
-                    /// `create_time`: corresponds to the time the JobTrigger was created. - `update_time`: corresponds
-                    /// to the time the JobTrigger was last updated. - `last_run_time`: corresponds to the last time the
-                    /// JobTrigger ran. - `name`: corresponds to the JobTrigger's name. - `display_name`: corresponds to
-                    /// the JobTrigger's display name. - `status`: corresponds to JobTrigger's status.
+                    /// This list is case insensitive. The default sorting order is ascending. Redundant space
+                    /// characters are insignificant. Example: `name asc,update_time, create_time desc` Supported fields
+                    /// are: - `create_time`: corresponds to the time the JobTrigger was created. - `update_time`:
+                    /// corresponds to the time the JobTrigger was last updated. - `last_run_time`: corresponds to the
+                    /// last time the JobTrigger ran. - `name`: corresponds to the JobTrigger's name. - `display_name`:
+                    /// corresponds to the JobTrigger's display name. - `status`: corresponds to JobTrigger's status.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
 
-                    /// <summary>Size of the page, can be limited by a server.</summary>
+                    /// <summary>Size of the page. This value can be limited by a server.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
                     /// <summary>
-                    /// Page token to continue retrieval. Comes from previous call to ListJobTriggers. `order_by` field
-                    /// must not change for subsequent calls.
+                    /// Page token to continue retrieval. Comes from the previous call to ListJobTriggers. `order_by`
+                    /// field must not change for subsequent calls.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -9025,7 +9035,7 @@ namespace Google.Apis.DLP.v2
 
                     /// <summary>
                     /// Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This list is
-                    /// case-insensitive, default sorting order is ascending, redundant space characters are
+                    /// case insensitive. The default sorting order is ascending. Redundant space characters are
                     /// insignificant. Example: `name asc, display_name, create_time desc` Supported fields are: -
                     /// `create_time`: corresponds to the time the most recent version of the resource was created. -
                     /// `state`: corresponds to the state of the resource. - `name`: corresponds to resource name. -
@@ -9035,13 +9045,14 @@ namespace Google.Apis.DLP.v2
                     public virtual string OrderBy { get; set; }
 
                     /// <summary>
-                    /// Size of the page, can be limited by the server. If zero server returns a page of max size 100.
+                    /// Size of the page. This value can be limited by the server. If zero server returns a page of max
+                    /// size 100.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
                     /// <summary>
-                    /// Page token to continue retrieval. Comes from previous call to `ListStoredInfoTypes`.
+                    /// Page token to continue retrieval. Comes from the previous call to `ListStoredInfoTypes`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -9429,8 +9440,8 @@ namespace Google.Apis.DLP.v2
                 public virtual string LocationId { get; set; }
 
                 /// <summary>
-                /// Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This list is
-                /// case-insensitive, default sorting order is ascending, redundant space characters are insignificant.
+                /// Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This list is case
+                /// insensitive. The default sorting order is ascending. Redundant space characters are insignificant.
                 /// Example: `name asc, display_name, create_time desc` Supported fields are: - `create_time`:
                 /// corresponds to the time the most recent version of the resource was created. - `state`: corresponds
                 /// to the state of the resource. - `name`: corresponds to resource name. - `display_name`: corresponds
@@ -9440,13 +9451,14 @@ namespace Google.Apis.DLP.v2
                 public virtual string OrderBy { get; set; }
 
                 /// <summary>
-                /// Size of the page, can be limited by the server. If zero server returns a page of max size 100.
+                /// Size of the page. This value can be limited by the server. If zero server returns a page of max size
+                /// 100.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
                 /// <summary>
-                /// Page token to continue retrieval. Comes from previous call to `ListStoredInfoTypes`.
+                /// Page token to continue retrieval. Comes from the previous call to `ListStoredInfoTypes`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -9732,7 +9744,7 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Target used to match against for Discovery with BigQuery tables</summary>
+    /// <summary>Target used to match against for discovery with BigQuery tables</summary>
     public class GooglePrivacyDlpV2BigQueryDiscoveryTarget : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -9753,7 +9765,7 @@ namespace Google.Apis.DLP.v2.Data
         public virtual GooglePrivacyDlpV2Disabled Disabled { get; set; }
 
         /// <summary>
-        /// Required. The tables the Discovery cadence applies to. The first target with a matching filter will be the
+        /// Required. The tables the discovery cadence applies to. The first target with a matching filter will be the
         /// one to apply to a table.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
@@ -9927,10 +9939,10 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The types of bigquery tables supported by Cloud DLP.</summary>
+    /// <summary>The types of BigQuery tables supported by Cloud DLP.</summary>
     public class GooglePrivacyDlpV2BigQueryTableTypes : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A set of bigquery table types.</summary>
+        /// <summary>A set of BigQuery table types.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("types")]
         public virtual System.Collections.Generic.IList<string> Types { get; set; }
 
@@ -10673,7 +10685,7 @@ namespace Google.Apis.DLP.v2.Data
     public class GooglePrivacyDlpV2CreateDiscoveryConfigRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The config id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the
+        /// The config ID can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the
         /// regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system
         /// to generate one.
         /// </summary>
@@ -11083,7 +11095,7 @@ namespace Google.Apis.DLP.v2.Data
         /// Each region is scanned using the applicable template. If no region-specific template is specified, but a
         /// "global" template is specified, it will be copied to that region and used instead. If no global or
         /// region-specific template is provided for a region with data, that region's data will not be scanned. For
-        /// more information, see https://cloud.google.com/dlp/docs/data-profiles#data_residency.
+        /// more information, see https://cloud.google.com/dlp/docs/data-profiles#data-residency.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inspectTemplates")]
         public virtual System.Collections.Generic.IList<string> InspectTemplates { get; set; }
@@ -11679,7 +11691,7 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Do nothing.</summary>
+    /// <summary>Do not profile the tables.</summary>
     public class GooglePrivacyDlpV2Disabled : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -11687,8 +11699,9 @@ namespace Google.Apis.DLP.v2.Data
     }
 
     /// <summary>
-    /// Requirements that must be true before a table is scanned in Discovery for the first time. There is an AND
-    /// relationship between the top-level attributes.
+    /// Requirements that must be true before a table is scanned in discovery for the first time. There is an AND
+    /// relationship between the top-level attributes. Additionally, minimum conditions with an OR relationship that
+    /// must be met before Cloud DLP scans a table can be set (like a minimum row count or a minimum table age).
     /// </summary>
     public class GooglePrivacyDlpV2DiscoveryBigQueryConditions : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11733,11 +11746,11 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("orConditions")]
         public virtual GooglePrivacyDlpV2OrConditions OrConditions { get; set; }
 
-        /// <summary>Restrict Discovery to categories of table types.</summary>
+        /// <summary>Restrict discovery to categories of table types.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("typeCollection")]
         public virtual string TypeCollection { get; set; }
 
-        /// <summary>Restrict Discovery to specific table types.</summary>
+        /// <summary>Restrict discovery to specific table types.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("types")]
         public virtual GooglePrivacyDlpV2BigQueryTableTypes Types { get; set; }
 
@@ -11747,8 +11760,7 @@ namespace Google.Apis.DLP.v2.Data
 
     /// <summary>
     /// Determines what tables will have profiles generated within an organization or project. Includes the ability to
-    /// filter by regular expression patterns on project ID, dataset ID, and table ID. Also lets you set minimum
-    /// conditions that must be met before Cloud DLP scans a table (like a minimum row count or a minimum table age).
+    /// filter by regular expression patterns on project ID, dataset ID, and table ID.
     /// </summary>
     public class GooglePrivacyDlpV2DiscoveryBigQueryFilter : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11772,7 +11784,7 @@ namespace Google.Apis.DLP.v2.Data
     }
 
     /// <summary>
-    /// Configuration for Discovery to scan resources for profile generation. Only one Discovery configuration may exist
+    /// Configuration for discovery to scan resources for profile generation. Only one discovery configuration may exist
     /// per organization, folder, or project. The generated data profiles are retained according to the [data retention
     /// policy] (https://cloud.google.com/dlp/docs/data-profiles#retention).
     /// </summary>
@@ -11838,7 +11850,7 @@ namespace Google.Apis.DLP.v2.Data
         /// Each region is scanned using the applicable template. If no region-specific template is specified, but a
         /// "global" template is specified, it will be copied to that region and used instead. If no global or
         /// region-specific template is provided for a region with data, that region's data will not be scanned. For
-        /// more information, see https://cloud.google.com/dlp/docs/data-profiles#data_residency.
+        /// more information, see https://cloud.google.com/dlp/docs/data-profiles#data-residency.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inspectTemplates")]
         public virtual System.Collections.Generic.IList<string> InspectTemplates { get; set; }
@@ -11977,7 +11989,7 @@ namespace Google.Apis.DLP.v2.Data
     }
 
     /// <summary>
-    /// The location to begin a Discovery scan. Denotes an organization ID or folder ID within an organization.
+    /// The location to begin a discovery scan. Denotes an organization ID or folder ID within an organization.
     /// </summary>
     public class GooglePrivacyDlpV2DiscoveryStartingLocation : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -14005,7 +14017,7 @@ namespace Google.Apis.DLP.v2.Data
         public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2DeidentifyTemplate> DeidentifyTemplates { get; set; }
 
         /// <summary>
-        /// If the next page is available then the next page token to be used in following ListDeidentifyTemplates
+        /// If the next page is available then the next page token to be used in the following ListDeidentifyTemplates
         /// request.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
@@ -14023,7 +14035,8 @@ namespace Google.Apis.DLP.v2.Data
         public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2DiscoveryConfig> DiscoveryConfigs { get; set; }
 
         /// <summary>
-        /// If the next page is available then the next page token to be used in following ListDiscoveryConfigs request.
+        /// If the next page is available then the next page token to be used in the following ListDiscoveryConfigs
+        /// request.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
@@ -14066,7 +14079,8 @@ namespace Google.Apis.DLP.v2.Data
         public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2InspectTemplate> InspectTemplates { get; set; }
 
         /// <summary>
-        /// If the next page is available then the next page token to be used in following ListInspectTemplates request.
+        /// If the next page is available then the next page token to be used in the following ListInspectTemplates
+        /// request.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
@@ -14083,7 +14097,7 @@ namespace Google.Apis.DLP.v2.Data
         public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2JobTrigger> JobTriggers { get; set; }
 
         /// <summary>
-        /// If the next page is available then the next page token to be used in following ListJobTriggers request.
+        /// If the next page is available then the next page token to be used in the following ListJobTriggers request.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
@@ -14096,7 +14110,8 @@ namespace Google.Apis.DLP.v2.Data
     public class GooglePrivacyDlpV2ListStoredInfoTypesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// If the next page is available then the next page token to be used in following ListStoredInfoTypes request.
+        /// If the next page is available then the next page token to be used in the following ListStoredInfoTypes
+        /// request.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
@@ -16283,7 +16298,7 @@ namespace Google.Apis.DLP.v2.Data
     /// <summary>Request message for UpdateDiscoveryConfig.</summary>
     public class GooglePrivacyDlpV2UpdateDiscoveryConfigRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>New DiscoveryConfig value.</summary>
+        /// <summary>Required. New DiscoveryConfig value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("discoveryConfig")]
         public virtual GooglePrivacyDlpV2DiscoveryConfig DiscoveryConfig { get; set; }
 

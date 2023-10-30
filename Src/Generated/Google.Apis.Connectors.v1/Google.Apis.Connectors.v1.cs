@@ -5404,6 +5404,10 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("eventTypeId")]
         public virtual string EventTypeId { get; set; }
 
+        /// <summary>Optional. JMS is the source for the event listener.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jms")]
+        public virtual JMS Jms { get; set; }
+
         /// <summary>
         /// Required. Resource name of the EventSubscription. Format:
         /// projects/{project}/locations/{location}/connections/{connection}/eventSubscriptions/{event_subscription}
@@ -5675,6 +5679,10 @@ namespace Google.Apis.Connectors.v1.Data
         /// <summary>Enrichment Supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enrichmentSupported")]
         public virtual System.Nullable<bool> EnrichmentSupported { get; set; }
+
+        /// <summary>The type of the event listener for a specific connector.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventListenerType")]
+        public virtual string EventListenerType { get; set; }
 
         /// <summary>Is Eventing Supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isEventingSupported")]
@@ -5974,6 +5982,21 @@ namespace Google.Apis.Connectors.v1.Data
         /// <summary>Name of the Parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameter")]
         public virtual string Parameter { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>JMS message denotes the source of the event</summary>
+    public class JMS : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Name of the JMS source. i.e. queueName or topicName</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Optional. Type of the JMS Source. i.e. Queue or Topic</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

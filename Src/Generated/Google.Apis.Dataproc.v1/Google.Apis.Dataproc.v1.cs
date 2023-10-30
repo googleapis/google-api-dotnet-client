@@ -8757,6 +8757,17 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Encryption settings for the encrypting customer core content. NEXT ID: 2</summary>
+    public class GoogleCloudDataprocV1WorkflowTemplateEncryptionConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The Cloud KMS key name to use for encrypting customer core content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKey")]
+        public virtual string KmsKey { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A Dataproc job for running Apache Hadoop MapReduce
     /// (https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html)
@@ -9949,6 +9960,13 @@ namespace Google.Apis.Dataproc.v1.Data
         /// <summary>Output only. WorkflowTemplates list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("templates")]
         public virtual System.Collections.Generic.IList<WorkflowTemplate> Templates { get; set; }
+
+        /// <summary>
+        /// Output only. List of workflow templates that could not be included in the response. Attempting to get one of
+        /// these resources may indicate why it was not included in the list response.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11989,6 +12007,17 @@ namespace Google.Apis.Dataproc.v1.Data
     /// <summary>Usage metrics represent approximate total resources consumed by a workload.</summary>
     public class UsageMetrics : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Accelerator type being used, if any</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("acceleratorType")]
+        public virtual string AcceleratorType { get; set; }
+
+        /// <summary>
+        /// Optional. Accelerator usage in (milliAccelerator x seconds) (see Dataproc Serverless pricing
+        /// (https://cloud.google.com/dataproc-serverless/pricing)).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("milliAcceleratorSeconds")]
+        public virtual System.Nullable<long> MilliAcceleratorSeconds { get; set; }
+
         /// <summary>
         /// Optional. DCU (Dataproc Compute Units) usage in (milliDCU x seconds) (see Dataproc Serverless pricing
         /// (https://cloud.google.com/dataproc-serverless/pricing)).
@@ -12010,6 +12039,17 @@ namespace Google.Apis.Dataproc.v1.Data
     /// <summary>The usage snapshot represents the resources consumed by a workload at a specified time.</summary>
     public class UsageSnapshot : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Accelerator type being used, if any</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("acceleratorType")]
+        public virtual string AcceleratorType { get; set; }
+
+        /// <summary>
+        /// Optional. Milli (one-thousandth) accelerator. (see Dataproc Serverless pricing
+        /// (https://cloud.google.com/dataproc-serverless/pricing))
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("milliAccelerator")]
+        public virtual System.Nullable<long> MilliAccelerator { get; set; }
+
         /// <summary>
         /// Optional. Milli (one-thousandth) Dataproc Compute Units (DCUs) (see Dataproc Serverless pricing
         /// (https://cloud.google.com/dataproc-serverless/pricing)).
@@ -12411,6 +12451,10 @@ namespace Google.Apis.Dataproc.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dagTimeout")]
         public virtual object DagTimeout { get; set; }
+
+        /// <summary>Optional. Encryption settings for the encrypting customer core content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionConfig")]
+        public virtual GoogleCloudDataprocV1WorkflowTemplateEncryptionConfig EncryptionConfig { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }

@@ -2873,6 +2873,13 @@ namespace Google.Apis.Batch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("tasks")]
         public virtual System.Collections.Generic.IList<AgentTask> Tasks { get; set; }
 
+        /// <summary>
+        /// If true, the cloud logging for batch agent will use batch.googleapis.com/Job as monitored resource for Batch
+        /// job related logging.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("useBatchMonitoredResource")]
+        public virtual System.Nullable<bool> UseBatchMonitoredResource { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

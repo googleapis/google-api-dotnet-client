@@ -605,6 +605,59 @@ namespace Google.Apis.AIPlatformNotebooks.v2
                 }
 
                 /// <summary>
+                /// Gets general backend configurations that might also affect the frontend. Location is required by
+                /// CCFE. Although we could bypass it to send location- less request directly to the backend job, we
+                /// would need CPE (go/cloud-cpe). Having the location might also be useful depending on the query.
+                /// </summary>
+                /// <param name="name">Required. Format: `projects/{project_id}/locations/{location}`</param>
+                public virtual GetConfigRequest GetConfig(string name)
+                {
+                    return new GetConfigRequest(service, name);
+                }
+
+                /// <summary>
+                /// Gets general backend configurations that might also affect the frontend. Location is required by
+                /// CCFE. Although we could bypass it to send location- less request directly to the backend job, we
+                /// would need CPE (go/cloud-cpe). Having the location might also be useful depending on the query.
+                /// </summary>
+                public class GetConfigRequest : AIPlatformNotebooksBaseServiceRequest<Google.Apis.AIPlatformNotebooks.v2.Data.Config>
+                {
+                    /// <summary>Constructs a new GetConfig request.</summary>
+                    public GetConfigRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Format: `projects/{project_id}/locations/{location}`</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "getConfig";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}/instances:getConfig";
+
+                    /// <summary>Initializes GetConfig parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
                 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and
                 /// does not have a policy set.
                 /// </summary>
@@ -1964,6 +2017,25 @@ namespace Google.Apis.AIPlatformNotebooks.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response for getting WbI configurations in a location</summary>
+    public class Config : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The list of available images to create a WbI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("availableImages")]
+        public virtual System.Collections.Generic.IList<ImageRelease> AvailableImages { get; set; }
+
+        /// <summary>Output only. The default values for configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultValues")]
+        public virtual DefaultValues DefaultValues { get; set; }
+
+        /// <summary>Output only. The supported values for configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("supportedValues")]
+        public virtual SupportedValues SupportedValues { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Definition of a container image for starting a notebook instance with the environment installed in a container.
     /// </summary>
@@ -2012,6 +2084,17 @@ namespace Google.Apis.AIPlatformNotebooks.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKey")]
         public virtual string KmsKey { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>DefaultValues represents the default configuration values.</summary>
+    public class DefaultValues : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The default machine type used by the backend if not provided by the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
+        public virtual string MachineType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2275,6 +2358,21 @@ namespace Google.Apis.AIPlatformNotebooks.v2.Data
         /// <summary>Optional. Use a Compute Engine VM image to start the notebook instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vmImage")]
         public virtual VmImage VmImage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>ConfigImage represents an image release available to create a WbI</summary>
+    public class ImageRelease : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The name of the image of the form workbench-instances-vYYYYmmdd--</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageName")]
+        public virtual string ImageName { get; set; }
+
+        /// <summary>Output only. The release of the image of the form m123</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("releaseName")]
+        public virtual string ReleaseName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2904,6 +3002,21 @@ namespace Google.Apis.AIPlatformNotebooks.v2.Data
     /// <summary>Request for stopping a notebook instance</summary>
     public class StopInstanceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>SupportedValues represents the values supported by the configuration.</summary>
+    public class SupportedValues : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The accelerator types supported by WbI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("acceleratorTypes")]
+        public virtual System.Collections.Generic.IList<string> AcceleratorTypes { get; set; }
+
+        /// <summary>Output only. The machine types supported by WbI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("machineTypes")]
+        public virtual System.Collections.Generic.IList<string> MachineTypes { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

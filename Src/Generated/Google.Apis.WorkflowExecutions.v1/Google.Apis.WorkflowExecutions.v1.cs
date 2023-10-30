@@ -327,6 +327,7 @@ namespace Google.Apis.WorkflowExecutions.v1
                     {
                         this.service = service;
                         Callbacks = new CallbacksResource(service);
+                        StepEntries = new StepEntriesResource(service);
                     }
 
                     /// <summary>Gets the Callbacks resource.</summary>
@@ -426,6 +427,213 @@ namespace Google.Apis.WorkflowExecutions.v1
                                 RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+                    }
+
+                    /// <summary>Gets the StepEntries resource.</summary>
+                    public virtual StepEntriesResource StepEntries { get; }
+
+                    /// <summary>The "stepEntries" collection of methods.</summary>
+                    public class StepEntriesResource
+                    {
+                        private const string Resource = "stepEntries";
+
+                        /// <summary>The service which this resource belongs to.</summary>
+                        private readonly Google.Apis.Services.IClientService service;
+
+                        /// <summary>Constructs a new resource.</summary>
+                        public StepEntriesResource(Google.Apis.Services.IClientService service)
+                        {
+                            this.service = service;
+                        }
+
+                        /// <summary>Gets a step entry.</summary>
+                        /// <param name="name">
+                        /// Required. The name of the step entry to retrieve. Format:
+                        /// projects/{project}/locations/{location}/workflows/{workflow}/executions/{execution}/stepEntries/{step_entry}
+                        /// </param>
+                        public virtual GetRequest Get(string name)
+                        {
+                            return new GetRequest(service, name);
+                        }
+
+                        /// <summary>Gets a step entry.</summary>
+                        public class GetRequest : WorkflowExecutionsBaseServiceRequest<Google.Apis.WorkflowExecutions.v1.Data.StepEntry>
+                        {
+                            /// <summary>Constructs a new Get request.</summary>
+                            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The name of the step entry to retrieve. Format:
+                            /// projects/{project}/locations/{location}/workflows/{workflow}/executions/{execution}/stepEntries/{step_entry}
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "get";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+name}";
+
+                            /// <summary>Initializes Get parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/workflows/[^/]+/executions/[^/]+/stepEntries/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>
+                        /// Lists step entries for the corresponding workflow execution. Returned entries are ordered by
+                        /// their create_time.
+                        /// </summary>
+                        /// <param name="parent">
+                        /// Required. Name of the workflow execution to list entries for. Format:
+                        /// projects/{project}/locations/{location}/workflows/{workflow}/executions/{execution}/stepEntries/
+                        /// </param>
+                        public virtual ListRequest List(string parent)
+                        {
+                            return new ListRequest(service, parent);
+                        }
+
+                        /// <summary>
+                        /// Lists step entries for the corresponding workflow execution. Returned entries are ordered by
+                        /// their create_time.
+                        /// </summary>
+                        public class ListRequest : WorkflowExecutionsBaseServiceRequest<Google.Apis.WorkflowExecutions.v1.Data.ListStepEntriesResponse>
+                        {
+                            /// <summary>Constructs a new List request.</summary>
+                            public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. Name of the workflow execution to list entries for. Format:
+                            /// projects/{project}/locations/{location}/workflows/{workflow}/executions/{execution}/stepEntries/
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>
+                            /// Optional. Filters applied to the `[StepEntries.ListStepEntries]` results. The following
+                            /// fields are supported for filtering: `entryId`, `createTime`, `updateTime`, `routine`,
+                            /// `step`, `stepType`, `state`. For details, see AIP-160. For example, if you are using the
+                            /// Google APIs Explorer: `state="SUCCEEDED"` or `createTime&amp;gt;"2023-08-01" AND
+                            /// state="FAILED"`
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string Filter { get; set; }
+
+                            /// <summary>
+                            /// Optional. Comma-separated list of fields that specify the ordering applied to the
+                            /// `[StepEntries.ListStepEntries]` results. By default the ordering is based on ascending
+                            /// `entryId`. The following fields are supported for ordering: `entryId`, `createTime`,
+                            /// `updateTime`, `routine`, `step`, `stepType`, `state`. For details, see AIP-132.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string OrderBy { get; set; }
+
+                            /// <summary>
+                            /// Optional. Number of step entries to return per call. The default max is 1000.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<int> PageSize { get; set; }
+
+                            /// <summary>
+                            /// Optional. A page token, received from a previous `ListStepEntries` call. Provide this to
+                            /// retrieve the subsequent page. When paginating, all other parameters provided to
+                            /// `ListStepEntries` must match the call that provided the page token.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string PageToken { get; set; }
+
+                            /// <summary>
+                            /// Optional. The number of step entries to skip. It can be used with or without a
+                            /// pageToken. If used with a pageToken, then it indicates the number of step entries to
+                            /// skip starting from the requested page.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("skip", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<int> Skip { get; set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "list";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+parent}/stepEntries";
+
+                            /// <summary>Initializes List parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/workflows/[^/]+/executions/[^/]+$",
+                                });
+                                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "filter",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "orderBy",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("skip", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "skip",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -990,6 +1198,17 @@ namespace Google.Apis.WorkflowExecutions.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Exception describes why the step entry failed.</summary>
+    public class Exception : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Error message represented as a JSON string.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("payload")]
+        public virtual string Payload { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A running instance of a [Workflow](/workflows/docs/reference/rest/v1/projects.locations.workflows).
     /// </summary>
@@ -1185,6 +1404,59 @@ namespace Google.Apis.WorkflowExecutions.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for ExecutionHistory.ListStepEntries.</summary>
+    public class ListStepEntriesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token to retrieve next page of results. Pass this value in the ListStepEntriesRequest.page_token field in
+        /// the subsequent call to `ListStepEntries` method to retrieve the next page of results.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The list of entries.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stepEntries")]
+        public virtual System.Collections.Generic.IList<StepEntry> StepEntries { get; set; }
+
+        /// <summary>
+        /// Indicates the total number of StepEntries that matched the request filter. For running executions, this
+        /// number shows the number of StepEntries that are executed thus far.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalSize")]
+        public virtual System.Nullable<int> TotalSize { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// NavigationInfo describes what steps if any come before or after this step, or what steps are parents or children
+    /// of this step.
+    /// </summary>
+    public class NavigationInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Step entries that can be reached by "stepping into" e.g. a subworkflow call.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("children")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> Children { get; set; }
+
+        /// <summary>The index of the next step in the current workflow, if any.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("next")]
+        public virtual System.Nullable<long> Next { get; set; }
+
+        /// <summary>
+        /// The step entry, if any, that can be reached by "stepping out" of the current workflow being executed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
+        public virtual System.Nullable<long> Parent { get; set; }
+
+        /// <summary>The index of the previous step in the current workflow, if any.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("previous")]
+        public virtual System.Nullable<long> Previous { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Position contains source position information about the stack trace element such as line number, column number
     /// and length of the code block in bytes.
@@ -1363,6 +1635,152 @@ namespace Google.Apis.WorkflowExecutions.v1.Data
         /// <summary>Name of a step within the routine.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("step")]
         public virtual string StepValue { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An StepEntry contains debugging information for a step transition in a workflow execution.</summary>
+    public class StepEntry : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The creation time of the step entry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>Output only. The numeric ID of this step entry, used for navigation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entryId")]
+        public virtual System.Nullable<long> EntryId { get; set; }
+
+        /// <summary>Output only. The exception thrown by the step entry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exception")]
+        public virtual Exception Exception { get; set; }
+
+        /// <summary>
+        /// Output only. The full resource name of the step entry. Each step entry has a unique entry ID, which is a
+        /// monotonically increasing counter. Step entry names have the format:
+        /// `projects/{project}/locations/{location}/workflows/{workflow}/executions/{execution}/stepEntries/{step_entry}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The NavigationInfo associated to this step.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("navigationInfo")]
+        public virtual NavigationInfo NavigationInfo { get; set; }
+
+        /// <summary>
+        /// Output only. The name of the routine this step entry belongs to. A routine name is the subworkflow name
+        /// defined in the YAML source code. The top level routine name is `main`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("routine")]
+        public virtual string Routine { get; set; }
+
+        /// <summary>Output only. The state of the step entry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Output only. The name of the step this step entry belongs to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("step")]
+        public virtual string Step { get; set; }
+
+        /// <summary>Output only. The StepEntryMetadata associated to this step.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stepEntryMetadata")]
+        public virtual StepEntryMetadata StepEntryMetadata { get; set; }
+
+        /// <summary>Output only. The type of the step this step entry belongs to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stepType")]
+        public virtual string StepType { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The most recently updated time of the step entry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>StepEntryMetadata contains metadata information about this step.</summary>
+    public class StepEntryMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Progress number represents the current state of the current progress. eg: A step entry represents the 4th
+        /// iteration in a progress of PROGRESS_TYPE_FOR.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("progressNumber")]
+        public virtual System.Nullable<long> ProgressNumber { get; set; }
+
+        /// <summary>Progress type of this step entry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("progressType")]
+        public virtual string ProgressType { get; set; }
+
+        /// <summary>Child thread id that this step entry belongs to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("threadId")]
+        public virtual string ThreadId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

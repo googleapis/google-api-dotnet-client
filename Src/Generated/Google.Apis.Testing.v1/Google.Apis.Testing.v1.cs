@@ -1756,12 +1756,6 @@ namespace Google.Apis.Testing.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("androidDevice")]
         public virtual AndroidDevice AndroidDevice { get; set; }
 
-        /// <summary>
-        /// Optional. The list of requested devices. At most two devices may be simultaneously requested.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("androidDeviceList")]
-        public virtual AndroidDeviceList AndroidDeviceList { get; set; }
-
         private string _createTimeRaw;
 
         private object _createTime;
@@ -1869,7 +1863,7 @@ namespace Google.Apis.Testing.v1.Data
 
         /// <summary>
         /// Optional. The amount of time that a device will be initially allocated for. This can eventually be extended
-        /// with the ExtendDeviceSession RPC. Default: 30 minutes.
+        /// with the UpdateDeviceSession RPC. Default: 30 minutes.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ttl")]
         public virtual object Ttl { get; set; }

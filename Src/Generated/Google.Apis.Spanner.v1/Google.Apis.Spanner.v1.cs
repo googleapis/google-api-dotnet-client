@@ -6237,6 +6237,82 @@ namespace Google.Apis.Spanner.v1
 }
 namespace Google.Apis.Spanner.v1.Data
 {
+    /// <summary>Autoscaling config for an instance.</summary>
+    public class AutoscalingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Autoscaling limits for an instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoscalingLimits")]
+        public virtual AutoscalingLimits AutoscalingLimits { get; set; }
+
+        /// <summary>Required. The autoscaling targets for an instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoscalingTargets")]
+        public virtual AutoscalingTargets AutoscalingTargets { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The autoscaling limits for the instance. Users can define the minimum and maximum compute capacity allocated to
+    /// the instance, and the autoscaler will only scale within that range. Users can either use nodes or processing
+    /// units to specify the limits, but should use the same unit to set both the min_limit and max_limit.
+    /// </summary>
+    public class AutoscalingLimits : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Maximum number of nodes allocated to the instance. If set, this number should be greater than or equal to
+        /// min_nodes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxNodes")]
+        public virtual System.Nullable<int> MaxNodes { get; set; }
+
+        /// <summary>
+        /// Maximum number of processing units allocated to the instance. If set, this number should be multiples of
+        /// 1000 and be greater than or equal to min_processing_units.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxProcessingUnits")]
+        public virtual System.Nullable<int> MaxProcessingUnits { get; set; }
+
+        /// <summary>
+        /// Minimum number of nodes allocated to the instance. If set, this number should be greater than or equal to 1.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minNodes")]
+        public virtual System.Nullable<int> MinNodes { get; set; }
+
+        /// <summary>
+        /// Minimum number of processing units allocated to the instance. If set, this number should be multiples of
+        /// 1000.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minProcessingUnits")]
+        public virtual System.Nullable<int> MinProcessingUnits { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The autoscaling targets for an instance.</summary>
+    public class AutoscalingTargets : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The target high priority cpu utilization percentage that the autoscaler should be trying to
+        /// achieve for the instance. This number is on a scale from 0 (no utilization) to 100 (full utilization). The
+        /// valid range is [10, 90] inclusive.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("highPriorityCpuUtilizationPercent")]
+        public virtual System.Nullable<int> HighPriorityCpuUtilizationPercent { get; set; }
+
+        /// <summary>
+        /// Required. The target storage utilization percentage that the autoscaler should be trying to achieve for the
+        /// instance. This number is on a scale from 0 (no utilization) to 100 (full utilization). The valid range is
+        /// [10, 100] inclusive.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storageUtilizationPercent")]
+        public virtual System.Nullable<int> StorageUtilizationPercent { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A backup of a Cloud Spanner database.</summary>
     public class Backup : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8154,6 +8230,14 @@ namespace Google.Apis.Spanner.v1.Data
     /// <summary>An isolated set of Cloud Spanner resources on which databases can be hosted.</summary>
     public class Instance : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. The autoscaling configuration. Autoscaling is enabled if this field is set. When autoscaling is
+        /// enabled, node_count and processing_units are treated as OUTPUT_ONLY fields and reflect the current compute
+        /// capacity allocated to the instance.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoscalingConfig")]
+        public virtual AutoscalingConfig AutoscalingConfig { get; set; }
+
         /// <summary>
         /// Required. The name of the instance's configuration. Values are of the form `projects//instanceConfigs/`. See
         /// also InstanceConfig and ListInstanceConfigs.
