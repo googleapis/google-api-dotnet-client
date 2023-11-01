@@ -196,7 +196,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
         [MemberData(nameof(SubjectTokenExceptionData))]
         public async Task SubjectTokenException(FileSourcedExternalAccountCredential credential, Type innerExceptionType)
         {
-            var exception = await Assert.ThrowsAsync<SubjectTokenException>(async () => await credential.GetAccessTokenForRequestAsync());
+            var exception = await Assert.ThrowsAsync<SubjectTokenException>(() => credential.GetAccessTokenForRequestAsync());
             Assert.IsType(innerExceptionType, exception.InnerException);
         }
     }

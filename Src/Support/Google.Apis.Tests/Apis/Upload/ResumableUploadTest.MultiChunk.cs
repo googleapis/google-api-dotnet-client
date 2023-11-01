@@ -391,7 +391,7 @@ namespace Google.Apis.Tests.Apis.Upload
                 var content = new UnknownSizeMemoryStream(UploadTestBytes);
                 var uploader = new TestResumableUpload(service, "whatever", "PUT", content, "", 100);
                 var url = new Uri("http://what.ever/");
-                Assert.ThrowsAsync<NotImplementedException>(async () => await uploader.ResumeAsync(url));
+                Assert.ThrowsAsync<NotImplementedException>(() => uploader.ResumeAsync(url));
             }
         }
 

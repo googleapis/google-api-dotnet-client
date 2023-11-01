@@ -42,7 +42,7 @@ namespace Google.Apis.Tests.Apis.Utils
             var result = tcs.Task.WithCancellationToken(cts.Token);
             cts.Cancel();
 
-            await Assert.ThrowsAsync<TaskCanceledException>(async () => await result);
+            await Assert.ThrowsAsync<TaskCanceledException>(() => result);
         }
 
         [Fact]
@@ -54,7 +54,7 @@ namespace Google.Apis.Tests.Apis.Utils
             var result = tcs.Task.WithCancellationToken(cts.Token);
             tcs.SetCanceled();
 
-            await Assert.ThrowsAsync<TaskCanceledException>(async () => await result);
+            await Assert.ThrowsAsync<TaskCanceledException>(() => result);
         }
 
         [Fact]
@@ -67,7 +67,7 @@ namespace Google.Apis.Tests.Apis.Utils
             var exception = new Exception();
             tcs.SetException(exception);
 
-            var caught = await Assert.ThrowsAsync<Exception>(async () => await result);
+            var caught = await Assert.ThrowsAsync<Exception>(() => result);
             Assert.Same(exception, caught);
         }
 
