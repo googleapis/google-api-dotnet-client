@@ -7593,6 +7593,12 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
     public class PostgreSqlConnectionProfile : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. If the destination is an AlloyDB database, use this field to provide the AlloyDB cluster ID.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alloydbClusterId")]
+        public virtual string AlloydbClusterId { get; set; }
+
+        /// <summary>
         /// If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudSqlId")]

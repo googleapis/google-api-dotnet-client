@@ -43194,7 +43194,10 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The dedicated serving endpoint for this FeatureOnlineStore.</summary>
+    /// <summary>
+    /// The dedicated serving endpoint for this FeatureOnlineStore. Only need to set when you choose Optimized storage
+    /// type or enable EmbeddingManagement.
+    /// </summary>
     public class GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpoint : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -44518,17 +44521,6 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
             get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
         }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Contains information about the source of the models generated from Generative AI Studio.</summary>
-    public class GoogleCloudAiplatformV1beta1GenieSource : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required. The public base model URI.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("baseModelUri")]
-        public virtual string BaseModelUri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -47262,13 +47254,6 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         public virtual GoogleCloudAiplatformV1beta1ExplanationSpec ExplanationSpec { get; set; }
 
         /// <summary>
-        /// Optional. Used to specify the source of the Model Garden model or Genie models. Only present for models
-        /// created or tuned from Model Garden and Genie.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("generatedModelSource")]
-        public virtual GoogleCloudAiplatformV1beta1ModelGeneratedModelSource GeneratedModelSource { get; set; }
-
-        /// <summary>
         /// The labels with user-defined metadata to organize your Models. Label keys and values can be no longer than
         /// 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and
         /// dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of
@@ -48409,35 +48394,6 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Contains information about the source of the models generated from Model Garden.</summary>
-    public class GoogleCloudAiplatformV1beta1ModelGardenSource : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required. The model garden source model resource name.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("publicModelName")]
-        public virtual string PublicModelName { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Used to specify the source of the Model Garden model or Genie models. Only present for models created or tuned
-    /// from Model Garden and Genie.
-    /// </summary>
-    public class GoogleCloudAiplatformV1beta1ModelGeneratedModelSource : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Information about the base model of Genie models.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("genieSource")]
-        public virtual GoogleCloudAiplatformV1beta1GenieSource GenieSource { get; set; }
-
-        /// <summary>Source information of Model Garden models.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("modelGardenSource")]
-        public virtual GoogleCloudAiplatformV1beta1ModelGardenSource ModelGardenSource { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

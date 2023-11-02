@@ -744,6 +744,9 @@ namespace Google.Apis.CloudBillingBudget.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        [Newtonsoft.Json.JsonPropertyAttribute("ownershipScope")]
+        public virtual string OwnershipScope { get; set; }
+
         /// <summary>
         /// Optional. Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the
         /// specified percentages of the budget. Optional for `pubsubTopic` notifications. Required if using email

@@ -4500,6 +4500,13 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
         public virtual string RequestId { get; set; }
 
+        /// <summary>
+        /// Optional. An optional hint to the endpoint to generate a client ceritificate that can be used by AlloyDB
+        /// connectors to exchange additional metadata with the server after TLS handshake.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("useMetadataExchange")]
+        public virtual System.Nullable<bool> UseMetadataExchange { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

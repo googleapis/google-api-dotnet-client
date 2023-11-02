@@ -526,6 +526,10 @@ namespace Google.Apis.ChromeUXReport.v1.Data
     /// </summary>
     public class Metric : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>For enum metrics, provides fractions which add up to approximately 1.0.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fractions")]
+        public virtual System.Collections.Generic.IDictionary<string, System.Nullable<double>> Fractions { get; set; }
+
         /// <summary>
         /// The histogram of user experiences for a metric. The histogram will have at least one bin and the densities
         /// of all bins will add up to ~1.

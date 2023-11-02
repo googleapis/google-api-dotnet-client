@@ -34,6 +34,7 @@ namespace Google.Apis.Storage.v1
         /// <param name="initializer">The service initializer.</param>
         public StorageService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
+            AnywhereCache = new AnywhereCacheResource(this);
             BucketAccessControls = new BucketAccessControlsResource(this);
             Buckets = new BucketsResource(this);
             Channels = new ChannelsResource(this);
@@ -101,6 +102,9 @@ namespace Google.Apis.Storage.v1
             /// <summary>Manage your data in Google Cloud Storage</summary>
             public const string DevstorageReadWrite = "https://www.googleapis.com/auth/devstorage.read_write";
         }
+
+        /// <summary>Gets the AnywhereCache resource.</summary>
+        public virtual AnywhereCacheResource AnywhereCache { get; }
 
         /// <summary>Gets the BucketAccessControls resource.</summary>
         public virtual BucketAccessControlsResource BucketAccessControls { get; }
@@ -254,6 +258,448 @@ namespace Google.Apis.Storage.v1
                 DefaultValue = null,
                 Pattern = null,
             });
+        }
+    }
+
+    /// <summary>The "anywhereCache" collection of methods.</summary>
+    public class AnywhereCacheResource
+    {
+        private const string Resource = "anywhereCache";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public AnywhereCacheResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>Disables an Anywhere Cache instance.</summary>
+        /// <param name="bucket">Name of the partent bucket</param>
+        /// <param name="anywhereCacheId">The ID of requested Anywhere Cache instance.</param>
+        public virtual DisableRequest Disable(string bucket, string anywhereCacheId)
+        {
+            return new DisableRequest(service, bucket, anywhereCacheId);
+        }
+
+        /// <summary>Disables an Anywhere Cache instance.</summary>
+        public class DisableRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.AnywhereCache>
+        {
+            /// <summary>Constructs a new Disable request.</summary>
+            public DisableRequest(Google.Apis.Services.IClientService service, string bucket, string anywhereCacheId) : base(service)
+            {
+                Bucket = bucket;
+                AnywhereCacheId = anywhereCacheId;
+                InitParameters();
+            }
+
+            /// <summary>Name of the partent bucket</summary>
+            [Google.Apis.Util.RequestParameterAttribute("bucket", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Bucket { get; private set; }
+
+            /// <summary>The ID of requested Anywhere Cache instance.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("anywhereCacheId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string AnywhereCacheId { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "disable";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "b/{bucket}/anywhereCaches/{anywhereCacheId}/disable";
+
+            /// <summary>Initializes Disable parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("bucket", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "bucket",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("anywhereCacheId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "anywhereCacheId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Returns the metadata of an Anywhere Cache instance.</summary>
+        /// <param name="bucket">Name of the partent bucket</param>
+        /// <param name="anywhereCacheId">The ID of requested Anywhere Cache instance.</param>
+        public virtual GetRequest Get(string bucket, string anywhereCacheId)
+        {
+            return new GetRequest(service, bucket, anywhereCacheId);
+        }
+
+        /// <summary>Returns the metadata of an Anywhere Cache instance.</summary>
+        public class GetRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.AnywhereCache>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string bucket, string anywhereCacheId) : base(service)
+            {
+                Bucket = bucket;
+                AnywhereCacheId = anywhereCacheId;
+                InitParameters();
+            }
+
+            /// <summary>Name of the partent bucket</summary>
+            [Google.Apis.Util.RequestParameterAttribute("bucket", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Bucket { get; private set; }
+
+            /// <summary>The ID of requested Anywhere Cache instance.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("anywhereCacheId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string AnywhereCacheId { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "get";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "b/{bucket}/anywhereCaches/{anywhereCacheId}";
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("bucket", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "bucket",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("anywhereCacheId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "anywhereCacheId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Creates an Anywhere Cache instance.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="bucket">Name of the partent bucket</param>
+        public virtual InsertRequest Insert(Google.Apis.Storage.v1.Data.AnywhereCache body, string bucket)
+        {
+            return new InsertRequest(service, body, bucket);
+        }
+
+        /// <summary>Creates an Anywhere Cache instance.</summary>
+        public class InsertRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.GoogleLongrunningOperation>
+        {
+            /// <summary>Constructs a new Insert request.</summary>
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Storage.v1.Data.AnywhereCache body, string bucket) : base(service)
+            {
+                Bucket = bucket;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Name of the partent bucket</summary>
+            [Google.Apis.Util.RequestParameterAttribute("bucket", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Bucket { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Storage.v1.Data.AnywhereCache Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "insert";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "b/{bucket}/anywhereCaches";
+
+            /// <summary>Initializes Insert parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("bucket", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "bucket",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Returns a list of Anywhere Cache instances of the bucket matching the criteria.</summary>
+        /// <param name="bucket">Name of the partent bucket</param>
+        public virtual ListRequest List(string bucket)
+        {
+            return new ListRequest(service, bucket);
+        }
+
+        /// <summary>Returns a list of Anywhere Cache instances of the bucket matching the criteria.</summary>
+        public class ListRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.AnywhereCaches>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service, string bucket) : base(service)
+            {
+                Bucket = bucket;
+                InitParameters();
+            }
+
+            /// <summary>Name of the partent bucket</summary>
+            [Google.Apis.Util.RequestParameterAttribute("bucket", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Bucket { get; private set; }
+
+            /// <summary>Maximum number of items return in a single page of responses. Maximum 1000.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>
+            /// A previously-returned page token representing part of the larger set of results to view.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "list";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "b/{bucket}/anywhereCache";
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("bucket", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "bucket",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Pauses an Anywhere Cache instance.</summary>
+        /// <param name="bucket">Name of the partent bucket</param>
+        /// <param name="anywhereCacheId">The ID of requested Anywhere Cache instance.</param>
+        public virtual PauseRequest Pause(string bucket, string anywhereCacheId)
+        {
+            return new PauseRequest(service, bucket, anywhereCacheId);
+        }
+
+        /// <summary>Pauses an Anywhere Cache instance.</summary>
+        public class PauseRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.AnywhereCache>
+        {
+            /// <summary>Constructs a new Pause request.</summary>
+            public PauseRequest(Google.Apis.Services.IClientService service, string bucket, string anywhereCacheId) : base(service)
+            {
+                Bucket = bucket;
+                AnywhereCacheId = anywhereCacheId;
+                InitParameters();
+            }
+
+            /// <summary>Name of the partent bucket</summary>
+            [Google.Apis.Util.RequestParameterAttribute("bucket", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Bucket { get; private set; }
+
+            /// <summary>The ID of requested Anywhere Cache instance.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("anywhereCacheId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string AnywhereCacheId { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "pause";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "b/{bucket}/anywhereCaches/{anywhereCacheId}/pause";
+
+            /// <summary>Initializes Pause parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("bucket", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "bucket",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("anywhereCacheId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "anywhereCacheId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Resumes a paused or disabled Anywhere Cache instance.</summary>
+        /// <param name="bucket">Name of the partent bucket</param>
+        /// <param name="anywhereCacheId">The ID of requested Anywhere Cache instance.</param>
+        public virtual ResumeRequest Resume(string bucket, string anywhereCacheId)
+        {
+            return new ResumeRequest(service, bucket, anywhereCacheId);
+        }
+
+        /// <summary>Resumes a paused or disabled Anywhere Cache instance.</summary>
+        public class ResumeRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.AnywhereCache>
+        {
+            /// <summary>Constructs a new Resume request.</summary>
+            public ResumeRequest(Google.Apis.Services.IClientService service, string bucket, string anywhereCacheId) : base(service)
+            {
+                Bucket = bucket;
+                AnywhereCacheId = anywhereCacheId;
+                InitParameters();
+            }
+
+            /// <summary>Name of the partent bucket</summary>
+            [Google.Apis.Util.RequestParameterAttribute("bucket", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Bucket { get; private set; }
+
+            /// <summary>The ID of requested Anywhere Cache instance.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("anywhereCacheId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string AnywhereCacheId { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "resume";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "b/{bucket}/anywhereCaches/{anywhereCacheId}/resume";
+
+            /// <summary>Initializes Resume parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("bucket", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "bucket",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("anywhereCacheId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "anywhereCacheId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Updates the config(ttl and admissionPolicy) of an Anywhere Cache instance.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="bucket">Name of the partent bucket</param>
+        /// <param name="anywhereCacheId">The ID of requested Anywhere Cache instance.</param>
+        public virtual UpdateRequest Update(Google.Apis.Storage.v1.Data.AnywhereCache body, string bucket, string anywhereCacheId)
+        {
+            return new UpdateRequest(service, body, bucket, anywhereCacheId);
+        }
+
+        /// <summary>Updates the config(ttl and admissionPolicy) of an Anywhere Cache instance.</summary>
+        public class UpdateRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.GoogleLongrunningOperation>
+        {
+            /// <summary>Constructs a new Update request.</summary>
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Storage.v1.Data.AnywhereCache body, string bucket, string anywhereCacheId) : base(service)
+            {
+                Bucket = bucket;
+                AnywhereCacheId = anywhereCacheId;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Name of the partent bucket</summary>
+            [Google.Apis.Util.RequestParameterAttribute("bucket", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Bucket { get; private set; }
+
+            /// <summary>The ID of requested Anywhere Cache instance.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("anywhereCacheId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string AnywhereCacheId { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Storage.v1.Data.AnywhereCache Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "update";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "PATCH";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "b/{bucket}/anywhereCaches/{anywhereCacheId}";
+
+            /// <summary>Initializes Update parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("bucket", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "bucket",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("anywhereCacheId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "anywhereCacheId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
         }
     }
 
@@ -8067,6 +8513,115 @@ namespace Google.Apis.Storage.v1
 }
 namespace Google.Apis.Storage.v1.Data
 {
+    /// <summary>An Anywhere Cache instance.</summary>
+    public class AnywhereCache : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The cache-level entry admission policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("admissionPolicy")]
+        public virtual string AdmissionPolicy { get; set; }
+
+        /// <summary>The ID of the Anywhere cache instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("anywhereCacheId")]
+        public virtual string AnywhereCacheId { get; set; }
+
+        /// <summary>The name of the bucket containing this cache instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bucket")]
+        public virtual string Bucket { get; set; }
+
+        /// <summary>The creation time of the cache instance in RFC 3339 format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw { get; set; }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary><seealso cref="System.DateTime"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual System.DateTime? CreateTime
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+        }
+
+        /// <summary>The ID of the resource, including the project number, bucket name and anywhere cache ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>The kind of item this is. For Anywhere Cache, this is always storage#anywhereCache.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        /// <summary>True if the cache instance has an active Update long-running operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pendingUpdate")]
+        public virtual System.Nullable<bool> PendingUpdate { get; set; }
+
+        /// <summary>The link to this cache instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
+        public virtual string SelfLink { get; set; }
+
+        /// <summary>The current state of the cache instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The TTL of all cache entries in whole seconds. e.g., "7200s". </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ttl")]
+        public virtual object Ttl { get; set; }
+
+        /// <summary>The modification time of the cache instance metadata in RFC 3339 format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw { get; set; }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary><seealso cref="System.DateTime"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual System.DateTime? UpdateTime
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A list of Anywhere Caches.</summary>
+    public class AnywhereCaches : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of items.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual System.Collections.Generic.IList<AnywhereCache> Items { get; set; }
+
+        /// <summary>
+        /// The kind of item this is. For lists of Anywhere Caches, this is always storage#anywhereCaches.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        /// <summary>
+        /// The continuation token, used to page through large result sets. Provide this value in a subsequent request
+        /// to return the next page of results.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A bucket.</summary>
     public class Bucket : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8749,7 +9304,7 @@ namespace Google.Apis.Storage.v1.Data
             }
 
             /// <summary>
-            /// The period of time in seconds, that soft-deleted objects in the bucket will be retained and cannot be
+            /// The duration in seconds that soft-deleted objects in the bucket will be retained and cannot be
             /// permanently deleted.
             /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("retentionDurationSeconds")]

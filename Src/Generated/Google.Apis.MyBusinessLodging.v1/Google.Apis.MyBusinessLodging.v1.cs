@@ -821,7 +821,10 @@ namespace Google.Apis.MyBusinessLodging.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>An eco certificate awarded to the hotel.</summary>
+    /// <summary>
+    /// An eco certificate awarded to the hotel. Deprecated: this message is no longer populated. All certification data
+    /// is now provided by BeCause.
+    /// </summary>
     public class EcoCertification : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Whether the eco certificate was awarded or not.</summary>
@@ -910,7 +913,9 @@ namespace Google.Apis.MyBusinessLodging.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("energySavingThermostatsException")]
         public virtual string EnergySavingThermostatsException { get; set; }
 
-        /// <summary>Output only. Green building design. True if BREEAM-* or LEED-* certified.</summary>
+        /// <summary>
+        /// Output only. Green building design. True if the property has been awarded a relevant certification.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("greenBuildingDesign")]
         public virtual System.Nullable<bool> GreenBuildingDesign { get; set; }
 
@@ -3166,7 +3171,10 @@ namespace Google.Apis.MyBusinessLodging.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("energyEfficiency")]
         public virtual EnergyEfficiency EnergyEfficiency { get; set; }
 
-        /// <summary>Sustainability certifications the hotel has been awarded.</summary>
+        /// <summary>
+        /// Sustainability certifications the hotel has been awarded. Deprecated: this field is no longer populated. All
+        /// certification data is now provided by BeCause.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sustainabilityCertifications")]
         public virtual SustainabilityCertifications SustainabilityCertifications { get; set; }
 
@@ -3186,7 +3194,10 @@ namespace Google.Apis.MyBusinessLodging.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Sustainability certifications the hotel has been awarded.</summary>
+    /// <summary>
+    /// Sustainability certifications the hotel has been awarded. Deprecated: this message is no longer populated. All
+    /// certification data is now provided by BeCause.
+    /// </summary>
     public class SustainabilityCertifications : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>BREEAM certification.</summary>
@@ -3201,17 +3212,11 @@ namespace Google.Apis.MyBusinessLodging.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ecoCertifications")]
         public virtual System.Collections.Generic.IList<EcoCertification> EcoCertifications { get; set; }
 
-        /// <summary>
-        /// LEED certification. Deprecated: this field is no longer populated. LEED certification status is now provided
-        /// directly by USGBC.
-        /// </summary>
+        /// <summary>LEED certification.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("leedCertification")]
         public virtual string LeedCertification { get; set; }
 
-        /// <summary>
-        /// LEED certification exception. Deprecated: this field is no longer populated. LEED certification status is
-        /// now provided directly by USGBC.
-        /// </summary>
+        /// <summary>LEED certification exception.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("leedCertificationException")]
         public virtual string LeedCertificationException { get; set; }
 

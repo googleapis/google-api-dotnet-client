@@ -3152,6 +3152,12 @@ namespace Google.Apis.Testing.v1.Data
         public virtual System.Collections.Generic.IList<DeviceFile> FilesToPush { get; set; }
 
         /// <summary>
+        /// Optional. Initial setup APKs to install before the app under test is installed. Currently capped at 100.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("initialSetupApks")]
+        public virtual System.Collections.Generic.IList<Apk> InitialSetupApks { get; set; }
+
+        /// <summary>
         /// The network traffic profile used for running the test. Available network profiles can be queried by using
         /// the NETWORK_CONFIGURATION environment type when calling
         /// TestEnvironmentDiscoveryService.GetTestEnvironmentCatalog.
