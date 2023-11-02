@@ -318,8 +318,10 @@ namespace Google.Apis.MapsPlaces.v1
 
             /// <summary>Get a photo media with a photo reference string.</summary>
             /// <param name="name">
-            /// Required. The resource name of a photo as returned in a Place object's photos.name field. Format:
-            /// places/place_id/photos/photo_reference.
+            /// Required. The resource name of a photo media in the format:
+            /// `places/place_id/photos/photo_reference/media`. The resource name of a photo as returned in a Place
+            /// object's photos.name field comes with the format `places/place_id/photos/photo_reference`. You need to
+            /// append `/media` at the end of the photo resource to get the photo media resource name.
             /// </param>
             public virtual GetMediaRequest GetMedia(string name)
             {
@@ -337,8 +339,10 @@ namespace Google.Apis.MapsPlaces.v1
                 }
 
                 /// <summary>
-                /// Required. The resource name of a photo as returned in a Place object's photos.name field. Format:
-                /// places/place_id/photos/photo_reference.
+                /// Required. The resource name of a photo media in the format:
+                /// `places/place_id/photos/photo_reference/media`. The resource name of a photo as returned in a Place
+                /// object's photos.name field comes with the format `places/place_id/photos/photo_reference`. You need
+                /// to append `/media` at the end of the photo resource to get the photo media resource name.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -645,9 +649,7 @@ namespace Google.Apis.MapsPlaces.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("center")]
         public virtual GoogleTypeLatLng Center { get; set; }
 
-        /// <summary>
-        /// Required. Radius measured in meters. The radius must be within [0.0, 50000.0]. The default radius is 0.0.
-        /// </summary>
+        /// <summary>Required. Radius measured in meters. The radius must be within [0.0, 50000.0].</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("radius")]
         public virtual System.Nullable<double> Radius { get; set; }
 
@@ -848,7 +850,9 @@ namespace Google.Apis.MapsPlaces.v1.Data
     /// <summary>A photo media from Places API.</summary>
     public class GoogleMapsPlacesV1PhotoMedia : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The resource name of a photo in the format: places/place_id/photos/photo_reference.</summary>
+        /// <summary>
+        /// The resource name of a photo media in the format: `places/place_id/photos/photo_reference/media`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 

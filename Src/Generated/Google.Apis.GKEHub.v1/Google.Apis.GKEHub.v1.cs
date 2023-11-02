@@ -4542,6 +4542,14 @@ namespace Google.Apis.GKEHub.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("configmanagement")]
         public virtual ConfigManagementMembershipSpec Configmanagement { get; set; }
 
+        /// <summary>Identity Service-specific spec.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("identityservice")]
+        public virtual IdentityServiceMembershipSpec Identityservice { get; set; }
+
+        /// <summary>Anthos Service Mesh-specific spec</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mesh")]
+        public virtual ServiceMeshMembershipSpec Mesh { get; set; }
+
         /// <summary>Policy Controller spec.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policycontroller")]
         public virtual PolicyControllerMembershipSpec Policycontroller { get; set; }

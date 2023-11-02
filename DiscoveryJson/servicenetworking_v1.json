@@ -789,11 +789,11 @@
             "https://www.googleapis.com/auth/service.management"
            ]
           },
-          "getVpcScControls": {
+          "getVpcServiceControls": {
            "description": "Consumers use this method to find out the state of VPC Service Controls. The controls could be enabled or disabled for a connection.",
-           "flatPath": "v1/services/{servicesId}/projects/{projectsId}/global/networks/{networksId}/vpcScControls",
+           "flatPath": "v1/services/{servicesId}/projects/{projectsId}/global/networks/{networksId}/vpcServiceControls",
            "httpMethod": "GET",
-           "id": "servicenetworking.services.projects.global.networks.getVpcScControls",
+           "id": "servicenetworking.services.projects.global.networks.getVpcServiceControls",
            "parameterOrder": [
             "name"
            ],
@@ -806,7 +806,7 @@
              "type": "string"
             }
            },
-           "path": "v1/{+name}/vpcScControls",
+           "path": "v1/{+name}/vpcServiceControls",
            "response": {
             "$ref": "VpcServiceControls"
            },
@@ -1029,7 +1029,7 @@
    }
   }
  },
- "revision": "20231015",
+ "revision": "20231031",
  "rootUrl": "https://servicenetworking.googleapis.com/",
  "schemas": {
   "AddDnsRecordSetMetadata": {
@@ -1162,6 +1162,10 @@
     },
     "description": {
      "description": "Optional. Description of the subnet.",
+     "type": "string"
+    },
+    "internalRange": {
+     "description": "Optional. The url of an Internal Range. Eg: `projects//locations/global/internalRanges/`. If specified, it means that the subnetwork cidr will be created using the combination of requested_address/ip_prefix_length. Note that the subnet cidr has to be within the cidr range of this Internal Range.",
      "type": "string"
     },
     "ipPrefixLength": {

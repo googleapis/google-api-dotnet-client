@@ -1532,6 +1532,77 @@ namespace Google.Apis.SQLAdmin.v1beta4
         }
 
         /// <summary>
+        /// Demotes an existing standalone instance to be a Cloud SQL read replica for an external database server.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Required. The project ID of the project that contains the instance.</param>
+        /// <param name="instance">Required. The name of the Cloud SQL instance.</param>
+        public virtual DemoteRequest Demote(Google.Apis.SQLAdmin.v1beta4.Data.InstancesDemoteRequest body, string project, string instance)
+        {
+            return new DemoteRequest(service, body, project, instance);
+        }
+
+        /// <summary>
+        /// Demotes an existing standalone instance to be a Cloud SQL read replica for an external database server.
+        /// </summary>
+        public class DemoteRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.Operation>
+        {
+            /// <summary>Constructs a new Demote request.</summary>
+            public DemoteRequest(Google.Apis.Services.IClientService service, Google.Apis.SQLAdmin.v1beta4.Data.InstancesDemoteRequest body, string project, string instance) : base(service)
+            {
+                Project = project;
+                Instance = instance;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Required. The project ID of the project that contains the instance.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Required. The name of the Cloud SQL instance.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Instance { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.SQLAdmin.v1beta4.Data.InstancesDemoteRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "demote";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "sql/v1beta4/projects/{project}/instances/{instance}/demote";
+
+            /// <summary>Initializes Demote parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("instance", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "instance",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>
         /// Demotes the stand-alone instance to be a Cloud SQL read replica for an external database server.
         /// </summary>
         /// <param name="body">The body of the request.</param>
@@ -5417,6 +5488,26 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// This context is used to demote an existing standalone instance to be a Cloud SQL read replica for an external
+    /// database server.
+    /// </summary>
+    public class DemoteContext : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>This is always `sql#demoteContext`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        /// <summary>
+        /// Required. The name of the instance which acts as an on-premises primary instance in the replication setup.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceRepresentativeInstanceName")]
+        public virtual string SourceRepresentativeInstanceName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Read-replica configuration for connecting to the on-premises primary instance.</summary>
     public class DemoteMasterConfiguration : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6148,6 +6239,23 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// <summary>Contains details about the demoteMaster operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("demoteMasterContext")]
         public virtual DemoteMasterContext DemoteMasterContext { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// This request is used to demote an existing standalone instance to be a Cloud SQL read replica for an external
+    /// database server.
+    /// </summary>
+    public class InstancesDemoteRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. This context is used to demote an existing standalone instance to be a Cloud SQL read replica for
+        /// an external database server.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("demoteContext")]
+        public virtual DemoteContext DemoteContext { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

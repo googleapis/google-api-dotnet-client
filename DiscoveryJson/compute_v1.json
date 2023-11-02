@@ -35267,7 +35267,7 @@
    }
   }
  },
- "revision": "20231017",
+ "revision": "20231024",
  "rootUrl": "https://compute.googleapis.com/",
  "schemas": {
   "AWSV4Signature": {
@@ -47650,11 +47650,6 @@
      "type": "array"
     },
     "baseInstanceName": {
-     "annotations": {
-      "required": [
-       "compute.instanceGroupManagers.insert"
-      ]
-     },
      "description": "The base instance name to use for instances in this group. The value must be 1-58 characters long. Instances are named by appending a hyphen and a random four-character string to the base instance name. The base instance name must comply with RFC1035.",
      "pattern": "[a-z][-a-z0-9]{0,57}",
      "type": "string"

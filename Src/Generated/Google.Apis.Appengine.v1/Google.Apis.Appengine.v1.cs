@@ -3489,6 +3489,83 @@ namespace Google.Apis.Appengine.v1
             }
         }
 
+        /// <summary>Lists all the available runtimes for the application.</summary>
+        /// <param name="appsId">
+        /// Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp.
+        /// </param>
+        public virtual ListRuntimesRequest ListRuntimes(string appsId)
+        {
+            return new ListRuntimesRequest(service, appsId);
+        }
+
+        /// <summary>Lists all the available runtimes for the application.</summary>
+        public class ListRuntimesRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1.Data.ListRuntimesResponse>
+        {
+            /// <summary>Constructs a new ListRuntimes request.</summary>
+            public ListRuntimesRequest(Google.Apis.Services.IClientService service, string appsId) : base(service)
+            {
+                AppsId = appsId;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("appsId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string AppsId { get; private set; }
+
+            /// <summary>Optional. The environment of the Application.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("environment", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<EnvironmentEnum> Environment { get; set; }
+
+            /// <summary>Optional. The environment of the Application.</summary>
+            public enum EnvironmentEnum
+            {
+                /// <summary>Default value.</summary>
+                [Google.Apis.Util.StringValueAttribute("ENVIRONMENT_UNSPECIFIED")]
+                ENVIRONMENTUNSPECIFIED = 0,
+
+                /// <summary>App Engine Standard.</summary>
+                [Google.Apis.Util.StringValueAttribute("STANDARD")]
+                STANDARD = 1,
+
+                /// <summary>App Engine Flexible</summary>
+                [Google.Apis.Util.StringValueAttribute("FLEXIBLE")]
+                FLEXIBLE = 2,
+            }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "listRuntimes";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/apps/{appsId}:listRuntimes";
+
+            /// <summary>Initializes ListRuntimes parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("appsId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "appsId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("environment", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "environment",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
         /// <summary>
         /// Updates the specified Application resource. You can update the following fields: auth_domain - Google
         /// authentication domain for controlling user access to the application. default_cookie_expiration - Cookie
@@ -4186,6 +4263,35 @@ namespace Google.Apis.Appengine.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either
+    /// specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one
+    /// of the following: A full date, with non-zero year, month, and day values. A month and day, with a zero year (for
+    /// example, an anniversary). A year on its own, with a zero month and a zero day. A year and month, with a zero day
+    /// (for example, a credit card expiration date).Related types: google.type.TimeOfDay google.type.DateTime
+    /// google.protobuf.Timestamp
+    /// </summary>
+    public class Date : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a
+        /// year and month where the day isn't significant.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("day")]
+        public virtual System.Nullable<int> Day { get; set; }
+
+        /// <summary>Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("month")]
+        public virtual System.Nullable<int> Month { get; set; }
+
+        /// <summary>Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("year")]
+        public virtual System.Nullable<int> Year { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for Instances.DebugInstance.</summary>
     public class DebugInstanceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4811,6 +4917,21 @@ namespace Google.Apis.Appengine.v1.Data
         /// <summary>A list of operations that matches the specified filter in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operations")]
         public virtual System.Collections.Generic.IList<Operation> Operations { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for Applications.ListRuntimes.</summary>
+    public class ListRuntimesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Continuation token for fetching the next page of results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The runtimes available to the requested application.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runtimes")]
+        public virtual System.Collections.Generic.IList<Runtime> Runtimes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5671,6 +5792,41 @@ namespace Google.Apis.Appengine.v1.Data
         /// <summary>User specified volumes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("volumes")]
         public virtual System.Collections.Generic.IList<Volume> Volumes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Runtime versions for App Engine.</summary>
+    public class Runtime : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Date when Runtime is decommissioned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("decommissionedDate")]
+        public virtual Date DecommissionedDate { get; set; }
+
+        /// <summary>Date when Runtime is deprecated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deprecationDate")]
+        public virtual Date DeprecationDate { get; set; }
+
+        /// <summary>Date when Runtime is end of support.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endOfSupportDate")]
+        public virtual Date EndOfSupportDate { get; set; }
+
+        /// <summary>The environment of the runtime.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("environment")]
+        public virtual string Environment { get; set; }
+
+        /// <summary>The name of the runtime, e.g., 'go113', 'nodejs12', etc.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The stage of life this runtime is in, e.g., BETA, GA, etc.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stage")]
+        public virtual string Stage { get; set; }
+
+        /// <summary>Warning messages, e.g., a deprecation warning.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
+        public virtual System.Collections.Generic.IList<string> Warnings { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

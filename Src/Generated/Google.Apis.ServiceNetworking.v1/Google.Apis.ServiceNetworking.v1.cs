@@ -1966,19 +1966,19 @@ namespace Google.Apis.ServiceNetworking.v1
                     /// {project} is a project number e.g. `12345` that contains the service consumer's VPC network.
                     /// {network} is the name of the service consumer's VPC network.
                     /// </param>
-                    public virtual GetVpcScControlsRequest GetVpcScControls(string name)
+                    public virtual GetVpcServiceControlsRequest GetVpcServiceControls(string name)
                     {
-                        return new GetVpcScControlsRequest(service, name);
+                        return new GetVpcServiceControlsRequest(service, name);
                     }
 
                     /// <summary>
                     /// Consumers use this method to find out the state of VPC Service Controls. The controls could be
                     /// enabled or disabled for a connection.
                     /// </summary>
-                    public class GetVpcScControlsRequest : ServiceNetworkingBaseServiceRequest<Google.Apis.ServiceNetworking.v1.Data.VpcServiceControls>
+                    public class GetVpcServiceControlsRequest : ServiceNetworkingBaseServiceRequest<Google.Apis.ServiceNetworking.v1.Data.VpcServiceControls>
                     {
-                        /// <summary>Constructs a new GetVpcScControls request.</summary>
-                        public GetVpcScControlsRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        /// <summary>Constructs a new GetVpcServiceControls request.</summary>
+                        public GetVpcServiceControlsRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                         {
                             Name = name;
                             InitParameters();
@@ -1996,15 +1996,15 @@ namespace Google.Apis.ServiceNetworking.v1
                         public virtual string Name { get; private set; }
 
                         /// <summary>Gets the method name.</summary>
-                        public override string MethodName => "getVpcScControls";
+                        public override string MethodName => "getVpcServiceControls";
 
                         /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "GET";
 
                         /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v1/{+name}/vpcScControls";
+                        public override string RestPath => "v1/{+name}/vpcServiceControls";
 
-                        /// <summary>Initializes GetVpcScControls parameter list.</summary>
+                        /// <summary>Initializes GetVpcServiceControls parameter list.</summary>
                         protected override void InitParameters()
                         {
                             base.InitParameters();
@@ -2696,6 +2696,14 @@ namespace Google.Apis.ServiceNetworking.v1.Data
         /// <summary>Optional. Description of the subnet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Optional. The url of an Internal Range. Eg: `projects//locations/global/internalRanges/`. If specified, it
+        /// means that the subnetwork cidr will be created using the combination of requested_address/ip_prefix_length.
+        /// Note that the subnet cidr has to be within the cidr range of this Internal Range.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("internalRange")]
+        public virtual string InternalRange { get; set; }
 
         /// <summary>
         /// Required. The prefix length of the subnet's IP address range. Use CIDR range notation, such as `29` to

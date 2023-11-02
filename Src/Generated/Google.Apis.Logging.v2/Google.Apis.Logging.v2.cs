@@ -18175,6 +18175,16 @@ namespace Google.Apis.Logging.v2.Data
     public class LogEntry : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Output only. The Error Reporting (https://cloud.google.com/error-reporting) error groups associated with
+        /// this LogEntry. Error Reporting sets the values for this field during error group creation.For more
+        /// information, see View error details(
+        /// https://cloud.google.com/error-reporting/docs/viewing-errors#view_error_details)This field isn't available
+        /// during log routing (https://cloud.google.com/logging/docs/routing/overview)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorGroups")]
+        public virtual System.Collections.Generic.IList<LogErrorGroup> ErrorGroups { get; set; }
+
+        /// <summary>
         /// Optional. Information about the HTTP request associated with this log entry, if applicable.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("httpRequest")]
@@ -18449,6 +18459,22 @@ namespace Google.Apis.Logging.v2.Data
         /// <summary>Optional. Line within the source file. 1-based; 0 indicates no line number available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("line")]
         public virtual System.Nullable<long> Line { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains metadata that associates the LogEntry to Error Reporting error groups.</summary>
+    public class LogErrorGroup : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The id is a unique identifier for a particular error group; it is the last part of the error group resource
+        /// name: /projects//errors/. Example: COShysOX0r_51QE The id is derived from key parts of the error-log content
+        /// and is treated as Service Data. For information about how Service Data is handled, see Google Cloud Privacy
+        /// Notice (https://cloud.google.com/terms/cloud-privacy-notice).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
