@@ -3670,7 +3670,7 @@ namespace Google.Apis.ArtifactRegistry.v1
                 /// <summary>Updates a repository.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
+                /// The name of the repository, for example: `projects/p1/locations/us-central1/repositories/repo1`.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.ArtifactRegistry.v1.Data.Repository body, string name)
                 {
@@ -3689,7 +3689,7 @@ namespace Google.Apis.ArtifactRegistry.v1
                     }
 
                     /// <summary>
-                    /// The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
+                    /// The name of the repository, for example: `projects/p1/locations/us-central1/repositories/repo1`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -6132,7 +6132,7 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         public virtual string Mode { get; set; }
 
         /// <summary>
-        /// The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
+        /// The name of the repository, for example: `projects/p1/locations/us-central1/repositories/repo1`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -6491,7 +6491,7 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         public virtual System.Nullable<int> Priority { get; set; }
 
         /// <summary>
-        /// A reference to the repository resource, for example: "projects/p1/locations/us-central1/repositories/repo1".
+        /// A reference to the repository resource, for example: `projects/p1/locations/us-central1/repositories/repo1`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("repository")]
         public virtual string Repository { get; set; }

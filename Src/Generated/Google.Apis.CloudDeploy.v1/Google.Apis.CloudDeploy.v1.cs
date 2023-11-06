@@ -310,7 +310,785 @@ namespace Google.Apis.CloudDeploy.v1
                 public DeliveryPipelinesResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
+                    AutomationRuns = new AutomationRunsResource(service);
+                    Automations = new AutomationsResource(service);
                     Releases = new ReleasesResource(service);
+                }
+
+                /// <summary>Gets the AutomationRuns resource.</summary>
+                public virtual AutomationRunsResource AutomationRuns { get; }
+
+                /// <summary>The "automationRuns" collection of methods.</summary>
+                public class AutomationRunsResource
+                {
+                    private const string Resource = "automationRuns";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public AutomationRunsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>
+                    /// Cancels an AutomationRun. The `state` of the `AutomationRun` after cancelling is `CANCELLED`.
+                    /// `CancelAutomationRun` can be called on AutomationRun in the state `IN_PROGRESS` and `PENDING`;
+                    /// AutomationRun in a different state returns an `FAILED_PRECONDITION` error.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Required. Name of the `AutomationRun`. Format is
+                    /// projects/{project}/locations/{location}/deliveryPipelines/{delivery_pipeline}/automationRuns/{automation_run}.
+                    /// </param>
+                    public virtual CancelRequest Cancel(Google.Apis.CloudDeploy.v1.Data.CancelAutomationRunRequest body, string name)
+                    {
+                        return new CancelRequest(service, body, name);
+                    }
+
+                    /// <summary>
+                    /// Cancels an AutomationRun. The `state` of the `AutomationRun` after cancelling is `CANCELLED`.
+                    /// `CancelAutomationRun` can be called on AutomationRun in the state `IN_PROGRESS` and `PENDING`;
+                    /// AutomationRun in a different state returns an `FAILED_PRECONDITION` error.
+                    /// </summary>
+                    public class CancelRequest : CloudDeployBaseServiceRequest<Google.Apis.CloudDeploy.v1.Data.CancelAutomationRunResponse>
+                    {
+                        /// <summary>Constructs a new Cancel request.</summary>
+                        public CancelRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudDeploy.v1.Data.CancelAutomationRunRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Name of the `AutomationRun`. Format is
+                        /// projects/{project}/locations/{location}/deliveryPipelines/{delivery_pipeline}/automationRuns/{automation_run}.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudDeploy.v1.Data.CancelAutomationRunRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "cancel";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:cancel";
+
+                        /// <summary>Initializes Cancel parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/deliveryPipelines/[^/]+/automationRuns/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Gets details of a single AutomationRun.</summary>
+                    /// <param name="name">
+                    /// Required. Name of the `AutomationRun`. Format must be
+                    /// projects/{project}/locations/{location}/deliveryPipelines/{delivery_pipeline}/automationRuns/{automation_run}.
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(service, name);
+                    }
+
+                    /// <summary>Gets details of a single AutomationRun.</summary>
+                    public class GetRequest : CloudDeployBaseServiceRequest<Google.Apis.CloudDeploy.v1.Data.AutomationRun>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Name of the `AutomationRun`. Format must be
+                        /// projects/{project}/locations/{location}/deliveryPipelines/{delivery_pipeline}/automationRuns/{automation_run}.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/deliveryPipelines/[^/]+/automationRuns/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Lists AutomationRuns in a given project and location.</summary>
+                    /// <param name="parent">
+                    /// Required. The parent, which owns this collection of automationRuns. Format must be
+                    /// projects/{project}/locations/{location}/deliveryPipelines/{delivery_pipeline}.
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(service, parent);
+                    }
+
+                    /// <summary>Lists AutomationRuns in a given project and location.</summary>
+                    public class ListRequest : CloudDeployBaseServiceRequest<Google.Apis.CloudDeploy.v1.Data.ListAutomationRunsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The parent, which owns this collection of automationRuns. Format must be
+                        /// projects/{project}/locations/{location}/deliveryPipelines/{delivery_pipeline}.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Filter automationRuns to be returned. All fields can be used in the filter.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+                        /// <summary>Field to sort by.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string OrderBy { get; set; }
+
+                        /// <summary>
+                        /// The maximum number of automationRuns to return. The service may return fewer than this
+                        /// value. If unspecified, at most 50 automationRuns will be returned. The maximum value is
+                        /// 1000; values above 1000 will be set to 1000.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// A page token, received from a previous `ListAutomationRuns` call. Provide this to retrieve
+                        /// the subsequent page. When paginating, all other provided parameters match the call that
+                        /// provided the page token.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/automationRuns";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/deliveryPipelines/[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "orderBy",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>Gets the Automations resource.</summary>
+                public virtual AutomationsResource Automations { get; }
+
+                /// <summary>The "automations" collection of methods.</summary>
+                public class AutomationsResource
+                {
+                    private const string Resource = "automations";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public AutomationsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Creates a new Automation in a given project and location.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. The parent collection in which the `Automation` should be created. Format should be
+                    /// projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}.
+                    /// </param>
+                    public virtual CreateRequest Create(Google.Apis.CloudDeploy.v1.Data.Automation body, string parent)
+                    {
+                        return new CreateRequest(service, body, parent);
+                    }
+
+                    /// <summary>Creates a new Automation in a given project and location.</summary>
+                    public class CreateRequest : CloudDeployBaseServiceRequest<Google.Apis.CloudDeploy.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudDeploy.v1.Data.Automation body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The parent collection in which the `Automation` should be created. Format should
+                        /// be projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Required. ID of the `Automation`.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("automationId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string AutomationId { get; set; }
+
+                        /// <summary>
+                        /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must
+                        /// retry your request, the server will know to ignore the request if it has already been
+                        /// completed. The server will guarantee that for at least 60 minutes since the first request.
+                        /// For example, consider a situation where you make an initial request and the request times
+                        /// out. If you make the request again with the same request ID, the server can check if
+                        /// original operation with the same request ID was received, and if so, will ignore the second
+                        /// request. This prevents clients from accidentally creating duplicate commitments. The request
+                        /// ID must be a valid UUID with the exception that zero UUID is not supported
+                        /// (00000000-0000-0000-0000-000000000000).
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string RequestId { get; set; }
+
+                        /// <summary>
+                        /// Optional. If set to true, the request is validated and the user is provided with an expected
+                        /// result, but no actual change is made.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudDeploy.v1.Data.Automation Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "create";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/automations";
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/deliveryPipelines/[^/]+$",
+                            });
+                            RequestParameters.Add("automationId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "automationId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "requestId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "validateOnly",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Deletes a single Automation resource.</summary>
+                    /// <param name="name">
+                    /// Required. The name of the `Automation` to delete. Format should be
+                    /// projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}/automations/{automation_name}.
+                    /// </param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(service, name);
+                    }
+
+                    /// <summary>Deletes a single Automation resource.</summary>
+                    public class DeleteRequest : CloudDeployBaseServiceRequest<Google.Apis.CloudDeploy.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the `Automation` to delete. Format should be
+                        /// projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}/automations/{automation_name}.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// Optional. If set to true, then deleting an already deleted or non-existing `Automation` will
+                        /// succeed.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("allowMissing", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> AllowMissing { get; set; }
+
+                        /// <summary>
+                        /// Optional. The weak etag of the request. This checksum is computed by the server based on the
+                        /// value of other fields, and may be sent on update and delete requests to ensure the client
+                        /// has an up-to-date value before proceeding.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Etag { get; set; }
+
+                        /// <summary>
+                        /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must
+                        /// retry your request, the server will know to ignore the request if it has already been
+                        /// completed. The server will guarantee that for at least 60 minutes after the first request.
+                        /// For example, consider a situation where you make an initial request and the request times
+                        /// out. If you make the request again with the same request ID, the server can check if
+                        /// original operation with the same request ID was received, and if so, will ignore the second
+                        /// request. This prevents clients from accidentally creating duplicate commitments. The request
+                        /// ID must be a valid UUID with the exception that zero UUID is not supported
+                        /// (00000000-0000-0000-0000-000000000000).
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string RequestId { get; set; }
+
+                        /// <summary>
+                        /// Optional. If set, validate the request and verify whether the resource exists, but do not
+                        /// actually post it.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/deliveryPipelines/[^/]+/automations/[^/]+$",
+                            });
+                            RequestParameters.Add("allowMissing", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "allowMissing",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("etag", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "etag",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "requestId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "validateOnly",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Gets details of a single Automation.</summary>
+                    /// <param name="name">
+                    /// Required. Name of the `Automation`. Format must be
+                    /// projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}/automations/{automation_name}.
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(service, name);
+                    }
+
+                    /// <summary>Gets details of a single Automation.</summary>
+                    public class GetRequest : CloudDeployBaseServiceRequest<Google.Apis.CloudDeploy.v1.Data.Automation>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Name of the `Automation`. Format must be
+                        /// projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}/automations/{automation_name}.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/deliveryPipelines/[^/]+/automations/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Lists Automations in a given project and location.</summary>
+                    /// <param name="parent">
+                    /// Required. The parent, which owns this collection of automations. Format must be
+                    /// projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}.
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(service, parent);
+                    }
+
+                    /// <summary>Lists Automations in a given project and location.</summary>
+                    public class ListRequest : CloudDeployBaseServiceRequest<Google.Apis.CloudDeploy.v1.Data.ListAutomationsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The parent, which owns this collection of automations. Format must be
+                        /// projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Filter automations to be returned. All fields can be used in the filter.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+                        /// <summary>Field to sort by.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string OrderBy { get; set; }
+
+                        /// <summary>
+                        /// The maximum number of automations to return. The service may return fewer than this value.
+                        /// If unspecified, at most 50 automations will be returned. The maximum value is 1000; values
+                        /// above 1000 will be set to 1000.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// A page token, received from a previous `ListAutomations` call. Provide this to retrieve the
+                        /// subsequent page. When paginating, all other provided parameters match the call that provided
+                        /// the page token.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/automations";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/deliveryPipelines/[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "orderBy",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Updates the parameters of a single Automation resource.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Output only. Name of the `Automation`. Format is
+                    /// projects/{project}/locations/{location}/deliveryPipelines/{delivery_pipeline}/automations/{automation}.
+                    /// </param>
+                    public virtual PatchRequest Patch(Google.Apis.CloudDeploy.v1.Data.Automation body, string name)
+                    {
+                        return new PatchRequest(service, body, name);
+                    }
+
+                    /// <summary>Updates the parameters of a single Automation resource.</summary>
+                    public class PatchRequest : CloudDeployBaseServiceRequest<Google.Apis.CloudDeploy.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Patch request.</summary>
+                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudDeploy.v1.Data.Automation body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Output only. Name of the `Automation`. Format is
+                        /// projects/{project}/locations/{location}/deliveryPipelines/{delivery_pipeline}/automations/{automation}.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// Optional. If set to true, updating a `Automation` that does not exist will result in the
+                        /// creation of a new `Automation`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("allowMissing", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> AllowMissing { get; set; }
+
+                        /// <summary>
+                        /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must
+                        /// retry your request, the server will know to ignore the request if it has already been
+                        /// completed. The server will guarantee that for at least 60 minutes since the first request.
+                        /// For example, consider a situation where you make an initial request and the request times
+                        /// out. If you make the request again with the same request ID, the server can check if
+                        /// original operation with the same request ID was received, and if so, will ignore the second
+                        /// request. This prevents clients from accidentally creating duplicate commitments. The request
+                        /// ID must be a valid UUID with the exception that zero UUID is not supported
+                        /// (00000000-0000-0000-0000-000000000000).
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string RequestId { get; set; }
+
+                        /// <summary>
+                        /// Required. Field mask is used to specify the fields to be overwritten in the `Automation`
+                        /// resource by the update. The fields specified in the update_mask are relative to the
+                        /// resource, not the full request. A field will be overwritten if it is in the mask. If the
+                        /// user does not provide a mask then all fields will be overwritten.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object UpdateMask { get; set; }
+
+                        /// <summary>
+                        /// Optional. If set to true, the request is validated and the user is provided with an expected
+                        /// result, but no actual change is made.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudDeploy.v1.Data.Automation Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "patch";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "PATCH";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Patch parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/deliveryPipelines/[^/]+/automations/[^/]+$",
+                            });
+                            RequestParameters.Add("allowMissing", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "allowMissing",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "requestId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "updateMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "validateOnly",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
                 }
 
                 /// <summary>Gets the Releases resource.</summary>
@@ -3561,6 +4339,29 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Contains the information of an automated advance-rollout operation.</summary>
+    public class AdvanceRolloutOperation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The phase to which the rollout will be advanced to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationPhase")]
+        public virtual string DestinationPhase { get; set; }
+
+        /// <summary>Output only. The name of the rollout that initiates the `AutomationRun`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rollout")]
+        public virtual string Rollout { get; set; }
+
+        /// <summary>Output only. The phase of a deployment that initiated the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourcePhase")]
+        public virtual string SourcePhase { get; set; }
+
+        /// <summary>Output only. How long the operation will be paused.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wait")]
+        public virtual object Wait { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The request object used by `AdvanceRollout`.</summary>
     public class AdvanceRolloutRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3575,6 +4376,38 @@ namespace Google.Apis.CloudDeploy.v1.Data
     /// <summary>The response object from `AdvanceRollout`.</summary>
     public class AdvanceRolloutResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The `AdvanceRollout` automation rule will automatically advance a successful Rollout to the next phase.
+    /// </summary>
+    public class AdvanceRolloutRule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Information around the state of the Automation rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("condition")]
+        public virtual AutomationRuleCondition Condition { get; set; }
+
+        /// <summary>
+        /// Required. ID of the rule. This id must be unique in the `Automation` resource to which this rule belongs.
+        /// The format is a-z{0,62}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>
+        /// Optional. Proceeds only after phase name matched any one in the list. This value must consist of lower-case
+        /// letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length
+        /// of 63 characters. In other words, it must match the following regex: `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourcePhases")]
+        public virtual System.Collections.Generic.IList<string> SourcePhases { get; set; }
+
+        /// <summary>Optional. How long to wait after a rollout is finished.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wait")]
+        public virtual object Wait { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -3664,6 +4497,159 @@ namespace Google.Apis.CloudDeploy.v1.Data
     }
 
     /// <summary>
+    /// An `Automation` resource in the Cloud Deploy API. An `Automation` enables the automation of manually driven
+    /// actions for a Delivery Pipeline, which includes Release promotion amongst Targets, Rollout repair and Rollout
+    /// deployment strategy advancement. The intention of Automation is to reduce manual intervention in the continuous
+    /// delivery process.
+    /// </summary>
+    public class Automation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy.
+        /// Annotations must meet the following constraints: * Annotations are key/value pairs. * Valid annotation keys
+        /// have two segments: an optional prefix and name, separated by a slash (/). * The name segment is required and
+        /// must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes
+        /// (-), underscores (_), dots (.), and alphanumerics between. * The prefix is optional. If specified, the
+        /// prefix must be a DNS subdomain: a series of DNS labels separated by dots(.), not longer than 253 characters
+        /// in total, followed by a slash (/). See
+        /// https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/#syntax-and-character-set for
+        /// more details.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Time at which the automation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>Optional. Description of the `Automation`. Max length is 255 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Optional. The weak etag of the `Automation` resource. This checksum is computed by the server based on the
+        /// value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date
+        /// value before proceeding.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>
+        /// Optional. Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must
+        /// meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters,
+        /// underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed.
+        /// * Keys must start with a lowercase letter or international character. * Each resource is limited to a
+        /// maximum of 64 labels. Both keys and values are additionally constrained to be &amp;lt;= 63 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Output only. Name of the `Automation`. Format is
+        /// projects/{project}/locations/{location}/deliveryPipelines/{delivery_pipeline}/automations/{automation}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Required. List of Automation rules associated with the Automation resource. Must have at least one rule and
+        /// limited to 250 rules per Delivery Pipeline. Note: the order of the rules here is not the same as the order
+        /// of execution.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rules")]
+        public virtual System.Collections.Generic.IList<AutomationRule> Rules { get; set; }
+
+        /// <summary>Required. Selected resources to which the automation will be applied.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selector")]
+        public virtual AutomationResourceSelector Selector { get; set; }
+
+        /// <summary>
+        /// Required. Email address of the user-managed IAM service account that creates Cloud Deploy release and
+        /// rollout resources.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
+        public virtual string ServiceAccount { get; set; }
+
+        /// <summary>Optional. When Suspended, automation is deactivated from execution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suspended")]
+        public virtual System.Nullable<bool> Suspended { get; set; }
+
+        /// <summary>Output only. Unique identifier of the `Automation`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uid")]
+        public virtual string Uid { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. Time at which the automation was updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+    }
+
+    /// <summary>
     /// Payload proto for "clouddeploy.googleapis.com/automation" Platform Log event that describes the Automation
     /// related events.
     /// </summary>
@@ -3690,6 +4676,298 @@ namespace Google.Apis.CloudDeploy.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// AutomationResourceSelector contains the information to select the resources to which an Automation is going to
+    /// be applied.
+    /// </summary>
+    public class AutomationResourceSelector : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Contains attributes about a target.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targets")]
+        public virtual System.Collections.Generic.IList<TargetAttribute> Targets { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// AutomationRolloutMetadata contains Automation-related actions that were performed on a rollout.
+    /// </summary>
+    public class AutomationRolloutMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The IDs of the AutomationRuns initiated by an advance rollout rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("advanceAutomationRuns")]
+        public virtual System.Collections.Generic.IList<string> AdvanceAutomationRuns { get; set; }
+
+        /// <summary>Output only. The ID of the AutomationRun initiated by a promote release rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("promoteAutomationRun")]
+        public virtual string PromoteAutomationRun { get; set; }
+
+        /// <summary>Output only. The IDs of the AutomationRuns initiated by a repair rollout rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("repairAutomationRuns")]
+        public virtual System.Collections.Generic.IList<string> RepairAutomationRuns { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>`AutomationRule` defines the automation activities.</summary>
+    public class AutomationRule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The `AdvanceRolloutRule` will automatically advance a successful Rollout.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("advanceRolloutRule")]
+        public virtual AdvanceRolloutRule AdvanceRolloutRule { get; set; }
+
+        /// <summary>
+        /// Optional. `PromoteReleaseRule` will automatically promote a release from the current target to a specified
+        /// target.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("promoteReleaseRule")]
+        public virtual PromoteReleaseRule PromoteReleaseRule { get; set; }
+
+        /// <summary>Optional. The `RepairRolloutRule` will automatically repair a failed rollout.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("repairRolloutRule")]
+        public virtual RepairRolloutRule RepairRolloutRule { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>`AutomationRuleCondition` contains conditions relevant to an `Automation` rule.</summary>
+    public class AutomationRuleCondition : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Details around targets enumerated in the rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetsPresentCondition")]
+        public virtual TargetsPresentCondition TargetsPresentCondition { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// An `AutomationRun` resource in the Cloud Deploy API. An `AutomationResource` represents an automation execution
+    /// instance of an automation rule.
+    /// </summary>
+    public class AutomationRun : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Advances a rollout to the next phase.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("advanceRolloutOperation")]
+        public virtual AdvanceRolloutOperation AdvanceRolloutOperation { get; set; }
+
+        /// <summary>Output only. The ID of the automation that initiated the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("automationId")]
+        public virtual string AutomationId { get; set; }
+
+        /// <summary>Output only. Snapshot of the Automation taken at AutomationRun creation time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("automationSnapshot")]
+        public virtual Automation AutomationSnapshot { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Time at which the `AutomationRun` was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>
+        /// Output only. The weak etag of the `AutomationRun` resource. This checksum is computed by the server based on
+        /// the value of other fields, and may be sent on update and delete requests to ensure the client has an
+        /// up-to-date value before proceeding.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        private string _expireTimeRaw;
+
+        private object _expireTime;
+
+        /// <summary>
+        /// Output only. Time the `AutomationRun` will expire. An `AutomationRun` will expire after 14 days from its
+        /// creation date.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
+        public virtual string ExpireTimeRaw
+        {
+            get => _expireTimeRaw;
+            set
+            {
+                _expireTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _expireTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ExpireTimeDateTimeOffset instead.")]
+        public virtual object ExpireTime
+        {
+            get => _expireTime;
+            set
+            {
+                _expireTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _expireTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>
+        /// Output only. Name of the `AutomationRun`. Format is
+        /// projects/{project}/locations/{location}/deliveryPipelines/{delivery_pipeline}/automationRuns/{automation_run}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. Promotes a release to a specified 'Target'.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("promoteReleaseOperation")]
+        public virtual PromoteReleaseOperation PromoteReleaseOperation { get; set; }
+
+        /// <summary>Output only. Repairs a failed 'Rollout'.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("repairRolloutOperation")]
+        public virtual RepairRolloutOperation RepairRolloutOperation { get; set; }
+
+        /// <summary>Output only. The ID of the automation rule that initiated the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ruleId")]
+        public virtual string RuleId { get; set; }
+
+        /// <summary>
+        /// Output only. Email address of the user-managed IAM service account that performs the operations against
+        /// Cloud Deploy resources.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
+        public virtual string ServiceAccount { get; set; }
+
+        /// <summary>Output only. Current state of the `AutomationRun`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>
+        /// Output only. Explains the current state of the `AutomationRun`. Present only an explanation is needed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stateDescription")]
+        public virtual string StateDescription { get; set; }
+
+        /// <summary>
+        /// Output only. The ID of the target that represents the promotion stage that initiates the `AutomationRun`.
+        /// The value of this field is the last segment of a target name.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetId")]
+        public virtual string TargetId { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. Time at which the automationRun was updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        private string _waitUntilTimeRaw;
+
+        private object _waitUntilTime;
+
+        /// <summary>
+        /// Output only. Earliest time the `AutomationRun` will attempt to resume. Wait-time is configured by `wait` in
+        /// automation rule.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("waitUntilTime")]
+        public virtual string WaitUntilTimeRaw
+        {
+            get => _waitUntilTimeRaw;
+            set
+            {
+                _waitUntilTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _waitUntilTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="WaitUntilTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use WaitUntilTimeDateTimeOffset instead.")]
+        public virtual object WaitUntilTime
+        {
+            get => _waitUntilTime;
+            set
+            {
+                _waitUntilTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _waitUntilTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="WaitUntilTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? WaitUntilTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(WaitUntilTimeRaw);
+            set => WaitUntilTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
     }
 
     /// <summary>
@@ -3856,6 +5134,20 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("verify")]
         public virtual System.Nullable<bool> Verify { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request object used by `CancelAutomationRun`.</summary>
+    public class CancelAutomationRunRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response object from `CancelAutomationRun`.</summary>
+    public class CancelAutomationRunResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -4793,6 +6085,50 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The response object from `ListAutomationRuns`.</summary>
+    public class ListAutomationRunsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The `AutomationRuns` objects.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("automationRuns")]
+        public virtual System.Collections.Generic.IList<AutomationRun> AutomationRuns { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response object from `ListAutomations`.</summary>
+    public class ListAutomationsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The `Automations` objects.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("automations")]
+        public virtual System.Collections.Generic.IList<Automation> Automations { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The response object from `ListDeliveryPipelines`.</summary>
     public class ListDeliveryPipelinesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4968,6 +6304,13 @@ namespace Google.Apis.CloudDeploy.v1.Data
     /// <summary>Metadata includes information associated with a `Rollout`.</summary>
     public class Metadata : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Output only. AutomationRolloutMetadata contains the information about the interactions between Automation
+        /// service and this rollout.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("automation")]
+        public virtual AutomationRolloutMetadata Automation { get; set; }
+
         /// <summary>Output only. The name of the Cloud Run Service that is associated with a `Rollout`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudRun")]
         public virtual CloudRunMetadata CloudRun { get; set; }
@@ -5503,6 +6846,71 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Contains the information of an automated promote-release operation.</summary>
+    public class PromoteReleaseOperation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The starting phase of the rollout created by this operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phase")]
+        public virtual string Phase { get; set; }
+
+        /// <summary>Output only. The name of the rollout that initiates the `AutomationRun`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rollout")]
+        public virtual string Rollout { get; set; }
+
+        /// <summary>
+        /// Output only. The ID of the target that represents the promotion stage to which the release will be promoted.
+        /// The value of this field is the last segment of a target name.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetId")]
+        public virtual string TargetId { get; set; }
+
+        /// <summary>Output only. How long the operation will be paused.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wait")]
+        public virtual object Wait { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// `PromoteRelease` rule will automatically promote a release from the current target to a specified target.
+    /// </summary>
+    public class PromoteReleaseRule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Information around the state of the Automation rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("condition")]
+        public virtual AutomationRuleCondition Condition { get; set; }
+
+        /// <summary>
+        /// Optional. The starting phase of the rollout created by this operation. Default to the first phase.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationPhase")]
+        public virtual string DestinationPhase { get; set; }
+
+        /// <summary>
+        /// Optional. The ID of the stage in the pipeline to which this `Release` is deploying. If unspecified, default
+        /// it to the next stage in the promotion flow. The value of this field could be one of the following: * The
+        /// last segment of a target name. It only needs the ID to determine if the target is one of the stages in the
+        /// promotion sequence defined in the pipeline. * "@next", the next target in the promotion sequence.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationTargetId")]
+        public virtual string DestinationTargetId { get; set; }
+
+        /// <summary>
+        /// Required. ID of the rule. This id must be unique in the `Automation` resource to which this rule belongs.
+        /// The format is a-z{0,62}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>Optional. How long the release need to be paused until being promoted to the next target.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wait")]
+        public virtual object Wait { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A `Release` resource in the Cloud Deploy API. A `Release` defines a specific Skaffold configuration instance
     /// that can be deployed.
@@ -5803,6 +7211,153 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration of the repair action.</summary>
+    public class RepairMode : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Retries a failed job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("retry")]
+        public virtual Retry Retry { get; set; }
+
+        /// <summary>Optional. Rolls back a `Rollout`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rollback")]
+        public virtual Rollback Rollback { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// RepairPhase tracks the repair attempts that have been made for each `RepairMode` specified in the `Automation`
+    /// resource.
+    /// </summary>
+    public class RepairPhase : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Records of the retry attempts for retry repair mode.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("retry")]
+        public virtual RetryPhase Retry { get; set; }
+
+        /// <summary>Output only. Rollback attempt for rollback repair mode .</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rollback")]
+        public virtual RollbackAttempt Rollback { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains the information for an automated `repair rollout` operation.</summary>
+    public class RepairRolloutOperation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The index of the current repair action in the repair sequence.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("currentRepairModeIndex")]
+        public virtual System.Nullable<long> CurrentRepairModeIndex { get; set; }
+
+        /// <summary>
+        /// Output only. Records of the repair attempts. Each repair phase may have multiple retry attempts or single
+        /// rollback attempt.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("repairPhases")]
+        public virtual System.Collections.Generic.IList<RepairPhase> RepairPhases { get; set; }
+
+        /// <summary>Output only. The name of the rollout that initiates the `AutomationRun`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rollout")]
+        public virtual string Rollout { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The `RepairRolloutRule` automation rule will automatically repair a failed `Rollout`.</summary>
+    public class RepairRolloutRule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Information around the state of the 'Automation' rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("condition")]
+        public virtual AutomationRuleCondition Condition { get; set; }
+
+        /// <summary>
+        /// Required. ID of the rule. This id must be unique in the `Automation` resource to which this rule belongs.
+        /// The format is a-z{0,62}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>
+        /// Optional. Jobs to repair. Proceeds only after job name matched any one in the list, or for all jobs if
+        /// unspecified or empty. The phase that includes the job must match the phase ID specified in `source_phase`.
+        /// This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a
+        /// letter or a number, and have a max length of 63 characters. In other words, it must match the following
+        /// regex: `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jobs")]
+        public virtual System.Collections.Generic.IList<string> Jobs { get; set; }
+
+        /// <summary>Required. Defines the types of automatic repair actions for failed jobs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("repairModes")]
+        public virtual System.Collections.Generic.IList<RepairMode> RepairModes { get; set; }
+
+        /// <summary>
+        /// Optional. Phases within which jobs are subject to automatic repair actions on failure. Proceeds only after
+        /// phase name matched any one in the list, or for all phases if unspecified. This value must consist of
+        /// lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a
+        /// max length of 63 characters. In other words, it must match the following regex:
+        /// `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourcePhases")]
+        public virtual System.Collections.Generic.IList<string> SourcePhases { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Retries the failed job.</summary>
+    public class Retry : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Total number of retries. Retry will skipped if set to 0; The minimum value is 1, and the maximum
+        /// value is 10.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attempts")]
+        public virtual System.Nullable<long> Attempts { get; set; }
+
+        /// <summary>
+        /// Optional. The pattern of how wait time will be increased. Default is linear. Backoff mode will be ignored if
+        /// `wait` is 0.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backoffMode")]
+        public virtual string BackoffMode { get; set; }
+
+        /// <summary>
+        /// Optional. How long to wait for the first retry. Default is 0, and the maximum value is 14d.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wait")]
+        public virtual object Wait { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>RetryAttempt represents an action of retrying the failed Cloud Deploy job.</summary>
+    public class RetryAttempt : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The index of this retry attempt.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attempt")]
+        public virtual System.Nullable<long> Attempt { get; set; }
+
+        /// <summary>Output only. Valid state of this retry action.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Output only. Description of the state of the Retry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stateDesc")]
+        public virtual string StateDesc { get; set; }
+
+        /// <summary>Output only. How long the operation will be paused.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wait")]
+        public virtual object Wait { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>RetryJobRequest is the request object used by `RetryJob`.</summary>
     public class RetryJobRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5821,6 +7376,70 @@ namespace Google.Apis.CloudDeploy.v1.Data
     /// <summary>The response object from 'RetryJob'.</summary>
     public class RetryJobResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>RetryPhase contains the retry attempts and the metadata for initiating a new attempt.</summary>
+    public class RetryPhase : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Detail of a retry action.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attempts")]
+        public virtual System.Collections.Generic.IList<RetryAttempt> Attempts { get; set; }
+
+        /// <summary>Output only. The pattern of how the wait time of the retry attempt is calculated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backoffMode")]
+        public virtual string BackoffMode { get; set; }
+
+        /// <summary>Output only. The job ID for the Job to retry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jobId")]
+        public virtual string JobId { get; set; }
+
+        /// <summary>Output only. The phase ID of the phase that includes the job being retried.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phaseId")]
+        public virtual string PhaseId { get; set; }
+
+        /// <summary>Output only. The number of attempts that have been made.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalAttempts")]
+        public virtual System.Nullable<long> TotalAttempts { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Rolls back a `Rollout`.</summary>
+    public class Rollback : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The starting phase ID for the `Rollout`. If unspecified, the `Rollout` will start in the stable
+        /// phase.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationPhase")]
+        public virtual string DestinationPhase { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>RollbackAttempt represents an action of rolling back a Cloud Deploy 'Target'.</summary>
+    public class RollbackAttempt : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The phase to which the rollout will be rolled back to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationPhase")]
+        public virtual string DestinationPhase { get; set; }
+
+        /// <summary>Output only. ID of the rollback `Rollout` to create.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rolloutId")]
+        public virtual string RolloutId { get; set; }
+
+        /// <summary>Output only. Valid state of this rollback action.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Output only. Description of the state of the Rollback.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stateDesc")]
+        public virtual string StateDesc { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -6206,6 +7825,44 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual string TargetId { get; set; }
 
         /// <summary>Type of this notification, e.g. for a Pub/Sub failure.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Payload proto for "clouddeploy.googleapis.com/rollout_update" Platform Log event that describes the rollout
+    /// update event.
+    /// </summary>
+    public class RolloutUpdateEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Debug message for when a rollout update event occurs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
+
+        /// <summary>Unique identifier of the pipeline.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pipelineUid")]
+        public virtual string PipelineUid { get; set; }
+
+        /// <summary>Unique identifier of the release.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("releaseUid")]
+        public virtual string ReleaseUid { get; set; }
+
+        /// <summary>The name of the rollout.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rollout")]
+        public virtual string Rollout { get; set; }
+
+        /// <summary>Output only. The type of the rollout update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rolloutUpdateType")]
+        public virtual string RolloutUpdateType { get; set; }
+
+        /// <summary>ID of the target.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetId")]
+        public virtual string TargetId { get; set; }
+
+        /// <summary>Type of this notification, e.g. for a rollout update event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
@@ -6751,6 +8408,28 @@ namespace Google.Apis.CloudDeploy.v1.Data
         /// <summary>Output only. File path of the resolved Skaffold configuration relative to the URI.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skaffoldConfigPath")]
         public virtual string SkaffoldConfigPath { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Contains criteria for selecting Targets. Attributes provided must match the target resource in order for policy
+    /// restrictions to apply. E.g. if id "prod" and labels "foo: bar" are given the target resource must match both
+    /// that id and have that label in order to be selected.
+    /// </summary>
+    public class TargetAttribute : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// ID of the `Target`. The value of this field could be one of the following: * The last segment of a target
+        /// name. It only needs the ID to determine which target is being referred to * "*", all targets in a location.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>Target labels.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

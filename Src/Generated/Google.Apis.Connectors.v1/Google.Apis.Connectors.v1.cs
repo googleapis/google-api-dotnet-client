@@ -5201,6 +5201,24 @@ namespace Google.Apis.Connectors.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Regional encryption config for CMEK details.</summary>
+    public class EncryptionConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Encryption type for the region.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionType")]
+        public virtual string EncryptionType { get; set; }
+
+        /// <summary>
+        /// Optional. KMS crypto key. This field accepts identifiers of the form
+        /// `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/ {crypto_key}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
+        public virtual string KmsKeyName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Encryption Key value.</summary>
     public class EncryptionKey : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5726,6 +5744,10 @@ namespace Google.Apis.Connectors.v1.Data
         /// <summary>Output only. Array of search keywords.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("searchTags")]
         public virtual System.Collections.Generic.IList<string> SearchTags { get; set; }
+
+        /// <summary>Output only. The type of the event listener for a specific connector.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6920,6 +6942,10 @@ namespace Google.Apis.Connectors.v1.Data
     /// <summary>Regional Settings details.</summary>
     public class RegionalSettings : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Regional encryption config to hold CMEK details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionConfig")]
+        public virtual EncryptionConfig EncryptionConfig { get; set; }
+
         /// <summary>
         /// Output only. Resource name of the Connection. Format:
         /// projects/{project}/locations/{location}/regionalSettings

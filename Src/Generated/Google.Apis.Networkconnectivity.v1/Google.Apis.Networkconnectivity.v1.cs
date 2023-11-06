@@ -5340,59 +5340,6 @@ namespace Google.Apis.Networkconnectivity.v1
                     this.service = service;
                 }
 
-                /// <summary>Accepts a proposal to attach a Network Connectivity Center spoke to the hub.</summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="name">Required. The name of the spoke to accept.</param>
-                public virtual AcceptRequest Accept(Google.Apis.Networkconnectivity.v1.Data.AcceptSpokeRequest body, string name)
-                {
-                    return new AcceptRequest(service, body, name);
-                }
-
-                /// <summary>Accepts a proposal to attach a Network Connectivity Center spoke to the hub.</summary>
-                public class AcceptRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.GoogleLongrunningOperation>
-                {
-                    /// <summary>Constructs a new Accept request.</summary>
-                    public AcceptRequest(Google.Apis.Services.IClientService service, Google.Apis.Networkconnectivity.v1.Data.AcceptSpokeRequest body, string name) : base(service)
-                    {
-                        Name = name;
-                        Body = body;
-                        InitParameters();
-                    }
-
-                    /// <summary>Required. The name of the spoke to accept.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Name { get; private set; }
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.Networkconnectivity.v1.Data.AcceptSpokeRequest Body { get; set; }
-
-                    /// <summary>Returns the body of the request.</summary>
-                    protected override object GetBody() => Body;
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "accept";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "POST";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1/{+name}:accept";
-
-                    /// <summary>Initializes Accept parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+/spokes/[^/]+$",
-                        });
-                    }
-                }
-
                 /// <summary>Creates a Network Connectivity Center spoke.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">Required. The parent resource.</param>
@@ -5864,67 +5811,6 @@ namespace Google.Apis.Networkconnectivity.v1
                 }
 
                 /// <summary>
-                /// Rejects a Network Connectivity Center spoke from being attached to the hub. If the spoke was
-                /// previously in the `ACTIVE` state, it transitions to the `INACTIVE` state and is no longer able to
-                /// connect to other spokes that are attached to the hub.
-                /// </summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="name">Required. The name of the spoke to reject.</param>
-                public virtual RejectRequest Reject(Google.Apis.Networkconnectivity.v1.Data.RejectSpokeRequest body, string name)
-                {
-                    return new RejectRequest(service, body, name);
-                }
-
-                /// <summary>
-                /// Rejects a Network Connectivity Center spoke from being attached to the hub. If the spoke was
-                /// previously in the `ACTIVE` state, it transitions to the `INACTIVE` state and is no longer able to
-                /// connect to other spokes that are attached to the hub.
-                /// </summary>
-                public class RejectRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.GoogleLongrunningOperation>
-                {
-                    /// <summary>Constructs a new Reject request.</summary>
-                    public RejectRequest(Google.Apis.Services.IClientService service, Google.Apis.Networkconnectivity.v1.Data.RejectSpokeRequest body, string name) : base(service)
-                    {
-                        Name = name;
-                        Body = body;
-                        InitParameters();
-                    }
-
-                    /// <summary>Required. The name of the spoke to reject.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Name { get; private set; }
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.Networkconnectivity.v1.Data.RejectSpokeRequest Body { get; set; }
-
-                    /// <summary>Returns the body of the request.</summary>
-                    protected override object GetBody() => Body;
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "reject";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "POST";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1/{+name}:reject";
-
-                    /// <summary>Initializes Reject parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+/spokes/[^/]+$",
-                        });
-                    }
-                }
-
-                /// <summary>
                 /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return
                 /// `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
                 /// </summary>
@@ -6231,26 +6117,6 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         /// <summary>The spoke that was operated on.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spoke")]
         public virtual Spoke Spoke { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>The request for HubService.AcceptSpoke.</summary>
-    public class AcceptSpokeRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your
-        /// request, the server knows to ignore the request if it has already been completed. The server guarantees that
-        /// a request doesn't result in creation of duplicate commitments for at least 60 minutes. For example, consider
-        /// a situation where you make an initial request and the request times out. If you make the request again with
-        /// the same request ID, the server can check to see whether the original operation was received. If it was, the
-        /// server ignores the second request. This behavior prevents clients from mistakenly creating duplicate
-        /// commitments. The request ID must be a valid UUID, with the exception that zero UUID is not supported
-        /// (00000000-0000-0000-0000-000000000000).
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
-        public virtual string RequestId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7981,32 +7847,6 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         /// <summary>The spoke that was operated on.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spoke")]
         public virtual Spoke Spoke { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>The request for HubService.RejectSpoke.</summary>
-    public class RejectSpokeRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Optional. Additional information provided by the hub administrator in the `RejectSpoke` call.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("details")]
-        public virtual string Details { get; set; }
-
-        /// <summary>
-        /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your
-        /// request, the server knows to ignore the request if it has already been completed. The server guarantees that
-        /// a request doesn't result in creation of duplicate commitments for at least 60 minutes. For example, consider
-        /// a situation where you make an initial request and the request times out. If you make the request again with
-        /// the same request ID, the server can check to see whether the original operation was received. If it was, the
-        /// server ignores the second request. This behavior prevents clients from mistakenly creating duplicate
-        /// commitments. The request ID must be a valid UUID, with the exception that zero UUID is not supported
-        /// (00000000-0000-0000-0000-000000000000).
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
-        public virtual string RequestId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

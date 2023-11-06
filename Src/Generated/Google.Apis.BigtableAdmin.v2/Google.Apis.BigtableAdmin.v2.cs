@@ -4526,6 +4526,13 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("consistencyToken")]
         public virtual string ConsistencyToken { get; set; }
 
+        /// <summary>
+        /// Checks that reads using an app profile with `StandardIsolation` can see all writes committed before the
+        /// token was created, even if the read and write target different clusters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("standardReadRemoteWrites")]
+        public virtual StandardReadRemoteWrites StandardReadRemoteWrites { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -4651,8 +4658,8 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         public virtual GcRule GcRule { get; set; }
 
         /// <summary>
-        /// Only available with STATS_VIEW, this includes summary statistics about column family contents. For
-        /// statistics over an entire table, see TableStats above.
+        /// Output only. Only available with STATS_VIEW, this includes summary statistics about column family contents.
+        /// For statistics over an entire table, see TableStats above.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stats")]
         public virtual ColumnFamilyStats Stats { get; set; }
@@ -6275,6 +6282,15 @@ namespace Google.Apis.BigtableAdmin.v2.Data
     }
 
     /// <summary>
+    /// Checks that all writes before the consistency token was generated is replicated in every cluster and readable.
+    /// </summary>
+    public class StandardReadRemoteWrites : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// The `Status` type defines a logical error model that is suitable for different programming environments,
     /// including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains
     /// three pieces of data: error code, error message, and error details. You can find out more about this error model
@@ -6364,9 +6380,9 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         public virtual RestoreInfo RestoreInfo { get; set; }
 
         /// <summary>
-        /// Only available with STATS_VIEW, this includes summary statistics about the entire table contents. For
-        /// statistics about a specific column family, see ColumnFamilyStats in the mapped ColumnFamily collection
-        /// above.
+        /// Output only. Only available with STATS_VIEW, this includes summary statistics about the entire table
+        /// contents. For statistics about a specific column family, see ColumnFamilyStats in the mapped ColumnFamily
+        /// collection above.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stats")]
         public virtual TableStats Stats { get; set; }

@@ -4251,6 +4251,82 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                                 public SeriesResource(Google.Apis.Services.IClientService service)
                                 {
                                     this.service = service;
+                                    Instances = new InstancesResource(service);
+                                }
+
+                                /// <summary>Gets the Instances resource.</summary>
+                                public virtual InstancesResource Instances { get; }
+
+                                /// <summary>The "instances" collection of methods.</summary>
+                                public class InstancesResource
+                                {
+                                    private const string Resource = "instances";
+
+                                    /// <summary>The service which this resource belongs to.</summary>
+                                    private readonly Google.Apis.Services.IClientService service;
+
+                                    /// <summary>Constructs a new resource.</summary>
+                                    public InstancesResource(Google.Apis.Services.IClientService service)
+                                    {
+                                        this.service = service;
+                                    }
+
+                                    /// <summary>
+                                    /// GetStorageInfo returns the storage info of the specified resource.
+                                    /// </summary>
+                                    /// <param name="resource">
+                                    /// Required. The path of the resource for which the storage info is requested (for
+                                    /// exaxmple for a DICOM Instance:
+                                    /// `projects/{projectid}/datasets/{datasetid}/dicomStores/{dicomStoreId}/dicomWeb/studies/{study_uid}/series/{series_uid}/instances/{instance_uid}`)
+                                    /// </param>
+                                    public virtual GetStorageInfoRequest GetStorageInfo(string resource)
+                                    {
+                                        return new GetStorageInfoRequest(service, resource);
+                                    }
+
+                                    /// <summary>
+                                    /// GetStorageInfo returns the storage info of the specified resource.
+                                    /// </summary>
+                                    public class GetStorageInfoRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.StorageInfo>
+                                    {
+                                        /// <summary>Constructs a new GetStorageInfo request.</summary>
+                                        public GetStorageInfoRequest(Google.Apis.Services.IClientService service, string resource) : base(service)
+                                        {
+                                            Resource = resource;
+                                            InitParameters();
+                                        }
+
+                                        /// <summary>
+                                        /// Required. The path of the resource for which the storage info is requested
+                                        /// (for exaxmple for a DICOM Instance:
+                                        /// `projects/{projectid}/datasets/{datasetid}/dicomStores/{dicomStoreId}/dicomWeb/studies/{study_uid}/series/{series_uid}/instances/{instance_uid}`)
+                                        /// </summary>
+                                        [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                                        public virtual string Resource { get; private set; }
+
+                                        /// <summary>Gets the method name.</summary>
+                                        public override string MethodName => "getStorageInfo";
+
+                                        /// <summary>Gets the HTTP method.</summary>
+                                        public override string HttpMethod => "GET";
+
+                                        /// <summary>Gets the REST path.</summary>
+                                        public override string RestPath => "v1beta1/{+resource}:getStorageInfo";
+
+                                        /// <summary>Initializes GetStorageInfo parameter list.</summary>
+                                        protected override void InitParameters()
+                                        {
+                                            base.InitParameters();
+                                            RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                                            {
+                                                Name = "resource",
+                                                IsRequired = true,
+                                                ParameterType = "path",
+                                                DefaultValue = null,
+                                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+/dicomWeb/studies/[^/]+/series/[^/]+/instances/[^/]+$",
+                                            });
+                                        }
+                                    }
                                 }
 
                                 /// <summary>GetSeriesMetrics returns metrics for a series.</summary>
@@ -4355,6 +4431,82 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                                     });
                                 }
                             }
+
+                            /// <summary>
+                            /// SetBlobStorageSettings sets the blob storage settings of the specified resources.
+                            /// </summary>
+                            /// <param name="body">The body of the request.</param>
+                            /// <param name="resource">
+                            /// Required. The path of the resource to update the blob storage settings in the format of
+                            /// `projects/{projectID}/datasets/{datasetID}/dicomStores/{dicomStoreID}/dicomWeb/studies/{studyUID}`,
+                            /// `projects/{projectID}/datasets/{datasetID}/dicomStores/{dicomStoreID}/dicomWeb/studies/{studyUID}/series/{seriesUID}/`,
+                            /// or
+                            /// `projects/{projectID}/datasets/{datasetID}/dicomStores/{dicomStoreID}/dicomWeb/studies/{studyUID}/series/{seriesUID}/instances/{instanceUID}`.
+                            /// If `filter_config` is specified, set the value of `resource` to the resource name of a
+                            /// DICOM store in the format
+                            /// `projects/{projectID}/datasets/{datasetID}/dicomStores/{dicomStoreID}`.
+                            /// </param>
+                            public virtual SetBlobStorageSettingsRequest SetBlobStorageSettings(Google.Apis.CloudHealthcare.v1beta1.Data.SetBlobStorageSettingsRequest body, string resource)
+                            {
+                                return new SetBlobStorageSettingsRequest(service, body, resource);
+                            }
+
+                            /// <summary>
+                            /// SetBlobStorageSettings sets the blob storage settings of the specified resources.
+                            /// </summary>
+                            public class SetBlobStorageSettingsRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.Operation>
+                            {
+                                /// <summary>Constructs a new SetBlobStorageSettings request.</summary>
+                                public SetBlobStorageSettingsRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1beta1.Data.SetBlobStorageSettingsRequest body, string resource) : base(service)
+                                {
+                                    Resource = resource;
+                                    Body = body;
+                                    InitParameters();
+                                }
+
+                                /// <summary>
+                                /// Required. The path of the resource to update the blob storage settings in the format
+                                /// of
+                                /// `projects/{projectID}/datasets/{datasetID}/dicomStores/{dicomStoreID}/dicomWeb/studies/{studyUID}`,
+                                /// `projects/{projectID}/datasets/{datasetID}/dicomStores/{dicomStoreID}/dicomWeb/studies/{studyUID}/series/{seriesUID}/`,
+                                /// or
+                                /// `projects/{projectID}/datasets/{datasetID}/dicomStores/{dicomStoreID}/dicomWeb/studies/{studyUID}/series/{seriesUID}/instances/{instanceUID}`.
+                                /// If `filter_config` is specified, set the value of `resource` to the resource name of
+                                /// a DICOM store in the format
+                                /// `projects/{projectID}/datasets/{datasetID}/dicomStores/{dicomStoreID}`.
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string Resource { get; private set; }
+
+                                /// <summary>Gets or sets the body of this request.</summary>
+                                Google.Apis.CloudHealthcare.v1beta1.Data.SetBlobStorageSettingsRequest Body { get; set; }
+
+                                /// <summary>Returns the body of the request.</summary>
+                                protected override object GetBody() => Body;
+
+                                /// <summary>Gets the method name.</summary>
+                                public override string MethodName => "setBlobStorageSettings";
+
+                                /// <summary>Gets the HTTP method.</summary>
+                                public override string HttpMethod => "POST";
+
+                                /// <summary>Gets the REST path.</summary>
+                                public override string RestPath => "v1beta1/{+resource}:setBlobStorageSettings";
+
+                                /// <summary>Initializes SetBlobStorageSettings parameter list.</summary>
+                                protected override void InitParameters()
+                                {
+                                    base.InitParameters();
+                                    RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "resource",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+/dicomWeb/studies/.*$",
+                                    });
+                                }
+                            }
                         }
                     }
 
@@ -4436,8 +4588,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                                     /// For details on the implementation of RetrieveFrames, see [DICOM
                                     /// frames](https://cloud.google.com/healthcare/docs/dicom#dicom_frames) in the
                                     /// Cloud Healthcare API conformance statement. For samples that show how to call
-                                    /// RetrieveFrames, see [Retrieving DICOM
-                                    /// data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieving_dicom_data).
+                                    /// RetrieveFrames, see [Retrieve DICOM
+                                    /// data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-dicom).
                                     /// </summary>
                                     /// <param name="parent">
                                     /// The name of the DICOM store that is being accessed. For example,
@@ -4459,8 +4611,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                                     /// For details on the implementation of RetrieveFrames, see [DICOM
                                     /// frames](https://cloud.google.com/healthcare/docs/dicom#dicom_frames) in the
                                     /// Cloud Healthcare API conformance statement. For samples that show how to call
-                                    /// RetrieveFrames, see [Retrieving DICOM
-                                    /// data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieving_dicom_data).
+                                    /// RetrieveFrames, see [Retrieve DICOM
+                                    /// data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-dicom).
                                     /// </summary>
                                     public class RetrieveFramesRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.HttpBody>
                                     {
@@ -4526,8 +4678,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                                     /// For details on the implementation of RetrieveRenderedFrames, see [Rendered
                                     /// resources](https://cloud.google.com/healthcare/docs/dicom#rendered_resources) in
                                     /// the Cloud Healthcare API conformance statement. For samples that show how to
-                                    /// call RetrieveRenderedFrames, see [Retrieving consumer image
-                                    /// formats](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieving_consumer_image_formats).
+                                    /// call RetrieveRenderedFrames, see [Retrieve consumer image
+                                    /// formats](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-consumer).
                                     /// </summary>
                                     /// <param name="parent">
                                     /// The name of the DICOM store that is being accessed. For example,
@@ -4550,8 +4702,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                                     /// For details on the implementation of RetrieveRenderedFrames, see [Rendered
                                     /// resources](https://cloud.google.com/healthcare/docs/dicom#rendered_resources) in
                                     /// the Cloud Healthcare API conformance statement. For samples that show how to
-                                    /// call RetrieveRenderedFrames, see [Retrieving consumer image
-                                    /// formats](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieving_consumer_image_formats).
+                                    /// call RetrieveRenderedFrames, see [Retrieve consumer image
+                                    /// formats](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-consumer).
                                     /// </summary>
                                     public class RetrieveRenderedRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.HttpBody>
                                     {
@@ -4615,8 +4767,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                                 /// Instance UID. Delete requests are equivalent to the GET requests specified in the
                                 /// Retrieve transaction. Study and series search results can take a few seconds to be
                                 /// updated after an instance is deleted using DeleteInstance. For samples that show how
-                                /// to call DeleteInstance, see [Deleting a study, series, or
-                                /// instance](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#deleting_a_study_series_or_instance).
+                                /// to call DeleteInstance, see [Delete a study, series, or
+                                /// instance](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#delete-dicom).
                                 /// </summary>
                                 /// <param name="parent">
                                 /// The name of the DICOM store that is being accessed. For example,
@@ -4636,8 +4788,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                                 /// Instance UID. Delete requests are equivalent to the GET requests specified in the
                                 /// Retrieve transaction. Study and series search results can take a few seconds to be
                                 /// updated after an instance is deleted using DeleteInstance. For samples that show how
-                                /// to call DeleteInstance, see [Deleting a study, series, or
-                                /// instance](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#deleting_a_study_series_or_instance).
+                                /// to call DeleteInstance, see [Delete a study, series, or
+                                /// instance](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#delete-dicom).
                                 /// </summary>
                                 public class DeleteRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.Empty>
                                 {
@@ -4704,8 +4856,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                                 /// and [DICOM
                                 /// instances](https://cloud.google.com/healthcare/docs/dicom#dicom_instances) in the
                                 /// Cloud Healthcare API conformance statement. For samples that show how to call
-                                /// RetrieveInstance, see [Retrieving an
-                                /// instance](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieving_an_instance).
+                                /// RetrieveInstance, see [Retrieve an
+                                /// instance](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-instance).
                                 /// </summary>
                                 /// <param name="parent">
                                 /// The name of the DICOM store that is being accessed. For example,
@@ -4729,8 +4881,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                                 /// and [DICOM
                                 /// instances](https://cloud.google.com/healthcare/docs/dicom#dicom_instances) in the
                                 /// Cloud Healthcare API conformance statement. For samples that show how to call
-                                /// RetrieveInstance, see [Retrieving an
-                                /// instance](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieving_an_instance).
+                                /// RetrieveInstance, see [Retrieve an
+                                /// instance](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-instance).
                                 /// </summary>
                                 public class RetrieveInstanceRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.HttpBody>
                                 {
@@ -4795,8 +4947,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                                 /// For details on the implementation of RetrieveInstanceMetadata, see [Metadata
                                 /// resources](https://cloud.google.com/healthcare/docs/dicom#metadata_resources) in the
                                 /// Cloud Healthcare API conformance statement. For samples that show how to call
-                                /// RetrieveInstanceMetadata, see [Retrieving
-                                /// metadata](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieving_metadata).
+                                /// RetrieveInstanceMetadata, see [Retrieve
+                                /// metadata](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-metadata).
                                 /// </summary>
                                 /// <param name="parent">
                                 /// The name of the DICOM store that is being accessed. For example,
@@ -4818,8 +4970,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                                 /// For details on the implementation of RetrieveInstanceMetadata, see [Metadata
                                 /// resources](https://cloud.google.com/healthcare/docs/dicom#metadata_resources) in the
                                 /// Cloud Healthcare API conformance statement. For samples that show how to call
-                                /// RetrieveInstanceMetadata, see [Retrieving
-                                /// metadata](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieving_metadata).
+                                /// RetrieveInstanceMetadata, see [Retrieve
+                                /// metadata](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-metadata).
                                 /// </summary>
                                 public class RetrieveMetadataRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.HttpBody>
                                 {
@@ -4884,8 +5036,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                                 /// For details on the implementation of RetrieveRenderedInstance, see [Rendered
                                 /// resources](https://cloud.google.com/healthcare/docs/dicom#rendered_resources) in the
                                 /// Cloud Healthcare API conformance statement. For samples that show how to call
-                                /// RetrieveRenderedInstance, see [Retrieving consumer image
-                                /// formats](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieving_consumer_image_formats).
+                                /// RetrieveRenderedInstance, see [Retrieve consumer image
+                                /// formats](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-consumer).
                                 /// </summary>
                                 /// <param name="parent">
                                 /// The name of the DICOM store that is being accessed. For example,
@@ -4907,8 +5059,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                                 /// For details on the implementation of RetrieveRenderedInstance, see [Rendered
                                 /// resources](https://cloud.google.com/healthcare/docs/dicom#rendered_resources) in the
                                 /// Cloud Healthcare API conformance statement. For samples that show how to call
-                                /// RetrieveRenderedInstance, see [Retrieving consumer image
-                                /// formats](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieving_consumer_image_formats).
+                                /// RetrieveRenderedInstance, see [Retrieve consumer image
+                                /// formats](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-consumer).
                                 /// </summary>
                                 public class RetrieveRenderedRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.HttpBody>
                                 {
@@ -4972,8 +5124,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             /// running operation. The method returns an Operation which will be marked successful when
                             /// the deletion is complete. Warning: Instances cannot be inserted into a series that is
                             /// being deleted by an operation until the operation completes. For samples that show how
-                            /// to call DeleteSeries, see [Deleting a study, series, or
-                            /// instance](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#deleting_a_study_series_or_instance).
+                            /// to call DeleteSeries, see [Delete a study, series, or
+                            /// instance](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#delete-dicom).
                             /// </summary>
                             /// <param name="parent">
                             /// The name of the DICOM store that is being accessed. For example,
@@ -4993,8 +5145,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             /// running operation. The method returns an Operation which will be marked successful when
                             /// the deletion is complete. Warning: Instances cannot be inserted into a series that is
                             /// being deleted by an operation until the operation completes. For samples that show how
-                            /// to call DeleteSeries, see [Deleting a study, series, or
-                            /// instance](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#deleting_a_study_series_or_instance).
+                            /// to call DeleteSeries, see [Delete a study, series, or
+                            /// instance](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#delete-dicom).
                             /// </summary>
                             public class DeleteRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.Operation>
                             {
@@ -5059,8 +5211,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             /// For details on the implementation of RetrieveSeriesMetadata, see [Metadata
                             /// resources](https://cloud.google.com/healthcare/docs/dicom#metadata_resources) in the
                             /// Cloud Healthcare API conformance statement. For samples that show how to call
-                            /// RetrieveSeriesMetadata, see [Retrieving
-                            /// metadata](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieving_metadata).
+                            /// RetrieveSeriesMetadata, see [Retrieve
+                            /// metadata](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-metadata).
                             /// </summary>
                             /// <param name="parent">
                             /// The name of the DICOM store that is being accessed. For example,
@@ -5082,8 +5234,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             /// For details on the implementation of RetrieveSeriesMetadata, see [Metadata
                             /// resources](https://cloud.google.com/healthcare/docs/dicom#metadata_resources) in the
                             /// Cloud Healthcare API conformance statement. For samples that show how to call
-                            /// RetrieveSeriesMetadata, see [Retrieving
-                            /// metadata](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieving_metadata).
+                            /// RetrieveSeriesMetadata, see [Retrieve
+                            /// metadata](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-metadata).
                             /// </summary>
                             public class RetrieveMetadataRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.HttpBody>
                             {
@@ -5147,8 +5299,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             /// For details on the implementation of RetrieveSeries, see [DICOM
                             /// study/series/instances](https://cloud.google.com/healthcare/docs/dicom#dicom_studyseriesinstances)
                             /// in the Cloud Healthcare API conformance statement. For samples that show how to call
-                            /// RetrieveSeries, see [Retrieving DICOM
-                            /// data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieving_dicom_data).
+                            /// RetrieveSeries, see [Retrieve DICOM
+                            /// data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-dicom).
                             /// </summary>
                             /// <param name="parent">
                             /// The name of the DICOM store that is being accessed. For example,
@@ -5169,8 +5321,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             /// For details on the implementation of RetrieveSeries, see [DICOM
                             /// study/series/instances](https://cloud.google.com/healthcare/docs/dicom#dicom_studyseriesinstances)
                             /// in the Cloud Healthcare API conformance statement. For samples that show how to call
-                            /// RetrieveSeries, see [Retrieving DICOM
-                            /// data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieving_dicom_data).
+                            /// RetrieveSeries, see [Retrieve DICOM
+                            /// data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-dicom).
                             /// </summary>
                             public class RetrieveSeriesRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.HttpBody>
                             {
@@ -5234,8 +5386,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             /// For details on the implementation of SearchForInstances, see [Search
                             /// transaction](https://cloud.google.com/healthcare/docs/dicom#search_transaction) in the
                             /// Cloud Healthcare API conformance statement. For samples that show how to call
-                            /// SearchForInstances, see [Searching for studies, series, instances, and
-                            /// frames](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#searching_for_studies_series_instances_and_frames).
+                            /// SearchForInstances, see [Search for DICOM
+                            /// data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#search-dicom).
                             /// </summary>
                             /// <param name="parent">
                             /// The name of the DICOM store that is being accessed. For example,
@@ -5256,8 +5408,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             /// For details on the implementation of SearchForInstances, see [Search
                             /// transaction](https://cloud.google.com/healthcare/docs/dicom#search_transaction) in the
                             /// Cloud Healthcare API conformance statement. For samples that show how to call
-                            /// SearchForInstances, see [Searching for studies, series, instances, and
-                            /// frames](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#searching_for_studies_series_instances_and_frames).
+                            /// SearchForInstances, see [Search for DICOM
+                            /// data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#search-dicom).
                             /// </summary>
                             public class SearchForInstancesRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.HttpBody>
                             {
@@ -5320,9 +5472,9 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// DeleteStudy deletes all instances within the given study using a long running operation. The
                         /// method returns an Operation which will be marked successful when the deletion is complete.
                         /// Warning: Instances cannot be inserted into a study that is being deleted by an operation
-                        /// until the operation completes. For samples that show how to call DeleteStudy, see [Deleting
-                        /// a study, series, or
-                        /// instance](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#deleting_a_study_series_or_instance).
+                        /// until the operation completes. For samples that show how to call DeleteStudy, see [Delete a
+                        /// study, series, or
+                        /// instance](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#delete-dicom).
                         /// </summary>
                         /// <param name="parent"><c>null</c></param>
                         /// <param name="dicomWebPath">
@@ -5337,9 +5489,9 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// DeleteStudy deletes all instances within the given study using a long running operation. The
                         /// method returns an Operation which will be marked successful when the deletion is complete.
                         /// Warning: Instances cannot be inserted into a study that is being deleted by an operation
-                        /// until the operation completes. For samples that show how to call DeleteStudy, see [Deleting
-                        /// a study, series, or
-                        /// instance](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#deleting_a_study_series_or_instance).
+                        /// until the operation completes. For samples that show how to call DeleteStudy, see [Delete a
+                        /// study, series, or
+                        /// instance](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#delete-dicom).
                         /// </summary>
                         public class DeleteRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.Operation>
                         {
@@ -5399,8 +5551,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// For details on the implementation of RetrieveStudyMetadata, see [Metadata
                         /// resources](https://cloud.google.com/healthcare/docs/dicom#metadata_resources) in the Cloud
                         /// Healthcare API conformance statement. For samples that show how to call
-                        /// RetrieveStudyMetadata, see [Retrieving
-                        /// metadata](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieving_metadata).
+                        /// RetrieveStudyMetadata, see [Retrieve
+                        /// metadata](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-metadata).
                         /// </summary>
                         /// <param name="parent">
                         /// The name of the DICOM store that is being accessed. For example,
@@ -5422,8 +5574,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// For details on the implementation of RetrieveStudyMetadata, see [Metadata
                         /// resources](https://cloud.google.com/healthcare/docs/dicom#metadata_resources) in the Cloud
                         /// Healthcare API conformance statement. For samples that show how to call
-                        /// RetrieveStudyMetadata, see [Retrieving
-                        /// metadata](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieving_metadata).
+                        /// RetrieveStudyMetadata, see [Retrieve
+                        /// metadata](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-metadata).
                         /// </summary>
                         public class RetrieveMetadataRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.HttpBody>
                         {
@@ -5487,8 +5639,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// For details on the implementation of RetrieveStudy, see [DICOM
                         /// study/series/instances](https://cloud.google.com/healthcare/docs/dicom#dicom_studyseriesinstances)
                         /// in the Cloud Healthcare API conformance statement. For samples that show how to call
-                        /// RetrieveStudy, see [Retrieving DICOM
-                        /// data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieving_dicom_data).
+                        /// RetrieveStudy, see [Retrieve DICOM
+                        /// data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-dicom).
                         /// </summary>
                         /// <param name="parent">
                         /// The name of the DICOM store that is being accessed. For example,
@@ -5508,8 +5660,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// For details on the implementation of RetrieveStudy, see [DICOM
                         /// study/series/instances](https://cloud.google.com/healthcare/docs/dicom#dicom_studyseriesinstances)
                         /// in the Cloud Healthcare API conformance statement. For samples that show how to call
-                        /// RetrieveStudy, see [Retrieving DICOM
-                        /// data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieving_dicom_data).
+                        /// RetrieveStudy, see [Retrieve DICOM
+                        /// data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-dicom).
                         /// </summary>
                         public class RetrieveStudyRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.HttpBody>
                         {
@@ -5572,8 +5724,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// For details on the implementation of SearchForInstances, see [Search
                         /// transaction](https://cloud.google.com/healthcare/docs/dicom#search_transaction) in the Cloud
                         /// Healthcare API conformance statement. For samples that show how to call SearchForInstances,
-                        /// see [Searching for studies, series, instances, and
-                        /// frames](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#searching_for_studies_series_instances_and_frames).
+                        /// see [Search for DICOM
+                        /// data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#search-dicom).
                         /// </summary>
                         /// <param name="parent">
                         /// The name of the DICOM store that is being accessed. For example,
@@ -5594,8 +5746,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// For details on the implementation of SearchForInstances, see [Search
                         /// transaction](https://cloud.google.com/healthcare/docs/dicom#search_transaction) in the Cloud
                         /// Healthcare API conformance statement. For samples that show how to call SearchForInstances,
-                        /// see [Searching for studies, series, instances, and
-                        /// frames](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#searching_for_studies_series_instances_and_frames).
+                        /// see [Search for DICOM
+                        /// data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#search-dicom).
                         /// </summary>
                         public class SearchForInstancesRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.HttpBody>
                         {
@@ -5659,8 +5811,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// For details on the implementation of SearchForSeries, see [Search
                         /// transaction](https://cloud.google.com/healthcare/docs/dicom#search_transaction) in the Cloud
                         /// Healthcare API conformance statement. For samples that show how to call SearchForSeries, see
-                        /// [Searching for studies, series, instances, and
-                        /// frames](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#searching_for_studies_series_instances_and_frames).
+                        /// [Search for DICOM
+                        /// data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#search-dicom).
                         /// </summary>
                         /// <param name="parent">
                         /// The name of the DICOM store that is being accessed. For example,
@@ -5681,8 +5833,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// For details on the implementation of SearchForSeries, see [Search
                         /// transaction](https://cloud.google.com/healthcare/docs/dicom#search_transaction) in the Cloud
                         /// Healthcare API conformance statement. For samples that show how to call SearchForSeries, see
-                        /// [Searching for studies, series, instances, and
-                        /// frames](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#searching_for_studies_series_instances_and_frames).
+                        /// [Search for DICOM
+                        /// data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#search-dicom).
                         /// </summary>
                         public class SearchForSeriesRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.HttpBody>
                         {
@@ -5747,8 +5899,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// For details on the implementation of StoreInstances, see [Store
                         /// transaction](https://cloud.google.com/healthcare/docs/dicom#store_transaction) in the Cloud
                         /// Healthcare API conformance statement. For samples that show how to call StoreInstances, see
-                        /// [Storing DICOM
-                        /// data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#storing_dicom_data).
+                        /// [Store DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#store-dicom).
                         /// </summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="parent">
@@ -5771,8 +5922,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// For details on the implementation of StoreInstances, see [Store
                         /// transaction](https://cloud.google.com/healthcare/docs/dicom#store_transaction) in the Cloud
                         /// Healthcare API conformance statement. For samples that show how to call StoreInstances, see
-                        /// [Storing DICOM
-                        /// data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#storing_dicom_data).
+                        /// [Store DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#store-dicom).
                         /// </summary>
                         public class StoreInstancesRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.HttpBody>
                         {
@@ -6526,8 +6676,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// For details on the implementation of SearchForInstances, see [Search
                     /// transaction](https://cloud.google.com/healthcare/docs/dicom#search_transaction) in the Cloud
                     /// Healthcare API conformance statement. For samples that show how to call SearchForInstances, see
-                    /// [Searching for studies, series, instances, and
-                    /// frames](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#searching_for_studies_series_instances_and_frames).
+                    /// [Search for DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#search-dicom).
                     /// </summary>
                     /// <param name="parent">
                     /// The name of the DICOM store that is being accessed. For example,
@@ -6548,8 +6697,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// For details on the implementation of SearchForInstances, see [Search
                     /// transaction](https://cloud.google.com/healthcare/docs/dicom#search_transaction) in the Cloud
                     /// Healthcare API conformance statement. For samples that show how to call SearchForInstances, see
-                    /// [Searching for studies, series, instances, and
-                    /// frames](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#searching_for_studies_series_instances_and_frames).
+                    /// [Search for DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#search-dicom).
                     /// </summary>
                     public class SearchForInstancesRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.HttpBody>
                     {
@@ -6613,8 +6761,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// For details on the implementation of SearchForSeries, see [Search
                     /// transaction](https://cloud.google.com/healthcare/docs/dicom#search_transaction) in the Cloud
                     /// Healthcare API conformance statement. For samples that show how to call SearchForSeries, see
-                    /// [Searching for studies, series, instances, and
-                    /// frames](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#searching_for_studies_series_instances_and_frames).
+                    /// [Search for DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#search-dicom).
                     /// </summary>
                     /// <param name="parent">
                     /// The name of the DICOM store that is being accessed. For example,
@@ -6635,8 +6782,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// For details on the implementation of SearchForSeries, see [Search
                     /// transaction](https://cloud.google.com/healthcare/docs/dicom#search_transaction) in the Cloud
                     /// Healthcare API conformance statement. For samples that show how to call SearchForSeries, see
-                    /// [Searching for studies, series, instances, and
-                    /// frames](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#searching_for_studies_series_instances_and_frames).
+                    /// [Search for DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#search-dicom).
                     /// </summary>
                     public class SearchForSeriesRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.HttpBody>
                     {
@@ -6700,8 +6846,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// For details on the implementation of SearchForStudies, see [Search
                     /// transaction](https://cloud.google.com/healthcare/docs/dicom#search_transaction) in the Cloud
                     /// Healthcare API conformance statement. For samples that show how to call SearchForStudies, see
-                    /// [Searching for studies, series, instances, and
-                    /// frames](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#searching_for_studies_series_instances_and_frames).
+                    /// [Search for DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#search-dicom).
                     /// </summary>
                     /// <param name="parent">
                     /// The name of the DICOM store that is being accessed. For example,
@@ -6721,8 +6866,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// For details on the implementation of SearchForStudies, see [Search
                     /// transaction](https://cloud.google.com/healthcare/docs/dicom#search_transaction) in the Cloud
                     /// Healthcare API conformance statement. For samples that show how to call SearchForStudies, see
-                    /// [Searching for studies, series, instances, and
-                    /// frames](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#searching_for_studies_series_instances_and_frames).
+                    /// [Search for DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#search-dicom).
                     /// </summary>
                     public class SearchForStudiesRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.HttpBody>
                     {
@@ -6775,6 +6919,79 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = @"^studies$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// SetBlobStorageSettings sets the blob storage settings of the specified resources.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="resource">
+                    /// Required. The path of the resource to update the blob storage settings in the format of
+                    /// `projects/{projectID}/datasets/{datasetID}/dicomStores/{dicomStoreID}/dicomWeb/studies/{studyUID}`,
+                    /// `projects/{projectID}/datasets/{datasetID}/dicomStores/{dicomStoreID}/dicomWeb/studies/{studyUID}/series/{seriesUID}/`,
+                    /// or
+                    /// `projects/{projectID}/datasets/{datasetID}/dicomStores/{dicomStoreID}/dicomWeb/studies/{studyUID}/series/{seriesUID}/instances/{instanceUID}`.
+                    /// If `filter_config` is specified, set the value of `resource` to the resource name of a DICOM
+                    /// store in the format `projects/{projectID}/datasets/{datasetID}/dicomStores/{dicomStoreID}`.
+                    /// </param>
+                    public virtual SetBlobStorageSettingsRequest SetBlobStorageSettings(Google.Apis.CloudHealthcare.v1beta1.Data.SetBlobStorageSettingsRequest body, string resource)
+                    {
+                        return new SetBlobStorageSettingsRequest(service, body, resource);
+                    }
+
+                    /// <summary>
+                    /// SetBlobStorageSettings sets the blob storage settings of the specified resources.
+                    /// </summary>
+                    public class SetBlobStorageSettingsRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new SetBlobStorageSettings request.</summary>
+                        public SetBlobStorageSettingsRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1beta1.Data.SetBlobStorageSettingsRequest body, string resource) : base(service)
+                        {
+                            Resource = resource;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The path of the resource to update the blob storage settings in the format of
+                        /// `projects/{projectID}/datasets/{datasetID}/dicomStores/{dicomStoreID}/dicomWeb/studies/{studyUID}`,
+                        /// `projects/{projectID}/datasets/{datasetID}/dicomStores/{dicomStoreID}/dicomWeb/studies/{studyUID}/series/{seriesUID}/`,
+                        /// or
+                        /// `projects/{projectID}/datasets/{datasetID}/dicomStores/{dicomStoreID}/dicomWeb/studies/{studyUID}/series/{seriesUID}/instances/{instanceUID}`.
+                        /// If `filter_config` is specified, set the value of `resource` to the resource name of a DICOM
+                        /// store in the format `projects/{projectID}/datasets/{datasetID}/dicomStores/{dicomStoreID}`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Resource { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudHealthcare.v1beta1.Data.SetBlobStorageSettingsRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "setBlobStorageSettings";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+resource}:setBlobStorageSettings";
+
+                        /// <summary>Initializes SetBlobStorageSettings parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "resource",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$",
                             });
                         }
                     }
@@ -6853,8 +7070,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// details on the implementation of StoreInstances, see [Store
                     /// transaction](https://cloud.google.com/healthcare/docs/dicom#store_transaction) in the Cloud
                     /// Healthcare API conformance statement. For samples that show how to call StoreInstances, see
-                    /// [Storing DICOM
-                    /// data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#storing_dicom_data).
+                    /// [Store DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#store-dicom).
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
@@ -6877,8 +7093,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// details on the implementation of StoreInstances, see [Store
                     /// transaction](https://cloud.google.com/healthcare/docs/dicom#store_transaction) in the Cloud
                     /// Healthcare API conformance statement. For samples that show how to call StoreInstances, see
-                    /// [Storing DICOM
-                    /// data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#storing_dicom_data).
+                    /// [Store DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#store-dicom).
                     /// </summary>
                     public class StoreInstancesRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.HttpBody>
                     {
@@ -11780,7 +11995,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         }
                     }
 
-                    /// <summary>Gets metrics asssociated with the HL7v2 store.</summary>
+                    /// <summary>Gets metrics associated with the HL7v2 store.</summary>
                     /// <param name="name">
                     /// The resource name of the HL7v2 store to get metrics for, in the format
                     /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/hl7V2Stores/{hl7v2_store_id}`.
@@ -11790,7 +12005,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         return new GetHL7v2StoreMetricsRequest(service, name);
                     }
 
-                    /// <summary>Gets metrics asssociated with the HL7v2 store.</summary>
+                    /// <summary>Gets metrics associated with the HL7v2 store.</summary>
                     public class GetHL7v2StoreMetricsRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.Hl7V2StoreMetrics>
                     {
                         /// <summary>Constructs a new GetHL7v2StoreMetrics request.</summary>
@@ -14062,6 +14277,77 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual string Role { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// BlobStorageInfo contains details about the data stored in Blob Storage for the referenced resource. Note:
+    /// Storage class is only valid for DICOM and hence will only be populated for DICOM resources.
+    /// </summary>
+    public class BlobStorageInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Size in bytes of data stored in Blob Storage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sizeBytes")]
+        public virtual System.Nullable<long> SizeBytes { get; set; }
+
+        /// <summary>The storage class in which the Blob data is stored.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storageClass")]
+        public virtual string StorageClass { get; set; }
+
+        private string _storageClassUpdateTimeRaw;
+
+        private object _storageClassUpdateTime;
+
+        /// <summary>
+        /// The time at which the storage class was updated. This is used to compute early deletion fees of the
+        /// resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storageClassUpdateTime")]
+        public virtual string StorageClassUpdateTimeRaw
+        {
+            get => _storageClassUpdateTimeRaw;
+            set
+            {
+                _storageClassUpdateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _storageClassUpdateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StorageClassUpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StorageClassUpdateTimeDateTimeOffset instead.")]
+        public virtual object StorageClassUpdateTime
+        {
+            get => _storageClassUpdateTime;
+            set
+            {
+                _storageClassUpdateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _storageClassUpdateTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="StorageClassUpdateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StorageClassUpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StorageClassUpdateTimeRaw);
+            set => StorageClassUpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Settings for data stored in Blob storage.</summary>
+    public class BlobStorageSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The Storage class in which the Blob data is stored.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blobStorageClass")]
+        public virtual string BlobStorageClass { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16762,6 +17048,10 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
     /// </summary>
     public class ImportDicomDataRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. The blob storage settings for the data imported by this operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blobStorageSettings")]
+        public virtual BlobStorageSettings BlobStorageSettings { get; set; }
+
         /// <summary>
         /// Cloud Storage source data location and import configuration. The Cloud Healthcare Service Agent requires the
         /// `roles/storage.objectViewer` Cloud IAM roles on the Cloud Storage location.
@@ -18010,11 +18300,11 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
     public class RollbackFhirResourceFilteringFields : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. A string to use for filtering resource metadata. Complies with AIP-160 except without the has
-        /// operator. Additionally, supports 2 functions: hastag("system") = "code" for tag filtering and
-        /// extension_ts_value("uri") = timestamp for filtering extensions with timestamp, which is given as a unix
-        /// timestamp. extension_ts_url can be used with &amp;gt;, &amp;lt;, &amp;lt;=, &amp;gt;=, != comparisons as
-        /// well.
+        /// Optional. A filter expression that matches data in the `Resource.meta` element. Supports all filters in
+        /// [AIP-160](https://google.aip.dev/160) except the "has" (`:`) operator. Supports the following custom
+        /// functions: * `tag("") = ""` for tag filtering. * `extension_value_ts("") = ` for filtering extensions with a
+        /// timestamp, where `` is a Unix timestamp. Supports the `&amp;gt;`, `&amp;lt;`, `&amp;lt;=`, `&amp;gt;=`, and
+        /// `!=` comparison operators.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadataFilter")]
         public virtual string MetadataFilter { get; set; }
@@ -18370,6 +18660,35 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for `SetBlobStorageSettings` method.</summary>
+    public class SetBlobStorageSettingsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The blob storage settings to update for the specified resources. Only fields listed in `update_mask` are
+        /// applied.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blobStorageSettings")]
+        public virtual BlobStorageSettings BlobStorageSettings { get; set; }
+
+        /// <summary>
+        /// Optional. A filter configuration. If `filter_config` is specified, set the value of `resource` to the
+        /// resource name of a DICOM store in the format
+        /// `projects/{projectID}/datasets/{datasetID}/dicomStores/{dicomStoreID}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filterConfig")]
+        public virtual DicomFilterConfig FilterConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Returns additional info in regards to a completed set blob storage settings API.</summary>
+    public class SetBlobStorageSettingsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for `SetIamPolicy` method.</summary>
     public class SetIamPolicyRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -18479,6 +18798,28 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>StorageInfo encapsulates all the storage info of a resource.</summary>
+    public class StorageInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Info about the data stored in blob storage for the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blobStorageInfo")]
+        public virtual BlobStorageInfo BlobStorageInfo { get; set; }
+
+        /// <summary>
+        /// The resource whose storage info is returned. For example, to specify the resource path of a DICOM Instance:
+        /// `projects/{projectid}/datasets/{datasetid}/dicomStores/{dicom_store_id}/dicomWeb/studi/{study_uid}/series/{series_uid}/instances/{instance_uid}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("referencedResource")]
+        public virtual string ReferencedResource { get; set; }
+
+        /// <summary>Info about the data stored in structured storage for the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("structuredStorageInfo")]
+        public virtual StructuredStorageInfo StructuredStorageInfo { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Contains configuration for streaming FHIR export.</summary>
     public class StreamConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -18531,6 +18872,19 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceTypes")]
         public virtual System.Collections.Generic.IList<string> ResourceTypes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// StructuredStorageInfo contains details about the data stored in Structured Storage for the referenced resource.
+    /// </summary>
+    public class StructuredStorageInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Size in bytes of data stored in structured storage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sizeBytes")]
+        public virtual System.Nullable<long> SizeBytes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

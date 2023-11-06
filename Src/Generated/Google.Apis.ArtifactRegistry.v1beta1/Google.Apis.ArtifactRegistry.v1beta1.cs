@@ -1679,7 +1679,7 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                 /// <summary>Updates a repository.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
+                /// The name of the repository, for example: `projects/p1/locations/us-central1/repositories/repo1`.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.ArtifactRegistry.v1beta1.Data.Repository body, string name)
                 {
@@ -1698,7 +1698,7 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                     }
 
                     /// <summary>
-                    /// The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
+                    /// The name of the repository, for example: `projects/p1/locations/us-central1/repositories/repo1`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -2639,7 +2639,7 @@ namespace Google.Apis.ArtifactRegistry.v1beta1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
+        /// The name of the repository, for example: `projects/p1/locations/us-central1/repositories/repo1`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }

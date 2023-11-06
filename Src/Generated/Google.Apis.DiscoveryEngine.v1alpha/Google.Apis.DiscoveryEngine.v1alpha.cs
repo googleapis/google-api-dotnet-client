@@ -9863,8 +9863,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>
         /// Additional search parameters. For public website search only, supported values are: * `user_country_code`:
         /// string. Default empty. If set to non-empty, results are restricted or boosted based on the location
-        /// provided. * `search_type`: double. Default empty. Enables non-webpage searching depending on the value. The
-        /// only valid non-default value is 1, which enables image searching.
+        /// provided. Example: user_country_code: "au" For available codes see [Country
+        /// Codes](https://developers.google.com/custom-search/docs/json_api_reference#countryCodes) * `search_type`:
+        /// double. Default empty. Enables non-webpage searching depending on the value. The only valid non-default
+        /// value is 1, which enables image searching. Example: search_type: 1
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("params")]
         public virtual System.Collections.Generic.IDictionary<string, object> Params__ { get; set; }
