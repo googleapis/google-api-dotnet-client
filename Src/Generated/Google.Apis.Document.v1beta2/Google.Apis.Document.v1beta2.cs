@@ -1339,7 +1339,7 @@ namespace Google.Apis.Document.v1beta2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The metadata proto of ResyncDataset method.</summary>
+    /// <summary>The metadata proto of `ResyncDataset` method.</summary>
     public class GoogleCloudDocumentaiUiv1beta3ResyncDatasetMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The basic metadata of the long-running operation.</summary>
@@ -1347,7 +1347,7 @@ namespace Google.Apis.Document.v1beta2.Data
         public virtual GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata CommonMetadata { get; set; }
 
         /// <summary>
-        /// The list of dataset resync statuses. Not checked when `dataset_documents` is specified in ResyncRequest.
+        /// The list of dataset resync statuses. Not checked when ResyncDatasetRequest.dataset_documents is specified.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("datasetResyncStatuses")]
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiUiv1beta3ResyncDatasetMetadataDatasetResyncStatus> DatasetResyncStatuses { get; set; }
@@ -1371,8 +1371,8 @@ namespace Google.Apis.Document.v1beta2.Data
         public virtual string DatasetInconsistencyType { get; set; }
 
         /// <summary>
-        /// The status of resyncing the dataset with regards to the detected inconsistency. Empty if `validate_only` is
-        /// true in the request.
+        /// The status of resyncing the dataset with regards to the detected inconsistency. Empty if
+        /// ResyncDatasetRequest.validate_only is `true`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual GoogleRpcStatus Status { get; set; }
@@ -1393,8 +1393,8 @@ namespace Google.Apis.Document.v1beta2.Data
         public virtual string DocumentInconsistencyType { get; set; }
 
         /// <summary>
-        /// The status of resyncing the document with regards to the detected inconsistency. Empty if `validate_only` is
-        /// true in the request.
+        /// The status of resyncing the document with regards to the detected inconsistency. Empty if
+        /// ResyncDatasetRequest.validate_only is `true`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual GoogleRpcStatus Status { get; set; }
@@ -5412,7 +5412,7 @@ namespace Google.Apis.Document.v1beta2.Data
     /// <summary>A singleton resource under a Processor which configures a collection of documents.</summary>
     public class GoogleCloudDocumentaiV1beta3Dataset : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Document AI Warehouse-based dataset configuration.</summary>
+        /// <summary>Optional. Derepcated. Warehouse-based dataset configuration is not supported today.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("documentWarehouseConfig")]
         public virtual GoogleCloudDocumentaiV1beta3DatasetDocumentWarehouseConfig DocumentWarehouseConfig { get; set; }
 

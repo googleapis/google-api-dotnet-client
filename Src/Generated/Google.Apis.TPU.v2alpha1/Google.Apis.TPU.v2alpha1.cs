@@ -294,6 +294,7 @@ namespace Google.Apis.TPU.v2alpha1
                 Nodes = new NodesResource(service);
                 Operations = new OperationsResource(service);
                 QueuedResources = new QueuedResourcesResource(service);
+                Reservations = new ReservationsResource(service);
                 RuntimeVersions = new RuntimeVersionsResource(service);
             }
 
@@ -1605,6 +1606,93 @@ namespace Google.Apis.TPU.v2alpha1
                 }
             }
 
+            /// <summary>Gets the Reservations resource.</summary>
+            public virtual ReservationsResource Reservations { get; }
+
+            /// <summary>The "reservations" collection of methods.</summary>
+            public class ReservationsResource
+            {
+                private const string Resource = "reservations";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public ReservationsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Retrieves the reservations for the given project in the given location.</summary>
+                /// <param name="parent">Required. The parent for reservations.</param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>Retrieves the reservations for the given project in the given location.</summary>
+                public class ListRequest : TPUBaseServiceRequest<Google.Apis.TPU.v2alpha1.Data.ListReservationsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The parent for reservations.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>The maximum number of items to return.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>The next_page_token value returned from a previous List request, if any.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2alpha1/{+parent}/reservations";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
             /// <summary>Gets the RuntimeVersions resource.</summary>
             public virtual RuntimeVersionsResource RuntimeVersions { get; }
 
@@ -2394,6 +2482,21 @@ namespace Google.Apis.TPU.v2alpha1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response for ListReservations.</summary>
+    public class ListReservationsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The next page token or empty if none.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The listed reservations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reservations")]
+        public virtual System.Collections.Generic.IList<Reservation> Reservations { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response for ListRuntimeVersions.</summary>
     public class ListRuntimeVersionsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2871,6 +2974,43 @@ namespace Google.Apis.TPU.v2alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("bestEffort")]
         public virtual BestEffort BestEffort { get; set; }
 
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time when the QueuedResource was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
         /// <summary>The Guaranteed tier.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("guaranteed")]
         public virtual Guaranteed Guaranteed { get; set; }
@@ -3056,6 +3196,22 @@ namespace Google.Apis.TPU.v2alpha1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A reservation describes the amount of a resource 'allotted' for a defined period of time.</summary>
+    public class Reservation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The reservation name with the format: projects/{projectID}/locations/{location}/reservations/{reservationID}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("standard")]
+        public virtual Standard Standard { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request for ResetQueuedResource.</summary>
     public class ResetQueuedResourceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3153,6 +3309,30 @@ namespace Google.Apis.TPU.v2alpha1.Data
     /// <summary>Spot tier definition.</summary>
     public class Spot : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class Standard : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("capacityUnits")]
+        public virtual string CapacityUnits { get; set; }
+
+        /// <summary>The start and end time of the reservation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("interval")]
+        public virtual Interval Interval { get; set; }
+
+        /// <summary>The resource type of the reservation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
+        public virtual string ResourceType { get; set; }
+
+        /// <summary>The size of the reservation, in the units specified in the 'capacity_units' field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("size")]
+        public virtual System.Nullable<int> Size { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("usage")]
+        public virtual Usage Usage { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -3276,6 +3456,18 @@ namespace Google.Apis.TPU.v2alpha1.Data
         /// <summary>The TPU node(s) being requested.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodeSpec")]
         public virtual System.Collections.Generic.IList<NodeSpec> NodeSpec { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class Usage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The real-time value of usage within the reservation, with the unit specified in field capacity_units.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("total")]
+        public virtual System.Nullable<long> Total { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

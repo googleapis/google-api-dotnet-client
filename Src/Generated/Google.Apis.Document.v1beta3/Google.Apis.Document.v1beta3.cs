@@ -3449,7 +3449,7 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The metadata proto of ResyncDataset method.</summary>
+    /// <summary>The metadata proto of `ResyncDataset` method.</summary>
     public class GoogleCloudDocumentaiUiv1beta3ResyncDatasetMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The basic metadata of the long-running operation.</summary>
@@ -3457,7 +3457,7 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata CommonMetadata { get; set; }
 
         /// <summary>
-        /// The list of dataset resync statuses. Not checked when `dataset_documents` is specified in ResyncRequest.
+        /// The list of dataset resync statuses. Not checked when ResyncDatasetRequest.dataset_documents is specified.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("datasetResyncStatuses")]
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiUiv1beta3ResyncDatasetMetadataDatasetResyncStatus> DatasetResyncStatuses { get; set; }
@@ -3481,8 +3481,8 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string DatasetInconsistencyType { get; set; }
 
         /// <summary>
-        /// The status of resyncing the dataset with regards to the detected inconsistency. Empty if `validate_only` is
-        /// true in the request.
+        /// The status of resyncing the dataset with regards to the detected inconsistency. Empty if
+        /// ResyncDatasetRequest.validate_only is `true`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual GoogleRpcStatus Status { get; set; }
@@ -3503,8 +3503,8 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string DocumentInconsistencyType { get; set; }
 
         /// <summary>
-        /// The status of resyncing the document with regards to the detected inconsistency. Empty if `validate_only` is
-        /// true in the request.
+        /// The status of resyncing the document with regards to the detected inconsistency. Empty if
+        /// ResyncDatasetRequest.validate_only is `true`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual GoogleRpcStatus Status { get; set; }
@@ -7476,7 +7476,7 @@ namespace Google.Apis.Document.v1beta3.Data
     /// <summary>A singleton resource under a Processor which configures a collection of documents.</summary>
     public class GoogleCloudDocumentaiV1beta3Dataset : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Document AI Warehouse-based dataset configuration.</summary>
+        /// <summary>Optional. Derepcated. Warehouse-based dataset configuration is not supported today.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("documentWarehouseConfig")]
         public virtual GoogleCloudDocumentaiV1beta3DatasetDocumentWarehouseConfig DocumentWarehouseConfig { get; set; }
 
@@ -7927,7 +7927,7 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("documentId")]
         public virtual GoogleCloudDocumentaiV1beta3DocumentId DocumentId { get; set; }
 
-        /// <summary>Labelling state of the document.</summary>
+        /// <summary>Labeling state of the document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labelingState")]
         public virtual string LabelingState { get; set; }
 
@@ -9632,7 +9632,7 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string PageToken { get; set; }
 
         /// <summary>
-        /// Optional. Controls if the ListDocuments request requires a total size of matched documents. See
+        /// Optional. Controls if the request requires a total size of matched documents. See
         /// ListDocumentsResponse.total_size. Enabling this flag may adversely impact performance. Defaults to false.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("returnTotalSize")]
@@ -9640,10 +9640,10 @@ namespace Google.Apis.Document.v1beta3.Data
 
         /// <summary>
         /// Optional. Number of results to skip beginning from the `page_token` if provided.
-        /// https://google.aip.dev/158#skipping-results. It must be a non-negative integer. Negative values wil be
+        /// https://google.aip.dev/158#skipping-results. It must be a non-negative integer. Negative values will be
         /// rejected. Note that this is not the number of pages to skip. If this value causes the cursor to move past
-        /// the end of results, `ListDocumentsResponse.document_metadata` and `ListDocumentsResponse.next_page_token`
-        /// will be empty.
+        /// the end of results, ListDocumentsResponse.document_metadata and ListDocumentsResponse.next_page_token will
+        /// be empty.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skip")]
         public virtual System.Nullable<int> Skip { get; set; }
@@ -9659,8 +9659,8 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta3DocumentMetadata> DocumentMetadata { get; set; }
 
         /// <summary>
-        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
-        /// subsequent pages.
+        /// A token, which can be sent as ListDocumentsRequest.page_token to retrieve the next page. If this field is
+        /// omitted, there are no subsequent pages.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }

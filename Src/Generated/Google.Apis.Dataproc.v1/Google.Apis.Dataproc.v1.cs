@@ -8224,6 +8224,13 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gcePdKmsKeyName")]
         public virtual string GcePdKmsKeyName { get; set; }
 
+        /// <summary>
+        /// Optional. The Cloud KMS key name to use for encrypting customer core content in spanner and cluster PD disk
+        /// for all instances in the cluster.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKey")]
+        public virtual string KmsKey { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -9891,6 +9898,13 @@ namespace Google.Apis.Dataproc.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
+
+        /// <summary>
+        /// Output only. List of jobs that could not be included in the response. Attempting to get one of these
+        /// resources may indicate why it was not included in the list response.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

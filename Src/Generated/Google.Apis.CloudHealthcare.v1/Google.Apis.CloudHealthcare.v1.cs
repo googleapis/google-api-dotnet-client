@@ -3225,8 +3225,8 @@ namespace Google.Apis.CloudHealthcare.v1
                                     /// For details on the implementation of RetrieveFrames, see [DICOM
                                     /// frames](https://cloud.google.com/healthcare/docs/dicom#dicom_frames) in the
                                     /// Cloud Healthcare API conformance statement. For samples that show how to call
-                                    /// RetrieveFrames, see [Retrieving DICOM
-                                    /// data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieving_dicom_data).
+                                    /// RetrieveFrames, see [Retrieve DICOM
+                                    /// data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-dicom).
                                     /// </summary>
                                     /// <param name="parent">
                                     /// The name of the DICOM store that is being accessed. For example,
@@ -3248,8 +3248,8 @@ namespace Google.Apis.CloudHealthcare.v1
                                     /// For details on the implementation of RetrieveFrames, see [DICOM
                                     /// frames](https://cloud.google.com/healthcare/docs/dicom#dicom_frames) in the
                                     /// Cloud Healthcare API conformance statement. For samples that show how to call
-                                    /// RetrieveFrames, see [Retrieving DICOM
-                                    /// data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieving_dicom_data).
+                                    /// RetrieveFrames, see [Retrieve DICOM
+                                    /// data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-dicom).
                                     /// </summary>
                                     public class RetrieveFramesRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.HttpBody>
                                     {
@@ -3315,8 +3315,8 @@ namespace Google.Apis.CloudHealthcare.v1
                                     /// For details on the implementation of RetrieveRenderedFrames, see [Rendered
                                     /// resources](https://cloud.google.com/healthcare/docs/dicom#rendered_resources) in
                                     /// the Cloud Healthcare API conformance statement. For samples that show how to
-                                    /// call RetrieveRenderedFrames, see [Retrieving consumer image
-                                    /// formats](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieving_consumer_image_formats).
+                                    /// call RetrieveRenderedFrames, see [Retrieve consumer image
+                                    /// formats](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-consumer).
                                     /// </summary>
                                     /// <param name="parent">
                                     /// The name of the DICOM store that is being accessed. For example,
@@ -3339,8 +3339,8 @@ namespace Google.Apis.CloudHealthcare.v1
                                     /// For details on the implementation of RetrieveRenderedFrames, see [Rendered
                                     /// resources](https://cloud.google.com/healthcare/docs/dicom#rendered_resources) in
                                     /// the Cloud Healthcare API conformance statement. For samples that show how to
-                                    /// call RetrieveRenderedFrames, see [Retrieving consumer image
-                                    /// formats](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieving_consumer_image_formats).
+                                    /// call RetrieveRenderedFrames, see [Retrieve consumer image
+                                    /// formats](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-consumer).
                                     /// </summary>
                                     public class RetrieveRenderedRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.HttpBody>
                                     {
@@ -3404,8 +3404,8 @@ namespace Google.Apis.CloudHealthcare.v1
                                 /// Instance UID. Delete requests are equivalent to the GET requests specified in the
                                 /// Retrieve transaction. Study and series search results can take a few seconds to be
                                 /// updated after an instance is deleted using DeleteInstance. For samples that show how
-                                /// to call DeleteInstance, see [Deleting a study, series, or
-                                /// instance](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#deleting_a_study_series_or_instance).
+                                /// to call DeleteInstance, see [Delete a study, series, or
+                                /// instance](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#delete-dicom).
                                 /// </summary>
                                 /// <param name="parent">
                                 /// The name of the DICOM store that is being accessed. For example,
@@ -3425,8 +3425,8 @@ namespace Google.Apis.CloudHealthcare.v1
                                 /// Instance UID. Delete requests are equivalent to the GET requests specified in the
                                 /// Retrieve transaction. Study and series search results can take a few seconds to be
                                 /// updated after an instance is deleted using DeleteInstance. For samples that show how
-                                /// to call DeleteInstance, see [Deleting a study, series, or
-                                /// instance](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#deleting_a_study_series_or_instance).
+                                /// to call DeleteInstance, see [Delete a study, series, or
+                                /// instance](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#delete-dicom).
                                 /// </summary>
                                 public class DeleteRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.Empty>
                                 {
@@ -3493,8 +3493,8 @@ namespace Google.Apis.CloudHealthcare.v1
                                 /// and [DICOM
                                 /// instances](https://cloud.google.com/healthcare/docs/dicom#dicom_instances) in the
                                 /// Cloud Healthcare API conformance statement. For samples that show how to call
-                                /// RetrieveInstance, see [Retrieving an
-                                /// instance](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieving_an_instance).
+                                /// RetrieveInstance, see [Retrieve an
+                                /// instance](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-instance).
                                 /// </summary>
                                 /// <param name="parent">
                                 /// The name of the DICOM store that is being accessed. For example,
@@ -3518,8 +3518,8 @@ namespace Google.Apis.CloudHealthcare.v1
                                 /// and [DICOM
                                 /// instances](https://cloud.google.com/healthcare/docs/dicom#dicom_instances) in the
                                 /// Cloud Healthcare API conformance statement. For samples that show how to call
-                                /// RetrieveInstance, see [Retrieving an
-                                /// instance](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieving_an_instance).
+                                /// RetrieveInstance, see [Retrieve an
+                                /// instance](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-instance).
                                 /// </summary>
                                 public class RetrieveInstanceRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.HttpBody>
                                 {
@@ -3585,8 +3585,8 @@ namespace Google.Apis.CloudHealthcare.v1
                                 /// details on the implementation of RetrieveInstanceMetadata, see [Metadata
                                 /// resources](https://cloud.google.com/healthcare/docs/dicom#metadata_resources) in the
                                 /// Cloud Healthcare API conformance statement. For samples that show how to call
-                                /// RetrieveInstanceMetadata, see [Retrieving
-                                /// metadata](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieving_metadata).
+                                /// RetrieveInstanceMetadata, see [Retrieve
+                                /// metadata](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-metadata).
                                 /// </summary>
                                 /// <param name="parent">
                                 /// The name of the DICOM store that is being accessed. For example,
@@ -3609,8 +3609,8 @@ namespace Google.Apis.CloudHealthcare.v1
                                 /// details on the implementation of RetrieveInstanceMetadata, see [Metadata
                                 /// resources](https://cloud.google.com/healthcare/docs/dicom#metadata_resources) in the
                                 /// Cloud Healthcare API conformance statement. For samples that show how to call
-                                /// RetrieveInstanceMetadata, see [Retrieving
-                                /// metadata](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieving_metadata).
+                                /// RetrieveInstanceMetadata, see [Retrieve
+                                /// metadata](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-metadata).
                                 /// </summary>
                                 public class RetrieveMetadataRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.HttpBody>
                                 {
@@ -3675,8 +3675,8 @@ namespace Google.Apis.CloudHealthcare.v1
                                 /// details on the implementation of RetrieveRenderedInstance, see [Rendered
                                 /// resources](https://cloud.google.com/healthcare/docs/dicom#rendered_resources) in the
                                 /// Cloud Healthcare API conformance statement. For samples that show how to call
-                                /// RetrieveRenderedInstance, see [Retrieving consumer image
-                                /// formats](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieving_consumer_image_formats).
+                                /// RetrieveRenderedInstance, see [Retrieve consumer image
+                                /// formats](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-consumer).
                                 /// </summary>
                                 /// <param name="parent">
                                 /// The name of the DICOM store that is being accessed. For example,
@@ -3698,8 +3698,8 @@ namespace Google.Apis.CloudHealthcare.v1
                                 /// details on the implementation of RetrieveRenderedInstance, see [Rendered
                                 /// resources](https://cloud.google.com/healthcare/docs/dicom#rendered_resources) in the
                                 /// Cloud Healthcare API conformance statement. For samples that show how to call
-                                /// RetrieveRenderedInstance, see [Retrieving consumer image
-                                /// formats](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieving_consumer_image_formats).
+                                /// RetrieveRenderedInstance, see [Retrieve consumer image
+                                /// formats](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-consumer).
                                 /// </summary>
                                 public class RetrieveRenderedRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.HttpBody>
                                 {
@@ -3764,8 +3764,8 @@ namespace Google.Apis.CloudHealthcare.v1
                             /// returns an Operation which will be marked successful when the deletion is complete.
                             /// Warning: Instances cannot be inserted into a series that is being deleted by an
                             /// operation until the operation completes. For samples that show how to call DeleteSeries,
-                            /// see [Deleting a study, series, or
-                            /// instance](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#deleting_a_study_series_or_instance).
+                            /// see [Delete a study, series, or
+                            /// instance](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#delete-dicom).
                             /// </summary>
                             /// <param name="parent">
                             /// The name of the DICOM store that is being accessed. For example,
@@ -3786,8 +3786,8 @@ namespace Google.Apis.CloudHealthcare.v1
                             /// returns an Operation which will be marked successful when the deletion is complete.
                             /// Warning: Instances cannot be inserted into a series that is being deleted by an
                             /// operation until the operation completes. For samples that show how to call DeleteSeries,
-                            /// see [Deleting a study, series, or
-                            /// instance](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#deleting_a_study_series_or_instance).
+                            /// see [Delete a study, series, or
+                            /// instance](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#delete-dicom).
                             /// </summary>
                             public class DeleteRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.Operation>
                             {
@@ -3852,8 +3852,8 @@ namespace Google.Apis.CloudHealthcare.v1
                             /// details on the implementation of RetrieveSeriesMetadata, see [Metadata
                             /// resources](https://cloud.google.com/healthcare/docs/dicom#metadata_resources) in the
                             /// Cloud Healthcare API conformance statement. For samples that show how to call
-                            /// RetrieveSeriesMetadata, see [Retrieving
-                            /// metadata](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieving_metadata).
+                            /// RetrieveSeriesMetadata, see [Retrieve
+                            /// metadata](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-metadata).
                             /// </summary>
                             /// <param name="parent">
                             /// The name of the DICOM store that is being accessed. For example,
@@ -3875,8 +3875,8 @@ namespace Google.Apis.CloudHealthcare.v1
                             /// details on the implementation of RetrieveSeriesMetadata, see [Metadata
                             /// resources](https://cloud.google.com/healthcare/docs/dicom#metadata_resources) in the
                             /// Cloud Healthcare API conformance statement. For samples that show how to call
-                            /// RetrieveSeriesMetadata, see [Retrieving
-                            /// metadata](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieving_metadata).
+                            /// RetrieveSeriesMetadata, see [Retrieve
+                            /// metadata](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-metadata).
                             /// </summary>
                             public class RetrieveMetadataRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.HttpBody>
                             {
@@ -3941,8 +3941,8 @@ namespace Google.Apis.CloudHealthcare.v1
                             /// details on the implementation of RetrieveSeries, see [DICOM
                             /// study/series/instances](https://cloud.google.com/healthcare/docs/dicom#dicom_studyseriesinstances)
                             /// in the Cloud Healthcare API conformance statement. For samples that show how to call
-                            /// RetrieveSeries, see [Retrieving DICOM
-                            /// data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieving_dicom_data).
+                            /// RetrieveSeries, see [Retrieve DICOM
+                            /// data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-dicom).
                             /// </summary>
                             /// <param name="parent">
                             /// The name of the DICOM store that is being accessed. For example,
@@ -3964,8 +3964,8 @@ namespace Google.Apis.CloudHealthcare.v1
                             /// details on the implementation of RetrieveSeries, see [DICOM
                             /// study/series/instances](https://cloud.google.com/healthcare/docs/dicom#dicom_studyseriesinstances)
                             /// in the Cloud Healthcare API conformance statement. For samples that show how to call
-                            /// RetrieveSeries, see [Retrieving DICOM
-                            /// data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieving_dicom_data).
+                            /// RetrieveSeries, see [Retrieve DICOM
+                            /// data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-dicom).
                             /// </summary>
                             public class RetrieveSeriesRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.HttpBody>
                             {
@@ -4029,8 +4029,8 @@ namespace Google.Apis.CloudHealthcare.v1
                             /// details on the implementation of SearchForInstances, see [Search
                             /// transaction](https://cloud.google.com/healthcare/docs/dicom#search_transaction) in the
                             /// Cloud Healthcare API conformance statement. For samples that show how to call
-                            /// SearchForInstances, see [Searching for studies, series, instances, and
-                            /// frames](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#searching_for_studies_series_instances_and_frames).
+                            /// SearchForInstances, see [Search for DICOM
+                            /// data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#search-dicom).
                             /// </summary>
                             /// <param name="parent">
                             /// The name of the DICOM store that is being accessed. For example,
@@ -4051,8 +4051,8 @@ namespace Google.Apis.CloudHealthcare.v1
                             /// details on the implementation of SearchForInstances, see [Search
                             /// transaction](https://cloud.google.com/healthcare/docs/dicom#search_transaction) in the
                             /// Cloud Healthcare API conformance statement. For samples that show how to call
-                            /// SearchForInstances, see [Searching for studies, series, instances, and
-                            /// frames](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#searching_for_studies_series_instances_and_frames).
+                            /// SearchForInstances, see [Search for DICOM
+                            /// data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#search-dicom).
                             /// </summary>
                             public class SearchForInstancesRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.HttpBody>
                             {
@@ -4116,8 +4116,8 @@ namespace Google.Apis.CloudHealthcare.v1
                         /// the GET requests specified in the Retrieve transaction. The method returns an Operation
                         /// which will be marked successful when the deletion is complete. Warning: Instances cannot be
                         /// inserted into a study that is being deleted by an operation until the operation completes.
-                        /// For samples that show how to call DeleteStudy, see [Deleting a study, series, or
-                        /// instance](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#deleting_a_study_series_or_instance).
+                        /// For samples that show how to call DeleteStudy, see [Delete a study, series, or
+                        /// instance](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#delete-dicom).
                         /// </summary>
                         /// <param name="parent"><c>null</c></param>
                         /// <param name="dicomWebPath">
@@ -4133,8 +4133,8 @@ namespace Google.Apis.CloudHealthcare.v1
                         /// the GET requests specified in the Retrieve transaction. The method returns an Operation
                         /// which will be marked successful when the deletion is complete. Warning: Instances cannot be
                         /// inserted into a study that is being deleted by an operation until the operation completes.
-                        /// For samples that show how to call DeleteStudy, see [Deleting a study, series, or
-                        /// instance](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#deleting_a_study_series_or_instance).
+                        /// For samples that show how to call DeleteStudy, see [Delete a study, series, or
+                        /// instance](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#delete-dicom).
                         /// </summary>
                         public class DeleteRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.Operation>
                         {
@@ -4194,8 +4194,8 @@ namespace Google.Apis.CloudHealthcare.v1
                         /// on the implementation of RetrieveStudyMetadata, see [Metadata
                         /// resources](https://cloud.google.com/healthcare/docs/dicom#metadata_resources) in the Cloud
                         /// Healthcare API conformance statement. For samples that show how to call
-                        /// RetrieveStudyMetadata, see [Retrieving
-                        /// metadata](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieving_metadata).
+                        /// RetrieveStudyMetadata, see [Retrieve
+                        /// metadata](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-metadata).
                         /// </summary>
                         /// <param name="parent">
                         /// The name of the DICOM store that is being accessed. For example,
@@ -4217,8 +4217,8 @@ namespace Google.Apis.CloudHealthcare.v1
                         /// on the implementation of RetrieveStudyMetadata, see [Metadata
                         /// resources](https://cloud.google.com/healthcare/docs/dicom#metadata_resources) in the Cloud
                         /// Healthcare API conformance statement. For samples that show how to call
-                        /// RetrieveStudyMetadata, see [Retrieving
-                        /// metadata](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieving_metadata).
+                        /// RetrieveStudyMetadata, see [Retrieve
+                        /// metadata](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-metadata).
                         /// </summary>
                         public class RetrieveMetadataRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.HttpBody>
                         {
@@ -4282,8 +4282,8 @@ namespace Google.Apis.CloudHealthcare.v1
                         /// on the implementation of RetrieveStudy, see [DICOM
                         /// study/series/instances](https://cloud.google.com/healthcare/docs/dicom#dicom_studyseriesinstances)
                         /// in the Cloud Healthcare API conformance statement. For samples that show how to call
-                        /// RetrieveStudy, see [Retrieving DICOM
-                        /// data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieving_dicom_data).
+                        /// RetrieveStudy, see [Retrieve DICOM
+                        /// data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-dicom).
                         /// </summary>
                         /// <param name="parent">
                         /// The name of the DICOM store that is being accessed. For example,
@@ -4303,8 +4303,8 @@ namespace Google.Apis.CloudHealthcare.v1
                         /// on the implementation of RetrieveStudy, see [DICOM
                         /// study/series/instances](https://cloud.google.com/healthcare/docs/dicom#dicom_studyseriesinstances)
                         /// in the Cloud Healthcare API conformance statement. For samples that show how to call
-                        /// RetrieveStudy, see [Retrieving DICOM
-                        /// data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieving_dicom_data).
+                        /// RetrieveStudy, see [Retrieve DICOM
+                        /// data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-dicom).
                         /// </summary>
                         public class RetrieveStudyRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.HttpBody>
                         {
@@ -4367,8 +4367,8 @@ namespace Google.Apis.CloudHealthcare.v1
                         /// on the implementation of SearchForInstances, see [Search
                         /// transaction](https://cloud.google.com/healthcare/docs/dicom#search_transaction) in the Cloud
                         /// Healthcare API conformance statement. For samples that show how to call SearchForInstances,
-                        /// see [Searching for studies, series, instances, and
-                        /// frames](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#searching_for_studies_series_instances_and_frames).
+                        /// see [Search for DICOM
+                        /// data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#search-dicom).
                         /// </summary>
                         /// <param name="parent">
                         /// The name of the DICOM store that is being accessed. For example,
@@ -4389,8 +4389,8 @@ namespace Google.Apis.CloudHealthcare.v1
                         /// on the implementation of SearchForInstances, see [Search
                         /// transaction](https://cloud.google.com/healthcare/docs/dicom#search_transaction) in the Cloud
                         /// Healthcare API conformance statement. For samples that show how to call SearchForInstances,
-                        /// see [Searching for studies, series, instances, and
-                        /// frames](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#searching_for_studies_series_instances_and_frames).
+                        /// see [Search for DICOM
+                        /// data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#search-dicom).
                         /// </summary>
                         public class SearchForInstancesRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.HttpBody>
                         {
@@ -4454,8 +4454,8 @@ namespace Google.Apis.CloudHealthcare.v1
                         /// on the implementation of SearchForSeries, see [Search
                         /// transaction](https://cloud.google.com/healthcare/docs/dicom#search_transaction) in the Cloud
                         /// Healthcare API conformance statement. For samples that show how to call SearchForSeries, see
-                        /// [Searching for studies, series, instances, and
-                        /// frames](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#searching_for_studies_series_instances_and_frames).
+                        /// [Search for DICOM
+                        /// data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#search-dicom).
                         /// </summary>
                         /// <param name="parent">
                         /// The name of the DICOM store that is being accessed. For example,
@@ -4476,8 +4476,8 @@ namespace Google.Apis.CloudHealthcare.v1
                         /// on the implementation of SearchForSeries, see [Search
                         /// transaction](https://cloud.google.com/healthcare/docs/dicom#search_transaction) in the Cloud
                         /// Healthcare API conformance statement. For samples that show how to call SearchForSeries, see
-                        /// [Searching for studies, series, instances, and
-                        /// frames](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#searching_for_studies_series_instances_and_frames).
+                        /// [Search for DICOM
+                        /// data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#search-dicom).
                         /// </summary>
                         public class SearchForSeriesRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.HttpBody>
                         {
@@ -4542,8 +4542,7 @@ namespace Google.Apis.CloudHealthcare.v1
                         /// on the implementation of StoreInstances, see [Store
                         /// transaction](https://cloud.google.com/healthcare/docs/dicom#store_transaction) in the Cloud
                         /// Healthcare API conformance statement. For samples that show how to call StoreInstances, see
-                        /// [Storing DICOM
-                        /// data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#storing_dicom_data).
+                        /// [Store DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#store-dicom).
                         /// </summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="parent">
@@ -4566,8 +4565,7 @@ namespace Google.Apis.CloudHealthcare.v1
                         /// on the implementation of StoreInstances, see [Store
                         /// transaction](https://cloud.google.com/healthcare/docs/dicom#store_transaction) in the Cloud
                         /// Healthcare API conformance statement. For samples that show how to call StoreInstances, see
-                        /// [Storing DICOM
-                        /// data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#storing_dicom_data).
+                        /// [Store DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#store-dicom).
                         /// </summary>
                         public class StoreInstancesRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.HttpBody>
                         {
@@ -5321,8 +5319,7 @@ namespace Google.Apis.CloudHealthcare.v1
                     /// the implementation of SearchForInstances, see [Search
                     /// transaction](https://cloud.google.com/healthcare/docs/dicom#search_transaction) in the Cloud
                     /// Healthcare API conformance statement. For samples that show how to call SearchForInstances, see
-                    /// [Searching for studies, series, instances, and
-                    /// frames](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#searching_for_studies_series_instances_and_frames).
+                    /// [Search for DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#search-dicom).
                     /// </summary>
                     /// <param name="parent">
                     /// The name of the DICOM store that is being accessed. For example,
@@ -5343,8 +5340,7 @@ namespace Google.Apis.CloudHealthcare.v1
                     /// the implementation of SearchForInstances, see [Search
                     /// transaction](https://cloud.google.com/healthcare/docs/dicom#search_transaction) in the Cloud
                     /// Healthcare API conformance statement. For samples that show how to call SearchForInstances, see
-                    /// [Searching for studies, series, instances, and
-                    /// frames](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#searching_for_studies_series_instances_and_frames).
+                    /// [Search for DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#search-dicom).
                     /// </summary>
                     public class SearchForInstancesRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.HttpBody>
                     {
@@ -5408,8 +5404,7 @@ namespace Google.Apis.CloudHealthcare.v1
                     /// the implementation of SearchForSeries, see [Search
                     /// transaction](https://cloud.google.com/healthcare/docs/dicom#search_transaction) in the Cloud
                     /// Healthcare API conformance statement. For samples that show how to call SearchForSeries, see
-                    /// [Searching for studies, series, instances, and
-                    /// frames](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#searching_for_studies_series_instances_and_frames).
+                    /// [Search for DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#search-dicom).
                     /// </summary>
                     /// <param name="parent">
                     /// The name of the DICOM store that is being accessed. For example,
@@ -5430,8 +5425,7 @@ namespace Google.Apis.CloudHealthcare.v1
                     /// the implementation of SearchForSeries, see [Search
                     /// transaction](https://cloud.google.com/healthcare/docs/dicom#search_transaction) in the Cloud
                     /// Healthcare API conformance statement. For samples that show how to call SearchForSeries, see
-                    /// [Searching for studies, series, instances, and
-                    /// frames](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#searching_for_studies_series_instances_and_frames).
+                    /// [Search for DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#search-dicom).
                     /// </summary>
                     public class SearchForSeriesRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.HttpBody>
                     {
@@ -5495,8 +5489,7 @@ namespace Google.Apis.CloudHealthcare.v1
                     /// the implementation of SearchForStudies, see [Search
                     /// transaction](https://cloud.google.com/healthcare/docs/dicom#search_transaction) in the Cloud
                     /// Healthcare API conformance statement. For samples that show how to call SearchForStudies, see
-                    /// [Searching for studies, series, instances, and
-                    /// frames](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#searching_for_studies_series_instances_and_frames).
+                    /// [Search for DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#search-dicom).
                     /// </summary>
                     /// <param name="parent">
                     /// The name of the DICOM store that is being accessed. For example,
@@ -5516,8 +5509,7 @@ namespace Google.Apis.CloudHealthcare.v1
                     /// the implementation of SearchForStudies, see [Search
                     /// transaction](https://cloud.google.com/healthcare/docs/dicom#search_transaction) in the Cloud
                     /// Healthcare API conformance statement. For samples that show how to call SearchForStudies, see
-                    /// [Searching for studies, series, instances, and
-                    /// frames](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#searching_for_studies_series_instances_and_frames).
+                    /// [Search for DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#search-dicom).
                     /// </summary>
                     public class SearchForStudiesRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.HttpBody>
                     {
@@ -5648,8 +5640,7 @@ namespace Google.Apis.CloudHealthcare.v1
                     /// the implementation of StoreInstances, see [Store
                     /// transaction](https://cloud.google.com/healthcare/docs/dicom#store_transaction) in the Cloud
                     /// Healthcare API conformance statement. For samples that show how to call StoreInstances, see
-                    /// [Storing DICOM
-                    /// data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#storing_dicom_data).
+                    /// [Store DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#store-dicom).
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
@@ -5672,8 +5663,7 @@ namespace Google.Apis.CloudHealthcare.v1
                     /// the implementation of StoreInstances, see [Store
                     /// transaction](https://cloud.google.com/healthcare/docs/dicom#store_transaction) in the Cloud
                     /// Healthcare API conformance statement. For samples that show how to call StoreInstances, see
-                    /// [Storing DICOM
-                    /// data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#storing_dicom_data).
+                    /// [Store DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#store-dicom).
                     /// </summary>
                     public class StoreInstancesRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.HttpBody>
                     {
@@ -9465,7 +9455,7 @@ namespace Google.Apis.CloudHealthcare.v1
                         }
                     }
 
-                    /// <summary>Gets metrics asssociated with the HL7v2 store.</summary>
+                    /// <summary>Gets metrics associated with the HL7v2 store.</summary>
                     /// <param name="name">
                     /// The resource name of the HL7v2 store to get metrics for, in the format
                     /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/hl7V2Stores/{hl7v2_store_id}`.
@@ -9475,7 +9465,7 @@ namespace Google.Apis.CloudHealthcare.v1
                         return new GetHL7v2StoreMetricsRequest(service, name);
                     }
 
-                    /// <summary>Gets metrics asssociated with the HL7v2 store.</summary>
+                    /// <summary>Gets metrics associated with the HL7v2 store.</summary>
                     public class GetHL7v2StoreMetricsRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.Hl7V2StoreMetrics>
                     {
                         /// <summary>Constructs a new GetHL7v2StoreMetrics request.</summary>

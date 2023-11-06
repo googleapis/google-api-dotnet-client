@@ -688,6 +688,32 @@ namespace Google.Apis.SA360.v0.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Contains the usage information of the asset.</summary>
+    public class GoogleAdsSearchads360V0CommonAssetUsage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Resource name of the asset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("asset")]
+        public virtual string Asset { get; set; }
+
+        /// <summary>The served field type of the asset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("servedAssetFieldType")]
+        public virtual string ServedAssetFieldType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An audience criterion.</summary>
+    public class GoogleAdsSearchads360V0CommonAudienceInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The Audience resource name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audience")]
+        public virtual string Audience { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Business Profile location data synced from the linked Business Profile account.</summary>
     public class GoogleAdsSearchads360V0CommonBusinessProfileLocation : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -709,6 +735,17 @@ namespace Google.Apis.SA360.v0.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storeCode")]
         public virtual string StoreCode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A call to action asset.</summary>
+    public class GoogleAdsSearchads360V0CommonCallToActionAsset : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Call to action.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("callToAction")]
+        public virtual string CallToAction { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -770,6 +807,44 @@ namespace Google.Apis.SA360.v0.Data
         /// <summary>Type of the gender.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An Image asset.</summary>
+    public class GoogleAdsSearchads360V0CommonImageAsset : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>File size of the image asset in bytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileSize")]
+        public virtual System.Nullable<long> FileSize { get; set; }
+
+        /// <summary>Metadata for this image at its original size.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fullSize")]
+        public virtual GoogleAdsSearchads360V0CommonImageDimension FullSize { get; set; }
+
+        /// <summary>MIME type of the image asset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
+        public virtual string MimeType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for an image at a certain size, either original or resized.</summary>
+    public class GoogleAdsSearchads360V0CommonImageDimension : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Height of the image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("heightPixels")]
+        public virtual System.Nullable<long> HeightPixels { get; set; }
+
+        /// <summary>A URL that returns the image with this height and width.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("url")]
+        public virtual string Url { get; set; }
+
+        /// <summary>Width of the image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("widthPixels")]
+        public virtual System.Nullable<long> WidthPixels { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1117,6 +1192,126 @@ namespace Google.Apis.SA360.v0.Data
         public virtual System.Nullable<double> ClientAccountConversionsValue { get; set; }
 
         /// <summary>
+        /// Client account cross-sell cost of goods sold (COGS) is the total cost of products sold as a result of
+        /// advertising a different product. How it works: You report conversions with cart data for completed purchases
+        /// on your website. If the ad that was interacted with before the purchase has an associated product (see
+        /// Shopping Ads) then this product is considered the advertised product. Any product included in the order the
+        /// customer places is a sold product. If these products don't match then this is considered cross-sell.
+        /// Cross-sell cost of goods sold is the total cost of the products sold that weren't advertised. Example:
+        /// Someone clicked on a Shopping ad for a hat then bought the same hat and a shirt. The hat has a cost of goods
+        /// sold value of $3, the shirt has a cost of goods sold value of $5. The cross-sell cost of goods sold for this
+        /// order is $5. This metric is only available if you report conversions with cart data. This metric is a
+        /// monetary value and returned in the customer's currency by default. See the metrics_currency parameter at
+        /// https://developers.google.com/search-ads/reporting/query/query-structure#parameters_clause
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientAccountCrossSellCostOfGoodsSoldMicros")]
+        public virtual System.Nullable<long> ClientAccountCrossSellCostOfGoodsSoldMicros { get; set; }
+
+        /// <summary>
+        /// Client account cross-sell gross profit is the profit you made from products sold as a result of advertising
+        /// a different product, minus cost of goods sold (COGS). How it works: You report conversions with cart data
+        /// for completed purchases on your website. If the ad that was interacted with before the purchase has an
+        /// associated product (see Shopping Ads) then this product is considered the advertised product. Any product
+        /// included in the purchase is a sold product. If these products don't match then this is considered
+        /// cross-sell. Cross-sell gross profit is the revenue you made from cross-sell attributed to your ads minus the
+        /// cost of the goods sold. Example: Someone clicked on a Shopping ad for a hat then bought the same hat and a
+        /// shirt. The shirt is priced $20 and has a cost of goods sold value of $5. The cross-sell gross profit of this
+        /// order is $15 = $20 - $5. This metric is only available if you report conversions with cart data. This metric
+        /// is a monetary value and returned in the customer's currency by default. See the metrics_currency parameter
+        /// at https://developers.google.com/search-ads/reporting/query/query-structure#parameters_clause
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientAccountCrossSellGrossProfitMicros")]
+        public virtual System.Nullable<long> ClientAccountCrossSellGrossProfitMicros { get; set; }
+
+        /// <summary>
+        /// Client account cross-sell revenue is the total amount you made from products sold as a result of advertising
+        /// a different product. How it works: You report conversions with cart data for completed purchases on your
+        /// website. If the ad that was interacted with before the purchase has an associated product (see Shopping Ads)
+        /// then this product is considered the advertised product. Any product included in the order the customer
+        /// places is a sold product. If these products don't match then this is considered cross-sell. Cross-sell
+        /// revenue is the total value you made from cross-sell attributed to your ads. Example: Someone clicked on a
+        /// Shopping ad for a hat then bought the same hat and a shirt. The hat is priced $10 and the shirt is priced
+        /// $20. The cross-sell revenue of this order is $20. This metric is only available if you report conversions
+        /// with cart data. This metric is a monetary value and returned in the customer's currency by default. See the
+        /// metrics_currency parameter at
+        /// https://developers.google.com/search-ads/reporting/query/query-structure#parameters_clause
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientAccountCrossSellRevenueMicros")]
+        public virtual System.Nullable<long> ClientAccountCrossSellRevenueMicros { get; set; }
+
+        /// <summary>
+        /// Client account cross-sell units sold is the total number of products sold as a result of advertising a
+        /// different product. How it works: You report conversions with cart data for completed purchases on your
+        /// website. If the ad that was interacted with before the purchase has an associated product (see Shopping Ads)
+        /// then this product is considered the advertised product. Any product included in the order the customer
+        /// places is a sold product. If these products don't match then this is considered cross-sell. Cross-sell units
+        /// sold is the total number of cross-sold products from all orders attributed to your ads. Example: Someone
+        /// clicked on a Shopping ad for a hat then bought the same hat, a shirt and a jacket. The cross-sell units sold
+        /// in this order is 2. This metric is only available if you report conversions with cart data.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientAccountCrossSellUnitsSold")]
+        public virtual System.Nullable<double> ClientAccountCrossSellUnitsSold { get; set; }
+
+        /// <summary>
+        /// Client account lead cost of goods sold (COGS) is the total cost of products sold as a result of advertising
+        /// the same product. How it works: You report conversions with cart data for completed purchases on your
+        /// website. If the ad that was interacted with has an associated product (see Shopping Ads) then this product
+        /// is considered the advertised product. Any product included in the order the customer places is a sold
+        /// product. If the advertised and sold products match, then the cost of these goods is counted under lead cost
+        /// of goods sold. Example: Someone clicked on a Shopping ad for a hat then bought the same hat and a shirt. The
+        /// hat has a cost of goods sold value of $3, the shirt has a cost of goods sold value of $5. The lead cost of
+        /// goods sold for this order is $3. This metric is only available if you report conversions with cart data.
+        /// This metric is a monetary value and returned in the customer's currency by default. See the metrics_currency
+        /// parameter at https://developers.google.com/search-ads/reporting/query/query-structure#parameters_clause
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientAccountLeadCostOfGoodsSoldMicros")]
+        public virtual System.Nullable<long> ClientAccountLeadCostOfGoodsSoldMicros { get; set; }
+
+        /// <summary>
+        /// Client account lead gross profit is the profit you made from products sold as a result of advertising the
+        /// same product, minus cost of goods sold (COGS). How it works: You report conversions with cart data for
+        /// completed purchases on your website. If the ad that was interacted with before the purchase has an
+        /// associated product (see Shopping Ads) then this product is considered the advertised product. Any product
+        /// included in the order the customer places is a sold product. If the advertised and sold products match, then
+        /// the revenue you made from these sales minus the cost of goods sold is your lead gross profit. Example:
+        /// Someone clicked on a Shopping ad for a hat then bought the same hat and a shirt. The hat is priced $10 and
+        /// has a cost of goods sold value of $3. The lead gross profit of this order is $7 = $10 - $3. This metric is
+        /// only available if you report conversions with cart data. This metric is a monetary value and returned in the
+        /// customer's currency by default. See the metrics_currency parameter at
+        /// https://developers.google.com/search-ads/reporting/query/query-structure#parameters_clause
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientAccountLeadGrossProfitMicros")]
+        public virtual System.Nullable<long> ClientAccountLeadGrossProfitMicros { get; set; }
+
+        /// <summary>
+        /// Client account lead revenue is the total amount you made from products sold as a result of advertising the
+        /// same product. How it works: You report conversions with cart data for completed purchases on your website.
+        /// If the ad that was interacted with before the purchase has an associated product (see Shopping Ads) then
+        /// this product is considered the advertised product. Any product included in the order the customer places is
+        /// a sold product. If the advertised and sold products match, then the total value you made from the sales of
+        /// these products is shown under lead revenue. Example: Someone clicked on a Shopping ad for a hat then bought
+        /// the same hat and a shirt. The hat is priced $10 and the shirt is priced $20. The lead revenue of this order
+        /// is $10. This metric is only available if you report conversions with cart data. This metric is a monetary
+        /// value and returned in the customer's currency by default. See the metrics_currency parameter at
+        /// https://developers.google.com/search-ads/reporting/query/query-structure#parameters_clause
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientAccountLeadRevenueMicros")]
+        public virtual System.Nullable<long> ClientAccountLeadRevenueMicros { get; set; }
+
+        /// <summary>
+        /// Client account lead units sold is the total number of products sold as a result of advertising the same
+        /// product. How it works: You report conversions with cart data for completed purchases on your website. If the
+        /// ad that was interacted with before the purchase has an associated product (see Shopping Ads) then this
+        /// product is considered the advertised product. Any product included in the order the customer places is a
+        /// sold product. If the advertised and sold products match, then the total number of these products sold is
+        /// shown under lead units sold. Example: Someone clicked on a Shopping ad for a hat then bought the same hat, a
+        /// shirt and a jacket. The lead units sold in this order is 1. This metric is only available if you report
+        /// conversions with cart data.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientAccountLeadUnitsSold")]
+        public virtual System.Nullable<double> ClientAccountLeadUnitsSold { get; set; }
+
+        /// <summary>
         /// The total number of view-through conversions. These happen when a customer sees an image or rich media ad,
         /// then later completes a conversion on your site without interacting with (for example, clicking on) another
         /// ad.
@@ -1235,6 +1430,66 @@ namespace Google.Apis.SA360.v0.Data
         public virtual System.Nullable<double> CrossDeviceConversionsValue { get; set; }
 
         /// <summary>
+        /// Cross-sell cost of goods sold (COGS) is the total cost of products sold as a result of advertising a
+        /// different product. How it works: You report conversions with cart data for completed purchases on your
+        /// website. If the ad that was interacted with before the purchase has an associated product (see Shopping Ads)
+        /// then this product is considered the advertised product. Any product included in the order the customer
+        /// places is a sold product. If these products don't match then this is considered cross-sell. Cross-sell cost
+        /// of goods sold is the total cost of the products sold that weren't advertised. Example: Someone clicked on a
+        /// Shopping ad for a hat then bought the same hat and a shirt. The hat has a cost of goods sold value of $3,
+        /// the shirt has a cost of goods sold value of $5. The cross-sell cost of goods sold for this order is $5. This
+        /// metric is only available if you report conversions with cart data. This metric is a monetary value and
+        /// returned in the customer's currency by default. See the metrics_currency parameter at
+        /// https://developers.google.com/search-ads/reporting/query/query-structure#parameters_clause
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("crossSellCostOfGoodsSoldMicros")]
+        public virtual System.Nullable<long> CrossSellCostOfGoodsSoldMicros { get; set; }
+
+        /// <summary>
+        /// Cross-sell gross profit is the profit you made from products sold as a result of advertising a different
+        /// product, minus cost of goods sold (COGS). How it works: You report conversions with cart data for completed
+        /// purchases on your website. If the ad that was interacted with before the purchase has an associated product
+        /// (see Shopping Ads) then this product is considered the advertised product. Any product included in the
+        /// purchase is a sold product. If these products don't match then this is considered cross-sell. Cross-sell
+        /// gross profit is the revenue you made from cross-sell attributed to your ads minus the cost of the goods
+        /// sold. Example: Someone clicked on a Shopping ad for a hat then bought the same hat and a shirt. The shirt is
+        /// priced $20 and has a cost of goods sold value of $5. The cross-sell gross profit of this order is $15 = $20
+        /// - $5. This metric is only available if you report conversions with cart data. This metric is a monetary
+        /// value and returned in the customer's currency by default. See the metrics_currency parameter at
+        /// https://developers.google.com/search-ads/reporting/query/query-structure#parameters_clause
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("crossSellGrossProfitMicros")]
+        public virtual System.Nullable<long> CrossSellGrossProfitMicros { get; set; }
+
+        /// <summary>
+        /// Cross-sell revenue is the total amount you made from products sold as a result of advertising a different
+        /// product. How it works: You report conversions with cart data for completed purchases on your website. If the
+        /// ad that was interacted with before the purchase has an associated product (see Shopping Ads) then this
+        /// product is considered the advertised product. Any product included in the order the customer places is a
+        /// sold product. If these products don't match then this is considered cross-sell. Cross-sell revenue is the
+        /// total value you made from cross-sell attributed to your ads. Example: Someone clicked on a Shopping ad for a
+        /// hat then bought the same hat and a shirt. The hat is priced $10 and the shirt is priced $20. The cross-sell
+        /// revenue of this order is $20. This metric is only available if you report conversions with cart data. This
+        /// metric is a monetary value and returned in the customer's currency by default. See the metrics_currency
+        /// parameter at https://developers.google.com/search-ads/reporting/query/query-structure#parameters_clause
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("crossSellRevenueMicros")]
+        public virtual System.Nullable<long> CrossSellRevenueMicros { get; set; }
+
+        /// <summary>
+        /// Cross-sell units sold is the total number of products sold as a result of advertising a different product.
+        /// How it works: You report conversions with cart data for completed purchases on your website. If the ad that
+        /// was interacted with before the purchase has an associated product (see Shopping Ads) then this product is
+        /// considered the advertised product. Any product included in the order the customer places is a sold product.
+        /// If these products don't match then this is considered cross-sell. Cross-sell units sold is the total number
+        /// of cross-sold products from all orders attributed to your ads. Example: Someone clicked on a Shopping ad for
+        /// a hat then bought the same hat, a shirt and a jacket. The cross-sell units sold in this order is 2. This
+        /// metric is only available if you report conversions with cart data.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("crossSellUnitsSold")]
+        public virtual System.Nullable<double> CrossSellUnitsSold { get; set; }
+
+        /// <summary>
         /// The number of clicks your ad receives (Clicks) divided by the number of times your ad is shown
         /// (Impressions).
         /// </summary>
@@ -1291,6 +1546,65 @@ namespace Google.Apis.SA360.v0.Data
         /// <summary>Number of clicks Google considers illegitimate and doesn't charge you for.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("invalidClicks")]
         public virtual System.Nullable<long> InvalidClicks { get; set; }
+
+        /// <summary>
+        /// Lead cost of goods sold (COGS) is the total cost of products sold as a result of advertising the same
+        /// product. How it works: You report conversions with cart data for completed purchases on your website. If the
+        /// ad that was interacted with has an associated product (see Shopping Ads) then this product is considered the
+        /// advertised product. Any product included in the order the customer places is a sold product. If the
+        /// advertised and sold products match, then the cost of these goods is counted under lead cost of goods sold.
+        /// Example: Someone clicked on a Shopping ad for a hat then bought the same hat and a shirt. The hat has a cost
+        /// of goods sold value of $3, the shirt has a cost of goods sold value of $5. The lead cost of goods sold for
+        /// this order is $3. This metric is only available if you report conversions with cart data. This metric is a
+        /// monetary value and returned in the customer's currency by default. See the metrics_currency parameter at
+        /// https://developers.google.com/search-ads/reporting/query/query-structure#parameters_clause
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("leadCostOfGoodsSoldMicros")]
+        public virtual System.Nullable<long> LeadCostOfGoodsSoldMicros { get; set; }
+
+        /// <summary>
+        /// Lead gross profit is the profit you made from products sold as a result of advertising the same product,
+        /// minus cost of goods sold (COGS). How it works: You report conversions with cart data for completed purchases
+        /// on your website. If the ad that was interacted with before the purchase has an associated product (see
+        /// Shopping Ads) then this product is considered the advertised product. Any product included in the order the
+        /// customer places is a sold product. If the advertised and sold products match, then the revenue you made from
+        /// these sales minus the cost of goods sold is your lead gross profit. Example: Someone clicked on a Shopping
+        /// ad for a hat then bought the same hat and a shirt. The hat is priced $10 and has a cost of goods sold value
+        /// of $3. The lead gross profit of this order is $7 = $10 - $3. This metric is only available if you report
+        /// conversions with cart data. This metric is a monetary value and returned in the customer's currency by
+        /// default. See the metrics_currency parameter at
+        /// https://developers.google.com/search-ads/reporting/query/query-structure#parameters_clause
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("leadGrossProfitMicros")]
+        public virtual System.Nullable<long> LeadGrossProfitMicros { get; set; }
+
+        /// <summary>
+        /// Lead revenue is the total amount you made from products sold as a result of advertising the same product.
+        /// How it works: You report conversions with cart data for completed purchases on your website. If the ad that
+        /// was interacted with before the purchase has an associated product (see Shopping Ads) then this product is
+        /// considered the advertised product. Any product included in the order the customer places is a sold product.
+        /// If the advertised and sold products match, then the total value you made from the sales of these products is
+        /// shown under lead revenue. Example: Someone clicked on a Shopping ad for a hat then bought the same hat and a
+        /// shirt. The hat is priced $10 and the shirt is priced $20. The lead revenue of this order is $10. This metric
+        /// is only available if you report conversions with cart data. This metric is a monetary value and returned in
+        /// the customer's currency by default. See the metrics_currency parameter at
+        /// https://developers.google.com/search-ads/reporting/query/query-structure#parameters_clause
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("leadRevenueMicros")]
+        public virtual System.Nullable<long> LeadRevenueMicros { get; set; }
+
+        /// <summary>
+        /// Lead units sold is the total number of products sold as a result of advertising the same product. How it
+        /// works: You report conversions with cart data for completed purchases on your website. If the ad that was
+        /// interacted with before the purchase has an associated product (see Shopping Ads) then this product is
+        /// considered the advertised product. Any product included in the order the customer places is a sold product.
+        /// If the advertised and sold products match, then the total number of these products sold is shown under lead
+        /// units sold. Example: Someone clicked on a Shopping ad for a hat then bought the same hat, a shirt and a
+        /// jacket. The lead units sold in this order is 1. This metric is only available if you report conversions with
+        /// cart data.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("leadUnitsSold")]
+        public virtual System.Nullable<double> LeadUnitsSold { get; set; }
 
         /// <summary>The percentage of mobile clicks that go to a mobile-friendly page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mobileFriendlyClicksPercentage")]
@@ -1648,6 +1962,178 @@ namespace Google.Apis.SA360.v0.Data
         [Newtonsoft.Json.JsonPropertyAttribute("month")]
         public virtual string Month { get; set; }
 
+        /// <summary>Bidding category (level 1) of the product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productBiddingCategoryLevel1")]
+        public virtual string ProductBiddingCategoryLevel1 { get; set; }
+
+        /// <summary>Bidding category (level 2) of the product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productBiddingCategoryLevel2")]
+        public virtual string ProductBiddingCategoryLevel2 { get; set; }
+
+        /// <summary>Bidding category (level 3) of the product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productBiddingCategoryLevel3")]
+        public virtual string ProductBiddingCategoryLevel3 { get; set; }
+
+        /// <summary>Bidding category (level 4) of the product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productBiddingCategoryLevel4")]
+        public virtual string ProductBiddingCategoryLevel4 { get; set; }
+
+        /// <summary>Bidding category (level 5) of the product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productBiddingCategoryLevel5")]
+        public virtual string ProductBiddingCategoryLevel5 { get; set; }
+
+        /// <summary>Brand of the product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productBrand")]
+        public virtual string ProductBrand { get; set; }
+
+        /// <summary>Channel of the product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productChannel")]
+        public virtual string ProductChannel { get; set; }
+
+        /// <summary>Channel exclusivity of the product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productChannelExclusivity")]
+        public virtual string ProductChannelExclusivity { get; set; }
+
+        /// <summary>Condition of the product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productCondition")]
+        public virtual string ProductCondition { get; set; }
+
+        /// <summary>Resource name of the geo target constant for the country of sale of the product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productCountry")]
+        public virtual string ProductCountry { get; set; }
+
+        /// <summary>Custom attribute 0 of the product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productCustomAttribute0")]
+        public virtual string ProductCustomAttribute0 { get; set; }
+
+        /// <summary>Custom attribute 1 of the product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productCustomAttribute1")]
+        public virtual string ProductCustomAttribute1 { get; set; }
+
+        /// <summary>Custom attribute 2 of the product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productCustomAttribute2")]
+        public virtual string ProductCustomAttribute2 { get; set; }
+
+        /// <summary>Custom attribute 3 of the product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productCustomAttribute3")]
+        public virtual string ProductCustomAttribute3 { get; set; }
+
+        /// <summary>Custom attribute 4 of the product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productCustomAttribute4")]
+        public virtual string ProductCustomAttribute4 { get; set; }
+
+        /// <summary>Item ID of the product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productItemId")]
+        public virtual string ProductItemId { get; set; }
+
+        /// <summary>Resource name of the language constant for the language of the product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productLanguage")]
+        public virtual string ProductLanguage { get; set; }
+
+        /// <summary>Bidding category (level 1) of the product sold.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productSoldBiddingCategoryLevel1")]
+        public virtual string ProductSoldBiddingCategoryLevel1 { get; set; }
+
+        /// <summary>Bidding category (level 2) of the product sold.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productSoldBiddingCategoryLevel2")]
+        public virtual string ProductSoldBiddingCategoryLevel2 { get; set; }
+
+        /// <summary>Bidding category (level 3) of the product sold.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productSoldBiddingCategoryLevel3")]
+        public virtual string ProductSoldBiddingCategoryLevel3 { get; set; }
+
+        /// <summary>Bidding category (level 4) of the product sold.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productSoldBiddingCategoryLevel4")]
+        public virtual string ProductSoldBiddingCategoryLevel4 { get; set; }
+
+        /// <summary>Bidding category (level 5) of the product sold.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productSoldBiddingCategoryLevel5")]
+        public virtual string ProductSoldBiddingCategoryLevel5 { get; set; }
+
+        /// <summary>Brand of the product sold.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productSoldBrand")]
+        public virtual string ProductSoldBrand { get; set; }
+
+        /// <summary>Condition of the product sold.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productSoldCondition")]
+        public virtual string ProductSoldCondition { get; set; }
+
+        /// <summary>Custom attribute 0 of the product sold.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productSoldCustomAttribute0")]
+        public virtual string ProductSoldCustomAttribute0 { get; set; }
+
+        /// <summary>Custom attribute 1 of the product sold.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productSoldCustomAttribute1")]
+        public virtual string ProductSoldCustomAttribute1 { get; set; }
+
+        /// <summary>Custom attribute 2 of the product sold.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productSoldCustomAttribute2")]
+        public virtual string ProductSoldCustomAttribute2 { get; set; }
+
+        /// <summary>Custom attribute 3 of the product sold.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productSoldCustomAttribute3")]
+        public virtual string ProductSoldCustomAttribute3 { get; set; }
+
+        /// <summary>Custom attribute 4 of the product sold.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productSoldCustomAttribute4")]
+        public virtual string ProductSoldCustomAttribute4 { get; set; }
+
+        /// <summary>Item ID of the product sold.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productSoldItemId")]
+        public virtual string ProductSoldItemId { get; set; }
+
+        /// <summary>Title of the product sold.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productSoldTitle")]
+        public virtual string ProductSoldTitle { get; set; }
+
+        /// <summary>Type (level 1) of the product sold.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productSoldTypeL1")]
+        public virtual string ProductSoldTypeL1 { get; set; }
+
+        /// <summary>Type (level 2) of the product sold.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productSoldTypeL2")]
+        public virtual string ProductSoldTypeL2 { get; set; }
+
+        /// <summary>Type (level 3) of the product sold.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productSoldTypeL3")]
+        public virtual string ProductSoldTypeL3 { get; set; }
+
+        /// <summary>Type (level 4) of the product sold.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productSoldTypeL4")]
+        public virtual string ProductSoldTypeL4 { get; set; }
+
+        /// <summary>Type (level 5) of the product sold.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productSoldTypeL5")]
+        public virtual string ProductSoldTypeL5 { get; set; }
+
+        /// <summary>Store ID of the product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productStoreId")]
+        public virtual string ProductStoreId { get; set; }
+
+        /// <summary>Title of the product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productTitle")]
+        public virtual string ProductTitle { get; set; }
+
+        /// <summary>Type (level 1) of the product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productTypeL1")]
+        public virtual string ProductTypeL1 { get; set; }
+
+        /// <summary>Type (level 2) of the product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productTypeL2")]
+        public virtual string ProductTypeL2 { get; set; }
+
+        /// <summary>Type (level 3) of the product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productTypeL3")]
+        public virtual string ProductTypeL3 { get; set; }
+
+        /// <summary>Type (level 4) of the product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productTypeL4")]
+        public virtual string ProductTypeL4 { get; set; }
+
+        /// <summary>Type (level 5) of the product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productTypeL5")]
+        public virtual string ProductTypeL5 { get; set; }
+
         /// <summary>
         /// Quarter as represented by the date of the first day of a quarter. Uses the calendar year for quarters, for
         /// example, the second quarter of 2018 starts on 2018-04-01. Formatted as yyyy-MM-dd.
@@ -1840,6 +2326,17 @@ namespace Google.Apis.SA360.v0.Data
         /// <summary>The per-targeting-dimension setting to restrict the reach of your campaign or ad group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetRestrictions")]
         public virtual System.Collections.Generic.IList<GoogleAdsSearchads360V0CommonTargetRestriction> TargetRestrictions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A Text asset.</summary>
+    public class GoogleAdsSearchads360V0CommonTextAsset : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Text content of the text asset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2145,6 +2642,21 @@ namespace Google.Apis.SA360.v0.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A YouTube asset.</summary>
+    public class GoogleAdsSearchads360V0CommonYoutubeVideoAsset : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>YouTube video id. This is the 11 character string value used in the YouTube video URL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("youtubeVideoId")]
+        public virtual string YoutubeVideoId { get; set; }
+
+        /// <summary>YouTube video title.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("youtubeVideoTitle")]
+        public virtual string YoutubeVideoTitle { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The error reason represented by type and enum.</summary>
     public class GoogleAdsSearchads360V0ErrorsErrorCode : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2188,7 +2700,7 @@ namespace Google.Apis.SA360.v0.Data
         [Newtonsoft.Json.JsonPropertyAttribute("queryError")]
         public virtual string QueryError { get; set; }
 
-        /// <summary>An error with the amonut of quota remaining.</summary>
+        /// <summary>An error with the amount of quota remaining.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quotaError")]
         public virtual string QuotaError { get; set; }
 
@@ -2890,6 +3402,10 @@ namespace Google.Apis.SA360.v0.Data
         [Newtonsoft.Json.JsonPropertyAttribute("callAsset")]
         public virtual GoogleAdsSearchads360V0CommonUnifiedCallAsset CallAsset { get; set; }
 
+        /// <summary>Immutable. A call to action asset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("callToActionAsset")]
+        public virtual GoogleAdsSearchads360V0CommonCallToActionAsset CallToActionAsset { get; set; }
+
         /// <summary>Output only. A unified callout asset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("calloutAsset")]
         public virtual GoogleAdsSearchads360V0CommonUnifiedCalloutAsset CalloutAsset { get; set; }
@@ -2913,6 +3429,10 @@ namespace Google.Apis.SA360.v0.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual System.Nullable<long> Id { get; set; }
 
+        /// <summary>Output only. An image asset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageAsset")]
+        public virtual GoogleAdsSearchads360V0CommonImageAsset ImageAsset { get; set; }
+
         /// <summary>
         /// Output only. The datetime when this asset was last modified. The datetime is in the customer's time zone and
         /// in "yyyy-MM-dd HH:mm:ss.ssssss" format.
@@ -2927,6 +3447,10 @@ namespace Google.Apis.SA360.v0.Data
         /// <summary>A mobile app asset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mobileAppAsset")]
         public virtual GoogleAdsSearchads360V0CommonMobileAppAsset MobileAppAsset { get; set; }
+
+        /// <summary>Optional name of the asset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>Output only. A unified page feed asset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageFeedAsset")]
@@ -2947,6 +3471,10 @@ namespace Google.Apis.SA360.v0.Data
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; }
 
+        /// <summary>Output only. A text asset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textAsset")]
+        public virtual GoogleAdsSearchads360V0CommonTextAsset TextAsset { get; set; }
+
         /// <summary>URL template for constructing a tracking URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trackingUrlTemplate")]
         public virtual string TrackingUrlTemplate { get; set; }
@@ -2954,6 +3482,221 @@ namespace Google.Apis.SA360.v0.Data
         /// <summary>Output only. Type of the asset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>Immutable. A YouTube video asset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("youtubeVideoAsset")]
+        public virtual GoogleAdsSearchads360V0CommonYoutubeVideoAsset YoutubeVideoAsset { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// An asset group. AssetGroupAsset is used to link an asset to the asset group. AssetGroupSignal is used to
+    /// associate a signal to an asset group.
+    /// </summary>
+    public class GoogleAdsSearchads360V0ResourcesAssetGroup : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Overall ad strength of this asset group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adStrength")]
+        public virtual string AdStrength { get; set; }
+
+        /// <summary>
+        /// Immutable. The campaign with which this asset group is associated. The asset which is linked to the asset
+        /// group.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("campaign")]
+        public virtual string Campaign { get; set; }
+
+        /// <summary>
+        /// A list of final mobile URLs after all cross domain redirects. In performance max, by default, the urls are
+        /// eligible for expansion unless opted out.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("finalMobileUrls")]
+        public virtual System.Collections.Generic.IList<string> FinalMobileUrls { get; set; }
+
+        /// <summary>
+        /// A list of final URLs after all cross domain redirects. In performance max, by default, the urls are eligible
+        /// for expansion unless opted out.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("finalUrls")]
+        public virtual System.Collections.Generic.IList<string> FinalUrls { get; set; }
+
+        /// <summary>Output only. The ID of the asset group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual System.Nullable<long> Id { get; set; }
+
+        /// <summary>
+        /// Required. Name of the asset group. Required. It must have a minimum length of 1 and maximum length of 128.
+        /// It must be unique under a campaign.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>First part of text that may appear appended to the url displayed in the ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("path1")]
+        public virtual string Path1 { get; set; }
+
+        /// <summary>
+        /// Second part of text that may appear appended to the url displayed in the ad. This field can only be set when
+        /// path1 is set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("path2")]
+        public virtual string Path2 { get; set; }
+
+        /// <summary>
+        /// Immutable. The resource name of the asset group. Asset group resource names have the form:
+        /// `customers/{customer_id}/assetGroups/{asset_group_id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
+        public virtual string ResourceName { get; set; }
+
+        /// <summary>The status of the asset group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// AssetGroupAsset is the link between an asset and an asset group. Adding an AssetGroupAsset links an asset with
+    /// an asset group.
+    /// </summary>
+    public class GoogleAdsSearchads360V0ResourcesAssetGroupAsset : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Immutable. The asset which this asset group asset is linking.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("asset")]
+        public virtual string Asset { get; set; }
+
+        /// <summary>Immutable. The asset group which this asset group asset is linking.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assetGroup")]
+        public virtual string AssetGroup { get; set; }
+
+        /// <summary>
+        /// The description of the placement of the asset within the asset group. For example: HEADLINE, YOUTUBE_VIDEO
+        /// etc
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldType")]
+        public virtual string FieldType { get; set; }
+
+        /// <summary>
+        /// Immutable. The resource name of the asset group asset. Asset group asset resource name have the form:
+        /// `customers/{customer_id}/assetGroupAssets/{asset_group_id}~{asset_id}~{field_type}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
+        public virtual string ResourceName { get; set; }
+
+        /// <summary>The status of the link between an asset and asset group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Asset group asset combination data</summary>
+    public class GoogleAdsSearchads360V0ResourcesAssetGroupAssetCombinationData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Served assets.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assetCombinationServedAssets")]
+        public virtual System.Collections.Generic.IList<GoogleAdsSearchads360V0CommonAssetUsage> AssetCombinationServedAssets { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>AssetGroupListingGroupFilter represents a listing group filter tree node in an asset group.</summary>
+    public class GoogleAdsSearchads360V0ResourcesAssetGroupListingGroupFilter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Immutable. The asset group which this asset group listing group filter is part of.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assetGroup")]
+        public virtual string AssetGroup { get; set; }
+
+        /// <summary>
+        /// Dimension value with which this listing group is refining its parent. Undefined for the root group.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("caseValue")]
+        public virtual GoogleAdsSearchads360V0ResourcesListingGroupFilterDimension CaseValue { get; set; }
+
+        /// <summary>Output only. The ID of the ListingGroupFilter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual System.Nullable<long> Id { get; set; }
+
+        /// <summary>
+        /// Immutable. Resource name of the parent listing group subdivision. Null for the root listing group filter
+        /// node.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parentListingGroupFilter")]
+        public virtual string ParentListingGroupFilter { get; set; }
+
+        /// <summary>Output only. The path of dimensions defining this listing group filter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("path")]
+        public virtual GoogleAdsSearchads360V0ResourcesListingGroupFilterDimensionPath Path { get; set; }
+
+        /// <summary>
+        /// Immutable. The resource name of the asset group listing group filter. Asset group listing group filter
+        /// resource name have the form:
+        /// `customers/{customer_id}/assetGroupListingGroupFilters/{asset_group_id}~{listing_group_filter_id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
+        public virtual string ResourceName { get; set; }
+
+        /// <summary>Immutable. Type of a listing group filter node.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>
+        /// Immutable. The vertical the current node tree represents. All nodes in the same tree must belong to the same
+        /// vertical.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vertical")]
+        public virtual string Vertical { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// AssetGroupSignal represents a signal in an asset group. The existence of a signal tells the performance max
+    /// campaign who's most likely to convert. Performance Max uses the signal to look for new people with similar or
+    /// stronger intent to find conversions across Search, Display, Video, and more.
+    /// </summary>
+    public class GoogleAdsSearchads360V0ResourcesAssetGroupSignal : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Immutable. The asset group which this asset group signal belongs to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assetGroup")]
+        public virtual string AssetGroup { get; set; }
+
+        /// <summary>Immutable. The audience signal to be used by the performance max campaign.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audience")]
+        public virtual GoogleAdsSearchads360V0CommonAudienceInfo Audience { get; set; }
+
+        /// <summary>
+        /// Immutable. The resource name of the asset group signal. Asset group signal resource name have the form:
+        /// `customers/{customer_id}/assetGroupSignals/{asset_group_id}~{signal_id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
+        public virtual string ResourceName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A view on the usage of ad group ad asset combination.</summary>
+    public class GoogleAdsSearchads360V0ResourcesAssetGroupTopCombinationView : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The top combinations of assets that served together.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assetGroupTopCombinations")]
+        public virtual System.Collections.Generic.IList<GoogleAdsSearchads360V0ResourcesAssetGroupAssetCombinationData> AssetGroupTopCombinations { get; set; }
+
+        /// <summary>
+        /// Output only. The resource name of the asset group top combination view. AssetGroup Top Combination view
+        /// resource names have the form:
+        /// `"customers/{customer_id}/assetGroupTopCombinationViews/{asset_group_id}~{asset_combination_category}"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
+        public virtual string ResourceName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3003,6 +3746,38 @@ namespace Google.Apis.SA360.v0.Data
         /// <summary>Output only. The status of the asset set asset. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Audience is an effective targeting option that lets you intersect different segment attributes, such as detailed
+    /// demographics and affinities, to create audiences that represent sections of your target segments.
+    /// </summary>
+    public class GoogleAdsSearchads360V0ResourcesAudience : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Description of this audience.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Output only. ID of the audience.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual System.Nullable<long> Id { get; set; }
+
+        /// <summary>
+        /// Required. Name of the audience. It should be unique across all audiences. It must have a minimum length of 1
+        /// and maximum length of 255.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Immutable. The resource name of the audience. Audience names have the form:
+        /// `customers/{customer_id}/audiences/{audience_id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
+        public virtual string ResourceName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3763,6 +4538,157 @@ namespace Google.Apis.SA360.v0.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Cart data sales view.</summary>
+    public class GoogleAdsSearchads360V0ResourcesCartDataSalesView : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The resource name of the Cart data sales view. Cart data sales view resource names have the
+        /// form: `customers/{customer_id}/cartDataSalesView`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
+        public virtual string ResourceName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A conversion.</summary>
+    public class GoogleAdsSearchads360V0ResourcesConversion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Ad ID. A value of 0 indicates that the ad is unattributed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adId")]
+        public virtual System.Nullable<long> AdId { get; set; }
+
+        /// <summary>
+        /// Output only. For offline conversions, this is an ID provided by advertisers. If an advertiser doesn't
+        /// specify such an ID, Search Ads 360 generates one. For online conversions, this is equal to the id column or
+        /// the floodlight_order_id column depending on the advertiser's Floodlight instructions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("advertiserConversionId")]
+        public virtual string AdvertiserConversionId { get; set; }
+
+        /// <summary>Output only. Asset field type of the conversion event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assetFieldType")]
+        public virtual string AssetFieldType { get; set; }
+
+        /// <summary>Output only. ID of the asset which was interacted with during the conversion event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assetId")]
+        public virtual System.Nullable<long> AssetId { get; set; }
+
+        /// <summary>Output only. What the conversion is attributed to: Visit or Keyword+Ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attributionType")]
+        public virtual string AttributionType { get; set; }
+
+        /// <summary>
+        /// Output only. A unique string, for the visit that the conversion is attributed to, that is passed to the
+        /// landing page as the click id URL parameter.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clickId")]
+        public virtual string ClickId { get; set; }
+
+        /// <summary>Output only. The timestamp of the conversion event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversionDateTime")]
+        public virtual string ConversionDateTime { get; set; }
+
+        /// <summary>Output only. The timestamp of the last time the conversion was modified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversionLastModifiedDateTime")]
+        public virtual string ConversionLastModifiedDateTime { get; set; }
+
+        /// <summary>
+        /// Output only. The quantity of items recorded by the conversion, as determined by the qty url parameter. The
+        /// advertiser is responsible for dynamically populating the parameter (such as number of items sold in the
+        /// conversion), otherwise it defaults to 1.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversionQuantity")]
+        public virtual System.Nullable<long> ConversionQuantity { get; set; }
+
+        /// <summary>
+        /// Output only. The adjusted revenue in micros for the conversion event. This will always be in the currency of
+        /// the serving account.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversionRevenueMicros")]
+        public virtual System.Nullable<long> ConversionRevenueMicros { get; set; }
+
+        /// <summary>Output only. The timestamp of the visit that the conversion is attributed to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversionVisitDateTime")]
+        public virtual string ConversionVisitDateTime { get; set; }
+
+        /// <summary>
+        /// Output only. Search Ads 360 criterion ID. A value of 0 indicates that the criterion is unattributed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("criterionId")]
+        public virtual System.Nullable<long> CriterionId { get; set; }
+
+        /// <summary>Output only. The Floodlight order ID provided by the advertiser for the conversion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("floodlightOrderId")]
+        public virtual string FloodlightOrderId { get; set; }
+
+        /// <summary>
+        /// Output only. The original, unchanged revenue associated with the Floodlight event (in the currency of the
+        /// current report), before Floodlight currency instruction modifications.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("floodlightOriginalRevenue")]
+        public virtual System.Nullable<long> FloodlightOriginalRevenue { get; set; }
+
+        /// <summary>Output only. The ID of the conversion</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual System.Nullable<long> Id { get; set; }
+
+        /// <summary>
+        /// Output only. The SearchAds360 inventory account ID containing the product that was clicked on. SearchAds360
+        /// generates this ID when you link an inventory account in SearchAds360.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("merchantId")]
+        public virtual System.Nullable<long> MerchantId { get; set; }
+
+        /// <summary>Output only. The sales channel of the product that was clicked on: Online or Local.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productChannel")]
+        public virtual string ProductChannel { get; set; }
+
+        /// <summary>
+        /// Output only. The country (ISO-3166-format) registered for the inventory feed that contains the product
+        /// clicked on.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productCountryCode")]
+        public virtual string ProductCountryCode { get; set; }
+
+        /// <summary>Output only. The ID of the product clicked on.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productId")]
+        public virtual string ProductId { get; set; }
+
+        /// <summary>
+        /// Output only. The language (ISO-639-1) that has been set for the Merchant Center feed containing data about
+        /// the product.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productLanguageCode")]
+        public virtual string ProductLanguageCode { get; set; }
+
+        /// <summary>
+        /// Output only. The store in the Local Inventory Ad that was clicked on. This should match the store IDs used
+        /// in your local products feed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productStoreId")]
+        public virtual string ProductStoreId { get; set; }
+
+        /// <summary>
+        /// Output only. The resource name of the conversion. Conversion resource names have the form:
+        /// `customers/{customer_id}/conversions/{ad_group_id}~{criterion_id}~{ds_conversion_id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
+        public virtual string ResourceName { get; set; }
+
+        /// <summary>Output only. The status of the conversion, either ENABLED or REMOVED..</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; }
+
+        /// <summary>Output only. The SearchAds360 visit ID that the conversion is attributed to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("visitId")]
+        public virtual System.Nullable<long> VisitId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A conversion action.</summary>
     public class GoogleAdsSearchads360V0ResourcesConversionAction : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4427,6 +5353,183 @@ namespace Google.Apis.SA360.v0.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A language.</summary>
+    public class GoogleAdsSearchads360V0ResourcesLanguageConstant : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The language code, for example, "en_US", "en_AU", "es", "fr", etc.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual string Code { get; set; }
+
+        /// <summary>Output only. The ID of the language constant.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual System.Nullable<long> Id { get; set; }
+
+        /// <summary>
+        /// Output only. The full name of the language in English, for example, "English (US)", "Spanish", etc.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. The resource name of the language constant. Language constant resource names have the form:
+        /// `languageConstants/{criterion_id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
+        public virtual string ResourceName { get; set; }
+
+        /// <summary>Output only. Whether the language is targetable.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetable")]
+        public virtual System.Nullable<bool> Targetable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Listing dimensions for the asset group listing group filter.</summary>
+    public class GoogleAdsSearchads360V0ResourcesListingGroupFilterDimension : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Bidding category of a product offer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productBiddingCategory")]
+        public virtual GoogleAdsSearchads360V0ResourcesListingGroupFilterDimensionProductBiddingCategory ProductBiddingCategory { get; set; }
+
+        /// <summary>Brand of a product offer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productBrand")]
+        public virtual GoogleAdsSearchads360V0ResourcesListingGroupFilterDimensionProductBrand ProductBrand { get; set; }
+
+        /// <summary>Locality of a product offer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productChannel")]
+        public virtual GoogleAdsSearchads360V0ResourcesListingGroupFilterDimensionProductChannel ProductChannel { get; set; }
+
+        /// <summary>Condition of a product offer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productCondition")]
+        public virtual GoogleAdsSearchads360V0ResourcesListingGroupFilterDimensionProductCondition ProductCondition { get; set; }
+
+        /// <summary>Custom attribute of a product offer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productCustomAttribute")]
+        public virtual GoogleAdsSearchads360V0ResourcesListingGroupFilterDimensionProductCustomAttribute ProductCustomAttribute { get; set; }
+
+        /// <summary>Item id of a product offer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productItemId")]
+        public virtual GoogleAdsSearchads360V0ResourcesListingGroupFilterDimensionProductItemId ProductItemId { get; set; }
+
+        /// <summary>Type of a product offer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productType")]
+        public virtual GoogleAdsSearchads360V0ResourcesListingGroupFilterDimensionProductType ProductType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The path defining of dimensions defining a listing group filter.</summary>
+    public class GoogleAdsSearchads360V0ResourcesListingGroupFilterDimensionPath : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The complete path of dimensions through the listing group filter hierarchy (excluding the root
+        /// node) to this listing group filter.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dimensions")]
+        public virtual System.Collections.Generic.IList<GoogleAdsSearchads360V0ResourcesListingGroupFilterDimension> Dimensions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// One element of a bidding category at a certain level. Top-level categories are at level 1, their children at
+    /// level 2, and so on. We currently support up to 5 levels. The user must specify a dimension type that indicates
+    /// the level of the category. All cases of the same subdivision must have the same dimension type (category level).
+    /// </summary>
+    public class GoogleAdsSearchads360V0ResourcesListingGroupFilterDimensionProductBiddingCategory : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// ID of the product bidding category. This ID is equivalent to the google_product_category ID as described in
+        /// this article: https://support.google.com/merchants/answer/6324436
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual System.Nullable<long> Id { get; set; }
+
+        /// <summary>Indicates the level of the category in the taxonomy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("level")]
+        public virtual string Level { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Brand of the product.</summary>
+    public class GoogleAdsSearchads360V0ResourcesListingGroupFilterDimensionProductBrand : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>String value of the product brand.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Locality of a product offer.</summary>
+    public class GoogleAdsSearchads360V0ResourcesListingGroupFilterDimensionProductChannel : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Value of the locality.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("channel")]
+        public virtual string Channel { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Condition of a product offer.</summary>
+    public class GoogleAdsSearchads360V0ResourcesListingGroupFilterDimensionProductCondition : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Value of the condition.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("condition")]
+        public virtual string Condition { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Custom attribute of a product offer.</summary>
+    public class GoogleAdsSearchads360V0ResourcesListingGroupFilterDimensionProductCustomAttribute : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Indicates the index of the custom attribute.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("index")]
+        public virtual string Index { get; set; }
+
+        /// <summary>String value of the product custom attribute.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Item id of a product offer.</summary>
+    public class GoogleAdsSearchads360V0ResourcesListingGroupFilterDimensionProductItemId : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Value of the id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Type of a product offer.</summary>
+    public class GoogleAdsSearchads360V0ResourcesListingGroupFilterDimensionProductType : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Level of the type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("level")]
+        public virtual string Level { get; set; }
+
+        /// <summary>Value of the type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A location view summarizes the performance of campaigns by Location criteria.</summary>
     public class GoogleAdsSearchads360V0ResourcesLocationView : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4436,6 +5539,53 @@ namespace Google.Apis.SA360.v0.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
         public virtual string ResourceName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A Product Bidding Category.</summary>
+    public class GoogleAdsSearchads360V0ResourcesProductBiddingCategoryConstant : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Two-letter upper-case country code of the product bidding category.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("countryCode")]
+        public virtual string CountryCode { get; set; }
+
+        /// <summary>
+        /// Output only. ID of the product bidding category. This ID is equivalent to the google_product_category ID as
+        /// described in this article: https://support.google.com/merchants/answer/6324436.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual System.Nullable<long> Id { get; set; }
+
+        /// <summary>Output only. Language code of the product bidding category.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; }
+
+        /// <summary>Output only. Level of the product bidding category.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("level")]
+        public virtual string Level { get; set; }
+
+        /// <summary>
+        /// Output only. Display value of the product bidding category localized according to language_code.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("localizedName")]
+        public virtual string LocalizedName { get; set; }
+
+        /// <summary>Output only. Resource name of the parent product bidding category.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productBiddingCategoryConstantParent")]
+        public virtual string ProductBiddingCategoryConstantParent { get; set; }
+
+        /// <summary>
+        /// Output only. The resource name of the product bidding category. Product bidding category resource names have
+        /// the form: `productBiddingCategoryConstants/{country_code}~{level}~{id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
+        public virtual string ResourceName { get; set; }
+
+        /// <summary>Output only. Status of the product bidding category.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4540,6 +5690,25 @@ namespace Google.Apis.SA360.v0.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Shopping performance view. Provides Shopping campaign statistics aggregated at several product dimension levels.
+    /// Product dimension values from Merchant Center such as brand, category, custom attributes, product condition and
+    /// product type will reflect the state of each dimension as of the date and time when the corresponding event was
+    /// recorded.
+    /// </summary>
+    public class GoogleAdsSearchads360V0ResourcesShoppingPerformanceView : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The resource name of the Shopping performance view. Shopping performance view resource names
+        /// have the form: `customers/{customer_id}/shoppingPerformanceView`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
+        public virtual string ResourceName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A user list. This is a list of users a customer may target.</summary>
     public class GoogleAdsSearchads360V0ResourcesUserList : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4564,6 +5733,92 @@ namespace Google.Apis.SA360.v0.Data
         /// <summary>Output only. Type of this list. This field is read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A visit.</summary>
+    public class GoogleAdsSearchads360V0ResourcesVisit : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Ad ID. A value of 0 indicates that the ad is unattributed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adId")]
+        public virtual System.Nullable<long> AdId { get; set; }
+
+        /// <summary>Output only. Asset field type of the visit event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assetFieldType")]
+        public virtual string AssetFieldType { get; set; }
+
+        /// <summary>Output only. ID of the asset which was interacted with during the visit event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assetId")]
+        public virtual System.Nullable<long> AssetId { get; set; }
+
+        /// <summary>
+        /// Output only. A unique string for each visit that is passed to the landing page as the click id URL
+        /// parameter.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clickId")]
+        public virtual string ClickId { get; set; }
+
+        /// <summary>
+        /// Output only. Search Ads 360 keyword ID. A value of 0 indicates that the keyword is unattributed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("criterionId")]
+        public virtual System.Nullable<long> CriterionId { get; set; }
+
+        /// <summary>Output only. The ID of the visit.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual System.Nullable<long> Id { get; set; }
+
+        /// <summary>
+        /// Output only. The Search Ads 360 inventory account ID containing the product that was clicked on. Search Ads
+        /// 360 generates this ID when you link an inventory account in Search Ads 360.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("merchantId")]
+        public virtual System.Nullable<long> MerchantId { get; set; }
+
+        /// <summary>Output only. The sales channel of the product that was clicked on: Online or Local.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productChannel")]
+        public virtual string ProductChannel { get; set; }
+
+        /// <summary>
+        /// Output only. The country (ISO-3166 format) registered for the inventory feed that contains the product
+        /// clicked on.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productCountryCode")]
+        public virtual string ProductCountryCode { get; set; }
+
+        /// <summary>Output only. The ID of the product clicked on.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productId")]
+        public virtual string ProductId { get; set; }
+
+        /// <summary>
+        /// Output only. The language (ISO-639-1) that has been set for the Merchant Center feed containing data about
+        /// the product.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productLanguageCode")]
+        public virtual string ProductLanguageCode { get; set; }
+
+        /// <summary>
+        /// Output only. The store in the Local Inventory Ad that was clicked on. This should match the store IDs used
+        /// in your local products feed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productStoreId")]
+        public virtual string ProductStoreId { get; set; }
+
+        /// <summary>
+        /// Output only. The resource name of the visit. Visit resource names have the form:
+        /// `customers/{customer_id}/visits/{ad_group_id}~{criterion_id}~{ds_visit_id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
+        public virtual string ResourceName { get; set; }
+
+        /// <summary>
+        /// Output only. The timestamp of the visit event. The timestamp is in the customer's time zone and in
+        /// "yyyy-MM-dd HH:mm:ss" format.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("visitDateTime")]
+        public virtual string VisitDateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4675,6 +5930,26 @@ namespace Google.Apis.SA360.v0.Data
         [Newtonsoft.Json.JsonPropertyAttribute("asset")]
         public virtual GoogleAdsSearchads360V0ResourcesAsset Asset { get; set; }
 
+        /// <summary>The asset group referenced in the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assetGroup")]
+        public virtual GoogleAdsSearchads360V0ResourcesAssetGroup AssetGroup { get; set; }
+
+        /// <summary>The asset group asset referenced in the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assetGroupAsset")]
+        public virtual GoogleAdsSearchads360V0ResourcesAssetGroupAsset AssetGroupAsset { get; set; }
+
+        /// <summary>The asset group listing group filter referenced in the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assetGroupListingGroupFilter")]
+        public virtual GoogleAdsSearchads360V0ResourcesAssetGroupListingGroupFilter AssetGroupListingGroupFilter { get; set; }
+
+        /// <summary>The asset group signal referenced in the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assetGroupSignal")]
+        public virtual GoogleAdsSearchads360V0ResourcesAssetGroupSignal AssetGroupSignal { get; set; }
+
+        /// <summary>The asset group top combination view referenced in the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assetGroupTopCombinationView")]
+        public virtual GoogleAdsSearchads360V0ResourcesAssetGroupTopCombinationView AssetGroupTopCombinationView { get; set; }
+
         /// <summary>The asset set referenced in the query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assetSet")]
         public virtual GoogleAdsSearchads360V0ResourcesAssetSet AssetSet { get; set; }
@@ -4682,6 +5957,10 @@ namespace Google.Apis.SA360.v0.Data
         /// <summary>The asset set asset referenced in the query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assetSetAsset")]
         public virtual GoogleAdsSearchads360V0ResourcesAssetSetAsset AssetSetAsset { get; set; }
+
+        /// <summary>The Audience referenced in the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audience")]
+        public virtual GoogleAdsSearchads360V0ResourcesAudience Audience { get; set; }
 
         /// <summary>The bidding strategy referenced in the query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("biddingStrategy")]
@@ -4714,6 +5993,14 @@ namespace Google.Apis.SA360.v0.Data
         /// <summary>The campaign label referenced in the query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("campaignLabel")]
         public virtual GoogleAdsSearchads360V0ResourcesCampaignLabel CampaignLabel { get; set; }
+
+        /// <summary>The cart data sales view referenced in the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cartDataSalesView")]
+        public virtual GoogleAdsSearchads360V0ResourcesCartDataSalesView CartDataSalesView { get; set; }
+
+        /// <summary>The event level conversion referenced in the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversion")]
+        public virtual GoogleAdsSearchads360V0ResourcesConversion Conversion { get; set; }
 
         /// <summary>The conversion action referenced in the query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conversionAction")]
@@ -4763,6 +6050,10 @@ namespace Google.Apis.SA360.v0.Data
         [Newtonsoft.Json.JsonPropertyAttribute("label")]
         public virtual GoogleAdsSearchads360V0ResourcesLabel Label { get; set; }
 
+        /// <summary>The language constant referenced in the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageConstant")]
+        public virtual GoogleAdsSearchads360V0ResourcesLanguageConstant LanguageConstant { get; set; }
+
         /// <summary>The location view referenced in the query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationView")]
         public virtual GoogleAdsSearchads360V0ResourcesLocationView LocationView { get; set; }
@@ -4770,6 +6061,10 @@ namespace Google.Apis.SA360.v0.Data
         /// <summary>The metrics.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
         public virtual GoogleAdsSearchads360V0CommonMetrics Metrics { get; set; }
+
+        /// <summary>The Product Bidding Category referenced in the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productBiddingCategoryConstant")]
+        public virtual GoogleAdsSearchads360V0ResourcesProductBiddingCategoryConstant ProductBiddingCategoryConstant { get; set; }
 
         /// <summary>The product group view referenced in the query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productGroupView")]
@@ -4779,9 +6074,17 @@ namespace Google.Apis.SA360.v0.Data
         [Newtonsoft.Json.JsonPropertyAttribute("segments")]
         public virtual GoogleAdsSearchads360V0CommonSegments Segments { get; set; }
 
+        /// <summary>The shopping performance view referenced in the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shoppingPerformanceView")]
+        public virtual GoogleAdsSearchads360V0ResourcesShoppingPerformanceView ShoppingPerformanceView { get; set; }
+
         /// <summary>The user list referenced in the query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userList")]
         public virtual GoogleAdsSearchads360V0ResourcesUserList UserList { get; set; }
+
+        /// <summary>The event level visit referenced in the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("visit")]
+        public virtual GoogleAdsSearchads360V0ResourcesVisit Visit { get; set; }
 
         /// <summary>The webpage view referenced in the query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webpageView")]

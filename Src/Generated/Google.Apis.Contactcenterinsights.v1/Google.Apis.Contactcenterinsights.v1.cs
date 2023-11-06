@@ -625,6 +625,64 @@ namespace Google.Apis.Contactcenterinsights.v1
                     }
                 }
 
+                /// <summary>Deletes multiple conversations in a single request.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The parent resource to create analyses in. Format: projects/{project}/locations/{location}
+                /// </param>
+                public virtual BulkDeleteRequest BulkDelete(Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1BulkDeleteConversationsRequest body, string parent)
+                {
+                    return new BulkDeleteRequest(service, body, parent);
+                }
+
+                /// <summary>Deletes multiple conversations in a single request.</summary>
+                public class BulkDeleteRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new BulkDelete request.</summary>
+                    public BulkDeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1BulkDeleteConversationsRequest body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent resource to create analyses in. Format:
+                    /// projects/{project}/locations/{location}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1BulkDeleteConversationsRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "bulkDelete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/conversations:bulkDelete";
+
+                    /// <summary>Initializes BulkDelete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Gets conversation statistics.</summary>
                 /// <param name="location">Required. The location of the conversations.</param>
                 public virtual CalculateStatsRequest CalculateStats(string location)
@@ -3342,7 +3400,8 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         public virtual System.Nullable<int> FailedAnalysesCount { get; set; }
 
         /// <summary>
-        /// Output only. Partial errors during ingest operation that might cause the operation output to be incomplete.
+        /// Output only. Partial errors during bulk analyze operation that might cause the operation output to be
+        /// incomplete.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partialErrors")]
         public virtual System.Collections.Generic.IList<GoogleRpcStatus> PartialErrors { get; set; }
@@ -3399,6 +3458,136 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("successfulAnalysisCount")]
         public virtual System.Nullable<int> SuccessfulAnalysisCount { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The metadata for a bulk delete conversations operation.</summary>
+    public class GoogleCloudContactcenterinsightsV1BulkDeleteConversationsMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>The time the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>The time the operation finished running.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>
+        /// Partial errors during bulk delete conversations operation that might cause the operation output to be
+        /// incomplete.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partialErrors")]
+        public virtual System.Collections.Generic.IList<GoogleRpcStatus> PartialErrors { get; set; }
+
+        /// <summary>The original request for bulk delete.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("request")]
+        public virtual GoogleCloudContactcenterinsightsV1BulkDeleteConversationsRequest Request { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request to delete conversations in bulk.</summary>
+    public class GoogleCloudContactcenterinsightsV1BulkDeleteConversationsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Filter used to select the subset of conversations to analyze.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; }
+
+        /// <summary>
+        /// If set to true, all of this conversation's analyses will also be deleted. Otherwise, the request will only
+        /// succeed if the conversation has no analyses.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("force")]
+        public virtual System.Nullable<bool> Force { get; set; }
+
+        /// <summary>
+        /// Maximum number of conversations to delete. The default is 1000. It can be changed by setting the
+        /// `max_delete_count` field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxDeleteCount")]
+        public virtual System.Nullable<int> MaxDeleteCount { get; set; }
+
+        /// <summary>
+        /// Required. The parent resource to create analyses in. Format: projects/{project}/locations/{location}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
+        public virtual string Parent { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response for a bulk analyze conversations operation.</summary>
+    public class GoogleCloudContactcenterinsightsV1BulkDeleteConversationsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -4964,6 +5153,18 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
         public virtual string Parent { get; set; }
 
+        /// <summary>
+        /// Optional. DLP settings for transcript redaction. Optional, will default to the config specified in Settings.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("redactionConfig")]
+        public virtual GoogleCloudContactcenterinsightsV1RedactionConfig RedactionConfig { get; set; }
+
+        /// <summary>
+        /// Optional. Default Speech-to-Text configuration. Optional, will default to the config specified in Settings.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("speechConfig")]
+        public virtual GoogleCloudContactcenterinsightsV1SpeechConfig SpeechConfig { get; set; }
+
         /// <summary>Configuration for when `source` contains conversation transcripts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transcriptObjectConfig")]
         public virtual GoogleCloudContactcenterinsightsV1IngestConversationsRequestTranscriptObjectConfig TranscriptObjectConfig { get; set; }
@@ -4976,10 +5177,24 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
     public class GoogleCloudContactcenterinsightsV1IngestConversationsRequestConversationConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. For audio conversations, this field indicates which of the channels, 1 or 2, contains the agent.
+        /// Note that this must be set for audio conversations to be properly displayed and analyzed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentChannel")]
+        public virtual System.Nullable<int> AgentChannel { get; set; }
+
+        /// <summary>
         /// An opaque, user-specified string representing the human agent who handled the conversations.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agentId")]
         public virtual string AgentId { get; set; }
+
+        /// <summary>
+        /// Optional. For audio conversations, this field indicates which of the channels, 1 or 2, contains the
+        /// customer. Note that this must be set for audio conversations to be properly displayed and analyzed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customerChannel")]
+        public virtual System.Nullable<int> CustomerChannel { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4988,6 +5203,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
     /// <summary>Configuration for Cloud Storage bucket sources.</summary>
     public class GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSource : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Specifies the type of the objects in `bucket_uri`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bucketObjectType")]
+        public virtual string BucketObjectType { get; set; }
+
         /// <summary>Required. The Cloud Storage bucket containing source objects.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bucketUri")]
         public virtual string BucketUri { get; set; }
@@ -6832,7 +7051,8 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         public virtual System.Nullable<int> FailedAnalysesCount { get; set; }
 
         /// <summary>
-        /// Output only. Partial errors during ingest operation that might cause the operation output to be incomplete.
+        /// Output only. Partial errors during bulk analyze operation that might cause the operation output to be
+        /// incomplete.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partialErrors")]
         public virtual System.Collections.Generic.IList<GoogleRpcStatus> PartialErrors { get; set; }
@@ -6889,6 +7109,136 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("successfulAnalysisCount")]
         public virtual System.Nullable<int> SuccessfulAnalysisCount { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The metadata for a bulk delete conversations operation.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1BulkDeleteConversationsMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>The time the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>The time the operation finished running.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>
+        /// Partial errors during bulk delete conversations operation that might cause the operation output to be
+        /// incomplete.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partialErrors")]
+        public virtual System.Collections.Generic.IList<GoogleRpcStatus> PartialErrors { get; set; }
+
+        /// <summary>The original request for bulk delete.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("request")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1BulkDeleteConversationsRequest Request { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request to delete conversations in bulk.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1BulkDeleteConversationsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Filter used to select the subset of conversations to analyze.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; }
+
+        /// <summary>
+        /// If set to true, all of this conversation's analyses will also be deleted. Otherwise, the request will only
+        /// succeed if the conversation has no analyses.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("force")]
+        public virtual System.Nullable<bool> Force { get; set; }
+
+        /// <summary>
+        /// Maximum number of conversations to delete. The default is 1000. It can be changed by setting the
+        /// `max_delete_count` field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxDeleteCount")]
+        public virtual System.Nullable<int> MaxDeleteCount { get; set; }
+
+        /// <summary>
+        /// Required. The parent resource to create analyses in. Format: projects/{project}/locations/{location}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
+        public virtual string Parent { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response for a bulk analyze conversations operation.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1BulkDeleteConversationsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -8305,6 +8655,18 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
         public virtual string Parent { get; set; }
 
+        /// <summary>
+        /// Optional. DLP settings for transcript redaction. Optional, will default to the config specified in Settings.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("redactionConfig")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1RedactionConfig RedactionConfig { get; set; }
+
+        /// <summary>
+        /// Optional. Default Speech-to-Text configuration. Optional, will default to the config specified in Settings.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("speechConfig")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1SpeechConfig SpeechConfig { get; set; }
+
         /// <summary>Configuration for when `source` contains conversation transcripts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transcriptObjectConfig")]
         public virtual GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequestTranscriptObjectConfig TranscriptObjectConfig { get; set; }
@@ -8317,10 +8679,24 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
     public class GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequestConversationConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. For audio conversations, this field indicates which of the channels, 1 or 2, contains the agent.
+        /// Note that this must be set for audio conversations to be properly displayed and analyzed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentChannel")]
+        public virtual System.Nullable<int> AgentChannel { get; set; }
+
+        /// <summary>
         /// An opaque, user-specified string representing the human agent who handled the conversations.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agentId")]
         public virtual string AgentId { get; set; }
+
+        /// <summary>
+        /// Optional. For audio conversations, this field indicates which of the channels, 1 or 2, contains the
+        /// customer. Note that this must be set for audio conversations to be properly displayed and analyzed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customerChannel")]
+        public virtual System.Nullable<int> CustomerChannel { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8329,6 +8705,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
     /// <summary>Configuration for Cloud Storage bucket sources.</summary>
     public class GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequestGcsSource : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Specifies the type of the objects in `bucket_uri`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bucketObjectType")]
+        public virtual string BucketObjectType { get; set; }
+
         /// <summary>Required. The Cloud Storage bucket containing source objects.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bucketUri")]
         public virtual string BucketUri { get; set; }

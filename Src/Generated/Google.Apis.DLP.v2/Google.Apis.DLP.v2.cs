@@ -10353,7 +10353,7 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Other types found within this column. List will be un-ordered.</summary>
+        /// <summary>Other types found within this column. List will be unordered.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("otherMatches")]
         public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2OtherInfoTypeSummary> OtherMatches { get; set; }
 
@@ -10415,7 +10415,7 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
-        /// <summary>The resource name to the table data profile.</summary>
+        /// <summary>The resource name of the table data profile.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tableDataProfile")]
         public virtual string TableDataProfile { get; set; }
 
@@ -11006,7 +11006,7 @@ namespace Google.Apis.DLP.v2.Data
 
         /// <summary>
         /// Sensitivity for this CustomInfoType. If this CustomInfoType extends an existing InfoType, the sensitivity
-        /// here will take precedent over that of the original InfoType. If unset for a CustomInfoType, it will default
+        /// here will take precedence over that of the original InfoType. If unset for a CustomInfoType, it will default
         /// to HIGH. This only applies to data profiling.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sensitivityScore")]
@@ -11044,7 +11044,7 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The schema of data to be saved to the BigQuery when the `DataProfileAction` is enabled.</summary>
+    /// <summary>The schema of data to be saved to the BigQuery table when the `DataProfileAction` is enabled.</summary>
     public class GooglePrivacyDlpV2DataProfileBigQueryRowSchema : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Column data profile column</summary>
@@ -13150,10 +13150,10 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>
         /// Restricts what info_types to look for. The values must correspond to InfoType values returned by
         /// ListInfoTypes or listed at https://cloud.google.com/dlp/docs/infotypes-reference. When no InfoTypes or
-        /// CustomInfoTypes are specified in a request, the system may automatically choose what detectors to run. By
-        /// default this may be all types, but may change over time as detectors are updated. If you need precise
-        /// control and predictability as to what detectors are run you should specify specific InfoTypes listed in the
-        /// reference, otherwise a default list will be used, which may change over time.
+        /// CustomInfoTypes are specified in a request, the system may automatically choose a default list of detectors
+        /// to run, which may change over time. If you need precise control and predictability as to what detectors are
+        /// run you should specify specific InfoTypes listed in the reference, otherwise a default list will be used,
+        /// which may change over time.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("infoTypes")]
         public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2InfoType> InfoTypes { get; set; }
@@ -14035,8 +14035,8 @@ namespace Google.Apis.DLP.v2.Data
         public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2DiscoveryConfig> DiscoveryConfigs { get; set; }
 
         /// <summary>
-        /// If the next page is available then the next page token to be used in the following ListDiscoveryConfigs
-        /// request.
+        /// If the next page is available then this value is the next page token to be used in the following
+        /// ListDiscoveryConfigs request.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
@@ -14097,7 +14097,8 @@ namespace Google.Apis.DLP.v2.Data
         public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2JobTrigger> JobTriggers { get; set; }
 
         /// <summary>
-        /// If the next page is available then the next page token to be used in the following ListJobTriggers request.
+        /// If the next page is available then this value is the next page token to be used in the following
+        /// ListJobTriggers request.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
@@ -15041,7 +15042,7 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>De-id options.</summary>
+    /// <summary>De-identification options.</summary>
     public class GooglePrivacyDlpV2RequestedDeidentifyOptions : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
