@@ -5,6 +5,12 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.0</TargetFramework>
     <CheckEolTargetFramework>False</CheckEolTargetFramework>
+
+    <!--
+      - The (indirect) System.Management dependency complains on older frameworks,
+      - but we use it carefully.
+      -->
+    <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings>
   </PropertyGroup>
 
   <!-- nupkg information -->
