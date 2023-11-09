@@ -4072,6 +4072,14 @@ namespace Google.Apis.Pubsub.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("allowedPersistenceRegions")]
         public virtual System.Collections.Generic.IList<string> AllowedPersistenceRegions { get; set; }
 
+        /// <summary>
+        /// Optional. If true, `allowed_persistence_regions` is also used to enforce in-transit guarantees for messages.
+        /// That is, Pub/Sub will fail Publish operations on this topic and subscribe operations on any subscription
+        /// attached to this topic in any region that is not in `allowed_persistence_regions`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enforceInTransit")]
+        public virtual System.Nullable<bool> EnforceInTransit { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

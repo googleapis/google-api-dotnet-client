@@ -6549,6 +6549,19 @@ namespace Google.Apis.GKEHub.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// DefaultClusterConfig describes the default cluster configurations to be applied to all clusters born-in-fleet.
+    /// </summary>
+    public class DefaultClusterConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Enable/Disable Security Posture features for the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("securityPostureConfig")]
+        public virtual SecurityPostureConfig SecurityPostureConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>EdgeCluster contains information specific to Google Edge Clusters.</summary>
     public class EdgeCluster : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6917,6 +6930,10 @@ namespace Google.Apis.GKEHub.v1beta.Data
             get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
             set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
         }
+
+        /// <summary>Optional. The default cluster configurations to apply across the fleet.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultClusterConfig")]
+        public virtual DefaultClusterConfig DefaultClusterConfig { get; set; }
 
         private string _deleteTimeRaw;
 
@@ -9561,6 +9578,23 @@ namespace Google.Apis.GKEHub.v1beta.Data
         /// <summary>Output only. The current state of the scope resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual string Code { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// SecurityPostureConfig defines the flags needed to enable/disable features for the Security Posture API.
+    /// </summary>
+    public class SecurityPostureConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Sets which mode to use for Security Posture features.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mode")]
+        public virtual string Mode { get; set; }
+
+        /// <summary>Sets which mode to use for vulnerability scanning.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vulnerabilityMode")]
+        public virtual string VulnerabilityMode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

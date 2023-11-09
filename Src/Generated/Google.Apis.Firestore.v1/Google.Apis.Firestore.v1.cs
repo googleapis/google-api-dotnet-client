@@ -5354,11 +5354,10 @@ namespace Google.Apis.Firestore.v1.Data
         private object _snapshotTime;
 
         /// <summary>
-        /// The timestamp that corresponds to the version of the database to be exported. The timestamp must be rounded
-        /// to the minute, in the past, and not older than 5 days. Please choose a reasonable timestamp based on prior
-        /// knowledge on how long exports take as data at provided snapshot timestamp can expire during export. If
-        /// specified, then the exported documents will represent a consistent view of the database at the provided
-        /// time. Otherwise, there are no guarantees about the consistency of the exported documents.
+        /// The timestamp that corresponds to the version of the database to be exported. The timestamp must be in the
+        /// past, rounded to the minute and not older than earliestVersionTime. If specified, then the exported
+        /// documents will represent a consistent view of the database at the provided time. Otherwise, there are no
+        /// guarantees about the consistency of the exported documents.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("snapshotTime")]
         public virtual string SnapshotTimeRaw

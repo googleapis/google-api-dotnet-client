@@ -8,7 +8,8 @@
     "FAILED",
     "TIMED_OUT",
     "UNKNOWN",
-    "DELAYED"
+    "DELAYED",
+    "EXECUTION_DISABLED"
   ],
   "Google.Apis.Script.v1.ProcessesResource+ListRequest.UserProcessFilterTypesEnum": [
     "PROCESS_TYPE_UNSPECIFIED",
@@ -38,7 +39,8 @@
     "FAILED",
     "TIMED_OUT",
     "UNKNOWN",
-    "DELAYED"
+    "DELAYED",
+    "EXECUTION_DISABLED"
   ],
   "Google.Apis.Script.v1.ProcessesResource+ListScriptProcessesRequest.ScriptProcessFilterTypesEnum": [
     "PROCESS_TYPE_UNSPECIFIED",

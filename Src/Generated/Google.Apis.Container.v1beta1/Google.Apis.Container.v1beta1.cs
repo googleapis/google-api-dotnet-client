@@ -7025,6 +7025,10 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("endpoint")]
         public virtual string Endpoint { get; set; }
 
+        /// <summary>GKE Enterprise Configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enterpriseConfig")]
+        public virtual EnterpriseConfig EnterpriseConfig { get; set; }
+
         /// <summary>
         /// This checksum is computed by the server based on the value of cluster fields, and may be sent on update
         /// requests to ensure the client has an up-to-date value before proceeding.
@@ -8021,6 +8025,17 @@ namespace Google.Apis.Container.v1beta1.Data
     /// </summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>EnterpriseConfig is the cluster enterprise configuration.</summary>
+    public class EnterpriseConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. [Output only] cluster_tier specifies the premium tier of the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterTier")]
+        public virtual string ClusterTier { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

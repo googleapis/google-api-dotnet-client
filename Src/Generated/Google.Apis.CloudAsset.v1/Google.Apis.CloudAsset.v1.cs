@@ -1483,7 +1483,7 @@ namespace Google.Apis.CloudAsset.v1
             /// projects/project_number/savedQueries/saved_query_id * folders/folder_number/savedQueries/saved_query_id
             /// * organizations/organization_number/savedQueries/saved_query_id If both `analysis_query` and
             /// `saved_analysis_query` are provided, they will be merged together with the `saved_analysis_query` as
-            /// base and the `analysis_query` as overrides. For more details of the merge behavior, please refer to the
+            /// base and the `analysis_query` as overrides. For more details of the merge behavior, refer to the
             /// [MergeFrom](https://developers.google.com/protocol-buffers/docs/reference/cpp/google.protobuf.message#Message.MergeFrom.details)
             /// page. Note that you cannot override primitive fields with default value, such as 0 or empty string,
             /// etc., because we use proto3, which doesn't support field presence yet.
@@ -2787,33 +2787,33 @@ namespace Google.Apis.CloudAsset.v1
             /// as a key or value. * `labels.env:prod` to find Google Cloud resources that have a label `env` and its
             /// value is `prod`. * `labels.env:*` to find Google Cloud resources that have a label `env`. *
             /// `tagKeys:env` to find Google Cloud resources that have directly attached tags where the
-            /// [`TagKey`](https://cloud.google.com/resource-manager/reference/rest/v3/tagKeys#resource:-tagkey)
-            /// .`namespacedName` contains `env`. * `tagValues:prod*` to find Google Cloud resources that have directly
-            /// attached tags where the
-            /// [`TagValue`](https://cloud.google.com/resource-manager/reference/rest/v3/tagValues#resource:-tagvalue)
-            /// .`namespacedName` contains a word prefixed by `prod`. * `tagValueIds=tagValues/123` to find Google Cloud
-            /// resources that have directly attached tags where the
-            /// [`TagValue`](https://cloud.google.com/resource-manager/reference/rest/v3/tagValues#resource:-tagvalue)
-            /// .`name` is exactly `tagValues/123`. * `effectiveTagKeys:env` to find Google Cloud resources that have
-            /// directly attached or inherited tags where the
-            /// [`TagKey`](https://cloud.google.com/resource-manager/reference/rest/v3/tagKeys#resource:-tagkey)
-            /// .`namespacedName` contains `env`. * `effectiveTagValues:prod*` to find Google Cloud resources that have
-            /// directly attached or inherited tags where the
-            /// [`TagValue`](https://cloud.google.com/resource-manager/reference/rest/v3/tagValues#resource:-tagvalue)
-            /// .`namespacedName` contains a word prefixed by `prod`. * `effectiveTagValueIds=tagValues/123` to find
-            /// Google Cloud resources that have directly attached or inherited tags where the
-            /// [`TagValue`](https://cloud.google.com/resource-manager/reference/rest/v3/tagValues#resource:-tagvalue)
-            /// .`name` is exactly `tagValues/123`. * `kmsKey:key` to find Google Cloud resources encrypted with a
-            /// customer-managed encryption key whose name contains `key` as a word. This field is deprecated. Please
-            /// use the `kmsKeys` field to retrieve Cloud KMS key information. * `kmsKeys:key` to find Google Cloud
-            /// resources encrypted with customer-managed encryption keys whose name contains the word `key`. *
+            /// [`TagKey.namespacedName`](https://cloud.google.com/resource-manager/reference/rest/v3/tagKeys#resource:-tagkey)
+            /// contains `env`. * `tagValues:prod*` to find Google Cloud resources that have directly attached tags
+            /// where the
+            /// [`TagValue.namespacedName`](https://cloud.google.com/resource-manager/reference/rest/v3/tagValues#resource:-tagvalue)
+            /// contains a word prefixed by `prod`. * `tagValueIds=tagValues/123` to find Google Cloud resources that
+            /// have directly attached tags where the
+            /// [`TagValue.name`](https://cloud.google.com/resource-manager/reference/rest/v3/tagValues#resource:-tagvalue)
+            /// is exactly `tagValues/123`. * `effectiveTagKeys:env` to find Google Cloud resources that have directly
+            /// attached or inherited tags where the
+            /// [`TagKey.namespacedName`](https://cloud.google.com/resource-manager/reference/rest/v3/tagKeys#resource:-tagkey)
+            /// contains `env`. * `effectiveTagValues:prod*` to find Google Cloud resources that have directly attached
+            /// or inherited tags where the
+            /// [`TagValue.namespacedName`](https://cloud.google.com/resource-manager/reference/rest/v3/tagValues#resource:-tagvalue)
+            /// contains a word prefixed by `prod`. * `effectiveTagValueIds=tagValues/123` to find Google Cloud
+            /// resources that have directly attached or inherited tags where the
+            /// [`TagValue.name`](https://cloud.google.com/resource-manager/reference/rest/v3/tagValues#resource:-tagvalue)
+            /// is exactly `tagValues/123`. * `kmsKey:key` to find Google Cloud resources encrypted with a
+            /// customer-managed encryption key whose name contains `key` as a word. This field is deprecated. Use the
+            /// `kmsKeys` field to retrieve Cloud KMS key information. * `kmsKeys:key` to find Google Cloud resources
+            /// encrypted with customer-managed encryption keys whose name contains the word `key`. *
             /// `relationships:instance-group-1` to find Google Cloud resources that have relationships with
             /// `instance-group-1` in the related resource name. * `relationships:INSTANCE_TO_INSTANCEGROUP` to find
             /// Compute Engine instances that have relationships of type `INSTANCE_TO_INSTANCEGROUP`. *
             /// `relationships.INSTANCE_TO_INSTANCEGROUP:instance-group-1` to find Compute Engine instances that have
             /// relationships with `instance-group-1` in the Compute Engine instance group resource name, for
             /// relationship type `INSTANCE_TO_INSTANCEGROUP`. * `sccSecurityMarks.key=value` to find Cloud resources
-            /// that are attached with security marks whose key is `key` and value is `value'. *
+            /// that are attached with security marks whose key is `key` and value is `value`. *
             /// `sccSecurityMarks.key:*` to find Cloud resources that are attached with security marks whose key is
             /// `key`. * `state:ACTIVE` to find Google Cloud resources whose state contains `ACTIVE` as a word. * `NOT
             /// state:ACTIVE` to find Google Cloud resources whose state doesn't contain `ACTIVE` as a word. *
@@ -2999,7 +2999,7 @@ namespace Google.Apis.CloudAsset.v1.Data
         /// projects/project_number/savedQueries/saved_query_id * folders/folder_number/savedQueries/saved_query_id *
         /// organizations/organization_number/savedQueries/saved_query_id If both `analysis_query` and
         /// `saved_analysis_query` are provided, they will be merged together with the `saved_analysis_query` as base
-        /// and the `analysis_query` as overrides. For more details of the merge behavior, please refer to the
+        /// and the `analysis_query` as overrides. For more details of the merge behavior, refer to the
         /// [MergeFrom](https://developers.google.com/protocol-buffers/docs/reference/cpp/google.protobuf.message#Message.MergeFrom.details)
         /// doc. Note that you cannot override primitive fields with default value, such as 0 or empty string, etc.,
         /// because we use proto3, which doesn't support field presence yet.
@@ -3194,14 +3194,14 @@ namespace Google.Apis.CloudAsset.v1.Data
     public class Asset : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Please also refer to the [access level user
+        /// Also refer to the [access level user
         /// guide](https://cloud.google.com/access-context-manager/docs/overview#access-levels).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accessLevel")]
         public virtual GoogleIdentityAccesscontextmanagerV1AccessLevel AccessLevel { get; set; }
 
         /// <summary>
-        /// Please also refer to the [access policy user
+        /// Also refer to the [access policy user
         /// guide](https://cloud.google.com/access-context-manager/docs/overview#access-policies).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accessPolicy")]
@@ -3275,7 +3275,7 @@ namespace Google.Apis.CloudAsset.v1.Data
         public virtual Resource Resource { get; set; }
 
         /// <summary>
-        /// Please also refer to the [service perimeter user
+        /// Also refer to the [service perimeter user
         /// guide](https://cloud.google.com/vpc-service-controls/docs/overview).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("servicePerimeter")]
@@ -7085,7 +7085,7 @@ namespace Google.Apis.CloudAsset.v1.Data
         /// [CryptoKey](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys) name
         /// or
         /// [CryptoKeyVersion](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys.cryptoKeyVersions)
-        /// name. This field only presents for the purpose of backward compatibility. Please use the `kms_keys` field to
+        /// name. This field only presents for the purpose of backward compatibility. Use the `kms_keys` field to
         /// retrieve Cloud KMS key information. This field is available only when the resource's Protobuf contains it
         /// and will only be populated for [these resource
         /// types](https://cloud.google.com/asset-inventory/docs/legacy-field-names#resource_types_with_the_to_be_deprecated_kmskey_field)
@@ -7190,11 +7190,8 @@ namespace Google.Apis.CloudAsset.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, RelatedResources> Relationships { get; set; }
 
         /// <summary>
-        /// The actual content of Security Command Center security marks associated with the asset. Note that both
-        /// staging &amp;amp; prod SecurityMarks are attached on prod resources. In CAS preprod/prod, both staging
-        /// &amp;amp; prod SecurityMarks are ingested and returned in the following `security_marks` map. In that case,
-        /// the prefix "staging." will be added to the keys of all the staging marks. To search against SCC
-        /// SecurityMarks field: * Use a field query: - query by a given key value pair. Example:
+        /// The actual content of Security Command Center security marks associated with the asset. To search against
+        /// SCC SecurityMarks field: * Use a field query: - query by a given key value pair. Example:
         /// `sccSecurityMarks.foo=bar` - query by a given key's existence. Example: `sccSecurityMarks.foo:*`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sccSecurityMarks")]
@@ -7215,26 +7212,26 @@ namespace Google.Apis.CloudAsset.v1.Data
         public virtual string State { get; set; }
 
         /// <summary>
-        /// This field is only present for the purpose of backward compatibility. Please use the `tags` field instead.
-        /// TagKey namespaced names, in the format of {ORG_ID}/{TAG_KEY_SHORT_NAME}. To search against the `tagKeys`: *
-        /// Use a field query. Example: - `tagKeys:"123456789/env*"` - `tagKeys="123456789/env"` - `tagKeys:"env"` * Use
-        /// a free text query. Example: - `env`
+        /// This field is only present for the purpose of backward compatibility. Use the `tags` field instead. TagKey
+        /// namespaced names, in the format of {ORG_ID}/{TAG_KEY_SHORT_NAME}. To search against the `tagKeys`: * Use a
+        /// field query. Example: - `tagKeys:"123456789/env*"` - `tagKeys="123456789/env"` - `tagKeys:"env"` * Use a
+        /// free text query. Example: - `env`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tagKeys")]
         public virtual System.Collections.Generic.IList<string> TagKeys { get; set; }
 
         /// <summary>
-        /// This field is only present for the purpose of backward compatibility. Please use the `tags` field instead.
-        /// TagValue IDs, in the format of tagValues/{TAG_VALUE_ID}. To search against the `tagValueIds`: * Use a field
-        /// query. Example: - `tagValueIds="tagValues/456"` * Use a free text query. Example: - `456`
+        /// This field is only present for the purpose of backward compatibility. Use the `tags` field instead. TagValue
+        /// IDs, in the format of tagValues/{TAG_VALUE_ID}. To search against the `tagValueIds`: * Use a field query.
+        /// Example: - `tagValueIds="tagValues/456"` * Use a free text query. Example: - `456`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tagValueIds")]
         public virtual System.Collections.Generic.IList<string> TagValueIds { get; set; }
 
         /// <summary>
-        /// This field is only present for the purpose of backward compatibility. Please use the `tags` field instead.
-        /// TagValue namespaced names, in the format of {ORG_ID}/{TAG_KEY_SHORT_NAME}/{TAG_VALUE_SHORT_NAME}. To search
-        /// against the `tagValues`: * Use a field query. Example: - `tagValues:"env"` - `tagValues:"env/prod"` -
+        /// This field is only present for the purpose of backward compatibility. Use the `tags` field instead. TagValue
+        /// namespaced names, in the format of {ORG_ID}/{TAG_KEY_SHORT_NAME}/{TAG_VALUE_SHORT_NAME}. To search against
+        /// the `tagValues`: * Use a field query. Example: - `tagValues:"env"` - `tagValues:"env/prod"` -
         /// `tagValues:"123456789/env/prod*"` - `tagValues="123456789/env/prod"` * Use a free text query. Example: -
         /// `prod`
         /// </summary>

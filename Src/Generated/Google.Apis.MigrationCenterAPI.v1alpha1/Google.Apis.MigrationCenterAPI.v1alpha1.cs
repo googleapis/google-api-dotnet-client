@@ -8756,7 +8756,8 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
 
         /// <summary>
         /// Region preferences for assets using this preference set. If you are unsure which value to set, the migration
-        /// service API region is often a good value to start with.
+        /// service API region is often a good value to start with. If PreferenceSet.RegionPreferences is specified, it
+        /// overrides this field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regionPreferences")]
         public virtual RegionPreferences RegionPreferences { get; set; }

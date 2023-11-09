@@ -2299,13 +2299,17 @@ namespace Google.Apis.AccessApproval.v1.Data
             set => RequestTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
         }
 
+        /// <summary>The requested access duration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestedDuration")]
+        public virtual object RequestedDuration { get; set; }
+
         private string _requestedExpirationRaw;
 
         private object _requestedExpiration;
 
         /// <summary>
-        /// The requested expiration for the approval. If the request is approved, access will be granted from the time
-        /// of approval until the expiration time.
+        /// The original requested expiration for the approval. Calculated by adding the requested_duration to the
+        /// request_time.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedExpiration")]
         public virtual string RequestedExpirationRaw

@@ -12722,11 +12722,26 @@ namespace Google.Apis.CloudDataplex.v1.Data
     public class GoogleCloudDataplexV1DataScanEventDataQualityResult : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// The score of each column scanned in the data scan job. The key of the map is the name of the column. The
+        /// value is the data quality score for the column.The score ranges between 0, 100 (up to two decimal points).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("columnScore")]
+        public virtual System.Collections.Generic.IDictionary<string, System.Nullable<float>> ColumnScore { get; set; }
+
+        /// <summary>
         /// The result of each dimension for data quality result. The key of the map is the name of the dimension. The
         /// value is the bool value depicting whether the dimension result was pass or not.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dimensionPassed")]
         public virtual System.Collections.Generic.IDictionary<string, System.Nullable<bool>> DimensionPassed { get; set; }
+
+        /// <summary>
+        /// The score of each dimension for data quality result. The key of the map is the name of the dimension. The
+        /// value is the data quality score for the dimension.The score ranges between 0, 100 (up to two decimal
+        /// points).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dimensionScore")]
+        public virtual System.Collections.Generic.IDictionary<string, System.Nullable<float>> DimensionScore { get; set; }
 
         /// <summary>Whether the data quality result was pass or not.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("passed")]
@@ -12735,6 +12750,13 @@ namespace Google.Apis.CloudDataplex.v1.Data
         /// <summary>The count of rows processed in the data scan job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rowCount")]
         public virtual System.Nullable<long> RowCount { get; set; }
+
+        /// <summary>
+        /// The table-level data quality score for the data scan job.The data quality score ranges between 0, 100 (up to
+        /// two decimal points).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("score")]
+        public virtual System.Nullable<float> Score { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

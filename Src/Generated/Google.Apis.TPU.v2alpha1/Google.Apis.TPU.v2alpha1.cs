@@ -2642,6 +2642,10 @@ namespace Google.Apis.TPU.v2alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("apiVersion")]
         public virtual string ApiVersion { get; set; }
 
+        /// <summary>Optional. Whether Autocheckpoint is enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autocheckpointEnabled")]
+        public virtual System.Nullable<bool> AutocheckpointEnabled { get; set; }
+
         /// <summary>Optional. Boot disk configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bootDiskConfig")]
         public virtual BootDiskConfig BootDiskConfig { get; set; }

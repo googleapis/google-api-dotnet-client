@@ -514,6 +514,10 @@ namespace Google.Apis.Script.v1
                 /// <summary>The process is delayed, waiting for quota.</summary>
                 [Google.Apis.Util.StringValueAttribute("DELAYED")]
                 DELAYED = 8,
+
+                /// <summary>AppsScript executions are disabled by Admin.</summary>
+                [Google.Apis.Util.StringValueAttribute("EXECUTION_DISABLED")]
+                EXECUTIONDISABLED = 9,
             }
 
             /// <summary>
@@ -854,6 +858,10 @@ namespace Google.Apis.Script.v1
                 /// <summary>The process is delayed, waiting for quota.</summary>
                 [Google.Apis.Util.StringValueAttribute("DELAYED")]
                 DELAYED = 8,
+
+                /// <summary>AppsScript executions are disabled by Admin.</summary>
+                [Google.Apis.Util.StringValueAttribute("EXECUTION_DISABLED")]
+                EXECUTIONDISABLED = 9,
             }
 
             /// <summary>

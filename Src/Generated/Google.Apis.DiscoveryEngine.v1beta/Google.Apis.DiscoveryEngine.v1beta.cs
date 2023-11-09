@@ -2348,9 +2348,14 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                         /// <summary>Makes a recommendation, which requires a contextual user event.</summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="servingConfig">
-                        /// Required. Full resource name of the format:
-                        /// `projects/*/locations/global/collections/*/dataStores/*/servingConfigs/*` Before you can
-                        /// request recommendations from your model, you must create at least one serving config for it.
+                        /// Required. Full resource name of a ServingConfig:
+                        /// `projects/*/locations/global/collections/*/engines/*/servingConfigs/*`, or
+                        /// `projects/*/locations/global/collections/*/dataStores/*/servingConfigs/*` One default
+                        /// serving config is created along with your recommendation engine creation. The engine ID will
+                        /// be used as the ID of the default serving config. For example, for Engine
+                        /// `projects/*/locations/global/collections/*/engines/my-engine`, you can use
+                        /// `projects/*/locations/global/collections/*/engines/my-engine/servingConfigs/my-engine` for
+                        /// your Recommend requests.
                         /// </param>
                         public virtual RecommendRequest Recommend(Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaRecommendRequest body, string servingConfig)
                         {
@@ -2369,10 +2374,14 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                             }
 
                             /// <summary>
-                            /// Required. Full resource name of the format:
-                            /// `projects/*/locations/global/collections/*/dataStores/*/servingConfigs/*` Before you can
-                            /// request recommendations from your model, you must create at least one serving config for
-                            /// it.
+                            /// Required. Full resource name of a ServingConfig:
+                            /// `projects/*/locations/global/collections/*/engines/*/servingConfigs/*`, or
+                            /// `projects/*/locations/global/collections/*/dataStores/*/servingConfigs/*` One default
+                            /// serving config is created along with your recommendation engine creation. The engine ID
+                            /// will be used as the ID of the default serving config. For example, for Engine
+                            /// `projects/*/locations/global/collections/*/engines/my-engine`, you can use
+                            /// `projects/*/locations/global/collections/*/engines/my-engine/servingConfigs/my-engine`
+                            /// for your Recommend requests.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("servingConfig", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string ServingConfig { get; private set; }
@@ -2411,6 +2420,8 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                         /// <param name="body">The body of the request.</param>
                         /// <param name="servingConfig">
                         /// Required. The resource name of the Search serving config, such as
+                        /// `projects/*/locations/global/collections/default_collection/engines/*/servingConfigs/default_serving_config`,
+                        /// or
                         /// `projects/*/locations/global/collections/default_collection/dataStores/default_data_store/servingConfigs/default_serving_config`.
                         /// This field is used to identify the serving configuration name, set of models used to make
                         /// the search.
@@ -2433,6 +2444,8 @@ namespace Google.Apis.DiscoveryEngine.v1beta
 
                             /// <summary>
                             /// Required. The resource name of the Search serving config, such as
+                            /// `projects/*/locations/global/collections/default_collection/engines/*/servingConfigs/default_serving_config`,
+                            /// or
                             /// `projects/*/locations/global/collections/default_collection/dataStores/default_data_store/servingConfigs/default_serving_config`.
                             /// This field is used to identify the serving configuration name, set of models used to
                             /// make the search.
@@ -3392,9 +3405,14 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                         /// <summary>Makes a recommendation, which requires a contextual user event.</summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="servingConfig">
-                        /// Required. Full resource name of the format:
-                        /// `projects/*/locations/global/collections/*/dataStores/*/servingConfigs/*` Before you can
-                        /// request recommendations from your model, you must create at least one serving config for it.
+                        /// Required. Full resource name of a ServingConfig:
+                        /// `projects/*/locations/global/collections/*/engines/*/servingConfigs/*`, or
+                        /// `projects/*/locations/global/collections/*/dataStores/*/servingConfigs/*` One default
+                        /// serving config is created along with your recommendation engine creation. The engine ID will
+                        /// be used as the ID of the default serving config. For example, for Engine
+                        /// `projects/*/locations/global/collections/*/engines/my-engine`, you can use
+                        /// `projects/*/locations/global/collections/*/engines/my-engine/servingConfigs/my-engine` for
+                        /// your Recommend requests.
                         /// </param>
                         public virtual RecommendRequest Recommend(Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaRecommendRequest body, string servingConfig)
                         {
@@ -3413,10 +3431,14 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                             }
 
                             /// <summary>
-                            /// Required. Full resource name of the format:
-                            /// `projects/*/locations/global/collections/*/dataStores/*/servingConfigs/*` Before you can
-                            /// request recommendations from your model, you must create at least one serving config for
-                            /// it.
+                            /// Required. Full resource name of a ServingConfig:
+                            /// `projects/*/locations/global/collections/*/engines/*/servingConfigs/*`, or
+                            /// `projects/*/locations/global/collections/*/dataStores/*/servingConfigs/*` One default
+                            /// serving config is created along with your recommendation engine creation. The engine ID
+                            /// will be used as the ID of the default serving config. For example, for Engine
+                            /// `projects/*/locations/global/collections/*/engines/my-engine`, you can use
+                            /// `projects/*/locations/global/collections/*/engines/my-engine/servingConfigs/my-engine`
+                            /// for your Recommend requests.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("servingConfig", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string ServingConfig { get; private set; }
@@ -3455,6 +3477,8 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                         /// <param name="body">The body of the request.</param>
                         /// <param name="servingConfig">
                         /// Required. The resource name of the Search serving config, such as
+                        /// `projects/*/locations/global/collections/default_collection/engines/*/servingConfigs/default_serving_config`,
+                        /// or
                         /// `projects/*/locations/global/collections/default_collection/dataStores/default_data_store/servingConfigs/default_serving_config`.
                         /// This field is used to identify the serving configuration name, set of models used to make
                         /// the search.
@@ -3477,6 +3501,8 @@ namespace Google.Apis.DiscoveryEngine.v1beta
 
                             /// <summary>
                             /// Required. The resource name of the Search serving config, such as
+                            /// `projects/*/locations/global/collections/default_collection/engines/*/servingConfigs/default_serving_config`,
+                            /// or
                             /// `projects/*/locations/global/collections/default_collection/dataStores/default_data_store/servingConfigs/default_serving_config`.
                             /// This field is used to identify the serving configuration name, set of models used to
                             /// make the search.
@@ -5545,9 +5571,14 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                     /// <summary>Makes a recommendation, which requires a contextual user event.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="servingConfig">
-                    /// Required. Full resource name of the format:
-                    /// `projects/*/locations/global/collections/*/dataStores/*/servingConfigs/*` Before you can request
-                    /// recommendations from your model, you must create at least one serving config for it.
+                    /// Required. Full resource name of a ServingConfig:
+                    /// `projects/*/locations/global/collections/*/engines/*/servingConfigs/*`, or
+                    /// `projects/*/locations/global/collections/*/dataStores/*/servingConfigs/*` One default serving
+                    /// config is created along with your recommendation engine creation. The engine ID will be used as
+                    /// the ID of the default serving config. For example, for Engine
+                    /// `projects/*/locations/global/collections/*/engines/my-engine`, you can use
+                    /// `projects/*/locations/global/collections/*/engines/my-engine/servingConfigs/my-engine` for your
+                    /// Recommend requests.
                     /// </param>
                     public virtual RecommendRequest Recommend(Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaRecommendRequest body, string servingConfig)
                     {
@@ -5566,9 +5597,14 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                         }
 
                         /// <summary>
-                        /// Required. Full resource name of the format:
-                        /// `projects/*/locations/global/collections/*/dataStores/*/servingConfigs/*` Before you can
-                        /// request recommendations from your model, you must create at least one serving config for it.
+                        /// Required. Full resource name of a ServingConfig:
+                        /// `projects/*/locations/global/collections/*/engines/*/servingConfigs/*`, or
+                        /// `projects/*/locations/global/collections/*/dataStores/*/servingConfigs/*` One default
+                        /// serving config is created along with your recommendation engine creation. The engine ID will
+                        /// be used as the ID of the default serving config. For example, for Engine
+                        /// `projects/*/locations/global/collections/*/engines/my-engine`, you can use
+                        /// `projects/*/locations/global/collections/*/engines/my-engine/servingConfigs/my-engine` for
+                        /// your Recommend requests.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("servingConfig", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string ServingConfig { get; private set; }
@@ -5607,6 +5643,8 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                     /// <param name="body">The body of the request.</param>
                     /// <param name="servingConfig">
                     /// Required. The resource name of the Search serving config, such as
+                    /// `projects/*/locations/global/collections/default_collection/engines/*/servingConfigs/default_serving_config`,
+                    /// or
                     /// `projects/*/locations/global/collections/default_collection/dataStores/default_data_store/servingConfigs/default_serving_config`.
                     /// This field is used to identify the serving configuration name, set of models used to make the
                     /// search.
@@ -5629,6 +5667,8 @@ namespace Google.Apis.DiscoveryEngine.v1beta
 
                         /// <summary>
                         /// Required. The resource name of the Search serving config, such as
+                        /// `projects/*/locations/global/collections/default_collection/engines/*/servingConfigs/default_serving_config`,
+                        /// or
                         /// `projects/*/locations/global/collections/default_collection/dataStores/default_data_store/servingConfigs/default_serving_config`.
                         /// This field is used to identify the serving configuration name, set of models used to make
                         /// the search.
@@ -7147,8 +7187,426 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Metadata related to the progress of the DataStoreService.CreateDataStore operation. This will be returned by the
+    /// google.longrunning.Operation.metadata field.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaCreateDataStoreMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Operation create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Metadata related to the progress of the EngineService.CreateEngine operation. This will be returned by the
+    /// google.longrunning.Operation.metadata field.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaCreateEngineMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Operation create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata for Create Schema LRO.</summary>
     public class GoogleCloudDiscoveryengineV1alphaCreateSchemaMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Operation create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>DataStore captures global settings and configs at the DataStore level.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaDataStore : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Immutable. The content config of the data store. If this field is unset, the server behavior defaults to
+        /// ContentConfig.NO_CONTENT.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentConfig")]
+        public virtual string ContentConfig { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Timestamp the DataStore was created at.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>Output only. The id of the default Schema asscociated to this data store.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultSchemaId")]
+        public virtual string DefaultSchemaId { get; set; }
+
+        /// <summary>
+        /// Required. The data store display name. This field must be a UTF-8 encoded string with a length limit of 128
+        /// characters. Otherwise, an INVALID_ARGUMENT error is returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Immutable. The industry vertical that the data store registers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("industryVertical")]
+        public virtual string IndustryVertical { get; set; }
+
+        /// <summary>
+        /// Immutable. The full resource name of the data store. Format:
+        /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`. This field
+        /// must be a UTF-8 encoded string with a length limit of 1024 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// The solutions that the data store enrolls. Available solutions for each industry_vertical: * `MEDIA`:
+        /// `SOLUTION_TYPE_RECOMMENDATION` and `SOLUTION_TYPE_SEARCH`. * `SITE_SEARCH`: `SOLUTION_TYPE_SEARCH` is
+        /// automatically enrolled. Other solutions cannot be enrolled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("solutionTypes")]
+        public virtual System.Collections.Generic.IList<string> SolutionTypes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Metadata related to the progress of the DataStoreService.DeleteDataStore operation. This will be returned by the
+    /// google.longrunning.Operation.metadata field.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaDeleteDataStoreMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Operation create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Metadata related to the progress of the EngineService.DeleteEngine operation. This will be returned by the
+    /// google.longrunning.Operation.metadata field.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaDeleteEngineMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         private string _createTimeRaw;
 
@@ -7305,6 +7763,398 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
             set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
         }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata that describes the training and serving parameters of an Engine.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaEngine : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Configurations for the Chat Engine. Only applicable if solution_type is SOLUTION_TYPE_CHAT.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chatEngineConfig")]
+        public virtual GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfig ChatEngineConfig { get; set; }
+
+        /// <summary>
+        /// Output only. Additional information of the Chat Engine. Only applicable if solution_type is
+        /// SOLUTION_TYPE_CHAT.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chatEngineMetadata")]
+        public virtual GoogleCloudDiscoveryengineV1alphaEngineChatEngineMetadata ChatEngineMetadata { get; set; }
+
+        /// <summary>Common config spec that specifies the metadata of the engine.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commonConfig")]
+        public virtual GoogleCloudDiscoveryengineV1alphaEngineCommonConfig CommonConfig { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Timestamp the Recommendation Engine was created at.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>
+        /// The data stores associated with this engine. For SOLUTION_TYPE_SEARCH and SOLUTION_TYPE_RECOMMENDATION type
+        /// of engines, they can only associate with at most one data store. If solution_type is SOLUTION_TYPE_CHAT,
+        /// multiple DataStores in the same Collection can be associated here. Note that when used in
+        /// CreateEngineRequest, one DataStore id must be provided as the system will use it for necessary
+        /// intializations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataStoreIds")]
+        public virtual System.Collections.Generic.IList<string> DataStoreIds { get; set; }
+
+        /// <summary>
+        /// Required. The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024
+        /// characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Configurations for the Media Engine. Only applicable on the data stores with solution_type
+        /// SOLUTION_TYPE_RECOMMENDATION and IndustryVertical.MEDIA vertical.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mediaRecommendationEngineConfig")]
+        public virtual GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfig MediaRecommendationEngineConfig { get; set; }
+
+        /// <summary>
+        /// Immutable. The fully qualified resource name of the engine. This field must be a UTF-8 encoded string with a
+        /// length limit of 1024 characters. Format:
+        /// `projects/{project_number}/locations/{location}/collections/{collection}/engines/{engine}` engine should be
+        /// 1-63 characters, and valid characters are /a-z0-9*/. Otherwise, an INVALID_ARGUMENT error is returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. Additional information of a recommendation engine. Only applicable if solution_type is
+        /// SOLUTION_TYPE_RECOMMENDATION.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recommendationMetadata")]
+        public virtual GoogleCloudDiscoveryengineV1alphaEngineRecommendationMetadata RecommendationMetadata { get; set; }
+
+        /// <summary>
+        /// Configurations for the Search Engine. Only applicable if solution_type is SOLUTION_TYPE_SEARCH.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("searchEngineConfig")]
+        public virtual GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfig SearchEngineConfig { get; set; }
+
+        /// <summary>Additional config specs for a `similar-items` engine.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("similarDocumentsConfig")]
+        public virtual GoogleCloudDiscoveryengineV1alphaEngineSimilarDocumentsEngineConfig SimilarDocumentsConfig { get; set; }
+
+        /// <summary>Required. The solutions of the engine.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("solutionType")]
+        public virtual string SolutionType { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. Timestamp the Recommendation Engine was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configurations for a Chat Engine.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The configurationt generate the Dialogflow agent that is associated to this Engine. Note that these
+        /// configurations are one-time consumed by and passed to Dialogflow service. It means they cannot be retrieved
+        /// using GetEngine or ListEngine API after engine creation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentCreationConfig")]
+        public virtual GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigAgentCreationConfig AgentCreationConfig { get; set; }
+
+        /// <summary>
+        /// The resource name of an exist Dialogflow agent to link to this Chat Engine. Customers can either provide
+        /// `agent_creation_config` to create agent or provide an agent name that links the agent with the Chat engine.
+        /// Format: `projects//locations//agents/`. Note that the `dialogflow_agent_to_link` are one-time consumed by
+        /// and passed to Dialogflow service. It means they cannot be retrieved using GetEngine or ListEngine API after
+        /// engine creation. Please use Engine.chat_engine_metadata.dialogflow_agent for actual agent association after
+        /// Engine is created.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dialogflowAgentToLink")]
+        public virtual string DialogflowAgentToLink { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Configurations for generating a Dialogflow agent. Note that these configurations are one-time consumed by and
+    /// passed to Dialogflow service. It means they cannot be retrieved using GetEngine or ListEngine API after engine
+    /// creation.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigAgentCreationConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Name of the company, organization or other entity that the agent represents. Used for knowledge connector
+        /// LLM prompt and for knowledge search.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("business")]
+        public virtual string Business { get; set; }
+
+        /// <summary>
+        /// Required. The default language of the agent as a language tag. See [Language
+        /// Support](https://cloud.google.com/dialogflow/docs/reference/language) for a list of the currently supported
+        /// language codes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultLanguageCode")]
+        public virtual string DefaultLanguageCode { get; set; }
+
+        /// <summary>
+        /// Required. The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g.,
+        /// America/New_York, Europe/Paris.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
+        public virtual string TimeZone { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Additional information of a Chat Engine. Fields in this message are output only.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaEngineChatEngineMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The resource name of a Dialogflow agent, that this Chat Engine refers to. Format:
+        /// `projects//locations//agents/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dialogflowAgent")]
+        public virtual string DialogflowAgent { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Common configurations for an Engine.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaEngineCommonConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The name of the company, business or entity that is associated with the engine. Setting this may help
+        /// improve LLM related features.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("companyName")]
+        public virtual string CompanyName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Additional config specs for a Media Recommendation engine.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The optimization objective e.g. `cvr`. This field together with optimization_objective describe engine
+        /// metadata to use to control engine training and serving. Currently supported values: `ctr`, `cvr`. If not
+        /// specified, we choose default based on engine type. Default depends on type of recommendation:
+        /// `recommended-for-you` =&amp;gt; `ctr` `others-you-may-like` =&amp;gt; `ctr`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("optimizationObjective")]
+        public virtual string OptimizationObjective { get; set; }
+
+        /// <summary>
+        /// Name and value of the custom threshold for cvr optimization_objective. For target_field `watch-time`,
+        /// target_field_value must be an integer value indicating the media progress time in seconds between (0, 86400]
+        /// (excludes 0, includes 86400) (e.g., 90). For target_field `watch-percentage`, the target_field_value must be
+        /// a valid float value between (0, 1.0] (excludes 0, includes 1.0) (e.g., 0.5).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("optimizationObjectiveConfig")]
+        public virtual GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigOptimizationObjectiveConfig OptimizationObjectiveConfig { get; set; }
+
+        /// <summary>
+        /// The training state that the engine is in (e.g. `TRAINING` or `PAUSED`). Since part of the cost of running
+        /// the service is frequency of training - this can be used to determine when to train engine in order to
+        /// control cost. If not specified: the default value for `CreateEngine` method is `TRAINING`. The default value
+        /// for `UpdateEngine` method is to keep the state the same as before.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trainingState")]
+        public virtual string TrainingState { get; set; }
+
+        /// <summary>
+        /// Required. The type of engine e.g. `recommended-for-you`. This field together with optimization_objective
+        /// describe engine metadata to use to control engine training and serving. Currently supported values:
+        /// `recommended-for-you`, `others-you-may-like`, `more-like-this`, `most-popular-items`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Custom threshold for `cvr` optimization_objective.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigOptimizationObjectiveConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The name of the field to target. Currently supported values: `watch-percentage`, `watch-time`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetField")]
+        public virtual string TargetField { get; set; }
+
+        /// <summary>Required. The threshold to be applied to the target (e.g., 0.5).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetFieldValueFloat")]
+        public virtual System.Nullable<float> TargetFieldValueFloat { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Additional information of a recommendation engine.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaEngineRecommendationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The state of data requirements for this engine: `DATA_OK` and `DATA_ERROR`. Engine cannot be
+        /// trained if the data is in `DATA_ERROR` state. Engine can have `DATA_ERROR` state even if serving state is
+        /// `ACTIVE`: engines were trained successfully before, but cannot be refreshed because the underlying engine no
+        /// longer has sufficient data for training.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataState")]
+        public virtual string DataState { get; set; }
+
+        private string _lastTuneTimeRaw;
+
+        private object _lastTuneTime;
+
+        /// <summary>
+        /// Output only. The timestamp when the latest successful tune finished. Only applicable on Media Recommendation
+        /// engines.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastTuneTime")]
+        public virtual string LastTuneTimeRaw
+        {
+            get => _lastTuneTimeRaw;
+            set
+            {
+                _lastTuneTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastTuneTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastTuneTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastTuneTimeDateTimeOffset instead.")]
+        public virtual object LastTuneTime
+        {
+            get => _lastTuneTime;
+            set
+            {
+                _lastTuneTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastTuneTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="LastTuneTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastTuneTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastTuneTimeRaw);
+            set => LastTuneTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>Output only. The serving state of the engine: `ACTIVE`, `NOT_ACTIVE`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("servingState")]
+        public virtual string ServingState { get; set; }
+
+        /// <summary>
+        /// Output only. The latest tune operation id associated with the engine. Only applicable on Media
+        /// Recommendation engines. If present, this operation id can be used to determine if there is an ongoing tune
+        /// for this engine. To check the operation status, send the GetOperation request with this operation id in the
+        /// engine resource format. If no tuning has happened for this engine, the string is empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tuningOperation")]
+        public virtual string TuningOperation { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configurations for a Search Engine.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The add-on that this search engine enables.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("searchAddOns")]
+        public virtual System.Collections.Generic.IList<string> SearchAddOns { get; set; }
+
+        /// <summary>
+        /// The search feature tier of this engine. Different tiers might have different pricing. To learn more, please
+        /// check the pricing documentation. Defaults to SearchTier.SEARCH_TIER_STANDARD if not specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("searchTier")]
+        public virtual string SearchTier { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Additional config specs for a `similar-items` engine.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaEngineSimilarDocumentsEngineConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -8200,6 +9050,27 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     }
 
     public class GoogleCloudDiscoveryengineV1alphaTargetSiteFailureReasonQuotaFailure : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata associated with a tune operation.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaTuneEngineMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The resource name of the engine that this tune applies to. Format:
+        /// `projects/{project_number}/locations/{location_id}/collections/{collection_id}/engines/{engine_id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("engine")]
+        public virtual string Engine { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response associated with a tune operation.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaTuneEngineResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

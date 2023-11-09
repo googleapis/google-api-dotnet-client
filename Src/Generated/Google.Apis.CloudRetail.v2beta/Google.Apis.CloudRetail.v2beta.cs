@@ -11193,7 +11193,7 @@ namespace Google.Apis.CloudRetail.v2beta.Data
     }
 
     /// <summary>
-    /// Force returns an attribute/facet in the request around a certain position or above. * Rule Condition: - Must
+    /// Force returns an attribute/facet in the request around a certain position or above. * Rule Condition: Must
     /// specify non-empty Condition.query_terms (for search only) or Condition.page_categories (for browse only), but
     /// can't specify both. * Action Inputs: attribute name, position * Action Result: Will force return a facet key
     /// around a certain position or above if the condition is satisfied. Example: Suppose the query is "shoes", the
@@ -11276,7 +11276,7 @@ namespace Google.Apis.CloudRetail.v2beta.Data
     }
 
     /// <summary>
-    /// Redirects a shopper to a specific page. * Rule Condition: - Must specify Condition.query_terms. * Action Input:
+    /// Redirects a shopper to a specific page. * Rule Condition: Must specify Condition.query_terms. * Action Input:
     /// Request Query * Action Result: Redirects shopper to provided uri.
     /// </summary>
     public class GoogleCloudRetailV2betaRuleRedirectAction : Google.Apis.Requests.IDirectResponseSchema
@@ -11290,7 +11290,7 @@ namespace Google.Apis.CloudRetail.v2beta.Data
     }
 
     /// <summary>
-    /// Removes an attribute/facet in the request if is present. * Rule Condition: - Must specify non-empty
+    /// Removes an attribute/facet in the request if is present. * Rule Condition: Must specify non-empty
     /// Condition.query_terms (for search only) or Condition.page_categories (for browse only), but can't specify both.
     /// * Action Input: attribute name * Action Result: Will remove the attribute (as a facet) from the request if it is
     /// present. Example: Suppose the query is "shoes", the Condition.query_terms is "shoes" and the attribute name
