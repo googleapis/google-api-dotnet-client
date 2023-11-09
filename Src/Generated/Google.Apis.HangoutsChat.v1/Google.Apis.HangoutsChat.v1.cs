@@ -1575,7 +1575,10 @@ namespace Google.Apis.HangoutsChat.v1
                 /// </summary>
                 public enum MessageReplyOptionEnum
                 {
-                    /// <summary>Default. Starts a thread.</summary>
+                    /// <summary>
+                    /// Default. Starts a new thread. Using this option ignores any thread ID or `thread_key` that's
+                    /// included.
+                    /// </summary>
                     [Google.Apis.Util.StringValueAttribute("MESSAGE_REPLY_OPTION_UNSPECIFIED")]
                     MESSAGEREPLYOPTIONUNSPECIFIED = 0,
 
@@ -1605,7 +1608,7 @@ namespace Google.Apis.HangoutsChat.v1
                 /// Optional. Deprecated: Use thread.thread_key instead. ID for the thread. Supports up to 4000
                 /// characters. To start or add to a thread, create a message and specify a `threadKey` or the
                 /// thread.name. For example usage, see [Start or reply to a message
-                /// thread](https://developers.google.com/chat/api/guides/crudl/messages#start_or_reply_to_a_message_thread).
+                /// thread](https://developers.google.com/chat/api/guides/v1/messages/create#create-message-thread).
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("threadKey", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string ThreadKey { get; set; }
@@ -4932,7 +4935,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
     public class ListMembershipsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>List of memberships in the requested (or first) page.</summary>
+        /// <summary>Unordered list. List of memberships in the requested (or first) page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("memberships")]
         public virtual System.Collections.Generic.IList<Membership> Memberships { get; set; }
 
@@ -5360,7 +5363,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
         /// <summary>
         /// The thread the message belongs to. For example usage, see [Start or reply to a message
-        /// thread](https://developers.google.com/chat/api/guides/crudl/messages#start_or_reply_to_a_message_thread).
+        /// thread](https://developers.google.com/chat/api/guides/v1/messages/create#create-message-thread).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thread")]
         public virtual Thread Thread { get; set; }

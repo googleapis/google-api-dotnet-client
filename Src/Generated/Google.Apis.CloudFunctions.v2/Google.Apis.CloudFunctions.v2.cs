@@ -519,8 +519,8 @@ namespace Google.Apis.CloudFunctions.v2
                 /// No credentials should be attached - the signed URLs provide access to the target bucket using
                 /// internal service identity; if credentials were attached, the identity from the credentials would be
                 /// used, but that identity does not have permissions to upload files to the URL. When making a HTTP PUT
-                /// request, these two headers need to be specified: * `content-type: application/zip` And this header
-                /// SHOULD NOT be specified: * `Authorization: Bearer YOUR_TOKEN`
+                /// request, specify this header: * `content-type: application/zip` Do not specify this header: *
+                /// `Authorization: Bearer YOUR_TOKEN`
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
@@ -541,8 +541,8 @@ namespace Google.Apis.CloudFunctions.v2
                 /// No credentials should be attached - the signed URLs provide access to the target bucket using
                 /// internal service identity; if credentials were attached, the identity from the credentials would be
                 /// used, but that identity does not have permissions to upload files to the URL. When making a HTTP PUT
-                /// request, these two headers need to be specified: * `content-type: application/zip` And this header
-                /// SHOULD NOT be specified: * `Authorization: Bearer YOUR_TOKEN`
+                /// request, specify this header: * `content-type: application/zip` Do not specify this header: *
+                /// `Authorization: Bearer YOUR_TOKEN`
                 /// </summary>
                 public class GenerateUploadUrlRequest : CloudFunctionsBaseServiceRequest<Google.Apis.CloudFunctions.v2.Data.GenerateUploadUrlResponse>
                 {

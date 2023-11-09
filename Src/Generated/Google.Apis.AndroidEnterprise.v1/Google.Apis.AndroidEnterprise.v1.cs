@@ -6256,7 +6256,10 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("autoInstallConstraint")]
         public virtual System.Collections.Generic.IList<AutoInstallConstraint> AutoInstallConstraint { get; set; }
 
-        /// <summary>The auto-install mode. If unset defaults to "doNotAutoInstall".</summary>
+        /// <summary>
+        /// The auto-install mode. If unset, defaults to "doNotAutoInstall". An app is automatically installed
+        /// regardless of a set maintenance window.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoInstallMode")]
         public virtual string AutoInstallMode { get; set; }
 

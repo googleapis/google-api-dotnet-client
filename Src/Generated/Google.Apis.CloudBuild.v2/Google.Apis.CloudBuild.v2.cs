@@ -2063,6 +2063,21 @@ namespace Google.Apis.CloudBuild.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Capabilities adds and removes POSIX capabilities from running containers.</summary>
+    public class Capabilities : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Added capabilities +optional</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("add")]
+        public virtual System.Collections.Generic.IList<string> Add { get; set; }
+
+        /// <summary>Optional. Removed capabilities +optional</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("drop")]
+        public virtual System.Collections.Generic.IList<string> Drop { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// ChildStatusReference is used to point to the statuses of individual TaskRuns and Runs within this PipelineRun.
     /// </summary>
@@ -2282,6 +2297,22 @@ namespace Google.Apis.CloudBuild.v2.Data
         /// <summary>Value of the environment variable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>ExecAction describes a "run in container" action.</summary>
+    public class ExecAction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Command is the command line to execute inside the container, the working directory for the command
+        /// is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so
+        /// traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to
+        /// that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy. +optional
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("command")]
+        public virtual System.Collections.Generic.IList<string> Command { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3590,6 +3621,26 @@ namespace Google.Apis.CloudBuild.v2.Data
         public virtual System.Nullable<int> Version { get; set; }
     }
 
+    /// <summary>
+    /// Probe describes a health check to be performed against a container to determine whether it is alive or ready to
+    /// receive traffic.
+    /// </summary>
+    public class Probe : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Exec specifies the action to take. +optional</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exec")]
+        public virtual ExecAction Exec { get; set; }
+
+        /// <summary>
+        /// Optional. How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. +optional
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("periodSeconds")]
+        public virtual System.Nullable<int> PeriodSeconds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>PropertySpec holds information about a property in an object.</summary>
     public class PropertySpec : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3830,9 +3881,49 @@ namespace Google.Apis.CloudBuild.v2.Data
     /// <summary>Security options the container should be run with.</summary>
     public class SecurityContext : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. AllowPrivilegeEscalation controls whether a process can gain more privileges than its parent
+        /// process. This bool directly controls if the no_new_privs flag will be set on the container process.
+        /// AllowPrivilegeEscalation is true always when the container is: 1) run as Privileged 2) has CAP_SYS_ADMIN
+        /// Note that this field cannot be set when spec.os.name is windows. +optional
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowPrivilegeEscalation")]
+        public virtual System.Nullable<bool> AllowPrivilegeEscalation { get; set; }
+
+        /// <summary>Optional. Adds and removes POSIX capabilities from running containers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("capabilities")]
+        public virtual Capabilities Capabilities { get; set; }
+
         /// <summary>Run container in privileged mode.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privileged")]
         public virtual System.Nullable<bool> Privileged { get; set; }
+
+        /// <summary>
+        /// Optional. The GID to run the entrypoint of the container process. Uses runtime default if unset. May also be
+        /// set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in
+        /// SecurityContext takes precedence. Note that this field cannot be set when spec.os.name is windows. +optional
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runAsGroup")]
+        public virtual System.Nullable<long> RunAsGroup { get; set; }
+
+        /// <summary>
+        /// Optional. Indicates that the container must run as a non-root user. If true, the Kubelet will validate the
+        /// image at runtime to ensure that it does not run as UID 0 (root) and fail to start the container if it does.
+        /// If unset or false, no such validation will be performed. May also be set in PodSecurityContext. If set in
+        /// both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+        /// +optional
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runAsNonRoot")]
+        public virtual System.Nullable<bool> RunAsNonRoot { get; set; }
+
+        /// <summary>
+        /// Optional. The UID to run the entrypoint of the container process. Defaults to user specified in image
+        /// metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and
+        /// PodSecurityContext, the value specified in SecurityContext takes precedence. Note that this field cannot be
+        /// set when spec.os.name is windows. +optional
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runAsUser")]
+        public virtual System.Nullable<long> RunAsUser { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3883,11 +3974,19 @@ namespace Google.Apis.CloudBuild.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>
+        /// Optional. Periodic probe of Sidecar service readiness. Container will be removed from service endpoints if
+        /// the probe fails. Cannot be updated. More info:
+        /// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes +optional
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("readinessProbe")]
+        public virtual Probe ReadinessProbe { get; set; }
+
         /// <summary>The contents of an executable file to execute.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("script")]
         public virtual string Script { get; set; }
 
-        /// <summary>Security options the container should be run with.</summary>
+        /// <summary>Optional. Security options the container should be run with.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("securityContext")]
         public virtual SecurityContext SecurityContext { get; set; }
 
@@ -3980,6 +4079,14 @@ namespace Google.Apis.CloudBuild.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("script")]
         public virtual string Script { get; set; }
 
+        /// <summary>
+        /// Optional. SecurityContext defines the security options the Step should be run with. If set, the fields of
+        /// SecurityContext override the equivalent fields of PodSecurityContext. More info:
+        /// https://kubernetes.io/docs/tasks/configure-pod-container/security-context/ +optional
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("securityContext")]
+        public virtual SecurityContext SecurityContext { get; set; }
+
         /// <summary>Time after which the Step times out. Defaults to never.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeout")]
         public virtual object Timeout { get; set; }
@@ -3991,6 +4098,20 @@ namespace Google.Apis.CloudBuild.v2.Data
         /// <summary>Container's working directory.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workingDir")]
         public virtual string WorkingDir { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// StepTemplate can be used as the basis for all step containers within the Task, so that the steps inherit
+    /// settings on the base container.
+    /// </summary>
+    public class StepTemplate : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. List of environment variables to set in the Step. Cannot be updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("env")]
+        public virtual System.Collections.Generic.IList<EnvVar> Env { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4071,6 +4192,13 @@ namespace Google.Apis.CloudBuild.v2.Data
         /// <summary>Sidecars that run alongside the Task's step containers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sidecars")]
         public virtual System.Collections.Generic.IList<Sidecar> Sidecars { get; set; }
+
+        /// <summary>
+        /// Optional. StepTemplate can be used as the basis for all step containers within the Task, so that the steps
+        /// inherit settings on the base container.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stepTemplate")]
+        public virtual System.Collections.Generic.IList<StepTemplate> StepTemplate { get; set; }
 
         /// <summary>Steps of the task.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("steps")]
@@ -4273,6 +4401,13 @@ namespace Google.Apis.CloudBuild.v2.Data
         /// <summary>Name is the name by which you can bind the volume at runtime.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Optional. Optional marks a Workspace as not being required in TaskRuns. By default this field is false and
+        /// so declared workspaces are required.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("optional")]
+        public virtual System.Nullable<bool> Optional { get; set; }
 
         /// <summary>ReadOnly dictates whether a mounted volume is writable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("readOnly")]

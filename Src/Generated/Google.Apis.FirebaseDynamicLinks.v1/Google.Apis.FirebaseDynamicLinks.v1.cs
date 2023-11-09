@@ -931,7 +931,10 @@ namespace Google.Apis.FirebaseDynamicLinks.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response for iSDK to execute strong match flow for post-install attribution.</summary>
+    /// <summary>
+    /// Response for iSDK to execute strong match flow for post-install attribution. Information of the resolved FDL
+    /// link.
+    /// </summary>
     public class GetIosPostInstallAttributionResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>

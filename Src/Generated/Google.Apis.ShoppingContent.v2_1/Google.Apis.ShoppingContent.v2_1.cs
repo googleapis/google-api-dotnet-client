@@ -14322,7 +14322,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
     /// <summary>
     /// The [business identity attributes](https://support.google.com/merchants/answer/10342414) can be used to
-    /// self-declare attributes that let customers know more about your business. NEXT ID: 7.
+    /// self-declare attributes that let customers know more about your business.
     /// </summary>
     public class AccountBusinessIdentity : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -26410,8 +26410,8 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual System.Collections.Generic.IList<RateGroup> RateGroups { get; set; }
 
         /// <summary>
-        /// Type of locations this service ships orders to. Acceptable values are: - "`delivery`" - "`pickup`" -
-        /// "`local_delivery`" - "`collection_point`"
+        /// Type of locations this service ships orders to. Acceptable values are: - "`delivery`" - "`pickup`
+        /// (deprecated)" - "`local_delivery`" - "`collection_point`"
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shipmentType")]
         public virtual string ShipmentType { get; set; }

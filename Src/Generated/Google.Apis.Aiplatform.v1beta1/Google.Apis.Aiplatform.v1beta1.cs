@@ -27905,6 +27905,71 @@ namespace Google.Apis.Aiplatform.v1beta1
                 }
 
                 /// <summary>
+                /// Batch deletes PipelineJobs The Operation is atomic. If it fails, none of the PipelineJobs are
+                /// deleted. If it succeeds, all of the PipelineJobs are deleted.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The name of the PipelineJobs' parent resource. Format:
+                /// `projects/{project}/locations/{location}`
+                /// </param>
+                public virtual BatchDeleteRequest BatchDelete(Google.Apis.Aiplatform.v1beta1.Data.GoogleCloudAiplatformV1beta1BatchDeletePipelineJobsRequest body, string parent)
+                {
+                    return new BatchDeleteRequest(service, body, parent);
+                }
+
+                /// <summary>
+                /// Batch deletes PipelineJobs The Operation is atomic. If it fails, none of the PipelineJobs are
+                /// deleted. If it succeeds, all of the PipelineJobs are deleted.
+                /// </summary>
+                public class BatchDeleteRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1beta1.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new BatchDelete request.</summary>
+                    public BatchDeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.Aiplatform.v1beta1.Data.GoogleCloudAiplatformV1beta1BatchDeletePipelineJobsRequest body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the PipelineJobs' parent resource. Format:
+                    /// `projects/{project}/locations/{location}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Aiplatform.v1beta1.Data.GoogleCloudAiplatformV1beta1BatchDeletePipelineJobsRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "batchDelete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+parent}/pipelineJobs:batchDelete";
+
+                    /// <summary>Initializes BatchDelete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
                 /// Cancels a PipelineJob. Starts asynchronous cancellation on the PipelineJob. The server makes a best
                 /// effort to cancel the pipeline, but success is not guaranteed. Clients can use
                 /// PipelineService.GetPipelineJob or other methods to check whether the cancellation succeeded or
@@ -37632,6 +37697,20 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for PipelineService.BatchDeletePipelineJobs.</summary>
+    public class GoogleCloudAiplatformV1beta1BatchDeletePipelineJobsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The names of the PipelineJobs to delete. A maximum of 32 PipelineJobs can be deleted in a batch.
+        /// Format: `projects/{project}/locations/{location}/pipelineJobs/{pipelineJob}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("names")]
+        public virtual System.Collections.Generic.IList<string> Names { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for ModelService.BatchImportEvaluatedAnnotations</summary>
     public class GoogleCloudAiplatformV1beta1BatchImportEvaluatedAnnotationsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -41733,6 +41812,15 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
     public class GoogleCloudAiplatformV1beta1ExplainRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. This field is the same as the one above, but supports multiple explanations to occur in parallel.
+        /// The key can be any string. Each override will be run against the model, then its explanations will be
+        /// grouped together. Note - these explanations are run **In Addition** to the default Explanation in the
+        /// deployed model.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("concurrentExplanationSpecOverride")]
+        public virtual System.Collections.Generic.IDictionary<string, GoogleCloudAiplatformV1beta1ExplanationSpecOverride> ConcurrentExplanationSpecOverride { get; set; }
+
+        /// <summary>
         /// If specified, this ExplainRequest will be served by the chosen DeployedModel, overriding
         /// Endpoint.traffic_split.
         /// </summary>
@@ -41772,6 +41860,13 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
     /// <summary>Response message for PredictionService.Explain.</summary>
     public class GoogleCloudAiplatformV1beta1ExplainResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// This field stores the results of the explanations run in parallel with The default explanation
+        /// strategy/method.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("concurrentExplanations")]
+        public virtual System.Collections.Generic.IDictionary<string, GoogleCloudAiplatformV1beta1ExplainResponseConcurrentExplanation> ConcurrentExplanations { get; set; }
+
         /// <summary>ID of the Endpoint's DeployedModel that served this explanation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deployedModelId")]
         public virtual string DeployedModelId { get; set; }
@@ -41788,6 +41883,20 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("predictions")]
         public virtual System.Collections.Generic.IList<object> Predictions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>This message is a wrapper grouping Concurrent Explanations.</summary>
+    public class GoogleCloudAiplatformV1beta1ExplainResponseConcurrentExplanation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The explanations of the Model's PredictResponse.predictions. It has the same number of elements as instances
+        /// to be explained.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("explanations")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1beta1Explanation> Explanations { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -42839,6 +42948,13 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         /// <summary>Immutable. Only applicable for Vertex AI Feature Store (Legacy). Type of Feature value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valueType")]
         public virtual string ValueType { get; set; }
+
+        /// <summary>
+        /// Only applicable for Vertex AI Feature Store. The name of the BigQuery Table/View columnn hosting data for
+        /// this version. If no value is provided, will use feature_id.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("versionColumnName")]
+        public virtual string VersionColumnName { get; set; }
     }
 
     /// <summary>Vertex AI Feature Group.</summary>
@@ -43115,6 +43231,15 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>
+        /// Contains settings for the Optimized store that will be created to serve featureValues for all FeatureViews
+        /// under this FeatureOnlineStore. When choose Optimized storage type, need to set
+        /// PrivateServiceConnectConfig.enable_private_service_connect to use private endpoint. Otherwise will use
+        /// public endpoint by default.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("optimized")]
+        public virtual GoogleCloudAiplatformV1beta1FeatureOnlineStoreOptimized Optimized { get; set; }
+
         /// <summary>Output only. State of the featureOnlineStore.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
@@ -43196,15 +43321,30 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
 
     /// <summary>
     /// The dedicated serving endpoint for this FeatureOnlineStore. Only need to set when you choose Optimized storage
-    /// type or enable EmbeddingManagement.
+    /// type or enable EmbeddingManagement. Will use public endpoint by default.
     /// </summary>
     public class GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpoint : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Private service connect config. If PrivateServiceConnectConfig.enable_private_service_connect set
+        /// to true, customers will use private service connection to send request. Otherwise, the connection will set
+        /// to public endpoint.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateServiceConnectConfig")]
+        public virtual GoogleCloudAiplatformV1beta1PrivateServiceConnectConfig PrivateServiceConnectConfig { get; set; }
+
         /// <summary>
         /// Output only. This field will be populated with the domain name to use for this FeatureOnlineStore
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publicEndpointDomainName")]
         public virtual string PublicEndpointDomainName { get; set; }
+
+        /// <summary>
+        /// Output only. The name of the service attachment resource. Populated if private service connect is enabled
+        /// and after FeatureViewSync is created.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAttachment")]
+        public virtual string ServiceAttachment { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -43220,6 +43360,13 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
         public virtual System.Nullable<bool> Enabled { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Optimized storage type to replace lightning</summary>
+    public class GoogleCloudAiplatformV1beta1FeatureOnlineStoreOptimized : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -45230,6 +45377,13 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
 
         /// <summary>
         /// Optional. List of Restrict of the datapoint, used to perform "restricted searches" where boolean rule are
+        /// used to filter the subset of the database eligible for matching. This uses numeric comparisons.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numericRestricts")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1beta1IndexDatapointNumericRestriction> NumericRestricts { get; set; }
+
+        /// <summary>
+        /// Optional. List of Restrict of the datapoint, used to perform "restricted searches" where boolean rule are
         /// used to filter the subset of the database eligible for matching. This uses categorical tokens. See:
         /// https://cloud.google.com/vertex-ai/docs/matching-engine/filtering
         /// </summary>
@@ -45254,6 +45408,35 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("crowdingAttribute")]
         public virtual string CrowdingAttribute { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// This field allows restricts to be based on numeric comparisons rather than categorical tokens.
+    /// </summary>
+    public class GoogleCloudAiplatformV1beta1IndexDatapointNumericRestriction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The namespace of this restriction. e.g.: cost.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("namespace")]
+        public virtual string Namespace__ { get; set; }
+
+        /// <summary>This MUST be specified for queries and must NOT be specified for datapoints.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("op")]
+        public virtual string Op { get; set; }
+
+        /// <summary>Represents 64 bit float.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("valueDouble")]
+        public virtual System.Nullable<double> ValueDouble { get; set; }
+
+        /// <summary>Represents 32 bit float.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("valueFloat")]
+        public virtual System.Nullable<float> ValueFloat { get; set; }
+
+        /// <summary>Represents 64 bit integer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("valueInt")]
+        public virtual System.Nullable<long> ValueInt { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

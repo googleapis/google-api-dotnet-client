@@ -7192,9 +7192,13 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
 
-        /// <summary>The name of the `Release`.</summary>
+        /// <summary>The name of the release.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("release")]
         public virtual string Release { get; set; }
+
+        /// <summary>The state of the release render.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("releaseRenderState")]
+        public virtual string ReleaseRenderState { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7854,7 +7858,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("rollout")]
         public virtual string Rollout { get; set; }
 
-        /// <summary>Output only. The type of the rollout update.</summary>
+        /// <summary>The type of the rollout update.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rolloutUpdateType")]
         public virtual string RolloutUpdateType { get; set; }
 

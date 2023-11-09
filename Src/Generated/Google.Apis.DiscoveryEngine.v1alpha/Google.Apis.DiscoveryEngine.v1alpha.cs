@@ -2613,9 +2613,14 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         /// <summary>Makes a recommendation, which requires a contextual user event.</summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="servingConfig">
-                        /// Required. Full resource name of the format:
-                        /// `projects/*/locations/global/collections/*/dataStores/*/servingConfigs/*` Before you can
-                        /// request recommendations from your model, you must create at least one serving config for it.
+                        /// Required. Full resource name of a ServingConfig:
+                        /// `projects/*/locations/global/collections/*/engines/*/servingConfigs/*`, or
+                        /// `projects/*/locations/global/collections/*/dataStores/*/servingConfigs/*` One default
+                        /// serving config is created along with your recommendation engine creation. The engine ID will
+                        /// be used as the ID of the default serving config. For example, for Engine
+                        /// `projects/*/locations/global/collections/*/engines/my-engine`, you can use
+                        /// `projects/*/locations/global/collections/*/engines/my-engine/servingConfigs/my-engine` for
+                        /// your Recommend requests.
                         /// </param>
                         public virtual RecommendRequest Recommend(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaRecommendRequest body, string servingConfig)
                         {
@@ -2634,10 +2639,14 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                             }
 
                             /// <summary>
-                            /// Required. Full resource name of the format:
-                            /// `projects/*/locations/global/collections/*/dataStores/*/servingConfigs/*` Before you can
-                            /// request recommendations from your model, you must create at least one serving config for
-                            /// it.
+                            /// Required. Full resource name of a ServingConfig:
+                            /// `projects/*/locations/global/collections/*/engines/*/servingConfigs/*`, or
+                            /// `projects/*/locations/global/collections/*/dataStores/*/servingConfigs/*` One default
+                            /// serving config is created along with your recommendation engine creation. The engine ID
+                            /// will be used as the ID of the default serving config. For example, for Engine
+                            /// `projects/*/locations/global/collections/*/engines/my-engine`, you can use
+                            /// `projects/*/locations/global/collections/*/engines/my-engine/servingConfigs/my-engine`
+                            /// for your Recommend requests.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("servingConfig", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string ServingConfig { get; private set; }
@@ -2676,6 +2685,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         /// <param name="body">The body of the request.</param>
                         /// <param name="servingConfig">
                         /// Required. The resource name of the Search serving config, such as
+                        /// `projects/*/locations/global/collections/default_collection/engines/*/servingConfigs/default_serving_config`,
+                        /// or
                         /// `projects/*/locations/global/collections/default_collection/dataStores/default_data_store/servingConfigs/default_serving_config`.
                         /// This field is used to identify the serving configuration name, set of models used to make
                         /// the search.
@@ -2698,6 +2709,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
 
                             /// <summary>
                             /// Required. The resource name of the Search serving config, such as
+                            /// `projects/*/locations/global/collections/default_collection/engines/*/servingConfigs/default_serving_config`,
+                            /// or
                             /// `projects/*/locations/global/collections/default_collection/dataStores/default_data_store/servingConfigs/default_serving_config`.
                             /// This field is used to identify the serving configuration name, set of models used to
                             /// make the search.
@@ -3587,6 +3600,396 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                             });
                         }
                     }
+
+                    /// <summary>
+                    /// Creates a DataStore. DataStore is for storing Documents. To serve these documents for Search, or
+                    /// Recommendation use case, an Engine needs to be created separately.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. The parent resource name, such as
+                    /// `projects/{project}/locations/{location}/collections/{collection}`.
+                    /// </param>
+                    public virtual CreateRequest Create(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaDataStore body, string parent)
+                    {
+                        return new CreateRequest(service, body, parent);
+                    }
+
+                    /// <summary>
+                    /// Creates a DataStore. DataStore is for storing Documents. To serve these documents for Search, or
+                    /// Recommendation use case, an Engine needs to be created separately.
+                    /// </summary>
+                    public class CreateRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaDataStore body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The parent resource name, such as
+                        /// `projects/{project}/locations/{location}/collections/{collection}`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// A boolean flag indicating whether user want to directly create an advanced data store for
+                        /// site search. If the data store is not configured as site search (GENERIC vertical and
+                        /// PUBLIC_WEBSITE content_config), this flag will be ignored.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("createAdvancedSiteSearch", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> CreateAdvancedSiteSearch { get; set; }
+
+                        /// <summary>
+                        /// Required. The ID to use for the DataStore, which will become the final component of the
+                        /// DataStore's resource name. This field must conform to
+                        /// [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63
+                        /// characters. Otherwise, an INVALID_ARGUMENT error is returned.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("dataStoreId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string DataStoreId { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaDataStore Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "create";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha/{+parent}/dataStores";
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+$",
+                            });
+                            RequestParameters.Add("createAdvancedSiteSearch", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "createAdvancedSiteSearch",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("dataStoreId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "dataStoreId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Deletes a DataStore.</summary>
+                    /// <param name="name">
+                    /// Required. Full resource name of DataStore, such as
+                    /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`.
+                    /// If the caller does not have permission to delete the DataStore, regardless of whether or not it
+                    /// exists, a PERMISSION_DENIED error is returned. If the DataStore to delete does not exist, a
+                    /// NOT_FOUND error is returned.
+                    /// </param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(service, name);
+                    }
+
+                    /// <summary>Deletes a DataStore.</summary>
+                    public class DeleteRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Full resource name of DataStore, such as
+                        /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`.
+                        /// If the caller does not have permission to delete the DataStore, regardless of whether or not
+                        /// it exists, a PERMISSION_DENIED error is returned. If the DataStore to delete does not exist,
+                        /// a NOT_FOUND error is returned.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/dataStores/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Gets a DataStore.</summary>
+                    /// <param name="name">
+                    /// Required. Full resource name of DataStore, such as
+                    /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`.
+                    /// If the caller does not have permission to access the DataStore, regardless of whether or not it
+                    /// exists, a PERMISSION_DENIED error is returned. If the requested DataStore does not exist, a
+                    /// NOT_FOUND error is returned.
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(service, name);
+                    }
+
+                    /// <summary>Gets a DataStore.</summary>
+                    public class GetRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaDataStore>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Full resource name of DataStore, such as
+                        /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`.
+                        /// If the caller does not have permission to access the DataStore, regardless of whether or not
+                        /// it exists, a PERMISSION_DENIED error is returned. If the requested DataStore does not exist,
+                        /// a NOT_FOUND error is returned.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/dataStores/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Lists all the DataStores associated with the project.</summary>
+                    /// <param name="parent">
+                    /// Required. The parent branch resource name, such as
+                    /// `projects/{project}/locations/{location}/collections/{collection_id}`. If the caller does not
+                    /// have permission to list DataStoress under this location, regardless of whether or not this data
+                    /// store exists, a PERMISSION_DENIED error is returned.
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(service, parent);
+                    }
+
+                    /// <summary>Lists all the DataStores associated with the project.</summary>
+                    public class ListRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaListDataStoresResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The parent branch resource name, such as
+                        /// `projects/{project}/locations/{location}/collections/{collection_id}`. If the caller does
+                        /// not have permission to list DataStoress under this location, regardless of whether or not
+                        /// this data store exists, a PERMISSION_DENIED error is returned.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Filter by solution type. For example: filter = 'solution_type:SOLUTION_TYPE_SEARCH'
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+                        /// <summary>
+                        /// Maximum number of DataStores to return. If unspecified, defaults to 10. The maximum allowed
+                        /// value is 50. Values above 50 will be coerced to 50. If this field is negative, an
+                        /// INVALID_ARGUMENT is returned.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// A page token ListDataStoresResponse.next_page_token, received from a previous
+                        /// DataStoreService.ListDataStores call. Provide this to retrieve the subsequent page. When
+                        /// paginating, all other parameters provided to DataStoreService.ListDataStores must match the
+                        /// call that provided the page token. Otherwise, an INVALID_ARGUMENT error is returned.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha/{+parent}/dataStores";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Updates a DataStore</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Immutable. The full resource name of the data store. Format:
+                    /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`.
+                    /// This field must be a UTF-8 encoded string with a length limit of 1024 characters.
+                    /// </param>
+                    public virtual PatchRequest Patch(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaDataStore body, string name)
+                    {
+                        return new PatchRequest(service, body, name);
+                    }
+
+                    /// <summary>Updates a DataStore</summary>
+                    public class PatchRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaDataStore>
+                    {
+                        /// <summary>Constructs a new Patch request.</summary>
+                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaDataStore body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Immutable. The full resource name of the data store. Format:
+                        /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`.
+                        /// This field must be a UTF-8 encoded string with a length limit of 1024 characters.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// Indicates which fields in the provided DataStore to update. If an unsupported or unknown
+                        /// field is provided, an INVALID_ARGUMENT error is returned.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object UpdateMask { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaDataStore Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "patch";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "PATCH";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha/{+name}";
+
+                        /// <summary>Initializes Patch parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/dataStores/[^/]+$",
+                            });
+                            RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "updateMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
                 }
 
                 /// <summary>Gets the Engines resource.</summary>
@@ -3784,9 +4187,14 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         /// <summary>Makes a recommendation, which requires a contextual user event.</summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="servingConfig">
-                        /// Required. Full resource name of the format:
-                        /// `projects/*/locations/global/collections/*/dataStores/*/servingConfigs/*` Before you can
-                        /// request recommendations from your model, you must create at least one serving config for it.
+                        /// Required. Full resource name of a ServingConfig:
+                        /// `projects/*/locations/global/collections/*/engines/*/servingConfigs/*`, or
+                        /// `projects/*/locations/global/collections/*/dataStores/*/servingConfigs/*` One default
+                        /// serving config is created along with your recommendation engine creation. The engine ID will
+                        /// be used as the ID of the default serving config. For example, for Engine
+                        /// `projects/*/locations/global/collections/*/engines/my-engine`, you can use
+                        /// `projects/*/locations/global/collections/*/engines/my-engine/servingConfigs/my-engine` for
+                        /// your Recommend requests.
                         /// </param>
                         public virtual RecommendRequest Recommend(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaRecommendRequest body, string servingConfig)
                         {
@@ -3805,10 +4213,14 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                             }
 
                             /// <summary>
-                            /// Required. Full resource name of the format:
-                            /// `projects/*/locations/global/collections/*/dataStores/*/servingConfigs/*` Before you can
-                            /// request recommendations from your model, you must create at least one serving config for
-                            /// it.
+                            /// Required. Full resource name of a ServingConfig:
+                            /// `projects/*/locations/global/collections/*/engines/*/servingConfigs/*`, or
+                            /// `projects/*/locations/global/collections/*/dataStores/*/servingConfigs/*` One default
+                            /// serving config is created along with your recommendation engine creation. The engine ID
+                            /// will be used as the ID of the default serving config. For example, for Engine
+                            /// `projects/*/locations/global/collections/*/engines/my-engine`, you can use
+                            /// `projects/*/locations/global/collections/*/engines/my-engine/servingConfigs/my-engine`
+                            /// for your Recommend requests.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("servingConfig", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string ServingConfig { get; private set; }
@@ -3847,6 +4259,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         /// <param name="body">The body of the request.</param>
                         /// <param name="servingConfig">
                         /// Required. The resource name of the Search serving config, such as
+                        /// `projects/*/locations/global/collections/default_collection/engines/*/servingConfigs/default_serving_config`,
+                        /// or
                         /// `projects/*/locations/global/collections/default_collection/dataStores/default_data_store/servingConfigs/default_serving_config`.
                         /// This field is used to identify the serving configuration name, set of models used to make
                         /// the search.
@@ -3869,6 +4283,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
 
                             /// <summary>
                             /// Required. The resource name of the Search serving config, such as
+                            /// `projects/*/locations/global/collections/default_collection/engines/*/servingConfigs/default_serving_config`,
+                            /// or
                             /// `projects/*/locations/global/collections/default_collection/dataStores/default_data_store/servingConfigs/default_serving_config`.
                             /// This field is used to identify the serving configuration name, set of models used to
                             /// make the search.
@@ -3904,6 +4320,552 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                                     Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/servingConfigs/[^/]+$",
                                 });
                             }
+                        }
+                    }
+
+                    /// <summary>Creates a Engine.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. The parent resource name, such as
+                    /// `projects/{project}/locations/{location}/collections/{collection}`.
+                    /// </param>
+                    public virtual CreateRequest Create(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaEngine body, string parent)
+                    {
+                        return new CreateRequest(service, body, parent);
+                    }
+
+                    /// <summary>Creates a Engine.</summary>
+                    public class CreateRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaEngine body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The parent resource name, such as
+                        /// `projects/{project}/locations/{location}/collections/{collection}`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Required. The ID to use for the Engine, which will become the final component of the
+                        /// Engine's resource name. This field must conform to
+                        /// [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63
+                        /// characters. Otherwise, an INVALID_ARGUMENT error is returned.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("engineId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string EngineId { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaEngine Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "create";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha/{+parent}/engines";
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+$",
+                            });
+                            RequestParameters.Add("engineId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "engineId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Deletes a Engine.</summary>
+                    /// <param name="name">
+                    /// Required. Full resource name of Engine, such as
+                    /// `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}`. If
+                    /// the caller does not have permission to delete the Engine, regardless of whether or not it
+                    /// exists, a PERMISSION_DENIED error is returned. If the Engine to delete does not exist, a
+                    /// NOT_FOUND error is returned.
+                    /// </param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(service, name);
+                    }
+
+                    /// <summary>Deletes a Engine.</summary>
+                    public class DeleteRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleProtobufEmpty>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Full resource name of Engine, such as
+                        /// `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}`.
+                        /// If the caller does not have permission to delete the Engine, regardless of whether or not it
+                        /// exists, a PERMISSION_DENIED error is returned. If the Engine to delete does not exist, a
+                        /// NOT_FOUND error is returned.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Gets a Engine.</summary>
+                    /// <param name="name">
+                    /// Required. Full resource name of Engine, such as
+                    /// `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}`.
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(service, name);
+                    }
+
+                    /// <summary>Gets a Engine.</summary>
+                    public class GetRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaEngine>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Full resource name of Engine, such as
+                        /// `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Lists all the Engines associated with the project.</summary>
+                    /// <param name="parent">
+                    /// Required. The parent resource name, such as
+                    /// `projects/{project}/locations/{location}/collections/{collection_id}`.
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(service, parent);
+                    }
+
+                    /// <summary>Lists all the Engines associated with the project.</summary>
+                    public class ListRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaListEnginesResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The parent resource name, such as
+                        /// `projects/{project}/locations/{location}/collections/{collection_id}`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Optional. Filter by solution type. For example: solution_type=SOLUTION_TYPE_SEARCH
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+                        /// <summary>Optional. Not supported.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>Optional. Not supported.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha/{+parent}/engines";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Updates an Engine</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Immutable. The fully qualified resource name of the engine. This field must be a UTF-8 encoded
+                    /// string with a length limit of 1024 characters. Format:
+                    /// `projects/{project_number}/locations/{location}/collections/{collection}/engines/{engine}`
+                    /// engine should be 1-63 characters, and valid characters are /a-z0-9*/. Otherwise, an
+                    /// INVALID_ARGUMENT error is returned.
+                    /// </param>
+                    public virtual PatchRequest Patch(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaEngine body, string name)
+                    {
+                        return new PatchRequest(service, body, name);
+                    }
+
+                    /// <summary>Updates an Engine</summary>
+                    public class PatchRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaEngine>
+                    {
+                        /// <summary>Constructs a new Patch request.</summary>
+                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaEngine body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Immutable. The fully qualified resource name of the engine. This field must be a UTF-8
+                        /// encoded string with a length limit of 1024 characters. Format:
+                        /// `projects/{project_number}/locations/{location}/collections/{collection}/engines/{engine}`
+                        /// engine should be 1-63 characters, and valid characters are /a-z0-9*/. Otherwise, an
+                        /// INVALID_ARGUMENT error is returned.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// Indicates which fields in the provided Engine to update. If an unsupported or unknown field
+                        /// is provided, an INVALID_ARGUMENT error is returned.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object UpdateMask { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaEngine Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "patch";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "PATCH";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha/{+name}";
+
+                        /// <summary>Initializes Patch parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+$",
+                            });
+                            RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "updateMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Pauses the training of an existing engine. Only applicable if solution_type is
+                    /// SOLUTION_TYPE_RECOMMENDATION.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Required. The name of the engine to pause. Format:
+                    /// `projects/{project_number}/locations/{location_id}/collections/{collection_id}/engines/{engine_id}`
+                    /// </param>
+                    public virtual PauseRequest Pause(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaPauseEngineRequest body, string name)
+                    {
+                        return new PauseRequest(service, body, name);
+                    }
+
+                    /// <summary>
+                    /// Pauses the training of an existing engine. Only applicable if solution_type is
+                    /// SOLUTION_TYPE_RECOMMENDATION.
+                    /// </summary>
+                    public class PauseRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaEngine>
+                    {
+                        /// <summary>Constructs a new Pause request.</summary>
+                        public PauseRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaPauseEngineRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the engine to pause. Format:
+                        /// `projects/{project_number}/locations/{location_id}/collections/{collection_id}/engines/{engine_id}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaPauseEngineRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "pause";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha/{+name}:pause";
+
+                        /// <summary>Initializes Pause parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Resumes the training of an existing engine. Only applicable if solution_type is
+                    /// SOLUTION_TYPE_RECOMMENDATION.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Required. The name of the engine to resume. Format:
+                    /// `projects/{project_number}/locations/{location_id}/collections/{collection_id}/engines/{engine_id}`
+                    /// </param>
+                    public virtual ResumeRequest Resume(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaResumeEngineRequest body, string name)
+                    {
+                        return new ResumeRequest(service, body, name);
+                    }
+
+                    /// <summary>
+                    /// Resumes the training of an existing engine. Only applicable if solution_type is
+                    /// SOLUTION_TYPE_RECOMMENDATION.
+                    /// </summary>
+                    public class ResumeRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaEngine>
+                    {
+                        /// <summary>Constructs a new Resume request.</summary>
+                        public ResumeRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaResumeEngineRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the engine to resume. Format:
+                        /// `projects/{project_number}/locations/{location_id}/collections/{collection_id}/engines/{engine_id}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaResumeEngineRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "resume";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha/{+name}:resume";
+
+                        /// <summary>Initializes Resume parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Tunes an existing engine. Only applicable if solution_type is SOLUTION_TYPE_RECOMMENDATION.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Required. The resource name of the engine to tune. Format:
+                    /// `projects/{project_number}/locations/{location_id}/collections/{collection_id}/engines/{engine_id}`
+                    /// </param>
+                    public virtual TuneRequest Tune(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaTuneEngineRequest body, string name)
+                    {
+                        return new TuneRequest(service, body, name);
+                    }
+
+                    /// <summary>
+                    /// Tunes an existing engine. Only applicable if solution_type is SOLUTION_TYPE_RECOMMENDATION.
+                    /// </summary>
+                    public class TuneRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new Tune request.</summary>
+                        public TuneRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaTuneEngineRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the engine to tune. Format:
+                        /// `projects/{project_number}/locations/{location_id}/collections/{collection_id}/engines/{engine_id}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaTuneEngineRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "tune";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha/{+name}:tune";
+
+                        /// <summary>Initializes Tune parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+$",
+                            });
                         }
                     }
                 }
@@ -5938,9 +6900,14 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     /// <summary>Makes a recommendation, which requires a contextual user event.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="servingConfig">
-                    /// Required. Full resource name of the format:
-                    /// `projects/*/locations/global/collections/*/dataStores/*/servingConfigs/*` Before you can request
-                    /// recommendations from your model, you must create at least one serving config for it.
+                    /// Required. Full resource name of a ServingConfig:
+                    /// `projects/*/locations/global/collections/*/engines/*/servingConfigs/*`, or
+                    /// `projects/*/locations/global/collections/*/dataStores/*/servingConfigs/*` One default serving
+                    /// config is created along with your recommendation engine creation. The engine ID will be used as
+                    /// the ID of the default serving config. For example, for Engine
+                    /// `projects/*/locations/global/collections/*/engines/my-engine`, you can use
+                    /// `projects/*/locations/global/collections/*/engines/my-engine/servingConfigs/my-engine` for your
+                    /// Recommend requests.
                     /// </param>
                     public virtual RecommendRequest Recommend(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaRecommendRequest body, string servingConfig)
                     {
@@ -5959,9 +6926,14 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         }
 
                         /// <summary>
-                        /// Required. Full resource name of the format:
-                        /// `projects/*/locations/global/collections/*/dataStores/*/servingConfigs/*` Before you can
-                        /// request recommendations from your model, you must create at least one serving config for it.
+                        /// Required. Full resource name of a ServingConfig:
+                        /// `projects/*/locations/global/collections/*/engines/*/servingConfigs/*`, or
+                        /// `projects/*/locations/global/collections/*/dataStores/*/servingConfigs/*` One default
+                        /// serving config is created along with your recommendation engine creation. The engine ID will
+                        /// be used as the ID of the default serving config. For example, for Engine
+                        /// `projects/*/locations/global/collections/*/engines/my-engine`, you can use
+                        /// `projects/*/locations/global/collections/*/engines/my-engine/servingConfigs/my-engine` for
+                        /// your Recommend requests.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("servingConfig", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string ServingConfig { get; private set; }
@@ -6000,6 +6972,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     /// <param name="body">The body of the request.</param>
                     /// <param name="servingConfig">
                     /// Required. The resource name of the Search serving config, such as
+                    /// `projects/*/locations/global/collections/default_collection/engines/*/servingConfigs/default_serving_config`,
+                    /// or
                     /// `projects/*/locations/global/collections/default_collection/dataStores/default_data_store/servingConfigs/default_serving_config`.
                     /// This field is used to identify the serving configuration name, set of models used to make the
                     /// search.
@@ -6022,6 +6996,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
 
                         /// <summary>
                         /// Required. The resource name of the Search serving config, such as
+                        /// `projects/*/locations/global/collections/default_collection/engines/*/servingConfigs/default_serving_config`,
+                        /// or
                         /// `projects/*/locations/global/collections/default_collection/dataStores/default_data_store/servingConfigs/default_serving_config`.
                         /// This field is used to identify the serving configuration name, set of models used to make
                         /// the search.
@@ -6567,6 +7543,396 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         RequestParameters.Add("userPseudoId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "userPseudoId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Creates a DataStore. DataStore is for storing Documents. To serve these documents for Search, or
+                /// Recommendation use case, an Engine needs to be created separately.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The parent resource name, such as
+                /// `projects/{project}/locations/{location}/collections/{collection}`.
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaDataStore body, string parent)
+                {
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>
+                /// Creates a DataStore. DataStore is for storing Documents. To serve these documents for Search, or
+                /// Recommendation use case, an Engine needs to be created separately.
+                /// </summary>
+                public class CreateRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaDataStore body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent resource name, such as
+                    /// `projects/{project}/locations/{location}/collections/{collection}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// A boolean flag indicating whether user want to directly create an advanced data store for site
+                    /// search. If the data store is not configured as site search (GENERIC vertical and PUBLIC_WEBSITE
+                    /// content_config), this flag will be ignored.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("createAdvancedSiteSearch", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> CreateAdvancedSiteSearch { get; set; }
+
+                    /// <summary>
+                    /// Required. The ID to use for the DataStore, which will become the final component of the
+                    /// DataStore's resource name. This field must conform to
+                    /// [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters.
+                    /// Otherwise, an INVALID_ARGUMENT error is returned.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("dataStoreId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string DataStoreId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaDataStore Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+parent}/dataStores";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("createAdvancedSiteSearch", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "createAdvancedSiteSearch",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("dataStoreId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "dataStoreId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes a DataStore.</summary>
+                /// <param name="name">
+                /// Required. Full resource name of DataStore, such as
+                /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`. If
+                /// the caller does not have permission to delete the DataStore, regardless of whether or not it exists,
+                /// a PERMISSION_DENIED error is returned. If the DataStore to delete does not exist, a NOT_FOUND error
+                /// is returned.
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(service, name);
+                }
+
+                /// <summary>Deletes a DataStore.</summary>
+                public class DeleteRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Full resource name of DataStore, such as
+                    /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`.
+                    /// If the caller does not have permission to delete the DataStore, regardless of whether or not it
+                    /// exists, a PERMISSION_DENIED error is returned. If the DataStore to delete does not exist, a
+                    /// NOT_FOUND error is returned.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/dataStores/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Gets a DataStore.</summary>
+                /// <param name="name">
+                /// Required. Full resource name of DataStore, such as
+                /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`. If
+                /// the caller does not have permission to access the DataStore, regardless of whether or not it exists,
+                /// a PERMISSION_DENIED error is returned. If the requested DataStore does not exist, a NOT_FOUND error
+                /// is returned.
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Gets a DataStore.</summary>
+                public class GetRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaDataStore>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Full resource name of DataStore, such as
+                    /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`.
+                    /// If the caller does not have permission to access the DataStore, regardless of whether or not it
+                    /// exists, a PERMISSION_DENIED error is returned. If the requested DataStore does not exist, a
+                    /// NOT_FOUND error is returned.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/dataStores/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists all the DataStores associated with the project.</summary>
+                /// <param name="parent">
+                /// Required. The parent branch resource name, such as
+                /// `projects/{project}/locations/{location}/collections/{collection_id}`. If the caller does not have
+                /// permission to list DataStoress under this location, regardless of whether or not this data store
+                /// exists, a PERMISSION_DENIED error is returned.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>Lists all the DataStores associated with the project.</summary>
+                public class ListRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaListDataStoresResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent branch resource name, such as
+                    /// `projects/{project}/locations/{location}/collections/{collection_id}`. If the caller does not
+                    /// have permission to list DataStoress under this location, regardless of whether or not this data
+                    /// store exists, a PERMISSION_DENIED error is returned.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Filter by solution type. For example: filter = 'solution_type:SOLUTION_TYPE_SEARCH'
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// Maximum number of DataStores to return. If unspecified, defaults to 10. The maximum allowed
+                    /// value is 50. Values above 50 will be coerced to 50. If this field is negative, an
+                    /// INVALID_ARGUMENT is returned.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// A page token ListDataStoresResponse.next_page_token, received from a previous
+                    /// DataStoreService.ListDataStores call. Provide this to retrieve the subsequent page. When
+                    /// paginating, all other parameters provided to DataStoreService.ListDataStores must match the call
+                    /// that provided the page token. Otherwise, an INVALID_ARGUMENT error is returned.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+parent}/dataStores";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates a DataStore</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Immutable. The full resource name of the data store. Format:
+                /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`.
+                /// This field must be a UTF-8 encoded string with a length limit of 1024 characters.
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaDataStore body, string name)
+                {
+                    return new PatchRequest(service, body, name);
+                }
+
+                /// <summary>Updates a DataStore</summary>
+                public class PatchRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaDataStore>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaDataStore body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Immutable. The full resource name of the data store. Format:
+                    /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`.
+                    /// This field must be a UTF-8 encoded string with a length limit of 1024 characters.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Indicates which fields in the provided DataStore to update. If an unsupported or unknown field
+                    /// is provided, an INVALID_ARGUMENT error is returned.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaDataStore Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/dataStores/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -8103,6 +9469,174 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Metadata related to the progress of the DataStoreService.CreateDataStore operation. This will be returned by the
+    /// google.longrunning.Operation.metadata field.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaCreateDataStoreMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Operation create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Metadata related to the progress of the EngineService.CreateEngine operation. This will be returned by the
+    /// google.longrunning.Operation.metadata field.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaCreateEngineMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Operation create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata for Create Schema LRO.</summary>
     public class GoogleCloudDiscoveryengineV1alphaCreateSchemaMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8203,6 +9737,256 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual System.Collections.Generic.IList<string> Text { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>DataStore captures global settings and configs at the DataStore level.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaDataStore : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Immutable. The content config of the data store. If this field is unset, the server behavior defaults to
+        /// ContentConfig.NO_CONTENT.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentConfig")]
+        public virtual string ContentConfig { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Timestamp the DataStore was created at.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>Output only. The id of the default Schema asscociated to this data store.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultSchemaId")]
+        public virtual string DefaultSchemaId { get; set; }
+
+        /// <summary>
+        /// Required. The data store display name. This field must be a UTF-8 encoded string with a length limit of 128
+        /// characters. Otherwise, an INVALID_ARGUMENT error is returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Immutable. The industry vertical that the data store registers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("industryVertical")]
+        public virtual string IndustryVertical { get; set; }
+
+        /// <summary>
+        /// Immutable. The full resource name of the data store. Format:
+        /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`. This field
+        /// must be a UTF-8 encoded string with a length limit of 1024 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// The solutions that the data store enrolls. Available solutions for each industry_vertical: * `MEDIA`:
+        /// `SOLUTION_TYPE_RECOMMENDATION` and `SOLUTION_TYPE_SEARCH`. * `SITE_SEARCH`: `SOLUTION_TYPE_SEARCH` is
+        /// automatically enrolled. Other solutions cannot be enrolled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("solutionTypes")]
+        public virtual System.Collections.Generic.IList<string> SolutionTypes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Metadata related to the progress of the DataStoreService.DeleteDataStore operation. This will be returned by the
+    /// google.longrunning.Operation.metadata field.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaDeleteDataStoreMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Operation create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Metadata related to the progress of the EngineService.DeleteEngine operation. This will be returned by the
+    /// google.longrunning.Operation.metadata field.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaDeleteEngineMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Operation create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8425,6 +10209,398 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
         public virtual System.Collections.Generic.IList<System.Nullable<double>> Values { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata that describes the training and serving parameters of an Engine.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaEngine : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Configurations for the Chat Engine. Only applicable if solution_type is SOLUTION_TYPE_CHAT.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chatEngineConfig")]
+        public virtual GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfig ChatEngineConfig { get; set; }
+
+        /// <summary>
+        /// Output only. Additional information of the Chat Engine. Only applicable if solution_type is
+        /// SOLUTION_TYPE_CHAT.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chatEngineMetadata")]
+        public virtual GoogleCloudDiscoveryengineV1alphaEngineChatEngineMetadata ChatEngineMetadata { get; set; }
+
+        /// <summary>Common config spec that specifies the metadata of the engine.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commonConfig")]
+        public virtual GoogleCloudDiscoveryengineV1alphaEngineCommonConfig CommonConfig { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Timestamp the Recommendation Engine was created at.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>
+        /// The data stores associated with this engine. For SOLUTION_TYPE_SEARCH and SOLUTION_TYPE_RECOMMENDATION type
+        /// of engines, they can only associate with at most one data store. If solution_type is SOLUTION_TYPE_CHAT,
+        /// multiple DataStores in the same Collection can be associated here. Note that when used in
+        /// CreateEngineRequest, one DataStore id must be provided as the system will use it for necessary
+        /// intializations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataStoreIds")]
+        public virtual System.Collections.Generic.IList<string> DataStoreIds { get; set; }
+
+        /// <summary>
+        /// Required. The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024
+        /// characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Configurations for the Media Engine. Only applicable on the data stores with solution_type
+        /// SOLUTION_TYPE_RECOMMENDATION and IndustryVertical.MEDIA vertical.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mediaRecommendationEngineConfig")]
+        public virtual GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfig MediaRecommendationEngineConfig { get; set; }
+
+        /// <summary>
+        /// Immutable. The fully qualified resource name of the engine. This field must be a UTF-8 encoded string with a
+        /// length limit of 1024 characters. Format:
+        /// `projects/{project_number}/locations/{location}/collections/{collection}/engines/{engine}` engine should be
+        /// 1-63 characters, and valid characters are /a-z0-9*/. Otherwise, an INVALID_ARGUMENT error is returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. Additional information of a recommendation engine. Only applicable if solution_type is
+        /// SOLUTION_TYPE_RECOMMENDATION.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recommendationMetadata")]
+        public virtual GoogleCloudDiscoveryengineV1alphaEngineRecommendationMetadata RecommendationMetadata { get; set; }
+
+        /// <summary>
+        /// Configurations for the Search Engine. Only applicable if solution_type is SOLUTION_TYPE_SEARCH.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("searchEngineConfig")]
+        public virtual GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfig SearchEngineConfig { get; set; }
+
+        /// <summary>Additional config specs for a `similar-items` engine.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("similarDocumentsConfig")]
+        public virtual GoogleCloudDiscoveryengineV1alphaEngineSimilarDocumentsEngineConfig SimilarDocumentsConfig { get; set; }
+
+        /// <summary>Required. The solutions of the engine.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("solutionType")]
+        public virtual string SolutionType { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. Timestamp the Recommendation Engine was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configurations for a Chat Engine.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The configurationt generate the Dialogflow agent that is associated to this Engine. Note that these
+        /// configurations are one-time consumed by and passed to Dialogflow service. It means they cannot be retrieved
+        /// using GetEngine or ListEngine API after engine creation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentCreationConfig")]
+        public virtual GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigAgentCreationConfig AgentCreationConfig { get; set; }
+
+        /// <summary>
+        /// The resource name of an exist Dialogflow agent to link to this Chat Engine. Customers can either provide
+        /// `agent_creation_config` to create agent or provide an agent name that links the agent with the Chat engine.
+        /// Format: `projects//locations//agents/`. Note that the `dialogflow_agent_to_link` are one-time consumed by
+        /// and passed to Dialogflow service. It means they cannot be retrieved using GetEngine or ListEngine API after
+        /// engine creation. Please use Engine.chat_engine_metadata.dialogflow_agent for actual agent association after
+        /// Engine is created.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dialogflowAgentToLink")]
+        public virtual string DialogflowAgentToLink { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Configurations for generating a Dialogflow agent. Note that these configurations are one-time consumed by and
+    /// passed to Dialogflow service. It means they cannot be retrieved using GetEngine or ListEngine API after engine
+    /// creation.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigAgentCreationConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Name of the company, organization or other entity that the agent represents. Used for knowledge connector
+        /// LLM prompt and for knowledge search.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("business")]
+        public virtual string Business { get; set; }
+
+        /// <summary>
+        /// Required. The default language of the agent as a language tag. See [Language
+        /// Support](https://cloud.google.com/dialogflow/docs/reference/language) for a list of the currently supported
+        /// language codes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultLanguageCode")]
+        public virtual string DefaultLanguageCode { get; set; }
+
+        /// <summary>
+        /// Required. The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g.,
+        /// America/New_York, Europe/Paris.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
+        public virtual string TimeZone { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Additional information of a Chat Engine. Fields in this message are output only.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaEngineChatEngineMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The resource name of a Dialogflow agent, that this Chat Engine refers to. Format:
+        /// `projects//locations//agents/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dialogflowAgent")]
+        public virtual string DialogflowAgent { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Common configurations for an Engine.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaEngineCommonConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The name of the company, business or entity that is associated with the engine. Setting this may help
+        /// improve LLM related features.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("companyName")]
+        public virtual string CompanyName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Additional config specs for a Media Recommendation engine.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The optimization objective e.g. `cvr`. This field together with optimization_objective describe engine
+        /// metadata to use to control engine training and serving. Currently supported values: `ctr`, `cvr`. If not
+        /// specified, we choose default based on engine type. Default depends on type of recommendation:
+        /// `recommended-for-you` =&amp;gt; `ctr` `others-you-may-like` =&amp;gt; `ctr`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("optimizationObjective")]
+        public virtual string OptimizationObjective { get; set; }
+
+        /// <summary>
+        /// Name and value of the custom threshold for cvr optimization_objective. For target_field `watch-time`,
+        /// target_field_value must be an integer value indicating the media progress time in seconds between (0, 86400]
+        /// (excludes 0, includes 86400) (e.g., 90). For target_field `watch-percentage`, the target_field_value must be
+        /// a valid float value between (0, 1.0] (excludes 0, includes 1.0) (e.g., 0.5).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("optimizationObjectiveConfig")]
+        public virtual GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigOptimizationObjectiveConfig OptimizationObjectiveConfig { get; set; }
+
+        /// <summary>
+        /// The training state that the engine is in (e.g. `TRAINING` or `PAUSED`). Since part of the cost of running
+        /// the service is frequency of training - this can be used to determine when to train engine in order to
+        /// control cost. If not specified: the default value for `CreateEngine` method is `TRAINING`. The default value
+        /// for `UpdateEngine` method is to keep the state the same as before.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trainingState")]
+        public virtual string TrainingState { get; set; }
+
+        /// <summary>
+        /// Required. The type of engine e.g. `recommended-for-you`. This field together with optimization_objective
+        /// describe engine metadata to use to control engine training and serving. Currently supported values:
+        /// `recommended-for-you`, `others-you-may-like`, `more-like-this`, `most-popular-items`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Custom threshold for `cvr` optimization_objective.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigOptimizationObjectiveConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The name of the field to target. Currently supported values: `watch-percentage`, `watch-time`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetField")]
+        public virtual string TargetField { get; set; }
+
+        /// <summary>Required. The threshold to be applied to the target (e.g., 0.5).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetFieldValueFloat")]
+        public virtual System.Nullable<float> TargetFieldValueFloat { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Additional information of a recommendation engine.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaEngineRecommendationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The state of data requirements for this engine: `DATA_OK` and `DATA_ERROR`. Engine cannot be
+        /// trained if the data is in `DATA_ERROR` state. Engine can have `DATA_ERROR` state even if serving state is
+        /// `ACTIVE`: engines were trained successfully before, but cannot be refreshed because the underlying engine no
+        /// longer has sufficient data for training.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataState")]
+        public virtual string DataState { get; set; }
+
+        private string _lastTuneTimeRaw;
+
+        private object _lastTuneTime;
+
+        /// <summary>
+        /// Output only. The timestamp when the latest successful tune finished. Only applicable on Media Recommendation
+        /// engines.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastTuneTime")]
+        public virtual string LastTuneTimeRaw
+        {
+            get => _lastTuneTimeRaw;
+            set
+            {
+                _lastTuneTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastTuneTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastTuneTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastTuneTimeDateTimeOffset instead.")]
+        public virtual object LastTuneTime
+        {
+            get => _lastTuneTime;
+            set
+            {
+                _lastTuneTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastTuneTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="LastTuneTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastTuneTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastTuneTimeRaw);
+            set => LastTuneTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>Output only. The serving state of the engine: `ACTIVE`, `NOT_ACTIVE`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("servingState")]
+        public virtual string ServingState { get; set; }
+
+        /// <summary>
+        /// Output only. The latest tune operation id associated with the engine. Only applicable on Media
+        /// Recommendation engines. If present, this operation id can be used to determine if there is an ongoing tune
+        /// for this engine. To check the operation status, send the GetOperation request with this operation id in the
+        /// engine resource format. If no tuning has happened for this engine, the string is empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tuningOperation")]
+        public virtual string TuningOperation { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configurations for a Search Engine.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The add-on that this search engine enables.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("searchAddOns")]
+        public virtual System.Collections.Generic.IList<string> SearchAddOns { get; set; }
+
+        /// <summary>
+        /// The search feature tier of this engine. Different tiers might have different pricing. To learn more, please
+        /// check the pricing documentation. Defaults to SearchTier.SEARCH_TIER_STANDARD if not specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("searchTier")]
+        public virtual string SearchTier { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Additional config specs for a `similar-items` engine.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaEngineSimilarDocumentsEngineConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -8942,6 +11118,24 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for DataStoreService.ListDataStores method.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaListDataStoresResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>All the customer's DataStores.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataStores")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaDataStore> DataStores { get; set; }
+
+        /// <summary>
+        /// A token that can be sent as ListDataStoresRequest.page_token to retrieve the next page. If this field is
+        /// omitted, there are no subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for DocumentService.ListDocuments method.</summary>
     public class GoogleCloudDiscoveryengineV1alphaListDocumentsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8953,6 +11147,21 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// A token that can be sent as ListDocumentsRequest.page_token to retrieve the next page. If this field is
         /// omitted, there are no subsequent pages.
         /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for EngineService.ListEngines method.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaListEnginesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>All the customer's Engines.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("engines")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaEngine> Engines { get; set; }
+
+        /// <summary>Not supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
@@ -9090,6 +11299,13 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("totalPanels")]
         public virtual System.Nullable<int> TotalPanels { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request for pausing training of an engine.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaPauseEngineRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -9710,6 +11926,13 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request for resuming training of an engine.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaResumeEngineRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Defines the structure and layout of a type of document data.</summary>
     public class GoogleCloudDiscoveryengineV1alphaSchema : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9901,6 +12124,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
 
         /// <summary>
         /// Required. The resource name of the Search serving config, such as
+        /// `projects/*/locations/global/collections/default_collection/engines/*/servingConfigs/default_serving_config`,
+        /// or
         /// `projects/*/locations/global/collections/default_collection/dataStores/default_data_store/servingConfigs/default_serving_config`.
         /// This field is used to identify the serving configuration name, set of models used to make the search.
         /// </summary>
@@ -10777,6 +13002,37 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual System.Nullable<float> Value { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata associated with a tune operation.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaTuneEngineMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The resource name of the engine that this tune applies to. Format:
+        /// `projects/{project_number}/locations/{location_id}/collections/{collection_id}/engines/{engine_id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("engine")]
+        public virtual string Engine { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Request to manually start a tuning process now (instead of waiting for the periodically scheduled tuning to
+    /// happen).
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaTuneEngineRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response associated with a tune operation.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaTuneEngineResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

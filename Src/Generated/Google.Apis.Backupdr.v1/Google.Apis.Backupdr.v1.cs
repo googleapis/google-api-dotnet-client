@@ -1644,6 +1644,17 @@ namespace Google.Apis.Backupdr.v1.Data
             get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
         }
+
+        /// <summary>
+        /// Output only. The hostnames of the exposed AGM endpoints for both types of user i.e. 1p and 3p, used to
+        /// connect AGM/RM UI.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workforceIdentityBasedManagementUri")]
+        public virtual WorkforceIdentityBasedManagementURI WorkforceIdentityBasedManagementUri { get; set; }
+
+        /// <summary>Output only. The OAuth client IDs for both types of user i.e. 1p and 3p.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workforceIdentityBasedOauth2ClientId")]
+        public virtual WorkforceIdentityBasedOAuth2ClientID WorkforceIdentityBasedOauth2ClientId { get; set; }
     }
 
     /// <summary>ManagementURI for the Management Server resource.</summary>
@@ -1985,6 +1996,36 @@ namespace Google.Apis.Backupdr.v1.Data
         /// <summary>A subset of `TestPermissionsRequest.permissions` that the caller is allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
         public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>ManagementURI depending on the Workforce Identity i.e. either 1p or 3p.</summary>
+    public class WorkforceIdentityBasedManagementURI : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. First party Management URI for Google Identities.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("firstPartyManagementUri")]
+        public virtual string FirstPartyManagementUri { get; set; }
+
+        /// <summary>Output only. Third party Management URI for External Identity Providers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("thirdPartyManagementUri")]
+        public virtual string ThirdPartyManagementUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>OAuth Client ID depending on the Workforce Identity i.e. either 1p or 3p,</summary>
+    public class WorkforceIdentityBasedOAuth2ClientID : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. First party OAuth Client ID for Google Identities.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("firstPartyOauth2ClientId")]
+        public virtual string FirstPartyOauth2ClientId { get; set; }
+
+        /// <summary>Output only. Third party OAuth Client ID for External Identity Providers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("thirdPartyOauth2ClientId")]
+        public virtual string ThirdPartyOauth2ClientId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

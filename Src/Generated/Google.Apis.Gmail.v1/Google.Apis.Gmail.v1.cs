@@ -8019,6 +8019,9 @@ namespace Google.Apis.Gmail.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IList<Label> Labels { get; set; }
 
+        [Newtonsoft.Json.JsonPropertyAttribute("productId")]
+        public virtual System.Nullable<int> ProductId { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

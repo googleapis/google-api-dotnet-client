@@ -353,6 +353,29 @@ namespace Google.Apis.PlayIntegrity.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Contains signals about others apps on the device which could be used to access or control the requesting app.
+    /// </summary>
+    public class AppAccessRiskVerdict : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. App access risk verdict related to apps that are not installed by Google Play, and are not
+        /// preloaded on the system image by the device manufacturer.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("otherApps")]
+        public virtual string OtherApps { get; set; }
+
+        /// <summary>
+        /// Required. App access risk verdict related to apps that are not installed by the Google Play Store, and are
+        /// not preloaded on the system image by the device manufacturer.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("playOrSystemApps")]
+        public virtual string PlayOrSystemApps { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Contains the application integrity information.</summary>
     public class AppIntegrity : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -415,8 +438,25 @@ namespace Google.Apis.PlayIntegrity.v1.Data
     }
 
     /// <summary>
-    /// Contains guidance details about the Integrity API response, providing additional context to the integrity
-    /// verdicts.
+    /// Contains information about the environment Play Integrity API runs in, e.g. Play Protect verdict.
+    /// </summary>
+    public class EnvironmentDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The evaluation of the App Access Risk verdicts.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appAccessRiskVerdict")]
+        public virtual AppAccessRiskVerdict AppAccessRiskVerdict { get; set; }
+
+        /// <summary>The evaluation of Play Protect verdict.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("playProtectVerdict")]
+        public virtual string PlayProtectVerdict { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Deprecated: this field is not used. Contains guidance details about the Integrity API response, providing
+    /// additional context to the integrity verdicts.
     /// </summary>
     public class GuidanceDetails : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -488,7 +528,13 @@ namespace Google.Apis.PlayIntegrity.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deviceIntegrity")]
         public virtual DeviceIntegrity DeviceIntegrity { get; set; }
 
-        /// <summary>Additional guidance related to the integrity API response.</summary>
+        /// <summary>Details of the environment Play Integrity API runs in.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("environmentDetails")]
+        public virtual EnvironmentDetails EnvironmentDetails { get; set; }
+
+        /// <summary>
+        /// Deprecated: this field is not used. Additional guidance related to the integrity API response.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("guidanceDetails")]
         public virtual GuidanceDetails GuidanceDetails { get; set; }
 
@@ -507,7 +553,9 @@ namespace Google.Apis.PlayIntegrity.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Contains details of remediation guidance that the user can perform.</summary>
+    /// <summary>
+    /// Deprecated: this field is not used. Contains details of remediation guidance that the user can perform.
+    /// </summary>
     public class UserRemediationDetails : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Description of the user remediation action.</summary>

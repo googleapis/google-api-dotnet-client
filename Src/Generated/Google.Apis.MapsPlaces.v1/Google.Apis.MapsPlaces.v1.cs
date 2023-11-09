@@ -374,7 +374,7 @@ namespace Google.Apis.MapsPlaces.v1
                 /// <summary>
                 /// Optional. If set, skip the default HTTP redirect behavior and render a text format (for example, in
                 /// JSON format for HTTP use case) response. If not set, an HTTP redirect will be issued to redirect the
-                /// call to the image midea. This option is ignored for non-HTTP requests.
+                /// call to the image media. This option is ignored for non-HTTP requests.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("skipHttpRedirect", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> SkipHttpRedirect { get; set; }

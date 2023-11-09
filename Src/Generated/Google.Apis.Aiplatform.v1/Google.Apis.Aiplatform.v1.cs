@@ -310,6 +310,8 @@ namespace Google.Apis.Aiplatform.v1
                 Datasets = new DatasetsResource(service);
                 DeploymentResourcePools = new DeploymentResourcePoolsResource(service);
                 Endpoints = new EndpointsResource(service);
+                FeatureGroups = new FeatureGroupsResource(service);
+                FeatureOnlineStores = new FeatureOnlineStoresResource(service);
                 Featurestores = new FeaturestoresResource(service);
                 HyperparameterTuningJobs = new HyperparameterTuningJobsResource(service);
                 IndexEndpoints = new IndexEndpointsResource(service);
@@ -7041,6 +7043,3131 @@ namespace Google.Apis.Aiplatform.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/endpoints/[^/]+$",
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the FeatureGroups resource.</summary>
+            public virtual FeatureGroupsResource FeatureGroups { get; }
+
+            /// <summary>The "featureGroups" collection of methods.</summary>
+            public class FeatureGroupsResource
+            {
+                private const string Resource = "featureGroups";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public FeatureGroupsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    Features = new FeaturesResource(service);
+                    Operations = new OperationsResource(service);
+                }
+
+                /// <summary>Gets the Features resource.</summary>
+                public virtual FeaturesResource Features { get; }
+
+                /// <summary>The "features" collection of methods.</summary>
+                public class FeaturesResource
+                {
+                    private const string Resource = "features";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public FeaturesResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                        Operations = new OperationsResource(service);
+                    }
+
+                    /// <summary>Gets the Operations resource.</summary>
+                    public virtual OperationsResource Operations { get; }
+
+                    /// <summary>The "operations" collection of methods.</summary>
+                    public class OperationsResource
+                    {
+                        private const string Resource = "operations";
+
+                        /// <summary>The service which this resource belongs to.</summary>
+                        private readonly Google.Apis.Services.IClientService service;
+
+                        /// <summary>Constructs a new resource.</summary>
+                        public OperationsResource(Google.Apis.Services.IClientService service)
+                        {
+                            this.service = service;
+                        }
+
+                        /// <summary>
+                        /// Deletes a long-running operation. This method indicates that the client is no longer
+                        /// interested in the operation result. It does not cancel the operation. If the server doesn't
+                        /// support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+                        /// </summary>
+                        /// <param name="name">The name of the operation resource to be deleted.</param>
+                        public virtual DeleteRequest Delete(string name)
+                        {
+                            return new DeleteRequest(service, name);
+                        }
+
+                        /// <summary>
+                        /// Deletes a long-running operation. This method indicates that the client is no longer
+                        /// interested in the operation result. It does not cancel the operation. If the server doesn't
+                        /// support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+                        /// </summary>
+                        public class DeleteRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleProtobufEmpty>
+                        {
+                            /// <summary>Constructs a new Delete request.</summary>
+                            public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>The name of the operation resource to be deleted.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "delete";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "DELETE";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+name}";
+
+                            /// <summary>Initializes Delete parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/featureGroups/[^/]+/features/[^/]+/operations/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>
+                        /// Gets the latest state of a long-running operation. Clients can use this method to poll the
+                        /// operation result at intervals as recommended by the API service.
+                        /// </summary>
+                        /// <param name="name">The name of the operation resource.</param>
+                        public virtual GetRequest Get(string name)
+                        {
+                            return new GetRequest(service, name);
+                        }
+
+                        /// <summary>
+                        /// Gets the latest state of a long-running operation. Clients can use this method to poll the
+                        /// operation result at intervals as recommended by the API service.
+                        /// </summary>
+                        public class GetRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleLongrunningOperation>
+                        {
+                            /// <summary>Constructs a new Get request.</summary>
+                            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>The name of the operation resource.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "get";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+name}";
+
+                            /// <summary>Initializes Get parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/featureGroups/[^/]+/features/[^/]+/operations/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>
+                        /// Lists operations that match the specified filter in the request. If the server doesn't
+                        /// support this method, it returns `UNIMPLEMENTED`.
+                        /// </summary>
+                        /// <param name="name">The name of the operation's parent resource.</param>
+                        public virtual ListWaitRequest ListWait(string name)
+                        {
+                            return new ListWaitRequest(service, name);
+                        }
+
+                        /// <summary>
+                        /// Lists operations that match the specified filter in the request. If the server doesn't
+                        /// support this method, it returns `UNIMPLEMENTED`.
+                        /// </summary>
+                        public class ListWaitRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleLongrunningListOperationsResponse>
+                        {
+                            /// <summary>Constructs a new ListWait request.</summary>
+                            public ListWaitRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>The name of the operation's parent resource.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>The standard list filter.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string Filter { get; set; }
+
+                            /// <summary>The standard list page size.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<int> PageSize { get; set; }
+
+                            /// <summary>The standard list page token.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string PageToken { get; set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "listWait";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+name}:wait";
+
+                            /// <summary>Initializes ListWait parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/featureGroups/[^/]+/features/[^/]+/operations/[^/]+$",
+                                });
+                                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "filter",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+
+                        /// <summary>
+                        /// Waits until the specified long-running operation is done or reaches at most a specified
+                        /// timeout, returning the latest state. If the operation is already done, the latest state is
+                        /// immediately returned. If the timeout specified is greater than the default HTTP/RPC timeout,
+                        /// the HTTP/RPC timeout is used. If the server does not support this method, it returns
+                        /// `google.rpc.Code.UNIMPLEMENTED`. Note that this method is on a best-effort basis. It may
+                        /// return the latest state before the specified timeout (including immediately), meaning even
+                        /// an immediate response is no guarantee that the operation is done.
+                        /// </summary>
+                        /// <param name="name">The name of the operation resource to wait on.</param>
+                        public virtual WaitRequest Wait(string name)
+                        {
+                            return new WaitRequest(service, name);
+                        }
+
+                        /// <summary>
+                        /// Waits until the specified long-running operation is done or reaches at most a specified
+                        /// timeout, returning the latest state. If the operation is already done, the latest state is
+                        /// immediately returned. If the timeout specified is greater than the default HTTP/RPC timeout,
+                        /// the HTTP/RPC timeout is used. If the server does not support this method, it returns
+                        /// `google.rpc.Code.UNIMPLEMENTED`. Note that this method is on a best-effort basis. It may
+                        /// return the latest state before the specified timeout (including immediately), meaning even
+                        /// an immediate response is no guarantee that the operation is done.
+                        /// </summary>
+                        public class WaitRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleLongrunningOperation>
+                        {
+                            /// <summary>Constructs a new Wait request.</summary>
+                            public WaitRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>The name of the operation resource to wait on.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>
+                            /// The maximum duration to wait before timing out. If left blank, the wait will be at most
+                            /// the time permitted by the underlying HTTP/RPC protocol. If RPC context deadline is also
+                            /// specified, the shorter one will be used.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("timeout", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual object Timeout { get; set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "wait";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+name}:wait";
+
+                            /// <summary>Initializes Wait parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/featureGroups/[^/]+/features/[^/]+/operations/[^/]+$",
+                                });
+                                RequestParameters.Add("timeout", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "timeout",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+                    }
+
+                    /// <summary>Creates a new Feature in a given FeatureGroup.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. The resource name of the EntityType or FeatureGroup to create a Feature. Format for
+                    /// entity_type as parent:
+                    /// `projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entity_type}`
+                    /// Format for feature_group as parent:
+                    /// `projects/{project}/locations/{location}/featureGroups/{feature_group}`
+                    /// </param>
+                    public virtual CreateRequest Create(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1Feature body, string parent)
+                    {
+                        return new CreateRequest(service, body, parent);
+                    }
+
+                    /// <summary>Creates a new Feature in a given FeatureGroup.</summary>
+                    public class CreateRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1Feature body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the EntityType or FeatureGroup to create a Feature. Format
+                        /// for entity_type as parent:
+                        /// `projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entity_type}`
+                        /// Format for feature_group as parent:
+                        /// `projects/{project}/locations/{location}/featureGroups/{feature_group}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Required. The ID to use for the Feature, which will become the final component of the
+                        /// Feature's resource name. This value may be up to 128 characters, and valid characters are
+                        /// `[a-z0-9_]`. The first character cannot be a number. The value must be unique within an
+                        /// EntityType/FeatureGroup.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("featureId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string FeatureId { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1Feature Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "create";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/features";
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/featureGroups/[^/]+$",
+                            });
+                            RequestParameters.Add("featureId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "featureId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Deletes a single Feature.</summary>
+                    /// <param name="name">
+                    /// Required. The name of the Features to be deleted. Format:
+                    /// `projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entity_type}/features/{feature}`
+                    /// `projects/{project}/locations/{location}/featureGroups/{feature_group}/features/{feature}`
+                    /// </param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(service, name);
+                    }
+
+                    /// <summary>Deletes a single Feature.</summary>
+                    public class DeleteRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the Features to be deleted. Format:
+                        /// `projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entity_type}/features/{feature}`
+                        /// `projects/{project}/locations/{location}/featureGroups/{feature_group}/features/{feature}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/featureGroups/[^/]+/features/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Gets details of a single Feature.</summary>
+                    /// <param name="name">
+                    /// Required. The name of the Feature resource. Format for entity_type as parent:
+                    /// `projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entity_type}`
+                    /// Format for feature_group as parent:
+                    /// `projects/{project}/locations/{location}/featureGroups/{feature_group}`
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(service, name);
+                    }
+
+                    /// <summary>Gets details of a single Feature.</summary>
+                    public class GetRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1Feature>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the Feature resource. Format for entity_type as parent:
+                        /// `projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entity_type}`
+                        /// Format for feature_group as parent:
+                        /// `projects/{project}/locations/{location}/featureGroups/{feature_group}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/featureGroups/[^/]+/features/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Lists Features in a given FeatureGroup.</summary>
+                    /// <param name="parent">
+                    /// Required. The resource name of the Location to list Features. Format for entity_type as parent:
+                    /// `projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entity_type}`
+                    /// Format for feature_group as parent:
+                    /// `projects/{project}/locations/{location}/featureGroups/{feature_group}`
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(service, parent);
+                    }
+
+                    /// <summary>Lists Features in a given FeatureGroup.</summary>
+                    public class ListRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1ListFeaturesResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the Location to list Features. Format for entity_type as
+                        /// parent:
+                        /// `projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entity_type}`
+                        /// Format for feature_group as parent:
+                        /// `projects/{project}/locations/{location}/featureGroups/{feature_group}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Lists the Features that match the filter expression. The following filters are supported: *
+                        /// `value_type`: Supports = and != comparisons. * `create_time`: Supports =, !=, &amp;lt;,
+                        /// &amp;gt;, &amp;gt;=, and &amp;lt;= comparisons. Values must be in RFC 3339 format. *
+                        /// `update_time`: Supports =, !=, &amp;lt;, &amp;gt;, &amp;gt;=, and &amp;lt;= comparisons.
+                        /// Values must be in RFC 3339 format. * `labels`: Supports key-value equality as well as key
+                        /// presence. Examples: * `value_type = DOUBLE` --&amp;gt; Features whose type is DOUBLE. *
+                        /// `create_time &amp;gt; \"2020-01-31T15:30:00.000000Z\" OR update_time &amp;gt;
+                        /// \"2020-01-31T15:30:00.000000Z\"` --&amp;gt; EntityTypes created or updated after
+                        /// 2020-01-31T15:30:00.000000Z. * `labels.active = yes AND labels.env = prod` --&amp;gt;
+                        /// Features having both (active: yes) and (env: prod) labels. * `labels.env: *` --&amp;gt; Any
+                        /// Feature which has a label with 'env' as the key.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+                        /// <summary>
+                        /// Only applicable for Vertex AI Feature Store (Legacy). If set, return the most recent
+                        /// ListFeaturesRequest.latest_stats_count of stats for each Feature in response. Valid value is
+                        /// [0, 10]. If number of stats exists &amp;lt; ListFeaturesRequest.latest_stats_count, return
+                        /// all existing stats.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("latestStatsCount", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> LatestStatsCount { get; set; }
+
+                        /// <summary>
+                        /// A comma-separated list of fields to order by, sorted in ascending order. Use "desc" after a
+                        /// field name for descending. Supported fields: * `feature_id` * `value_type` (Not supported
+                        /// for FeatureRegistry Feature) * `create_time` * `update_time`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string OrderBy { get; set; }
+
+                        /// <summary>
+                        /// The maximum number of Features to return. The service may return fewer than this value. If
+                        /// unspecified, at most 1000 Features will be returned. The maximum value is 1000; any value
+                        /// greater than 1000 will be coerced to 1000.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// A page token, received from a previous FeaturestoreService.ListFeatures call or
+                        /// FeatureRegistryService.ListFeatures call. Provide this to retrieve the subsequent page. When
+                        /// paginating, all other parameters provided to FeaturestoreService.ListFeatures or or
+                        /// FeatureRegistryService.ListFeatures must match the call that provided the page token.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Mask specifying which fields to read.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("readMask", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object ReadMask { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/features";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/featureGroups/[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("latestStatsCount", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "latestStatsCount",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "orderBy",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("readMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "readMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Updates the parameters of a single Feature.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Immutable. Name of the Feature. Format:
+                    /// `projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entity_type}/features/{feature}`
+                    /// `projects/{project}/locations/{location}/featureGroups/{feature_group}/features/{feature}` The
+                    /// last part feature is assigned by the client. The feature can be up to 64 characters long and can
+                    /// consist only of ASCII Latin letters A-Z and a-z, underscore(_), and ASCII digits 0-9 starting
+                    /// with a letter. The value will be unique given an entity type.
+                    /// </param>
+                    public virtual PatchRequest Patch(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1Feature body, string name)
+                    {
+                        return new PatchRequest(service, body, name);
+                    }
+
+                    /// <summary>Updates the parameters of a single Feature.</summary>
+                    public class PatchRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new Patch request.</summary>
+                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1Feature body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Immutable. Name of the Feature. Format:
+                        /// `projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entity_type}/features/{feature}`
+                        /// `projects/{project}/locations/{location}/featureGroups/{feature_group}/features/{feature}`
+                        /// The last part feature is assigned by the client. The feature can be up to 64 characters long
+                        /// and can consist only of ASCII Latin letters A-Z and a-z, underscore(_), and ASCII digits 0-9
+                        /// starting with a letter. The value will be unique given an entity type.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// Field mask is used to specify the fields to be overwritten in the Features resource by the
+                        /// update. The fields specified in the update_mask are relative to the resource, not the full
+                        /// request. A field will be overwritten if it is in the mask. If the user does not provide a
+                        /// mask then only the non-empty fields present in the request will be overwritten. Set the
+                        /// update_mask to `*` to override all fields. Updatable fields: * `description` * `labels` *
+                        /// `disable_monitoring` (Not supported for FeatureRegistry Feature)
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object UpdateMask { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1Feature Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "patch";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "PATCH";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Patch parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/featureGroups/[^/]+/features/[^/]+$",
+                            });
+                            RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "updateMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>Gets the Operations resource.</summary>
+                public virtual OperationsResource Operations { get; }
+
+                /// <summary>The "operations" collection of methods.</summary>
+                public class OperationsResource
+                {
+                    private const string Resource = "operations";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public OperationsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>
+                    /// Deletes a long-running operation. This method indicates that the client is no longer interested
+                    /// in the operation result. It does not cancel the operation. If the server doesn't support this
+                    /// method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+                    /// </summary>
+                    /// <param name="name">The name of the operation resource to be deleted.</param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(service, name);
+                    }
+
+                    /// <summary>
+                    /// Deletes a long-running operation. This method indicates that the client is no longer interested
+                    /// in the operation result. It does not cancel the operation. If the server doesn't support this
+                    /// method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+                    /// </summary>
+                    public class DeleteRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleProtobufEmpty>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>The name of the operation resource to be deleted.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/featureGroups/[^/]+/operations/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Gets the latest state of a long-running operation. Clients can use this method to poll the
+                    /// operation result at intervals as recommended by the API service.
+                    /// </summary>
+                    /// <param name="name">The name of the operation resource.</param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(service, name);
+                    }
+
+                    /// <summary>
+                    /// Gets the latest state of a long-running operation. Clients can use this method to poll the
+                    /// operation result at intervals as recommended by the API service.
+                    /// </summary>
+                    public class GetRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>The name of the operation resource.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/featureGroups/[^/]+/operations/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Lists operations that match the specified filter in the request. If the server doesn't support
+                    /// this method, it returns `UNIMPLEMENTED`.
+                    /// </summary>
+                    /// <param name="name">The name of the operation's parent resource.</param>
+                    public virtual ListWaitRequest ListWait(string name)
+                    {
+                        return new ListWaitRequest(service, name);
+                    }
+
+                    /// <summary>
+                    /// Lists operations that match the specified filter in the request. If the server doesn't support
+                    /// this method, it returns `UNIMPLEMENTED`.
+                    /// </summary>
+                    public class ListWaitRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleLongrunningListOperationsResponse>
+                    {
+                        /// <summary>Constructs a new ListWait request.</summary>
+                        public ListWaitRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>The name of the operation's parent resource.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>The standard list filter.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+                        /// <summary>The standard list page size.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>The standard list page token.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "listWait";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:wait";
+
+                        /// <summary>Initializes ListWait parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/featureGroups/[^/]+/operations/[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Waits until the specified long-running operation is done or reaches at most a specified timeout,
+                    /// returning the latest state. If the operation is already done, the latest state is immediately
+                    /// returned. If the timeout specified is greater than the default HTTP/RPC timeout, the HTTP/RPC
+                    /// timeout is used. If the server does not support this method, it returns
+                    /// `google.rpc.Code.UNIMPLEMENTED`. Note that this method is on a best-effort basis. It may return
+                    /// the latest state before the specified timeout (including immediately), meaning even an immediate
+                    /// response is no guarantee that the operation is done.
+                    /// </summary>
+                    /// <param name="name">The name of the operation resource to wait on.</param>
+                    public virtual WaitRequest Wait(string name)
+                    {
+                        return new WaitRequest(service, name);
+                    }
+
+                    /// <summary>
+                    /// Waits until the specified long-running operation is done or reaches at most a specified timeout,
+                    /// returning the latest state. If the operation is already done, the latest state is immediately
+                    /// returned. If the timeout specified is greater than the default HTTP/RPC timeout, the HTTP/RPC
+                    /// timeout is used. If the server does not support this method, it returns
+                    /// `google.rpc.Code.UNIMPLEMENTED`. Note that this method is on a best-effort basis. It may return
+                    /// the latest state before the specified timeout (including immediately), meaning even an immediate
+                    /// response is no guarantee that the operation is done.
+                    /// </summary>
+                    public class WaitRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new Wait request.</summary>
+                        public WaitRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>The name of the operation resource to wait on.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// The maximum duration to wait before timing out. If left blank, the wait will be at most the
+                        /// time permitted by the underlying HTTP/RPC protocol. If RPC context deadline is also
+                        /// specified, the shorter one will be used.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("timeout", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object Timeout { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "wait";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:wait";
+
+                        /// <summary>Initializes Wait parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/featureGroups/[^/]+/operations/[^/]+$",
+                            });
+                            RequestParameters.Add("timeout", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "timeout",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>Creates a new FeatureGroup in a given project and location.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The resource name of the Location to create FeatureGroups. Format:
+                /// `projects/{project}/locations/{location}'`
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1FeatureGroup body, string parent)
+                {
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>Creates a new FeatureGroup in a given project and location.</summary>
+                public class CreateRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1FeatureGroup body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the Location to create FeatureGroups. Format:
+                    /// `projects/{project}/locations/{location}'`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Required. The ID to use for this FeatureGroup, which will become the final component of the
+                    /// FeatureGroup's resource name. This value may be up to 60 characters, and valid characters are
+                    /// `[a-z0-9_]`. The first character cannot be a number. The value must be unique within the project
+                    /// and location.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("featureGroupId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string FeatureGroupId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1FeatureGroup Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/featureGroups";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("featureGroupId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "featureGroupId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes a single FeatureGroup.</summary>
+                /// <param name="name">
+                /// Required. The name of the FeatureGroup to be deleted. Format:
+                /// `projects/{project}/locations/{location}/featureGroups/{feature_group}`
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(service, name);
+                }
+
+                /// <summary>Deletes a single FeatureGroup.</summary>
+                public class DeleteRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the FeatureGroup to be deleted. Format:
+                    /// `projects/{project}/locations/{location}/featureGroups/{feature_group}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// If set to true, any Features under this FeatureGroup will also be deleted. (Otherwise, the
+                    /// request will only work if the FeatureGroup has no Features.)
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("force", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> Force { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/featureGroups/[^/]+$",
+                        });
+                        RequestParameters.Add("force", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "force",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Gets details of a single FeatureGroup.</summary>
+                /// <param name="name">Required. The name of the FeatureGroup resource.</param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Gets details of a single FeatureGroup.</summary>
+                public class GetRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1FeatureGroup>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The name of the FeatureGroup resource.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/featureGroups/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists FeatureGroups in a given project and location.</summary>
+                /// <param name="parent">
+                /// Required. The resource name of the Location to list FeatureGroups. Format:
+                /// `projects/{project}/locations/{location}`
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>Lists FeatureGroups in a given project and location.</summary>
+                public class ListRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1ListFeatureGroupsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the Location to list FeatureGroups. Format:
+                    /// `projects/{project}/locations/{location}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Lists the FeatureGroups that match the filter expression. The following fields are supported: *
+                    /// `create_time`: Supports `=`, `!=`, `&amp;lt;`, `&amp;gt;`, `&amp;lt;=`, and `&amp;gt;=`
+                    /// comparisons. Values must be in RFC 3339 format. * `update_time`: Supports `=`, `!=`, `&amp;lt;`,
+                    /// `&amp;gt;`, `&amp;lt;=`, and `&amp;gt;=` comparisons. Values must be in RFC 3339 format. *
+                    /// `labels`: Supports key-value equality and key presence. Examples: * `create_time &amp;gt;
+                    /// "2020-01-01" OR update_time &amp;gt; "2020-01-01"` FeatureGroups created or updated after
+                    /// 2020-01-01. * `labels.env = "prod"` FeatureGroups with label "env" set to "prod".
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// A comma-separated list of fields to order by, sorted in ascending order. Use "desc" after a
+                    /// field name for descending. Supported Fields: * `create_time` * `update_time`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>
+                    /// The maximum number of FeatureGroups to return. The service may return fewer than this value. If
+                    /// unspecified, at most 100 FeatureGroups will be returned. The maximum value is 100; any value
+                    /// greater than 100 will be coerced to 100.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// A page token, received from a previous FeatureGroupAdminService.ListFeatureGroups call. Provide
+                    /// this to retrieve the subsequent page. When paginating, all other parameters provided to
+                    /// FeatureGroupAdminService.ListFeatureGroups must match the call that provided the page token.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/featureGroups";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates the parameters of a single FeatureGroup.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Output only. Name of the FeatureGroup. Format:
+                /// `projects/{project}/locations/{location}/featureGroups/{featureGroup}`
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1FeatureGroup body, string name)
+                {
+                    return new PatchRequest(service, body, name);
+                }
+
+                /// <summary>Updates the parameters of a single FeatureGroup.</summary>
+                public class PatchRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1FeatureGroup body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Output only. Name of the FeatureGroup. Format:
+                    /// `projects/{project}/locations/{location}/featureGroups/{featureGroup}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Field mask is used to specify the fields to be overwritten in the FeatureGroup resource by the
+                    /// update. The fields specified in the update_mask are relative to the resource, not the full
+                    /// request. A field will be overwritten if it is in the mask. If the user does not provide a mask
+                    /// then only the non-empty fields present in the request will be overwritten. Set the update_mask
+                    /// to `*` to override all fields. Updatable fields: * `labels`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1FeatureGroup Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/featureGroups/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the FeatureOnlineStores resource.</summary>
+            public virtual FeatureOnlineStoresResource FeatureOnlineStores { get; }
+
+            /// <summary>The "featureOnlineStores" collection of methods.</summary>
+            public class FeatureOnlineStoresResource
+            {
+                private const string Resource = "featureOnlineStores";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public FeatureOnlineStoresResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    FeatureViews = new FeatureViewsResource(service);
+                    Operations = new OperationsResource(service);
+                }
+
+                /// <summary>Gets the FeatureViews resource.</summary>
+                public virtual FeatureViewsResource FeatureViews { get; }
+
+                /// <summary>The "featureViews" collection of methods.</summary>
+                public class FeatureViewsResource
+                {
+                    private const string Resource = "featureViews";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public FeatureViewsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                        FeatureViewSyncs = new FeatureViewSyncsResource(service);
+                        Operations = new OperationsResource(service);
+                    }
+
+                    /// <summary>Gets the FeatureViewSyncs resource.</summary>
+                    public virtual FeatureViewSyncsResource FeatureViewSyncs { get; }
+
+                    /// <summary>The "featureViewSyncs" collection of methods.</summary>
+                    public class FeatureViewSyncsResource
+                    {
+                        private const string Resource = "featureViewSyncs";
+
+                        /// <summary>The service which this resource belongs to.</summary>
+                        private readonly Google.Apis.Services.IClientService service;
+
+                        /// <summary>Constructs a new resource.</summary>
+                        public FeatureViewSyncsResource(Google.Apis.Services.IClientService service)
+                        {
+                            this.service = service;
+                        }
+
+                        /// <summary>Gets details of a single FeatureViewSync.</summary>
+                        /// <param name="name">
+                        /// Required. The name of the FeatureViewSync resource. Format:
+                        /// `projects/{project}/locations/{location}/featureOnlineStores/{feature_online_store}/featureViews/{feature_view}/featureViewSyncs/{feature_view_sync}`
+                        /// </param>
+                        public virtual GetRequest Get(string name)
+                        {
+                            return new GetRequest(service, name);
+                        }
+
+                        /// <summary>Gets details of a single FeatureViewSync.</summary>
+                        public class GetRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1FeatureViewSync>
+                        {
+                            /// <summary>Constructs a new Get request.</summary>
+                            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The name of the FeatureViewSync resource. Format:
+                            /// `projects/{project}/locations/{location}/featureOnlineStores/{feature_online_store}/featureViews/{feature_view}/featureViewSyncs/{feature_view_sync}`
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "get";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+name}";
+
+                            /// <summary>Initializes Get parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/featureOnlineStores/[^/]+/featureViews/[^/]+/featureViewSyncs/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>Lists FeatureViewSyncs in a given FeatureView.</summary>
+                        /// <param name="parent">
+                        /// Required. The resource name of the FeatureView to list FeatureViewSyncs. Format:
+                        /// `projects/{project}/locations/{location}/featureOnlineStores/{feature_online_store}/featureViews/{feature_view}`
+                        /// </param>
+                        public virtual ListRequest List(string parent)
+                        {
+                            return new ListRequest(service, parent);
+                        }
+
+                        /// <summary>Lists FeatureViewSyncs in a given FeatureView.</summary>
+                        public class ListRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1ListFeatureViewSyncsResponse>
+                        {
+                            /// <summary>Constructs a new List request.</summary>
+                            public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The resource name of the FeatureView to list FeatureViewSyncs. Format:
+                            /// `projects/{project}/locations/{location}/featureOnlineStores/{feature_online_store}/featureViews/{feature_view}`
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>
+                            /// Lists the FeatureViewSyncs that match the filter expression. The following filters are
+                            /// supported: * `create_time`: Supports `=`, `!=`, `&amp;lt;`, `&amp;gt;`, `&amp;gt;=`, and
+                            /// `&amp;lt;=` comparisons. Values must be in RFC 3339 format. Examples: * `create_time
+                            /// &amp;gt; \"2020-01-31T15:30:00.000000Z\"` --&amp;gt; FeatureViewSyncs created after
+                            /// 2020-01-31T15:30:00.000000Z.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string Filter { get; set; }
+
+                            /// <summary>
+                            /// A comma-separated list of fields to order by, sorted in ascending order. Use "desc"
+                            /// after a field name for descending. Supported fields: * `create_time`
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string OrderBy { get; set; }
+
+                            /// <summary>
+                            /// The maximum number of FeatureViewSyncs to return. The service may return fewer than this
+                            /// value. If unspecified, at most 1000 FeatureViewSyncs will be returned. The maximum value
+                            /// is 1000; any value greater than 1000 will be coerced to 1000.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<int> PageSize { get; set; }
+
+                            /// <summary>
+                            /// A page token, received from a previous
+                            /// FeatureOnlineStoreAdminService.ListFeatureViewSyncs call. Provide this to retrieve the
+                            /// subsequent page. When paginating, all other parameters provided to
+                            /// FeatureOnlineStoreAdminService.ListFeatureViewSyncs must match the call that provided
+                            /// the page token.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string PageToken { get; set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "list";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+parent}/featureViewSyncs";
+
+                            /// <summary>Initializes List parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/featureOnlineStores/[^/]+/featureViews/[^/]+$",
+                                });
+                                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "filter",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "orderBy",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+                    }
+
+                    /// <summary>Gets the Operations resource.</summary>
+                    public virtual OperationsResource Operations { get; }
+
+                    /// <summary>The "operations" collection of methods.</summary>
+                    public class OperationsResource
+                    {
+                        private const string Resource = "operations";
+
+                        /// <summary>The service which this resource belongs to.</summary>
+                        private readonly Google.Apis.Services.IClientService service;
+
+                        /// <summary>Constructs a new resource.</summary>
+                        public OperationsResource(Google.Apis.Services.IClientService service)
+                        {
+                            this.service = service;
+                        }
+
+                        /// <summary>
+                        /// Deletes a long-running operation. This method indicates that the client is no longer
+                        /// interested in the operation result. It does not cancel the operation. If the server doesn't
+                        /// support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+                        /// </summary>
+                        /// <param name="name">The name of the operation resource to be deleted.</param>
+                        public virtual DeleteRequest Delete(string name)
+                        {
+                            return new DeleteRequest(service, name);
+                        }
+
+                        /// <summary>
+                        /// Deletes a long-running operation. This method indicates that the client is no longer
+                        /// interested in the operation result. It does not cancel the operation. If the server doesn't
+                        /// support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+                        /// </summary>
+                        public class DeleteRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleProtobufEmpty>
+                        {
+                            /// <summary>Constructs a new Delete request.</summary>
+                            public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>The name of the operation resource to be deleted.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "delete";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "DELETE";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+name}";
+
+                            /// <summary>Initializes Delete parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/featureOnlineStores/[^/]+/featureViews/[^/]+/operations/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>
+                        /// Gets the latest state of a long-running operation. Clients can use this method to poll the
+                        /// operation result at intervals as recommended by the API service.
+                        /// </summary>
+                        /// <param name="name">The name of the operation resource.</param>
+                        public virtual GetRequest Get(string name)
+                        {
+                            return new GetRequest(service, name);
+                        }
+
+                        /// <summary>
+                        /// Gets the latest state of a long-running operation. Clients can use this method to poll the
+                        /// operation result at intervals as recommended by the API service.
+                        /// </summary>
+                        public class GetRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleLongrunningOperation>
+                        {
+                            /// <summary>Constructs a new Get request.</summary>
+                            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>The name of the operation resource.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "get";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+name}";
+
+                            /// <summary>Initializes Get parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/featureOnlineStores/[^/]+/featureViews/[^/]+/operations/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>
+                        /// Lists operations that match the specified filter in the request. If the server doesn't
+                        /// support this method, it returns `UNIMPLEMENTED`.
+                        /// </summary>
+                        /// <param name="name">The name of the operation's parent resource.</param>
+                        public virtual ListWaitRequest ListWait(string name)
+                        {
+                            return new ListWaitRequest(service, name);
+                        }
+
+                        /// <summary>
+                        /// Lists operations that match the specified filter in the request. If the server doesn't
+                        /// support this method, it returns `UNIMPLEMENTED`.
+                        /// </summary>
+                        public class ListWaitRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleLongrunningListOperationsResponse>
+                        {
+                            /// <summary>Constructs a new ListWait request.</summary>
+                            public ListWaitRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>The name of the operation's parent resource.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>The standard list filter.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string Filter { get; set; }
+
+                            /// <summary>The standard list page size.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<int> PageSize { get; set; }
+
+                            /// <summary>The standard list page token.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string PageToken { get; set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "listWait";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+name}:wait";
+
+                            /// <summary>Initializes ListWait parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/featureOnlineStores/[^/]+/featureViews/[^/]+/operations/[^/]+$",
+                                });
+                                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "filter",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+
+                        /// <summary>
+                        /// Waits until the specified long-running operation is done or reaches at most a specified
+                        /// timeout, returning the latest state. If the operation is already done, the latest state is
+                        /// immediately returned. If the timeout specified is greater than the default HTTP/RPC timeout,
+                        /// the HTTP/RPC timeout is used. If the server does not support this method, it returns
+                        /// `google.rpc.Code.UNIMPLEMENTED`. Note that this method is on a best-effort basis. It may
+                        /// return the latest state before the specified timeout (including immediately), meaning even
+                        /// an immediate response is no guarantee that the operation is done.
+                        /// </summary>
+                        /// <param name="name">The name of the operation resource to wait on.</param>
+                        public virtual WaitRequest Wait(string name)
+                        {
+                            return new WaitRequest(service, name);
+                        }
+
+                        /// <summary>
+                        /// Waits until the specified long-running operation is done or reaches at most a specified
+                        /// timeout, returning the latest state. If the operation is already done, the latest state is
+                        /// immediately returned. If the timeout specified is greater than the default HTTP/RPC timeout,
+                        /// the HTTP/RPC timeout is used. If the server does not support this method, it returns
+                        /// `google.rpc.Code.UNIMPLEMENTED`. Note that this method is on a best-effort basis. It may
+                        /// return the latest state before the specified timeout (including immediately), meaning even
+                        /// an immediate response is no guarantee that the operation is done.
+                        /// </summary>
+                        public class WaitRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleLongrunningOperation>
+                        {
+                            /// <summary>Constructs a new Wait request.</summary>
+                            public WaitRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>The name of the operation resource to wait on.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>
+                            /// The maximum duration to wait before timing out. If left blank, the wait will be at most
+                            /// the time permitted by the underlying HTTP/RPC protocol. If RPC context deadline is also
+                            /// specified, the shorter one will be used.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("timeout", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual object Timeout { get; set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "wait";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+name}:wait";
+
+                            /// <summary>Initializes Wait parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/featureOnlineStores/[^/]+/featureViews/[^/]+/operations/[^/]+$",
+                                });
+                                RequestParameters.Add("timeout", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "timeout",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+                    }
+
+                    /// <summary>Creates a new FeatureView in a given FeatureOnlineStore.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. The resource name of the FeatureOnlineStore to create FeatureViews. Format:
+                    /// `projects/{project}/locations/{location}/featureOnlineStores/{feature_online_store}`
+                    /// </param>
+                    public virtual CreateRequest Create(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1FeatureView body, string parent)
+                    {
+                        return new CreateRequest(service, body, parent);
+                    }
+
+                    /// <summary>Creates a new FeatureView in a given FeatureOnlineStore.</summary>
+                    public class CreateRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1FeatureView body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the FeatureOnlineStore to create FeatureViews. Format:
+                        /// `projects/{project}/locations/{location}/featureOnlineStores/{feature_online_store}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Required. The ID to use for the FeatureView, which will become the final component of the
+                        /// FeatureView's resource name. This value may be up to 60 characters, and valid characters are
+                        /// `[a-z0-9_]`. The first character cannot be a number. The value must be unique within a
+                        /// FeatureOnlineStore.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("featureViewId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string FeatureViewId { get; set; }
+
+                        /// <summary>
+                        /// Immutable. If set to true, one on demand sync will be run immediately, regardless whether
+                        /// the FeatureView.sync_config is configured or not.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("runSyncImmediately", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> RunSyncImmediately { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1FeatureView Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "create";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/featureViews";
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/featureOnlineStores/[^/]+$",
+                            });
+                            RequestParameters.Add("featureViewId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "featureViewId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("runSyncImmediately", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "runSyncImmediately",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Deletes a single FeatureView.</summary>
+                    /// <param name="name">
+                    /// Required. The name of the FeatureView to be deleted. Format:
+                    /// `projects/{project}/locations/{location}/featureOnlineStores/{feature_online_store}/featureViews/{feature_view}`
+                    /// </param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(service, name);
+                    }
+
+                    /// <summary>Deletes a single FeatureView.</summary>
+                    public class DeleteRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the FeatureView to be deleted. Format:
+                        /// `projects/{project}/locations/{location}/featureOnlineStores/{feature_online_store}/featureViews/{feature_view}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/featureOnlineStores/[^/]+/featureViews/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Fetch feature values under a FeatureView.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="featureView">
+                    /// Required. FeatureView resource format
+                    /// `projects/{project}/locations/{location}/featureOnlineStores/{featureOnlineStore}/featureViews/{featureView}`
+                    /// </param>
+                    public virtual FetchFeatureValuesRequest FetchFeatureValues(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1FetchFeatureValuesRequest body, string featureView)
+                    {
+                        return new FetchFeatureValuesRequest(service, body, featureView);
+                    }
+
+                    /// <summary>Fetch feature values under a FeatureView.</summary>
+                    public class FetchFeatureValuesRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1FetchFeatureValuesResponse>
+                    {
+                        /// <summary>Constructs a new FetchFeatureValues request.</summary>
+                        public FetchFeatureValuesRequest(Google.Apis.Services.IClientService service, Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1FetchFeatureValuesRequest body, string featureView) : base(service)
+                        {
+                            FeatureView = featureView;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. FeatureView resource format
+                        /// `projects/{project}/locations/{location}/featureOnlineStores/{featureOnlineStore}/featureViews/{featureView}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("featureView", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string FeatureView { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1FetchFeatureValuesRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "fetchFeatureValues";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+featureView}:fetchFeatureValues";
+
+                        /// <summary>Initializes FetchFeatureValues parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("featureView", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "featureView",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/featureOnlineStores/[^/]+/featureViews/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Gets details of a single FeatureView.</summary>
+                    /// <param name="name">
+                    /// Required. The name of the FeatureView resource. Format:
+                    /// `projects/{project}/locations/{location}/featureOnlineStores/{feature_online_store}/featureViews/{feature_view}`
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(service, name);
+                    }
+
+                    /// <summary>Gets details of a single FeatureView.</summary>
+                    public class GetRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1FeatureView>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the FeatureView resource. Format:
+                        /// `projects/{project}/locations/{location}/featureOnlineStores/{feature_online_store}/featureViews/{feature_view}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/featureOnlineStores/[^/]+/featureViews/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Lists FeatureViews in a given FeatureOnlineStore.</summary>
+                    /// <param name="parent">
+                    /// Required. The resource name of the FeatureOnlineStore to list FeatureViews. Format:
+                    /// `projects/{project}/locations/{location}/featureOnlineStores/{feature_online_store}`
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(service, parent);
+                    }
+
+                    /// <summary>Lists FeatureViews in a given FeatureOnlineStore.</summary>
+                    public class ListRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1ListFeatureViewsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the FeatureOnlineStore to list FeatureViews. Format:
+                        /// `projects/{project}/locations/{location}/featureOnlineStores/{feature_online_store}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Lists the FeatureViews that match the filter expression. The following filters are
+                        /// supported: * `create_time`: Supports `=`, `!=`, `&amp;lt;`, `&amp;gt;`, `&amp;gt;=`, and
+                        /// `&amp;lt;=` comparisons. Values must be in RFC 3339 format. * `update_time`: Supports `=`,
+                        /// `!=`, `&amp;lt;`, `&amp;gt;`, `&amp;gt;=`, and `&amp;lt;=` comparisons. Values must be in
+                        /// RFC 3339 format. * `labels`: Supports key-value equality as well as key presence. Examples:
+                        /// * `create_time &amp;gt; \"2020-01-31T15:30:00.000000Z\" OR update_time &amp;gt;
+                        /// \"2020-01-31T15:30:00.000000Z\"` --&amp;gt; FeatureViews created or updated after
+                        /// 2020-01-31T15:30:00.000000Z. * `labels.active = yes AND labels.env = prod` --&amp;gt;
+                        /// FeatureViews having both (active: yes) and (env: prod) labels. * `labels.env: *` --&amp;gt;
+                        /// Any FeatureView which has a label with 'env' as the key.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+                        /// <summary>
+                        /// A comma-separated list of fields to order by, sorted in ascending order. Use "desc" after a
+                        /// field name for descending. Supported fields: * `feature_view_id` * `create_time` *
+                        /// `update_time`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string OrderBy { get; set; }
+
+                        /// <summary>
+                        /// The maximum number of FeatureViews to return. The service may return fewer than this value.
+                        /// If unspecified, at most 1000 FeatureViews will be returned. The maximum value is 1000; any
+                        /// value greater than 1000 will be coerced to 1000.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// A page token, received from a previous FeatureOnlineStoreAdminService.ListFeatureViews call.
+                        /// Provide this to retrieve the subsequent page. When paginating, all other parameters provided
+                        /// to FeatureOnlineStoreAdminService.ListFeatureViews must match the call that provided the
+                        /// page token.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/featureViews";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/featureOnlineStores/[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "orderBy",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Updates the parameters of a single FeatureView.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Output only. Name of the FeatureView. Format:
+                    /// `projects/{project}/locations/{location}/featureOnlineStores/{feature_online_store}/featureViews/{feature_view}`
+                    /// </param>
+                    public virtual PatchRequest Patch(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1FeatureView body, string name)
+                    {
+                        return new PatchRequest(service, body, name);
+                    }
+
+                    /// <summary>Updates the parameters of a single FeatureView.</summary>
+                    public class PatchRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new Patch request.</summary>
+                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1FeatureView body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Output only. Name of the FeatureView. Format:
+                        /// `projects/{project}/locations/{location}/featureOnlineStores/{feature_online_store}/featureViews/{feature_view}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// Field mask is used to specify the fields to be overwritten in the FeatureView resource by
+                        /// the update. The fields specified in the update_mask are relative to the resource, not the
+                        /// full request. A field will be overwritten if it is in the mask. If the user does not provide
+                        /// a mask then only the non-empty fields present in the request will be overwritten. Set the
+                        /// update_mask to `*` to override all fields. Updatable fields: * `labels`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object UpdateMask { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1FeatureView Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "patch";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "PATCH";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Patch parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/featureOnlineStores/[^/]+/featureViews/[^/]+$",
+                            });
+                            RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "updateMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Triggers on-demand sync for the FeatureView.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="featureView">
+                    /// Required. Format:
+                    /// `projects/{project}/locations/{location}/featureOnlineStores/{feature_online_store}/featureViews/{feature_view}`
+                    /// </param>
+                    public virtual SyncRequest Sync(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1SyncFeatureViewRequest body, string featureView)
+                    {
+                        return new SyncRequest(service, body, featureView);
+                    }
+
+                    /// <summary>Triggers on-demand sync for the FeatureView.</summary>
+                    public class SyncRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1SyncFeatureViewResponse>
+                    {
+                        /// <summary>Constructs a new Sync request.</summary>
+                        public SyncRequest(Google.Apis.Services.IClientService service, Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1SyncFeatureViewRequest body, string featureView) : base(service)
+                        {
+                            FeatureView = featureView;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Format:
+                        /// `projects/{project}/locations/{location}/featureOnlineStores/{feature_online_store}/featureViews/{feature_view}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("featureView", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string FeatureView { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1SyncFeatureViewRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "sync";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+featureView}:sync";
+
+                        /// <summary>Initializes Sync parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("featureView", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "featureView",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/featureOnlineStores/[^/]+/featureViews/[^/]+$",
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>Gets the Operations resource.</summary>
+                public virtual OperationsResource Operations { get; }
+
+                /// <summary>The "operations" collection of methods.</summary>
+                public class OperationsResource
+                {
+                    private const string Resource = "operations";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public OperationsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>
+                    /// Deletes a long-running operation. This method indicates that the client is no longer interested
+                    /// in the operation result. It does not cancel the operation. If the server doesn't support this
+                    /// method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+                    /// </summary>
+                    /// <param name="name">The name of the operation resource to be deleted.</param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(service, name);
+                    }
+
+                    /// <summary>
+                    /// Deletes a long-running operation. This method indicates that the client is no longer interested
+                    /// in the operation result. It does not cancel the operation. If the server doesn't support this
+                    /// method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+                    /// </summary>
+                    public class DeleteRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleProtobufEmpty>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>The name of the operation resource to be deleted.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/featureOnlineStores/[^/]+/operations/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Gets the latest state of a long-running operation. Clients can use this method to poll the
+                    /// operation result at intervals as recommended by the API service.
+                    /// </summary>
+                    /// <param name="name">The name of the operation resource.</param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(service, name);
+                    }
+
+                    /// <summary>
+                    /// Gets the latest state of a long-running operation. Clients can use this method to poll the
+                    /// operation result at intervals as recommended by the API service.
+                    /// </summary>
+                    public class GetRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>The name of the operation resource.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/featureOnlineStores/[^/]+/operations/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Lists operations that match the specified filter in the request. If the server doesn't support
+                    /// this method, it returns `UNIMPLEMENTED`.
+                    /// </summary>
+                    /// <param name="name">The name of the operation's parent resource.</param>
+                    public virtual ListWaitRequest ListWait(string name)
+                    {
+                        return new ListWaitRequest(service, name);
+                    }
+
+                    /// <summary>
+                    /// Lists operations that match the specified filter in the request. If the server doesn't support
+                    /// this method, it returns `UNIMPLEMENTED`.
+                    /// </summary>
+                    public class ListWaitRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleLongrunningListOperationsResponse>
+                    {
+                        /// <summary>Constructs a new ListWait request.</summary>
+                        public ListWaitRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>The name of the operation's parent resource.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>The standard list filter.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+                        /// <summary>The standard list page size.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>The standard list page token.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "listWait";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:wait";
+
+                        /// <summary>Initializes ListWait parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/featureOnlineStores/[^/]+/operations/[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Waits until the specified long-running operation is done or reaches at most a specified timeout,
+                    /// returning the latest state. If the operation is already done, the latest state is immediately
+                    /// returned. If the timeout specified is greater than the default HTTP/RPC timeout, the HTTP/RPC
+                    /// timeout is used. If the server does not support this method, it returns
+                    /// `google.rpc.Code.UNIMPLEMENTED`. Note that this method is on a best-effort basis. It may return
+                    /// the latest state before the specified timeout (including immediately), meaning even an immediate
+                    /// response is no guarantee that the operation is done.
+                    /// </summary>
+                    /// <param name="name">The name of the operation resource to wait on.</param>
+                    public virtual WaitRequest Wait(string name)
+                    {
+                        return new WaitRequest(service, name);
+                    }
+
+                    /// <summary>
+                    /// Waits until the specified long-running operation is done or reaches at most a specified timeout,
+                    /// returning the latest state. If the operation is already done, the latest state is immediately
+                    /// returned. If the timeout specified is greater than the default HTTP/RPC timeout, the HTTP/RPC
+                    /// timeout is used. If the server does not support this method, it returns
+                    /// `google.rpc.Code.UNIMPLEMENTED`. Note that this method is on a best-effort basis. It may return
+                    /// the latest state before the specified timeout (including immediately), meaning even an immediate
+                    /// response is no guarantee that the operation is done.
+                    /// </summary>
+                    public class WaitRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new Wait request.</summary>
+                        public WaitRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>The name of the operation resource to wait on.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// The maximum duration to wait before timing out. If left blank, the wait will be at most the
+                        /// time permitted by the underlying HTTP/RPC protocol. If RPC context deadline is also
+                        /// specified, the shorter one will be used.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("timeout", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object Timeout { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "wait";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:wait";
+
+                        /// <summary>Initializes Wait parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/featureOnlineStores/[^/]+/operations/[^/]+$",
+                            });
+                            RequestParameters.Add("timeout", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "timeout",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>Creates a new FeatureOnlineStore in a given project and location.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The resource name of the Location to create FeatureOnlineStores. Format:
+                /// `projects/{project}/locations/{location}'`
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1FeatureOnlineStore body, string parent)
+                {
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>Creates a new FeatureOnlineStore in a given project and location.</summary>
+                public class CreateRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1FeatureOnlineStore body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the Location to create FeatureOnlineStores. Format:
+                    /// `projects/{project}/locations/{location}'`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Required. The ID to use for this FeatureOnlineStore, which will become the final component of
+                    /// the FeatureOnlineStore's resource name. This value may be up to 60 characters, and valid
+                    /// characters are `[a-z0-9_]`. The first character cannot be a number. The value must be unique
+                    /// within the project and location.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("featureOnlineStoreId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string FeatureOnlineStoreId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1FeatureOnlineStore Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/featureOnlineStores";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("featureOnlineStoreId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "featureOnlineStoreId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Deletes a single FeatureOnlineStore. The FeatureOnlineStore must not contain any FeatureViews.
+                /// </summary>
+                /// <param name="name">
+                /// Required. The name of the FeatureOnlineStore to be deleted. Format:
+                /// `projects/{project}/locations/{location}/featureOnlineStores/{feature_online_store}`
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(service, name);
+                }
+
+                /// <summary>
+                /// Deletes a single FeatureOnlineStore. The FeatureOnlineStore must not contain any FeatureViews.
+                /// </summary>
+                public class DeleteRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the FeatureOnlineStore to be deleted. Format:
+                    /// `projects/{project}/locations/{location}/featureOnlineStores/{feature_online_store}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// If set to true, any FeatureViews and Features for this FeatureOnlineStore will also be deleted.
+                    /// (Otherwise, the request will only work if the FeatureOnlineStore has no FeatureViews.)
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("force", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> Force { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/featureOnlineStores/[^/]+$",
+                        });
+                        RequestParameters.Add("force", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "force",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Gets details of a single FeatureOnlineStore.</summary>
+                /// <param name="name">Required. The name of the FeatureOnlineStore resource.</param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Gets details of a single FeatureOnlineStore.</summary>
+                public class GetRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1FeatureOnlineStore>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The name of the FeatureOnlineStore resource.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/featureOnlineStores/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists FeatureOnlineStores in a given project and location.</summary>
+                /// <param name="parent">
+                /// Required. The resource name of the Location to list FeatureOnlineStores. Format:
+                /// `projects/{project}/locations/{location}`
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>Lists FeatureOnlineStores in a given project and location.</summary>
+                public class ListRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1ListFeatureOnlineStoresResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the Location to list FeatureOnlineStores. Format:
+                    /// `projects/{project}/locations/{location}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Lists the FeatureOnlineStores that match the filter expression. The following fields are
+                    /// supported: * `create_time`: Supports `=`, `!=`, `&amp;lt;`, `&amp;gt;`, `&amp;lt;=`, and
+                    /// `&amp;gt;=` comparisons. Values must be in RFC 3339 format. * `update_time`: Supports `=`, `!=`,
+                    /// `&amp;lt;`, `&amp;gt;`, `&amp;lt;=`, and `&amp;gt;=` comparisons. Values must be in RFC 3339
+                    /// format. * `labels`: Supports key-value equality and key presence. Examples: * `create_time
+                    /// &amp;gt; "2020-01-01" OR update_time &amp;gt; "2020-01-01"` FeatureOnlineStores created or
+                    /// updated after 2020-01-01. * `labels.env = "prod"` FeatureOnlineStores with label "env" set to
+                    /// "prod".
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// A comma-separated list of fields to order by, sorted in ascending order. Use "desc" after a
+                    /// field name for descending. Supported Fields: * `create_time` * `update_time`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>
+                    /// The maximum number of FeatureOnlineStores to return. The service may return fewer than this
+                    /// value. If unspecified, at most 100 FeatureOnlineStores will be returned. The maximum value is
+                    /// 100; any value greater than 100 will be coerced to 100.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// A page token, received from a previous FeatureOnlineStoreAdminService.ListFeatureOnlineStores
+                    /// call. Provide this to retrieve the subsequent page. When paginating, all other parameters
+                    /// provided to FeatureOnlineStoreAdminService.ListFeatureOnlineStores must match the call that
+                    /// provided the page token.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/featureOnlineStores";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates the parameters of a single FeatureOnlineStore.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Output only. Name of the FeatureOnlineStore. Format:
+                /// `projects/{project}/locations/{location}/featureOnlineStores/{featureOnlineStore}`
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1FeatureOnlineStore body, string name)
+                {
+                    return new PatchRequest(service, body, name);
+                }
+
+                /// <summary>Updates the parameters of a single FeatureOnlineStore.</summary>
+                public class PatchRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1FeatureOnlineStore body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Output only. Name of the FeatureOnlineStore. Format:
+                    /// `projects/{project}/locations/{location}/featureOnlineStores/{featureOnlineStore}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Field mask is used to specify the fields to be overwritten in the FeatureOnlineStore resource by
+                    /// the update. The fields specified in the update_mask are relative to the resource, not the full
+                    /// request. A field will be overwritten if it is in the mask. If the user does not provide a mask
+                    /// then only the non-empty fields present in the request will be overwritten. Set the update_mask
+                    /// to `*` to override all fields. Updatable fields: * `big_query_source` * `labels` * `sync_config`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1FeatureOnlineStore Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/featureOnlineStores/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     }
                 }
@@ -31665,6 +34792,28 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Details of operations that perform create FeatureGroup.</summary>
+    public class GoogleCloudAiplatformV1CreateFeatureGroupOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Operation metadata for FeatureGroup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("genericMetadata")]
+        public virtual GoogleCloudAiplatformV1GenericOperationMetadata GenericMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details of operations that perform create FeatureOnlineStore.</summary>
+    public class GoogleCloudAiplatformV1CreateFeatureOnlineStoreOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Operation metadata for FeatureOnlineStore.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("genericMetadata")]
+        public virtual GoogleCloudAiplatformV1GenericOperationMetadata GenericMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Details of operations that perform create Feature.</summary>
     public class GoogleCloudAiplatformV1CreateFeatureOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -31700,6 +34849,17 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
         public virtual string Parent { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details of operations that perform create FeatureView.</summary>
+    public class GoogleCloudAiplatformV1CreateFeatureViewOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Operation metadata for FeatureView Create.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("genericMetadata")]
+        public virtual GoogleCloudAiplatformV1GenericOperationMetadata GenericMetadata { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -31785,6 +34945,17 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pipelineJobId")]
         public virtual string PipelineJobId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details of operations that perform create FeatureGroup.</summary>
+    public class GoogleCloudAiplatformV1CreateRegistryFeatureOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Operation metadata for Feature.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("genericMetadata")]
+        public virtual GoogleCloudAiplatformV1GenericOperationMetadata GenericMetadata { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -35300,6 +38471,147 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// <summary>Immutable. Only applicable for Vertex AI Feature Store (Legacy). Type of Feature value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valueType")]
         public virtual string ValueType { get; set; }
+
+        /// <summary>
+        /// Only applicable for Vertex AI Feature Store. The name of the BigQuery Table/View columnn hosting data for
+        /// this version. If no value is provided, will use feature_id.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("versionColumnName")]
+        public virtual string VersionColumnName { get; set; }
+    }
+
+    /// <summary>Vertex AI Feature Group.</summary>
+    public class GoogleCloudAiplatformV1FeatureGroup : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Indicates that features for this group come from BigQuery Table/View. By default treats the source as a
+        /// sparse time series source, which is required to have an entity_id and a feature_timestamp column in the
+        /// source.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bigQuery")]
+        public virtual GoogleCloudAiplatformV1FeatureGroupBigQuery BigQuery { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Timestamp when this FeatureGroup was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>Optional. Description of the FeatureGroup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Optional. Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update
+        /// happens.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>
+        /// Optional. The labels with user-defined metadata to organize your FeatureGroup. Label keys and values can be
+        /// no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters,
+        /// underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information
+        /// on and examples of labels. No more than 64 user labels can be associated with one FeatureGroup(System labels
+        /// are excluded)." System reserved label keys are prefixed with "aiplatform.googleapis.com/" and are immutable.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Output only. Name of the FeatureGroup. Format:
+        /// `projects/{project}/locations/{location}/featureGroups/{featureGroup}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. Timestamp when this FeatureGroup was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+    }
+
+    /// <summary>Input source type for BigQuery Tables and Views.</summary>
+    public class GoogleCloudAiplatformV1FeatureGroupBigQuery : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Immutable. The BigQuery source URI that points to either a BigQuery Table or View.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bigQuerySource")]
+        public virtual GoogleCloudAiplatformV1BigQuerySource BigQuerySource { get; set; }
+
+        /// <summary>
+        /// Optional. Columns to construct entity_id / row keys. Currently only supports 1 entity_id_column. If not
+        /// provided defaults to `entity_id`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityIdColumns")]
+        public virtual System.Collections.Generic.IList<string> EntityIdColumns { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 
     /// <summary>
@@ -35351,6 +38663,216 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sigma")]
         public virtual System.Nullable<float> Sigma { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Vertex AI Feature Online Store provides a centralized repository for serving ML features and embedding indexes
+    /// at low latency. The Feature Online Store is a top-level container.
+    /// </summary>
+    public class GoogleCloudAiplatformV1FeatureOnlineStore : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Contains settings for the Cloud Bigtable instance that will be created to serve featureValues for all
+        /// FeatureViews under this FeatureOnlineStore.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bigtable")]
+        public virtual GoogleCloudAiplatformV1FeatureOnlineStoreBigtable Bigtable { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Timestamp when this FeatureOnlineStore was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>
+        /// Optional. The dedicated serving endpoint for this FeatureOnlineStore, which is different from common Vertex
+        /// service endpoint.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dedicatedServingEndpoint")]
+        public virtual GoogleCloudAiplatformV1FeatureOnlineStoreDedicatedServingEndpoint DedicatedServingEndpoint { get; set; }
+
+        /// <summary>Optional. The settings for embedding management in FeatureOnlineStore.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("embeddingManagement")]
+        public virtual GoogleCloudAiplatformV1FeatureOnlineStoreEmbeddingManagement EmbeddingManagement { get; set; }
+
+        /// <summary>
+        /// Optional. Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update
+        /// happens.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>
+        /// Optional. The labels with user-defined metadata to organize your FeatureOnlineStore. Label keys and values
+        /// can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric
+        /// characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more
+        /// information on and examples of labels. No more than 64 user labels can be associated with one
+        /// FeatureOnlineStore(System labels are excluded)." System reserved label keys are prefixed with
+        /// "aiplatform.googleapis.com/" and are immutable.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Output only. Name of the FeatureOnlineStore. Format:
+        /// `projects/{project}/locations/{location}/featureOnlineStores/{featureOnlineStore}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. State of the featureOnlineStore.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. Timestamp when this FeatureOnlineStore was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+    }
+
+    public class GoogleCloudAiplatformV1FeatureOnlineStoreBigtable : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Autoscaling config applied to Bigtable Instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoScaling")]
+        public virtual GoogleCloudAiplatformV1FeatureOnlineStoreBigtableAutoScaling AutoScaling { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class GoogleCloudAiplatformV1FeatureOnlineStoreBigtableAutoScaling : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. A percentage of the cluster's CPU capacity. Can be from 10% to 80%. When a cluster's CPU
+        /// utilization exceeds the target that you have set, Bigtable immediately adds nodes to the cluster. When CPU
+        /// utilization is substantially lower than the target, Bigtable removes nodes. If not set will default to 50%.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cpuUtilizationTarget")]
+        public virtual System.Nullable<int> CpuUtilizationTarget { get; set; }
+
+        /// <summary>
+        /// Required. The maximum number of nodes to scale up to. Must be greater than or equal to min_node_count, and
+        /// less than or equal to 10 times of 'min_node_count'.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxNodeCount")]
+        public virtual System.Nullable<int> MaxNodeCount { get; set; }
+
+        /// <summary>
+        /// Required. The minimum number of nodes to scale down to. Must be greater than or equal to 1.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minNodeCount")]
+        public virtual System.Nullable<int> MinNodeCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The dedicated serving endpoint for this FeatureOnlineStore. Only need to set when you choose Optimized storage
+    /// type or enable EmbeddingManagement. Will use public endpoint by default.
+    /// </summary>
+    public class GoogleCloudAiplatformV1FeatureOnlineStoreDedicatedServingEndpoint : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Private service connect config. If PrivateServiceConnectConfig.enable_private_service_connect set
+        /// to true, customers will use private service connection to send request. Otherwise, the connection will set
+        /// to public endpoint.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateServiceConnectConfig")]
+        public virtual GoogleCloudAiplatformV1PrivateServiceConnectConfig PrivateServiceConnectConfig { get; set; }
+
+        /// <summary>
+        /// Output only. This field will be populated with the domain name to use for this FeatureOnlineStore
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publicEndpointDomainName")]
+        public virtual string PublicEndpointDomainName { get; set; }
+
+        /// <summary>
+        /// Output only. The name of the service attachment resource. Populated if private service connect is enabled
+        /// and after FeatureViewSync is created.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAttachment")]
+        public virtual string ServiceAttachment { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains settings for embedding management.</summary>
+    public class GoogleCloudAiplatformV1FeatureOnlineStoreEmbeddingManagement : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Immutable. Whether to enable embedding management in this FeatureOnlineStore. It's immutable after
+        /// creation to ensure the FeatureOnlineStore availability.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -35633,6 +39155,328 @@ namespace Google.Apis.Aiplatform.v1.Data
             get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(GenerateTimeRaw);
             set => GenerateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// FeatureView is representation of values that the FeatureOnlineStore will serve based on its syncConfig.
+    /// </summary>
+    public class GoogleCloudAiplatformV1FeatureView : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Configures how data is supposed to be extracted from a BigQuery source to be loaded onto the
+        /// FeatureOnlineStore.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bigQuerySource")]
+        public virtual GoogleCloudAiplatformV1FeatureViewBigQuerySource BigQuerySource { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Timestamp when this FeatureView was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>
+        /// Optional. Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update
+        /// happens.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>
+        /// Optional. Configures the features from a Feature Registry source that need to be loaded onto the
+        /// FeatureOnlineStore.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("featureRegistrySource")]
+        public virtual GoogleCloudAiplatformV1FeatureViewFeatureRegistrySource FeatureRegistrySource { get; set; }
+
+        /// <summary>
+        /// Optional. The labels with user-defined metadata to organize your FeatureViews. Label keys and values can be
+        /// no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters,
+        /// underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information
+        /// on and examples of labels. No more than 64 user labels can be associated with one FeatureOnlineStore(System
+        /// labels are excluded)." System reserved label keys are prefixed with "aiplatform.googleapis.com/" and are
+        /// immutable.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Output only. Name of the FeatureView. Format:
+        /// `projects/{project}/locations/{location}/featureOnlineStores/{feature_online_store}/featureViews/{feature_view}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Configures when data is to be synced/updated for this FeatureView. At the end of the sync the latest
+        /// featureValues for each entityId of this FeatureView are made ready for online serving.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("syncConfig")]
+        public virtual GoogleCloudAiplatformV1FeatureViewSyncConfig SyncConfig { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. Timestamp when this FeatureView was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>
+        /// Optional. Configuration for vector search. It contains the required configurations to create an index from
+        /// source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during
+        /// online serving.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vectorSearchConfig")]
+        public virtual GoogleCloudAiplatformV1FeatureViewVectorSearchConfig VectorSearchConfig { get; set; }
+    }
+
+    public class GoogleCloudAiplatformV1FeatureViewBigQuerySource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Columns to construct entity_id / row keys. Start by supporting 1 only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityIdColumns")]
+        public virtual System.Collections.Generic.IList<string> EntityIdColumns { get; set; }
+
+        /// <summary>
+        /// Required. The BigQuery view URI that will be materialized on each sync trigger based on
+        /// FeatureView.SyncConfig.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A Feature Registry source for features that need to be synced to Online Store.</summary>
+    public class GoogleCloudAiplatformV1FeatureViewFeatureRegistrySource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. List of features that need to be synced to Online Store.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("featureGroups")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1FeatureViewFeatureRegistrySourceFeatureGroup> FeatureGroups { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Features belonging to a single feature group that will be synced to Online Store.</summary>
+    public class GoogleCloudAiplatformV1FeatureViewFeatureRegistrySourceFeatureGroup : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Identifier of the feature group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("featureGroupId")]
+        public virtual string FeatureGroupId { get; set; }
+
+        /// <summary>Required. Identifiers of features under the feature group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("featureIds")]
+        public virtual System.Collections.Generic.IList<string> FeatureIds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// FeatureViewSync is a representation of sync operation which copies data from data source to Feature View in
+    /// Online Store.
+    /// </summary>
+    public class GoogleCloudAiplatformV1FeatureViewSync : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>
+        /// Output only. Time when this FeatureViewSync is created. Creation of a FeatureViewSync means that the job is
+        /// pending / waiting for sufficient resources but may not have started the actual data transfer yet.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>Output only. Final status of the FeatureViewSync.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("finalStatus")]
+        public virtual GoogleRpcStatus FinalStatus { get; set; }
+
+        /// <summary>
+        /// Output only. Name of the FeatureViewSync. Format:
+        /// `projects/{project}/locations/{location}/featureOnlineStores/{feature_online_store}/featureViews/{feature_view}/featureViewSyncs/{feature_view_sync}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. Time when this FeatureViewSync is finished.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runTime")]
+        public virtual GoogleTypeInterval RunTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class GoogleCloudAiplatformV1FeatureViewSyncConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs. To explicitly set a timezone to
+        /// the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or "TZ=${IANA_TIME_ZONE}". The
+        /// ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example,
+        /// "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cron")]
+        public virtual string Cron { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for vector search.</summary>
+    public class GoogleCloudAiplatformV1FeatureViewVectorSearchConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Configuration options for using brute force search, which simply implements the standard linear
+        /// search in the database for each query. It is primarily meant for benchmarking and to generate the ground
+        /// truth for approximate search.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bruteForceConfig")]
+        public virtual GoogleCloudAiplatformV1FeatureViewVectorSearchConfigBruteForceConfig BruteForceConfig { get; set; }
+
+        /// <summary>
+        /// Optional. Column of crowding. This column contains crowding attribute which is a constraint on a neighbor
+        /// list produced by nearest neighbor search requiring that no more than some value k' of the k neighbors
+        /// returned have the same value of crowding_attribute.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("crowdingColumn")]
+        public virtual string CrowdingColumn { get; set; }
+
+        /// <summary>Optional. The distance measure used in nearest neighbor search.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("distanceMeasureType")]
+        public virtual string DistanceMeasureType { get; set; }
+
+        /// <summary>
+        /// Optional. Column of embedding. This column contains the source data to create index for vector search.
+        /// embedding_column must be set when using vector search.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("embeddingColumn")]
+        public virtual string EmbeddingColumn { get; set; }
+
+        /// <summary>Optional. The number of dimensions of the input embedding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("embeddingDimension")]
+        public virtual System.Nullable<int> EmbeddingDimension { get; set; }
+
+        /// <summary>Optional. Columns of features that're used to filter vector search results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filterColumns")]
+        public virtual System.Collections.Generic.IList<string> FilterColumns { get; set; }
+
+        /// <summary>
+        /// Optional. Configuration options for the tree-AH algorithm (Shallow tree + Asymmetric Hashing). Please refer
+        /// to this paper for more details: https://arxiv.org/abs/1908.10396
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("treeAhConfig")]
+        public virtual GoogleCloudAiplatformV1FeatureViewVectorSearchConfigTreeAHConfig TreeAhConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class GoogleCloudAiplatformV1FeatureViewVectorSearchConfigBruteForceConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class GoogleCloudAiplatformV1FeatureViewVectorSearchConfigTreeAHConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Number of embeddings on each leaf node. The default value is 1000 if not set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("leafNodeEmbeddingCount")]
+        public virtual System.Nullable<long> LeafNodeEmbeddingCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -35922,6 +39766,67 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minNodeCount")]
         public virtual System.Nullable<int> MinNodeCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Request message for FeatureOnlineStoreService.FetchFeatureValues. All the features under the requested feature
+    /// view will be returned.
+    /// </summary>
+    public class GoogleCloudAiplatformV1FetchFeatureValuesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Specify response data format. If not set, KeyValue format will be used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("format")]
+        public virtual string Format { get; set; }
+
+        /// <summary>
+        /// Simple ID. The whole string will be used as is to identify Entity to fetch feature values for.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for FeatureOnlineStoreService.FetchFeatureValues</summary>
+    public class GoogleCloudAiplatformV1FetchFeatureValuesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Feature values in KeyValue format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyValues")]
+        public virtual GoogleCloudAiplatformV1FetchFeatureValuesResponseFeatureNameValuePairList KeyValues { get; set; }
+
+        /// <summary>Feature values in proto Struct format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("protoStruct")]
+        public virtual System.Collections.Generic.IDictionary<string, object> ProtoStruct { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response structure in the format of key (feature name) and (feature) value pair.</summary>
+    public class GoogleCloudAiplatformV1FetchFeatureValuesResponseFeatureNameValuePairList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of feature names and values.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("features")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1FetchFeatureValuesResponseFeatureNameValuePairListFeatureNameValuePair> Features { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Feature name &amp; value pair.</summary>
+    public class GoogleCloudAiplatformV1FetchFeatureValuesResponseFeatureNameValuePairListFeatureNameValuePair : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Feature short name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Feature value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual GoogleCloudAiplatformV1FeatureValue Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -36917,6 +40822,13 @@ namespace Google.Apis.Aiplatform.v1.Data
 
         /// <summary>
         /// Optional. List of Restrict of the datapoint, used to perform "restricted searches" where boolean rule are
+        /// used to filter the subset of the database eligible for matching. This uses numeric comparisons.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numericRestricts")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1IndexDatapointNumericRestriction> NumericRestricts { get; set; }
+
+        /// <summary>
+        /// Optional. List of Restrict of the datapoint, used to perform "restricted searches" where boolean rule are
         /// used to filter the subset of the database eligible for matching. This uses categorical tokens. See:
         /// https://cloud.google.com/vertex-ai/docs/matching-engine/filtering
         /// </summary>
@@ -36941,6 +40853,35 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("crowdingAttribute")]
         public virtual string CrowdingAttribute { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// This field allows restricts to be based on numeric comparisons rather than categorical tokens.
+    /// </summary>
+    public class GoogleCloudAiplatformV1IndexDatapointNumericRestriction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The namespace of this restriction. e.g.: cost.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("namespace")]
+        public virtual string Namespace__ { get; set; }
+
+        /// <summary>This MUST be specified for queries and must NOT be specified for datapoints.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("op")]
+        public virtual string Op { get; set; }
+
+        /// <summary>Represents 64 bit float.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("valueDouble")]
+        public virtual System.Nullable<double> ValueDouble { get; set; }
+
+        /// <summary>Represents 32 bit float.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("valueFloat")]
+        public virtual System.Nullable<float> ValueFloat { get; set; }
+
+        /// <summary>Represents 64 bit integer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("valueInt")]
+        public virtual System.Nullable<long> ValueInt { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -37540,6 +41481,78 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// <summary>
         /// A token, which can be sent as ListExecutionsRequest.page_token to retrieve the next page. If this field is
         /// not populated, there are no subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for FeatureRegistryService.ListFeatureGroups.</summary>
+    public class GoogleCloudAiplatformV1ListFeatureGroupsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The FeatureGroups matching the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("featureGroups")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1FeatureGroup> FeatureGroups { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as ListFeatureGroupsRequest.page_token to retrieve the next page. If this field
+        /// is omitted, there are no subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for FeatureOnlineStoreAdminService.ListFeatureOnlineStores.</summary>
+    public class GoogleCloudAiplatformV1ListFeatureOnlineStoresResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The FeatureOnlineStores matching the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("featureOnlineStores")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1FeatureOnlineStore> FeatureOnlineStores { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as ListFeatureOnlineStoresRequest.page_token to retrieve the next page. If this
+        /// field is omitted, there are no subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for FeatureOnlineStoreAdminService.ListFeatureViewSyncs.</summary>
+    public class GoogleCloudAiplatformV1ListFeatureViewSyncsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The FeatureViewSyncs matching the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("featureViewSyncs")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1FeatureViewSync> FeatureViewSyncs { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as ListFeatureViewSyncsRequest.page_token to retrieve the next page. If this
+        /// field is omitted, there are no subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for FeatureOnlineStoreAdminService.ListFeatureViews.</summary>
+    public class GoogleCloudAiplatformV1ListFeatureViewsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The FeatureViews matching the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("featureViews")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1FeatureView> FeatureViews { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as ListFeatureViewsRequest.page_token to retrieve the next page. If this field is
+        /// omitted, there are no subsequent pages.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
@@ -48777,6 +52790,27 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for FeatureOnlineStoreAdminService.SyncFeatureView.</summary>
+    public class GoogleCloudAiplatformV1SyncFeatureViewRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Respose message for FeatureOnlineStoreAdminService.SyncFeatureView.</summary>
+    public class GoogleCloudAiplatformV1SyncFeatureViewResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Format:
+        /// `projects/{project}/locations/{location}/featureOnlineStores/{feature_online_store}/featureViews/{feature_view}/featureViewSyncs/{feature_view_sync}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("featureViewSync")]
+        public virtual string FeatureViewSync { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The storage details for TFRecord output content.</summary>
     public class GoogleCloudAiplatformV1TFRecordDestination : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -50173,6 +54207,50 @@ namespace Google.Apis.Aiplatform.v1.Data
     /// <summary>Response message of ModelService.UpdateExplanationDataset operation.</summary>
     public class GoogleCloudAiplatformV1UpdateExplanationDatasetResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details of operations that perform update FeatureGroup.</summary>
+    public class GoogleCloudAiplatformV1UpdateFeatureGroupOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Operation metadata for FeatureGroup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("genericMetadata")]
+        public virtual GoogleCloudAiplatformV1GenericOperationMetadata GenericMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details of operations that perform update FeatureOnlineStore.</summary>
+    public class GoogleCloudAiplatformV1UpdateFeatureOnlineStoreOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Operation metadata for FeatureOnlineStore.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("genericMetadata")]
+        public virtual GoogleCloudAiplatformV1GenericOperationMetadata GenericMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details of operations that perform update Feature.</summary>
+    public class GoogleCloudAiplatformV1UpdateFeatureOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Operation metadata for Feature Update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("genericMetadata")]
+        public virtual GoogleCloudAiplatformV1GenericOperationMetadata GenericMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details of operations that perform update FeatureView.</summary>
+    public class GoogleCloudAiplatformV1UpdateFeatureViewOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Operation metadata for FeatureView Update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("genericMetadata")]
+        public virtual GoogleCloudAiplatformV1GenericOperationMetadata GenericMetadata { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

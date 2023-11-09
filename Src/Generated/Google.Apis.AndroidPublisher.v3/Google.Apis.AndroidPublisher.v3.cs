@@ -6474,7 +6474,16 @@ namespace Google.Apis.AndroidPublisher.v3
                         [Google.Apis.Util.RequestParameterAttribute("offerId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string OfferId { get; set; }
 
-                        /// <summary>Required. The latest version is 2022/02.</summary>
+                        /// <summary>
+                        /// Required. A string representing the version of available regions being used for the
+                        /// specified resource. Regional prices for the resource have to be specified according to the
+                        /// information published in [this
+                        /// article](https://support.google.com/googleplay/android-developer/answer/10532353). Each time
+                        /// the supported locations substantially change, the version will be incremented. Using this
+                        /// field will ensure that creating and updating the resource with an older region's version and
+                        /// set of regional prices and currencies will succeed even though a new version is available.
+                        /// The latest version is 2022/02.
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("regionsVersion.version", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string RegionsVersionVersion { get; set; }
 
@@ -7006,7 +7015,16 @@ namespace Google.Apis.AndroidPublisher.v3
                         [Google.Apis.Util.RequestParameterAttribute("offerId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string OfferId { get; private set; }
 
-                        /// <summary>Required. The latest version is 2022/02.</summary>
+                        /// <summary>
+                        /// Required. A string representing the version of available regions being used for the
+                        /// specified resource. Regional prices for the resource have to be specified according to the
+                        /// information published in [this
+                        /// article](https://support.google.com/googleplay/android-developer/answer/10532353). Each time
+                        /// the supported locations substantially change, the version will be incremented. Using this
+                        /// field will ensure that creating and updating the resource with an older region's version and
+                        /// set of regional prices and currencies will succeed even though a new version is available.
+                        /// The latest version is 2022/02.
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("regionsVersion.version", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string RegionsVersionVersion { get; set; }
 
@@ -7565,7 +7583,16 @@ namespace Google.Apis.AndroidPublisher.v3
                 [Google.Apis.Util.RequestParameterAttribute("productId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string ProductId { get; set; }
 
-                /// <summary>Required. The latest version is 2022/02.</summary>
+                /// <summary>
+                /// Required. A string representing the version of available regions being used for the specified
+                /// resource. Regional prices for the resource have to be specified according to the information
+                /// published in [this
+                /// article](https://support.google.com/googleplay/android-developer/answer/10532353). Each time the
+                /// supported locations substantially change, the version will be incremented. Using this field will
+                /// ensure that creating and updating the resource with an older region's version and set of regional
+                /// prices and currencies will succeed even though a new version is available. The latest version is
+                /// 2022/02.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("regionsVersion.version", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string RegionsVersionVersion { get; set; }
 
@@ -7871,7 +7898,16 @@ namespace Google.Apis.AndroidPublisher.v3
                 [Google.Apis.Util.RequestParameterAttribute("productId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProductId { get; private set; }
 
-                /// <summary>Required. The latest version is 2022/02.</summary>
+                /// <summary>
+                /// Required. A string representing the version of available regions being used for the specified
+                /// resource. Regional prices for the resource have to be specified according to the information
+                /// published in [this
+                /// article](https://support.google.com/googleplay/android-developer/answer/10532353). Each time the
+                /// supported locations substantially change, the version will be incremented. Using this field will
+                /// ensure that creating and updating the resource with an older region's version and set of regional
+                /// prices and currencies will succeed even though a new version is available. The latest version is
+                /// 2022/02.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("regionsVersion.version", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string RegionsVersionVersion { get; set; }
 
@@ -12684,15 +12720,17 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// The version of the available regions being used for the specified resource. A string representing the version of
-    /// available regions being used for the specified resource. Regional prices for the resource have to be specified
-    /// according to the information published in [this
-    /// article](https://support.google.com/googleplay/android-developer/answer/10532353).
-    /// </summary>
+    /// <summary>The version of the available regions being used for the specified resource.</summary>
     public class RegionsVersion : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The latest version is 2022/02.</summary>
+        /// <summary>
+        /// Required. A string representing the version of available regions being used for the specified resource.
+        /// Regional prices for the resource have to be specified according to the information published in [this
+        /// article](https://support.google.com/googleplay/android-developer/answer/10532353). Each time the supported
+        /// locations substantially change, the version will be incremented. Using this field will ensure that creating
+        /// and updating the resource with an older region's version and set of regional prices and currencies will
+        /// succeed even though a new version is available. The latest version is 2022/02.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
 
