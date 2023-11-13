@@ -6301,6 +6301,10 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("multiclusteringress")]
         public virtual MultiClusterIngressFeatureSpec Multiclusteringress { get; set; }
 
+        /// <summary>Namespace Actuation feature spec</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("namespaceactuation")]
+        public virtual NamespaceActuationFeatureSpec Namespaceactuation { get; set; }
+
         /// <summary>Workload Certificate spec.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workloadcertificate")]
         public virtual FeatureSpec Workloadcertificate { get; set; }
@@ -6323,6 +6327,10 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         /// <summary>FleetObservability feature state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fleetobservability")]
         public virtual FleetObservabilityFeatureState Fleetobservability { get; set; }
+
+        /// <summary>Namespace Actuation feature state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("namespaceactuation")]
+        public virtual NamespaceActuationFeatureState Namespaceactuation { get; set; }
 
         /// <summary>Service Mesh-specific state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("servicemesh")]
@@ -7180,6 +7188,19 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// DefaultClusterConfig describes the default cluster configurations to be applied to all clusters born-in-fleet.
+    /// </summary>
+    public class DefaultClusterConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Enable/Disable Security Posture features for the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("securityPostureConfig")]
+        public virtual SecurityPostureConfig SecurityPostureConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>EdgeCluster contains information specific to Google Edge Clusters.</summary>
     public class EdgeCluster : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7565,6 +7586,10 @@ namespace Google.Apis.GKEHub.v1alpha.Data
             get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
             set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
         }
+
+        /// <summary>Optional. The default cluster configurations to apply across the fleet.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultClusterConfig")]
+        public virtual DefaultClusterConfig DefaultClusterConfig { get; set; }
 
         private string _deleteTimeRaw;
 
@@ -8912,6 +8937,10 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("mesh")]
         public virtual ServiceMeshMembershipSpec Mesh { get; set; }
 
+        /// <summary>FNS Actuation membership spec</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("namespaceactuation")]
+        public virtual NamespaceActuationMembershipSpec Namespaceactuation { get; set; }
+
         /// <summary>
         /// Whether this per-Membership spec was inherited from a fleet-level default. This field can be updated by
         /// users by either overriding a Membership config (updated to USER implicitly) or setting to FLEET explicitly.
@@ -8957,6 +8986,10 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         /// <summary>Metering-specific state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metering")]
         public virtual MeteringMembershipState Metering { get; set; }
+
+        /// <summary>FNS Actuation membership state</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("namespaceactuation")]
+        public virtual NamespaceActuationMembershipState Namespaceactuation { get; set; }
 
         /// <summary>Policycontroller-specific state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policycontroller")]
@@ -9280,6 +9313,38 @@ namespace Google.Apis.GKEHub.v1alpha.Data
             set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
         }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An empty spec for actuation feature. This is required since Feature proto requires a spec.</summary>
+    public class NamespaceActuationFeatureSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>actuation_mode controls the behavior of the controller</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("actuationMode")]
+        public virtual string ActuationMode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>NamespaceActuation Feature State.</summary>
+    public class NamespaceActuationFeatureState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>**Namespace Actuation**: The membership-specific input for NamespaceActuation feature.</summary>
+    public class NamespaceActuationMembershipSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>**Namespace Actuation**: An empty state left as an example membership-specific Feature state.</summary>
+    public class NamespaceActuationMembershipState : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -10243,6 +10308,23 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         /// <summary>Output only. The current state of the scope resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual string Code { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// SecurityPostureConfig defines the flags needed to enable/disable features for the Security Posture API.
+    /// </summary>
+    public class SecurityPostureConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Sets which mode to use for Security Posture features.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mode")]
+        public virtual string Mode { get; set; }
+
+        /// <summary>Sets which mode to use for vulnerability scanning.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vulnerabilityMode")]
+        public virtual string VulnerabilityMode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

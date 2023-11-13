@@ -11062,7 +11062,11 @@ namespace Google.Apis.DLP.v2.Data
     /// <summary>Snapshot of the configurations used to generate the profile.</summary>
     public class GooglePrivacyDlpV2DataProfileConfigSnapshot : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A copy of the configuration used to generate this profile.</summary>
+        /// <summary>
+        /// A copy of the configuration used to generate this profile. This is deprecated and will be replaced by
+        /// DiscoveryConfig. DataProfileJobConfig will still be written here for Discovery in BigQuery for backwards
+        /// compatibility, but will not be updated with new fields, while DiscoveryConfig will.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataProfileJob")]
         public virtual GooglePrivacyDlpV2DataProfileJobConfig DataProfileJob { get; set; }
 

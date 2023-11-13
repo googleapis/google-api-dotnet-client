@@ -2832,6 +2832,67 @@ namespace Google.Apis.DatabaseMigrationService.v1
                     }
                 }
 
+                /// <summary>
+                /// Demotes the destination database to become a read replica of the source. This is applicable for the
+                /// following migrations: 1. MySQL to Cloud SQL (for MySQL) 2. PostgreSQL to Cloud SQL (for PostgreSQL)
+                /// 3. PostgreSQL to AlloyDB.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">Name of the migration job resource to demote its destination.</param>
+                public virtual DemoteDestinationRequest DemoteDestination(Google.Apis.DatabaseMigrationService.v1.Data.DemoteDestinationRequest body, string name)
+                {
+                    return new DemoteDestinationRequest(service, body, name);
+                }
+
+                /// <summary>
+                /// Demotes the destination database to become a read replica of the source. This is applicable for the
+                /// following migrations: 1. MySQL to Cloud SQL (for MySQL) 2. PostgreSQL to Cloud SQL (for PostgreSQL)
+                /// 3. PostgreSQL to AlloyDB.
+                /// </summary>
+                public class DemoteDestinationRequest : DatabaseMigrationServiceBaseServiceRequest<Google.Apis.DatabaseMigrationService.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new DemoteDestination request.</summary>
+                    public DemoteDestinationRequest(Google.Apis.Services.IClientService service, Google.Apis.DatabaseMigrationService.v1.Data.DemoteDestinationRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Name of the migration job resource to demote its destination.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.DatabaseMigrationService.v1.Data.DemoteDestinationRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "demoteDestination";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:demoteDestination";
+
+                    /// <summary>Initializes DemoteDestination parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/migrationJobs/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Generate a SSH configuration script to configure the reverse SSH connectivity.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="migrationJob">Name of the migration job resource to generate the SSH script.</param>
@@ -5989,6 +6050,13 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("provider")]
         public virtual string Provider { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for 'DemoteDestination' request.</summary>
+    public class DemoteDestinationRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

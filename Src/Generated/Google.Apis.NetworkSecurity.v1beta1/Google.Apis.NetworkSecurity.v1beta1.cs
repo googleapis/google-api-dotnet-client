@@ -4482,7 +4482,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// Required. Id of the requesting object. If auto-generating Id server-side, remove this field and
+                    /// Optional. Id of the requesting object. If auto-generating Id server-side, remove this field and
                     /// firewall_endpoint_association_id from the method_signature of Create RPC.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("firewallEndpointAssociationId", Google.Apis.Util.RequestParameterType.Query)]

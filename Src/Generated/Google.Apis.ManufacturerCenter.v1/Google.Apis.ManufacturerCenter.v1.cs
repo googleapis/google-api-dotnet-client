@@ -1085,6 +1085,10 @@ namespace Google.Apis.ManufacturerCenter.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("capacity")]
         public virtual Capacity Capacity { get; set; }
 
+        /// <summary>Optional. List of certifications claimed by this product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("certification")]
+        public virtual System.Collections.Generic.IList<GoogleShoppingManufacturersV1ProductCertification> Certification { get; set; }
+
         /// <summary>
         /// The color of the product. For more information, see
         /// https://support.google.com/manufacturers/answer/6124116#color.
@@ -1463,6 +1467,25 @@ namespace Google.Apis.ManufacturerCenter.v1.Data
         /// <summary>unit.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unit")]
         public virtual string Unit { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Description of a certification.</summary>
+    public class GoogleShoppingManufacturersV1ProductCertification : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Name of the certification body.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authority")]
+        public virtual string Authority { get; set; }
+
+        /// <summary>Required. A unique code to identify the certification.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual string Code { get; set; }
+
+        /// <summary>Required. Name of the certification.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

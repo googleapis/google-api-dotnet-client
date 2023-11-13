@@ -5442,6 +5442,10 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("settings")]
         public virtual Settings Settings { get; set; }
 
+        /// <summary>The SQL network architecture for the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sqlNetworkArchitecture")]
+        public virtual string SqlNetworkArchitecture { get; set; }
+
         /// <summary>The current serving state of the Cloud SQL instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
@@ -6698,6 +6702,10 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
     /// </summary>
     public class Operation : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>An Admin API warning message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apiWarning")]
+        public virtual ApiWarning ApiWarning { get; set; }
+
         /// <summary>The context for backup operation, if applicable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backupContext")]
         public virtual BackupContext BackupContext { get; set; }
@@ -7097,6 +7105,10 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// <summary>The complexity of the password.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("complexity")]
         public virtual string Complexity { get; set; }
+
+        /// <summary>Disallow credentials that have been previously compromised by a public data breach.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disallowCompromisedCredentials")]
+        public virtual System.Nullable<bool> DisallowCompromisedCredentials { get; set; }
 
         /// <summary>Disallow username as a part of the password.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disallowUsernameSubstring")]

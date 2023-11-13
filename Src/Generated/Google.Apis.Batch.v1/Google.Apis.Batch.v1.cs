@@ -1890,7 +1890,10 @@ namespace Google.Apis.Batch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual LocationPolicy Location { get; set; }
 
-        /// <summary>The network policy.</summary>
+        /// <summary>
+        /// The network policy. If you define an instance template in the InstancePolicyOrTemplate field, Batch will use
+        /// the network settings in the instance template instead of this field.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual NetworkPolicy Network { get; set; }
 

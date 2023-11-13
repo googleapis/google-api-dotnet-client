@@ -7163,9 +7163,9 @@ namespace Google.Apis.GKEOnPrem.v1.Data
     public class Authorization : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. For VMware and bare metal user clusters, users will be granted the cluster-admin role on the
-        /// cluster, which provides full administrative access to the cluster. For bare metal admin clusters, users will
-        /// be granted the cluster-view role, which limits users to read-only access.
+        /// For VMware and bare metal user clusters, users will be granted the cluster-admin role on the cluster, which
+        /// provides full administrative access to the cluster. For bare metal admin clusters, users will be granted the
+        /// cluster-view role, which limits users to read-only access.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adminUsers")]
         public virtual System.Collections.Generic.IList<ClusterUser> AdminUsers { get; set; }
@@ -10052,6 +10052,17 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>VmwareAdminAuthorizationConfig represents configuration for admin cluster authorization.</summary>
+    public class VmwareAdminAuthorizationConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>For VMware admin clusters, users will be granted the cluster-viewer role on the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("viewerUsers")]
+        public virtual System.Collections.Generic.IList<ClusterUser> ViewerUsers { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Resource that represents a VMware admin cluster.</summary>
     public class VmwareAdminCluster : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10072,6 +10083,10 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         /// <summary>The VMware admin cluster anti affinity group configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("antiAffinityGroups")]
         public virtual VmwareAAGConfig AntiAffinityGroups { get; set; }
+
+        /// <summary>The VMware admin cluster authorization configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authorization")]
+        public virtual VmwareAdminAuthorizationConfig Authorization { get; set; }
 
         /// <summary>The VMware admin cluster auto repair configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoRepairConfig")]

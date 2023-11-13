@@ -1297,6 +1297,16 @@ namespace Google.Apis.TrafficDirectorService.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Specifies a list of alternatives for the match.</summary>
+    public class OrMatcher : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("valueMatchers")]
+        public virtual System.Collections.Generic.IList<ValueMatcher> ValueMatchers { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Specifies the segment in a path to retrieve value from Struct.</summary>
     public class PathSegment : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1812,7 +1822,7 @@ namespace Google.Apis.TrafficDirectorService.v3.Data
 
     /// <summary>
     /// Specifies the way to match a ProtobufWkt::Value. Primitive values and ListValue are supported. StructValue is
-    /// not supported and is always not matched. [#next-free-field: 7]
+    /// not supported and is always not matched. [#next-free-field: 8]
     /// </summary>
     public class ValueMatcher : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1837,6 +1847,12 @@ namespace Google.Apis.TrafficDirectorService.v3.Data
         /// <summary>If specified, a match occurs if and only if the target value is a NullValue.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nullMatch")]
         public virtual NullMatch NullMatch { get; set; }
+
+        /// <summary>
+        /// If specified, a match occurs if and only if any of the alternatives in the match accept the value.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("orMatch")]
+        public virtual OrMatcher OrMatch { get; set; }
 
         /// <summary>
         /// If specified, value match will be performed based on whether the path is referring to a valid primitive
