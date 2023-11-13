@@ -2550,6 +2550,13 @@ namespace Google.Apis.CloudRedis.v1.Data
         public virtual string ReservedIpRange { get; set; }
 
         /// <summary>
+        /// Optional. Output only. Reserved for future use. Zone Separation compliance state of the instance. Field name
+        /// and documentation is obfuscated according to go/zs-resource-status.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
+
+        /// <summary>
         /// Optional. Additional IP range for node placement. Required when enabling read replicas on an existing
         /// instance. For DIRECT_PEERING mode value must be a CIDR range of size /28, or "auto". For
         /// PRIVATE_SERVICE_ACCESS mode value must be the name of an allocated address range associated with the private

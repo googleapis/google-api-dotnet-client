@@ -4332,6 +4332,54 @@ namespace Google.Apis.ChromeManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Network bandwidth report. * Granular permission needed: TELEMETRY_API_NETWORK_REPORT</summary>
+    public class GoogleChromeManagementV1NetworkBandwidthReport : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Download speed in kilobits per second.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("downloadSpeedKbps")]
+        public virtual System.Nullable<long> DownloadSpeedKbps { get; set; }
+
+        private string _reportTimeRaw;
+
+        private object _reportTime;
+
+        /// <summary>Output only. Timestamp of when the report was collected.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reportTime")]
+        public virtual string ReportTimeRaw
+        {
+            get => _reportTimeRaw;
+            set
+            {
+                _reportTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _reportTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ReportTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ReportTimeDateTimeOffset instead.")]
+        public virtual object ReportTime
+        {
+            get => _reportTime;
+            set
+            {
+                _reportTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _reportTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ReportTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ReportTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ReportTimeRaw);
+            set => ReportTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Details about the network device. * This field provides device information, which is static and will not change
     /// over time. * Data for this field is controlled via policy:
@@ -5090,6 +5138,12 @@ namespace Google.Apis.ChromeManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>
+        /// Output only. Network bandwidth reports collected periodically sorted in a decreasing order of report_time.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkBandwidthReport")]
+        public virtual System.Collections.Generic.IList<GoogleChromeManagementV1NetworkBandwidthReport> NetworkBandwidthReport { get; set; }
+
         /// <summary>Output only. Network diagnostics collected periodically.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkDiagnosticsReport")]
         public virtual System.Collections.Generic.IList<GoogleChromeManagementV1NetworkDiagnosticsReport> NetworkDiagnosticsReport { get; set; }
@@ -5451,6 +5505,12 @@ namespace Google.Apis.ChromeManagement.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceId")]
         public virtual string DeviceId { get; set; }
+
+        /// <summary>
+        /// Output only. Network bandwidth reports collected periodically sorted in a decreasing order of report_time.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkBandwidthReport")]
+        public virtual System.Collections.Generic.IList<GoogleChromeManagementV1NetworkBandwidthReport> NetworkBandwidthReport { get; set; }
 
         /// <summary>
         /// Output only. Peripherals reports collected periodically sorted in a decreasing order of report_time.

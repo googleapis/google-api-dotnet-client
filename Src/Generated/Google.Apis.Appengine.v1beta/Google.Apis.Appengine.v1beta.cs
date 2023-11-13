@@ -6799,7 +6799,7 @@ namespace Google.Apis.Appengine.v1beta.Data
 
         /// <summary>
         /// Configures health checking for instances. Unhealthy instances are stopped and replaced with new instances.
-        /// Only applicable in the App Engine flexible environment.Only returned in GET requests if view=FULL is set.
+        /// Only applicable in the App Engine flexible environment.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("healthCheck")]
         public virtual HealthCheck HealthCheck { get; set; }
@@ -6835,7 +6835,7 @@ namespace Google.Apis.Appengine.v1beta.Data
 
         /// <summary>
         /// Configures liveness health checking for instances. Unhealthy instances are stopped and replaced with new
-        /// instancesOnly returned in GET requests if view=FULL is set.
+        /// instances
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("livenessCheck")]
         public virtual LivenessCheck LivenessCheck { get; set; }
@@ -6866,7 +6866,7 @@ namespace Google.Apis.Appengine.v1beta.Data
 
         /// <summary>
         /// Configures readiness health checking for instances. Unhealthy instances are not put into the backend traffic
-        /// rotation.Only returned in GET requests if view=FULL is set.
+        /// rotation.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("readinessCheck")]
         public virtual ReadinessCheck ReadinessCheck { get; set; }

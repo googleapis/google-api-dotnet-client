@@ -454,23 +454,6 @@ namespace Google.Apis.PlayIntegrity.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Deprecated: this field is not used. Contains guidance details about the Integrity API response, providing
-    /// additional context to the integrity verdicts.
-    /// </summary>
-    public class GuidanceDetails : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// This shows when there is an issue with at least one of the integrity verdicts, which can be remedied by the
-        /// user and provides additional details.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("userRemediationDetails")]
-        public virtual System.Collections.Generic.IList<UserRemediationDetails> UserRemediationDetails { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Contains the integrity request information.</summary>
     public class RequestDetails : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -532,12 +515,6 @@ namespace Google.Apis.PlayIntegrity.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("environmentDetails")]
         public virtual EnvironmentDetails EnvironmentDetails { get; set; }
 
-        /// <summary>
-        /// Deprecated: this field is not used. Additional guidance related to the integrity API response.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("guidanceDetails")]
-        public virtual GuidanceDetails GuidanceDetails { get; set; }
-
         /// <summary>Required. Details about the integrity request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestDetails")]
         public virtual RequestDetails RequestDetails { get; set; }
@@ -548,19 +525,6 @@ namespace Google.Apis.PlayIntegrity.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testingDetails")]
         public virtual TestingDetails TestingDetails { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Deprecated: this field is not used. Contains details of remediation guidance that the user can perform.
-    /// </summary>
-    public class UserRemediationDetails : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Description of the user remediation action.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("remediation")]
-        public virtual string Remediation { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

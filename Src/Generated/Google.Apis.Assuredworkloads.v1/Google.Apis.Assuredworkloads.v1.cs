@@ -1368,6 +1368,10 @@ namespace Google.Apis.Assuredworkloads.v1.Data
     /// <summary>Request for acknowledging the violation Next Id: 5</summary>
     public class GoogleCloudAssuredworkloadsV1AcknowledgeViolationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Acknowledge type of specified violation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("acknowledgeType")]
+        public virtual string AcknowledgeType { get; set; }
+
         /// <summary>Required. Business justification explaining the need for violation acknowledgement</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("comment")]
         public virtual string Comment { get; set; }
@@ -1658,6 +1662,13 @@ namespace Google.Apis.Assuredworkloads.v1.Data
         }
 
         /// <summary>
+        /// Optional. Output only. Violation Id of the org-policy violation due to which the resource violation is
+        /// caused. Empty for org-policy violations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("associatedOrgPolicyViolationId")]
+        public virtual string AssociatedOrgPolicyViolationId { get; set; }
+
+        /// <summary>
         /// Output only. Immutable. Audit Log Link for violated resource Format:
         /// https://console.cloud.google.com/logs/query;query={logName}{protoPayload.resourceName}{timeRange}{folder}
         /// </summary>
@@ -1748,6 +1759,12 @@ namespace Google.Apis.Assuredworkloads.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("orgPolicyConstraint")]
         public virtual string OrgPolicyConstraint { get; set; }
 
+        /// <summary>
+        /// Optional. Output only. Parent project number where resource is present. Empty for org-policy violations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parentProjectNumber")]
+        public virtual string ParentProjectNumber { get; set; }
+
         /// <summary>Output only. Compliance violation remediation</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("remediation")]
         public virtual GoogleCloudAssuredworkloadsV1ViolationRemediation Remediation { get; set; }
@@ -1791,6 +1808,20 @@ namespace Google.Apis.Assuredworkloads.v1.Data
             set => ResolveTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
         }
 
+        /// <summary>
+        /// Optional. Output only. Name of the resource like //storage.googleapis.com/myprojectxyz-testbucket. Empty for
+        /// org-policy violations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
+        public virtual string ResourceName { get; set; }
+
+        /// <summary>
+        /// Optional. Output only. Type of the resource like compute.googleapis.com/Disk, etc. Empty for org-policy
+        /// violations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
+        public virtual string ResourceType { get; set; }
+
         /// <summary>Output only. State of the violation</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
@@ -1831,6 +1862,10 @@ namespace Google.Apis.Assuredworkloads.v1.Data
             get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
         }
+
+        /// <summary>Output only. Type of the violation</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("violationType")]
+        public virtual string ViolationType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2137,9 +2172,17 @@ namespace Google.Apis.Assuredworkloads.v1.Data
     /// <summary>Represents the Compliance Status of this workload</summary>
     public class GoogleCloudAssuredworkloadsV1WorkloadComplianceStatus : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Number of current resource violations which are not acknowledged.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("acknowledgedResourceViolationCount")]
+        public virtual System.Nullable<int> AcknowledgedResourceViolationCount { get; set; }
+
         /// <summary>Number of current orgPolicy violations which are acknowledged.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("acknowledgedViolationCount")]
         public virtual System.Nullable<int> AcknowledgedViolationCount { get; set; }
+
+        /// <summary>Number of current resource violations which are acknowledged.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("activeResourceViolationCount")]
+        public virtual System.Nullable<int> ActiveResourceViolationCount { get; set; }
 
         /// <summary>Number of current orgPolicy violations which are not acknowledged.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("activeViolationCount")]

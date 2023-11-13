@@ -6922,6 +6922,63 @@ namespace Google.Apis.Aiplatform.v1beta1
                     }
                 }
 
+                /// <summary>Return a list of tokens based on the input text.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="endpoint">
+                /// Required. The name of the Endpoint requested to get lists of tokens and token ids.
+                /// </param>
+                public virtual ComputeTokensRequest ComputeTokens(Google.Apis.Aiplatform.v1beta1.Data.GoogleCloudAiplatformV1beta1ComputeTokensRequest body, string endpoint)
+                {
+                    return new ComputeTokensRequest(service, body, endpoint);
+                }
+
+                /// <summary>Return a list of tokens based on the input text.</summary>
+                public class ComputeTokensRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1beta1.Data.GoogleCloudAiplatformV1beta1ComputeTokensResponse>
+                {
+                    /// <summary>Constructs a new ComputeTokens request.</summary>
+                    public ComputeTokensRequest(Google.Apis.Services.IClientService service, Google.Apis.Aiplatform.v1beta1.Data.GoogleCloudAiplatformV1beta1ComputeTokensRequest body, string endpoint) : base(service)
+                    {
+                        Endpoint = endpoint;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the Endpoint requested to get lists of tokens and token ids.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("endpoint", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Endpoint { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Aiplatform.v1beta1.Data.GoogleCloudAiplatformV1beta1ComputeTokensRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "computeTokens";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+endpoint}:computeTokens";
+
+                    /// <summary>Initializes ComputeTokens parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("endpoint", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "endpoint",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/endpoints/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Perform a token counting.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="endpoint">
@@ -28397,6 +28454,63 @@ namespace Google.Apis.Aiplatform.v1beta1
                         this.service = service;
                     }
 
+                    /// <summary>Return a list of tokens based on the input text.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="endpoint">
+                    /// Required. The name of the Endpoint requested to get lists of tokens and token ids.
+                    /// </param>
+                    public virtual ComputeTokensRequest ComputeTokens(Google.Apis.Aiplatform.v1beta1.Data.GoogleCloudAiplatformV1beta1ComputeTokensRequest body, string endpoint)
+                    {
+                        return new ComputeTokensRequest(service, body, endpoint);
+                    }
+
+                    /// <summary>Return a list of tokens based on the input text.</summary>
+                    public class ComputeTokensRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1beta1.Data.GoogleCloudAiplatformV1beta1ComputeTokensResponse>
+                    {
+                        /// <summary>Constructs a new ComputeTokens request.</summary>
+                        public ComputeTokensRequest(Google.Apis.Services.IClientService service, Google.Apis.Aiplatform.v1beta1.Data.GoogleCloudAiplatformV1beta1ComputeTokensRequest body, string endpoint) : base(service)
+                        {
+                            Endpoint = endpoint;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the Endpoint requested to get lists of tokens and token ids.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("endpoint", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Endpoint { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Aiplatform.v1beta1.Data.GoogleCloudAiplatformV1beta1ComputeTokensRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "computeTokens";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+endpoint}:computeTokens";
+
+                        /// <summary>Initializes ComputeTokens parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("endpoint", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "endpoint",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/publishers/[^/]+/models/[^/]+$",
+                            });
+                        }
+                    }
+
                     /// <summary>Perform a token counting.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="endpoint">
@@ -38681,6 +38795,34 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for ComputeTokens RPC call.</summary>
+    public class GoogleCloudAiplatformV1beta1ComputeTokensRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The instances that are the input to token computing API call. Schema is identical to the
+        /// prediction schema of the text model, even for the non-text models, like chat models, or Codey models.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instances")]
+        public virtual System.Collections.Generic.IList<object> Instances { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for ComputeTokens RPC call.</summary>
+    public class GoogleCloudAiplatformV1beta1ComputeTokensResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Lists of tokens info from the input. A ComputeTokensRequest could have multiple instances with a prompt in
+        /// each instance. We also need to return lists of tokens info for the request with multiple instances.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tokensInfo")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1beta1TokensInfo> TokensInfo { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The Container Registry location for the container image.</summary>
     public class GoogleCloudAiplatformV1beta1ContainerRegistryDestination : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -40599,13 +40741,13 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
 
         /// <summary>
         /// Optional. A description of resources that are dedicated to the DeployedIndex, and that need a higher degree
-        /// of manual configuration. If min_replica_count is not set, the default value is 2 (we don't provide SLA when
-        /// min_replica_count=1). If max_replica_count is not set, the default value is min_replica_count. The max
-        /// allowed replica count is 1000. Available machine types for SMALL shard: e2-standard-2 and all machine types
-        /// available for MEDIUM and LARGE shard. Available machine types for MEDIUM shard: e2-standard-16 and all
-        /// machine types available for LARGE shard. Available machine types for LARGE shard: e2-highmem-16,
-        /// n2d-standard-32. n1-standard-16 and n1-standard-32 are still available, but we recommend e2-standard-16 and
-        /// e2-highmem-16 for cost efficiency.
+        /// of manual configuration. The field min_replica_count must be set to a value strictly greater than 0, or else
+        /// validation will fail. We don't provide SLA when min_replica_count=1. If max_replica_count is not set, the
+        /// default value is min_replica_count. The max allowed replica count is 1000. Available machine types for SMALL
+        /// shard: e2-standard-2 and all machine types available for MEDIUM and LARGE shard. Available machine types for
+        /// MEDIUM shard: e2-standard-16 and all machine types available for LARGE shard. Available machine types for
+        /// LARGE shard: e2-highmem-16, n2d-standard-32. n1-standard-16 and n1-standard-32 are still available, but we
+        /// recommend e2-standard-16 and e2-highmem-16 for cost efficiency.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dedicatedResources")]
         public virtual GoogleCloudAiplatformV1beta1DedicatedResources DedicatedResources { get; set; }
@@ -51988,6 +52130,10 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("eventType")]
         public virtual string EventType { get; set; }
 
+        /// <summary>Optional. The error details of the event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual GoogleRpcStatus Status { get; set; }
+
         /// <summary>
         /// Required. The VM identity token (a JWT) for authenticating the VM.
         /// https://cloud.google.com/compute/docs/instances/verifying-instance-identity
@@ -57259,7 +57405,7 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A message representing a Study. Next id: 12</summary>
+    /// <summary>A message representing a Study.</summary>
     public class GoogleCloudAiplatformV1beta1Study : Google.Apis.Requests.IDirectResponseSchema
     {
         private string _createTimeRaw;
@@ -58893,6 +59039,21 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         /// <summary>The fraction of the input data that is to be used to validate the Model.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validationFraction")]
         public virtual System.Nullable<double> ValidationFraction { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Tokens info with a list of tokens and the corresponding list of token ids.</summary>
+    public class GoogleCloudAiplatformV1beta1TokensInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of token ids from the input.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tokenIds")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> TokenIds { get; set; }
+
+        /// <summary>A list of tokens from the input.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tokens")]
+        public virtual System.Collections.Generic.IList<string> Tokens { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

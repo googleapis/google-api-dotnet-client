@@ -4165,6 +4165,15 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
             set => DeleteTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
         }
 
+        /// <summary>
+        /// Optional. Disables support for plain TCP connections in the workstation. By default the service supports TCP
+        /// connections via a websocket relay. Setting this option to true disables that relay, which prevents the usage
+        /// of services that require plain tcp connections, such as ssh. When enabled, all communication must occur over
+        /// https or wss.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disableTcpConnections")]
+        public virtual System.Nullable<bool> DisableTcpConnections { get; set; }
+
         /// <summary>Optional. Human-readable name for this workstation configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }

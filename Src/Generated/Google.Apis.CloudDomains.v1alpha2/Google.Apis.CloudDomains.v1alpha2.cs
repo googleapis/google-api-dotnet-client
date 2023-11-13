@@ -653,13 +653,15 @@ namespace Google.Apis.CloudDomains.v1alpha2
                 /// <summary>
                 /// Deletes a `Registration` resource. This method works on any `Registration` resource using
                 /// [Subscription or Commitment billing](/domains/pricing#billing-models), provided that the resource
-                /// was created at least 1 day in the past. For `Registration` resources using [Monthly
-                /// billing](/domains/pricing#billing-models), this method works if: * `state` is `EXPORTED` with
-                /// `expire_time` in the past * `state` is `REGISTRATION_FAILED` * `state` is `TRANSFER_FAILED` When an
-                /// active registration is successfully deleted, you can continue to use the domain in [Google
-                /// Domains](https://domains.google/) until it expires. The calling user becomes the domain's sole owner
-                /// in Google Domains, and permissions for the domain are subsequently managed there. The domain does
-                /// not renew automatically unless the new owner sets up billing in Google Domains.
+                /// was created at least 1 day in the past. When an active registration is successfully deleted, you can
+                /// continue to use the domain in [Google Domains](https://domains.google/) until it expires. The
+                /// calling user becomes the domain's sole owner in Google Domains, and permissions for the domain are
+                /// subsequently managed there. The domain does not renew automatically unless the new owner sets up
+                /// billing in Google Domains. After January 2024 you will only be able to delete `Registration`
+                /// resources when `state` is one of: `EXPORTED`, `EXPIRED`,`REGISTRATION_FAILED` or `TRANSFER_FAILED`.
+                /// See [Cloud Domains feature
+                /// deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) for more
+                /// details.
                 /// </summary>
                 /// <param name="name">
                 /// Required. The name of the `Registration` to delete, in the format
@@ -673,13 +675,15 @@ namespace Google.Apis.CloudDomains.v1alpha2
                 /// <summary>
                 /// Deletes a `Registration` resource. This method works on any `Registration` resource using
                 /// [Subscription or Commitment billing](/domains/pricing#billing-models), provided that the resource
-                /// was created at least 1 day in the past. For `Registration` resources using [Monthly
-                /// billing](/domains/pricing#billing-models), this method works if: * `state` is `EXPORTED` with
-                /// `expire_time` in the past * `state` is `REGISTRATION_FAILED` * `state` is `TRANSFER_FAILED` When an
-                /// active registration is successfully deleted, you can continue to use the domain in [Google
-                /// Domains](https://domains.google/) until it expires. The calling user becomes the domain's sole owner
-                /// in Google Domains, and permissions for the domain are subsequently managed there. The domain does
-                /// not renew automatically unless the new owner sets up billing in Google Domains.
+                /// was created at least 1 day in the past. When an active registration is successfully deleted, you can
+                /// continue to use the domain in [Google Domains](https://domains.google/) until it expires. The
+                /// calling user becomes the domain's sole owner in Google Domains, and permissions for the domain are
+                /// subsequently managed there. The domain does not renew automatically unless the new owner sets up
+                /// billing in Google Domains. After January 2024 you will only be able to delete `Registration`
+                /// resources when `state` is one of: `EXPORTED`, `EXPIRED`,`REGISTRATION_FAILED` or `TRANSFER_FAILED`.
+                /// See [Cloud Domains feature
+                /// deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) for more
+                /// details.
                 /// </summary>
                 public class DeleteRequest : CloudDomainsBaseServiceRequest<Google.Apis.CloudDomains.v1alpha2.Data.Operation>
                 {
@@ -722,8 +726,10 @@ namespace Google.Apis.CloudDomains.v1alpha2
                 }
 
                 /// <summary>
-                /// Exports a `Registration` resource, such that it is no longer managed by Cloud Domains. When an
-                /// active domain is successfully exported, you can continue to use the domain in [Google
+                /// Deprecated: For more information, see [Cloud Domains feature
+                /// deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) Exports a
+                /// `Registration` resource, such that it is no longer managed by Cloud Domains. When an active domain
+                /// is successfully exported, you can continue to use the domain in [Google
                 /// Domains](https://domains.google/) until it expires. The calling user becomes the domain's sole owner
                 /// in Google Domains, and permissions for the domain are subsequently managed there. The domain does
                 /// not renew automatically unless the new owner sets up billing in Google Domains.
@@ -739,8 +745,10 @@ namespace Google.Apis.CloudDomains.v1alpha2
                 }
 
                 /// <summary>
-                /// Exports a `Registration` resource, such that it is no longer managed by Cloud Domains. When an
-                /// active domain is successfully exported, you can continue to use the domain in [Google
+                /// Deprecated: For more information, see [Cloud Domains feature
+                /// deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) Exports a
+                /// `Registration` resource, such that it is no longer managed by Cloud Domains. When an active domain
+                /// is successfully exported, you can continue to use the domain in [Google
                 /// Domains](https://domains.google/) until it expires. The calling user becomes the domain's sole owner
                 /// in Google Domains, and permissions for the domain are subsequently managed there. The domain does
                 /// not renew automatically unless the new owner sets up billing in Google Domains.
@@ -924,10 +932,11 @@ namespace Google.Apis.CloudDomains.v1alpha2
                 }
 
                 /// <summary>
-                /// Imports a domain name from [Google Domains](https://domains.google/) for use in Cloud Domains. To
-                /// transfer a domain from another registrar, use the `TransferDomain` method instead. Since individual
-                /// users can own domains in Google Domains, the calling user must have ownership permission on the
-                /// domain.
+                /// Deprecated: For more information, see [Cloud Domains feature
+                /// deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) Imports a
+                /// domain name from [Google Domains](https://domains.google/) for use in Cloud Domains. To transfer a
+                /// domain from another registrar, use the `TransferDomain` method instead. Since individual users can
+                /// own domains in Google Domains, the calling user must have ownership permission on the domain.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
@@ -939,10 +948,11 @@ namespace Google.Apis.CloudDomains.v1alpha2
                 }
 
                 /// <summary>
-                /// Imports a domain name from [Google Domains](https://domains.google/) for use in Cloud Domains. To
-                /// transfer a domain from another registrar, use the `TransferDomain` method instead. Since individual
-                /// users can own domains in Google Domains, the calling user must have ownership permission on the
-                /// domain.
+                /// Deprecated: For more information, see [Cloud Domains feature
+                /// deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) Imports a
+                /// domain name from [Google Domains](https://domains.google/) for use in Cloud Domains. To transfer a
+                /// domain from another registrar, use the `TransferDomain` method instead. Since individual users can
+                /// own domains in Google Domains, the calling user must have ownership permission on the domain.
                 /// </summary>
                 public class ImportRequest : CloudDomainsBaseServiceRequest<Google.Apis.CloudDomains.v1alpha2.Data.Operation>
                 {
@@ -1374,10 +1384,12 @@ namespace Google.Apis.CloudDomains.v1alpha2
                 }
 
                 /// <summary>
-                /// Lists domain names from [Google Domains](https://domains.google/) that can be imported to Cloud
-                /// Domains using the `ImportDomain` method. Since individual users can own domains in Google Domains,
-                /// the list of domains returned depends on the individual user making the call. Domains already managed
-                /// by Cloud Domains are not returned.
+                /// Deprecated: For more information, see [Cloud Domains feature
+                /// deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) Lists domain
+                /// names from [Google Domains](https://domains.google/) that can be imported to Cloud Domains using the
+                /// `ImportDomain` method. Since individual users can own domains in Google Domains, the list of domains
+                /// returned depends on the individual user making the call. Domains already managed by Cloud Domains
+                /// are not returned.
                 /// </summary>
                 /// <param name="location">
                 /// Required. The location. Must be in the format `projects/*/locations/*`.
@@ -1388,10 +1400,12 @@ namespace Google.Apis.CloudDomains.v1alpha2
                 }
 
                 /// <summary>
-                /// Lists domain names from [Google Domains](https://domains.google/) that can be imported to Cloud
-                /// Domains using the `ImportDomain` method. Since individual users can own domains in Google Domains,
-                /// the list of domains returned depends on the individual user making the call. Domains already managed
-                /// by Cloud Domains are not returned.
+                /// Deprecated: For more information, see [Cloud Domains feature
+                /// deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) Lists domain
+                /// names from [Google Domains](https://domains.google/) that can be imported to Cloud Domains using the
+                /// `ImportDomain` method. Since individual users can own domains in Google Domains, the list of domains
+                /// returned depends on the individual user making the call. Domains already managed by Cloud Domains
+                /// are not returned.
                 /// </summary>
                 public class RetrieveImportableDomainsRequest : CloudDomainsBaseServiceRequest<Google.Apis.CloudDomains.v1alpha2.Data.RetrieveImportableDomainsResponse>
                 {
@@ -1524,9 +1538,11 @@ namespace Google.Apis.CloudDomains.v1alpha2
                 }
 
                 /// <summary>
-                /// Gets parameters needed to transfer a domain name from another registrar to Cloud Domains. For
-                /// domains already managed by [Google Domains](https://domains.google/), use `ImportDomain` instead.
-                /// Use the returned values to call `TransferDomain`.
+                /// Deprecated: For more information, see [Cloud Domains feature
+                /// deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) Gets
+                /// parameters needed to transfer a domain name from another registrar to Cloud Domains. For domains
+                /// already managed by [Google Domains](https://domains.google/), use `ImportDomain` instead. Use the
+                /// returned values to call `TransferDomain`.
                 /// </summary>
                 /// <param name="location">
                 /// Required. The location. Must be in the format `projects/*/locations/*`.
@@ -1537,9 +1553,11 @@ namespace Google.Apis.CloudDomains.v1alpha2
                 }
 
                 /// <summary>
-                /// Gets parameters needed to transfer a domain name from another registrar to Cloud Domains. For
-                /// domains already managed by [Google Domains](https://domains.google/), use `ImportDomain` instead.
-                /// Use the returned values to call `TransferDomain`.
+                /// Deprecated: For more information, see [Cloud Domains feature
+                /// deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) Gets
+                /// parameters needed to transfer a domain name from another registrar to Cloud Domains. For domains
+                /// already managed by [Google Domains](https://domains.google/), use `ImportDomain` instead. Use the
+                /// returned values to call `TransferDomain`.
                 /// </summary>
                 public class RetrieveTransferParametersRequest : CloudDomainsBaseServiceRequest<Google.Apis.CloudDomains.v1alpha2.Data.RetrieveTransferParametersResponse>
                 {
@@ -1798,18 +1816,20 @@ namespace Google.Apis.CloudDomains.v1alpha2
                 }
 
                 /// <summary>
-                /// Transfers a domain name from another registrar to Cloud Domains. For domains already managed by
-                /// [Google Domains](https://domains.google/), use `ImportDomain` instead. Before calling this method,
-                /// go to the domain's current registrar to unlock the domain for transfer and retrieve the domain's
-                /// transfer authorization code. Then call `RetrieveTransferParameters` to confirm that the domain is
-                /// unlocked and to get values needed to build a call to this method. A successful call creates a
-                /// `Registration` resource in state `TRANSFER_PENDING`. It can take several days to complete the
-                /// transfer process. The registrant can often speed up this process by approving the transfer through
-                /// the current registrar, either by clicking a link in an email from the registrar or by visiting the
-                /// registrar's website. A few minutes after transfer approval, the resource transitions to state
-                /// `ACTIVE`, indicating that the transfer was successful. If the transfer is rejected or the request
-                /// expires without being approved, the resource can end up in state `TRANSFER_FAILED`. If transfer
-                /// fails, you can safely delete the resource and retry the transfer.
+                /// Deprecated: For more information, see [Cloud Domains feature
+                /// deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) Transfers a
+                /// domain name from another registrar to Cloud Domains. For domains already managed by [Google
+                /// Domains](https://domains.google/), use `ImportDomain` instead. Before calling this method, go to the
+                /// domain's current registrar to unlock the domain for transfer and retrieve the domain's transfer
+                /// authorization code. Then call `RetrieveTransferParameters` to confirm that the domain is unlocked
+                /// and to get values needed to build a call to this method. A successful call creates a `Registration`
+                /// resource in state `TRANSFER_PENDING`. It can take several days to complete the transfer process. The
+                /// registrant can often speed up this process by approving the transfer through the current registrar,
+                /// either by clicking a link in an email from the registrar or by visiting the registrar's website. A
+                /// few minutes after transfer approval, the resource transitions to state `ACTIVE`, indicating that the
+                /// transfer was successful. If the transfer is rejected or the request expires without being approved,
+                /// the resource can end up in state `TRANSFER_FAILED`. If transfer fails, you can safely delete the
+                /// resource and retry the transfer.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
@@ -1821,18 +1841,20 @@ namespace Google.Apis.CloudDomains.v1alpha2
                 }
 
                 /// <summary>
-                /// Transfers a domain name from another registrar to Cloud Domains. For domains already managed by
-                /// [Google Domains](https://domains.google/), use `ImportDomain` instead. Before calling this method,
-                /// go to the domain's current registrar to unlock the domain for transfer and retrieve the domain's
-                /// transfer authorization code. Then call `RetrieveTransferParameters` to confirm that the domain is
-                /// unlocked and to get values needed to build a call to this method. A successful call creates a
-                /// `Registration` resource in state `TRANSFER_PENDING`. It can take several days to complete the
-                /// transfer process. The registrant can often speed up this process by approving the transfer through
-                /// the current registrar, either by clicking a link in an email from the registrar or by visiting the
-                /// registrar's website. A few minutes after transfer approval, the resource transitions to state
-                /// `ACTIVE`, indicating that the transfer was successful. If the transfer is rejected or the request
-                /// expires without being approved, the resource can end up in state `TRANSFER_FAILED`. If transfer
-                /// fails, you can safely delete the resource and retry the transfer.
+                /// Deprecated: For more information, see [Cloud Domains feature
+                /// deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) Transfers a
+                /// domain name from another registrar to Cloud Domains. For domains already managed by [Google
+                /// Domains](https://domains.google/), use `ImportDomain` instead. Before calling this method, go to the
+                /// domain's current registrar to unlock the domain for transfer and retrieve the domain's transfer
+                /// authorization code. Then call `RetrieveTransferParameters` to confirm that the domain is unlocked
+                /// and to get values needed to build a call to this method. A successful call creates a `Registration`
+                /// resource in state `TRANSFER_PENDING`. It can take several days to complete the transfer process. The
+                /// registrant can often speed up this process by approving the transfer through the current registrar,
+                /// either by clicking a link in an email from the registrar or by visiting the registrar's website. A
+                /// few minutes after transfer approval, the resource transitions to state `ACTIVE`, indicating that the
+                /// transfer was successful. If the transfer is rejected or the request expires without being approved,
+                /// the resource can end up in state `TRANSFER_FAILED`. If transfer fails, you can safely delete the
+                /// resource and retry the transfer.
                 /// </summary>
                 public class TransferRequest : CloudDomainsBaseServiceRequest<Google.Apis.CloudDomains.v1alpha2.Data.Operation>
                 {
@@ -2300,7 +2322,11 @@ namespace Google.Apis.CloudDomains.v1alpha2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("glueRecords")]
         public virtual System.Collections.Generic.IList<GlueRecord> GlueRecords { get; set; }
 
-        /// <summary>The free DNS zone provided by [Google Domains](https://domains.google/).</summary>
+        /// <summary>
+        /// Deprecated: For more information, see [Cloud Domains feature
+        /// deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) The free DNS zone
+        /// provided by [Google Domains](https://domains.google/).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googleDomainsDns")]
         public virtual GoogleDomainsDns GoogleDomainsDns { get; set; }
 
@@ -2353,7 +2379,11 @@ namespace Google.Apis.CloudDomains.v1alpha2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Request for the `ExportRegistration` method.</summary>
+    /// <summary>
+    /// Deprecated: For more information, see [Cloud Domains feature
+    /// deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) Request for the
+    /// `ExportRegistration` method.
+    /// </summary>
     public class ExportRegistrationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -2435,9 +2465,10 @@ namespace Google.Apis.CloudDomains.v1alpha2.Data
     }
 
     /// <summary>
-    /// Configuration for using the free DNS zone provided by Google Domains as a `Registration`'s `dns_provider`. You
-    /// cannot configure the DNS zone itself using the API. To configure the DNS zone, go to [Google
-    /// Domains](https://domains.google/).
+    /// Deprecated: For more information, see [Cloud Domains feature
+    /// deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) Configuration for using
+    /// the free DNS zone provided by Google Domains as a `Registration`'s `dns_provider`. You cannot configure the DNS
+    /// zone itself using the API. To configure the DNS zone, go to [Google Domains](https://domains.google/).
     /// </summary>
     public class GoogleDomainsDns : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2466,7 +2497,11 @@ namespace Google.Apis.CloudDomains.v1alpha2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Request for the `ImportDomain` method.</summary>
+    /// <summary>
+    /// Deprecated: For more information, see [Cloud Domains feature
+    /// deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) Request for the
+    /// `ImportDomain` method.
+    /// </summary>
     public class ImportDomainRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. The domain name. Unicode domain names must be expressed in Punycode format.</summary>
@@ -2564,7 +2599,26 @@ namespace Google.Apis.CloudDomains.v1alpha2.Data
     /// <summary>Defines renewal, billing, and transfer settings for a `Registration`.</summary>
     public class ManagementSettings : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. The renewal method for this `Registration`.</summary>
+        /// <summary>
+        /// Optional. The desired renewal method for this `Registration`. The actual `renewal_method` is automatically
+        /// updated to reflect this choice. If unset or equal to `RENEWAL_METHOD_UNSPECIFIED`, it will be treated as if
+        /// it were set to `AUTOMATIC_RENEWAL`. Can't be set to `RENEWAL_DISABLED` during resource creation and can only
+        /// be updated when the `Registration` resource has state `ACTIVE` or `SUSPENDED`. When
+        /// `preferred_renewal_method` is set to `AUTOMATIC_RENEWAL` the actual `renewal_method` can be set to
+        /// `RENEWAL_DISABLED` in case of e.g. problems with the Billing Account or reported domain abuse. In such cases
+        /// check the `issues` field on the `Registration`. After the problem is resolved the `renewal_method` will be
+        /// automatically updated to `preferred_renewal_method` in a few hours.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("preferredRenewalMethod")]
+        public virtual string PreferredRenewalMethod { get; set; }
+
+        /// <summary>
+        /// Output only. The actual renewal method for this `Registration`. When `preferred_renewal_method` is set to
+        /// `AUTOMATIC_RENEWAL` the actual `renewal_method` can be equal to `RENEWAL_DISABLED` in case of e.g. problems
+        /// with the Billing Account or reported domain abuse. In such cases check the `issues` field on the
+        /// `Registration`. After the problem is resolved the `renewal_method` will be automatically updated to
+        /// `preferred_renewal_method` in a few hours.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("renewalMethod")]
         public virtual string RenewalMethod { get; set; }
 
@@ -3004,11 +3058,14 @@ namespace Google.Apis.CloudDomains.v1alpha2.Data
     /// name by calling the `SearchDomains` method with a query to see available domain name options. After choosing a
     /// name, call `RetrieveRegisterParameters` to ensure availability and obtain information like pricing, which is
     /// needed to build a call to `RegisterDomain`. Another way to create a new `Registration` is to transfer an
-    /// existing domain from another registrar. First, go to the current registrar to unlock the domain for transfer and
-    /// retrieve the domain's transfer authorization code. Then call `RetrieveTransferParameters` to confirm that the
-    /// domain is unlocked and to get values needed to build a call to `TransferDomain`. Finally, you can create a new
-    /// `Registration` by importing an existing domain managed with [Google Domains](https://domains.google/). First,
-    /// call `RetrieveImportableDomains` to list domains to which the calling user has sufficient access. Then call
+    /// existing domain from another registrar (Deprecated: For more information, see [Cloud Domains feature
+    /// deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations)). First, go to the current
+    /// registrar to unlock the domain for transfer and retrieve the domain's transfer authorization code. Then call
+    /// `RetrieveTransferParameters` to confirm that the domain is unlocked and to get values needed to build a call to
+    /// `TransferDomain`. Finally, you can create a new `Registration` by importing an existing domain managed with
+    /// [Google Domains](https://domains.google/) (Deprecated: For more information, see [Cloud Domains feature
+    /// deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations)). First, call
+    /// `RetrieveImportableDomains` to list domains to which the calling user has sufficient access. Then call
     /// `ImportDomain` on any domain names you want to use with Cloud Domains.
     /// </summary>
     public class Registration : Google.Apis.Requests.IDirectResponseSchema
@@ -3156,7 +3213,9 @@ namespace Google.Apis.CloudDomains.v1alpha2.Data
         public virtual System.Collections.Generic.IList<string> SupportedPrivacy { get; set; }
 
         /// <summary>
-        /// Output only. The reason the domain transfer failed. Only set for domains in TRANSFER_FAILED state.
+        /// Output only. Deprecated: For more information, see [Cloud Domains feature
+        /// deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) The reason the domain
+        /// transfer failed. Only set for domains in TRANSFER_FAILED state.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transferFailureReason")]
         public virtual string TransferFailureReason { get; set; }
@@ -3172,7 +3231,11 @@ namespace Google.Apis.CloudDomains.v1alpha2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response for the `RetrieveImportableDomains` method.</summary>
+    /// <summary>
+    /// Deprecated: For more information, see [Cloud Domains feature
+    /// deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) Response for the
+    /// `RetrieveImportableDomains` method.
+    /// </summary>
     public class RetrieveImportableDomainsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A list of domains that the calling user manages in Google Domains.</summary>
@@ -3201,7 +3264,11 @@ namespace Google.Apis.CloudDomains.v1alpha2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response for the `RetrieveTransferParameters` method.</summary>
+    /// <summary>
+    /// Deprecated: For more information, see [Cloud Domains feature
+    /// deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) Response for the
+    /// `RetrieveTransferParameters` method.
+    /// </summary>
     public class RetrieveTransferParametersResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Parameters to use when calling the `TransferDomain` method.</summary>
@@ -3300,7 +3367,11 @@ namespace Google.Apis.CloudDomains.v1alpha2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Request for the `TransferDomain` method.</summary>
+    /// <summary>
+    /// Deprecated: For more information, see [Cloud Domains feature
+    /// deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) Request for the
+    /// `TransferDomain` method.
+    /// </summary>
     public class TransferDomainRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -3340,7 +3411,11 @@ namespace Google.Apis.CloudDomains.v1alpha2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Parameters required to transfer a domain from another registrar.</summary>
+    /// <summary>
+    /// Deprecated: For more information, see [Cloud Domains feature
+    /// deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) Parameters required to
+    /// transfer a domain from another registrar.
+    /// </summary>
     public class TransferParameters : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The registrar that currently manages the domain.</summary>
