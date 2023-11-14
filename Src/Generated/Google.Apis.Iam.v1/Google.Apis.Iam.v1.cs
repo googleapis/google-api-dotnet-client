@@ -304,7 +304,7 @@ namespace Google.Apis.Iam.v1
         /// <param name="body">The body of the request.</param>
         public virtual LintPolicyRequest LintPolicy(Google.Apis.Iam.v1.Data.LintPolicyRequest body)
         {
-            return new LintPolicyRequest(service, body);
+            return new LintPolicyRequest(this.service, body);
         }
 
         /// <summary>
@@ -350,7 +350,7 @@ namespace Google.Apis.Iam.v1
         /// <param name="body">The body of the request.</param>
         public virtual QueryAuditableServicesRequest QueryAuditableServices(Google.Apis.Iam.v1.Data.QueryAuditableServicesRequest body)
         {
-            return new QueryAuditableServicesRequest(service, body);
+            return new QueryAuditableServicesRequest(this.service, body);
         }
 
         /// <summary>
@@ -448,7 +448,7 @@ namespace Google.Apis.Iam.v1
                 /// <param name="name">The name of the operation resource.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -554,7 +554,7 @@ namespace Google.Apis.Iam.v1
                         /// <param name="name">The name of the operation resource.</param>
                         public virtual GetRequest Get(string name)
                         {
-                            return new GetRequest(service, name);
+                            return new GetRequest(this.service, name);
                         }
 
                         /// <summary>
@@ -604,7 +604,7 @@ namespace Google.Apis.Iam.v1
                     /// <param name="parent">Required. The provider to create this key in.</param>
                     public virtual CreateRequest Create(Google.Apis.Iam.v1.Data.WorkforcePoolProviderKey body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>Creates a new WorkforcePoolProviderKey in a WorkforcePoolProvider.</summary>
@@ -674,7 +674,7 @@ namespace Google.Apis.Iam.v1
                     /// <param name="name">Required. The name of the key to delete.</param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -722,7 +722,7 @@ namespace Google.Apis.Iam.v1
                     /// <param name="name">Required. The name of the key to retrieve.</param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Gets a WorkforcePoolProviderKey.</summary>
@@ -773,7 +773,7 @@ namespace Google.Apis.Iam.v1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>
@@ -869,7 +869,7 @@ namespace Google.Apis.Iam.v1
                     /// <param name="name">Required. The name of the key to undelete.</param>
                     public virtual UndeleteRequest Undelete(Google.Apis.Iam.v1.Data.UndeleteWorkforcePoolProviderKeyRequest body, string name)
                     {
-                        return new UndeleteRequest(service, body, name);
+                        return new UndeleteRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -944,7 +944,7 @@ namespace Google.Apis.Iam.v1
                     /// <param name="name">The name of the operation resource.</param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -1000,7 +1000,7 @@ namespace Google.Apis.Iam.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Iam.v1.Data.WorkforcePoolProvider body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -1081,7 +1081,7 @@ namespace Google.Apis.Iam.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -1136,7 +1136,7 @@ namespace Google.Apis.Iam.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets an individual WorkforcePoolProvider.</summary>
@@ -1190,7 +1190,7 @@ namespace Google.Apis.Iam.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>
@@ -1287,7 +1287,7 @@ namespace Google.Apis.Iam.v1
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.Iam.v1.Data.WorkforcePoolProvider body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates an existing WorkforcePoolProvider.</summary>
@@ -1360,7 +1360,7 @@ namespace Google.Apis.Iam.v1
                 /// </param>
                 public virtual UndeleteRequest Undelete(Google.Apis.Iam.v1.Data.UndeleteWorkforcePoolProviderRequest body, string name)
                 {
-                    return new UndeleteRequest(service, body, name);
+                    return new UndeleteRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -1456,7 +1456,7 @@ namespace Google.Apis.Iam.v1
                     /// <param name="name">The name of the operation resource.</param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -1518,7 +1518,7 @@ namespace Google.Apis.Iam.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -1584,7 +1584,7 @@ namespace Google.Apis.Iam.v1
                 /// </param>
                 public virtual UndeleteRequest Undelete(Google.Apis.Iam.v1.Data.UndeleteWorkforcePoolSubjectRequest body, string name)
                 {
-                    return new UndeleteRequest(service, body, name);
+                    return new UndeleteRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -1647,7 +1647,7 @@ namespace Google.Apis.Iam.v1
             /// <param name="location">The location of the pool to create. Format: `locations/{location}`.</param>
             public virtual CreateRequest Create(Google.Apis.Iam.v1.Data.WorkforcePool body, string location)
             {
-                return new CreateRequest(service, body, location);
+                return new CreateRequest(this.service, body, location);
             }
 
             /// <summary>
@@ -1727,7 +1727,7 @@ namespace Google.Apis.Iam.v1
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>
@@ -1784,7 +1784,7 @@ namespace Google.Apis.Iam.v1
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets an individual WorkforcePool.</summary>
@@ -1836,7 +1836,7 @@ namespace Google.Apis.Iam.v1
             /// </param>
             public virtual GetIamPolicyRequest GetIamPolicy(Google.Apis.Iam.v1.Data.GetIamPolicyRequest body, string resource)
             {
-                return new GetIamPolicyRequest(service, body, resource);
+                return new GetIamPolicyRequest(this.service, body, resource);
             }
 
             /// <summary>Gets IAM policies on a WorkforcePool.</summary>
@@ -1895,7 +1895,7 @@ namespace Google.Apis.Iam.v1
             /// <param name="location">The location of the pool. Format: `locations/{location}`.</param>
             public virtual ListRequest List(string location)
             {
-                return new ListRequest(service, location);
+                return new ListRequest(this.service, location);
             }
 
             /// <summary>
@@ -2003,7 +2003,7 @@ namespace Google.Apis.Iam.v1
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.Iam.v1.Data.WorkforcePool body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>Updates an existing WorkforcePool.</summary>
@@ -2074,7 +2074,7 @@ namespace Google.Apis.Iam.v1
             /// </param>
             public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Iam.v1.Data.SetIamPolicyRequest body, string resource)
             {
-                return new SetIamPolicyRequest(service, body, resource);
+                return new SetIamPolicyRequest(this.service, body, resource);
             }
 
             /// <summary>Sets IAM policies on a WorkforcePool.</summary>
@@ -2137,7 +2137,7 @@ namespace Google.Apis.Iam.v1
             /// </param>
             public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Iam.v1.Data.TestIamPermissionsRequest body, string resource)
             {
-                return new TestIamPermissionsRequest(service, body, resource);
+                return new TestIamPermissionsRequest(this.service, body, resource);
             }
 
             /// <summary>
@@ -2200,7 +2200,7 @@ namespace Google.Apis.Iam.v1
             /// </param>
             public virtual UndeleteRequest Undelete(Google.Apis.Iam.v1.Data.UndeleteWorkforcePoolRequest body, string name)
             {
-                return new UndeleteRequest(service, body, name);
+                return new UndeleteRequest(this.service, body, name);
             }
 
             /// <summary>Undeletes a WorkforcePool, as long as it was deleted fewer than 30 days ago.</summary>
@@ -2304,7 +2304,7 @@ namespace Google.Apis.Iam.v1
             /// </param>
             public virtual CreateRequest Create(Google.Apis.Iam.v1.Data.CreateRoleRequest body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>Creates a new custom Role.</summary>
@@ -2393,7 +2393,7 @@ namespace Google.Apis.Iam.v1
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>
@@ -2494,7 +2494,7 @@ namespace Google.Apis.Iam.v1
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets the definition of a Role.</summary>
@@ -2582,7 +2582,7 @@ namespace Google.Apis.Iam.v1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>
@@ -2737,7 +2737,7 @@ namespace Google.Apis.Iam.v1
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.Iam.v1.Data.Role body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>Updates the definition of a custom Role.</summary>
@@ -2834,7 +2834,7 @@ namespace Google.Apis.Iam.v1
             /// </param>
             public virtual UndeleteRequest Undelete(Google.Apis.Iam.v1.Data.UndeleteRoleRequest body, string name)
             {
-                return new UndeleteRequest(service, body, name);
+                return new UndeleteRequest(this.service, body, name);
             }
 
             /// <summary>Undeletes a custom Role.</summary>
@@ -2921,7 +2921,7 @@ namespace Google.Apis.Iam.v1
         /// <param name="body">The body of the request.</param>
         public virtual QueryTestablePermissionsRequest QueryTestablePermissions(Google.Apis.Iam.v1.Data.QueryTestablePermissionsRequest body)
         {
-            return new QueryTestablePermissionsRequest(service, body);
+            return new QueryTestablePermissionsRequest(this.service, body);
         }
 
         /// <summary>
@@ -3077,7 +3077,7 @@ namespace Google.Apis.Iam.v1
                             /// <param name="name">The name of the operation resource.</param>
                             public virtual GetRequest Get(string name)
                             {
-                                return new GetRequest(service, name);
+                                return new GetRequest(this.service, name);
                             }
 
                             /// <summary>
@@ -3164,7 +3164,7 @@ namespace Google.Apis.Iam.v1
                                 /// <param name="name">The name of the operation resource.</param>
                                 public virtual GetRequest Get(string name)
                                 {
-                                    return new GetRequest(service, name);
+                                    return new GetRequest(this.service, name);
                                 }
 
                                 /// <summary>
@@ -3235,7 +3235,7 @@ namespace Google.Apis.Iam.v1
                         /// <param name="name">The name of the operation resource.</param>
                         public virtual GetRequest Get(string name)
                         {
-                            return new GetRequest(service, name);
+                            return new GetRequest(this.service, name);
                         }
 
                         /// <summary>
@@ -3305,7 +3305,7 @@ namespace Google.Apis.Iam.v1
                     /// <param name="name">The name of the operation resource.</param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -3411,7 +3411,7 @@ namespace Google.Apis.Iam.v1
                             /// <param name="name">The name of the operation resource.</param>
                             public virtual GetRequest Get(string name)
                             {
-                                return new GetRequest(service, name);
+                                return new GetRequest(this.service, name);
                             }
 
                             /// <summary>
@@ -3463,7 +3463,7 @@ namespace Google.Apis.Iam.v1
                         /// <param name="parent">Required. The parent provider resource to create the key in.</param>
                         public virtual CreateRequest Create(Google.Apis.Iam.v1.Data.WorkloadIdentityPoolProviderKey body, string parent)
                         {
-                            return new CreateRequest(service, body, parent);
+                            return new CreateRequest(this.service, body, parent);
                         }
 
                         /// <summary>
@@ -3535,7 +3535,7 @@ namespace Google.Apis.Iam.v1
                         /// <param name="name">Required. The name of the encryption key to delete.</param>
                         public virtual DeleteRequest Delete(string name)
                         {
-                            return new DeleteRequest(service, name);
+                            return new DeleteRequest(this.service, name);
                         }
 
                         /// <summary>
@@ -3583,7 +3583,7 @@ namespace Google.Apis.Iam.v1
                         /// <param name="name">Required. The name of the key to retrieve.</param>
                         public virtual GetRequest Get(string name)
                         {
-                            return new GetRequest(service, name);
+                            return new GetRequest(this.service, name);
                         }
 
                         /// <summary>Gets an individual WorkloadIdentityPoolProviderKey.</summary>
@@ -3633,7 +3633,7 @@ namespace Google.Apis.Iam.v1
                         /// </param>
                         public virtual ListRequest List(string parent)
                         {
-                            return new ListRequest(service, parent);
+                            return new ListRequest(this.service, parent);
                         }
 
                         /// <summary>
@@ -3727,7 +3727,7 @@ namespace Google.Apis.Iam.v1
                         /// <param name="name">Required. The name of the encryption key to undelete.</param>
                         public virtual UndeleteRequest Undelete(Google.Apis.Iam.v1.Data.UndeleteWorkloadIdentityPoolProviderKeyRequest body, string name)
                         {
-                            return new UndeleteRequest(service, body, name);
+                            return new UndeleteRequest(this.service, body, name);
                         }
 
                         /// <summary>
@@ -3803,7 +3803,7 @@ namespace Google.Apis.Iam.v1
                         /// <param name="name">The name of the operation resource.</param>
                         public virtual GetRequest Get(string name)
                         {
-                            return new GetRequest(service, name);
+                            return new GetRequest(this.service, name);
                         }
 
                         /// <summary>
@@ -3856,7 +3856,7 @@ namespace Google.Apis.Iam.v1
                     /// <param name="parent">Required. The pool to create this provider in.</param>
                     public virtual CreateRequest Create(Google.Apis.Iam.v1.Data.WorkloadIdentityPoolProvider body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>
@@ -3932,7 +3932,7 @@ namespace Google.Apis.Iam.v1
                     /// <param name="name">Required. The name of the provider to delete.</param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -3982,7 +3982,7 @@ namespace Google.Apis.Iam.v1
                     /// <param name="name">Required. The name of the provider to retrieve.</param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Gets an individual WorkloadIdentityPoolProvider.</summary>
@@ -4030,7 +4030,7 @@ namespace Google.Apis.Iam.v1
                     /// <param name="parent">Required. The pool to list providers for.</param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>
@@ -4121,7 +4121,7 @@ namespace Google.Apis.Iam.v1
                     /// <param name="name">Output only. The resource name of the provider.</param>
                     public virtual PatchRequest Patch(Google.Apis.Iam.v1.Data.WorkloadIdentityPoolProvider body, string name)
                     {
-                        return new PatchRequest(service, body, name);
+                        return new PatchRequest(this.service, body, name);
                     }
 
                     /// <summary>Updates an existing WorkloadIdentityPoolProvider.</summary>
@@ -4188,7 +4188,7 @@ namespace Google.Apis.Iam.v1
                     /// <param name="name">Required. The name of the provider to undelete.</param>
                     public virtual UndeleteRequest Undelete(Google.Apis.Iam.v1.Data.UndeleteWorkloadIdentityPoolProviderRequest body, string name)
                     {
-                        return new UndeleteRequest(service, body, name);
+                        return new UndeleteRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -4249,7 +4249,7 @@ namespace Google.Apis.Iam.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Iam.v1.Data.WorkloadIdentityPool body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -4329,7 +4329,7 @@ namespace Google.Apis.Iam.v1
                 /// <param name="name">Required. The name of the pool to delete.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -4381,7 +4381,7 @@ namespace Google.Apis.Iam.v1
                 /// <param name="name">Required. The name of the pool to retrieve.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets an individual WorkloadIdentityPool.</summary>
@@ -4429,7 +4429,7 @@ namespace Google.Apis.Iam.v1
                 /// <param name="parent">Required. The parent resource to list pools for.</param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>
@@ -4520,7 +4520,7 @@ namespace Google.Apis.Iam.v1
                 /// <param name="name">Output only. The resource name of the pool.</param>
                 public virtual PatchRequest Patch(Google.Apis.Iam.v1.Data.WorkloadIdentityPool body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates an existing WorkloadIdentityPool.</summary>
@@ -4587,7 +4587,7 @@ namespace Google.Apis.Iam.v1
                 /// <param name="name">Required. The name of the pool to undelete.</param>
                 public virtual UndeleteRequest Undelete(Google.Apis.Iam.v1.Data.UndeleteWorkloadIdentityPoolRequest body, string name)
                 {
-                    return new UndeleteRequest(service, body, name);
+                    return new UndeleteRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -4675,7 +4675,7 @@ namespace Google.Apis.Iam.v1
             /// </param>
             public virtual CreateRequest Create(Google.Apis.Iam.v1.Data.CreateRoleRequest body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>Creates a new custom Role.</summary>
@@ -4764,7 +4764,7 @@ namespace Google.Apis.Iam.v1
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>
@@ -4865,7 +4865,7 @@ namespace Google.Apis.Iam.v1
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets the definition of a Role.</summary>
@@ -4953,7 +4953,7 @@ namespace Google.Apis.Iam.v1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>
@@ -5108,7 +5108,7 @@ namespace Google.Apis.Iam.v1
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.Iam.v1.Data.Role body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>Updates the definition of a custom Role.</summary>
@@ -5205,7 +5205,7 @@ namespace Google.Apis.Iam.v1
             /// </param>
             public virtual UndeleteRequest Undelete(Google.Apis.Iam.v1.Data.UndeleteRoleRequest body, string name)
             {
-                return new UndeleteRequest(service, body, name);
+                return new UndeleteRequest(this.service, body, name);
             }
 
             /// <summary>Undeletes a custom Role.</summary>
@@ -5319,7 +5319,7 @@ namespace Google.Apis.Iam.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Iam.v1.Data.CreateServiceAccountKeyRequest body, string name)
                 {
-                    return new CreateRequest(service, body, name);
+                    return new CreateRequest(this.service, body, name);
                 }
 
                 /// <summary>Creates a ServiceAccountKey.</summary>
@@ -5394,7 +5394,7 @@ namespace Google.Apis.Iam.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -5468,7 +5468,7 @@ namespace Google.Apis.Iam.v1
                 /// </param>
                 public virtual DisableRequest Disable(Google.Apis.Iam.v1.Data.DisableServiceAccountKeyRequest body, string name)
                 {
-                    return new DisableRequest(service, body, name);
+                    return new DisableRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -5546,7 +5546,7 @@ namespace Google.Apis.Iam.v1
                 /// </param>
                 public virtual EnableRequest Enable(Google.Apis.Iam.v1.Data.EnableServiceAccountKeyRequest body, string name)
                 {
-                    return new EnableRequest(service, body, name);
+                    return new EnableRequest(this.service, body, name);
                 }
 
                 /// <summary>Enable a ServiceAccountKey.</summary>
@@ -5620,7 +5620,7 @@ namespace Google.Apis.Iam.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets a ServiceAccountKey.</summary>
@@ -5719,7 +5719,7 @@ namespace Google.Apis.Iam.v1
                 /// </param>
                 public virtual ListRequest List(string name)
                 {
-                    return new ListRequest(service, name);
+                    return new ListRequest(this.service, name);
                 }
 
                 /// <summary>Lists every ServiceAccountKey for a service account.</summary>
@@ -5839,7 +5839,7 @@ namespace Google.Apis.Iam.v1
                 /// </param>
                 public virtual UploadRequest Upload(Google.Apis.Iam.v1.Data.UploadServiceAccountKeyRequest body, string name)
                 {
-                    return new UploadRequest(service, body, name);
+                    return new UploadRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -5909,7 +5909,7 @@ namespace Google.Apis.Iam.v1
             /// </param>
             public virtual CreateRequest Create(Google.Apis.Iam.v1.Data.CreateServiceAccountRequest body, string name)
             {
-                return new CreateRequest(service, body, name);
+                return new CreateRequest(this.service, body, name);
             }
 
             /// <summary>Creates a ServiceAccount.</summary>
@@ -5982,7 +5982,7 @@ namespace Google.Apis.Iam.v1
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>
@@ -6064,7 +6064,7 @@ namespace Google.Apis.Iam.v1
             /// </param>
             public virtual DisableRequest Disable(Google.Apis.Iam.v1.Data.DisableServiceAccountRequest body, string name)
             {
-                return new DisableRequest(service, body, name);
+                return new DisableRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -6149,7 +6149,7 @@ namespace Google.Apis.Iam.v1
             /// </param>
             public virtual EnableRequest Enable(Google.Apis.Iam.v1.Data.EnableServiceAccountRequest body, string name)
             {
-                return new EnableRequest(service, body, name);
+                return new EnableRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -6224,7 +6224,7 @@ namespace Google.Apis.Iam.v1
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets a ServiceAccount.</summary>
@@ -6289,7 +6289,7 @@ namespace Google.Apis.Iam.v1
             /// </param>
             public virtual GetIamPolicyRequest GetIamPolicy(string resource)
             {
-                return new GetIamPolicyRequest(service, resource);
+                return new GetIamPolicyRequest(this.service, resource);
             }
 
             /// <summary>
@@ -6370,7 +6370,7 @@ namespace Google.Apis.Iam.v1
             /// </param>
             public virtual ListRequest List(string name)
             {
-                return new ListRequest(service, name);
+                return new ListRequest(this.service, name);
             }
 
             /// <summary>Lists every ServiceAccount that belongs to a specific project.</summary>
@@ -6458,7 +6458,7 @@ namespace Google.Apis.Iam.v1
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.Iam.v1.Data.PatchServiceAccountRequest body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>Patches a ServiceAccount.</summary>
@@ -6533,7 +6533,7 @@ namespace Google.Apis.Iam.v1
             /// </param>
             public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Iam.v1.Data.SetIamPolicyRequest body, string resource)
             {
-                return new SetIamPolicyRequest(service, body, resource);
+                return new SetIamPolicyRequest(this.service, body, resource);
             }
 
             /// <summary>
@@ -6616,7 +6616,7 @@ namespace Google.Apis.Iam.v1
             /// </param>
             public virtual SignBlobRequest SignBlob(Google.Apis.Iam.v1.Data.SignBlobRequest body, string name)
             {
-                return new SignBlobRequest(service, body, name);
+                return new SignBlobRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -6701,7 +6701,7 @@ namespace Google.Apis.Iam.v1
             /// </param>
             public virtual SignJwtRequest SignJwt(Google.Apis.Iam.v1.Data.SignJwtRequest body, string name)
             {
-                return new SignJwtRequest(service, body, name);
+                return new SignJwtRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -6773,7 +6773,7 @@ namespace Google.Apis.Iam.v1
             /// </param>
             public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Iam.v1.Data.TestIamPermissionsRequest body, string resource)
             {
-                return new TestIamPermissionsRequest(service, body, resource);
+                return new TestIamPermissionsRequest(this.service, body, resource);
             }
 
             /// <summary>Tests whether the caller has the specified permissions on a ServiceAccount.</summary>
@@ -6844,7 +6844,7 @@ namespace Google.Apis.Iam.v1
             /// </param>
             public virtual UndeleteRequest Undelete(Google.Apis.Iam.v1.Data.UndeleteServiceAccountRequest body, string name)
             {
-                return new UndeleteRequest(service, body, name);
+                return new UndeleteRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -6923,7 +6923,7 @@ namespace Google.Apis.Iam.v1
             /// </param>
             public virtual UpdateRequest Update(Google.Apis.Iam.v1.Data.ServiceAccount body, string name)
             {
-                return new UpdateRequest(service, body, name);
+                return new UpdateRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -7023,7 +7023,7 @@ namespace Google.Apis.Iam.v1
         /// </param>
         public virtual GetRequest Get(string name)
         {
-            return new GetRequest(service, name);
+            return new GetRequest(this.service, name);
         }
 
         /// <summary>Gets the definition of a Role.</summary>
@@ -7091,7 +7091,7 @@ namespace Google.Apis.Iam.v1
         /// </summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>
@@ -7231,7 +7231,7 @@ namespace Google.Apis.Iam.v1
         /// <param name="body">The body of the request.</param>
         public virtual QueryGrantableRolesRequest QueryGrantableRoles(Google.Apis.Iam.v1.Data.QueryGrantableRolesRequest body)
         {
-            return new QueryGrantableRolesRequest(service, body);
+            return new QueryGrantableRolesRequest(this.service, body);
         }
 
         /// <summary>
@@ -7823,8 +7823,8 @@ namespace Google.Apis.Iam.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? NotAfterTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(NotAfterTimeRaw);
-            set => NotAfterTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(NotAfterTimeRaw);
+            set => NotAfterTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _notBeforeTimeRaw;
@@ -7863,8 +7863,8 @@ namespace Google.Apis.Iam.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? NotBeforeTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(NotBeforeTimeRaw);
-            set => NotBeforeTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(NotBeforeTimeRaw);
+            set => NotBeforeTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -8221,8 +8221,8 @@ namespace Google.Apis.Iam.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _endTimeRaw;
@@ -8258,8 +8258,8 @@ namespace Google.Apis.Iam.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. Human-readable status of the operation, if any.</summary>
@@ -8785,8 +8785,8 @@ namespace Google.Apis.Iam.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ValidAfterTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ValidAfterTimeRaw);
-            set => ValidAfterTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ValidAfterTimeRaw);
+            set => ValidAfterTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _validBeforeTimeRaw;
@@ -8828,8 +8828,8 @@ namespace Google.Apis.Iam.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ValidBeforeTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ValidBeforeTimeRaw);
-            set => ValidBeforeTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ValidBeforeTimeRaw);
+            set => ValidBeforeTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -9166,8 +9166,8 @@ namespace Google.Apis.Iam.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpireTimeRaw);
-            set => ExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -9306,8 +9306,8 @@ namespace Google.Apis.Iam.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpireTimeRaw);
-            set => ExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -9376,8 +9376,8 @@ namespace Google.Apis.Iam.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpireTimeRaw);
-            set => ExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Immutable. Public half of the asymmetric key.</summary>
@@ -9456,8 +9456,8 @@ namespace Google.Apis.Iam.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpireTimeRaw);
-            set => ExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. The resource name of the pool.</summary>
@@ -9594,8 +9594,8 @@ namespace Google.Apis.Iam.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpireTimeRaw);
-            set => ExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. The resource name of the provider.</summary>
@@ -9661,8 +9661,8 @@ namespace Google.Apis.Iam.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpireTimeRaw);
-            set => ExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Immutable. Public half of the asymmetric key.</summary>

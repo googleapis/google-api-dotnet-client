@@ -294,7 +294,7 @@ namespace Google.Apis.DataCatalog.v1beta1
         /// <param name="body">The body of the request.</param>
         public virtual SearchRequest Search(Google.Apis.DataCatalog.v1beta1.Data.GoogleCloudDatacatalogV1beta1SearchCatalogRequest body)
         {
-            return new SearchRequest(service, body);
+            return new SearchRequest(this.service, body);
         }
 
         /// <summary>
@@ -358,7 +358,7 @@ namespace Google.Apis.DataCatalog.v1beta1
         /// </summary>
         public virtual LookupRequest Lookup()
         {
-            return new LookupRequest(service);
+            return new LookupRequest(this.service);
         }
 
         /// <summary>
@@ -531,7 +531,7 @@ namespace Google.Apis.DataCatalog.v1beta1
                         /// </param>
                         public virtual CreateRequest Create(Google.Apis.DataCatalog.v1beta1.Data.GoogleCloudDatacatalogV1beta1Tag body, string parent)
                         {
-                            return new CreateRequest(service, body, parent);
+                            return new CreateRequest(this.service, body, parent);
                         }
 
                         /// <summary>
@@ -598,7 +598,7 @@ namespace Google.Apis.DataCatalog.v1beta1
                         /// </param>
                         public virtual DeleteRequest Delete(string name)
                         {
-                            return new DeleteRequest(service, name);
+                            return new DeleteRequest(this.service, name);
                         }
 
                         /// <summary>Deletes a tag.</summary>
@@ -653,7 +653,7 @@ namespace Google.Apis.DataCatalog.v1beta1
                         /// </param>
                         public virtual ListRequest List(string parent)
                         {
-                            return new ListRequest(service, parent);
+                            return new ListRequest(this.service, parent);
                         }
 
                         /// <summary>
@@ -739,7 +739,7 @@ namespace Google.Apis.DataCatalog.v1beta1
                         /// </param>
                         public virtual PatchRequest Patch(Google.Apis.DataCatalog.v1beta1.Data.GoogleCloudDatacatalogV1beta1Tag body, string name)
                         {
-                            return new PatchRequest(service, body, name);
+                            return new PatchRequest(this.service, body, name);
                         }
 
                         /// <summary>Updates an existing tag.</summary>
@@ -826,7 +826,7 @@ namespace Google.Apis.DataCatalog.v1beta1
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.DataCatalog.v1beta1.Data.GoogleCloudDatacatalogV1beta1Entry body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>
@@ -908,7 +908,7 @@ namespace Google.Apis.DataCatalog.v1beta1
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -964,7 +964,7 @@ namespace Google.Apis.DataCatalog.v1beta1
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Gets an entry.</summary>
@@ -1026,7 +1026,7 @@ namespace Google.Apis.DataCatalog.v1beta1
                     /// </param>
                     public virtual GetIamPolicyRequest GetIamPolicy(Google.Apis.DataCatalog.v1beta1.Data.GetIamPolicyRequest body, string resource)
                     {
-                        return new GetIamPolicyRequest(service, body, resource);
+                        return new GetIamPolicyRequest(this.service, body, resource);
                     }
 
                     /// <summary>
@@ -1094,7 +1094,7 @@ namespace Google.Apis.DataCatalog.v1beta1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists entries.</summary>
@@ -1197,7 +1197,7 @@ namespace Google.Apis.DataCatalog.v1beta1
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.DataCatalog.v1beta1.Data.GoogleCloudDatacatalogV1beta1Entry body, string name)
                     {
-                        return new PatchRequest(service, body, name);
+                        return new PatchRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -1290,7 +1290,7 @@ namespace Google.Apis.DataCatalog.v1beta1
                     /// </param>
                     public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.DataCatalog.v1beta1.Data.TestIamPermissionsRequest body, string resource)
                     {
-                        return new TestIamPermissionsRequest(service, body, resource);
+                        return new TestIamPermissionsRequest(this.service, body, resource);
                     }
 
                     /// <summary>
@@ -1382,7 +1382,7 @@ namespace Google.Apis.DataCatalog.v1beta1
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.DataCatalog.v1beta1.Data.GoogleCloudDatacatalogV1beta1Tag body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>
@@ -1449,7 +1449,7 @@ namespace Google.Apis.DataCatalog.v1beta1
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>Deletes a tag.</summary>
@@ -1502,7 +1502,7 @@ namespace Google.Apis.DataCatalog.v1beta1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists tags assigned to an Entry. The columns in the response are lowercased.</summary>
@@ -1584,7 +1584,7 @@ namespace Google.Apis.DataCatalog.v1beta1
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.DataCatalog.v1beta1.Data.GoogleCloudDatacatalogV1beta1Tag body, string name)
                     {
-                        return new PatchRequest(service, body, name);
+                        return new PatchRequest(this.service, body, name);
                     }
 
                     /// <summary>Updates an existing tag.</summary>
@@ -1670,7 +1670,7 @@ namespace Google.Apis.DataCatalog.v1beta1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.DataCatalog.v1beta1.Data.GoogleCloudDatacatalogV1beta1EntryGroup body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -1754,7 +1754,7 @@ namespace Google.Apis.DataCatalog.v1beta1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -1822,7 +1822,7 @@ namespace Google.Apis.DataCatalog.v1beta1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets an EntryGroup.</summary>
@@ -1896,7 +1896,7 @@ namespace Google.Apis.DataCatalog.v1beta1
                 /// </param>
                 public virtual GetIamPolicyRequest GetIamPolicy(Google.Apis.DataCatalog.v1beta1.Data.GetIamPolicyRequest body, string resource)
                 {
-                    return new GetIamPolicyRequest(service, body, resource);
+                    return new GetIamPolicyRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -1964,7 +1964,7 @@ namespace Google.Apis.DataCatalog.v1beta1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists entry groups.</summary>
@@ -2050,7 +2050,7 @@ namespace Google.Apis.DataCatalog.v1beta1
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.DataCatalog.v1beta1.Data.GoogleCloudDatacatalogV1beta1EntryGroup body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -2138,7 +2138,7 @@ namespace Google.Apis.DataCatalog.v1beta1
                 /// </param>
                 public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.DataCatalog.v1beta1.Data.SetIamPolicyRequest body, string resource)
                 {
-                    return new SetIamPolicyRequest(service, body, resource);
+                    return new SetIamPolicyRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -2212,7 +2212,7 @@ namespace Google.Apis.DataCatalog.v1beta1
                 /// </param>
                 public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.DataCatalog.v1beta1.Data.TestIamPermissionsRequest body, string resource)
                 {
-                    return new TestIamPermissionsRequest(service, body, resource);
+                    return new TestIamPermissionsRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -2336,7 +2336,7 @@ namespace Google.Apis.DataCatalog.v1beta1
                         /// </param>
                         public virtual RenameRequest Rename(Google.Apis.DataCatalog.v1beta1.Data.GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest body, string name)
                         {
-                            return new RenameRequest(service, body, name);
+                            return new RenameRequest(this.service, body, name);
                         }
 
                         /// <summary>
@@ -2406,7 +2406,7 @@ namespace Google.Apis.DataCatalog.v1beta1
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.DataCatalog.v1beta1.Data.GoogleCloudDatacatalogV1beta1TagTemplateField body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>
@@ -2492,7 +2492,7 @@ namespace Google.Apis.DataCatalog.v1beta1
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -2569,7 +2569,7 @@ namespace Google.Apis.DataCatalog.v1beta1
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.DataCatalog.v1beta1.Data.GoogleCloudDatacatalogV1beta1TagTemplateField body, string name)
                     {
-                        return new PatchRequest(service, body, name);
+                        return new PatchRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -2659,7 +2659,7 @@ namespace Google.Apis.DataCatalog.v1beta1
                     /// </param>
                     public virtual RenameRequest Rename(Google.Apis.DataCatalog.v1beta1.Data.GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest body, string name)
                     {
-                        return new RenameRequest(service, body, name);
+                        return new RenameRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -2730,7 +2730,7 @@ namespace Google.Apis.DataCatalog.v1beta1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.DataCatalog.v1beta1.Data.GoogleCloudDatacatalogV1beta1TagTemplate body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -2810,7 +2810,7 @@ namespace Google.Apis.DataCatalog.v1beta1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -2880,7 +2880,7 @@ namespace Google.Apis.DataCatalog.v1beta1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets a tag template.</summary>
@@ -2942,7 +2942,7 @@ namespace Google.Apis.DataCatalog.v1beta1
                 /// </param>
                 public virtual GetIamPolicyRequest GetIamPolicy(Google.Apis.DataCatalog.v1beta1.Data.GetIamPolicyRequest body, string resource)
                 {
-                    return new GetIamPolicyRequest(service, body, resource);
+                    return new GetIamPolicyRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -3018,7 +3018,7 @@ namespace Google.Apis.DataCatalog.v1beta1
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.DataCatalog.v1beta1.Data.GoogleCloudDatacatalogV1beta1TagTemplate body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -3109,7 +3109,7 @@ namespace Google.Apis.DataCatalog.v1beta1
                 /// </param>
                 public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.DataCatalog.v1beta1.Data.SetIamPolicyRequest body, string resource)
                 {
-                    return new SetIamPolicyRequest(service, body, resource);
+                    return new SetIamPolicyRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -3183,7 +3183,7 @@ namespace Google.Apis.DataCatalog.v1beta1
                 /// </param>
                 public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.DataCatalog.v1beta1.Data.TestIamPermissionsRequest body, string resource)
                 {
-                    return new TestIamPermissionsRequest(service, body, resource);
+                    return new TestIamPermissionsRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -3284,7 +3284,7 @@ namespace Google.Apis.DataCatalog.v1beta1
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.DataCatalog.v1beta1.Data.GoogleCloudDatacatalogV1beta1PolicyTag body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>Creates a policy tag in the specified taxonomy.</summary>
@@ -3341,7 +3341,7 @@ namespace Google.Apis.DataCatalog.v1beta1
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>Deletes a policy tag. Also deletes all of its descendant policy tags.</summary>
@@ -3389,7 +3389,7 @@ namespace Google.Apis.DataCatalog.v1beta1
                     /// <param name="name">Required. Resource name of the requested policy tag.</param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Gets a policy tag.</summary>
@@ -3439,7 +3439,7 @@ namespace Google.Apis.DataCatalog.v1beta1
                     /// </param>
                     public virtual GetIamPolicyRequest GetIamPolicy(Google.Apis.DataCatalog.v1beta1.Data.GetIamPolicyRequest body, string resource)
                     {
-                        return new GetIamPolicyRequest(service, body, resource);
+                        return new GetIamPolicyRequest(this.service, body, resource);
                     }
 
                     /// <summary>Gets the IAM policy for a taxonomy or a policy tag.</summary>
@@ -3495,7 +3495,7 @@ namespace Google.Apis.DataCatalog.v1beta1
                     /// <param name="parent">Required. Resource name of the taxonomy to list the policy tags of.</param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists all policy tags in a taxonomy.</summary>
@@ -3574,7 +3574,7 @@ namespace Google.Apis.DataCatalog.v1beta1
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.DataCatalog.v1beta1.Data.GoogleCloudDatacatalogV1beta1PolicyTag body, string name)
                     {
-                        return new PatchRequest(service, body, name);
+                        return new PatchRequest(this.service, body, name);
                     }
 
                     /// <summary>Updates a policy tag.</summary>
@@ -3653,7 +3653,7 @@ namespace Google.Apis.DataCatalog.v1beta1
                     /// </param>
                     public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.DataCatalog.v1beta1.Data.SetIamPolicyRequest body, string resource)
                     {
-                        return new SetIamPolicyRequest(service, body, resource);
+                        return new SetIamPolicyRequest(this.service, body, resource);
                     }
 
                     /// <summary>Sets the IAM policy for a taxonomy or a policy tag.</summary>
@@ -3716,7 +3716,7 @@ namespace Google.Apis.DataCatalog.v1beta1
                     /// </param>
                     public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.DataCatalog.v1beta1.Data.TestIamPermissionsRequest body, string resource)
                     {
-                        return new TestIamPermissionsRequest(service, body, resource);
+                        return new TestIamPermissionsRequest(this.service, body, resource);
                     }
 
                     /// <summary>
@@ -3778,7 +3778,7 @@ namespace Google.Apis.DataCatalog.v1beta1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.DataCatalog.v1beta1.Data.GoogleCloudDatacatalogV1beta1Taxonomy body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a taxonomy in the specified project.</summary>
@@ -3836,7 +3836,7 @@ namespace Google.Apis.DataCatalog.v1beta1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -3892,7 +3892,7 @@ namespace Google.Apis.DataCatalog.v1beta1
                 /// </param>
                 public virtual ExportRequest Export(string parent)
                 {
-                    return new ExportRequest(service, parent);
+                    return new ExportRequest(this.service, parent);
                 }
 
                 /// <summary>
@@ -3966,7 +3966,7 @@ namespace Google.Apis.DataCatalog.v1beta1
                 /// <param name="name">Required. Resource name of the requested taxonomy.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets a taxonomy.</summary>
@@ -4016,7 +4016,7 @@ namespace Google.Apis.DataCatalog.v1beta1
                 /// </param>
                 public virtual GetIamPolicyRequest GetIamPolicy(Google.Apis.DataCatalog.v1beta1.Data.GetIamPolicyRequest body, string resource)
                 {
-                    return new GetIamPolicyRequest(service, body, resource);
+                    return new GetIamPolicyRequest(this.service, body, resource);
                 }
 
                 /// <summary>Gets the IAM policy for a taxonomy or a policy tag.</summary>
@@ -4078,7 +4078,7 @@ namespace Google.Apis.DataCatalog.v1beta1
                 /// </param>
                 public virtual ImportRequest Import(Google.Apis.DataCatalog.v1beta1.Data.GoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest body, string parent)
                 {
-                    return new ImportRequest(service, body, parent);
+                    return new ImportRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -4137,7 +4137,7 @@ namespace Google.Apis.DataCatalog.v1beta1
                 /// <param name="parent">Required. Resource name of the project to list the taxonomies of.</param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>
@@ -4232,7 +4232,7 @@ namespace Google.Apis.DataCatalog.v1beta1
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.DataCatalog.v1beta1.Data.GoogleCloudDatacatalogV1beta1Taxonomy body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates a taxonomy.</summary>
@@ -4308,7 +4308,7 @@ namespace Google.Apis.DataCatalog.v1beta1
                 /// </param>
                 public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.DataCatalog.v1beta1.Data.SetIamPolicyRequest body, string resource)
                 {
-                    return new SetIamPolicyRequest(service, body, resource);
+                    return new SetIamPolicyRequest(this.service, body, resource);
                 }
 
                 /// <summary>Sets the IAM policy for a taxonomy or a policy tag.</summary>
@@ -4371,7 +4371,7 @@ namespace Google.Apis.DataCatalog.v1beta1
                 /// </param>
                 public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.DataCatalog.v1beta1.Data.TestIamPermissionsRequest body, string resource)
                 {
-                    return new TestIamPermissionsRequest(service, body, resource);
+                    return new TestIamPermissionsRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -5422,8 +5422,8 @@ namespace Google.Apis.DataCatalog.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StarTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StarTimeRaw);
-            set => StarTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StarTimeRaw);
+            set => StarTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>True if the entry is starred by the user; false otherwise.</summary>
@@ -5728,8 +5728,8 @@ namespace Google.Apis.DataCatalog.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _expireTimeRaw;
@@ -5768,8 +5768,8 @@ namespace Google.Apis.DataCatalog.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpireTimeRaw);
-            set => ExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _updateTimeRaw;
@@ -5809,8 +5809,8 @@ namespace Google.Apis.DataCatalog.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -5954,8 +5954,8 @@ namespace Google.Apis.DataCatalog.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? TimestampValueDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(TimestampValueRaw);
-            set => TimestampValueRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(TimestampValueRaw);
+            set => TimestampValueRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -6050,8 +6050,8 @@ namespace Google.Apis.DataCatalog.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -6850,8 +6850,8 @@ namespace Google.Apis.DataCatalog.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ModifyTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ModifyTimeRaw);
-            set => ModifyTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ModifyTimeRaw);
+            set => ModifyTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -6974,8 +6974,8 @@ namespace Google.Apis.DataCatalog.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _expireTimeRaw;
@@ -7014,8 +7014,8 @@ namespace Google.Apis.DataCatalog.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpireTimeRaw);
-            set => ExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _updateTimeRaw;
@@ -7051,8 +7051,8 @@ namespace Google.Apis.DataCatalog.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -7191,8 +7191,8 @@ namespace Google.Apis.DataCatalog.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? TimestampValueDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(TimestampValueRaw);
-            set => TimestampValueRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(TimestampValueRaw);
+            set => TimestampValueRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -7392,8 +7392,8 @@ namespace Google.Apis.DataCatalog.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>

@@ -263,7 +263,7 @@ namespace Google.Apis.CloudSecurityToken.v1beta
         /// <param name="body">The body of the request.</param>
         public virtual TokenRequest Token(Google.Apis.CloudSecurityToken.v1beta.Data.GoogleIdentityStsV1betaExchangeTokenRequest body)
         {
-            return new TokenRequest(service, body);
+            return new TokenRequest(this.service, body);
         }
 
         /// <summary>

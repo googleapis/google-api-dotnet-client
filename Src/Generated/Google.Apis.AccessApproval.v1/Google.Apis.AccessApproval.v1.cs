@@ -308,7 +308,7 @@ namespace Google.Apis.AccessApproval.v1
             /// <param name="name">Name of the approval request to approve.</param>
             public virtual ApproveRequest Approve(Google.Apis.AccessApproval.v1.Data.ApproveApprovalRequestMessage body, string name)
             {
-                return new ApproveRequest(service, body, name);
+                return new ApproveRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -369,7 +369,7 @@ namespace Google.Apis.AccessApproval.v1
             /// <param name="name">Name of the ApprovalRequest to dismiss.</param>
             public virtual DismissRequest Dismiss(Google.Apis.AccessApproval.v1.Data.DismissApprovalRequestMessage body, string name)
             {
-                return new DismissRequest(service, body, name);
+                return new DismissRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -429,7 +429,7 @@ namespace Google.Apis.AccessApproval.v1
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets an approval request. Returns NOT_FOUND if the request does not exist.</summary>
@@ -482,7 +482,7 @@ namespace Google.Apis.AccessApproval.v1
             /// <param name="name">Name of the ApprovalRequest to invalidate.</param>
             public virtual InvalidateRequest Invalidate(Google.Apis.AccessApproval.v1.Data.InvalidateApprovalRequestMessage body, string name)
             {
-                return new InvalidateRequest(service, body, name);
+                return new InvalidateRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -544,7 +544,7 @@ namespace Google.Apis.AccessApproval.v1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>
@@ -644,7 +644,7 @@ namespace Google.Apis.AccessApproval.v1
         /// <param name="name">Name of the AccessApprovalSettings to delete.</param>
         public virtual DeleteAccessApprovalSettingsRequest DeleteAccessApprovalSettings(string name)
         {
-            return new DeleteAccessApprovalSettingsRequest(service, name);
+            return new DeleteAccessApprovalSettingsRequest(this.service, name);
         }
 
         /// <summary>
@@ -697,7 +697,7 @@ namespace Google.Apis.AccessApproval.v1
         /// </param>
         public virtual GetAccessApprovalSettingsRequest GetAccessApprovalSettings(string name)
         {
-            return new GetAccessApprovalSettingsRequest(service, name);
+            return new GetAccessApprovalSettingsRequest(this.service, name);
         }
 
         /// <summary>Gets the settings associated with a project, folder, or organization.</summary>
@@ -748,7 +748,7 @@ namespace Google.Apis.AccessApproval.v1
         /// <param name="name">Name of the AccessApprovalServiceAccount to retrieve.</param>
         public virtual GetServiceAccountRequest GetServiceAccount(string name)
         {
-            return new GetServiceAccountRequest(service, name);
+            return new GetServiceAccountRequest(this.service, name);
         }
 
         /// <summary>
@@ -803,7 +803,7 @@ namespace Google.Apis.AccessApproval.v1
         /// </param>
         public virtual UpdateAccessApprovalSettingsRequest UpdateAccessApprovalSettings(Google.Apis.AccessApproval.v1.Data.AccessApprovalSettings body, string name)
         {
-            return new UpdateAccessApprovalSettingsRequest(service, body, name);
+            return new UpdateAccessApprovalSettingsRequest(this.service, body, name);
         }
 
         /// <summary>
@@ -917,7 +917,7 @@ namespace Google.Apis.AccessApproval.v1
             /// <param name="name">Name of the approval request to approve.</param>
             public virtual ApproveRequest Approve(Google.Apis.AccessApproval.v1.Data.ApproveApprovalRequestMessage body, string name)
             {
-                return new ApproveRequest(service, body, name);
+                return new ApproveRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -978,7 +978,7 @@ namespace Google.Apis.AccessApproval.v1
             /// <param name="name">Name of the ApprovalRequest to dismiss.</param>
             public virtual DismissRequest Dismiss(Google.Apis.AccessApproval.v1.Data.DismissApprovalRequestMessage body, string name)
             {
-                return new DismissRequest(service, body, name);
+                return new DismissRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -1038,7 +1038,7 @@ namespace Google.Apis.AccessApproval.v1
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets an approval request. Returns NOT_FOUND if the request does not exist.</summary>
@@ -1091,7 +1091,7 @@ namespace Google.Apis.AccessApproval.v1
             /// <param name="name">Name of the ApprovalRequest to invalidate.</param>
             public virtual InvalidateRequest Invalidate(Google.Apis.AccessApproval.v1.Data.InvalidateApprovalRequestMessage body, string name)
             {
-                return new InvalidateRequest(service, body, name);
+                return new InvalidateRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -1153,7 +1153,7 @@ namespace Google.Apis.AccessApproval.v1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>
@@ -1253,7 +1253,7 @@ namespace Google.Apis.AccessApproval.v1
         /// <param name="name">Name of the AccessApprovalSettings to delete.</param>
         public virtual DeleteAccessApprovalSettingsRequest DeleteAccessApprovalSettings(string name)
         {
-            return new DeleteAccessApprovalSettingsRequest(service, name);
+            return new DeleteAccessApprovalSettingsRequest(this.service, name);
         }
 
         /// <summary>
@@ -1306,7 +1306,7 @@ namespace Google.Apis.AccessApproval.v1
         /// </param>
         public virtual GetAccessApprovalSettingsRequest GetAccessApprovalSettings(string name)
         {
-            return new GetAccessApprovalSettingsRequest(service, name);
+            return new GetAccessApprovalSettingsRequest(this.service, name);
         }
 
         /// <summary>Gets the settings associated with a project, folder, or organization.</summary>
@@ -1357,7 +1357,7 @@ namespace Google.Apis.AccessApproval.v1
         /// <param name="name">Name of the AccessApprovalServiceAccount to retrieve.</param>
         public virtual GetServiceAccountRequest GetServiceAccount(string name)
         {
-            return new GetServiceAccountRequest(service, name);
+            return new GetServiceAccountRequest(this.service, name);
         }
 
         /// <summary>
@@ -1412,7 +1412,7 @@ namespace Google.Apis.AccessApproval.v1
         /// </param>
         public virtual UpdateAccessApprovalSettingsRequest UpdateAccessApprovalSettings(Google.Apis.AccessApproval.v1.Data.AccessApprovalSettings body, string name)
         {
-            return new UpdateAccessApprovalSettingsRequest(service, body, name);
+            return new UpdateAccessApprovalSettingsRequest(this.service, body, name);
         }
 
         /// <summary>
@@ -1526,7 +1526,7 @@ namespace Google.Apis.AccessApproval.v1
             /// <param name="name">Name of the approval request to approve.</param>
             public virtual ApproveRequest Approve(Google.Apis.AccessApproval.v1.Data.ApproveApprovalRequestMessage body, string name)
             {
-                return new ApproveRequest(service, body, name);
+                return new ApproveRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -1587,7 +1587,7 @@ namespace Google.Apis.AccessApproval.v1
             /// <param name="name">Name of the ApprovalRequest to dismiss.</param>
             public virtual DismissRequest Dismiss(Google.Apis.AccessApproval.v1.Data.DismissApprovalRequestMessage body, string name)
             {
-                return new DismissRequest(service, body, name);
+                return new DismissRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -1647,7 +1647,7 @@ namespace Google.Apis.AccessApproval.v1
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets an approval request. Returns NOT_FOUND if the request does not exist.</summary>
@@ -1700,7 +1700,7 @@ namespace Google.Apis.AccessApproval.v1
             /// <param name="name">Name of the ApprovalRequest to invalidate.</param>
             public virtual InvalidateRequest Invalidate(Google.Apis.AccessApproval.v1.Data.InvalidateApprovalRequestMessage body, string name)
             {
-                return new InvalidateRequest(service, body, name);
+                return new InvalidateRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -1762,7 +1762,7 @@ namespace Google.Apis.AccessApproval.v1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>
@@ -1862,7 +1862,7 @@ namespace Google.Apis.AccessApproval.v1
         /// <param name="name">Name of the AccessApprovalSettings to delete.</param>
         public virtual DeleteAccessApprovalSettingsRequest DeleteAccessApprovalSettings(string name)
         {
-            return new DeleteAccessApprovalSettingsRequest(service, name);
+            return new DeleteAccessApprovalSettingsRequest(this.service, name);
         }
 
         /// <summary>
@@ -1915,7 +1915,7 @@ namespace Google.Apis.AccessApproval.v1
         /// </param>
         public virtual GetAccessApprovalSettingsRequest GetAccessApprovalSettings(string name)
         {
-            return new GetAccessApprovalSettingsRequest(service, name);
+            return new GetAccessApprovalSettingsRequest(this.service, name);
         }
 
         /// <summary>Gets the settings associated with a project, folder, or organization.</summary>
@@ -1966,7 +1966,7 @@ namespace Google.Apis.AccessApproval.v1
         /// <param name="name">Name of the AccessApprovalServiceAccount to retrieve.</param>
         public virtual GetServiceAccountRequest GetServiceAccount(string name)
         {
-            return new GetServiceAccountRequest(service, name);
+            return new GetServiceAccountRequest(this.service, name);
         }
 
         /// <summary>
@@ -2021,7 +2021,7 @@ namespace Google.Apis.AccessApproval.v1
         /// </param>
         public virtual UpdateAccessApprovalSettingsRequest UpdateAccessApprovalSettings(Google.Apis.AccessApproval.v1.Data.AccessApprovalSettings body, string name)
         {
-            return new UpdateAccessApprovalSettingsRequest(service, body, name);
+            return new UpdateAccessApprovalSettingsRequest(this.service, body, name);
         }
 
         /// <summary>
@@ -2295,8 +2295,8 @@ namespace Google.Apis.AccessApproval.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? RequestTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(RequestTimeRaw);
-            set => RequestTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(RequestTimeRaw);
+            set => RequestTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The requested access duration.</summary>
@@ -2341,8 +2341,8 @@ namespace Google.Apis.AccessApproval.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? RequestedExpirationDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(RequestedExpirationRaw);
-            set => RequestedExpirationRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(RequestedExpirationRaw);
+            set => RequestedExpirationRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The locations for which approval is being requested.</summary>
@@ -2406,8 +2406,8 @@ namespace Google.Apis.AccessApproval.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpireTimeRaw);
-            set => ExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -2450,8 +2450,8 @@ namespace Google.Apis.AccessApproval.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ApproveTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ApproveTimeRaw);
-            set => ApproveTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ApproveTimeRaw);
+            set => ApproveTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>True when the request has been auto-approved.</summary>
@@ -2491,8 +2491,8 @@ namespace Google.Apis.AccessApproval.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpireTimeRaw);
-            set => ExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _invalidateTimeRaw;
@@ -2530,8 +2530,8 @@ namespace Google.Apis.AccessApproval.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? InvalidateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(InvalidateTimeRaw);
-            set => InvalidateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(InvalidateTimeRaw);
+            set => InvalidateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The signature for the ApprovalRequest and details on how it was signed.</summary>
@@ -2585,8 +2585,8 @@ namespace Google.Apis.AccessApproval.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? DismissTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DismissTimeRaw);
-            set => DismissTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DismissTimeRaw);
+            set => DismissTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -2685,11 +2685,25 @@ namespace Google.Apis.AccessApproval.v1.Data
         public virtual string CustomerKmsKeyVersion { get; set; }
 
         /// <summary>
+        /// The hashing algorithm used for signature verification. It will only be present in the case of Google managed
+        /// keys.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleKeyAlgorithm")]
+        public virtual string GoogleKeyAlgorithm { get; set; }
+
+        /// <summary>
         /// The public key for the Google default signing, encoded in PEM format. The signature was created using a
         /// private key which may be verified using this public key.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googlePublicKeyPem")]
         public virtual string GooglePublicKeyPem { get; set; }
+
+        /// <summary>
+        /// The serialized ApprovalRequest message without the approve.signature_info field. This to allow the customer
+        /// to verify signatures if they want to.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serializedApprovalRequest")]
+        public virtual string SerializedApprovalRequest { get; set; }
 
         /// <summary>The digital signature.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signature")]

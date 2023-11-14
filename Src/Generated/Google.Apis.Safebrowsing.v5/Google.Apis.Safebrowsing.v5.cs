@@ -260,7 +260,7 @@ namespace Google.Apis.Safebrowsing.v5
         /// </summary>
         public virtual SearchRequest Search()
         {
-            return new SearchRequest(service);
+            return new SearchRequest(this.service);
         }
 
         /// <summary>

@@ -298,7 +298,7 @@ namespace Google.Apis.Storagetransfer.v1
         /// </param>
         public virtual GetRequest Get(string projectId)
         {
-            return new GetRequest(service, projectId);
+            return new GetRequest(this.service, projectId);
         }
 
         /// <summary>
@@ -385,7 +385,7 @@ namespace Google.Apis.Storagetransfer.v1
             /// <param name="projectId">Required. The ID of the Google Cloud project that owns the agent pool.</param>
             public virtual CreateRequest Create(Google.Apis.Storagetransfer.v1.Data.AgentPool body, string projectId)
             {
-                return new CreateRequest(service, body, projectId);
+                return new CreateRequest(this.service, body, projectId);
             }
 
             /// <summary>Creates an agent pool resource.</summary>
@@ -456,7 +456,7 @@ namespace Google.Apis.Storagetransfer.v1
             /// <param name="name">Required. The name of the agent pool to delete.</param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>Deletes an agent pool.</summary>
@@ -501,7 +501,7 @@ namespace Google.Apis.Storagetransfer.v1
             /// <param name="name">Required. The name of the agent pool to get.</param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets an agent pool.</summary>
@@ -546,7 +546,7 @@ namespace Google.Apis.Storagetransfer.v1
             /// <param name="projectId">Required. The ID of the Google Cloud project that owns the job.</param>
             public virtual ListRequest List(string projectId)
             {
-                return new ListRequest(service, projectId);
+                return new ListRequest(this.service, projectId);
             }
 
             /// <summary>Lists agent pools.</summary>
@@ -636,7 +636,7 @@ namespace Google.Apis.Storagetransfer.v1
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.Storagetransfer.v1.Data.AgentPool body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>Updates an existing agent pool resource.</summary>
@@ -723,7 +723,7 @@ namespace Google.Apis.Storagetransfer.v1
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.Storagetransfer.v1.Data.TransferJob body)
         {
-            return new CreateRequest(service, body);
+            return new CreateRequest(this.service, body);
         }
 
         /// <summary>Creates a transfer job that runs periodically.</summary>
@@ -763,7 +763,7 @@ namespace Google.Apis.Storagetransfer.v1
         /// <param name="projectId">Required. The ID of the Google Cloud project that owns the job.</param>
         public virtual DeleteRequest Delete(string jobName, string projectId)
         {
-            return new DeleteRequest(service, jobName, projectId);
+            return new DeleteRequest(this.service, jobName, projectId);
         }
 
         /// <summary>Deletes a transfer job. Deleting a transfer job sets its status to DELETED.</summary>
@@ -822,7 +822,7 @@ namespace Google.Apis.Storagetransfer.v1
         /// <param name="projectId">Required. The ID of the Google Cloud project that owns the job.</param>
         public virtual GetRequest Get(string jobName, string projectId)
         {
-            return new GetRequest(service, jobName, projectId);
+            return new GetRequest(this.service, jobName, projectId);
         }
 
         /// <summary>Gets a transfer job.</summary>
@@ -886,7 +886,7 @@ namespace Google.Apis.Storagetransfer.v1
         /// </param>
         public virtual ListRequest List(string filter)
         {
-            return new ListRequest(service, filter);
+            return new ListRequest(this.service, filter);
         }
 
         /// <summary>Lists transfer jobs.</summary>
@@ -967,7 +967,7 @@ namespace Google.Apis.Storagetransfer.v1
         /// <param name="jobName">Required. The name of job to update.</param>
         public virtual PatchRequest Patch(Google.Apis.Storagetransfer.v1.Data.UpdateTransferJobRequest body, string jobName)
         {
-            return new PatchRequest(service, body, jobName);
+            return new PatchRequest(this.service, body, jobName);
         }
 
         /// <summary>
@@ -1027,7 +1027,7 @@ namespace Google.Apis.Storagetransfer.v1
         /// <param name="jobName">Required. The name of the transfer job.</param>
         public virtual RunRequest Run(Google.Apis.Storagetransfer.v1.Data.RunTransferJobRequest body, string jobName)
         {
-            return new RunRequest(service, body, jobName);
+            return new RunRequest(this.service, body, jobName);
         }
 
         /// <summary>
@@ -1111,7 +1111,7 @@ namespace Google.Apis.Storagetransfer.v1
         /// <param name="name">The name of the operation resource to be cancelled.</param>
         public virtual CancelRequest Cancel(Google.Apis.Storagetransfer.v1.Data.CancelOperationRequest body, string name)
         {
-            return new CancelRequest(service, body, name);
+            return new CancelRequest(this.service, body, name);
         }
 
         /// <summary>
@@ -1179,7 +1179,7 @@ namespace Google.Apis.Storagetransfer.v1
         /// <param name="name">The name of the operation resource.</param>
         public virtual GetRequest Get(string name)
         {
-            return new GetRequest(service, name);
+            return new GetRequest(this.service, name);
         }
 
         /// <summary>
@@ -1237,7 +1237,7 @@ namespace Google.Apis.Storagetransfer.v1
         /// </param>
         public virtual ListRequest List(string name, string filter)
         {
-            return new ListRequest(service, name, filter);
+            return new ListRequest(this.service, name, filter);
         }
 
         /// <summary>
@@ -1330,7 +1330,7 @@ namespace Google.Apis.Storagetransfer.v1
         /// <param name="name">Required. The name of the transfer operation.</param>
         public virtual PauseRequest Pause(Google.Apis.Storagetransfer.v1.Data.PauseTransferOperationRequest body, string name)
         {
-            return new PauseRequest(service, body, name);
+            return new PauseRequest(this.service, body, name);
         }
 
         /// <summary>Pauses a transfer operation.</summary>
@@ -1383,7 +1383,7 @@ namespace Google.Apis.Storagetransfer.v1
         /// <param name="name">Required. The name of the transfer operation.</param>
         public virtual ResumeRequest Resume(Google.Apis.Storagetransfer.v1.Data.ResumeTransferOperationRequest body, string name)
         {
-            return new ResumeRequest(service, body, name);
+            return new ResumeRequest(this.service, body, name);
         }
 
         /// <summary>Resumes a transfer operation that is paused.</summary>
@@ -1784,8 +1784,8 @@ namespace Google.Apis.Storagetransfer.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EventStreamExpirationTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EventStreamExpirationTimeRaw);
-            set => EventStreamExpirationTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EventStreamExpirationTimeRaw);
+            set => EventStreamExpirationTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _eventStreamStartTimeRaw;
@@ -1827,8 +1827,8 @@ namespace Google.Apis.Storagetransfer.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EventStreamStartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EventStreamStartTimeRaw);
-            set => EventStreamStartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EventStreamStartTimeRaw);
+            set => EventStreamStartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -2179,8 +2179,8 @@ namespace Google.Apis.Storagetransfer.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LastModifiedBeforeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastModifiedBeforeRaw);
-            set => LastModifiedBeforeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastModifiedBeforeRaw);
+            set => LastModifiedBeforeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _lastModifiedSinceRaw;
@@ -2224,8 +2224,8 @@ namespace Google.Apis.Storagetransfer.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LastModifiedSinceDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastModifiedSinceRaw);
-            set => LastModifiedSinceRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastModifiedSinceRaw);
+            set => LastModifiedSinceRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -2637,8 +2637,8 @@ namespace Google.Apis.Storagetransfer.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreationTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreationTimeRaw);
-            set => CreationTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreationTimeRaw);
+            set => CreationTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _deletionTimeRaw;
@@ -2674,8 +2674,8 @@ namespace Google.Apis.Storagetransfer.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? DeletionTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DeletionTimeRaw);
-            set => DeletionTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DeletionTimeRaw);
+            set => DeletionTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -2726,8 +2726,8 @@ namespace Google.Apis.Storagetransfer.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LastModificationTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastModificationTimeRaw);
-            set => LastModificationTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastModificationTimeRaw);
+            set => LastModificationTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -2844,8 +2844,8 @@ namespace Google.Apis.Storagetransfer.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Summarizes errors encountered with sample error log entries.</summary>
@@ -2901,8 +2901,8 @@ namespace Google.Apis.Storagetransfer.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Status of the transfer operation.</summary>

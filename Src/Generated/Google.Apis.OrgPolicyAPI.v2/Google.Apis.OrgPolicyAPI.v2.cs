@@ -309,7 +309,7 @@ namespace Google.Apis.OrgPolicyAPI.v2
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists constraints that could be applied on the specified resource.</summary>
@@ -415,7 +415,7 @@ namespace Google.Apis.OrgPolicyAPI.v2
             /// </param>
             public virtual CreateRequest Create(Google.Apis.OrgPolicyAPI.v2.Data.GoogleCloudOrgpolicyV2Policy body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -480,7 +480,7 @@ namespace Google.Apis.OrgPolicyAPI.v2
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>
@@ -531,7 +531,7 @@ namespace Google.Apis.OrgPolicyAPI.v2
             /// <param name="name">Required. Resource name of the policy. See Policy for naming requirements.</param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>
@@ -586,7 +586,7 @@ namespace Google.Apis.OrgPolicyAPI.v2
             /// </param>
             public virtual GetEffectivePolicyRequest GetEffectivePolicy(string name)
             {
-                return new GetEffectivePolicyRequest(service, name);
+                return new GetEffectivePolicyRequest(this.service, name);
             }
 
             /// <summary>
@@ -640,7 +640,7 @@ namespace Google.Apis.OrgPolicyAPI.v2
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Retrieves all of the policies that exist on a particular resource.</summary>
@@ -735,7 +735,7 @@ namespace Google.Apis.OrgPolicyAPI.v2
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.OrgPolicyAPI.v2.Data.GoogleCloudOrgpolicyV2Policy body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -856,7 +856,7 @@ namespace Google.Apis.OrgPolicyAPI.v2
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists constraints that could be applied on the specified resource.</summary>
@@ -960,7 +960,7 @@ namespace Google.Apis.OrgPolicyAPI.v2
             /// </param>
             public virtual CreateRequest Create(Google.Apis.OrgPolicyAPI.v2.Data.GoogleCloudOrgpolicyV2CustomConstraint body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -1021,7 +1021,7 @@ namespace Google.Apis.OrgPolicyAPI.v2
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>
@@ -1077,7 +1077,7 @@ namespace Google.Apis.OrgPolicyAPI.v2
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>
@@ -1133,7 +1133,7 @@ namespace Google.Apis.OrgPolicyAPI.v2
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>
@@ -1223,7 +1223,7 @@ namespace Google.Apis.OrgPolicyAPI.v2
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.OrgPolicyAPI.v2.Data.GoogleCloudOrgpolicyV2CustomConstraint body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -1311,7 +1311,7 @@ namespace Google.Apis.OrgPolicyAPI.v2
             /// </param>
             public virtual CreateRequest Create(Google.Apis.OrgPolicyAPI.v2.Data.GoogleCloudOrgpolicyV2Policy body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -1376,7 +1376,7 @@ namespace Google.Apis.OrgPolicyAPI.v2
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>
@@ -1427,7 +1427,7 @@ namespace Google.Apis.OrgPolicyAPI.v2
             /// <param name="name">Required. Resource name of the policy. See Policy for naming requirements.</param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>
@@ -1482,7 +1482,7 @@ namespace Google.Apis.OrgPolicyAPI.v2
             /// </param>
             public virtual GetEffectivePolicyRequest GetEffectivePolicy(string name)
             {
-                return new GetEffectivePolicyRequest(service, name);
+                return new GetEffectivePolicyRequest(this.service, name);
             }
 
             /// <summary>
@@ -1536,7 +1536,7 @@ namespace Google.Apis.OrgPolicyAPI.v2
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Retrieves all of the policies that exist on a particular resource.</summary>
@@ -1631,7 +1631,7 @@ namespace Google.Apis.OrgPolicyAPI.v2
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.OrgPolicyAPI.v2.Data.GoogleCloudOrgpolicyV2Policy body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -1751,7 +1751,7 @@ namespace Google.Apis.OrgPolicyAPI.v2
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists constraints that could be applied on the specified resource.</summary>
@@ -1857,7 +1857,7 @@ namespace Google.Apis.OrgPolicyAPI.v2
             /// </param>
             public virtual CreateRequest Create(Google.Apis.OrgPolicyAPI.v2.Data.GoogleCloudOrgpolicyV2Policy body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -1922,7 +1922,7 @@ namespace Google.Apis.OrgPolicyAPI.v2
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>
@@ -1973,7 +1973,7 @@ namespace Google.Apis.OrgPolicyAPI.v2
             /// <param name="name">Required. Resource name of the policy. See Policy for naming requirements.</param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>
@@ -2028,7 +2028,7 @@ namespace Google.Apis.OrgPolicyAPI.v2
             /// </param>
             public virtual GetEffectivePolicyRequest GetEffectivePolicy(string name)
             {
-                return new GetEffectivePolicyRequest(service, name);
+                return new GetEffectivePolicyRequest(this.service, name);
             }
 
             /// <summary>
@@ -2082,7 +2082,7 @@ namespace Google.Apis.OrgPolicyAPI.v2
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Retrieves all of the policies that exist on a particular resource.</summary>
@@ -2177,7 +2177,7 @@ namespace Google.Apis.OrgPolicyAPI.v2
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.OrgPolicyAPI.v2.Data.GoogleCloudOrgpolicyV2Policy body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -2453,8 +2453,8 @@ namespace Google.Apis.OrgPolicyAPI.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -2635,8 +2635,8 @@ namespace Google.Apis.OrgPolicyAPI.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
     }
 

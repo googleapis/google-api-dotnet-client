@@ -300,7 +300,7 @@ namespace Google.Apis.Libraryagent.v1
             /// <param name="name">Required. The name of the book to borrow.</param>
             public virtual BorrowRequest Borrow(string name)
             {
-                return new BorrowRequest(service, name);
+                return new BorrowRequest(this.service, name);
             }
 
             /// <summary>
@@ -349,7 +349,7 @@ namespace Google.Apis.Libraryagent.v1
             /// <param name="name">Required. The name of the book to retrieve.</param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets a book. Returns NOT_FOUND if the book does not exist.</summary>
@@ -397,7 +397,7 @@ namespace Google.Apis.Libraryagent.v1
             /// <param name="parent">Required. The name of the shelf whose books we'd like to list.</param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>
@@ -478,7 +478,7 @@ namespace Google.Apis.Libraryagent.v1
             /// <param name="name">Required. The name of the book to return.</param>
             public virtual LibraryagentReturnRequest LibraryagentReturn(string name)
             {
-                return new LibraryagentReturnRequest(service, name);
+                return new LibraryagentReturnRequest(this.service, name);
             }
 
             /// <summary>
@@ -527,7 +527,7 @@ namespace Google.Apis.Libraryagent.v1
         /// <param name="name">Required. The name of the shelf to retrieve.</param>
         public virtual GetRequest Get(string name)
         {
-            return new GetRequest(service, name);
+            return new GetRequest(this.service, name);
         }
 
         /// <summary>Gets a shelf. Returns NOT_FOUND if the shelf does not exist.</summary>
@@ -574,7 +574,7 @@ namespace Google.Apis.Libraryagent.v1
         /// </summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>

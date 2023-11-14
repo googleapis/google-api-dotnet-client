@@ -272,7 +272,7 @@ namespace Google.Apis.Verifiedaccess.v1
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.Verifiedaccess.v1.Data.Empty body)
         {
-            return new CreateRequest(service, body);
+            return new CreateRequest(this.service, body);
         }
 
         /// <summary>CreateChallenge API</summary>
@@ -311,7 +311,7 @@ namespace Google.Apis.Verifiedaccess.v1
         /// <param name="body">The body of the request.</param>
         public virtual VerifyRequest Verify(Google.Apis.Verifiedaccess.v1.Data.VerifyChallengeResponseRequest body)
         {
-            return new VerifyRequest(service, body);
+            return new VerifyRequest(this.service, body);
         }
 
         /// <summary>VerifyChallengeResponse API</summary>

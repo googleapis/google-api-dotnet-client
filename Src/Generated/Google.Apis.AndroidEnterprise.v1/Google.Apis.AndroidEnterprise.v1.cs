@@ -338,7 +338,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// <param name="deviceId">The ID of the device.</param>
         public virtual ForceReportUploadRequest ForceReportUpload(string enterpriseId, string userId, string deviceId)
         {
-            return new ForceReportUploadRequest(service, enterpriseId, userId, deviceId);
+            return new ForceReportUploadRequest(this.service, enterpriseId, userId, deviceId);
         }
 
         /// <summary>
@@ -415,7 +415,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// <param name="deviceId">The ID of the device.</param>
         public virtual GetRequest Get(string enterpriseId, string userId, string deviceId)
         {
-            return new GetRequest(service, enterpriseId, userId, deviceId);
+            return new GetRequest(this.service, enterpriseId, userId, deviceId);
         }
 
         /// <summary>Retrieves the details of a device.</summary>
@@ -493,7 +493,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// <param name="deviceId">The ID of the device.</param>
         public virtual GetStateRequest GetState(string enterpriseId, string userId, string deviceId)
         {
-            return new GetStateRequest(service, enterpriseId, userId, deviceId);
+            return new GetStateRequest(this.service, enterpriseId, userId, deviceId);
         }
 
         /// <summary>
@@ -570,7 +570,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// <param name="userId">The ID of the user.</param>
         public virtual ListRequest List(string enterpriseId, string userId)
         {
-            return new ListRequest(service, enterpriseId, userId);
+            return new ListRequest(this.service, enterpriseId, userId);
         }
 
         /// <summary>Retrieves the IDs of all of a user's devices.</summary>
@@ -636,7 +636,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// <param name="deviceId">The ID of the device.</param>
         public virtual SetStateRequest SetState(Google.Apis.AndroidEnterprise.v1.Data.DeviceState body, string enterpriseId, string userId, string deviceId)
         {
-            return new SetStateRequest(service, body, enterpriseId, userId, deviceId);
+            return new SetStateRequest(this.service, body, enterpriseId, userId, deviceId);
         }
 
         /// <summary>
@@ -728,7 +728,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// <param name="deviceId">The ID of the device.</param>
         public virtual UpdateRequest Update(Google.Apis.AndroidEnterprise.v1.Data.Device body, string enterpriseId, string userId, string deviceId)
         {
-            return new UpdateRequest(service, body, enterpriseId, userId, deviceId);
+            return new UpdateRequest(this.service, body, enterpriseId, userId, deviceId);
         }
 
         /// <summary>
@@ -845,7 +845,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// </summary>
         public virtual AcknowledgeNotificationSetRequest AcknowledgeNotificationSet()
         {
-            return new AcknowledgeNotificationSetRequest(service);
+            return new AcknowledgeNotificationSetRequest(this.service);
         }
 
         /// <summary>
@@ -896,7 +896,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// </summary>
         public virtual CompleteSignupRequest CompleteSignup()
         {
-            return new CompleteSignupRequest(service);
+            return new CompleteSignupRequest(this.service);
         }
 
         /// <summary>
@@ -959,7 +959,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// <param name="enterpriseId">The ID of the enterprise.</param>
         public virtual CreateEnrollmentTokenRequest CreateEnrollmentToken(string enterpriseId)
         {
-            return new CreateEnrollmentTokenRequest(service, enterpriseId);
+            return new CreateEnrollmentTokenRequest(this.service, enterpriseId);
         }
 
         /// <summary>
@@ -1041,7 +1041,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// <param name="enterpriseId">The ID of the enterprise.</param>
         public virtual CreateWebTokenRequest CreateWebToken(Google.Apis.AndroidEnterprise.v1.Data.AdministratorWebTokenSpec body, string enterpriseId)
         {
-            return new CreateWebTokenRequest(service, body, enterpriseId);
+            return new CreateWebTokenRequest(this.service, body, enterpriseId);
         }
 
         /// <summary>
@@ -1098,7 +1098,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// <param name="token">Required. The token provided by the enterprise to register the EMM.</param>
         public virtual EnrollRequest Enroll(Google.Apis.AndroidEnterprise.v1.Data.Enterprise body, string token)
         {
-            return new EnrollRequest(service, body, token);
+            return new EnrollRequest(this.service, body, token);
         }
 
         /// <summary>Enrolls an enterprise with the calling EMM.</summary>
@@ -1149,7 +1149,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// <summary>Generates a sign-up URL.</summary>
         public virtual GenerateSignupUrlRequest GenerateSignupUrl()
         {
-            return new GenerateSignupUrlRequest(service);
+            return new GenerateSignupUrlRequest(this.service);
         }
 
         /// <summary>Generates a sign-up URL.</summary>
@@ -1199,7 +1199,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// <param name="enterpriseId">The ID of the enterprise.</param>
         public virtual GetRequest Get(string enterpriseId)
         {
-            return new GetRequest(service, enterpriseId);
+            return new GetRequest(this.service, enterpriseId);
         }
 
         /// <summary>Retrieves the name and domain of an enterprise.</summary>
@@ -1252,7 +1252,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// <param name="enterpriseId">The ID of the enterprise.</param>
         public virtual GetServiceAccountRequest GetServiceAccount(string enterpriseId)
         {
-            return new GetServiceAccountRequest(service, enterpriseId);
+            return new GetServiceAccountRequest(this.service, enterpriseId);
         }
 
         /// <summary>
@@ -1336,7 +1336,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// <param name="enterpriseId">The ID of the enterprise.</param>
         public virtual GetStoreLayoutRequest GetStoreLayout(string enterpriseId)
         {
-            return new GetStoreLayoutRequest(service, enterpriseId);
+            return new GetStoreLayoutRequest(this.service, enterpriseId);
         }
 
         /// <summary>
@@ -1389,7 +1389,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// <param name="domain">Required. The exact primary domain name of the enterprise to look up.</param>
         public virtual ListRequest List(string domain)
         {
-            return new ListRequest(service, domain);
+            return new ListRequest(this.service, domain);
         }
 
         /// <summary>
@@ -1449,7 +1449,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// </summary>
         public virtual PullNotificationSetRequest PullNotificationSet()
         {
-            return new PullNotificationSetRequest(service);
+            return new PullNotificationSetRequest(this.service);
         }
 
         /// <summary>
@@ -1531,7 +1531,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// <param name="enterpriseId">The ID of the enterprise.</param>
         public virtual SendTestPushNotificationRequest SendTestPushNotification(string enterpriseId)
         {
-            return new SendTestPushNotificationRequest(service, enterpriseId);
+            return new SendTestPushNotificationRequest(this.service, enterpriseId);
         }
 
         /// <summary>
@@ -1580,7 +1580,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// <param name="enterpriseId">The ID of the enterprise.</param>
         public virtual SetAccountRequest SetAccount(Google.Apis.AndroidEnterprise.v1.Data.EnterpriseAccount body, string enterpriseId)
         {
-            return new SetAccountRequest(service, body, enterpriseId);
+            return new SetAccountRequest(this.service, body, enterpriseId);
         }
 
         /// <summary>Sets the account that will be used to authenticate to the API as the enterprise.</summary>
@@ -1639,7 +1639,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// <param name="enterpriseId">The ID of the enterprise.</param>
         public virtual SetStoreLayoutRequest SetStoreLayout(Google.Apis.AndroidEnterprise.v1.Data.StoreLayout body, string enterpriseId)
         {
-            return new SetStoreLayoutRequest(service, body, enterpriseId);
+            return new SetStoreLayoutRequest(this.service, body, enterpriseId);
         }
 
         /// <summary>
@@ -1697,7 +1697,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// <param name="enterpriseId">The ID of the enterprise.</param>
         public virtual UnenrollRequest Unenroll(string enterpriseId)
         {
-            return new UnenrollRequest(service, enterpriseId);
+            return new UnenrollRequest(this.service, enterpriseId);
         }
 
         /// <summary>Unenrolls an enterprise from the calling EMM.</summary>
@@ -1764,7 +1764,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// </param>
         public virtual DeleteRequest Delete(string enterpriseId, string userId, string entitlementId)
         {
-            return new DeleteRequest(service, enterpriseId, userId, entitlementId);
+            return new DeleteRequest(this.service, enterpriseId, userId, entitlementId);
         }
 
         /// <summary>
@@ -1845,7 +1845,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// </param>
         public virtual GetRequest Get(string enterpriseId, string userId, string entitlementId)
         {
-            return new GetRequest(service, enterpriseId, userId, entitlementId);
+            return new GetRequest(this.service, enterpriseId, userId, entitlementId);
         }
 
         /// <summary>
@@ -1923,7 +1923,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// <param name="userId">The ID of the user.</param>
         public virtual ListRequest List(string enterpriseId, string userId)
         {
-            return new ListRequest(service, enterpriseId, userId);
+            return new ListRequest(this.service, enterpriseId, userId);
         }
 
         /// <summary>
@@ -1992,7 +1992,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// </param>
         public virtual UpdateRequest Update(Google.Apis.AndroidEnterprise.v1.Data.Entitlement body, string enterpriseId, string userId, string entitlementId)
         {
-            return new UpdateRequest(service, body, enterpriseId, userId, entitlementId);
+            return new UpdateRequest(this.service, body, enterpriseId, userId, entitlementId);
         }
 
         /// <summary>
@@ -2110,7 +2110,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// </param>
         public virtual GetRequest Get(string enterpriseId, string groupLicenseId)
         {
-            return new GetRequest(service, enterpriseId, groupLicenseId);
+            return new GetRequest(this.service, enterpriseId, groupLicenseId);
         }
 
         /// <summary>
@@ -2174,7 +2174,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// <param name="enterpriseId">The ID of the enterprise.</param>
         public virtual ListRequest List(string enterpriseId)
         {
-            return new ListRequest(service, enterpriseId);
+            return new ListRequest(this.service, enterpriseId);
         }
 
         /// <summary>
@@ -2243,7 +2243,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// </param>
         public virtual ListRequest List(string enterpriseId, string groupLicenseId)
         {
-            return new ListRequest(service, enterpriseId, groupLicenseId);
+            return new ListRequest(this.service, enterpriseId, groupLicenseId);
         }
 
         /// <summary>
@@ -2329,7 +2329,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// </param>
         public virtual DeleteRequest Delete(string enterpriseId, string userId, string deviceId, string installId)
         {
-            return new DeleteRequest(service, enterpriseId, userId, deviceId, installId);
+            return new DeleteRequest(this.service, enterpriseId, userId, deviceId, installId);
         }
 
         /// <summary>
@@ -2423,7 +2423,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// </param>
         public virtual GetRequest Get(string enterpriseId, string userId, string deviceId, string installId)
         {
-            return new GetRequest(service, enterpriseId, userId, deviceId, installId);
+            return new GetRequest(this.service, enterpriseId, userId, deviceId, installId);
         }
 
         /// <summary>Retrieves details of an installation of an app on a device.</summary>
@@ -2509,7 +2509,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// <param name="deviceId">The Android ID of the device.</param>
         public virtual ListRequest List(string enterpriseId, string userId, string deviceId)
         {
-            return new ListRequest(service, enterpriseId, userId, deviceId);
+            return new ListRequest(this.service, enterpriseId, userId, deviceId);
         }
 
         /// <summary>Retrieves the details of all apps installed on the specified device.</summary>
@@ -2589,7 +2589,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// </param>
         public virtual UpdateRequest Update(Google.Apis.AndroidEnterprise.v1.Data.Install body, string enterpriseId, string userId, string deviceId, string installId)
         {
-            return new UpdateRequest(service, body, enterpriseId, userId, deviceId, installId);
+            return new UpdateRequest(this.service, body, enterpriseId, userId, deviceId, installId);
         }
 
         /// <summary>
@@ -2703,7 +2703,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// </param>
         public virtual DeleteRequest Delete(string enterpriseId, string userId, string deviceId, string managedConfigurationForDeviceId)
         {
-            return new DeleteRequest(service, enterpriseId, userId, deviceId, managedConfigurationForDeviceId);
+            return new DeleteRequest(this.service, enterpriseId, userId, deviceId, managedConfigurationForDeviceId);
         }
 
         /// <summary>Removes a per-device managed configuration for an app for the specified device.</summary>
@@ -2792,7 +2792,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// </param>
         public virtual GetRequest Get(string enterpriseId, string userId, string deviceId, string managedConfigurationForDeviceId)
         {
-            return new GetRequest(service, enterpriseId, userId, deviceId, managedConfigurationForDeviceId);
+            return new GetRequest(this.service, enterpriseId, userId, deviceId, managedConfigurationForDeviceId);
         }
 
         /// <summary>Retrieves details of a per-device managed configuration.</summary>
@@ -2880,7 +2880,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// <param name="deviceId">The Android ID of the device.</param>
         public virtual ListRequest List(string enterpriseId, string userId, string deviceId)
         {
-            return new ListRequest(service, enterpriseId, userId, deviceId);
+            return new ListRequest(this.service, enterpriseId, userId, deviceId);
         }
 
         /// <summary>
@@ -2959,7 +2959,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// </param>
         public virtual UpdateRequest Update(Google.Apis.AndroidEnterprise.v1.Data.ManagedConfiguration body, string enterpriseId, string userId, string deviceId, string managedConfigurationForDeviceId)
         {
-            return new UpdateRequest(service, body, enterpriseId, userId, deviceId, managedConfigurationForDeviceId);
+            return new UpdateRequest(this.service, body, enterpriseId, userId, deviceId, managedConfigurationForDeviceId);
         }
 
         /// <summary>Adds or updates a per-device managed configuration for an app for the specified device.</summary>
@@ -3069,7 +3069,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// </param>
         public virtual DeleteRequest Delete(string enterpriseId, string userId, string managedConfigurationForUserId)
         {
-            return new DeleteRequest(service, enterpriseId, userId, managedConfigurationForUserId);
+            return new DeleteRequest(this.service, enterpriseId, userId, managedConfigurationForUserId);
         }
 
         /// <summary>Removes a per-user managed configuration for an app for the specified user.</summary>
@@ -3144,7 +3144,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// </param>
         public virtual GetRequest Get(string enterpriseId, string userId, string managedConfigurationForUserId)
         {
-            return new GetRequest(service, enterpriseId, userId, managedConfigurationForUserId);
+            return new GetRequest(this.service, enterpriseId, userId, managedConfigurationForUserId);
         }
 
         /// <summary>Retrieves details of a per-user managed configuration for an app for the specified user.</summary>
@@ -3216,7 +3216,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// <param name="userId">The ID of the user.</param>
         public virtual ListRequest List(string enterpriseId, string userId)
         {
-            return new ListRequest(service, enterpriseId, userId);
+            return new ListRequest(this.service, enterpriseId, userId);
         }
 
         /// <summary>Lists all the per-user managed configurations for the specified user. Only the ID is set.</summary>
@@ -3284,7 +3284,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// </param>
         public virtual UpdateRequest Update(Google.Apis.AndroidEnterprise.v1.Data.ManagedConfiguration body, string enterpriseId, string userId, string managedConfigurationForUserId)
         {
-            return new UpdateRequest(service, body, enterpriseId, userId, managedConfigurationForUserId);
+            return new UpdateRequest(this.service, body, enterpriseId, userId, managedConfigurationForUserId);
         }
 
         /// <summary>
@@ -3385,7 +3385,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// </param>
         public virtual ListRequest List(string enterpriseId, string productId)
         {
-            return new ListRequest(service, enterpriseId, productId);
+            return new ListRequest(this.service, enterpriseId, productId);
         }
 
         /// <summary>Lists all the managed configurations settings for the specified app.</summary>
@@ -3458,7 +3458,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// <param name="permissionId">The ID of the permission.</param>
         public virtual GetRequest Get(string permissionId)
         {
-            return new GetRequest(service, permissionId);
+            return new GetRequest(this.service, permissionId);
         }
 
         /// <summary>Retrieves details of an Android app permission for display to an enterprise admin.</summary>
@@ -3537,7 +3537,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// <param name="productId">The ID of the product.</param>
         public virtual ApproveRequest Approve(Google.Apis.AndroidEnterprise.v1.Data.ProductsApproveRequest body, string enterpriseId, string productId)
         {
-            return new ApproveRequest(service, body, enterpriseId, productId);
+            return new ApproveRequest(this.service, body, enterpriseId, productId);
         }
 
         /// <summary>
@@ -3616,7 +3616,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// <param name="productId">The ID of the product.</param>
         public virtual GenerateApprovalUrlRequest GenerateApprovalUrl(string enterpriseId, string productId)
         {
-            return new GenerateApprovalUrlRequest(service, enterpriseId, productId);
+            return new GenerateApprovalUrlRequest(this.service, enterpriseId, productId);
         }
 
         /// <summary>
@@ -3698,7 +3698,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// <param name="productId">The ID of the product, e.g. "app:com.google.android.gm".</param>
         public virtual GetRequest Get(string enterpriseId, string productId)
         {
-            return new GetRequest(service, enterpriseId, productId);
+            return new GetRequest(this.service, enterpriseId, productId);
         }
 
         /// <summary>Retrieves details of a product for display to an enterprise admin.</summary>
@@ -3774,7 +3774,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// <param name="productId">The ID of the product.</param>
         public virtual GetAppRestrictionsSchemaRequest GetAppRestrictionsSchema(string enterpriseId, string productId)
         {
-            return new GetAppRestrictionsSchemaRequest(service, enterpriseId, productId);
+            return new GetAppRestrictionsSchemaRequest(this.service, enterpriseId, productId);
         }
 
         /// <summary>
@@ -3850,7 +3850,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// <param name="productId">The ID of the product.</param>
         public virtual GetPermissionsRequest GetPermissions(string enterpriseId, string productId)
         {
-            return new GetPermissionsRequest(service, enterpriseId, productId);
+            return new GetPermissionsRequest(this.service, enterpriseId, productId);
         }
 
         /// <summary>Retrieves the Android app permissions required by this app.</summary>
@@ -3911,7 +3911,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// <param name="enterpriseId">The ID of the enterprise.</param>
         public virtual ListRequest List(string enterpriseId)
         {
-            return new ListRequest(service, enterpriseId);
+            return new ListRequest(this.service, enterpriseId);
         }
 
         /// <summary>
@@ -4039,7 +4039,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// <param name="productId">The ID of the product.</param>
         public virtual UnapproveRequest Unapprove(string enterpriseId, string productId)
         {
-            return new UnapproveRequest(service, enterpriseId, productId);
+            return new UnapproveRequest(this.service, enterpriseId, productId);
         }
 
         /// <summary>
@@ -4120,7 +4120,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// <param name="keyId">The ID of the key.</param>
         public virtual DeleteRequest Delete(string enterpriseId, string keyId)
         {
-            return new DeleteRequest(service, enterpriseId, keyId);
+            return new DeleteRequest(this.service, enterpriseId, keyId);
         }
 
         /// <summary>
@@ -4188,7 +4188,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// <param name="enterpriseId">The ID of the enterprise.</param>
         public virtual InsertRequest Insert(Google.Apis.AndroidEnterprise.v1.Data.ServiceAccountKey body, string enterpriseId)
         {
-            return new InsertRequest(service, body, enterpriseId);
+            return new InsertRequest(this.service, body, enterpriseId);
         }
 
         /// <summary>
@@ -4250,7 +4250,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// <param name="enterpriseId">The ID of the enterprise.</param>
         public virtual ListRequest List(string enterpriseId)
         {
-            return new ListRequest(service, enterpriseId);
+            return new ListRequest(this.service, enterpriseId);
         }
 
         /// <summary>
@@ -4317,7 +4317,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// <param name="clusterId">The ID of the cluster.</param>
         public virtual DeleteRequest Delete(string enterpriseId, string pageId, string clusterId)
         {
-            return new DeleteRequest(service, enterpriseId, pageId, clusterId);
+            return new DeleteRequest(this.service, enterpriseId, pageId, clusterId);
         }
 
         /// <summary>Deletes a cluster.</summary>
@@ -4390,7 +4390,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// <param name="clusterId">The ID of the cluster.</param>
         public virtual GetRequest Get(string enterpriseId, string pageId, string clusterId)
         {
-            return new GetRequest(service, enterpriseId, pageId, clusterId);
+            return new GetRequest(this.service, enterpriseId, pageId, clusterId);
         }
 
         /// <summary>Retrieves details of a cluster.</summary>
@@ -4463,7 +4463,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// <param name="pageId">The ID of the page.</param>
         public virtual InsertRequest Insert(Google.Apis.AndroidEnterprise.v1.Data.StoreCluster body, string enterpriseId, string pageId)
         {
-            return new InsertRequest(service, body, enterpriseId, pageId);
+            return new InsertRequest(this.service, body, enterpriseId, pageId);
         }
 
         /// <summary>Inserts a new cluster in a page.</summary>
@@ -4529,7 +4529,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// <param name="pageId">The ID of the page.</param>
         public virtual ListRequest List(string enterpriseId, string pageId)
         {
-            return new ListRequest(service, enterpriseId, pageId);
+            return new ListRequest(this.service, enterpriseId, pageId);
         }
 
         /// <summary>Retrieves the details of all clusters on the specified page.</summary>
@@ -4590,7 +4590,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// <param name="clusterId">The ID of the cluster.</param>
         public virtual UpdateRequest Update(Google.Apis.AndroidEnterprise.v1.Data.StoreCluster body, string enterpriseId, string pageId, string clusterId)
         {
-            return new UpdateRequest(service, body, enterpriseId, pageId, clusterId);
+            return new UpdateRequest(this.service, body, enterpriseId, pageId, clusterId);
         }
 
         /// <summary>Updates a cluster.</summary>
@@ -4684,7 +4684,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// <param name="pageId">The ID of the page.</param>
         public virtual DeleteRequest Delete(string enterpriseId, string pageId)
         {
-            return new DeleteRequest(service, enterpriseId, pageId);
+            return new DeleteRequest(this.service, enterpriseId, pageId);
         }
 
         /// <summary>Deletes a store page.</summary>
@@ -4743,7 +4743,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// <param name="pageId">The ID of the page.</param>
         public virtual GetRequest Get(string enterpriseId, string pageId)
         {
-            return new GetRequest(service, enterpriseId, pageId);
+            return new GetRequest(this.service, enterpriseId, pageId);
         }
 
         /// <summary>Retrieves details of a store page.</summary>
@@ -4802,7 +4802,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// <param name="enterpriseId">The ID of the enterprise.</param>
         public virtual InsertRequest Insert(Google.Apis.AndroidEnterprise.v1.Data.StorePage body, string enterpriseId)
         {
-            return new InsertRequest(service, body, enterpriseId);
+            return new InsertRequest(this.service, body, enterpriseId);
         }
 
         /// <summary>Inserts a new store page.</summary>
@@ -4854,7 +4854,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// <param name="enterpriseId">The ID of the enterprise.</param>
         public virtual ListRequest List(string enterpriseId)
         {
-            return new ListRequest(service, enterpriseId);
+            return new ListRequest(this.service, enterpriseId);
         }
 
         /// <summary>Retrieves the details of all pages in the store.</summary>
@@ -4901,7 +4901,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// <param name="pageId">The ID of the page.</param>
         public virtual UpdateRequest Update(Google.Apis.AndroidEnterprise.v1.Data.StorePage body, string enterpriseId, string pageId)
         {
-            return new UpdateRequest(service, body, enterpriseId, pageId);
+            return new UpdateRequest(this.service, body, enterpriseId, pageId);
         }
 
         /// <summary>Updates the content of a store page.</summary>
@@ -4982,7 +4982,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// <param name="userId">The ID of the user.</param>
         public virtual DeleteRequest Delete(string enterpriseId, string userId)
         {
-            return new DeleteRequest(service, enterpriseId, userId);
+            return new DeleteRequest(this.service, enterpriseId, userId);
         }
 
         /// <summary>Deleted an EMM-managed user.</summary>
@@ -5045,7 +5045,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// <param name="userId">The ID of the user.</param>
         public virtual GenerateAuthenticationTokenRequest GenerateAuthenticationToken(string enterpriseId, string userId)
         {
-            return new GenerateAuthenticationTokenRequest(service, enterpriseId, userId);
+            return new GenerateAuthenticationTokenRequest(this.service, enterpriseId, userId);
         }
 
         /// <summary>
@@ -5108,7 +5108,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// <param name="userId">The ID of the user.</param>
         public virtual GetRequest Get(string enterpriseId, string userId)
         {
-            return new GetRequest(service, enterpriseId, userId);
+            return new GetRequest(this.service, enterpriseId, userId);
         }
 
         /// <summary>Retrieves a user's details.</summary>
@@ -5170,7 +5170,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// <param name="userId">The ID of the user.</param>
         public virtual GetAvailableProductSetRequest GetAvailableProductSet(string enterpriseId, string userId)
         {
-            return new GetAvailableProductSetRequest(service, enterpriseId, userId);
+            return new GetAvailableProductSetRequest(this.service, enterpriseId, userId);
         }
 
         /// <summary>
@@ -5237,7 +5237,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// <param name="enterpriseId">The ID of the enterprise.</param>
         public virtual InsertRequest Insert(Google.Apis.AndroidEnterprise.v1.Data.User body, string enterpriseId)
         {
-            return new InsertRequest(service, body, enterpriseId);
+            return new InsertRequest(this.service, body, enterpriseId);
         }
 
         /// <summary>
@@ -5299,7 +5299,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// <param name="email">Required. The exact primary email address of the user to look up.</param>
         public virtual ListRequest List(string enterpriseId, string email)
         {
-            return new ListRequest(service, enterpriseId, email);
+            return new ListRequest(this.service, enterpriseId, email);
         }
 
         /// <summary>
@@ -5365,7 +5365,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// <param name="userId">The ID of the user.</param>
         public virtual RevokeDeviceAccessRequest RevokeDeviceAccess(string enterpriseId, string userId)
         {
-            return new RevokeDeviceAccessRequest(service, enterpriseId, userId);
+            return new RevokeDeviceAccessRequest(this.service, enterpriseId, userId);
         }
 
         /// <summary>
@@ -5433,7 +5433,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// <param name="userId">The ID of the user.</param>
         public virtual SetAvailableProductSetRequest SetAvailableProductSet(Google.Apis.AndroidEnterprise.v1.Data.ProductSet body, string enterpriseId, string userId)
         {
-            return new SetAvailableProductSetRequest(service, body, enterpriseId, userId);
+            return new SetAvailableProductSetRequest(this.service, body, enterpriseId, userId);
         }
 
         /// <summary>
@@ -5509,7 +5509,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// <param name="userId">The ID of the user.</param>
         public virtual UpdateRequest Update(Google.Apis.AndroidEnterprise.v1.Data.User body, string enterpriseId, string userId)
         {
-            return new UpdateRequest(service, body, enterpriseId, userId);
+            return new UpdateRequest(this.service, body, enterpriseId, userId);
         }
 
         /// <summary>
@@ -5594,7 +5594,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// <param name="webAppId">The ID of the web app.</param>
         public virtual DeleteRequest Delete(string enterpriseId, string webAppId)
         {
-            return new DeleteRequest(service, enterpriseId, webAppId);
+            return new DeleteRequest(this.service, enterpriseId, webAppId);
         }
 
         /// <summary>Deletes an existing web app.</summary>
@@ -5653,7 +5653,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// <param name="webAppId">The ID of the web app.</param>
         public virtual GetRequest Get(string enterpriseId, string webAppId)
         {
-            return new GetRequest(service, enterpriseId, webAppId);
+            return new GetRequest(this.service, enterpriseId, webAppId);
         }
 
         /// <summary>Gets an existing web app.</summary>
@@ -5712,7 +5712,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// <param name="enterpriseId">The ID of the enterprise.</param>
         public virtual InsertRequest Insert(Google.Apis.AndroidEnterprise.v1.Data.WebApp body, string enterpriseId)
         {
-            return new InsertRequest(service, body, enterpriseId);
+            return new InsertRequest(this.service, body, enterpriseId);
         }
 
         /// <summary>Creates a new web app for the enterprise.</summary>
@@ -5764,7 +5764,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// <param name="enterpriseId">The ID of the enterprise.</param>
         public virtual ListRequest List(string enterpriseId)
         {
-            return new ListRequest(service, enterpriseId);
+            return new ListRequest(this.service, enterpriseId);
         }
 
         /// <summary>Retrieves the details of all web apps for a given enterprise.</summary>
@@ -5811,7 +5811,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// <param name="webAppId">The ID of the web app.</param>
         public virtual UpdateRequest Update(Google.Apis.AndroidEnterprise.v1.Data.WebApp body, string enterpriseId, string webAppId)
         {
-            return new UpdateRequest(service, body, enterpriseId, webAppId);
+            return new UpdateRequest(this.service, body, enterpriseId, webAppId);
         }
 
         /// <summary>Updates an existing web app.</summary>
@@ -6366,9 +6366,7 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("report")]
         public virtual DeviceReport Report { get; set; }
 
-        /// <summary>
-        /// Retail brand for the device, if set. See https://developer.android.com/reference/android/os/Build.html#BRAND
-        /// </summary>
+        /// <summary>Retail brand for the device, if set. See android.os.Build.BRAND</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("retailBrand")]
         public virtual string RetailBrand { get; set; }
 
@@ -7155,14 +7153,11 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     /// </summary>
     public class Permission : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// A longer description of the Permissions resource, giving more details of what it affects. This field may be
-        /// absent.
-        /// </summary>
+        /// <summary>A longer description of the Permissions resource, giving more details of what it affects.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
-        /// <summary>The name of the permission. This field may be absent.</summary>
+        /// <summary>The name of the permission.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -7178,11 +7173,11 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     public class Policy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Recommended alternative: autoUpdateMode which is set per app, provides greater flexibility around update
-        /// frequency. When autoUpdateMode is set to AUTO_UPDATE_POSTPONED or AUTO_UPDATE_HIGH_PRIORITY, this field has
-        /// no effect. "choiceToTheUser" allows the device's user to configure the app update policy. "always" enables
-        /// auto updates. "never" disables auto updates. "wifiOnly" enables auto updates only when the device is
-        /// connected to wifi.
+        /// Controls when automatic app updates on the device can be applied. Recommended alternative: autoUpdateMode
+        /// which is set per app, provides greater flexibility around update frequency. When autoUpdateMode is set to
+        /// AUTO_UPDATE_POSTPONED or AUTO_UPDATE_HIGH_PRIORITY, autoUpdatePolicy has no effect. "choiceToTheUser" allows
+        /// the device's user to configure the app update policy. "always" enables auto updates. "never" disables auto
+        /// updates. "wifiOnly" enables auto updates only when the device is connected to wifi.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoUpdatePolicy")]
         public virtual string AutoUpdatePolicy { get; set; }
@@ -7437,16 +7432,17 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("autoInstallPolicy")]
         public virtual AutoInstallPolicy AutoInstallPolicy { get; set; }
 
-        /// <summary>The auto-update mode for the product.</summary>
+        /// <summary>
+        /// The auto-update mode for the product. When autoUpdateMode is used, it always takes precedence over the
+        /// user's choice. So when a user makes changes to the device settings manually, these changes are ignored.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoUpdateMode")]
         public virtual string AutoUpdateMode { get; set; }
 
         /// <summary>
         /// An authentication URL configuration for the authenticator app of an identity provider. This helps to launch
         /// the identity provider's authenticator app during the authentication happening in a private app using Android
-        /// WebView. Authenticator app should already be the [default
-        /// handler](https://developer.android.com/training/app-links/verify-site-associations) for the authentication
-        /// url on the device.
+        /// WebView. Authenticator app should already be the default handler for the authentication url on the device.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enterpriseAuthenticationAppLinkConfigs")]
         public virtual System.Collections.Generic.IList<EnterpriseAuthenticationAppLinkConfig> EnterpriseAuthenticationAppLinkConfigs { get; set; }

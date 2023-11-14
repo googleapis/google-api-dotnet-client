@@ -288,7 +288,7 @@ namespace Google.Apis.MyBusinessPlaceActions.v1
             /// </param>
             public virtual CreateRequest Create(Google.Apis.MyBusinessPlaceActions.v1.Data.PlaceActionLink body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -349,7 +349,7 @@ namespace Google.Apis.MyBusinessPlaceActions.v1
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>Deletes a place action link from the specified location.</summary>
@@ -394,7 +394,7 @@ namespace Google.Apis.MyBusinessPlaceActions.v1
             /// <param name="name">Required. The name of the place action link to fetch.</param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets the specified place action link.</summary>
@@ -441,7 +441,7 @@ namespace Google.Apis.MyBusinessPlaceActions.v1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists the place action links for the specified location.</summary>
@@ -539,7 +539,7 @@ namespace Google.Apis.MyBusinessPlaceActions.v1
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.MyBusinessPlaceActions.v1.Data.PlaceActionLink body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>Updates the specified place action link and returns it.</summary>
@@ -629,7 +629,7 @@ namespace Google.Apis.MyBusinessPlaceActions.v1
         /// <summary>Returns the list of available place action types for a location or country.</summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>Returns the list of available place action types for a location or country.</summary>
@@ -805,8 +805,8 @@ namespace Google.Apis.MyBusinessPlaceActions.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. Indicates whether this link can be edited by the client.</summary>
@@ -872,8 +872,8 @@ namespace Google.Apis.MyBusinessPlaceActions.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>

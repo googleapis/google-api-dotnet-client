@@ -321,7 +321,7 @@ namespace Google.Apis.CloudProfiler.v2
             /// <param name="parent">Parent project to create the profile in.</param>
             public virtual CreateRequest Create(Google.Apis.CloudProfiler.v2.Data.CreateProfileRequest body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -385,7 +385,7 @@ namespace Google.Apis.CloudProfiler.v2
             /// <param name="parent">Parent project to create the profile in.</param>
             public virtual CreateOfflineRequest CreateOffline(Google.Apis.CloudProfiler.v2.Data.Profile body, string parent)
             {
-                return new CreateOfflineRequest(service, body, parent);
+                return new CreateOfflineRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -445,7 +445,7 @@ namespace Google.Apis.CloudProfiler.v2
             /// <param name="name">Output only. Opaque, server-assigned, unique ID for this profile.</param>
             public virtual PatchRequest Patch(Google.Apis.CloudProfiler.v2.Data.Profile body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>

@@ -290,7 +290,7 @@ namespace Google.Apis.Analytics.v3
             /// </param>
             public virtual GetRequest Get(string ids, string startDate, string endDate, string metrics)
             {
-                return new GetRequest(service, ids, startDate, endDate, metrics);
+                return new GetRequest(this.service, ids, startDate, endDate, metrics);
             }
 
             /// <summary>Returns Analytics data for a view (profile).</summary>
@@ -571,7 +571,7 @@ namespace Google.Apis.Analytics.v3
             /// </param>
             public virtual GetRequest Get(string ids, string startDate, string endDate, string metrics)
             {
-                return new GetRequest(service, ids, startDate, endDate, metrics);
+                return new GetRequest(this.service, ids, startDate, endDate, metrics);
             }
 
             /// <summary>Returns Analytics Multi-Channel Funnels data for a view (profile).</summary>
@@ -793,7 +793,7 @@ namespace Google.Apis.Analytics.v3
             /// </param>
             public virtual GetRequest Get(string ids, string metrics)
             {
-                return new GetRequest(service, ids, metrics);
+                return new GetRequest(this.service, ids, metrics);
             }
 
             /// <summary>Returns real time data for a view (profile).</summary>
@@ -964,7 +964,7 @@ namespace Google.Apis.Analytics.v3
             /// </summary>
             public virtual ListRequest List()
             {
-                return new ListRequest(service);
+                return new ListRequest(this.service);
             }
 
             /// <summary>
@@ -1048,7 +1048,7 @@ namespace Google.Apis.Analytics.v3
             /// <param name="linkId">Link ID to delete the user link for.</param>
             public virtual DeleteRequest Delete(string accountId, string linkId)
             {
-                return new DeleteRequest(service, accountId, linkId);
+                return new DeleteRequest(this.service, accountId, linkId);
             }
 
             /// <summary>Removes a user from the given account.</summary>
@@ -1107,7 +1107,7 @@ namespace Google.Apis.Analytics.v3
             /// <param name="accountId">Account ID to create the user link for.</param>
             public virtual InsertRequest Insert(Google.Apis.Analytics.v3.Data.EntityUserLink body, string accountId)
             {
-                return new InsertRequest(service, body, accountId);
+                return new InsertRequest(this.service, body, accountId);
             }
 
             /// <summary>Adds a new user to the given account.</summary>
@@ -1159,7 +1159,7 @@ namespace Google.Apis.Analytics.v3
             /// <param name="accountId">Account ID to retrieve the user links for.</param>
             public virtual ListRequest List(string accountId)
             {
-                return new ListRequest(service, accountId);
+                return new ListRequest(this.service, accountId);
             }
 
             /// <summary>Lists account-user links for a given account.</summary>
@@ -1233,7 +1233,7 @@ namespace Google.Apis.Analytics.v3
             /// <param name="linkId">Link ID to update the account-user link for.</param>
             public virtual UpdateRequest Update(Google.Apis.Analytics.v3.Data.EntityUserLink body, string accountId, string linkId)
             {
-                return new UpdateRequest(service, body, accountId, linkId);
+                return new UpdateRequest(this.service, body, accountId, linkId);
             }
 
             /// <summary>Updates permissions for an existing user on the given account.</summary>
@@ -1315,7 +1315,7 @@ namespace Google.Apis.Analytics.v3
             /// <summary>Lists all accounts to which the user has access.</summary>
             public virtual ListRequest List()
             {
-                return new ListRequest(service);
+                return new ListRequest(this.service);
             }
 
             /// <summary>Lists all accounts to which the user has access.</summary>
@@ -1392,7 +1392,7 @@ namespace Google.Apis.Analytics.v3
             /// <param name="body">The body of the request.</param>
             public virtual HashClientIdRequest HashClientId(Google.Apis.Analytics.v3.Data.HashClientIdRequest body)
             {
-                return new HashClientIdRequest(service, body);
+                return new HashClientIdRequest(this.service, body);
             }
 
             /// <summary>Hashes the given Client ID.</summary>
@@ -1450,7 +1450,7 @@ namespace Google.Apis.Analytics.v3
             /// <param name="webPropertyId">Web property Id for the custom data sources to retrieve.</param>
             public virtual ListRequest List(string accountId, string webPropertyId)
             {
-                return new ListRequest(service, accountId, webPropertyId);
+                return new ListRequest(this.service, accountId, webPropertyId);
             }
 
             /// <summary>List custom data sources to which the user has access.</summary>
@@ -1555,7 +1555,7 @@ namespace Google.Apis.Analytics.v3
             /// <param name="customDimensionId">The ID of the custom dimension to retrieve.</param>
             public virtual GetRequest Get(string accountId, string webPropertyId, string customDimensionId)
             {
-                return new GetRequest(service, accountId, webPropertyId, customDimensionId);
+                return new GetRequest(this.service, accountId, webPropertyId, customDimensionId);
             }
 
             /// <summary>Get a custom dimension to which the user has access.</summary>
@@ -1628,7 +1628,7 @@ namespace Google.Apis.Analytics.v3
             /// <param name="webPropertyId">Web property ID for the custom dimension to create.</param>
             public virtual InsertRequest Insert(Google.Apis.Analytics.v3.Data.CustomDimension body, string accountId, string webPropertyId)
             {
-                return new InsertRequest(service, body, accountId, webPropertyId);
+                return new InsertRequest(this.service, body, accountId, webPropertyId);
             }
 
             /// <summary>Create a new custom dimension.</summary>
@@ -1694,7 +1694,7 @@ namespace Google.Apis.Analytics.v3
             /// <param name="webPropertyId">Web property ID for the custom dimensions to retrieve.</param>
             public virtual ListRequest List(string accountId, string webPropertyId)
             {
-                return new ListRequest(service, accountId, webPropertyId);
+                return new ListRequest(this.service, accountId, webPropertyId);
             }
 
             /// <summary>Lists custom dimensions to which the user has access.</summary>
@@ -1782,7 +1782,7 @@ namespace Google.Apis.Analytics.v3
             /// <param name="customDimensionId">Custom dimension ID for the custom dimension to update.</param>
             public virtual PatchRequest Patch(Google.Apis.Analytics.v3.Data.CustomDimension body, string accountId, string webPropertyId, string customDimensionId)
             {
-                return new PatchRequest(service, body, accountId, webPropertyId, customDimensionId);
+                return new PatchRequest(this.service, body, accountId, webPropertyId, customDimensionId);
             }
 
             /// <summary>Updates an existing custom dimension. This method supports patch semantics.</summary>
@@ -1878,7 +1878,7 @@ namespace Google.Apis.Analytics.v3
             /// <param name="customDimensionId">Custom dimension ID for the custom dimension to update.</param>
             public virtual UpdateRequest Update(Google.Apis.Analytics.v3.Data.CustomDimension body, string accountId, string webPropertyId, string customDimensionId)
             {
-                return new UpdateRequest(service, body, accountId, webPropertyId, customDimensionId);
+                return new UpdateRequest(this.service, body, accountId, webPropertyId, customDimensionId);
             }
 
             /// <summary>Updates an existing custom dimension.</summary>
@@ -1991,7 +1991,7 @@ namespace Google.Apis.Analytics.v3
             /// <param name="customMetricId">The ID of the custom metric to retrieve.</param>
             public virtual GetRequest Get(string accountId, string webPropertyId, string customMetricId)
             {
-                return new GetRequest(service, accountId, webPropertyId, customMetricId);
+                return new GetRequest(this.service, accountId, webPropertyId, customMetricId);
             }
 
             /// <summary>Get a custom metric to which the user has access.</summary>
@@ -2064,7 +2064,7 @@ namespace Google.Apis.Analytics.v3
             /// <param name="webPropertyId">Web property ID for the custom dimension to create.</param>
             public virtual InsertRequest Insert(Google.Apis.Analytics.v3.Data.CustomMetric body, string accountId, string webPropertyId)
             {
-                return new InsertRequest(service, body, accountId, webPropertyId);
+                return new InsertRequest(this.service, body, accountId, webPropertyId);
             }
 
             /// <summary>Create a new custom metric.</summary>
@@ -2130,7 +2130,7 @@ namespace Google.Apis.Analytics.v3
             /// <param name="webPropertyId">Web property ID for the custom metrics to retrieve.</param>
             public virtual ListRequest List(string accountId, string webPropertyId)
             {
-                return new ListRequest(service, accountId, webPropertyId);
+                return new ListRequest(this.service, accountId, webPropertyId);
             }
 
             /// <summary>Lists custom metrics to which the user has access.</summary>
@@ -2218,7 +2218,7 @@ namespace Google.Apis.Analytics.v3
             /// <param name="customMetricId">Custom metric ID for the custom metric to update.</param>
             public virtual PatchRequest Patch(Google.Apis.Analytics.v3.Data.CustomMetric body, string accountId, string webPropertyId, string customMetricId)
             {
-                return new PatchRequest(service, body, accountId, webPropertyId, customMetricId);
+                return new PatchRequest(this.service, body, accountId, webPropertyId, customMetricId);
             }
 
             /// <summary>Updates an existing custom metric. This method supports patch semantics.</summary>
@@ -2314,7 +2314,7 @@ namespace Google.Apis.Analytics.v3
             /// <param name="customMetricId">Custom metric ID for the custom metric to update.</param>
             public virtual UpdateRequest Update(Google.Apis.Analytics.v3.Data.CustomMetric body, string accountId, string webPropertyId, string customMetricId)
             {
-                return new UpdateRequest(service, body, accountId, webPropertyId, customMetricId);
+                return new UpdateRequest(this.service, body, accountId, webPropertyId, customMetricId);
             }
 
             /// <summary>Updates an existing custom metric.</summary>
@@ -2428,7 +2428,7 @@ namespace Google.Apis.Analytics.v3
             /// <param name="experimentId">ID of the experiment to delete</param>
             public virtual DeleteRequest Delete(string accountId, string webPropertyId, string profileId, string experimentId)
             {
-                return new DeleteRequest(service, accountId, webPropertyId, profileId, experimentId);
+                return new DeleteRequest(this.service, accountId, webPropertyId, profileId, experimentId);
             }
 
             /// <summary>Delete an experiment.</summary>
@@ -2515,7 +2515,7 @@ namespace Google.Apis.Analytics.v3
             /// <param name="experimentId">Experiment ID to retrieve the experiment for.</param>
             public virtual GetRequest Get(string accountId, string webPropertyId, string profileId, string experimentId)
             {
-                return new GetRequest(service, accountId, webPropertyId, profileId, experimentId);
+                return new GetRequest(this.service, accountId, webPropertyId, profileId, experimentId);
             }
 
             /// <summary>Returns an experiment to which the user has access.</summary>
@@ -2602,7 +2602,7 @@ namespace Google.Apis.Analytics.v3
             /// <param name="profileId">View (Profile) ID to create the experiment for.</param>
             public virtual InsertRequest Insert(Google.Apis.Analytics.v3.Data.Experiment body, string accountId, string webPropertyId, string profileId)
             {
-                return new InsertRequest(service, body, accountId, webPropertyId, profileId);
+                return new InsertRequest(this.service, body, accountId, webPropertyId, profileId);
             }
 
             /// <summary>Create a new experiment.</summary>
@@ -2682,7 +2682,7 @@ namespace Google.Apis.Analytics.v3
             /// <param name="profileId">View (Profile) ID to retrieve experiments for.</param>
             public virtual ListRequest List(string accountId, string webPropertyId, string profileId)
             {
-                return new ListRequest(service, accountId, webPropertyId, profileId);
+                return new ListRequest(this.service, accountId, webPropertyId, profileId);
             }
 
             /// <summary>Lists experiments to which the user has access.</summary>
@@ -2784,7 +2784,7 @@ namespace Google.Apis.Analytics.v3
             /// <param name="experimentId">Experiment ID of the experiment to update.</param>
             public virtual PatchRequest Patch(Google.Apis.Analytics.v3.Data.Experiment body, string accountId, string webPropertyId, string profileId, string experimentId)
             {
-                return new PatchRequest(service, body, accountId, webPropertyId, profileId, experimentId);
+                return new PatchRequest(this.service, body, accountId, webPropertyId, profileId, experimentId);
             }
 
             /// <summary>Update an existing experiment. This method supports patch semantics.</summary>
@@ -2879,7 +2879,7 @@ namespace Google.Apis.Analytics.v3
             /// <param name="experimentId">Experiment ID of the experiment to update.</param>
             public virtual UpdateRequest Update(Google.Apis.Analytics.v3.Data.Experiment body, string accountId, string webPropertyId, string profileId, string experimentId)
             {
-                return new UpdateRequest(service, body, accountId, webPropertyId, profileId, experimentId);
+                return new UpdateRequest(this.service, body, accountId, webPropertyId, profileId, experimentId);
             }
 
             /// <summary>Update an existing experiment.</summary>
@@ -2989,7 +2989,7 @@ namespace Google.Apis.Analytics.v3
             /// <param name="filterId">ID of the filter to be deleted.</param>
             public virtual DeleteRequest Delete(string accountId, string filterId)
             {
-                return new DeleteRequest(service, accountId, filterId);
+                return new DeleteRequest(this.service, accountId, filterId);
             }
 
             /// <summary>Delete a filter.</summary>
@@ -3048,7 +3048,7 @@ namespace Google.Apis.Analytics.v3
             /// <param name="filterId">Filter ID to retrieve filters for.</param>
             public virtual GetRequest Get(string accountId, string filterId)
             {
-                return new GetRequest(service, accountId, filterId);
+                return new GetRequest(this.service, accountId, filterId);
             }
 
             /// <summary>Returns filters to which the user has access.</summary>
@@ -3107,7 +3107,7 @@ namespace Google.Apis.Analytics.v3
             /// <param name="accountId">Account ID to create filter for.</param>
             public virtual InsertRequest Insert(Google.Apis.Analytics.v3.Data.Filter body, string accountId)
             {
-                return new InsertRequest(service, body, accountId);
+                return new InsertRequest(this.service, body, accountId);
             }
 
             /// <summary>Create a new filter.</summary>
@@ -3159,7 +3159,7 @@ namespace Google.Apis.Analytics.v3
             /// <param name="accountId">Account ID to retrieve filters for.</param>
             public virtual ListRequest List(string accountId)
             {
-                return new ListRequest(service, accountId);
+                return new ListRequest(this.service, accountId);
             }
 
             /// <summary>Lists all filters for an account</summary>
@@ -3233,7 +3233,7 @@ namespace Google.Apis.Analytics.v3
             /// <param name="filterId">ID of the filter to be updated.</param>
             public virtual PatchRequest Patch(Google.Apis.Analytics.v3.Data.Filter body, string accountId, string filterId)
             {
-                return new PatchRequest(service, body, accountId, filterId);
+                return new PatchRequest(this.service, body, accountId, filterId);
             }
 
             /// <summary>Updates an existing filter. This method supports patch semantics.</summary>
@@ -3300,7 +3300,7 @@ namespace Google.Apis.Analytics.v3
             /// <param name="filterId">ID of the filter to be updated.</param>
             public virtual UpdateRequest Update(Google.Apis.Analytics.v3.Data.Filter body, string accountId, string filterId)
             {
-                return new UpdateRequest(service, body, accountId, filterId);
+                return new UpdateRequest(this.service, body, accountId, filterId);
             }
 
             /// <summary>Updates an existing filter.</summary>
@@ -3386,7 +3386,7 @@ namespace Google.Apis.Analytics.v3
             /// <param name="goalId">Goal ID to retrieve the goal for.</param>
             public virtual GetRequest Get(string accountId, string webPropertyId, string profileId, string goalId)
             {
-                return new GetRequest(service, accountId, webPropertyId, profileId, goalId);
+                return new GetRequest(this.service, accountId, webPropertyId, profileId, goalId);
             }
 
             /// <summary>Gets a goal to which the user has access.</summary>
@@ -3473,7 +3473,7 @@ namespace Google.Apis.Analytics.v3
             /// <param name="profileId">View (Profile) ID to create the goal for.</param>
             public virtual InsertRequest Insert(Google.Apis.Analytics.v3.Data.Goal body, string accountId, string webPropertyId, string profileId)
             {
-                return new InsertRequest(service, body, accountId, webPropertyId, profileId);
+                return new InsertRequest(this.service, body, accountId, webPropertyId, profileId);
             }
 
             /// <summary>Create a new goal.</summary>
@@ -3562,7 +3562,7 @@ namespace Google.Apis.Analytics.v3
             /// </param>
             public virtual ListRequest List(string accountId, string webPropertyId, string profileId)
             {
-                return new ListRequest(service, accountId, webPropertyId, profileId);
+                return new ListRequest(this.service, accountId, webPropertyId, profileId);
             }
 
             /// <summary>Lists goals to which the user has access.</summary>
@@ -3673,7 +3673,7 @@ namespace Google.Apis.Analytics.v3
             /// <param name="goalId">Index of the goal to be updated.</param>
             public virtual PatchRequest Patch(Google.Apis.Analytics.v3.Data.Goal body, string accountId, string webPropertyId, string profileId, string goalId)
             {
-                return new PatchRequest(service, body, accountId, webPropertyId, profileId, goalId);
+                return new PatchRequest(this.service, body, accountId, webPropertyId, profileId, goalId);
             }
 
             /// <summary>Updates an existing goal. This method supports patch semantics.</summary>
@@ -3768,7 +3768,7 @@ namespace Google.Apis.Analytics.v3
             /// <param name="goalId">Index of the goal to be updated.</param>
             public virtual UpdateRequest Update(Google.Apis.Analytics.v3.Data.Goal body, string accountId, string webPropertyId, string profileId, string goalId)
             {
-                return new UpdateRequest(service, body, accountId, webPropertyId, profileId, goalId);
+                return new UpdateRequest(this.service, body, accountId, webPropertyId, profileId, goalId);
             }
 
             /// <summary>Updates an existing goal.</summary>
@@ -3880,7 +3880,7 @@ namespace Google.Apis.Analytics.v3
             /// <param name="linkId">ID of the profile filter link to delete.</param>
             public virtual DeleteRequest Delete(string accountId, string webPropertyId, string profileId, string linkId)
             {
-                return new DeleteRequest(service, accountId, webPropertyId, profileId, linkId);
+                return new DeleteRequest(this.service, accountId, webPropertyId, profileId, linkId);
             }
 
             /// <summary>Delete a profile filter link.</summary>
@@ -3967,7 +3967,7 @@ namespace Google.Apis.Analytics.v3
             /// <param name="linkId">ID of the profile filter link.</param>
             public virtual GetRequest Get(string accountId, string webPropertyId, string profileId, string linkId)
             {
-                return new GetRequest(service, accountId, webPropertyId, profileId, linkId);
+                return new GetRequest(this.service, accountId, webPropertyId, profileId, linkId);
             }
 
             /// <summary>Returns a single profile filter link.</summary>
@@ -4054,7 +4054,7 @@ namespace Google.Apis.Analytics.v3
             /// <param name="profileId">Profile ID to create filter link for.</param>
             public virtual InsertRequest Insert(Google.Apis.Analytics.v3.Data.ProfileFilterLink body, string accountId, string webPropertyId, string profileId)
             {
-                return new InsertRequest(service, body, accountId, webPropertyId, profileId);
+                return new InsertRequest(this.service, body, accountId, webPropertyId, profileId);
             }
 
             /// <summary>Create a new profile filter link.</summary>
@@ -4140,7 +4140,7 @@ namespace Google.Apis.Analytics.v3
             /// </param>
             public virtual ListRequest List(string accountId, string webPropertyId, string profileId)
             {
-                return new ListRequest(service, accountId, webPropertyId, profileId);
+                return new ListRequest(this.service, accountId, webPropertyId, profileId);
             }
 
             /// <summary>Lists all profile filter links for a profile.</summary>
@@ -4248,7 +4248,7 @@ namespace Google.Apis.Analytics.v3
             /// <param name="linkId">ID of the profile filter link to be updated.</param>
             public virtual PatchRequest Patch(Google.Apis.Analytics.v3.Data.ProfileFilterLink body, string accountId, string webPropertyId, string profileId, string linkId)
             {
-                return new PatchRequest(service, body, accountId, webPropertyId, profileId, linkId);
+                return new PatchRequest(this.service, body, accountId, webPropertyId, profileId, linkId);
             }
 
             /// <summary>Update an existing profile filter link. This method supports patch semantics.</summary>
@@ -4343,7 +4343,7 @@ namespace Google.Apis.Analytics.v3
             /// <param name="linkId">ID of the profile filter link to be updated.</param>
             public virtual UpdateRequest Update(Google.Apis.Analytics.v3.Data.ProfileFilterLink body, string accountId, string webPropertyId, string profileId, string linkId)
             {
-                return new UpdateRequest(service, body, accountId, webPropertyId, profileId, linkId);
+                return new UpdateRequest(this.service, body, accountId, webPropertyId, profileId, linkId);
             }
 
             /// <summary>Update an existing profile filter link.</summary>
@@ -4455,7 +4455,7 @@ namespace Google.Apis.Analytics.v3
             /// <param name="linkId">Link ID to delete the user link for.</param>
             public virtual DeleteRequest Delete(string accountId, string webPropertyId, string profileId, string linkId)
             {
-                return new DeleteRequest(service, accountId, webPropertyId, profileId, linkId);
+                return new DeleteRequest(this.service, accountId, webPropertyId, profileId, linkId);
             }
 
             /// <summary>Removes a user from the given view (profile).</summary>
@@ -4542,7 +4542,7 @@ namespace Google.Apis.Analytics.v3
             /// <param name="profileId">View (Profile) ID to create the user link for.</param>
             public virtual InsertRequest Insert(Google.Apis.Analytics.v3.Data.EntityUserLink body, string accountId, string webPropertyId, string profileId)
             {
-                return new InsertRequest(service, body, accountId, webPropertyId, profileId);
+                return new InsertRequest(this.service, body, accountId, webPropertyId, profileId);
             }
 
             /// <summary>Adds a new user to the given view (profile).</summary>
@@ -4628,7 +4628,7 @@ namespace Google.Apis.Analytics.v3
             /// </param>
             public virtual ListRequest List(string accountId, string webPropertyId, string profileId)
             {
-                return new ListRequest(service, accountId, webPropertyId, profileId);
+                return new ListRequest(this.service, accountId, webPropertyId, profileId);
             }
 
             /// <summary>Lists profile-user links for a given view (profile).</summary>
@@ -4736,7 +4736,7 @@ namespace Google.Apis.Analytics.v3
             /// <param name="linkId">Link ID to update the user link for.</param>
             public virtual UpdateRequest Update(Google.Apis.Analytics.v3.Data.EntityUserLink body, string accountId, string webPropertyId, string profileId, string linkId)
             {
-                return new UpdateRequest(service, body, accountId, webPropertyId, profileId, linkId);
+                return new UpdateRequest(this.service, body, accountId, webPropertyId, profileId, linkId);
             }
 
             /// <summary>Updates permissions for an existing user on the given view (profile).</summary>
@@ -4847,7 +4847,7 @@ namespace Google.Apis.Analytics.v3
             /// <param name="profileId">ID of the view (profile) to be deleted.</param>
             public virtual DeleteRequest Delete(string accountId, string webPropertyId, string profileId)
             {
-                return new DeleteRequest(service, accountId, webPropertyId, profileId);
+                return new DeleteRequest(this.service, accountId, webPropertyId, profileId);
             }
 
             /// <summary>Deletes a view (profile).</summary>
@@ -4920,7 +4920,7 @@ namespace Google.Apis.Analytics.v3
             /// <param name="profileId">View (Profile) ID to retrieve the view (profile) for.</param>
             public virtual GetRequest Get(string accountId, string webPropertyId, string profileId)
             {
-                return new GetRequest(service, accountId, webPropertyId, profileId);
+                return new GetRequest(this.service, accountId, webPropertyId, profileId);
             }
 
             /// <summary>Gets a view (profile) to which the user has access.</summary>
@@ -4993,7 +4993,7 @@ namespace Google.Apis.Analytics.v3
             /// <param name="webPropertyId">Web property ID to create the view (profile) for.</param>
             public virtual InsertRequest Insert(Google.Apis.Analytics.v3.Data.Profile body, string accountId, string webPropertyId)
             {
-                return new InsertRequest(service, body, accountId, webPropertyId);
+                return new InsertRequest(this.service, body, accountId, webPropertyId);
             }
 
             /// <summary>Create a new view (profile).</summary>
@@ -5065,7 +5065,7 @@ namespace Google.Apis.Analytics.v3
             /// </param>
             public virtual ListRequest List(string accountId, string webPropertyId)
             {
-                return new ListRequest(service, accountId, webPropertyId);
+                return new ListRequest(this.service, accountId, webPropertyId);
             }
 
             /// <summary>Lists views (profiles) to which the user has access.</summary>
@@ -5159,7 +5159,7 @@ namespace Google.Apis.Analytics.v3
             /// <param name="profileId">ID of the view (profile) to be updated.</param>
             public virtual PatchRequest Patch(Google.Apis.Analytics.v3.Data.Profile body, string accountId, string webPropertyId, string profileId)
             {
-                return new PatchRequest(service, body, accountId, webPropertyId, profileId);
+                return new PatchRequest(this.service, body, accountId, webPropertyId, profileId);
             }
 
             /// <summary>Updates an existing view (profile). This method supports patch semantics.</summary>
@@ -5240,7 +5240,7 @@ namespace Google.Apis.Analytics.v3
             /// <param name="profileId">ID of the view (profile) to be updated.</param>
             public virtual UpdateRequest Update(Google.Apis.Analytics.v3.Data.Profile body, string accountId, string webPropertyId, string profileId)
             {
-                return new UpdateRequest(service, body, accountId, webPropertyId, profileId);
+                return new UpdateRequest(this.service, body, accountId, webPropertyId, profileId);
             }
 
             /// <summary>Updates an existing view (profile).</summary>
@@ -5338,7 +5338,7 @@ namespace Google.Apis.Analytics.v3
             /// <param name="remarketingAudienceId">The ID of the remarketing audience to delete.</param>
             public virtual DeleteRequest Delete(string accountId, string webPropertyId, string remarketingAudienceId)
             {
-                return new DeleteRequest(service, accountId, webPropertyId, remarketingAudienceId);
+                return new DeleteRequest(this.service, accountId, webPropertyId, remarketingAudienceId);
             }
 
             /// <summary>Delete a remarketing audience.</summary>
@@ -5411,7 +5411,7 @@ namespace Google.Apis.Analytics.v3
             /// <param name="remarketingAudienceId">The ID of the remarketing audience to retrieve.</param>
             public virtual GetRequest Get(string accountId, string webPropertyId, string remarketingAudienceId)
             {
-                return new GetRequest(service, accountId, webPropertyId, remarketingAudienceId);
+                return new GetRequest(this.service, accountId, webPropertyId, remarketingAudienceId);
             }
 
             /// <summary>Gets a remarketing audience to which the user has access.</summary>
@@ -5484,7 +5484,7 @@ namespace Google.Apis.Analytics.v3
             /// <param name="webPropertyId">Web property ID for which to create the remarketing audience.</param>
             public virtual InsertRequest Insert(Google.Apis.Analytics.v3.Data.RemarketingAudience body, string accountId, string webPropertyId)
             {
-                return new InsertRequest(service, body, accountId, webPropertyId);
+                return new InsertRequest(this.service, body, accountId, webPropertyId);
             }
 
             /// <summary>Creates a new remarketing audience.</summary>
@@ -5550,7 +5550,7 @@ namespace Google.Apis.Analytics.v3
             /// <param name="webPropertyId">The web property ID of the remarketing audiences to retrieve.</param>
             public virtual ListRequest List(string accountId, string webPropertyId)
             {
-                return new ListRequest(service, accountId, webPropertyId);
+                return new ListRequest(this.service, accountId, webPropertyId);
             }
 
             /// <summary>Lists remarketing audiences to which the user has access.</summary>
@@ -5649,7 +5649,7 @@ namespace Google.Apis.Analytics.v3
             /// <param name="remarketingAudienceId">The ID of the remarketing audience to update.</param>
             public virtual PatchRequest Patch(Google.Apis.Analytics.v3.Data.RemarketingAudience body, string accountId, string webPropertyId, string remarketingAudienceId)
             {
-                return new PatchRequest(service, body, accountId, webPropertyId, remarketingAudienceId);
+                return new PatchRequest(this.service, body, accountId, webPropertyId, remarketingAudienceId);
             }
 
             /// <summary>Updates an existing remarketing audience. This method supports patch semantics.</summary>
@@ -5730,7 +5730,7 @@ namespace Google.Apis.Analytics.v3
             /// <param name="remarketingAudienceId">The ID of the remarketing audience to update.</param>
             public virtual UpdateRequest Update(Google.Apis.Analytics.v3.Data.RemarketingAudience body, string accountId, string webPropertyId, string remarketingAudienceId)
             {
-                return new UpdateRequest(service, body, accountId, webPropertyId, remarketingAudienceId);
+                return new UpdateRequest(this.service, body, accountId, webPropertyId, remarketingAudienceId);
             }
 
             /// <summary>Updates an existing remarketing audience.</summary>
@@ -5825,7 +5825,7 @@ namespace Google.Apis.Analytics.v3
             /// <summary>Lists segments to which the user has access.</summary>
             public virtual ListRequest List()
             {
-                return new ListRequest(service);
+                return new ListRequest(this.service);
             }
 
             /// <summary>Lists segments to which the user has access.</summary>
@@ -5905,7 +5905,7 @@ namespace Google.Apis.Analytics.v3
             /// <param name="unsampledReportId">ID of the unsampled report to be deleted.</param>
             public virtual DeleteRequest Delete(string accountId, string webPropertyId, string profileId, string unsampledReportId)
             {
-                return new DeleteRequest(service, accountId, webPropertyId, profileId, unsampledReportId);
+                return new DeleteRequest(this.service, accountId, webPropertyId, profileId, unsampledReportId);
             }
 
             /// <summary>Deletes an unsampled report.</summary>
@@ -5992,7 +5992,7 @@ namespace Google.Apis.Analytics.v3
             /// <param name="unsampledReportId">ID of the unsampled report to retrieve.</param>
             public virtual GetRequest Get(string accountId, string webPropertyId, string profileId, string unsampledReportId)
             {
-                return new GetRequest(service, accountId, webPropertyId, profileId, unsampledReportId);
+                return new GetRequest(this.service, accountId, webPropertyId, profileId, unsampledReportId);
             }
 
             /// <summary>Returns a single unsampled report.</summary>
@@ -6079,7 +6079,7 @@ namespace Google.Apis.Analytics.v3
             /// <param name="profileId">View (Profile) ID to create the unsampled report for.</param>
             public virtual InsertRequest Insert(Google.Apis.Analytics.v3.Data.UnsampledReport body, string accountId, string webPropertyId, string profileId)
             {
-                return new InsertRequest(service, body, accountId, webPropertyId, profileId);
+                return new InsertRequest(this.service, body, accountId, webPropertyId, profileId);
             }
 
             /// <summary>Create a new unsampled report.</summary>
@@ -6167,7 +6167,7 @@ namespace Google.Apis.Analytics.v3
             /// </param>
             public virtual ListRequest List(string accountId, string webPropertyId, string profileId)
             {
-                return new ListRequest(service, accountId, webPropertyId, profileId);
+                return new ListRequest(this.service, accountId, webPropertyId, profileId);
             }
 
             /// <summary>Lists unsampled reports to which the user has access.</summary>
@@ -6294,7 +6294,7 @@ namespace Google.Apis.Analytics.v3
             /// <param name="customDataSourceId">Custom data source Id for the uploads to be deleted.</param>
             public virtual DeleteUploadDataRequest DeleteUploadData(Google.Apis.Analytics.v3.Data.AnalyticsDataimportDeleteUploadDataRequest body, string accountId, string webPropertyId, string customDataSourceId)
             {
-                return new DeleteUploadDataRequest(service, body, accountId, webPropertyId, customDataSourceId);
+                return new DeleteUploadDataRequest(this.service, body, accountId, webPropertyId, customDataSourceId);
             }
 
             /// <summary>Delete data associated with a previous upload.</summary>
@@ -6375,7 +6375,7 @@ namespace Google.Apis.Analytics.v3
             /// <param name="uploadId">Upload Id to retrieve.</param>
             public virtual GetRequest Get(string accountId, string webPropertyId, string customDataSourceId, string uploadId)
             {
-                return new GetRequest(service, accountId, webPropertyId, customDataSourceId, uploadId);
+                return new GetRequest(this.service, accountId, webPropertyId, customDataSourceId, uploadId);
             }
 
             /// <summary>List uploads to which the user has access.</summary>
@@ -6461,7 +6461,7 @@ namespace Google.Apis.Analytics.v3
             /// <param name="customDataSourceId">Custom data source Id for uploads to retrieve.</param>
             public virtual ListRequest List(string accountId, string webPropertyId, string customDataSourceId)
             {
-                return new ListRequest(service, accountId, webPropertyId, customDataSourceId);
+                return new ListRequest(this.service, accountId, webPropertyId, customDataSourceId);
             }
 
             /// <summary>List uploads to which the user has access.</summary>
@@ -6561,7 +6561,7 @@ namespace Google.Apis.Analytics.v3
             /// <param name="customDataSourceId">Custom data source Id to which the data being uploaded belongs.</param>
             public virtual UploadDataRequest UploadData(string accountId, string webPropertyId, string customDataSourceId)
             {
-                return new UploadDataRequest(service, accountId, webPropertyId, customDataSourceId);
+                return new UploadDataRequest(this.service, accountId, webPropertyId, customDataSourceId);
             }
 
             /// <summary>Upload data for a custom data source.</summary>
@@ -6768,7 +6768,7 @@ namespace Google.Apis.Analytics.v3
             /// <param name="webPropertyAdWordsLinkId">Web property Google Ads link ID.</param>
             public virtual DeleteRequest Delete(string accountId, string webPropertyId, string webPropertyAdWordsLinkId)
             {
-                return new DeleteRequest(service, accountId, webPropertyId, webPropertyAdWordsLinkId);
+                return new DeleteRequest(this.service, accountId, webPropertyId, webPropertyAdWordsLinkId);
             }
 
             /// <summary>Deletes a web property-Google Ads link.</summary>
@@ -6841,7 +6841,7 @@ namespace Google.Apis.Analytics.v3
             /// <param name="webPropertyAdWordsLinkId">Web property-Google Ads link ID.</param>
             public virtual GetRequest Get(string accountId, string webPropertyId, string webPropertyAdWordsLinkId)
             {
-                return new GetRequest(service, accountId, webPropertyId, webPropertyAdWordsLinkId);
+                return new GetRequest(this.service, accountId, webPropertyId, webPropertyAdWordsLinkId);
             }
 
             /// <summary>Returns a web property-Google Ads link to which the user has access.</summary>
@@ -6914,7 +6914,7 @@ namespace Google.Apis.Analytics.v3
             /// <param name="webPropertyId">Web property ID to create the link for.</param>
             public virtual InsertRequest Insert(Google.Apis.Analytics.v3.Data.EntityAdWordsLink body, string accountId, string webPropertyId)
             {
-                return new InsertRequest(service, body, accountId, webPropertyId);
+                return new InsertRequest(this.service, body, accountId, webPropertyId);
             }
 
             /// <summary>Creates a webProperty-Google Ads link.</summary>
@@ -6980,7 +6980,7 @@ namespace Google.Apis.Analytics.v3
             /// <param name="webPropertyId">Web property ID to retrieve the Google Ads links for.</param>
             public virtual ListRequest List(string accountId, string webPropertyId)
             {
-                return new ListRequest(service, accountId, webPropertyId);
+                return new ListRequest(this.service, accountId, webPropertyId);
             }
 
             /// <summary>Lists webProperty-Google Ads links for a given web property.</summary>
@@ -7070,7 +7070,7 @@ namespace Google.Apis.Analytics.v3
             /// <param name="webPropertyAdWordsLinkId">Web property-Google Ads link ID.</param>
             public virtual PatchRequest Patch(Google.Apis.Analytics.v3.Data.EntityAdWordsLink body, string accountId, string webPropertyId, string webPropertyAdWordsLinkId)
             {
-                return new PatchRequest(service, body, accountId, webPropertyId, webPropertyAdWordsLinkId);
+                return new PatchRequest(this.service, body, accountId, webPropertyId, webPropertyAdWordsLinkId);
             }
 
             /// <summary>
@@ -7153,7 +7153,7 @@ namespace Google.Apis.Analytics.v3
             /// <param name="webPropertyAdWordsLinkId">Web property-Google Ads link ID.</param>
             public virtual UpdateRequest Update(Google.Apis.Analytics.v3.Data.EntityAdWordsLink body, string accountId, string webPropertyId, string webPropertyAdWordsLinkId)
             {
-                return new UpdateRequest(service, body, accountId, webPropertyId, webPropertyAdWordsLinkId);
+                return new UpdateRequest(this.service, body, accountId, webPropertyId, webPropertyAdWordsLinkId);
             }
 
             /// <summary>Updates an existing webProperty-Google Ads link.</summary>
@@ -7250,7 +7250,7 @@ namespace Google.Apis.Analytics.v3
             /// <param name="webPropertyId">ID to retrieve the web property for.</param>
             public virtual GetRequest Get(string accountId, string webPropertyId)
             {
-                return new GetRequest(service, accountId, webPropertyId);
+                return new GetRequest(this.service, accountId, webPropertyId);
             }
 
             /// <summary>Gets a web property to which the user has access.</summary>
@@ -7312,7 +7312,7 @@ namespace Google.Apis.Analytics.v3
             /// <param name="accountId">Account ID to create the web property for.</param>
             public virtual InsertRequest Insert(Google.Apis.Analytics.v3.Data.Webproperty body, string accountId)
             {
-                return new InsertRequest(service, body, accountId);
+                return new InsertRequest(this.service, body, accountId);
             }
 
             /// <summary>
@@ -7370,7 +7370,7 @@ namespace Google.Apis.Analytics.v3
             /// </param>
             public virtual ListRequest List(string accountId)
             {
-                return new ListRequest(service, accountId);
+                return new ListRequest(this.service, accountId);
             }
 
             /// <summary>Lists web properties to which the user has access.</summary>
@@ -7447,7 +7447,7 @@ namespace Google.Apis.Analytics.v3
             /// <param name="webPropertyId">Web property ID</param>
             public virtual PatchRequest Patch(Google.Apis.Analytics.v3.Data.Webproperty body, string accountId, string webPropertyId)
             {
-                return new PatchRequest(service, body, accountId, webPropertyId);
+                return new PatchRequest(this.service, body, accountId, webPropertyId);
             }
 
             /// <summary>Updates an existing web property. This method supports patch semantics.</summary>
@@ -7514,7 +7514,7 @@ namespace Google.Apis.Analytics.v3
             /// <param name="webPropertyId">Web property ID</param>
             public virtual UpdateRequest Update(Google.Apis.Analytics.v3.Data.Webproperty body, string accountId, string webPropertyId)
             {
-                return new UpdateRequest(service, body, accountId, webPropertyId);
+                return new UpdateRequest(this.service, body, accountId, webPropertyId);
             }
 
             /// <summary>Updates an existing web property.</summary>
@@ -7599,7 +7599,7 @@ namespace Google.Apis.Analytics.v3
             /// <param name="linkId">Link ID to delete the user link for.</param>
             public virtual DeleteRequest Delete(string accountId, string webPropertyId, string linkId)
             {
-                return new DeleteRequest(service, accountId, webPropertyId, linkId);
+                return new DeleteRequest(this.service, accountId, webPropertyId, linkId);
             }
 
             /// <summary>Removes a user from the given web property.</summary>
@@ -7672,7 +7672,7 @@ namespace Google.Apis.Analytics.v3
             /// <param name="webPropertyId">Web Property ID to create the user link for.</param>
             public virtual InsertRequest Insert(Google.Apis.Analytics.v3.Data.EntityUserLink body, string accountId, string webPropertyId)
             {
-                return new InsertRequest(service, body, accountId, webPropertyId);
+                return new InsertRequest(this.service, body, accountId, webPropertyId);
             }
 
             /// <summary>Adds a new user to the given web property.</summary>
@@ -7741,7 +7741,7 @@ namespace Google.Apis.Analytics.v3
             /// </param>
             public virtual ListRequest List(string accountId, string webPropertyId)
             {
-                return new ListRequest(service, accountId, webPropertyId);
+                return new ListRequest(this.service, accountId, webPropertyId);
             }
 
             /// <summary>Lists webProperty-user links for a given web property.</summary>
@@ -7832,7 +7832,7 @@ namespace Google.Apis.Analytics.v3
             /// <param name="linkId">Link ID to update the account-user link for.</param>
             public virtual UpdateRequest Update(Google.Apis.Analytics.v3.Data.EntityUserLink body, string accountId, string webPropertyId, string linkId)
             {
-                return new UpdateRequest(service, body, accountId, webPropertyId, linkId);
+                return new UpdateRequest(this.service, body, accountId, webPropertyId, linkId);
             }
 
             /// <summary>Updates permissions for an existing user on the given web property.</summary>
@@ -7946,7 +7946,7 @@ namespace Google.Apis.Analytics.v3
             /// </param>
             public virtual ListRequest List(string reportType)
             {
-                return new ListRequest(service, reportType);
+                return new ListRequest(this.service, reportType);
             }
 
             /// <summary>Lists all columns for a report type</summary>
@@ -8009,7 +8009,7 @@ namespace Google.Apis.Analytics.v3
         /// <param name="body">The body of the request.</param>
         public virtual CreateAccountTicketRequest CreateAccountTicket(Google.Apis.Analytics.v3.Data.AccountTicket body)
         {
-            return new CreateAccountTicketRequest(service, body);
+            return new CreateAccountTicketRequest(this.service, body);
         }
 
         /// <summary>Creates an account ticket.</summary>
@@ -8048,7 +8048,7 @@ namespace Google.Apis.Analytics.v3
         /// <param name="body">The body of the request.</param>
         public virtual CreateAccountTreeRequest CreateAccountTree(Google.Apis.Analytics.v3.Data.AccountTreeRequest body)
         {
-            return new CreateAccountTreeRequest(service, body);
+            return new CreateAccountTreeRequest(this.service, body);
         }
 
         /// <summary>Provision account.</summary>
@@ -8120,7 +8120,7 @@ namespace Google.Apis.Analytics.v3
             /// <param name="body">The body of the request.</param>
             public virtual UpsertRequest Upsert(Google.Apis.Analytics.v3.Data.UserDeletionRequest body)
             {
-                return new UpsertRequest(service, body);
+                return new UpsertRequest(this.service, body);
             }
 
             /// <summary>Insert or update a user deletion requests.</summary>
@@ -8174,8 +8174,8 @@ namespace Google.Apis.Analytics.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreatedDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreatedRaw);
-            set => CreatedRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(CreatedRaw);
+            set => CreatedRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="CreatedRaw"/>.</summary>
@@ -8219,8 +8219,8 @@ namespace Google.Apis.Analytics.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdatedDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdatedRaw);
-            set => UpdatedRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(UpdatedRaw);
+            set => UpdatedRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="UpdatedRaw"/>.</summary>
@@ -8603,8 +8603,8 @@ namespace Google.Apis.Analytics.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreatedDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreatedRaw);
-            set => CreatedRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(CreatedRaw);
+            set => CreatedRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="CreatedRaw"/>.</summary>
@@ -8666,8 +8666,8 @@ namespace Google.Apis.Analytics.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdatedDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdatedRaw);
-            set => UpdatedRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(UpdatedRaw);
+            set => UpdatedRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="UpdatedRaw"/>.</summary>
@@ -8790,8 +8790,8 @@ namespace Google.Apis.Analytics.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreatedDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreatedRaw);
-            set => CreatedRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(CreatedRaw);
+            set => CreatedRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="CreatedRaw"/>.</summary>
@@ -8843,8 +8843,8 @@ namespace Google.Apis.Analytics.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdatedDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdatedRaw);
-            set => UpdatedRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(UpdatedRaw);
+            set => UpdatedRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="UpdatedRaw"/>.</summary>
@@ -8948,8 +8948,8 @@ namespace Google.Apis.Analytics.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreatedDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreatedRaw);
-            set => CreatedRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(CreatedRaw);
+            set => CreatedRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="CreatedRaw"/>.</summary>
@@ -9011,8 +9011,8 @@ namespace Google.Apis.Analytics.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdatedDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdatedRaw);
-            set => UpdatedRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(UpdatedRaw);
+            set => UpdatedRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="UpdatedRaw"/>.</summary>
@@ -9319,8 +9319,8 @@ namespace Google.Apis.Analytics.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreatedDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreatedRaw);
-            set => CreatedRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(CreatedRaw);
+            set => CreatedRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="CreatedRaw"/>.</summary>
@@ -9353,8 +9353,8 @@ namespace Google.Apis.Analytics.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="EndTimeRaw"/>.</summary>
@@ -9476,8 +9476,8 @@ namespace Google.Apis.Analytics.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="StartTimeRaw"/>.</summary>
@@ -9512,8 +9512,8 @@ namespace Google.Apis.Analytics.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdatedDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdatedRaw);
-            set => UpdatedRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(UpdatedRaw);
+            set => UpdatedRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="UpdatedRaw"/>.</summary>
@@ -9684,8 +9684,8 @@ namespace Google.Apis.Analytics.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreatedDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreatedRaw);
-            set => CreatedRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(CreatedRaw);
+            set => CreatedRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="CreatedRaw"/>.</summary>
@@ -9748,8 +9748,8 @@ namespace Google.Apis.Analytics.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdatedDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdatedRaw);
-            set => UpdatedRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(UpdatedRaw);
+            set => UpdatedRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="UpdatedRaw"/>.</summary>
@@ -10259,8 +10259,8 @@ namespace Google.Apis.Analytics.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreatedDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreatedRaw);
-            set => CreatedRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(CreatedRaw);
+            set => CreatedRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="CreatedRaw"/>.</summary>
@@ -10318,8 +10318,8 @@ namespace Google.Apis.Analytics.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdatedDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdatedRaw);
-            set => UpdatedRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(UpdatedRaw);
+            set => UpdatedRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="UpdatedRaw"/>.</summary>
@@ -10876,8 +10876,8 @@ namespace Google.Apis.Analytics.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreatedDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreatedRaw);
-            set => CreatedRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(CreatedRaw);
+            set => CreatedRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="CreatedRaw"/>.</summary>
@@ -10990,8 +10990,8 @@ namespace Google.Apis.Analytics.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdatedDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdatedRaw);
-            set => UpdatedRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(UpdatedRaw);
+            set => UpdatedRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="UpdatedRaw"/>.</summary>
@@ -11411,8 +11411,8 @@ namespace Google.Apis.Analytics.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreatedDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreatedRaw);
-            set => CreatedRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(CreatedRaw);
+            set => CreatedRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="CreatedRaw"/>.</summary>
@@ -11469,8 +11469,8 @@ namespace Google.Apis.Analytics.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdatedDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdatedRaw);
-            set => UpdatedRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(UpdatedRaw);
+            set => UpdatedRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="UpdatedRaw"/>.</summary>
@@ -11586,8 +11586,8 @@ namespace Google.Apis.Analytics.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreatedDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreatedRaw);
-            set => CreatedRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(CreatedRaw);
+            set => CreatedRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="CreatedRaw"/>.</summary>
@@ -11635,8 +11635,8 @@ namespace Google.Apis.Analytics.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdatedDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdatedRaw);
-            set => UpdatedRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(UpdatedRaw);
+            set => UpdatedRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="UpdatedRaw"/>.</summary>
@@ -11722,8 +11722,8 @@ namespace Google.Apis.Analytics.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreatedDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreatedRaw);
-            set => CreatedRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(CreatedRaw);
+            set => CreatedRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="CreatedRaw"/>.</summary>
@@ -11803,8 +11803,8 @@ namespace Google.Apis.Analytics.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdatedDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdatedRaw);
-            set => UpdatedRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(UpdatedRaw);
+            set => UpdatedRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="UpdatedRaw"/>.</summary>
@@ -11933,8 +11933,8 @@ namespace Google.Apis.Analytics.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UploadTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UploadTimeRaw);
-            set => UploadTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(UploadTimeRaw);
+            set => UploadTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="UploadTimeRaw"/>.</summary>
@@ -12010,8 +12010,8 @@ namespace Google.Apis.Analytics.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? DeletionRequestTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DeletionRequestTimeRaw);
-            set => DeletionRequestTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(DeletionRequestTimeRaw);
+            set => DeletionRequestTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="DeletionRequestTimeRaw"/>.</summary>
@@ -12222,8 +12222,8 @@ namespace Google.Apis.Analytics.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreatedDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreatedRaw);
-            set => CreatedRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(CreatedRaw);
+            set => CreatedRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="CreatedRaw"/>.</summary>
@@ -12307,8 +12307,8 @@ namespace Google.Apis.Analytics.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdatedDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdatedRaw);
-            set => UpdatedRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(UpdatedRaw);
+            set => UpdatedRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="UpdatedRaw"/>.</summary>

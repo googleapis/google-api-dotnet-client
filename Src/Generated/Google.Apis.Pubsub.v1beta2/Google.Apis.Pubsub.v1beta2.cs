@@ -309,7 +309,7 @@ namespace Google.Apis.Pubsub.v1beta2
             /// <param name="subscription">The subscription whose message is being acknowledged.</param>
             public virtual AcknowledgeRequest Acknowledge(Google.Apis.Pubsub.v1beta2.Data.AcknowledgeRequest body, string subscription)
             {
-                return new AcknowledgeRequest(service, body, subscription);
+                return new AcknowledgeRequest(this.service, body, subscription);
             }
 
             /// <summary>
@@ -378,7 +378,7 @@ namespace Google.Apis.Pubsub.v1beta2
             /// </param>
             public virtual CreateRequest Create(Google.Apis.Pubsub.v1beta2.Data.Subscription body, string name)
             {
-                return new CreateRequest(service, body, name);
+                return new CreateRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -446,7 +446,7 @@ namespace Google.Apis.Pubsub.v1beta2
             /// <param name="subscription">The subscription to delete.</param>
             public virtual DeleteRequest Delete(string subscription)
             {
-                return new DeleteRequest(service, subscription);
+                return new DeleteRequest(this.service, subscription);
             }
 
             /// <summary>
@@ -496,7 +496,7 @@ namespace Google.Apis.Pubsub.v1beta2
             /// <param name="subscription">The name of the subscription to get.</param>
             public virtual GetRequest Get(string subscription)
             {
-                return new GetRequest(service, subscription);
+                return new GetRequest(this.service, subscription);
             }
 
             /// <summary>Gets the configuration details of a subscription.</summary>
@@ -547,7 +547,7 @@ namespace Google.Apis.Pubsub.v1beta2
             /// </param>
             public virtual GetIamPolicyRequest GetIamPolicy(string resource)
             {
-                return new GetIamPolicyRequest(service, resource);
+                return new GetIamPolicyRequest(this.service, resource);
             }
 
             /// <summary>
@@ -620,7 +620,7 @@ namespace Google.Apis.Pubsub.v1beta2
             /// <param name="project">The name of the cloud project that subscriptions belong to.</param>
             public virtual ListRequest List(string project)
             {
-                return new ListRequest(service, project);
+                return new ListRequest(this.service, project);
             }
 
             /// <summary>Lists matching subscriptions.</summary>
@@ -698,7 +698,7 @@ namespace Google.Apis.Pubsub.v1beta2
             /// <param name="subscription">The name of the subscription.</param>
             public virtual ModifyAckDeadlineRequest ModifyAckDeadline(Google.Apis.Pubsub.v1beta2.Data.ModifyAckDeadlineRequest body, string subscription)
             {
-                return new ModifyAckDeadlineRequest(service, body, subscription);
+                return new ModifyAckDeadlineRequest(this.service, body, subscription);
             }
 
             /// <summary>
@@ -761,7 +761,7 @@ namespace Google.Apis.Pubsub.v1beta2
             /// <param name="subscription">The name of the subscription.</param>
             public virtual ModifyPushConfigRequest ModifyPushConfig(Google.Apis.Pubsub.v1beta2.Data.ModifyPushConfigRequest body, string subscription)
             {
-                return new ModifyPushConfigRequest(service, body, subscription);
+                return new ModifyPushConfigRequest(this.service, body, subscription);
             }
 
             /// <summary>
@@ -823,7 +823,7 @@ namespace Google.Apis.Pubsub.v1beta2
             /// <param name="subscription">The subscription from which messages should be pulled.</param>
             public virtual PullRequest Pull(Google.Apis.Pubsub.v1beta2.Data.PullRequest body, string subscription)
             {
-                return new PullRequest(service, body, subscription);
+                return new PullRequest(this.service, body, subscription);
             }
 
             /// <summary>
@@ -886,7 +886,7 @@ namespace Google.Apis.Pubsub.v1beta2
             /// </param>
             public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Pubsub.v1beta2.Data.SetIamPolicyRequest body, string resource)
             {
-                return new SetIamPolicyRequest(service, body, resource);
+                return new SetIamPolicyRequest(this.service, body, resource);
             }
 
             /// <summary>
@@ -954,7 +954,7 @@ namespace Google.Apis.Pubsub.v1beta2
             /// </param>
             public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Pubsub.v1beta2.Data.TestIamPermissionsRequest body, string resource)
             {
-                return new TestIamPermissionsRequest(service, body, resource);
+                return new TestIamPermissionsRequest(this.service, body, resource);
             }
 
             /// <summary>
@@ -1051,7 +1051,7 @@ namespace Google.Apis.Pubsub.v1beta2
                 /// <param name="topic">The name of the topic that subscriptions are attached to.</param>
                 public virtual ListRequest List(string topic)
                 {
-                    return new ListRequest(service, topic);
+                    return new ListRequest(this.service, topic);
                 }
 
                 /// <summary>Lists the name of the subscriptions for this topic.</summary>
@@ -1131,7 +1131,7 @@ namespace Google.Apis.Pubsub.v1beta2
             /// </param>
             public virtual CreateRequest Create(Google.Apis.Pubsub.v1beta2.Data.Topic body, string name)
             {
-                return new CreateRequest(service, body, name);
+                return new CreateRequest(this.service, body, name);
             }
 
             /// <summary>Creates the given topic with the given name.</summary>
@@ -1193,7 +1193,7 @@ namespace Google.Apis.Pubsub.v1beta2
             /// <param name="topic">Name of the topic to delete.</param>
             public virtual DeleteRequest Delete(string topic)
             {
-                return new DeleteRequest(service, topic);
+                return new DeleteRequest(this.service, topic);
             }
 
             /// <summary>
@@ -1243,7 +1243,7 @@ namespace Google.Apis.Pubsub.v1beta2
             /// <param name="topic">The name of the topic to get.</param>
             public virtual GetRequest Get(string topic)
             {
-                return new GetRequest(service, topic);
+                return new GetRequest(this.service, topic);
             }
 
             /// <summary>Gets the configuration of a topic.</summary>
@@ -1294,7 +1294,7 @@ namespace Google.Apis.Pubsub.v1beta2
             /// </param>
             public virtual GetIamPolicyRequest GetIamPolicy(string resource)
             {
-                return new GetIamPolicyRequest(service, resource);
+                return new GetIamPolicyRequest(this.service, resource);
             }
 
             /// <summary>
@@ -1367,7 +1367,7 @@ namespace Google.Apis.Pubsub.v1beta2
             /// <param name="project">The name of the cloud project that topics belong to.</param>
             public virtual ListRequest List(string project)
             {
-                return new ListRequest(service, project);
+                return new ListRequest(this.service, project);
             }
 
             /// <summary>Lists matching topics.</summary>
@@ -1443,7 +1443,7 @@ namespace Google.Apis.Pubsub.v1beta2
             /// <param name="topic">The messages in the request will be published on this topic.</param>
             public virtual PublishRequest Publish(Google.Apis.Pubsub.v1beta2.Data.PublishRequest body, string topic)
             {
-                return new PublishRequest(service, body, topic);
+                return new PublishRequest(this.service, body, topic);
             }
 
             /// <summary>
@@ -1505,7 +1505,7 @@ namespace Google.Apis.Pubsub.v1beta2
             /// </param>
             public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Pubsub.v1beta2.Data.SetIamPolicyRequest body, string resource)
             {
-                return new SetIamPolicyRequest(service, body, resource);
+                return new SetIamPolicyRequest(this.service, body, resource);
             }
 
             /// <summary>
@@ -1573,7 +1573,7 @@ namespace Google.Apis.Pubsub.v1beta2
             /// </param>
             public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Pubsub.v1beta2.Data.TestIamPermissionsRequest body, string resource)
             {
-                return new TestIamPermissionsRequest(service, body, resource);
+                return new TestIamPermissionsRequest(this.service, body, resource);
             }
 
             /// <summary>
@@ -2035,8 +2035,8 @@ namespace Google.Apis.Pubsub.v1beta2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? PublishTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(PublishTimeRaw);
-            set => PublishTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(PublishTimeRaw);
+            set => PublishTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>

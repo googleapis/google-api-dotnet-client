@@ -375,7 +375,7 @@ namespace Google.Apis.Logging.v2
             /// </param>
             public virtual CreateRequest Create(Google.Apis.Logging.v2.Data.LogExclusion body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -441,7 +441,7 @@ namespace Google.Apis.Logging.v2
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>Deletes an exclusion in the _Default sink.</summary>
@@ -499,7 +499,7 @@ namespace Google.Apis.Logging.v2
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets the description of an exclusion in the _Default sink.</summary>
@@ -554,7 +554,7 @@ namespace Google.Apis.Logging.v2
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists all the exclusions on the _Default sink in a parent resource.</summary>
@@ -642,7 +642,7 @@ namespace Google.Apis.Logging.v2
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.Logging.v2.Data.LogExclusion body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>Changes one or more properties of an existing exclusion in the _Default sink.</summary>
@@ -784,7 +784,7 @@ namespace Google.Apis.Logging.v2
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.Logging.v2.Data.Link body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>
@@ -868,7 +868,7 @@ namespace Google.Apis.Logging.v2
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -927,7 +927,7 @@ namespace Google.Apis.Logging.v2
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Gets a link.</summary>
@@ -984,7 +984,7 @@ namespace Google.Apis.Logging.v2
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists links.</summary>
@@ -1104,7 +1104,7 @@ namespace Google.Apis.Logging.v2
                         /// </param>
                         public virtual ListRequest List(string parent)
                         {
-                            return new ListRequest(service, parent);
+                            return new ListRequest(this.service, parent);
                         }
 
                         /// <summary>
@@ -1216,7 +1216,7 @@ namespace Google.Apis.Logging.v2
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.Logging.v2.Data.LogView body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>
@@ -1297,7 +1297,7 @@ namespace Google.Apis.Logging.v2
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -1354,7 +1354,7 @@ namespace Google.Apis.Logging.v2
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Gets a view on a log bucket.</summary>
@@ -1406,7 +1406,7 @@ namespace Google.Apis.Logging.v2
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists views on a log bucket.</summary>
@@ -1496,7 +1496,7 @@ namespace Google.Apis.Logging.v2
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.Logging.v2.Data.LogView body, string name)
                     {
-                        return new PatchRequest(service, body, name);
+                        return new PatchRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -1583,7 +1583,7 @@ namespace Google.Apis.Logging.v2
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Logging.v2.Data.LogBucket body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -1664,7 +1664,7 @@ namespace Google.Apis.Logging.v2
                 /// </param>
                 public virtual CreateAsyncRequest CreateAsync(Google.Apis.Logging.v2.Data.LogBucket body, string parent)
                 {
-                    return new CreateAsyncRequest(service, body, parent);
+                    return new CreateAsyncRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -1748,7 +1748,7 @@ namespace Google.Apis.Logging.v2
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -1810,7 +1810,7 @@ namespace Google.Apis.Logging.v2
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets a log bucket.</summary>
@@ -1869,7 +1869,7 @@ namespace Google.Apis.Logging.v2
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists log buckets.</summary>
@@ -1965,7 +1965,7 @@ namespace Google.Apis.Logging.v2
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.Logging.v2.Data.LogBucket body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -2057,7 +2057,7 @@ namespace Google.Apis.Logging.v2
                 /// </param>
                 public virtual UndeleteRequest Undelete(Google.Apis.Logging.v2.Data.UndeleteBucketRequest body, string name)
                 {
-                    return new UndeleteRequest(service, body, name);
+                    return new UndeleteRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -2131,7 +2131,7 @@ namespace Google.Apis.Logging.v2
                 /// </param>
                 public virtual UpdateAsyncRequest UpdateAsync(Google.Apis.Logging.v2.Data.LogBucket body, string name)
                 {
-                    return new UpdateAsyncRequest(service, body, name);
+                    return new UpdateAsyncRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -2238,7 +2238,7 @@ namespace Google.Apis.Logging.v2
                 /// <param name="name">The name of the operation resource to be cancelled.</param>
                 public virtual CancelRequest Cancel(Google.Apis.Logging.v2.Data.CancelOperationRequest body, string name)
                 {
-                    return new CancelRequest(service, body, name);
+                    return new CancelRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -2300,7 +2300,7 @@ namespace Google.Apis.Logging.v2
                 /// <param name="name">The name of the operation resource.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -2351,7 +2351,7 @@ namespace Google.Apis.Logging.v2
                 /// <param name="name">The name of the operation's parent resource.</param>
                 public virtual ListRequest List(string name)
                 {
-                    return new ListRequest(service, name);
+                    return new ListRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -2436,7 +2436,7 @@ namespace Google.Apis.Logging.v2
             /// <param name="name">Resource name for the location.</param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets information about a location.</summary>
@@ -2481,7 +2481,7 @@ namespace Google.Apis.Logging.v2
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
             {
-                return new ListRequest(service, name);
+                return new ListRequest(this.service, name);
             }
 
             /// <summary>Lists information about the supported locations for this service.</summary>
@@ -2598,7 +2598,7 @@ namespace Google.Apis.Logging.v2
             /// </param>
             public virtual DeleteRequest Delete(string logName)
             {
-                return new DeleteRequest(service, logName);
+                return new DeleteRequest(this.service, logName);
             }
 
             /// <summary>
@@ -2660,7 +2660,7 @@ namespace Google.Apis.Logging.v2
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>
@@ -2791,7 +2791,7 @@ namespace Google.Apis.Logging.v2
             /// </param>
             public virtual CreateRequest Create(Google.Apis.Logging.v2.Data.LogSink body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -2896,7 +2896,7 @@ namespace Google.Apis.Logging.v2
             /// </param>
             public virtual DeleteRequest Delete(string sinkName)
             {
-                return new DeleteRequest(service, sinkName);
+                return new DeleteRequest(this.service, sinkName);
             }
 
             /// <summary>
@@ -2953,7 +2953,7 @@ namespace Google.Apis.Logging.v2
             /// </param>
             public virtual GetRequest Get(string sinkName)
             {
-                return new GetRequest(service, sinkName);
+                return new GetRequest(this.service, sinkName);
             }
 
             /// <summary>Gets a sink.</summary>
@@ -3006,7 +3006,7 @@ namespace Google.Apis.Logging.v2
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists sinks.</summary>
@@ -3096,7 +3096,7 @@ namespace Google.Apis.Logging.v2
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.Logging.v2.Data.LogSink body, string sinkName)
             {
-                return new PatchRequest(service, body, sinkName);
+                return new PatchRequest(this.service, body, sinkName);
             }
 
             /// <summary>
@@ -3226,7 +3226,7 @@ namespace Google.Apis.Logging.v2
             /// </param>
             public virtual UpdateRequest Update(Google.Apis.Logging.v2.Data.LogSink body, string sinkName)
             {
-                return new UpdateRequest(service, body, sinkName);
+                return new UpdateRequest(this.service, body, sinkName);
             }
 
             /// <summary>
@@ -3358,7 +3358,7 @@ namespace Google.Apis.Logging.v2
         /// </param>
         public virtual GetCmekSettingsRequest GetCmekSettings(string name)
         {
-            return new GetCmekSettingsRequest(service, name);
+            return new GetCmekSettingsRequest(this.service, name);
         }
 
         /// <summary>
@@ -3427,7 +3427,7 @@ namespace Google.Apis.Logging.v2
         /// </param>
         public virtual GetSettingsRequest GetSettings(string name)
         {
-            return new GetSettingsRequest(service, name);
+            return new GetSettingsRequest(this.service, name);
         }
 
         /// <summary>
@@ -3500,7 +3500,7 @@ namespace Google.Apis.Logging.v2
         /// <param name="body">The body of the request.</param>
         public virtual CopyRequest Copy(Google.Apis.Logging.v2.Data.CopyLogEntriesRequest body)
         {
-            return new CopyRequest(service, body);
+            return new CopyRequest(this.service, body);
         }
 
         /// <summary>Copies a set of log entries from a log bucket to a Cloud Storage bucket.</summary>
@@ -3543,7 +3543,7 @@ namespace Google.Apis.Logging.v2
         /// <param name="body">The body of the request.</param>
         public virtual ListRequest List(Google.Apis.Logging.v2.Data.ListLogEntriesRequest body)
         {
-            return new ListRequest(service, body);
+            return new ListRequest(this.service, body);
         }
 
         /// <summary>
@@ -3589,7 +3589,7 @@ namespace Google.Apis.Logging.v2
         /// <param name="body">The body of the request.</param>
         public virtual TailRequest Tail(Google.Apis.Logging.v2.Data.TailLogEntriesRequest body)
         {
-            return new TailRequest(service, body);
+            return new TailRequest(this.service, body);
         }
 
         /// <summary>
@@ -3637,7 +3637,7 @@ namespace Google.Apis.Logging.v2
         /// <param name="body">The body of the request.</param>
         public virtual WriteRequest Write(Google.Apis.Logging.v2.Data.WriteLogEntriesRequest body)
         {
-            return new WriteRequest(service, body);
+            return new WriteRequest(this.service, body);
         }
 
         /// <summary>
@@ -3705,7 +3705,7 @@ namespace Google.Apis.Logging.v2
         /// </param>
         public virtual CreateRequest Create(Google.Apis.Logging.v2.Data.LogExclusion body, string parent)
         {
-            return new CreateRequest(service, body, parent);
+            return new CreateRequest(this.service, body, parent);
         }
 
         /// <summary>
@@ -3770,7 +3770,7 @@ namespace Google.Apis.Logging.v2
         /// </param>
         public virtual DeleteRequest Delete(string name)
         {
-            return new DeleteRequest(service, name);
+            return new DeleteRequest(this.service, name);
         }
 
         /// <summary>Deletes an exclusion in the _Default sink.</summary>
@@ -3827,7 +3827,7 @@ namespace Google.Apis.Logging.v2
         /// </param>
         public virtual GetRequest Get(string name)
         {
-            return new GetRequest(service, name);
+            return new GetRequest(this.service, name);
         }
 
         /// <summary>Gets the description of an exclusion in the _Default sink.</summary>
@@ -3881,7 +3881,7 @@ namespace Google.Apis.Logging.v2
         /// </param>
         public virtual ListRequest List(string parent)
         {
-            return new ListRequest(service, parent);
+            return new ListRequest(this.service, parent);
         }
 
         /// <summary>Lists all the exclusions on the _Default sink in a parent resource.</summary>
@@ -3966,7 +3966,7 @@ namespace Google.Apis.Logging.v2
         /// </param>
         public virtual PatchRequest Patch(Google.Apis.Logging.v2.Data.LogExclusion body, string name)
         {
-            return new PatchRequest(service, body, name);
+            return new PatchRequest(this.service, body, name);
         }
 
         /// <summary>Changes one or more properties of an existing exclusion in the _Default sink.</summary>
@@ -4086,7 +4086,7 @@ namespace Google.Apis.Logging.v2
             /// </param>
             public virtual CreateRequest Create(Google.Apis.Logging.v2.Data.LogExclusion body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -4152,7 +4152,7 @@ namespace Google.Apis.Logging.v2
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>Deletes an exclusion in the _Default sink.</summary>
@@ -4210,7 +4210,7 @@ namespace Google.Apis.Logging.v2
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets the description of an exclusion in the _Default sink.</summary>
@@ -4265,7 +4265,7 @@ namespace Google.Apis.Logging.v2
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists all the exclusions on the _Default sink in a parent resource.</summary>
@@ -4353,7 +4353,7 @@ namespace Google.Apis.Logging.v2
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.Logging.v2.Data.LogExclusion body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>Changes one or more properties of an existing exclusion in the _Default sink.</summary>
@@ -4495,7 +4495,7 @@ namespace Google.Apis.Logging.v2
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.Logging.v2.Data.Link body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>
@@ -4579,7 +4579,7 @@ namespace Google.Apis.Logging.v2
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -4638,7 +4638,7 @@ namespace Google.Apis.Logging.v2
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Gets a link.</summary>
@@ -4695,7 +4695,7 @@ namespace Google.Apis.Logging.v2
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists links.</summary>
@@ -4815,7 +4815,7 @@ namespace Google.Apis.Logging.v2
                         /// </param>
                         public virtual ListRequest List(string parent)
                         {
-                            return new ListRequest(service, parent);
+                            return new ListRequest(this.service, parent);
                         }
 
                         /// <summary>
@@ -4927,7 +4927,7 @@ namespace Google.Apis.Logging.v2
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.Logging.v2.Data.LogView body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>
@@ -5008,7 +5008,7 @@ namespace Google.Apis.Logging.v2
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -5065,7 +5065,7 @@ namespace Google.Apis.Logging.v2
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Gets a view on a log bucket.</summary>
@@ -5117,7 +5117,7 @@ namespace Google.Apis.Logging.v2
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists views on a log bucket.</summary>
@@ -5207,7 +5207,7 @@ namespace Google.Apis.Logging.v2
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.Logging.v2.Data.LogView body, string name)
                     {
-                        return new PatchRequest(service, body, name);
+                        return new PatchRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -5294,7 +5294,7 @@ namespace Google.Apis.Logging.v2
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Logging.v2.Data.LogBucket body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -5375,7 +5375,7 @@ namespace Google.Apis.Logging.v2
                 /// </param>
                 public virtual CreateAsyncRequest CreateAsync(Google.Apis.Logging.v2.Data.LogBucket body, string parent)
                 {
-                    return new CreateAsyncRequest(service, body, parent);
+                    return new CreateAsyncRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -5459,7 +5459,7 @@ namespace Google.Apis.Logging.v2
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -5521,7 +5521,7 @@ namespace Google.Apis.Logging.v2
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets a log bucket.</summary>
@@ -5580,7 +5580,7 @@ namespace Google.Apis.Logging.v2
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists log buckets.</summary>
@@ -5676,7 +5676,7 @@ namespace Google.Apis.Logging.v2
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.Logging.v2.Data.LogBucket body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -5768,7 +5768,7 @@ namespace Google.Apis.Logging.v2
                 /// </param>
                 public virtual UndeleteRequest Undelete(Google.Apis.Logging.v2.Data.UndeleteBucketRequest body, string name)
                 {
-                    return new UndeleteRequest(service, body, name);
+                    return new UndeleteRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -5842,7 +5842,7 @@ namespace Google.Apis.Logging.v2
                 /// </param>
                 public virtual UpdateAsyncRequest UpdateAsync(Google.Apis.Logging.v2.Data.LogBucket body, string name)
                 {
-                    return new UpdateAsyncRequest(service, body, name);
+                    return new UpdateAsyncRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -5949,7 +5949,7 @@ namespace Google.Apis.Logging.v2
                 /// <param name="name">The name of the operation resource to be cancelled.</param>
                 public virtual CancelRequest Cancel(Google.Apis.Logging.v2.Data.CancelOperationRequest body, string name)
                 {
-                    return new CancelRequest(service, body, name);
+                    return new CancelRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -6011,7 +6011,7 @@ namespace Google.Apis.Logging.v2
                 /// <param name="name">The name of the operation resource.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -6062,7 +6062,7 @@ namespace Google.Apis.Logging.v2
                 /// <param name="name">The name of the operation's parent resource.</param>
                 public virtual ListRequest List(string name)
                 {
-                    return new ListRequest(service, name);
+                    return new ListRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -6147,7 +6147,7 @@ namespace Google.Apis.Logging.v2
             /// <param name="name">Resource name for the location.</param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets information about a location.</summary>
@@ -6192,7 +6192,7 @@ namespace Google.Apis.Logging.v2
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
             {
-                return new ListRequest(service, name);
+                return new ListRequest(this.service, name);
             }
 
             /// <summary>Lists information about the supported locations for this service.</summary>
@@ -6309,7 +6309,7 @@ namespace Google.Apis.Logging.v2
             /// </param>
             public virtual DeleteRequest Delete(string logName)
             {
-                return new DeleteRequest(service, logName);
+                return new DeleteRequest(this.service, logName);
             }
 
             /// <summary>
@@ -6371,7 +6371,7 @@ namespace Google.Apis.Logging.v2
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>
@@ -6502,7 +6502,7 @@ namespace Google.Apis.Logging.v2
             /// </param>
             public virtual CreateRequest Create(Google.Apis.Logging.v2.Data.LogSink body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -6607,7 +6607,7 @@ namespace Google.Apis.Logging.v2
             /// </param>
             public virtual DeleteRequest Delete(string sinkName)
             {
-                return new DeleteRequest(service, sinkName);
+                return new DeleteRequest(this.service, sinkName);
             }
 
             /// <summary>
@@ -6664,7 +6664,7 @@ namespace Google.Apis.Logging.v2
             /// </param>
             public virtual GetRequest Get(string sinkName)
             {
-                return new GetRequest(service, sinkName);
+                return new GetRequest(this.service, sinkName);
             }
 
             /// <summary>Gets a sink.</summary>
@@ -6717,7 +6717,7 @@ namespace Google.Apis.Logging.v2
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists sinks.</summary>
@@ -6807,7 +6807,7 @@ namespace Google.Apis.Logging.v2
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.Logging.v2.Data.LogSink body, string sinkName)
             {
-                return new PatchRequest(service, body, sinkName);
+                return new PatchRequest(this.service, body, sinkName);
             }
 
             /// <summary>
@@ -6937,7 +6937,7 @@ namespace Google.Apis.Logging.v2
             /// </param>
             public virtual UpdateRequest Update(Google.Apis.Logging.v2.Data.LogSink body, string sinkName)
             {
-                return new UpdateRequest(service, body, sinkName);
+                return new UpdateRequest(this.service, body, sinkName);
             }
 
             /// <summary>
@@ -7069,7 +7069,7 @@ namespace Google.Apis.Logging.v2
         /// </param>
         public virtual GetCmekSettingsRequest GetCmekSettings(string name)
         {
-            return new GetCmekSettingsRequest(service, name);
+            return new GetCmekSettingsRequest(this.service, name);
         }
 
         /// <summary>
@@ -7138,7 +7138,7 @@ namespace Google.Apis.Logging.v2
         /// </param>
         public virtual GetSettingsRequest GetSettings(string name)
         {
-            return new GetSettingsRequest(service, name);
+            return new GetSettingsRequest(this.service, name);
         }
 
         /// <summary>
@@ -7210,7 +7210,7 @@ namespace Google.Apis.Logging.v2
         /// </param>
         public virtual UpdateSettingsRequest UpdateSettings(Google.Apis.Logging.v2.Data.Settings body, string name)
         {
-            return new UpdateSettingsRequest(service, body, name);
+            return new UpdateSettingsRequest(this.service, body, name);
         }
 
         /// <summary>
@@ -7354,7 +7354,7 @@ namespace Google.Apis.Logging.v2
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Logging.v2.Data.Link body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -7436,7 +7436,7 @@ namespace Google.Apis.Logging.v2
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes a link. This will also delete the corresponding BigQuery linked dataset.</summary>
@@ -7493,7 +7493,7 @@ namespace Google.Apis.Logging.v2
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets a link.</summary>
@@ -7550,7 +7550,7 @@ namespace Google.Apis.Logging.v2
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists links.</summary>
@@ -7653,7 +7653,7 @@ namespace Google.Apis.Logging.v2
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Logging.v2.Data.LogView body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -7733,7 +7733,7 @@ namespace Google.Apis.Logging.v2
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -7789,7 +7789,7 @@ namespace Google.Apis.Logging.v2
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets a view on a log bucket.</summary>
@@ -7841,7 +7841,7 @@ namespace Google.Apis.Logging.v2
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists views on a log bucket.</summary>
@@ -7930,7 +7930,7 @@ namespace Google.Apis.Logging.v2
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.Logging.v2.Data.LogView body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -8016,7 +8016,7 @@ namespace Google.Apis.Logging.v2
             /// </param>
             public virtual CreateRequest Create(Google.Apis.Logging.v2.Data.LogBucket body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -8096,7 +8096,7 @@ namespace Google.Apis.Logging.v2
             /// </param>
             public virtual CreateAsyncRequest CreateAsync(Google.Apis.Logging.v2.Data.LogBucket body, string parent)
             {
-                return new CreateAsyncRequest(service, body, parent);
+                return new CreateAsyncRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -8179,7 +8179,7 @@ namespace Google.Apis.Logging.v2
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>
@@ -8241,7 +8241,7 @@ namespace Google.Apis.Logging.v2
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets a log bucket.</summary>
@@ -8300,7 +8300,7 @@ namespace Google.Apis.Logging.v2
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists log buckets.</summary>
@@ -8395,7 +8395,7 @@ namespace Google.Apis.Logging.v2
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.Logging.v2.Data.LogBucket body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -8486,7 +8486,7 @@ namespace Google.Apis.Logging.v2
             /// </param>
             public virtual UndeleteRequest Undelete(Google.Apis.Logging.v2.Data.UndeleteBucketRequest body, string name)
             {
-                return new UndeleteRequest(service, body, name);
+                return new UndeleteRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -8560,7 +8560,7 @@ namespace Google.Apis.Logging.v2
             /// </param>
             public virtual UpdateAsyncRequest UpdateAsync(Google.Apis.Logging.v2.Data.LogBucket body, string name)
             {
-                return new UpdateAsyncRequest(service, body, name);
+                return new UpdateAsyncRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -8667,7 +8667,7 @@ namespace Google.Apis.Logging.v2
             /// <param name="name">The name of the operation resource to be cancelled.</param>
             public virtual CancelRequest Cancel(Google.Apis.Logging.v2.Data.CancelOperationRequest body, string name)
             {
-                return new CancelRequest(service, body, name);
+                return new CancelRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -8729,7 +8729,7 @@ namespace Google.Apis.Logging.v2
             /// <param name="name">The name of the operation resource.</param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>
@@ -8780,7 +8780,7 @@ namespace Google.Apis.Logging.v2
             /// <param name="name">The name of the operation's parent resource.</param>
             public virtual ListRequest List(string name)
             {
-                return new ListRequest(service, name);
+                return new ListRequest(this.service, name);
             }
 
             /// <summary>
@@ -8865,7 +8865,7 @@ namespace Google.Apis.Logging.v2
         /// <param name="name">Resource name for the location.</param>
         public virtual GetRequest Get(string name)
         {
-            return new GetRequest(service, name);
+            return new GetRequest(this.service, name);
         }
 
         /// <summary>Gets information about a location.</summary>
@@ -8910,7 +8910,7 @@ namespace Google.Apis.Logging.v2
         /// <param name="name">The resource that owns the locations collection, if applicable.</param>
         public virtual ListRequest List(string name)
         {
-            return new ListRequest(service, name);
+            return new ListRequest(this.service, name);
         }
 
         /// <summary>Lists information about the supported locations for this service.</summary>
@@ -9022,7 +9022,7 @@ namespace Google.Apis.Logging.v2
         /// </param>
         public virtual DeleteRequest Delete(string logName)
         {
-            return new DeleteRequest(service, logName);
+            return new DeleteRequest(this.service, logName);
         }
 
         /// <summary>
@@ -9083,7 +9083,7 @@ namespace Google.Apis.Logging.v2
         /// </param>
         public virtual ListRequest List(string parent)
         {
-            return new ListRequest(service, parent);
+            return new ListRequest(this.service, parent);
         }
 
         /// <summary>
@@ -9200,7 +9200,7 @@ namespace Google.Apis.Logging.v2
         /// <summary>Lists the descriptors for monitored resource types used by Logging.</summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>Lists the descriptors for monitored resource types used by Logging.</summary>
@@ -9307,7 +9307,7 @@ namespace Google.Apis.Logging.v2
             /// </param>
             public virtual CreateRequest Create(Google.Apis.Logging.v2.Data.LogExclusion body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -9373,7 +9373,7 @@ namespace Google.Apis.Logging.v2
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>Deletes an exclusion in the _Default sink.</summary>
@@ -9431,7 +9431,7 @@ namespace Google.Apis.Logging.v2
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets the description of an exclusion in the _Default sink.</summary>
@@ -9486,7 +9486,7 @@ namespace Google.Apis.Logging.v2
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists all the exclusions on the _Default sink in a parent resource.</summary>
@@ -9574,7 +9574,7 @@ namespace Google.Apis.Logging.v2
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.Logging.v2.Data.LogExclusion body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>Changes one or more properties of an existing exclusion in the _Default sink.</summary>
@@ -9716,7 +9716,7 @@ namespace Google.Apis.Logging.v2
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.Logging.v2.Data.Link body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>
@@ -9800,7 +9800,7 @@ namespace Google.Apis.Logging.v2
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -9859,7 +9859,7 @@ namespace Google.Apis.Logging.v2
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Gets a link.</summary>
@@ -9916,7 +9916,7 @@ namespace Google.Apis.Logging.v2
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists links.</summary>
@@ -10036,7 +10036,7 @@ namespace Google.Apis.Logging.v2
                         /// </param>
                         public virtual ListRequest List(string parent)
                         {
-                            return new ListRequest(service, parent);
+                            return new ListRequest(this.service, parent);
                         }
 
                         /// <summary>
@@ -10148,7 +10148,7 @@ namespace Google.Apis.Logging.v2
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.Logging.v2.Data.LogView body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>
@@ -10229,7 +10229,7 @@ namespace Google.Apis.Logging.v2
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -10286,7 +10286,7 @@ namespace Google.Apis.Logging.v2
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Gets a view on a log bucket.</summary>
@@ -10338,7 +10338,7 @@ namespace Google.Apis.Logging.v2
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists views on a log bucket.</summary>
@@ -10428,7 +10428,7 @@ namespace Google.Apis.Logging.v2
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.Logging.v2.Data.LogView body, string name)
                     {
-                        return new PatchRequest(service, body, name);
+                        return new PatchRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -10515,7 +10515,7 @@ namespace Google.Apis.Logging.v2
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Logging.v2.Data.LogBucket body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -10596,7 +10596,7 @@ namespace Google.Apis.Logging.v2
                 /// </param>
                 public virtual CreateAsyncRequest CreateAsync(Google.Apis.Logging.v2.Data.LogBucket body, string parent)
                 {
-                    return new CreateAsyncRequest(service, body, parent);
+                    return new CreateAsyncRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -10680,7 +10680,7 @@ namespace Google.Apis.Logging.v2
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -10742,7 +10742,7 @@ namespace Google.Apis.Logging.v2
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets a log bucket.</summary>
@@ -10801,7 +10801,7 @@ namespace Google.Apis.Logging.v2
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists log buckets.</summary>
@@ -10897,7 +10897,7 @@ namespace Google.Apis.Logging.v2
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.Logging.v2.Data.LogBucket body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -10989,7 +10989,7 @@ namespace Google.Apis.Logging.v2
                 /// </param>
                 public virtual UndeleteRequest Undelete(Google.Apis.Logging.v2.Data.UndeleteBucketRequest body, string name)
                 {
-                    return new UndeleteRequest(service, body, name);
+                    return new UndeleteRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -11063,7 +11063,7 @@ namespace Google.Apis.Logging.v2
                 /// </param>
                 public virtual UpdateAsyncRequest UpdateAsync(Google.Apis.Logging.v2.Data.LogBucket body, string name)
                 {
-                    return new UpdateAsyncRequest(service, body, name);
+                    return new UpdateAsyncRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -11170,7 +11170,7 @@ namespace Google.Apis.Logging.v2
                 /// <param name="name">The name of the operation resource to be cancelled.</param>
                 public virtual CancelRequest Cancel(Google.Apis.Logging.v2.Data.CancelOperationRequest body, string name)
                 {
-                    return new CancelRequest(service, body, name);
+                    return new CancelRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -11232,7 +11232,7 @@ namespace Google.Apis.Logging.v2
                 /// <param name="name">The name of the operation resource.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -11283,7 +11283,7 @@ namespace Google.Apis.Logging.v2
                 /// <param name="name">The name of the operation's parent resource.</param>
                 public virtual ListRequest List(string name)
                 {
-                    return new ListRequest(service, name);
+                    return new ListRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -11368,7 +11368,7 @@ namespace Google.Apis.Logging.v2
             /// <param name="name">Resource name for the location.</param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets information about a location.</summary>
@@ -11413,7 +11413,7 @@ namespace Google.Apis.Logging.v2
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
             {
-                return new ListRequest(service, name);
+                return new ListRequest(this.service, name);
             }
 
             /// <summary>Lists information about the supported locations for this service.</summary>
@@ -11530,7 +11530,7 @@ namespace Google.Apis.Logging.v2
             /// </param>
             public virtual DeleteRequest Delete(string logName)
             {
-                return new DeleteRequest(service, logName);
+                return new DeleteRequest(this.service, logName);
             }
 
             /// <summary>
@@ -11592,7 +11592,7 @@ namespace Google.Apis.Logging.v2
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>
@@ -11723,7 +11723,7 @@ namespace Google.Apis.Logging.v2
             /// </param>
             public virtual CreateRequest Create(Google.Apis.Logging.v2.Data.LogSink body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -11828,7 +11828,7 @@ namespace Google.Apis.Logging.v2
             /// </param>
             public virtual DeleteRequest Delete(string sinkName)
             {
-                return new DeleteRequest(service, sinkName);
+                return new DeleteRequest(this.service, sinkName);
             }
 
             /// <summary>
@@ -11885,7 +11885,7 @@ namespace Google.Apis.Logging.v2
             /// </param>
             public virtual GetRequest Get(string sinkName)
             {
-                return new GetRequest(service, sinkName);
+                return new GetRequest(this.service, sinkName);
             }
 
             /// <summary>Gets a sink.</summary>
@@ -11938,7 +11938,7 @@ namespace Google.Apis.Logging.v2
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists sinks.</summary>
@@ -12028,7 +12028,7 @@ namespace Google.Apis.Logging.v2
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.Logging.v2.Data.LogSink body, string sinkName)
             {
-                return new PatchRequest(service, body, sinkName);
+                return new PatchRequest(this.service, body, sinkName);
             }
 
             /// <summary>
@@ -12158,7 +12158,7 @@ namespace Google.Apis.Logging.v2
             /// </param>
             public virtual UpdateRequest Update(Google.Apis.Logging.v2.Data.LogSink body, string sinkName)
             {
-                return new UpdateRequest(service, body, sinkName);
+                return new UpdateRequest(this.service, body, sinkName);
             }
 
             /// <summary>
@@ -12290,7 +12290,7 @@ namespace Google.Apis.Logging.v2
         /// </param>
         public virtual GetCmekSettingsRequest GetCmekSettings(string name)
         {
-            return new GetCmekSettingsRequest(service, name);
+            return new GetCmekSettingsRequest(this.service, name);
         }
 
         /// <summary>
@@ -12359,7 +12359,7 @@ namespace Google.Apis.Logging.v2
         /// </param>
         public virtual GetSettingsRequest GetSettings(string name)
         {
-            return new GetSettingsRequest(service, name);
+            return new GetSettingsRequest(this.service, name);
         }
 
         /// <summary>
@@ -12431,7 +12431,7 @@ namespace Google.Apis.Logging.v2
         /// </param>
         public virtual UpdateCmekSettingsRequest UpdateCmekSettings(Google.Apis.Logging.v2.Data.CmekSettings body, string name)
         {
-            return new UpdateCmekSettingsRequest(service, body, name);
+            return new UpdateCmekSettingsRequest(this.service, body, name);
         }
 
         /// <summary>
@@ -12526,7 +12526,7 @@ namespace Google.Apis.Logging.v2
         /// </param>
         public virtual UpdateSettingsRequest UpdateSettings(Google.Apis.Logging.v2.Data.Settings body, string name)
         {
-            return new UpdateSettingsRequest(service, body, name);
+            return new UpdateSettingsRequest(this.service, body, name);
         }
 
         /// <summary>
@@ -12652,7 +12652,7 @@ namespace Google.Apis.Logging.v2
             /// </param>
             public virtual CreateRequest Create(Google.Apis.Logging.v2.Data.LogExclusion body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -12718,7 +12718,7 @@ namespace Google.Apis.Logging.v2
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>Deletes an exclusion in the _Default sink.</summary>
@@ -12776,7 +12776,7 @@ namespace Google.Apis.Logging.v2
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets the description of an exclusion in the _Default sink.</summary>
@@ -12831,7 +12831,7 @@ namespace Google.Apis.Logging.v2
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists all the exclusions on the _Default sink in a parent resource.</summary>
@@ -12919,7 +12919,7 @@ namespace Google.Apis.Logging.v2
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.Logging.v2.Data.LogExclusion body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>Changes one or more properties of an existing exclusion in the _Default sink.</summary>
@@ -13061,7 +13061,7 @@ namespace Google.Apis.Logging.v2
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.Logging.v2.Data.Link body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>
@@ -13145,7 +13145,7 @@ namespace Google.Apis.Logging.v2
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -13204,7 +13204,7 @@ namespace Google.Apis.Logging.v2
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Gets a link.</summary>
@@ -13261,7 +13261,7 @@ namespace Google.Apis.Logging.v2
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists links.</summary>
@@ -13381,7 +13381,7 @@ namespace Google.Apis.Logging.v2
                         /// </param>
                         public virtual ListRequest List(string parent)
                         {
-                            return new ListRequest(service, parent);
+                            return new ListRequest(this.service, parent);
                         }
 
                         /// <summary>
@@ -13493,7 +13493,7 @@ namespace Google.Apis.Logging.v2
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.Logging.v2.Data.LogView body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>
@@ -13574,7 +13574,7 @@ namespace Google.Apis.Logging.v2
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -13631,7 +13631,7 @@ namespace Google.Apis.Logging.v2
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Gets a view on a log bucket.</summary>
@@ -13683,7 +13683,7 @@ namespace Google.Apis.Logging.v2
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists views on a log bucket.</summary>
@@ -13773,7 +13773,7 @@ namespace Google.Apis.Logging.v2
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.Logging.v2.Data.LogView body, string name)
                     {
-                        return new PatchRequest(service, body, name);
+                        return new PatchRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -13860,7 +13860,7 @@ namespace Google.Apis.Logging.v2
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Logging.v2.Data.LogBucket body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -13941,7 +13941,7 @@ namespace Google.Apis.Logging.v2
                 /// </param>
                 public virtual CreateAsyncRequest CreateAsync(Google.Apis.Logging.v2.Data.LogBucket body, string parent)
                 {
-                    return new CreateAsyncRequest(service, body, parent);
+                    return new CreateAsyncRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -14025,7 +14025,7 @@ namespace Google.Apis.Logging.v2
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -14087,7 +14087,7 @@ namespace Google.Apis.Logging.v2
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets a log bucket.</summary>
@@ -14146,7 +14146,7 @@ namespace Google.Apis.Logging.v2
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists log buckets.</summary>
@@ -14242,7 +14242,7 @@ namespace Google.Apis.Logging.v2
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.Logging.v2.Data.LogBucket body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -14334,7 +14334,7 @@ namespace Google.Apis.Logging.v2
                 /// </param>
                 public virtual UndeleteRequest Undelete(Google.Apis.Logging.v2.Data.UndeleteBucketRequest body, string name)
                 {
-                    return new UndeleteRequest(service, body, name);
+                    return new UndeleteRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -14408,7 +14408,7 @@ namespace Google.Apis.Logging.v2
                 /// </param>
                 public virtual UpdateAsyncRequest UpdateAsync(Google.Apis.Logging.v2.Data.LogBucket body, string name)
                 {
-                    return new UpdateAsyncRequest(service, body, name);
+                    return new UpdateAsyncRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -14515,7 +14515,7 @@ namespace Google.Apis.Logging.v2
                 /// <param name="name">The name of the operation resource to be cancelled.</param>
                 public virtual CancelRequest Cancel(Google.Apis.Logging.v2.Data.CancelOperationRequest body, string name)
                 {
-                    return new CancelRequest(service, body, name);
+                    return new CancelRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -14577,7 +14577,7 @@ namespace Google.Apis.Logging.v2
                 /// <param name="name">The name of the operation resource.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -14628,7 +14628,7 @@ namespace Google.Apis.Logging.v2
                 /// <param name="name">The name of the operation's parent resource.</param>
                 public virtual ListRequest List(string name)
                 {
-                    return new ListRequest(service, name);
+                    return new ListRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -14713,7 +14713,7 @@ namespace Google.Apis.Logging.v2
             /// <param name="name">Resource name for the location.</param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets information about a location.</summary>
@@ -14758,7 +14758,7 @@ namespace Google.Apis.Logging.v2
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
             {
-                return new ListRequest(service, name);
+                return new ListRequest(this.service, name);
             }
 
             /// <summary>Lists information about the supported locations for this service.</summary>
@@ -14875,7 +14875,7 @@ namespace Google.Apis.Logging.v2
             /// </param>
             public virtual DeleteRequest Delete(string logName)
             {
-                return new DeleteRequest(service, logName);
+                return new DeleteRequest(this.service, logName);
             }
 
             /// <summary>
@@ -14937,7 +14937,7 @@ namespace Google.Apis.Logging.v2
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>
@@ -15063,7 +15063,7 @@ namespace Google.Apis.Logging.v2
             /// </param>
             public virtual CreateRequest Create(Google.Apis.Logging.v2.Data.LogMetric body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>Creates a logs-based metric.</summary>
@@ -15120,7 +15120,7 @@ namespace Google.Apis.Logging.v2
             /// </param>
             public virtual DeleteRequest Delete(string metricName)
             {
-                return new DeleteRequest(service, metricName);
+                return new DeleteRequest(this.service, metricName);
             }
 
             /// <summary>Deletes a logs-based metric.</summary>
@@ -15169,7 +15169,7 @@ namespace Google.Apis.Logging.v2
             /// </param>
             public virtual GetRequest Get(string metricName)
             {
-                return new GetRequest(service, metricName);
+                return new GetRequest(this.service, metricName);
             }
 
             /// <summary>Gets a logs-based metric.</summary>
@@ -15218,7 +15218,7 @@ namespace Google.Apis.Logging.v2
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists logs-based metrics.</summary>
@@ -15302,7 +15302,7 @@ namespace Google.Apis.Logging.v2
             /// </param>
             public virtual UpdateRequest Update(Google.Apis.Logging.v2.Data.LogMetric body, string metricName)
             {
-                return new UpdateRequest(service, body, metricName);
+                return new UpdateRequest(this.service, body, metricName);
             }
 
             /// <summary>Creates or updates a logs-based metric.</summary>
@@ -15385,7 +15385,7 @@ namespace Google.Apis.Logging.v2
             /// </param>
             public virtual CreateRequest Create(Google.Apis.Logging.v2.Data.LogSink body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -15490,7 +15490,7 @@ namespace Google.Apis.Logging.v2
             /// </param>
             public virtual DeleteRequest Delete(string sinkName)
             {
-                return new DeleteRequest(service, sinkName);
+                return new DeleteRequest(this.service, sinkName);
             }
 
             /// <summary>
@@ -15547,7 +15547,7 @@ namespace Google.Apis.Logging.v2
             /// </param>
             public virtual GetRequest Get(string sinkName)
             {
-                return new GetRequest(service, sinkName);
+                return new GetRequest(this.service, sinkName);
             }
 
             /// <summary>Gets a sink.</summary>
@@ -15600,7 +15600,7 @@ namespace Google.Apis.Logging.v2
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists sinks.</summary>
@@ -15690,7 +15690,7 @@ namespace Google.Apis.Logging.v2
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.Logging.v2.Data.LogSink body, string sinkName)
             {
-                return new PatchRequest(service, body, sinkName);
+                return new PatchRequest(this.service, body, sinkName);
             }
 
             /// <summary>
@@ -15820,7 +15820,7 @@ namespace Google.Apis.Logging.v2
             /// </param>
             public virtual UpdateRequest Update(Google.Apis.Logging.v2.Data.LogSink body, string sinkName)
             {
-                return new UpdateRequest(service, body, sinkName);
+                return new UpdateRequest(this.service, body, sinkName);
             }
 
             /// <summary>
@@ -15952,7 +15952,7 @@ namespace Google.Apis.Logging.v2
         /// </param>
         public virtual GetCmekSettingsRequest GetCmekSettings(string name)
         {
-            return new GetCmekSettingsRequest(service, name);
+            return new GetCmekSettingsRequest(this.service, name);
         }
 
         /// <summary>
@@ -16021,7 +16021,7 @@ namespace Google.Apis.Logging.v2
         /// </param>
         public virtual GetSettingsRequest GetSettings(string name)
         {
-            return new GetSettingsRequest(service, name);
+            return new GetSettingsRequest(this.service, name);
         }
 
         /// <summary>
@@ -16103,7 +16103,7 @@ namespace Google.Apis.Logging.v2
         /// </param>
         public virtual CreateRequest Create(Google.Apis.Logging.v2.Data.LogSink body, string parent)
         {
-            return new CreateRequest(service, body, parent);
+            return new CreateRequest(this.service, body, parent);
         }
 
         /// <summary>
@@ -16208,7 +16208,7 @@ namespace Google.Apis.Logging.v2
         /// </param>
         public virtual DeleteRequest Delete(string sinkName)
         {
-            return new DeleteRequest(service, sinkName);
+            return new DeleteRequest(this.service, sinkName);
         }
 
         /// <summary>
@@ -16264,7 +16264,7 @@ namespace Google.Apis.Logging.v2
         /// </param>
         public virtual GetRequest Get(string sinkName)
         {
-            return new GetRequest(service, sinkName);
+            return new GetRequest(this.service, sinkName);
         }
 
         /// <summary>Gets a sink.</summary>
@@ -16316,7 +16316,7 @@ namespace Google.Apis.Logging.v2
         /// </param>
         public virtual ListRequest List(string parent)
         {
-            return new ListRequest(service, parent);
+            return new ListRequest(this.service, parent);
         }
 
         /// <summary>Lists sinks.</summary>
@@ -16405,7 +16405,7 @@ namespace Google.Apis.Logging.v2
         /// </param>
         public virtual UpdateRequest Update(Google.Apis.Logging.v2.Data.LogSink body, string sinkName)
         {
-            return new UpdateRequest(service, body, sinkName);
+            return new UpdateRequest(this.service, body, sinkName);
         }
 
         /// <summary>
@@ -16549,7 +16549,7 @@ namespace Google.Apis.Logging.v2
         /// </param>
         public virtual GetCmekSettingsRequest GetCmekSettings(string name)
         {
-            return new GetCmekSettingsRequest(service, name);
+            return new GetCmekSettingsRequest(this.service, name);
         }
 
         /// <summary>
@@ -16618,7 +16618,7 @@ namespace Google.Apis.Logging.v2
         /// </param>
         public virtual GetSettingsRequest GetSettings(string name)
         {
-            return new GetSettingsRequest(service, name);
+            return new GetSettingsRequest(this.service, name);
         }
 
         /// <summary>
@@ -16690,7 +16690,7 @@ namespace Google.Apis.Logging.v2
         /// </param>
         public virtual UpdateCmekSettingsRequest UpdateCmekSettings(Google.Apis.Logging.v2.Data.CmekSettings body, string name)
         {
-            return new UpdateCmekSettingsRequest(service, body, name);
+            return new UpdateCmekSettingsRequest(this.service, body, name);
         }
 
         /// <summary>
@@ -16785,7 +16785,7 @@ namespace Google.Apis.Logging.v2
         /// </param>
         public virtual UpdateSettingsRequest UpdateSettings(Google.Apis.Logging.v2.Data.Settings body, string name)
         {
-            return new UpdateSettingsRequest(service, body, name);
+            return new UpdateSettingsRequest(this.service, body, name);
         }
 
         /// <summary>
@@ -16947,8 +16947,8 @@ namespace Google.Apis.Logging.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _startTimeRaw;
@@ -16984,8 +16984,8 @@ namespace Google.Apis.Logging.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>State of an operation.</summary>
@@ -17131,8 +17131,8 @@ namespace Google.Apis.Logging.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Estimated progress of the operation (0 - 100%).</summary>
@@ -17176,8 +17176,8 @@ namespace Google.Apis.Logging.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>State of an operation.</summary>
@@ -17493,8 +17493,8 @@ namespace Google.Apis.Logging.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -17601,8 +17601,8 @@ namespace Google.Apis.Logging.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Describes this link.The maximum length of the description is 8000 characters.</summary>
@@ -17673,8 +17673,8 @@ namespace Google.Apis.Logging.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _startTimeRaw;
@@ -17710,8 +17710,8 @@ namespace Google.Apis.Logging.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>State of an operation.</summary>
@@ -18080,8 +18080,8 @@ namespace Google.Apis.Logging.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Describes this bucket.</summary>
@@ -18163,8 +18163,8 @@ namespace Google.Apis.Logging.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -18288,8 +18288,8 @@ namespace Google.Apis.Logging.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ReceiveTimestampDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ReceiveTimestampRaw);
-            set => ReceiveTimestampRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ReceiveTimestampRaw);
+            set => ReceiveTimestampRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -18378,8 +18378,8 @@ namespace Google.Apis.Logging.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? TimestampDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(TimestampRaw);
-            set => TimestampRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(TimestampRaw);
+            set => TimestampRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -18523,8 +18523,8 @@ namespace Google.Apis.Logging.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Optional. A description of this exclusion.</summary>
@@ -18591,8 +18591,8 @@ namespace Google.Apis.Logging.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -18647,8 +18647,8 @@ namespace Google.Apis.Logging.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? TimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(TimeRaw);
-            set => TimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(TimeRaw);
+            set => TimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -18714,8 +18714,8 @@ namespace Google.Apis.Logging.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -18813,8 +18813,8 @@ namespace Google.Apis.Logging.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -18889,8 +18889,8 @@ namespace Google.Apis.Logging.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -18994,8 +18994,8 @@ namespace Google.Apis.Logging.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -19080,8 +19080,8 @@ namespace Google.Apis.Logging.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Describes this view.</summary>
@@ -19137,8 +19137,8 @@ namespace Google.Apis.Logging.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -19482,8 +19482,8 @@ namespace Google.Apis.Logging.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Whether this request is finished or active.</summary>
@@ -19620,8 +19620,8 @@ namespace Google.Apis.Logging.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>HTTP response status code. Example: 200, 404.</summary>

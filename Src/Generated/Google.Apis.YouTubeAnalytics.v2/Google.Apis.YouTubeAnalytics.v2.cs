@@ -303,7 +303,7 @@ namespace Google.Apis.YouTubeAnalytics.v2
         /// <summary>Removes an item from a group.</summary>
         public virtual DeleteRequest Delete()
         {
-            return new DeleteRequest(service);
+            return new DeleteRequest(this.service);
         }
 
         /// <summary>Removes an item from a group.</summary>
@@ -369,7 +369,7 @@ namespace Google.Apis.YouTubeAnalytics.v2
         /// <param name="body">The body of the request.</param>
         public virtual InsertRequest Insert(Google.Apis.YouTubeAnalytics.v2.Data.GroupItem body)
         {
-            return new InsertRequest(service, body);
+            return new InsertRequest(this.service, body);
         }
 
         /// <summary>Creates a group item.</summary>
@@ -427,7 +427,7 @@ namespace Google.Apis.YouTubeAnalytics.v2
         /// <summary>Returns a collection of group items that match the API request parameters.</summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>Returns a collection of group items that match the API request parameters.</summary>
@@ -507,7 +507,7 @@ namespace Google.Apis.YouTubeAnalytics.v2
         /// <summary>Deletes a group.</summary>
         public virtual DeleteRequest Delete()
         {
-            return new DeleteRequest(service);
+            return new DeleteRequest(this.service);
         }
 
         /// <summary>Deletes a group.</summary>
@@ -571,7 +571,7 @@ namespace Google.Apis.YouTubeAnalytics.v2
         /// <param name="body">The body of the request.</param>
         public virtual InsertRequest Insert(Google.Apis.YouTubeAnalytics.v2.Data.Group body)
         {
-            return new InsertRequest(service, body);
+            return new InsertRequest(this.service, body);
         }
 
         /// <summary>Creates a group.</summary>
@@ -632,7 +632,7 @@ namespace Google.Apis.YouTubeAnalytics.v2
         /// </summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>
@@ -734,7 +734,7 @@ namespace Google.Apis.YouTubeAnalytics.v2
         /// <param name="body">The body of the request.</param>
         public virtual UpdateRequest Update(Google.Apis.YouTubeAnalytics.v2.Data.Group body)
         {
-            return new UpdateRequest(service, body);
+            return new UpdateRequest(this.service, body);
         }
 
         /// <summary>Modifies a group. For example, you could change a group's title.</summary>
@@ -807,7 +807,7 @@ namespace Google.Apis.YouTubeAnalytics.v2
         /// <summary>Retrieve your YouTube Analytics reports.</summary>
         public virtual QueryRequest Query()
         {
-            return new QueryRequest(service);
+            return new QueryRequest(this.service);
         }
 
         /// <summary>Retrieve your YouTube Analytics reports.</summary>
@@ -1252,8 +1252,8 @@ namespace Google.Apis.YouTubeAnalytics.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? PublishedAtDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(PublishedAtRaw);
-            set => PublishedAtRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(PublishedAtRaw);
+            set => PublishedAtRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The group name. The value must be a non-empty string.</summary>

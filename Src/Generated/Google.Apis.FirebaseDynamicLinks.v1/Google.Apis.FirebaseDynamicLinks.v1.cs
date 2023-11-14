@@ -287,7 +287,7 @@ namespace Google.Apis.FirebaseDynamicLinks.v1
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.FirebaseDynamicLinks.v1.Data.CreateManagedShortLinkRequest body)
         {
-            return new CreateRequest(service, body);
+            return new CreateRequest(this.service, body);
         }
 
         /// <summary>
@@ -353,7 +353,7 @@ namespace Google.Apis.FirebaseDynamicLinks.v1
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.FirebaseDynamicLinks.v1.Data.CreateShortDynamicLinkRequest body)
         {
-            return new CreateRequest(service, body);
+            return new CreateRequest(this.service, body);
         }
 
         /// <summary>
@@ -415,7 +415,7 @@ namespace Google.Apis.FirebaseDynamicLinks.v1
         /// <param name="dynamicLink">Dynamic Link URL. e.g. https://abcd.app.goo.gl/wxyz</param>
         public virtual GetLinkStatsRequest GetLinkStats(string dynamicLink)
         {
-            return new GetLinkStatsRequest(service, dynamicLink);
+            return new GetLinkStatsRequest(this.service, dynamicLink);
         }
 
         /// <summary>
@@ -487,7 +487,7 @@ namespace Google.Apis.FirebaseDynamicLinks.v1
         /// <param name="body">The body of the request.</param>
         public virtual InstallAttributionRequest InstallAttribution(Google.Apis.FirebaseDynamicLinks.v1.Data.GetIosPostInstallAttributionRequest body)
         {
-            return new InstallAttributionRequest(service, body);
+            return new InstallAttributionRequest(this.service, body);
         }
 
         /// <summary>Get iOS strong/weak-match info for post-install attribution.</summary>
@@ -526,7 +526,7 @@ namespace Google.Apis.FirebaseDynamicLinks.v1
         /// <param name="body">The body of the request.</param>
         public virtual ReopenAttributionRequest ReopenAttribution(Google.Apis.FirebaseDynamicLinks.v1.Data.GetIosReopenAttributionRequest body)
         {
-            return new ReopenAttributionRequest(service, body);
+            return new ReopenAttributionRequest(this.service, body);
         }
 
         /// <summary>Get iOS reopen attribution for app universal link open deeplinking.</summary>
@@ -1251,8 +1251,8 @@ namespace Google.Apis.FirebaseDynamicLinks.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreationTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreationTimeRaw);
-            set => CreationTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreationTimeRaw);
+            set => CreationTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Attributes that have been flagged about this short url.</summary>

@@ -342,7 +342,7 @@ namespace Google.Apis.ChromeManagement.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Get a specific app for a customer by its resource name.</summary>
@@ -417,7 +417,7 @@ namespace Google.Apis.ChromeManagement.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Get a specific app for a customer by its resource name.</summary>
@@ -492,7 +492,7 @@ namespace Google.Apis.ChromeManagement.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Get a specific app for a customer by its resource name.</summary>
@@ -546,7 +546,7 @@ namespace Google.Apis.ChromeManagement.v1
             /// </param>
             public virtual CountChromeAppRequestsRequest CountChromeAppRequests(string customer)
             {
-                return new CountChromeAppRequestsRequest(service, customer);
+                return new CountChromeAppRequestsRequest(this.service, customer);
             }
 
             /// <summary>Generate summary of app installation requests.</summary>
@@ -668,7 +668,7 @@ namespace Google.Apis.ChromeManagement.v1
             /// <param name="customer">Required. The customer ID or "my_customer" prefixed with "customers/".</param>
             public virtual CountChromeBrowsersNeedingAttentionRequest CountChromeBrowsersNeedingAttention(string customer)
             {
-                return new CountChromeBrowsersNeedingAttentionRequest(service, customer);
+                return new CountChromeBrowsersNeedingAttentionRequest(this.service, customer);
             }
 
             /// <summary>
@@ -734,7 +734,7 @@ namespace Google.Apis.ChromeManagement.v1
             /// <param name="customer">Required. The customer ID or "my_customer" prefixed with "customers/".</param>
             public virtual CountChromeDevicesReachingAutoExpirationDateRequest CountChromeDevicesReachingAutoExpirationDate(string customer)
             {
-                return new CountChromeDevicesReachingAutoExpirationDateRequest(service, customer);
+                return new CountChromeDevicesReachingAutoExpirationDateRequest(this.service, customer);
             }
 
             /// <summary>
@@ -833,7 +833,7 @@ namespace Google.Apis.ChromeManagement.v1
             /// <param name="customer">Required. The customer ID or "my_customer" prefixed with "customers/".</param>
             public virtual CountChromeDevicesThatNeedAttentionRequest CountChromeDevicesThatNeedAttention(string customer)
             {
-                return new CountChromeDevicesThatNeedAttentionRequest(service, customer);
+                return new CountChromeDevicesThatNeedAttentionRequest(this.service, customer);
             }
 
             /// <summary>
@@ -912,7 +912,7 @@ namespace Google.Apis.ChromeManagement.v1
             /// <param name="customer">Required. The customer ID or "my_customer".</param>
             public virtual CountChromeHardwareFleetDevicesRequest CountChromeHardwareFleetDevices(string customer)
             {
-                return new CountChromeHardwareFleetDevicesRequest(service, customer);
+                return new CountChromeHardwareFleetDevicesRequest(this.service, customer);
             }
 
             /// <summary>
@@ -989,7 +989,7 @@ namespace Google.Apis.ChromeManagement.v1
             /// </param>
             public virtual CountChromeVersionsRequest CountChromeVersions(string customer)
             {
-                return new CountChromeVersionsRequest(service, customer);
+                return new CountChromeVersionsRequest(this.service, customer);
             }
 
             /// <summary>Generate report of installed Chrome versions.</summary>
@@ -1090,7 +1090,7 @@ namespace Google.Apis.ChromeManagement.v1
             /// </param>
             public virtual CountInstalledAppsRequest CountInstalledApps(string customer)
             {
-                return new CountInstalledAppsRequest(service, customer);
+                return new CountInstalledAppsRequest(this.service, customer);
             }
 
             /// <summary>Generate report of app installations.</summary>
@@ -1208,7 +1208,7 @@ namespace Google.Apis.ChromeManagement.v1
             /// </param>
             public virtual CountPrintJobsByPrinterRequest CountPrintJobsByPrinter(string customer)
             {
-                return new CountPrintJobsByPrinterRequest(service, customer);
+                return new CountPrintJobsByPrinterRequest(this.service, customer);
             }
 
             /// <summary>Get a summary of printing done by each printer.</summary>
@@ -1330,7 +1330,7 @@ namespace Google.Apis.ChromeManagement.v1
             /// </param>
             public virtual CountPrintJobsByUserRequest CountPrintJobsByUser(string customer)
             {
-                return new CountPrintJobsByUserRequest(service, customer);
+                return new CountPrintJobsByUserRequest(this.service, customer);
             }
 
             /// <summary>Get a summary of printing done by each user.</summary>
@@ -1453,7 +1453,7 @@ namespace Google.Apis.ChromeManagement.v1
             /// </param>
             public virtual EnumeratePrintJobsRequest EnumeratePrintJobs(string customer)
             {
-                return new EnumeratePrintJobsRequest(service, customer);
+                return new EnumeratePrintJobsRequest(this.service, customer);
             }
 
             /// <summary>Get a list of print jobs.</summary>
@@ -1584,7 +1584,7 @@ namespace Google.Apis.ChromeManagement.v1
             /// </param>
             public virtual FindInstalledAppDevicesRequest FindInstalledAppDevices(string customer)
             {
-                return new FindInstalledAppDevicesRequest(service, customer);
+                return new FindInstalledAppDevicesRequest(this.service, customer);
             }
 
             /// <summary>
@@ -1791,7 +1791,7 @@ namespace Google.Apis.ChromeManagement.v1
                 /// <param name="name">Required. Name of the `TelemetryDevice` to return.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Get telemetry device.</summary>
@@ -1851,7 +1851,7 @@ namespace Google.Apis.ChromeManagement.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>List all telemetry devices.</summary>
@@ -1976,7 +1976,7 @@ namespace Google.Apis.ChromeManagement.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>List telemetry events.</summary>
@@ -2107,7 +2107,7 @@ namespace Google.Apis.ChromeManagement.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementV1TelemetryNotificationConfig body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Create a telemetry notification config.</summary>
@@ -2165,7 +2165,7 @@ namespace Google.Apis.ChromeManagement.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Delete a telemetry notification config.</summary>
@@ -2213,7 +2213,7 @@ namespace Google.Apis.ChromeManagement.v1
                 /// <param name="parent">Required. The parent which owns the notification configs.</param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>List all telemetry notification configs.</summary>
@@ -2308,7 +2308,7 @@ namespace Google.Apis.ChromeManagement.v1
                 /// <param name="name">Required. Name of the `TelemetryUser` to return.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Get telemetry user.</summary>
@@ -2368,7 +2368,7 @@ namespace Google.Apis.ChromeManagement.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>List all telemetry users.</summary>
@@ -2557,8 +2557,8 @@ namespace Google.Apis.ChromeManagement.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? FirstPublishTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(FirstPublishTimeRaw);
-            set => FirstPublishTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(FirstPublishTimeRaw);
+            set => FirstPublishTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. Home page or Website uri.</summary>
@@ -2608,8 +2608,8 @@ namespace Google.Apis.ChromeManagement.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LatestPublishTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LatestPublishTimeRaw);
-            set => LatestPublishTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LatestPublishTimeRaw);
+            set => LatestPublishTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -2728,8 +2728,8 @@ namespace Google.Apis.ChromeManagement.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ReportTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ReportTimeRaw);
-            set => ReportTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ReportTimeRaw);
+            set => ReportTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -2836,8 +2836,8 @@ namespace Google.Apis.ChromeManagement.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ReportTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ReportTimeRaw);
-            set => ReportTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ReportTimeRaw);
+            set => ReportTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. Battery status read from sysfs. Example: Discharging</summary>
@@ -2911,8 +2911,8 @@ namespace Google.Apis.ChromeManagement.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ReportTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ReportTimeRaw);
-            set => ReportTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ReportTimeRaw);
+            set => ReportTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. Sampling data for the battery sorted in a decreasing order of report_time.</summary>
@@ -2974,8 +2974,8 @@ namespace Google.Apis.ChromeManagement.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? BootUpTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(BootUpTimeRaw);
-            set => BootUpTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(BootUpTimeRaw);
+            set => BootUpTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _reportTimeRaw;
@@ -3011,8 +3011,8 @@ namespace Google.Apis.ChromeManagement.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ReportTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ReportTimeRaw);
-            set => ReportTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ReportTimeRaw);
+            set => ReportTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Total time since shutdown start to power off.</summary>
@@ -3056,8 +3056,8 @@ namespace Google.Apis.ChromeManagement.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ShutdownTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ShutdownTimeRaw);
-            set => ShutdownTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ShutdownTimeRaw);
+            set => ShutdownTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -3241,8 +3241,8 @@ namespace Google.Apis.ChromeManagement.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LatestRequestTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LatestRequestTimeRaw);
-            set => LatestRequestTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LatestRequestTimeRaw);
+            set => LatestRequestTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. Total count of requests for this app.</summary>
@@ -3550,8 +3550,8 @@ namespace Google.Apis.ChromeManagement.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ReportTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ReportTimeRaw);
-            set => ReportTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ReportTimeRaw);
+            set => ReportTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. Frequency the report is sampled.</summary>
@@ -3639,8 +3639,8 @@ namespace Google.Apis.ChromeManagement.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ReportTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ReportTimeRaw);
-            set => ReportTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ReportTimeRaw);
+            set => ReportTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -3973,8 +3973,8 @@ namespace Google.Apis.ChromeManagement.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ReportTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ReportTimeRaw);
-            set => ReportTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ReportTimeRaw);
+            set => ReportTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -4027,8 +4027,8 @@ namespace Google.Apis.ChromeManagement.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ReportTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ReportTimeRaw);
-            set => ReportTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ReportTimeRaw);
+            set => ReportTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>State the device changed to</summary>
@@ -4166,8 +4166,8 @@ namespace Google.Apis.ChromeManagement.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ReportTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ReportTimeRaw);
-            set => ReportTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ReportTimeRaw);
+            set => ReportTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -4316,8 +4316,8 @@ namespace Google.Apis.ChromeManagement.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ReportTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ReportTimeRaw);
-            set => ReportTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ReportTimeRaw);
+            set => ReportTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. Frequency the report is sampled.</summary>
@@ -4372,8 +4372,8 @@ namespace Google.Apis.ChromeManagement.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ReportTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ReportTimeRaw);
-            set => ReportTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ReportTimeRaw);
+            set => ReportTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -4461,8 +4461,8 @@ namespace Google.Apis.ChromeManagement.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ReportTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ReportTimeRaw);
-            set => ReportTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ReportTimeRaw);
+            set => ReportTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -4559,8 +4559,8 @@ namespace Google.Apis.ChromeManagement.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ReportTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ReportTimeRaw);
-            set => ReportTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ReportTimeRaw);
+            set => ReportTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. Frequency the report is sampled.</summary>
@@ -4639,8 +4639,8 @@ namespace Google.Apis.ChromeManagement.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LastRebootTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastRebootTimeRaw);
-            set => LastRebootTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastRebootTimeRaw);
+            set => LastRebootTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _lastUpdateCheckTimeRaw;
@@ -4678,8 +4678,8 @@ namespace Google.Apis.ChromeManagement.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LastUpdateCheckTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastUpdateCheckTimeRaw);
-            set => LastUpdateCheckTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastUpdateCheckTimeRaw);
+            set => LastUpdateCheckTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _lastUpdateTimeRaw;
@@ -4717,8 +4717,8 @@ namespace Google.Apis.ChromeManagement.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LastUpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastUpdateTimeRaw);
-            set => LastUpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastUpdateTimeRaw);
+            set => LastUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -4777,8 +4777,8 @@ namespace Google.Apis.ChromeManagement.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ReportTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ReportTimeRaw);
-            set => ReportTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ReportTimeRaw);
+            set => ReportTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Reports of all usb connected devices.</summary>
@@ -4829,8 +4829,8 @@ namespace Google.Apis.ChromeManagement.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CompleteTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CompleteTimeRaw);
-            set => CompleteTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CompleteTimeRaw);
+            set => CompleteTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Number of copies.</summary>
@@ -4870,8 +4870,8 @@ namespace Google.Apis.ChromeManagement.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Number of pages in the document.</summary>
@@ -5043,8 +5043,8 @@ namespace Google.Apis.ChromeManagement.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ReportTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ReportTimeRaw);
-            set => ReportTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ReportTimeRaw);
+            set => ReportTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -5282,8 +5282,8 @@ namespace Google.Apis.ChromeManagement.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ReportTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ReportTimeRaw);
-            set => ReportTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ReportTimeRaw);
+            set => ReportTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>

@@ -325,7 +325,7 @@ namespace Google.Apis.Translate.v3beta1
                 /// <param name="parent">Required. The project name.</param>
                 public virtual CreateRequest Create(Google.Apis.Translate.v3beta1.Data.Glossary body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -383,7 +383,7 @@ namespace Google.Apis.Translate.v3beta1
                 /// <param name="name">Required. The name of the glossary to delete.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -431,7 +431,7 @@ namespace Google.Apis.Translate.v3beta1
                 /// <param name="name">Required. The name of the glossary to retrieve.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets a glossary. Returns NOT_FOUND, if the glossary doesn't exist.</summary>
@@ -478,7 +478,7 @@ namespace Google.Apis.Translate.v3beta1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists glossaries in a project. Returns NOT_FOUND, if the project doesn't exist.</summary>
@@ -604,7 +604,7 @@ namespace Google.Apis.Translate.v3beta1
                 /// <param name="name">The name of the operation resource to be cancelled.</param>
                 public virtual CancelRequest Cancel(Google.Apis.Translate.v3beta1.Data.CancelOperationRequest body, string name)
                 {
-                    return new CancelRequest(service, body, name);
+                    return new CancelRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -667,7 +667,7 @@ namespace Google.Apis.Translate.v3beta1
                 /// <param name="name">The name of the operation resource to be deleted.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -719,7 +719,7 @@ namespace Google.Apis.Translate.v3beta1
                 /// <param name="name">The name of the operation resource.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -770,7 +770,7 @@ namespace Google.Apis.Translate.v3beta1
                 /// <param name="name">The name of the operation's parent resource.</param>
                 public virtual ListRequest List(string name)
                 {
-                    return new ListRequest(service, name);
+                    return new ListRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -863,7 +863,7 @@ namespace Google.Apis.Translate.v3beta1
                 /// <param name="name">The name of the operation resource to wait on.</param>
                 public virtual WaitRequest Wait(Google.Apis.Translate.v3beta1.Data.WaitOperationRequest body, string name)
                 {
-                    return new WaitRequest(service, body, name);
+                    return new WaitRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -935,7 +935,7 @@ namespace Google.Apis.Translate.v3beta1
             /// </param>
             public virtual BatchTranslateDocumentRequest BatchTranslateDocument(Google.Apis.Translate.v3beta1.Data.BatchTranslateDocumentRequest body, string parent)
             {
-                return new BatchTranslateDocumentRequest(service, body, parent);
+                return new BatchTranslateDocumentRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -1008,7 +1008,7 @@ namespace Google.Apis.Translate.v3beta1
             /// </param>
             public virtual BatchTranslateTextRequest BatchTranslateText(Google.Apis.Translate.v3beta1.Data.BatchTranslateTextRequest body, string parent)
             {
-                return new BatchTranslateTextRequest(service, body, parent);
+                return new BatchTranslateTextRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -1077,7 +1077,7 @@ namespace Google.Apis.Translate.v3beta1
             /// </param>
             public virtual DetectLanguageRequest DetectLanguage(Google.Apis.Translate.v3beta1.Data.DetectLanguageRequest body, string parent)
             {
-                return new DetectLanguageRequest(service, body, parent);
+                return new DetectLanguageRequest(this.service, body, parent);
             }
 
             /// <summary>Detects the language of text within a request.</summary>
@@ -1135,7 +1135,7 @@ namespace Google.Apis.Translate.v3beta1
             /// <param name="name">Resource name for the location.</param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets information about a location.</summary>
@@ -1187,7 +1187,7 @@ namespace Google.Apis.Translate.v3beta1
             /// </param>
             public virtual GetSupportedLanguagesRequest GetSupportedLanguages(string parent)
             {
-                return new GetSupportedLanguagesRequest(service, parent);
+                return new GetSupportedLanguagesRequest(this.service, parent);
             }
 
             /// <summary>Returns a list of supported languages for translation.</summary>
@@ -1273,7 +1273,7 @@ namespace Google.Apis.Translate.v3beta1
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
             {
-                return new ListRequest(service, name);
+                return new ListRequest(this.service, name);
             }
 
             /// <summary>Lists information about the supported locations for this service.</summary>
@@ -1369,7 +1369,7 @@ namespace Google.Apis.Translate.v3beta1
             /// </param>
             public virtual TranslateDocumentRequest TranslateDocument(Google.Apis.Translate.v3beta1.Data.TranslateDocumentRequest body, string parent)
             {
-                return new TranslateDocumentRequest(service, body, parent);
+                return new TranslateDocumentRequest(this.service, body, parent);
             }
 
             /// <summary>Translates documents in synchronous mode.</summary>
@@ -1435,7 +1435,7 @@ namespace Google.Apis.Translate.v3beta1
             /// </param>
             public virtual TranslateTextRequest TranslateText(Google.Apis.Translate.v3beta1.Data.TranslateTextRequest body, string parent)
             {
-                return new TranslateTextRequest(service, body, parent);
+                return new TranslateTextRequest(this.service, body, parent);
             }
 
             /// <summary>Translates input text and returns translated text.</summary>
@@ -1502,7 +1502,7 @@ namespace Google.Apis.Translate.v3beta1
         /// </param>
         public virtual DetectLanguageRequest DetectLanguage(Google.Apis.Translate.v3beta1.Data.DetectLanguageRequest body, string parent)
         {
-            return new DetectLanguageRequest(service, body, parent);
+            return new DetectLanguageRequest(this.service, body, parent);
         }
 
         /// <summary>Detects the language of text within a request.</summary>
@@ -1566,7 +1566,7 @@ namespace Google.Apis.Translate.v3beta1
         /// </param>
         public virtual GetSupportedLanguagesRequest GetSupportedLanguages(string parent)
         {
-            return new GetSupportedLanguagesRequest(service, parent);
+            return new GetSupportedLanguagesRequest(this.service, parent);
         }
 
         /// <summary>Returns a list of supported languages for translation.</summary>
@@ -1658,7 +1658,7 @@ namespace Google.Apis.Translate.v3beta1
         /// </param>
         public virtual TranslateTextRequest TranslateText(Google.Apis.Translate.v3beta1.Data.TranslateTextRequest body, string parent)
         {
-            return new TranslateTextRequest(service, body, parent);
+            return new TranslateTextRequest(this.service, body, parent);
         }
 
         /// <summary>Translates input text and returns translated text.</summary>
@@ -2146,8 +2146,8 @@ namespace Google.Apis.Translate.v3beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. The number of entries defined in the glossary.</summary>
@@ -2209,8 +2209,8 @@ namespace Google.Apis.Translate.v3beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? SubmitTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(SubmitTimeRaw);
-            set => SubmitTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(SubmitTimeRaw);
+            set => SubmitTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>

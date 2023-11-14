@@ -290,7 +290,7 @@ namespace Google.Apis.ServiceConsumerManagement.v1
         /// <param name="name">The name of the operation resource to be cancelled.</param>
         public virtual CancelRequest Cancel(Google.Apis.ServiceConsumerManagement.v1.Data.CancelOperationRequest body, string name)
         {
-            return new CancelRequest(service, body, name);
+            return new CancelRequest(this.service, body, name);
         }
 
         /// <summary>
@@ -353,7 +353,7 @@ namespace Google.Apis.ServiceConsumerManagement.v1
         /// <param name="name">The name of the operation resource to be deleted.</param>
         public virtual DeleteRequest Delete(string name)
         {
-            return new DeleteRequest(service, name);
+            return new DeleteRequest(this.service, name);
         }
 
         /// <summary>
@@ -405,7 +405,7 @@ namespace Google.Apis.ServiceConsumerManagement.v1
         /// <param name="name">The name of the operation resource.</param>
         public virtual GetRequest Get(string name)
         {
-            return new GetRequest(service, name);
+            return new GetRequest(this.service, name);
         }
 
         /// <summary>
@@ -456,7 +456,7 @@ namespace Google.Apis.ServiceConsumerManagement.v1
         /// <param name="name">The name of the operation's parent resource.</param>
         public virtual ListRequest List(string name)
         {
-            return new ListRequest(service, name);
+            return new ListRequest(this.service, name);
         }
 
         /// <summary>
@@ -582,7 +582,7 @@ namespace Google.Apis.ServiceConsumerManagement.v1
             /// </param>
             public virtual AddProjectRequest AddProject(Google.Apis.ServiceConsumerManagement.v1.Data.AddTenantProjectRequest body, string parent)
             {
-                return new AddProjectRequest(service, body, parent);
+                return new AddProjectRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -657,7 +657,7 @@ namespace Google.Apis.ServiceConsumerManagement.v1
             /// </param>
             public virtual ApplyProjectConfigRequest ApplyProjectConfig(Google.Apis.ServiceConsumerManagement.v1.Data.ApplyTenantProjectConfigRequest body, string name)
             {
-                return new ApplyProjectConfigRequest(service, body, name);
+                return new ApplyProjectConfigRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -735,7 +735,7 @@ namespace Google.Apis.ServiceConsumerManagement.v1
             /// </param>
             public virtual AttachProjectRequest AttachProject(Google.Apis.ServiceConsumerManagement.v1.Data.AttachTenantProjectRequest body, string name)
             {
-                return new AttachProjectRequest(service, body, name);
+                return new AttachProjectRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -808,7 +808,7 @@ namespace Google.Apis.ServiceConsumerManagement.v1
             /// </param>
             public virtual CreateRequest Create(Google.Apis.ServiceConsumerManagement.v1.Data.CreateTenancyUnitRequest body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -873,7 +873,7 @@ namespace Google.Apis.ServiceConsumerManagement.v1
             /// <param name="name">Required. Name of the tenancy unit to be deleted.</param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>
@@ -932,7 +932,7 @@ namespace Google.Apis.ServiceConsumerManagement.v1
             /// </param>
             public virtual DeleteProjectRequest DeleteProject(Google.Apis.ServiceConsumerManagement.v1.Data.DeleteTenantProjectRequest body, string name)
             {
-                return new DeleteProjectRequest(service, body, name);
+                return new DeleteProjectRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -1003,7 +1003,7 @@ namespace Google.Apis.ServiceConsumerManagement.v1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>
@@ -1106,7 +1106,7 @@ namespace Google.Apis.ServiceConsumerManagement.v1
             /// </param>
             public virtual RemoveProjectRequest RemoveProject(Google.Apis.ServiceConsumerManagement.v1.Data.RemoveTenantProjectRequest body, string name)
             {
-                return new RemoveProjectRequest(service, body, name);
+                return new RemoveProjectRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -1176,7 +1176,7 @@ namespace Google.Apis.ServiceConsumerManagement.v1
             /// </param>
             public virtual UndeleteProjectRequest UndeleteProject(Google.Apis.ServiceConsumerManagement.v1.Data.UndeleteTenantProjectRequest body, string name)
             {
-                return new UndeleteProjectRequest(service, body, name);
+                return new UndeleteProjectRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -1240,7 +1240,7 @@ namespace Google.Apis.ServiceConsumerManagement.v1
         /// </param>
         public virtual SearchRequest Search(string parent)
         {
-            return new SearchRequest(service, parent);
+            return new SearchRequest(this.service, parent);
         }
 
         /// <summary>Search tenancy units for a managed service.</summary>
@@ -3927,8 +3927,8 @@ namespace Google.Apis.ServiceConsumerManagement.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>

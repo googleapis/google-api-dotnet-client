@@ -353,7 +353,7 @@ namespace Google.Apis.ServiceDirectory.v1
                         /// </param>
                         public virtual CreateRequest Create(Google.Apis.ServiceDirectory.v1.Data.Endpoint body, string parent)
                         {
-                            return new CreateRequest(service, body, parent);
+                            return new CreateRequest(this.service, body, parent);
                         }
 
                         /// <summary>Creates an endpoint, and returns the new endpoint.</summary>
@@ -425,7 +425,7 @@ namespace Google.Apis.ServiceDirectory.v1
                         /// <param name="name">Required. The name of the endpoint to delete.</param>
                         public virtual DeleteRequest Delete(string name)
                         {
-                            return new DeleteRequest(service, name);
+                            return new DeleteRequest(this.service, name);
                         }
 
                         /// <summary>Deletes an endpoint.</summary>
@@ -470,7 +470,7 @@ namespace Google.Apis.ServiceDirectory.v1
                         /// <param name="name">Required. The name of the endpoint to get.</param>
                         public virtual GetRequest Get(string name)
                         {
-                            return new GetRequest(service, name);
+                            return new GetRequest(this.service, name);
                         }
 
                         /// <summary>Gets an endpoint.</summary>
@@ -517,7 +517,7 @@ namespace Google.Apis.ServiceDirectory.v1
                         /// </param>
                         public virtual ListRequest List(string parent)
                         {
-                            return new ListRequest(service, parent);
+                            return new ListRequest(this.service, parent);
                         }
 
                         /// <summary>Lists all endpoints.</summary>
@@ -641,7 +641,7 @@ namespace Google.Apis.ServiceDirectory.v1
                         /// </param>
                         public virtual PatchRequest Patch(Google.Apis.ServiceDirectory.v1.Data.Endpoint body, string name)
                         {
-                            return new PatchRequest(service, body, name);
+                            return new PatchRequest(this.service, body, name);
                         }
 
                         /// <summary>Updates an endpoint.</summary>
@@ -712,7 +712,7 @@ namespace Google.Apis.ServiceDirectory.v1
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.ServiceDirectory.v1.Data.Service body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>Creates a service, and returns the new service.</summary>
@@ -784,7 +784,7 @@ namespace Google.Apis.ServiceDirectory.v1
                     /// <param name="name">Required. The name of the service to delete.</param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -831,7 +831,7 @@ namespace Google.Apis.ServiceDirectory.v1
                     /// <param name="name">Required. The name of the service to get.</param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Gets a service.</summary>
@@ -881,7 +881,7 @@ namespace Google.Apis.ServiceDirectory.v1
                     /// </param>
                     public virtual GetIamPolicyRequest GetIamPolicy(Google.Apis.ServiceDirectory.v1.Data.GetIamPolicyRequest body, string resource)
                     {
-                        return new GetIamPolicyRequest(service, body, resource);
+                        return new GetIamPolicyRequest(this.service, body, resource);
                     }
 
                     /// <summary>Gets the IAM Policy for a resource (namespace or service only).</summary>
@@ -939,7 +939,7 @@ namespace Google.Apis.ServiceDirectory.v1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists all services belonging to a namespace.</summary>
@@ -1060,7 +1060,7 @@ namespace Google.Apis.ServiceDirectory.v1
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.ServiceDirectory.v1.Data.Service body, string name)
                     {
-                        return new PatchRequest(service, body, name);
+                        return new PatchRequest(this.service, body, name);
                     }
 
                     /// <summary>Updates a service.</summary>
@@ -1131,7 +1131,7 @@ namespace Google.Apis.ServiceDirectory.v1
                     /// <param name="name">Required. The name of the service to resolve.</param>
                     public virtual ResolveRequest Resolve(Google.Apis.ServiceDirectory.v1.Data.ResolveServiceRequest body, string name)
                     {
-                        return new ResolveRequest(service, body, name);
+                        return new ResolveRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -1191,7 +1191,7 @@ namespace Google.Apis.ServiceDirectory.v1
                     /// </param>
                     public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.ServiceDirectory.v1.Data.SetIamPolicyRequest body, string resource)
                     {
-                        return new SetIamPolicyRequest(service, body, resource);
+                        return new SetIamPolicyRequest(this.service, body, resource);
                     }
 
                     /// <summary>Sets the IAM Policy for a resource (namespace or service only).</summary>
@@ -1252,7 +1252,7 @@ namespace Google.Apis.ServiceDirectory.v1
                     /// </param>
                     public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.ServiceDirectory.v1.Data.TestIamPermissionsRequest body, string resource)
                     {
-                        return new TestIamPermissionsRequest(service, body, resource);
+                        return new TestIamPermissionsRequest(this.service, body, resource);
                     }
 
                     /// <summary>Tests IAM permissions for a resource (namespace or service only).</summary>
@@ -1312,7 +1312,7 @@ namespace Google.Apis.ServiceDirectory.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.ServiceDirectory.v1.Data.Namespace body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a namespace, and returns the new namespace.</summary>
@@ -1386,7 +1386,7 @@ namespace Google.Apis.ServiceDirectory.v1
                 /// <param name="name">Required. The name of the namespace to delete.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -1433,7 +1433,7 @@ namespace Google.Apis.ServiceDirectory.v1
                 /// <param name="name">Required. The name of the namespace to retrieve.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets a namespace.</summary>
@@ -1483,7 +1483,7 @@ namespace Google.Apis.ServiceDirectory.v1
                 /// </param>
                 public virtual GetIamPolicyRequest GetIamPolicy(Google.Apis.ServiceDirectory.v1.Data.GetIamPolicyRequest body, string resource)
                 {
-                    return new GetIamPolicyRequest(service, body, resource);
+                    return new GetIamPolicyRequest(this.service, body, resource);
                 }
 
                 /// <summary>Gets the IAM Policy for a resource (namespace or service only).</summary>
@@ -1541,7 +1541,7 @@ namespace Google.Apis.ServiceDirectory.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists all namespaces.</summary>
@@ -1660,7 +1660,7 @@ namespace Google.Apis.ServiceDirectory.v1
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.ServiceDirectory.v1.Data.Namespace body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates a namespace.</summary>
@@ -1732,7 +1732,7 @@ namespace Google.Apis.ServiceDirectory.v1
                 /// </param>
                 public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.ServiceDirectory.v1.Data.SetIamPolicyRequest body, string resource)
                 {
-                    return new SetIamPolicyRequest(service, body, resource);
+                    return new SetIamPolicyRequest(this.service, body, resource);
                 }
 
                 /// <summary>Sets the IAM Policy for a resource (namespace or service only).</summary>
@@ -1793,7 +1793,7 @@ namespace Google.Apis.ServiceDirectory.v1
                 /// </param>
                 public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.ServiceDirectory.v1.Data.TestIamPermissionsRequest body, string resource)
                 {
-                    return new TestIamPermissionsRequest(service, body, resource);
+                    return new TestIamPermissionsRequest(this.service, body, resource);
                 }
 
                 /// <summary>Tests IAM permissions for a resource (namespace or service only).</summary>
@@ -1850,7 +1850,7 @@ namespace Google.Apis.ServiceDirectory.v1
             /// <param name="name">Resource name for the location.</param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets information about a location.</summary>
@@ -1895,7 +1895,7 @@ namespace Google.Apis.ServiceDirectory.v1
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
             {
-                return new ListRequest(service, name);
+                return new ListRequest(this.service, name);
             }
 
             /// <summary>Lists information about the supported locations for this service.</summary>

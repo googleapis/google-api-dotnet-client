@@ -302,7 +302,7 @@ namespace Google.Apis.DataLabeling.v1beta1
             /// <param name="parent">Required. AnnotationSpecSet resource parent, format: projects/{project_id}</param>
             public virtual CreateRequest Create(Google.Apis.DataLabeling.v1beta1.Data.GoogleCloudDatalabelingV1beta1CreateAnnotationSpecSetRequest body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>Creates an annotation spec set by providing a set of labels.</summary>
@@ -357,7 +357,7 @@ namespace Google.Apis.DataLabeling.v1beta1
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>Deletes an annotation spec set by resource name.</summary>
@@ -408,7 +408,7 @@ namespace Google.Apis.DataLabeling.v1beta1
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets an annotation spec set by resource name.</summary>
@@ -458,7 +458,7 @@ namespace Google.Apis.DataLabeling.v1beta1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists annotation spec sets for a project. Pagination is supported.</summary>
@@ -612,7 +612,7 @@ namespace Google.Apis.DataLabeling.v1beta1
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -669,7 +669,7 @@ namespace Google.Apis.DataLabeling.v1beta1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>
@@ -785,7 +785,7 @@ namespace Google.Apis.DataLabeling.v1beta1
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Gets an example by resource name, including both data and annotation.</summary>
@@ -849,7 +849,7 @@ namespace Google.Apis.DataLabeling.v1beta1
                     /// <param name="parent">Required. Example resource parent.</param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists examples in an annotated dataset. Pagination is supported.</summary>
@@ -981,7 +981,7 @@ namespace Google.Apis.DataLabeling.v1beta1
                         /// </param>
                         public virtual CreateRequest Create(Google.Apis.DataLabeling.v1beta1.Data.GoogleCloudDatalabelingV1beta1FeedbackMessage body, string parent)
                         {
-                            return new CreateRequest(service, body, parent);
+                            return new CreateRequest(this.service, body, parent);
                         }
 
                         /// <summary>Create a FeedbackMessage object.</summary>
@@ -1039,7 +1039,7 @@ namespace Google.Apis.DataLabeling.v1beta1
                         /// </param>
                         public virtual DeleteRequest Delete(string name)
                         {
-                            return new DeleteRequest(service, name);
+                            return new DeleteRequest(this.service, name);
                         }
 
                         /// <summary>Delete a FeedbackMessage.</summary>
@@ -1090,7 +1090,7 @@ namespace Google.Apis.DataLabeling.v1beta1
                         /// </param>
                         public virtual GetRequest Get(string name)
                         {
-                            return new GetRequest(service, name);
+                            return new GetRequest(this.service, name);
                         }
 
                         /// <summary>Get a FeedbackMessage object.</summary>
@@ -1141,7 +1141,7 @@ namespace Google.Apis.DataLabeling.v1beta1
                         /// </param>
                         public virtual ListRequest List(string parent)
                         {
-                            return new ListRequest(service, parent);
+                            return new ListRequest(this.service, parent);
                         }
 
                         /// <summary>List FeedbackMessages with pagination.</summary>
@@ -1224,7 +1224,7 @@ namespace Google.Apis.DataLabeling.v1beta1
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>Delete a FeedbackThread.</summary>
@@ -1275,7 +1275,7 @@ namespace Google.Apis.DataLabeling.v1beta1
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Get a FeedbackThread object.</summary>
@@ -1326,7 +1326,7 @@ namespace Google.Apis.DataLabeling.v1beta1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>List FeedbackThreads with pagination.</summary>
@@ -1409,7 +1409,7 @@ namespace Google.Apis.DataLabeling.v1beta1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes an annotated dataset by resource name.</summary>
@@ -1460,7 +1460,7 @@ namespace Google.Apis.DataLabeling.v1beta1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets an annotated dataset by resource name.</summary>
@@ -1511,7 +1511,7 @@ namespace Google.Apis.DataLabeling.v1beta1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists annotated datasets for a dataset. Pagination is supported.</summary>
@@ -1626,7 +1626,7 @@ namespace Google.Apis.DataLabeling.v1beta1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -1683,7 +1683,7 @@ namespace Google.Apis.DataLabeling.v1beta1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>
@@ -1821,7 +1821,7 @@ namespace Google.Apis.DataLabeling.v1beta1
                     /// </param>
                     public virtual SearchRequest Search(Google.Apis.DataLabeling.v1beta1.Data.GoogleCloudDatalabelingV1beta1SearchExampleComparisonsRequest body, string parent)
                     {
-                        return new SearchRequest(service, body, parent);
+                        return new SearchRequest(this.service, body, parent);
                     }
 
                     /// <summary>
@@ -1884,7 +1884,7 @@ namespace Google.Apis.DataLabeling.v1beta1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets an evaluation by resource name (to search, use projects.evaluations.search).</summary>
@@ -1957,7 +1957,7 @@ namespace Google.Apis.DataLabeling.v1beta1
                 /// </param>
                 public virtual LabelRequest Label(Google.Apis.DataLabeling.v1beta1.Data.GoogleCloudDatalabelingV1beta1LabelImageRequest body, string parent)
                 {
-                    return new LabelRequest(service, body, parent);
+                    return new LabelRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -2040,7 +2040,7 @@ namespace Google.Apis.DataLabeling.v1beta1
                 /// </param>
                 public virtual LabelRequest Label(Google.Apis.DataLabeling.v1beta1.Data.GoogleCloudDatalabelingV1beta1LabelTextRequest body, string parent)
                 {
-                    return new LabelRequest(service, body, parent);
+                    return new LabelRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -2123,7 +2123,7 @@ namespace Google.Apis.DataLabeling.v1beta1
                 /// </param>
                 public virtual LabelRequest Label(Google.Apis.DataLabeling.v1beta1.Data.GoogleCloudDatalabelingV1beta1LabelVideoRequest body, string parent)
                 {
-                    return new LabelRequest(service, body, parent);
+                    return new LabelRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -2183,7 +2183,7 @@ namespace Google.Apis.DataLabeling.v1beta1
             /// <param name="parent">Required. Dataset resource parent, format: projects/{project_id}</param>
             public virtual CreateRequest Create(Google.Apis.DataLabeling.v1beta1.Data.GoogleCloudDatalabelingV1beta1CreateDatasetRequest body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>Creates dataset. If success return a Dataset resource.</summary>
@@ -2237,7 +2237,7 @@ namespace Google.Apis.DataLabeling.v1beta1
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>Deletes a dataset by resource name.</summary>
@@ -2287,7 +2287,7 @@ namespace Google.Apis.DataLabeling.v1beta1
             /// </param>
             public virtual ExportDataRequest ExportData(Google.Apis.DataLabeling.v1beta1.Data.GoogleCloudDatalabelingV1beta1ExportDataRequest body, string name)
             {
-                return new ExportDataRequest(service, body, name);
+                return new ExportDataRequest(this.service, body, name);
             }
 
             /// <summary>Exports data and annotations from dataset.</summary>
@@ -2343,7 +2343,7 @@ namespace Google.Apis.DataLabeling.v1beta1
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets dataset by resource name.</summary>
@@ -2398,7 +2398,7 @@ namespace Google.Apis.DataLabeling.v1beta1
             /// </param>
             public virtual ImportDataRequest ImportData(Google.Apis.DataLabeling.v1beta1.Data.GoogleCloudDatalabelingV1beta1ImportDataRequest body, string name)
             {
-                return new ImportDataRequest(service, body, name);
+                return new ImportDataRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -2457,7 +2457,7 @@ namespace Google.Apis.DataLabeling.v1beta1
             /// <param name="parent">Required. Dataset resource parent, format: projects/{project_id}</param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists datasets under a project. Pagination is supported.</summary>
@@ -2563,7 +2563,7 @@ namespace Google.Apis.DataLabeling.v1beta1
             /// <param name="parent">Required. Evaluation job resource parent. Format: "projects/{project_id}"</param>
             public virtual CreateRequest Create(Google.Apis.DataLabeling.v1beta1.Data.GoogleCloudDatalabelingV1beta1CreateEvaluationJobRequest body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>Creates an evaluation job.</summary>
@@ -2618,7 +2618,7 @@ namespace Google.Apis.DataLabeling.v1beta1
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>Stops and deletes an evaluation job.</summary>
@@ -2669,7 +2669,7 @@ namespace Google.Apis.DataLabeling.v1beta1
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets an evaluation job by resource name.</summary>
@@ -2719,7 +2719,7 @@ namespace Google.Apis.DataLabeling.v1beta1
             /// <param name="parent">Required. Evaluation job resource parent. Format: "projects/{project_id}"</param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>
@@ -2822,7 +2822,7 @@ namespace Google.Apis.DataLabeling.v1beta1
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.DataLabeling.v1beta1.Data.GoogleCloudDatalabelingV1beta1EvaluationJob body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -2904,7 +2904,7 @@ namespace Google.Apis.DataLabeling.v1beta1
             /// </param>
             public virtual PauseRequest Pause(Google.Apis.DataLabeling.v1beta1.Data.GoogleCloudDatalabelingV1beta1PauseEvaluationJobRequest body, string name)
             {
-                return new PauseRequest(service, body, name);
+                return new PauseRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -2968,7 +2968,7 @@ namespace Google.Apis.DataLabeling.v1beta1
             /// </param>
             public virtual ResumeRequest Resume(Google.Apis.DataLabeling.v1beta1.Data.GoogleCloudDatalabelingV1beta1ResumeEvaluationJobRequest body, string name)
             {
-                return new ResumeRequest(service, body, name);
+                return new ResumeRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -3046,7 +3046,7 @@ namespace Google.Apis.DataLabeling.v1beta1
             /// </param>
             public virtual SearchRequest Search(string parent)
             {
-                return new SearchRequest(service, parent);
+                return new SearchRequest(this.service, parent);
             }
 
             /// <summary>Searches evaluations within a project.</summary>
@@ -3165,7 +3165,7 @@ namespace Google.Apis.DataLabeling.v1beta1
             /// <param name="parent">Required. Instruction resource parent, format: projects/{project_id}</param>
             public virtual CreateRequest Create(Google.Apis.DataLabeling.v1beta1.Data.GoogleCloudDatalabelingV1beta1CreateInstructionRequest body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>Creates an instruction for how data should be labeled.</summary>
@@ -3219,7 +3219,7 @@ namespace Google.Apis.DataLabeling.v1beta1
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>Deletes an instruction object by resource name.</summary>
@@ -3268,7 +3268,7 @@ namespace Google.Apis.DataLabeling.v1beta1
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets an instruction by resource name.</summary>
@@ -3315,7 +3315,7 @@ namespace Google.Apis.DataLabeling.v1beta1
             /// <param name="parent">Required. Instruction resource parent, format: projects/{project_id}</param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists instructions for a project. Pagination is supported.</summary>
@@ -3427,7 +3427,7 @@ namespace Google.Apis.DataLabeling.v1beta1
             /// <param name="name">The name of the operation resource to be cancelled.</param>
             public virtual CancelRequest Cancel(string name)
             {
-                return new CancelRequest(service, name);
+                return new CancelRequest(this.service, name);
             }
 
             /// <summary>
@@ -3483,7 +3483,7 @@ namespace Google.Apis.DataLabeling.v1beta1
             /// <param name="name">The name of the operation resource to be deleted.</param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>
@@ -3535,7 +3535,7 @@ namespace Google.Apis.DataLabeling.v1beta1
             /// <param name="name">The name of the operation resource.</param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>
@@ -3586,7 +3586,7 @@ namespace Google.Apis.DataLabeling.v1beta1
             /// <param name="name">The name of the operation's parent resource.</param>
             public virtual ListRequest List(string name)
             {
-                return new ListRequest(service, name);
+                return new ListRequest(this.service, name);
             }
 
             /// <summary>
@@ -3706,8 +3706,8 @@ namespace Google.Apis.DataLabeling.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The name of the created Instruction. projects/{project_id}/instructions/{instruction_id}</summary>
@@ -3767,8 +3767,8 @@ namespace Google.Apis.DataLabeling.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. The name of dataset to be exported. "projects/*/datasets/*"</summary>
@@ -3952,8 +3952,8 @@ namespace Google.Apis.DataLabeling.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. The name of imported dataset. "projects/*/datasets/*"</summary>
@@ -4098,8 +4098,8 @@ namespace Google.Apis.DataLabeling.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. The name of dataset to be labeled. "projects/*/datasets/*"</summary>
@@ -4327,8 +4327,8 @@ namespace Google.Apis.DataLabeling.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -4644,8 +4644,8 @@ namespace Google.Apis.DataLabeling.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? AttemptTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(AttemptTimeRaw);
-            set => AttemptTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(AttemptTimeRaw);
+            set => AttemptTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Details of errors that occurred.</summary>
@@ -4900,8 +4900,8 @@ namespace Google.Apis.DataLabeling.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The name of the created Instruction. projects/{project_id}/instructions/{instruction_id}</summary>
@@ -5010,8 +5010,8 @@ namespace Google.Apis.DataLabeling.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. The number of data items in the dataset.</summary>
@@ -5074,8 +5074,8 @@ namespace Google.Apis.DataLabeling.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LastMigrateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastMigrateTimeRaw);
-            set => LastMigrateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastMigrateTimeRaw);
+            set => LastMigrateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -5138,8 +5138,8 @@ namespace Google.Apis.DataLabeling.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -5184,8 +5184,8 @@ namespace Google.Apis.DataLabeling.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EvaluationJobRunTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EvaluationJobRunTimeRaw);
-            set => EvaluationJobRunTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EvaluationJobRunTimeRaw);
+            set => EvaluationJobRunTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. Metrics comparing predictions to ground truth labels.</summary>
@@ -5271,8 +5271,8 @@ namespace Google.Apis.DataLabeling.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Required. Description of the job. The description can be up to 25,000 characters long.</summary>
@@ -5573,8 +5573,8 @@ namespace Google.Apis.DataLabeling.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. The name of dataset to be exported. "projects/*/datasets/*"</summary>
@@ -5695,8 +5695,8 @@ namespace Google.Apis.DataLabeling.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -5775,8 +5775,8 @@ namespace Google.Apis.DataLabeling.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _lastUpdateTimeRaw;
@@ -5814,8 +5814,8 @@ namespace Google.Apis.DataLabeling.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LastUpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastUpdateTimeRaw);
-            set => LastUpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastUpdateTimeRaw);
+            set => LastUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
@@ -6088,8 +6088,8 @@ namespace Google.Apis.DataLabeling.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. The name of imported dataset. "projects/*/datasets/*"</summary>
@@ -6229,8 +6229,8 @@ namespace Google.Apis.DataLabeling.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -6299,8 +6299,8 @@ namespace Google.Apis.DataLabeling.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -6458,8 +6458,8 @@ namespace Google.Apis.DataLabeling.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. The name of dataset to be labeled. "projects/*/datasets/*"</summary>
@@ -7460,8 +7460,8 @@ namespace Google.Apis.DataLabeling.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The name of the created Instruction. projects/{project_id}/instructions/{instruction_id}</summary>
@@ -7521,8 +7521,8 @@ namespace Google.Apis.DataLabeling.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. The name of dataset to be exported. "projects/*/datasets/*"</summary>
@@ -7637,8 +7637,8 @@ namespace Google.Apis.DataLabeling.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -7756,8 +7756,8 @@ namespace Google.Apis.DataLabeling.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. The name of imported dataset. "projects/*/datasets/*"</summary>
@@ -7902,8 +7902,8 @@ namespace Google.Apis.DataLabeling.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. The name of dataset to be labeled. "projects/*/datasets/*"</summary>
@@ -8110,8 +8110,8 @@ namespace Google.Apis.DataLabeling.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The name of the created Instruction. projects/{project_id}/instructions/{instruction_id}</summary>
@@ -8171,8 +8171,8 @@ namespace Google.Apis.DataLabeling.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. The name of dataset to be exported. "projects/*/datasets/*"</summary>
@@ -8356,8 +8356,8 @@ namespace Google.Apis.DataLabeling.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. The name of imported dataset. "projects/*/datasets/*"</summary>
@@ -8502,8 +8502,8 @@ namespace Google.Apis.DataLabeling.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. The name of dataset to be labeled. "projects/*/datasets/*"</summary>

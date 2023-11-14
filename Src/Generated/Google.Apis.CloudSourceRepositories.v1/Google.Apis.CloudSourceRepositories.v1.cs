@@ -320,7 +320,7 @@ namespace Google.Apis.CloudSourceRepositories.v1
             /// </param>
             public virtual CreateRequest Create(Google.Apis.CloudSourceRepositories.v1.Data.Repo body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -375,7 +375,7 @@ namespace Google.Apis.CloudSourceRepositories.v1
             /// <param name="name">The name of the repo to delete. Values are of the form `projects//repos/`.</param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>Deletes a repo.</summary>
@@ -422,7 +422,7 @@ namespace Google.Apis.CloudSourceRepositories.v1
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Returns information about a repo.</summary>
@@ -473,7 +473,7 @@ namespace Google.Apis.CloudSourceRepositories.v1
             /// </param>
             public virtual GetIamPolicyRequest GetIamPolicy(string resource)
             {
-                return new GetIamPolicyRequest(service, resource);
+                return new GetIamPolicyRequest(this.service, resource);
             }
 
             /// <summary>
@@ -551,7 +551,7 @@ namespace Google.Apis.CloudSourceRepositories.v1
             /// </param>
             public virtual ListRequest List(string name)
             {
-                return new ListRequest(service, name);
+                return new ListRequest(this.service, name);
             }
 
             /// <summary>
@@ -632,7 +632,7 @@ namespace Google.Apis.CloudSourceRepositories.v1
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.CloudSourceRepositories.v1.Data.UpdateRepoRequest body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>Updates information about a repo.</summary>
@@ -690,7 +690,7 @@ namespace Google.Apis.CloudSourceRepositories.v1
             /// </param>
             public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.CloudSourceRepositories.v1.Data.SetIamPolicyRequest body, string resource)
             {
-                return new SetIamPolicyRequest(service, body, resource);
+                return new SetIamPolicyRequest(this.service, body, resource);
             }
 
             /// <summary>
@@ -753,7 +753,7 @@ namespace Google.Apis.CloudSourceRepositories.v1
             /// </param>
             public virtual SyncRequest Sync(Google.Apis.CloudSourceRepositories.v1.Data.SyncRepoRequest body, string name)
             {
-                return new SyncRequest(service, body, name);
+                return new SyncRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -814,7 +814,7 @@ namespace Google.Apis.CloudSourceRepositories.v1
             /// </param>
             public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.CloudSourceRepositories.v1.Data.TestIamPermissionsRequest body, string resource)
             {
-                return new TestIamPermissionsRequest(service, body, resource);
+                return new TestIamPermissionsRequest(this.service, body, resource);
             }
 
             /// <summary>
@@ -874,7 +874,7 @@ namespace Google.Apis.CloudSourceRepositories.v1
         /// <param name="name">The name of the requested project. Values are of the form `projects/`.</param>
         public virtual GetConfigRequest GetConfig(string name)
         {
-            return new GetConfigRequest(service, name);
+            return new GetConfigRequest(this.service, name);
         }
 
         /// <summary>Returns the Cloud Source Repositories configuration of the project.</summary>
@@ -920,7 +920,7 @@ namespace Google.Apis.CloudSourceRepositories.v1
         /// <param name="name">The name of the requested project. Values are of the form `projects/`.</param>
         public virtual UpdateConfigRequest UpdateConfig(Google.Apis.CloudSourceRepositories.v1.Data.UpdateProjectConfigRequest body, string name)
         {
-            return new UpdateConfigRequest(service, body, name);
+            return new UpdateConfigRequest(this.service, body, name);
         }
 
         /// <summary>Updates the Cloud Source Repositories configuration of the project.</summary>
@@ -1468,8 +1468,8 @@ namespace Google.Apis.CloudSourceRepositories.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The latest status message on syncing the repository.</summary>
@@ -1509,8 +1509,8 @@ namespace Google.Apis.CloudSourceRepositories.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>

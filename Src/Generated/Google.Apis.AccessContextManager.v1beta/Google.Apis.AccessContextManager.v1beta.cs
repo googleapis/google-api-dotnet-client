@@ -309,7 +309,7 @@ namespace Google.Apis.AccessContextManager.v1beta
             /// </param>
             public virtual CreateRequest Create(Google.Apis.AccessContextManager.v1beta.Data.AccessLevel body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -374,7 +374,7 @@ namespace Google.Apis.AccessContextManager.v1beta
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>
@@ -428,7 +428,7 @@ namespace Google.Apis.AccessContextManager.v1beta
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Get an Access Level by resource name.</summary>
@@ -523,7 +523,7 @@ namespace Google.Apis.AccessContextManager.v1beta
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>List all Access Levels for an access policy.</summary>
@@ -647,7 +647,7 @@ namespace Google.Apis.AccessContextManager.v1beta
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.AccessContextManager.v1beta.Data.AccessLevel body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -746,7 +746,7 @@ namespace Google.Apis.AccessContextManager.v1beta
             /// </param>
             public virtual CreateRequest Create(Google.Apis.AccessContextManager.v1beta.Data.ServicePerimeter body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -811,7 +811,7 @@ namespace Google.Apis.AccessContextManager.v1beta
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>
@@ -865,7 +865,7 @@ namespace Google.Apis.AccessContextManager.v1beta
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Get a Service Perimeter by resource name.</summary>
@@ -916,7 +916,7 @@ namespace Google.Apis.AccessContextManager.v1beta
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>List all Service Perimeters for an access policy.</summary>
@@ -1001,7 +1001,7 @@ namespace Google.Apis.AccessContextManager.v1beta
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.AccessContextManager.v1beta.Data.ServicePerimeter body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -1079,7 +1079,7 @@ namespace Google.Apis.AccessContextManager.v1beta
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.AccessContextManager.v1beta.Data.AccessPolicy body)
         {
-            return new CreateRequest(service, body);
+            return new CreateRequest(this.service, body);
         }
 
         /// <summary>
@@ -1127,7 +1127,7 @@ namespace Google.Apis.AccessContextManager.v1beta
         /// </param>
         public virtual DeleteRequest Delete(string name)
         {
-            return new DeleteRequest(service, name);
+            return new DeleteRequest(this.service, name);
         }
 
         /// <summary>
@@ -1179,7 +1179,7 @@ namespace Google.Apis.AccessContextManager.v1beta
         /// </param>
         public virtual GetRequest Get(string name)
         {
-            return new GetRequest(service, name);
+            return new GetRequest(this.service, name);
         }
 
         /// <summary>Get an AccessPolicy by name.</summary>
@@ -1225,7 +1225,7 @@ namespace Google.Apis.AccessContextManager.v1beta
         /// <summary>List all AccessPolicies under a container.</summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>List all AccessPolicies under a container.</summary>
@@ -1305,7 +1305,7 @@ namespace Google.Apis.AccessContextManager.v1beta
         /// </param>
         public virtual PatchRequest Patch(Google.Apis.AccessContextManager.v1beta.Data.AccessPolicy body, string name)
         {
-            return new PatchRequest(service, body, name);
+            return new PatchRequest(this.service, body, name);
         }
 
         /// <summary>
@@ -1393,7 +1393,7 @@ namespace Google.Apis.AccessContextManager.v1beta
         /// <param name="name">The name of the operation resource.</param>
         public virtual GetRequest Get(string name)
         {
-            return new GetRequest(service, name);
+            return new GetRequest(this.service, name);
         }
 
         /// <summary>

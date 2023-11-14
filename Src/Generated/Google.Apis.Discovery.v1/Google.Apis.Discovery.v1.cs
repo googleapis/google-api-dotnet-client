@@ -190,7 +190,7 @@ namespace Google.Apis.Discovery.v1
         /// <param name="version">The version of the API.</param>
         public virtual GetRestRequest GetRest(string api, string version)
         {
-            return new GetRestRequest(service, api, version);
+            return new GetRestRequest(this.service, api, version);
         }
 
         /// <summary>Retrieve the description of a particular version of an api.</summary>
@@ -247,7 +247,7 @@ namespace Google.Apis.Discovery.v1
         /// <summary>Retrieve the list of APIs supported at this endpoint.</summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>Retrieve the list of APIs supported at this endpoint.</summary>

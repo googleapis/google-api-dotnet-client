@@ -273,7 +273,7 @@ namespace Google.Apis.PlayIntegrity.v1
         /// <param name="packageName"> Package name of the app the attached integrity token belongs to.</param>
         public virtual DecodeIntegrityTokenRequest DecodeIntegrityToken(Google.Apis.PlayIntegrity.v1.Data.DecodeIntegrityTokenRequest body, string packageName)
         {
-            return new DecodeIntegrityTokenRequest(service, body, packageName);
+            return new DecodeIntegrityTokenRequest(this.service, body, packageName);
         }
 
         /// <summary>Decodes the integrity token and returns the token payload.</summary>

@@ -263,7 +263,7 @@ namespace Google.Apis.ACMEDNS.v1
         /// </param>
         public virtual GetRequest Get(string rootDomain)
         {
-            return new GetRequest(service, rootDomain);
+            return new GetRequest(this.service, rootDomain);
         }
 
         /// <summary>
@@ -321,7 +321,7 @@ namespace Google.Apis.ACMEDNS.v1
         /// </param>
         public virtual RotateChallengesRequest RotateChallenges(Google.Apis.ACMEDNS.v1.Data.RotateChallengesRequest body, string rootDomain)
         {
-            return new RotateChallengesRequest(service, body, rootDomain);
+            return new RotateChallengesRequest(this.service, body, rootDomain);
         }
 
         /// <summary>
@@ -443,8 +443,8 @@ namespace Google.Apis.ACMEDNS.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>

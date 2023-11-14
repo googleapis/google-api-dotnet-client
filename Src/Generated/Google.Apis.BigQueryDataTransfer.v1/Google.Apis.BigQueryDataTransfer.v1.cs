@@ -324,7 +324,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1
             /// </param>
             public virtual CheckValidCredsRequest CheckValidCreds(Google.Apis.BigQueryDataTransfer.v1.Data.CheckValidCredsRequest body, string name)
             {
-                return new CheckValidCredsRequest(service, body, name);
+                return new CheckValidCredsRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -385,7 +385,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Retrieves a supported data source and returns its settings.</summary>
@@ -437,7 +437,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists supported data sources and returns their settings.</summary>
@@ -556,7 +556,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                 /// </param>
                 public virtual CheckValidCredsRequest CheckValidCreds(Google.Apis.BigQueryDataTransfer.v1.Data.CheckValidCredsRequest body, string name)
                 {
-                    return new CheckValidCredsRequest(service, body, name);
+                    return new CheckValidCredsRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -617,7 +617,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Retrieves a supported data source and returns its settings.</summary>
@@ -669,7 +669,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists supported data sources and returns their settings.</summary>
@@ -803,7 +803,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                         /// </param>
                         public virtual ListRequest List(string parent)
                         {
-                            return new ListRequest(service, parent);
+                            return new ListRequest(this.service, parent);
                         }
 
                         /// <summary>Returns log messages for the transfer run.</summary>
@@ -941,7 +941,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>Deletes the specified transfer run.</summary>
@@ -994,7 +994,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Returns information about the particular transfer run.</summary>
@@ -1047,7 +1047,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Returns information about running and completed transfer runs.</summary>
@@ -1209,7 +1209,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.BigQueryDataTransfer.v1.Data.TransferConfig body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a new data transfer configuration.</summary>
@@ -1331,7 +1331,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -1386,7 +1386,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Returns information about a data transfer config.</summary>
@@ -1440,7 +1440,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>
@@ -1538,7 +1538,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.BigQueryDataTransfer.v1.Data.TransferConfig body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -1678,7 +1678,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                 /// </param>
                 public virtual ScheduleRunsRequest ScheduleRuns(Google.Apis.BigQueryDataTransfer.v1.Data.ScheduleTransferRunsRequest body, string parent)
                 {
-                    return new ScheduleRunsRequest(service, body, parent);
+                    return new ScheduleRunsRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -1746,7 +1746,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                 /// </param>
                 public virtual StartManualRunsRequest StartManualRuns(Google.Apis.BigQueryDataTransfer.v1.Data.StartManualTransferRunsRequest body, string parent)
                 {
-                    return new StartManualRunsRequest(service, body, parent);
+                    return new StartManualRunsRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -1813,7 +1813,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1
             /// <param name="name">The name of the project resource in the form: `projects/{project_id}`</param>
             public virtual EnrollDataSourcesRequest EnrollDataSources(Google.Apis.BigQueryDataTransfer.v1.Data.EnrollDataSourcesRequest body, string name)
             {
-                return new EnrollDataSourcesRequest(service, body, name);
+                return new EnrollDataSourcesRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -1871,7 +1871,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1
             /// <param name="name">Resource name for the location.</param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets information about a location.</summary>
@@ -1916,7 +1916,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
             {
-                return new ListRequest(service, name);
+                return new ListRequest(this.service, name);
             }
 
             /// <summary>Lists information about the supported locations for this service.</summary>
@@ -2063,7 +2063,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Returns log messages for the transfer run.</summary>
@@ -2195,7 +2195,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes the specified transfer run.</summary>
@@ -2248,7 +2248,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Returns information about the particular transfer run.</summary>
@@ -2301,7 +2301,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Returns information about running and completed transfer runs.</summary>
@@ -2462,7 +2462,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1
             /// </param>
             public virtual CreateRequest Create(Google.Apis.BigQueryDataTransfer.v1.Data.TransferConfig body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>Creates a new data transfer configuration.</summary>
@@ -2582,7 +2582,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>
@@ -2637,7 +2637,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Returns information about a data transfer config.</summary>
@@ -2691,7 +2691,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>
@@ -2789,7 +2789,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.BigQueryDataTransfer.v1.Data.TransferConfig body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -2926,7 +2926,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1
             /// </param>
             public virtual ScheduleRunsRequest ScheduleRuns(Google.Apis.BigQueryDataTransfer.v1.Data.ScheduleTransferRunsRequest body, string parent)
             {
-                return new ScheduleRunsRequest(service, body, parent);
+                return new ScheduleRunsRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -2994,7 +2994,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1
             /// </param>
             public virtual StartManualRunsRequest StartManualRuns(Google.Apis.BigQueryDataTransfer.v1.Data.StartManualTransferRunsRequest body, string parent)
             {
-                return new StartManualRunsRequest(service, body, parent);
+                return new StartManualRunsRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -3061,7 +3061,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1
         /// <param name="name">The name of the project resource in the form: `projects/{project_id}`</param>
         public virtual EnrollDataSourcesRequest EnrollDataSources(Google.Apis.BigQueryDataTransfer.v1.Data.EnrollDataSourcesRequest body, string name)
         {
-            return new EnrollDataSourcesRequest(service, body, name);
+            return new EnrollDataSourcesRequest(this.service, body, name);
         }
 
         /// <summary>
@@ -3525,8 +3525,8 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _startTimeRaw;
@@ -3566,8 +3566,8 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -3612,8 +3612,8 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _startTimeRaw;
@@ -3651,8 +3651,8 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -3711,8 +3711,8 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? RequestedRunTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(RequestedRunTimeRaw);
-            set => RequestedRunTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(RequestedRunTimeRaw);
+            set => RequestedRunTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -3810,8 +3810,8 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _startTimeRaw;
@@ -3851,8 +3851,8 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -3957,8 +3957,8 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? NextRunTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(NextRunTimeRaw);
-            set => NextRunTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(NextRunTimeRaw);
+            set => NextRunTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -4037,8 +4037,8 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Deprecated. Unique ID of the user on whose behalf transfer is done.</summary>
@@ -4089,8 +4089,8 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? MessageTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(MessageTimeRaw);
-            set => MessageTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(MessageTimeRaw);
+            set => MessageTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Message severity.</summary>
@@ -4154,8 +4154,8 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Status of the transfer run.</summary>
@@ -4218,8 +4218,8 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? RunTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(RunTimeRaw);
-            set => RunTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(RunTimeRaw);
+            set => RunTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -4263,8 +4263,8 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ScheduleTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ScheduleTimeRaw);
-            set => ScheduleTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ScheduleTimeRaw);
+            set => ScheduleTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _startTimeRaw;
@@ -4302,8 +4302,8 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Data transfer run state. Ignored for input requests.</summary>
@@ -4343,8 +4343,8 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Deprecated. Unique ID of the user on whose behalf transfer is done.</summary>

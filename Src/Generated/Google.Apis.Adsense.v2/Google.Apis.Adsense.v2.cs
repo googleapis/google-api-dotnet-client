@@ -329,7 +329,7 @@ namespace Google.Apis.Adsense.v2
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Adsense.v2.Data.AdUnit body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -392,7 +392,7 @@ namespace Google.Apis.Adsense.v2
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets an ad unit from a specified account and ad client.</summary>
@@ -447,7 +447,7 @@ namespace Google.Apis.Adsense.v2
                 /// </param>
                 public virtual GetAdcodeRequest GetAdcode(string name)
                 {
-                    return new GetAdcodeRequest(service, name);
+                    return new GetAdcodeRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -502,7 +502,7 @@ namespace Google.Apis.Adsense.v2
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists all ad units under a specified account and ad client.</summary>
@@ -585,7 +585,7 @@ namespace Google.Apis.Adsense.v2
                 /// </param>
                 public virtual ListLinkedCustomChannelsRequest ListLinkedCustomChannels(string parent)
                 {
-                    return new ListLinkedCustomChannelsRequest(service, parent);
+                    return new ListLinkedCustomChannelsRequest(this.service, parent);
                 }
 
                 /// <summary>Lists all the custom channels available for an ad unit.</summary>
@@ -673,7 +673,7 @@ namespace Google.Apis.Adsense.v2
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.Adsense.v2.Data.AdUnit body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -769,7 +769,7 @@ namespace Google.Apis.Adsense.v2
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Adsense.v2.Data.CustomChannel body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -833,7 +833,7 @@ namespace Google.Apis.Adsense.v2
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -887,7 +887,7 @@ namespace Google.Apis.Adsense.v2
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets information about the selected custom channel.</summary>
@@ -938,7 +938,7 @@ namespace Google.Apis.Adsense.v2
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists all the custom channels available in an ad client.</summary>
@@ -1021,7 +1021,7 @@ namespace Google.Apis.Adsense.v2
                 /// </param>
                 public virtual ListLinkedAdUnitsRequest ListLinkedAdUnits(string parent)
                 {
-                    return new ListLinkedAdUnitsRequest(service, parent);
+                    return new ListLinkedAdUnitsRequest(this.service, parent);
                 }
 
                 /// <summary>Lists all the ad units available for a custom channel.</summary>
@@ -1108,7 +1108,7 @@ namespace Google.Apis.Adsense.v2
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.Adsense.v2.Data.CustomChannel body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -1199,7 +1199,7 @@ namespace Google.Apis.Adsense.v2
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets information about the selected url channel.</summary>
@@ -1250,7 +1250,7 @@ namespace Google.Apis.Adsense.v2
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists active url channels.</summary>
@@ -1333,7 +1333,7 @@ namespace Google.Apis.Adsense.v2
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets the ad client from the given resource name.</summary>
@@ -1387,7 +1387,7 @@ namespace Google.Apis.Adsense.v2
             /// </param>
             public virtual GetAdcodeRequest GetAdcode(string name)
             {
-                return new GetAdcodeRequest(service, name);
+                return new GetAdcodeRequest(this.service, name);
             }
 
             /// <summary>
@@ -1441,7 +1441,7 @@ namespace Google.Apis.Adsense.v2
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists all the ad clients available in an account.</summary>
@@ -1540,7 +1540,7 @@ namespace Google.Apis.Adsense.v2
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists all the alerts available in an account.</summary>
@@ -1624,7 +1624,7 @@ namespace Google.Apis.Adsense.v2
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists all the payments available for an account.</summary>
@@ -1709,7 +1709,7 @@ namespace Google.Apis.Adsense.v2
                 /// </param>
                 public virtual GenerateRequest Generate(string name)
                 {
-                    return new GenerateRequest(service, name);
+                    return new GenerateRequest(this.service, name);
                 }
 
                 /// <summary>Generates a saved report.</summary>
@@ -1969,7 +1969,7 @@ namespace Google.Apis.Adsense.v2
                 /// </param>
                 public virtual GenerateCsvRequest GenerateCsv(string name)
                 {
-                    return new GenerateCsvRequest(service, name);
+                    return new GenerateCsvRequest(this.service, name);
                 }
 
                 /// <summary>Generates a csv formatted saved report.</summary>
@@ -2229,7 +2229,7 @@ namespace Google.Apis.Adsense.v2
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists saved reports.</summary>
@@ -2311,7 +2311,7 @@ namespace Google.Apis.Adsense.v2
             /// </param>
             public virtual GenerateRequest Generate(string account)
             {
-                return new GenerateRequest(service, account);
+                return new GenerateRequest(this.service, account);
             }
 
             /// <summary>Generates an ad hoc report.</summary>
@@ -3144,7 +3144,7 @@ namespace Google.Apis.Adsense.v2
             /// </param>
             public virtual GenerateCsvRequest GenerateCsv(string account)
             {
-                return new GenerateCsvRequest(service, account);
+                return new GenerateCsvRequest(this.service, account);
             }
 
             /// <summary>Generates a csv formatted ad hoc report.</summary>
@@ -3977,7 +3977,7 @@ namespace Google.Apis.Adsense.v2
             /// </param>
             public virtual GetSavedRequest GetSaved(string name)
             {
-                return new GetSavedRequest(service, name);
+                return new GetSavedRequest(this.service, name);
             }
 
             /// <summary>Gets the saved report from the given resource name.</summary>
@@ -4042,7 +4042,7 @@ namespace Google.Apis.Adsense.v2
             /// <param name="name">Required. Name of the site. Format: accounts/{account}/sites/{site}</param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets information about the selected site.</summary>
@@ -4089,7 +4089,7 @@ namespace Google.Apis.Adsense.v2
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists all the sites available in an account.</summary>
@@ -4169,7 +4169,7 @@ namespace Google.Apis.Adsense.v2
         /// <param name="name">Required. Account to get information about. Format: accounts/{account}</param>
         public virtual GetRequest Get(string name)
         {
-            return new GetRequest(service, name);
+            return new GetRequest(this.service, name);
         }
 
         /// <summary>Gets information about the selected AdSense account.</summary>
@@ -4214,7 +4214,7 @@ namespace Google.Apis.Adsense.v2
         /// <param name="name">Required. The name of the account to get the tag for. Format: accounts/{account}</param>
         public virtual GetAdBlockingRecoveryTagRequest GetAdBlockingRecoveryTag(string name)
         {
-            return new GetAdBlockingRecoveryTagRequest(service, name);
+            return new GetAdBlockingRecoveryTagRequest(this.service, name);
         }
 
         /// <summary>Gets the ad blocking recovery tag of an account.</summary>
@@ -4258,7 +4258,7 @@ namespace Google.Apis.Adsense.v2
         /// <summary>Lists all accounts available to this user.</summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>Lists all accounts available to this user.</summary>
@@ -4324,7 +4324,7 @@ namespace Google.Apis.Adsense.v2
         /// </param>
         public virtual ListChildAccountsRequest ListChildAccounts(string parent)
         {
-            return new ListChildAccountsRequest(service, parent);
+            return new ListChildAccountsRequest(this.service, parent);
         }
 
         /// <summary>Lists all accounts directly managed by the given AdSense account.</summary>
@@ -4438,8 +4438,8 @@ namespace Google.Apis.Adsense.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. Display name of this account.</summary>

@@ -320,7 +320,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                 /// <param name="parent">Required. Format: `projects/{project_id}/locations/{location}`</param>
                 public virtual CreateRequest Create(Google.Apis.AIPlatformNotebooks.v1.Data.Environment body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a new Environment.</summary>
@@ -390,7 +390,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes a single Environment.</summary>
@@ -439,7 +439,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets details of a single Environment.</summary>
@@ -486,7 +486,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                 /// <param name="parent">Required. Format: `projects/{project_id}/locations/{location}`</param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists environments in a project.</summary>
@@ -576,7 +576,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                 /// <param name="parent">Required. Format: `parent=projects/{project_id}/locations/{location}`</param>
                 public virtual CreateRequest Create(Google.Apis.AIPlatformNotebooks.v1.Data.Execution body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a new Execution in a given project and location.</summary>
@@ -642,7 +642,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes execution</summary>
@@ -691,7 +691,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets details of executions</summary>
@@ -738,7 +738,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                 /// <param name="parent">Required. Format: `parent=projects/{project_id}/locations/{location}`</param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists executions in a given project and location</summary>
@@ -855,7 +855,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                 /// <param name="parent">Required. Format: `parent=projects/{project_id}/locations/{location}`</param>
                 public virtual CreateRequest Create(Google.Apis.AIPlatformNotebooks.v1.Data.Instance body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a new Instance in a given project and location.</summary>
@@ -921,7 +921,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes a single Instance.</summary>
@@ -971,7 +971,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                 /// </param>
                 public virtual DiagnoseRequest Diagnose(Google.Apis.AIPlatformNotebooks.v1.Data.DiagnoseInstanceRequest body, string name)
                 {
-                    return new DiagnoseRequest(service, body, name);
+                    return new DiagnoseRequest(this.service, body, name);
                 }
 
                 /// <summary>Creates a Diagnostic File and runs Diagnostic Tool given an Instance.</summary>
@@ -1027,7 +1027,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets details of a single Instance.</summary>
@@ -1081,7 +1081,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                 /// </param>
                 public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                 {
-                    return new GetIamPolicyRequest(service, resource);
+                    return new GetIamPolicyRequest(this.service, resource);
                 }
 
                 /// <summary>
@@ -1156,7 +1156,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                 /// </param>
                 public virtual GetInstanceHealthRequest GetInstanceHealth(string name)
                 {
-                    return new GetInstanceHealthRequest(service, name);
+                    return new GetInstanceHealthRequest(this.service, name);
                 }
 
                 /// <summary>Checks whether a notebook instance is healthy.</summary>
@@ -1205,7 +1205,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                 /// </param>
                 public virtual IsUpgradeableRequest IsUpgradeable(string notebookInstance)
                 {
-                    return new IsUpgradeableRequest(service, notebookInstance);
+                    return new IsUpgradeableRequest(this.service, notebookInstance);
                 }
 
                 /// <summary>Checks whether a notebook instance is upgradable.</summary>
@@ -1294,7 +1294,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                 /// <param name="parent">Required. Format: `parent=projects/{project_id}/locations/{location}`</param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists instances in a given project and location.</summary>
@@ -1394,7 +1394,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                 /// </param>
                 public virtual MigrateRequest Migrate(Google.Apis.AIPlatformNotebooks.v1.Data.MigrateInstanceRequest body, string name)
                 {
-                    return new MigrateRequest(service, body, name);
+                    return new MigrateRequest(this.service, body, name);
                 }
 
                 /// <summary>Migrates an existing User-Managed Notebook to Workbench Instances.</summary>
@@ -1453,7 +1453,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                 /// <param name="parent">Required. Format: `parent=projects/{project_id}/locations/{location}`</param>
                 public virtual RegisterRequest Register(Google.Apis.AIPlatformNotebooks.v1.Data.RegisterInstanceRequest body, string parent)
                 {
-                    return new RegisterRequest(service, body, parent);
+                    return new RegisterRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -1516,7 +1516,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                 /// </param>
                 public virtual ReportRequest Report(Google.Apis.AIPlatformNotebooks.v1.Data.ReportInstanceInfoRequest body, string name)
                 {
-                    return new ReportRequest(service, body, name);
+                    return new ReportRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -1577,7 +1577,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                 /// </param>
                 public virtual ReportEventRequest ReportEvent(Google.Apis.AIPlatformNotebooks.v1.Data.ReportInstanceEventRequest body, string name)
                 {
-                    return new ReportEventRequest(service, body, name);
+                    return new ReportEventRequest(this.service, body, name);
                 }
 
                 /// <summary>Reports and processes an instance event.</summary>
@@ -1634,7 +1634,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                 /// </param>
                 public virtual ResetRequest Reset(Google.Apis.AIPlatformNotebooks.v1.Data.ResetInstanceRequest body, string name)
                 {
-                    return new ResetRequest(service, body, name);
+                    return new ResetRequest(this.service, body, name);
                 }
 
                 /// <summary>Resets a notebook instance.</summary>
@@ -1691,7 +1691,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                 /// </param>
                 public virtual RollbackRequest Rollback(Google.Apis.AIPlatformNotebooks.v1.Data.RollbackInstanceRequest body, string name)
                 {
-                    return new RollbackRequest(service, body, name);
+                    return new RollbackRequest(this.service, body, name);
                 }
 
                 /// <summary>Rollbacks a notebook instance to the previous version.</summary>
@@ -1748,7 +1748,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                 /// </param>
                 public virtual SetAcceleratorRequest SetAccelerator(Google.Apis.AIPlatformNotebooks.v1.Data.SetInstanceAcceleratorRequest body, string name)
                 {
-                    return new SetAcceleratorRequest(service, body, name);
+                    return new SetAcceleratorRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates the guest accelerators of a single Instance.</summary>
@@ -1810,7 +1810,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                 /// </param>
                 public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.AIPlatformNotebooks.v1.Data.SetIamPolicyRequest body, string resource)
                 {
-                    return new SetIamPolicyRequest(service, body, resource);
+                    return new SetIamPolicyRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -1872,7 +1872,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                 /// </param>
                 public virtual SetLabelsRequest SetLabels(Google.Apis.AIPlatformNotebooks.v1.Data.SetInstanceLabelsRequest body, string name)
                 {
-                    return new SetLabelsRequest(service, body, name);
+                    return new SetLabelsRequest(this.service, body, name);
                 }
 
                 /// <summary>Replaces all the labels of an Instance.</summary>
@@ -1929,7 +1929,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                 /// </param>
                 public virtual SetMachineTypeRequest SetMachineType(Google.Apis.AIPlatformNotebooks.v1.Data.SetInstanceMachineTypeRequest body, string name)
                 {
-                    return new SetMachineTypeRequest(service, body, name);
+                    return new SetMachineTypeRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates the machine type of a single Instance.</summary>
@@ -1986,7 +1986,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                 /// </param>
                 public virtual StartRequest Start(Google.Apis.AIPlatformNotebooks.v1.Data.StartInstanceRequest body, string name)
                 {
-                    return new StartRequest(service, body, name);
+                    return new StartRequest(this.service, body, name);
                 }
 
                 /// <summary>Starts a notebook instance.</summary>
@@ -2043,7 +2043,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                 /// </param>
                 public virtual StopRequest Stop(Google.Apis.AIPlatformNotebooks.v1.Data.StopInstanceRequest body, string name)
                 {
-                    return new StopRequest(service, body, name);
+                    return new StopRequest(this.service, body, name);
                 }
 
                 /// <summary>Stops a notebook instance.</summary>
@@ -2107,7 +2107,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                 /// </param>
                 public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.AIPlatformNotebooks.v1.Data.TestIamPermissionsRequest body, string resource)
                 {
-                    return new TestIamPermissionsRequest(service, body, resource);
+                    return new TestIamPermissionsRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -2171,7 +2171,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                 /// </param>
                 public virtual UpdateConfigRequest UpdateConfig(Google.Apis.AIPlatformNotebooks.v1.Data.UpdateInstanceConfigRequest body, string name)
                 {
-                    return new UpdateConfigRequest(service, body, name);
+                    return new UpdateConfigRequest(this.service, body, name);
                 }
 
                 /// <summary>Update Notebook Instance configurations.</summary>
@@ -2228,7 +2228,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                 /// </param>
                 public virtual UpdateMetadataItemsRequest UpdateMetadataItems(Google.Apis.AIPlatformNotebooks.v1.Data.UpdateInstanceMetadataItemsRequest body, string name)
                 {
-                    return new UpdateMetadataItemsRequest(service, body, name);
+                    return new UpdateMetadataItemsRequest(this.service, body, name);
                 }
 
                 /// <summary>Add/update metadata items for an instance.</summary>
@@ -2285,7 +2285,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                 /// </param>
                 public virtual UpdateShieldedInstanceConfigRequest UpdateShieldedInstanceConfig(Google.Apis.AIPlatformNotebooks.v1.Data.UpdateShieldedInstanceConfigRequest body, string name)
                 {
-                    return new UpdateShieldedInstanceConfigRequest(service, body, name);
+                    return new UpdateShieldedInstanceConfigRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates the Shielded instance configuration of a single Instance.</summary>
@@ -2342,7 +2342,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                 /// </param>
                 public virtual UpgradeRequest Upgrade(Google.Apis.AIPlatformNotebooks.v1.Data.UpgradeInstanceRequest body, string name)
                 {
-                    return new UpgradeRequest(service, body, name);
+                    return new UpgradeRequest(this.service, body, name);
                 }
 
                 /// <summary>Upgrades a notebook instance to the latest version.</summary>
@@ -2402,7 +2402,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                 /// </param>
                 public virtual UpgradeInternalRequest UpgradeInternal(Google.Apis.AIPlatformNotebooks.v1.Data.UpgradeInstanceInternalRequest body, string name)
                 {
-                    return new UpgradeInternalRequest(service, body, name);
+                    return new UpgradeInternalRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -2485,7 +2485,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                 /// <param name="name">The name of the operation resource to be cancelled.</param>
                 public virtual CancelRequest Cancel(Google.Apis.AIPlatformNotebooks.v1.Data.CancelOperationRequest body, string name)
                 {
-                    return new CancelRequest(service, body, name);
+                    return new CancelRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -2548,7 +2548,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                 /// <param name="name">The name of the operation resource to be deleted.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -2600,7 +2600,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                 /// <param name="name">The name of the operation resource.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -2651,7 +2651,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                 /// <param name="name">The name of the operation's parent resource.</param>
                 public virtual ListRequest List(string name)
                 {
-                    return new ListRequest(service, name);
+                    return new ListRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -2754,7 +2754,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                 /// <param name="parent">Required. Format: `parent=projects/{project_id}/locations/{location}`</param>
                 public virtual CreateRequest Create(Google.Apis.AIPlatformNotebooks.v1.Data.Runtime body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a new Runtime in a given project and location.</summary>
@@ -2832,7 +2832,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes a single Runtime.</summary>
@@ -2894,7 +2894,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                 /// </param>
                 public virtual DiagnoseRequest Diagnose(Google.Apis.AIPlatformNotebooks.v1.Data.DiagnoseRuntimeRequest body, string name)
                 {
-                    return new DiagnoseRequest(service, body, name);
+                    return new DiagnoseRequest(this.service, body, name);
                 }
 
                 /// <summary>Creates a Diagnostic File and runs Diagnostic Tool given a Runtime.</summary>
@@ -2952,7 +2952,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -3008,7 +3008,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                 /// </param>
                 public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                 {
-                    return new GetIamPolicyRequest(service, resource);
+                    return new GetIamPolicyRequest(this.service, resource);
                 }
 
                 /// <summary>
@@ -3081,7 +3081,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                 /// <param name="parent">Required. Format: `parent=projects/{project_id}/locations/{location}`</param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists Runtimes in a given project and location.</summary>
@@ -3181,7 +3181,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                 /// </param>
                 public virtual MigrateRequest Migrate(Google.Apis.AIPlatformNotebooks.v1.Data.MigrateRuntimeRequest body, string name)
                 {
-                    return new MigrateRequest(service, body, name);
+                    return new MigrateRequest(this.service, body, name);
                 }
 
                 /// <summary>Migrate an existing Runtime to a new Workbench Instance.</summary>
@@ -3239,7 +3239,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.AIPlatformNotebooks.v1.Data.Runtime body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Update Notebook Runtime configuration.</summary>
@@ -3334,7 +3334,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                 /// </param>
                 public virtual RefreshRuntimeTokenInternalRequest RefreshRuntimeTokenInternal(Google.Apis.AIPlatformNotebooks.v1.Data.RefreshRuntimeTokenInternalRequest body, string name)
                 {
-                    return new RefreshRuntimeTokenInternalRequest(service, body, name);
+                    return new RefreshRuntimeTokenInternalRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -3394,7 +3394,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                 /// </param>
                 public virtual ReportEventRequest ReportEvent(Google.Apis.AIPlatformNotebooks.v1.Data.ReportRuntimeEventRequest body, string name)
                 {
-                    return new ReportEventRequest(service, body, name);
+                    return new ReportEventRequest(this.service, body, name);
                 }
 
                 /// <summary>Reports and processes a runtime event.</summary>
@@ -3451,7 +3451,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                 /// </param>
                 public virtual ResetRequest Reset(Google.Apis.AIPlatformNotebooks.v1.Data.ResetRuntimeRequest body, string name)
                 {
-                    return new ResetRequest(service, body, name);
+                    return new ResetRequest(this.service, body, name);
                 }
 
                 /// <summary>Resets a Managed Notebook Runtime.</summary>
@@ -3513,7 +3513,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                 /// </param>
                 public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.AIPlatformNotebooks.v1.Data.SetIamPolicyRequest body, string resource)
                 {
-                    return new SetIamPolicyRequest(service, body, resource);
+                    return new SetIamPolicyRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -3579,7 +3579,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                 /// </param>
                 public virtual StartRequest Start(Google.Apis.AIPlatformNotebooks.v1.Data.StartRuntimeRequest body, string name)
                 {
-                    return new StartRequest(service, body, name);
+                    return new StartRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -3644,7 +3644,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                 /// </param>
                 public virtual StopRequest Stop(Google.Apis.AIPlatformNotebooks.v1.Data.StopRuntimeRequest body, string name)
                 {
-                    return new StopRequest(service, body, name);
+                    return new StopRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -3705,7 +3705,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                 /// </param>
                 public virtual AIPlatformNotebooksSwitchRequest AIPlatformNotebooksSwitch(Google.Apis.AIPlatformNotebooks.v1.Data.SwitchRuntimeRequest body, string name)
                 {
-                    return new AIPlatformNotebooksSwitchRequest(service, body, name);
+                    return new AIPlatformNotebooksSwitchRequest(this.service, body, name);
                 }
 
                 /// <summary>Switch a Managed Notebook Runtime.</summary>
@@ -3769,7 +3769,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                 /// </param>
                 public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.AIPlatformNotebooks.v1.Data.TestIamPermissionsRequest body, string resource)
                 {
-                    return new TestIamPermissionsRequest(service, body, resource);
+                    return new TestIamPermissionsRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -3833,7 +3833,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                 /// </param>
                 public virtual UpgradeRequest Upgrade(Google.Apis.AIPlatformNotebooks.v1.Data.UpgradeRuntimeRequest body, string name)
                 {
-                    return new UpgradeRequest(service, body, name);
+                    return new UpgradeRequest(this.service, body, name);
                 }
 
                 /// <summary>Upgrades a Managed Notebook Runtime to the latest version.</summary>
@@ -3906,7 +3906,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                 /// <param name="parent">Required. Format: `parent=projects/{project_id}/locations/{location}`</param>
                 public virtual CreateRequest Create(Google.Apis.AIPlatformNotebooks.v1.Data.Schedule body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a new Scheduled Notebook in a given project and location.</summary>
@@ -3972,7 +3972,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes schedule and all underlying jobs</summary>
@@ -4021,7 +4021,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets details of schedule</summary>
@@ -4068,7 +4068,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                 /// <param name="parent">Required. Format: `parent=projects/{project_id}/locations/{location}`</param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists schedules in a given project and location.</summary>
@@ -4166,7 +4166,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                 /// </param>
                 public virtual TriggerRequest Trigger(Google.Apis.AIPlatformNotebooks.v1.Data.TriggerScheduleRequest body, string name)
                 {
-                    return new TriggerRequest(service, body, name);
+                    return new TriggerRequest(this.service, body, name);
                 }
 
                 /// <summary>Triggers execution of an existing schedule.</summary>
@@ -4221,7 +4221,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1
             /// <param name="name">Resource name for the location.</param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets information about a location.</summary>
@@ -4266,7 +4266,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
             {
-                return new ListRequest(service, name);
+                return new ListRequest(this.service, name);
             }
 
             /// <summary>Lists information about the supported locations for this service.</summary>
@@ -4696,8 +4696,8 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>A brief description of this environment.</summary>
@@ -4770,8 +4770,8 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ReportTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ReportTimeRaw);
-            set => ReportTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ReportTimeRaw);
+            set => ReportTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Event type.</summary>
@@ -4818,8 +4818,8 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>A brief description of this execution.</summary>
@@ -4888,8 +4888,8 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -5154,8 +5154,8 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. Email address of entity that sent original CreateInstance request.</summary>
@@ -5367,8 +5367,8 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The upgrade history of this instance.</summary>
@@ -5898,8 +5898,8 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _endTimeRaw;
@@ -5935,8 +5935,8 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>API endpoint name of this operation.</summary>
@@ -6094,8 +6094,8 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpireTimeRaw);
-            set => ExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -6263,8 +6263,8 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. Runtime health_state.</summary>
@@ -6342,8 +6342,8 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Use a Compute Engine VM image to start the managed notebook instance.</summary>
@@ -6587,8 +6587,8 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -6672,8 +6672,8 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -6997,8 +6997,8 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The framework of this notebook instance.</summary>

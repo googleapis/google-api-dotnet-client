@@ -301,7 +301,7 @@ namespace Google.Apis.AdMob.v1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>List the ad units under the specified AdMob account.</summary>
@@ -398,7 +398,7 @@ namespace Google.Apis.AdMob.v1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>List the apps under the specified AdMob account.</summary>
@@ -499,7 +499,7 @@ namespace Google.Apis.AdMob.v1
             /// </param>
             public virtual GenerateRequest Generate(Google.Apis.AdMob.v1.Data.GenerateMediationReportRequest body, string parent)
             {
-                return new GenerateRequest(service, body, parent);
+                return new GenerateRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -580,7 +580,7 @@ namespace Google.Apis.AdMob.v1
             /// </param>
             public virtual GenerateRequest Generate(Google.Apis.AdMob.v1.Data.GenerateNetworkReportRequest body, string parent)
             {
-                return new GenerateRequest(service, body, parent);
+                return new GenerateRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -640,7 +640,7 @@ namespace Google.Apis.AdMob.v1
         /// </param>
         public virtual GetRequest Get(string name)
         {
-            return new GetRequest(service, name);
+            return new GetRequest(this.service, name);
         }
 
         /// <summary>Gets information about the specified AdMob publisher account.</summary>
@@ -689,7 +689,7 @@ namespace Google.Apis.AdMob.v1
         /// </summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>

@@ -327,7 +327,7 @@ namespace Google.Apis.Games.v1
         /// <summary>Lists all the achievement definitions for your application.</summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>Lists all the achievement definitions for your application.</summary>
@@ -417,7 +417,7 @@ namespace Google.Apis.Games.v1
         /// <param name="stepsToIncrement">Required. The number of steps to increment.</param>
         public virtual IncrementRequest Increment(string achievementId, int stepsToIncrement)
         {
-            return new IncrementRequest(service, achievementId, stepsToIncrement);
+            return new IncrementRequest(this.service, achievementId, stepsToIncrement);
         }
 
         /// <summary>
@@ -496,7 +496,7 @@ namespace Google.Apis.Games.v1
         /// </param>
         public virtual ListRequest List(string playerId)
         {
-            return new ListRequest(service, playerId);
+            return new ListRequest(this.service, playerId);
         }
 
         /// <summary>
@@ -623,7 +623,7 @@ namespace Google.Apis.Games.v1
         /// <param name="achievementId">The ID of the achievement used by this method.</param>
         public virtual RevealRequest Reveal(string achievementId)
         {
-            return new RevealRequest(service, achievementId);
+            return new RevealRequest(this.service, achievementId);
         }
 
         /// <summary>
@@ -675,7 +675,7 @@ namespace Google.Apis.Games.v1
         /// <param name="steps">Required. The minimum value to set the steps to.</param>
         public virtual SetStepsAtLeastRequest SetStepsAtLeast(string achievementId, int steps)
         {
-            return new SetStepsAtLeastRequest(service, achievementId, steps);
+            return new SetStepsAtLeastRequest(this.service, achievementId, steps);
         }
 
         /// <summary>
@@ -737,7 +737,7 @@ namespace Google.Apis.Games.v1
         /// <param name="achievementId">The ID of the achievement used by this method.</param>
         public virtual UnlockRequest Unlock(string achievementId)
         {
-            return new UnlockRequest(service, achievementId);
+            return new UnlockRequest(this.service, achievementId);
         }
 
         /// <summary>Unlocks this achievement for the currently authenticated player.</summary>
@@ -782,7 +782,7 @@ namespace Google.Apis.Games.v1
         /// <param name="body">The body of the request.</param>
         public virtual UpdateMultipleRequest UpdateMultiple(Google.Apis.Games.v1.Data.AchievementUpdateMultipleRequest body)
         {
-            return new UpdateMultipleRequest(service, body);
+            return new UpdateMultipleRequest(this.service, body);
         }
 
         /// <summary>Updates multiple achievements for the currently authenticated player.</summary>
@@ -839,7 +839,7 @@ namespace Google.Apis.Games.v1
         /// <param name="applicationId">The application ID from the Google Play developer console.</param>
         public virtual GetRequest Get(string applicationId)
         {
-            return new GetRequest(service, applicationId);
+            return new GetRequest(this.service, applicationId);
         }
 
         /// <summary>
@@ -926,7 +926,7 @@ namespace Google.Apis.Games.v1
         /// <summary>Returns a URL for the requested end point type.</summary>
         public virtual GetEndPointRequest GetEndPoint()
         {
-            return new GetEndPointRequest(service);
+            return new GetEndPointRequest(this.service);
         }
 
         /// <summary>Returns a URL for the requested end point type.</summary>
@@ -993,7 +993,7 @@ namespace Google.Apis.Games.v1
         /// <summary>Indicate that the currently authenticated user is playing your application.</summary>
         public virtual PlayedRequest Played()
         {
-            return new PlayedRequest(service);
+            return new PlayedRequest(this.service);
         }
 
         /// <summary>Indicate that the currently authenticated user is playing your application.</summary>
@@ -1028,7 +1028,7 @@ namespace Google.Apis.Games.v1
         /// <param name="applicationId">The application ID from the Google Play developer console.</param>
         public virtual VerifyRequest Verify(string applicationId)
         {
-            return new VerifyRequest(service, applicationId);
+            return new VerifyRequest(this.service, applicationId);
         }
 
         /// <summary>
@@ -1093,7 +1093,7 @@ namespace Google.Apis.Games.v1
         /// </summary>
         public virtual ListByPlayerRequest ListByPlayer()
         {
-            return new ListByPlayerRequest(service);
+            return new ListByPlayerRequest(this.service);
         }
 
         /// <summary>
@@ -1166,7 +1166,7 @@ namespace Google.Apis.Games.v1
         /// <summary>Returns a list of the event definitions in this application.</summary>
         public virtual ListDefinitionsRequest ListDefinitions()
         {
-            return new ListDefinitionsRequest(service);
+            return new ListDefinitionsRequest(this.service);
         }
 
         /// <summary>Returns a list of the event definitions in this application.</summary>
@@ -1240,7 +1240,7 @@ namespace Google.Apis.Games.v1
         /// <param name="body">The body of the request.</param>
         public virtual RecordRequest Record(Google.Apis.Games.v1.Data.EventRecordRequest body)
         {
-            return new RecordRequest(service, body);
+            return new RecordRequest(this.service, body);
         }
 
         /// <summary>
@@ -1309,7 +1309,7 @@ namespace Google.Apis.Games.v1
         /// <param name="leaderboardId">The ID of the leaderboard.</param>
         public virtual GetRequest Get(string leaderboardId)
         {
-            return new GetRequest(service, leaderboardId);
+            return new GetRequest(this.service, leaderboardId);
         }
 
         /// <summary>Retrieves the metadata of the leaderboard with the given ID.</summary>
@@ -1365,7 +1365,7 @@ namespace Google.Apis.Games.v1
         /// <summary>Lists all the leaderboard metadata for your application.</summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>Lists all the leaderboard metadata for your application.</summary>
@@ -1450,7 +1450,7 @@ namespace Google.Apis.Games.v1
         /// <summary>Return the metagame configuration data for the calling application.</summary>
         public virtual GetMetagameConfigRequest GetMetagameConfig()
         {
-            return new GetMetagameConfigRequest(service);
+            return new GetMetagameConfigRequest(this.service);
         }
 
         /// <summary>Return the metagame configuration data for the calling application.</summary>
@@ -1485,7 +1485,7 @@ namespace Google.Apis.Games.v1
         /// <param name="collection">The collection of categories for which data will be returned.</param>
         public virtual ListCategoriesByPlayerRequest ListCategoriesByPlayer(string playerId, ListCategoriesByPlayerRequest.CollectionEnum collection)
         {
-            return new ListCategoriesByPlayerRequest(service, playerId, collection);
+            return new ListCategoriesByPlayerRequest(this.service, playerId, collection);
         }
 
         /// <summary>List play data aggregated per category for the player corresponding to `playerId`.</summary>
@@ -1610,7 +1610,7 @@ namespace Google.Apis.Games.v1
         /// </param>
         public virtual GetRequest Get(string playerId)
         {
-            return new GetRequest(service, playerId);
+            return new GetRequest(this.service, playerId);
         }
 
         /// <summary>
@@ -1688,7 +1688,7 @@ namespace Google.Apis.Games.v1
         /// </summary>
         public virtual GetMultipleApplicationPlayerIdsRequest GetMultipleApplicationPlayerIds()
         {
-            return new GetMultipleApplicationPlayerIdsRequest(service);
+            return new GetMultipleApplicationPlayerIdsRequest(this.service);
         }
 
         /// <summary>
@@ -1738,7 +1738,7 @@ namespace Google.Apis.Games.v1
         /// <summary>Retrieves scoped player identifiers for currently authenticated user.</summary>
         public virtual GetScopedPlayerIdsRequest GetScopedPlayerIds()
         {
-            return new GetScopedPlayerIdsRequest(service);
+            return new GetScopedPlayerIdsRequest(this.service);
         }
 
         /// <summary>Retrieves scoped player identifiers for currently authenticated user.</summary>
@@ -1770,7 +1770,7 @@ namespace Google.Apis.Games.v1
         /// <param name="collection">Collection of players being retrieved</param>
         public virtual ListRequest List(ListRequest.CollectionEnum collection)
         {
-            return new ListRequest(service, collection);
+            return new ListRequest(this.service, collection);
         }
 
         /// <summary>Get the collection of players for the currently authenticated user.</summary>
@@ -1891,7 +1891,7 @@ namespace Google.Apis.Games.v1
         /// <param name="body">The body of the request.</param>
         public virtual LinkPersonaRequest LinkPersona(Google.Apis.Games.v1.Data.LinkPersonaRequest body)
         {
-            return new LinkPersonaRequest(service, body);
+            return new LinkPersonaRequest(this.service, body);
         }
 
         /// <summary>
@@ -1934,7 +1934,7 @@ namespace Google.Apis.Games.v1
         /// <param name="body">The body of the request.</param>
         public virtual ResetPersonaRequest ResetPersona(Google.Apis.Games.v1.Data.ResetPersonaRequest body)
         {
-            return new ResetPersonaRequest(service, body);
+            return new ResetPersonaRequest(this.service, body);
         }
 
         /// <summary>
@@ -1981,7 +1981,7 @@ namespace Google.Apis.Games.v1
         /// </param>
         public virtual RetrieveTokensRequest RetrieveTokens(string sessionId)
         {
-            return new RetrieveTokensRequest(service, sessionId);
+            return new RetrieveTokensRequest(this.service, sessionId);
         }
 
         /// <summary>
@@ -2035,7 +2035,7 @@ namespace Google.Apis.Games.v1
         /// <param name="body">The body of the request.</param>
         public virtual UnlinkPersonaRequest UnlinkPersona(Google.Apis.Games.v1.Data.UnlinkPersonaRequest body)
         {
-            return new UnlinkPersonaRequest(service, body);
+            return new UnlinkPersonaRequest(this.service, body);
         }
 
         /// <summary>
@@ -2096,7 +2096,7 @@ namespace Google.Apis.Games.v1
         /// </param>
         public virtual CheckRequest Check(string clientRevision)
         {
-            return new CheckRequest(service, clientRevision);
+            return new CheckRequest(this.service, clientRevision);
         }
 
         /// <summary>Checks whether the games client is out of date.</summary>
@@ -2172,7 +2172,7 @@ namespace Google.Apis.Games.v1
         /// <param name="timeSpan">The time span for the scores and ranks you're requesting.</param>
         public virtual GetRequest Get(string playerId, string leaderboardId, GetRequest.TimeSpanEnum timeSpan)
         {
-            return new GetRequest(service, playerId, leaderboardId, timeSpan);
+            return new GetRequest(this.service, playerId, leaderboardId, timeSpan);
         }
 
         /// <summary>
@@ -2348,7 +2348,7 @@ namespace Google.Apis.Games.v1
         /// <param name="timeSpan">Required. The time span for the scores and ranks you're requesting.</param>
         public virtual ListRequest List(string leaderboardId, ListRequest.CollectionEnum collection, ListRequest.TimeSpanEnum timeSpan)
         {
-            return new ListRequest(service, leaderboardId, collection, timeSpan);
+            return new ListRequest(this.service, leaderboardId, collection, timeSpan);
         }
 
         /// <summary>Lists the scores in a leaderboard, starting from the top.</summary>
@@ -2492,7 +2492,7 @@ namespace Google.Apis.Games.v1
         /// <param name="timeSpan">Required. The time span for the scores and ranks you're requesting.</param>
         public virtual ListWindowRequest ListWindow(string leaderboardId, ListWindowRequest.CollectionEnum collection, ListWindowRequest.TimeSpanEnum timeSpan)
         {
-            return new ListWindowRequest(service, leaderboardId, collection, timeSpan);
+            return new ListWindowRequest(this.service, leaderboardId, collection, timeSpan);
         }
 
         /// <summary>Lists the scores in a leaderboard around (and including) a player's score.</summary>
@@ -2670,7 +2670,7 @@ namespace Google.Apis.Games.v1
         /// </param>
         public virtual SubmitRequest Submit(string leaderboardId, long score)
         {
-            return new SubmitRequest(service, leaderboardId, score);
+            return new SubmitRequest(this.service, leaderboardId, score);
         }
 
         /// <summary>Submits a score to the specified leaderboard.</summary>
@@ -2761,7 +2761,7 @@ namespace Google.Apis.Games.v1
         /// <param name="body">The body of the request.</param>
         public virtual SubmitMultipleRequest SubmitMultiple(Google.Apis.Games.v1.Data.PlayerScoreSubmissionList body)
         {
-            return new SubmitMultipleRequest(service, body);
+            return new SubmitMultipleRequest(this.service, body);
         }
 
         /// <summary>Submits multiple scores to leaderboards.</summary>
@@ -2827,7 +2827,7 @@ namespace Google.Apis.Games.v1
         /// <param name="snapshotId">The ID of the snapshot.</param>
         public virtual GetRequest Get(string snapshotId)
         {
-            return new GetRequest(service, snapshotId);
+            return new GetRequest(this.service, snapshotId);
         }
 
         /// <summary>Retrieves the metadata for a given snapshot ID.</summary>
@@ -2888,7 +2888,7 @@ namespace Google.Apis.Games.v1
         /// </param>
         public virtual ListRequest List(string playerId)
         {
-            return new ListRequest(service, playerId);
+            return new ListRequest(this.service, playerId);
         }
 
         /// <summary>
@@ -2990,7 +2990,7 @@ namespace Google.Apis.Games.v1
         /// </summary>
         public virtual GetRequest Get()
         {
-            return new GetRequest(service);
+            return new GetRequest(this.service);
         }
 
         /// <summary>
@@ -4150,8 +4150,8 @@ namespace Google.Apis.Games.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpireTimeRaw);
-            set => ExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -4743,8 +4743,8 @@ namespace Google.Apis.Games.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpireTimeRaw);
-            set => ExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Required. Whether the persona identified by the token is linked to multiple PGS Players</summary>

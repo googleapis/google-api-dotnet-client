@@ -305,7 +305,7 @@ namespace Google.Apis.YouTubeReporting.v1
             /// <param name="reportId">The ID of the report to retrieve.</param>
             public virtual GetRequest Get(string jobId, string reportId)
             {
-                return new GetRequest(service, jobId, reportId);
+                return new GetRequest(this.service, jobId, reportId);
             }
 
             /// <summary>Gets the metadata of a specific report.</summary>
@@ -378,7 +378,7 @@ namespace Google.Apis.YouTubeReporting.v1
             /// <param name="jobId">The ID of the job.</param>
             public virtual ListRequest List(string jobId)
             {
-                return new ListRequest(service, jobId);
+                return new ListRequest(this.service, jobId);
             }
 
             /// <summary>Lists reports created by a specific job. Returns NOT_FOUND if the job does not exist.</summary>
@@ -395,9 +395,36 @@ namespace Google.Apis.YouTubeReporting.v1
                 [Google.Apis.Util.RequestParameterAttribute("jobId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string JobId { get; private set; }
 
-                /// <summary>If set, only reports created after the specified date/time are returned.</summary>
+                private object _createdAfter;
+
+                /// <summary>
+                /// String representation of <see cref="CreatedAfterDateTimeOffset"/>, formatted for inclusion in the
+                /// HTTP request.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("createdAfter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual object CreatedAfter { get; set; }
+                public virtual string CreatedAfterRaw { get; private set; }
+
+                /// <summary><seealso cref="object"/> representation of <see cref="CreatedAfterRaw"/>.</summary>
+                [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreatedAfterDateTimeOffset instead.")]
+                public virtual object CreatedAfter
+                {
+                    get => _createdAfter;
+                    set
+                    {
+                        CreatedAfterRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                        _createdAfter = value;
+                    }
+                }
+
+                public virtual System.DateTimeOffset? CreatedAfterDateTimeOffset
+                {
+                    get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreatedAfterRaw);
+                    set
+                    {
+                        CreatedAfterRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                        _createdAfter = value;
+                    }
+                }
 
                 /// <summary>
                 /// The content owner's external ID on which behalf the user is acting on. If not set, the user is
@@ -421,17 +448,67 @@ namespace Google.Apis.YouTubeReporting.v1
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
-                /// <summary>
-                /// If set, only reports whose start time is greater than or equal the specified date/time are returned.
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("startTimeAtOrAfter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual object StartTimeAtOrAfter { get; set; }
+                private object _startTimeAtOrAfter;
 
                 /// <summary>
-                /// If set, only reports whose start time is smaller than the specified date/time are returned.
+                /// String representation of <see cref="StartTimeAtOrAfterDateTimeOffset"/>, formatted for inclusion in
+                /// the HTTP request.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("startTimeAtOrAfter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string StartTimeAtOrAfterRaw { get; private set; }
+
+                /// <summary><seealso cref="object"/> representation of <see cref="StartTimeAtOrAfterRaw"/>.</summary>
+                [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeAtOrAfterDateTimeOffset instead.")]
+                public virtual object StartTimeAtOrAfter
+                {
+                    get => _startTimeAtOrAfter;
+                    set
+                    {
+                        StartTimeAtOrAfterRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                        _startTimeAtOrAfter = value;
+                    }
+                }
+
+                public virtual System.DateTimeOffset? StartTimeAtOrAfterDateTimeOffset
+                {
+                    get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeAtOrAfterRaw);
+                    set
+                    {
+                        StartTimeAtOrAfterRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                        _startTimeAtOrAfter = value;
+                    }
+                }
+
+                private object _startTimeBefore;
+
+                /// <summary>
+                /// String representation of <see cref="StartTimeBeforeDateTimeOffset"/>, formatted for inclusion in the
+                /// HTTP request.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("startTimeBefore", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual object StartTimeBefore { get; set; }
+                public virtual string StartTimeBeforeRaw { get; private set; }
+
+                /// <summary><seealso cref="object"/> representation of <see cref="StartTimeBeforeRaw"/>.</summary>
+                [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeBeforeDateTimeOffset instead.")]
+                public virtual object StartTimeBefore
+                {
+                    get => _startTimeBefore;
+                    set
+                    {
+                        StartTimeBeforeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                        _startTimeBefore = value;
+                    }
+                }
+
+                public virtual System.DateTimeOffset? StartTimeBeforeDateTimeOffset
+                {
+                    get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeBeforeRaw);
+                    set
+                    {
+                        StartTimeBeforeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                        _startTimeBefore = value;
+                    }
+                }
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
@@ -510,7 +587,7 @@ namespace Google.Apis.YouTubeReporting.v1
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.YouTubeReporting.v1.Data.Job body)
         {
-            return new CreateRequest(service, body);
+            return new CreateRequest(this.service, body);
         }
 
         /// <summary>Creates a job and returns it.</summary>
@@ -564,7 +641,7 @@ namespace Google.Apis.YouTubeReporting.v1
         /// <param name="jobId">The ID of the job to delete.</param>
         public virtual DeleteRequest Delete(string jobId)
         {
-            return new DeleteRequest(service, jobId);
+            return new DeleteRequest(this.service, jobId);
         }
 
         /// <summary>Deletes a job.</summary>
@@ -624,7 +701,7 @@ namespace Google.Apis.YouTubeReporting.v1
         /// <param name="jobId">The ID of the job to retrieve.</param>
         public virtual GetRequest Get(string jobId)
         {
-            return new GetRequest(service, jobId);
+            return new GetRequest(this.service, jobId);
         }
 
         /// <summary>Gets a job.</summary>
@@ -683,7 +760,7 @@ namespace Google.Apis.YouTubeReporting.v1
         /// <summary>Lists jobs.</summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>Lists jobs.</summary>
@@ -793,7 +870,7 @@ namespace Google.Apis.YouTubeReporting.v1
         /// <param name="resourceName">Name of the media that is being downloaded.</param>
         public virtual DownloadRequest Download(string resourceName)
         {
-            return new DownloadRequest(service, resourceName);
+            return new DownloadRequest(this.service, resourceName);
         }
 
         /// <summary>
@@ -940,7 +1017,7 @@ namespace Google.Apis.YouTubeReporting.v1
         /// <summary>Lists report types.</summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>Lists report types.</summary>
@@ -1432,8 +1509,8 @@ namespace Google.Apis.YouTubeReporting.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _expireTimeRaw;
@@ -1471,8 +1548,8 @@ namespace Google.Apis.YouTubeReporting.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpireTimeRaw);
-            set => ExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The server-generated ID of the job (max. 40 characters).</summary>
@@ -1585,8 +1662,8 @@ namespace Google.Apis.YouTubeReporting.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The URL from which the report can be downloaded (max. 1000 characters).</summary>
@@ -1626,8 +1703,8 @@ namespace Google.Apis.YouTubeReporting.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The server-generated ID of the report.</summary>
@@ -1667,8 +1744,8 @@ namespace Google.Apis.YouTubeReporting.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? JobExpireTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(JobExpireTimeRaw);
-            set => JobExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(JobExpireTimeRaw);
+            set => JobExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ID of the job that created this report.</summary>
@@ -1708,8 +1785,8 @@ namespace Google.Apis.YouTubeReporting.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -1752,8 +1829,8 @@ namespace Google.Apis.YouTubeReporting.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? DeprecateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DeprecateTimeRaw);
-            set => DeprecateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DeprecateTimeRaw);
+            set => DeprecateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ID of the report type (max. 100 characters).</summary>

@@ -316,7 +316,7 @@ namespace Google.Apis.CloudTrace.v2beta1
             /// </param>
             public virtual CreateRequest Create(Google.Apis.CloudTrace.v2beta1.Data.TraceSink body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -379,7 +379,7 @@ namespace Google.Apis.CloudTrace.v2beta1
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>Deletes a sink.</summary>
@@ -431,7 +431,7 @@ namespace Google.Apis.CloudTrace.v2beta1
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Get a trace sink by name under the parent resource (GCP project).</summary>
@@ -482,7 +482,7 @@ namespace Google.Apis.CloudTrace.v2beta1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>List all sinks for the parent resource (GCP project).</summary>
@@ -570,7 +570,7 @@ namespace Google.Apis.CloudTrace.v2beta1
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.CloudTrace.v2beta1.Data.TraceSink body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>

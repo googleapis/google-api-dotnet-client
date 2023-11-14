@@ -358,7 +358,7 @@ namespace Google.Apis.TagManager.v1
                 /// <param name="containerId">The GTM Container ID.</param>
                 public virtual CreateRequest Create(Google.Apis.TagManager.v1.Data.Environment body, string accountId, string containerId)
                 {
-                    return new CreateRequest(service, body, accountId, containerId);
+                    return new CreateRequest(this.service, body, accountId, containerId);
                 }
 
                 /// <summary>Creates a GTM Environment.</summary>
@@ -425,7 +425,7 @@ namespace Google.Apis.TagManager.v1
                 /// <param name="environmentId">The GTM Environment ID.</param>
                 public virtual DeleteRequest Delete(string accountId, string containerId, string environmentId)
                 {
-                    return new DeleteRequest(service, accountId, containerId, environmentId);
+                    return new DeleteRequest(this.service, accountId, containerId, environmentId);
                 }
 
                 /// <summary>Deletes a GTM Environment.</summary>
@@ -498,7 +498,7 @@ namespace Google.Apis.TagManager.v1
                 /// <param name="environmentId">The GTM Environment ID.</param>
                 public virtual GetRequest Get(string accountId, string containerId, string environmentId)
                 {
-                    return new GetRequest(service, accountId, containerId, environmentId);
+                    return new GetRequest(this.service, accountId, containerId, environmentId);
                 }
 
                 /// <summary>Gets a GTM Environment.</summary>
@@ -570,7 +570,7 @@ namespace Google.Apis.TagManager.v1
                 /// <param name="containerId">The GTM Container ID.</param>
                 public virtual ListRequest List(string accountId, string containerId)
                 {
-                    return new ListRequest(service, accountId, containerId);
+                    return new ListRequest(this.service, accountId, containerId);
                 }
 
                 /// <summary>Lists all GTM Environments of a GTM Container.</summary>
@@ -631,7 +631,7 @@ namespace Google.Apis.TagManager.v1
                 /// <param name="environmentId">The GTM Environment ID.</param>
                 public virtual UpdateRequest Update(Google.Apis.TagManager.v1.Data.Environment body, string accountId, string containerId, string environmentId)
                 {
-                    return new UpdateRequest(service, body, accountId, containerId, environmentId);
+                    return new UpdateRequest(this.service, body, accountId, containerId, environmentId);
                 }
 
                 /// <summary>Updates a GTM Environment.</summary>
@@ -761,7 +761,7 @@ namespace Google.Apis.TagManager.v1
                     /// <param name="folderId">The GTM Folder ID.</param>
                     public virtual ListRequest List(string accountId, string containerId, string folderId)
                     {
-                        return new ListRequest(service, accountId, containerId, folderId);
+                        return new ListRequest(this.service, accountId, containerId, folderId);
                     }
 
                     /// <summary>List all entities in a GTM Folder.</summary>
@@ -835,7 +835,7 @@ namespace Google.Apis.TagManager.v1
                 /// <param name="containerId">The GTM Container ID.</param>
                 public virtual CreateRequest Create(Google.Apis.TagManager.v1.Data.Folder body, string accountId, string containerId)
                 {
-                    return new CreateRequest(service, body, accountId, containerId);
+                    return new CreateRequest(this.service, body, accountId, containerId);
                 }
 
                 /// <summary>Creates a GTM Folder.</summary>
@@ -902,7 +902,7 @@ namespace Google.Apis.TagManager.v1
                 /// <param name="folderId">The GTM Folder ID.</param>
                 public virtual DeleteRequest Delete(string accountId, string containerId, string folderId)
                 {
-                    return new DeleteRequest(service, accountId, containerId, folderId);
+                    return new DeleteRequest(this.service, accountId, containerId, folderId);
                 }
 
                 /// <summary>Deletes a GTM Folder.</summary>
@@ -975,7 +975,7 @@ namespace Google.Apis.TagManager.v1
                 /// <param name="folderId">The GTM Folder ID.</param>
                 public virtual GetRequest Get(string accountId, string containerId, string folderId)
                 {
-                    return new GetRequest(service, accountId, containerId, folderId);
+                    return new GetRequest(this.service, accountId, containerId, folderId);
                 }
 
                 /// <summary>Gets a GTM Folder.</summary>
@@ -1047,7 +1047,7 @@ namespace Google.Apis.TagManager.v1
                 /// <param name="containerId">The GTM Container ID.</param>
                 public virtual ListRequest List(string accountId, string containerId)
                 {
-                    return new ListRequest(service, accountId, containerId);
+                    return new ListRequest(this.service, accountId, containerId);
                 }
 
                 /// <summary>Lists all GTM Folders of a Container.</summary>
@@ -1108,7 +1108,7 @@ namespace Google.Apis.TagManager.v1
                 /// <param name="folderId">The GTM Folder ID.</param>
                 public virtual UpdateRequest Update(Google.Apis.TagManager.v1.Data.Folder body, string accountId, string containerId, string folderId)
                 {
-                    return new UpdateRequest(service, body, accountId, containerId, folderId);
+                    return new UpdateRequest(this.service, body, accountId, containerId, folderId);
                 }
 
                 /// <summary>Updates a GTM Folder.</summary>
@@ -1221,7 +1221,7 @@ namespace Google.Apis.TagManager.v1
                 /// <param name="folderId">The GTM Folder ID.</param>
                 public virtual UpdateRequest Update(Google.Apis.TagManager.v1.Data.Folder body, string accountId, string containerId, string folderId)
                 {
-                    return new UpdateRequest(service, body, accountId, containerId, folderId);
+                    return new UpdateRequest(this.service, body, accountId, containerId, folderId);
                 }
 
                 /// <summary>Moves entities to a GTM Folder.</summary>
@@ -1356,7 +1356,7 @@ namespace Google.Apis.TagManager.v1
                 /// <param name="environmentId">The GTM Environment ID.</param>
                 public virtual UpdateRequest Update(Google.Apis.TagManager.v1.Data.Environment body, string accountId, string containerId, string environmentId)
                 {
-                    return new UpdateRequest(service, body, accountId, containerId, environmentId);
+                    return new UpdateRequest(this.service, body, accountId, containerId, environmentId);
                 }
 
                 /// <summary>Re-generates the authorization code for a GTM Environment.</summary>
@@ -1454,7 +1454,7 @@ namespace Google.Apis.TagManager.v1
                 /// <param name="containerId">The GTM Container ID.</param>
                 public virtual CreateRequest Create(Google.Apis.TagManager.v1.Data.Tag body, string accountId, string containerId)
                 {
-                    return new CreateRequest(service, body, accountId, containerId);
+                    return new CreateRequest(this.service, body, accountId, containerId);
                 }
 
                 /// <summary>Creates a GTM Tag.</summary>
@@ -1521,7 +1521,7 @@ namespace Google.Apis.TagManager.v1
                 /// <param name="tagId">The GTM Tag ID.</param>
                 public virtual DeleteRequest Delete(string accountId, string containerId, string tagId)
                 {
-                    return new DeleteRequest(service, accountId, containerId, tagId);
+                    return new DeleteRequest(this.service, accountId, containerId, tagId);
                 }
 
                 /// <summary>Deletes a GTM Tag.</summary>
@@ -1594,7 +1594,7 @@ namespace Google.Apis.TagManager.v1
                 /// <param name="tagId">The GTM Tag ID.</param>
                 public virtual GetRequest Get(string accountId, string containerId, string tagId)
                 {
-                    return new GetRequest(service, accountId, containerId, tagId);
+                    return new GetRequest(this.service, accountId, containerId, tagId);
                 }
 
                 /// <summary>Gets a GTM Tag.</summary>
@@ -1666,7 +1666,7 @@ namespace Google.Apis.TagManager.v1
                 /// <param name="containerId">The GTM Container ID.</param>
                 public virtual ListRequest List(string accountId, string containerId)
                 {
-                    return new ListRequest(service, accountId, containerId);
+                    return new ListRequest(this.service, accountId, containerId);
                 }
 
                 /// <summary>Lists all GTM Tags of a Container.</summary>
@@ -1727,7 +1727,7 @@ namespace Google.Apis.TagManager.v1
                 /// <param name="tagId">The GTM Tag ID.</param>
                 public virtual UpdateRequest Update(Google.Apis.TagManager.v1.Data.Tag body, string accountId, string containerId, string tagId)
                 {
-                    return new UpdateRequest(service, body, accountId, containerId, tagId);
+                    return new UpdateRequest(this.service, body, accountId, containerId, tagId);
                 }
 
                 /// <summary>Updates a GTM Tag.</summary>
@@ -1839,7 +1839,7 @@ namespace Google.Apis.TagManager.v1
                 /// <param name="containerId">The GTM Container ID.</param>
                 public virtual CreateRequest Create(Google.Apis.TagManager.v1.Data.Trigger body, string accountId, string containerId)
                 {
-                    return new CreateRequest(service, body, accountId, containerId);
+                    return new CreateRequest(this.service, body, accountId, containerId);
                 }
 
                 /// <summary>Creates a GTM Trigger.</summary>
@@ -1906,7 +1906,7 @@ namespace Google.Apis.TagManager.v1
                 /// <param name="triggerId">The GTM Trigger ID.</param>
                 public virtual DeleteRequest Delete(string accountId, string containerId, string triggerId)
                 {
-                    return new DeleteRequest(service, accountId, containerId, triggerId);
+                    return new DeleteRequest(this.service, accountId, containerId, triggerId);
                 }
 
                 /// <summary>Deletes a GTM Trigger.</summary>
@@ -1979,7 +1979,7 @@ namespace Google.Apis.TagManager.v1
                 /// <param name="triggerId">The GTM Trigger ID.</param>
                 public virtual GetRequest Get(string accountId, string containerId, string triggerId)
                 {
-                    return new GetRequest(service, accountId, containerId, triggerId);
+                    return new GetRequest(this.service, accountId, containerId, triggerId);
                 }
 
                 /// <summary>Gets a GTM Trigger.</summary>
@@ -2051,7 +2051,7 @@ namespace Google.Apis.TagManager.v1
                 /// <param name="containerId">The GTM Container ID.</param>
                 public virtual ListRequest List(string accountId, string containerId)
                 {
-                    return new ListRequest(service, accountId, containerId);
+                    return new ListRequest(this.service, accountId, containerId);
                 }
 
                 /// <summary>Lists all GTM Triggers of a Container.</summary>
@@ -2112,7 +2112,7 @@ namespace Google.Apis.TagManager.v1
                 /// <param name="triggerId">The GTM Trigger ID.</param>
                 public virtual UpdateRequest Update(Google.Apis.TagManager.v1.Data.Trigger body, string accountId, string containerId, string triggerId)
                 {
-                    return new UpdateRequest(service, body, accountId, containerId, triggerId);
+                    return new UpdateRequest(this.service, body, accountId, containerId, triggerId);
                 }
 
                 /// <summary>Updates a GTM Trigger.</summary>
@@ -2224,7 +2224,7 @@ namespace Google.Apis.TagManager.v1
                 /// <param name="containerId">The GTM Container ID.</param>
                 public virtual CreateRequest Create(Google.Apis.TagManager.v1.Data.Variable body, string accountId, string containerId)
                 {
-                    return new CreateRequest(service, body, accountId, containerId);
+                    return new CreateRequest(this.service, body, accountId, containerId);
                 }
 
                 /// <summary>Creates a GTM Variable.</summary>
@@ -2291,7 +2291,7 @@ namespace Google.Apis.TagManager.v1
                 /// <param name="variableId">The GTM Variable ID.</param>
                 public virtual DeleteRequest Delete(string accountId, string containerId, string variableId)
                 {
-                    return new DeleteRequest(service, accountId, containerId, variableId);
+                    return new DeleteRequest(this.service, accountId, containerId, variableId);
                 }
 
                 /// <summary>Deletes a GTM Variable.</summary>
@@ -2364,7 +2364,7 @@ namespace Google.Apis.TagManager.v1
                 /// <param name="variableId">The GTM Variable ID.</param>
                 public virtual GetRequest Get(string accountId, string containerId, string variableId)
                 {
-                    return new GetRequest(service, accountId, containerId, variableId);
+                    return new GetRequest(this.service, accountId, containerId, variableId);
                 }
 
                 /// <summary>Gets a GTM Variable.</summary>
@@ -2436,7 +2436,7 @@ namespace Google.Apis.TagManager.v1
                 /// <param name="containerId">The GTM Container ID.</param>
                 public virtual ListRequest List(string accountId, string containerId)
                 {
-                    return new ListRequest(service, accountId, containerId);
+                    return new ListRequest(this.service, accountId, containerId);
                 }
 
                 /// <summary>Lists all GTM Variables of a Container.</summary>
@@ -2497,7 +2497,7 @@ namespace Google.Apis.TagManager.v1
                 /// <param name="variableId">The GTM Variable ID.</param>
                 public virtual UpdateRequest Update(Google.Apis.TagManager.v1.Data.Variable body, string accountId, string containerId, string variableId)
                 {
-                    return new UpdateRequest(service, body, accountId, containerId, variableId);
+                    return new UpdateRequest(this.service, body, accountId, containerId, variableId);
                 }
 
                 /// <summary>Updates a GTM Variable.</summary>
@@ -2609,7 +2609,7 @@ namespace Google.Apis.TagManager.v1
                 /// <param name="containerId">The GTM Container ID.</param>
                 public virtual CreateRequest Create(Google.Apis.TagManager.v1.Data.CreateContainerVersionRequestVersionOptions body, string accountId, string containerId)
                 {
-                    return new CreateRequest(service, body, accountId, containerId);
+                    return new CreateRequest(this.service, body, accountId, containerId);
                 }
 
                 /// <summary>Creates a Container Version.</summary>
@@ -2676,7 +2676,7 @@ namespace Google.Apis.TagManager.v1
                 /// <param name="containerVersionId">The GTM Container Version ID.</param>
                 public virtual DeleteRequest Delete(string accountId, string containerId, string containerVersionId)
                 {
-                    return new DeleteRequest(service, accountId, containerId, containerVersionId);
+                    return new DeleteRequest(this.service, accountId, containerId, containerVersionId);
                 }
 
                 /// <summary>Deletes a Container Version.</summary>
@@ -2751,7 +2751,7 @@ namespace Google.Apis.TagManager.v1
                 /// </param>
                 public virtual GetRequest Get(string accountId, string containerId, string containerVersionId)
                 {
-                    return new GetRequest(service, accountId, containerId, containerVersionId);
+                    return new GetRequest(this.service, accountId, containerId, containerVersionId);
                 }
 
                 /// <summary>Gets a Container Version.</summary>
@@ -2825,7 +2825,7 @@ namespace Google.Apis.TagManager.v1
                 /// <param name="containerId">The GTM Container ID.</param>
                 public virtual ListRequest List(string accountId, string containerId)
                 {
-                    return new ListRequest(service, accountId, containerId);
+                    return new ListRequest(this.service, accountId, containerId);
                 }
 
                 /// <summary>Lists all Container Versions of a GTM Container.</summary>
@@ -2909,7 +2909,7 @@ namespace Google.Apis.TagManager.v1
                 /// <param name="containerVersionId">The GTM Container Version ID.</param>
                 public virtual PublishRequest Publish(string accountId, string containerId, string containerVersionId)
                 {
-                    return new PublishRequest(service, accountId, containerId, containerVersionId);
+                    return new PublishRequest(this.service, accountId, containerId, containerVersionId);
                 }
 
                 /// <summary>Publishes a Container Version.</summary>
@@ -3000,7 +3000,7 @@ namespace Google.Apis.TagManager.v1
                 /// <param name="containerVersionId">The GTM Container Version ID.</param>
                 public virtual RestoreRequest Restore(string accountId, string containerId, string containerVersionId)
                 {
-                    return new RestoreRequest(service, accountId, containerId, containerVersionId);
+                    return new RestoreRequest(this.service, accountId, containerId, containerVersionId);
                 }
 
                 /// <summary>
@@ -3077,7 +3077,7 @@ namespace Google.Apis.TagManager.v1
                 /// <param name="containerVersionId">The GTM Container Version ID.</param>
                 public virtual UndeleteRequest Undelete(string accountId, string containerId, string containerVersionId)
                 {
-                    return new UndeleteRequest(service, accountId, containerId, containerVersionId);
+                    return new UndeleteRequest(this.service, accountId, containerId, containerVersionId);
                 }
 
                 /// <summary>Undeletes a Container Version.</summary>
@@ -3151,7 +3151,7 @@ namespace Google.Apis.TagManager.v1
                 /// <param name="containerVersionId">The GTM Container Version ID.</param>
                 public virtual UpdateRequest Update(Google.Apis.TagManager.v1.Data.ContainerVersion body, string accountId, string containerId, string containerVersionId)
                 {
-                    return new UpdateRequest(service, body, accountId, containerId, containerVersionId);
+                    return new UpdateRequest(this.service, body, accountId, containerId, containerVersionId);
                 }
 
                 /// <summary>Updates a Container Version.</summary>
@@ -3245,7 +3245,7 @@ namespace Google.Apis.TagManager.v1
             /// <param name="accountId">The GTM Account ID.</param>
             public virtual CreateRequest Create(Google.Apis.TagManager.v1.Data.Container body, string accountId)
             {
-                return new CreateRequest(service, body, accountId);
+                return new CreateRequest(this.service, body, accountId);
             }
 
             /// <summary>Creates a Container.</summary>
@@ -3298,7 +3298,7 @@ namespace Google.Apis.TagManager.v1
             /// <param name="containerId">The GTM Container ID.</param>
             public virtual DeleteRequest Delete(string accountId, string containerId)
             {
-                return new DeleteRequest(service, accountId, containerId);
+                return new DeleteRequest(this.service, accountId, containerId);
             }
 
             /// <summary>Deletes a Container.</summary>
@@ -3357,7 +3357,7 @@ namespace Google.Apis.TagManager.v1
             /// <param name="containerId">The GTM Container ID.</param>
             public virtual GetRequest Get(string accountId, string containerId)
             {
-                return new GetRequest(service, accountId, containerId);
+                return new GetRequest(this.service, accountId, containerId);
             }
 
             /// <summary>Gets a Container.</summary>
@@ -3415,7 +3415,7 @@ namespace Google.Apis.TagManager.v1
             /// <param name="accountId">The GTM Account ID.</param>
             public virtual ListRequest List(string accountId)
             {
-                return new ListRequest(service, accountId);
+                return new ListRequest(this.service, accountId);
             }
 
             /// <summary>Lists all Containers that belongs to a GTM Account.</summary>
@@ -3462,7 +3462,7 @@ namespace Google.Apis.TagManager.v1
             /// <param name="containerId">The GTM Container ID.</param>
             public virtual UpdateRequest Update(Google.Apis.TagManager.v1.Data.Container body, string accountId, string containerId)
             {
-                return new UpdateRequest(service, body, accountId, containerId);
+                return new UpdateRequest(this.service, body, accountId, containerId);
             }
 
             /// <summary>Updates a Container.</summary>
@@ -3560,7 +3560,7 @@ namespace Google.Apis.TagManager.v1
             /// <param name="accountId">The GTM Account ID.</param>
             public virtual CreateRequest Create(Google.Apis.TagManager.v1.Data.UserAccess body, string accountId)
             {
-                return new CreateRequest(service, body, accountId);
+                return new CreateRequest(this.service, body, accountId);
             }
 
             /// <summary>Creates a user's Account &amp; Container Permissions.</summary>
@@ -3613,7 +3613,7 @@ namespace Google.Apis.TagManager.v1
             /// <param name="permissionId">The GTM User ID.</param>
             public virtual DeleteRequest Delete(string accountId, string permissionId)
             {
-                return new DeleteRequest(service, accountId, permissionId);
+                return new DeleteRequest(this.service, accountId, permissionId);
             }
 
             /// <summary>Removes a user from the account, revoking access to it and all of its containers.</summary>
@@ -3672,7 +3672,7 @@ namespace Google.Apis.TagManager.v1
             /// <param name="permissionId">The GTM User ID.</param>
             public virtual GetRequest Get(string accountId, string permissionId)
             {
-                return new GetRequest(service, accountId, permissionId);
+                return new GetRequest(this.service, accountId, permissionId);
             }
 
             /// <summary>Gets a user's Account &amp; Container Permissions.</summary>
@@ -3733,7 +3733,7 @@ namespace Google.Apis.TagManager.v1
             /// <param name="accountId">The GTM Account ID.</param>
             public virtual ListRequest List(string accountId)
             {
-                return new ListRequest(service, accountId);
+                return new ListRequest(this.service, accountId);
             }
 
             /// <summary>
@@ -3783,7 +3783,7 @@ namespace Google.Apis.TagManager.v1
             /// <param name="permissionId">The GTM User ID.</param>
             public virtual UpdateRequest Update(Google.Apis.TagManager.v1.Data.UserAccess body, string accountId, string permissionId)
             {
-                return new UpdateRequest(service, body, accountId, permissionId);
+                return new UpdateRequest(this.service, body, accountId, permissionId);
             }
 
             /// <summary>Updates a user's Account &amp; Container Permissions.</summary>
@@ -3849,7 +3849,7 @@ namespace Google.Apis.TagManager.v1
         /// <param name="accountId">The GTM Account ID.</param>
         public virtual GetRequest Get(string accountId)
         {
-            return new GetRequest(service, accountId);
+            return new GetRequest(this.service, accountId);
         }
 
         /// <summary>Gets a GTM Account.</summary>
@@ -3893,7 +3893,7 @@ namespace Google.Apis.TagManager.v1
         /// <summary>Lists all GTM Accounts that a user has access to.</summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>Lists all GTM Accounts that a user has access to.</summary>
@@ -3926,7 +3926,7 @@ namespace Google.Apis.TagManager.v1
         /// <param name="accountId">The GTM Account ID.</param>
         public virtual UpdateRequest Update(Google.Apis.TagManager.v1.Data.Account body, string accountId)
         {
-            return new UpdateRequest(service, body, accountId);
+            return new UpdateRequest(this.service, body, accountId);
         }
 
         /// <summary>Updates a GTM Account.</summary>

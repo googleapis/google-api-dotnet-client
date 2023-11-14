@@ -289,7 +289,7 @@ namespace Google.Apis.Speech.v1
         /// <param name="name">The name of the operation resource.</param>
         public virtual GetRequest Get(string name)
         {
-            return new GetRequest(service, name);
+            return new GetRequest(this.service, name);
         }
 
         /// <summary>
@@ -339,7 +339,7 @@ namespace Google.Apis.Speech.v1
         /// </summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>
@@ -482,7 +482,7 @@ namespace Google.Apis.Speech.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Speech.v1.Data.CreateCustomClassRequest body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Create a custom class.</summary>
@@ -548,7 +548,7 @@ namespace Google.Apis.Speech.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Delete a custom class.</summary>
@@ -603,7 +603,7 @@ namespace Google.Apis.Speech.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Get a custom class.</summary>
@@ -658,7 +658,7 @@ namespace Google.Apis.Speech.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>List custom classes.</summary>
@@ -743,7 +743,7 @@ namespace Google.Apis.Speech.v1
                 /// <param name="name">The resource name of the custom class.</param>
                 public virtual PatchRequest Patch(Google.Apis.Speech.v1.Data.CustomClass body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Update a custom class.</summary>
@@ -837,7 +837,7 @@ namespace Google.Apis.Speech.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Speech.v1.Data.CreatePhraseSetRequest body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -903,7 +903,7 @@ namespace Google.Apis.Speech.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Delete a phrase set.</summary>
@@ -958,7 +958,7 @@ namespace Google.Apis.Speech.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Get a phrase set.</summary>
@@ -1017,7 +1017,7 @@ namespace Google.Apis.Speech.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>List phrase sets.</summary>
@@ -1102,7 +1102,7 @@ namespace Google.Apis.Speech.v1
                 /// <param name="name">The resource name of the phrase set.</param>
                 public virtual PatchRequest Patch(Google.Apis.Speech.v1.Data.PhraseSet body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Update a phrase set.</summary>
@@ -1188,7 +1188,7 @@ namespace Google.Apis.Speech.v1
         /// <param name="body">The body of the request.</param>
         public virtual LongrunningrecognizeRequest Longrunningrecognize(Google.Apis.Speech.v1.Data.LongRunningRecognizeRequest body)
         {
-            return new LongrunningrecognizeRequest(service, body);
+            return new LongrunningrecognizeRequest(this.service, body);
         }
 
         /// <summary>
@@ -1234,7 +1234,7 @@ namespace Google.Apis.Speech.v1
         /// <param name="body">The body of the request.</param>
         public virtual RecognizeRequest Recognize(Google.Apis.Speech.v1.Data.RecognizeRequest body)
         {
-            return new RecognizeRequest(service, body);
+            return new RecognizeRequest(this.service, body);
         }
 
         /// <summary>
@@ -1390,8 +1390,8 @@ namespace Google.Apis.Speech.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? DeleteTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DeleteTimeRaw);
-            set => DeleteTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DeleteTimeRaw);
+            set => DeleteTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -1442,8 +1442,8 @@ namespace Google.Apis.Speech.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpireTimeRaw);
-            set => ExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>A collection of class items.</summary>
@@ -1590,8 +1590,8 @@ namespace Google.Apis.Speech.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LastUpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastUpdateTimeRaw);
-            set => LastUpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastUpdateTimeRaw);
+            set => LastUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -1634,8 +1634,8 @@ namespace Google.Apis.Speech.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -1843,8 +1843,8 @@ namespace Google.Apis.Speech.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? DeleteTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DeleteTimeRaw);
-            set => DeleteTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DeleteTimeRaw);
+            set => DeleteTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -1895,8 +1895,8 @@ namespace Google.Apis.Speech.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpireTimeRaw);
-            set => ExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>

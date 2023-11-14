@@ -293,7 +293,7 @@ namespace Google.Apis.Pubsub.v1beta1a
         /// <param name="body">The body of the request.</param>
         public virtual AcknowledgeRequest Acknowledge(Google.Apis.Pubsub.v1beta1a.Data.AcknowledgeRequest body)
         {
-            return new AcknowledgeRequest(service, body);
+            return new AcknowledgeRequest(this.service, body);
         }
 
         /// <summary>
@@ -341,7 +341,7 @@ namespace Google.Apis.Pubsub.v1beta1a
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.Pubsub.v1beta1a.Data.Subscription body)
         {
-            return new CreateRequest(service, body);
+            return new CreateRequest(this.service, body);
         }
 
         /// <summary>
@@ -387,7 +387,7 @@ namespace Google.Apis.Pubsub.v1beta1a
         /// <param name="subscription">The subscription to delete.</param>
         public virtual DeleteRequest Delete(string subscription)
         {
-            return new DeleteRequest(service, subscription);
+            return new DeleteRequest(this.service, subscription);
         }
 
         /// <summary>
@@ -435,7 +435,7 @@ namespace Google.Apis.Pubsub.v1beta1a
         /// <param name="subscription">The name of the subscription to get.</param>
         public virtual GetRequest Get(string subscription)
         {
-            return new GetRequest(service, subscription);
+            return new GetRequest(this.service, subscription);
         }
 
         /// <summary>Gets the configuration details of a subscription.</summary>
@@ -479,7 +479,7 @@ namespace Google.Apis.Pubsub.v1beta1a
         /// <summary>Lists matching subscriptions.</summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>Lists matching subscriptions.</summary>
@@ -547,7 +547,7 @@ namespace Google.Apis.Pubsub.v1beta1a
         /// <param name="body">The body of the request.</param>
         public virtual ModifyAckDeadlineRequest ModifyAckDeadline(Google.Apis.Pubsub.v1beta1a.Data.ModifyAckDeadlineRequest body)
         {
-            return new ModifyAckDeadlineRequest(service, body);
+            return new ModifyAckDeadlineRequest(this.service, body);
         }
 
         /// <summary>Modifies the Ack deadline for a message received from a pull request.</summary>
@@ -590,7 +590,7 @@ namespace Google.Apis.Pubsub.v1beta1a
         /// <param name="body">The body of the request.</param>
         public virtual ModifyPushConfigRequest ModifyPushConfig(Google.Apis.Pubsub.v1beta1a.Data.ModifyPushConfigRequest body)
         {
-            return new ModifyPushConfigRequest(service, body);
+            return new ModifyPushConfigRequest(this.service, body);
         }
 
         /// <summary>
@@ -637,7 +637,7 @@ namespace Google.Apis.Pubsub.v1beta1a
         /// <param name="body">The body of the request.</param>
         public virtual PullRequest Pull(Google.Apis.Pubsub.v1beta1a.Data.PullRequest body)
         {
-            return new PullRequest(service, body);
+            return new PullRequest(this.service, body);
         }
 
         /// <summary>
@@ -684,7 +684,7 @@ namespace Google.Apis.Pubsub.v1beta1a
         /// <param name="body">The body of the request.</param>
         public virtual PullBatchRequest PullBatch(Google.Apis.Pubsub.v1beta1a.Data.PullBatchRequest body)
         {
-            return new PullBatchRequest(service, body);
+            return new PullBatchRequest(this.service, body);
         }
 
         /// <summary>
@@ -742,7 +742,7 @@ namespace Google.Apis.Pubsub.v1beta1a
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.Pubsub.v1beta1a.Data.Topic body)
         {
-            return new CreateRequest(service, body);
+            return new CreateRequest(this.service, body);
         }
 
         /// <summary>Creates the given topic with the given name.</summary>
@@ -784,7 +784,7 @@ namespace Google.Apis.Pubsub.v1beta1a
         /// <param name="topic">Name of the topic to delete.</param>
         public virtual DeleteRequest Delete(string topic)
         {
-            return new DeleteRequest(service, topic);
+            return new DeleteRequest(this.service, topic);
         }
 
         /// <summary>
@@ -835,7 +835,7 @@ namespace Google.Apis.Pubsub.v1beta1a
         /// <param name="topic">The name of the topic to get.</param>
         public virtual GetRequest Get(string topic)
         {
-            return new GetRequest(service, topic);
+            return new GetRequest(this.service, topic);
         }
 
         /// <summary>
@@ -882,7 +882,7 @@ namespace Google.Apis.Pubsub.v1beta1a
         /// <summary>Lists matching topics.</summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>Lists matching topics.</summary>
@@ -950,7 +950,7 @@ namespace Google.Apis.Pubsub.v1beta1a
         /// <param name="body">The body of the request.</param>
         public virtual PublishRequest Publish(Google.Apis.Pubsub.v1beta1a.Data.PublishRequest body)
         {
-            return new PublishRequest(service, body);
+            return new PublishRequest(this.service, body);
         }
 
         /// <summary>Adds a message to the topic. Returns NOT_FOUND if the topic does not exist.</summary>
@@ -989,7 +989,7 @@ namespace Google.Apis.Pubsub.v1beta1a
         /// <param name="body">The body of the request.</param>
         public virtual PublishBatchRequest PublishBatch(Google.Apis.Pubsub.v1beta1a.Data.PublishBatchRequest body)
         {
-            return new PublishBatchRequest(service, body);
+            return new PublishBatchRequest(this.service, body);
         }
 
         /// <summary>Adds one or more messages to the topic. Returns NOT_FOUND if the topic does not exist.</summary>

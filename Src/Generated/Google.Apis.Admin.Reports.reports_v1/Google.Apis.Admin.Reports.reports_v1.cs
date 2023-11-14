@@ -305,7 +305,7 @@ namespace Google.Apis.Admin.Reports.reports_v1
         /// <param name="applicationName">Application name for which the events are to be retrieved.</param>
         public virtual ListRequest List(string userKey, ListRequest.ApplicationNameEnum applicationName)
         {
-            return new ListRequest(service, userKey, applicationName);
+            return new ListRequest(this.service, userKey, applicationName);
         }
 
         /// <summary>
@@ -720,7 +720,7 @@ namespace Google.Apis.Admin.Reports.reports_v1
         /// <param name="applicationName">Application name for which the events are to be retrieved.</param>
         public virtual WatchRequest Watch(Google.Apis.Admin.Reports.reports_v1.Data.Channel body, string userKey, WatchRequest.ApplicationNameEnum applicationName)
         {
-            return new WatchRequest(service, body, userKey, applicationName);
+            return new WatchRequest(this.service, body, userKey, applicationName);
         }
 
         /// <summary>
@@ -1145,7 +1145,7 @@ namespace Google.Apis.Admin.Reports.reports_v1
         /// <param name="body">The body of the request.</param>
         public virtual StopRequest Stop(Google.Apis.Admin.Reports.reports_v1.Data.Channel body)
         {
-            return new StopRequest(service, body);
+            return new StopRequest(this.service, body);
         }
 
         /// <summary>Stop watching resources through this channel.</summary>
@@ -1206,7 +1206,7 @@ namespace Google.Apis.Admin.Reports.reports_v1
         /// </param>
         public virtual GetRequest Get(string date)
         {
-            return new GetRequest(service, date);
+            return new GetRequest(this.service, date);
         }
 
         /// <summary>
@@ -1338,7 +1338,7 @@ namespace Google.Apis.Admin.Reports.reports_v1
         /// </param>
         public virtual GetRequest Get(GetRequest.EntityTypeEnum entityType, string entityKey, string date)
         {
-            return new GetRequest(service, entityType, entityKey, date);
+            return new GetRequest(this.service, entityType, entityKey, date);
         }
 
         /// <summary>
@@ -1550,7 +1550,7 @@ namespace Google.Apis.Admin.Reports.reports_v1
         /// </param>
         public virtual GetRequest Get(string userKey, string date)
         {
-            return new GetRequest(service, userKey, date);
+            return new GetRequest(this.service, userKey, date);
         }
 
         /// <summary>
@@ -1952,8 +1952,8 @@ namespace Google.Apis.Admin.Reports.reports_v1.Data
             [Newtonsoft.Json.JsonIgnoreAttribute]
             public virtual System.DateTimeOffset? TimeDateTimeOffset
             {
-                get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(TimeRaw);
-                set => TimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+                get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(TimeRaw);
+                set => TimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
             }
 
             /// <summary><seealso cref="System.DateTime"/> representation of <see cref="TimeRaw"/>.</summary>
@@ -2143,8 +2143,8 @@ namespace Google.Apis.Admin.Reports.reports_v1.Data
             [Newtonsoft.Json.JsonIgnoreAttribute]
             public virtual System.DateTimeOffset? DatetimeValueDateTimeOffset
             {
-                get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DatetimeValueRaw);
-                set => DatetimeValueRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+                get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(DatetimeValueRaw);
+                set => DatetimeValueRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
             }
 
             /// <summary><seealso cref="System.DateTime"/> representation of <see cref="DatetimeValueRaw"/>.</summary>

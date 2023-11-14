@@ -530,7 +530,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// <param name="codeId">The unique ID of the ASP to be deleted.</param>
         public virtual DeleteRequest Delete(string userKey, int codeId)
         {
-            return new DeleteRequest(service, userKey, codeId);
+            return new DeleteRequest(this.service, userKey, codeId);
         }
 
         /// <summary>Deletes an ASP issued by a user.</summary>
@@ -595,7 +595,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// <param name="codeId">The unique ID of the ASP.</param>
         public virtual GetRequest Get(string userKey, int codeId)
         {
-            return new GetRequest(service, userKey, codeId);
+            return new GetRequest(this.service, userKey, codeId);
         }
 
         /// <summary>Gets information about an ASP issued by a user.</summary>
@@ -659,7 +659,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// </param>
         public virtual ListRequest List(string userKey)
         {
-            return new ListRequest(service, userKey);
+            return new ListRequest(this.service, userKey);
         }
 
         /// <summary>Lists the ASPs issued by a user.</summary>
@@ -722,7 +722,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// <param name="body">The body of the request.</param>
         public virtual StopRequest Stop(Google.Apis.Admin.Directory.directory_v1.Data.Channel body)
         {
-            return new StopRequest(service, body);
+            return new StopRequest(this.service, body);
         }
 
         /// <summary>Stops watching resources through this channel.</summary>
@@ -793,7 +793,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// </param>
         public virtual ActionRequest Action(Google.Apis.Admin.Directory.directory_v1.Data.ChromeOsDeviceAction body, string customerId, string resourceId)
         {
-            return new ActionRequest(service, body, customerId, resourceId);
+            return new ActionRequest(this.service, body, customerId, resourceId);
         }
 
         /// <summary>
@@ -881,7 +881,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// </param>
         public virtual GetRequest Get(string customerId, string deviceId)
         {
-            return new GetRequest(service, customerId, deviceId);
+            return new GetRequest(this.service, customerId, deviceId);
         }
 
         /// <summary>Retrieves a Chrome OS device's properties.</summary>
@@ -980,7 +980,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// </param>
         public virtual ListRequest List(string customerId)
         {
-            return new ListRequest(service, customerId);
+            return new ListRequest(this.service, customerId);
         }
 
         /// <summary>Retrieves a paginated list of Chrome OS devices within an account.</summary>
@@ -1203,7 +1203,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// <param name="orgUnitPath">Full path of the target organizational unit or its ID</param>
         public virtual MoveDevicesToOuRequest MoveDevicesToOu(Google.Apis.Admin.Directory.directory_v1.Data.ChromeOsMoveDevicesToOu body, string customerId, string orgUnitPath)
         {
-            return new MoveDevicesToOuRequest(service, body, customerId, orgUnitPath);
+            return new MoveDevicesToOuRequest(this.service, body, customerId, orgUnitPath);
         }
 
         /// <summary>
@@ -1284,7 +1284,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// </param>
         public virtual PatchRequest Patch(Google.Apis.Admin.Directory.directory_v1.Data.ChromeOsDevice body, string customerId, string deviceId)
         {
-            return new PatchRequest(service, body, customerId, deviceId);
+            return new PatchRequest(this.service, body, customerId, deviceId);
         }
 
         /// <summary>
@@ -1398,7 +1398,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// </param>
         public virtual UpdateRequest Update(Google.Apis.Admin.Directory.directory_v1.Data.ChromeOsDevice body, string customerId, string deviceId)
         {
-            return new UpdateRequest(service, body, customerId, deviceId);
+            return new UpdateRequest(this.service, body, customerId, deviceId);
         }
 
         /// <summary>
@@ -1570,7 +1570,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                     /// <param name="commandId">Immutable. ID of Chrome OS Device Command.</param>
                     public virtual GetRequest Get(string customerId, string deviceId, long commandId)
                     {
-                        return new GetRequest(service, customerId, deviceId, commandId);
+                        return new GetRequest(this.service, customerId, deviceId, commandId);
                     }
 
                     /// <summary>Gets command data a specific command issued to the device.</summary>
@@ -1644,7 +1644,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 /// <param name="deviceId">Immutable. ID of Chrome OS Device.</param>
                 public virtual IssueCommandRequest IssueCommand(Google.Apis.Admin.Directory.directory_v1.Data.DirectoryChromeosdevicesIssueCommandRequest body, string customerId, string deviceId)
                 {
-                    return new IssueCommandRequest(service, body, customerId, deviceId);
+                    return new IssueCommandRequest(this.service, body, customerId, deviceId);
                 }
 
                 /// <summary>Issues a command for the device to execute.</summary>
@@ -1768,7 +1768,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 /// </param>
                 public virtual BatchCreatePrintServersRequest BatchCreatePrintServers(Google.Apis.Admin.Directory.directory_v1.Data.BatchCreatePrintServersRequest body, string parent)
                 {
-                    return new BatchCreatePrintServersRequest(service, body, parent);
+                    return new BatchCreatePrintServersRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates multiple print servers.</summary>
@@ -1829,7 +1829,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 /// </param>
                 public virtual BatchDeletePrintServersRequest BatchDeletePrintServers(Google.Apis.Admin.Directory.directory_v1.Data.BatchDeletePrintServersRequest body, string parent)
                 {
-                    return new BatchDeletePrintServersRequest(service, body, parent);
+                    return new BatchDeletePrintServersRequest(this.service, body, parent);
                 }
 
                 /// <summary>Deletes multiple print servers.</summary>
@@ -1890,7 +1890,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Admin.Directory.directory_v1.Data.PrintServer body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a print server.</summary>
@@ -1949,7 +1949,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes a print server.</summary>
@@ -2001,7 +2001,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Returns a print server's configuration.</summary>
@@ -2054,7 +2054,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists print server configurations.</summary>
@@ -2186,7 +2186,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.Admin.Directory.directory_v1.Data.PrintServer body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates a print server's configuration.</summary>
@@ -2275,7 +2275,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 /// <param name="parent">Required. The name of the customer. Format: customers/{customer_id}</param>
                 public virtual BatchCreatePrintersRequest BatchCreatePrinters(Google.Apis.Admin.Directory.directory_v1.Data.BatchCreatePrintersRequest body, string parent)
                 {
-                    return new BatchCreatePrintersRequest(service, body, parent);
+                    return new BatchCreatePrintersRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates printers under given Organization Unit.</summary>
@@ -2328,7 +2328,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 /// <param name="parent">Required. The name of the customer. Format: customers/{customer_id}</param>
                 public virtual BatchDeletePrintersRequest BatchDeletePrinters(Google.Apis.Admin.Directory.directory_v1.Data.BatchDeletePrintersRequest body, string parent)
                 {
-                    return new BatchDeletePrintersRequest(service, body, parent);
+                    return new BatchDeletePrintersRequest(this.service, body, parent);
                 }
 
                 /// <summary>Deletes printers in batch.</summary>
@@ -2381,7 +2381,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 /// <param name="parent">Required. The name of the customer. Format: customers/{customer_id}</param>
                 public virtual CreateRequest Create(Google.Apis.Admin.Directory.directory_v1.Data.Printer body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a printer under given Organization Unit.</summary>
@@ -2436,7 +2436,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes a `Printer`.</summary>
@@ -2487,7 +2487,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Returns a `Printer` resource (printer's config).</summary>
@@ -2538,7 +2538,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>List printers configs.</summary>
@@ -2663,7 +2663,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 /// </param>
                 public virtual ListPrinterModelsRequest ListPrinterModels(string parent)
                 {
-                    return new ListPrinterModelsRequest(service, parent);
+                    return new ListPrinterModelsRequest(this.service, parent);
                 }
 
                 /// <summary>Lists the supported printer models.</summary>
@@ -2756,7 +2756,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.Admin.Directory.directory_v1.Data.Printer body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates a `Printer` resource.</summary>
@@ -2843,7 +2843,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// <param name="customerKey">Id of the customer to be retrieved</param>
         public virtual GetRequest Get(string customerKey)
         {
-            return new GetRequest(service, customerKey);
+            return new GetRequest(this.service, customerKey);
         }
 
         /// <summary>Retrieves a customer.</summary>
@@ -2889,7 +2889,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// <param name="customerKey">Id of the customer to be updated</param>
         public virtual PatchRequest Patch(Google.Apis.Admin.Directory.directory_v1.Data.Customer body, string customerKey)
         {
-            return new PatchRequest(service, body, customerKey);
+            return new PatchRequest(this.service, body, customerKey);
         }
 
         /// <summary>Patches a customer.</summary>
@@ -2942,7 +2942,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// <param name="customerKey">Id of the customer to be updated</param>
         public virtual UpdateRequest Update(Google.Apis.Admin.Directory.directory_v1.Data.Customer body, string customerKey)
         {
-            return new UpdateRequest(service, body, customerKey);
+            return new UpdateRequest(this.service, body, customerKey);
         }
 
         /// <summary>Updates a customer.</summary>
@@ -3010,7 +3010,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// <param name="domainAliasName">Name of domain alias to be retrieved.</param>
         public virtual DeleteRequest Delete(string customer, string domainAliasName)
         {
-            return new DeleteRequest(service, customer, domainAliasName);
+            return new DeleteRequest(this.service, customer, domainAliasName);
         }
 
         /// <summary>Deletes a domain Alias of the customer.</summary>
@@ -3075,7 +3075,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// <param name="domainAliasName">Name of domain alias to be retrieved.</param>
         public virtual GetRequest Get(string customer, string domainAliasName)
         {
-            return new GetRequest(service, customer, domainAliasName);
+            return new GetRequest(this.service, customer, domainAliasName);
         }
 
         /// <summary>Retrieves a domain alias of the customer.</summary>
@@ -3140,7 +3140,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// <param name="customer">Immutable ID of the Google Workspace account.</param>
         public virtual InsertRequest Insert(Google.Apis.Admin.Directory.directory_v1.Data.DomainAlias body, string customer)
         {
-            return new InsertRequest(service, body, customer);
+            return new InsertRequest(this.service, body, customer);
         }
 
         /// <summary>Inserts a domain alias of the customer.</summary>
@@ -3198,7 +3198,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// </param>
         public virtual ListRequest List(string customer)
         {
-            return new ListRequest(service, customer);
+            return new ListRequest(this.service, customer);
         }
 
         /// <summary>Lists the domain aliases of the customer.</summary>
@@ -3277,7 +3277,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// <param name="domainName">Name of domain to be deleted</param>
         public virtual DeleteRequest Delete(string customer, string domainName)
         {
-            return new DeleteRequest(service, customer, domainName);
+            return new DeleteRequest(this.service, customer, domainName);
         }
 
         /// <summary>Deletes a domain of the customer.</summary>
@@ -3342,7 +3342,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// <param name="domainName">Name of domain to be retrieved</param>
         public virtual GetRequest Get(string customer, string domainName)
         {
-            return new GetRequest(service, customer, domainName);
+            return new GetRequest(this.service, customer, domainName);
         }
 
         /// <summary>Retrieves a domain of the customer.</summary>
@@ -3407,7 +3407,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// <param name="customer">Immutable ID of the Google Workspace account.</param>
         public virtual InsertRequest Insert(Google.Apis.Admin.Directory.directory_v1.Data.Domains body, string customer)
         {
-            return new InsertRequest(service, body, customer);
+            return new InsertRequest(this.service, body, customer);
         }
 
         /// <summary>Inserts a domain of the customer.</summary>
@@ -3465,7 +3465,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// </param>
         public virtual ListRequest List(string customer)
         {
-            return new ListRequest(service, customer);
+            return new ListRequest(this.service, customer);
         }
 
         /// <summary>Lists the domains of the customer.</summary>
@@ -3553,7 +3553,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             /// <param name="alias">The alias to be removed</param>
             public virtual DeleteRequest Delete(string groupKey, string alias)
             {
-                return new DeleteRequest(service, groupKey, alias);
+                return new DeleteRequest(this.service, groupKey, alias);
             }
 
             /// <summary>Removes an alias.</summary>
@@ -3618,7 +3618,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             /// </param>
             public virtual InsertRequest Insert(Google.Apis.Admin.Directory.directory_v1.Data.Alias body, string groupKey)
             {
-                return new InsertRequest(service, body, groupKey);
+                return new InsertRequest(this.service, body, groupKey);
             }
 
             /// <summary>Adds an alias for the group.</summary>
@@ -3676,7 +3676,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             /// </param>
             public virtual ListRequest List(string groupKey)
             {
-                return new ListRequest(service, groupKey);
+                return new ListRequest(this.service, groupKey);
             }
 
             /// <summary>Lists all aliases for a group.</summary>
@@ -3728,7 +3728,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// </param>
         public virtual DeleteRequest Delete(string groupKey)
         {
-            return new DeleteRequest(service, groupKey);
+            return new DeleteRequest(this.service, groupKey);
         }
 
         /// <summary>Deletes a group.</summary>
@@ -3779,7 +3779,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// </param>
         public virtual GetRequest Get(string groupKey)
         {
-            return new GetRequest(service, groupKey);
+            return new GetRequest(this.service, groupKey);
         }
 
         /// <summary>Retrieves a group's properties.</summary>
@@ -3827,7 +3827,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// <param name="body">The body of the request.</param>
         public virtual InsertRequest Insert(Google.Apis.Admin.Directory.directory_v1.Data.Group body)
         {
-            return new InsertRequest(service, body);
+            return new InsertRequest(this.service, body);
         }
 
         /// <summary>Creates a group.</summary>
@@ -3865,7 +3865,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// <summary>Retrieves all groups of a domain or of a user given a userKey (paginated).</summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>Retrieves all groups of a domain or of a user given a userKey (paginated).</summary>
@@ -4039,7 +4039,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// </param>
         public virtual PatchRequest Patch(Google.Apis.Admin.Directory.directory_v1.Data.Group body, string groupKey)
         {
-            return new PatchRequest(service, body, groupKey);
+            return new PatchRequest(this.service, body, groupKey);
         }
 
         /// <summary>
@@ -4101,7 +4101,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// </param>
         public virtual UpdateRequest Update(Google.Apis.Admin.Directory.directory_v1.Data.Group body, string groupKey)
         {
-            return new UpdateRequest(service, body, groupKey);
+            return new UpdateRequest(this.service, body, groupKey);
         }
 
         /// <summary>Updates a group's properties.</summary>
@@ -4178,7 +4178,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// </param>
         public virtual DeleteRequest Delete(string groupKey, string memberKey)
         {
-            return new DeleteRequest(service, groupKey, memberKey);
+            return new DeleteRequest(this.service, groupKey, memberKey);
         }
 
         /// <summary>Removes a member from a group.</summary>
@@ -4249,7 +4249,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// </param>
         public virtual GetRequest Get(string groupKey, string memberKey)
         {
-            return new GetRequest(service, groupKey, memberKey);
+            return new GetRequest(this.service, groupKey, memberKey);
         }
 
         /// <summary>Retrieves a group member's properties.</summary>
@@ -4326,7 +4326,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// </param>
         public virtual HasMemberRequest HasMember(string groupKey, string memberKey)
         {
-            return new HasMemberRequest(service, groupKey, memberKey);
+            return new HasMemberRequest(this.service, groupKey, memberKey);
         }
 
         /// <summary>
@@ -4400,7 +4400,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// </param>
         public virtual InsertRequest Insert(Google.Apis.Admin.Directory.directory_v1.Data.Member body, string groupKey)
         {
-            return new InsertRequest(service, body, groupKey);
+            return new InsertRequest(this.service, body, groupKey);
         }
 
         /// <summary>Adds a user to the specified group.</summary>
@@ -4462,7 +4462,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// </param>
         public virtual ListRequest List(string groupKey)
         {
-            return new ListRequest(service, groupKey);
+            return new ListRequest(this.service, groupKey);
         }
 
         /// <summary>
@@ -4576,7 +4576,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// </param>
         public virtual PatchRequest Patch(Google.Apis.Admin.Directory.directory_v1.Data.Member body, string groupKey, string memberKey)
         {
-            return new PatchRequest(service, body, groupKey, memberKey);
+            return new PatchRequest(this.service, body, groupKey, memberKey);
         }
 
         /// <summary>
@@ -4658,7 +4658,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// </param>
         public virtual UpdateRequest Update(Google.Apis.Admin.Directory.directory_v1.Data.Member body, string groupKey, string memberKey)
         {
-            return new UpdateRequest(service, body, groupKey, memberKey);
+            return new UpdateRequest(this.service, body, groupKey, memberKey);
         }
 
         /// <summary>Updates the membership of a user in the specified group.</summary>
@@ -4750,7 +4750,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// <param name="resourceId">The unique ID the API service uses to identify the mobile device.</param>
         public virtual ActionRequest Action(Google.Apis.Admin.Directory.directory_v1.Data.MobileDeviceAction body, string customerId, string resourceId)
         {
-            return new ActionRequest(service, body, customerId, resourceId);
+            return new ActionRequest(this.service, body, customerId, resourceId);
         }
 
         /// <summary>Takes an action that affects a mobile device. For example, remotely wiping a device.</summary>
@@ -4824,7 +4824,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// <param name="resourceId">The unique ID the API service uses to identify the mobile device.</param>
         public virtual DeleteRequest Delete(string customerId, string resourceId)
         {
-            return new DeleteRequest(service, customerId, resourceId);
+            return new DeleteRequest(this.service, customerId, resourceId);
         }
 
         /// <summary>Removes a mobile device.</summary>
@@ -4891,7 +4891,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// <param name="resourceId">The unique ID the API service uses to identify the mobile device.</param>
         public virtual GetRequest Get(string customerId, string resourceId)
         {
-            return new GetRequest(service, customerId, resourceId);
+            return new GetRequest(this.service, customerId, resourceId);
         }
 
         /// <summary>Retrieves a mobile device's properties.</summary>
@@ -4989,7 +4989,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// </param>
         public virtual ListRequest List(string customerId)
         {
-            return new ListRequest(service, customerId);
+            return new ListRequest(this.service, customerId);
         }
 
         /// <summary>
@@ -5210,7 +5210,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// </param>
         public virtual DeleteRequest Delete(string customerId, string orgUnitPath)
         {
-            return new DeleteRequest(service, customerId, orgUnitPath);
+            return new DeleteRequest(this.service, customerId, orgUnitPath);
         }
 
         /// <summary>Removes an organizational unit.</summary>
@@ -5279,7 +5279,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// </param>
         public virtual GetRequest Get(string customerId, string orgUnitPath)
         {
-            return new GetRequest(service, customerId, orgUnitPath);
+            return new GetRequest(this.service, customerId, orgUnitPath);
         }
 
         /// <summary>Retrieves an organizational unit.</summary>
@@ -5346,7 +5346,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// </param>
         public virtual InsertRequest Insert(Google.Apis.Admin.Directory.directory_v1.Data.OrgUnit body, string customerId)
         {
-            return new InsertRequest(service, body, customerId);
+            return new InsertRequest(this.service, body, customerId);
         }
 
         /// <summary>Adds an organizational unit.</summary>
@@ -5406,7 +5406,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// </param>
         public virtual ListRequest List(string customerId)
         {
-            return new ListRequest(service, customerId);
+            return new ListRequest(this.service, customerId);
         }
 
         /// <summary>Retrieves a list of all organizational units for an account.</summary>
@@ -5511,7 +5511,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// </param>
         public virtual PatchRequest Patch(Google.Apis.Admin.Directory.directory_v1.Data.OrgUnit body, string customerId, string orgUnitPath)
         {
-            return new PatchRequest(service, body, customerId, orgUnitPath);
+            return new PatchRequest(this.service, body, customerId, orgUnitPath);
         }
 
         /// <summary>
@@ -5591,7 +5591,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// </param>
         public virtual UpdateRequest Update(Google.Apis.Admin.Directory.directory_v1.Data.OrgUnit body, string customerId, string orgUnitPath)
         {
-            return new UpdateRequest(service, body, customerId, orgUnitPath);
+            return new UpdateRequest(this.service, body, customerId, orgUnitPath);
         }
 
         /// <summary>Updates an organizational unit.</summary>
@@ -5681,7 +5681,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// </param>
         public virtual ListRequest List(string customer)
         {
-            return new ListRequest(service, customer);
+            return new ListRequest(this.service, customer);
         }
 
         /// <summary>Retrieves a paginated list of all privileges for a customer.</summary>
@@ -5771,7 +5771,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             /// <param name="buildingId">The id of the building to delete.</param>
             public virtual DeleteRequest Delete(string customer, string buildingId)
             {
-                return new DeleteRequest(service, customer, buildingId);
+                return new DeleteRequest(this.service, customer, buildingId);
             }
 
             /// <summary>Deletes a building.</summary>
@@ -5836,7 +5836,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             /// <param name="buildingId">The unique ID of the building to retrieve.</param>
             public virtual GetRequest Get(string customer, string buildingId)
             {
-                return new GetRequest(service, customer, buildingId);
+                return new GetRequest(this.service, customer, buildingId);
             }
 
             /// <summary>Retrieves a building.</summary>
@@ -5901,7 +5901,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             /// </param>
             public virtual InsertRequest Insert(Google.Apis.Admin.Directory.directory_v1.Data.Building body, string customer)
             {
-                return new InsertRequest(service, body, customer);
+                return new InsertRequest(this.service, body, customer);
             }
 
             /// <summary>Inserts a building.</summary>
@@ -5990,7 +5990,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             /// </param>
             public virtual ListRequest List(string customer)
             {
-                return new ListRequest(service, customer);
+                return new ListRequest(this.service, customer);
             }
 
             /// <summary>Retrieves a list of buildings for an account.</summary>
@@ -6067,7 +6067,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             /// <param name="buildingId">The id of the building to update.</param>
             public virtual PatchRequest Patch(Google.Apis.Admin.Directory.directory_v1.Data.Building body, string customer, string buildingId)
             {
-                return new PatchRequest(service, body, customer, buildingId);
+                return new PatchRequest(this.service, body, customer, buildingId);
             }
 
             /// <summary>Patches a building.</summary>
@@ -6171,7 +6171,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             /// <param name="buildingId">The id of the building to update.</param>
             public virtual UpdateRequest Update(Google.Apis.Admin.Directory.directory_v1.Data.Building body, string customer, string buildingId)
             {
-                return new UpdateRequest(service, body, customer, buildingId);
+                return new UpdateRequest(this.service, body, customer, buildingId);
             }
 
             /// <summary>Updates a building.</summary>
@@ -6292,7 +6292,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             /// <param name="calendarResourceId">The unique ID of the calendar resource to delete.</param>
             public virtual DeleteRequest Delete(string customer, string calendarResourceId)
             {
-                return new DeleteRequest(service, customer, calendarResourceId);
+                return new DeleteRequest(this.service, customer, calendarResourceId);
             }
 
             /// <summary>Deletes a calendar resource.</summary>
@@ -6357,7 +6357,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             /// <param name="calendarResourceId">The unique ID of the calendar resource to retrieve.</param>
             public virtual GetRequest Get(string customer, string calendarResourceId)
             {
-                return new GetRequest(service, customer, calendarResourceId);
+                return new GetRequest(this.service, customer, calendarResourceId);
             }
 
             /// <summary>Retrieves a calendar resource.</summary>
@@ -6422,7 +6422,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             /// </param>
             public virtual InsertRequest Insert(Google.Apis.Admin.Directory.directory_v1.Data.CalendarResource body, string customer)
             {
-                return new InsertRequest(service, body, customer);
+                return new InsertRequest(this.service, body, customer);
             }
 
             /// <summary>Inserts a calendar resource.</summary>
@@ -6480,7 +6480,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             /// </param>
             public virtual ListRequest List(string customer)
             {
-                return new ListRequest(service, customer);
+                return new ListRequest(this.service, customer);
             }
 
             /// <summary>Retrieves a list of calendar resources for an account.</summary>
@@ -6595,7 +6595,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             /// <param name="calendarResourceId">The unique ID of the calendar resource to update.</param>
             public virtual PatchRequest Patch(Google.Apis.Admin.Directory.directory_v1.Data.CalendarResource body, string customer, string calendarResourceId)
             {
-                return new PatchRequest(service, body, customer, calendarResourceId);
+                return new PatchRequest(this.service, body, customer, calendarResourceId);
             }
 
             /// <summary>Patches a calendar resource.</summary>
@@ -6671,7 +6671,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             /// <param name="calendarResourceId">The unique ID of the calendar resource to update.</param>
             public virtual UpdateRequest Update(Google.Apis.Admin.Directory.directory_v1.Data.CalendarResource body, string customer, string calendarResourceId)
             {
-                return new UpdateRequest(service, body, customer, calendarResourceId);
+                return new UpdateRequest(this.service, body, customer, calendarResourceId);
             }
 
             /// <summary>
@@ -6764,7 +6764,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             /// <param name="featureKey">The unique ID of the feature to delete.</param>
             public virtual DeleteRequest Delete(string customer, string featureKey)
             {
-                return new DeleteRequest(service, customer, featureKey);
+                return new DeleteRequest(this.service, customer, featureKey);
             }
 
             /// <summary>Deletes a feature.</summary>
@@ -6829,7 +6829,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             /// <param name="featureKey">The unique ID of the feature to retrieve.</param>
             public virtual GetRequest Get(string customer, string featureKey)
             {
-                return new GetRequest(service, customer, featureKey);
+                return new GetRequest(this.service, customer, featureKey);
             }
 
             /// <summary>Retrieves a feature.</summary>
@@ -6894,7 +6894,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             /// </param>
             public virtual InsertRequest Insert(Google.Apis.Admin.Directory.directory_v1.Data.Feature body, string customer)
             {
-                return new InsertRequest(service, body, customer);
+                return new InsertRequest(this.service, body, customer);
             }
 
             /// <summary>Inserts a feature.</summary>
@@ -6952,7 +6952,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             /// </param>
             public virtual ListRequest List(string customer)
             {
-                return new ListRequest(service, customer);
+                return new ListRequest(this.service, customer);
             }
 
             /// <summary>Retrieves a list of features for an account.</summary>
@@ -7029,7 +7029,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             /// <param name="featureKey">The unique ID of the feature to update.</param>
             public virtual PatchRequest Patch(Google.Apis.Admin.Directory.directory_v1.Data.Feature body, string customer, string featureKey)
             {
-                return new PatchRequest(service, body, customer, featureKey);
+                return new PatchRequest(this.service, body, customer, featureKey);
             }
 
             /// <summary>Patches a feature.</summary>
@@ -7102,7 +7102,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             /// <param name="oldName">The unique ID of the feature to rename.</param>
             public virtual RenameRequest Rename(Google.Apis.Admin.Directory.directory_v1.Data.FeatureRename body, string customer, string oldName)
             {
-                return new RenameRequest(service, body, customer, oldName);
+                return new RenameRequest(this.service, body, customer, oldName);
             }
 
             /// <summary>Renames a feature.</summary>
@@ -7175,7 +7175,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             /// <param name="featureKey">The unique ID of the feature to update.</param>
             public virtual UpdateRequest Update(Google.Apis.Admin.Directory.directory_v1.Data.Feature body, string customer, string featureKey)
             {
-                return new UpdateRequest(service, body, customer, featureKey);
+                return new UpdateRequest(this.service, body, customer, featureKey);
             }
 
             /// <summary>Updates a feature.</summary>
@@ -7260,7 +7260,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// <param name="roleAssignmentId">Immutable ID of the role assignment.</param>
         public virtual DeleteRequest Delete(string customer, string roleAssignmentId)
         {
-            return new DeleteRequest(service, customer, roleAssignmentId);
+            return new DeleteRequest(this.service, customer, roleAssignmentId);
         }
 
         /// <summary>Deletes a role assignment.</summary>
@@ -7325,7 +7325,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// <param name="roleAssignmentId">Immutable ID of the role assignment.</param>
         public virtual GetRequest Get(string customer, string roleAssignmentId)
         {
-            return new GetRequest(service, customer, roleAssignmentId);
+            return new GetRequest(this.service, customer, roleAssignmentId);
         }
 
         /// <summary>Retrieves a role assignment.</summary>
@@ -7390,7 +7390,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// <param name="customer">Immutable ID of the Google Workspace account.</param>
         public virtual InsertRequest Insert(Google.Apis.Admin.Directory.directory_v1.Data.RoleAssignment body, string customer)
         {
-            return new InsertRequest(service, body, customer);
+            return new InsertRequest(this.service, body, customer);
         }
 
         /// <summary>Creates a role assignment.</summary>
@@ -7448,7 +7448,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// </param>
         public virtual ListRequest List(string customer)
         {
-            return new ListRequest(service, customer);
+            return new ListRequest(this.service, customer);
         }
 
         /// <summary>Retrieves a paginated list of all roleAssignments.</summary>
@@ -7585,7 +7585,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// <param name="roleId">Immutable ID of the role.</param>
         public virtual DeleteRequest Delete(string customer, string roleId)
         {
-            return new DeleteRequest(service, customer, roleId);
+            return new DeleteRequest(this.service, customer, roleId);
         }
 
         /// <summary>Deletes a role.</summary>
@@ -7650,7 +7650,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// <param name="roleId">Immutable ID of the role.</param>
         public virtual GetRequest Get(string customer, string roleId)
         {
-            return new GetRequest(service, customer, roleId);
+            return new GetRequest(this.service, customer, roleId);
         }
 
         /// <summary>Retrieves a role.</summary>
@@ -7715,7 +7715,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// <param name="customer">Immutable ID of the Google Workspace account.</param>
         public virtual InsertRequest Insert(Google.Apis.Admin.Directory.directory_v1.Data.Role body, string customer)
         {
-            return new InsertRequest(service, body, customer);
+            return new InsertRequest(this.service, body, customer);
         }
 
         /// <summary>Creates a role.</summary>
@@ -7773,7 +7773,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// </param>
         public virtual ListRequest List(string customer)
         {
-            return new ListRequest(service, customer);
+            return new ListRequest(this.service, customer);
         }
 
         /// <summary>Retrieves a paginated list of all the roles in a domain.</summary>
@@ -7850,7 +7850,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// <param name="roleId">Immutable ID of the role.</param>
         public virtual PatchRequest Patch(Google.Apis.Admin.Directory.directory_v1.Data.Role body, string customer, string roleId)
         {
-            return new PatchRequest(service, body, customer, roleId);
+            return new PatchRequest(this.service, body, customer, roleId);
         }
 
         /// <summary>Patches a role.</summary>
@@ -7917,7 +7917,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// <param name="roleId">Immutable ID of the role.</param>
         public virtual UpdateRequest Update(Google.Apis.Admin.Directory.directory_v1.Data.Role body, string customer, string roleId)
         {
-            return new UpdateRequest(service, body, customer, roleId);
+            return new UpdateRequest(this.service, body, customer, roleId);
         }
 
         /// <summary>Updates a role.</summary>
@@ -7998,7 +7998,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// <param name="schemaKey">Name or immutable ID of the schema.</param>
         public virtual DeleteRequest Delete(string customerId, string schemaKey)
         {
-            return new DeleteRequest(service, customerId, schemaKey);
+            return new DeleteRequest(this.service, customerId, schemaKey);
         }
 
         /// <summary>Deletes a schema.</summary>
@@ -8063,7 +8063,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// <param name="schemaKey">Name or immutable ID of the schema.</param>
         public virtual GetRequest Get(string customerId, string schemaKey)
         {
-            return new GetRequest(service, customerId, schemaKey);
+            return new GetRequest(this.service, customerId, schemaKey);
         }
 
         /// <summary>Retrieves a schema.</summary>
@@ -8128,7 +8128,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// <param name="customerId">Immutable ID of the Google Workspace account.</param>
         public virtual InsertRequest Insert(Google.Apis.Admin.Directory.directory_v1.Data.Schema body, string customerId)
         {
-            return new InsertRequest(service, body, customerId);
+            return new InsertRequest(this.service, body, customerId);
         }
 
         /// <summary>Creates a schema.</summary>
@@ -8186,7 +8186,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// </param>
         public virtual ListRequest List(string customerId)
         {
-            return new ListRequest(service, customerId);
+            return new ListRequest(this.service, customerId);
         }
 
         /// <summary>Retrieves all schemas for a customer.</summary>
@@ -8239,7 +8239,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// <param name="schemaKey">Name or immutable ID of the schema.</param>
         public virtual PatchRequest Patch(Google.Apis.Admin.Directory.directory_v1.Data.Schema body, string customerId, string schemaKey)
         {
-            return new PatchRequest(service, body, customerId, schemaKey);
+            return new PatchRequest(this.service, body, customerId, schemaKey);
         }
 
         /// <summary>Patches a schema.</summary>
@@ -8306,7 +8306,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// <param name="schemaKey">Name or immutable ID of the schema.</param>
         public virtual UpdateRequest Update(Google.Apis.Admin.Directory.directory_v1.Data.Schema body, string customerId, string schemaKey)
         {
-            return new UpdateRequest(service, body, customerId, schemaKey);
+            return new UpdateRequest(this.service, body, customerId, schemaKey);
         }
 
         /// <summary>Updates a schema.</summary>
@@ -8390,7 +8390,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// <param name="clientId">The Client ID of the application the token is issued to.</param>
         public virtual DeleteRequest Delete(string userKey, string clientId)
         {
-            return new DeleteRequest(service, userKey, clientId);
+            return new DeleteRequest(this.service, userKey, clientId);
         }
 
         /// <summary>Deletes all access tokens issued by a user for an application.</summary>
@@ -8455,7 +8455,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// <param name="clientId">The Client ID of the application the token is issued to.</param>
         public virtual GetRequest Get(string userKey, string clientId)
         {
-            return new GetRequest(service, userKey, clientId);
+            return new GetRequest(this.service, userKey, clientId);
         }
 
         /// <summary>Gets information about an access token issued by a user.</summary>
@@ -8519,7 +8519,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// </param>
         public virtual ListRequest List(string userKey)
         {
-            return new ListRequest(service, userKey);
+            return new ListRequest(this.service, userKey);
         }
 
         /// <summary>Returns the set of tokens specified user has issued to 3rd party applications.</summary>
@@ -8585,7 +8585,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// </param>
         public virtual TurnOffRequest TurnOff(string userKey)
         {
-            return new TurnOffRequest(service, userKey);
+            return new TurnOffRequest(this.service, userKey);
         }
 
         /// <summary>Turns off 2-Step Verification for user.</summary>
@@ -8671,7 +8671,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             /// <param name="alias">The alias to be removed.</param>
             public virtual DeleteRequest Delete(string userKey, string alias)
             {
-                return new DeleteRequest(service, userKey, alias);
+                return new DeleteRequest(this.service, userKey, alias);
             }
 
             /// <summary>Removes an alias.</summary>
@@ -8736,7 +8736,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             /// </param>
             public virtual InsertRequest Insert(Google.Apis.Admin.Directory.directory_v1.Data.Alias body, string userKey)
             {
-                return new InsertRequest(service, body, userKey);
+                return new InsertRequest(this.service, body, userKey);
             }
 
             /// <summary>Adds an alias.</summary>
@@ -8794,7 +8794,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             /// </param>
             public virtual ListRequest List(string userKey)
             {
-                return new ListRequest(service, userKey);
+                return new ListRequest(this.service, userKey);
             }
 
             /// <summary>Lists all aliases for a user.</summary>
@@ -8867,7 +8867,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             /// <param name="userKey">Email or immutable ID of the user</param>
             public virtual WatchRequest Watch(Google.Apis.Admin.Directory.directory_v1.Data.Channel body, string userKey)
             {
-                return new WatchRequest(service, body, userKey);
+                return new WatchRequest(this.service, body, userKey);
             }
 
             /// <summary>Watches for changes in users list.</summary>
@@ -8964,7 +8964,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             /// </param>
             public virtual DeleteRequest Delete(string userKey)
             {
-                return new DeleteRequest(service, userKey);
+                return new DeleteRequest(this.service, userKey);
             }
 
             /// <summary>Removes the user's photo.</summary>
@@ -9015,7 +9015,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             /// </param>
             public virtual GetRequest Get(string userKey)
             {
-                return new GetRequest(service, userKey);
+                return new GetRequest(this.service, userKey);
             }
 
             /// <summary>Retrieves the user's photo.</summary>
@@ -9070,7 +9070,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.Admin.Directory.directory_v1.Data.UserPhoto body, string userKey)
             {
-                return new PatchRequest(service, body, userKey);
+                return new PatchRequest(this.service, body, userKey);
             }
 
             /// <summary>
@@ -9132,7 +9132,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             /// </param>
             public virtual UpdateRequest Update(Google.Apis.Admin.Directory.directory_v1.Data.UserPhoto body, string userKey)
             {
-                return new UpdateRequest(service, body, userKey);
+                return new UpdateRequest(this.service, body, userKey);
             }
 
             /// <summary>Adds a photo for the user.</summary>
@@ -9191,7 +9191,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// </param>
         public virtual DeleteRequest Delete(string userKey)
         {
-            return new DeleteRequest(service, userKey);
+            return new DeleteRequest(this.service, userKey);
         }
 
         /// <summary>Deletes a user.</summary>
@@ -9242,7 +9242,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// </param>
         public virtual GetRequest Get(string userKey)
         {
-            return new GetRequest(service, userKey);
+            return new GetRequest(this.service, userKey);
         }
 
         /// <summary>Retrieves a user.</summary>
@@ -9371,7 +9371,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// <param name="body">The body of the request.</param>
         public virtual InsertRequest Insert(Google.Apis.Admin.Directory.directory_v1.Data.User body)
         {
-            return new InsertRequest(service, body);
+            return new InsertRequest(this.service, body);
         }
 
         /// <summary>
@@ -9428,7 +9428,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// <summary>Retrieves a paginated list of either deleted users or all users in a domain.</summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>Retrieves a paginated list of either deleted users or all users in a domain.</summary>
@@ -9714,7 +9714,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// </param>
         public virtual MakeAdminRequest MakeAdmin(Google.Apis.Admin.Directory.directory_v1.Data.UserMakeAdmin body, string userKey)
         {
-            return new MakeAdminRequest(service, body, userKey);
+            return new MakeAdminRequest(this.service, body, userKey);
         }
 
         /// <summary>Makes a user a super administrator.</summary>
@@ -9779,7 +9779,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// </param>
         public virtual PatchRequest Patch(Google.Apis.Admin.Directory.directory_v1.Data.User body, string userKey)
         {
-            return new PatchRequest(service, body, userKey);
+            return new PatchRequest(this.service, body, userKey);
         }
 
         /// <summary>
@@ -9846,7 +9846,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// </param>
         public virtual SignOutRequest SignOut(string userKey)
         {
-            return new SignOutRequest(service, userKey);
+            return new SignOutRequest(this.service, userKey);
         }
 
         /// <summary>
@@ -9898,7 +9898,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// <param name="userKey">The immutable id of the user</param>
         public virtual UndeleteRequest Undelete(Google.Apis.Admin.Directory.directory_v1.Data.UserUndelete body, string userKey)
         {
-            return new UndeleteRequest(service, body, userKey);
+            return new UndeleteRequest(this.service, body, userKey);
         }
 
         /// <summary>Undeletes a deleted user.</summary>
@@ -9961,7 +9961,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// </param>
         public virtual UpdateRequest Update(Google.Apis.Admin.Directory.directory_v1.Data.User body, string userKey)
         {
-            return new UpdateRequest(service, body, userKey);
+            return new UpdateRequest(this.service, body, userKey);
         }
 
         /// <summary>
@@ -10023,7 +10023,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// <param name="body">The body of the request.</param>
         public virtual WatchRequest Watch(Google.Apis.Admin.Directory.directory_v1.Data.Channel body)
         {
-            return new WatchRequest(service, body);
+            return new WatchRequest(this.service, body);
         }
 
         /// <summary>Watches for changes in users list.</summary>
@@ -10323,7 +10323,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// <param name="userKey">Email or immutable ID of the user</param>
         public virtual GenerateRequest Generate(string userKey)
         {
-            return new GenerateRequest(service, userKey);
+            return new GenerateRequest(this.service, userKey);
         }
 
         /// <summary>Generates new backup verification codes for the user.</summary>
@@ -10368,7 +10368,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// <param name="userKey">Email or immutable ID of the user</param>
         public virtual InvalidateRequest Invalidate(string userKey)
         {
-            return new InvalidateRequest(service, userKey);
+            return new InvalidateRequest(this.service, userKey);
         }
 
         /// <summary>Invalidates the current backup verification codes for the user.</summary>
@@ -10416,7 +10416,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// </param>
         public virtual ListRequest List(string userKey)
         {
-            return new ListRequest(service, userKey);
+            return new ListRequest(this.service, userKey);
         }
 
         /// <summary>Returns the current set of valid backup verification codes for the specified user.</summary>
@@ -11103,8 +11103,8 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LastEnrollmentTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastEnrollmentTimeRaw);
-            set => LastEnrollmentTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(LastEnrollmentTimeRaw);
+            set => LastEnrollmentTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="LastEnrollmentTimeRaw"/>.</summary>
@@ -11131,8 +11131,8 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LastSyncDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastSyncRaw);
-            set => LastSyncRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(LastSyncRaw);
+            set => LastSyncRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="LastSyncRaw"/>.</summary>
@@ -11250,8 +11250,8 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? SupportEndDateDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(SupportEndDateRaw);
-            set => SupportEndDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(SupportEndDateRaw);
+            set => SupportEndDateRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="SupportEndDateRaw"/>.</summary>
@@ -11372,8 +11372,8 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
             [Newtonsoft.Json.JsonIgnoreAttribute]
             public virtual System.DateTimeOffset? ReportTimeDateTimeOffset
             {
-                get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ReportTimeRaw);
-                set => ReportTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+                get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(ReportTimeRaw);
+                set => ReportTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
             }
 
             /// <summary><seealso cref="System.DateTime"/> representation of <see cref="ReportTimeRaw"/>.</summary>
@@ -11411,8 +11411,8 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
             [Newtonsoft.Json.JsonIgnoreAttribute]
             public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
             {
-                get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-                set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+                get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(CreateTimeRaw);
+                set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
             }
 
             /// <summary><seealso cref="System.DateTime"/> representation of <see cref="CreateTimeRaw"/>.</summary>
@@ -11500,8 +11500,8 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
             [Newtonsoft.Json.JsonIgnoreAttribute]
             public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
             {
-                get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-                set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+                get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(CreateTimeRaw);
+                set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
             }
 
             /// <summary><seealso cref="System.DateTime"/> representation of <see cref="CreateTimeRaw"/>.</summary>
@@ -11539,8 +11539,8 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
             [Newtonsoft.Json.JsonIgnoreAttribute]
             public virtual System.DateTimeOffset? ReportTimeDateTimeOffset
             {
-                get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ReportTimeRaw);
-                set => ReportTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+                get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(ReportTimeRaw);
+                set => ReportTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
             }
 
             /// <summary><seealso cref="System.DateTime"/> representation of <see cref="ReportTimeRaw"/>.</summary>
@@ -11701,8 +11701,8 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CustomerCreationTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CustomerCreationTimeRaw);
-            set => CustomerCreationTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(CustomerCreationTimeRaw);
+            set => CustomerCreationTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary>
@@ -11842,8 +11842,8 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CommandExpireTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CommandExpireTimeRaw);
-            set => CommandExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CommandExpireTimeRaw);
+            set => CommandExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Unique ID of a device command.</summary>
@@ -11887,8 +11887,8 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? IssueTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(IssueTimeRaw);
-            set => IssueTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(IssueTimeRaw);
+            set => IssueTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The payload that the command specified, if any.</summary>
@@ -11957,8 +11957,8 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ExecuteTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExecuteTimeRaw);
-            set => ExecuteTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExecuteTimeRaw);
+            set => ExecuteTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The result of the command.</summary>
@@ -12549,8 +12549,8 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? FirstSyncDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(FirstSyncRaw);
-            set => FirstSyncRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(FirstSyncRaw);
+            set => FirstSyncRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="FirstSyncRaw"/>.</summary>
@@ -12599,8 +12599,8 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LastSyncDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastSyncRaw);
-            set => LastSyncRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(LastSyncRaw);
+            set => LastSyncRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="LastSyncRaw"/>.</summary>
@@ -12929,8 +12929,8 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Editable. Description of the print server (as shown in the Admin console).</summary>
@@ -13031,8 +13031,8 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Editable. Description of printer.</summary>
@@ -13506,8 +13506,8 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreationTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreationTimeRaw);
-            set => CreationTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(CreationTimeRaw);
+            set => CreationTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="CreationTimeRaw"/>.</summary>
@@ -13542,8 +13542,8 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? DeletionTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DeletionTimeRaw);
-            set => DeletionTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(DeletionTimeRaw);
+            set => DeletionTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="DeletionTimeRaw"/>.</summary>
@@ -13670,8 +13670,8 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LastLoginTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastLoginTimeRaw);
-            set => LastLoginTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(LastLoginTimeRaw);
+            set => LastLoginTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="LastLoginTimeRaw"/>.</summary>

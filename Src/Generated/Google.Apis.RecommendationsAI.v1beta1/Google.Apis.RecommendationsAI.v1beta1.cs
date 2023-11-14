@@ -338,7 +338,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.RecommendationsAI.v1beta1.Data.GoogleCloudRecommendationengineV1beta1CatalogItem body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>Creates a catalog item.</summary>
@@ -396,7 +396,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>Deletes a catalog item.</summary>
@@ -447,7 +447,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Gets a specific catalog item.</summary>
@@ -504,7 +504,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                     /// </param>
                     public virtual ImportRequest Import(Google.Apis.RecommendationsAI.v1beta1.Data.GoogleCloudRecommendationengineV1beta1ImportCatalogItemsRequest body, string parent)
                     {
-                        return new ImportRequest(service, body, parent);
+                        return new ImportRequest(this.service, body, parent);
                     }
 
                     /// <summary>
@@ -567,7 +567,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Gets a list of catalog items.</summary>
@@ -660,7 +660,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.RecommendationsAI.v1beta1.Data.GoogleCloudRecommendationengineV1beta1CatalogItem body, string name)
                     {
-                        return new PatchRequest(service, body, name);
+                        return new PatchRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -774,7 +774,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                         /// <param name="name">The name of the operation resource.</param>
                         public virtual GetRequest Get(string name)
                         {
-                            return new GetRequest(service, name);
+                            return new GetRequest(this.service, name);
                         }
 
                         /// <summary>
@@ -825,7 +825,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                         /// <param name="name">The name of the operation's parent resource.</param>
                         public virtual ListRequest List(string name)
                         {
-                            return new ListRequest(service, name);
+                            return new ListRequest(this.service, name);
                         }
 
                         /// <summary>
@@ -932,7 +932,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                         /// <param name="name"><c>null</c></param>
                         public virtual PredictRequest Predict(Google.Apis.RecommendationsAI.v1beta1.Data.GoogleCloudRecommendationengineV1beta1PredictRequest body, string name)
                         {
-                            return new PredictRequest(service, body, name);
+                            return new PredictRequest(this.service, body, name);
                         }
 
                         /// <summary>
@@ -1009,7 +1009,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                         /// </param>
                         public virtual CreateRequest Create(Google.Apis.RecommendationsAI.v1beta1.Data.GoogleCloudRecommendationengineV1beta1CreatePredictionApiKeyRegistrationRequest body, string parent)
                         {
-                            return new CreateRequest(service, body, parent);
+                            return new CreateRequest(this.service, body, parent);
                         }
 
                         /// <summary>Register an API key for use with predict method.</summary>
@@ -1067,7 +1067,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                         /// </param>
                         public virtual DeleteRequest Delete(string name)
                         {
-                            return new DeleteRequest(service, name);
+                            return new DeleteRequest(this.service, name);
                         }
 
                         /// <summary>Unregister an apiKey from using for predict method.</summary>
@@ -1118,7 +1118,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                         /// </param>
                         public virtual ListRequest List(string parent)
                         {
-                            return new ListRequest(service, parent);
+                            return new ListRequest(this.service, parent);
                         }
 
                         /// <summary>List the registered apiKeys for use with predict method.</summary>
@@ -1220,7 +1220,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                         /// </param>
                         public virtual CollectRequest Collect(string parent)
                         {
-                            return new CollectRequest(service, parent);
+                            return new CollectRequest(this.service, parent);
                         }
 
                         /// <summary>
@@ -1325,7 +1325,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                         /// </param>
                         public virtual ImportRequest Import(Google.Apis.RecommendationsAI.v1beta1.Data.GoogleCloudRecommendationengineV1beta1ImportUserEventsRequest body, string parent)
                         {
-                            return new ImportRequest(service, body, parent);
+                            return new ImportRequest(this.service, body, parent);
                         }
 
                         /// <summary>
@@ -1394,7 +1394,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                         /// </param>
                         public virtual ListRequest List(string parent)
                         {
-                            return new ListRequest(service, parent);
+                            return new ListRequest(this.service, parent);
                         }
 
                         /// <summary>
@@ -1514,7 +1514,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                         /// </param>
                         public virtual PurgeRequest Purge(Google.Apis.RecommendationsAI.v1beta1.Data.GoogleCloudRecommendationengineV1beta1PurgeUserEventsRequest body, string parent)
                         {
-                            return new PurgeRequest(service, body, parent);
+                            return new PurgeRequest(this.service, body, parent);
                         }
 
                         /// <summary>
@@ -1585,7 +1585,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                         /// </param>
                         public virtual RejoinRequest Rejoin(Google.Apis.RecommendationsAI.v1beta1.Data.GoogleCloudRecommendationengineV1beta1RejoinUserEventsRequest body, string parent)
                         {
-                            return new RejoinRequest(service, body, parent);
+                            return new RejoinRequest(this.service, body, parent);
                         }
 
                         /// <summary>
@@ -1651,7 +1651,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                         /// </param>
                         public virtual WriteRequest Write(Google.Apis.RecommendationsAI.v1beta1.Data.GoogleCloudRecommendationengineV1beta1UserEvent body, string parent)
                         {
-                            return new WriteRequest(service, body, parent);
+                            return new WriteRequest(this.service, body, parent);
                         }
 
                         /// <summary>Writes a single user event.</summary>
@@ -1728,7 +1728,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                     /// <param name="name">The name of the operation resource.</param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -1779,7 +1779,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                     /// <param name="name">The name of the operation's parent resource.</param>
                     public virtual ListRequest List(string name)
                     {
-                        return new ListRequest(service, name);
+                        return new ListRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -1864,7 +1864,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                 /// <param name="parent">Required. The account resource name with an associated location.</param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists all the catalog configurations associated with the project.</summary>
@@ -1940,7 +1940,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                 /// <param name="name">The fully qualified resource name of the catalog.</param>
                 public virtual PatchRequest Patch(Google.Apis.RecommendationsAI.v1beta1.Data.GoogleCloudRecommendationengineV1beta1Catalog body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates the catalog configuration.</summary>
@@ -2530,8 +2530,8 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Count of entries that encountered errors while processing.</summary>
@@ -2585,8 +2585,8 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -3177,8 +3177,8 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ID of the request / operation.</summary>
@@ -3320,8 +3320,8 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EventTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EventTimeRaw);
-            set => EventTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EventTimeRaw);
+            set => EventTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>

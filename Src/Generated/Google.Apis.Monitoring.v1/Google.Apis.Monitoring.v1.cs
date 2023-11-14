@@ -368,7 +368,7 @@ namespace Google.Apis.Monitoring.v1
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.Monitoring.v1.Data.MonitoredProject body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>
@@ -430,7 +430,7 @@ namespace Google.Apis.Monitoring.v1
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>Deletes a MonitoredProject from the specified Metrics Scope.</summary>
@@ -487,7 +487,7 @@ namespace Google.Apis.Monitoring.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -541,7 +541,7 @@ namespace Google.Apis.Monitoring.v1
                 /// </summary>
                 public virtual ListMetricsScopesByMonitoredProjectRequest ListMetricsScopesByMonitoredProject()
                 {
-                    return new ListMetricsScopesByMonitoredProjectRequest(service);
+                    return new ListMetricsScopesByMonitoredProjectRequest(this.service);
                 }
 
                 /// <summary>
@@ -612,7 +612,7 @@ namespace Google.Apis.Monitoring.v1
         /// <param name="name">The name of the operation resource.</param>
         public virtual GetRequest Get(string name)
         {
-            return new GetRequest(service, name);
+            return new GetRequest(this.service, name);
         }
 
         /// <summary>
@@ -703,7 +703,7 @@ namespace Google.Apis.Monitoring.v1
             /// </param>
             public virtual CreateRequest Create(Google.Apis.Monitoring.v1.Data.Dashboard body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -782,7 +782,7 @@ namespace Google.Apis.Monitoring.v1
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>
@@ -841,7 +841,7 @@ namespace Google.Apis.Monitoring.v1
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>
@@ -900,7 +900,7 @@ namespace Google.Apis.Monitoring.v1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>
@@ -987,7 +987,7 @@ namespace Google.Apis.Monitoring.v1
             /// <param name="name">Immutable. The resource name of the dashboard.</param>
             public virtual PatchRequest Patch(Google.Apis.Monitoring.v1.Data.Dashboard body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -1154,7 +1154,7 @@ namespace Google.Apis.Monitoring.v1
                             /// <param name="label">The label name for which values are queried.</param>
                             public virtual ValuesRequest Values(string name, string location, string label)
                             {
-                                return new ValuesRequest(service, name, location, label);
+                                return new ValuesRequest(this.service, name, location, label);
                             }
 
                             /// <summary>Lists possible values for a given label name.</summary>
@@ -1299,7 +1299,7 @@ namespace Google.Apis.Monitoring.v1
                             /// </param>
                             public virtual ListRequest List(string name, string location)
                             {
-                                return new ListRequest(service, name, location);
+                                return new ListRequest(this.service, name, location);
                             }
 
                             /// <summary>Lists metadata for metrics.</summary>
@@ -1396,7 +1396,7 @@ namespace Google.Apis.Monitoring.v1
                         /// <param name="location">Location of the resource information. Has to be "global" now.</param>
                         public virtual LabelsRequest Labels(Google.Apis.Monitoring.v1.Data.QueryLabelsRequest body, string name, string location)
                         {
-                            return new LabelsRequest(service, body, name, location);
+                            return new LabelsRequest(this.service, body, name, location);
                         }
 
                         /// <summary>Lists labels for metrics.</summary>
@@ -1472,7 +1472,7 @@ namespace Google.Apis.Monitoring.v1
                         /// <param name="location">Location of the resource information. Has to be "global" now.</param>
                         public virtual QueryRequest Query(Google.Apis.Monitoring.v1.Data.QueryInstantRequest body, string name, string location)
                         {
-                            return new QueryRequest(service, body, name, location);
+                            return new QueryRequest(this.service, body, name, location);
                         }
 
                         /// <summary>Evaluate a PromQL query at a single point in time.</summary>
@@ -1549,7 +1549,7 @@ namespace Google.Apis.Monitoring.v1
                         /// <param name="location">Location of the resource information. Has to be "global" now.</param>
                         public virtual QueryExemplarsRequest QueryExemplars(Google.Apis.Monitoring.v1.Data.QueryExemplarsRequest body, string name, string location)
                         {
-                            return new QueryExemplarsRequest(service, body, name, location);
+                            return new QueryExemplarsRequest(this.service, body, name, location);
                         }
 
                         /// <summary>Lists exemplars relevant to a given PromQL query,</summary>
@@ -1626,7 +1626,7 @@ namespace Google.Apis.Monitoring.v1
                         /// <param name="location">Location of the resource information. Has to be "global" now.</param>
                         public virtual QueryRangeRequest QueryRange(Google.Apis.Monitoring.v1.Data.QueryRangeRequest body, string name, string location)
                         {
-                            return new QueryRangeRequest(service, body, name, location);
+                            return new QueryRangeRequest(this.service, body, name, location);
                         }
 
                         /// <summary>Evaluate a PromQL query with start, end time range.</summary>
@@ -1704,7 +1704,7 @@ namespace Google.Apis.Monitoring.v1
                         /// </param>
                         public virtual SeriesRequest Series(Google.Apis.Monitoring.v1.Data.QuerySeriesRequest body, string name, string location)
                         {
-                            return new SeriesRequest(service, body, name, location);
+                            return new SeriesRequest(this.service, body, name, location);
                         }
 
                         /// <summary>Lists metadata for metrics.</summary>
@@ -2530,8 +2530,8 @@ namespace Google.Apis.Monitoring.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. The list of projects monitored by this Metrics Scope.</summary>
@@ -2579,8 +2579,8 @@ namespace Google.Apis.Monitoring.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -2626,8 +2626,8 @@ namespace Google.Apis.Monitoring.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -2772,8 +2772,8 @@ namespace Google.Apis.Monitoring.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Current state of the batch operation.</summary>
@@ -2813,8 +2813,8 @@ namespace Google.Apis.Monitoring.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>

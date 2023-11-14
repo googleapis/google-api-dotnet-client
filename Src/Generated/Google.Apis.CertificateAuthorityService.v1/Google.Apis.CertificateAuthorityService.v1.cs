@@ -353,7 +353,7 @@ namespace Google.Apis.CertificateAuthorityService.v1
                         /// <param name="name">Required. The name of the CertificateRevocationList to get.</param>
                         public virtual GetRequest Get(string name)
                         {
-                            return new GetRequest(service, name);
+                            return new GetRequest(this.service, name);
                         }
 
                         /// <summary>Returns a CertificateRevocationList.</summary>
@@ -405,7 +405,7 @@ namespace Google.Apis.CertificateAuthorityService.v1
                         /// </param>
                         public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                         {
-                            return new GetIamPolicyRequest(service, resource);
+                            return new GetIamPolicyRequest(this.service, resource);
                         }
 
                         /// <summary>
@@ -482,7 +482,7 @@ namespace Google.Apis.CertificateAuthorityService.v1
                         /// </param>
                         public virtual ListRequest List(string parent)
                         {
-                            return new ListRequest(service, parent);
+                            return new ListRequest(this.service, parent);
                         }
 
                         /// <summary>Lists CertificateRevocationLists.</summary>
@@ -593,7 +593,7 @@ namespace Google.Apis.CertificateAuthorityService.v1
                         /// </param>
                         public virtual PatchRequest Patch(Google.Apis.CertificateAuthorityService.v1.Data.CertificateRevocationList body, string name)
                         {
-                            return new PatchRequest(service, body, name);
+                            return new PatchRequest(this.service, body, name);
                         }
 
                         /// <summary>Update a CertificateRevocationList.</summary>
@@ -691,7 +691,7 @@ namespace Google.Apis.CertificateAuthorityService.v1
                         /// </param>
                         public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.CertificateAuthorityService.v1.Data.SetIamPolicyRequest body, string resource)
                         {
-                            return new SetIamPolicyRequest(service, body, resource);
+                            return new SetIamPolicyRequest(this.service, body, resource);
                         }
 
                         /// <summary>
@@ -760,7 +760,7 @@ namespace Google.Apis.CertificateAuthorityService.v1
                         /// </param>
                         public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.CertificateAuthorityService.v1.Data.TestIamPermissionsRequest body, string resource)
                         {
-                            return new TestIamPermissionsRequest(service, body, resource);
+                            return new TestIamPermissionsRequest(this.service, body, resource);
                         }
 
                         /// <summary>
@@ -830,7 +830,7 @@ namespace Google.Apis.CertificateAuthorityService.v1
                     /// </param>
                     public virtual ActivateRequest Activate(Google.Apis.CertificateAuthorityService.v1.Data.ActivateCertificateAuthorityRequest body, string name)
                     {
-                        return new ActivateRequest(service, body, name);
+                        return new ActivateRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -893,7 +893,7 @@ namespace Google.Apis.CertificateAuthorityService.v1
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.CertificateAuthorityService.v1.Data.CertificateAuthority body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>Create a new CertificateAuthority in a given Project and Location.</summary>
@@ -988,7 +988,7 @@ namespace Google.Apis.CertificateAuthorityService.v1
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>Delete a CertificateAuthority.</summary>
@@ -1109,7 +1109,7 @@ namespace Google.Apis.CertificateAuthorityService.v1
                     /// </param>
                     public virtual DisableRequest Disable(Google.Apis.CertificateAuthorityService.v1.Data.DisableCertificateAuthorityRequest body, string name)
                     {
-                        return new DisableRequest(service, body, name);
+                        return new DisableRequest(this.service, body, name);
                     }
 
                     /// <summary>Disable a CertificateAuthority.</summary>
@@ -1168,7 +1168,7 @@ namespace Google.Apis.CertificateAuthorityService.v1
                     /// </param>
                     public virtual EnableRequest Enable(Google.Apis.CertificateAuthorityService.v1.Data.EnableCertificateAuthorityRequest body, string name)
                     {
-                        return new EnableRequest(service, body, name);
+                        return new EnableRequest(this.service, body, name);
                     }
 
                     /// <summary>Enable a CertificateAuthority.</summary>
@@ -1231,7 +1231,7 @@ namespace Google.Apis.CertificateAuthorityService.v1
                     /// </param>
                     public virtual FetchRequest Fetch(string name)
                     {
-                        return new FetchRequest(service, name);
+                        return new FetchRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -1284,7 +1284,7 @@ namespace Google.Apis.CertificateAuthorityService.v1
                     /// <param name="name">Required. The name of the CertificateAuthority to get.</param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Returns a CertificateAuthority.</summary>
@@ -1332,7 +1332,7 @@ namespace Google.Apis.CertificateAuthorityService.v1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists CertificateAuthorities.</summary>
@@ -1440,7 +1440,7 @@ namespace Google.Apis.CertificateAuthorityService.v1
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.CertificateAuthorityService.v1.Data.CertificateAuthority body, string name)
                     {
-                        return new PatchRequest(service, body, name);
+                        return new PatchRequest(this.service, body, name);
                     }
 
                     /// <summary>Update a CertificateAuthority.</summary>
@@ -1533,7 +1533,7 @@ namespace Google.Apis.CertificateAuthorityService.v1
                     /// </param>
                     public virtual UndeleteRequest Undelete(Google.Apis.CertificateAuthorityService.v1.Data.UndeleteCertificateAuthorityRequest body, string name)
                     {
-                        return new UndeleteRequest(service, body, name);
+                        return new UndeleteRequest(this.service, body, name);
                     }
 
                     /// <summary>Undelete a CertificateAuthority that has been deleted.</summary>
@@ -1612,7 +1612,7 @@ namespace Google.Apis.CertificateAuthorityService.v1
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.CertificateAuthorityService.v1.Data.Certificate body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>
@@ -1744,7 +1744,7 @@ namespace Google.Apis.CertificateAuthorityService.v1
                     /// <param name="name">Required. The name of the Certificate to get.</param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Returns a Certificate.</summary>
@@ -1792,7 +1792,7 @@ namespace Google.Apis.CertificateAuthorityService.v1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists Certificates.</summary>
@@ -1909,7 +1909,7 @@ namespace Google.Apis.CertificateAuthorityService.v1
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.CertificateAuthorityService.v1.Data.Certificate body, string name)
                     {
-                        return new PatchRequest(service, body, name);
+                        return new PatchRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -2004,7 +2004,7 @@ namespace Google.Apis.CertificateAuthorityService.v1
                     /// </param>
                     public virtual RevokeRequest Revoke(Google.Apis.CertificateAuthorityService.v1.Data.RevokeCertificateRequest body, string name)
                     {
-                        return new RevokeRequest(service, body, name);
+                        return new RevokeRequest(this.service, body, name);
                     }
 
                     /// <summary>Revoke a Certificate.</summary>
@@ -2064,7 +2064,7 @@ namespace Google.Apis.CertificateAuthorityService.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.CertificateAuthorityService.v1.Data.CaPool body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Create a CaPool.</summary>
@@ -2157,7 +2157,7 @@ namespace Google.Apis.CertificateAuthorityService.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Delete a CaPool.</summary>
@@ -2247,7 +2247,7 @@ namespace Google.Apis.CertificateAuthorityService.v1
                 /// </param>
                 public virtual FetchCaCertsRequest FetchCaCerts(Google.Apis.CertificateAuthorityService.v1.Data.FetchCaCertsRequest body, string caPool)
                 {
-                    return new FetchCaCertsRequest(service, body, caPool);
+                    return new FetchCaCertsRequest(this.service, body, caPool);
                 }
 
                 /// <summary>
@@ -2304,7 +2304,7 @@ namespace Google.Apis.CertificateAuthorityService.v1
                 /// <param name="name">Required. The name of the CaPool to get.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Returns a CaPool.</summary>
@@ -2356,7 +2356,7 @@ namespace Google.Apis.CertificateAuthorityService.v1
                 /// </param>
                 public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                 {
-                    return new GetIamPolicyRequest(service, resource);
+                    return new GetIamPolicyRequest(this.service, resource);
                 }
 
                 /// <summary>
@@ -2432,7 +2432,7 @@ namespace Google.Apis.CertificateAuthorityService.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists CaPools.</summary>
@@ -2537,7 +2537,7 @@ namespace Google.Apis.CertificateAuthorityService.v1
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.CertificateAuthorityService.v1.Data.CaPool body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Update a CaPool.</summary>
@@ -2632,7 +2632,7 @@ namespace Google.Apis.CertificateAuthorityService.v1
                 /// </param>
                 public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.CertificateAuthorityService.v1.Data.SetIamPolicyRequest body, string resource)
                 {
-                    return new SetIamPolicyRequest(service, body, resource);
+                    return new SetIamPolicyRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -2701,7 +2701,7 @@ namespace Google.Apis.CertificateAuthorityService.v1
                 /// </param>
                 public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.CertificateAuthorityService.v1.Data.TestIamPermissionsRequest body, string resource)
                 {
-                    return new TestIamPermissionsRequest(service, body, resource);
+                    return new TestIamPermissionsRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -2784,7 +2784,7 @@ namespace Google.Apis.CertificateAuthorityService.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.CertificateAuthorityService.v1.Data.CertificateTemplate body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Create a new CertificateTemplate in a given Project and Location.</summary>
@@ -2878,7 +2878,7 @@ namespace Google.Apis.CertificateAuthorityService.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>DeleteCertificateTemplate deletes a CertificateTemplate.</summary>
@@ -2947,7 +2947,7 @@ namespace Google.Apis.CertificateAuthorityService.v1
                 /// <param name="name">Required. The name of the CertificateTemplate to get.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Returns a CertificateTemplate.</summary>
@@ -2999,7 +2999,7 @@ namespace Google.Apis.CertificateAuthorityService.v1
                 /// </param>
                 public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                 {
-                    return new GetIamPolicyRequest(service, resource);
+                    return new GetIamPolicyRequest(this.service, resource);
                 }
 
                 /// <summary>
@@ -3075,7 +3075,7 @@ namespace Google.Apis.CertificateAuthorityService.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists CertificateTemplates.</summary>
@@ -3183,7 +3183,7 @@ namespace Google.Apis.CertificateAuthorityService.v1
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.CertificateAuthorityService.v1.Data.CertificateTemplate body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Update a CertificateTemplate.</summary>
@@ -3279,7 +3279,7 @@ namespace Google.Apis.CertificateAuthorityService.v1
                 /// </param>
                 public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.CertificateAuthorityService.v1.Data.SetIamPolicyRequest body, string resource)
                 {
-                    return new SetIamPolicyRequest(service, body, resource);
+                    return new SetIamPolicyRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -3348,7 +3348,7 @@ namespace Google.Apis.CertificateAuthorityService.v1
                 /// </param>
                 public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.CertificateAuthorityService.v1.Data.TestIamPermissionsRequest body, string resource)
                 {
-                    return new TestIamPermissionsRequest(service, body, resource);
+                    return new TestIamPermissionsRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -3435,7 +3435,7 @@ namespace Google.Apis.CertificateAuthorityService.v1
                 /// <param name="name">The name of the operation resource to be cancelled.</param>
                 public virtual CancelRequest Cancel(Google.Apis.CertificateAuthorityService.v1.Data.CancelOperationRequest body, string name)
                 {
-                    return new CancelRequest(service, body, name);
+                    return new CancelRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -3498,7 +3498,7 @@ namespace Google.Apis.CertificateAuthorityService.v1
                 /// <param name="name">The name of the operation resource to be deleted.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -3550,7 +3550,7 @@ namespace Google.Apis.CertificateAuthorityService.v1
                 /// <param name="name">The name of the operation resource.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -3601,7 +3601,7 @@ namespace Google.Apis.CertificateAuthorityService.v1
                 /// <param name="name">The name of the operation's parent resource.</param>
                 public virtual ListRequest List(string name)
                 {
-                    return new ListRequest(service, name);
+                    return new ListRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -3686,7 +3686,7 @@ namespace Google.Apis.CertificateAuthorityService.v1
             /// <param name="name">Resource name for the location.</param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets information about a location.</summary>
@@ -3731,7 +3731,7 @@ namespace Google.Apis.CertificateAuthorityService.v1
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
             {
-                return new ListRequest(service, name);
+                return new ListRequest(this.service, name);
             }
 
             /// <summary>Lists information about the supported locations for this service.</summary>
@@ -4124,8 +4124,8 @@ namespace Google.Apis.CertificateAuthorityService.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -4216,8 +4216,8 @@ namespace Google.Apis.CertificateAuthorityService.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -4280,8 +4280,8 @@ namespace Google.Apis.CertificateAuthorityService.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _deleteTimeRaw;
@@ -4319,8 +4319,8 @@ namespace Google.Apis.CertificateAuthorityService.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? DeleteTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DeleteTimeRaw);
-            set => DeleteTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DeleteTimeRaw);
+            set => DeleteTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _expireTimeRaw;
@@ -4359,8 +4359,8 @@ namespace Google.Apis.CertificateAuthorityService.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpireTimeRaw);
-            set => ExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -4459,8 +4459,8 @@ namespace Google.Apis.CertificateAuthorityService.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -4654,8 +4654,8 @@ namespace Google.Apis.CertificateAuthorityService.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Optional. Labels with user-defined metadata.</summary>
@@ -4725,8 +4725,8 @@ namespace Google.Apis.CertificateAuthorityService.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -4769,8 +4769,8 @@ namespace Google.Apis.CertificateAuthorityService.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Optional. A human-readable description of scenarios this template is intended for.</summary>
@@ -4857,8 +4857,8 @@ namespace Google.Apis.CertificateAuthorityService.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -5589,8 +5589,8 @@ namespace Google.Apis.CertificateAuthorityService.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _endTimeRaw;
@@ -5626,8 +5626,8 @@ namespace Google.Apis.CertificateAuthorityService.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -5842,8 +5842,8 @@ namespace Google.Apis.CertificateAuthorityService.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? RevocationTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(RevocationTimeRaw);
-            set => RevocationTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(RevocationTimeRaw);
+            set => RevocationTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -6111,8 +6111,8 @@ namespace Google.Apis.CertificateAuthorityService.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? NotAfterTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(NotAfterTimeRaw);
-            set => NotAfterTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(NotAfterTimeRaw);
+            set => NotAfterTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _notBeforeTimeRaw;
@@ -6148,8 +6148,8 @@ namespace Google.Apis.CertificateAuthorityService.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? NotBeforeTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(NotBeforeTimeRaw);
-            set => NotBeforeTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(NotBeforeTimeRaw);
+            set => NotBeforeTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Contains distinguished name fields such as the common name, location and / organization.</summary>

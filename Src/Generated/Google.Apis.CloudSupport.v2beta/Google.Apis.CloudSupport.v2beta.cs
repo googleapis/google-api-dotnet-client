@@ -303,7 +303,7 @@ namespace Google.Apis.CloudSupport.v2beta
         /// </summary>
         public virtual SearchRequest Search()
         {
-            return new SearchRequest(service);
+            return new SearchRequest(this.service);
         }
 
         /// <summary>
@@ -444,7 +444,7 @@ namespace Google.Apis.CloudSupport.v2beta
             /// <param name="parent">Required. The name of the case for which attachments should be listed.</param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>
@@ -569,7 +569,7 @@ namespace Google.Apis.CloudSupport.v2beta
             /// <param name="parent">Required. The name of the case to which the comment should be added.</param>
             public virtual CreateRequest Create(Google.Apis.CloudSupport.v2beta.Data.Comment body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -653,7 +653,7 @@ namespace Google.Apis.CloudSupport.v2beta
             /// <param name="parent">Required. The name of the case for which to list comments.</param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>
@@ -757,7 +757,7 @@ namespace Google.Apis.CloudSupport.v2beta
         /// <param name="name">Required. The name of the case to close.</param>
         public virtual CloseRequest Close(Google.Apis.CloudSupport.v2beta.Data.CloseCaseRequest body, string name)
         {
-            return new CloseRequest(service, body, name);
+            return new CloseRequest(this.service, body, name);
         }
 
         /// <summary>
@@ -849,7 +849,7 @@ namespace Google.Apis.CloudSupport.v2beta
         /// <param name="parent">Required. The name of the parent under which the case should be created.</param>
         public virtual CreateRequest Create(Google.Apis.CloudSupport.v2beta.Data.Case body, string parent)
         {
-            return new CreateRequest(service, body, parent);
+            return new CreateRequest(this.service, body, parent);
         }
 
         /// <summary>
@@ -946,7 +946,7 @@ namespace Google.Apis.CloudSupport.v2beta
         /// <param name="name">Required. The name of the case to be escalated.</param>
         public virtual EscalateRequest Escalate(Google.Apis.CloudSupport.v2beta.Data.EscalateCaseRequest body, string name)
         {
-            return new EscalateRequest(service, body, name);
+            return new EscalateRequest(this.service, body, name);
         }
 
         /// <summary>
@@ -1031,7 +1031,7 @@ namespace Google.Apis.CloudSupport.v2beta
         /// <param name="name">Required. The full name of a case to be retrieved.</param>
         public virtual GetRequest Get(string name)
         {
-            return new GetRequest(service, name);
+            return new GetRequest(this.service, name);
         }
 
         /// <summary>
@@ -1106,7 +1106,7 @@ namespace Google.Apis.CloudSupport.v2beta
         /// <param name="parent">Required. The name of a parent to list cases under.</param>
         public virtual ListRequest List(string parent)
         {
-            return new ListRequest(service, parent);
+            return new ListRequest(this.service, parent);
         }
 
         /// <summary>
@@ -1232,7 +1232,7 @@ namespace Google.Apis.CloudSupport.v2beta
         /// <param name="name">The resource name for the case.</param>
         public virtual PatchRequest Patch(Google.Apis.CloudSupport.v2beta.Data.Case body, string name)
         {
-            return new PatchRequest(service, body, name);
+            return new PatchRequest(this.service, body, name);
         }
 
         /// <summary>
@@ -1334,7 +1334,7 @@ namespace Google.Apis.CloudSupport.v2beta
         /// </summary>
         public virtual SearchRequest Search()
         {
-            return new SearchRequest(service);
+            return new SearchRequest(this.service);
         }
 
         /// <summary>
@@ -1479,7 +1479,7 @@ namespace Google.Apis.CloudSupport.v2beta
         /// <param name="name">The name of the file attachment to download.</param>
         public virtual DownloadRequest Download(string name)
         {
-            return new DownloadRequest(service, name);
+            return new DownloadRequest(this.service, name);
         }
 
         /// <summary>
@@ -1649,7 +1649,7 @@ namespace Google.Apis.CloudSupport.v2beta
         /// </param>
         public virtual UploadRequest Upload(Google.Apis.CloudSupport.v2beta.Data.CreateAttachmentRequest body, string parent)
         {
-            return new UploadRequest(service, body, parent);
+            return new UploadRequest(this.service, body, parent);
         }
 
         /// <summary>
@@ -1948,8 +1948,8 @@ namespace Google.Apis.CloudSupport.v2beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -2053,8 +2053,8 @@ namespace Google.Apis.CloudSupport.v2beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -2152,8 +2152,8 @@ namespace Google.Apis.CloudSupport.v2beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -2231,8 +2231,8 @@ namespace Google.Apis.CloudSupport.v2beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. The user or Google Support agent created this comment.</summary>

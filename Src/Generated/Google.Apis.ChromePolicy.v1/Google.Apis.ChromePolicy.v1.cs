@@ -340,7 +340,7 @@ namespace Google.Apis.ChromePolicy.v1
                 /// </param>
                 public virtual BatchDeleteRequest BatchDelete(Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyVersionsV1BatchDeleteGroupPoliciesRequest body, string customer)
                 {
-                    return new BatchDeleteRequest(service, body, customer);
+                    return new BatchDeleteRequest(this.service, body, customer);
                 }
 
                 /// <summary>
@@ -409,7 +409,7 @@ namespace Google.Apis.ChromePolicy.v1
                 /// </param>
                 public virtual BatchModifyRequest BatchModify(Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyVersionsV1BatchModifyGroupPoliciesRequest body, string customer)
                 {
-                    return new BatchModifyRequest(service, body, customer);
+                    return new BatchModifyRequest(this.service, body, customer);
                 }
 
                 /// <summary>
@@ -477,7 +477,7 @@ namespace Google.Apis.ChromePolicy.v1
                 /// </param>
                 public virtual ListGroupPriorityOrderingRequest ListGroupPriorityOrdering(Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyVersionsV1ListGroupPriorityOrderingRequest body, string customer)
                 {
-                    return new ListGroupPriorityOrderingRequest(service, body, customer);
+                    return new ListGroupPriorityOrderingRequest(this.service, body, customer);
                 }
 
                 /// <summary>
@@ -544,7 +544,7 @@ namespace Google.Apis.ChromePolicy.v1
                 /// </param>
                 public virtual UpdateGroupPriorityOrderingRequest UpdateGroupPriorityOrdering(Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyVersionsV1UpdateGroupPriorityOrderingRequest body, string customer)
                 {
-                    return new UpdateGroupPriorityOrderingRequest(service, body, customer);
+                    return new UpdateGroupPriorityOrderingRequest(this.service, body, customer);
                 }
 
                 /// <summary>
@@ -622,7 +622,7 @@ namespace Google.Apis.ChromePolicy.v1
                 /// <param name="customer">Required. The customer for which the certificate will apply.</param>
                 public virtual DefineCertificateRequest DefineCertificate(Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyVersionsV1DefineCertificateRequest body, string customer)
                 {
-                    return new DefineCertificateRequest(service, body, customer);
+                    return new DefineCertificateRequest(this.service, body, customer);
                 }
 
                 /// <summary>Creates a certificate at a specified OU for a customer.</summary>
@@ -675,7 +675,7 @@ namespace Google.Apis.ChromePolicy.v1
                 /// <param name="customer">Required. The customer who will own this new network.</param>
                 public virtual DefineNetworkRequest DefineNetwork(Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyVersionsV1DefineNetworkRequest body, string customer)
                 {
-                    return new DefineNetworkRequest(service, body, customer);
+                    return new DefineNetworkRequest(this.service, body, customer);
                 }
 
                 /// <summary>Define a new network.</summary>
@@ -728,7 +728,7 @@ namespace Google.Apis.ChromePolicy.v1
                 /// <param name="customer">Required. The customer whose certificate will be removed.</param>
                 public virtual RemoveCertificateRequest RemoveCertificate(Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyVersionsV1RemoveCertificateRequest body, string customer)
                 {
-                    return new RemoveCertificateRequest(service, body, customer);
+                    return new RemoveCertificateRequest(this.service, body, customer);
                 }
 
                 /// <summary>Remove an existing certificate by guid.</summary>
@@ -781,7 +781,7 @@ namespace Google.Apis.ChromePolicy.v1
                 /// <param name="customer">Required. The customer whose network will be removed.</param>
                 public virtual RemoveNetworkRequest RemoveNetwork(Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyVersionsV1RemoveNetworkRequest body, string customer)
                 {
-                    return new RemoveNetworkRequest(service, body, customer);
+                    return new RemoveNetworkRequest(this.service, body, customer);
                 }
 
                 /// <summary>Remove an existing network by guid.</summary>
@@ -860,7 +860,7 @@ namespace Google.Apis.ChromePolicy.v1
                 /// </param>
                 public virtual BatchInheritRequest BatchInherit(Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyVersionsV1BatchInheritOrgUnitPoliciesRequest body, string customer)
                 {
-                    return new BatchInheritRequest(service, body, customer);
+                    return new BatchInheritRequest(this.service, body, customer);
                 }
 
                 /// <summary>
@@ -928,7 +928,7 @@ namespace Google.Apis.ChromePolicy.v1
                 /// </param>
                 public virtual BatchModifyRequest BatchModify(Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyVersionsV1BatchModifyOrgUnitPoliciesRequest body, string customer)
                 {
-                    return new BatchModifyRequest(service, body, customer);
+                    return new BatchModifyRequest(this.service, body, customer);
                 }
 
                 /// <summary>
@@ -991,7 +991,7 @@ namespace Google.Apis.ChromePolicy.v1
             /// </param>
             public virtual ResolveRequest Resolve(Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyVersionsV1ResolveRequest body, string customer)
             {
-                return new ResolveRequest(service, body, customer);
+                return new ResolveRequest(this.service, body, customer);
             }
 
             /// <summary>Gets the resolved policy values for a list of policies that match a search query.</summary>
@@ -1063,7 +1063,7 @@ namespace Google.Apis.ChromePolicy.v1
             /// <param name="name">Required. The policy schema resource name to query.</param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Get a specific policy schema for a customer by its resource name.</summary>
@@ -1110,7 +1110,7 @@ namespace Google.Apis.ChromePolicy.v1
             /// <param name="parent">Required. The customer for which the listing request will apply.</param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>
@@ -1217,7 +1217,7 @@ namespace Google.Apis.ChromePolicy.v1
         /// <param name="customer">Required. The customer for which the file upload will apply.</param>
         public virtual UploadRequest Upload(Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyVersionsV1UploadPolicyFileRequest body, string customer)
         {
-            return new UploadRequest(service, body, customer);
+            return new UploadRequest(this.service, body, customer);
         }
 
         /// <summary>

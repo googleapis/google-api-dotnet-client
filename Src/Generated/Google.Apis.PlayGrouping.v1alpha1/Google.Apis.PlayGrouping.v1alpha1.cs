@@ -302,7 +302,7 @@ namespace Google.Apis.PlayGrouping.v1alpha1
                 /// </param>
                 public virtual CreateOrUpdateRequest CreateOrUpdate(Google.Apis.PlayGrouping.v1alpha1.Data.CreateOrUpdateTagsRequest body, string appPackage, string token)
                 {
-                    return new CreateOrUpdateRequest(service, body, appPackage, token);
+                    return new CreateOrUpdateRequest(this.service, body, appPackage, token);
                 }
 
                 /// <summary>
@@ -378,7 +378,7 @@ namespace Google.Apis.PlayGrouping.v1alpha1
             /// <param name="token">Required. The token to be verified. Format: tokens/{token}</param>
             public virtual VerifyRequest Verify(Google.Apis.PlayGrouping.v1alpha1.Data.VerifyTokenRequest body, string appPackage, string token)
             {
-                return new VerifyRequest(service, body, appPackage, token);
+                return new VerifyRequest(this.service, body, appPackage, token);
             }
 
             /// <summary>
@@ -521,8 +521,8 @@ namespace Google.Apis.PlayGrouping.v1alpha1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? TimeValueDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(TimeValueRaw);
-            set => TimeValueRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(TimeValueRaw);
+            set => TimeValueRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>

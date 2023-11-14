@@ -291,7 +291,7 @@ namespace Google.Apis.Datastore.v1beta1
         /// <param name="projectId">Project ID against which to make the request.</param>
         public virtual ExportRequest Export(Google.Apis.Datastore.v1beta1.Data.GoogleDatastoreAdminV1beta1ExportEntitiesRequest body, string projectId)
         {
-            return new ExportRequest(service, body, projectId);
+            return new ExportRequest(this.service, body, projectId);
         }
 
         /// <summary>
@@ -355,7 +355,7 @@ namespace Google.Apis.Datastore.v1beta1
         /// <param name="projectId">Project ID against which to make the request.</param>
         public virtual ImportRequest Import(Google.Apis.Datastore.v1beta1.Data.GoogleDatastoreAdminV1beta1ImportEntitiesRequest body, string projectId)
         {
-            return new ImportRequest(service, body, projectId);
+            return new ImportRequest(this.service, body, projectId);
         }
 
         /// <summary>
@@ -447,8 +447,8 @@ namespace Google.Apis.Datastore.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -495,8 +495,8 @@ namespace Google.Apis.Datastore.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The current state of the Operation.</summary>
@@ -764,8 +764,8 @@ namespace Google.Apis.Datastore.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -812,8 +812,8 @@ namespace Google.Apis.Datastore.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The current state of the Operation.</summary>

@@ -305,7 +305,7 @@ namespace Google.Apis.CloudResourceManager.v1
         /// <param name="resource">Name of the resource for the `Policy` to clear.</param>
         public virtual ClearOrgPolicyRequest ClearOrgPolicy(Google.Apis.CloudResourceManager.v1.Data.ClearOrgPolicyRequest body, string resource)
         {
-            return new ClearOrgPolicyRequest(service, body, resource);
+            return new ClearOrgPolicyRequest(this.service, body, resource);
         }
 
         /// <summary>Clears a `Policy` from a resource.</summary>
@@ -363,7 +363,7 @@ namespace Google.Apis.CloudResourceManager.v1
         /// <param name="resource">The name of the resource to start computing the effective `Policy`.</param>
         public virtual GetEffectiveOrgPolicyRequest GetEffectiveOrgPolicy(Google.Apis.CloudResourceManager.v1.Data.GetEffectiveOrgPolicyRequest body, string resource)
         {
-            return new GetEffectiveOrgPolicyRequest(service, body, resource);
+            return new GetEffectiveOrgPolicyRequest(this.service, body, resource);
         }
 
         /// <summary>
@@ -425,7 +425,7 @@ namespace Google.Apis.CloudResourceManager.v1
         /// <param name="resource">Name of the resource the `Policy` is set on.</param>
         public virtual GetOrgPolicyRequest GetOrgPolicy(Google.Apis.CloudResourceManager.v1.Data.GetOrgPolicyRequest body, string resource)
         {
-            return new GetOrgPolicyRequest(service, body, resource);
+            return new GetOrgPolicyRequest(this.service, body, resource);
         }
 
         /// <summary>
@@ -482,7 +482,7 @@ namespace Google.Apis.CloudResourceManager.v1
         /// <param name="resource">Name of the resource to list `Constraints` for.</param>
         public virtual ListAvailableOrgPolicyConstraintsRequest ListAvailableOrgPolicyConstraints(Google.Apis.CloudResourceManager.v1.Data.ListAvailableOrgPolicyConstraintsRequest body, string resource)
         {
-            return new ListAvailableOrgPolicyConstraintsRequest(service, body, resource);
+            return new ListAvailableOrgPolicyConstraintsRequest(this.service, body, resource);
         }
 
         /// <summary>Lists `Constraints` that could be applied on the specified resource.</summary>
@@ -535,7 +535,7 @@ namespace Google.Apis.CloudResourceManager.v1
         /// <param name="resource">Name of the resource to list Policies for.</param>
         public virtual ListOrgPoliciesRequest ListOrgPolicies(Google.Apis.CloudResourceManager.v1.Data.ListOrgPoliciesRequest body, string resource)
         {
-            return new ListOrgPoliciesRequest(service, body, resource);
+            return new ListOrgPoliciesRequest(this.service, body, resource);
         }
 
         /// <summary>Lists all the `Policies` set for a particular resource.</summary>
@@ -592,7 +592,7 @@ namespace Google.Apis.CloudResourceManager.v1
         /// <param name="resource">Resource name of the resource to attach the `Policy`.</param>
         public virtual SetOrgPolicyRequest SetOrgPolicy(Google.Apis.CloudResourceManager.v1.Data.SetOrgPolicyRequest body, string resource)
         {
-            return new SetOrgPolicyRequest(service, body, resource);
+            return new SetOrgPolicyRequest(this.service, body, resource);
         }
 
         /// <summary>
@@ -668,7 +668,7 @@ namespace Google.Apis.CloudResourceManager.v1
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.CloudResourceManager.v1.Data.Lien body)
         {
-            return new CreateRequest(service, body);
+            return new CreateRequest(this.service, body);
         }
 
         /// <summary>
@@ -716,7 +716,7 @@ namespace Google.Apis.CloudResourceManager.v1
         /// <param name="name">Required. The name/identifier of the Lien to delete.</param>
         public virtual DeleteRequest Delete(string name)
         {
-            return new DeleteRequest(service, name);
+            return new DeleteRequest(this.service, name);
         }
 
         /// <summary>
@@ -768,7 +768,7 @@ namespace Google.Apis.CloudResourceManager.v1
         /// <param name="name">Required. The name/identifier of the Lien.</param>
         public virtual GetRequest Get(string name)
         {
-            return new GetRequest(service, name);
+            return new GetRequest(this.service, name);
         }
 
         /// <summary>
@@ -819,7 +819,7 @@ namespace Google.Apis.CloudResourceManager.v1
         /// </summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>
@@ -916,7 +916,7 @@ namespace Google.Apis.CloudResourceManager.v1
         /// <param name="name">The name of the operation resource.</param>
         public virtual GetRequest Get(string name)
         {
-            return new GetRequest(service, name);
+            return new GetRequest(this.service, name);
         }
 
         /// <summary>
@@ -980,7 +980,7 @@ namespace Google.Apis.CloudResourceManager.v1
         /// <param name="resource">Name of the resource for the `Policy` to clear.</param>
         public virtual ClearOrgPolicyRequest ClearOrgPolicy(Google.Apis.CloudResourceManager.v1.Data.ClearOrgPolicyRequest body, string resource)
         {
-            return new ClearOrgPolicyRequest(service, body, resource);
+            return new ClearOrgPolicyRequest(this.service, body, resource);
         }
 
         /// <summary>Clears a `Policy` from a resource.</summary>
@@ -1035,7 +1035,7 @@ namespace Google.Apis.CloudResourceManager.v1
         /// </param>
         public virtual GetRequest Get(string name)
         {
-            return new GetRequest(service, name);
+            return new GetRequest(this.service, name);
         }
 
         /// <summary>Fetches an Organization resource identified by the specified resource name.</summary>
@@ -1089,7 +1089,7 @@ namespace Google.Apis.CloudResourceManager.v1
         /// <param name="resource">The name of the resource to start computing the effective `Policy`.</param>
         public virtual GetEffectiveOrgPolicyRequest GetEffectiveOrgPolicy(Google.Apis.CloudResourceManager.v1.Data.GetEffectiveOrgPolicyRequest body, string resource)
         {
-            return new GetEffectiveOrgPolicyRequest(service, body, resource);
+            return new GetEffectiveOrgPolicyRequest(this.service, body, resource);
         }
 
         /// <summary>
@@ -1155,7 +1155,7 @@ namespace Google.Apis.CloudResourceManager.v1
         /// </param>
         public virtual GetIamPolicyRequest GetIamPolicy(Google.Apis.CloudResourceManager.v1.Data.GetIamPolicyRequest body, string resource)
         {
-            return new GetIamPolicyRequest(service, body, resource);
+            return new GetIamPolicyRequest(this.service, body, resource);
         }
 
         /// <summary>
@@ -1220,7 +1220,7 @@ namespace Google.Apis.CloudResourceManager.v1
         /// <param name="resource">Name of the resource the `Policy` is set on.</param>
         public virtual GetOrgPolicyRequest GetOrgPolicy(Google.Apis.CloudResourceManager.v1.Data.GetOrgPolicyRequest body, string resource)
         {
-            return new GetOrgPolicyRequest(service, body, resource);
+            return new GetOrgPolicyRequest(this.service, body, resource);
         }
 
         /// <summary>
@@ -1277,7 +1277,7 @@ namespace Google.Apis.CloudResourceManager.v1
         /// <param name="resource">Name of the resource to list `Constraints` for.</param>
         public virtual ListAvailableOrgPolicyConstraintsRequest ListAvailableOrgPolicyConstraints(Google.Apis.CloudResourceManager.v1.Data.ListAvailableOrgPolicyConstraintsRequest body, string resource)
         {
-            return new ListAvailableOrgPolicyConstraintsRequest(service, body, resource);
+            return new ListAvailableOrgPolicyConstraintsRequest(this.service, body, resource);
         }
 
         /// <summary>Lists `Constraints` that could be applied on the specified resource.</summary>
@@ -1330,7 +1330,7 @@ namespace Google.Apis.CloudResourceManager.v1
         /// <param name="resource">Name of the resource to list Policies for.</param>
         public virtual ListOrgPoliciesRequest ListOrgPolicies(Google.Apis.CloudResourceManager.v1.Data.ListOrgPoliciesRequest body, string resource)
         {
-            return new ListOrgPoliciesRequest(service, body, resource);
+            return new ListOrgPoliciesRequest(this.service, body, resource);
         }
 
         /// <summary>Lists all the `Policies` set for a particular resource.</summary>
@@ -1387,7 +1387,7 @@ namespace Google.Apis.CloudResourceManager.v1
         /// <param name="body">The body of the request.</param>
         public virtual SearchRequest Search(Google.Apis.CloudResourceManager.v1.Data.SearchOrganizationsRequest body)
         {
-            return new SearchRequest(service, body);
+            return new SearchRequest(this.service, body);
         }
 
         /// <summary>
@@ -1439,7 +1439,7 @@ namespace Google.Apis.CloudResourceManager.v1
         /// </param>
         public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.CloudResourceManager.v1.Data.SetIamPolicyRequest body, string resource)
         {
-            return new SetIamPolicyRequest(service, body, resource);
+            return new SetIamPolicyRequest(this.service, body, resource);
         }
 
         /// <summary>
@@ -1503,7 +1503,7 @@ namespace Google.Apis.CloudResourceManager.v1
         /// <param name="resource">Resource name of the resource to attach the `Policy`.</param>
         public virtual SetOrgPolicyRequest SetOrgPolicy(Google.Apis.CloudResourceManager.v1.Data.SetOrgPolicyRequest body, string resource)
         {
-            return new SetOrgPolicyRequest(service, body, resource);
+            return new SetOrgPolicyRequest(this.service, body, resource);
         }
 
         /// <summary>
@@ -1567,7 +1567,7 @@ namespace Google.Apis.CloudResourceManager.v1
         /// </param>
         public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.CloudResourceManager.v1.Data.TestIamPermissionsRequest body, string resource)
         {
-            return new TestIamPermissionsRequest(service, body, resource);
+            return new TestIamPermissionsRequest(this.service, body, resource);
         }
 
         /// <summary>
@@ -1642,7 +1642,7 @@ namespace Google.Apis.CloudResourceManager.v1
         /// <param name="resource">Name of the resource for the `Policy` to clear.</param>
         public virtual ClearOrgPolicyRequest ClearOrgPolicy(Google.Apis.CloudResourceManager.v1.Data.ClearOrgPolicyRequest body, string resource)
         {
-            return new ClearOrgPolicyRequest(service, body, resource);
+            return new ClearOrgPolicyRequest(this.service, body, resource);
         }
 
         /// <summary>Clears a `Policy` from a resource.</summary>
@@ -1703,7 +1703,7 @@ namespace Google.Apis.CloudResourceManager.v1
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.CloudResourceManager.v1.Data.Project body)
         {
-            return new CreateRequest(service, body);
+            return new CreateRequest(this.service, body);
         }
 
         /// <summary>
@@ -1759,7 +1759,7 @@ namespace Google.Apis.CloudResourceManager.v1
         /// <param name="projectId">The Project ID (for example, `foo-bar-123`). Required.</param>
         public virtual DeleteRequest Delete(string projectId)
         {
-            return new DeleteRequest(service, projectId);
+            return new DeleteRequest(this.service, projectId);
         }
 
         /// <summary>
@@ -1815,7 +1815,7 @@ namespace Google.Apis.CloudResourceManager.v1
         /// <param name="projectId">Required. The Project ID (for example, `my-project-123`).</param>
         public virtual GetRequest Get(string projectId)
         {
-            return new GetRequest(service, projectId);
+            return new GetRequest(this.service, projectId);
         }
 
         /// <summary>
@@ -1867,7 +1867,7 @@ namespace Google.Apis.CloudResourceManager.v1
         /// <param name="projectId">Required. The Project ID (for example, `my-project-123`).</param>
         public virtual GetAncestryRequest GetAncestry(Google.Apis.CloudResourceManager.v1.Data.GetAncestryRequest body, string projectId)
         {
-            return new GetAncestryRequest(service, body, projectId);
+            return new GetAncestryRequest(this.service, body, projectId);
         }
 
         /// <summary>
@@ -1928,7 +1928,7 @@ namespace Google.Apis.CloudResourceManager.v1
         /// <param name="resource">The name of the resource to start computing the effective `Policy`.</param>
         public virtual GetEffectiveOrgPolicyRequest GetEffectiveOrgPolicy(Google.Apis.CloudResourceManager.v1.Data.GetEffectiveOrgPolicyRequest body, string resource)
         {
-            return new GetEffectiveOrgPolicyRequest(service, body, resource);
+            return new GetEffectiveOrgPolicyRequest(this.service, body, resource);
         }
 
         /// <summary>
@@ -1995,7 +1995,7 @@ namespace Google.Apis.CloudResourceManager.v1
         /// </param>
         public virtual GetIamPolicyRequest GetIamPolicy(Google.Apis.CloudResourceManager.v1.Data.GetIamPolicyRequest body, string resource)
         {
-            return new GetIamPolicyRequest(service, body, resource);
+            return new GetIamPolicyRequest(this.service, body, resource);
         }
 
         /// <summary>
@@ -2061,7 +2061,7 @@ namespace Google.Apis.CloudResourceManager.v1
         /// <param name="resource">Name of the resource the `Policy` is set on.</param>
         public virtual GetOrgPolicyRequest GetOrgPolicy(Google.Apis.CloudResourceManager.v1.Data.GetOrgPolicyRequest body, string resource)
         {
-            return new GetOrgPolicyRequest(service, body, resource);
+            return new GetOrgPolicyRequest(this.service, body, resource);
         }
 
         /// <summary>
@@ -2125,7 +2125,7 @@ namespace Google.Apis.CloudResourceManager.v1
         /// </summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>
@@ -2226,7 +2226,7 @@ namespace Google.Apis.CloudResourceManager.v1
         /// <param name="resource">Name of the resource to list `Constraints` for.</param>
         public virtual ListAvailableOrgPolicyConstraintsRequest ListAvailableOrgPolicyConstraints(Google.Apis.CloudResourceManager.v1.Data.ListAvailableOrgPolicyConstraintsRequest body, string resource)
         {
-            return new ListAvailableOrgPolicyConstraintsRequest(service, body, resource);
+            return new ListAvailableOrgPolicyConstraintsRequest(this.service, body, resource);
         }
 
         /// <summary>Lists `Constraints` that could be applied on the specified resource.</summary>
@@ -2279,7 +2279,7 @@ namespace Google.Apis.CloudResourceManager.v1
         /// <param name="resource">Name of the resource to list Policies for.</param>
         public virtual ListOrgPoliciesRequest ListOrgPolicies(Google.Apis.CloudResourceManager.v1.Data.ListOrgPoliciesRequest body, string resource)
         {
-            return new ListOrgPoliciesRequest(service, body, resource);
+            return new ListOrgPoliciesRequest(this.service, body, resource);
         }
 
         /// <summary>Lists all the `Policies` set for a particular resource.</summary>
@@ -2359,7 +2359,7 @@ namespace Google.Apis.CloudResourceManager.v1
         /// </param>
         public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.CloudResourceManager.v1.Data.SetIamPolicyRequest body, string resource)
         {
-            return new SetIamPolicyRequest(service, body, resource);
+            return new SetIamPolicyRequest(this.service, body, resource);
         }
 
         /// <summary>
@@ -2443,7 +2443,7 @@ namespace Google.Apis.CloudResourceManager.v1
         /// <param name="resource">Resource name of the resource to attach the `Policy`.</param>
         public virtual SetOrgPolicyRequest SetOrgPolicy(Google.Apis.CloudResourceManager.v1.Data.SetOrgPolicyRequest body, string resource)
         {
-            return new SetOrgPolicyRequest(service, body, resource);
+            return new SetOrgPolicyRequest(this.service, body, resource);
         }
 
         /// <summary>
@@ -2508,7 +2508,7 @@ namespace Google.Apis.CloudResourceManager.v1
         /// </param>
         public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.CloudResourceManager.v1.Data.TestIamPermissionsRequest body, string resource)
         {
-            return new TestIamPermissionsRequest(service, body, resource);
+            return new TestIamPermissionsRequest(this.service, body, resource);
         }
 
         /// <summary>
@@ -2573,7 +2573,7 @@ namespace Google.Apis.CloudResourceManager.v1
         /// <param name="projectId">Required. The project ID (for example, `foo-bar-123`).</param>
         public virtual UndeleteRequest Undelete(Google.Apis.CloudResourceManager.v1.Data.UndeleteProjectRequest body, string projectId)
         {
-            return new UndeleteRequest(service, body, projectId);
+            return new UndeleteRequest(this.service, body, projectId);
         }
 
         /// <summary>
@@ -2633,7 +2633,7 @@ namespace Google.Apis.CloudResourceManager.v1
         /// <param name="projectId">The project ID (for example, `my-project-123`). Required.</param>
         public virtual UpdateRequest Update(Google.Apis.CloudResourceManager.v1.Data.Project body, string projectId)
         {
-            return new UpdateRequest(service, body, projectId);
+            return new UpdateRequest(this.service, body, projectId);
         }
 
         /// <summary>
@@ -3016,8 +3016,8 @@ namespace Google.Apis.CloudResourceManager.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -3307,8 +3307,8 @@ namespace Google.Apis.CloudResourceManager.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>A system-generated unique identifier for this Lien. Example: `liens/1234abcd`</summary>
@@ -3734,8 +3734,8 @@ namespace Google.Apis.CloudResourceManager.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Version of the `Policy`. Default version is 0;</summary>
@@ -3781,8 +3781,8 @@ namespace Google.Apis.CloudResourceManager.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreationTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreationTimeRaw);
-            set => CreationTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreationTimeRaw);
+            set => CreationTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -3946,8 +3946,8 @@ namespace Google.Apis.CloudResourceManager.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -4036,8 +4036,8 @@ namespace Google.Apis.CloudResourceManager.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>

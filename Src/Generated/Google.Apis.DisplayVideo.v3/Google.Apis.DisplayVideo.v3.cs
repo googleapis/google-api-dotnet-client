@@ -384,7 +384,7 @@ namespace Google.Apis.DisplayVideo.v3
             /// <param name="adGroupAdId">Required. The ID of the ad group ad to fetch.</param>
             public virtual GetRequest Get(long advertiserId, long adGroupAdId)
             {
-                return new GetRequest(service, advertiserId, adGroupAdId);
+                return new GetRequest(this.service, advertiserId, adGroupAdId);
             }
 
             /// <summary>Gets an ad group ad.</summary>
@@ -442,7 +442,7 @@ namespace Google.Apis.DisplayVideo.v3
             /// <param name="advertiserId">Required. The ID of the advertiser the ad groups belongs to.</param>
             public virtual ListRequest List(long advertiserId)
             {
-                return new ListRequest(service, advertiserId);
+                return new ListRequest(this.service, advertiserId);
             }
 
             /// <summary>Lists ad group ads.</summary>
@@ -629,7 +629,7 @@ namespace Google.Apis.DisplayVideo.v3
                     /// </param>
                     public virtual GetRequest Get(long advertiserId, long adGroupId, GetRequest.TargetingTypeEnum targetingType, string assignedTargetingOptionId)
                     {
-                        return new GetRequest(service, advertiserId, adGroupId, targetingType, assignedTargetingOptionId);
+                        return new GetRequest(this.service, advertiserId, adGroupId, targetingType, assignedTargetingOptionId);
                     }
 
                     /// <summary>
@@ -1000,7 +1000,7 @@ namespace Google.Apis.DisplayVideo.v3
                     /// </param>
                     public virtual ListRequest List(long advertiserId, long adGroupId, ListRequest.TargetingTypeEnum targetingType)
                     {
-                        return new ListRequest(service, advertiserId, adGroupId, targetingType);
+                        return new ListRequest(this.service, advertiserId, adGroupId, targetingType);
                     }
 
                     /// <summary>
@@ -1414,7 +1414,7 @@ namespace Google.Apis.DisplayVideo.v3
             /// <param name="advertiserId">Required. The ID of the advertiser the line items belongs to.</param>
             public virtual BulkListAdGroupAssignedTargetingOptionsRequest BulkListAdGroupAssignedTargetingOptions(long advertiserId)
             {
-                return new BulkListAdGroupAssignedTargetingOptionsRequest(service, advertiserId);
+                return new BulkListAdGroupAssignedTargetingOptionsRequest(this.service, advertiserId);
             }
 
             /// <summary>
@@ -1544,7 +1544,7 @@ namespace Google.Apis.DisplayVideo.v3
             /// <param name="adGroupId">Required. The ID of the ad group to fetch.</param>
             public virtual GetRequest Get(long advertiserId, long adGroupId)
             {
-                return new GetRequest(service, advertiserId, adGroupId);
+                return new GetRequest(this.service, advertiserId, adGroupId);
             }
 
             /// <summary>Gets an ad group.</summary>
@@ -1602,7 +1602,7 @@ namespace Google.Apis.DisplayVideo.v3
             /// <param name="advertiserId">Required. The ID of the advertiser the ad groups belongs to.</param>
             public virtual ListRequest List(long advertiserId)
             {
-                return new ListRequest(service, advertiserId);
+                return new ListRequest(this.service, advertiserId);
             }
 
             /// <summary>Lists ad groups.</summary>
@@ -1742,7 +1742,7 @@ namespace Google.Apis.DisplayVideo.v3
             /// <param name="advertiserId">Required. The ID of the advertiser this asset belongs to.</param>
             public virtual UploadRequest Upload(Google.Apis.DisplayVideo.v3.Data.CreateAssetRequest body, long advertiserId)
             {
-                return new UploadRequest(service, body, advertiserId);
+                return new UploadRequest(this.service, body, advertiserId);
             }
 
             /// <summary>
@@ -2022,7 +2022,7 @@ namespace Google.Apis.DisplayVideo.v3
                     /// </param>
                     public virtual GetRequest Get(long advertiserId, long campaignId, GetRequest.TargetingTypeEnum targetingType, string assignedTargetingOptionId)
                     {
-                        return new GetRequest(service, advertiserId, campaignId, targetingType, assignedTargetingOptionId);
+                        return new GetRequest(this.service, advertiserId, campaignId, targetingType, assignedTargetingOptionId);
                     }
 
                     /// <summary>Gets a single targeting option assigned to a campaign.</summary>
@@ -2401,7 +2401,7 @@ namespace Google.Apis.DisplayVideo.v3
                     /// </param>
                     public virtual ListRequest List(long advertiserId, long campaignId, ListRequest.TargetingTypeEnum targetingType)
                     {
-                        return new ListRequest(service, advertiserId, campaignId, targetingType);
+                        return new ListRequest(this.service, advertiserId, campaignId, targetingType);
                     }
 
                     /// <summary>
@@ -2820,7 +2820,7 @@ namespace Google.Apis.DisplayVideo.v3
             /// <param name="advertiserId">Output only. The unique ID of the advertiser the campaign belongs to.</param>
             public virtual CreateRequest Create(Google.Apis.DisplayVideo.v3.Data.Campaign body, long advertiserId)
             {
-                return new CreateRequest(service, body, advertiserId);
+                return new CreateRequest(this.service, body, advertiserId);
             }
 
             /// <summary>Creates a new campaign. Returns the newly created campaign if successful.</summary>
@@ -2876,7 +2876,7 @@ namespace Google.Apis.DisplayVideo.v3
             /// <param name="campaignId">The ID of the campaign we need to delete.</param>
             public virtual DeleteRequest Delete(long advertiserId, long campaignId)
             {
-                return new DeleteRequest(service, advertiserId, campaignId);
+                return new DeleteRequest(this.service, advertiserId, campaignId);
             }
 
             /// <summary>
@@ -2938,7 +2938,7 @@ namespace Google.Apis.DisplayVideo.v3
             /// <param name="campaignId">Required. The ID of the campaign to fetch.</param>
             public virtual GetRequest Get(long advertiserId, long campaignId)
             {
-                return new GetRequest(service, advertiserId, campaignId);
+                return new GetRequest(this.service, advertiserId, campaignId);
             }
 
             /// <summary>Gets a campaign.</summary>
@@ -3000,7 +3000,7 @@ namespace Google.Apis.DisplayVideo.v3
             /// <param name="advertiserId">The ID of the advertiser to list campaigns for.</param>
             public virtual ListRequest List(long advertiserId)
             {
-                return new ListRequest(service, advertiserId);
+                return new ListRequest(this.service, advertiserId);
             }
 
             /// <summary>
@@ -3124,7 +3124,7 @@ namespace Google.Apis.DisplayVideo.v3
             /// </param>
             public virtual ListAssignedTargetingOptionsRequest ListAssignedTargetingOptions(long advertiserId, long campaignId)
             {
-                return new ListAssignedTargetingOptionsRequest(service, advertiserId, campaignId);
+                return new ListAssignedTargetingOptionsRequest(this.service, advertiserId, campaignId);
             }
 
             /// <summary>Lists assigned targeting options of a campaign across targeting types.</summary>
@@ -3254,7 +3254,7 @@ namespace Google.Apis.DisplayVideo.v3
             /// <param name="campaignId">Output only. The unique ID of the campaign. Assigned by the system.</param>
             public virtual PatchRequest Patch(Google.Apis.DisplayVideo.v3.Data.Campaign body, long advertiserId, long campaignId)
             {
-                return new PatchRequest(service, body, advertiserId, campaignId);
+                return new PatchRequest(this.service, body, advertiserId, campaignId);
             }
 
             /// <summary>Updates an existing campaign. Returns the updated campaign if successful.</summary>
@@ -3373,7 +3373,7 @@ namespace Google.Apis.DisplayVideo.v3
                 /// <param name="channelId">Required. The ID of the parent channel to which the sites belong.</param>
                 public virtual BulkEditRequest BulkEdit(Google.Apis.DisplayVideo.v3.Data.BulkEditSitesRequest body, long advertiserId, long channelId)
                 {
-                    return new BulkEditRequest(service, body, advertiserId, channelId);
+                    return new BulkEditRequest(this.service, body, advertiserId, channelId);
                 }
 
                 /// <summary>
@@ -3446,7 +3446,7 @@ namespace Google.Apis.DisplayVideo.v3
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.DisplayVideo.v3.Data.Site body, long advertiserId, long channelId)
                 {
-                    return new CreateRequest(service, body, advertiserId, channelId);
+                    return new CreateRequest(this.service, body, advertiserId, channelId);
                 }
 
                 /// <summary>Creates a site in a channel.</summary>
@@ -3525,7 +3525,7 @@ namespace Google.Apis.DisplayVideo.v3
                 /// <param name="urlOrAppId">Required. The URL or app ID of the site to delete.</param>
                 public virtual DeleteRequest Delete(long advertiserId, long channelId, string urlOrAppId)
                 {
-                    return new DeleteRequest(service, advertiserId, channelId, urlOrAppId);
+                    return new DeleteRequest(this.service, advertiserId, channelId, urlOrAppId);
                 }
 
                 /// <summary>Deletes a site from a channel.</summary>
@@ -3611,7 +3611,7 @@ namespace Google.Apis.DisplayVideo.v3
                 /// </param>
                 public virtual ListRequest List(long advertiserId, long channelId)
                 {
-                    return new ListRequest(service, advertiserId, channelId);
+                    return new ListRequest(this.service, advertiserId, channelId);
                 }
 
                 /// <summary>Lists sites in a channel.</summary>
@@ -3752,7 +3752,7 @@ namespace Google.Apis.DisplayVideo.v3
                 /// <param name="channelId">Required. The ID of the parent channel whose sites will be replaced.</param>
                 public virtual ReplaceRequest Replace(Google.Apis.DisplayVideo.v3.Data.ReplaceSitesRequest body, long advertiserId, long channelId)
                 {
-                    return new ReplaceRequest(service, body, advertiserId, channelId);
+                    return new ReplaceRequest(this.service, body, advertiserId, channelId);
                 }
 
                 /// <summary>
@@ -3822,7 +3822,7 @@ namespace Google.Apis.DisplayVideo.v3
             /// <param name="advertiserId">The ID of the advertiser that owns the created channel.</param>
             public virtual CreateRequest Create(Google.Apis.DisplayVideo.v3.Data.Channel body, long advertiserId)
             {
-                return new CreateRequest(service, body, advertiserId);
+                return new CreateRequest(this.service, body, advertiserId);
             }
 
             /// <summary>Creates a new channel. Returns the newly created channel if successful.</summary>
@@ -3887,7 +3887,7 @@ namespace Google.Apis.DisplayVideo.v3
             /// <param name="channelId">Required. The ID of the channel to fetch.</param>
             public virtual GetRequest Get(long advertiserId, long channelId)
             {
-                return new GetRequest(service, advertiserId, channelId);
+                return new GetRequest(this.service, advertiserId, channelId);
             }
 
             /// <summary>Gets a channel for a partner or advertiser.</summary>
@@ -3957,7 +3957,7 @@ namespace Google.Apis.DisplayVideo.v3
             /// <param name="advertiserId">The ID of the advertiser that owns the channels.</param>
             public virtual ListRequest List(long advertiserId)
             {
-                return new ListRequest(service, advertiserId);
+                return new ListRequest(this.service, advertiserId);
             }
 
             /// <summary>Lists channels for a partner or advertiser.</summary>
@@ -4082,7 +4082,7 @@ namespace Google.Apis.DisplayVideo.v3
             /// <param name="channelId">Output only. The unique ID of the channel. Assigned by the system.</param>
             public virtual PatchRequest Patch(Google.Apis.DisplayVideo.v3.Data.Channel body, long advertiserId, long channelId)
             {
-                return new PatchRequest(service, body, advertiserId, channelId);
+                return new PatchRequest(this.service, body, advertiserId, channelId);
             }
 
             /// <summary>Updates a channel. Returns the updated channel if successful.</summary>
@@ -4190,7 +4190,7 @@ namespace Google.Apis.DisplayVideo.v3
             /// <param name="advertiserId">Output only. The unique ID of the advertiser the creative belongs to.</param>
             public virtual CreateRequest Create(Google.Apis.DisplayVideo.v3.Data.Creative body, long advertiserId)
             {
-                return new CreateRequest(service, body, advertiserId);
+                return new CreateRequest(this.service, body, advertiserId);
             }
 
             /// <summary>Creates a new creative. Returns the newly created creative if successful.</summary>
@@ -4246,7 +4246,7 @@ namespace Google.Apis.DisplayVideo.v3
             /// <param name="creativeId">The ID of the creative to be deleted.</param>
             public virtual DeleteRequest Delete(long advertiserId, long creativeId)
             {
-                return new DeleteRequest(service, advertiserId, creativeId);
+                return new DeleteRequest(this.service, advertiserId, creativeId);
             }
 
             /// <summary>
@@ -4308,7 +4308,7 @@ namespace Google.Apis.DisplayVideo.v3
             /// <param name="creativeId">Required. The ID of the creative to fetch.</param>
             public virtual GetRequest Get(long advertiserId, long creativeId)
             {
-                return new GetRequest(service, advertiserId, creativeId);
+                return new GetRequest(this.service, advertiserId, creativeId);
             }
 
             /// <summary>Gets a creative.</summary>
@@ -4370,7 +4370,7 @@ namespace Google.Apis.DisplayVideo.v3
             /// <param name="advertiserId">Required. The ID of the advertiser to list creatives for.</param>
             public virtual ListRequest List(long advertiserId)
             {
-                return new ListRequest(service, advertiserId);
+                return new ListRequest(this.service, advertiserId);
             }
 
             /// <summary>
@@ -4508,7 +4508,7 @@ namespace Google.Apis.DisplayVideo.v3
             /// <param name="creativeId">Output only. The unique ID of the creative. Assigned by the system.</param>
             public virtual PatchRequest Patch(Google.Apis.DisplayVideo.v3.Data.Creative body, long advertiserId, long creativeId)
             {
-                return new PatchRequest(service, body, advertiserId, creativeId);
+                return new PatchRequest(this.service, body, advertiserId, creativeId);
             }
 
             /// <summary>Updates an existing creative. Returns the updated creative if successful.</summary>
@@ -4664,7 +4664,7 @@ namespace Google.Apis.DisplayVideo.v3
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.DisplayVideo.v3.Data.AssignedTargetingOption body, long advertiserId, long insertionOrderId, CreateRequest.TargetingTypeEnum targetingType)
                     {
-                        return new CreateRequest(service, body, advertiserId, insertionOrderId, targetingType);
+                        return new CreateRequest(this.service, body, advertiserId, insertionOrderId, targetingType);
                     }
 
                     /// <summary>
@@ -5049,7 +5049,7 @@ namespace Google.Apis.DisplayVideo.v3
                     /// </param>
                     public virtual DeleteRequest Delete(long advertiserId, long insertionOrderId, DeleteRequest.TargetingTypeEnum targetingType, string assignedTargetingOptionId)
                     {
-                        return new DeleteRequest(service, advertiserId, insertionOrderId, targetingType, assignedTargetingOptionId);
+                        return new DeleteRequest(this.service, advertiserId, insertionOrderId, targetingType, assignedTargetingOptionId);
                     }
 
                     /// <summary>
@@ -5445,7 +5445,7 @@ namespace Google.Apis.DisplayVideo.v3
                     /// </param>
                     public virtual GetRequest Get(long advertiserId, long insertionOrderId, GetRequest.TargetingTypeEnum targetingType, string assignedTargetingOptionId)
                     {
-                        return new GetRequest(service, advertiserId, insertionOrderId, targetingType, assignedTargetingOptionId);
+                        return new GetRequest(this.service, advertiserId, insertionOrderId, targetingType, assignedTargetingOptionId);
                     }
 
                     /// <summary>Gets a single targeting option assigned to an insertion order.</summary>
@@ -5859,7 +5859,7 @@ namespace Google.Apis.DisplayVideo.v3
                     /// </param>
                     public virtual ListRequest List(long advertiserId, long insertionOrderId, ListRequest.TargetingTypeEnum targetingType)
                     {
-                        return new ListRequest(service, advertiserId, insertionOrderId, targetingType);
+                        return new ListRequest(this.service, advertiserId, insertionOrderId, targetingType);
                     }
 
                     /// <summary>Lists the targeting options assigned to an insertion order.</summary>
@@ -6309,7 +6309,7 @@ namespace Google.Apis.DisplayVideo.v3
             /// </param>
             public virtual CreateRequest Create(Google.Apis.DisplayVideo.v3.Data.InsertionOrder body, long advertiserId)
             {
-                return new CreateRequest(service, body, advertiserId);
+                return new CreateRequest(this.service, body, advertiserId);
             }
 
             /// <summary>
@@ -6368,7 +6368,7 @@ namespace Google.Apis.DisplayVideo.v3
             /// <param name="insertionOrderId">The ID of the insertion order to delete.</param>
             public virtual DeleteRequest Delete(long advertiserId, long insertionOrderId)
             {
-                return new DeleteRequest(service, advertiserId, insertionOrderId);
+                return new DeleteRequest(this.service, advertiserId, insertionOrderId);
             }
 
             /// <summary>
@@ -6433,7 +6433,7 @@ namespace Google.Apis.DisplayVideo.v3
             /// <param name="insertionOrderId">Required. The ID of the insertion order to fetch.</param>
             public virtual GetRequest Get(long advertiserId, long insertionOrderId)
             {
-                return new GetRequest(service, advertiserId, insertionOrderId);
+                return new GetRequest(this.service, advertiserId, insertionOrderId);
             }
 
             /// <summary>
@@ -6497,7 +6497,7 @@ namespace Google.Apis.DisplayVideo.v3
             /// <param name="advertiserId">Required. The ID of the advertiser to list insertion orders for.</param>
             public virtual ListRequest List(long advertiserId)
             {
-                return new ListRequest(service, advertiserId);
+                return new ListRequest(this.service, advertiserId);
             }
 
             /// <summary>
@@ -6623,7 +6623,7 @@ namespace Google.Apis.DisplayVideo.v3
             /// </param>
             public virtual ListAssignedTargetingOptionsRequest ListAssignedTargetingOptions(long advertiserId, long insertionOrderId)
             {
-                return new ListAssignedTargetingOptionsRequest(service, advertiserId, insertionOrderId);
+                return new ListAssignedTargetingOptionsRequest(this.service, advertiserId, insertionOrderId);
             }
 
             /// <summary>Lists assigned targeting options of an insertion order across targeting types.</summary>
@@ -6759,7 +6759,7 @@ namespace Google.Apis.DisplayVideo.v3
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.DisplayVideo.v3.Data.InsertionOrder body, long advertiserId, long insertionOrderId)
             {
-                return new PatchRequest(service, body, advertiserId, insertionOrderId);
+                return new PatchRequest(this.service, body, advertiserId, insertionOrderId);
             }
 
             /// <summary>
@@ -6859,7 +6859,7 @@ namespace Google.Apis.DisplayVideo.v3
             /// <param name="advertiserId">Required. The ID of the advertiser to list invoices for.</param>
             public virtual ListRequest List(long advertiserId)
             {
-                return new ListRequest(service, advertiserId);
+                return new ListRequest(this.service, advertiserId);
             }
 
             /// <summary>
@@ -6987,7 +6987,7 @@ namespace Google.Apis.DisplayVideo.v3
             /// <param name="advertiserId">Required. The ID of the advertiser to lookup currency for.</param>
             public virtual LookupInvoiceCurrencyRequest LookupInvoiceCurrency(long advertiserId)
             {
-                return new LookupInvoiceCurrencyRequest(service, advertiserId);
+                return new LookupInvoiceCurrencyRequest(this.service, advertiserId);
             }
 
             /// <summary>Retrieves the invoice currency used by an advertiser in a given month.</summary>
@@ -7133,7 +7133,7 @@ namespace Google.Apis.DisplayVideo.v3
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.DisplayVideo.v3.Data.AssignedTargetingOption body, long advertiserId, long lineItemId, CreateRequest.TargetingTypeEnum targetingType)
                     {
-                        return new CreateRequest(service, body, advertiserId, lineItemId, targetingType);
+                        return new CreateRequest(this.service, body, advertiserId, lineItemId, targetingType);
                     }
 
                     /// <summary>
@@ -7549,7 +7549,7 @@ namespace Google.Apis.DisplayVideo.v3
                     /// </param>
                     public virtual DeleteRequest Delete(long advertiserId, long lineItemId, DeleteRequest.TargetingTypeEnum targetingType, string assignedTargetingOptionId)
                     {
-                        return new DeleteRequest(service, advertiserId, lineItemId, targetingType, assignedTargetingOptionId);
+                        return new DeleteRequest(this.service, advertiserId, lineItemId, targetingType, assignedTargetingOptionId);
                     }
 
                     /// <summary>
@@ -7970,7 +7970,7 @@ namespace Google.Apis.DisplayVideo.v3
                     /// </param>
                     public virtual GetRequest Get(long advertiserId, long lineItemId, GetRequest.TargetingTypeEnum targetingType, string assignedTargetingOptionId)
                     {
-                        return new GetRequest(service, advertiserId, lineItemId, targetingType, assignedTargetingOptionId);
+                        return new GetRequest(this.service, advertiserId, lineItemId, targetingType, assignedTargetingOptionId);
                     }
 
                     /// <summary>Gets a single targeting option assigned to a line item.</summary>
@@ -8391,7 +8391,7 @@ namespace Google.Apis.DisplayVideo.v3
                     /// </param>
                     public virtual ListRequest List(long advertiserId, long lineItemId, ListRequest.TargetingTypeEnum targetingType)
                     {
-                        return new ListRequest(service, advertiserId, lineItemId, targetingType);
+                        return new ListRequest(this.service, advertiserId, lineItemId, targetingType);
                     }
 
                     /// <summary>Lists the targeting options assigned to a line item.</summary>
@@ -8847,7 +8847,7 @@ namespace Google.Apis.DisplayVideo.v3
             /// <param name="advertiserId">Required. The ID of the advertiser the line items belong to.</param>
             public virtual BulkEditAssignedTargetingOptionsRequest BulkEditAssignedTargetingOptions(Google.Apis.DisplayVideo.v3.Data.BulkEditAssignedTargetingOptionsRequest body, long advertiserId)
             {
-                return new BulkEditAssignedTargetingOptionsRequest(service, body, advertiserId);
+                return new BulkEditAssignedTargetingOptionsRequest(this.service, body, advertiserId);
             }
 
             /// <summary>
@@ -8906,7 +8906,7 @@ namespace Google.Apis.DisplayVideo.v3
             /// <param name="advertiserId">Required. The ID of the advertiser the line items belongs to.</param>
             public virtual BulkListAssignedTargetingOptionsRequest BulkListAssignedTargetingOptions(long advertiserId)
             {
-                return new BulkListAssignedTargetingOptionsRequest(service, advertiserId);
+                return new BulkListAssignedTargetingOptionsRequest(this.service, advertiserId);
             }
 
             /// <summary>Lists assigned targeting options for multiple line items across targeting types.</summary>
@@ -9040,7 +9040,7 @@ namespace Google.Apis.DisplayVideo.v3
             /// <param name="advertiserId">Required. The ID of the advertiser this line item belongs to.</param>
             public virtual BulkUpdateRequest BulkUpdate(Google.Apis.DisplayVideo.v3.Data.BulkUpdateLineItemsRequest body, long advertiserId)
             {
-                return new BulkUpdateRequest(service, body, advertiserId);
+                return new BulkUpdateRequest(this.service, body, advertiserId);
             }
 
             /// <summary>
@@ -9099,7 +9099,7 @@ namespace Google.Apis.DisplayVideo.v3
             /// </param>
             public virtual CreateRequest Create(Google.Apis.DisplayVideo.v3.Data.LineItem body, long advertiserId)
             {
-                return new CreateRequest(service, body, advertiserId);
+                return new CreateRequest(this.service, body, advertiserId);
             }
 
             /// <summary>Creates a new line item. Returns the newly created line item if successful.</summary>
@@ -9155,7 +9155,7 @@ namespace Google.Apis.DisplayVideo.v3
             /// <param name="lineItemId">The ID of the line item to delete.</param>
             public virtual DeleteRequest Delete(long advertiserId, long lineItemId)
             {
-                return new DeleteRequest(service, advertiserId, lineItemId);
+                return new DeleteRequest(this.service, advertiserId, lineItemId);
             }
 
             /// <summary>
@@ -9218,7 +9218,7 @@ namespace Google.Apis.DisplayVideo.v3
             /// <param name="lineItemId">Required. The ID of the line item to duplicate.</param>
             public virtual DuplicateRequest Duplicate(Google.Apis.DisplayVideo.v3.Data.DuplicateLineItemRequest body, long advertiserId, long lineItemId)
             {
-                return new DuplicateRequest(service, body, advertiserId, lineItemId);
+                return new DuplicateRequest(this.service, body, advertiserId, lineItemId);
             }
 
             /// <summary>Duplicates a line item. Returns the ID of the created line item if successful.</summary>
@@ -9289,7 +9289,7 @@ namespace Google.Apis.DisplayVideo.v3
             /// <param name="advertiserId">Required. The ID of the advertiser this line item belongs to.</param>
             public virtual GenerateDefaultRequest GenerateDefault(Google.Apis.DisplayVideo.v3.Data.GenerateDefaultLineItemRequest body, long advertiserId)
             {
-                return new GenerateDefaultRequest(service, body, advertiserId);
+                return new GenerateDefaultRequest(this.service, body, advertiserId);
             }
 
             /// <summary>
@@ -9347,7 +9347,7 @@ namespace Google.Apis.DisplayVideo.v3
             /// <param name="lineItemId">Required. The ID of the line item to fetch.</param>
             public virtual GetRequest Get(long advertiserId, long lineItemId)
             {
-                return new GetRequest(service, advertiserId, lineItemId);
+                return new GetRequest(this.service, advertiserId, lineItemId);
             }
 
             /// <summary>Gets a line item.</summary>
@@ -9409,7 +9409,7 @@ namespace Google.Apis.DisplayVideo.v3
             /// <param name="advertiserId">Required. The ID of the advertiser to list line items for.</param>
             public virtual ListRequest List(long advertiserId)
             {
-                return new ListRequest(service, advertiserId);
+                return new ListRequest(this.service, advertiserId);
             }
 
             /// <summary>
@@ -9543,7 +9543,7 @@ namespace Google.Apis.DisplayVideo.v3
             /// <param name="lineItemId">Output only. The unique ID of the line item. Assigned by the system.</param>
             public virtual PatchRequest Patch(Google.Apis.DisplayVideo.v3.Data.LineItem body, long advertiserId, long lineItemId)
             {
-                return new PatchRequest(service, body, advertiserId, lineItemId);
+                return new PatchRequest(this.service, body, advertiserId, lineItemId);
             }
 
             /// <summary>
@@ -9671,7 +9671,7 @@ namespace Google.Apis.DisplayVideo.v3
                 /// </param>
                 public virtual BulkEditRequest BulkEdit(Google.Apis.DisplayVideo.v3.Data.BulkEditAssignedLocationsRequest body, long advertiserId, long locationListId)
                 {
-                    return new BulkEditRequest(service, body, advertiserId, locationListId);
+                    return new BulkEditRequest(this.service, body, advertiserId, locationListId);
                 }
 
                 /// <summary>
@@ -9748,7 +9748,7 @@ namespace Google.Apis.DisplayVideo.v3
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.DisplayVideo.v3.Data.AssignedLocation body, long advertiserId, long locationListId)
                 {
-                    return new CreateRequest(service, body, advertiserId, locationListId);
+                    return new CreateRequest(this.service, body, advertiserId, locationListId);
                 }
 
                 /// <summary>Creates an assignment between a location and a location list.</summary>
@@ -9821,7 +9821,7 @@ namespace Google.Apis.DisplayVideo.v3
                 /// <param name="assignedLocationId">Required. The ID of the assigned location to delete.</param>
                 public virtual DeleteRequest Delete(long advertiserId, long locationListId, long assignedLocationId)
                 {
-                    return new DeleteRequest(service, advertiserId, locationListId, assignedLocationId);
+                    return new DeleteRequest(this.service, advertiserId, locationListId, assignedLocationId);
                 }
 
                 /// <summary>Deletes the assignment between a location and a location list.</summary>
@@ -9897,7 +9897,7 @@ namespace Google.Apis.DisplayVideo.v3
                 /// </param>
                 public virtual ListRequest List(long advertiserId, long locationListId)
                 {
-                    return new ListRequest(service, advertiserId, locationListId);
+                    return new ListRequest(this.service, advertiserId, locationListId);
                 }
 
                 /// <summary>Lists locations assigned to a location list.</summary>
@@ -10027,7 +10027,7 @@ namespace Google.Apis.DisplayVideo.v3
             /// </param>
             public virtual CreateRequest Create(Google.Apis.DisplayVideo.v3.Data.LocationList body, long advertiserId)
             {
-                return new CreateRequest(service, body, advertiserId);
+                return new CreateRequest(this.service, body, advertiserId);
             }
 
             /// <summary>Creates a new location list. Returns the newly created location list if successful.</summary>
@@ -10082,7 +10082,7 @@ namespace Google.Apis.DisplayVideo.v3
             /// <param name="locationListId">Required. The ID of the location list to fetch.</param>
             public virtual GetRequest Get(long advertiserId, long locationListId)
             {
-                return new GetRequest(service, advertiserId, locationListId);
+                return new GetRequest(this.service, advertiserId, locationListId);
             }
 
             /// <summary>Gets a location list.</summary>
@@ -10144,7 +10144,7 @@ namespace Google.Apis.DisplayVideo.v3
             /// </param>
             public virtual ListRequest List(long advertiserId)
             {
-                return new ListRequest(service, advertiserId);
+                return new ListRequest(this.service, advertiserId);
             }
 
             /// <summary>Lists location lists based on a given advertiser id.</summary>
@@ -10265,7 +10265,7 @@ namespace Google.Apis.DisplayVideo.v3
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.DisplayVideo.v3.Data.LocationList body, long advertiserId, long locationListId)
             {
-                return new PatchRequest(service, body, advertiserId, locationListId);
+                return new PatchRequest(this.service, body, advertiserId, locationListId);
             }
 
             /// <summary>Updates a location list. Returns the updated location list if successful.</summary>
@@ -10390,7 +10390,7 @@ namespace Google.Apis.DisplayVideo.v3
                 /// </param>
                 public virtual BulkEditRequest BulkEdit(Google.Apis.DisplayVideo.v3.Data.BulkEditNegativeKeywordsRequest body, long advertiserId, long negativeKeywordListId)
                 {
-                    return new BulkEditRequest(service, body, advertiserId, negativeKeywordListId);
+                    return new BulkEditRequest(this.service, body, advertiserId, negativeKeywordListId);
                 }
 
                 /// <summary>
@@ -10471,7 +10471,7 @@ namespace Google.Apis.DisplayVideo.v3
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.DisplayVideo.v3.Data.NegativeKeyword body, long advertiserId, long negativeKeywordListId)
                 {
-                    return new CreateRequest(service, body, advertiserId, negativeKeywordListId);
+                    return new CreateRequest(this.service, body, advertiserId, negativeKeywordListId);
                 }
 
                 /// <summary>Creates a negative keyword in a negative keyword list.</summary>
@@ -10547,7 +10547,7 @@ namespace Google.Apis.DisplayVideo.v3
                 /// <param name="keywordValue">Required. The keyword value of the negative keyword to delete.</param>
                 public virtual DeleteRequest Delete(long advertiserId, long negativeKeywordListId, string keywordValue)
                 {
-                    return new DeleteRequest(service, advertiserId, negativeKeywordListId, keywordValue);
+                    return new DeleteRequest(this.service, advertiserId, negativeKeywordListId, keywordValue);
                 }
 
                 /// <summary>Deletes a negative keyword from a negative keyword list.</summary>
@@ -10628,7 +10628,7 @@ namespace Google.Apis.DisplayVideo.v3
                 /// </param>
                 public virtual ListRequest List(long advertiserId, long negativeKeywordListId)
                 {
-                    return new ListRequest(service, advertiserId, negativeKeywordListId);
+                    return new ListRequest(this.service, advertiserId, negativeKeywordListId);
                 }
 
                 /// <summary>Lists negative keywords in a negative keyword list.</summary>
@@ -10768,7 +10768,7 @@ namespace Google.Apis.DisplayVideo.v3
                 /// </param>
                 public virtual ReplaceRequest Replace(Google.Apis.DisplayVideo.v3.Data.ReplaceNegativeKeywordsRequest body, long advertiserId, long negativeKeywordListId)
                 {
-                    return new ReplaceRequest(service, body, advertiserId, negativeKeywordListId);
+                    return new ReplaceRequest(this.service, body, advertiserId, negativeKeywordListId);
                 }
 
                 /// <summary>
@@ -10847,7 +10847,7 @@ namespace Google.Apis.DisplayVideo.v3
             /// </param>
             public virtual CreateRequest Create(Google.Apis.DisplayVideo.v3.Data.NegativeKeywordList body, long advertiserId)
             {
-                return new CreateRequest(service, body, advertiserId);
+                return new CreateRequest(this.service, body, advertiserId);
             }
 
             /// <summary>
@@ -10908,7 +10908,7 @@ namespace Google.Apis.DisplayVideo.v3
             /// <param name="negativeKeywordListId">Required. The ID of the negative keyword list to delete.</param>
             public virtual DeleteRequest Delete(long advertiserId, long negativeKeywordListId)
             {
-                return new DeleteRequest(service, advertiserId, negativeKeywordListId);
+                return new DeleteRequest(this.service, advertiserId, negativeKeywordListId);
             }
 
             /// <summary>
@@ -10973,7 +10973,7 @@ namespace Google.Apis.DisplayVideo.v3
             /// <param name="negativeKeywordListId">Required. The ID of the negative keyword list to fetch.</param>
             public virtual GetRequest Get(long advertiserId, long negativeKeywordListId)
             {
-                return new GetRequest(service, advertiserId, negativeKeywordListId);
+                return new GetRequest(this.service, advertiserId, negativeKeywordListId);
             }
 
             /// <summary>Gets a negative keyword list given an advertiser ID and a negative keyword list ID.</summary>
@@ -11035,7 +11035,7 @@ namespace Google.Apis.DisplayVideo.v3
             /// </param>
             public virtual ListRequest List(long advertiserId)
             {
-                return new ListRequest(service, advertiserId);
+                return new ListRequest(this.service, advertiserId);
             }
 
             /// <summary>Lists negative keyword lists based on a given advertiser id.</summary>
@@ -11121,7 +11121,7 @@ namespace Google.Apis.DisplayVideo.v3
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.DisplayVideo.v3.Data.NegativeKeywordList body, long advertiserId, long negativeKeywordListId)
             {
-                return new PatchRequest(service, body, advertiserId, negativeKeywordListId);
+                return new PatchRequest(this.service, body, advertiserId, negativeKeywordListId);
             }
 
             /// <summary>
@@ -11246,7 +11246,7 @@ namespace Google.Apis.DisplayVideo.v3
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.DisplayVideo.v3.Data.AssignedTargetingOption body, long advertiserId, CreateRequest.TargetingTypeEnum targetingType)
                 {
-                    return new CreateRequest(service, body, advertiserId, targetingType);
+                    return new CreateRequest(this.service, body, advertiserId, targetingType);
                 }
 
                 /// <summary>
@@ -11575,7 +11575,7 @@ namespace Google.Apis.DisplayVideo.v3
                 /// </param>
                 public virtual DeleteRequest Delete(long advertiserId, DeleteRequest.TargetingTypeEnum targetingType, string assignedTargetingOptionId)
                 {
-                    return new DeleteRequest(service, advertiserId, targetingType, assignedTargetingOptionId);
+                    return new DeleteRequest(this.service, advertiserId, targetingType, assignedTargetingOptionId);
                 }
 
                 /// <summary>Deletes an assigned targeting option from an advertiser.</summary>
@@ -11910,7 +11910,7 @@ namespace Google.Apis.DisplayVideo.v3
                 /// </param>
                 public virtual GetRequest Get(long advertiserId, GetRequest.TargetingTypeEnum targetingType, string assignedTargetingOptionId)
                 {
-                    return new GetRequest(service, advertiserId, targetingType, assignedTargetingOptionId);
+                    return new GetRequest(this.service, advertiserId, targetingType, assignedTargetingOptionId);
                 }
 
                 /// <summary>Gets a single targeting option assigned to an advertiser.</summary>
@@ -12246,7 +12246,7 @@ namespace Google.Apis.DisplayVideo.v3
                 /// </param>
                 public virtual ListRequest List(long advertiserId, ListRequest.TargetingTypeEnum targetingType)
                 {
-                    return new ListRequest(service, advertiserId, targetingType);
+                    return new ListRequest(this.service, advertiserId, targetingType);
                 }
 
                 /// <summary>Lists the targeting options assigned to an advertiser.</summary>
@@ -12633,7 +12633,7 @@ namespace Google.Apis.DisplayVideo.v3
         /// <param name="advertiserId">Required. The ID of the advertiser to audit.</param>
         public virtual AuditRequest Audit(long advertiserId)
         {
-            return new AuditRequest(service, advertiserId);
+            return new AuditRequest(this.service, advertiserId);
         }
 
         /// <summary>
@@ -12702,7 +12702,7 @@ namespace Google.Apis.DisplayVideo.v3
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.DisplayVideo.v3.Data.Advertiser body)
         {
-            return new CreateRequest(service, body);
+            return new CreateRequest(this.service, body);
         }
 
         /// <summary>
@@ -12747,7 +12747,7 @@ namespace Google.Apis.DisplayVideo.v3
         /// <param name="advertiserId">The ID of the advertiser we need to delete.</param>
         public virtual DeleteRequest Delete(long advertiserId)
         {
-            return new DeleteRequest(service, advertiserId);
+            return new DeleteRequest(this.service, advertiserId);
         }
 
         /// <summary>
@@ -12800,7 +12800,7 @@ namespace Google.Apis.DisplayVideo.v3
         /// <param name="advertiserId">Required. The ID of the advertiser.</param>
         public virtual EditAssignedTargetingOptionsRequest EditAssignedTargetingOptions(Google.Apis.DisplayVideo.v3.Data.BulkEditAdvertiserAssignedTargetingOptionsRequest body, long advertiserId)
         {
-            return new EditAssignedTargetingOptionsRequest(service, body, advertiserId);
+            return new EditAssignedTargetingOptionsRequest(this.service, body, advertiserId);
         }
 
         /// <summary>
@@ -12856,7 +12856,7 @@ namespace Google.Apis.DisplayVideo.v3
         /// <param name="advertiserId">Required. The ID of the advertiser to fetch.</param>
         public virtual GetRequest Get(long advertiserId)
         {
-            return new GetRequest(service, advertiserId);
+            return new GetRequest(this.service, advertiserId);
         }
 
         /// <summary>Gets an advertiser.</summary>
@@ -12903,7 +12903,7 @@ namespace Google.Apis.DisplayVideo.v3
         /// </summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>
@@ -13024,7 +13024,7 @@ namespace Google.Apis.DisplayVideo.v3
         /// <param name="advertiserId">Required. The ID of the advertiser the line item belongs to.</param>
         public virtual ListAssignedTargetingOptionsRequest ListAssignedTargetingOptions(long advertiserId)
         {
-            return new ListAssignedTargetingOptionsRequest(service, advertiserId);
+            return new ListAssignedTargetingOptionsRequest(this.service, advertiserId);
         }
 
         /// <summary>Lists assigned targeting options of an advertiser across targeting types.</summary>
@@ -13137,7 +13137,7 @@ namespace Google.Apis.DisplayVideo.v3
         /// <param name="advertiserId">Output only. The unique ID of the advertiser. Assigned by the system.</param>
         public virtual PatchRequest Patch(Google.Apis.DisplayVideo.v3.Data.Advertiser body, long advertiserId)
         {
-            return new PatchRequest(service, body, advertiserId);
+            return new PatchRequest(this.service, body, advertiserId);
         }
 
         /// <summary>Updates an existing advertiser. Returns the updated advertiser if successful.</summary>
@@ -13216,7 +13216,7 @@ namespace Google.Apis.DisplayVideo.v3
         /// <param name="combinedAudienceId">Required. The ID of the combined audience to fetch.</param>
         public virtual GetRequest Get(long combinedAudienceId)
         {
-            return new GetRequest(service, combinedAudienceId);
+            return new GetRequest(this.service, combinedAudienceId);
         }
 
         /// <summary>Gets a combined audience.</summary>
@@ -13284,7 +13284,7 @@ namespace Google.Apis.DisplayVideo.v3
         /// <summary>Lists combined audiences. The order is defined by the order_by parameter.</summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>Lists combined audiences. The order is defined by the order_by parameter.</summary>
@@ -13443,7 +13443,7 @@ namespace Google.Apis.DisplayVideo.v3
             /// </param>
             public virtual CreateRequest Create(Google.Apis.DisplayVideo.v3.Data.CustomBiddingAlgorithmRules body, long customBiddingAlgorithmId)
             {
-                return new CreateRequest(service, body, customBiddingAlgorithmId);
+                return new CreateRequest(this.service, body, customBiddingAlgorithmId);
             }
 
             /// <summary>Creates a new rules resource. Returns the newly created rules resource if successful.</summary>
@@ -13525,7 +13525,7 @@ namespace Google.Apis.DisplayVideo.v3
             /// <param name="customBiddingAlgorithmRulesId">Required. The ID of the rules resource to fetch.</param>
             public virtual GetRequest Get(long customBiddingAlgorithmId, long customBiddingAlgorithmRulesId)
             {
-                return new GetRequest(service, customBiddingAlgorithmId, customBiddingAlgorithmRulesId);
+                return new GetRequest(this.service, customBiddingAlgorithmId, customBiddingAlgorithmRulesId);
             }
 
             /// <summary>Retrieves a rules resource.</summary>
@@ -13612,7 +13612,7 @@ namespace Google.Apis.DisplayVideo.v3
             /// </param>
             public virtual ListRequest List(long customBiddingAlgorithmId)
             {
-                return new ListRequest(service, customBiddingAlgorithmId);
+                return new ListRequest(this.service, customBiddingAlgorithmId);
             }
 
             /// <summary>
@@ -13752,7 +13752,7 @@ namespace Google.Apis.DisplayVideo.v3
             /// </param>
             public virtual CreateRequest Create(Google.Apis.DisplayVideo.v3.Data.CustomBiddingScript body, long customBiddingAlgorithmId)
             {
-                return new CreateRequest(service, body, customBiddingAlgorithmId);
+                return new CreateRequest(this.service, body, customBiddingAlgorithmId);
             }
 
             /// <summary>Creates a new custom bidding script. Returns the newly created script if successful.</summary>
@@ -13834,7 +13834,7 @@ namespace Google.Apis.DisplayVideo.v3
             /// <param name="customBiddingScriptId">Required. The ID of the custom bidding script to fetch.</param>
             public virtual GetRequest Get(long customBiddingAlgorithmId, long customBiddingScriptId)
             {
-                return new GetRequest(service, customBiddingAlgorithmId, customBiddingScriptId);
+                return new GetRequest(this.service, customBiddingAlgorithmId, customBiddingScriptId);
             }
 
             /// <summary>Gets a custom bidding script.</summary>
@@ -13924,7 +13924,7 @@ namespace Google.Apis.DisplayVideo.v3
             /// </param>
             public virtual ListRequest List(long customBiddingAlgorithmId)
             {
-                return new ListRequest(service, customBiddingAlgorithmId);
+                return new ListRequest(this.service, customBiddingAlgorithmId);
             }
 
             /// <summary>
@@ -14049,7 +14049,7 @@ namespace Google.Apis.DisplayVideo.v3
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.DisplayVideo.v3.Data.CustomBiddingAlgorithm body)
         {
-            return new CreateRequest(service, body);
+            return new CreateRequest(this.service, body);
         }
 
         /// <summary>
@@ -14090,7 +14090,7 @@ namespace Google.Apis.DisplayVideo.v3
         /// <param name="customBiddingAlgorithmId">Required. The ID of the custom bidding algorithm to fetch.</param>
         public virtual GetRequest Get(long customBiddingAlgorithmId)
         {
-            return new GetRequest(service, customBiddingAlgorithmId);
+            return new GetRequest(this.service, customBiddingAlgorithmId);
         }
 
         /// <summary>Gets a custom bidding algorithm.</summary>
@@ -14161,7 +14161,7 @@ namespace Google.Apis.DisplayVideo.v3
         /// </summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>
@@ -14295,7 +14295,7 @@ namespace Google.Apis.DisplayVideo.v3
         /// </param>
         public virtual PatchRequest Patch(Google.Apis.DisplayVideo.v3.Data.CustomBiddingAlgorithm body, long customBiddingAlgorithmId)
         {
-            return new PatchRequest(service, body, customBiddingAlgorithmId);
+            return new PatchRequest(this.service, body, customBiddingAlgorithmId);
         }
 
         /// <summary>
@@ -14367,7 +14367,7 @@ namespace Google.Apis.DisplayVideo.v3
         /// </param>
         public virtual UploadRulesRequest UploadRules(long customBiddingAlgorithmId)
         {
-            return new UploadRulesRequest(service, customBiddingAlgorithmId);
+            return new UploadRulesRequest(this.service, customBiddingAlgorithmId);
         }
 
         /// <summary>
@@ -14446,7 +14446,7 @@ namespace Google.Apis.DisplayVideo.v3
         /// </param>
         public virtual UploadScriptRequest UploadScript(long customBiddingAlgorithmId)
         {
-            return new UploadScriptRequest(service, customBiddingAlgorithmId);
+            return new UploadScriptRequest(this.service, customBiddingAlgorithmId);
         }
 
         /// <summary>
@@ -14537,7 +14537,7 @@ namespace Google.Apis.DisplayVideo.v3
         /// <param name="customListId">Required. The ID of the custom list to fetch.</param>
         public virtual GetRequest Get(long customListId)
         {
-            return new GetRequest(service, customListId);
+            return new GetRequest(this.service, customListId);
         }
 
         /// <summary>Gets a custom list.</summary>
@@ -14593,7 +14593,7 @@ namespace Google.Apis.DisplayVideo.v3
         /// <summary>Lists custom lists. The order is defined by the order_by parameter.</summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>Lists custom lists. The order is defined by the order_by parameter.</summary>
@@ -14721,7 +14721,7 @@ namespace Google.Apis.DisplayVideo.v3
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.DisplayVideo.v3.Data.FirstAndThirdPartyAudience body)
         {
-            return new CreateRequest(service, body);
+            return new CreateRequest(this.service, body);
         }
 
         /// <summary>
@@ -14783,7 +14783,7 @@ namespace Google.Apis.DisplayVideo.v3
         /// </param>
         public virtual EditCustomerMatchMembersRequest EditCustomerMatchMembers(Google.Apis.DisplayVideo.v3.Data.EditCustomerMatchMembersRequest body, long firstAndThirdPartyAudienceId)
         {
-            return new EditCustomerMatchMembersRequest(service, body, firstAndThirdPartyAudienceId);
+            return new EditCustomerMatchMembersRequest(this.service, body, firstAndThirdPartyAudienceId);
         }
 
         /// <summary>
@@ -14842,7 +14842,7 @@ namespace Google.Apis.DisplayVideo.v3
         /// </param>
         public virtual GetRequest Get(long firstAndThirdPartyAudienceId)
         {
-            return new GetRequest(service, firstAndThirdPartyAudienceId);
+            return new GetRequest(this.service, firstAndThirdPartyAudienceId);
         }
 
         /// <summary>Gets a first and third party audience.</summary>
@@ -14912,7 +14912,7 @@ namespace Google.Apis.DisplayVideo.v3
         /// <summary>Lists first and third party audiences. The order is defined by the order_by parameter.</summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>Lists first and third party audiences. The order is defined by the order_by parameter.</summary>
@@ -15043,7 +15043,7 @@ namespace Google.Apis.DisplayVideo.v3
         /// </param>
         public virtual PatchRequest Patch(Google.Apis.DisplayVideo.v3.Data.FirstAndThirdPartyAudience body, long firstAndThirdPartyAudienceId)
         {
-            return new PatchRequest(service, body, firstAndThirdPartyAudienceId);
+            return new PatchRequest(this.service, body, firstAndThirdPartyAudienceId);
         }
 
         /// <summary>
@@ -15142,7 +15142,7 @@ namespace Google.Apis.DisplayVideo.v3
         /// <param name="floodlightGroupId">Required. The ID of the Floodlight group to fetch.</param>
         public virtual GetRequest Get(long floodlightGroupId)
         {
-            return new GetRequest(service, floodlightGroupId);
+            return new GetRequest(this.service, floodlightGroupId);
         }
 
         /// <summary>Gets a Floodlight group.</summary>
@@ -15202,7 +15202,7 @@ namespace Google.Apis.DisplayVideo.v3
         /// </param>
         public virtual PatchRequest Patch(Google.Apis.DisplayVideo.v3.Data.FloodlightGroup body, long floodlightGroupId)
         {
-            return new PatchRequest(service, body, floodlightGroupId);
+            return new PatchRequest(this.service, body, floodlightGroupId);
         }
 
         /// <summary>Updates an existing Floodlight group. Returns the updated Floodlight group if successful.</summary>
@@ -15293,7 +15293,7 @@ namespace Google.Apis.DisplayVideo.v3
         /// <param name="googleAudienceId">Required. The ID of the Google audience to fetch.</param>
         public virtual GetRequest Get(long googleAudienceId)
         {
-            return new GetRequest(service, googleAudienceId);
+            return new GetRequest(this.service, googleAudienceId);
         }
 
         /// <summary>Gets a Google audience.</summary>
@@ -15361,7 +15361,7 @@ namespace Google.Apis.DisplayVideo.v3
         /// <summary>Lists Google audiences. The order is defined by the order_by parameter.</summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>Lists Google audiences. The order is defined by the order_by parameter.</summary>
@@ -15498,7 +15498,7 @@ namespace Google.Apis.DisplayVideo.v3
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.DisplayVideo.v3.Data.GuaranteedOrder body)
         {
-            return new CreateRequest(service, body);
+            return new CreateRequest(this.service, body);
         }
 
         /// <summary>Creates a new guaranteed order. Returns the newly created guaranteed order if successful.</summary>
@@ -15565,7 +15565,7 @@ namespace Google.Apis.DisplayVideo.v3
         /// </param>
         public virtual EditGuaranteedOrderReadAccessorsRequest EditGuaranteedOrderReadAccessors(Google.Apis.DisplayVideo.v3.Data.EditGuaranteedOrderReadAccessorsRequest body, string guaranteedOrderId)
         {
-            return new EditGuaranteedOrderReadAccessorsRequest(service, body, guaranteedOrderId);
+            return new EditGuaranteedOrderReadAccessorsRequest(this.service, body, guaranteedOrderId);
         }
 
         /// <summary>Edits read advertisers of a guaranteed order.</summary>
@@ -15623,7 +15623,7 @@ namespace Google.Apis.DisplayVideo.v3
         /// </param>
         public virtual GetRequest Get(string guaranteedOrderId)
         {
-            return new GetRequest(service, guaranteedOrderId);
+            return new GetRequest(this.service, guaranteedOrderId);
         }
 
         /// <summary>Gets a guaranteed order.</summary>
@@ -15698,7 +15698,7 @@ namespace Google.Apis.DisplayVideo.v3
         /// </summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>
@@ -15830,7 +15830,7 @@ namespace Google.Apis.DisplayVideo.v3
         /// </param>
         public virtual PatchRequest Patch(Google.Apis.DisplayVideo.v3.Data.GuaranteedOrder body, string guaranteedOrderId)
         {
-            return new PatchRequest(service, body, guaranteedOrderId);
+            return new PatchRequest(this.service, body, guaranteedOrderId);
         }
 
         /// <summary>Updates an existing guaranteed order. Returns the updated guaranteed order if successful.</summary>
@@ -15963,7 +15963,7 @@ namespace Google.Apis.DisplayVideo.v3
             /// </param>
             public virtual BulkEditRequest BulkEdit(Google.Apis.DisplayVideo.v3.Data.BulkEditAssignedInventorySourcesRequest body, long inventorySourceGroupId)
             {
-                return new BulkEditRequest(service, body, inventorySourceGroupId);
+                return new BulkEditRequest(this.service, body, inventorySourceGroupId);
             }
 
             /// <summary>
@@ -16026,7 +16026,7 @@ namespace Google.Apis.DisplayVideo.v3
             /// </param>
             public virtual CreateRequest Create(Google.Apis.DisplayVideo.v3.Data.AssignedInventorySource body, long inventorySourceGroupId)
             {
-                return new CreateRequest(service, body, inventorySourceGroupId);
+                return new CreateRequest(this.service, body, inventorySourceGroupId);
             }
 
             /// <summary>Creates an assignment between an inventory source and an inventory source group.</summary>
@@ -16115,7 +16115,7 @@ namespace Google.Apis.DisplayVideo.v3
             /// </param>
             public virtual DeleteRequest Delete(long inventorySourceGroupId, long assignedInventorySourceId)
             {
-                return new DeleteRequest(service, inventorySourceGroupId, assignedInventorySourceId);
+                return new DeleteRequest(this.service, inventorySourceGroupId, assignedInventorySourceId);
             }
 
             /// <summary>Deletes the assignment between an inventory source and an inventory source group.</summary>
@@ -16207,7 +16207,7 @@ namespace Google.Apis.DisplayVideo.v3
             /// </param>
             public virtual ListRequest List(long inventorySourceGroupId)
             {
-                return new ListRequest(service, inventorySourceGroupId);
+                return new ListRequest(this.service, inventorySourceGroupId);
             }
 
             /// <summary>Lists inventory sources assigned to an inventory source group.</summary>
@@ -16354,7 +16354,7 @@ namespace Google.Apis.DisplayVideo.v3
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.DisplayVideo.v3.Data.InventorySourceGroup body)
         {
-            return new CreateRequest(service, body);
+            return new CreateRequest(this.service, body);
         }
 
         /// <summary>
@@ -16426,7 +16426,7 @@ namespace Google.Apis.DisplayVideo.v3
         /// <param name="inventorySourceGroupId">Required. The ID of the inventory source group to delete.</param>
         public virtual DeleteRequest Delete(long inventorySourceGroupId)
         {
-            return new DeleteRequest(service, inventorySourceGroupId);
+            return new DeleteRequest(this.service, inventorySourceGroupId);
         }
 
         /// <summary>Deletes an inventory source group.</summary>
@@ -16501,7 +16501,7 @@ namespace Google.Apis.DisplayVideo.v3
         /// <param name="inventorySourceGroupId">Required. The ID of the inventory source group to fetch.</param>
         public virtual GetRequest Get(long inventorySourceGroupId)
         {
-            return new GetRequest(service, inventorySourceGroupId);
+            return new GetRequest(this.service, inventorySourceGroupId);
         }
 
         /// <summary>Gets an inventory source group.</summary>
@@ -16578,7 +16578,7 @@ namespace Google.Apis.DisplayVideo.v3
         /// </summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>
@@ -16713,7 +16713,7 @@ namespace Google.Apis.DisplayVideo.v3
         /// </param>
         public virtual PatchRequest Patch(Google.Apis.DisplayVideo.v3.Data.InventorySourceGroup body, long inventorySourceGroupId)
         {
-            return new PatchRequest(service, body, inventorySourceGroupId);
+            return new PatchRequest(this.service, body, inventorySourceGroupId);
         }
 
         /// <summary>
@@ -16824,7 +16824,7 @@ namespace Google.Apis.DisplayVideo.v3
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.DisplayVideo.v3.Data.InventorySource body)
         {
-            return new CreateRequest(service, body);
+            return new CreateRequest(this.service, body);
         }
 
         /// <summary>Creates a new inventory source. Returns the newly created inventory source if successful.</summary>
@@ -16891,7 +16891,7 @@ namespace Google.Apis.DisplayVideo.v3
         /// <param name="inventorySourceId">Required. The ID of inventory source to update.</param>
         public virtual EditInventorySourceReadWriteAccessorsRequest EditInventorySourceReadWriteAccessors(Google.Apis.DisplayVideo.v3.Data.EditInventorySourceReadWriteAccessorsRequest body, long inventorySourceId)
         {
-            return new EditInventorySourceReadWriteAccessorsRequest(service, body, inventorySourceId);
+            return new EditInventorySourceReadWriteAccessorsRequest(this.service, body, inventorySourceId);
         }
 
         /// <summary>
@@ -16946,7 +16946,7 @@ namespace Google.Apis.DisplayVideo.v3
         /// <param name="inventorySourceId">Required. The ID of the inventory source to fetch.</param>
         public virtual GetRequest Get(long inventorySourceId)
         {
-            return new GetRequest(service, inventorySourceId);
+            return new GetRequest(this.service, inventorySourceId);
         }
 
         /// <summary>Gets an inventory source.</summary>
@@ -17024,7 +17024,7 @@ namespace Google.Apis.DisplayVideo.v3
         /// </summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>
@@ -17155,7 +17155,7 @@ namespace Google.Apis.DisplayVideo.v3
         /// </param>
         public virtual PatchRequest Patch(Google.Apis.DisplayVideo.v3.Data.InventorySource body, long inventorySourceId)
         {
-            return new PatchRequest(service, body, inventorySourceId);
+            return new PatchRequest(this.service, body, inventorySourceId);
         }
 
         /// <summary>Updates an existing inventory source. Returns the updated inventory source if successful.</summary>
@@ -17263,7 +17263,7 @@ namespace Google.Apis.DisplayVideo.v3
         /// </param>
         public virtual DownloadRequest Download(string resourceName)
         {
-            return new DownloadRequest(service, resourceName);
+            return new DownloadRequest(this.service, resourceName);
         }
 
         /// <summary>
@@ -17403,7 +17403,7 @@ namespace Google.Apis.DisplayVideo.v3
         /// </param>
         public virtual UploadRequest Upload(Google.Apis.DisplayVideo.v3.Data.GoogleBytestreamMedia body, string resourceName)
         {
-            return new UploadRequest(service, body, resourceName);
+            return new UploadRequest(this.service, body, resourceName);
         }
 
         /// <summary>
@@ -17660,7 +17660,7 @@ namespace Google.Apis.DisplayVideo.v3
                 /// <param name="channelId">Required. The ID of the parent channel to which the sites belong.</param>
                 public virtual BulkEditRequest BulkEdit(Google.Apis.DisplayVideo.v3.Data.BulkEditSitesRequest body, long partnerId, long channelId)
                 {
-                    return new BulkEditRequest(service, body, partnerId, channelId);
+                    return new BulkEditRequest(this.service, body, partnerId, channelId);
                 }
 
                 /// <summary>
@@ -17733,7 +17733,7 @@ namespace Google.Apis.DisplayVideo.v3
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.DisplayVideo.v3.Data.Site body, long partnerId, long channelId)
                 {
-                    return new CreateRequest(service, body, partnerId, channelId);
+                    return new CreateRequest(this.service, body, partnerId, channelId);
                 }
 
                 /// <summary>Creates a site in a channel.</summary>
@@ -17812,7 +17812,7 @@ namespace Google.Apis.DisplayVideo.v3
                 /// <param name="urlOrAppId">Required. The URL or app ID of the site to delete.</param>
                 public virtual DeleteRequest Delete(long partnerId, long channelId, string urlOrAppId)
                 {
-                    return new DeleteRequest(service, partnerId, channelId, urlOrAppId);
+                    return new DeleteRequest(this.service, partnerId, channelId, urlOrAppId);
                 }
 
                 /// <summary>Deletes a site from a channel.</summary>
@@ -17898,7 +17898,7 @@ namespace Google.Apis.DisplayVideo.v3
                 /// </param>
                 public virtual ListRequest List(long partnerId, long channelId)
                 {
-                    return new ListRequest(service, partnerId, channelId);
+                    return new ListRequest(this.service, partnerId, channelId);
                 }
 
                 /// <summary>Lists sites in a channel.</summary>
@@ -18039,7 +18039,7 @@ namespace Google.Apis.DisplayVideo.v3
                 /// <param name="channelId">Required. The ID of the parent channel whose sites will be replaced.</param>
                 public virtual ReplaceRequest Replace(Google.Apis.DisplayVideo.v3.Data.ReplaceSitesRequest body, long partnerId, long channelId)
                 {
-                    return new ReplaceRequest(service, body, partnerId, channelId);
+                    return new ReplaceRequest(this.service, body, partnerId, channelId);
                 }
 
                 /// <summary>
@@ -18109,7 +18109,7 @@ namespace Google.Apis.DisplayVideo.v3
             /// <param name="partnerId">The ID of the partner that owns the created channel.</param>
             public virtual CreateRequest Create(Google.Apis.DisplayVideo.v3.Data.Channel body, long partnerId)
             {
-                return new CreateRequest(service, body, partnerId);
+                return new CreateRequest(this.service, body, partnerId);
             }
 
             /// <summary>Creates a new channel. Returns the newly created channel if successful.</summary>
@@ -18174,7 +18174,7 @@ namespace Google.Apis.DisplayVideo.v3
             /// <param name="channelId">Required. The ID of the channel to fetch.</param>
             public virtual GetRequest Get(long partnerId, long channelId)
             {
-                return new GetRequest(service, partnerId, channelId);
+                return new GetRequest(this.service, partnerId, channelId);
             }
 
             /// <summary>Gets a channel for a partner or advertiser.</summary>
@@ -18244,7 +18244,7 @@ namespace Google.Apis.DisplayVideo.v3
             /// <param name="partnerId">The ID of the partner that owns the channels.</param>
             public virtual ListRequest List(long partnerId)
             {
-                return new ListRequest(service, partnerId);
+                return new ListRequest(this.service, partnerId);
             }
 
             /// <summary>Lists channels for a partner or advertiser.</summary>
@@ -18369,7 +18369,7 @@ namespace Google.Apis.DisplayVideo.v3
             /// <param name="channelId">Output only. The unique ID of the channel. Assigned by the system.</param>
             public virtual PatchRequest Patch(Google.Apis.DisplayVideo.v3.Data.Channel body, long partnerId, long channelId)
             {
-                return new PatchRequest(service, body, partnerId, channelId);
+                return new PatchRequest(this.service, body, partnerId, channelId);
             }
 
             /// <summary>Updates a channel. Returns the updated channel if successful.</summary>
@@ -18501,7 +18501,7 @@ namespace Google.Apis.DisplayVideo.v3
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.DisplayVideo.v3.Data.AssignedTargetingOption body, long partnerId, CreateRequest.TargetingTypeEnum targetingType)
                 {
-                    return new CreateRequest(service, body, partnerId, targetingType);
+                    return new CreateRequest(this.service, body, partnerId, targetingType);
                 }
 
                 /// <summary>
@@ -18827,7 +18827,7 @@ namespace Google.Apis.DisplayVideo.v3
                 /// </param>
                 public virtual DeleteRequest Delete(long partnerId, DeleteRequest.TargetingTypeEnum targetingType, string assignedTargetingOptionId)
                 {
-                    return new DeleteRequest(service, partnerId, targetingType, assignedTargetingOptionId);
+                    return new DeleteRequest(this.service, partnerId, targetingType, assignedTargetingOptionId);
                 }
 
                 /// <summary>Deletes an assigned targeting option from a partner.</summary>
@@ -19158,7 +19158,7 @@ namespace Google.Apis.DisplayVideo.v3
                 /// </param>
                 public virtual GetRequest Get(long partnerId, GetRequest.TargetingTypeEnum targetingType, string assignedTargetingOptionId)
                 {
-                    return new GetRequest(service, partnerId, targetingType, assignedTargetingOptionId);
+                    return new GetRequest(this.service, partnerId, targetingType, assignedTargetingOptionId);
                 }
 
                 /// <summary>Gets a single targeting option assigned to a partner.</summary>
@@ -19488,7 +19488,7 @@ namespace Google.Apis.DisplayVideo.v3
                 /// </param>
                 public virtual ListRequest List(long partnerId, ListRequest.TargetingTypeEnum targetingType)
                 {
-                    return new ListRequest(service, partnerId, targetingType);
+                    return new ListRequest(this.service, partnerId, targetingType);
                 }
 
                 /// <summary>Lists the targeting options assigned to a partner.</summary>
@@ -19872,7 +19872,7 @@ namespace Google.Apis.DisplayVideo.v3
         /// <param name="partnerId">Required. The ID of the partner.</param>
         public virtual EditAssignedTargetingOptionsRequest EditAssignedTargetingOptions(Google.Apis.DisplayVideo.v3.Data.BulkEditPartnerAssignedTargetingOptionsRequest body, long partnerId)
         {
-            return new EditAssignedTargetingOptionsRequest(service, body, partnerId);
+            return new EditAssignedTargetingOptionsRequest(this.service, body, partnerId);
         }
 
         /// <summary>
@@ -19928,7 +19928,7 @@ namespace Google.Apis.DisplayVideo.v3
         /// <param name="partnerId">Required. The ID of the partner to fetch.</param>
         public virtual GetRequest Get(long partnerId)
         {
-            return new GetRequest(service, partnerId);
+            return new GetRequest(this.service, partnerId);
         }
 
         /// <summary>Gets a partner.</summary>
@@ -19974,7 +19974,7 @@ namespace Google.Apis.DisplayVideo.v3
         /// </summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>
@@ -20110,7 +20110,7 @@ namespace Google.Apis.DisplayVideo.v3
             /// <param name="name">The name of the operation resource.</param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>
@@ -20166,7 +20166,7 @@ namespace Google.Apis.DisplayVideo.v3
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.DisplayVideo.v3.Data.CreateSdfDownloadTaskRequest body)
         {
-            return new CreateRequest(service, body);
+            return new CreateRequest(this.service, body);
         }
 
         /// <summary>
@@ -20259,7 +20259,7 @@ namespace Google.Apis.DisplayVideo.v3
             /// <param name="targetingOptionId">Required. The ID of the of targeting option to retrieve.</param>
             public virtual GetRequest Get(GetRequest.TargetingTypeEnum targetingType, string targetingOptionId)
             {
-                return new GetRequest(service, targetingType, targetingOptionId);
+                return new GetRequest(this.service, targetingType, targetingOptionId);
             }
 
             /// <summary>Gets a single targeting option.</summary>
@@ -20604,7 +20604,7 @@ namespace Google.Apis.DisplayVideo.v3
             /// </param>
             public virtual ListRequest List(ListRequest.TargetingTypeEnum targetingType)
             {
-                return new ListRequest(service, targetingType);
+                return new ListRequest(this.service, targetingType);
             }
 
             /// <summary>Lists targeting options of a given type.</summary>
@@ -20999,7 +20999,7 @@ namespace Google.Apis.DisplayVideo.v3
             /// </param>
             public virtual SearchRequest Search(Google.Apis.DisplayVideo.v3.Data.SearchTargetingOptionsRequest body, SearchRequest.TargetingTypeEnum targetingType)
             {
-                return new SearchRequest(service, body, targetingType);
+                return new SearchRequest(this.service, body, targetingType);
             }
 
             /// <summary>Searches for targeting options of a given type based on the given search terms.</summary>
@@ -21317,7 +21317,7 @@ namespace Google.Apis.DisplayVideo.v3
         /// <param name="userId">Required. The ID of the user to which the assigned user roles belong.</param>
         public virtual BulkEditAssignedUserRolesRequest BulkEditAssignedUserRoles(Google.Apis.DisplayVideo.v3.Data.BulkEditAssignedUserRolesRequest body, long userId)
         {
-            return new BulkEditAssignedUserRolesRequest(service, body, userId);
+            return new BulkEditAssignedUserRolesRequest(this.service, body, userId);
         }
 
         /// <summary>
@@ -21381,7 +21381,7 @@ namespace Google.Apis.DisplayVideo.v3
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.DisplayVideo.v3.Data.User body)
         {
-            return new CreateRequest(service, body);
+            return new CreateRequest(this.service, body);
         }
 
         /// <summary>
@@ -21429,7 +21429,7 @@ namespace Google.Apis.DisplayVideo.v3
         /// <param name="userId">Required. The ID of the user to delete.</param>
         public virtual DeleteRequest Delete(long userId)
         {
-            return new DeleteRequest(service, userId);
+            return new DeleteRequest(this.service, userId);
         }
 
         /// <summary>
@@ -21482,7 +21482,7 @@ namespace Google.Apis.DisplayVideo.v3
         /// <param name="userId">Required. The ID of the user to fetch.</param>
         public virtual GetRequest Get(long userId)
         {
-            return new GetRequest(service, userId);
+            return new GetRequest(this.service, userId);
         }
 
         /// <summary>
@@ -21535,7 +21535,7 @@ namespace Google.Apis.DisplayVideo.v3
         /// </summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>
@@ -21654,7 +21654,7 @@ namespace Google.Apis.DisplayVideo.v3
         /// <param name="userId">Output only. The unique ID of the user. Assigned by the system.</param>
         public virtual PatchRequest Patch(Google.Apis.DisplayVideo.v3.Data.User body, long userId)
         {
-            return new PatchRequest(service, body, userId);
+            return new PatchRequest(this.service, body, userId);
         }
 
         /// <summary>
@@ -22052,8 +22052,8 @@ namespace Google.Apis.DisplayVideo.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -23939,8 +23939,8 @@ namespace Google.Apis.DisplayVideo.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -24349,6 +24349,21 @@ namespace Google.Apis.DisplayVideo.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>User consent status.</summary>
+    public class Consent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Represents consent for ad personalization.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adPersonalization")]
+        public virtual string AdPersonalization { get; set; }
+
+        /// <summary>Represents consent for ad user data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adUserData")]
+        public virtual string AdUserData { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Contact information defining a Customer Match audience member.</summary>
     public class ContactInfo : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -24401,6 +24416,10 @@ namespace Google.Apis.DisplayVideo.v3.Data
     /// <summary>Wrapper message for a list of contact information defining Customer Match audience members.</summary>
     public class ContactInfoList : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Input only. User consent status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consent")]
+        public virtual Consent Consent { get; set; }
+
         /// <summary>
         /// A list of ContactInfo objects defining Customer Match audience members. The size of members after splitting
         /// the contact_infos mustn't be greater than 500,000.
@@ -24809,8 +24828,8 @@ namespace Google.Apis.DisplayVideo.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. A list of attributes of the creative that is generated by the system.</summary>
@@ -25105,8 +25124,8 @@ namespace Google.Apis.DisplayVideo.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -25260,8 +25279,8 @@ namespace Google.Apis.DisplayVideo.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -25387,8 +25406,8 @@ namespace Google.Apis.DisplayVideo.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. The unique ID of the custom bidding algorithm the script belongs to.</summary>
@@ -26738,8 +26757,8 @@ namespace Google.Apis.DisplayVideo.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -27001,8 +27020,8 @@ namespace Google.Apis.DisplayVideo.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -27294,8 +27313,8 @@ namespace Google.Apis.DisplayVideo.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -27847,8 +27866,8 @@ namespace Google.Apis.DisplayVideo.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -28731,6 +28750,10 @@ namespace Google.Apis.DisplayVideo.v3.Data
     /// <summary>Wrapper message for a list of mobile device IDs defining Customer Match audience members.</summary>
     public class MobileDeviceIdList : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Input only. User consent status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consent")]
+        public virtual Consent Consent { get; set; }
+
         /// <summary>
         /// A list of mobile device IDs defining Customer Match audience members. The size of mobile_device_ids mustn't
         /// be greater than 500,000.
@@ -29246,8 +29269,8 @@ namespace Google.Apis.DisplayVideo.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -29889,8 +29912,8 @@ namespace Google.Apis.DisplayVideo.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _endTimeRaw;
@@ -29926,8 +29949,8 @@ namespace Google.Apis.DisplayVideo.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The SDF version used to execute this download task.</summary>
@@ -30475,8 +30498,8 @@ namespace Google.Apis.DisplayVideo.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _startTimeRaw;
@@ -30512,8 +30535,8 @@ namespace Google.Apis.DisplayVideo.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>

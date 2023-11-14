@@ -310,7 +310,7 @@ namespace Google.Apis.Translate.v2
         /// <param name="body">The body of the request.</param>
         public virtual DetectRequest Detect(Google.Apis.Translate.v2.Data.DetectLanguageRequest body)
         {
-            return new DetectRequest(service, body);
+            return new DetectRequest(this.service, body);
         }
 
         /// <summary>Detects the language of text within a request.</summary>
@@ -352,7 +352,7 @@ namespace Google.Apis.Translate.v2
         /// </param>
         public virtual ListRequest List(Google.Apis.Util.Repeatable<string> q)
         {
-            return new ListRequest(service, q);
+            return new ListRequest(this.service, q);
         }
 
         /// <summary>Detects the language of text within a request.</summary>
@@ -414,7 +414,7 @@ namespace Google.Apis.Translate.v2
         /// <summary>Returns a list of supported languages for translation.</summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>Returns a list of supported languages for translation.</summary>
@@ -492,7 +492,7 @@ namespace Google.Apis.Translate.v2
         /// </param>
         public virtual ListRequest List(Google.Apis.Util.Repeatable<string> q, string target)
         {
-            return new ListRequest(service, q, target);
+            return new ListRequest(this.service, q, target);
         }
 
         /// <summary>Translates input text, returning translated text.</summary>
@@ -628,7 +628,7 @@ namespace Google.Apis.Translate.v2
         /// <param name="body">The body of the request.</param>
         public virtual TranslateRequest Translate(Google.Apis.Translate.v2.Data.TranslateTextRequest body)
         {
-            return new TranslateRequest(service, body);
+            return new TranslateRequest(this.service, body);
         }
 
         /// <summary>Translates input text, returning translated text.</summary>

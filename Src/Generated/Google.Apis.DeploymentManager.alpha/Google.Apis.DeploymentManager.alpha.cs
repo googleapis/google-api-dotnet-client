@@ -333,7 +333,7 @@ namespace Google.Apis.DeploymentManager.alpha
         /// <param name="compositeType">The name of the type for this request.</param>
         public virtual DeleteRequest Delete(string project, string compositeType)
         {
-            return new DeleteRequest(service, project, compositeType);
+            return new DeleteRequest(this.service, project, compositeType);
         }
 
         /// <summary>Deletes a composite type.</summary>
@@ -392,7 +392,7 @@ namespace Google.Apis.DeploymentManager.alpha
         /// <param name="compositeType">The name of the composite type for this request.</param>
         public virtual GetRequest Get(string project, string compositeType)
         {
-            return new GetRequest(service, project, compositeType);
+            return new GetRequest(this.service, project, compositeType);
         }
 
         /// <summary>Gets information about a specific composite type.</summary>
@@ -451,7 +451,7 @@ namespace Google.Apis.DeploymentManager.alpha
         /// <param name="project">The project ID for this request.</param>
         public virtual InsertRequest Insert(Google.Apis.DeploymentManager.alpha.Data.CompositeType body, string project)
         {
-            return new InsertRequest(service, body, project);
+            return new InsertRequest(this.service, body, project);
         }
 
         /// <summary>Creates a composite type.</summary>
@@ -503,7 +503,7 @@ namespace Google.Apis.DeploymentManager.alpha
         /// <param name="project">The project ID for this request.</param>
         public virtual ListRequest List(string project)
         {
-            return new ListRequest(service, project);
+            return new ListRequest(this.service, project);
         }
 
         /// <summary>Lists all composite types for Deployment Manager.</summary>
@@ -646,7 +646,7 @@ namespace Google.Apis.DeploymentManager.alpha
         /// <param name="compositeType">The name of the composite type for this request.</param>
         public virtual PatchRequest Patch(Google.Apis.DeploymentManager.alpha.Data.CompositeType body, string project, string compositeType)
         {
-            return new PatchRequest(service, body, project, compositeType);
+            return new PatchRequest(this.service, body, project, compositeType);
         }
 
         /// <summary>Patches a composite type.</summary>
@@ -713,7 +713,7 @@ namespace Google.Apis.DeploymentManager.alpha
         /// <param name="compositeType">The name of the composite type for this request.</param>
         public virtual UpdateRequest Update(Google.Apis.DeploymentManager.alpha.Data.CompositeType body, string project, string compositeType)
         {
-            return new UpdateRequest(service, body, project, compositeType);
+            return new UpdateRequest(this.service, body, project, compositeType);
         }
 
         /// <summary>Updates a composite type.</summary>
@@ -795,7 +795,7 @@ namespace Google.Apis.DeploymentManager.alpha
         /// <param name="deployment">The name of the deployment for this request.</param>
         public virtual CancelPreviewRequest CancelPreview(Google.Apis.DeploymentManager.alpha.Data.DeploymentsCancelPreviewRequest body, string project, string deployment)
         {
-            return new CancelPreviewRequest(service, body, project, deployment);
+            return new CancelPreviewRequest(this.service, body, project, deployment);
         }
 
         /// <summary>Cancels and removes the preview currently associated with the deployment.</summary>
@@ -861,7 +861,7 @@ namespace Google.Apis.DeploymentManager.alpha
         /// <param name="deployment">The name of the deployment for this request.</param>
         public virtual DeleteRequest Delete(string project, string deployment)
         {
-            return new DeleteRequest(service, project, deployment);
+            return new DeleteRequest(this.service, project, deployment);
         }
 
         /// <summary>Deletes a deployment and all of the resources in the deployment.</summary>
@@ -944,7 +944,7 @@ namespace Google.Apis.DeploymentManager.alpha
         /// <param name="deployment">The name of the deployment for this request.</param>
         public virtual GetRequest Get(string project, string deployment)
         {
-            return new GetRequest(service, project, deployment);
+            return new GetRequest(this.service, project, deployment);
         }
 
         /// <summary>Gets information about a specific deployment.</summary>
@@ -1005,7 +1005,7 @@ namespace Google.Apis.DeploymentManager.alpha
         /// <param name="resource">Name or id of the resource for this request.</param>
         public virtual GetIamPolicyRequest GetIamPolicy(string project, string resource)
         {
-            return new GetIamPolicyRequest(service, project, resource);
+            return new GetIamPolicyRequest(this.service, project, resource);
         }
 
         /// <summary>
@@ -1078,7 +1078,7 @@ namespace Google.Apis.DeploymentManager.alpha
         /// <param name="project">The project ID for this request.</param>
         public virtual InsertRequest Insert(Google.Apis.DeploymentManager.alpha.Data.Deployment body, string project)
         {
-            return new InsertRequest(service, body, project);
+            return new InsertRequest(this.service, body, project);
         }
 
         /// <summary>Creates a deployment and all of the resources described by the deployment manifest.</summary>
@@ -1176,7 +1176,7 @@ namespace Google.Apis.DeploymentManager.alpha
         /// <param name="project">The project ID for this request.</param>
         public virtual ListRequest List(string project)
         {
-            return new ListRequest(service, project);
+            return new ListRequest(this.service, project);
         }
 
         /// <summary>Lists all deployments for a given project.</summary>
@@ -1319,7 +1319,7 @@ namespace Google.Apis.DeploymentManager.alpha
         /// <param name="deployment">The name of the deployment for this request.</param>
         public virtual PatchRequest Patch(Google.Apis.DeploymentManager.alpha.Data.Deployment body, string project, string deployment)
         {
-            return new PatchRequest(service, body, project, deployment);
+            return new PatchRequest(this.service, body, project, deployment);
         }
 
         /// <summary>Patches a deployment and all of the resources described by the deployment manifest.</summary>
@@ -1458,7 +1458,7 @@ namespace Google.Apis.DeploymentManager.alpha
         /// <param name="resource">Name or id of the resource for this request.</param>
         public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.DeploymentManager.alpha.Data.GlobalSetPolicyRequest body, string project, string resource)
         {
-            return new SetIamPolicyRequest(service, body, project, resource);
+            return new SetIamPolicyRequest(this.service, body, project, resource);
         }
 
         /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
@@ -1528,7 +1528,7 @@ namespace Google.Apis.DeploymentManager.alpha
         /// <param name="deployment">The name of the deployment for this request.</param>
         public virtual StopRequest Stop(Google.Apis.DeploymentManager.alpha.Data.DeploymentsStopRequest body, string project, string deployment)
         {
-            return new StopRequest(service, body, project, deployment);
+            return new StopRequest(this.service, body, project, deployment);
         }
 
         /// <summary>
@@ -1598,7 +1598,7 @@ namespace Google.Apis.DeploymentManager.alpha
         /// <param name="resource">Name or id of the resource for this request.</param>
         public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.DeploymentManager.alpha.Data.TestPermissionsRequest body, string project, string resource)
         {
-            return new TestIamPermissionsRequest(service, body, project, resource);
+            return new TestIamPermissionsRequest(this.service, body, project, resource);
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -1665,7 +1665,7 @@ namespace Google.Apis.DeploymentManager.alpha
         /// <param name="deployment">The name of the deployment for this request.</param>
         public virtual UpdateRequest Update(Google.Apis.DeploymentManager.alpha.Data.Deployment body, string project, string deployment)
         {
-            return new UpdateRequest(service, body, project, deployment);
+            return new UpdateRequest(this.service, body, project, deployment);
         }
 
         /// <summary>Updates a deployment and all of the resources described by the deployment manifest.</summary>
@@ -1819,7 +1819,7 @@ namespace Google.Apis.DeploymentManager.alpha
         /// <param name="manifest">The name of the manifest for this request.</param>
         public virtual GetRequest Get(string project, string deployment, string manifest)
         {
-            return new GetRequest(service, project, deployment, manifest);
+            return new GetRequest(this.service, project, deployment, manifest);
         }
 
         /// <summary>Gets information about a specific manifest.</summary>
@@ -1891,7 +1891,7 @@ namespace Google.Apis.DeploymentManager.alpha
         /// <param name="deployment">The name of the deployment for this request.</param>
         public virtual ListRequest List(string project, string deployment)
         {
-            return new ListRequest(service, project, deployment);
+            return new ListRequest(this.service, project, deployment);
         }
 
         /// <summary>Lists all manifests for a given deployment.</summary>
@@ -2061,7 +2061,7 @@ namespace Google.Apis.DeploymentManager.alpha
         /// <param name="operation">The name of the operation for this request.</param>
         public virtual GetRequest Get(string project, string operation)
         {
-            return new GetRequest(service, project, operation);
+            return new GetRequest(this.service, project, operation);
         }
 
         /// <summary>Gets information about a specific operation.</summary>
@@ -2119,7 +2119,7 @@ namespace Google.Apis.DeploymentManager.alpha
         /// <param name="project">The project ID for this request.</param>
         public virtual ListRequest List(string project)
         {
-            return new ListRequest(service, project);
+            return new ListRequest(this.service, project);
         }
 
         /// <summary>Lists all operations for a project.</summary>
@@ -2277,7 +2277,7 @@ namespace Google.Apis.DeploymentManager.alpha
         /// <param name="resource">The name of the resource for this request.</param>
         public virtual GetRequest Get(string project, string deployment, string resource)
         {
-            return new GetRequest(service, project, deployment, resource);
+            return new GetRequest(this.service, project, deployment, resource);
         }
 
         /// <summary>Gets information about a single resource.</summary>
@@ -2349,7 +2349,7 @@ namespace Google.Apis.DeploymentManager.alpha
         /// <param name="deployment">The name of the deployment for this request.</param>
         public virtual ListRequest List(string project, string deployment)
         {
-            return new ListRequest(service, project, deployment);
+            return new ListRequest(this.service, project, deployment);
         }
 
         /// <summary>Lists all resources in a given deployment.</summary>
@@ -2519,7 +2519,7 @@ namespace Google.Apis.DeploymentManager.alpha
         /// <param name="typeProvider">The name of the type provider for this request.</param>
         public virtual DeleteRequest Delete(string project, string typeProvider)
         {
-            return new DeleteRequest(service, project, typeProvider);
+            return new DeleteRequest(this.service, project, typeProvider);
         }
 
         /// <summary>Deletes a type provider.</summary>
@@ -2578,7 +2578,7 @@ namespace Google.Apis.DeploymentManager.alpha
         /// <param name="typeProvider">The name of the type provider for this request.</param>
         public virtual GetRequest Get(string project, string typeProvider)
         {
-            return new GetRequest(service, project, typeProvider);
+            return new GetRequest(this.service, project, typeProvider);
         }
 
         /// <summary>Gets information about a specific type provider.</summary>
@@ -2638,7 +2638,7 @@ namespace Google.Apis.DeploymentManager.alpha
         /// <param name="type">The name of the type provider type for this request.</param>
         public virtual GetTypeRequest GetType(string project, string typeProvider, string type)
         {
-            return new GetTypeRequest(service, project, typeProvider, type);
+            return new GetTypeRequest(this.service, project, typeProvider, type);
         }
 
         /// <summary>Gets a type info for a type provided by a TypeProvider.</summary>
@@ -2710,7 +2710,7 @@ namespace Google.Apis.DeploymentManager.alpha
         /// <param name="project">The project ID for this request.</param>
         public virtual InsertRequest Insert(Google.Apis.DeploymentManager.alpha.Data.TypeProvider body, string project)
         {
-            return new InsertRequest(service, body, project);
+            return new InsertRequest(this.service, body, project);
         }
 
         /// <summary>Creates a type provider.</summary>
@@ -2762,7 +2762,7 @@ namespace Google.Apis.DeploymentManager.alpha
         /// <param name="project">The project ID for this request.</param>
         public virtual ListRequest List(string project)
         {
-            return new ListRequest(service, project);
+            return new ListRequest(this.service, project);
         }
 
         /// <summary>Lists all resource type providers for Deployment Manager.</summary>
@@ -2904,7 +2904,7 @@ namespace Google.Apis.DeploymentManager.alpha
         /// <param name="typeProvider">The name of the type provider for this request.</param>
         public virtual ListTypesRequest ListTypes(string project, string typeProvider)
         {
-            return new ListTypesRequest(service, project, typeProvider);
+            return new ListTypesRequest(this.service, project, typeProvider);
         }
 
         /// <summary>Lists all the type info for a TypeProvider.</summary>
@@ -3060,7 +3060,7 @@ namespace Google.Apis.DeploymentManager.alpha
         /// <param name="typeProvider">The name of the type provider for this request.</param>
         public virtual PatchRequest Patch(Google.Apis.DeploymentManager.alpha.Data.TypeProvider body, string project, string typeProvider)
         {
-            return new PatchRequest(service, body, project, typeProvider);
+            return new PatchRequest(this.service, body, project, typeProvider);
         }
 
         /// <summary>Patches a type provider.</summary>
@@ -3127,7 +3127,7 @@ namespace Google.Apis.DeploymentManager.alpha
         /// <param name="typeProvider">The name of the type provider for this request.</param>
         public virtual UpdateRequest Update(Google.Apis.DeploymentManager.alpha.Data.TypeProvider body, string project, string typeProvider)
         {
-            return new UpdateRequest(service, body, project, typeProvider);
+            return new UpdateRequest(this.service, body, project, typeProvider);
         }
 
         /// <summary>Updates a type provider.</summary>
@@ -3208,7 +3208,7 @@ namespace Google.Apis.DeploymentManager.alpha
         /// <param name="type">The name of the type for this request.</param>
         public virtual GetRequest Get(string project, string type)
         {
-            return new GetRequest(service, project, type);
+            return new GetRequest(this.service, project, type);
         }
 
         /// <summary>Gets information about a specific type.</summary>
@@ -3266,7 +3266,7 @@ namespace Google.Apis.DeploymentManager.alpha
         /// <param name="project">The project ID for this request.</param>
         public virtual ListRequest List(string project)
         {
-            return new ListRequest(service, project);
+            return new ListRequest(this.service, project);
         }
 
         /// <summary>Lists all resource types for Deployment Manager.</summary>

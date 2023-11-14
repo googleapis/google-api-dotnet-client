@@ -309,7 +309,7 @@ namespace Google.Apis.CloudTrace.v1
             /// <param name="traceId">Required. ID of the trace to return.</param>
             public virtual GetRequest Get(string projectId, string traceId)
             {
-                return new GetRequest(service, projectId, traceId);
+                return new GetRequest(this.service, projectId, traceId);
             }
 
             /// <summary>Gets a single trace by its ID.</summary>
@@ -367,7 +367,7 @@ namespace Google.Apis.CloudTrace.v1
             /// <param name="projectId">Required. ID of the Cloud project where the trace data is stored.</param>
             public virtual ListRequest List(string projectId)
             {
-                return new ListRequest(service, projectId);
+                return new ListRequest(this.service, projectId);
             }
 
             /// <summary>Returns a list of traces that match the specified filter conditions.</summary>
@@ -384,11 +384,36 @@ namespace Google.Apis.CloudTrace.v1
                 [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectId { get; private set; }
 
+                private object _endTime;
+
                 /// <summary>
-                /// End of the time interval (inclusive) during which the trace data was collected from the application.
+                /// String representation of <see cref="EndTimeDateTimeOffset"/>, formatted for inclusion in the HTTP
+                /// request.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("endTime", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual object EndTime { get; set; }
+                public virtual string EndTimeRaw { get; private set; }
+
+                /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+                [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+                public virtual object EndTime
+                {
+                    get => _endTime;
+                    set
+                    {
+                        EndTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                        _endTime = value;
+                    }
+                }
+
+                public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+                {
+                    get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+                    set
+                    {
+                        EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                        _endTime = value;
+                    }
+                }
 
                 /// <summary>
                 /// Optional. A filter against labels for the request. By default, searches use prefix matching. To
@@ -435,12 +460,36 @@ namespace Google.Apis.CloudTrace.v1
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
+                private object _startTime;
+
                 /// <summary>
-                /// Start of the time interval (inclusive) during which the trace data was collected from the
-                /// application.
+                /// String representation of <see cref="StartTimeDateTimeOffset"/>, formatted for inclusion in the HTTP
+                /// request.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual object StartTime { get; set; }
+                public virtual string StartTimeRaw { get; private set; }
+
+                /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+                [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+                public virtual object StartTime
+                {
+                    get => _startTime;
+                    set
+                    {
+                        StartTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                        _startTime = value;
+                    }
+                }
+
+                public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+                {
+                    get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+                    set
+                    {
+                        StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                        _startTime = value;
+                    }
+                }
 
                 /// <summary>Optional. Type of data returned for traces in the list. Default is `MINIMAL`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
@@ -565,7 +614,7 @@ namespace Google.Apis.CloudTrace.v1
         /// <param name="projectId">Required. ID of the Cloud project where the trace data is stored.</param>
         public virtual PatchTracesRequest PatchTraces(Google.Apis.CloudTrace.v1.Data.Traces body, string projectId)
         {
-            return new PatchTracesRequest(service, body, projectId);
+            return new PatchTracesRequest(this.service, body, projectId);
         }
 
         /// <summary>
@@ -715,8 +764,8 @@ namespace Google.Apis.CloudTrace.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -793,8 +842,8 @@ namespace Google.Apis.CloudTrace.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>

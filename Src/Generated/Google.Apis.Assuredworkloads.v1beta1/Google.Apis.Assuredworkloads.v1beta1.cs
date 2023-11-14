@@ -318,7 +318,7 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                 /// <param name="name">The name of the operation resource.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -369,7 +369,7 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                 /// <param name="name">The name of the operation's parent resource.</param>
                 public virtual ListRequest List(string name)
                 {
-                    return new ListRequest(service, name);
+                    return new ListRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -497,7 +497,7 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                     /// </param>
                     public virtual AcknowledgeRequest Acknowledge(Google.Apis.Assuredworkloads.v1beta1.Data.GoogleCloudAssuredworkloadsV1beta1AcknowledgeViolationRequest body, string name)
                     {
-                        return new AcknowledgeRequest(service, body, name);
+                        return new AcknowledgeRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -559,7 +559,7 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Retrieves Assured Workload Violation based on ID.</summary>
@@ -615,7 +615,7 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>
@@ -644,13 +644,71 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
 
-                        /// <summary>The end of the time window.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("interval.endTime", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual object IntervalEndTime { get; set; }
+                        private object _intervalEndTime;
 
-                        /// <summary>The start of the time window.</summary>
+                        /// <summary>
+                        /// String representation of <see cref="IntervalEndTimeDateTimeOffset"/>, formatted for
+                        /// inclusion in the HTTP request.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("interval.endTime", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string IntervalEndTimeRaw { get; private set; }
+
+                        /// <summary>
+                        /// <seealso cref="object"/> representation of <see cref="IntervalEndTimeRaw"/>.
+                        /// </summary>
+                        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use IntervalEndTimeDateTimeOffset instead.")]
+                        public virtual object IntervalEndTime
+                        {
+                            get => _intervalEndTime;
+                            set
+                            {
+                                IntervalEndTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                                _intervalEndTime = value;
+                            }
+                        }
+
+                        public virtual System.DateTimeOffset? IntervalEndTimeDateTimeOffset
+                        {
+                            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(IntervalEndTimeRaw);
+                            set
+                            {
+                                IntervalEndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                                _intervalEndTime = value;
+                            }
+                        }
+
+                        private object _intervalStartTime;
+
+                        /// <summary>
+                        /// String representation of <see cref="IntervalStartTimeDateTimeOffset"/>, formatted for
+                        /// inclusion in the HTTP request.
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("interval.startTime", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual object IntervalStartTime { get; set; }
+                        public virtual string IntervalStartTimeRaw { get; private set; }
+
+                        /// <summary>
+                        /// <seealso cref="object"/> representation of <see cref="IntervalStartTimeRaw"/>.
+                        /// </summary>
+                        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use IntervalStartTimeDateTimeOffset instead.")]
+                        public virtual object IntervalStartTime
+                        {
+                            get => _intervalStartTime;
+                            set
+                            {
+                                IntervalStartTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                                _intervalStartTime = value;
+                            }
+                        }
+
+                        public virtual System.DateTimeOffset? IntervalStartTimeDateTimeOffset
+                        {
+                            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(IntervalStartTimeRaw);
+                            set
+                            {
+                                IntervalStartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                                _intervalStartTime = value;
+                            }
+                        }
 
                         /// <summary>Optional. Page size.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
@@ -737,7 +795,7 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                 /// </param>
                 public virtual AnalyzeWorkloadMoveRequest AnalyzeWorkloadMove(string target)
                 {
-                    return new AnalyzeWorkloadMoveRequest(service, target);
+                    return new AnalyzeWorkloadMoveRequest(this.service, target);
                 }
 
                 /// <summary>
@@ -856,7 +914,7 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Assuredworkloads.v1beta1.Data.GoogleCloudAssuredworkloadsV1beta1Workload body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates Assured Workload.</summary>
@@ -935,7 +993,7 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -1005,7 +1063,7 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                 /// </param>
                 public virtual EnableResourceMonitoringRequest EnableResourceMonitoring(string name)
                 {
-                    return new EnableResourceMonitoringRequest(service, name);
+                    return new EnableResourceMonitoringRequest(this.service, name);
                 }
 
                 /// <summary>Enable resource violation monitoring for a workload.</summary>
@@ -1057,7 +1115,7 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets Assured Workload associated with a CRM Node</summary>
@@ -1110,7 +1168,7 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists Assured Workloads under a CRM Node.</summary>
@@ -1208,7 +1266,7 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.Assuredworkloads.v1beta1.Data.GoogleCloudAssuredworkloadsV1beta1Workload body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -1289,7 +1347,7 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                 /// </param>
                 public virtual RestrictAllowedResourcesRequest RestrictAllowedResources(Google.Apis.Assuredworkloads.v1beta1.Data.GoogleCloudAssuredworkloadsV1beta1RestrictAllowedResourcesRequest body, string name)
                 {
-                    return new RestrictAllowedResourcesRequest(service, body, name);
+                    return new RestrictAllowedResourcesRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -1464,8 +1522,8 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Optional. The display name of the workload.</summary>
@@ -1637,8 +1695,8 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? AcknowledgementTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(AcknowledgementTimeRaw);
-            set => AcknowledgementTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(AcknowledgementTimeRaw);
+            set => AcknowledgementTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -1688,8 +1746,8 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? BeginTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(BeginTimeRaw);
-            set => BeginTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(BeginTimeRaw);
+            set => BeginTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -1784,8 +1842,8 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ResolveTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ResolveTimeRaw);
-            set => ResolveTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ResolveTimeRaw);
+            set => ResolveTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -1839,8 +1897,8 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. Type of the violation</summary>
@@ -1889,8 +1947,8 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? AcknowledgementTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(AcknowledgementTimeRaw);
-            set => AcknowledgementTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(AcknowledgementTimeRaw);
+            set => AcknowledgementTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Business justification provided towards the acknowledgement of the violation.</summary>
@@ -2045,8 +2103,8 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -2292,8 +2350,8 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? NextRotationTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(NextRotationTimeRaw);
-            set => NextRotationTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(NextRotationTimeRaw);
+            set => NextRotationTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>

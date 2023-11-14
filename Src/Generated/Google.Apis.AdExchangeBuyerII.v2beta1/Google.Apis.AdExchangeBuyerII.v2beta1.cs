@@ -324,7 +324,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.AdExchangeBuyerII.v2beta1.Data.ClientUserInvitation body, long accountId, long clientAccountId)
                 {
-                    return new CreateRequest(service, body, accountId, clientAccountId);
+                    return new CreateRequest(this.service, body, accountId, clientAccountId);
                 }
 
                 /// <summary>
@@ -400,7 +400,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 /// </param>
                 public virtual GetRequest Get(long accountId, long clientAccountId, long invitationId)
                 {
-                    return new GetRequest(service, accountId, clientAccountId, invitationId);
+                    return new GetRequest(this.service, accountId, clientAccountId, invitationId);
                 }
 
                 /// <summary>Retrieves an existing client user invitation.</summary>
@@ -479,7 +479,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 /// </param>
                 public virtual ListRequest List(long accountId, string clientAccountId)
                 {
-                    return new ListRequest(service, accountId, clientAccountId);
+                    return new ListRequest(this.service, accountId, clientAccountId);
                 }
 
                 /// <summary>Lists all the client users invitations for a client with a given account ID.</summary>
@@ -595,7 +595,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 /// <param name="userId">Numerical identifier of the user to retrieve. (required)</param>
                 public virtual GetRequest Get(long accountId, long clientAccountId, long userId)
                 {
-                    return new GetRequest(service, accountId, clientAccountId, userId);
+                    return new GetRequest(this.service, accountId, clientAccountId, userId);
                 }
 
                 /// <summary>Retrieves an existing client user.</summary>
@@ -676,7 +676,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 /// </param>
                 public virtual ListRequest List(long accountId, string clientAccountId)
                 {
-                    return new ListRequest(service, accountId, clientAccountId);
+                    return new ListRequest(this.service, accountId, clientAccountId);
                 }
 
                 /// <summary>Lists all the known client users for a specified sponsor buyer account ID.</summary>
@@ -777,7 +777,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 /// <param name="userId">Numerical identifier of the user to retrieve. (required)</param>
                 public virtual UpdateRequest Update(Google.Apis.AdExchangeBuyerII.v2beta1.Data.ClientUser body, long accountId, long clientAccountId, long userId)
                 {
-                    return new UpdateRequest(service, body, accountId, clientAccountId, userId);
+                    return new UpdateRequest(this.service, body, accountId, clientAccountId, userId);
                 }
 
                 /// <summary>Updates an existing client user. Only the user status can be changed on update.</summary>
@@ -863,7 +863,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
             /// </param>
             public virtual CreateRequest Create(Google.Apis.AdExchangeBuyerII.v2beta1.Data.Client body, long accountId)
             {
-                return new CreateRequest(service, body, accountId);
+                return new CreateRequest(this.service, body, accountId);
             }
 
             /// <summary>Creates a new client buyer.</summary>
@@ -919,7 +919,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
             /// <param name="clientAccountId">Numerical account ID of the client buyer to retrieve. (required)</param>
             public virtual GetRequest Get(long accountId, long clientAccountId)
             {
-                return new GetRequest(service, accountId, clientAccountId);
+                return new GetRequest(this.service, accountId, clientAccountId);
             }
 
             /// <summary>Gets a client buyer with a given client account ID.</summary>
@@ -979,7 +979,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
             /// </param>
             public virtual ListRequest List(long accountId)
             {
-                return new ListRequest(service, accountId);
+                return new ListRequest(this.service, accountId);
             }
 
             /// <summary>Lists all the clients for the current sponsor buyer.</summary>
@@ -1075,7 +1075,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
             /// <param name="clientAccountId">Unique numerical account ID of the client to update. (required)</param>
             public virtual UpdateRequest Update(Google.Apis.AdExchangeBuyerII.v2beta1.Data.Client body, long accountId, long clientAccountId)
             {
-                return new UpdateRequest(service, body, accountId, clientAccountId);
+                return new UpdateRequest(this.service, body, accountId, clientAccountId);
             }
 
             /// <summary>Updates an existing client buyer.</summary>
@@ -1181,7 +1181,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 /// <param name="creativeId">The ID of the creative associated with the deal.</param>
                 public virtual AddRequest Add(Google.Apis.AdExchangeBuyerII.v2beta1.Data.AddDealAssociationRequest body, string accountId, string creativeId)
                 {
-                    return new AddRequest(service, body, accountId, creativeId);
+                    return new AddRequest(this.service, body, accountId, creativeId);
                 }
 
                 /// <summary>Associate an existing deal with a creative.</summary>
@@ -1253,7 +1253,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 /// </param>
                 public virtual ListRequest List(string accountId, string creativeId)
                 {
-                    return new ListRequest(service, accountId, creativeId);
+                    return new ListRequest(this.service, accountId, creativeId);
                 }
 
                 /// <summary>List all creative-deal associations.</summary>
@@ -1369,7 +1369,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 /// <param name="creativeId">The ID of the creative associated with the deal.</param>
                 public virtual RemoveRequest Remove(Google.Apis.AdExchangeBuyerII.v2beta1.Data.RemoveDealAssociationRequest body, string accountId, string creativeId)
                 {
-                    return new RemoveRequest(service, body, accountId, creativeId);
+                    return new RemoveRequest(this.service, body, accountId, creativeId);
                 }
 
                 /// <summary>Remove the association between a deal and a creative.</summary>
@@ -1439,7 +1439,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
             /// </param>
             public virtual CreateRequest Create(Google.Apis.AdExchangeBuyerII.v2beta1.Data.Creative body, string accountId)
             {
-                return new CreateRequest(service, body, accountId);
+                return new CreateRequest(this.service, body, accountId);
             }
 
             /// <summary>Creates a creative.</summary>
@@ -1533,7 +1533,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
             /// <param name="creativeId">The ID of the creative to retrieve.</param>
             public virtual GetRequest Get(string accountId, string creativeId)
             {
-                return new GetRequest(service, accountId, creativeId);
+                return new GetRequest(this.service, accountId, creativeId);
             }
 
             /// <summary>Gets a creative.</summary>
@@ -1594,7 +1594,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
             /// </param>
             public virtual ListRequest List(string accountId)
             {
-                return new ListRequest(service, accountId);
+                return new ListRequest(this.service, accountId);
             }
 
             /// <summary>Lists creatives.</summary>
@@ -1701,7 +1701,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
             /// </param>
             public virtual StopWatchingRequest StopWatching(Google.Apis.AdExchangeBuyerII.v2beta1.Data.StopWatchingCreativeRequest body, string accountId, string creativeId)
             {
-                return new StopWatchingRequest(service, body, accountId, creativeId);
+                return new StopWatchingRequest(this.service, body, accountId, creativeId);
             }
 
             /// <summary>
@@ -1780,7 +1780,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
             /// </param>
             public virtual UpdateRequest Update(Google.Apis.AdExchangeBuyerII.v2beta1.Data.Creative body, string accountId, string creativeId)
             {
-                return new UpdateRequest(service, body, accountId, creativeId);
+                return new UpdateRequest(this.service, body, accountId, creativeId);
             }
 
             /// <summary>Updates a creative.</summary>
@@ -1860,7 +1860,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
             /// </param>
             public virtual WatchRequest Watch(Google.Apis.AdExchangeBuyerII.v2beta1.Data.WatchCreativeRequest body, string accountId, string creativeId)
             {
-                return new WatchRequest(service, body, accountId, creativeId);
+                return new WatchRequest(this.service, body, accountId, creativeId);
             }
 
             /// <summary>
@@ -1953,7 +1953,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
             /// <param name="accountId">Account ID of the buyer.</param>
             public virtual ListRequest List(string accountId)
             {
-                return new ListRequest(service, accountId);
+                return new ListRequest(this.service, accountId);
             }
 
             /// <summary>
@@ -2091,7 +2091,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
             /// <param name="proposalId">The proposal_id of the proposal containing the deals.</param>
             public virtual PauseRequest Pause(Google.Apis.AdExchangeBuyerII.v2beta1.Data.PauseProposalDealsRequest body, string accountId, string proposalId)
             {
-                return new PauseRequest(service, body, accountId, proposalId);
+                return new PauseRequest(this.service, body, accountId, proposalId);
             }
 
             /// <summary>
@@ -2171,7 +2171,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
             /// <param name="proposalId">The proposal_id of the proposal containing the deals.</param>
             public virtual ResumeRequest Resume(Google.Apis.AdExchangeBuyerII.v2beta1.Data.ResumeProposalDealsRequest body, string accountId, string proposalId)
             {
-                return new ResumeRequest(service, body, accountId, proposalId);
+                return new ResumeRequest(this.service, body, accountId, proposalId);
             }
 
             /// <summary>
@@ -2262,7 +2262,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
             /// <param name="productId">The ID for the product to get the head revision for.</param>
             public virtual GetRequest Get(string accountId, string productId)
             {
-                return new GetRequest(service, accountId, productId);
+                return new GetRequest(this.service, accountId, productId);
             }
 
             /// <summary>Gets the requested product by ID.</summary>
@@ -2322,7 +2322,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
             /// <param name="accountId">Account ID of the buyer.</param>
             public virtual ListRequest List(string accountId)
             {
-                return new ListRequest(service, accountId);
+                return new ListRequest(this.service, accountId);
             }
 
             /// <summary>
@@ -2438,7 +2438,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
             /// <param name="proposalId">The ID of the proposal to accept.</param>
             public virtual AcceptRequest Accept(Google.Apis.AdExchangeBuyerII.v2beta1.Data.AcceptProposalRequest body, string accountId, string proposalId)
             {
-                return new AcceptRequest(service, body, accountId, proposalId);
+                return new AcceptRequest(this.service, body, accountId, proposalId);
             }
 
             /// <summary>
@@ -2514,7 +2514,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
             /// <param name="proposalId">The ID of the proposal to attach the note to.</param>
             public virtual AddNoteRequest AddNote(Google.Apis.AdExchangeBuyerII.v2beta1.Data.AddNoteRequest body, string accountId, string proposalId)
             {
-                return new AddNoteRequest(service, body, accountId, proposalId);
+                return new AddNoteRequest(this.service, body, accountId, proposalId);
             }
 
             /// <summary>
@@ -2587,7 +2587,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
             /// <param name="proposalId">The ID of the proposal to cancel negotiation for.</param>
             public virtual CancelNegotiationRequest CancelNegotiation(Google.Apis.AdExchangeBuyerII.v2beta1.Data.CancelNegotiationRequest body, string accountId, string proposalId)
             {
-                return new CancelNegotiationRequest(service, body, accountId, proposalId);
+                return new CancelNegotiationRequest(this.service, body, accountId, proposalId);
             }
 
             /// <summary>
@@ -2665,7 +2665,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
             /// <param name="proposalId">The ID of the proposal to mark as setup completed.</param>
             public virtual CompleteSetupRequest CompleteSetup(Google.Apis.AdExchangeBuyerII.v2beta1.Data.CompleteSetupRequest body, string accountId, string proposalId)
             {
-                return new CompleteSetupRequest(service, body, accountId, proposalId);
+                return new CompleteSetupRequest(this.service, body, accountId, proposalId);
             }
 
             /// <summary>
@@ -2742,7 +2742,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
             /// <param name="accountId">Account ID of the buyer.</param>
             public virtual CreateRequest Create(Google.Apis.AdExchangeBuyerII.v2beta1.Data.Proposal body, string accountId)
             {
-                return new CreateRequest(service, body, accountId);
+                return new CreateRequest(this.service, body, accountId);
             }
 
             /// <summary>
@@ -2798,7 +2798,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
             /// <param name="proposalId">The unique ID of the proposal</param>
             public virtual GetRequest Get(string accountId, string proposalId)
             {
-                return new GetRequest(service, accountId, proposalId);
+                return new GetRequest(this.service, accountId, proposalId);
             }
 
             /// <summary>Gets a proposal given its ID. The proposal is returned at its head revision.</summary>
@@ -2861,7 +2861,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
             /// <param name="accountId">Account ID of the buyer.</param>
             public virtual ListRequest List(string accountId)
             {
-                return new ListRequest(service, accountId);
+                return new ListRequest(this.service, accountId);
             }
 
             /// <summary>
@@ -3000,7 +3000,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
             /// <param name="proposalId">The ID of the proposal to pause.</param>
             public virtual PauseRequest Pause(Google.Apis.AdExchangeBuyerII.v2beta1.Data.PauseProposalRequest body, string accountId, string proposalId)
             {
-                return new PauseRequest(service, body, accountId, proposalId);
+                return new PauseRequest(this.service, body, accountId, proposalId);
             }
 
             /// <summary>
@@ -3078,7 +3078,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
             /// <param name="proposalId">The ID of the proposal to resume.</param>
             public virtual ResumeRequest Resume(Google.Apis.AdExchangeBuyerII.v2beta1.Data.ResumeProposalRequest body, string accountId, string proposalId)
             {
-                return new ResumeRequest(service, body, accountId, proposalId);
+                return new ResumeRequest(this.service, body, accountId, proposalId);
             }
 
             /// <summary>
@@ -3159,7 +3159,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
             /// <param name="proposalId">The unique ID of the proposal.</param>
             public virtual UpdateRequest Update(Google.Apis.AdExchangeBuyerII.v2beta1.Data.Proposal body, string accountId, string proposalId)
             {
-                return new UpdateRequest(service, body, accountId, proposalId);
+                return new UpdateRequest(this.service, body, accountId, proposalId);
             }
 
             /// <summary>
@@ -3251,7 +3251,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
             /// <param name="publisherProfileId">The id for the publisher profile to get.</param>
             public virtual GetRequest Get(string accountId, string publisherProfileId)
             {
-                return new GetRequest(service, accountId, publisherProfileId);
+                return new GetRequest(this.service, accountId, publisherProfileId);
             }
 
             /// <summary>Gets the requested publisher profile by id.</summary>
@@ -3309,7 +3309,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
             /// <param name="accountId">Account ID of the buyer.</param>
             public virtual ListRequest List(string accountId)
             {
-                return new ListRequest(service, accountId);
+                return new ListRequest(this.service, accountId);
             }
 
             /// <summary>List all publisher profiles visible to the buyer</summary>
@@ -3462,7 +3462,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     /// </param>
                     public virtual ListRequest List(string filterSetName)
                     {
-                        return new ListRequest(service, filterSetName);
+                        return new ListRequest(this.service, filterSetName);
                     }
 
                     /// <summary>Lists all metrics that are measured in terms of number of bids.</summary>
@@ -3571,7 +3571,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     /// </param>
                     public virtual ListRequest List(string filterSetName)
                     {
-                        return new ListRequest(service, filterSetName);
+                        return new ListRequest(this.service, filterSetName);
                     }
 
                     /// <summary>
@@ -3683,7 +3683,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     /// </param>
                     public virtual ListRequest List(string filterSetName)
                     {
-                        return new ListRequest(service, filterSetName);
+                        return new ListRequest(this.service, filterSetName);
                     }
 
                     /// <summary>
@@ -3795,7 +3795,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     /// </param>
                     public virtual ListRequest List(string filterSetName)
                     {
-                        return new ListRequest(service, filterSetName);
+                        return new ListRequest(this.service, filterSetName);
                     }
 
                     /// <summary>
@@ -3930,7 +3930,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                         /// </param>
                         public virtual ListRequest List(string filterSetName, int creativeStatusId)
                         {
-                            return new ListRequest(service, filterSetName, creativeStatusId);
+                            return new ListRequest(this.service, filterSetName, creativeStatusId);
                         }
 
                         /// <summary>
@@ -4064,7 +4064,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                         /// </param>
                         public virtual ListRequest List(string filterSetName, int creativeStatusId)
                         {
-                            return new ListRequest(service, filterSetName, creativeStatusId);
+                            return new ListRequest(this.service, filterSetName, creativeStatusId);
                         }
 
                         /// <summary>
@@ -4176,7 +4176,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     /// </param>
                     public virtual ListRequest List(string filterSetName)
                     {
-                        return new ListRequest(service, filterSetName);
+                        return new ListRequest(this.service, filterSetName);
                     }
 
                     /// <summary>
@@ -4284,7 +4284,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     /// </param>
                     public virtual ListRequest List(string filterSetName)
                     {
-                        return new ListRequest(service, filterSetName);
+                        return new ListRequest(this.service, filterSetName);
                     }
 
                     /// <summary>Lists all metrics that are measured in terms of number of impressions.</summary>
@@ -4393,7 +4393,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     /// </param>
                     public virtual ListRequest List(string filterSetName)
                     {
-                        return new ListRequest(service, filterSetName);
+                        return new ListRequest(this.service, filterSetName);
                     }
 
                     /// <summary>
@@ -4505,7 +4505,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     /// </param>
                     public virtual ListRequest List(string filterSetName)
                     {
-                        return new ListRequest(service, filterSetName);
+                        return new ListRequest(this.service, filterSetName);
                     }
 
                     /// <summary>
@@ -4597,7 +4597,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.AdExchangeBuyerII.v2beta1.Data.FilterSet body, string ownerName)
                 {
-                    return new CreateRequest(service, body, ownerName);
+                    return new CreateRequest(this.service, body, ownerName);
                 }
 
                 /// <summary>Creates the specified filter set for the account with the given account ID.</summary>
@@ -4674,7 +4674,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes the requested filter set from the account with the given account ID.</summary>
@@ -4730,7 +4730,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Retrieves the requested filter set for the account with the given account ID.</summary>
@@ -4786,7 +4786,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 /// </param>
                 public virtual ListRequest List(string ownerName)
                 {
-                    return new ListRequest(service, ownerName);
+                    return new ListRequest(this.service, ownerName);
                 }
 
                 /// <summary>Lists all filter sets for the account with the given account ID.</summary>
@@ -4917,7 +4917,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 /// </param>
                 public virtual ListRequest List(string filterSetName)
                 {
-                    return new ListRequest(service, filterSetName);
+                    return new ListRequest(this.service, filterSetName);
                 }
 
                 /// <summary>Lists all metrics that are measured in terms of number of bids.</summary>
@@ -5026,7 +5026,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 /// </param>
                 public virtual ListRequest List(string filterSetName)
                 {
-                    return new ListRequest(service, filterSetName);
+                    return new ListRequest(this.service, filterSetName);
                 }
 
                 /// <summary>
@@ -5138,7 +5138,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 /// </param>
                 public virtual ListRequest List(string filterSetName)
                 {
-                    return new ListRequest(service, filterSetName);
+                    return new ListRequest(this.service, filterSetName);
                 }
 
                 /// <summary>
@@ -5250,7 +5250,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 /// </param>
                 public virtual ListRequest List(string filterSetName)
                 {
-                    return new ListRequest(service, filterSetName);
+                    return new ListRequest(this.service, filterSetName);
                 }
 
                 /// <summary>
@@ -5385,7 +5385,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     /// </param>
                     public virtual ListRequest List(string filterSetName, int creativeStatusId)
                     {
-                        return new ListRequest(service, filterSetName, creativeStatusId);
+                        return new ListRequest(this.service, filterSetName, creativeStatusId);
                     }
 
                     /// <summary>
@@ -5518,7 +5518,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     /// </param>
                     public virtual ListRequest List(string filterSetName, int creativeStatusId)
                     {
-                        return new ListRequest(service, filterSetName, creativeStatusId);
+                        return new ListRequest(this.service, filterSetName, creativeStatusId);
                     }
 
                     /// <summary>
@@ -5629,7 +5629,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 /// </param>
                 public virtual ListRequest List(string filterSetName)
                 {
-                    return new ListRequest(service, filterSetName);
+                    return new ListRequest(this.service, filterSetName);
                 }
 
                 /// <summary>
@@ -5737,7 +5737,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 /// </param>
                 public virtual ListRequest List(string filterSetName)
                 {
-                    return new ListRequest(service, filterSetName);
+                    return new ListRequest(this.service, filterSetName);
                 }
 
                 /// <summary>Lists all metrics that are measured in terms of number of impressions.</summary>
@@ -5846,7 +5846,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 /// </param>
                 public virtual ListRequest List(string filterSetName)
                 {
-                    return new ListRequest(service, filterSetName);
+                    return new ListRequest(this.service, filterSetName);
                 }
 
                 /// <summary>
@@ -5958,7 +5958,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 /// </param>
                 public virtual ListRequest List(string filterSetName)
                 {
-                    return new ListRequest(service, filterSetName);
+                    return new ListRequest(this.service, filterSetName);
                 }
 
                 /// <summary>
@@ -6050,7 +6050,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
             /// </param>
             public virtual CreateRequest Create(Google.Apis.AdExchangeBuyerII.v2beta1.Data.FilterSet body, string ownerName)
             {
-                return new CreateRequest(service, body, ownerName);
+                return new CreateRequest(this.service, body, ownerName);
             }
 
             /// <summary>Creates the specified filter set for the account with the given account ID.</summary>
@@ -6127,7 +6127,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>Deletes the requested filter set from the account with the given account ID.</summary>
@@ -6182,7 +6182,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Retrieves the requested filter set for the account with the given account ID.</summary>
@@ -6237,7 +6237,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
             /// </param>
             public virtual ListRequest List(string ownerName)
             {
-                return new ListRequest(service, ownerName);
+                return new ListRequest(this.service, ownerName);
             }
 
             /// <summary>Lists all filter sets for the account with the given account ID.</summary>
@@ -6813,8 +6813,8 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ApiUpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ApiUpdateTimeRaw);
-            set => ApiUpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ApiUpdateTimeRaw);
+            set => ApiUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -7193,8 +7193,8 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? AvailableEndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(AvailableEndTimeRaw);
-            set => AvailableEndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(AvailableEndTimeRaw);
+            set => AvailableEndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _availableStartTimeRaw;
@@ -7236,8 +7236,8 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? AvailableStartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(AvailableStartTimeRaw);
-            set => AvailableStartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(AvailableStartTimeRaw);
+            set => AvailableStartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Buyer private data (hidden from seller).</summary>
@@ -7293,8 +7293,8 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. Specifies the creative pre-approval policy.</summary>
@@ -7415,8 +7415,8 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The web property code for the seller copied over from the product.</summary>
@@ -8523,8 +8523,8 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. The role of the person (buyer/seller) creating the note.</summary>
@@ -8732,8 +8732,8 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? AvailableEndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(AvailableEndTimeRaw);
-            set => AvailableEndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(AvailableEndTimeRaw);
+            set => AvailableEndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _availableStartTimeRaw;
@@ -8774,8 +8774,8 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? AvailableStartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(AvailableStartTimeRaw);
-            set => AvailableStartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(AvailableStartTimeRaw);
+            set => AvailableStartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _createTimeRaw;
@@ -8811,8 +8811,8 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Optional contact information for the creator of this product.</summary>
@@ -8898,8 +8898,8 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -9041,8 +9041,8 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -9213,8 +9213,8 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimestampDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimestampRaw);
-            set => StartTimestampRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimestampRaw);
+            set => StartTimestampRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -9528,8 +9528,8 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _startTimeRaw;
@@ -9565,8 +9565,8 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>

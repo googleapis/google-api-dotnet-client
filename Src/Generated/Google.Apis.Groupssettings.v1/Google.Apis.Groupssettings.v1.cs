@@ -207,7 +207,7 @@ namespace Google.Apis.Groupssettings.v1
         /// <param name="groupUniqueId">The group's email address.</param>
         public virtual GetRequest Get(string groupUniqueId)
         {
-            return new GetRequest(service, groupUniqueId);
+            return new GetRequest(this.service, groupUniqueId);
         }
 
         /// <summary>Gets one resource by id.</summary>
@@ -253,7 +253,7 @@ namespace Google.Apis.Groupssettings.v1
         /// <param name="groupUniqueId">The group's email address.</param>
         public virtual PatchRequest Patch(Google.Apis.Groupssettings.v1.Data.Groups body, string groupUniqueId)
         {
-            return new PatchRequest(service, body, groupUniqueId);
+            return new PatchRequest(this.service, body, groupUniqueId);
         }
 
         /// <summary>Updates an existing resource. This method supports patch semantics.</summary>
@@ -306,7 +306,7 @@ namespace Google.Apis.Groupssettings.v1
         /// <param name="groupUniqueId">The group's email address.</param>
         public virtual UpdateRequest Update(Google.Apis.Groupssettings.v1.Data.Groups body, string groupUniqueId)
         {
-            return new UpdateRequest(service, body, groupUniqueId);
+            return new UpdateRequest(this.service, body, groupUniqueId);
         }
 
         /// <summary>Updates an existing resource.</summary>

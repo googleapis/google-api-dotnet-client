@@ -339,7 +339,7 @@ namespace Google.Apis.AndroidPublisher.v3
             /// <param name="packageName">Package name of the app.</param>
             public virtual CreateRequest Create(Google.Apis.AndroidPublisher.v3.Data.DeviceTierConfig body, string packageName)
             {
-                return new CreateRequest(service, body, packageName);
+                return new CreateRequest(this.service, body, packageName);
             }
 
             /// <summary>Creates a new device tier config for an app.</summary>
@@ -406,7 +406,7 @@ namespace Google.Apis.AndroidPublisher.v3
             /// <param name="deviceTierConfigId">Required. Id of an existing device tier config.</param>
             public virtual GetRequest Get(string packageName, long deviceTierConfigId)
             {
-                return new GetRequest(service, packageName, deviceTierConfigId);
+                return new GetRequest(this.service, packageName, deviceTierConfigId);
             }
 
             /// <summary>Returns a particular device tier config.</summary>
@@ -464,7 +464,7 @@ namespace Google.Apis.AndroidPublisher.v3
             /// <param name="packageName">Package name of the app.</param>
             public virtual ListRequest List(string packageName)
             {
-                return new ListRequest(service, packageName);
+                return new ListRequest(this.service, packageName);
             }
 
             /// <summary>Returns created device tier configs, ordered by descending creation time.</summary>
@@ -590,7 +590,7 @@ namespace Google.Apis.AndroidPublisher.v3
             /// <param name="editId">Identifier of the edit.</param>
             public virtual AddexternallyhostedRequest Addexternallyhosted(Google.Apis.AndroidPublisher.v3.Data.ApksAddExternallyHostedRequest body, string packageName, string editId)
             {
-                return new AddexternallyhostedRequest(service, body, packageName, editId);
+                return new AddexternallyhostedRequest(this.service, body, packageName, editId);
             }
 
             /// <summary>
@@ -660,7 +660,7 @@ namespace Google.Apis.AndroidPublisher.v3
             /// <param name="editId">Identifier of the edit.</param>
             public virtual ListRequest List(string packageName, string editId)
             {
-                return new ListRequest(service, packageName, editId);
+                return new ListRequest(this.service, packageName, editId);
             }
 
             /// <summary>Lists all current APKs of the app and edit.</summary>
@@ -719,7 +719,7 @@ namespace Google.Apis.AndroidPublisher.v3
             /// <param name="editId">Identifier of the edit.</param>
             public virtual UploadRequest Upload(string packageName, string editId)
             {
-                return new UploadRequest(service, packageName, editId);
+                return new UploadRequest(this.service, packageName, editId);
             }
 
             /// <summary>Uploads an APK and adds to the current edit.</summary>
@@ -943,7 +943,7 @@ namespace Google.Apis.AndroidPublisher.v3
             /// <param name="editId">Identifier of the edit.</param>
             public virtual ListRequest List(string packageName, string editId)
             {
-                return new ListRequest(service, packageName, editId);
+                return new ListRequest(this.service, packageName, editId);
             }
 
             /// <summary>Lists all current Android App Bundles of the app and edit.</summary>
@@ -1008,7 +1008,7 @@ namespace Google.Apis.AndroidPublisher.v3
             /// <param name="editId">Identifier of the edit.</param>
             public virtual UploadRequest Upload(string packageName, string editId)
             {
-                return new UploadRequest(service, packageName, editId);
+                return new UploadRequest(this.service, packageName, editId);
             }
 
             /// <summary>
@@ -1289,7 +1289,7 @@ namespace Google.Apis.AndroidPublisher.v3
             /// <param name="track">The track to read from.</param>
             public virtual GetRequest Get(string packageName, string editId, string track)
             {
-                return new GetRequest(service, packageName, editId, track);
+                return new GetRequest(this.service, packageName, editId, track);
             }
 
             /// <summary>Gets country availability.</summary>
@@ -1383,7 +1383,7 @@ namespace Google.Apis.AndroidPublisher.v3
             /// <param name="deobfuscationFileType">The type of the deobfuscation file.</param>
             public virtual UploadRequest Upload(string packageName, string editId, int apkVersionCode, UploadRequest.DeobfuscationFileTypeEnum deobfuscationFileType)
             {
-                return new UploadRequest(service, packageName, editId, apkVersionCode, deobfuscationFileType);
+                return new UploadRequest(this.service, packageName, editId, apkVersionCode, deobfuscationFileType);
             }
 
             /// <summary>Uploads a new deobfuscation file and attaches to the specified APK.</summary>
@@ -1679,7 +1679,7 @@ namespace Google.Apis.AndroidPublisher.v3
             /// <param name="editId">Identifier of the edit.</param>
             public virtual GetRequest Get(string packageName, string editId)
             {
-                return new GetRequest(service, packageName, editId);
+                return new GetRequest(this.service, packageName, editId);
             }
 
             /// <summary>Gets details of an app.</summary>
@@ -1739,7 +1739,7 @@ namespace Google.Apis.AndroidPublisher.v3
             /// <param name="editId">Identifier of the edit.</param>
             public virtual PatchRequest Patch(Google.Apis.AndroidPublisher.v3.Data.AppDetails body, string packageName, string editId)
             {
-                return new PatchRequest(service, body, packageName, editId);
+                return new PatchRequest(this.service, body, packageName, editId);
             }
 
             /// <summary>Patches details of an app.</summary>
@@ -1806,7 +1806,7 @@ namespace Google.Apis.AndroidPublisher.v3
             /// <param name="editId">Identifier of the edit.</param>
             public virtual UpdateRequest Update(Google.Apis.AndroidPublisher.v3.Data.AppDetails body, string packageName, string editId)
             {
-                return new UpdateRequest(service, body, packageName, editId);
+                return new UpdateRequest(this.service, body, packageName, editId);
             }
 
             /// <summary>Updates details of an app.</summary>
@@ -1896,7 +1896,7 @@ namespace Google.Apis.AndroidPublisher.v3
             /// </param>
             public virtual GetRequest Get(string packageName, string editId, int apkVersionCode, GetRequest.ExpansionFileTypeEnum expansionFileType)
             {
-                return new GetRequest(service, packageName, editId, apkVersionCode, expansionFileType);
+                return new GetRequest(this.service, packageName, editId, apkVersionCode, expansionFileType);
             }
 
             /// <summary>Fetches the expansion file configuration for the specified APK.</summary>
@@ -2009,7 +2009,7 @@ namespace Google.Apis.AndroidPublisher.v3
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.AndroidPublisher.v3.Data.ExpansionFile body, string packageName, string editId, int apkVersionCode, PatchRequest.ExpansionFileTypeEnum expansionFileType)
             {
-                return new PatchRequest(service, body, packageName, editId, apkVersionCode, expansionFileType);
+                return new PatchRequest(this.service, body, packageName, editId, apkVersionCode, expansionFileType);
             }
 
             /// <summary>
@@ -2132,7 +2132,7 @@ namespace Google.Apis.AndroidPublisher.v3
             /// </param>
             public virtual UpdateRequest Update(Google.Apis.AndroidPublisher.v3.Data.ExpansionFile body, string packageName, string editId, int apkVersionCode, UpdateRequest.ExpansionFileTypeEnum expansionFileType)
             {
-                return new UpdateRequest(service, body, packageName, editId, apkVersionCode, expansionFileType);
+                return new UpdateRequest(this.service, body, packageName, editId, apkVersionCode, expansionFileType);
             }
 
             /// <summary>
@@ -2251,7 +2251,7 @@ namespace Google.Apis.AndroidPublisher.v3
             /// </param>
             public virtual UploadRequest Upload(string packageName, string editId, int apkVersionCode, UploadRequest.ExpansionFileTypeEnum expansionFileType)
             {
-                return new UploadRequest(service, packageName, editId, apkVersionCode, expansionFileType);
+                return new UploadRequest(this.service, packageName, editId, apkVersionCode, expansionFileType);
             }
 
             /// <summary>Uploads a new expansion file and attaches to the specified APK.</summary>
@@ -2558,7 +2558,7 @@ namespace Google.Apis.AndroidPublisher.v3
             /// <param name="imageId">Unique identifier an image within the set of images attached to this edit.</param>
             public virtual DeleteRequest Delete(string packageName, string editId, string language, DeleteRequest.ImageTypeEnum imageType, string imageId)
             {
-                return new DeleteRequest(service, packageName, editId, language, imageType, imageId);
+                return new DeleteRequest(this.service, packageName, editId, language, imageType, imageId);
             }
 
             /// <summary>Deletes the image (specified by id) from the edit.</summary>
@@ -2708,7 +2708,7 @@ namespace Google.Apis.AndroidPublisher.v3
             /// </param>
             public virtual DeleteallRequest Deleteall(string packageName, string editId, string language, DeleteallRequest.ImageTypeEnum imageType)
             {
-                return new DeleteallRequest(service, packageName, editId, language, imageType);
+                return new DeleteallRequest(this.service, packageName, editId, language, imageType);
             }
 
             /// <summary>
@@ -2846,7 +2846,7 @@ namespace Google.Apis.AndroidPublisher.v3
             /// </param>
             public virtual ListRequest List(string packageName, string editId, string language, ListRequest.ImageTypeEnum imageType)
             {
-                return new ListRequest(service, packageName, editId, language, imageType);
+                return new ListRequest(this.service, packageName, editId, language, imageType);
             }
 
             /// <summary>Lists all images. The response may be empty.</summary>
@@ -2983,7 +2983,7 @@ namespace Google.Apis.AndroidPublisher.v3
             /// <param name="imageType">Type of the Image.</param>
             public virtual UploadRequest Upload(string packageName, string editId, string language, UploadRequest.ImageTypeEnum imageType)
             {
-                return new UploadRequest(service, packageName, editId, language, imageType);
+                return new UploadRequest(this.service, packageName, editId, language, imageType);
             }
 
             /// <summary>Uploads an image of the specified language and image type, and adds to the edit.</summary>
@@ -3337,7 +3337,7 @@ namespace Google.Apis.AndroidPublisher.v3
             /// </param>
             public virtual DeleteRequest Delete(string packageName, string editId, string language)
             {
-                return new DeleteRequest(service, packageName, editId, language);
+                return new DeleteRequest(this.service, packageName, editId, language);
             }
 
             /// <summary>Deletes a localized store listing.</summary>
@@ -3411,7 +3411,7 @@ namespace Google.Apis.AndroidPublisher.v3
             /// <param name="editId">Identifier of the edit.</param>
             public virtual DeleteallRequest Deleteall(string packageName, string editId)
             {
-                return new DeleteallRequest(service, packageName, editId);
+                return new DeleteallRequest(this.service, packageName, editId);
             }
 
             /// <summary>Deletes all store listings.</summary>
@@ -3473,7 +3473,7 @@ namespace Google.Apis.AndroidPublisher.v3
             /// </param>
             public virtual GetRequest Get(string packageName, string editId, string language)
             {
-                return new GetRequest(service, packageName, editId, language);
+                return new GetRequest(this.service, packageName, editId, language);
             }
 
             /// <summary>Gets a localized store listing.</summary>
@@ -3547,7 +3547,7 @@ namespace Google.Apis.AndroidPublisher.v3
             /// <param name="editId">Identifier of the edit.</param>
             public virtual ListRequest List(string packageName, string editId)
             {
-                return new ListRequest(service, packageName, editId);
+                return new ListRequest(this.service, packageName, editId);
             }
 
             /// <summary>Lists all localized store listings.</summary>
@@ -3610,7 +3610,7 @@ namespace Google.Apis.AndroidPublisher.v3
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.AndroidPublisher.v3.Data.Listing body, string packageName, string editId, string language)
             {
-                return new PatchRequest(service, body, packageName, editId, language);
+                return new PatchRequest(this.service, body, packageName, editId, language);
             }
 
             /// <summary>Patches a localized store listing.</summary>
@@ -3695,7 +3695,7 @@ namespace Google.Apis.AndroidPublisher.v3
             /// </param>
             public virtual UpdateRequest Update(Google.Apis.AndroidPublisher.v3.Data.Listing body, string packageName, string editId, string language)
             {
-                return new UpdateRequest(service, body, packageName, editId, language);
+                return new UpdateRequest(this.service, body, packageName, editId, language);
             }
 
             /// <summary>Creates or updates a localized store listing.</summary>
@@ -3795,7 +3795,7 @@ namespace Google.Apis.AndroidPublisher.v3
             /// <param name="track">The track to read from.</param>
             public virtual GetRequest Get(string packageName, string editId, string track)
             {
-                return new GetRequest(service, packageName, editId, track);
+                return new GetRequest(this.service, packageName, editId, track);
             }
 
             /// <summary>Gets testers. Note: Testers resource does not support email lists.</summary>
@@ -3869,7 +3869,7 @@ namespace Google.Apis.AndroidPublisher.v3
             /// <param name="track">The track to update.</param>
             public virtual PatchRequest Patch(Google.Apis.AndroidPublisher.v3.Data.Testers body, string packageName, string editId, string track)
             {
-                return new PatchRequest(service, body, packageName, editId, track);
+                return new PatchRequest(this.service, body, packageName, editId, track);
             }
 
             /// <summary>Patches testers. Note: Testers resource does not support email lists.</summary>
@@ -3950,7 +3950,7 @@ namespace Google.Apis.AndroidPublisher.v3
             /// <param name="track">The track to update.</param>
             public virtual UpdateRequest Update(Google.Apis.AndroidPublisher.v3.Data.Testers body, string packageName, string editId, string track)
             {
-                return new UpdateRequest(service, body, packageName, editId, track);
+                return new UpdateRequest(this.service, body, packageName, editId, track);
             }
 
             /// <summary>Updates testers. Note: Testers resource does not support email lists.</summary>
@@ -4042,6 +4042,73 @@ namespace Google.Apis.AndroidPublisher.v3
                 this.service = service;
             }
 
+            /// <summary>Creates a new track.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="packageName">Required. Package name of the app.</param>
+            /// <param name="editId">Required. Identifier of the edit.</param>
+            public virtual CreateRequest Create(Google.Apis.AndroidPublisher.v3.Data.TrackConfig body, string packageName, string editId)
+            {
+                return new CreateRequest(this.service, body, packageName, editId);
+            }
+
+            /// <summary>Creates a new track.</summary>
+            public class CreateRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.Track>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.TrackConfig body, string packageName, string editId) : base(service)
+                {
+                    PackageName = packageName;
+                    EditId = editId;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>Required. Package name of the app.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string PackageName { get; private set; }
+
+                /// <summary>Required. Identifier of the edit.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("editId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string EditId { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.AndroidPublisher.v3.Data.TrackConfig Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "create";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "androidpublisher/v3/applications/{packageName}/edits/{editId}/tracks";
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "packageName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("editId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "editId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
             /// <summary>Gets a track.</summary>
             /// <param name="packageName">Package name of the app.</param>
             /// <param name="editId">Identifier of the edit.</param>
@@ -4051,7 +4118,7 @@ namespace Google.Apis.AndroidPublisher.v3
             /// </param>
             public virtual GetRequest Get(string packageName, string editId, string track)
             {
-                return new GetRequest(service, packageName, editId, track);
+                return new GetRequest(this.service, packageName, editId, track);
             }
 
             /// <summary>Gets a track.</summary>
@@ -4126,7 +4193,7 @@ namespace Google.Apis.AndroidPublisher.v3
             /// <param name="editId">Identifier of the edit.</param>
             public virtual ListRequest List(string packageName, string editId)
             {
-                return new ListRequest(service, packageName, editId);
+                return new ListRequest(this.service, packageName, editId);
             }
 
             /// <summary>Lists all tracks.</summary>
@@ -4190,7 +4257,7 @@ namespace Google.Apis.AndroidPublisher.v3
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.AndroidPublisher.v3.Data.Track body, string packageName, string editId, string track)
             {
-                return new PatchRequest(service, body, packageName, editId, track);
+                return new PatchRequest(this.service, body, packageName, editId, track);
             }
 
             /// <summary>Patches a track.</summary>
@@ -4277,7 +4344,7 @@ namespace Google.Apis.AndroidPublisher.v3
             /// </param>
             public virtual UpdateRequest Update(Google.Apis.AndroidPublisher.v3.Data.Track body, string packageName, string editId, string track)
             {
-                return new UpdateRequest(service, body, packageName, editId, track);
+                return new UpdateRequest(this.service, body, packageName, editId, track);
             }
 
             /// <summary>Updates a track.</summary>
@@ -4360,7 +4427,7 @@ namespace Google.Apis.AndroidPublisher.v3
         /// <param name="editId">Identifier of the edit.</param>
         public virtual CommitRequest Commit(string packageName, string editId)
         {
-            return new CommitRequest(service, packageName, editId);
+            return new CommitRequest(this.service, packageName, editId);
         }
 
         /// <summary>Commits an app edit.</summary>
@@ -4435,7 +4502,7 @@ namespace Google.Apis.AndroidPublisher.v3
         /// <param name="editId">Identifier of the edit.</param>
         public virtual DeleteRequest Delete(string packageName, string editId)
         {
-            return new DeleteRequest(service, packageName, editId);
+            return new DeleteRequest(this.service, packageName, editId);
         }
 
         /// <summary>Deletes an app edit.</summary>
@@ -4494,7 +4561,7 @@ namespace Google.Apis.AndroidPublisher.v3
         /// <param name="editId">Identifier of the edit.</param>
         public virtual GetRequest Get(string packageName, string editId)
         {
-            return new GetRequest(service, packageName, editId);
+            return new GetRequest(this.service, packageName, editId);
         }
 
         /// <summary>Gets an app edit.</summary>
@@ -4553,7 +4620,7 @@ namespace Google.Apis.AndroidPublisher.v3
         /// <param name="packageName">Package name of the app.</param>
         public virtual InsertRequest Insert(Google.Apis.AndroidPublisher.v3.Data.AppEdit body, string packageName)
         {
-            return new InsertRequest(service, body, packageName);
+            return new InsertRequest(this.service, body, packageName);
         }
 
         /// <summary>Creates a new edit for an app.</summary>
@@ -4606,7 +4673,7 @@ namespace Google.Apis.AndroidPublisher.v3
         /// <param name="editId">Identifier of the edit.</param>
         public virtual ValidateRequest Validate(string packageName, string editId)
         {
-            return new ValidateRequest(service, packageName, editId);
+            return new ValidateRequest(this.service, packageName, editId);
         }
 
         /// <summary>Validates an app edit.</summary>
@@ -4683,7 +4750,7 @@ namespace Google.Apis.AndroidPublisher.v3
         /// </param>
         public virtual CreateexternaltransactionRequest Createexternaltransaction(Google.Apis.AndroidPublisher.v3.Data.ExternalTransaction body, string parent)
         {
-            return new CreateexternaltransactionRequest(service, body, parent);
+            return new CreateexternaltransactionRequest(this.service, body, parent);
         }
 
         /// <summary>Creates a new external transaction.</summary>
@@ -4758,7 +4825,7 @@ namespace Google.Apis.AndroidPublisher.v3
         /// </param>
         public virtual GetexternaltransactionRequest Getexternaltransaction(string name)
         {
-            return new GetexternaltransactionRequest(service, name);
+            return new GetexternaltransactionRequest(this.service, name);
         }
 
         /// <summary>Gets an existing external transaction.</summary>
@@ -4810,7 +4877,7 @@ namespace Google.Apis.AndroidPublisher.v3
         /// </param>
         public virtual RefundexternaltransactionRequest Refundexternaltransaction(Google.Apis.AndroidPublisher.v3.Data.RefundExternalTransactionRequest body, string name)
         {
-            return new RefundexternaltransactionRequest(service, body, name);
+            return new RefundexternaltransactionRequest(this.service, body, name);
         }
 
         /// <summary>Refunds or partially refunds an existing external transaction.</summary>
@@ -4885,7 +4952,7 @@ namespace Google.Apis.AndroidPublisher.v3
         /// </param>
         public virtual DownloadRequest Download(string packageName, int versionCode, string downloadId)
         {
-            return new DownloadRequest(service, packageName, versionCode, downloadId);
+            return new DownloadRequest(this.service, packageName, versionCode, downloadId);
         }
 
         /// <summary>Downloads a single signed APK generated from an app bundle.</summary>
@@ -5046,7 +5113,7 @@ namespace Google.Apis.AndroidPublisher.v3
         /// <param name="versionCode">Version code of the app bundle.</param>
         public virtual ListRequest List(string packageName, int versionCode)
         {
-            return new ListRequest(service, packageName, versionCode);
+            return new ListRequest(this.service, packageName, versionCode);
         }
 
         /// <summary>Returns download metadata for all APKs that were generated from a given app bundle.</summary>
@@ -5122,7 +5189,7 @@ namespace Google.Apis.AndroidPublisher.v3
         /// </param>
         public virtual CreateRequest Create(Google.Apis.AndroidPublisher.v3.Data.Grant body, string parent)
         {
-            return new CreateRequest(service, body, parent);
+            return new CreateRequest(this.service, body, parent);
         }
 
         /// <summary>Grant access for a user to the given package.</summary>
@@ -5179,7 +5246,7 @@ namespace Google.Apis.AndroidPublisher.v3
         /// </param>
         public virtual DeleteRequest Delete(string name)
         {
-            return new DeleteRequest(service, name);
+            return new DeleteRequest(this.service, name);
         }
 
         /// <summary>Removes all access for the user to the given package or developer account.</summary>
@@ -5232,7 +5299,7 @@ namespace Google.Apis.AndroidPublisher.v3
         /// </param>
         public virtual PatchRequest Patch(Google.Apis.AndroidPublisher.v3.Data.Grant body, string name)
         {
-            return new PatchRequest(service, body, name);
+            return new PatchRequest(this.service, body, name);
         }
 
         /// <summary>Updates access for the user to the given package.</summary>
@@ -5321,7 +5388,7 @@ namespace Google.Apis.AndroidPublisher.v3
         /// <param name="sku">Unique identifier for the in-app product.</param>
         public virtual DeleteRequest Delete(string packageName, string sku)
         {
-            return new DeleteRequest(service, packageName, sku);
+            return new DeleteRequest(this.service, packageName, sku);
         }
 
         /// <summary>
@@ -5390,7 +5457,7 @@ namespace Google.Apis.AndroidPublisher.v3
         /// <param name="sku">Unique identifier for the in-app product.</param>
         public virtual GetRequest Get(string packageName, string sku)
         {
-            return new GetRequest(service, packageName, sku);
+            return new GetRequest(this.service, packageName, sku);
         }
 
         /// <summary>
@@ -5459,7 +5526,7 @@ namespace Google.Apis.AndroidPublisher.v3
         /// <param name="packageName">Package name of the app.</param>
         public virtual InsertRequest Insert(Google.Apis.AndroidPublisher.v3.Data.InAppProduct body, string packageName)
         {
-            return new InsertRequest(service, body, packageName);
+            return new InsertRequest(this.service, body, packageName);
         }
 
         /// <summary>
@@ -5539,7 +5606,7 @@ namespace Google.Apis.AndroidPublisher.v3
         /// <param name="packageName">Package name of the app.</param>
         public virtual ListRequest List(string packageName)
         {
-            return new ListRequest(service, packageName);
+            return new ListRequest(this.service, packageName);
         }
 
         /// <summary>
@@ -5634,7 +5701,7 @@ namespace Google.Apis.AndroidPublisher.v3
         /// <param name="sku">Unique identifier for the in-app product.</param>
         public virtual PatchRequest Patch(Google.Apis.AndroidPublisher.v3.Data.InAppProduct body, string packageName, string sku)
         {
-            return new PatchRequest(service, body, packageName, sku);
+            return new PatchRequest(this.service, body, packageName, sku);
         }
 
         /// <summary>
@@ -5727,7 +5794,7 @@ namespace Google.Apis.AndroidPublisher.v3
         /// <param name="sku">Unique identifier for the in-app product.</param>
         public virtual UpdateRequest Update(Google.Apis.AndroidPublisher.v3.Data.InAppProduct body, string packageName, string sku)
         {
-            return new UpdateRequest(service, body, packageName, sku);
+            return new UpdateRequest(this.service, body, packageName, sku);
         }
 
         /// <summary>
@@ -5848,7 +5915,7 @@ namespace Google.Apis.AndroidPublisher.v3
         /// <param name="packageName">Package name of the app.</param>
         public virtual UploadapkRequest Uploadapk(string packageName)
         {
-            return new UploadapkRequest(service, packageName);
+            return new UploadapkRequest(this.service, packageName);
         }
 
         /// <summary>
@@ -6046,7 +6113,7 @@ namespace Google.Apis.AndroidPublisher.v3
         /// <param name="packageName">Package name of the app.</param>
         public virtual UploadbundleRequest Uploadbundle(string packageName)
         {
-            return new UploadbundleRequest(service, packageName);
+            return new UploadbundleRequest(this.service, packageName);
         }
 
         /// <summary>
@@ -6318,7 +6385,7 @@ namespace Google.Apis.AndroidPublisher.v3
                     /// <param name="offerId">Required. The unique offer ID of the offer to activate.</param>
                     public virtual ActivateRequest Activate(Google.Apis.AndroidPublisher.v3.Data.ActivateSubscriptionOfferRequest body, string packageName, string productId, string basePlanId, string offerId)
                     {
-                        return new ActivateRequest(service, body, packageName, productId, basePlanId, offerId);
+                        return new ActivateRequest(this.service, body, packageName, productId, basePlanId, offerId);
                     }
 
                     /// <summary>
@@ -6427,7 +6494,7 @@ namespace Google.Apis.AndroidPublisher.v3
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.AndroidPublisher.v3.Data.SubscriptionOffer body, string packageName, string productId, string basePlanId)
                     {
-                        return new CreateRequest(service, body, packageName, productId, basePlanId);
+                        return new CreateRequest(this.service, body, packageName, productId, basePlanId);
                     }
 
                     /// <summary>
@@ -6564,7 +6631,7 @@ namespace Google.Apis.AndroidPublisher.v3
                     /// <param name="offerId">Required. The unique offer ID of the offer to deactivate.</param>
                     public virtual DeactivateRequest Deactivate(Google.Apis.AndroidPublisher.v3.Data.DeactivateSubscriptionOfferRequest body, string packageName, string productId, string basePlanId, string offerId)
                     {
-                        return new DeactivateRequest(service, body, packageName, productId, basePlanId, offerId);
+                        return new DeactivateRequest(this.service, body, packageName, productId, basePlanId, offerId);
                     }
 
                     /// <summary>
@@ -6665,7 +6732,7 @@ namespace Google.Apis.AndroidPublisher.v3
                     /// <param name="offerId">Required. The unique offer ID of the offer to delete.</param>
                     public virtual DeleteRequest Delete(string packageName, string productId, string basePlanId, string offerId)
                     {
-                        return new DeleteRequest(service, packageName, productId, basePlanId, offerId);
+                        return new DeleteRequest(this.service, packageName, productId, basePlanId, offerId);
                     }
 
                     /// <summary>
@@ -6754,7 +6821,7 @@ namespace Google.Apis.AndroidPublisher.v3
                     /// <param name="offerId">Required. The unique offer ID of the offer to get.</param>
                     public virtual GetRequest Get(string packageName, string productId, string basePlanId, string offerId)
                     {
-                        return new GetRequest(service, packageName, productId, basePlanId, offerId);
+                        return new GetRequest(this.service, packageName, productId, basePlanId, offerId);
                     }
 
                     /// <summary>Reads a single offer</summary>
@@ -6849,7 +6916,7 @@ namespace Google.Apis.AndroidPublisher.v3
                     /// </param>
                     public virtual ListRequest List(string packageName, string productId, string basePlanId)
                     {
-                        return new ListRequest(service, packageName, productId, basePlanId);
+                        return new ListRequest(this.service, packageName, productId, basePlanId);
                     }
 
                     /// <summary>Lists all offers under a given subscription.</summary>
@@ -6973,7 +7040,7 @@ namespace Google.Apis.AndroidPublisher.v3
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.AndroidPublisher.v3.Data.SubscriptionOffer body, string packageName, string productId, string basePlanId, string offerId)
                     {
-                        return new PatchRequest(service, body, packageName, productId, basePlanId, offerId);
+                        return new PatchRequest(this.service, body, packageName, productId, basePlanId, offerId);
                     }
 
                     /// <summary>Updates an existing subscription offer.</summary>
@@ -7114,7 +7181,7 @@ namespace Google.Apis.AndroidPublisher.v3
                 /// <param name="basePlanId">Required. The unique base plan ID of the base plan to activate.</param>
                 public virtual ActivateRequest Activate(Google.Apis.AndroidPublisher.v3.Data.ActivateBasePlanRequest body, string packageName, string productId, string basePlanId)
                 {
-                    return new ActivateRequest(service, body, packageName, productId, basePlanId);
+                    return new ActivateRequest(this.service, body, packageName, productId, basePlanId);
                 }
 
                 /// <summary>
@@ -7204,7 +7271,7 @@ namespace Google.Apis.AndroidPublisher.v3
                 /// <param name="basePlanId">Required. The unique base plan ID of the base plan to deactivate.</param>
                 public virtual DeactivateRequest Deactivate(Google.Apis.AndroidPublisher.v3.Data.DeactivateBasePlanRequest body, string packageName, string productId, string basePlanId)
                 {
-                    return new DeactivateRequest(service, body, packageName, productId, basePlanId);
+                    return new DeactivateRequest(this.service, body, packageName, productId, basePlanId);
                 }
 
                 /// <summary>
@@ -7291,7 +7358,7 @@ namespace Google.Apis.AndroidPublisher.v3
                 /// <param name="basePlanId">Required. The unique offer ID of the base plan to delete.</param>
                 public virtual DeleteRequest Delete(string packageName, string productId, string basePlanId)
                 {
-                    return new DeleteRequest(service, packageName, productId, basePlanId);
+                    return new DeleteRequest(this.service, packageName, productId, basePlanId);
                 }
 
                 /// <summary>
@@ -7380,7 +7447,7 @@ namespace Google.Apis.AndroidPublisher.v3
                 /// </param>
                 public virtual MigratePricesRequest MigratePrices(Google.Apis.AndroidPublisher.v3.Data.MigrateBasePlanPricesRequest body, string packageName, string productId, string basePlanId)
                 {
-                    return new MigratePricesRequest(service, body, packageName, productId, basePlanId);
+                    return new MigratePricesRequest(this.service, body, packageName, productId, basePlanId);
                 }
 
                 /// <summary>
@@ -7478,7 +7545,7 @@ namespace Google.Apis.AndroidPublisher.v3
             /// <param name="productId">Required. The unique product ID of the subscription to delete.</param>
             public virtual ArchiveRequest Archive(Google.Apis.AndroidPublisher.v3.Data.ArchiveSubscriptionRequest body, string packageName, string productId)
             {
-                return new ArchiveRequest(service, body, packageName, productId);
+                return new ArchiveRequest(this.service, body, packageName, productId);
             }
 
             /// <summary>
@@ -7553,7 +7620,7 @@ namespace Google.Apis.AndroidPublisher.v3
             /// </param>
             public virtual CreateRequest Create(Google.Apis.AndroidPublisher.v3.Data.Subscription body, string packageName)
             {
-                return new CreateRequest(service, body, packageName);
+                return new CreateRequest(this.service, body, packageName);
             }
 
             /// <summary>
@@ -7651,7 +7718,7 @@ namespace Google.Apis.AndroidPublisher.v3
             /// <param name="productId">Required. The unique product ID of the subscription to delete.</param>
             public virtual DeleteRequest Delete(string packageName, string productId)
             {
-                return new DeleteRequest(service, packageName, productId);
+                return new DeleteRequest(this.service, packageName, productId);
             }
 
             /// <summary>
@@ -7712,7 +7779,7 @@ namespace Google.Apis.AndroidPublisher.v3
             /// <param name="productId">Required. The unique product ID of the subscription to get.</param>
             public virtual GetRequest Get(string packageName, string productId)
             {
-                return new GetRequest(service, packageName, productId);
+                return new GetRequest(this.service, packageName, productId);
             }
 
             /// <summary>Reads a single subscription.</summary>
@@ -7772,7 +7839,7 @@ namespace Google.Apis.AndroidPublisher.v3
             /// </param>
             public virtual ListRequest List(string packageName)
             {
-                return new ListRequest(service, packageName);
+                return new ListRequest(this.service, packageName);
             }
 
             /// <summary>Lists all subscriptions under a given app.</summary>
@@ -7871,7 +7938,7 @@ namespace Google.Apis.AndroidPublisher.v3
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.AndroidPublisher.v3.Data.Subscription body, string packageName, string productId)
             {
-                return new PatchRequest(service, body, packageName, productId);
+                return new PatchRequest(this.service, body, packageName, productId);
             }
 
             /// <summary>Updates an existing subscription.</summary>
@@ -7978,7 +8045,7 @@ namespace Google.Apis.AndroidPublisher.v3
         /// <param name="packageName">Required. The app package name.</param>
         public virtual ConvertRegionPricesRequest ConvertRegionPrices(Google.Apis.AndroidPublisher.v3.Data.ConvertRegionPricesRequest body, string packageName)
         {
-            return new ConvertRegionPricesRequest(service, body, packageName);
+            return new ConvertRegionPricesRequest(this.service, body, packageName);
         }
 
         /// <summary>
@@ -8056,7 +8123,7 @@ namespace Google.Apis.AndroidPublisher.v3
         /// </param>
         public virtual RefundRequest Refund(string packageName, string orderId)
         {
-            return new RefundRequest(service, packageName, orderId);
+            return new RefundRequest(this.service, packageName, orderId);
         }
 
         /// <summary>
@@ -8180,7 +8247,7 @@ namespace Google.Apis.AndroidPublisher.v3
             /// </param>
             public virtual AcknowledgeRequest Acknowledge(Google.Apis.AndroidPublisher.v3.Data.ProductPurchasesAcknowledgeRequest body, string packageName, string productId, string token)
             {
-                return new AcknowledgeRequest(service, body, packageName, productId, token);
+                return new AcknowledgeRequest(this.service, body, packageName, productId, token);
             }
 
             /// <summary>Acknowledges a purchase of an inapp item.</summary>
@@ -8266,7 +8333,7 @@ namespace Google.Apis.AndroidPublisher.v3
             /// </param>
             public virtual ConsumeRequest Consume(string packageName, string productId, string token)
             {
-                return new ConsumeRequest(service, packageName, productId, token);
+                return new ConsumeRequest(this.service, packageName, productId, token);
             }
 
             /// <summary>Consumes a purchase for an inapp item.</summary>
@@ -8345,7 +8412,7 @@ namespace Google.Apis.AndroidPublisher.v3
             /// </param>
             public virtual GetRequest Get(string packageName, string productId, string token)
             {
-                return new GetRequest(service, packageName, productId, token);
+                return new GetRequest(this.service, packageName, productId, token);
             }
 
             /// <summary>Checks the purchase and consumption status of an inapp item.</summary>
@@ -8442,7 +8509,7 @@ namespace Google.Apis.AndroidPublisher.v3
             /// <param name="token">The token provided to the user's device when the subscription was purchased.</param>
             public virtual AcknowledgeRequest Acknowledge(Google.Apis.AndroidPublisher.v3.Data.SubscriptionPurchasesAcknowledgeRequest body, string packageName, string subscriptionId, string token)
             {
-                return new AcknowledgeRequest(service, body, packageName, subscriptionId, token);
+                return new AcknowledgeRequest(this.service, body, packageName, subscriptionId, token);
             }
 
             /// <summary>Acknowledges a subscription purchase.</summary>
@@ -8530,7 +8597,7 @@ namespace Google.Apis.AndroidPublisher.v3
             /// <param name="token">The token provided to the user's device when the subscription was purchased.</param>
             public virtual CancelRequest Cancel(string packageName, string subscriptionId, string token)
             {
-                return new CancelRequest(service, packageName, subscriptionId, token);
+                return new CancelRequest(this.service, packageName, subscriptionId, token);
             }
 
             /// <summary>
@@ -8612,7 +8679,7 @@ namespace Google.Apis.AndroidPublisher.v3
             /// <param name="token">The token provided to the user's device when the subscription was purchased.</param>
             public virtual DeferRequest Defer(Google.Apis.AndroidPublisher.v3.Data.SubscriptionPurchasesDeferRequest body, string packageName, string subscriptionId, string token)
             {
-                return new DeferRequest(service, body, packageName, subscriptionId, token);
+                return new DeferRequest(this.service, body, packageName, subscriptionId, token);
             }
 
             /// <summary>Defers a user's subscription purchase until a specified future expiration time.</summary>
@@ -8698,7 +8765,7 @@ namespace Google.Apis.AndroidPublisher.v3
             /// <param name="token">The token provided to the user's device when the subscription was purchased.</param>
             public virtual GetRequest Get(string packageName, string subscriptionId, string token)
             {
-                return new GetRequest(service, packageName, subscriptionId, token);
+                return new GetRequest(this.service, packageName, subscriptionId, token);
             }
 
             /// <summary>Checks whether a user's subscription purchase is valid and returns its expiry time.</summary>
@@ -8780,7 +8847,7 @@ namespace Google.Apis.AndroidPublisher.v3
             /// <param name="token">The token provided to the user's device when the subscription was purchased.</param>
             public virtual RefundRequest Refund(string packageName, string subscriptionId, string token)
             {
-                return new RefundRequest(service, packageName, subscriptionId, token);
+                return new RefundRequest(this.service, packageName, subscriptionId, token);
             }
 
             /// <summary>
@@ -8865,7 +8932,7 @@ namespace Google.Apis.AndroidPublisher.v3
             /// <param name="token">The token provided to the user's device when the subscription was purchased.</param>
             public virtual RevokeRequest Revoke(string packageName, string subscriptionId, string token)
             {
-                return new RevokeRequest(service, packageName, subscriptionId, token);
+                return new RevokeRequest(this.service, packageName, subscriptionId, token);
             }
 
             /// <summary>
@@ -8966,7 +9033,7 @@ namespace Google.Apis.AndroidPublisher.v3
             /// </param>
             public virtual GetRequest Get(string packageName, string token)
             {
-                return new GetRequest(service, packageName, token);
+                return new GetRequest(this.service, packageName, token);
             }
 
             /// <summary>Get metadata about a subscription</summary>
@@ -9050,7 +9117,7 @@ namespace Google.Apis.AndroidPublisher.v3
             /// </param>
             public virtual ListRequest List(string packageName)
             {
-                return new ListRequest(service, packageName);
+                return new ListRequest(this.service, packageName);
             }
 
             /// <summary>Lists the purchases that were canceled, refunded or charged-back.</summary>
@@ -9216,7 +9283,7 @@ namespace Google.Apis.AndroidPublisher.v3
         /// <param name="reviewId">Unique identifier for a review.</param>
         public virtual GetRequest Get(string packageName, string reviewId)
         {
-            return new GetRequest(service, packageName, reviewId);
+            return new GetRequest(this.service, packageName, reviewId);
         }
 
         /// <summary>Gets a single review.</summary>
@@ -9286,7 +9353,7 @@ namespace Google.Apis.AndroidPublisher.v3
         /// <param name="packageName">Package name of the app.</param>
         public virtual ListRequest List(string packageName)
         {
-            return new ListRequest(service, packageName);
+            return new ListRequest(this.service, packageName);
         }
 
         /// <summary>Lists all reviews.</summary>
@@ -9381,7 +9448,7 @@ namespace Google.Apis.AndroidPublisher.v3
         /// <param name="reviewId">Unique identifier for a review.</param>
         public virtual ReplyRequest Reply(Google.Apis.AndroidPublisher.v3.Data.ReviewsReplyRequest body, string packageName, string reviewId)
         {
-            return new ReplyRequest(service, body, packageName, reviewId);
+            return new ReplyRequest(this.service, body, packageName, reviewId);
         }
 
         /// <summary>Replies to a single review, or updates an existing reply.</summary>
@@ -9484,7 +9551,7 @@ namespace Google.Apis.AndroidPublisher.v3
             /// <param name="versionCode">The version code of the App Bundle.</param>
             public virtual CreateRequest Create(Google.Apis.AndroidPublisher.v3.Data.Variant body, string packageName, long versionCode)
             {
-                return new CreateRequest(service, body, packageName, versionCode);
+                return new CreateRequest(this.service, body, packageName, versionCode);
             }
 
             /// <summary>
@@ -9556,7 +9623,7 @@ namespace Google.Apis.AndroidPublisher.v3
             /// <param name="variantId">The ID of a previously created system APK variant.</param>
             public virtual DownloadRequest Download(string packageName, long versionCode, long variantId)
             {
-                return new DownloadRequest(service, packageName, versionCode, variantId);
+                return new DownloadRequest(this.service, packageName, versionCode, variantId);
             }
 
             /// <summary>
@@ -9719,7 +9786,7 @@ namespace Google.Apis.AndroidPublisher.v3
             /// <param name="variantId">The ID of a previously created system APK variant.</param>
             public virtual GetRequest Get(string packageName, long versionCode, long variantId)
             {
-                return new GetRequest(service, packageName, versionCode, variantId);
+                return new GetRequest(this.service, packageName, versionCode, variantId);
             }
 
             /// <summary>Returns a previously created system APK variant.</summary>
@@ -9791,7 +9858,7 @@ namespace Google.Apis.AndroidPublisher.v3
             /// <param name="versionCode">The version code of the App Bundle.</param>
             public virtual ListRequest List(string packageName, long versionCode)
             {
-                return new ListRequest(service, packageName, versionCode);
+                return new ListRequest(this.service, packageName, versionCode);
             }
 
             /// <summary>Returns the list of previously created system APK variants.</summary>
@@ -9868,7 +9935,7 @@ namespace Google.Apis.AndroidPublisher.v3
         /// </param>
         public virtual CreateRequest Create(Google.Apis.AndroidPublisher.v3.Data.User body, string parent)
         {
-            return new CreateRequest(service, body, parent);
+            return new CreateRequest(this.service, body, parent);
         }
 
         /// <summary>Grant access for a user to the given developer account.</summary>
@@ -9922,7 +9989,7 @@ namespace Google.Apis.AndroidPublisher.v3
         /// </param>
         public virtual DeleteRequest Delete(string name)
         {
-            return new DeleteRequest(service, name);
+            return new DeleteRequest(this.service, name);
         }
 
         /// <summary>Removes all access for the user to the given developer account.</summary>
@@ -9971,7 +10038,7 @@ namespace Google.Apis.AndroidPublisher.v3
         /// </param>
         public virtual ListRequest List(string parent)
         {
-            return new ListRequest(service, parent);
+            return new ListRequest(this.service, parent);
         }
 
         /// <summary>Lists all users with access to a developer account.</summary>
@@ -10047,7 +10114,7 @@ namespace Google.Apis.AndroidPublisher.v3
         /// </param>
         public virtual PatchRequest Patch(Google.Apis.AndroidPublisher.v3.Data.User body, string name)
         {
-            return new PatchRequest(service, body, name);
+            return new PatchRequest(this.service, body, name);
         }
 
         /// <summary>Updates access for the user to the developer account.</summary>
@@ -11132,8 +11199,8 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -11231,8 +11298,8 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? TransactionTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(TransactionTimeRaw);
-            set => TransactionTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(TransactionTimeRaw);
+            set => TransactionTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Required. User address for tax computation.</summary>
@@ -12266,8 +12333,8 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? AutoResumeTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(AutoResumeTimeRaw);
-            set => AutoResumeTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(AutoResumeTimeRaw);
+            set => AutoResumeTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -12339,8 +12406,8 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? AllowExtendAfterTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(AllowExtendAfterTimeRaw);
-            set => AllowExtendAfterTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(AllowExtendAfterTimeRaw);
+            set => AllowExtendAfterTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -12532,8 +12599,8 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? RefundTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(RefundTimeRaw);
-            set => RefundTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(RefundTimeRaw);
+            set => RefundTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -12612,8 +12679,8 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? OldestAllowedPriceVersionTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(OldestAllowedPriceVersionTimeRaw);
-            set => OldestAllowedPriceVersionTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(OldestAllowedPriceVersionTimeRaw);
+            set => OldestAllowedPriceVersionTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -13095,8 +13162,8 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ExpectedNewPriceChargeTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpectedNewPriceChargeTimeRaw);
-            set => ExpectedNewPriceChargeTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpectedNewPriceChargeTimeRaw);
+            set => ExpectedNewPriceChargeTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>New recurring price for the subscription item.</summary>
@@ -13540,8 +13607,8 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ExpiryTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpiryTimeRaw);
-            set => ExpiryTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpiryTimeRaw);
+            set => ExpiryTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The offer details for this item.</summary>
@@ -13656,8 +13723,8 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>User profile associated with purchases made with 'Subscribe with Google'.</summary>
@@ -13935,6 +14002,30 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configurations of the new track.</summary>
+    public class TrackConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Form factor of the new track. Defaults to the default track.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("formFactor")]
+        public virtual string FormFactor { get; set; }
+
+        /// <summary>
+        /// Required. Identifier of the new track. For default tracks, this field consists of the track alias only. Form
+        /// factor tracks have a special prefix as an identifier, for example `wear:production`,
+        /// `automotive:production`. This prefix must match the value of the `form_factor` field, if it is not a default
+        /// track. [More on track name](https://developers.google.com/android-publisher/tracks#ff-track-name)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("track")]
+        public virtual string Track { get; set; }
+
+        /// <summary>Required. Type of the new track. Currently, the only supported value is closedTesting.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Resource for per-track country availability information.</summary>
     public class TrackCountryAvailability : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -14119,8 +14210,8 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ExpirationTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpirationTimeRaw);
-            set => ExpirationTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpirationTimeRaw);
+            set => ExpirationTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. Per-app permissions for the user.</summary>
@@ -14301,8 +14392,8 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CancelTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CancelTimeRaw);
-            set => CancelTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CancelTimeRaw);
+            set => CancelTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>

@@ -305,7 +305,7 @@ namespace Google.Apis.CloudResourceManager.v2
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.CloudResourceManager.v2.Data.Folder body)
         {
-            return new CreateRequest(service, body);
+            return new CreateRequest(this.service, body);
         }
 
         /// <summary>
@@ -379,7 +379,7 @@ namespace Google.Apis.CloudResourceManager.v2
         /// </param>
         public virtual DeleteRequest Delete(string name)
         {
-            return new DeleteRequest(service, name);
+            return new DeleteRequest(this.service, name);
         }
 
         /// <summary>
@@ -437,7 +437,7 @@ namespace Google.Apis.CloudResourceManager.v2
         /// </param>
         public virtual GetRequest Get(string name)
         {
-            return new GetRequest(service, name);
+            return new GetRequest(this.service, name);
         }
 
         /// <summary>
@@ -496,7 +496,7 @@ namespace Google.Apis.CloudResourceManager.v2
         /// </param>
         public virtual GetIamPolicyRequest GetIamPolicy(Google.Apis.CloudResourceManager.v2.Data.GetIamPolicyRequest body, string resource)
         {
-            return new GetIamPolicyRequest(service, body, resource);
+            return new GetIamPolicyRequest(this.service, body, resource);
         }
 
         /// <summary>
@@ -559,7 +559,7 @@ namespace Google.Apis.CloudResourceManager.v2
         /// </summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>
@@ -669,7 +669,7 @@ namespace Google.Apis.CloudResourceManager.v2
         /// </param>
         public virtual MoveRequest Move(Google.Apis.CloudResourceManager.v2.Data.MoveFolderRequest body, string name)
         {
-            return new MoveRequest(service, body, name);
+            return new MoveRequest(this.service, body, name);
         }
 
         /// <summary>
@@ -745,7 +745,7 @@ namespace Google.Apis.CloudResourceManager.v2
         /// </param>
         public virtual PatchRequest Patch(Google.Apis.CloudResourceManager.v2.Data.Folder body, string name)
         {
-            return new PatchRequest(service, body, name);
+            return new PatchRequest(this.service, body, name);
         }
 
         /// <summary>
@@ -824,7 +824,7 @@ namespace Google.Apis.CloudResourceManager.v2
         /// <param name="body">The body of the request.</param>
         public virtual SearchRequest Search(Google.Apis.CloudResourceManager.v2.Data.SearchFoldersRequest body)
         {
-            return new SearchRequest(service, body);
+            return new SearchRequest(this.service, body);
         }
 
         /// <summary>
@@ -875,7 +875,7 @@ namespace Google.Apis.CloudResourceManager.v2
         /// </param>
         public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.CloudResourceManager.v2.Data.SetIamPolicyRequest body, string resource)
         {
-            return new SetIamPolicyRequest(service, body, resource);
+            return new SetIamPolicyRequest(this.service, body, resource);
         }
 
         /// <summary>
@@ -941,7 +941,7 @@ namespace Google.Apis.CloudResourceManager.v2
         /// </param>
         public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.CloudResourceManager.v2.Data.TestIamPermissionsRequest body, string resource)
         {
-            return new TestIamPermissionsRequest(service, body, resource);
+            return new TestIamPermissionsRequest(this.service, body, resource);
         }
 
         /// <summary>
@@ -1008,7 +1008,7 @@ namespace Google.Apis.CloudResourceManager.v2
         /// </param>
         public virtual UndeleteRequest Undelete(Google.Apis.CloudResourceManager.v2.Data.UndeleteFolderRequest body, string name)
         {
-            return new UndeleteRequest(service, body, name);
+            return new UndeleteRequest(this.service, body, name);
         }
 
         /// <summary>
@@ -1086,7 +1086,7 @@ namespace Google.Apis.CloudResourceManager.v2
         /// <param name="name">The name of the operation resource.</param>
         public virtual GetRequest Get(string name)
         {
-            return new GetRequest(service, name);
+            return new GetRequest(this.service, name);
         }
 
         /// <summary>
@@ -1347,8 +1347,8 @@ namespace Google.Apis.CloudResourceManager.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -1517,8 +1517,8 @@ namespace Google.Apis.CloudResourceManager.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -1845,8 +1845,8 @@ namespace Google.Apis.CloudResourceManager.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>

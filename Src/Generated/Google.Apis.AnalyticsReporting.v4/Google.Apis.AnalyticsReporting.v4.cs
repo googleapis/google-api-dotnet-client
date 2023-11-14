@@ -282,7 +282,7 @@ namespace Google.Apis.AnalyticsReporting.v4
         /// <param name="body">The body of the request.</param>
         public virtual BatchGetRequest BatchGet(Google.Apis.AnalyticsReporting.v4.Data.GetReportsRequest body)
         {
-            return new BatchGetRequest(service, body);
+            return new BatchGetRequest(this.service, body);
         }
 
         /// <summary>Returns the Analytics data.</summary>
@@ -336,7 +336,7 @@ namespace Google.Apis.AnalyticsReporting.v4
         /// <param name="body">The body of the request.</param>
         public virtual SearchRequest Search(Google.Apis.AnalyticsReporting.v4.Data.SearchUserActivityRequest body)
         {
-            return new SearchRequest(service, body);
+            return new SearchRequest(this.service, body);
         }
 
         /// <summary>Returns User Activity data.</summary>
@@ -421,8 +421,8 @@ namespace Google.Apis.AnalyticsReporting.v4.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ActivityTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ActivityTimeRaw);
-            set => ActivityTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ActivityTimeRaw);
+            set => ActivityTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Type of this activity.</summary>
@@ -1253,8 +1253,8 @@ namespace Google.Apis.AnalyticsReporting.v4.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? DataLastRefreshedDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DataLastRefreshedRaw);
-            set => DataLastRefreshedRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DataLastRefreshedRaw);
+            set => DataLastRefreshedRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>If empty reason is specified, the report is empty for this reason.</summary>

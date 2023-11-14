@@ -328,7 +328,7 @@ namespace Google.Apis.Dataproc.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Dataproc.v1.Data.AutoscalingPolicy body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates new autoscaling policy.</summary>
@@ -397,7 +397,7 @@ namespace Google.Apis.Dataproc.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -459,7 +459,7 @@ namespace Google.Apis.Dataproc.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Retrieves autoscaling policy.</summary>
@@ -518,7 +518,7 @@ namespace Google.Apis.Dataproc.v1
                 /// </param>
                 public virtual GetIamPolicyRequest GetIamPolicy(Google.Apis.Dataproc.v1.Data.GetIamPolicyRequest body, string resource)
                 {
-                    return new GetIamPolicyRequest(service, body, resource);
+                    return new GetIamPolicyRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -582,7 +582,7 @@ namespace Google.Apis.Dataproc.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists autoscaling policies in the project.</summary>
@@ -670,7 +670,7 @@ namespace Google.Apis.Dataproc.v1
                 /// </param>
                 public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Dataproc.v1.Data.SetIamPolicyRequest body, string resource)
                 {
-                    return new SetIamPolicyRequest(service, body, resource);
+                    return new SetIamPolicyRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -737,7 +737,7 @@ namespace Google.Apis.Dataproc.v1
                 /// </param>
                 public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Dataproc.v1.Data.TestIamPermissionsRequest body, string resource)
                 {
-                    return new TestIamPermissionsRequest(service, body, resource);
+                    return new TestIamPermissionsRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -808,7 +808,7 @@ namespace Google.Apis.Dataproc.v1
                 /// </param>
                 public virtual UpdateRequest Update(Google.Apis.Dataproc.v1.Data.AutoscalingPolicy body, string name)
                 {
-                    return new UpdateRequest(service, body, name);
+                    return new UpdateRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -889,7 +889,7 @@ namespace Google.Apis.Dataproc.v1
                 /// <param name="parent">Required. The parent resource where this batch will be created.</param>
                 public virtual CreateRequest Create(Google.Apis.Dataproc.v1.Data.Batch body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a batch workload that executes asynchronously.</summary>
@@ -983,7 +983,7 @@ namespace Google.Apis.Dataproc.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -1037,7 +1037,7 @@ namespace Google.Apis.Dataproc.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets the batch workload resource representation.</summary>
@@ -1085,7 +1085,7 @@ namespace Google.Apis.Dataproc.v1
                 /// <param name="parent">Required. The parent, which owns this collection of batches.</param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists batch workloads.</summary>
@@ -1221,7 +1221,7 @@ namespace Google.Apis.Dataproc.v1
                 /// <param name="name">The name of the operation resource to be cancelled.</param>
                 public virtual CancelRequest Cancel(string name)
                 {
-                    return new CancelRequest(service, name);
+                    return new CancelRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -1277,7 +1277,7 @@ namespace Google.Apis.Dataproc.v1
                 /// <param name="name">The name of the operation resource to be deleted.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -1329,7 +1329,7 @@ namespace Google.Apis.Dataproc.v1
                 /// <param name="name">The name of the operation resource.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -1380,7 +1380,7 @@ namespace Google.Apis.Dataproc.v1
                 /// <param name="name">The name of the operation's parent resource.</param>
                 public virtual ListRequest List(string name)
                 {
-                    return new ListRequest(service, name);
+                    return new ListRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -1485,7 +1485,7 @@ namespace Google.Apis.Dataproc.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Dataproc.v1.Data.SessionTemplate body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Create a session template synchronously.</summary>
@@ -1537,7 +1537,7 @@ namespace Google.Apis.Dataproc.v1
                 /// <param name="name">Required. The name of the session template resource to delete.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes a session template.</summary>
@@ -1582,7 +1582,7 @@ namespace Google.Apis.Dataproc.v1
                 /// <param name="name">Required. The name of the session template to retrieve.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets the resource representation for a session template.</summary>
@@ -1627,7 +1627,7 @@ namespace Google.Apis.Dataproc.v1
                 /// <param name="parent">Required. The parent that owns this collection of session templates.</param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists session templates.</summary>
@@ -1718,7 +1718,7 @@ namespace Google.Apis.Dataproc.v1
                 /// <param name="name">Required. The resource name of the session template.</param>
                 public virtual PatchRequest Patch(Google.Apis.Dataproc.v1.Data.SessionTemplate body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates the session template synchronously.</summary>
@@ -1789,7 +1789,7 @@ namespace Google.Apis.Dataproc.v1
                 /// <param name="parent">Required. The parent resource where this session will be created.</param>
                 public virtual CreateRequest Create(Google.Apis.Dataproc.v1.Data.Session body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Create an interactive session asynchronously.</summary>
@@ -1880,7 +1880,7 @@ namespace Google.Apis.Dataproc.v1
                 /// <param name="name">Required. The name of the session resource to delete.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -1948,7 +1948,7 @@ namespace Google.Apis.Dataproc.v1
                 /// <param name="name">Required. The name of the session to retrieve.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets the resource representation for an interactive session.</summary>
@@ -1993,7 +1993,7 @@ namespace Google.Apis.Dataproc.v1
                 /// <param name="parent">Required. The parent, which owns this collection of sessions.</param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists interactive sessions.</summary>
@@ -2089,7 +2089,7 @@ namespace Google.Apis.Dataproc.v1
                 /// <param name="name">Required. The name of the session resource to terminate.</param>
                 public virtual TerminateRequest Terminate(Google.Apis.Dataproc.v1.Data.TerminateSessionRequest body, string name)
                 {
-                    return new TerminateRequest(service, body, name);
+                    return new TerminateRequest(this.service, body, name);
                 }
 
                 /// <summary>Terminates the interactive session.</summary>
@@ -2166,7 +2166,7 @@ namespace Google.Apis.Dataproc.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Dataproc.v1.Data.WorkflowTemplate body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates new workflow template.</summary>
@@ -2232,7 +2232,7 @@ namespace Google.Apis.Dataproc.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes a workflow template. It does not cancel in-progress workflows.</summary>
@@ -2309,7 +2309,7 @@ namespace Google.Apis.Dataproc.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -2386,7 +2386,7 @@ namespace Google.Apis.Dataproc.v1
                 /// </param>
                 public virtual GetIamPolicyRequest GetIamPolicy(Google.Apis.Dataproc.v1.Data.GetIamPolicyRequest body, string resource)
                 {
-                    return new GetIamPolicyRequest(service, body, resource);
+                    return new GetIamPolicyRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -2462,7 +2462,7 @@ namespace Google.Apis.Dataproc.v1
                 /// </param>
                 public virtual InstantiateRequest Instantiate(Google.Apis.Dataproc.v1.Data.InstantiateWorkflowTemplateRequest body, string name)
                 {
-                    return new InstantiateRequest(service, body, name);
+                    return new InstantiateRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -2550,7 +2550,7 @@ namespace Google.Apis.Dataproc.v1
                 /// </param>
                 public virtual InstantiateInlineRequest InstantiateInline(Google.Apis.Dataproc.v1.Data.WorkflowTemplate body, string parent)
                 {
-                    return new InstantiateInlineRequest(service, body, parent);
+                    return new InstantiateInlineRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -2645,7 +2645,7 @@ namespace Google.Apis.Dataproc.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists workflows that match the specified filter in the request.</summary>
@@ -2730,7 +2730,7 @@ namespace Google.Apis.Dataproc.v1
                 /// </param>
                 public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Dataproc.v1.Data.SetIamPolicyRequest body, string resource)
                 {
-                    return new SetIamPolicyRequest(service, body, resource);
+                    return new SetIamPolicyRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -2797,7 +2797,7 @@ namespace Google.Apis.Dataproc.v1
                 /// </param>
                 public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Dataproc.v1.Data.TestIamPermissionsRequest body, string resource)
                 {
-                    return new TestIamPermissionsRequest(service, body, resource);
+                    return new TestIamPermissionsRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -2868,7 +2868,7 @@ namespace Google.Apis.Dataproc.v1
                 /// </param>
                 public virtual UpdateRequest Update(Google.Apis.Dataproc.v1.Data.WorkflowTemplate body, string name)
                 {
-                    return new UpdateRequest(service, body, name);
+                    return new UpdateRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -2979,7 +2979,7 @@ namespace Google.Apis.Dataproc.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Dataproc.v1.Data.AutoscalingPolicy body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates new autoscaling policy.</summary>
@@ -3048,7 +3048,7 @@ namespace Google.Apis.Dataproc.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -3110,7 +3110,7 @@ namespace Google.Apis.Dataproc.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Retrieves autoscaling policy.</summary>
@@ -3169,7 +3169,7 @@ namespace Google.Apis.Dataproc.v1
                 /// </param>
                 public virtual GetIamPolicyRequest GetIamPolicy(Google.Apis.Dataproc.v1.Data.GetIamPolicyRequest body, string resource)
                 {
-                    return new GetIamPolicyRequest(service, body, resource);
+                    return new GetIamPolicyRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -3233,7 +3233,7 @@ namespace Google.Apis.Dataproc.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists autoscaling policies in the project.</summary>
@@ -3321,7 +3321,7 @@ namespace Google.Apis.Dataproc.v1
                 /// </param>
                 public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Dataproc.v1.Data.SetIamPolicyRequest body, string resource)
                 {
-                    return new SetIamPolicyRequest(service, body, resource);
+                    return new SetIamPolicyRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -3388,7 +3388,7 @@ namespace Google.Apis.Dataproc.v1
                 /// </param>
                 public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Dataproc.v1.Data.TestIamPermissionsRequest body, string resource)
                 {
-                    return new TestIamPermissionsRequest(service, body, resource);
+                    return new TestIamPermissionsRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -3459,7 +3459,7 @@ namespace Google.Apis.Dataproc.v1
                 /// </param>
                 public virtual UpdateRequest Update(Google.Apis.Dataproc.v1.Data.AutoscalingPolicy body, string name)
                 {
-                    return new UpdateRequest(service, body, name);
+                    return new UpdateRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -3564,7 +3564,7 @@ namespace Google.Apis.Dataproc.v1
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.Dataproc.v1.Data.NodeGroup body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>
@@ -3674,7 +3674,7 @@ namespace Google.Apis.Dataproc.v1
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Gets the resource representation for a node group in a cluster.</summary>
@@ -3729,7 +3729,7 @@ namespace Google.Apis.Dataproc.v1
                     /// </param>
                     public virtual ResizeRequest Resize(Google.Apis.Dataproc.v1.Data.ResizeNodeGroupRequest body, string name)
                     {
-                        return new ResizeRequest(service, body, name);
+                        return new ResizeRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -3795,7 +3795,7 @@ namespace Google.Apis.Dataproc.v1
                 /// <param name="region">Required. The Dataproc region in which to handle the request.</param>
                 public virtual CreateRequest Create(Google.Apis.Dataproc.v1.Data.Cluster body, string projectId, string region)
                 {
-                    return new CreateRequest(service, body, projectId, region);
+                    return new CreateRequest(this.service, body, projectId, region);
                 }
 
                 /// <summary>
@@ -3924,7 +3924,7 @@ namespace Google.Apis.Dataproc.v1
                 /// <param name="clusterName">Required. The cluster name.</param>
                 public virtual DeleteRequest Delete(string projectId, string region, string clusterName)
                 {
-                    return new DeleteRequest(service, projectId, region, clusterName);
+                    return new DeleteRequest(this.service, projectId, region, clusterName);
                 }
 
                 /// <summary>
@@ -4067,7 +4067,7 @@ namespace Google.Apis.Dataproc.v1
                 /// <param name="clusterName">Required. The cluster name.</param>
                 public virtual DiagnoseRequest Diagnose(Google.Apis.Dataproc.v1.Data.DiagnoseClusterRequest body, string projectId, string region, string clusterName)
                 {
-                    return new DiagnoseRequest(service, body, projectId, region, clusterName);
+                    return new DiagnoseRequest(this.service, body, projectId, region, clusterName);
                 }
 
                 /// <summary>
@@ -4157,7 +4157,7 @@ namespace Google.Apis.Dataproc.v1
                 /// <param name="clusterName">Required. The cluster name.</param>
                 public virtual GetRequest Get(string projectId, string region, string clusterName)
                 {
-                    return new GetRequest(service, projectId, region, clusterName);
+                    return new GetRequest(this.service, projectId, region, clusterName);
                 }
 
                 /// <summary>Gets the resource representation for a cluster in a project.</summary>
@@ -4237,7 +4237,7 @@ namespace Google.Apis.Dataproc.v1
                 /// </param>
                 public virtual GetIamPolicyRequest GetIamPolicy(Google.Apis.Dataproc.v1.Data.GetIamPolicyRequest body, string resource)
                 {
-                    return new GetIamPolicyRequest(service, body, resource);
+                    return new GetIamPolicyRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -4303,7 +4303,7 @@ namespace Google.Apis.Dataproc.v1
                 /// <param name="cluster">Required. The cluster, in the form clusters/.</param>
                 public virtual InjectCredentialsRequest InjectCredentials(Google.Apis.Dataproc.v1.Data.InjectCredentialsRequest body, string project, string region, string cluster)
                 {
-                    return new InjectCredentialsRequest(service, body, project, region, cluster);
+                    return new InjectCredentialsRequest(this.service, body, project, region, cluster);
                 }
 
                 /// <summary>
@@ -4390,7 +4390,7 @@ namespace Google.Apis.Dataproc.v1
                 /// <param name="region">Required. The Dataproc region in which to handle the request.</param>
                 public virtual ListRequest List(string projectId, string region)
                 {
-                    return new ListRequest(service, projectId, region);
+                    return new ListRequest(this.service, projectId, region);
                 }
 
                 /// <summary>Lists all regions/{region}/clusters in a project alphabetically.</summary>
@@ -4505,7 +4505,7 @@ namespace Google.Apis.Dataproc.v1
                 /// <param name="clusterName">Required. The cluster name.</param>
                 public virtual PatchRequest Patch(Google.Apis.Dataproc.v1.Data.Cluster body, string projectId, string region, string clusterName)
                 {
-                    return new PatchRequest(service, body, projectId, region, clusterName);
+                    return new PatchRequest(this.service, body, projectId, region, clusterName);
                 }
 
                 /// <summary>
@@ -4658,7 +4658,7 @@ namespace Google.Apis.Dataproc.v1
                 /// <param name="clusterName">Required. The cluster name.</param>
                 public virtual RepairRequest Repair(Google.Apis.Dataproc.v1.Data.RepairClusterRequest body, string projectId, string region, string clusterName)
                 {
-                    return new RepairRequest(service, body, projectId, region, clusterName);
+                    return new RepairRequest(this.service, body, projectId, region, clusterName);
                 }
 
                 /// <summary>Repairs a cluster.</summary>
@@ -4743,7 +4743,7 @@ namespace Google.Apis.Dataproc.v1
                 /// </param>
                 public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Dataproc.v1.Data.SetIamPolicyRequest body, string resource)
                 {
-                    return new SetIamPolicyRequest(service, body, resource);
+                    return new SetIamPolicyRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -4806,7 +4806,7 @@ namespace Google.Apis.Dataproc.v1
                 /// <param name="clusterName">Required. The cluster name.</param>
                 public virtual StartRequest Start(Google.Apis.Dataproc.v1.Data.StartClusterRequest body, string projectId, string region, string clusterName)
                 {
-                    return new StartRequest(service, body, projectId, region, clusterName);
+                    return new StartRequest(this.service, body, projectId, region, clusterName);
                 }
 
                 /// <summary>Starts a cluster in a project.</summary>
@@ -4889,7 +4889,7 @@ namespace Google.Apis.Dataproc.v1
                 /// <param name="clusterName">Required. The cluster name.</param>
                 public virtual StopRequest Stop(Google.Apis.Dataproc.v1.Data.StopClusterRequest body, string projectId, string region, string clusterName)
                 {
-                    return new StopRequest(service, body, projectId, region, clusterName);
+                    return new StopRequest(this.service, body, projectId, region, clusterName);
                 }
 
                 /// <summary>Stops a cluster in a project.</summary>
@@ -4976,7 +4976,7 @@ namespace Google.Apis.Dataproc.v1
                 /// </param>
                 public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Dataproc.v1.Data.TestIamPermissionsRequest body, string resource)
                 {
-                    return new TestIamPermissionsRequest(service, body, resource);
+                    return new TestIamPermissionsRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -5065,7 +5065,7 @@ namespace Google.Apis.Dataproc.v1
                 /// <param name="jobId">Required. The job ID.</param>
                 public virtual CancelRequest Cancel(Google.Apis.Dataproc.v1.Data.CancelJobRequest body, string projectId, string region, string jobId)
                 {
-                    return new CancelRequest(service, body, projectId, region, jobId);
+                    return new CancelRequest(this.service, body, projectId, region, jobId);
                 }
 
                 /// <summary>
@@ -5158,7 +5158,7 @@ namespace Google.Apis.Dataproc.v1
                 /// <param name="jobId">Required. The job ID.</param>
                 public virtual DeleteRequest Delete(string projectId, string region, string jobId)
                 {
-                    return new DeleteRequest(service, projectId, region, jobId);
+                    return new DeleteRequest(this.service, projectId, region, jobId);
                 }
 
                 /// <summary>
@@ -5238,7 +5238,7 @@ namespace Google.Apis.Dataproc.v1
                 /// <param name="jobId">Required. The job ID.</param>
                 public virtual GetRequest Get(string projectId, string region, string jobId)
                 {
-                    return new GetRequest(service, projectId, region, jobId);
+                    return new GetRequest(this.service, projectId, region, jobId);
                 }
 
                 /// <summary>Gets the resource representation for a job in a project.</summary>
@@ -5318,7 +5318,7 @@ namespace Google.Apis.Dataproc.v1
                 /// </param>
                 public virtual GetIamPolicyRequest GetIamPolicy(Google.Apis.Dataproc.v1.Data.GetIamPolicyRequest body, string resource)
                 {
-                    return new GetIamPolicyRequest(service, body, resource);
+                    return new GetIamPolicyRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -5379,7 +5379,7 @@ namespace Google.Apis.Dataproc.v1
                 /// <param name="region">Required. The Dataproc region in which to handle the request.</param>
                 public virtual ListRequest List(string projectId, string region)
                 {
-                    return new ListRequest(service, projectId, region);
+                    return new ListRequest(this.service, projectId, region);
                 }
 
                 /// <summary>Lists regions/{region}/jobs in a project.</summary>
@@ -5540,7 +5540,7 @@ namespace Google.Apis.Dataproc.v1
                 /// <param name="jobId">Required. The job ID.</param>
                 public virtual PatchRequest Patch(Google.Apis.Dataproc.v1.Data.Job body, string projectId, string region, string jobId)
                 {
-                    return new PatchRequest(service, body, projectId, region, jobId);
+                    return new PatchRequest(this.service, body, projectId, region, jobId);
                 }
 
                 /// <summary>Updates a job in a project.</summary>
@@ -5644,7 +5644,7 @@ namespace Google.Apis.Dataproc.v1
                 /// </param>
                 public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Dataproc.v1.Data.SetIamPolicyRequest body, string resource)
                 {
-                    return new SetIamPolicyRequest(service, body, resource);
+                    return new SetIamPolicyRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -5706,7 +5706,7 @@ namespace Google.Apis.Dataproc.v1
                 /// <param name="region">Required. The Dataproc region in which to handle the request.</param>
                 public virtual SubmitRequest Submit(Google.Apis.Dataproc.v1.Data.SubmitJobRequest body, string projectId, string region)
                 {
-                    return new SubmitRequest(service, body, projectId, region);
+                    return new SubmitRequest(this.service, body, projectId, region);
                 }
 
                 /// <summary>Submits a job to a cluster.</summary>
@@ -5777,7 +5777,7 @@ namespace Google.Apis.Dataproc.v1
                 /// <param name="region">Required. The Dataproc region in which to handle the request.</param>
                 public virtual SubmitAsOperationRequest SubmitAsOperation(Google.Apis.Dataproc.v1.Data.SubmitJobRequest body, string projectId, string region)
                 {
-                    return new SubmitAsOperationRequest(service, body, projectId, region);
+                    return new SubmitAsOperationRequest(this.service, body, projectId, region);
                 }
 
                 /// <summary>Submits job to a cluster.</summary>
@@ -5853,7 +5853,7 @@ namespace Google.Apis.Dataproc.v1
                 /// </param>
                 public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Dataproc.v1.Data.TestIamPermissionsRequest body, string resource)
                 {
-                    return new TestIamPermissionsRequest(service, body, resource);
+                    return new TestIamPermissionsRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -5938,7 +5938,7 @@ namespace Google.Apis.Dataproc.v1
                 /// <param name="name">The name of the operation resource to be cancelled.</param>
                 public virtual CancelRequest Cancel(string name)
                 {
-                    return new CancelRequest(service, name);
+                    return new CancelRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -5994,7 +5994,7 @@ namespace Google.Apis.Dataproc.v1
                 /// <param name="name">The name of the operation resource to be deleted.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -6046,7 +6046,7 @@ namespace Google.Apis.Dataproc.v1
                 /// <param name="name">The name of the operation resource.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -6101,7 +6101,7 @@ namespace Google.Apis.Dataproc.v1
                 /// </param>
                 public virtual GetIamPolicyRequest GetIamPolicy(Google.Apis.Dataproc.v1.Data.GetIamPolicyRequest body, string resource)
                 {
-                    return new GetIamPolicyRequest(service, body, resource);
+                    return new GetIamPolicyRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -6162,7 +6162,7 @@ namespace Google.Apis.Dataproc.v1
                 /// <param name="name">The name of the operation's parent resource.</param>
                 public virtual ListRequest List(string name)
                 {
-                    return new ListRequest(service, name);
+                    return new ListRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -6253,7 +6253,7 @@ namespace Google.Apis.Dataproc.v1
                 /// </param>
                 public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Dataproc.v1.Data.SetIamPolicyRequest body, string resource)
                 {
-                    return new SetIamPolicyRequest(service, body, resource);
+                    return new SetIamPolicyRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -6320,7 +6320,7 @@ namespace Google.Apis.Dataproc.v1
                 /// </param>
                 public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Dataproc.v1.Data.TestIamPermissionsRequest body, string resource)
                 {
-                    return new TestIamPermissionsRequest(service, body, resource);
+                    return new TestIamPermissionsRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -6405,7 +6405,7 @@ namespace Google.Apis.Dataproc.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Dataproc.v1.Data.WorkflowTemplate body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates new workflow template.</summary>
@@ -6471,7 +6471,7 @@ namespace Google.Apis.Dataproc.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes a workflow template. It does not cancel in-progress workflows.</summary>
@@ -6548,7 +6548,7 @@ namespace Google.Apis.Dataproc.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -6625,7 +6625,7 @@ namespace Google.Apis.Dataproc.v1
                 /// </param>
                 public virtual GetIamPolicyRequest GetIamPolicy(Google.Apis.Dataproc.v1.Data.GetIamPolicyRequest body, string resource)
                 {
-                    return new GetIamPolicyRequest(service, body, resource);
+                    return new GetIamPolicyRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -6701,7 +6701,7 @@ namespace Google.Apis.Dataproc.v1
                 /// </param>
                 public virtual InstantiateRequest Instantiate(Google.Apis.Dataproc.v1.Data.InstantiateWorkflowTemplateRequest body, string name)
                 {
-                    return new InstantiateRequest(service, body, name);
+                    return new InstantiateRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -6789,7 +6789,7 @@ namespace Google.Apis.Dataproc.v1
                 /// </param>
                 public virtual InstantiateInlineRequest InstantiateInline(Google.Apis.Dataproc.v1.Data.WorkflowTemplate body, string parent)
                 {
-                    return new InstantiateInlineRequest(service, body, parent);
+                    return new InstantiateInlineRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -6884,7 +6884,7 @@ namespace Google.Apis.Dataproc.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists workflows that match the specified filter in the request.</summary>
@@ -6969,7 +6969,7 @@ namespace Google.Apis.Dataproc.v1
                 /// </param>
                 public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Dataproc.v1.Data.SetIamPolicyRequest body, string resource)
                 {
-                    return new SetIamPolicyRequest(service, body, resource);
+                    return new SetIamPolicyRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -7036,7 +7036,7 @@ namespace Google.Apis.Dataproc.v1
                 /// </param>
                 public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Dataproc.v1.Data.TestIamPermissionsRequest body, string resource)
                 {
-                    return new TestIamPermissionsRequest(service, body, resource);
+                    return new TestIamPermissionsRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -7107,7 +7107,7 @@ namespace Google.Apis.Dataproc.v1
                 /// </param>
                 public virtual UpdateRequest Update(Google.Apis.Dataproc.v1.Data.WorkflowTemplate body, string name)
                 {
-                    return new UpdateRequest(service, body, name);
+                    return new UpdateRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -7406,8 +7406,8 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. The email address of the user who created the batch.</summary>
@@ -7504,8 +7504,8 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StateTimeRaw);
-            set => StateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StateTimeRaw);
+            set => StateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -7563,8 +7563,8 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Short description of the operation.</summary>
@@ -7604,8 +7604,8 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? DoneTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DoneTimeRaw);
-            set => DoneTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DoneTimeRaw);
+            set => DoneTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Labels associated with the operation.</summary>
@@ -7984,8 +7984,8 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StateStartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StateStartTimeRaw);
-            set => StateStartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StateStartTimeRaw);
+            set => StateStartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -8059,8 +8059,8 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StateStartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StateStartTimeRaw);
-            set => StateStartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StateStartTimeRaw);
+            set => StateStartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. Additional state information that includes status reported by the agent.</summary>
@@ -9212,8 +9212,8 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _startTimeRaw;
@@ -9252,8 +9252,8 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -9422,8 +9422,8 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. Most recent job status.</summary>
@@ -9549,8 +9549,8 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StateStartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StateStartTimeRaw);
-            set => StateStartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StateStartTimeRaw);
+            set => StateStartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. Additional state information, which includes status reported by the agent.</summary>
@@ -9769,8 +9769,8 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? AutoDeleteTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(AutoDeleteTimeRaw);
-            set => AutoDeleteTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(AutoDeleteTimeRaw);
+            set => AutoDeleteTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -9826,8 +9826,8 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? IdleStartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(IdleStartTimeRaw);
-            set => IdleStartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(IdleStartTimeRaw);
+            set => IdleStartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -10943,8 +10943,8 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. The email address of the user who created the session.</summary>
@@ -11037,8 +11037,8 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StateTimeRaw);
-            set => StateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StateTimeRaw);
+            set => StateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Optional. The email address of the user who owns the session.</summary>
@@ -11092,8 +11092,8 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Short description of the operation.</summary>
@@ -11133,8 +11133,8 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? DoneTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DoneTimeRaw);
-            set => DoneTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DoneTimeRaw);
+            set => DoneTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Labels associated with the operation.</summary>
@@ -11207,8 +11207,8 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StateStartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StateStartTimeRaw);
-            set => StateStartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StateStartTimeRaw);
+            set => StateStartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -11251,8 +11251,8 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. The email address of the user who created the template.</summary>
@@ -11321,8 +11321,8 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -11795,8 +11795,8 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StateStartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StateStartTimeRaw);
-            set => StateStartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StateStartTimeRaw);
+            set => StateStartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -12125,8 +12125,8 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? SnapshotTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(SnapshotTimeRaw);
-            set => SnapshotTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(SnapshotTimeRaw);
+            set => SnapshotTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -12232,8 +12232,8 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? DagEndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DagEndTimeRaw);
-            set => DagEndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DagEndTimeRaw);
+            set => DagEndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _dagStartTimeRaw;
@@ -12269,8 +12269,8 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? DagStartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DagStartTimeRaw);
-            set => DagStartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DagStartTimeRaw);
+            set => DagStartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -12317,8 +12317,8 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. The workflow graph.</summary>
@@ -12362,8 +12362,8 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. The workflow state.</summary>
@@ -12452,8 +12452,8 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -12542,8 +12542,8 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>

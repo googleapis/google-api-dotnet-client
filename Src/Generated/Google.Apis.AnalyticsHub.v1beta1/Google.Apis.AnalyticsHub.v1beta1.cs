@@ -331,7 +331,7 @@ namespace Google.Apis.AnalyticsHub.v1beta1
                 /// </param>
                 public virtual ListRequest List(string organization)
                 {
-                    return new ListRequest(service, organization);
+                    return new ListRequest(this.service, organization);
                 }
 
                 /// <summary>Lists all data exchanges from projects in a given organization and location.</summary>
@@ -481,7 +481,7 @@ namespace Google.Apis.AnalyticsHub.v1beta1
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.AnalyticsHub.v1beta1.Data.Listing body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>Creates a new listing.</summary>
@@ -555,7 +555,7 @@ namespace Google.Apis.AnalyticsHub.v1beta1
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>Deletes a listing.</summary>
@@ -606,7 +606,7 @@ namespace Google.Apis.AnalyticsHub.v1beta1
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Gets the details of a listing.</summary>
@@ -659,7 +659,7 @@ namespace Google.Apis.AnalyticsHub.v1beta1
                     /// </param>
                     public virtual GetIamPolicyRequest GetIamPolicy(Google.Apis.AnalyticsHub.v1beta1.Data.GetIamPolicyRequest body, string resource)
                     {
-                        return new GetIamPolicyRequest(service, body, resource);
+                        return new GetIamPolicyRequest(this.service, body, resource);
                     }
 
                     /// <summary>Gets the IAM policy.</summary>
@@ -718,7 +718,7 @@ namespace Google.Apis.AnalyticsHub.v1beta1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists all listings in a given project and location.</summary>
@@ -799,7 +799,7 @@ namespace Google.Apis.AnalyticsHub.v1beta1
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.AnalyticsHub.v1beta1.Data.Listing body, string name)
                     {
-                        return new PatchRequest(service, body, name);
+                        return new PatchRequest(this.service, body, name);
                     }
 
                     /// <summary>Updates an existing listing.</summary>
@@ -874,7 +874,7 @@ namespace Google.Apis.AnalyticsHub.v1beta1
                     /// </param>
                     public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.AnalyticsHub.v1beta1.Data.SetIamPolicyRequest body, string resource)
                     {
-                        return new SetIamPolicyRequest(service, body, resource);
+                        return new SetIamPolicyRequest(this.service, body, resource);
                     }
 
                     /// <summary>Sets the IAM policy.</summary>
@@ -938,7 +938,7 @@ namespace Google.Apis.AnalyticsHub.v1beta1
                     /// </param>
                     public virtual SubscribeRequest Subscribe(Google.Apis.AnalyticsHub.v1beta1.Data.SubscribeListingRequest body, string name)
                     {
-                        return new SubscribeRequest(service, body, name);
+                        return new SubscribeRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -1002,7 +1002,7 @@ namespace Google.Apis.AnalyticsHub.v1beta1
                     /// </param>
                     public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.AnalyticsHub.v1beta1.Data.TestIamPermissionsRequest body, string resource)
                     {
-                        return new TestIamPermissionsRequest(service, body, resource);
+                        return new TestIamPermissionsRequest(this.service, body, resource);
                     }
 
                     /// <summary>Returns the permissions that a caller has.</summary>
@@ -1062,7 +1062,7 @@ namespace Google.Apis.AnalyticsHub.v1beta1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.AnalyticsHub.v1beta1.Data.DataExchange body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a new data exchange.</summary>
@@ -1135,7 +1135,7 @@ namespace Google.Apis.AnalyticsHub.v1beta1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes an existing data exchange.</summary>
@@ -1186,7 +1186,7 @@ namespace Google.Apis.AnalyticsHub.v1beta1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets the details of a data exchange.</summary>
@@ -1239,7 +1239,7 @@ namespace Google.Apis.AnalyticsHub.v1beta1
                 /// </param>
                 public virtual GetIamPolicyRequest GetIamPolicy(Google.Apis.AnalyticsHub.v1beta1.Data.GetIamPolicyRequest body, string resource)
                 {
-                    return new GetIamPolicyRequest(service, body, resource);
+                    return new GetIamPolicyRequest(this.service, body, resource);
                 }
 
                 /// <summary>Gets the IAM policy.</summary>
@@ -1297,7 +1297,7 @@ namespace Google.Apis.AnalyticsHub.v1beta1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists all data exchanges in a given project and location.</summary>
@@ -1376,7 +1376,7 @@ namespace Google.Apis.AnalyticsHub.v1beta1
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.AnalyticsHub.v1beta1.Data.DataExchange body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates an existing data exchange.</summary>
@@ -1451,7 +1451,7 @@ namespace Google.Apis.AnalyticsHub.v1beta1
                 /// </param>
                 public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.AnalyticsHub.v1beta1.Data.SetIamPolicyRequest body, string resource)
                 {
-                    return new SetIamPolicyRequest(service, body, resource);
+                    return new SetIamPolicyRequest(this.service, body, resource);
                 }
 
                 /// <summary>Sets the IAM policy.</summary>
@@ -1512,7 +1512,7 @@ namespace Google.Apis.AnalyticsHub.v1beta1
                 /// </param>
                 public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.AnalyticsHub.v1beta1.Data.TestIamPermissionsRequest body, string resource)
                 {
-                    return new TestIamPermissionsRequest(service, body, resource);
+                    return new TestIamPermissionsRequest(this.service, body, resource);
                 }
 
                 /// <summary>Returns the permissions that a caller has.</summary>
@@ -2085,8 +2085,8 @@ namespace Google.Apis.AnalyticsHub.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _endTimeRaw;
@@ -2122,8 +2122,8 @@ namespace Google.Apis.AnalyticsHub.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -2366,8 +2366,8 @@ namespace Google.Apis.AnalyticsHub.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreationTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreationTimeRaw);
-            set => CreationTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreationTimeRaw);
+            set => CreationTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -2411,8 +2411,8 @@ namespace Google.Apis.AnalyticsHub.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LastModifyTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastModifyTimeRaw);
-            set => LastModifyTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastModifyTimeRaw);
+            set => LastModifyTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>

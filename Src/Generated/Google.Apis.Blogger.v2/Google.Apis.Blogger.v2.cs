@@ -288,7 +288,7 @@ namespace Google.Apis.Blogger.v2
         /// <param name="blogId"><c>null</c></param>
         public virtual GetRequest Get(string blogId)
         {
-            return new GetRequest(service, blogId);
+            return new GetRequest(this.service, blogId);
         }
 
         /// <summary>Gets a blog by id.</summary>
@@ -332,7 +332,7 @@ namespace Google.Apis.Blogger.v2
         /// <param name="userId"><c>null</c></param>
         public virtual ListRequest List(string userId)
         {
-            return new ListRequest(service, userId);
+            return new ListRequest(this.service, userId);
         }
 
         /// <summary>Lists blogs by user id, possibly filtered.</summary>
@@ -393,7 +393,7 @@ namespace Google.Apis.Blogger.v2
         /// <param name="commentId"><c>null</c></param>
         public virtual GetRequest Get(string blogId, string postId, string commentId)
         {
-            return new GetRequest(service, blogId, postId, commentId);
+            return new GetRequest(this.service, blogId, postId, commentId);
         }
 
         /// <summary>Gets a comment by blog id, post id and comment id.</summary>
@@ -462,7 +462,7 @@ namespace Google.Apis.Blogger.v2
         /// <param name="postId"><c>null</c></param>
         public virtual ListRequest List(string blogId, string postId)
         {
-            return new ListRequest(service, blogId, postId);
+            return new ListRequest(this.service, blogId, postId);
         }
 
         /// <summary>Lists comments.</summary>
@@ -578,7 +578,7 @@ namespace Google.Apis.Blogger.v2
         /// <param name="pageId"><c>null</c></param>
         public virtual GetRequest Get(string blogId, string pageId)
         {
-            return new GetRequest(service, blogId, pageId);
+            return new GetRequest(this.service, blogId, pageId);
         }
 
         /// <summary>Gets a page by blog id and page id.</summary>
@@ -634,7 +634,7 @@ namespace Google.Apis.Blogger.v2
         /// <param name="blogId"><c>null</c></param>
         public virtual ListRequest List(string blogId)
         {
-            return new ListRequest(service, blogId);
+            return new ListRequest(this.service, blogId);
         }
 
         /// <summary>Lists pages.</summary>
@@ -705,7 +705,7 @@ namespace Google.Apis.Blogger.v2
         /// <param name="postId"><c>null</c></param>
         public virtual GetRequest Get(string blogId, string postId)
         {
-            return new GetRequest(service, blogId, postId);
+            return new GetRequest(this.service, blogId, postId);
         }
 
         /// <summary>Gets a post by blog id and post id</summary>
@@ -761,7 +761,7 @@ namespace Google.Apis.Blogger.v2
         /// <param name="blogId"><c>null</c></param>
         public virtual ListRequest List(string blogId)
         {
-            return new ListRequest(service, blogId);
+            return new ListRequest(this.service, blogId);
         }
 
         /// <summary>Lists posts.</summary>
@@ -864,7 +864,7 @@ namespace Google.Apis.Blogger.v2
         /// <param name="userId"><c>null</c></param>
         public virtual GetRequest Get(string userId)
         {
-            return new GetRequest(service, userId);
+            return new GetRequest(this.service, userId);
         }
 
         /// <summary>Gets a user by user id.</summary>

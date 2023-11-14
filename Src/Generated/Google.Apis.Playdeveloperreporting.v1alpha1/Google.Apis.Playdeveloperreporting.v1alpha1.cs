@@ -280,7 +280,7 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1
         /// <param name="parent">Required. Parent app for which anomalies were detected. Format: apps/{app}</param>
         public virtual ListRequest List(string parent)
         {
-            return new ListRequest(service, parent);
+            return new ListRequest(this.service, parent);
         }
 
         /// <summary>Lists anomalies in any of the datasets.</summary>
@@ -394,7 +394,7 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1
         /// </param>
         public virtual FetchReleaseFilterOptionsRequest FetchReleaseFilterOptions(string name)
         {
-            return new FetchReleaseFilterOptionsRequest(service, name);
+            return new FetchReleaseFilterOptionsRequest(this.service, name);
         }
 
         /// <summary>Describes filtering options for releases.</summary>
@@ -440,7 +440,7 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1
         /// <summary>Searches for Apps accessible by the user.</summary>
         public virtual SearchRequest Search()
         {
-            return new SearchRequest(service);
+            return new SearchRequest(this.service);
         }
 
         /// <summary>Searches for Apps accessible by the user.</summary>
@@ -542,7 +542,7 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1
             /// <param name="name">Required. The resource name. Format: apps/{app}/anrRateMetricSet</param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Describes the properties of the metric set.</summary>
@@ -588,7 +588,7 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1
             /// <param name="name">Required. The resource name. Format: apps/{app}/anrRateMetricSet</param>
             public virtual QueryRequest Query(Google.Apis.Playdeveloperreporting.v1alpha1.Data.GooglePlayDeveloperReportingV1alpha1QueryAnrRateMetricSetRequest body, string name)
             {
-                return new QueryRequest(service, body, name);
+                return new QueryRequest(this.service, body, name);
             }
 
             /// <summary>Queries the metrics in the metric set.</summary>
@@ -658,7 +658,7 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1
             /// <param name="name">Required. The resource name. Format: apps/{app}/crashRateMetricSet</param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Describes the properties of the metric set.</summary>
@@ -704,7 +704,7 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1
             /// <param name="name">Required. The resource name. Format: apps/{app}/crashRateMetricSet</param>
             public virtual QueryRequest Query(Google.Apis.Playdeveloperreporting.v1alpha1.Data.GooglePlayDeveloperReportingV1alpha1QueryCrashRateMetricSetRequest body, string name)
             {
-                return new QueryRequest(service, body, name);
+                return new QueryRequest(this.service, body, name);
             }
 
             /// <summary>Queries the metrics in the metric set.</summary>
@@ -796,7 +796,7 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Describes the properties of the metrics set.</summary>
@@ -844,7 +844,7 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1
                 /// <param name="name">Required. The resource name. Format: apps/{app}/errorCountMetricSet</param>
                 public virtual QueryRequest Query(Google.Apis.Playdeveloperreporting.v1alpha1.Data.GooglePlayDeveloperReportingV1alpha1QueryErrorCountMetricSetRequest body, string name)
                 {
-                    return new QueryRequest(service, body, name);
+                    return new QueryRequest(this.service, body, name);
                 }
 
                 /// <summary>Queries the metrics in the metrics set.</summary>
@@ -917,7 +917,7 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1
                 /// </param>
                 public virtual SearchRequest Search(string parent)
                 {
-                    return new SearchRequest(service, parent);
+                    return new SearchRequest(this.service, parent);
                 }
 
                 /// <summary>Searches all error issues in which reports have been grouped.</summary>
@@ -1351,7 +1351,7 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1
                 /// </param>
                 public virtual SearchRequest Search(string parent)
                 {
-                    return new SearchRequest(service, parent);
+                    return new SearchRequest(this.service, parent);
                 }
 
                 /// <summary>Searches all error reports received for an app.</summary>
@@ -1766,7 +1766,7 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1
             /// <param name="name">Required. The resource name. Format: apps/{app}/excessiveWakeupRateMetricSet</param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Describes the properties of the metric set.</summary>
@@ -1812,7 +1812,7 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1
             /// <param name="name">Required. The resource name. Format: apps/{app}/excessiveWakeupRateMetricSet</param>
             public virtual QueryRequest Query(Google.Apis.Playdeveloperreporting.v1alpha1.Data.GooglePlayDeveloperReportingV1alpha1QueryExcessiveWakeupRateMetricSetRequest body, string name)
             {
-                return new QueryRequest(service, body, name);
+                return new QueryRequest(this.service, body, name);
             }
 
             /// <summary>Queries the metrics in the metric set.</summary>
@@ -1882,7 +1882,7 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1
             /// <param name="name">Required. The resource name. Format: apps/{app}/slowRenderingRateMetricSet</param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Describes the properties of the metric set.</summary>
@@ -1928,7 +1928,7 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1
             /// <param name="name">Required. The resource name. Format: apps/{app}/slowRenderingRateMetricSet</param>
             public virtual QueryRequest Query(Google.Apis.Playdeveloperreporting.v1alpha1.Data.GooglePlayDeveloperReportingV1alpha1QuerySlowRenderingRateMetricSetRequest body, string name)
             {
-                return new QueryRequest(service, body, name);
+                return new QueryRequest(this.service, body, name);
             }
 
             /// <summary>Queries the metrics in the metric set.</summary>
@@ -1998,7 +1998,7 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1
             /// <param name="name">Required. The resource name. Format: apps/{app}/slowStartRateMetricSet</param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Describes the properties of the metric set.</summary>
@@ -2044,7 +2044,7 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1
             /// <param name="name">Required. The resource name. Format: apps/{app}/slowStartRateMetricSet</param>
             public virtual QueryRequest Query(Google.Apis.Playdeveloperreporting.v1alpha1.Data.GooglePlayDeveloperReportingV1alpha1QuerySlowStartRateMetricSetRequest body, string name)
             {
-                return new QueryRequest(service, body, name);
+                return new QueryRequest(this.service, body, name);
             }
 
             /// <summary>Queries the metrics in the metric set.</summary>
@@ -2116,7 +2116,7 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Describes the properties of the metric set.</summary>
@@ -2166,7 +2166,7 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1
             /// </param>
             public virtual QueryRequest Query(Google.Apis.Playdeveloperreporting.v1alpha1.Data.GooglePlayDeveloperReportingV1alpha1QueryStuckBackgroundWakelockRateMetricSetRequest body, string name)
             {
-                return new QueryRequest(service, body, name);
+                return new QueryRequest(this.service, body, name);
             }
 
             /// <summary>Queries the metrics in the metric set.</summary>
@@ -2629,8 +2629,8 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LastErrorReportTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastErrorReportTimeRaw);
-            set => LastErrorReportTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastErrorReportTimeRaw);
+            set => LastErrorReportTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -2705,8 +2705,8 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EventTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EventTimeRaw);
-            set => EventTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EventTimeRaw);
+            set => EventTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>

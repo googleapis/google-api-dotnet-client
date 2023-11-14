@@ -317,7 +317,7 @@ namespace Google.Apis.CloudScheduler.v1beta1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.CloudScheduler.v1beta1.Data.Job body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a job.</summary>
@@ -373,7 +373,7 @@ namespace Google.Apis.CloudScheduler.v1beta1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes a job.</summary>
@@ -438,7 +438,7 @@ namespace Google.Apis.CloudScheduler.v1beta1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets a job.</summary>
@@ -487,7 +487,7 @@ namespace Google.Apis.CloudScheduler.v1beta1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists jobs.</summary>
@@ -616,7 +616,7 @@ namespace Google.Apis.CloudScheduler.v1beta1
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.CloudScheduler.v1beta1.Data.Job body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -702,7 +702,7 @@ namespace Google.Apis.CloudScheduler.v1beta1
                 /// </param>
                 public virtual PauseRequest Pause(Google.Apis.CloudScheduler.v1beta1.Data.PauseJobRequest body, string name)
                 {
-                    return new PauseRequest(service, body, name);
+                    return new PauseRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -767,7 +767,7 @@ namespace Google.Apis.CloudScheduler.v1beta1
                 /// </param>
                 public virtual ResumeRequest Resume(Google.Apis.CloudScheduler.v1beta1.Data.ResumeJobRequest body, string name)
                 {
-                    return new ResumeRequest(service, body, name);
+                    return new ResumeRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -831,7 +831,7 @@ namespace Google.Apis.CloudScheduler.v1beta1
                 /// </param>
                 public virtual RunRequest Run(Google.Apis.CloudScheduler.v1beta1.Data.RunJobRequest body, string name)
                 {
-                    return new RunRequest(service, body, name);
+                    return new RunRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -889,7 +889,7 @@ namespace Google.Apis.CloudScheduler.v1beta1
             /// <param name="name">Resource name for the location.</param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets information about a location.</summary>
@@ -934,7 +934,7 @@ namespace Google.Apis.CloudScheduler.v1beta1
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
             {
-                return new ListRequest(service, name);
+                return new ListRequest(this.service, name);
             }
 
             /// <summary>Lists information about the supported locations for this service.</summary>
@@ -1284,8 +1284,8 @@ namespace Google.Apis.CloudScheduler.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LastAttemptTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastAttemptTimeRaw);
-            set => LastAttemptTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastAttemptTimeRaw);
+            set => LastAttemptTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -1370,8 +1370,8 @@ namespace Google.Apis.CloudScheduler.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ScheduleTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ScheduleTimeRaw);
-            set => ScheduleTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ScheduleTimeRaw);
+            set => ScheduleTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. State of the job.</summary>
@@ -1426,8 +1426,8 @@ namespace Google.Apis.CloudScheduler.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UserUpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UserUpdateTimeRaw);
-            set => UserUpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UserUpdateTimeRaw);
+            set => UserUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -1634,8 +1634,8 @@ namespace Google.Apis.CloudScheduler.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? PublishTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(PublishTimeRaw);
-            set => PublishTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(PublishTimeRaw);
+            set => PublishTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>

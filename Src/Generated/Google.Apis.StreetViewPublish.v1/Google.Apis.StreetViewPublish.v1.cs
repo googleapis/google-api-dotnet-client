@@ -293,7 +293,7 @@ namespace Google.Apis.StreetViewPublish.v1
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.StreetViewPublish.v1.Data.Photo body)
         {
-            return new CreateRequest(service, body);
+            return new CreateRequest(this.service, body);
         }
 
         /// <summary>
@@ -345,7 +345,7 @@ namespace Google.Apis.StreetViewPublish.v1
         /// <param name="photoId">Required. ID of the Photo.</param>
         public virtual DeleteRequest Delete(string photoId)
         {
-            return new DeleteRequest(service, photoId);
+            return new DeleteRequest(this.service, photoId);
         }
 
         /// <summary>
@@ -399,7 +399,7 @@ namespace Google.Apis.StreetViewPublish.v1
         /// <param name="photoId">Required. ID of the Photo.</param>
         public virtual GetRequest Get(string photoId)
         {
-            return new GetRequest(service, photoId);
+            return new GetRequest(this.service, photoId);
         }
 
         /// <summary>
@@ -505,7 +505,7 @@ namespace Google.Apis.StreetViewPublish.v1
         /// <param name="body">The body of the request.</param>
         public virtual StartUploadRequest StartUpload(Google.Apis.StreetViewPublish.v1.Data.Empty body)
         {
-            return new StartUploadRequest(service, body);
+            return new StartUploadRequest(this.service, body);
         }
 
         /// <summary>
@@ -562,7 +562,7 @@ namespace Google.Apis.StreetViewPublish.v1
         /// <param name="id">A unique identifier for a photo.</param>
         public virtual UpdateRequest Update(Google.Apis.StreetViewPublish.v1.Data.Photo body, string id)
         {
-            return new UpdateRequest(service, body, id);
+            return new UpdateRequest(this.service, body, id);
         }
 
         /// <summary>
@@ -663,7 +663,7 @@ namespace Google.Apis.StreetViewPublish.v1
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.StreetViewPublish.v1.Data.PhotoSequence body)
         {
-            return new CreateRequest(service, body);
+            return new CreateRequest(this.service, body);
         }
 
         /// <summary>
@@ -742,7 +742,7 @@ namespace Google.Apis.StreetViewPublish.v1
         /// <param name="sequenceId">Required. ID of the PhotoSequence.</param>
         public virtual DeleteRequest Delete(string sequenceId)
         {
-            return new DeleteRequest(service, sequenceId);
+            return new DeleteRequest(this.service, sequenceId);
         }
 
         /// <summary>
@@ -800,7 +800,7 @@ namespace Google.Apis.StreetViewPublish.v1
         /// <param name="sequenceId">Required. ID of the photo sequence.</param>
         public virtual GetRequest Get(string sequenceId)
         {
-            return new GetRequest(service, sequenceId);
+            return new GetRequest(this.service, sequenceId);
         }
 
         /// <summary>
@@ -904,7 +904,7 @@ namespace Google.Apis.StreetViewPublish.v1
         /// <param name="body">The body of the request.</param>
         public virtual StartUploadRequest StartUpload(Google.Apis.StreetViewPublish.v1.Data.Empty body)
         {
-            return new StartUploadRequest(service, body);
+            return new StartUploadRequest(this.service, body);
         }
 
         /// <summary>
@@ -963,7 +963,7 @@ namespace Google.Apis.StreetViewPublish.v1
         /// </summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>
@@ -1066,7 +1066,7 @@ namespace Google.Apis.StreetViewPublish.v1
         /// <param name="body">The body of the request.</param>
         public virtual BatchDeleteRequest BatchDelete(Google.Apis.StreetViewPublish.v1.Data.BatchDeletePhotosRequest body)
         {
-            return new BatchDeleteRequest(service, body);
+            return new BatchDeleteRequest(this.service, body);
         }
 
         /// <summary>
@@ -1114,7 +1114,7 @@ namespace Google.Apis.StreetViewPublish.v1
         /// </summary>
         public virtual BatchGetRequest BatchGet()
         {
-            return new BatchGetRequest(service);
+            return new BatchGetRequest(this.service);
         }
 
         /// <summary>
@@ -1221,7 +1221,7 @@ namespace Google.Apis.StreetViewPublish.v1
         /// <param name="body">The body of the request.</param>
         public virtual BatchUpdateRequest BatchUpdate(Google.Apis.StreetViewPublish.v1.Data.BatchUpdatePhotosRequest body)
         {
-            return new BatchUpdateRequest(service, body);
+            return new BatchUpdateRequest(this.service, body);
         }
 
         /// <summary>
@@ -1271,7 +1271,7 @@ namespace Google.Apis.StreetViewPublish.v1
         /// </summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>
@@ -1681,8 +1681,8 @@ namespace Google.Apis.StreetViewPublish.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CaptureTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CaptureTimeRaw);
-            set => CaptureTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CaptureTimeRaw);
+            set => CaptureTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The sensor measurement in the x axis.</summary>
@@ -1737,8 +1737,8 @@ namespace Google.Apis.StreetViewPublish.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? GpsEndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(GpsEndTimeRaw);
-            set => GpsEndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(GpsEndTimeRaw);
+            set => GpsEndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _gpsStartTimeRaw;
@@ -1774,8 +1774,8 @@ namespace Google.Apis.StreetViewPublish.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? GpsStartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(GpsStartTimeRaw);
-            set => GpsStartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(GpsStartTimeRaw);
+            set => GpsStartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _videoEndTimeRaw;
@@ -1811,8 +1811,8 @@ namespace Google.Apis.StreetViewPublish.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? VideoEndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(VideoEndTimeRaw);
-            set => VideoEndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(VideoEndTimeRaw);
+            set => VideoEndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _videoStartTimeRaw;
@@ -1850,8 +1850,8 @@ namespace Google.Apis.StreetViewPublish.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? VideoStartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(VideoStartTimeRaw);
-            set => VideoStartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(VideoStartTimeRaw);
+            set => VideoStartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -1954,8 +1954,8 @@ namespace Google.Apis.StreetViewPublish.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CaptureTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CaptureTimeRaw);
-            set => CaptureTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CaptureTimeRaw);
+            set => CaptureTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -2042,8 +2042,8 @@ namespace Google.Apis.StreetViewPublish.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UploadTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UploadTimeRaw);
-            set => UploadTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UploadTimeRaw);
+            set => UploadTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. View count of the photo.</summary>
@@ -2124,8 +2124,8 @@ namespace Google.Apis.StreetViewPublish.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CaptureTimeOverrideDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CaptureTimeOverrideRaw);
-            set => CaptureTimeOverrideRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CaptureTimeOverrideRaw);
+            set => CaptureTimeOverrideRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. The computed distance of the photo sequence in meters.</summary>
@@ -2237,8 +2237,8 @@ namespace Google.Apis.StreetViewPublish.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UploadTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UploadTimeRaw);
-            set => UploadTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UploadTimeRaw);
+            set => UploadTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -2326,8 +2326,8 @@ namespace Google.Apis.StreetViewPublish.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? GpsRecordTimestampUnixEpochDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(GpsRecordTimestampUnixEpochRaw);
-            set => GpsRecordTimestampUnixEpochRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(GpsRecordTimestampUnixEpochRaw);
+            set => GpsRecordTimestampUnixEpochRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>

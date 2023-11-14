@@ -257,7 +257,7 @@ namespace Google.Apis.Webfonts.v1
         /// <summary>Retrieves the list of fonts currently served by the Google Fonts Developer API.</summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>Retrieves the list of fonts currently served by the Google Fonts Developer API.</summary>

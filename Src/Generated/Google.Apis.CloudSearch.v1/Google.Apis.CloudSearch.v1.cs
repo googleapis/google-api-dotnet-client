@@ -408,7 +408,7 @@ namespace Google.Apis.CloudSearch.v1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>
@@ -502,7 +502,7 @@ namespace Google.Apis.CloudSearch.v1
                 /// <param name="name">Item name, format: datasources/{source_id}/items/{item_id}</param>
                 public virtual CheckAccessRequest CheckAccess(Google.Apis.CloudSearch.v1.Data.Principal body, string name)
                 {
-                    return new CheckAccessRequest(service, body, name);
+                    return new CheckAccessRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -575,7 +575,7 @@ namespace Google.Apis.CloudSearch.v1
                 /// <param name="name">Source name, format: datasources/{source_id}</param>
                 public virtual SearchByViewUrlRequest SearchByViewUrl(Google.Apis.CloudSearch.v1.Data.SearchItemsByViewUrlRequest body, string name)
                 {
-                    return new SearchByViewUrlRequest(service, body, name);
+                    return new SearchByViewUrlRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -673,7 +673,7 @@ namespace Google.Apis.CloudSearch.v1
                 /// </param>
                 public virtual ListForunmappedidentityRequest ListForunmappedidentity(string parent)
                 {
-                    return new ListForunmappedidentityRequest(service, parent);
+                    return new ListForunmappedidentityRequest(this.service, parent);
                 }
 
                 /// <summary>
@@ -806,7 +806,7 @@ namespace Google.Apis.CloudSearch.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>
@@ -1001,7 +1001,7 @@ namespace Google.Apis.CloudSearch.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -1139,7 +1139,7 @@ namespace Google.Apis.CloudSearch.v1
                 /// </param>
                 public virtual DeleteQueueItemsRequest DeleteQueueItems(Google.Apis.CloudSearch.v1.Data.DeleteQueueItemsRequest body, string name)
                 {
-                    return new DeleteQueueItemsRequest(service, body, name);
+                    return new DeleteQueueItemsRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -1202,7 +1202,7 @@ namespace Google.Apis.CloudSearch.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -1289,7 +1289,7 @@ namespace Google.Apis.CloudSearch.v1
                 /// </param>
                 public virtual IndexRequest Index(Google.Apis.CloudSearch.v1.Data.IndexItemRequest body, string name)
                 {
-                    return new IndexRequest(service, body, name);
+                    return new IndexRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -1354,7 +1354,7 @@ namespace Google.Apis.CloudSearch.v1
                 /// </param>
                 public virtual ListRequest List(string name)
                 {
-                    return new ListRequest(service, name);
+                    return new ListRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -1488,7 +1488,7 @@ namespace Google.Apis.CloudSearch.v1
                 /// </param>
                 public virtual PollRequest Poll(Google.Apis.CloudSearch.v1.Data.PollItemsRequest body, string name)
                 {
-                    return new PollRequest(service, body, name);
+                    return new PollRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -1557,7 +1557,7 @@ namespace Google.Apis.CloudSearch.v1
                 /// </param>
                 public virtual PushRequest Push(Google.Apis.CloudSearch.v1.Data.PushItemRequest body, string name)
                 {
-                    return new PushRequest(service, body, name);
+                    return new PushRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -1624,7 +1624,7 @@ namespace Google.Apis.CloudSearch.v1
                 /// </param>
                 public virtual UnreserveRequest Unreserve(Google.Apis.CloudSearch.v1.Data.UnreserveItemsRequest body, string name)
                 {
-                    return new UnreserveRequest(service, body, name);
+                    return new UnreserveRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -1691,7 +1691,7 @@ namespace Google.Apis.CloudSearch.v1
                 /// </param>
                 public virtual UploadRequest Upload(Google.Apis.CloudSearch.v1.Data.StartUploadItemRequest body, string name)
                 {
-                    return new UploadRequest(service, body, name);
+                    return new UploadRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -1753,7 +1753,7 @@ namespace Google.Apis.CloudSearch.v1
             /// <param name="name">The name of the data source to delete Schema. Format: datasources/{source_id}</param>
             public virtual DeleteSchemaRequest DeleteSchema(string name)
             {
-                return new DeleteSchemaRequest(service, name);
+                return new DeleteSchemaRequest(this.service, name);
             }
 
             /// <summary>
@@ -1816,7 +1816,7 @@ namespace Google.Apis.CloudSearch.v1
             /// <param name="name">The name of the data source to get Schema. Format: datasources/{source_id}</param>
             public virtual GetSchemaRequest GetSchema(string name)
             {
-                return new GetSchemaRequest(service, name);
+                return new GetSchemaRequest(this.service, name);
             }
 
             /// <summary>
@@ -1882,7 +1882,7 @@ namespace Google.Apis.CloudSearch.v1
             /// <param name="name">The name of the data source to update Schema. Format: datasources/{source_id}</param>
             public virtual UpdateSchemaRequest UpdateSchema(Google.Apis.CloudSearch.v1.Data.UpdateSchemaRequest body, string name)
             {
-                return new UpdateSchemaRequest(service, body, name);
+                return new UpdateSchemaRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -1969,7 +1969,7 @@ namespace Google.Apis.CloudSearch.v1
         /// </param>
         public virtual UploadRequest Upload(Google.Apis.CloudSearch.v1.Data.Media body, string resourceName)
         {
-            return new UploadRequest(service, body, resourceName);
+            return new UploadRequest(this.service, body, resourceName);
         }
 
         /// <summary>
@@ -2222,7 +2222,7 @@ namespace Google.Apis.CloudSearch.v1
             /// <param name="name">The name of the operation's parent resource.</param>
             public virtual ListRequest List(string name)
             {
-                return new ListRequest(service, name);
+                return new ListRequest(this.service, name);
             }
 
             /// <summary>
@@ -2310,7 +2310,7 @@ namespace Google.Apis.CloudSearch.v1
         /// <param name="name">The name of the operation resource.</param>
         public virtual GetRequest Get(string name)
         {
-            return new GetRequest(service, name);
+            return new GetRequest(this.service, name);
         }
 
         /// <summary>
@@ -2395,7 +2395,7 @@ namespace Google.Apis.CloudSearch.v1
             /// </summary>
             public virtual ListRequest List()
             {
-                return new ListRequest(service);
+                return new ListRequest(this.service);
             }
 
             /// <summary>
@@ -2517,7 +2517,7 @@ namespace Google.Apis.CloudSearch.v1
         /// <param name="body">The body of the request.</param>
         public virtual RemoveActivityRequest RemoveActivity(Google.Apis.CloudSearch.v1.Data.RemoveActivityRequest body)
         {
-            return new RemoveActivityRequest(service, body);
+            return new RemoveActivityRequest(this.service, body);
         }
 
         /// <summary>
@@ -2568,7 +2568,7 @@ namespace Google.Apis.CloudSearch.v1
         /// <param name="body">The body of the request.</param>
         public virtual SearchRequest Search(Google.Apis.CloudSearch.v1.Data.SearchRequest body)
         {
-            return new SearchRequest(service, body);
+            return new SearchRequest(this.service, body);
         }
 
         /// <summary>
@@ -2619,7 +2619,7 @@ namespace Google.Apis.CloudSearch.v1
         /// <param name="body">The body of the request.</param>
         public virtual SuggestRequest Suggest(Google.Apis.CloudSearch.v1.Data.SuggestRequest body)
         {
-            return new SuggestRequest(service, body);
+            return new SuggestRequest(this.service, body);
         }
 
         /// <summary>
@@ -2697,7 +2697,7 @@ namespace Google.Apis.CloudSearch.v1
             /// <param name="body">The body of the request.</param>
             public virtual CreateRequest Create(Google.Apis.CloudSearch.v1.Data.DataSource body)
             {
-                return new CreateRequest(service, body);
+                return new CreateRequest(this.service, body);
             }
 
             /// <summary>Creates a datasource. **Note:** This API requires an admin account to execute.</summary>
@@ -2736,7 +2736,7 @@ namespace Google.Apis.CloudSearch.v1
             /// <param name="name">The name of the datasource. Format: datasources/{source_id}.</param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>Deletes a datasource. **Note:** This API requires an admin account to execute.</summary>
@@ -2795,7 +2795,7 @@ namespace Google.Apis.CloudSearch.v1
             /// <param name="name">The name of the datasource resource. Format: datasources/{source_id}.</param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets a datasource. **Note:** This API requires an admin account to execute.</summary>
@@ -2853,7 +2853,7 @@ namespace Google.Apis.CloudSearch.v1
             /// <summary>Lists datasources. **Note:** This API requires an admin account to execute.</summary>
             public virtual ListRequest List()
             {
-                return new ListRequest(service);
+                return new ListRequest(this.service);
             }
 
             /// <summary>Lists datasources. **Note:** This API requires an admin account to execute.</summary>
@@ -2930,7 +2930,7 @@ namespace Google.Apis.CloudSearch.v1
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.CloudSearch.v1.Data.DataSource body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>Updates a datasource. **Note:** This API requires an admin account to execute.</summary>
@@ -3023,7 +3023,7 @@ namespace Google.Apis.CloudSearch.v1
             /// </param>
             public virtual UpdateRequest Update(Google.Apis.CloudSearch.v1.Data.UpdateDataSourceRequest body, string name)
             {
-                return new UpdateRequest(service, body, name);
+                return new UpdateRequest(this.service, body, name);
             }
 
             /// <summary>Updates a datasource. **Note:** This API requires an admin account to execute.</summary>
@@ -3098,7 +3098,7 @@ namespace Google.Apis.CloudSearch.v1
             /// <param name="body">The body of the request.</param>
             public virtual CreateRequest Create(Google.Apis.CloudSearch.v1.Data.SearchApplication body)
             {
-                return new CreateRequest(service, body);
+                return new CreateRequest(this.service, body);
             }
 
             /// <summary>
@@ -3143,7 +3143,7 @@ namespace Google.Apis.CloudSearch.v1
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>
@@ -3210,7 +3210,7 @@ namespace Google.Apis.CloudSearch.v1
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>
@@ -3272,7 +3272,7 @@ namespace Google.Apis.CloudSearch.v1
             /// </summary>
             public virtual ListRequest List()
             {
-                return new ListRequest(service);
+                return new ListRequest(this.service);
             }
 
             /// <summary>
@@ -3351,7 +3351,7 @@ namespace Google.Apis.CloudSearch.v1
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.CloudSearch.v1.Data.SearchApplication body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -3431,7 +3431,7 @@ namespace Google.Apis.CloudSearch.v1
             /// </param>
             public virtual ResetRequest Reset(Google.Apis.CloudSearch.v1.Data.ResetSearchApplicationRequest body, string name)
             {
-                return new ResetRequest(service, body, name);
+                return new ResetRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -3493,7 +3493,7 @@ namespace Google.Apis.CloudSearch.v1
             /// </param>
             public virtual UpdateRequest Update(Google.Apis.CloudSearch.v1.Data.SearchApplication body, string name)
             {
-                return new UpdateRequest(service, body, name);
+                return new UpdateRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -3567,7 +3567,7 @@ namespace Google.Apis.CloudSearch.v1
         /// <summary>Get customer settings. **Note:** This API requires an admin account to execute.</summary>
         public virtual GetCustomerRequest GetCustomer()
         {
-            return new GetCustomerRequest(service);
+            return new GetCustomerRequest(this.service);
         }
 
         /// <summary>Get customer settings. **Note:** This API requires an admin account to execute.</summary>
@@ -3599,7 +3599,7 @@ namespace Google.Apis.CloudSearch.v1
         /// <param name="body">The body of the request.</param>
         public virtual UpdateCustomerRequest UpdateCustomer(Google.Apis.CloudSearch.v1.Data.CustomerSettings body)
         {
-            return new UpdateCustomerRequest(service, body);
+            return new UpdateCustomerRequest(this.service, body);
         }
 
         /// <summary>Update customer settings. **Note:** This API requires an admin account to execute.</summary>
@@ -3714,7 +3714,7 @@ namespace Google.Apis.CloudSearch.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -3880,7 +3880,7 @@ namespace Google.Apis.CloudSearch.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -4046,7 +4046,7 @@ namespace Google.Apis.CloudSearch.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -4212,7 +4212,7 @@ namespace Google.Apis.CloudSearch.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -4340,7 +4340,7 @@ namespace Google.Apis.CloudSearch.v1
         /// </summary>
         public virtual GetIndexRequest GetIndex()
         {
-            return new GetIndexRequest(service);
+            return new GetIndexRequest(this.service);
         }
 
         /// <summary>
@@ -4449,7 +4449,7 @@ namespace Google.Apis.CloudSearch.v1
         /// </summary>
         public virtual GetQueryRequest GetQuery()
         {
-            return new GetQueryRequest(service);
+            return new GetQueryRequest(this.service);
         }
 
         /// <summary>
@@ -4557,7 +4557,7 @@ namespace Google.Apis.CloudSearch.v1
         /// </summary>
         public virtual GetSearchapplicationRequest GetSearchapplication()
         {
-            return new GetSearchapplicationRequest(service);
+            return new GetSearchapplicationRequest(this.service);
         }
 
         /// <summary>
@@ -4666,7 +4666,7 @@ namespace Google.Apis.CloudSearch.v1
         /// </summary>
         public virtual GetSessionRequest GetSession()
         {
-            return new GetSessionRequest(service);
+            return new GetSessionRequest(this.service);
         }
 
         /// <summary>
@@ -4774,7 +4774,7 @@ namespace Google.Apis.CloudSearch.v1
         /// </summary>
         public virtual GetUserRequest GetUser()
         {
-            return new GetUserRequest(service);
+            return new GetUserRequest(this.service);
         }
 
         /// <summary>
@@ -4898,7 +4898,7 @@ namespace Google.Apis.CloudSearch.v1
         /// <param name="body">The body of the request.</param>
         public virtual InitializeCustomerRequest InitializeCustomer(Google.Apis.CloudSearch.v1.Data.InitializeCustomerRequest body)
         {
-            return new InitializeCustomerRequest(service, body);
+            return new InitializeCustomerRequest(this.service, body);
         }
 
         /// <summary>
@@ -7525,8 +7525,8 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? InteractionTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(InteractionTimeRaw);
-            set => InteractionTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(InteractionTimeRaw);
+            set => InteractionTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The user that acted on the item.</summary>
@@ -7765,8 +7765,8 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -7858,8 +7858,8 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -8126,8 +8126,8 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Options that specify how to display a structured data search result.</summary>
@@ -8195,8 +8195,8 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -8695,8 +8695,8 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? WaldoComeBackTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(WaldoComeBackTimeRaw);
-            set => WaldoComeBackTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(WaldoComeBackTimeRaw);
+            set => WaldoComeBackTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -10408,8 +10408,8 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? TimestampValueDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(TimestampValueRaw);
-            set => TimestampValueRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(TimestampValueRaw);
+            set => TimestampValueRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>

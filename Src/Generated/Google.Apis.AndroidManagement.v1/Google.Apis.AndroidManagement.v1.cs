@@ -305,7 +305,7 @@ namespace Google.Apis.AndroidManagement.v1
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets info about an application.</summary>
@@ -410,7 +410,7 @@ namespace Google.Apis.AndroidManagement.v1
                 /// <param name="name">The name of the operation resource to be cancelled.</param>
                 public virtual CancelRequest Cancel(string name)
                 {
-                    return new CancelRequest(service, name);
+                    return new CancelRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -466,7 +466,7 @@ namespace Google.Apis.AndroidManagement.v1
                 /// <param name="name">The name of the operation resource to be deleted.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -518,7 +518,7 @@ namespace Google.Apis.AndroidManagement.v1
                 /// <param name="name">The name of the operation resource.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -569,7 +569,7 @@ namespace Google.Apis.AndroidManagement.v1
                 /// <param name="name">The name of the operation's parent resource.</param>
                 public virtual ListRequest List(string name)
                 {
-                    return new ListRequest(service, name);
+                    return new ListRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -659,7 +659,7 @@ namespace Google.Apis.AndroidManagement.v1
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>
@@ -764,7 +764,7 @@ namespace Google.Apis.AndroidManagement.v1
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets a device. Deleted devices will respond with a 404 error.</summary>
@@ -815,7 +815,7 @@ namespace Google.Apis.AndroidManagement.v1
             /// </param>
             public virtual IssueCommandRequest IssueCommand(Google.Apis.AndroidManagement.v1.Data.Command body, string name)
             {
-                return new IssueCommandRequest(service, body, name);
+                return new IssueCommandRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -872,7 +872,7 @@ namespace Google.Apis.AndroidManagement.v1
             /// <param name="parent">The name of the enterprise in the form enterprises/{enterpriseId}.</param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>
@@ -946,7 +946,7 @@ namespace Google.Apis.AndroidManagement.v1
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.AndroidManagement.v1.Data.Device body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>Updates a device.</summary>
@@ -1036,7 +1036,7 @@ namespace Google.Apis.AndroidManagement.v1
             /// <param name="parent">The name of the enterprise in the form enterprises/{enterpriseId}.</param>
             public virtual CreateRequest Create(Google.Apis.AndroidManagement.v1.Data.EnrollmentToken body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -1098,7 +1098,7 @@ namespace Google.Apis.AndroidManagement.v1
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>
@@ -1156,7 +1156,7 @@ namespace Google.Apis.AndroidManagement.v1
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>
@@ -1216,7 +1216,7 @@ namespace Google.Apis.AndroidManagement.v1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>
@@ -1315,7 +1315,7 @@ namespace Google.Apis.AndroidManagement.v1
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>
@@ -1366,7 +1366,7 @@ namespace Google.Apis.AndroidManagement.v1
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets a policy.</summary>
@@ -1413,7 +1413,7 @@ namespace Google.Apis.AndroidManagement.v1
             /// <param name="parent">The name of the enterprise in the form enterprises/{enterpriseId}.</param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists policies for a given enterprise.</summary>
@@ -1485,7 +1485,7 @@ namespace Google.Apis.AndroidManagement.v1
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.AndroidManagement.v1.Data.Policy body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>Updates or creates a policy.</summary>
@@ -1572,7 +1572,7 @@ namespace Google.Apis.AndroidManagement.v1
             /// <param name="parent">The name of the enterprise in the form enterprises/{enterpriseId}.</param>
             public virtual CreateRequest Create(Google.Apis.AndroidManagement.v1.Data.WebApp body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>Creates a web app.</summary>
@@ -1626,7 +1626,7 @@ namespace Google.Apis.AndroidManagement.v1
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>Deletes a web app.</summary>
@@ -1675,7 +1675,7 @@ namespace Google.Apis.AndroidManagement.v1
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets a web app.</summary>
@@ -1722,7 +1722,7 @@ namespace Google.Apis.AndroidManagement.v1
             /// <param name="parent">The name of the enterprise in the form enterprises/{enterpriseId}.</param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists web apps for a given enterprise.</summary>
@@ -1796,7 +1796,7 @@ namespace Google.Apis.AndroidManagement.v1
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.AndroidManagement.v1.Data.WebApp body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>Updates a web app.</summary>
@@ -1885,7 +1885,7 @@ namespace Google.Apis.AndroidManagement.v1
             /// <param name="parent">The name of the enterprise in the form enterprises/{enterpriseId}.</param>
             public virtual CreateRequest Create(Google.Apis.AndroidManagement.v1.Data.WebToken body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -1942,7 +1942,7 @@ namespace Google.Apis.AndroidManagement.v1
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.AndroidManagement.v1.Data.Enterprise body)
         {
-            return new CreateRequest(service, body);
+            return new CreateRequest(this.service, body);
         }
 
         /// <summary>
@@ -2048,7 +2048,7 @@ namespace Google.Apis.AndroidManagement.v1
         /// <param name="name">The name of the enterprise in the form enterprises/{enterpriseId}.</param>
         public virtual DeleteRequest Delete(string name)
         {
-            return new DeleteRequest(service, name);
+            return new DeleteRequest(this.service, name);
         }
 
         /// <summary>Deletes an enterprise. Only available for EMM-managed enterprises.</summary>
@@ -2093,7 +2093,7 @@ namespace Google.Apis.AndroidManagement.v1
         /// <param name="name">The name of the enterprise in the form enterprises/{enterpriseId}.</param>
         public virtual GetRequest Get(string name)
         {
-            return new GetRequest(service, name);
+            return new GetRequest(this.service, name);
         }
 
         /// <summary>Gets an enterprise.</summary>
@@ -2137,7 +2137,7 @@ namespace Google.Apis.AndroidManagement.v1
         /// <summary>Lists EMM-managed enterprises. Only BASIC fields are returned.</summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>Lists EMM-managed enterprises. Only BASIC fields are returned.</summary>
@@ -2230,7 +2230,7 @@ namespace Google.Apis.AndroidManagement.v1
         /// <param name="name">The name of the enterprise in the form enterprises/{enterpriseId}.</param>
         public virtual PatchRequest Patch(Google.Apis.AndroidManagement.v1.Data.Enterprise body, string name)
         {
-            return new PatchRequest(service, body, name);
+            return new PatchRequest(this.service, body, name);
         }
 
         /// <summary>Updates an enterprise. See also: SigninDetail</summary>
@@ -2314,7 +2314,7 @@ namespace Google.Apis.AndroidManagement.v1
         /// </param>
         public virtual GetRequest Get(string name)
         {
-            return new GetRequest(service, name);
+            return new GetRequest(this.service, name);
         }
 
         /// <summary>Get the device provisioning information by the identifier provided in the sign-in url.</summary>
@@ -2376,7 +2376,7 @@ namespace Google.Apis.AndroidManagement.v1
         /// <summary>Creates an enterprise signup URL.</summary>
         public virtual CreateRequest Create()
         {
-            return new CreateRequest(service);
+            return new CreateRequest(this.service);
         }
 
         /// <summary>Creates an enterprise signup URL.</summary>
@@ -2604,8 +2604,8 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>UID of the package.</summary>
@@ -2809,8 +2809,8 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -2853,8 +2853,8 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>App event type.</summary>
@@ -3126,8 +3126,8 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? RetrievalTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(RetrievalTimeRaw);
-            set => RetrievalTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(RetrievalTimeRaw);
+            set => RetrievalTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -3353,8 +3353,8 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -3757,8 +3757,8 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EnrollmentTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EnrollmentTimeRaw);
-            set => EnrollmentTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EnrollmentTimeRaw);
+            set => EnrollmentTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -3822,8 +3822,8 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LastPolicyComplianceReportTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastPolicyComplianceReportTimeRaw);
-            set => LastPolicyComplianceReportTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastPolicyComplianceReportTimeRaw);
+            set => LastPolicyComplianceReportTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _lastPolicySyncTimeRaw;
@@ -3861,8 +3861,8 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LastPolicySyncTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastPolicySyncTimeRaw);
-            set => LastPolicySyncTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastPolicySyncTimeRaw);
+            set => LastPolicySyncTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _lastStatusReportTimeRaw;
@@ -3900,8 +3900,8 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LastStatusReportTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastStatusReportTimeRaw);
-            set => LastStatusReportTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastStatusReportTimeRaw);
+            set => LastStatusReportTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -4263,8 +4263,8 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ExpirationTimestampDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpirationTimestampRaw);
-            set => ExpirationTimestampRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpirationTimestampRaw);
+            set => ExpirationTimestampRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -4625,8 +4625,8 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -4779,8 +4779,8 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -4832,8 +4832,8 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LastUpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastUpdateTimeRaw);
-            set => LastUpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastUpdateTimeRaw);
+            set => LastUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -5232,8 +5232,8 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Event type.</summary>
@@ -6312,8 +6312,8 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Event type.</summary>
@@ -6572,8 +6572,8 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? AndroidBuildTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(AndroidBuildTimeRaw);
-            set => AndroidBuildTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(AndroidBuildTimeRaw);
+            set => AndroidBuildTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The Android Device Policy app version code.</summary>
@@ -6878,8 +6878,8 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateReceivedTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateReceivedTimeRaw);
-            set => UpdateReceivedTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateReceivedTimeRaw);
+            set => UpdateReceivedTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The status of an update: whether an update exists and what type it is.</summary>
@@ -7044,8 +7044,8 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EventTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EventTimeRaw);
-            set => EventTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EventTimeRaw);
+            set => EventTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>

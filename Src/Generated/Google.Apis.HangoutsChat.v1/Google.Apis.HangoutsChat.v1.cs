@@ -374,7 +374,7 @@ namespace Google.Apis.HangoutsChat.v1
         /// </param>
         public virtual DownloadRequest Download(string resourceName)
         {
-            return new DownloadRequest(service, resourceName);
+            return new DownloadRequest(this.service, resourceName);
         }
 
         /// <summary>Downloads media. Download is supported on the URI `/v1/media/{+name}?alt=media`.</summary>
@@ -514,7 +514,7 @@ namespace Google.Apis.HangoutsChat.v1
         /// </param>
         public virtual UploadRequest Upload(Google.Apis.HangoutsChat.v1.Data.UploadAttachmentRequest body, string parent)
         {
-            return new UploadRequest(service, body, parent);
+            return new UploadRequest(this.service, body, parent);
         }
 
         /// <summary>
@@ -775,7 +775,7 @@ namespace Google.Apis.HangoutsChat.v1
             /// </param>
             public virtual CreateRequest Create(Google.Apis.HangoutsChat.v1.Data.Membership body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -856,7 +856,7 @@ namespace Google.Apis.HangoutsChat.v1
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>
@@ -926,7 +926,7 @@ namespace Google.Apis.HangoutsChat.v1
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>
@@ -997,7 +997,7 @@ namespace Google.Apis.HangoutsChat.v1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>
@@ -1184,7 +1184,7 @@ namespace Google.Apis.HangoutsChat.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -1264,7 +1264,7 @@ namespace Google.Apis.HangoutsChat.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.HangoutsChat.v1.Data.Reaction body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -1330,7 +1330,7 @@ namespace Google.Apis.HangoutsChat.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -1388,7 +1388,7 @@ namespace Google.Apis.HangoutsChat.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>
@@ -1521,7 +1521,7 @@ namespace Google.Apis.HangoutsChat.v1
             /// </param>
             public virtual CreateRequest Create(Google.Apis.HangoutsChat.v1.Data.Message body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -1689,7 +1689,7 @@ namespace Google.Apis.HangoutsChat.v1
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>
@@ -1774,7 +1774,7 @@ namespace Google.Apis.HangoutsChat.v1
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>
@@ -1838,7 +1838,7 @@ namespace Google.Apis.HangoutsChat.v1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>
@@ -1997,7 +1997,7 @@ namespace Google.Apis.HangoutsChat.v1
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.HangoutsChat.v1.Data.Message body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -2108,7 +2108,7 @@ namespace Google.Apis.HangoutsChat.v1
             /// </param>
             public virtual UpdateRequest Update(Google.Apis.HangoutsChat.v1.Data.Message body, string name)
             {
-                return new UpdateRequest(service, body, name);
+                return new UpdateRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -2213,7 +2213,7 @@ namespace Google.Apis.HangoutsChat.v1
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.HangoutsChat.v1.Data.Space body)
         {
-            return new CreateRequest(service, body);
+            return new CreateRequest(this.service, body);
         }
 
         /// <summary>
@@ -2280,7 +2280,7 @@ namespace Google.Apis.HangoutsChat.v1
         /// <param name="name">Required. Resource name of the space to delete. Format: `spaces/{space}`</param>
         public virtual DeleteRequest Delete(string name)
         {
-            return new DeleteRequest(service, name);
+            return new DeleteRequest(this.service, name);
         }
 
         /// <summary>
@@ -2340,7 +2340,7 @@ namespace Google.Apis.HangoutsChat.v1
         /// </summary>
         public virtual FindDirectMessageRequest FindDirectMessage()
         {
-            return new FindDirectMessageRequest(service);
+            return new FindDirectMessageRequest(this.service);
         }
 
         /// <summary>
@@ -2412,7 +2412,7 @@ namespace Google.Apis.HangoutsChat.v1
         /// </param>
         public virtual GetRequest Get(string name)
         {
-            return new GetRequest(service, name);
+            return new GetRequest(this.service, name);
         }
 
         /// <summary>
@@ -2471,7 +2471,7 @@ namespace Google.Apis.HangoutsChat.v1
         /// </summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>
@@ -2577,7 +2577,7 @@ namespace Google.Apis.HangoutsChat.v1
         /// <param name="name">Resource name of the space. Format: `spaces/{space}`</param>
         public virtual PatchRequest Patch(Google.Apis.HangoutsChat.v1.Data.Space body, string name)
         {
-            return new PatchRequest(service, body, name);
+            return new PatchRequest(this.service, body, name);
         }
 
         /// <summary>
@@ -2685,7 +2685,7 @@ namespace Google.Apis.HangoutsChat.v1
         /// <param name="body">The body of the request.</param>
         public virtual SetupRequest Setup(Google.Apis.HangoutsChat.v1.Data.SetUpSpaceRequest body)
         {
-            return new SetupRequest(service, body);
+            return new SetupRequest(this.service, body);
         }
 
         /// <summary>
@@ -3322,8 +3322,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EventTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EventTimeRaw);
-            set => EventTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EventTimeRaw);
+            set => EventTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -5067,8 +5067,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -5194,8 +5194,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _deleteTimeRaw;
@@ -5234,8 +5234,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? DeleteTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DeleteTimeRaw);
-            set => DeleteTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DeleteTimeRaw);
+            set => DeleteTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -5307,8 +5307,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LastUpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastUpdateTimeRaw);
-            set => LastUpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastUpdateTimeRaw);
+            set => LastUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -5446,8 +5446,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LastUpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastUpdateTimeRaw);
-            set => LastUpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastUpdateTimeRaw);
+            set => LastUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>

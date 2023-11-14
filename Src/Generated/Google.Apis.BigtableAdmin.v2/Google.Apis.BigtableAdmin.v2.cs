@@ -373,7 +373,7 @@ namespace Google.Apis.BigtableAdmin.v2
                 /// <param name="name">The name of the operation's parent resource.</param>
                 public virtual ListRequest List(string name)
                 {
-                    return new ListRequest(service, name);
+                    return new ListRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -466,7 +466,7 @@ namespace Google.Apis.BigtableAdmin.v2
         /// <param name="name">The name of the operation resource to be cancelled.</param>
         public virtual CancelRequest Cancel(string name)
         {
-            return new CancelRequest(service, name);
+            return new CancelRequest(this.service, name);
         }
 
         /// <summary>
@@ -522,7 +522,7 @@ namespace Google.Apis.BigtableAdmin.v2
         /// <param name="name">The name of the operation resource to be deleted.</param>
         public virtual DeleteRequest Delete(string name)
         {
-            return new DeleteRequest(service, name);
+            return new DeleteRequest(this.service, name);
         }
 
         /// <summary>
@@ -574,7 +574,7 @@ namespace Google.Apis.BigtableAdmin.v2
         /// <param name="name">The name of the operation resource.</param>
         public virtual GetRequest Get(string name)
         {
-            return new GetRequest(service, name);
+            return new GetRequest(this.service, name);
         }
 
         /// <summary>
@@ -680,7 +680,7 @@ namespace Google.Apis.BigtableAdmin.v2
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.BigtableAdmin.v2.Data.AppProfile body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates an app profile within an instance.</summary>
@@ -765,7 +765,7 @@ namespace Google.Apis.BigtableAdmin.v2
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes an app profile from an instance.</summary>
@@ -828,7 +828,7 @@ namespace Google.Apis.BigtableAdmin.v2
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets information about an app profile.</summary>
@@ -880,7 +880,7 @@ namespace Google.Apis.BigtableAdmin.v2
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists information about app profiles in an instance.</summary>
@@ -963,7 +963,7 @@ namespace Google.Apis.BigtableAdmin.v2
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.BigtableAdmin.v2.Data.AppProfile body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates an app profile within an instance.</summary>
@@ -1090,7 +1090,7 @@ namespace Google.Apis.BigtableAdmin.v2
                     /// </param>
                     public virtual CopyRequest Copy(Google.Apis.BigtableAdmin.v2.Data.CopyBackupRequest body, string parent)
                     {
-                        return new CopyRequest(service, body, parent);
+                        return new CopyRequest(this.service, body, parent);
                     }
 
                     /// <summary>
@@ -1159,7 +1159,7 @@ namespace Google.Apis.BigtableAdmin.v2
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.BigtableAdmin.v2.Data.Backup body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>
@@ -1240,7 +1240,7 @@ namespace Google.Apis.BigtableAdmin.v2
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>Deletes a pending or completed Cloud Bigtable backup.</summary>
@@ -1291,7 +1291,7 @@ namespace Google.Apis.BigtableAdmin.v2
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Gets metadata on a pending or completed Cloud Bigtable Backup.</summary>
@@ -1347,7 +1347,7 @@ namespace Google.Apis.BigtableAdmin.v2
                     /// </param>
                     public virtual GetIamPolicyRequest GetIamPolicy(Google.Apis.BigtableAdmin.v2.Data.GetIamPolicyRequest body, string resource)
                     {
-                        return new GetIamPolicyRequest(service, body, resource);
+                        return new GetIamPolicyRequest(this.service, body, resource);
                     }
 
                     /// <summary>
@@ -1411,7 +1411,7 @@ namespace Google.Apis.BigtableAdmin.v2
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists Cloud Bigtable backups. Returns both completed and pending backups.</summary>
@@ -1550,7 +1550,7 @@ namespace Google.Apis.BigtableAdmin.v2
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.BigtableAdmin.v2.Data.Backup body, string name)
                     {
-                        return new PatchRequest(service, body, name);
+                        return new PatchRequest(this.service, body, name);
                     }
 
                     /// <summary>Updates a pending or completed Cloud Bigtable Backup.</summary>
@@ -1632,7 +1632,7 @@ namespace Google.Apis.BigtableAdmin.v2
                     /// </param>
                     public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.BigtableAdmin.v2.Data.SetIamPolicyRequest body, string resource)
                     {
-                        return new SetIamPolicyRequest(service, body, resource);
+                        return new SetIamPolicyRequest(this.service, body, resource);
                     }
 
                     /// <summary>
@@ -1697,7 +1697,7 @@ namespace Google.Apis.BigtableAdmin.v2
                     /// </param>
                     public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.BigtableAdmin.v2.Data.TestIamPermissionsRequest body, string resource)
                     {
-                        return new TestIamPermissionsRequest(service, body, resource);
+                        return new TestIamPermissionsRequest(this.service, body, resource);
                     }
 
                     /// <summary>
@@ -1779,7 +1779,7 @@ namespace Google.Apis.BigtableAdmin.v2
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>
@@ -1802,9 +1802,36 @@ namespace Google.Apis.BigtableAdmin.v2
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
-                        /// <summary>The end time to list hot tablets.</summary>
+                        private object _endTime;
+
+                        /// <summary>
+                        /// String representation of <see cref="EndTimeDateTimeOffset"/>, formatted for inclusion in the
+                        /// HTTP request.
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("endTime", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual object EndTime { get; set; }
+                        public virtual string EndTimeRaw { get; private set; }
+
+                        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+                        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+                        public virtual object EndTime
+                        {
+                            get => _endTime;
+                            set
+                            {
+                                EndTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                                _endTime = value;
+                            }
+                        }
+
+                        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+                        {
+                            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+                            set
+                            {
+                                EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                                _endTime = value;
+                            }
+                        }
 
                         /// <summary>
                         /// Maximum number of results per page. A page_size that is empty or zero lets the server choose
@@ -1820,15 +1847,36 @@ namespace Google.Apis.BigtableAdmin.v2
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
 
+                        private object _startTime;
+
                         /// <summary>
-                        /// The start time to list hot tablets. The hot tablets in the response will have start times
-                        /// between the requested start time and end time. Start time defaults to Now if it is unset,
-                        /// and end time defaults to Now - 24 hours if it is unset. The start time should be less than
-                        /// the end time, and the maximum allowed time range between start time and end time is 48
-                        /// hours. Start time and end time should have values between Now and Now - 14 days.
+                        /// String representation of <see cref="StartTimeDateTimeOffset"/>, formatted for inclusion in
+                        /// the HTTP request.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual object StartTime { get; set; }
+                        public virtual string StartTimeRaw { get; private set; }
+
+                        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+                        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+                        public virtual object StartTime
+                        {
+                            get => _startTime;
+                            set
+                            {
+                                StartTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                                _startTime = value;
+                            }
+                        }
+
+                        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+                        {
+                            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+                            set
+                            {
+                                StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                                _startTime = value;
+                            }
+                        }
 
                         /// <summary>Gets the method name.</summary>
                         public override string MethodName => "list";
@@ -1900,7 +1948,7 @@ namespace Google.Apis.BigtableAdmin.v2
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.BigtableAdmin.v2.Data.Cluster body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -1978,7 +2026,7 @@ namespace Google.Apis.BigtableAdmin.v2
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes a cluster from an instance.</summary>
@@ -2029,7 +2077,7 @@ namespace Google.Apis.BigtableAdmin.v2
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets information about a cluster.</summary>
@@ -2081,7 +2129,7 @@ namespace Google.Apis.BigtableAdmin.v2
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists information about clusters in an instance.</summary>
@@ -2154,7 +2202,7 @@ namespace Google.Apis.BigtableAdmin.v2
                 /// </param>
                 public virtual PartialUpdateClusterRequest PartialUpdateCluster(Google.Apis.BigtableAdmin.v2.Data.Cluster body, string name)
                 {
-                    return new PartialUpdateClusterRequest(service, body, name);
+                    return new PartialUpdateClusterRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -2236,7 +2284,7 @@ namespace Google.Apis.BigtableAdmin.v2
                 /// </param>
                 public virtual UpdateRequest Update(Google.Apis.BigtableAdmin.v2.Data.Cluster body, string name)
                 {
-                    return new UpdateRequest(service, body, name);
+                    return new UpdateRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -2319,7 +2367,7 @@ namespace Google.Apis.BigtableAdmin.v2
                 /// </param>
                 public virtual CheckConsistencyRequest CheckConsistency(Google.Apis.BigtableAdmin.v2.Data.CheckConsistencyRequest body, string name)
                 {
-                    return new CheckConsistencyRequest(service, body, name);
+                    return new CheckConsistencyRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -2384,7 +2432,7 @@ namespace Google.Apis.BigtableAdmin.v2
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.BigtableAdmin.v2.Data.CreateTableRequest body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -2445,7 +2493,7 @@ namespace Google.Apis.BigtableAdmin.v2
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Permanently deletes a specified table and all of its data.</summary>
@@ -2500,7 +2548,7 @@ namespace Google.Apis.BigtableAdmin.v2
                 /// </param>
                 public virtual DropRowRangeRequest DropRowRange(Google.Apis.BigtableAdmin.v2.Data.DropRowRangeRequest body, string name)
                 {
-                    return new DropRowRangeRequest(service, body, name);
+                    return new DropRowRangeRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -2566,7 +2614,7 @@ namespace Google.Apis.BigtableAdmin.v2
                 /// </param>
                 public virtual GenerateConsistencyTokenRequest GenerateConsistencyToken(Google.Apis.BigtableAdmin.v2.Data.GenerateConsistencyTokenRequest body, string name)
                 {
-                    return new GenerateConsistencyTokenRequest(service, body, name);
+                    return new GenerateConsistencyTokenRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -2628,7 +2676,7 @@ namespace Google.Apis.BigtableAdmin.v2
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets metadata information about the specified table.</summary>
@@ -2737,7 +2785,7 @@ namespace Google.Apis.BigtableAdmin.v2
                 /// </param>
                 public virtual GetIamPolicyRequest GetIamPolicy(Google.Apis.BigtableAdmin.v2.Data.GetIamPolicyRequest body, string resource)
                 {
-                    return new GetIamPolicyRequest(service, body, resource);
+                    return new GetIamPolicyRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -2799,7 +2847,7 @@ namespace Google.Apis.BigtableAdmin.v2
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists all tables served from a specified instance.</summary>
@@ -2940,7 +2988,7 @@ namespace Google.Apis.BigtableAdmin.v2
                 /// </param>
                 public virtual ModifyColumnFamiliesRequest ModifyColumnFamilies(Google.Apis.BigtableAdmin.v2.Data.ModifyColumnFamiliesRequest body, string name)
                 {
-                    return new ModifyColumnFamiliesRequest(service, body, name);
+                    return new ModifyColumnFamiliesRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -3004,7 +3052,7 @@ namespace Google.Apis.BigtableAdmin.v2
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.BigtableAdmin.v2.Data.Table body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates a specified table.</summary>
@@ -3087,7 +3135,7 @@ namespace Google.Apis.BigtableAdmin.v2
                 /// </param>
                 public virtual RestoreRequest Restore(Google.Apis.BigtableAdmin.v2.Data.RestoreTableRequest body, string parent)
                 {
-                    return new RestoreRequest(service, body, parent);
+                    return new RestoreRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -3153,7 +3201,7 @@ namespace Google.Apis.BigtableAdmin.v2
                 /// </param>
                 public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.BigtableAdmin.v2.Data.SetIamPolicyRequest body, string resource)
                 {
-                    return new SetIamPolicyRequest(service, body, resource);
+                    return new SetIamPolicyRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -3218,7 +3266,7 @@ namespace Google.Apis.BigtableAdmin.v2
                 /// </param>
                 public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.BigtableAdmin.v2.Data.TestIamPermissionsRequest body, string resource)
                 {
-                    return new TestIamPermissionsRequest(service, body, resource);
+                    return new TestIamPermissionsRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -3280,7 +3328,7 @@ namespace Google.Apis.BigtableAdmin.v2
                 /// </param>
                 public virtual UndeleteRequest Undelete(Google.Apis.BigtableAdmin.v2.Data.UndeleteTableRequest body, string name)
                 {
-                    return new UndeleteRequest(service, body, name);
+                    return new UndeleteRequest(this.service, body, name);
                 }
 
                 /// <summary>Restores a specified table which was accidentally deleted.</summary>
@@ -3345,7 +3393,7 @@ namespace Google.Apis.BigtableAdmin.v2
             /// </param>
             public virtual CreateRequest Create(Google.Apis.BigtableAdmin.v2.Data.CreateInstanceRequest body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -3408,7 +3456,7 @@ namespace Google.Apis.BigtableAdmin.v2
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>Delete an instance from a project.</summary>
@@ -3459,7 +3507,7 @@ namespace Google.Apis.BigtableAdmin.v2
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets information about an instance.</summary>
@@ -3514,7 +3562,7 @@ namespace Google.Apis.BigtableAdmin.v2
             /// </param>
             public virtual GetIamPolicyRequest GetIamPolicy(Google.Apis.BigtableAdmin.v2.Data.GetIamPolicyRequest body, string resource)
             {
-                return new GetIamPolicyRequest(service, body, resource);
+                return new GetIamPolicyRequest(this.service, body, resource);
             }
 
             /// <summary>
@@ -3576,7 +3624,7 @@ namespace Google.Apis.BigtableAdmin.v2
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists information about instances in a project.</summary>
@@ -3642,7 +3690,7 @@ namespace Google.Apis.BigtableAdmin.v2
             /// </param>
             public virtual PartialUpdateInstanceRequest PartialUpdateInstance(Google.Apis.BigtableAdmin.v2.Data.Instance body, string name)
             {
-                return new PartialUpdateInstanceRequest(service, body, name);
+                return new PartialUpdateInstanceRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -3717,7 +3765,7 @@ namespace Google.Apis.BigtableAdmin.v2
             /// </param>
             public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.BigtableAdmin.v2.Data.SetIamPolicyRequest body, string resource)
             {
-                return new SetIamPolicyRequest(service, body, resource);
+                return new SetIamPolicyRequest(this.service, body, resource);
             }
 
             /// <summary>Sets the access control policy on an instance resource. Replaces any existing policy.</summary>
@@ -3777,7 +3825,7 @@ namespace Google.Apis.BigtableAdmin.v2
             /// </param>
             public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.BigtableAdmin.v2.Data.TestIamPermissionsRequest body, string resource)
             {
-                return new TestIamPermissionsRequest(service, body, resource);
+                return new TestIamPermissionsRequest(this.service, body, resource);
             }
 
             /// <summary>Returns permissions that the caller has on the specified instance resource.</summary>
@@ -3839,7 +3887,7 @@ namespace Google.Apis.BigtableAdmin.v2
             /// </param>
             public virtual UpdateRequest Update(Google.Apis.BigtableAdmin.v2.Data.Instance body, string name)
             {
-                return new UpdateRequest(service, body, name);
+                return new UpdateRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -3914,7 +3962,7 @@ namespace Google.Apis.BigtableAdmin.v2
             /// <param name="name">Resource name for the location.</param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets information about a location.</summary>
@@ -3959,7 +4007,7 @@ namespace Google.Apis.BigtableAdmin.v2
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
             {
-                return new ListRequest(service, name);
+                return new ListRequest(this.service, name);
             }
 
             /// <summary>Lists information about the supported locations for this service.</summary>
@@ -4229,8 +4277,8 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _expireTimeRaw;
@@ -4270,8 +4318,8 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpireTimeRaw);
-            set => ExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -4338,8 +4386,8 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. The current state of the backup.</summary>
@@ -4393,8 +4441,8 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -4444,8 +4492,8 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -4778,8 +4826,8 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpireTimeRaw);
-            set => ExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -4831,8 +4879,8 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The name of the backup being created.</summary>
@@ -4876,8 +4924,8 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -4920,8 +4968,8 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? FinishTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(FinishTimeRaw);
-            set => FinishTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(FinishTimeRaw);
+            set => FinishTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The request that prompted the initiation of this CreateCluster operation.</summary>
@@ -4961,8 +5009,8 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? RequestTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(RequestTimeRaw);
-            set => RequestTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(RequestTimeRaw);
+            set => RequestTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -5039,8 +5087,8 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? FinishTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(FinishTimeRaw);
-            set => FinishTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(FinishTimeRaw);
+            set => FinishTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The request that prompted the initiation of this CreateInstance operation.</summary>
@@ -5080,8 +5128,8 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? RequestTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(RequestTimeRaw);
-            set => RequestTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(RequestTimeRaw);
+            set => RequestTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -5385,8 +5433,8 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -5441,8 +5489,8 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -5498,8 +5546,8 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -5886,8 +5934,8 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Percent completion of the operation. Values are between 0 and 100 inclusive.</summary>
@@ -5927,8 +5975,8 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -5990,8 +6038,8 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? FinishTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(FinishTimeRaw);
-            set => FinishTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(FinishTimeRaw);
+            set => FinishTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The original request for PartialUpdateCluster.</summary>
@@ -6031,8 +6079,8 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? RequestTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(RequestTimeRaw);
-            set => RequestTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(RequestTimeRaw);
+            set => RequestTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -6517,8 +6565,8 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The name of the table being restored.</summary>
@@ -6558,8 +6606,8 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -6627,8 +6675,8 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? FinishTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(FinishTimeRaw);
-            set => FinishTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(FinishTimeRaw);
+            set => FinishTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The request that prompted the initiation of this UpdateCluster operation.</summary>
@@ -6668,8 +6716,8 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? RequestTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(RequestTimeRaw);
-            set => RequestTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(RequestTimeRaw);
+            set => RequestTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -6712,8 +6760,8 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? FinishTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(FinishTimeRaw);
-            set => FinishTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(FinishTimeRaw);
+            set => FinishTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The request that prompted the initiation of this UpdateInstance operation.</summary>
@@ -6753,8 +6801,8 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? RequestTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(RequestTimeRaw);
-            set => RequestTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(RequestTimeRaw);
+            set => RequestTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -6797,8 +6845,8 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The name of the table being updated.</summary>
@@ -6838,8 +6886,8 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>

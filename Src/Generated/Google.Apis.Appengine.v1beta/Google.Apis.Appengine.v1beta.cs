@@ -325,7 +325,7 @@ namespace Google.Apis.Appengine.v1beta
             /// </param>
             public virtual CreateRequest Create(Google.Apis.Appengine.v1beta.Data.AuthorizedCertificate body, string appsId)
             {
-                return new CreateRequest(service, body, appsId);
+                return new CreateRequest(this.service, body, appsId);
             }
 
             /// <summary>Uploads the specified SSL certificate.</summary>
@@ -380,7 +380,7 @@ namespace Google.Apis.Appengine.v1beta
             /// <param name="authorizedCertificatesId">Part of `name`. See documentation of `appsId`.</param>
             public virtual DeleteRequest Delete(string appsId, string authorizedCertificatesId)
             {
-                return new DeleteRequest(service, appsId, authorizedCertificatesId);
+                return new DeleteRequest(this.service, appsId, authorizedCertificatesId);
             }
 
             /// <summary>Deletes the specified SSL certificate.</summary>
@@ -443,7 +443,7 @@ namespace Google.Apis.Appengine.v1beta
             /// <param name="authorizedCertificatesId">Part of `name`. See documentation of `appsId`.</param>
             public virtual GetRequest Get(string appsId, string authorizedCertificatesId)
             {
-                return new GetRequest(service, appsId, authorizedCertificatesId);
+                return new GetRequest(this.service, appsId, authorizedCertificatesId);
             }
 
             /// <summary>Gets the specified SSL certificate.</summary>
@@ -534,7 +534,7 @@ namespace Google.Apis.Appengine.v1beta
             /// </param>
             public virtual ListRequest List(string appsId)
             {
-                return new ListRequest(service, appsId);
+                return new ListRequest(this.service, appsId);
             }
 
             /// <summary>Lists all SSL certificates the user is authorized to administer.</summary>
@@ -640,7 +640,7 @@ namespace Google.Apis.Appengine.v1beta
             /// <param name="authorizedCertificatesId">Part of `name`. See documentation of `appsId`.</param>
             public virtual PatchRequest Patch(Google.Apis.Appengine.v1beta.Data.AuthorizedCertificate body, string appsId, string authorizedCertificatesId)
             {
-                return new PatchRequest(service, body, appsId, authorizedCertificatesId);
+                return new PatchRequest(this.service, body, appsId, authorizedCertificatesId);
             }
 
             /// <summary>
@@ -746,7 +746,7 @@ namespace Google.Apis.Appengine.v1beta
             /// </param>
             public virtual ListRequest List(string appsId)
             {
-                return new ListRequest(service, appsId);
+                return new ListRequest(this.service, appsId);
             }
 
             /// <summary>Lists all domains the user is authorized to administer.</summary>
@@ -839,7 +839,7 @@ namespace Google.Apis.Appengine.v1beta
             /// </param>
             public virtual CreateRequest Create(Google.Apis.Appengine.v1beta.Data.DomainMapping body, string appsId)
             {
-                return new CreateRequest(service, body, appsId);
+                return new CreateRequest(this.service, body, appsId);
             }
 
             /// <summary>
@@ -942,7 +942,7 @@ namespace Google.Apis.Appengine.v1beta
             /// <param name="domainMappingsId">Part of `name`. See documentation of `appsId`.</param>
             public virtual DeleteRequest Delete(string appsId, string domainMappingsId)
             {
-                return new DeleteRequest(service, appsId, domainMappingsId);
+                return new DeleteRequest(this.service, appsId, domainMappingsId);
             }
 
             /// <summary>
@@ -1008,7 +1008,7 @@ namespace Google.Apis.Appengine.v1beta
             /// <param name="domainMappingsId">Part of `name`. See documentation of `appsId`.</param>
             public virtual GetRequest Get(string appsId, string domainMappingsId)
             {
-                return new GetRequest(service, appsId, domainMappingsId);
+                return new GetRequest(this.service, appsId, domainMappingsId);
             }
 
             /// <summary>Gets the specified domain mapping.</summary>
@@ -1070,7 +1070,7 @@ namespace Google.Apis.Appengine.v1beta
             /// </param>
             public virtual ListRequest List(string appsId)
             {
-                return new ListRequest(service, appsId);
+                return new ListRequest(this.service, appsId);
             }
 
             /// <summary>Lists the domain mappings on an application.</summary>
@@ -1147,7 +1147,7 @@ namespace Google.Apis.Appengine.v1beta
             /// <param name="domainMappingsId">Part of `name`. See documentation of `appsId`.</param>
             public virtual PatchRequest Patch(Google.Apis.Appengine.v1beta.Data.DomainMapping body, string appsId, string domainMappingsId)
             {
-                return new PatchRequest(service, body, appsId, domainMappingsId);
+                return new PatchRequest(this.service, body, appsId, domainMappingsId);
             }
 
             /// <summary>
@@ -1273,7 +1273,7 @@ namespace Google.Apis.Appengine.v1beta
                 /// </param>
                 public virtual BatchUpdateRequest BatchUpdate(Google.Apis.Appengine.v1beta.Data.BatchUpdateIngressRulesRequest body, string appsId)
                 {
-                    return new BatchUpdateRequest(service, body, appsId);
+                    return new BatchUpdateRequest(this.service, body, appsId);
                 }
 
                 /// <summary>
@@ -1336,7 +1336,7 @@ namespace Google.Apis.Appengine.v1beta
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Appengine.v1beta.Data.FirewallRule body, string appsId)
                 {
-                    return new CreateRequest(service, body, appsId);
+                    return new CreateRequest(this.service, body, appsId);
                 }
 
                 /// <summary>Creates a firewall rule for the application.</summary>
@@ -1395,7 +1395,7 @@ namespace Google.Apis.Appengine.v1beta
                 /// <param name="ingressRulesId">Part of `name`. See documentation of `appsId`.</param>
                 public virtual DeleteRequest Delete(string appsId, string ingressRulesId)
                 {
-                    return new DeleteRequest(service, appsId, ingressRulesId);
+                    return new DeleteRequest(this.service, appsId, ingressRulesId);
                 }
 
                 /// <summary>Deletes the specified firewall rule.</summary>
@@ -1460,7 +1460,7 @@ namespace Google.Apis.Appengine.v1beta
                 /// <param name="ingressRulesId">Part of `name`. See documentation of `appsId`.</param>
                 public virtual GetRequest Get(string appsId, string ingressRulesId)
                 {
-                    return new GetRequest(service, appsId, ingressRulesId);
+                    return new GetRequest(this.service, appsId, ingressRulesId);
                 }
 
                 /// <summary>Gets the specified firewall rule.</summary>
@@ -1524,7 +1524,7 @@ namespace Google.Apis.Appengine.v1beta
                 /// </param>
                 public virtual ListRequest List(string appsId)
                 {
-                    return new ListRequest(service, appsId);
+                    return new ListRequest(this.service, appsId);
                 }
 
                 /// <summary>Lists the firewall rules of an application.</summary>
@@ -1616,7 +1616,7 @@ namespace Google.Apis.Appengine.v1beta
                 /// <param name="ingressRulesId">Part of `name`. See documentation of `appsId`.</param>
                 public virtual PatchRequest Patch(Google.Apis.Appengine.v1beta.Data.FirewallRule body, string appsId, string ingressRulesId)
                 {
-                    return new PatchRequest(service, body, appsId, ingressRulesId);
+                    return new PatchRequest(this.service, body, appsId, ingressRulesId);
                 }
 
                 /// <summary>Updates the specified firewall rule.</summary>
@@ -1716,7 +1716,7 @@ namespace Google.Apis.Appengine.v1beta
             /// <param name="locationsId">Part of `name`. See documentation of `appsId`.</param>
             public virtual GetRequest Get(string appsId, string locationsId)
             {
-                return new GetRequest(service, appsId, locationsId);
+                return new GetRequest(this.service, appsId, locationsId);
             }
 
             /// <summary>Gets information about a location.</summary>
@@ -1776,7 +1776,7 @@ namespace Google.Apis.Appengine.v1beta
             /// </param>
             public virtual ListRequest List(string appsId)
             {
-                return new ListRequest(service, appsId);
+                return new ListRequest(this.service, appsId);
             }
 
             /// <summary>Lists information about the supported locations for this service.</summary>
@@ -1887,7 +1887,7 @@ namespace Google.Apis.Appengine.v1beta
             /// <param name="operationsId">Part of `name`. See documentation of `appsId`.</param>
             public virtual GetRequest Get(string appsId, string operationsId)
             {
-                return new GetRequest(service, appsId, operationsId);
+                return new GetRequest(this.service, appsId, operationsId);
             }
 
             /// <summary>
@@ -1951,7 +1951,7 @@ namespace Google.Apis.Appengine.v1beta
             /// <param name="appsId">Part of `name`. The name of the operation's parent resource.</param>
             public virtual ListRequest List(string appsId)
             {
-                return new ListRequest(service, appsId);
+                return new ListRequest(this.service, appsId);
             }
 
             /// <summary>
@@ -2102,7 +2102,7 @@ namespace Google.Apis.Appengine.v1beta
                     /// <param name="instancesId">Part of `name`. See documentation of `appsId`.</param>
                     public virtual DebugRequest Debug(Google.Apis.Appengine.v1beta.Data.DebugInstanceRequest body, string appsId, string servicesId, string versionsId, string instancesId)
                     {
-                        return new DebugRequest(service, body, appsId, servicesId, versionsId, instancesId);
+                        return new DebugRequest(this.service, body, appsId, servicesId, versionsId, instancesId);
                     }
 
                     /// <summary>
@@ -2219,7 +2219,7 @@ namespace Google.Apis.Appengine.v1beta
                     /// <param name="instancesId">Part of `name`. See documentation of `appsId`.</param>
                     public virtual DeleteRequest Delete(string appsId, string servicesId, string versionsId, string instancesId)
                     {
-                        return new DeleteRequest(service, appsId, servicesId, versionsId, instancesId);
+                        return new DeleteRequest(this.service, appsId, servicesId, versionsId, instancesId);
                     }
 
                     /// <summary>
@@ -2323,7 +2323,7 @@ namespace Google.Apis.Appengine.v1beta
                     /// <param name="instancesId">Part of `name`. See documentation of `appsId`.</param>
                     public virtual GetRequest Get(string appsId, string servicesId, string versionsId, string instancesId)
                     {
-                        return new GetRequest(service, appsId, servicesId, versionsId, instancesId);
+                        return new GetRequest(this.service, appsId, servicesId, versionsId, instancesId);
                     }
 
                     /// <summary>Gets instance information.</summary>
@@ -2419,7 +2419,7 @@ namespace Google.Apis.Appengine.v1beta
                     /// <param name="versionsId">Part of `parent`. See documentation of `appsId`.</param>
                     public virtual ListRequest List(string appsId, string servicesId, string versionsId)
                     {
-                        return new ListRequest(service, appsId, servicesId, versionsId);
+                        return new ListRequest(this.service, appsId, servicesId, versionsId);
                     }
 
                     /// <summary>
@@ -2527,7 +2527,7 @@ namespace Google.Apis.Appengine.v1beta
                 /// <param name="servicesId">Part of `parent`. See documentation of `appsId`.</param>
                 public virtual CreateRequest Create(Google.Apis.Appengine.v1beta.Data.Version body, string appsId, string servicesId)
                 {
-                    return new CreateRequest(service, body, appsId, servicesId);
+                    return new CreateRequest(this.service, body, appsId, servicesId);
                 }
 
                 /// <summary>Deploys code and resource files to a new version.</summary>
@@ -2599,7 +2599,7 @@ namespace Google.Apis.Appengine.v1beta
                 /// <param name="versionsId">Part of `name`. See documentation of `appsId`.</param>
                 public virtual DeleteRequest Delete(string appsId, string servicesId, string versionsId)
                 {
-                    return new DeleteRequest(service, appsId, servicesId, versionsId);
+                    return new DeleteRequest(this.service, appsId, servicesId, versionsId);
                 }
 
                 /// <summary>Deletes an existing Version resource.</summary>
@@ -2680,7 +2680,7 @@ namespace Google.Apis.Appengine.v1beta
                 /// <param name="versionsId">Part of `name`. See documentation of `appsId`.</param>
                 public virtual GetRequest Get(string appsId, string servicesId, string versionsId)
                 {
-                    return new GetRequest(service, appsId, servicesId, versionsId);
+                    return new GetRequest(this.service, appsId, servicesId, versionsId);
                 }
 
                 /// <summary>
@@ -2818,7 +2818,7 @@ namespace Google.Apis.Appengine.v1beta
                 /// <param name="servicesId">Part of `parent`. See documentation of `appsId`.</param>
                 public virtual ListRequest List(string appsId, string servicesId)
                 {
-                    return new ListRequest(service, appsId, servicesId);
+                    return new ListRequest(this.service, appsId, servicesId);
                 }
 
                 /// <summary>Lists the versions of a service.</summary>
@@ -2970,7 +2970,7 @@ namespace Google.Apis.Appengine.v1beta
                 /// <param name="versionsId">Part of `name`. See documentation of `appsId`.</param>
                 public virtual PatchRequest Patch(Google.Apis.Appengine.v1beta.Data.Version body, string appsId, string servicesId, string versionsId)
                 {
-                    return new PatchRequest(service, body, appsId, servicesId, versionsId);
+                    return new PatchRequest(this.service, body, appsId, servicesId, versionsId);
                 }
 
                 /// <summary>
@@ -3099,7 +3099,7 @@ namespace Google.Apis.Appengine.v1beta
             /// <param name="servicesId">Part of `name`. See documentation of `appsId`.</param>
             public virtual DeleteRequest Delete(string appsId, string servicesId)
             {
-                return new DeleteRequest(service, appsId, servicesId);
+                return new DeleteRequest(this.service, appsId, servicesId);
             }
 
             /// <summary>Deletes the specified service and all enclosed versions.</summary>
@@ -3162,7 +3162,7 @@ namespace Google.Apis.Appengine.v1beta
             /// <param name="servicesId">Part of `name`. See documentation of `appsId`.</param>
             public virtual GetRequest Get(string appsId, string servicesId)
             {
-                return new GetRequest(service, appsId, servicesId);
+                return new GetRequest(this.service, appsId, servicesId);
             }
 
             /// <summary>Gets the current configuration of the specified service.</summary>
@@ -3252,7 +3252,7 @@ namespace Google.Apis.Appengine.v1beta
             /// </param>
             public virtual ListRequest List(string appsId)
             {
-                return new ListRequest(service, appsId);
+                return new ListRequest(this.service, appsId);
             }
 
             /// <summary>Lists all the services in the application.</summary>
@@ -3325,7 +3325,7 @@ namespace Google.Apis.Appengine.v1beta
             /// <param name="servicesId">Part of `name`. See documentation of `appsId`.</param>
             public virtual PatchRequest Patch(Google.Apis.Appengine.v1beta.Data.Service body, string appsId, string servicesId)
             {
-                return new PatchRequest(service, body, appsId, servicesId);
+                return new PatchRequest(this.service, body, appsId, servicesId);
             }
 
             /// <summary>Updates the configuration of the specified service.</summary>
@@ -3435,7 +3435,7 @@ namespace Google.Apis.Appengine.v1beta
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.Appengine.v1beta.Data.Application body)
         {
-            return new CreateRequest(service, body);
+            return new CreateRequest(this.service, body);
         }
 
         /// <summary>
@@ -3480,7 +3480,7 @@ namespace Google.Apis.Appengine.v1beta
         /// <param name="appsId">Part of `name`. Name of the Application resource to get. Example: apps/myapp.</param>
         public virtual GetRequest Get(string appsId)
         {
-            return new GetRequest(service, appsId);
+            return new GetRequest(this.service, appsId);
         }
 
         /// <summary>Gets information about an application.</summary>
@@ -3555,7 +3555,7 @@ namespace Google.Apis.Appengine.v1beta
         /// </param>
         public virtual ListRuntimesRequest ListRuntimes(string appsId)
         {
-            return new ListRuntimesRequest(service, appsId);
+            return new ListRuntimesRequest(this.service, appsId);
         }
 
         /// <summary>Lists all the available runtimes for the application.</summary>
@@ -3637,7 +3637,7 @@ namespace Google.Apis.Appengine.v1beta
         /// </param>
         public virtual PatchRequest Patch(Google.Apis.Appengine.v1beta.Data.Application body, string appsId)
         {
-            return new PatchRequest(service, body, appsId);
+            return new PatchRequest(this.service, body, appsId);
         }
 
         /// <summary>
@@ -3714,7 +3714,7 @@ namespace Google.Apis.Appengine.v1beta
         /// <param name="appsId">Part of `name`. Name of the application to repair. Example: apps/myapp</param>
         public virtual RepairRequest Repair(Google.Apis.Appengine.v1beta.Data.RepairApplicationRequest body, string appsId)
         {
-            return new RepairRequest(service, body, appsId);
+            return new RepairRequest(this.service, body, appsId);
         }
 
         /// <summary>
@@ -3830,7 +3830,7 @@ namespace Google.Apis.Appengine.v1beta
                 /// <param name="operationsId">Part of `name`. See documentation of `projectsId`.</param>
                 public virtual GetRequest Get(string projectsId, string locationsId, string operationsId)
                 {
-                    return new GetRequest(service, projectsId, locationsId, operationsId);
+                    return new GetRequest(this.service, projectsId, locationsId, operationsId);
                 }
 
                 /// <summary>
@@ -3908,7 +3908,7 @@ namespace Google.Apis.Appengine.v1beta
                 /// <param name="locationsId">Part of `name`. See documentation of `projectsId`.</param>
                 public virtual ListRequest List(string projectsId, string locationsId)
                 {
-                    return new ListRequest(service, projectsId, locationsId);
+                    return new ListRequest(this.service, projectsId, locationsId);
                 }
 
                 /// <summary>
@@ -4007,7 +4007,7 @@ namespace Google.Apis.Appengine.v1beta
             /// <param name="locationsId">Part of `name`. See documentation of `projectsId`.</param>
             public virtual GetRequest Get(string projectsId, string locationsId)
             {
-                return new GetRequest(service, projectsId, locationsId);
+                return new GetRequest(this.service, projectsId, locationsId);
             }
 
             /// <summary>Gets information about a location.</summary>
@@ -4067,7 +4067,7 @@ namespace Google.Apis.Appengine.v1beta
             /// </param>
             public virtual ListRequest List(string projectsId)
             {
-                return new ListRequest(service, projectsId);
+                return new ListRequest(this.service, projectsId);
             }
 
             /// <summary>Lists information about the supported locations for this service.</summary>
@@ -4372,8 +4372,8 @@ namespace Google.Apis.Appengine.v1beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpireTimeRaw);
-            set => ExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -5246,8 +5246,8 @@ namespace Google.Apis.Appengine.v1beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -5601,8 +5601,8 @@ namespace Google.Apis.Appengine.v1beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LastRenewalTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastRenewalTimeRaw);
-            set => LastRenewalTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastRenewalTimeRaw);
+            set => LastRenewalTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -5798,8 +5798,8 @@ namespace Google.Apis.Appengine.v1beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Ephemeral message that may change every time the operation is polled. @OutputOnly</summary>
@@ -5839,8 +5839,8 @@ namespace Google.Apis.Appengine.v1beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? InsertTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(InsertTimeRaw);
-            set => InsertTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(InsertTimeRaw);
+            set => InsertTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -5906,8 +5906,8 @@ namespace Google.Apis.Appengine.v1beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Ephemeral message that may change every time the operation is polled. @OutputOnly</summary>
@@ -5947,8 +5947,8 @@ namespace Google.Apis.Appengine.v1beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? InsertTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(InsertTimeRaw);
-            set => InsertTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(InsertTimeRaw);
+            set => InsertTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -6015,8 +6015,8 @@ namespace Google.Apis.Appengine.v1beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Ephemeral message that may change every time the operation is polled. @OutputOnly</summary>
@@ -6056,8 +6056,8 @@ namespace Google.Apis.Appengine.v1beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? InsertTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(InsertTimeRaw);
-            set => InsertTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(InsertTimeRaw);
+            set => InsertTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -6721,8 +6721,8 @@ namespace Google.Apis.Appengine.v1beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Email address of the user who created this version.@OutputOnly</summary>

@@ -325,7 +325,7 @@ namespace Google.Apis.Cloudbilling.v1beta
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets a Google Cloud service visible to a billing account.</summary>
@@ -376,7 +376,7 @@ namespace Google.Apis.Cloudbilling.v1beta
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists services visible to a billing account.</summary>
@@ -493,7 +493,7 @@ namespace Google.Apis.Cloudbilling.v1beta
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets a SKU that is part of a billing account SKU group.</summary>
@@ -544,7 +544,7 @@ namespace Google.Apis.Cloudbilling.v1beta
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists SKUs that is part of billing account SKU groups.</summary>
@@ -626,7 +626,7 @@ namespace Google.Apis.Cloudbilling.v1beta
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets a SKU group visible to a billing account.</summary>
@@ -677,7 +677,7 @@ namespace Google.Apis.Cloudbilling.v1beta
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists SKU groups visible to a billing account.</summary>
@@ -794,7 +794,7 @@ namespace Google.Apis.Cloudbilling.v1beta
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets the latest price for the given billing account SKU.</summary>
@@ -861,7 +861,7 @@ namespace Google.Apis.Cloudbilling.v1beta
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets a SKU visible to a billing account.</summary>
@@ -912,7 +912,7 @@ namespace Google.Apis.Cloudbilling.v1beta
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists SKUs visible to a billing account.</summary>
@@ -1014,7 +1014,7 @@ namespace Google.Apis.Cloudbilling.v1beta
         /// </param>
         public virtual EstimateCostScenarioRequest EstimateCostScenario(Google.Apis.Cloudbilling.v1beta.Data.EstimateCostScenarioForBillingAccountRequest body, string billingAccount)
         {
-            return new EstimateCostScenarioRequest(service, body, billingAccount);
+            return new EstimateCostScenarioRequest(this.service, body, billingAccount);
         }
 
         /// <summary>
@@ -1107,7 +1107,7 @@ namespace Google.Apis.Cloudbilling.v1beta
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets a publicly listed SKU that is part of a publicly listed SKU group.</summary>
@@ -1156,7 +1156,7 @@ namespace Google.Apis.Cloudbilling.v1beta
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists all publicly listed SKUs contained by a publicly listed SKU group.</summary>
@@ -1232,7 +1232,7 @@ namespace Google.Apis.Cloudbilling.v1beta
         /// <param name="name">Required. The name of the SKU group to retrieve. Format: skuGroups/{sku_group}</param>
         public virtual GetRequest Get(string name)
         {
-            return new GetRequest(service, name);
+            return new GetRequest(this.service, name);
         }
 
         /// <summary>Gets a publicly listed SKU group.</summary>
@@ -1276,7 +1276,7 @@ namespace Google.Apis.Cloudbilling.v1beta
         /// <summary>Lists all publicly listed SKU groups.</summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>Lists all publicly listed SKU groups.</summary>
@@ -1371,7 +1371,7 @@ namespace Google.Apis.Cloudbilling.v1beta
             /// <param name="name">Required. Name of the latest price to retrieve. Format: skus/{sku}/price</param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets the latest price for the given SKU.</summary>
@@ -1446,7 +1446,7 @@ namespace Google.Apis.Cloudbilling.v1beta
         /// <param name="body">The body of the request.</param>
         public virtual EstimateCostScenarioRequest EstimateCostScenario(Google.Apis.Cloudbilling.v1beta.Data.EstimateCostScenarioWithListPriceRequest body)
         {
-            return new EstimateCostScenarioRequest(service, body);
+            return new EstimateCostScenarioRequest(this.service, body);
         }
 
         /// <summary>Estimate list prices using a `CostScenario` without a defined `billingAccount`.</summary>
@@ -2102,8 +2102,8 @@ namespace Google.Apis.Cloudbilling.v1beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? FixTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(FixTimeRaw);
-            set => FixTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(FixTimeRaw);
+            set => FixTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>SKU group where the fixed discount comes from.</summary>

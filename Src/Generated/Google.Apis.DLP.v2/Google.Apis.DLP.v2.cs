@@ -292,7 +292,7 @@ namespace Google.Apis.DLP.v2
         /// </summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>
@@ -420,7 +420,7 @@ namespace Google.Apis.DLP.v2
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>
@@ -563,7 +563,7 @@ namespace Google.Apis.DLP.v2
             /// </param>
             public virtual CreateRequest Create(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateDeidentifyTemplateRequest body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -635,7 +635,7 @@ namespace Google.Apis.DLP.v2
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>
@@ -693,7 +693,7 @@ namespace Google.Apis.DLP.v2
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>
@@ -756,7 +756,7 @@ namespace Google.Apis.DLP.v2
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>
@@ -881,7 +881,7 @@ namespace Google.Apis.DLP.v2
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -972,7 +972,7 @@ namespace Google.Apis.DLP.v2
             /// </param>
             public virtual CreateRequest Create(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateInspectTemplateRequest body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -1042,7 +1042,7 @@ namespace Google.Apis.DLP.v2
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>
@@ -1098,7 +1098,7 @@ namespace Google.Apis.DLP.v2
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>
@@ -1161,7 +1161,7 @@ namespace Google.Apis.DLP.v2
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>
@@ -1284,7 +1284,7 @@ namespace Google.Apis.DLP.v2
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2UpdateInspectTemplateRequest body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -1397,7 +1397,7 @@ namespace Google.Apis.DLP.v2
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateDeidentifyTemplateRequest body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -1469,7 +1469,7 @@ namespace Google.Apis.DLP.v2
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -1528,7 +1528,7 @@ namespace Google.Apis.DLP.v2
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -1593,7 +1593,7 @@ namespace Google.Apis.DLP.v2
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>
@@ -1719,7 +1719,7 @@ namespace Google.Apis.DLP.v2
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -1802,7 +1802,7 @@ namespace Google.Apis.DLP.v2
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateDiscoveryConfigRequest body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a config for discovery to scan and profile storage.</summary>
@@ -1862,7 +1862,7 @@ namespace Google.Apis.DLP.v2
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes a discovery configuration.</summary>
@@ -1913,7 +1913,7 @@ namespace Google.Apis.DLP.v2
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets a discovery configuration.</summary>
@@ -1966,7 +1966,7 @@ namespace Google.Apis.DLP.v2
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists discovery configurations.</summary>
@@ -2065,7 +2065,7 @@ namespace Google.Apis.DLP.v2
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2UpdateDiscoveryConfigRequest body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates a discovery configuration.</summary>
@@ -2149,7 +2149,7 @@ namespace Google.Apis.DLP.v2
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>
@@ -2347,7 +2347,7 @@ namespace Google.Apis.DLP.v2
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateInspectTemplateRequest body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -2418,7 +2418,7 @@ namespace Google.Apis.DLP.v2
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -2475,7 +2475,7 @@ namespace Google.Apis.DLP.v2
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -2538,7 +2538,7 @@ namespace Google.Apis.DLP.v2
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>
@@ -2662,7 +2662,7 @@ namespace Google.Apis.DLP.v2
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2UpdateInspectTemplateRequest body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -2749,7 +2749,7 @@ namespace Google.Apis.DLP.v2
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateJobTriggerRequest body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -2817,7 +2817,7 @@ namespace Google.Apis.DLP.v2
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -2872,7 +2872,7 @@ namespace Google.Apis.DLP.v2
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -2931,7 +2931,7 @@ namespace Google.Apis.DLP.v2
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>
@@ -3103,7 +3103,7 @@ namespace Google.Apis.DLP.v2
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2UpdateJobTriggerRequest body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -3192,7 +3192,7 @@ namespace Google.Apis.DLP.v2
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateStoredInfoTypeRequest body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -3264,7 +3264,7 @@ namespace Google.Apis.DLP.v2
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -3323,7 +3323,7 @@ namespace Google.Apis.DLP.v2
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -3386,7 +3386,7 @@ namespace Google.Apis.DLP.v2
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>
@@ -3511,7 +3511,7 @@ namespace Google.Apis.DLP.v2
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2UpdateStoredInfoTypeRequest body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -3604,7 +3604,7 @@ namespace Google.Apis.DLP.v2
             /// </param>
             public virtual CreateRequest Create(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateStoredInfoTypeRequest body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -3675,7 +3675,7 @@ namespace Google.Apis.DLP.v2
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>
@@ -3732,7 +3732,7 @@ namespace Google.Apis.DLP.v2
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>
@@ -3793,7 +3793,7 @@ namespace Google.Apis.DLP.v2
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>
@@ -3916,7 +3916,7 @@ namespace Google.Apis.DLP.v2
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2UpdateStoredInfoTypeRequest body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -4030,7 +4030,7 @@ namespace Google.Apis.DLP.v2
             /// </param>
             public virtual DeidentifyRequest Deidentify(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2DeidentifyContentRequest body, string parent)
             {
-                return new DeidentifyRequest(service, body, parent);
+                return new DeidentifyRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -4108,7 +4108,7 @@ namespace Google.Apis.DLP.v2
             /// </param>
             public virtual InspectRequest Inspect(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2InspectContentRequest body, string parent)
             {
-                return new InspectRequest(service, body, parent);
+                return new InspectRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -4185,7 +4185,7 @@ namespace Google.Apis.DLP.v2
             /// </param>
             public virtual ReidentifyRequest Reidentify(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ReidentifyContentRequest body, string parent)
             {
-                return new ReidentifyRequest(service, body, parent);
+                return new ReidentifyRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -4280,7 +4280,7 @@ namespace Google.Apis.DLP.v2
             /// </param>
             public virtual CreateRequest Create(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateDeidentifyTemplateRequest body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -4352,7 +4352,7 @@ namespace Google.Apis.DLP.v2
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>
@@ -4410,7 +4410,7 @@ namespace Google.Apis.DLP.v2
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>
@@ -4473,7 +4473,7 @@ namespace Google.Apis.DLP.v2
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>
@@ -4598,7 +4598,7 @@ namespace Google.Apis.DLP.v2
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -4680,7 +4680,7 @@ namespace Google.Apis.DLP.v2
             /// <param name="name">Required. The name of the DlpJob resource to be cancelled.</param>
             public virtual CancelRequest Cancel(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CancelDlpJobRequest body, string name)
             {
-                return new CancelRequest(service, body, name);
+                return new CancelRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -4750,7 +4750,7 @@ namespace Google.Apis.DLP.v2
             /// </param>
             public virtual CreateRequest Create(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateDlpJobRequest body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -4820,7 +4820,7 @@ namespace Google.Apis.DLP.v2
             /// <param name="name">Required. The name of the DlpJob resource to be deleted.</param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>
@@ -4873,7 +4873,7 @@ namespace Google.Apis.DLP.v2
             /// <param name="name">Required. The name of the DlpJob resource.</param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>
@@ -4932,7 +4932,7 @@ namespace Google.Apis.DLP.v2
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>
@@ -5128,7 +5128,7 @@ namespace Google.Apis.DLP.v2
             /// </param>
             public virtual RedactRequest Redact(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2RedactImageRequest body, string parent)
             {
-                return new RedactRequest(service, body, parent);
+                return new RedactRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -5225,7 +5225,7 @@ namespace Google.Apis.DLP.v2
             /// </param>
             public virtual CreateRequest Create(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateInspectTemplateRequest body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -5295,7 +5295,7 @@ namespace Google.Apis.DLP.v2
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>
@@ -5351,7 +5351,7 @@ namespace Google.Apis.DLP.v2
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>
@@ -5414,7 +5414,7 @@ namespace Google.Apis.DLP.v2
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>
@@ -5537,7 +5537,7 @@ namespace Google.Apis.DLP.v2
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2UpdateInspectTemplateRequest body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -5620,7 +5620,7 @@ namespace Google.Apis.DLP.v2
             /// </param>
             public virtual ActivateRequest Activate(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ActivateJobTriggerRequest body, string name)
             {
-                return new ActivateRequest(service, body, name);
+                return new ActivateRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -5689,7 +5689,7 @@ namespace Google.Apis.DLP.v2
             /// </param>
             public virtual CreateRequest Create(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateJobTriggerRequest body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -5756,7 +5756,7 @@ namespace Google.Apis.DLP.v2
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>
@@ -5811,7 +5811,7 @@ namespace Google.Apis.DLP.v2
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>
@@ -5870,7 +5870,7 @@ namespace Google.Apis.DLP.v2
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>
@@ -6041,7 +6041,7 @@ namespace Google.Apis.DLP.v2
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2UpdateJobTriggerRequest body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -6155,7 +6155,7 @@ namespace Google.Apis.DLP.v2
                 /// </param>
                 public virtual DeidentifyRequest Deidentify(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2DeidentifyContentRequest body, string parent)
                 {
-                    return new DeidentifyRequest(service, body, parent);
+                    return new DeidentifyRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -6236,7 +6236,7 @@ namespace Google.Apis.DLP.v2
                 /// </param>
                 public virtual InspectRequest Inspect(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2InspectContentRequest body, string parent)
                 {
-                    return new InspectRequest(service, body, parent);
+                    return new InspectRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -6315,7 +6315,7 @@ namespace Google.Apis.DLP.v2
                 /// </param>
                 public virtual ReidentifyRequest Reidentify(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ReidentifyContentRequest body, string parent)
                 {
-                    return new ReidentifyRequest(service, body, parent);
+                    return new ReidentifyRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -6411,7 +6411,7 @@ namespace Google.Apis.DLP.v2
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateDeidentifyTemplateRequest body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -6483,7 +6483,7 @@ namespace Google.Apis.DLP.v2
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -6542,7 +6542,7 @@ namespace Google.Apis.DLP.v2
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -6607,7 +6607,7 @@ namespace Google.Apis.DLP.v2
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>
@@ -6733,7 +6733,7 @@ namespace Google.Apis.DLP.v2
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -6816,7 +6816,7 @@ namespace Google.Apis.DLP.v2
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateDiscoveryConfigRequest body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a config for discovery to scan and profile storage.</summary>
@@ -6876,7 +6876,7 @@ namespace Google.Apis.DLP.v2
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes a discovery configuration.</summary>
@@ -6927,7 +6927,7 @@ namespace Google.Apis.DLP.v2
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets a discovery configuration.</summary>
@@ -6980,7 +6980,7 @@ namespace Google.Apis.DLP.v2
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists discovery configurations.</summary>
@@ -7079,7 +7079,7 @@ namespace Google.Apis.DLP.v2
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2UpdateDiscoveryConfigRequest body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates a discovery configuration.</summary>
@@ -7157,7 +7157,7 @@ namespace Google.Apis.DLP.v2
                 /// <param name="name">Required. The name of the DlpJob resource to be cancelled.</param>
                 public virtual CancelRequest Cancel(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CancelDlpJobRequest body, string name)
                 {
-                    return new CancelRequest(service, body, name);
+                    return new CancelRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -7227,7 +7227,7 @@ namespace Google.Apis.DLP.v2
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateDlpJobRequest body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -7298,7 +7298,7 @@ namespace Google.Apis.DLP.v2
                 /// <param name="name">Required. The name of the DlpJob resource to be deleted.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -7352,7 +7352,7 @@ namespace Google.Apis.DLP.v2
                 /// <param name="name">Required. The name of the DlpJob resource to be cancelled.</param>
                 public virtual FinishRequest Finish(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2FinishDlpJobRequest body, string name)
                 {
-                    return new FinishRequest(service, body, name);
+                    return new FinishRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -7411,7 +7411,7 @@ namespace Google.Apis.DLP.v2
                 /// <param name="name">Required. The name of the DlpJob resource.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -7467,7 +7467,7 @@ namespace Google.Apis.DLP.v2
                 /// </param>
                 public virtual HybridInspectRequest HybridInspect(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2HybridInspectDlpJobRequest body, string name)
                 {
-                    return new HybridInspectRequest(service, body, name);
+                    return new HybridInspectRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -7536,7 +7536,7 @@ namespace Google.Apis.DLP.v2
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>
@@ -7734,7 +7734,7 @@ namespace Google.Apis.DLP.v2
                 /// </param>
                 public virtual RedactRequest Redact(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2RedactImageRequest body, string parent)
                 {
-                    return new RedactRequest(service, body, parent);
+                    return new RedactRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -7832,7 +7832,7 @@ namespace Google.Apis.DLP.v2
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateInspectTemplateRequest body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -7903,7 +7903,7 @@ namespace Google.Apis.DLP.v2
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -7960,7 +7960,7 @@ namespace Google.Apis.DLP.v2
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -8023,7 +8023,7 @@ namespace Google.Apis.DLP.v2
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>
@@ -8147,7 +8147,7 @@ namespace Google.Apis.DLP.v2
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2UpdateInspectTemplateRequest body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -8230,7 +8230,7 @@ namespace Google.Apis.DLP.v2
                 /// </param>
                 public virtual ActivateRequest Activate(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ActivateJobTriggerRequest body, string name)
                 {
-                    return new ActivateRequest(service, body, name);
+                    return new ActivateRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -8299,7 +8299,7 @@ namespace Google.Apis.DLP.v2
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateJobTriggerRequest body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -8367,7 +8367,7 @@ namespace Google.Apis.DLP.v2
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -8422,7 +8422,7 @@ namespace Google.Apis.DLP.v2
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -8479,7 +8479,7 @@ namespace Google.Apis.DLP.v2
                 /// </param>
                 public virtual HybridInspectRequest HybridInspect(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2HybridInspectJobTriggerRequest body, string name)
                 {
-                    return new HybridInspectRequest(service, body, name);
+                    return new HybridInspectRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -8546,7 +8546,7 @@ namespace Google.Apis.DLP.v2
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>
@@ -8718,7 +8718,7 @@ namespace Google.Apis.DLP.v2
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2UpdateJobTriggerRequest body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -8807,7 +8807,7 @@ namespace Google.Apis.DLP.v2
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateStoredInfoTypeRequest body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -8879,7 +8879,7 @@ namespace Google.Apis.DLP.v2
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -8938,7 +8938,7 @@ namespace Google.Apis.DLP.v2
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -9001,7 +9001,7 @@ namespace Google.Apis.DLP.v2
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>
@@ -9126,7 +9126,7 @@ namespace Google.Apis.DLP.v2
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2UpdateStoredInfoTypeRequest body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -9219,7 +9219,7 @@ namespace Google.Apis.DLP.v2
             /// </param>
             public virtual CreateRequest Create(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateStoredInfoTypeRequest body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -9290,7 +9290,7 @@ namespace Google.Apis.DLP.v2
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>
@@ -9347,7 +9347,7 @@ namespace Google.Apis.DLP.v2
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>
@@ -9408,7 +9408,7 @@ namespace Google.Apis.DLP.v2
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>
@@ -9531,7 +9531,7 @@ namespace Google.Apis.DLP.v2
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2UpdateStoredInfoTypeRequest body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -10396,8 +10396,8 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ProfileLastGeneratedDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ProfileLastGeneratedRaw);
-            set => ProfileLastGeneratedRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ProfileLastGeneratedRaw);
+            set => ProfileLastGeneratedRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -10545,8 +10545,8 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Findings container version, if available ("generation" for Cloud Storage).</summary>
@@ -10630,8 +10630,8 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ContainerTimestampDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ContainerTimestampRaw);
-            set => ContainerTimestampRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ContainerTimestampRaw);
+            set => ContainerTimestampRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Finding container version, if available ("generation" for Cloud Storage).</summary>
@@ -11481,8 +11481,8 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The core content of the template.</summary>
@@ -11538,8 +11538,8 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -11742,8 +11742,8 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreatedAfterDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreatedAfterRaw);
-            set => CreatedAfterRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreatedAfterRaw);
+            set => CreatedAfterRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>At least one of the conditions must be true for a table to be scanned.</summary>
@@ -11831,8 +11831,8 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Display name (max 100 chars)</summary>
@@ -11892,8 +11892,8 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LastRunTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastRunTimeRaw);
-            set => LastRunTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastRunTimeRaw);
+            set => LastRunTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -11948,8 +11948,8 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -12078,8 +12078,8 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _endTimeRaw;
@@ -12115,8 +12115,8 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>A stream of errors encountered running the job.</summary>
@@ -12164,8 +12164,8 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LastModifiedDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastModifiedRaw);
-            set => LastModifiedRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastModifiedRaw);
+            set => LastModifiedRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The server-assigned name.</summary>
@@ -12209,8 +12209,8 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>State of a job.</summary>
@@ -12482,8 +12482,8 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The unique finding id.</summary>
@@ -12527,8 +12527,8 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? JobCreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(JobCreateTimeRaw);
-            set => JobCreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(JobCreateTimeRaw);
+            set => JobCreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The job that stored the finding.</summary>
@@ -13342,8 +13342,8 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Short description (max 256 chars).</summary>
@@ -13399,8 +13399,8 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -13489,8 +13489,8 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>User provided description (max 256 chars)</summary>
@@ -13546,8 +13546,8 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LastRunTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastRunTimeRaw);
-            set => LastRunTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastRunTimeRaw);
+            set => LastRunTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -13601,8 +13601,8 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -14482,8 +14482,8 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? TimestampDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(TimestampRaw);
-            set => TimestampRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(TimestampRaw);
+            set => TimestampRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -14835,8 +14835,8 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ContainerTimestampDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ContainerTimestampRaw);
-            set => ContainerTimestampRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ContainerTimestampRaw);
+            set => ContainerTimestampRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Container version, if available ("generation" for Cloud Storage).</summary>
@@ -15380,8 +15380,8 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -15449,8 +15449,8 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -15557,8 +15557,8 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The data risk level of this table.</summary>
@@ -15619,8 +15619,8 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ExpirationTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpirationTimeRaw);
-            set => ExpirationTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpirationTimeRaw);
+            set => ExpirationTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The number of columns skipped in the table because of an error.</summary>
@@ -15668,8 +15668,8 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LastModifiedTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastModifiedTimeRaw);
-            set => LastModifiedTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastModifiedTimeRaw);
+            set => LastModifiedTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The name of the profile.</summary>
@@ -15719,8 +15719,8 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ProfileLastGeneratedDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ProfileLastGeneratedRaw);
-            set => ProfileLastGeneratedRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ProfileLastGeneratedRaw);
+            set => ProfileLastGeneratedRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -15921,8 +15921,8 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _startTimeRaw;
@@ -15960,8 +15960,8 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -16434,8 +16434,8 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? TimestampValueDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(TimestampValueRaw);
-            set => TimestampValueRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(TimestampValueRaw);
+            set => TimestampValueRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>

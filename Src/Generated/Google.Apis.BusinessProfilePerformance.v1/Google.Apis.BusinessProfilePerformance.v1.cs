@@ -319,7 +319,7 @@ namespace Google.Apis.BusinessProfilePerformance.v1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>
@@ -494,7 +494,7 @@ namespace Google.Apis.BusinessProfilePerformance.v1
         /// </param>
         public virtual FetchMultiDailyMetricsTimeSeriesRequest FetchMultiDailyMetricsTimeSeries(string location)
         {
-            return new FetchMultiDailyMetricsTimeSeriesRequest(service, location);
+            return new FetchMultiDailyMetricsTimeSeriesRequest(this.service, location);
         }
 
         /// <summary>
@@ -726,7 +726,7 @@ namespace Google.Apis.BusinessProfilePerformance.v1
         /// </param>
         public virtual GetDailyMetricsTimeSeriesRequest GetDailyMetricsTimeSeries(string name)
         {
-            return new GetDailyMetricsTimeSeriesRequest(service, name);
+            return new GetDailyMetricsTimeSeriesRequest(this.service, name);
         }
 
         /// <summary>

@@ -349,7 +349,7 @@ namespace Google.Apis.VMwareEngine.v1
                     /// </param>
                     public virtual GrantRequest Grant(Google.Apis.VMwareEngine.v1.Data.GrantDnsBindPermissionRequest body, string name)
                     {
-                        return new GrantRequest(service, body, name);
+                        return new GrantRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -420,7 +420,7 @@ namespace Google.Apis.VMwareEngine.v1
                     /// </param>
                     public virtual RevokeRequest Revoke(Google.Apis.VMwareEngine.v1.Data.RevokeDnsBindPermissionRequest body, string name)
                     {
-                        return new RevokeRequest(service, body, name);
+                        return new RevokeRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -522,7 +522,7 @@ namespace Google.Apis.VMwareEngine.v1
                         /// </param>
                         public virtual ListRequest List(string parent)
                         {
-                            return new ListRequest(service, parent);
+                            return new ListRequest(this.service, parent);
                         }
 
                         /// <summary>Lists the network peering routes exchanged over a peering connection.</summary>
@@ -631,7 +631,7 @@ namespace Google.Apis.VMwareEngine.v1
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.VMwareEngine.v1.Data.NetworkPeering body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>
@@ -740,7 +740,7 @@ namespace Google.Apis.VMwareEngine.v1
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -823,7 +823,7 @@ namespace Google.Apis.VMwareEngine.v1
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -882,7 +882,7 @@ namespace Google.Apis.VMwareEngine.v1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists `NetworkPeering` resources in a given project.</summary>
@@ -1018,7 +1018,7 @@ namespace Google.Apis.VMwareEngine.v1
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.VMwareEngine.v1.Data.NetworkPeering body, string name)
                     {
-                        return new PatchRequest(service, body, name);
+                        return new PatchRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -1126,7 +1126,7 @@ namespace Google.Apis.VMwareEngine.v1
                 /// </param>
                 public virtual GetDnsBindPermissionRequest GetDnsBindPermission(string name)
                 {
-                    return new GetDnsBindPermissionRequest(service, name);
+                    return new GetDnsBindPermissionRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -1222,7 +1222,7 @@ namespace Google.Apis.VMwareEngine.v1
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.VMwareEngine.v1.Data.ExternalAccessRule body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>Creates a new external access rule in a given network policy.</summary>
@@ -1325,7 +1325,7 @@ namespace Google.Apis.VMwareEngine.v1
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>Deletes a single external access rule.</summary>
@@ -1402,7 +1402,7 @@ namespace Google.Apis.VMwareEngine.v1
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Gets details of a single external access rule.</summary>
@@ -1457,7 +1457,7 @@ namespace Google.Apis.VMwareEngine.v1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists `ExternalAccessRule` resources in the specified network policy.</summary>
@@ -1594,7 +1594,7 @@ namespace Google.Apis.VMwareEngine.v1
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.VMwareEngine.v1.Data.ExternalAccessRule body, string name)
                     {
-                        return new PatchRequest(service, body, name);
+                        return new PatchRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -1703,7 +1703,7 @@ namespace Google.Apis.VMwareEngine.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.VMwareEngine.v1.Data.NetworkPolicy body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -1811,7 +1811,7 @@ namespace Google.Apis.VMwareEngine.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -1893,7 +1893,7 @@ namespace Google.Apis.VMwareEngine.v1
                 /// </param>
                 public virtual FetchExternalAddressesRequest FetchExternalAddresses(string networkPolicy)
                 {
-                    return new FetchExternalAddressesRequest(service, networkPolicy);
+                    return new FetchExternalAddressesRequest(this.service, networkPolicy);
                 }
 
                 /// <summary>
@@ -1982,7 +1982,7 @@ namespace Google.Apis.VMwareEngine.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Retrieves a `NetworkPolicy` resource by its resource name.</summary>
@@ -2036,7 +2036,7 @@ namespace Google.Apis.VMwareEngine.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists `NetworkPolicy` resources in a specified project and location.</summary>
@@ -2176,7 +2176,7 @@ namespace Google.Apis.VMwareEngine.v1
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.VMwareEngine.v1.Data.NetworkPolicy body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -2302,7 +2302,7 @@ namespace Google.Apis.VMwareEngine.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets details of a single `NodeType`.</summary>
@@ -2355,7 +2355,7 @@ namespace Google.Apis.VMwareEngine.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists node types</summary>
@@ -2485,7 +2485,7 @@ namespace Google.Apis.VMwareEngine.v1
                 /// <param name="name">The name of the operation resource to be deleted.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -2537,7 +2537,7 @@ namespace Google.Apis.VMwareEngine.v1
                 /// <param name="name">The name of the operation resource.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -2588,7 +2588,7 @@ namespace Google.Apis.VMwareEngine.v1
                 /// <param name="name">The name of the operation's parent resource.</param>
                 public virtual ListRequest List(string name)
                 {
-                    return new ListRequest(service, name);
+                    return new ListRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -2734,7 +2734,7 @@ namespace Google.Apis.VMwareEngine.v1
                         /// </param>
                         public virtual GetRequest Get(string name)
                         {
-                            return new GetRequest(service, name);
+                            return new GetRequest(this.service, name);
                         }
 
                         /// <summary>Gets details of a single node.</summary>
@@ -2787,7 +2787,7 @@ namespace Google.Apis.VMwareEngine.v1
                         /// </param>
                         public virtual ListRequest List(string parent)
                         {
-                            return new ListRequest(service, parent);
+                            return new ListRequest(this.service, parent);
                         }
 
                         /// <summary>Lists nodes in a given cluster.</summary>
@@ -2880,7 +2880,7 @@ namespace Google.Apis.VMwareEngine.v1
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.VMwareEngine.v1.Data.Cluster body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>
@@ -2997,7 +2997,7 @@ namespace Google.Apis.VMwareEngine.v1
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -3070,7 +3070,7 @@ namespace Google.Apis.VMwareEngine.v1
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Retrieves a `Cluster` resource by its resource name.</summary>
@@ -3126,7 +3126,7 @@ namespace Google.Apis.VMwareEngine.v1
                     /// </param>
                     public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                     {
-                        return new GetIamPolicyRequest(service, resource);
+                        return new GetIamPolicyRequest(this.service, resource);
                     }
 
                     /// <summary>
@@ -3205,7 +3205,7 @@ namespace Google.Apis.VMwareEngine.v1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists `Cluster` resources in a given private cloud.</summary>
@@ -3337,7 +3337,7 @@ namespace Google.Apis.VMwareEngine.v1
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.VMwareEngine.v1.Data.Cluster body, string name)
                     {
-                        return new PatchRequest(service, body, name);
+                        return new PatchRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -3452,7 +3452,7 @@ namespace Google.Apis.VMwareEngine.v1
                     /// </param>
                     public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.VMwareEngine.v1.Data.SetIamPolicyRequest body, string resource)
                     {
-                        return new SetIamPolicyRequest(service, body, resource);
+                        return new SetIamPolicyRequest(this.service, body, resource);
                     }
 
                     /// <summary>
@@ -3521,7 +3521,7 @@ namespace Google.Apis.VMwareEngine.v1
                     /// </param>
                     public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.VMwareEngine.v1.Data.TestIamPermissionsRequest body, string resource)
                     {
-                        return new TestIamPermissionsRequest(service, body, resource);
+                        return new TestIamPermissionsRequest(this.service, body, resource);
                     }
 
                     /// <summary>
@@ -3610,7 +3610,7 @@ namespace Google.Apis.VMwareEngine.v1
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.VMwareEngine.v1.Data.ExternalAddress body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>
@@ -3720,7 +3720,7 @@ namespace Google.Apis.VMwareEngine.v1
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -3800,7 +3800,7 @@ namespace Google.Apis.VMwareEngine.v1
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Gets details of a single external IP address.</summary>
@@ -3857,7 +3857,7 @@ namespace Google.Apis.VMwareEngine.v1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>
@@ -3997,7 +3997,7 @@ namespace Google.Apis.VMwareEngine.v1
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.VMwareEngine.v1.Data.ExternalAddress body, string name)
                     {
-                        return new PatchRequest(service, body, name);
+                        return new PatchRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -4122,7 +4122,7 @@ namespace Google.Apis.VMwareEngine.v1
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.VMwareEngine.v1.Data.HcxActivationKey body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>Creates a new HCX activation key in a given private cloud.</summary>
@@ -4225,7 +4225,7 @@ namespace Google.Apis.VMwareEngine.v1
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Retrieves a `HcxActivationKey` resource by its resource name.</summary>
@@ -4282,7 +4282,7 @@ namespace Google.Apis.VMwareEngine.v1
                     /// </param>
                     public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                     {
-                        return new GetIamPolicyRequest(service, resource);
+                        return new GetIamPolicyRequest(this.service, resource);
                     }
 
                     /// <summary>
@@ -4361,7 +4361,7 @@ namespace Google.Apis.VMwareEngine.v1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists `HcxActivationKey` resources in a given private cloud.</summary>
@@ -4451,7 +4451,7 @@ namespace Google.Apis.VMwareEngine.v1
                     /// </param>
                     public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.VMwareEngine.v1.Data.SetIamPolicyRequest body, string resource)
                     {
-                        return new SetIamPolicyRequest(service, body, resource);
+                        return new SetIamPolicyRequest(this.service, body, resource);
                     }
 
                     /// <summary>
@@ -4520,7 +4520,7 @@ namespace Google.Apis.VMwareEngine.v1
                     /// </param>
                     public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.VMwareEngine.v1.Data.TestIamPermissionsRequest body, string resource)
                     {
-                        return new TestIamPermissionsRequest(service, body, resource);
+                        return new TestIamPermissionsRequest(this.service, body, resource);
                     }
 
                     /// <summary>
@@ -4605,7 +4605,7 @@ namespace Google.Apis.VMwareEngine.v1
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.VMwareEngine.v1.Data.LoggingServer body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>Create a new logging server for a given private cloud.</summary>
@@ -4707,7 +4707,7 @@ namespace Google.Apis.VMwareEngine.v1
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>Deletes a single logging server.</summary>
@@ -4784,7 +4784,7 @@ namespace Google.Apis.VMwareEngine.v1
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Gets details of a logging server.</summary>
@@ -4839,7 +4839,7 @@ namespace Google.Apis.VMwareEngine.v1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists logging servers configured for a given private cloud.</summary>
@@ -4976,7 +4976,7 @@ namespace Google.Apis.VMwareEngine.v1
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.VMwareEngine.v1.Data.LoggingServer body, string name)
                     {
-                        return new PatchRequest(service, body, name);
+                        return new PatchRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -5105,7 +5105,7 @@ namespace Google.Apis.VMwareEngine.v1
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.VMwareEngine.v1.Data.ManagementDnsZoneBinding body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>
@@ -5217,7 +5217,7 @@ namespace Google.Apis.VMwareEngine.v1
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -5297,7 +5297,7 @@ namespace Google.Apis.VMwareEngine.v1
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Retrieves a 'ManagementDnsZoneBinding' resource by its resource name.</summary>
@@ -5352,7 +5352,7 @@ namespace Google.Apis.VMwareEngine.v1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists Consumer VPCs bound to Management DNS Zone of a given private cloud.</summary>
@@ -5490,7 +5490,7 @@ namespace Google.Apis.VMwareEngine.v1
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.VMwareEngine.v1.Data.ManagementDnsZoneBinding body, string name)
                     {
-                        return new PatchRequest(service, body, name);
+                        return new PatchRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -5596,7 +5596,7 @@ namespace Google.Apis.VMwareEngine.v1
                     /// </param>
                     public virtual RepairRequest Repair(Google.Apis.VMwareEngine.v1.Data.RepairManagementDnsZoneBindingRequest body, string name)
                     {
-                        return new RepairRequest(service, body, name);
+                        return new RepairRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -5677,7 +5677,7 @@ namespace Google.Apis.VMwareEngine.v1
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Gets details of a single subnet.</summary>
@@ -5732,7 +5732,7 @@ namespace Google.Apis.VMwareEngine.v1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists subnets in a given private cloud.</summary>
@@ -5822,7 +5822,7 @@ namespace Google.Apis.VMwareEngine.v1
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.VMwareEngine.v1.Data.Subnet body, string name)
                     {
-                        return new PatchRequest(service, body, name);
+                        return new PatchRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -5911,7 +5911,7 @@ namespace Google.Apis.VMwareEngine.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.VMwareEngine.v1.Data.PrivateCloud body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -6037,7 +6037,7 @@ namespace Google.Apis.VMwareEngine.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -6152,7 +6152,7 @@ namespace Google.Apis.VMwareEngine.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Retrieves a `PrivateCloud` resource by its resource name.</summary>
@@ -6205,7 +6205,7 @@ namespace Google.Apis.VMwareEngine.v1
                 /// </param>
                 public virtual GetDnsForwardingRequest GetDnsForwarding(string name)
                 {
-                    return new GetDnsForwardingRequest(service, name);
+                    return new GetDnsForwardingRequest(this.service, name);
                 }
 
                 /// <summary>Gets details of the `DnsForwarding` config.</summary>
@@ -6261,7 +6261,7 @@ namespace Google.Apis.VMwareEngine.v1
                 /// </param>
                 public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                 {
-                    return new GetIamPolicyRequest(service, resource);
+                    return new GetIamPolicyRequest(this.service, resource);
                 }
 
                 /// <summary>
@@ -6338,7 +6338,7 @@ namespace Google.Apis.VMwareEngine.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists `PrivateCloud` resources in a given project and location.</summary>
@@ -6478,7 +6478,7 @@ namespace Google.Apis.VMwareEngine.v1
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.VMwareEngine.v1.Data.PrivateCloud body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -6577,7 +6577,7 @@ namespace Google.Apis.VMwareEngine.v1
                 /// </param>
                 public virtual ResetNsxCredentialsRequest ResetNsxCredentials(Google.Apis.VMwareEngine.v1.Data.ResetNsxCredentialsRequest body, string privateCloud)
                 {
-                    return new ResetNsxCredentialsRequest(service, body, privateCloud);
+                    return new ResetNsxCredentialsRequest(this.service, body, privateCloud);
                 }
 
                 /// <summary>Resets credentials of the NSX appliance.</summary>
@@ -6639,7 +6639,7 @@ namespace Google.Apis.VMwareEngine.v1
                 /// </param>
                 public virtual ResetVcenterCredentialsRequest ResetVcenterCredentials(Google.Apis.VMwareEngine.v1.Data.ResetVcenterCredentialsRequest body, string privateCloud)
                 {
-                    return new ResetVcenterCredentialsRequest(service, body, privateCloud);
+                    return new ResetVcenterCredentialsRequest(this.service, body, privateCloud);
                 }
 
                 /// <summary>Resets credentials of the Vcenter appliance.</summary>
@@ -6704,7 +6704,7 @@ namespace Google.Apis.VMwareEngine.v1
                 /// </param>
                 public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.VMwareEngine.v1.Data.SetIamPolicyRequest body, string resource)
                 {
-                    return new SetIamPolicyRequest(service, body, resource);
+                    return new SetIamPolicyRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -6767,7 +6767,7 @@ namespace Google.Apis.VMwareEngine.v1
                 /// </param>
                 public virtual ShowNsxCredentialsRequest ShowNsxCredentials(string privateCloud)
                 {
-                    return new ShowNsxCredentialsRequest(service, privateCloud);
+                    return new ShowNsxCredentialsRequest(this.service, privateCloud);
                 }
 
                 /// <summary>Gets details of credentials for NSX appliance.</summary>
@@ -6821,7 +6821,7 @@ namespace Google.Apis.VMwareEngine.v1
                 /// </param>
                 public virtual ShowVcenterCredentialsRequest ShowVcenterCredentials(string privateCloud)
                 {
-                    return new ShowVcenterCredentialsRequest(service, privateCloud);
+                    return new ShowVcenterCredentialsRequest(this.service, privateCloud);
                 }
 
                 /// <summary>Gets details of credentials for Vcenter appliance.</summary>
@@ -6899,7 +6899,7 @@ namespace Google.Apis.VMwareEngine.v1
                 /// </param>
                 public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.VMwareEngine.v1.Data.TestIamPermissionsRequest body, string resource)
                 {
-                    return new TestIamPermissionsRequest(service, body, resource);
+                    return new TestIamPermissionsRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -6969,7 +6969,7 @@ namespace Google.Apis.VMwareEngine.v1
                 /// </param>
                 public virtual UndeleteRequest Undelete(Google.Apis.VMwareEngine.v1.Data.UndeletePrivateCloudRequest body, string name)
                 {
-                    return new UndeleteRequest(service, body, name);
+                    return new UndeleteRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -7038,7 +7038,7 @@ namespace Google.Apis.VMwareEngine.v1
                 /// </param>
                 public virtual UpdateDnsForwardingRequest UpdateDnsForwarding(Google.Apis.VMwareEngine.v1.Data.DnsForwarding body, string name)
                 {
-                    return new UpdateDnsForwardingRequest(service, body, name);
+                    return new UpdateDnsForwardingRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -7177,7 +7177,7 @@ namespace Google.Apis.VMwareEngine.v1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists the private connection routes exchanged over a peering connection.</summary>
@@ -7266,7 +7266,7 @@ namespace Google.Apis.VMwareEngine.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.VMwareEngine.v1.Data.PrivateConnection body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a new private connection that can be used for accessing private Clouds.</summary>
@@ -7371,7 +7371,7 @@ namespace Google.Apis.VMwareEngine.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -7453,7 +7453,7 @@ namespace Google.Apis.VMwareEngine.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -7509,7 +7509,7 @@ namespace Google.Apis.VMwareEngine.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists `PrivateConnection` resources in a given project and location.</summary>
@@ -7643,7 +7643,7 @@ namespace Google.Apis.VMwareEngine.v1
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.VMwareEngine.v1.Data.PrivateConnection body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -7766,7 +7766,7 @@ namespace Google.Apis.VMwareEngine.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.VMwareEngine.v1.Data.VmwareEngineNetwork body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a new VMware Engine network that can be used by a private cloud.</summary>
@@ -7875,7 +7875,7 @@ namespace Google.Apis.VMwareEngine.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -7975,7 +7975,7 @@ namespace Google.Apis.VMwareEngine.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -8033,7 +8033,7 @@ namespace Google.Apis.VMwareEngine.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists `VmwareEngineNetwork` resources in a given project and location.</summary>
@@ -8167,7 +8167,7 @@ namespace Google.Apis.VMwareEngine.v1
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.VMwareEngine.v1.Data.VmwareEngineNetwork body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -8267,7 +8267,7 @@ namespace Google.Apis.VMwareEngine.v1
             /// <param name="name">Resource name for the location.</param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets information about a location.</summary>
@@ -8312,7 +8312,7 @@ namespace Google.Apis.VMwareEngine.v1
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
             {
-                return new ListRequest(service, name);
+                return new ListRequest(this.service, name);
             }
 
             /// <summary>Lists information about the supported locations for this service.</summary>
@@ -8541,8 +8541,8 @@ namespace Google.Apis.VMwareEngine.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -8615,8 +8615,8 @@ namespace Google.Apis.VMwareEngine.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -8704,8 +8704,8 @@ namespace Google.Apis.VMwareEngine.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Required. List of domain mappings to configure</summary>
@@ -8753,8 +8753,8 @@ namespace Google.Apis.VMwareEngine.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -8858,8 +8858,8 @@ namespace Google.Apis.VMwareEngine.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>User-provided description for this external access rule.</summary>
@@ -8967,8 +8967,8 @@ namespace Google.Apis.VMwareEngine.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -9013,8 +9013,8 @@ namespace Google.Apis.VMwareEngine.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>User-provided description for this resource.</summary>
@@ -9078,8 +9078,8 @@ namespace Google.Apis.VMwareEngine.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -9219,8 +9219,8 @@ namespace Google.Apis.VMwareEngine.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -9720,8 +9720,8 @@ namespace Google.Apis.VMwareEngine.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Required. Fully-qualified domain name (FQDN) or IP Address of the logging server.</summary>
@@ -9787,8 +9787,8 @@ namespace Google.Apis.VMwareEngine.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -9863,8 +9863,8 @@ namespace Google.Apis.VMwareEngine.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>User-provided description for this resource.</summary>
@@ -9920,8 +9920,8 @@ namespace Google.Apis.VMwareEngine.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -10024,8 +10024,8 @@ namespace Google.Apis.VMwareEngine.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Optional. User-provided description for this network peering.</summary>
@@ -10148,8 +10148,8 @@ namespace Google.Apis.VMwareEngine.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -10205,8 +10205,8 @@ namespace Google.Apis.VMwareEngine.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Optional. User-provided description for this network policy.</summary>
@@ -10277,8 +10277,8 @@ namespace Google.Apis.VMwareEngine.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -10536,8 +10536,8 @@ namespace Google.Apis.VMwareEngine.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _endTimeRaw;
@@ -10573,8 +10573,8 @@ namespace Google.Apis.VMwareEngine.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -10778,8 +10778,8 @@ namespace Google.Apis.VMwareEngine.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _deleteTimeRaw;
@@ -10815,8 +10815,8 @@ namespace Google.Apis.VMwareEngine.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? DeleteTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DeleteTimeRaw);
-            set => DeleteTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DeleteTimeRaw);
+            set => DeleteTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>User-provided description for this private cloud.</summary>
@@ -10856,8 +10856,8 @@ namespace Google.Apis.VMwareEngine.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpireTimeRaw);
-            set => ExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. HCX appliance.</summary>
@@ -10935,8 +10935,8 @@ namespace Google.Apis.VMwareEngine.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. Vcenter appliance.</summary>
@@ -10983,8 +10983,8 @@ namespace Google.Apis.VMwareEngine.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Optional. User-provided description for this private connection.</summary>
@@ -11072,8 +11072,8 @@ namespace Google.Apis.VMwareEngine.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -11408,8 +11408,8 @@ namespace Google.Apis.VMwareEngine.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>User-provided description for this VMware Engine network.</summary>
@@ -11477,8 +11477,8 @@ namespace Google.Apis.VMwareEngine.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>

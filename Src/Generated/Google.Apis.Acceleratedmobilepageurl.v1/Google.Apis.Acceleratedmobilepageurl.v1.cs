@@ -260,7 +260,7 @@ namespace Google.Apis.Acceleratedmobilepageurl.v1
         /// <param name="body">The body of the request.</param>
         public virtual BatchGetRequest BatchGet(Google.Apis.Acceleratedmobilepageurl.v1.Data.BatchGetAmpUrlsRequest body)
         {
-            return new BatchGetRequest(service, body);
+            return new BatchGetRequest(this.service, body);
         }
 
         /// <summary>

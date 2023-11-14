@@ -285,7 +285,7 @@ namespace Google.Apis.ServiceConsumerManagement.v1beta1
         /// <param name="name">The name of the operation resource.</param>
         public virtual GetRequest Get(string name)
         {
-            return new GetRequest(service, name);
+            return new GetRequest(this.service, name);
         }
 
         /// <summary>
@@ -413,7 +413,7 @@ namespace Google.Apis.ServiceConsumerManagement.v1beta1
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.ServiceConsumerManagement.v1beta1.Data.V1Beta1QuotaOverride body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>
@@ -555,7 +555,7 @@ namespace Google.Apis.ServiceConsumerManagement.v1beta1
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>Deletes a producer override.</summary>
@@ -684,7 +684,7 @@ namespace Google.Apis.ServiceConsumerManagement.v1beta1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists all producer overrides on this limit.</summary>
@@ -763,7 +763,7 @@ namespace Google.Apis.ServiceConsumerManagement.v1beta1
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.ServiceConsumerManagement.v1beta1.Data.V1Beta1QuotaOverride body, string name)
                     {
-                        return new PatchRequest(service, body, name);
+                        return new PatchRequest(this.service, body, name);
                     }
 
                     /// <summary>Updates a producer override.</summary>
@@ -914,7 +914,7 @@ namespace Google.Apis.ServiceConsumerManagement.v1beta1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Retrieves a summary of quota information for a specific quota limit.</summary>
@@ -1005,7 +1005,7 @@ namespace Google.Apis.ServiceConsumerManagement.v1beta1
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Retrieves a summary of quota information for a specific quota metric.</summary>
@@ -1098,7 +1098,7 @@ namespace Google.Apis.ServiceConsumerManagement.v1beta1
             /// </param>
             public virtual ImportProducerOverridesRequest ImportProducerOverrides(Google.Apis.ServiceConsumerManagement.v1beta1.Data.V1Beta1ImportProducerOverridesRequest body, string parent)
             {
-                return new ImportProducerOverridesRequest(service, body, parent);
+                return new ImportProducerOverridesRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -1164,7 +1164,7 @@ namespace Google.Apis.ServiceConsumerManagement.v1beta1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>

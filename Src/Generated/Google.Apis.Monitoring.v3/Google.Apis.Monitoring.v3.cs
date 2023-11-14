@@ -338,7 +338,7 @@ namespace Google.Apis.Monitoring.v3
             /// </param>
             public virtual ListRequest List(string name)
             {
-                return new ListRequest(service, name);
+                return new ListRequest(this.service, name);
             }
 
             /// <summary>Lists time series that match a filter.</summary>
@@ -722,16 +722,67 @@ namespace Google.Apis.Monitoring.v3
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
-                /// <summary>Required. The end of the time interval.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("interval.endTime", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual object IntervalEndTime { get; set; }
+                private object _intervalEndTime;
 
                 /// <summary>
-                /// Optional. The beginning of the time interval. The default value for the start time is the end time.
-                /// The start time must not be later than the end time.
+                /// String representation of <see cref="IntervalEndTimeDateTimeOffset"/>, formatted for inclusion in the
+                /// HTTP request.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("interval.endTime", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string IntervalEndTimeRaw { get; private set; }
+
+                /// <summary><seealso cref="object"/> representation of <see cref="IntervalEndTimeRaw"/>.</summary>
+                [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use IntervalEndTimeDateTimeOffset instead.")]
+                public virtual object IntervalEndTime
+                {
+                    get => _intervalEndTime;
+                    set
+                    {
+                        IntervalEndTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                        _intervalEndTime = value;
+                    }
+                }
+
+                public virtual System.DateTimeOffset? IntervalEndTimeDateTimeOffset
+                {
+                    get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(IntervalEndTimeRaw);
+                    set
+                    {
+                        IntervalEndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                        _intervalEndTime = value;
+                    }
+                }
+
+                private object _intervalStartTime;
+
+                /// <summary>
+                /// String representation of <see cref="IntervalStartTimeDateTimeOffset"/>, formatted for inclusion in
+                /// the HTTP request.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("interval.startTime", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual object IntervalStartTime { get; set; }
+                public virtual string IntervalStartTimeRaw { get; private set; }
+
+                /// <summary><seealso cref="object"/> representation of <see cref="IntervalStartTimeRaw"/>.</summary>
+                [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use IntervalStartTimeDateTimeOffset instead.")]
+                public virtual object IntervalStartTime
+                {
+                    get => _intervalStartTime;
+                    set
+                    {
+                        IntervalStartTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                        _intervalStartTime = value;
+                    }
+                }
+
+                public virtual System.DateTimeOffset? IntervalStartTimeDateTimeOffset
+                {
+                    get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(IntervalStartTimeRaw);
+                    set
+                    {
+                        IntervalStartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                        _intervalStartTime = value;
+                    }
+                }
 
                 /// <summary>
                 /// Unsupported: must be left blank. The points in each time series are currently returned in reverse
@@ -1316,7 +1367,7 @@ namespace Google.Apis.Monitoring.v3
             /// </param>
             public virtual ListRequest List(string name)
             {
-                return new ListRequest(service, name);
+                return new ListRequest(this.service, name);
             }
 
             /// <summary>Lists time series that match a filter.</summary>
@@ -1700,16 +1751,67 @@ namespace Google.Apis.Monitoring.v3
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
-                /// <summary>Required. The end of the time interval.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("interval.endTime", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual object IntervalEndTime { get; set; }
+                private object _intervalEndTime;
 
                 /// <summary>
-                /// Optional. The beginning of the time interval. The default value for the start time is the end time.
-                /// The start time must not be later than the end time.
+                /// String representation of <see cref="IntervalEndTimeDateTimeOffset"/>, formatted for inclusion in the
+                /// HTTP request.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("interval.endTime", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string IntervalEndTimeRaw { get; private set; }
+
+                /// <summary><seealso cref="object"/> representation of <see cref="IntervalEndTimeRaw"/>.</summary>
+                [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use IntervalEndTimeDateTimeOffset instead.")]
+                public virtual object IntervalEndTime
+                {
+                    get => _intervalEndTime;
+                    set
+                    {
+                        IntervalEndTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                        _intervalEndTime = value;
+                    }
+                }
+
+                public virtual System.DateTimeOffset? IntervalEndTimeDateTimeOffset
+                {
+                    get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(IntervalEndTimeRaw);
+                    set
+                    {
+                        IntervalEndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                        _intervalEndTime = value;
+                    }
+                }
+
+                private object _intervalStartTime;
+
+                /// <summary>
+                /// String representation of <see cref="IntervalStartTimeDateTimeOffset"/>, formatted for inclusion in
+                /// the HTTP request.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("interval.startTime", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual object IntervalStartTime { get; set; }
+                public virtual string IntervalStartTimeRaw { get; private set; }
+
+                /// <summary><seealso cref="object"/> representation of <see cref="IntervalStartTimeRaw"/>.</summary>
+                [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use IntervalStartTimeDateTimeOffset instead.")]
+                public virtual object IntervalStartTime
+                {
+                    get => _intervalStartTime;
+                    set
+                    {
+                        IntervalStartTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                        _intervalStartTime = value;
+                    }
+                }
+
+                public virtual System.DateTimeOffset? IntervalStartTimeDateTimeOffset
+                {
+                    get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(IntervalStartTimeRaw);
+                    set
+                    {
+                        IntervalStartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                        _intervalStartTime = value;
+                    }
+                }
 
                 /// <summary>
                 /// Unsupported: must be left blank. The points in each time series are currently returned in reverse
@@ -2311,7 +2413,7 @@ namespace Google.Apis.Monitoring.v3
             /// </param>
             public virtual CreateRequest Create(Google.Apis.Monitoring.v3.Data.AlertPolicy body, string name)
             {
-                return new CreateRequest(service, body, name);
+                return new CreateRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -2382,7 +2484,7 @@ namespace Google.Apis.Monitoring.v3
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>
@@ -2438,7 +2540,7 @@ namespace Google.Apis.Monitoring.v3
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets a single alerting policy.</summary>
@@ -2491,7 +2593,7 @@ namespace Google.Apis.Monitoring.v3
             /// </param>
             public virtual ListRequest List(string name)
             {
-                return new ListRequest(service, name);
+                return new ListRequest(this.service, name);
             }
 
             /// <summary>Lists the existing alerting policies for the workspace.</summary>
@@ -2614,7 +2716,7 @@ namespace Google.Apis.Monitoring.v3
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.Monitoring.v3.Data.AlertPolicy body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -2727,7 +2829,7 @@ namespace Google.Apis.Monitoring.v3
             /// </param>
             public virtual CreateRequest Create(Google.Apis.Monitoring.v3.Data.CreateCollectdTimeSeriesRequest body, string name)
             {
-                return new CreateRequest(service, body, name);
+                return new CreateRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -2824,7 +2926,7 @@ namespace Google.Apis.Monitoring.v3
                 /// </param>
                 public virtual ListRequest List(string name)
                 {
-                    return new ListRequest(service, name);
+                    return new ListRequest(this.service, name);
                 }
 
                 /// <summary>Lists the monitored resources that are members of a group.</summary>
@@ -2853,16 +2955,69 @@ namespace Google.Apis.Monitoring.v3
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
-                    /// <summary>Required. The end of the time interval.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("interval.endTime", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual object IntervalEndTime { get; set; }
+                    private object _intervalEndTime;
 
                     /// <summary>
-                    /// Optional. The beginning of the time interval. The default value for the start time is the end
-                    /// time. The start time must not be later than the end time.
+                    /// String representation of <see cref="IntervalEndTimeDateTimeOffset"/>, formatted for inclusion in
+                    /// the HTTP request.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("interval.endTime", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string IntervalEndTimeRaw { get; private set; }
+
+                    /// <summary><seealso cref="object"/> representation of <see cref="IntervalEndTimeRaw"/>.</summary>
+                    [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use IntervalEndTimeDateTimeOffset instead.")]
+                    public virtual object IntervalEndTime
+                    {
+                        get => _intervalEndTime;
+                        set
+                        {
+                            IntervalEndTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                            _intervalEndTime = value;
+                        }
+                    }
+
+                    public virtual System.DateTimeOffset? IntervalEndTimeDateTimeOffset
+                    {
+                        get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(IntervalEndTimeRaw);
+                        set
+                        {
+                            IntervalEndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                            _intervalEndTime = value;
+                        }
+                    }
+
+                    private object _intervalStartTime;
+
+                    /// <summary>
+                    /// String representation of <see cref="IntervalStartTimeDateTimeOffset"/>, formatted for inclusion
+                    /// in the HTTP request.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("interval.startTime", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual object IntervalStartTime { get; set; }
+                    public virtual string IntervalStartTimeRaw { get; private set; }
+
+                    /// <summary>
+                    /// <seealso cref="object"/> representation of <see cref="IntervalStartTimeRaw"/>.
+                    /// </summary>
+                    [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use IntervalStartTimeDateTimeOffset instead.")]
+                    public virtual object IntervalStartTime
+                    {
+                        get => _intervalStartTime;
+                        set
+                        {
+                            IntervalStartTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                            _intervalStartTime = value;
+                        }
+                    }
+
+                    public virtual System.DateTimeOffset? IntervalStartTimeDateTimeOffset
+                    {
+                        get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(IntervalStartTimeRaw);
+                        set
+                        {
+                            IntervalStartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                            _intervalStartTime = value;
+                        }
+                    }
 
                     /// <summary>A positive number that is the maximum number of results to return.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
@@ -2949,7 +3104,7 @@ namespace Google.Apis.Monitoring.v3
             /// </param>
             public virtual CreateRequest Create(Google.Apis.Monitoring.v3.Data.Group body, string name)
             {
-                return new CreateRequest(service, body, name);
+                return new CreateRequest(this.service, body, name);
             }
 
             /// <summary>Creates a new group.</summary>
@@ -3018,7 +3173,7 @@ namespace Google.Apis.Monitoring.v3
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>Deletes an existing group.</summary>
@@ -3082,7 +3237,7 @@ namespace Google.Apis.Monitoring.v3
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets a single group.</summary>
@@ -3132,7 +3287,7 @@ namespace Google.Apis.Monitoring.v3
             /// </param>
             public virtual ListRequest List(string name)
             {
-                return new ListRequest(service, name);
+                return new ListRequest(this.service, name);
             }
 
             /// <summary>Lists the existing groups.</summary>
@@ -3261,7 +3416,7 @@ namespace Google.Apis.Monitoring.v3
             /// </param>
             public virtual UpdateRequest Update(Google.Apis.Monitoring.v3.Data.Group body, string name)
             {
-                return new UpdateRequest(service, body, name);
+                return new UpdateRequest(this.service, body, name);
             }
 
             /// <summary>Updates an existing group. You can change any group attributes except name.</summary>
@@ -3356,7 +3511,7 @@ namespace Google.Apis.Monitoring.v3
             /// </param>
             public virtual CreateRequest Create(Google.Apis.Monitoring.v3.Data.MetricDescriptor body, string name)
             {
-                return new CreateRequest(service, body, name);
+                return new CreateRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -3422,7 +3577,7 @@ namespace Google.Apis.Monitoring.v3
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>
@@ -3478,7 +3633,7 @@ namespace Google.Apis.Monitoring.v3
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets a single metric descriptor.</summary>
@@ -3530,7 +3685,7 @@ namespace Google.Apis.Monitoring.v3
             /// </param>
             public virtual ListRequest List(string name)
             {
-                return new ListRequest(service, name);
+                return new ListRequest(this.service, name);
             }
 
             /// <summary>Lists metric descriptors that match a filter.</summary>
@@ -3650,7 +3805,7 @@ namespace Google.Apis.Monitoring.v3
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets a single monitored resource descriptor.</summary>
@@ -3702,7 +3857,7 @@ namespace Google.Apis.Monitoring.v3
             /// </param>
             public virtual ListRequest List(string name)
             {
-                return new ListRequest(service, name);
+                return new ListRequest(this.service, name);
             }
 
             /// <summary>Lists monitored resource descriptors that match a filter.</summary>
@@ -3819,7 +3974,7 @@ namespace Google.Apis.Monitoring.v3
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>
@@ -3879,7 +4034,7 @@ namespace Google.Apis.Monitoring.v3
             /// </param>
             public virtual ListRequest List(string name)
             {
-                return new ListRequest(service, name);
+                return new ListRequest(this.service, name);
             }
 
             /// <summary>
@@ -3993,7 +4148,7 @@ namespace Google.Apis.Monitoring.v3
             /// </param>
             public virtual CreateRequest Create(Google.Apis.Monitoring.v3.Data.NotificationChannel body, string name)
             {
-                return new CreateRequest(service, body, name);
+                return new CreateRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -4063,7 +4218,7 @@ namespace Google.Apis.Monitoring.v3
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>
@@ -4139,7 +4294,7 @@ namespace Google.Apis.Monitoring.v3
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>
@@ -4212,7 +4367,7 @@ namespace Google.Apis.Monitoring.v3
             /// </param>
             public virtual GetVerificationCodeRequest GetVerificationCode(Google.Apis.Monitoring.v3.Data.GetNotificationChannelVerificationCodeRequest body, string name)
             {
-                return new GetVerificationCodeRequest(service, body, name);
+                return new GetVerificationCodeRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -4291,7 +4446,7 @@ namespace Google.Apis.Monitoring.v3
             /// </param>
             public virtual ListRequest List(string name)
             {
-                return new ListRequest(service, name);
+                return new ListRequest(this.service, name);
             }
 
             /// <summary>
@@ -4417,7 +4572,7 @@ namespace Google.Apis.Monitoring.v3
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.Monitoring.v3.Data.NotificationChannel body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -4494,7 +4649,7 @@ namespace Google.Apis.Monitoring.v3
             /// <param name="name">Required. The notification channel to which to send a verification code.</param>
             public virtual SendVerificationCodeRequest SendVerificationCode(Google.Apis.Monitoring.v3.Data.SendNotificationChannelVerificationCodeRequest body, string name)
             {
-                return new SendVerificationCodeRequest(service, body, name);
+                return new SendVerificationCodeRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -4553,7 +4708,7 @@ namespace Google.Apis.Monitoring.v3
             /// <param name="name">Required. The notification channel to verify.</param>
             public virtual VerifyRequest Verify(Google.Apis.Monitoring.v3.Data.VerifyNotificationChannelRequest body, string name)
             {
-                return new VerifyRequest(service, body, name);
+                return new VerifyRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -4633,7 +4788,7 @@ namespace Google.Apis.Monitoring.v3
             /// </param>
             public virtual CreateRequest Create(Google.Apis.Monitoring.v3.Data.Snooze body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -4694,7 +4849,7 @@ namespace Google.Apis.Monitoring.v3
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Retrieves a Snooze by name.</summary>
@@ -4748,7 +4903,7 @@ namespace Google.Apis.Monitoring.v3
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>
@@ -4856,7 +5011,7 @@ namespace Google.Apis.Monitoring.v3
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.Monitoring.v3.Data.Snooze body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -4961,7 +5116,7 @@ namespace Google.Apis.Monitoring.v3
             /// </param>
             public virtual CreateRequest Create(Google.Apis.Monitoring.v3.Data.CreateTimeSeriesRequest body, string name)
             {
-                return new CreateRequest(service, body, name);
+                return new CreateRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -5031,7 +5186,7 @@ namespace Google.Apis.Monitoring.v3
             /// </param>
             public virtual CreateServiceRequest CreateService(Google.Apis.Monitoring.v3.Data.CreateTimeSeriesRequest body, string name)
             {
-                return new CreateServiceRequest(service, body, name);
+                return new CreateServiceRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -5096,7 +5251,7 @@ namespace Google.Apis.Monitoring.v3
             /// </param>
             public virtual ListRequest List(string name)
             {
-                return new ListRequest(service, name);
+                return new ListRequest(this.service, name);
             }
 
             /// <summary>Lists time series that match a filter.</summary>
@@ -5480,16 +5635,67 @@ namespace Google.Apis.Monitoring.v3
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
-                /// <summary>Required. The end of the time interval.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("interval.endTime", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual object IntervalEndTime { get; set; }
+                private object _intervalEndTime;
 
                 /// <summary>
-                /// Optional. The beginning of the time interval. The default value for the start time is the end time.
-                /// The start time must not be later than the end time.
+                /// String representation of <see cref="IntervalEndTimeDateTimeOffset"/>, formatted for inclusion in the
+                /// HTTP request.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("interval.endTime", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string IntervalEndTimeRaw { get; private set; }
+
+                /// <summary><seealso cref="object"/> representation of <see cref="IntervalEndTimeRaw"/>.</summary>
+                [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use IntervalEndTimeDateTimeOffset instead.")]
+                public virtual object IntervalEndTime
+                {
+                    get => _intervalEndTime;
+                    set
+                    {
+                        IntervalEndTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                        _intervalEndTime = value;
+                    }
+                }
+
+                public virtual System.DateTimeOffset? IntervalEndTimeDateTimeOffset
+                {
+                    get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(IntervalEndTimeRaw);
+                    set
+                    {
+                        IntervalEndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                        _intervalEndTime = value;
+                    }
+                }
+
+                private object _intervalStartTime;
+
+                /// <summary>
+                /// String representation of <see cref="IntervalStartTimeDateTimeOffset"/>, formatted for inclusion in
+                /// the HTTP request.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("interval.startTime", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual object IntervalStartTime { get; set; }
+                public virtual string IntervalStartTimeRaw { get; private set; }
+
+                /// <summary><seealso cref="object"/> representation of <see cref="IntervalStartTimeRaw"/>.</summary>
+                [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use IntervalStartTimeDateTimeOffset instead.")]
+                public virtual object IntervalStartTime
+                {
+                    get => _intervalStartTime;
+                    set
+                    {
+                        IntervalStartTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                        _intervalStartTime = value;
+                    }
+                }
+
+                public virtual System.DateTimeOffset? IntervalStartTimeDateTimeOffset
+                {
+                    get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(IntervalStartTimeRaw);
+                    set
+                    {
+                        IntervalStartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                        _intervalStartTime = value;
+                    }
+                }
 
                 /// <summary>
                 /// Unsupported: must be left blank. The points in each time series are currently returned in reverse
@@ -6040,7 +6246,7 @@ namespace Google.Apis.Monitoring.v3
             /// </param>
             public virtual QueryRequest Query(Google.Apis.Monitoring.v3.Data.QueryTimeSeriesRequest body, string name)
             {
-                return new QueryRequest(service, body, name);
+                return new QueryRequest(this.service, body, name);
             }
 
             /// <summary>Queries time series using Monitoring Query Language.</summary>
@@ -6117,7 +6323,7 @@ namespace Google.Apis.Monitoring.v3
             /// </param>
             public virtual CreateRequest Create(Google.Apis.Monitoring.v3.Data.UptimeCheckConfig body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>Creates a new Uptime check configuration.</summary>
@@ -6179,7 +6385,7 @@ namespace Google.Apis.Monitoring.v3
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>
@@ -6234,7 +6440,7 @@ namespace Google.Apis.Monitoring.v3
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets a single Uptime check configuration.</summary>
@@ -6288,7 +6494,7 @@ namespace Google.Apis.Monitoring.v3
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>
@@ -6398,7 +6604,7 @@ namespace Google.Apis.Monitoring.v3
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.Monitoring.v3.Data.UptimeCheckConfig body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -6514,7 +6720,7 @@ namespace Google.Apis.Monitoring.v3
             /// </param>
             public virtual CreateRequest Create(Google.Apis.Monitoring.v3.Data.ServiceLevelObjective body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>Create a ServiceLevelObjective for the given Service.</summary>
@@ -6587,7 +6793,7 @@ namespace Google.Apis.Monitoring.v3
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>Delete the given ServiceLevelObjective.</summary>
@@ -6638,7 +6844,7 @@ namespace Google.Apis.Monitoring.v3
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Get a ServiceLevelObjective by name.</summary>
@@ -6733,7 +6939,7 @@ namespace Google.Apis.Monitoring.v3
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>List the ServiceLevelObjectives for the given Service.</summary>
@@ -6872,7 +7078,7 @@ namespace Google.Apis.Monitoring.v3
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.Monitoring.v3.Data.ServiceLevelObjective body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>Update the given ServiceLevelObjective.</summary>
@@ -6944,7 +7150,7 @@ namespace Google.Apis.Monitoring.v3
         /// </param>
         public virtual CreateRequest Create(Google.Apis.Monitoring.v3.Data.Service body, string parent)
         {
-            return new CreateRequest(service, body, parent);
+            return new CreateRequest(this.service, body, parent);
         }
 
         /// <summary>Create a Service.</summary>
@@ -7017,7 +7223,7 @@ namespace Google.Apis.Monitoring.v3
         /// </param>
         public virtual DeleteRequest Delete(string name)
         {
-            return new DeleteRequest(service, name);
+            return new DeleteRequest(this.service, name);
         }
 
         /// <summary>Soft delete this Service.</summary>
@@ -7068,7 +7274,7 @@ namespace Google.Apis.Monitoring.v3
         /// </param>
         public virtual GetRequest Get(string name)
         {
-            return new GetRequest(service, name);
+            return new GetRequest(this.service, name);
         }
 
         /// <summary>Get the named Service.</summary>
@@ -7120,7 +7326,7 @@ namespace Google.Apis.Monitoring.v3
         /// </param>
         public virtual ListRequest List(string parent)
         {
-            return new ListRequest(service, parent);
+            return new ListRequest(this.service, parent);
         }
 
         /// <summary>List Services for this Metrics Scope.</summary>
@@ -7227,7 +7433,7 @@ namespace Google.Apis.Monitoring.v3
         /// </param>
         public virtual PatchRequest Patch(Google.Apis.Monitoring.v3.Data.Service body, string name)
         {
-            return new PatchRequest(service, body, name);
+            return new PatchRequest(this.service, body, name);
         }
 
         /// <summary>Update this Service.</summary>
@@ -7307,7 +7513,7 @@ namespace Google.Apis.Monitoring.v3
         /// <summary>Returns the list of IP addresses that checkers run from</summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>Returns the list of IP addresses that checkers run from</summary>
@@ -7859,8 +8065,8 @@ namespace Google.Apis.Monitoring.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The measurement metadata. Example: "process_id" -&gt; 12345</summary>
@@ -7908,8 +8114,8 @@ namespace Google.Apis.Monitoring.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The measurement type. Example: "memory".</summary>
@@ -8409,8 +8615,8 @@ namespace Google.Apis.Monitoring.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? TimestampDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(TimestampRaw);
-            set => TimestampRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(TimestampRaw);
+            set => TimestampRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Value of the exemplar point. This value determines to which bucket the exemplar belongs.</summary>
@@ -8575,8 +8781,8 @@ namespace Google.Apis.Monitoring.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpireTimeRaw);
-            set => ExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -8630,8 +8836,8 @@ namespace Google.Apis.Monitoring.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpireTimeRaw);
-            set => ExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -9955,8 +10161,8 @@ namespace Google.Apis.Monitoring.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? MutateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(MutateTimeRaw);
-            set => MutateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(MutateTimeRaw);
+            set => MutateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The email address of the user making the change.</summary>
@@ -10184,8 +10390,8 @@ namespace Google.Apis.Monitoring.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Current state of the batch operation.</summary>
@@ -10225,8 +10431,8 @@ namespace Google.Apis.Monitoring.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -10923,8 +11129,8 @@ namespace Google.Apis.Monitoring.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _startTimeRaw;
@@ -10963,8 +11169,8 @@ namespace Google.Apis.Monitoring.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>

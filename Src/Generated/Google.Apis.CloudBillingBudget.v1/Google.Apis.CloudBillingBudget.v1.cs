@@ -309,7 +309,7 @@ namespace Google.Apis.CloudBillingBudget.v1
             /// </param>
             public virtual CreateRequest Create(Google.Apis.CloudBillingBudget.v1.Data.GoogleCloudBillingBudgetsV1Budget body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -370,7 +370,7 @@ namespace Google.Apis.CloudBillingBudget.v1
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>Deletes a budget. Returns successfully if already deleted.</summary>
@@ -425,7 +425,7 @@ namespace Google.Apis.CloudBillingBudget.v1
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>
@@ -484,7 +484,7 @@ namespace Google.Apis.CloudBillingBudget.v1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>
@@ -591,7 +591,7 @@ namespace Google.Apis.CloudBillingBudget.v1
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.CloudBillingBudget.v1.Data.GoogleCloudBillingBudgetsV1Budget body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>

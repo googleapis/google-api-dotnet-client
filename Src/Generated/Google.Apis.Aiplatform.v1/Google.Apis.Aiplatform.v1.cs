@@ -365,7 +365,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual CancelRequest Cancel(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1CancelBatchPredictionJobRequest body, string name)
                 {
-                    return new CancelRequest(service, body, name);
+                    return new CancelRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -434,7 +434,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1BatchPredictionJob body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -495,7 +495,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes a BatchPredictionJob. Can only be called on jobs that already finished.</summary>
@@ -546,7 +546,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets a BatchPredictionJob</summary>
@@ -597,7 +597,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists BatchPredictionJobs in a Location.</summary>
@@ -751,7 +751,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation resource to be cancelled.</param>
                     public virtual CancelRequest Cancel(string name)
                     {
-                        return new CancelRequest(service, name);
+                        return new CancelRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -808,7 +808,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation resource to be deleted.</param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -860,7 +860,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation resource.</param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -911,7 +911,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation's parent resource.</param>
                     public virtual ListRequest List(string name)
                     {
-                        return new ListRequest(service, name);
+                        return new ListRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -1003,7 +1003,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation resource to wait on.</param>
                     public virtual WaitRequest Wait(string name)
                     {
-                        return new WaitRequest(service, name);
+                        return new WaitRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -1084,7 +1084,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual CancelRequest Cancel(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1CancelCustomJobRequest body, string name)
                 {
-                    return new CancelRequest(service, body, name);
+                    return new CancelRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -1150,7 +1150,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1CustomJob body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a CustomJob. A created CustomJob right away will be attempted to be run.</summary>
@@ -1208,7 +1208,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes a CustomJob.</summary>
@@ -1259,7 +1259,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets a CustomJob.</summary>
@@ -1310,7 +1310,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists CustomJobs in a Location.</summary>
@@ -1462,7 +1462,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation resource to be cancelled.</param>
                     public virtual CancelRequest Cancel(string name)
                     {
-                        return new CancelRequest(service, name);
+                        return new CancelRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -1519,7 +1519,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation resource to be deleted.</param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -1571,7 +1571,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation resource.</param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -1622,7 +1622,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation's parent resource.</param>
                     public virtual ListRequest List(string name)
                     {
-                        return new ListRequest(service, name);
+                        return new ListRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -1714,7 +1714,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation resource to wait on.</param>
                     public virtual WaitRequest Wait(string name)
                     {
-                        return new WaitRequest(service, name);
+                        return new WaitRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -1788,7 +1788,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual CancelRequest Cancel(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1CancelDataLabelingJobRequest body, string name)
                 {
-                    return new CancelRequest(service, body, name);
+                    return new CancelRequest(this.service, body, name);
                 }
 
                 /// <summary>Cancels a DataLabelingJob. Success of cancellation is not guaranteed.</summary>
@@ -1846,7 +1846,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1DataLabelingJob body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a DataLabelingJob.</summary>
@@ -1903,7 +1903,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes a DataLabelingJob.</summary>
@@ -1954,7 +1954,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets a DataLabelingJob.</summary>
@@ -2004,7 +2004,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists DataLabelingJobs in a Location.</summary>
@@ -2193,7 +2193,7 @@ namespace Google.Apis.Aiplatform.v1
                         /// <param name="name">The name of the operation resource to be cancelled.</param>
                         public virtual CancelRequest Cancel(string name)
                         {
-                            return new CancelRequest(service, name);
+                            return new CancelRequest(this.service, name);
                         }
 
                         /// <summary>
@@ -2250,7 +2250,7 @@ namespace Google.Apis.Aiplatform.v1
                         /// <param name="name">The name of the operation resource to be deleted.</param>
                         public virtual DeleteRequest Delete(string name)
                         {
-                            return new DeleteRequest(service, name);
+                            return new DeleteRequest(this.service, name);
                         }
 
                         /// <summary>
@@ -2302,7 +2302,7 @@ namespace Google.Apis.Aiplatform.v1
                         /// <param name="name">The name of the operation resource.</param>
                         public virtual GetRequest Get(string name)
                         {
-                            return new GetRequest(service, name);
+                            return new GetRequest(this.service, name);
                         }
 
                         /// <summary>
@@ -2353,7 +2353,7 @@ namespace Google.Apis.Aiplatform.v1
                         /// <param name="name">The name of the operation's parent resource.</param>
                         public virtual ListRequest List(string name)
                         {
-                            return new ListRequest(service, name);
+                            return new ListRequest(this.service, name);
                         }
 
                         /// <summary>
@@ -2445,7 +2445,7 @@ namespace Google.Apis.Aiplatform.v1
                         /// <param name="name">The name of the operation resource to wait on.</param>
                         public virtual WaitRequest Wait(string name)
                         {
-                            return new WaitRequest(service, name);
+                            return new WaitRequest(this.service, name);
                         }
 
                         /// <summary>
@@ -2518,7 +2518,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Gets an AnnotationSpec.</summary>
@@ -2641,7 +2641,7 @@ namespace Google.Apis.Aiplatform.v1
                             /// <param name="name">The name of the operation resource to be cancelled.</param>
                             public virtual CancelRequest Cancel(string name)
                             {
-                                return new CancelRequest(service, name);
+                                return new CancelRequest(this.service, name);
                             }
 
                             /// <summary>
@@ -2698,7 +2698,7 @@ namespace Google.Apis.Aiplatform.v1
                             /// <param name="name">The name of the operation resource to be deleted.</param>
                             public virtual DeleteRequest Delete(string name)
                             {
-                                return new DeleteRequest(service, name);
+                                return new DeleteRequest(this.service, name);
                             }
 
                             /// <summary>
@@ -2750,7 +2750,7 @@ namespace Google.Apis.Aiplatform.v1
                             /// <param name="name">The name of the operation resource.</param>
                             public virtual GetRequest Get(string name)
                             {
-                                return new GetRequest(service, name);
+                                return new GetRequest(this.service, name);
                             }
 
                             /// <summary>
@@ -2801,7 +2801,7 @@ namespace Google.Apis.Aiplatform.v1
                             /// <param name="name">The name of the operation's parent resource.</param>
                             public virtual ListRequest List(string name)
                             {
-                                return new ListRequest(service, name);
+                                return new ListRequest(this.service, name);
                             }
 
                             /// <summary>
@@ -2894,7 +2894,7 @@ namespace Google.Apis.Aiplatform.v1
                             /// <param name="name">The name of the operation resource to wait on.</param>
                             public virtual WaitRequest Wait(string name)
                             {
-                                return new WaitRequest(service, name);
+                                return new WaitRequest(this.service, name);
                             }
 
                             /// <summary>
@@ -2968,7 +2968,7 @@ namespace Google.Apis.Aiplatform.v1
                         /// </param>
                         public virtual ListRequest List(string parent)
                         {
-                            return new ListRequest(service, parent);
+                            return new ListRequest(this.service, parent);
                         }
 
                         /// <summary>Lists Annotations belongs to a dataitem</summary>
@@ -3105,7 +3105,7 @@ namespace Google.Apis.Aiplatform.v1
                         /// <param name="name">The name of the operation resource to be cancelled.</param>
                         public virtual CancelRequest Cancel(string name)
                         {
-                            return new CancelRequest(service, name);
+                            return new CancelRequest(this.service, name);
                         }
 
                         /// <summary>
@@ -3162,7 +3162,7 @@ namespace Google.Apis.Aiplatform.v1
                         /// <param name="name">The name of the operation resource to be deleted.</param>
                         public virtual DeleteRequest Delete(string name)
                         {
-                            return new DeleteRequest(service, name);
+                            return new DeleteRequest(this.service, name);
                         }
 
                         /// <summary>
@@ -3214,7 +3214,7 @@ namespace Google.Apis.Aiplatform.v1
                         /// <param name="name">The name of the operation resource.</param>
                         public virtual GetRequest Get(string name)
                         {
-                            return new GetRequest(service, name);
+                            return new GetRequest(this.service, name);
                         }
 
                         /// <summary>
@@ -3265,7 +3265,7 @@ namespace Google.Apis.Aiplatform.v1
                         /// <param name="name">The name of the operation's parent resource.</param>
                         public virtual ListRequest List(string name)
                         {
-                            return new ListRequest(service, name);
+                            return new ListRequest(this.service, name);
                         }
 
                         /// <summary>
@@ -3357,7 +3357,7 @@ namespace Google.Apis.Aiplatform.v1
                         /// <param name="name">The name of the operation resource to wait on.</param>
                         public virtual WaitRequest Wait(string name)
                         {
-                            return new WaitRequest(service, name);
+                            return new WaitRequest(this.service, name);
                         }
 
                         /// <summary>
@@ -3430,7 +3430,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists DataItems in a Dataset.</summary>
@@ -3563,7 +3563,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1DatasetVersion body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>Create a version from a Dataset.</summary>
@@ -3621,7 +3621,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>Deletes a Dataset version.</summary>
@@ -3672,7 +3672,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Gets a Dataset version.</summary>
@@ -3735,7 +3735,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists DatasetVersions in a Dataset.</summary>
@@ -3849,7 +3849,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// </param>
                     public virtual RestoreRequest Restore(string name)
                     {
-                        return new RestoreRequest(service, name);
+                        return new RestoreRequest(this.service, name);
                     }
 
                     /// <summary>Restores a dataset version.</summary>
@@ -3923,7 +3923,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation resource to be cancelled.</param>
                     public virtual CancelRequest Cancel(string name)
                     {
-                        return new CancelRequest(service, name);
+                        return new CancelRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -3980,7 +3980,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation resource to be deleted.</param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -4032,7 +4032,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation resource.</param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -4083,7 +4083,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation's parent resource.</param>
                     public virtual ListRequest List(string name)
                     {
-                        return new ListRequest(service, name);
+                        return new ListRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -4175,7 +4175,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation resource to wait on.</param>
                     public virtual WaitRequest Wait(string name)
                     {
-                        return new WaitRequest(service, name);
+                        return new WaitRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -4288,7 +4288,7 @@ namespace Google.Apis.Aiplatform.v1
                         /// <param name="name">The name of the operation resource to be cancelled.</param>
                         public virtual CancelRequest Cancel(string name)
                         {
-                            return new CancelRequest(service, name);
+                            return new CancelRequest(this.service, name);
                         }
 
                         /// <summary>
@@ -4345,7 +4345,7 @@ namespace Google.Apis.Aiplatform.v1
                         /// <param name="name">The name of the operation resource to be deleted.</param>
                         public virtual DeleteRequest Delete(string name)
                         {
-                            return new DeleteRequest(service, name);
+                            return new DeleteRequest(this.service, name);
                         }
 
                         /// <summary>
@@ -4397,7 +4397,7 @@ namespace Google.Apis.Aiplatform.v1
                         /// <param name="name">The name of the operation resource.</param>
                         public virtual GetRequest Get(string name)
                         {
-                            return new GetRequest(service, name);
+                            return new GetRequest(this.service, name);
                         }
 
                         /// <summary>
@@ -4448,7 +4448,7 @@ namespace Google.Apis.Aiplatform.v1
                         /// <param name="name">The name of the operation's parent resource.</param>
                         public virtual ListRequest List(string name)
                         {
-                            return new ListRequest(service, name);
+                            return new ListRequest(this.service, name);
                         }
 
                         /// <summary>
@@ -4540,7 +4540,7 @@ namespace Google.Apis.Aiplatform.v1
                         /// <param name="name">The name of the operation resource to wait on.</param>
                         public virtual WaitRequest Wait(string name)
                         {
-                            return new WaitRequest(service, name);
+                            return new WaitRequest(this.service, name);
                         }
 
                         /// <summary>
@@ -4613,7 +4613,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>Deletes a SavedQuery.</summary>
@@ -4664,7 +4664,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists SavedQueries in a Dataset.</summary>
@@ -4780,7 +4780,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1Dataset body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a Dataset.</summary>
@@ -4838,7 +4838,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes a Dataset.</summary>
@@ -4890,7 +4890,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual ExportRequest Export(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1ExportDataRequest body, string name)
                 {
-                    return new ExportRequest(service, body, name);
+                    return new ExportRequest(this.service, body, name);
                 }
 
                 /// <summary>Exports data from a Dataset.</summary>
@@ -4945,7 +4945,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// <param name="name">Required. The name of the Dataset resource.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets a Dataset.</summary>
@@ -5006,7 +5006,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual ImportRequest Import(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1ImportDataRequest body, string name)
                 {
-                    return new ImportRequest(service, body, name);
+                    return new ImportRequest(this.service, body, name);
                 }
 
                 /// <summary>Imports data into a Dataset.</summary>
@@ -5064,7 +5064,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists Datasets in a Location.</summary>
@@ -5182,7 +5182,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// <param name="name">Output only. The resource name of the Dataset.</param>
                 public virtual PatchRequest Patch(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1Dataset body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates a Dataset.</summary>
@@ -5252,7 +5252,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual SearchDataItemsRequest SearchDataItems(string dataset)
                 {
-                    return new SearchDataItemsRequest(service, dataset);
+                    return new SearchDataItemsRequest(this.service, dataset);
                 }
 
                 /// <summary>Searches DataItems in a Dataset.</summary>
@@ -5541,7 +5541,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation resource to be cancelled.</param>
                     public virtual CancelRequest Cancel(string name)
                     {
-                        return new CancelRequest(service, name);
+                        return new CancelRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -5598,7 +5598,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation resource to be deleted.</param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -5650,7 +5650,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation resource.</param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -5701,7 +5701,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation's parent resource.</param>
                     public virtual ListRequest List(string name)
                     {
-                        return new ListRequest(service, name);
+                        return new ListRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -5793,7 +5793,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation resource to wait on.</param>
                     public virtual WaitRequest Wait(string name)
                     {
-                        return new WaitRequest(service, name);
+                        return new WaitRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -5907,7 +5907,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation resource to be cancelled.</param>
                     public virtual CancelRequest Cancel(string name)
                     {
-                        return new CancelRequest(service, name);
+                        return new CancelRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -5964,7 +5964,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation resource to be deleted.</param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -6016,7 +6016,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation resource.</param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -6067,7 +6067,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation's parent resource.</param>
                     public virtual ListRequest List(string name)
                     {
-                        return new ListRequest(service, name);
+                        return new ListRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -6159,7 +6159,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation resource to wait on.</param>
                     public virtual WaitRequest Wait(string name)
                     {
-                        return new WaitRequest(service, name);
+                        return new WaitRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -6232,7 +6232,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual ComputeTokensRequest ComputeTokens(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1ComputeTokensRequest body, string endpoint)
                 {
-                    return new ComputeTokensRequest(service, body, endpoint);
+                    return new ComputeTokensRequest(this.service, body, endpoint);
                 }
 
                 /// <summary>Return a list of tokens based on the input text.</summary>
@@ -6290,7 +6290,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual CountTokensRequest CountTokens(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1CountTokensRequest body, string endpoint)
                 {
-                    return new CountTokensRequest(service, body, endpoint);
+                    return new CountTokensRequest(this.service, body, endpoint);
                 }
 
                 /// <summary>Perform a token counting.</summary>
@@ -6349,7 +6349,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1Endpoint body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates an Endpoint.</summary>
@@ -6428,7 +6428,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes an Endpoint.</summary>
@@ -6480,7 +6480,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual DeployModelRequest DeployModel(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1DeployModelRequest body, string endpoint)
                 {
-                    return new DeployModelRequest(service, body, endpoint);
+                    return new DeployModelRequest(this.service, body, endpoint);
                 }
 
                 /// <summary>Deploys a Model into this Endpoint, creating a DeployedModel within it.</summary>
@@ -6543,7 +6543,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual ExplainRequest Explain(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1ExplainRequest body, string endpoint)
                 {
-                    return new ExplainRequest(service, body, endpoint);
+                    return new ExplainRequest(this.service, body, endpoint);
                 }
 
                 /// <summary>
@@ -6605,7 +6605,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets an Endpoint.</summary>
@@ -6656,7 +6656,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists Endpoints in a Location.</summary>
@@ -6787,7 +6787,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual MutateDeployedModelRequest MutateDeployedModel(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1MutateDeployedModelRequest body, string endpoint)
                 {
-                    return new MutateDeployedModelRequest(service, body, endpoint);
+                    return new MutateDeployedModelRequest(this.service, body, endpoint);
                 }
 
                 /// <summary>
@@ -6847,7 +6847,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// <param name="name">Output only. The resource name of the Endpoint.</param>
                 public virtual PatchRequest Patch(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1Endpoint body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates an Endpoint.</summary>
@@ -6917,7 +6917,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual PredictRequest Predict(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1PredictRequest body, string endpoint)
                 {
-                    return new PredictRequest(service, body, endpoint);
+                    return new PredictRequest(this.service, body, endpoint);
                 }
 
                 /// <summary>Perform an online prediction.</summary>
@@ -6980,7 +6980,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual RawPredictRequest RawPredict(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1RawPredictRequest body, string endpoint)
                 {
-                    return new RawPredictRequest(service, body, endpoint);
+                    return new RawPredictRequest(this.service, body, endpoint);
                 }
 
                 /// <summary>
@@ -7045,7 +7045,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual ServerStreamingPredictRequest ServerStreamingPredict(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1StreamingPredictRequest body, string endpoint)
                 {
-                    return new ServerStreamingPredictRequest(service, body, endpoint);
+                    return new ServerStreamingPredictRequest(this.service, body, endpoint);
                 }
 
                 /// <summary>
@@ -7109,7 +7109,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual UndeployModelRequest UndeployModel(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1UndeployModelRequest body, string endpoint)
                 {
-                    return new UndeployModelRequest(service, body, endpoint);
+                    return new UndeployModelRequest(this.service, body, endpoint);
                 }
 
                 /// <summary>
@@ -7226,7 +7226,7 @@ namespace Google.Apis.Aiplatform.v1
                         /// <param name="name">The name of the operation resource to be deleted.</param>
                         public virtual DeleteRequest Delete(string name)
                         {
-                            return new DeleteRequest(service, name);
+                            return new DeleteRequest(this.service, name);
                         }
 
                         /// <summary>
@@ -7278,7 +7278,7 @@ namespace Google.Apis.Aiplatform.v1
                         /// <param name="name">The name of the operation resource.</param>
                         public virtual GetRequest Get(string name)
                         {
-                            return new GetRequest(service, name);
+                            return new GetRequest(this.service, name);
                         }
 
                         /// <summary>
@@ -7329,7 +7329,7 @@ namespace Google.Apis.Aiplatform.v1
                         /// <param name="name">The name of the operation's parent resource.</param>
                         public virtual ListWaitRequest ListWait(string name)
                         {
-                            return new ListWaitRequest(service, name);
+                            return new ListWaitRequest(this.service, name);
                         }
 
                         /// <summary>
@@ -7421,7 +7421,7 @@ namespace Google.Apis.Aiplatform.v1
                         /// <param name="name">The name of the operation resource to wait on.</param>
                         public virtual WaitRequest Wait(string name)
                         {
-                            return new WaitRequest(service, name);
+                            return new WaitRequest(this.service, name);
                         }
 
                         /// <summary>
@@ -7498,7 +7498,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1Feature body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>Creates a new Feature in a given FeatureGroup.</summary>
@@ -7577,7 +7577,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>Deletes a single Feature.</summary>
@@ -7631,7 +7631,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Gets details of a single Feature.</summary>
@@ -7686,7 +7686,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists Features in a given FeatureGroup.</summary>
@@ -7847,7 +7847,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1Feature body, string name)
                     {
-                        return new PatchRequest(service, body, name);
+                        return new PatchRequest(this.service, body, name);
                     }
 
                     /// <summary>Updates the parameters of a single Feature.</summary>
@@ -7947,7 +7947,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation resource to be deleted.</param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -7999,7 +7999,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation resource.</param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -8050,7 +8050,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation's parent resource.</param>
                     public virtual ListWaitRequest ListWait(string name)
                     {
-                        return new ListWaitRequest(service, name);
+                        return new ListWaitRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -8142,7 +8142,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation resource to wait on.</param>
                     public virtual WaitRequest Wait(string name)
                     {
-                        return new WaitRequest(service, name);
+                        return new WaitRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -8216,7 +8216,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1FeatureGroup body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a new FeatureGroup in a given project and location.</summary>
@@ -8291,7 +8291,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes a single FeatureGroup.</summary>
@@ -8354,7 +8354,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// <param name="name">Required. The name of the FeatureGroup resource.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets details of a single FeatureGroup.</summary>
@@ -8402,7 +8402,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists FeatureGroups in a given project and location.</summary>
@@ -8521,7 +8521,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1FeatureGroup body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates the parameters of a single FeatureGroup.</summary>
@@ -8653,7 +8653,7 @@ namespace Google.Apis.Aiplatform.v1
                         /// </param>
                         public virtual GetRequest Get(string name)
                         {
-                            return new GetRequest(service, name);
+                            return new GetRequest(this.service, name);
                         }
 
                         /// <summary>Gets details of a single FeatureViewSync.</summary>
@@ -8704,7 +8704,7 @@ namespace Google.Apis.Aiplatform.v1
                         /// </param>
                         public virtual ListRequest List(string parent)
                         {
-                            return new ListRequest(service, parent);
+                            return new ListRequest(this.service, parent);
                         }
 
                         /// <summary>Lists FeatureViewSyncs in a given FeatureView.</summary>
@@ -8841,7 +8841,7 @@ namespace Google.Apis.Aiplatform.v1
                         /// <param name="name">The name of the operation resource to be deleted.</param>
                         public virtual DeleteRequest Delete(string name)
                         {
-                            return new DeleteRequest(service, name);
+                            return new DeleteRequest(this.service, name);
                         }
 
                         /// <summary>
@@ -8893,7 +8893,7 @@ namespace Google.Apis.Aiplatform.v1
                         /// <param name="name">The name of the operation resource.</param>
                         public virtual GetRequest Get(string name)
                         {
-                            return new GetRequest(service, name);
+                            return new GetRequest(this.service, name);
                         }
 
                         /// <summary>
@@ -8944,7 +8944,7 @@ namespace Google.Apis.Aiplatform.v1
                         /// <param name="name">The name of the operation's parent resource.</param>
                         public virtual ListWaitRequest ListWait(string name)
                         {
-                            return new ListWaitRequest(service, name);
+                            return new ListWaitRequest(this.service, name);
                         }
 
                         /// <summary>
@@ -9036,7 +9036,7 @@ namespace Google.Apis.Aiplatform.v1
                         /// <param name="name">The name of the operation resource to wait on.</param>
                         public virtual WaitRequest Wait(string name)
                         {
-                            return new WaitRequest(service, name);
+                            return new WaitRequest(this.service, name);
                         }
 
                         /// <summary>
@@ -9110,7 +9110,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1FeatureView body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>Creates a new FeatureView in a given FeatureOnlineStore.</summary>
@@ -9200,7 +9200,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>Deletes a single FeatureView.</summary>
@@ -9252,7 +9252,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// </param>
                     public virtual FetchFeatureValuesRequest FetchFeatureValues(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1FetchFeatureValuesRequest body, string featureView)
                     {
-                        return new FetchFeatureValuesRequest(service, body, featureView);
+                        return new FetchFeatureValuesRequest(this.service, body, featureView);
                     }
 
                     /// <summary>Fetch feature values under a FeatureView.</summary>
@@ -9310,7 +9310,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Gets details of a single FeatureView.</summary>
@@ -9361,7 +9361,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists FeatureViews in a given FeatureOnlineStore.</summary>
@@ -9485,7 +9485,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1FeatureView body, string name)
                     {
-                        return new PatchRequest(service, body, name);
+                        return new PatchRequest(this.service, body, name);
                     }
 
                     /// <summary>Updates the parameters of a single FeatureView.</summary>
@@ -9562,7 +9562,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// </param>
                     public virtual SyncRequest Sync(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1SyncFeatureViewRequest body, string featureView)
                     {
-                        return new SyncRequest(service, body, featureView);
+                        return new SyncRequest(this.service, body, featureView);
                     }
 
                     /// <summary>Triggers on-demand sync for the FeatureView.</summary>
@@ -9639,7 +9639,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation resource to be deleted.</param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -9691,7 +9691,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation resource.</param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -9742,7 +9742,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation's parent resource.</param>
                     public virtual ListWaitRequest ListWait(string name)
                     {
-                        return new ListWaitRequest(service, name);
+                        return new ListWaitRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -9834,7 +9834,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation resource to wait on.</param>
                     public virtual WaitRequest Wait(string name)
                     {
-                        return new WaitRequest(service, name);
+                        return new WaitRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -9908,7 +9908,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1FeatureOnlineStore body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a new FeatureOnlineStore in a given project and location.</summary>
@@ -9985,7 +9985,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -10050,7 +10050,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// <param name="name">Required. The name of the FeatureOnlineStore resource.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets details of a single FeatureOnlineStore.</summary>
@@ -10098,7 +10098,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists FeatureOnlineStores in a given project and location.</summary>
@@ -10219,7 +10219,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1FeatureOnlineStore body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates the parameters of a single FeatureOnlineStore.</summary>
@@ -10374,7 +10374,7 @@ namespace Google.Apis.Aiplatform.v1
                             /// <param name="name">The name of the operation resource to be cancelled.</param>
                             public virtual CancelRequest Cancel(string name)
                             {
-                                return new CancelRequest(service, name);
+                                return new CancelRequest(this.service, name);
                             }
 
                             /// <summary>
@@ -10431,7 +10431,7 @@ namespace Google.Apis.Aiplatform.v1
                             /// <param name="name">The name of the operation resource to be deleted.</param>
                             public virtual DeleteRequest Delete(string name)
                             {
-                                return new DeleteRequest(service, name);
+                                return new DeleteRequest(this.service, name);
                             }
 
                             /// <summary>
@@ -10483,7 +10483,7 @@ namespace Google.Apis.Aiplatform.v1
                             /// <param name="name">The name of the operation resource.</param>
                             public virtual GetRequest Get(string name)
                             {
-                                return new GetRequest(service, name);
+                                return new GetRequest(this.service, name);
                             }
 
                             /// <summary>
@@ -10534,7 +10534,7 @@ namespace Google.Apis.Aiplatform.v1
                             /// <param name="name">The name of the operation's parent resource.</param>
                             public virtual ListRequest List(string name)
                             {
-                                return new ListRequest(service, name);
+                                return new ListRequest(this.service, name);
                             }
 
                             /// <summary>
@@ -10627,7 +10627,7 @@ namespace Google.Apis.Aiplatform.v1
                             /// <param name="name">The name of the operation resource to wait on.</param>
                             public virtual WaitRequest Wait(string name)
                             {
-                                return new WaitRequest(service, name);
+                                return new WaitRequest(this.service, name);
                             }
 
                             /// <summary>
@@ -10702,7 +10702,7 @@ namespace Google.Apis.Aiplatform.v1
                         /// </param>
                         public virtual BatchCreateRequest BatchCreate(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1BatchCreateFeaturesRequest body, string parent)
                         {
-                            return new BatchCreateRequest(service, body, parent);
+                            return new BatchCreateRequest(this.service, body, parent);
                         }
 
                         /// <summary>Creates a batch of Features in a given EntityType.</summary>
@@ -10765,7 +10765,7 @@ namespace Google.Apis.Aiplatform.v1
                         /// </param>
                         public virtual CreateRequest Create(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1Feature body, string parent)
                         {
-                            return new CreateRequest(service, body, parent);
+                            return new CreateRequest(this.service, body, parent);
                         }
 
                         /// <summary>Creates a new Feature in a given EntityType.</summary>
@@ -10844,7 +10844,7 @@ namespace Google.Apis.Aiplatform.v1
                         /// </param>
                         public virtual DeleteRequest Delete(string name)
                         {
-                            return new DeleteRequest(service, name);
+                            return new DeleteRequest(this.service, name);
                         }
 
                         /// <summary>Deletes a single Feature.</summary>
@@ -10898,7 +10898,7 @@ namespace Google.Apis.Aiplatform.v1
                         /// </param>
                         public virtual GetRequest Get(string name)
                         {
-                            return new GetRequest(service, name);
+                            return new GetRequest(this.service, name);
                         }
 
                         /// <summary>Gets details of a single Feature.</summary>
@@ -10954,7 +10954,7 @@ namespace Google.Apis.Aiplatform.v1
                         /// </param>
                         public virtual ListRequest List(string parent)
                         {
-                            return new ListRequest(service, parent);
+                            return new ListRequest(this.service, parent);
                         }
 
                         /// <summary>Lists Features in a given EntityType.</summary>
@@ -11115,7 +11115,7 @@ namespace Google.Apis.Aiplatform.v1
                         /// </param>
                         public virtual PatchRequest Patch(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1Feature body, string name)
                         {
-                            return new PatchRequest(service, body, name);
+                            return new PatchRequest(this.service, body, name);
                         }
 
                         /// <summary>Updates the parameters of a single Feature.</summary>
@@ -11220,7 +11220,7 @@ namespace Google.Apis.Aiplatform.v1
                         /// <param name="name">The name of the operation resource to be cancelled.</param>
                         public virtual CancelRequest Cancel(string name)
                         {
-                            return new CancelRequest(service, name);
+                            return new CancelRequest(this.service, name);
                         }
 
                         /// <summary>
@@ -11277,7 +11277,7 @@ namespace Google.Apis.Aiplatform.v1
                         /// <param name="name">The name of the operation resource to be deleted.</param>
                         public virtual DeleteRequest Delete(string name)
                         {
-                            return new DeleteRequest(service, name);
+                            return new DeleteRequest(this.service, name);
                         }
 
                         /// <summary>
@@ -11329,7 +11329,7 @@ namespace Google.Apis.Aiplatform.v1
                         /// <param name="name">The name of the operation resource.</param>
                         public virtual GetRequest Get(string name)
                         {
-                            return new GetRequest(service, name);
+                            return new GetRequest(this.service, name);
                         }
 
                         /// <summary>
@@ -11380,7 +11380,7 @@ namespace Google.Apis.Aiplatform.v1
                         /// <param name="name">The name of the operation's parent resource.</param>
                         public virtual ListRequest List(string name)
                         {
-                            return new ListRequest(service, name);
+                            return new ListRequest(this.service, name);
                         }
 
                         /// <summary>
@@ -11472,7 +11472,7 @@ namespace Google.Apis.Aiplatform.v1
                         /// <param name="name">The name of the operation resource to wait on.</param>
                         public virtual WaitRequest Wait(string name)
                         {
-                            return new WaitRequest(service, name);
+                            return new WaitRequest(this.service, name);
                         }
 
                         /// <summary>
@@ -11546,7 +11546,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1EntityType body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>Creates a new EntityType in a given Featurestore.</summary>
@@ -11624,7 +11624,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -11702,7 +11702,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// </param>
                     public virtual DeleteFeatureValuesRequest DeleteFeatureValues(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1DeleteFeatureValuesRequest body, string entityType)
                     {
-                        return new DeleteFeatureValuesRequest(service, body, entityType);
+                        return new DeleteFeatureValuesRequest(this.service, body, entityType);
                     }
 
                     /// <summary>
@@ -11769,7 +11769,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// </param>
                     public virtual ExportFeatureValuesRequest ExportFeatureValues(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1ExportFeatureValuesRequest body, string entityType)
                     {
-                        return new ExportFeatureValuesRequest(service, body, entityType);
+                        return new ExportFeatureValuesRequest(this.service, body, entityType);
                     }
 
                     /// <summary>Exports Feature values from all the entities of a target EntityType.</summary>
@@ -11827,7 +11827,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Gets details of a single EntityType.</summary>
@@ -11882,7 +11882,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// </param>
                     public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                     {
-                        return new GetIamPolicyRequest(service, resource);
+                        return new GetIamPolicyRequest(this.service, resource);
                     }
 
                     /// <summary>
@@ -11973,7 +11973,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// </param>
                     public virtual ImportFeatureValuesRequest ImportFeatureValues(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1ImportFeatureValuesRequest body, string entityType)
                     {
-                        return new ImportFeatureValuesRequest(service, body, entityType);
+                        return new ImportFeatureValuesRequest(this.service, body, entityType);
                     }
 
                     /// <summary>
@@ -12044,7 +12044,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists EntityTypes in a given Featurestore.</summary>
@@ -12182,7 +12182,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1EntityType body, string name)
                     {
-                        return new PatchRequest(service, body, name);
+                        return new PatchRequest(this.service, body, name);
                     }
 
                     /// <summary>Updates the parameters of a single EntityType.</summary>
@@ -12274,7 +12274,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// </param>
                     public virtual ReadFeatureValuesRequest ReadFeatureValues(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1ReadFeatureValuesRequest body, string entityType)
                     {
-                        return new ReadFeatureValuesRequest(service, body, entityType);
+                        return new ReadFeatureValuesRequest(this.service, body, entityType);
                     }
 
                     /// <summary>
@@ -12342,7 +12342,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// </param>
                     public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Aiplatform.v1.Data.GoogleIamV1SetIamPolicyRequest body, string resource)
                     {
-                        return new SetIamPolicyRequest(service, body, resource);
+                        return new SetIamPolicyRequest(this.service, body, resource);
                     }
 
                     /// <summary>
@@ -12410,7 +12410,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// </param>
                     public virtual StreamingReadFeatureValuesRequest StreamingReadFeatureValues(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1StreamingReadFeatureValuesRequest body, string entityType)
                     {
-                        return new StreamingReadFeatureValuesRequest(service, body, entityType);
+                        return new StreamingReadFeatureValuesRequest(this.service, body, entityType);
                     }
 
                     /// <summary>
@@ -12479,7 +12479,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// </param>
                     public virtual TestIamPermissionsRequest TestIamPermissions(string resource)
                     {
-                        return new TestIamPermissionsRequest(service, resource);
+                        return new TestIamPermissionsRequest(this.service, resource);
                     }
 
                     /// <summary>
@@ -12559,7 +12559,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// </param>
                     public virtual WriteFeatureValuesRequest WriteFeatureValues(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1WriteFeatureValuesRequest body, string entityType)
                     {
-                        return new WriteFeatureValuesRequest(service, body, entityType);
+                        return new WriteFeatureValuesRequest(this.service, body, entityType);
                     }
 
                     /// <summary>
@@ -12646,7 +12646,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation resource to be cancelled.</param>
                     public virtual CancelRequest Cancel(string name)
                     {
-                        return new CancelRequest(service, name);
+                        return new CancelRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -12703,7 +12703,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation resource to be deleted.</param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -12755,7 +12755,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation resource.</param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -12806,7 +12806,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation's parent resource.</param>
                     public virtual ListRequest List(string name)
                     {
-                        return new ListRequest(service, name);
+                        return new ListRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -12898,7 +12898,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation resource to wait on.</param>
                     public virtual WaitRequest Wait(string name)
                     {
-                        return new WaitRequest(service, name);
+                        return new WaitRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -12977,7 +12977,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual BatchReadFeatureValuesRequest BatchReadFeatureValues(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1BatchReadFeatureValuesRequest body, string featurestore)
                 {
-                    return new BatchReadFeatureValuesRequest(service, body, featurestore);
+                    return new BatchReadFeatureValuesRequest(this.service, body, featurestore);
                 }
 
                 /// <summary>
@@ -13041,7 +13041,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1Featurestore body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a new Featurestore in a given project and location.</summary>
@@ -13119,7 +13119,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -13185,7 +13185,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// <param name="name">Required. The name of the Featurestore resource.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets details of a single Featurestore.</summary>
@@ -13237,7 +13237,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                 {
-                    return new GetIamPolicyRequest(service, resource);
+                    return new GetIamPolicyRequest(this.service, resource);
                 }
 
                 /// <summary>
@@ -13313,7 +13313,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists Featurestores in a given project and location.</summary>
@@ -13447,7 +13447,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1Featurestore body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates the parameters of a single Featurestore.</summary>
@@ -13525,7 +13525,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual SearchFeaturesRequest SearchFeatures(string location)
                 {
-                    return new SearchFeaturesRequest(service, location);
+                    return new SearchFeaturesRequest(this.service, location);
                 }
 
                 /// <summary>Searches Features matching a query in a given project.</summary>
@@ -13654,7 +13654,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Aiplatform.v1.Data.GoogleIamV1SetIamPolicyRequest body, string resource)
                 {
-                    return new SetIamPolicyRequest(service, body, resource);
+                    return new SetIamPolicyRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -13722,7 +13722,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual TestIamPermissionsRequest TestIamPermissions(string resource)
                 {
-                    return new TestIamPermissionsRequest(service, resource);
+                    return new TestIamPermissionsRequest(this.service, resource);
                 }
 
                 /// <summary>
@@ -13836,7 +13836,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation resource to be cancelled.</param>
                     public virtual CancelRequest Cancel(string name)
                     {
-                        return new CancelRequest(service, name);
+                        return new CancelRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -13893,7 +13893,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation resource to be deleted.</param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -13945,7 +13945,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation resource.</param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -13996,7 +13996,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation's parent resource.</param>
                     public virtual ListRequest List(string name)
                     {
-                        return new ListRequest(service, name);
+                        return new ListRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -14088,7 +14088,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation resource to wait on.</param>
                     public virtual WaitRequest Wait(string name)
                     {
-                        return new WaitRequest(service, name);
+                        return new WaitRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -14170,7 +14170,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual CancelRequest Cancel(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1CancelHyperparameterTuningJobRequest body, string name)
                 {
-                    return new CancelRequest(service, body, name);
+                    return new CancelRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -14237,7 +14237,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1HyperparameterTuningJob body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a HyperparameterTuningJob</summary>
@@ -14295,7 +14295,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes a HyperparameterTuningJob.</summary>
@@ -14346,7 +14346,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets a HyperparameterTuningJob</summary>
@@ -14397,7 +14397,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists HyperparameterTuningJobs in a Location.</summary>
@@ -14550,7 +14550,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation resource to be cancelled.</param>
                     public virtual CancelRequest Cancel(string name)
                     {
-                        return new CancelRequest(service, name);
+                        return new CancelRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -14607,7 +14607,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation resource to be deleted.</param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -14659,7 +14659,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation resource.</param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -14710,7 +14710,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation's parent resource.</param>
                     public virtual ListRequest List(string name)
                     {
-                        return new ListRequest(service, name);
+                        return new ListRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -14802,7 +14802,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation resource to wait on.</param>
                     public virtual WaitRequest Wait(string name)
                     {
-                        return new WaitRequest(service, name);
+                        return new WaitRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -14876,7 +14876,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1IndexEndpoint body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates an IndexEndpoint.</summary>
@@ -14934,7 +14934,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes an IndexEndpoint.</summary>
@@ -14989,7 +14989,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual DeployIndexRequest DeployIndex(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1DeployIndexRequest body, string indexEndpoint)
                 {
-                    return new DeployIndexRequest(service, body, indexEndpoint);
+                    return new DeployIndexRequest(this.service, body, indexEndpoint);
                 }
 
                 /// <summary>
@@ -15051,7 +15051,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual FindNeighborsRequest FindNeighbors(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1FindNeighborsRequest body, string indexEndpoint)
                 {
-                    return new FindNeighborsRequest(service, body, indexEndpoint);
+                    return new FindNeighborsRequest(this.service, body, indexEndpoint);
                 }
 
                 /// <summary>Finds the nearest neighbors of each vector within the request.</summary>
@@ -15109,7 +15109,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets an IndexEndpoint.</summary>
@@ -15160,7 +15160,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists IndexEndpoints in a Location.</summary>
@@ -15274,7 +15274,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual MutateDeployedIndexRequest MutateDeployedIndex(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1DeployedIndex body, string indexEndpoint)
                 {
-                    return new MutateDeployedIndexRequest(service, body, indexEndpoint);
+                    return new MutateDeployedIndexRequest(this.service, body, indexEndpoint);
                 }
 
                 /// <summary>Update an existing DeployedIndex under an IndexEndpoint.</summary>
@@ -15330,7 +15330,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// <param name="name">Output only. The resource name of the IndexEndpoint.</param>
                 public virtual PatchRequest Patch(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1IndexEndpoint body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates an IndexEndpoint.</summary>
@@ -15403,7 +15403,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual ReadIndexDatapointsRequest ReadIndexDatapoints(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1ReadIndexDatapointsRequest body, string indexEndpoint)
                 {
-                    return new ReadIndexDatapointsRequest(service, body, indexEndpoint);
+                    return new ReadIndexDatapointsRequest(this.service, body, indexEndpoint);
                 }
 
                 /// <summary>
@@ -15468,7 +15468,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual UndeployIndexRequest UndeployIndex(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1UndeployIndexRequest body, string indexEndpoint)
                 {
-                    return new UndeployIndexRequest(service, body, indexEndpoint);
+                    return new UndeployIndexRequest(this.service, body, indexEndpoint);
                 }
 
                 /// <summary>
@@ -15570,7 +15570,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation resource to be cancelled.</param>
                     public virtual CancelRequest Cancel(string name)
                     {
-                        return new CancelRequest(service, name);
+                        return new CancelRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -15627,7 +15627,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation resource to be deleted.</param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -15679,7 +15679,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation resource.</param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -15730,7 +15730,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation's parent resource.</param>
                     public virtual ListRequest List(string name)
                     {
-                        return new ListRequest(service, name);
+                        return new ListRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -15822,7 +15822,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation resource to wait on.</param>
                     public virtual WaitRequest Wait(string name)
                     {
-                        return new WaitRequest(service, name);
+                        return new WaitRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -15896,7 +15896,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1Index body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates an Index.</summary>
@@ -15956,7 +15956,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -16009,7 +16009,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets an Index.</summary>
@@ -16060,7 +16060,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists Indexes in a Location.</summary>
@@ -16160,7 +16160,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// <param name="name">Output only. The resource name of the Index.</param>
                 public virtual PatchRequest Patch(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1Index body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates an Index.</summary>
@@ -16231,7 +16231,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual RemoveDatapointsRequest RemoveDatapoints(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1RemoveDatapointsRequest body, string index)
                 {
-                    return new RemoveDatapointsRequest(service, body, index);
+                    return new RemoveDatapointsRequest(this.service, body, index);
                 }
 
                 /// <summary>Remove Datapoints from an Index.</summary>
@@ -16290,7 +16290,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual UpsertDatapointsRequest UpsertDatapoints(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1UpsertDatapointsRequest body, string index)
                 {
-                    return new UpsertDatapointsRequest(service, body, index);
+                    return new UpsertDatapointsRequest(this.service, body, index);
                 }
 
                 /// <summary>Add/update Datapoints into an Index.</summary>
@@ -16388,7 +16388,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1Artifact body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>Creates an Artifact associated with a MetadataStore.</summary>
@@ -16465,7 +16465,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>Deletes an Artifact.</summary>
@@ -16531,7 +16531,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Retrieves a specific Artifact.</summary>
@@ -16582,7 +16582,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists Artifacts in the MetadataStore.</summary>
@@ -16709,7 +16709,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">Output only. The resource name of the Artifact.</param>
                     public virtual PatchRequest Patch(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1Artifact body, string name)
                     {
-                        return new PatchRequest(service, body, name);
+                        return new PatchRequest(this.service, body, name);
                     }
 
                     /// <summary>Updates a stored Artifact.</summary>
@@ -16789,7 +16789,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// </param>
                     public virtual PurgeRequest Purge(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1PurgeArtifactsRequest body, string parent)
                     {
-                        return new PurgeRequest(service, body, parent);
+                        return new PurgeRequest(this.service, body, parent);
                     }
 
                     /// <summary>Purges Artifacts.</summary>
@@ -16853,7 +16853,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// </param>
                     public virtual QueryArtifactLineageSubgraphRequest QueryArtifactLineageSubgraph(string artifact)
                     {
-                        return new QueryArtifactLineageSubgraphRequest(service, artifact);
+                        return new QueryArtifactLineageSubgraphRequest(this.service, artifact);
                     }
 
                     /// <summary>
@@ -16975,7 +16975,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// </param>
                     public virtual AddContextArtifactsAndExecutionsRequest AddContextArtifactsAndExecutions(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1AddContextArtifactsAndExecutionsRequest body, string context)
                     {
-                        return new AddContextArtifactsAndExecutionsRequest(service, body, context);
+                        return new AddContextArtifactsAndExecutionsRequest(this.service, body, context);
                     }
 
                     /// <summary>
@@ -17043,7 +17043,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// </param>
                     public virtual AddContextChildrenRequest AddContextChildren(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1AddContextChildrenRequest body, string context)
                     {
-                        return new AddContextChildrenRequest(service, body, context);
+                        return new AddContextChildrenRequest(this.service, body, context);
                     }
 
                     /// <summary>
@@ -17107,7 +17107,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1Context body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>Creates a Context associated with a MetadataStore.</summary>
@@ -17184,7 +17184,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>Deletes a stored Context.</summary>
@@ -17264,7 +17264,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Retrieves a specific Context.</summary>
@@ -17315,7 +17315,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists Contexts on the MetadataStore.</summary>
@@ -17446,7 +17446,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">Immutable. The resource name of the Context.</param>
                     public virtual PatchRequest Patch(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1Context body, string name)
                     {
-                        return new PatchRequest(service, body, name);
+                        return new PatchRequest(this.service, body, name);
                     }
 
                     /// <summary>Updates a stored Context.</summary>
@@ -17526,7 +17526,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// </param>
                     public virtual PurgeRequest Purge(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1PurgeContextsRequest body, string parent)
                     {
-                        return new PurgeRequest(service, body, parent);
+                        return new PurgeRequest(this.service, body, parent);
                     }
 
                     /// <summary>Purges Contexts.</summary>
@@ -17590,7 +17590,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// </param>
                     public virtual QueryContextLineageSubgraphRequest QueryContextLineageSubgraph(string context)
                     {
-                        return new QueryContextLineageSubgraphRequest(service, context);
+                        return new QueryContextLineageSubgraphRequest(this.service, context);
                     }
 
                     /// <summary>
@@ -17651,7 +17651,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// </param>
                     public virtual RemoveContextChildrenRequest RemoveContextChildren(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1RemoveContextChildrenRequest body, string context)
                     {
-                        return new RemoveContextChildrenRequest(service, body, context);
+                        return new RemoveContextChildrenRequest(this.service, body, context);
                     }
 
                     /// <summary>
@@ -17735,7 +17735,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// </param>
                     public virtual AddExecutionEventsRequest AddExecutionEvents(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1AddExecutionEventsRequest body, string execution)
                     {
-                        return new AddExecutionEventsRequest(service, body, execution);
+                        return new AddExecutionEventsRequest(this.service, body, execution);
                     }
 
                     /// <summary>
@@ -17798,7 +17798,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1Execution body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>Creates an Execution associated with a MetadataStore.</summary>
@@ -17875,7 +17875,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>Deletes an Execution.</summary>
@@ -17941,7 +17941,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Retrieves a specific Execution.</summary>
@@ -17992,7 +17992,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists Executions in the MetadataStore.</summary>
@@ -18119,7 +18119,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">Output only. The resource name of the Execution.</param>
                     public virtual PatchRequest Patch(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1Execution body, string name)
                     {
-                        return new PatchRequest(service, body, name);
+                        return new PatchRequest(this.service, body, name);
                     }
 
                     /// <summary>Updates a stored Execution.</summary>
@@ -18201,7 +18201,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// </param>
                     public virtual PurgeRequest Purge(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1PurgeExecutionsRequest body, string parent)
                     {
-                        return new PurgeRequest(service, body, parent);
+                        return new PurgeRequest(this.service, body, parent);
                     }
 
                     /// <summary>Purges Executions.</summary>
@@ -18263,7 +18263,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// </param>
                     public virtual QueryExecutionInputsAndOutputsRequest QueryExecutionInputsAndOutputs(string execution)
                     {
-                        return new QueryExecutionInputsAndOutputsRequest(service, execution);
+                        return new QueryExecutionInputsAndOutputsRequest(this.service, execution);
                     }
 
                     /// <summary>
@@ -18337,7 +18337,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1MetadataSchema body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>Creates a MetadataSchema.</summary>
@@ -18415,7 +18415,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Retrieves a specific MetadataSchema.</summary>
@@ -18466,7 +18466,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists MetadataSchemas.</summary>
@@ -18563,7 +18563,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1MetadataStore body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Initializes a MetadataStore, including allocation of resources.</summary>
@@ -18642,7 +18642,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -18707,7 +18707,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Retrieves a specific MetadataStore.</summary>
@@ -18758,7 +18758,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists MetadataStores for a Location.</summary>
@@ -18881,7 +18881,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation resource to be cancelled.</param>
                     public virtual CancelRequest Cancel(string name)
                     {
-                        return new CancelRequest(service, name);
+                        return new CancelRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -18938,7 +18938,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation resource to be deleted.</param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -18990,7 +18990,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation resource.</param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -19041,7 +19041,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation's parent resource.</param>
                     public virtual ListRequest List(string name)
                     {
-                        return new ListRequest(service, name);
+                        return new ListRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -19133,7 +19133,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation resource to wait on.</param>
                     public virtual WaitRequest Wait(string name)
                     {
-                        return new WaitRequest(service, name);
+                        return new WaitRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -19210,7 +19210,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual BatchMigrateRequest BatchMigrate(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1BatchMigrateResourcesRequest body, string parent)
                 {
-                    return new BatchMigrateRequest(service, body, parent);
+                    return new BatchMigrateRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -19276,7 +19276,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual SearchRequest Search(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1SearchMigratableResourcesRequest body, string parent)
                 {
-                    return new SearchRequest(service, body, parent);
+                    return new SearchRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -19379,7 +19379,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation resource to be cancelled.</param>
                     public virtual CancelRequest Cancel(string name)
                     {
-                        return new CancelRequest(service, name);
+                        return new CancelRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -19436,7 +19436,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation resource to be deleted.</param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -19488,7 +19488,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation resource.</param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -19539,7 +19539,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation's parent resource.</param>
                     public virtual ListRequest List(string name)
                     {
-                        return new ListRequest(service, name);
+                        return new ListRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -19631,7 +19631,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation resource to wait on.</param>
                     public virtual WaitRequest Wait(string name)
                     {
-                        return new WaitRequest(service, name);
+                        return new WaitRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -19707,7 +19707,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1ModelDeploymentMonitoringJob body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -19767,7 +19767,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes a ModelDeploymentMonitoringJob.</summary>
@@ -19818,7 +19818,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets a ModelDeploymentMonitoringJob.</summary>
@@ -19869,7 +19869,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists ModelDeploymentMonitoringJobs in a Location.</summary>
@@ -19975,7 +19975,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// <param name="name">Output only. Resource name of a ModelDeploymentMonitoringJob.</param>
                 public virtual PatchRequest Patch(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1ModelDeploymentMonitoringJob body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates a ModelDeploymentMonitoringJob.</summary>
@@ -20062,7 +20062,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual PauseRequest Pause(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1PauseModelDeploymentMonitoringJobRequest body, string name)
                 {
-                    return new PauseRequest(service, body, name);
+                    return new PauseRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -20127,7 +20127,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual ResumeRequest Resume(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1ResumeModelDeploymentMonitoringJobRequest body, string name)
                 {
-                    return new ResumeRequest(service, body, name);
+                    return new ResumeRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -20189,7 +20189,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual SearchModelDeploymentMonitoringStatsAnomaliesRequest SearchModelDeploymentMonitoringStatsAnomalies(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1SearchModelDeploymentMonitoringStatsAnomaliesRequest body, string modelDeploymentMonitoringJob)
                 {
-                    return new SearchModelDeploymentMonitoringStatsAnomaliesRequest(service, body, modelDeploymentMonitoringJob);
+                    return new SearchModelDeploymentMonitoringStatsAnomaliesRequest(this.service, body, modelDeploymentMonitoringJob);
                 }
 
                 /// <summary>Searches Model Monitoring Statistics generated within a given time window.</summary>
@@ -20308,7 +20308,7 @@ namespace Google.Apis.Aiplatform.v1
                         /// <param name="name">The name of the operation resource to be cancelled.</param>
                         public virtual CancelRequest Cancel(string name)
                         {
-                            return new CancelRequest(service, name);
+                            return new CancelRequest(this.service, name);
                         }
 
                         /// <summary>
@@ -20365,7 +20365,7 @@ namespace Google.Apis.Aiplatform.v1
                         /// <param name="name">The name of the operation resource to be deleted.</param>
                         public virtual DeleteRequest Delete(string name)
                         {
-                            return new DeleteRequest(service, name);
+                            return new DeleteRequest(this.service, name);
                         }
 
                         /// <summary>
@@ -20417,7 +20417,7 @@ namespace Google.Apis.Aiplatform.v1
                         /// <param name="name">The name of the operation resource.</param>
                         public virtual GetRequest Get(string name)
                         {
-                            return new GetRequest(service, name);
+                            return new GetRequest(this.service, name);
                         }
 
                         /// <summary>
@@ -20468,7 +20468,7 @@ namespace Google.Apis.Aiplatform.v1
                         /// <param name="name">The name of the operation's parent resource.</param>
                         public virtual ListRequest List(string name)
                         {
-                            return new ListRequest(service, name);
+                            return new ListRequest(this.service, name);
                         }
 
                         /// <summary>
@@ -20560,7 +20560,7 @@ namespace Google.Apis.Aiplatform.v1
                         /// <param name="name">The name of the operation resource to wait on.</param>
                         public virtual WaitRequest Wait(string name)
                         {
-                            return new WaitRequest(service, name);
+                            return new WaitRequest(this.service, name);
                         }
 
                         /// <summary>
@@ -20651,7 +20651,7 @@ namespace Google.Apis.Aiplatform.v1
                         /// </param>
                         public virtual BatchImportRequest BatchImport(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1BatchImportEvaluatedAnnotationsRequest body, string parent)
                         {
-                            return new BatchImportRequest(service, body, parent);
+                            return new BatchImportRequest(this.service, body, parent);
                         }
 
                         /// <summary>Imports a list of externally generated EvaluatedAnnotations.</summary>
@@ -20709,7 +20709,7 @@ namespace Google.Apis.Aiplatform.v1
                         /// </param>
                         public virtual GetRequest Get(string name)
                         {
-                            return new GetRequest(service, name);
+                            return new GetRequest(this.service, name);
                         }
 
                         /// <summary>Gets a ModelEvaluationSlice.</summary>
@@ -20760,7 +20760,7 @@ namespace Google.Apis.Aiplatform.v1
                         /// </param>
                         public virtual ListRequest List(string parent)
                         {
-                            return new ListRequest(service, parent);
+                            return new ListRequest(this.service, parent);
                         }
 
                         /// <summary>Lists ModelEvaluationSlices in a ModelEvaluation.</summary>
@@ -20865,7 +20865,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Gets a ModelEvaluation.</summary>
@@ -20917,7 +20917,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// </param>
                     public virtual ImportRequest Import(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1ImportModelEvaluationRequest body, string parent)
                     {
-                        return new ImportRequest(service, body, parent);
+                        return new ImportRequest(this.service, body, parent);
                     }
 
                     /// <summary>Imports an externally generated ModelEvaluation.</summary>
@@ -20975,7 +20975,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists ModelEvaluations in a Model.</summary>
@@ -21101,7 +21101,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation resource to be cancelled.</param>
                     public virtual CancelRequest Cancel(string name)
                     {
-                        return new CancelRequest(service, name);
+                        return new CancelRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -21158,7 +21158,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation resource to be deleted.</param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -21210,7 +21210,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation resource.</param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -21261,7 +21261,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation's parent resource.</param>
                     public virtual ListRequest List(string name)
                     {
-                        return new ListRequest(service, name);
+                        return new ListRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -21353,7 +21353,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation resource to wait on.</param>
                     public virtual WaitRequest Wait(string name)
                     {
-                        return new WaitRequest(service, name);
+                        return new WaitRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -21432,7 +21432,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual CopyRequest Copy(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1CopyModelRequest body, string parent)
                 {
-                    return new CopyRequest(service, body, parent);
+                    return new CopyRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -21498,7 +21498,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -21556,7 +21556,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual DeleteVersionRequest DeleteVersion(string name)
                 {
-                    return new DeleteVersionRequest(service, name);
+                    return new DeleteVersionRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -21616,7 +21616,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual ExportRequest Export(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1ExportModelRequest body, string name)
                 {
-                    return new ExportRequest(service, body, name);
+                    return new ExportRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -21684,7 +21684,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets a Model.</summary>
@@ -21741,7 +21741,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists Models in a Location.</summary>
@@ -21863,7 +21863,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// <param name="name">Required. The name of the model to list versions for.</param>
                 public virtual ListVersionsRequest ListVersions(string name)
                 {
-                    return new ListVersionsRequest(service, name);
+                    return new ListVersionsRequest(this.service, name);
                 }
 
                 /// <summary>Lists versions of the specified model.</summary>
@@ -21984,7 +21984,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual MergeVersionAliasesRequest MergeVersionAliases(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1MergeVersionAliasesRequest body, string name)
                 {
-                    return new MergeVersionAliasesRequest(service, body, name);
+                    return new MergeVersionAliasesRequest(this.service, body, name);
                 }
 
                 /// <summary>Merges a set of aliases for a Model version.</summary>
@@ -22040,7 +22040,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// <param name="name">The resource name of the Model.</param>
                 public virtual PatchRequest Patch(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1Model body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates a Model.</summary>
@@ -22111,7 +22111,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual UpdateExplanationDatasetRequest UpdateExplanationDataset(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1UpdateExplanationDatasetRequest body, string model)
                 {
-                    return new UpdateExplanationDatasetRequest(service, body, model);
+                    return new UpdateExplanationDatasetRequest(this.service, body, model);
                 }
 
                 /// <summary>Incrementally update the dataset used for an examples model.</summary>
@@ -22170,7 +22170,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual UploadRequest Upload(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1UploadModelRequest body, string parent)
                 {
-                    return new UploadRequest(service, body, parent);
+                    return new UploadRequest(this.service, body, parent);
                 }
 
                 /// <summary>Uploads a Model artifact into Vertex AI.</summary>
@@ -22264,7 +22264,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Gets a NasTrialDetail.</summary>
@@ -22315,7 +22315,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>List top NasTrialDetails of a NasJob.</summary>
@@ -22403,7 +22403,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual CancelRequest Cancel(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1CancelNasJobRequest body, string name)
                 {
-                    return new CancelRequest(service, body, name);
+                    return new CancelRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -22469,7 +22469,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1NasJob body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a NasJob</summary>
@@ -22527,7 +22527,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes a NasJob.</summary>
@@ -22578,7 +22578,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets a NasJob</summary>
@@ -22629,7 +22629,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists NasJobs in a Location.</summary>
@@ -22759,7 +22759,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1NotebookRuntimeTemplate body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a NotebookRuntimeTemplate.</summary>
@@ -22829,7 +22829,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes a NotebookRuntimeTemplate.</summary>
@@ -22880,7 +22880,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets a NotebookRuntimeTemplate.</summary>
@@ -22935,7 +22935,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                 {
-                    return new GetIamPolicyRequest(service, resource);
+                    return new GetIamPolicyRequest(this.service, resource);
                 }
 
                 /// <summary>
@@ -23011,7 +23011,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists NotebookRuntimeTemplates in a Location.</summary>
@@ -23145,7 +23145,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Aiplatform.v1.Data.GoogleIamV1SetIamPolicyRequest body, string resource)
                 {
-                    return new SetIamPolicyRequest(service, body, resource);
+                    return new SetIamPolicyRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -23213,7 +23213,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual TestIamPermissionsRequest TestIamPermissions(string resource)
                 {
-                    return new TestIamPermissionsRequest(service, resource);
+                    return new TestIamPermissionsRequest(this.service, resource);
                 }
 
                 /// <summary>
@@ -23308,7 +23308,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual AssignRequest Assign(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1AssignNotebookRuntimeRequest body, string parent)
                 {
-                    return new AssignRequest(service, body, parent);
+                    return new AssignRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -23370,7 +23370,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes a NotebookRuntime.</summary>
@@ -23423,7 +23423,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets a NotebookRuntime.</summary>
@@ -23475,7 +23475,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists NotebookRuntimes in a Location.</summary>
@@ -23613,7 +23613,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual StartRequest Start(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1StartNotebookRuntimeRequest body, string name)
                 {
-                    return new StartRequest(service, body, name);
+                    return new StartRequest(this.service, body, name);
                 }
 
                 /// <summary>Starts a NotebookRuntime.</summary>
@@ -23694,7 +23694,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// <param name="name">The name of the operation resource to be cancelled.</param>
                 public virtual CancelRequest Cancel(string name)
                 {
-                    return new CancelRequest(service, name);
+                    return new CancelRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -23750,7 +23750,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// <param name="name">The name of the operation resource to be deleted.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -23802,7 +23802,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// <param name="name">The name of the operation resource.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -23853,7 +23853,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// <param name="name">The name of the operation's parent resource.</param>
                 public virtual ListRequest List(string name)
                 {
-                    return new ListRequest(service, name);
+                    return new ListRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -23945,7 +23945,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// <param name="name">The name of the operation resource to wait on.</param>
                 public virtual WaitRequest Wait(string name)
                 {
-                    return new WaitRequest(service, name);
+                    return new WaitRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -24058,7 +24058,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation resource to be cancelled.</param>
                     public virtual CancelRequest Cancel(string name)
                     {
-                        return new CancelRequest(service, name);
+                        return new CancelRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -24115,7 +24115,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation resource to be deleted.</param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -24167,7 +24167,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation resource.</param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -24218,7 +24218,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation's parent resource.</param>
                     public virtual ListRequest List(string name)
                     {
-                        return new ListRequest(service, name);
+                        return new ListRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -24310,7 +24310,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation resource to wait on.</param>
                     public virtual WaitRequest Wait(string name)
                     {
-                        return new WaitRequest(service, name);
+                        return new WaitRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -24392,7 +24392,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual CancelRequest Cancel(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1CancelPipelineJobRequest body, string name)
                 {
-                    return new CancelRequest(service, body, name);
+                    return new CancelRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -24459,7 +24459,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1PipelineJob body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a PipelineJob. A PipelineJob will run immediately when created.</summary>
@@ -24533,7 +24533,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes a PipelineJob.</summary>
@@ -24584,7 +24584,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets a PipelineJob.</summary>
@@ -24635,7 +24635,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists PipelineJobs in a Location.</summary>
@@ -24811,7 +24811,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// </param>
                     public virtual ComputeTokensRequest ComputeTokens(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1ComputeTokensRequest body, string endpoint)
                     {
-                        return new ComputeTokensRequest(service, body, endpoint);
+                        return new ComputeTokensRequest(this.service, body, endpoint);
                     }
 
                     /// <summary>Return a list of tokens based on the input text.</summary>
@@ -24869,7 +24869,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// </param>
                     public virtual CountTokensRequest CountTokens(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1CountTokensRequest body, string endpoint)
                     {
-                        return new CountTokensRequest(service, body, endpoint);
+                        return new CountTokensRequest(this.service, body, endpoint);
                     }
 
                     /// <summary>Perform a token counting.</summary>
@@ -24928,7 +24928,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// </param>
                     public virtual PredictRequest Predict(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1PredictRequest body, string endpoint)
                     {
-                        return new PredictRequest(service, body, endpoint);
+                        return new PredictRequest(this.service, body, endpoint);
                     }
 
                     /// <summary>Perform an online prediction.</summary>
@@ -24991,7 +24991,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// </param>
                     public virtual RawPredictRequest RawPredict(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1RawPredictRequest body, string endpoint)
                     {
-                        return new RawPredictRequest(service, body, endpoint);
+                        return new RawPredictRequest(this.service, body, endpoint);
                     }
 
                     /// <summary>
@@ -25056,7 +25056,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// </param>
                     public virtual ServerStreamingPredictRequest ServerStreamingPredict(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1StreamingPredictRequest body, string endpoint)
                     {
-                        return new ServerStreamingPredictRequest(service, body, endpoint);
+                        return new ServerStreamingPredictRequest(this.service, body, endpoint);
                     }
 
                     /// <summary>
@@ -25158,7 +25158,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation resource to be cancelled.</param>
                     public virtual CancelRequest Cancel(string name)
                     {
-                        return new CancelRequest(service, name);
+                        return new CancelRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -25215,7 +25215,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation resource to be deleted.</param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -25267,7 +25267,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation resource.</param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -25318,7 +25318,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation's parent resource.</param>
                     public virtual ListRequest List(string name)
                     {
-                        return new ListRequest(service, name);
+                        return new ListRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -25410,7 +25410,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation resource to wait on.</param>
                     public virtual WaitRequest Wait(string name)
                     {
-                        return new WaitRequest(service, name);
+                        return new WaitRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -25484,7 +25484,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1Schedule body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a Schedule.</summary>
@@ -25542,7 +25542,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes a Schedule.</summary>
@@ -25593,7 +25593,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets a Schedule.</summary>
@@ -25644,7 +25644,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists Schedules in a Location.</summary>
@@ -25773,7 +25773,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// <param name="name">Immutable. The resource name of the Schedule.</param>
                 public virtual PatchRequest Patch(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1Schedule body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -25851,7 +25851,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual PauseRequest Pause(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1PauseScheduleRequest body, string name)
                 {
-                    return new PauseRequest(service, body, name);
+                    return new PauseRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -25918,7 +25918,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual ResumeRequest Resume(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1ResumeScheduleRequest body, string name)
                 {
-                    return new ResumeRequest(service, body, name);
+                    return new ResumeRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -26022,7 +26022,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation resource to be cancelled.</param>
                     public virtual CancelRequest Cancel(string name)
                     {
-                        return new CancelRequest(service, name);
+                        return new CancelRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -26079,7 +26079,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation resource to be deleted.</param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -26131,7 +26131,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation resource.</param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -26182,7 +26182,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation's parent resource.</param>
                     public virtual ListRequest List(string name)
                     {
-                        return new ListRequest(service, name);
+                        return new ListRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -26274,7 +26274,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation resource to wait on.</param>
                     public virtual WaitRequest Wait(string name)
                     {
-                        return new WaitRequest(service, name);
+                        return new WaitRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -26348,7 +26348,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1SpecialistPool body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a SpecialistPool.</summary>
@@ -26406,7 +26406,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes a SpecialistPool as well as all Specialists in the pool.</summary>
@@ -26472,7 +26472,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets a SpecialistPool.</summary>
@@ -26523,7 +26523,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists SpecialistPools in a Location.</summary>
@@ -26611,7 +26611,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// <param name="name">Required. The resource name of the SpecialistPool.</param>
                 public virtual PatchRequest Patch(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1SpecialistPool body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates a SpecialistPool.</summary>
@@ -26720,7 +26720,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation resource to be cancelled.</param>
                     public virtual CancelRequest Cancel(string name)
                     {
-                        return new CancelRequest(service, name);
+                        return new CancelRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -26777,7 +26777,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation resource to be deleted.</param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -26829,7 +26829,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation resource.</param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -26880,7 +26880,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation's parent resource.</param>
                     public virtual ListRequest List(string name)
                     {
-                        return new ListRequest(service, name);
+                        return new ListRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -26972,7 +26972,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation resource to wait on.</param>
                     public virtual WaitRequest Wait(string name)
                     {
-                        return new WaitRequest(service, name);
+                        return new WaitRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -27085,7 +27085,7 @@ namespace Google.Apis.Aiplatform.v1
                         /// <param name="name">The name of the operation resource to be cancelled.</param>
                         public virtual CancelRequest Cancel(string name)
                         {
-                            return new CancelRequest(service, name);
+                            return new CancelRequest(this.service, name);
                         }
 
                         /// <summary>
@@ -27142,7 +27142,7 @@ namespace Google.Apis.Aiplatform.v1
                         /// <param name="name">The name of the operation resource to be deleted.</param>
                         public virtual DeleteRequest Delete(string name)
                         {
-                            return new DeleteRequest(service, name);
+                            return new DeleteRequest(this.service, name);
                         }
 
                         /// <summary>
@@ -27194,7 +27194,7 @@ namespace Google.Apis.Aiplatform.v1
                         /// <param name="name">The name of the operation resource.</param>
                         public virtual GetRequest Get(string name)
                         {
-                            return new GetRequest(service, name);
+                            return new GetRequest(this.service, name);
                         }
 
                         /// <summary>
@@ -27245,7 +27245,7 @@ namespace Google.Apis.Aiplatform.v1
                         /// <param name="name">The name of the operation's parent resource.</param>
                         public virtual ListRequest List(string name)
                         {
-                            return new ListRequest(service, name);
+                            return new ListRequest(this.service, name);
                         }
 
                         /// <summary>
@@ -27337,7 +27337,7 @@ namespace Google.Apis.Aiplatform.v1
                         /// <param name="name">The name of the operation resource to wait on.</param>
                         public virtual WaitRequest Wait(string name)
                         {
-                            return new WaitRequest(service, name);
+                            return new WaitRequest(this.service, name);
                         }
 
                         /// <summary>
@@ -27414,7 +27414,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// </param>
                     public virtual AddTrialMeasurementRequest AddTrialMeasurement(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1AddTrialMeasurementRequest body, string trialName)
                     {
-                        return new AddTrialMeasurementRequest(service, body, trialName);
+                        return new AddTrialMeasurementRequest(this.service, body, trialName);
                     }
 
                     /// <summary>
@@ -27479,7 +27479,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// </param>
                     public virtual CheckTrialEarlyStoppingStateRequest CheckTrialEarlyStoppingState(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1CheckTrialEarlyStoppingStateRequest body, string trialName)
                     {
-                        return new CheckTrialEarlyStoppingStateRequest(service, body, trialName);
+                        return new CheckTrialEarlyStoppingStateRequest(this.service, body, trialName);
                     }
 
                     /// <summary>
@@ -27541,7 +27541,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// </param>
                     public virtual CompleteRequest Complete(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1CompleteTrialRequest body, string name)
                     {
-                        return new CompleteRequest(service, body, name);
+                        return new CompleteRequest(this.service, body, name);
                     }
 
                     /// <summary>Marks a Trial as complete.</summary>
@@ -27600,7 +27600,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1Trial body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>Adds a user provided Trial to a Study.</summary>
@@ -27658,7 +27658,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>Deletes a Trial.</summary>
@@ -27709,7 +27709,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Gets a Trial.</summary>
@@ -27760,7 +27760,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists the Trials associated with a Study.</summary>
@@ -27843,7 +27843,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="parent">Required. The name of the Study that the optimal Trial belongs to.</param>
                     public virtual ListOptimalTrialsRequest ListOptimalTrials(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1ListOptimalTrialsRequest body, string parent)
                     {
-                        return new ListOptimalTrialsRequest(service, body, parent);
+                        return new ListOptimalTrialsRequest(this.service, body, parent);
                     }
 
                     /// <summary>
@@ -27903,7 +27903,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// </param>
                     public virtual StopRequest Stop(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1StopTrialRequest body, string name)
                     {
-                        return new StopRequest(service, body, name);
+                        return new StopRequest(this.service, body, name);
                     }
 
                     /// <summary>Stops a Trial.</summary>
@@ -27966,7 +27966,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// </param>
                     public virtual SuggestRequest Suggest(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1SuggestTrialsRequest body, string parent)
                     {
-                        return new SuggestRequest(service, body, parent);
+                        return new SuggestRequest(this.service, body, parent);
                     }
 
                     /// <summary>
@@ -28030,7 +28030,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1Study body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a Study. A resource name will be generated after creation of the Study.</summary>
@@ -28088,7 +28088,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes a Study.</summary>
@@ -28139,7 +28139,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets a Study by name.</summary>
@@ -28190,7 +28190,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists all the studies in a region for an associated project.</summary>
@@ -28275,7 +28275,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual LookupRequest Lookup(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1LookupStudyRequest body, string parent)
                 {
-                    return new LookupRequest(service, body, parent);
+                    return new LookupRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -28397,7 +28397,7 @@ namespace Google.Apis.Aiplatform.v1
                         /// <param name="name">The name of the operation resource to be cancelled.</param>
                         public virtual CancelRequest Cancel(string name)
                         {
-                            return new CancelRequest(service, name);
+                            return new CancelRequest(this.service, name);
                         }
 
                         /// <summary>
@@ -28454,7 +28454,7 @@ namespace Google.Apis.Aiplatform.v1
                         /// <param name="name">The name of the operation resource to be deleted.</param>
                         public virtual DeleteRequest Delete(string name)
                         {
-                            return new DeleteRequest(service, name);
+                            return new DeleteRequest(this.service, name);
                         }
 
                         /// <summary>
@@ -28506,7 +28506,7 @@ namespace Google.Apis.Aiplatform.v1
                         /// <param name="name">The name of the operation resource.</param>
                         public virtual GetRequest Get(string name)
                         {
-                            return new GetRequest(service, name);
+                            return new GetRequest(this.service, name);
                         }
 
                         /// <summary>
@@ -28557,7 +28557,7 @@ namespace Google.Apis.Aiplatform.v1
                         /// <param name="name">The name of the operation's parent resource.</param>
                         public virtual ListRequest List(string name)
                         {
-                            return new ListRequest(service, name);
+                            return new ListRequest(this.service, name);
                         }
 
                         /// <summary>
@@ -28649,7 +28649,7 @@ namespace Google.Apis.Aiplatform.v1
                         /// <param name="name">The name of the operation resource to wait on.</param>
                         public virtual WaitRequest Wait(string name)
                         {
-                            return new WaitRequest(service, name);
+                            return new WaitRequest(this.service, name);
                         }
 
                         /// <summary>
@@ -28763,7 +28763,7 @@ namespace Google.Apis.Aiplatform.v1
                             /// <param name="name">The name of the operation resource to be cancelled.</param>
                             public virtual CancelRequest Cancel(string name)
                             {
-                                return new CancelRequest(service, name);
+                                return new CancelRequest(this.service, name);
                             }
 
                             /// <summary>
@@ -28820,7 +28820,7 @@ namespace Google.Apis.Aiplatform.v1
                             /// <param name="name">The name of the operation resource to be deleted.</param>
                             public virtual DeleteRequest Delete(string name)
                             {
-                                return new DeleteRequest(service, name);
+                                return new DeleteRequest(this.service, name);
                             }
 
                             /// <summary>
@@ -28872,7 +28872,7 @@ namespace Google.Apis.Aiplatform.v1
                             /// <param name="name">The name of the operation resource.</param>
                             public virtual GetRequest Get(string name)
                             {
-                                return new GetRequest(service, name);
+                                return new GetRequest(this.service, name);
                             }
 
                             /// <summary>
@@ -28923,7 +28923,7 @@ namespace Google.Apis.Aiplatform.v1
                             /// <param name="name">The name of the operation's parent resource.</param>
                             public virtual ListRequest List(string name)
                             {
-                                return new ListRequest(service, name);
+                                return new ListRequest(this.service, name);
                             }
 
                             /// <summary>
@@ -29016,7 +29016,7 @@ namespace Google.Apis.Aiplatform.v1
                             /// <param name="name">The name of the operation resource to wait on.</param>
                             public virtual WaitRequest Wait(string name)
                             {
-                                return new WaitRequest(service, name);
+                                return new WaitRequest(this.service, name);
                             }
 
                             /// <summary>
@@ -29131,7 +29131,7 @@ namespace Google.Apis.Aiplatform.v1
                                 /// <param name="name">The name of the operation resource to be cancelled.</param>
                                 public virtual CancelRequest Cancel(string name)
                                 {
-                                    return new CancelRequest(service, name);
+                                    return new CancelRequest(this.service, name);
                                 }
 
                                 /// <summary>
@@ -29189,7 +29189,7 @@ namespace Google.Apis.Aiplatform.v1
                                 /// <param name="name">The name of the operation resource to be deleted.</param>
                                 public virtual DeleteRequest Delete(string name)
                                 {
-                                    return new DeleteRequest(service, name);
+                                    return new DeleteRequest(this.service, name);
                                 }
 
                                 /// <summary>
@@ -29241,7 +29241,7 @@ namespace Google.Apis.Aiplatform.v1
                                 /// <param name="name">The name of the operation resource.</param>
                                 public virtual GetRequest Get(string name)
                                 {
-                                    return new GetRequest(service, name);
+                                    return new GetRequest(this.service, name);
                                 }
 
                                 /// <summary>
@@ -29292,7 +29292,7 @@ namespace Google.Apis.Aiplatform.v1
                                 /// <param name="name">The name of the operation's parent resource.</param>
                                 public virtual ListRequest List(string name)
                                 {
-                                    return new ListRequest(service, name);
+                                    return new ListRequest(this.service, name);
                                 }
 
                                 /// <summary>
@@ -29385,7 +29385,7 @@ namespace Google.Apis.Aiplatform.v1
                                 /// <param name="name">The name of the operation resource to wait on.</param>
                                 public virtual WaitRequest Wait(string name)
                                 {
-                                    return new WaitRequest(service, name);
+                                    return new WaitRequest(this.service, name);
                                 }
 
                                 /// <summary>
@@ -29467,7 +29467,7 @@ namespace Google.Apis.Aiplatform.v1
                             /// <param name="runsId"><c>null</c></param>
                             public virtual BatchCreateRequest BatchCreate(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1BatchCreateTensorboardTimeSeriesRequest body, string parent, string runsId)
                             {
-                                return new BatchCreateRequest(service, body, parent, runsId);
+                                return new BatchCreateRequest(this.service, body, parent, runsId);
                             }
 
                             /// <summary>
@@ -29552,7 +29552,7 @@ namespace Google.Apis.Aiplatform.v1
                             /// <param name="runsId"><c>null</c></param>
                             public virtual BatchReadRequest BatchRead(string tensorboard, string experimentsId, string runsId)
                             {
-                                return new BatchReadRequest(service, tensorboard, experimentsId, runsId);
+                                return new BatchReadRequest(this.service, tensorboard, experimentsId, runsId);
                             }
 
                             /// <summary>
@@ -29652,7 +29652,7 @@ namespace Google.Apis.Aiplatform.v1
                             /// </param>
                             public virtual CreateRequest Create(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1TensorboardTimeSeries body, string parent)
                             {
-                                return new CreateRequest(service, body, parent);
+                                return new CreateRequest(this.service, body, parent);
                             }
 
                             /// <summary>Creates a TensorboardTimeSeries.</summary>
@@ -29727,7 +29727,7 @@ namespace Google.Apis.Aiplatform.v1
                             /// </param>
                             public virtual DeleteRequest Delete(string name)
                             {
-                                return new DeleteRequest(service, name);
+                                return new DeleteRequest(this.service, name);
                             }
 
                             /// <summary>Deletes a TensorboardTimeSeries.</summary>
@@ -29781,7 +29781,7 @@ namespace Google.Apis.Aiplatform.v1
                             /// </param>
                             public virtual ExportTensorboardTimeSeriesRequest ExportTensorboardTimeSeries(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1ExportTensorboardTimeSeriesDataRequest body, string tensorboardTimeSeries)
                             {
-                                return new ExportTensorboardTimeSeriesRequest(service, body, tensorboardTimeSeries);
+                                return new ExportTensorboardTimeSeriesRequest(this.service, body, tensorboardTimeSeries);
                             }
 
                             /// <summary>
@@ -29842,7 +29842,7 @@ namespace Google.Apis.Aiplatform.v1
                             /// </param>
                             public virtual GetRequest Get(string name)
                             {
-                                return new GetRequest(service, name);
+                                return new GetRequest(this.service, name);
                             }
 
                             /// <summary>Gets a TensorboardTimeSeries.</summary>
@@ -29893,7 +29893,7 @@ namespace Google.Apis.Aiplatform.v1
                             /// </param>
                             public virtual ListRequest List(string parent)
                             {
-                                return new ListRequest(service, parent);
+                                return new ListRequest(this.service, parent);
                             }
 
                             /// <summary>Lists TensorboardTimeSeries in a Location.</summary>
@@ -30012,7 +30012,7 @@ namespace Google.Apis.Aiplatform.v1
                             /// <param name="name">Output only. Name of the TensorboardTimeSeries.</param>
                             public virtual PatchRequest Patch(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1TensorboardTimeSeries body, string name)
                             {
-                                return new PatchRequest(service, body, name);
+                                return new PatchRequest(this.service, body, name);
                             }
 
                             /// <summary>Updates a TensorboardTimeSeries.</summary>
@@ -30090,7 +30090,7 @@ namespace Google.Apis.Aiplatform.v1
                             /// </param>
                             public virtual ReadRequest Read(string tensorboardTimeSeries)
                             {
-                                return new ReadRequest(service, tensorboardTimeSeries);
+                                return new ReadRequest(this.service, tensorboardTimeSeries);
                             }
 
                             /// <summary>
@@ -30179,7 +30179,7 @@ namespace Google.Apis.Aiplatform.v1
                             /// </param>
                             public virtual ReadBlobDataRequest ReadBlobData(string timeSeries)
                             {
-                                return new ReadBlobDataRequest(service, timeSeries);
+                                return new ReadBlobDataRequest(this.service, timeSeries);
                             }
 
                             /// <summary>
@@ -30250,7 +30250,7 @@ namespace Google.Apis.Aiplatform.v1
                         /// </param>
                         public virtual BatchCreateRequest BatchCreate(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1BatchCreateTensorboardRunsRequest body, string parent)
                         {
-                            return new BatchCreateRequest(service, body, parent);
+                            return new BatchCreateRequest(this.service, body, parent);
                         }
 
                         /// <summary>Batch create TensorboardRuns.</summary>
@@ -30312,7 +30312,7 @@ namespace Google.Apis.Aiplatform.v1
                         /// </param>
                         public virtual CreateRequest Create(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1TensorboardRun body, string parent)
                         {
-                            return new CreateRequest(service, body, parent);
+                            return new CreateRequest(this.service, body, parent);
                         }
 
                         /// <summary>Creates a TensorboardRun.</summary>
@@ -30387,7 +30387,7 @@ namespace Google.Apis.Aiplatform.v1
                         /// </param>
                         public virtual DeleteRequest Delete(string name)
                         {
-                            return new DeleteRequest(service, name);
+                            return new DeleteRequest(this.service, name);
                         }
 
                         /// <summary>Deletes a TensorboardRun.</summary>
@@ -30438,7 +30438,7 @@ namespace Google.Apis.Aiplatform.v1
                         /// </param>
                         public virtual GetRequest Get(string name)
                         {
-                            return new GetRequest(service, name);
+                            return new GetRequest(this.service, name);
                         }
 
                         /// <summary>Gets a TensorboardRun.</summary>
@@ -30489,7 +30489,7 @@ namespace Google.Apis.Aiplatform.v1
                         /// </param>
                         public virtual ListRequest List(string parent)
                         {
-                            return new ListRequest(service, parent);
+                            return new ListRequest(this.service, parent);
                         }
 
                         /// <summary>Lists TensorboardRuns in a Location.</summary>
@@ -30611,7 +30611,7 @@ namespace Google.Apis.Aiplatform.v1
                         /// </param>
                         public virtual PatchRequest Patch(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1TensorboardRun body, string name)
                         {
-                            return new PatchRequest(service, body, name);
+                            return new PatchRequest(this.service, body, name);
                         }
 
                         /// <summary>Updates a TensorboardRun.</summary>
@@ -30691,7 +30691,7 @@ namespace Google.Apis.Aiplatform.v1
                         /// </param>
                         public virtual WriteRequest Write(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1WriteTensorboardRunDataRequest body, string tensorboardRun)
                         {
-                            return new WriteRequest(service, body, tensorboardRun);
+                            return new WriteRequest(this.service, body, tensorboardRun);
                         }
 
                         /// <summary>
@@ -30754,7 +30754,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1TensorboardExperiment body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>Creates a TensorboardExperiment.</summary>
@@ -30828,7 +30828,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>Deletes a TensorboardExperiment.</summary>
@@ -30879,7 +30879,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Gets a TensorboardExperiment.</summary>
@@ -30930,7 +30930,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists TensorboardExperiments in a Location.</summary>
@@ -31051,7 +31051,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1TensorboardExperiment body, string name)
                     {
-                        return new PatchRequest(service, body, name);
+                        return new PatchRequest(this.service, body, name);
                     }
 
                     /// <summary>Updates a TensorboardExperiment.</summary>
@@ -31131,7 +31131,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// </param>
                     public virtual WriteRequest Write(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1WriteTensorboardExperimentDataRequest body, string tensorboardExperiment)
                     {
-                        return new WriteRequest(service, body, tensorboardExperiment);
+                        return new WriteRequest(this.service, body, tensorboardExperiment);
                     }
 
                     /// <summary>
@@ -31215,7 +31215,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation resource to be cancelled.</param>
                     public virtual CancelRequest Cancel(string name)
                     {
-                        return new CancelRequest(service, name);
+                        return new CancelRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -31272,7 +31272,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation resource to be deleted.</param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -31324,7 +31324,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation resource.</param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -31375,7 +31375,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation's parent resource.</param>
                     public virtual ListRequest List(string name)
                     {
-                        return new ListRequest(service, name);
+                        return new ListRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -31467,7 +31467,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation resource to wait on.</param>
                     public virtual WaitRequest Wait(string name)
                     {
-                        return new WaitRequest(service, name);
+                        return new WaitRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -31541,7 +31541,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1Tensorboard body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a Tensorboard.</summary>
@@ -31599,7 +31599,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes a Tensorboard.</summary>
@@ -31650,7 +31650,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets a Tensorboard.</summary>
@@ -31701,7 +31701,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists Tensorboards in a Location.</summary>
@@ -31821,7 +31821,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1Tensorboard body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates a Tensorboard.</summary>
@@ -31896,7 +31896,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual ReadSizeRequest ReadSize(string tensorboard)
                 {
-                    return new ReadSizeRequest(service, tensorboard);
+                    return new ReadSizeRequest(this.service, tensorboard);
                 }
 
                 /// <summary>Returns the storage size for a given TensorBoard instance.</summary>
@@ -31947,7 +31947,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual ReadUsageRequest ReadUsage(string tensorboard)
                 {
-                    return new ReadUsageRequest(service, tensorboard);
+                    return new ReadUsageRequest(this.service, tensorboard);
                 }
 
                 /// <summary>Returns a list of monthly active users for a given TensorBoard instance.</summary>
@@ -32039,7 +32039,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation resource to be cancelled.</param>
                     public virtual CancelRequest Cancel(string name)
                     {
-                        return new CancelRequest(service, name);
+                        return new CancelRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -32096,7 +32096,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation resource to be deleted.</param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -32148,7 +32148,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation resource.</param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -32199,7 +32199,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation's parent resource.</param>
                     public virtual ListRequest List(string name)
                     {
-                        return new ListRequest(service, name);
+                        return new ListRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -32291,7 +32291,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <param name="name">The name of the operation resource to wait on.</param>
                     public virtual WaitRequest Wait(string name)
                     {
-                        return new WaitRequest(service, name);
+                        return new WaitRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -32373,7 +32373,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual CancelRequest Cancel(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1CancelTrainingPipelineRequest body, string name)
                 {
-                    return new CancelRequest(service, body, name);
+                    return new CancelRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -32442,7 +32442,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1TrainingPipeline body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -32502,7 +32502,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes a TrainingPipeline.</summary>
@@ -32553,7 +32553,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets a TrainingPipeline.</summary>
@@ -32604,7 +32604,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists TrainingPipelines in a Location.</summary>
@@ -32716,7 +32716,7 @@ namespace Google.Apis.Aiplatform.v1
             /// <param name="name">Resource name for the location.</param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets information about a location.</summary>
@@ -32761,7 +32761,7 @@ namespace Google.Apis.Aiplatform.v1
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
             {
-                return new ListRequest(service, name);
+                return new ListRequest(this.service, name);
             }
 
             /// <summary>Lists information about the supported locations for this service.</summary>
@@ -32887,7 +32887,7 @@ namespace Google.Apis.Aiplatform.v1
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets a Model Garden publisher model.</summary>
@@ -33164,8 +33164,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -33240,8 +33240,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
     }
 
@@ -33281,8 +33281,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -33336,8 +33336,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
     }
 
@@ -33377,8 +33377,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Description of the Artifact</summary>
@@ -33473,8 +33473,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -33930,8 +33930,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -33998,8 +33998,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -34159,8 +34159,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. The detailed state of the job.</summary>
@@ -34207,8 +34207,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -34463,8 +34463,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -34844,8 +34844,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Description of the Context</summary>
@@ -34939,8 +34939,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
     }
 
@@ -35384,8 +35384,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -35438,8 +35438,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -35500,8 +35500,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. The detailed state of the job.</summary>
@@ -35541,8 +35541,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -35701,8 +35701,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -35766,8 +35766,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
     }
 
@@ -35854,8 +35854,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. Estimated cost(in US dollars) that the DataLabelingJob has incurred to date.</summary>
@@ -35977,8 +35977,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -36021,8 +36021,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -36133,8 +36133,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
     }
 
@@ -36178,8 +36178,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -36225,8 +36225,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
     }
 
@@ -36566,8 +36566,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -36671,8 +36671,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? IndexSyncTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(IndexSyncTimeRaw);
-            set => IndexSyncTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(IndexSyncTimeRaw);
+            set => IndexSyncTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -36790,8 +36790,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -36989,8 +36989,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -37111,8 +37111,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
     }
 
@@ -37173,8 +37173,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Optional. Description of the EntityType.</summary>
@@ -37259,8 +37259,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
     }
 
@@ -37448,8 +37448,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EventTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EventTimeRaw);
-            set => EventTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EventTimeRaw);
+            set => EventTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. The relative resource name of the Execution in the Event.</summary>
@@ -37603,8 +37603,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Description of the Execution</summary>
@@ -37699,8 +37699,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
     }
 
@@ -38319,8 +38319,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _startTimeRaw;
@@ -38359,8 +38359,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -38409,8 +38409,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? SnapshotTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(SnapshotTimeRaw);
-            set => SnapshotTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(SnapshotTimeRaw);
+            set => SnapshotTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _startTimeRaw;
@@ -38449,8 +38449,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -38666,8 +38666,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Description of the Feature.</summary>
@@ -38753,8 +38753,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Immutable. Only applicable for Vertex AI Feature Store (Legacy). Type of Feature value.</summary>
@@ -38813,8 +38813,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Optional. Description of the FeatureGroup.</summary>
@@ -38878,8 +38878,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
     }
 
@@ -39003,8 +39003,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -39069,8 +39069,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
     }
 
@@ -39193,8 +39193,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -39243,8 +39243,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -39385,8 +39385,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? GenerateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(GenerateTimeRaw);
-            set => GenerateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(GenerateTimeRaw);
+            set => GenerateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -39438,8 +39438,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -39514,8 +39514,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
     }
 
@@ -39604,8 +39604,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. Final status of the FeatureViewSync.</summary>
@@ -39681,8 +39681,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -39770,8 +39770,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
     }
 
@@ -40234,8 +40234,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -40281,8 +40281,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -40328,8 +40328,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -40382,8 +40382,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. Only populated when job's state is JOB_STATE_FAILED or JOB_STATE_CANCELLED.</summary>
@@ -40453,8 +40453,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. The detailed state of the job.</summary>
@@ -40508,8 +40508,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -40720,8 +40720,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? FeatureTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(FeatureTimeRaw);
-            set => FeatureTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(FeatureTimeRaw);
+            set => FeatureTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Source column that holds the Feature timestamp for all Feature values in each entity.</summary>
@@ -40840,8 +40840,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -40954,8 +40954,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
     }
 
@@ -41105,8 +41105,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. The indexes deployed in this endpoint.</summary>
@@ -41224,8 +41224,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
     }
 
@@ -42381,8 +42381,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Description of the Metadata Schema</summary>
@@ -42456,8 +42456,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Description of the MetadataStore.</summary>
@@ -42512,8 +42512,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -42586,8 +42586,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LastMigrateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastMigrateTimeRaw);
-            set => LastMigrateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastMigrateTimeRaw);
+            set => LastMigrateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _lastUpdateTimeRaw;
@@ -42625,8 +42625,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LastUpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastUpdateTimeRaw);
-            set => LastUpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastUpdateTimeRaw);
+            set => LastUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. Represents one Version in ml.googleapis.com.</summary>
@@ -42942,8 +42942,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -43142,8 +43142,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -43191,8 +43191,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? VersionCreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(VersionCreateTimeRaw);
-            set => VersionCreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(VersionCreateTimeRaw);
+            set => VersionCreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The description of this version.</summary>
@@ -43242,8 +43242,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? VersionUpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(VersionUpdateTimeRaw);
-            set => VersionUpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(VersionUpdateTimeRaw);
+            set => VersionUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
     }
 
@@ -43478,8 +43478,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -43597,8 +43597,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? NextScheduleTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(NextScheduleTimeRaw);
-            set => NextScheduleTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(NextScheduleTimeRaw);
+            set => NextScheduleTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -43665,8 +43665,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -43709,8 +43709,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? RunTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(RunTimeRaw);
-            set => RunTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(RunTimeRaw);
+            set => RunTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The status of the most recent monitoring pipeline.</summary>
@@ -43813,8 +43813,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -43939,8 +43939,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -44519,8 +44519,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -44579,8 +44579,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. Only populated when job's state is JOB_STATE_FAILED or JOB_STATE_CANCELLED.</summary>
@@ -44643,8 +44643,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. The detailed state of the job.</summary>
@@ -44684,8 +44684,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -44870,8 +44870,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. The final measurement containing the objective value.</summary>
@@ -44915,8 +44915,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. The detailed state of the NasTrial.</summary>
@@ -45173,8 +45173,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The description of the NotebookRuntime.</summary>
@@ -45228,8 +45228,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ExpirationTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpirationTimeRaw);
-            set => ExpirationTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpirationTimeRaw);
+            set => ExpirationTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. The health state of the NotebookRuntime.</summary>
@@ -45312,8 +45312,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. The VM os image version of NotebookRuntime.</summary>
@@ -45363,8 +45363,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -45472,8 +45472,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
     }
 
@@ -45557,8 +45557,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -45608,8 +45608,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -45713,8 +45713,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. The detailed state of the job.</summary>
@@ -45769,8 +45769,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -45898,8 +45898,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _endTimeRaw;
@@ -45935,8 +45935,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -46008,8 +46008,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. State of the task.</summary>
@@ -46087,8 +46087,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -47242,8 +47242,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -47315,8 +47315,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
     }
 
@@ -47392,8 +47392,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -47450,8 +47450,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _lastPauseTimeRaw;
@@ -47487,8 +47487,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LastPauseTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastPauseTimeRaw);
-            set => LastPauseTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastPauseTimeRaw);
+            set => LastPauseTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _lastResumeTimeRaw;
@@ -47528,8 +47528,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LastResumeTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastResumeTimeRaw);
-            set => LastResumeTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastResumeTimeRaw);
+            set => LastResumeTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -47597,8 +47597,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? NextRunTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(NextRunTimeRaw);
-            set => NextRunTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(NextRunTimeRaw);
+            set => NextRunTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _startTimeRaw;
@@ -47637,8 +47637,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. The number of runs started by this schedule.</summary>
@@ -47682,8 +47682,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -47732,8 +47732,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ScheduledRunTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ScheduledRunTimeRaw);
-            set => ScheduledRunTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ScheduledRunTimeRaw);
+            set => ScheduledRunTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -51906,8 +51906,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -51968,8 +51968,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -52258,8 +52258,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Required. Describes the Study, default value is empty string.</summary>
@@ -52787,8 +52787,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Counts the wallclock time passed since the creation of this Study.</summary>
@@ -52897,8 +52897,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _startTimeRaw;
@@ -52934,8 +52934,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The state of the Study.</summary>
@@ -53095,8 +53095,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Description of this Tensorboard.</summary>
@@ -53182,8 +53182,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
     }
 
@@ -53260,8 +53260,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Description of this TensorboardExperiment.</summary>
@@ -53334,8 +53334,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
     }
 
@@ -53378,8 +53378,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Description of this TensorboardRun.</summary>
@@ -53453,8 +53453,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
     }
 
@@ -53512,8 +53512,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Description of this TensorboardTimeSeries.</summary>
@@ -53582,8 +53582,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Required. Immutable. Type of TensorboardTimeSeries value.</summary>
@@ -53638,8 +53638,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? MaxWallTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(MaxWallTimeRaw);
-            set => MaxWallTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(MaxWallTimeRaw);
+            set => MaxWallTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -53740,8 +53740,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? WallTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(WallTimeRaw);
-            set => WallTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(WallTimeRaw);
+            set => WallTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -53852,8 +53852,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Required. The user-defined name of this TrainingPipeline.</summary>
@@ -53904,8 +53904,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -54002,8 +54002,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. The detailed state of the pipeline.</summary>
@@ -54068,8 +54068,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -54131,8 +54131,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. The final measurement containing the objective value.</summary>
@@ -54198,8 +54198,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. The detailed state of the Trial.</summary>
@@ -55227,8 +55227,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _startTimeRaw;
@@ -55267,8 +55267,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>

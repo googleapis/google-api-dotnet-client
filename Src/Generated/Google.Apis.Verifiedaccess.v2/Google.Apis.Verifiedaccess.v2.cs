@@ -272,7 +272,7 @@ namespace Google.Apis.Verifiedaccess.v2
         /// <param name="body">The body of the request.</param>
         public virtual GenerateRequest Generate(Google.Apis.Verifiedaccess.v2.Data.Empty body)
         {
-            return new GenerateRequest(service, body);
+            return new GenerateRequest(this.service, body);
         }
 
         /// <summary>Generates a new challenge.</summary>
@@ -311,7 +311,7 @@ namespace Google.Apis.Verifiedaccess.v2
         /// <param name="body">The body of the request.</param>
         public virtual VerifyRequest Verify(Google.Apis.Verifiedaccess.v2.Data.VerifyChallengeResponseRequest body)
         {
-            return new VerifyRequest(service, body);
+            return new VerifyRequest(this.service, body);
         }
 
         /// <summary>Verifies the challenge response.</summary>

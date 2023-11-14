@@ -317,7 +317,7 @@ namespace Google.Apis.RealTimeBidding.v1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>
@@ -475,7 +475,7 @@ namespace Google.Apis.RealTimeBidding.v1
             /// </param>
             public virtual WatchRequest Watch(Google.Apis.RealTimeBidding.v1.Data.WatchCreativesRequest body, string parent)
             {
-                return new WatchRequest(service, body, parent);
+                return new WatchRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -555,7 +555,7 @@ namespace Google.Apis.RealTimeBidding.v1
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets a bidder endpoint by its name.</summary>
@@ -605,7 +605,7 @@ namespace Google.Apis.RealTimeBidding.v1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists all the bidder's endpoints.</summary>
@@ -687,7 +687,7 @@ namespace Google.Apis.RealTimeBidding.v1
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.RealTimeBidding.v1.Data.Endpoint body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>Updates a bidder's endpoint.</summary>
@@ -777,7 +777,7 @@ namespace Google.Apis.RealTimeBidding.v1
             /// </param>
             public virtual ActivateRequest Activate(Google.Apis.RealTimeBidding.v1.Data.ActivatePretargetingConfigRequest body, string name)
             {
-                return new ActivateRequest(service, body, name);
+                return new ActivateRequest(this.service, body, name);
             }
 
             /// <summary>Activates a pretargeting configuration.</summary>
@@ -836,7 +836,7 @@ namespace Google.Apis.RealTimeBidding.v1
             /// </param>
             public virtual AddTargetedAppsRequest AddTargetedApps(Google.Apis.RealTimeBidding.v1.Data.AddTargetedAppsRequest body, string pretargetingConfig)
             {
-                return new AddTargetedAppsRequest(service, body, pretargetingConfig);
+                return new AddTargetedAppsRequest(this.service, body, pretargetingConfig);
             }
 
             /// <summary>Adds targeted apps to the pretargeting configuration.</summary>
@@ -895,7 +895,7 @@ namespace Google.Apis.RealTimeBidding.v1
             /// </param>
             public virtual AddTargetedPublishersRequest AddTargetedPublishers(Google.Apis.RealTimeBidding.v1.Data.AddTargetedPublishersRequest body, string pretargetingConfig)
             {
-                return new AddTargetedPublishersRequest(service, body, pretargetingConfig);
+                return new AddTargetedPublishersRequest(this.service, body, pretargetingConfig);
             }
 
             /// <summary>Adds targeted publishers to the pretargeting config.</summary>
@@ -954,7 +954,7 @@ namespace Google.Apis.RealTimeBidding.v1
             /// </param>
             public virtual AddTargetedSitesRequest AddTargetedSites(Google.Apis.RealTimeBidding.v1.Data.AddTargetedSitesRequest body, string pretargetingConfig)
             {
-                return new AddTargetedSitesRequest(service, body, pretargetingConfig);
+                return new AddTargetedSitesRequest(this.service, body, pretargetingConfig);
             }
 
             /// <summary>Adds targeted sites to the pretargeting configuration.</summary>
@@ -1017,7 +1017,7 @@ namespace Google.Apis.RealTimeBidding.v1
             /// </param>
             public virtual CreateRequest Create(Google.Apis.RealTimeBidding.v1.Data.PretargetingConfig body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -1079,7 +1079,7 @@ namespace Google.Apis.RealTimeBidding.v1
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>Deletes a pretargeting configuration.</summary>
@@ -1130,7 +1130,7 @@ namespace Google.Apis.RealTimeBidding.v1
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets a pretargeting configuration.</summary>
@@ -1181,7 +1181,7 @@ namespace Google.Apis.RealTimeBidding.v1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists all pretargeting configurations for a single bidder.</summary>
@@ -1263,7 +1263,7 @@ namespace Google.Apis.RealTimeBidding.v1
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.RealTimeBidding.v1.Data.PretargetingConfig body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>Updates a pretargeting configuration.</summary>
@@ -1334,7 +1334,7 @@ namespace Google.Apis.RealTimeBidding.v1
             /// </param>
             public virtual RemoveTargetedAppsRequest RemoveTargetedApps(Google.Apis.RealTimeBidding.v1.Data.RemoveTargetedAppsRequest body, string pretargetingConfig)
             {
-                return new RemoveTargetedAppsRequest(service, body, pretargetingConfig);
+                return new RemoveTargetedAppsRequest(this.service, body, pretargetingConfig);
             }
 
             /// <summary>Removes targeted apps from the pretargeting configuration.</summary>
@@ -1393,7 +1393,7 @@ namespace Google.Apis.RealTimeBidding.v1
             /// </param>
             public virtual RemoveTargetedPublishersRequest RemoveTargetedPublishers(Google.Apis.RealTimeBidding.v1.Data.RemoveTargetedPublishersRequest body, string pretargetingConfig)
             {
-                return new RemoveTargetedPublishersRequest(service, body, pretargetingConfig);
+                return new RemoveTargetedPublishersRequest(this.service, body, pretargetingConfig);
             }
 
             /// <summary>Removes targeted publishers from the pretargeting config.</summary>
@@ -1452,7 +1452,7 @@ namespace Google.Apis.RealTimeBidding.v1
             /// </param>
             public virtual RemoveTargetedSitesRequest RemoveTargetedSites(Google.Apis.RealTimeBidding.v1.Data.RemoveTargetedSitesRequest body, string pretargetingConfig)
             {
-                return new RemoveTargetedSitesRequest(service, body, pretargetingConfig);
+                return new RemoveTargetedSitesRequest(this.service, body, pretargetingConfig);
             }
 
             /// <summary>Removes targeted sites from the pretargeting configuration.</summary>
@@ -1511,7 +1511,7 @@ namespace Google.Apis.RealTimeBidding.v1
             /// </param>
             public virtual SuspendRequest Suspend(Google.Apis.RealTimeBidding.v1.Data.SuspendPretargetingConfigRequest body, string name)
             {
-                return new SuspendRequest(service, body, name);
+                return new SuspendRequest(this.service, body, name);
             }
 
             /// <summary>Suspends a pretargeting configuration.</summary>
@@ -1588,7 +1588,7 @@ namespace Google.Apis.RealTimeBidding.v1
             /// </param>
             public virtual BatchApproveRequest BatchApprove(Google.Apis.RealTimeBidding.v1.Data.BatchApprovePublisherConnectionsRequest body, string parent)
             {
-                return new BatchApproveRequest(service, body, parent);
+                return new BatchApproveRequest(this.service, body, parent);
             }
 
             /// <summary>Batch approves multiple publisher connections.</summary>
@@ -1647,7 +1647,7 @@ namespace Google.Apis.RealTimeBidding.v1
             /// </param>
             public virtual BatchRejectRequest BatchReject(Google.Apis.RealTimeBidding.v1.Data.BatchRejectPublisherConnectionsRequest body, string parent)
             {
-                return new BatchRejectRequest(service, body, parent);
+                return new BatchRejectRequest(this.service, body, parent);
             }
 
             /// <summary>Batch rejects multiple publisher connections.</summary>
@@ -1706,7 +1706,7 @@ namespace Google.Apis.RealTimeBidding.v1
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets a publisher connection.</summary>
@@ -1758,7 +1758,7 @@ namespace Google.Apis.RealTimeBidding.v1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists publisher connections for a given bidder.</summary>
@@ -1872,7 +1872,7 @@ namespace Google.Apis.RealTimeBidding.v1
         /// <param name="name">Required. Name of the bidder to get. Format: `bidders/{bidderAccountId}`</param>
         public virtual GetRequest Get(string name)
         {
-            return new GetRequest(service, name);
+            return new GetRequest(this.service, name);
         }
 
         /// <summary>Gets a bidder account by its name.</summary>
@@ -1916,7 +1916,7 @@ namespace Google.Apis.RealTimeBidding.v1
         /// <summary>Lists all the bidder accounts that belong to the caller.</summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>Lists all the bidder accounts that belong to the caller.</summary>
@@ -2018,7 +2018,7 @@ namespace Google.Apis.RealTimeBidding.v1
             /// </param>
             public virtual CreateRequest Create(Google.Apis.RealTimeBidding.v1.Data.Creative body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>Creates a creative.</summary>
@@ -2075,7 +2075,7 @@ namespace Google.Apis.RealTimeBidding.v1
             /// <param name="name">Required. Name of the creative to retrieve. See creative.name.</param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets a creative.</summary>
@@ -2175,7 +2175,7 @@ namespace Google.Apis.RealTimeBidding.v1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>
@@ -2329,7 +2329,7 @@ namespace Google.Apis.RealTimeBidding.v1
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.RealTimeBidding.v1.Data.Creative body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>Updates a creative.</summary>
@@ -2418,7 +2418,7 @@ namespace Google.Apis.RealTimeBidding.v1
             /// <param name="name">Required. The name of the user list to close. See UserList.name</param>
             public virtual CloseRequest Close(Google.Apis.RealTimeBidding.v1.Data.CloseUserListRequest body, string name)
             {
-                return new CloseRequest(service, body, name);
+                return new CloseRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -2478,7 +2478,7 @@ namespace Google.Apis.RealTimeBidding.v1
             /// </param>
             public virtual CreateRequest Create(Google.Apis.RealTimeBidding.v1.Data.UserList body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>Creates a new user list.</summary>
@@ -2535,7 +2535,7 @@ namespace Google.Apis.RealTimeBidding.v1
             /// <param name="name">Required. The name of the user list to be retrieved. See UserList.name.</param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets a user list by its name.</summary>
@@ -2592,7 +2592,7 @@ namespace Google.Apis.RealTimeBidding.v1
             /// </param>
             public virtual GetRemarketingTagRequest GetRemarketingTag(string name)
             {
-                return new GetRemarketingTagRequest(service, name);
+                return new GetRemarketingTagRequest(this.service, name);
             }
 
             /// <summary>
@@ -2655,7 +2655,7 @@ namespace Google.Apis.RealTimeBidding.v1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists the user lists visible to the current user.</summary>
@@ -2732,7 +2732,7 @@ namespace Google.Apis.RealTimeBidding.v1
             /// <param name="name">Required. The name of the user list to open. See UserList.name</param>
             public virtual OpenRequest Open(Google.Apis.RealTimeBidding.v1.Data.OpenUserListRequest body, string name)
             {
-                return new OpenRequest(service, body, name);
+                return new OpenRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -2792,7 +2792,7 @@ namespace Google.Apis.RealTimeBidding.v1
             /// </param>
             public virtual UpdateRequest Update(Google.Apis.RealTimeBidding.v1.Data.UserList body, string name)
             {
-                return new UpdateRequest(service, body, name);
+                return new UpdateRequest(this.service, body, name);
             }
 
             /// <summary>Updates the given user list. Only user lists with URLRestrictions can be updated.</summary>
@@ -2851,7 +2851,7 @@ namespace Google.Apis.RealTimeBidding.v1
         /// <param name="name">Required. Name of the buyer to get. Format: `buyers/{buyerId}`</param>
         public virtual GetRequest Get(string name)
         {
-            return new GetRequest(service, name);
+            return new GetRequest(this.service, name);
         }
 
         /// <summary>Gets a buyer account by its name.</summary>
@@ -2907,7 +2907,7 @@ namespace Google.Apis.RealTimeBidding.v1
         /// </param>
         public virtual GetRemarketingTagRequest GetRemarketingTag(string name)
         {
-            return new GetRemarketingTagRequest(service, name);
+            return new GetRemarketingTagRequest(this.service, name);
         }
 
         /// <summary>
@@ -2964,7 +2964,7 @@ namespace Google.Apis.RealTimeBidding.v1
         /// </summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>
@@ -3418,8 +3418,8 @@ namespace Google.Apis.RealTimeBidding.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ApiUpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ApiUpdateTimeRaw);
-            set => ApiUpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ApiUpdateTimeRaw);
+            set => ApiUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -3667,8 +3667,8 @@ namespace Google.Apis.RealTimeBidding.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LastStatusUpdateDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastStatusUpdateRaw);
-            set => LastStatusUpdateRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastStatusUpdateRaw);
+            set => LastStatusUpdateRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -3762,8 +3762,8 @@ namespace Google.Apis.RealTimeBidding.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CrawlTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CrawlTimeRaw);
-            set => CrawlTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CrawlTimeRaw);
+            set => CrawlTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Destination URL that was attempted to be crawled.</summary>
@@ -3834,8 +3834,8 @@ namespace Google.Apis.RealTimeBidding.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LastCheckTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastCheckTimeRaw);
-            set => LastCheckTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastCheckTimeRaw);
+            set => LastCheckTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Platform of the non-working URL.</summary>
@@ -4610,8 +4610,8 @@ namespace Google.Apis.RealTimeBidding.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. Publisher display name.</summary>

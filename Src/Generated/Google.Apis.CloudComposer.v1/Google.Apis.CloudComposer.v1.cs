@@ -319,7 +319,7 @@ namespace Google.Apis.CloudComposer.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.CloudComposer.v1.Data.Environment body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Create a new environment.</summary>
@@ -374,7 +374,7 @@ namespace Google.Apis.CloudComposer.v1
                 /// </param>
                 public virtual DatabaseFailoverRequest DatabaseFailover(Google.Apis.CloudComposer.v1.Data.DatabaseFailoverRequest body, string environment)
                 {
-                    return new DatabaseFailoverRequest(service, body, environment);
+                    return new DatabaseFailoverRequest(this.service, body, environment);
                 }
 
                 /// <summary>Triggers database failover (only for highly resilient environments).</summary>
@@ -431,7 +431,7 @@ namespace Google.Apis.CloudComposer.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Delete an environment.</summary>
@@ -483,7 +483,7 @@ namespace Google.Apis.CloudComposer.v1
                 /// </param>
                 public virtual ExecuteAirflowCommandRequest ExecuteAirflowCommand(Google.Apis.CloudComposer.v1.Data.ExecuteAirflowCommandRequest body, string environment)
                 {
-                    return new ExecuteAirflowCommandRequest(service, body, environment);
+                    return new ExecuteAirflowCommandRequest(this.service, body, environment);
                 }
 
                 /// <summary>Executes Airflow CLI command.</summary>
@@ -541,7 +541,7 @@ namespace Google.Apis.CloudComposer.v1
                 /// </param>
                 public virtual FetchDatabasePropertiesRequest FetchDatabaseProperties(string environment)
                 {
-                    return new FetchDatabasePropertiesRequest(service, environment);
+                    return new FetchDatabasePropertiesRequest(this.service, environment);
                 }
 
                 /// <summary>Fetches database properties.</summary>
@@ -592,7 +592,7 @@ namespace Google.Apis.CloudComposer.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Get an existing environment.</summary>
@@ -643,7 +643,7 @@ namespace Google.Apis.CloudComposer.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>List environments.</summary>
@@ -722,7 +722,7 @@ namespace Google.Apis.CloudComposer.v1
                 /// </param>
                 public virtual LoadSnapshotRequest LoadSnapshot(Google.Apis.CloudComposer.v1.Data.LoadSnapshotRequest body, string environment)
                 {
-                    return new LoadSnapshotRequest(service, body, environment);
+                    return new LoadSnapshotRequest(this.service, body, environment);
                 }
 
                 /// <summary>
@@ -784,7 +784,7 @@ namespace Google.Apis.CloudComposer.v1
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.CloudComposer.v1.Data.Environment body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Update an environment.</summary>
@@ -914,7 +914,7 @@ namespace Google.Apis.CloudComposer.v1
                 /// </param>
                 public virtual PollAirflowCommandRequest PollAirflowCommand(Google.Apis.CloudComposer.v1.Data.PollAirflowCommandRequest body, string environment)
                 {
-                    return new PollAirflowCommandRequest(service, body, environment);
+                    return new PollAirflowCommandRequest(this.service, body, environment);
                 }
 
                 /// <summary>Polls Airflow CLI command execution and fetches logs.</summary>
@@ -976,7 +976,7 @@ namespace Google.Apis.CloudComposer.v1
                 /// </param>
                 public virtual SaveSnapshotRequest SaveSnapshot(Google.Apis.CloudComposer.v1.Data.SaveSnapshotRequest body, string environment)
                 {
-                    return new SaveSnapshotRequest(service, body, environment);
+                    return new SaveSnapshotRequest(this.service, body, environment);
                 }
 
                 /// <summary>
@@ -1038,7 +1038,7 @@ namespace Google.Apis.CloudComposer.v1
                 /// </param>
                 public virtual StopAirflowCommandRequest StopAirflowCommand(Google.Apis.CloudComposer.v1.Data.StopAirflowCommandRequest body, string environment)
                 {
-                    return new StopAirflowCommandRequest(service, body, environment);
+                    return new StopAirflowCommandRequest(this.service, body, environment);
                 }
 
                 /// <summary>Stops Airflow CLI command execution.</summary>
@@ -1114,7 +1114,7 @@ namespace Google.Apis.CloudComposer.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>List ImageVersions for provided location.</summary>
@@ -1220,7 +1220,7 @@ namespace Google.Apis.CloudComposer.v1
                 /// <param name="name">The name of the operation resource to be deleted.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -1272,7 +1272,7 @@ namespace Google.Apis.CloudComposer.v1
                 /// <param name="name">The name of the operation resource.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -1323,7 +1323,7 @@ namespace Google.Apis.CloudComposer.v1
                 /// <param name="name">The name of the operation's parent resource.</param>
                 public virtual ListRequest List(string name)
                 {
-                    return new ListRequest(service, name);
+                    return new ListRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -1609,8 +1609,8 @@ namespace Google.Apis.CloudComposer.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -1675,8 +1675,8 @@ namespace Google.Apis.CloudComposer.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -2137,8 +2137,8 @@ namespace Google.Apis.CloudComposer.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -2182,8 +2182,8 @@ namespace Google.Apis.CloudComposer.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -2406,8 +2406,8 @@ namespace Google.Apis.CloudComposer.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _endTimeRaw;
@@ -2446,8 +2446,8 @@ namespace Google.Apis.CloudComposer.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. The type of operation being performed.</summary>

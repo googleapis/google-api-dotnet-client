@@ -307,7 +307,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1
             /// </param>
             public virtual AnnotateRequest Annotate(Google.Apis.RecaptchaEnterprise.v1.Data.GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequest body, string name)
             {
-                return new AnnotateRequest(service, body, name);
+                return new AnnotateRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -369,7 +369,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1
             /// </param>
             public virtual CreateRequest Create(Google.Apis.RecaptchaEnterprise.v1.Data.GoogleCloudRecaptchaenterpriseV1Assessment body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>Creates an Assessment of the likelihood an event is legitimate.</summary>
@@ -448,7 +448,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1
             /// </param>
             public virtual CreateRequest Create(Google.Apis.RecaptchaEnterprise.v1.Data.GoogleCloudRecaptchaenterpriseV1FirewallPolicy body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -508,7 +508,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>Deletes the specified firewall policy.</summary>
@@ -559,7 +559,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Returns the specified firewall policy.</summary>
@@ -609,7 +609,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Returns the list of all firewall policies that belong to a project.</summary>
@@ -688,7 +688,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.RecaptchaEnterprise.v1.Data.GoogleCloudRecaptchaenterpriseV1FirewallPolicy body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>Updates the specified firewall policy.</summary>
@@ -779,7 +779,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1
             /// </param>
             public virtual CreateRequest Create(Google.Apis.RecaptchaEnterprise.v1.Data.GoogleCloudRecaptchaenterpriseV1Key body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>Creates a new reCAPTCHA Enterprise key.</summary>
@@ -836,7 +836,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>Deletes the specified key.</summary>
@@ -885,7 +885,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Returns the specified key.</summary>
@@ -934,7 +934,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1
             /// </param>
             public virtual GetMetricsRequest GetMetrics(string name)
             {
-                return new GetMetricsRequest(service, name);
+                return new GetMetricsRequest(this.service, name);
             }
 
             /// <summary>Get some aggregated metrics for a Key. This data can be used to build dashboards.</summary>
@@ -984,7 +984,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Returns the list of all keys that belong to a project.</summary>
@@ -1066,7 +1066,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1
             /// </param>
             public virtual MigrateRequest Migrate(Google.Apis.RecaptchaEnterprise.v1.Data.GoogleCloudRecaptchaenterpriseV1MigrateKeyRequest body, string name)
             {
-                return new MigrateRequest(service, body, name);
+                return new MigrateRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -1126,7 +1126,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1
             /// <param name="name">The resource name for the Key in the format `projects/{project}/keys/{key}`.</param>
             public virtual PatchRequest Patch(Google.Apis.RecaptchaEnterprise.v1.Data.GoogleCloudRecaptchaenterpriseV1Key body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>Updates the specified key.</summary>
@@ -1199,7 +1199,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1
             /// </param>
             public virtual RetrieveLegacySecretKeyRequest RetrieveLegacySecretKey(string key)
             {
-                return new RetrieveLegacySecretKeyRequest(service, key);
+                return new RetrieveLegacySecretKeyRequest(this.service, key);
             }
 
             /// <summary>
@@ -1272,7 +1272,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1
             /// </param>
             public virtual SearchRequest Search(Google.Apis.RecaptchaEnterprise.v1.Data.GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsRequest body, string project)
             {
-                return new SearchRequest(service, body, project);
+                return new SearchRequest(this.service, body, project);
             }
 
             /// <summary>Search group memberships related to a given account.</summary>
@@ -1366,7 +1366,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Get memberships in a group of related accounts.</summary>
@@ -1450,7 +1450,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>List groups of related accounts.</summary>
@@ -1801,8 +1801,8 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LastVerificationTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastVerificationTimeRaw);
-            set => LastVerificationTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastVerificationTimeRaw);
+            set => LastVerificationTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -2261,8 +2261,8 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Required. Human-readable display name of this key. Modifiable by user.</summary>
@@ -2425,8 +2425,8 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -2710,8 +2710,8 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. The hostname of the page on which the token was generated (Web keys only).</summary>
@@ -2973,8 +2973,8 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EventTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EventTimeRaw);
-            set => EventTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EventTimeRaw);
+            set => EventTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Optional. The type of this transaction event.</summary>
@@ -3071,8 +3071,8 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateAccountTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateAccountTimeRaw);
-            set => CreateAccountTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateAccountTimeRaw);
+            set => CreateAccountTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Optional. Identifiers associated with this user or request.</summary>

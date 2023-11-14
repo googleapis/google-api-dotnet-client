@@ -303,7 +303,7 @@ namespace Google.Apis.Vault.v1
             /// <param name="matterId">The matter ID.</param>
             public virtual CreateRequest Create(Google.Apis.Vault.v1.Data.Export body, string matterId)
             {
-                return new CreateRequest(service, body, matterId);
+                return new CreateRequest(this.service, body, matterId);
             }
 
             /// <summary>Creates an export.</summary>
@@ -356,7 +356,7 @@ namespace Google.Apis.Vault.v1
             /// <param name="exportId">The export ID.</param>
             public virtual DeleteRequest Delete(string matterId, string exportId)
             {
-                return new DeleteRequest(service, matterId, exportId);
+                return new DeleteRequest(this.service, matterId, exportId);
             }
 
             /// <summary>Deletes an export.</summary>
@@ -415,7 +415,7 @@ namespace Google.Apis.Vault.v1
             /// <param name="exportId">The export ID.</param>
             public virtual GetRequest Get(string matterId, string exportId)
             {
-                return new GetRequest(service, matterId, exportId);
+                return new GetRequest(this.service, matterId, exportId);
             }
 
             /// <summary>Gets an export.</summary>
@@ -473,7 +473,7 @@ namespace Google.Apis.Vault.v1
             /// <param name="matterId">The matter ID.</param>
             public virtual ListRequest List(string matterId)
             {
-                return new ListRequest(service, matterId);
+                return new ListRequest(this.service, matterId);
             }
 
             /// <summary>Lists details about the exports in the specified matter.</summary>
@@ -583,7 +583,7 @@ namespace Google.Apis.Vault.v1
                 /// <param name="holdId">The hold ID.</param>
                 public virtual CreateRequest Create(Google.Apis.Vault.v1.Data.HeldAccount body, string matterId, string holdId)
                 {
-                    return new CreateRequest(service, body, matterId, holdId);
+                    return new CreateRequest(this.service, body, matterId, holdId);
                 }
 
                 /// <summary>
@@ -653,7 +653,7 @@ namespace Google.Apis.Vault.v1
                 /// <param name="accountId">The ID of the account to remove from the hold.</param>
                 public virtual DeleteRequest Delete(string matterId, string holdId, string accountId)
                 {
-                    return new DeleteRequest(service, matterId, holdId, accountId);
+                    return new DeleteRequest(this.service, matterId, holdId, accountId);
                 }
 
                 /// <summary>Removes an account from a hold.</summary>
@@ -730,7 +730,7 @@ namespace Google.Apis.Vault.v1
                 /// <param name="holdId">The hold ID.</param>
                 public virtual ListRequest List(string matterId, string holdId)
                 {
-                    return new ListRequest(service, matterId, holdId);
+                    return new ListRequest(this.service, matterId, holdId);
                 }
 
                 /// <summary>
@@ -799,7 +799,7 @@ namespace Google.Apis.Vault.v1
             /// <param name="holdId">The hold ID.</param>
             public virtual AddHeldAccountsRequest AddHeldAccounts(Google.Apis.Vault.v1.Data.AddHeldAccountsRequest body, string matterId, string holdId)
             {
-                return new AddHeldAccountsRequest(service, body, matterId, holdId);
+                return new AddHeldAccountsRequest(this.service, body, matterId, holdId);
             }
 
             /// <summary>
@@ -868,7 +868,7 @@ namespace Google.Apis.Vault.v1
             /// <param name="matterId">The matter ID.</param>
             public virtual CreateRequest Create(Google.Apis.Vault.v1.Data.Hold body, string matterId)
             {
-                return new CreateRequest(service, body, matterId);
+                return new CreateRequest(this.service, body, matterId);
             }
 
             /// <summary>Creates a hold in the specified matter.</summary>
@@ -924,7 +924,7 @@ namespace Google.Apis.Vault.v1
             /// <param name="holdId">The hold ID.</param>
             public virtual DeleteRequest Delete(string matterId, string holdId)
             {
-                return new DeleteRequest(service, matterId, holdId);
+                return new DeleteRequest(this.service, matterId, holdId);
             }
 
             /// <summary>
@@ -986,7 +986,7 @@ namespace Google.Apis.Vault.v1
             /// <param name="holdId">The hold ID.</param>
             public virtual GetRequest Get(string matterId, string holdId)
             {
-                return new GetRequest(service, matterId, holdId);
+                return new GetRequest(this.service, matterId, holdId);
             }
 
             /// <summary>Gets the specified hold.</summary>
@@ -1075,7 +1075,7 @@ namespace Google.Apis.Vault.v1
             /// <param name="matterId">The matter ID.</param>
             public virtual ListRequest List(string matterId)
             {
-                return new ListRequest(service, matterId);
+                return new ListRequest(this.service, matterId);
             }
 
             /// <summary>Lists the holds in a matter.</summary>
@@ -1184,7 +1184,7 @@ namespace Google.Apis.Vault.v1
             /// <param name="holdId">The hold ID.</param>
             public virtual RemoveHeldAccountsRequest RemoveHeldAccounts(Google.Apis.Vault.v1.Data.RemoveHeldAccountsRequest body, string matterId, string holdId)
             {
-                return new RemoveHeldAccountsRequest(service, body, matterId, holdId);
+                return new RemoveHeldAccountsRequest(this.service, body, matterId, holdId);
             }
 
             /// <summary>
@@ -1257,7 +1257,7 @@ namespace Google.Apis.Vault.v1
             /// <param name="holdId">The ID of the hold.</param>
             public virtual UpdateRequest Update(Google.Apis.Vault.v1.Data.Hold body, string matterId, string holdId)
             {
-                return new UpdateRequest(service, body, matterId, holdId);
+                return new UpdateRequest(this.service, body, matterId, holdId);
             }
 
             /// <summary>
@@ -1345,7 +1345,7 @@ namespace Google.Apis.Vault.v1
             /// <param name="matterId">The ID of the matter to create the saved query in.</param>
             public virtual CreateRequest Create(Google.Apis.Vault.v1.Data.SavedQuery body, string matterId)
             {
-                return new CreateRequest(service, body, matterId);
+                return new CreateRequest(this.service, body, matterId);
             }
 
             /// <summary>Creates a saved query.</summary>
@@ -1398,7 +1398,7 @@ namespace Google.Apis.Vault.v1
             /// <param name="savedQueryId">ID of the saved query to delete.</param>
             public virtual DeleteRequest Delete(string matterId, string savedQueryId)
             {
-                return new DeleteRequest(service, matterId, savedQueryId);
+                return new DeleteRequest(this.service, matterId, savedQueryId);
             }
 
             /// <summary>Deletes the specified saved query.</summary>
@@ -1457,7 +1457,7 @@ namespace Google.Apis.Vault.v1
             /// <param name="savedQueryId">ID of the saved query to retrieve.</param>
             public virtual GetRequest Get(string matterId, string savedQueryId)
             {
-                return new GetRequest(service, matterId, savedQueryId);
+                return new GetRequest(this.service, matterId, savedQueryId);
             }
 
             /// <summary>Retrieves the specified saved query.</summary>
@@ -1515,7 +1515,7 @@ namespace Google.Apis.Vault.v1
             /// <param name="matterId">The ID of the matter to get the saved queries for.</param>
             public virtual ListRequest List(string matterId)
             {
-                return new ListRequest(service, matterId);
+                return new ListRequest(this.service, matterId);
             }
 
             /// <summary>Lists the saved queries in a matter.</summary>
@@ -1589,7 +1589,7 @@ namespace Google.Apis.Vault.v1
         /// <param name="matterId">The matter ID.</param>
         public virtual AddPermissionsRequest AddPermissions(Google.Apis.Vault.v1.Data.AddMatterPermissionsRequest body, string matterId)
         {
-            return new AddPermissionsRequest(service, body, matterId);
+            return new AddPermissionsRequest(this.service, body, matterId);
         }
 
         /// <summary>Adds an account as a matter collaborator.</summary>
@@ -1642,7 +1642,7 @@ namespace Google.Apis.Vault.v1
         /// <param name="matterId">The matter ID.</param>
         public virtual CloseRequest Close(Google.Apis.Vault.v1.Data.CloseMatterRequest body, string matterId)
         {
-            return new CloseRequest(service, body, matterId);
+            return new CloseRequest(this.service, body, matterId);
         }
 
         /// <summary>Closes the specified matter. Returns the matter with updated state.</summary>
@@ -1695,7 +1695,7 @@ namespace Google.Apis.Vault.v1
         /// <param name="matterId">The matter ID.</param>
         public virtual CountRequest Count(Google.Apis.Vault.v1.Data.CountArtifactsRequest body, string matterId)
         {
-            return new CountRequest(service, body, matterId);
+            return new CountRequest(this.service, body, matterId);
         }
 
         /// <summary>Counts the accounts processed by the specified query.</summary>
@@ -1750,7 +1750,7 @@ namespace Google.Apis.Vault.v1
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.Vault.v1.Data.Matter body)
         {
-            return new CreateRequest(service, body);
+            return new CreateRequest(this.service, body);
         }
 
         /// <summary>
@@ -1792,7 +1792,7 @@ namespace Google.Apis.Vault.v1
         /// <param name="matterId">The matter ID</param>
         public virtual DeleteRequest Delete(string matterId)
         {
-            return new DeleteRequest(service, matterId);
+            return new DeleteRequest(this.service, matterId);
         }
 
         /// <summary>Deletes the specified matter. Returns the matter with updated state.</summary>
@@ -1837,7 +1837,7 @@ namespace Google.Apis.Vault.v1
         /// <param name="matterId">The matter ID.</param>
         public virtual GetRequest Get(string matterId)
         {
-            return new GetRequest(service, matterId);
+            return new GetRequest(this.service, matterId);
         }
 
         /// <summary>Gets the specified matter.</summary>
@@ -1912,7 +1912,7 @@ namespace Google.Apis.Vault.v1
         /// <summary>Lists matters the requestor has access to.</summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>Lists matters the requestor has access to.</summary>
@@ -2036,7 +2036,7 @@ namespace Google.Apis.Vault.v1
         /// <param name="matterId">The matter ID.</param>
         public virtual RemovePermissionsRequest RemovePermissions(Google.Apis.Vault.v1.Data.RemoveMatterPermissionsRequest body, string matterId)
         {
-            return new RemovePermissionsRequest(service, body, matterId);
+            return new RemovePermissionsRequest(this.service, body, matterId);
         }
 
         /// <summary>Removes an account as a matter collaborator.</summary>
@@ -2089,7 +2089,7 @@ namespace Google.Apis.Vault.v1
         /// <param name="matterId">The matter ID.</param>
         public virtual ReopenRequest Reopen(Google.Apis.Vault.v1.Data.ReopenMatterRequest body, string matterId)
         {
-            return new ReopenRequest(service, body, matterId);
+            return new ReopenRequest(this.service, body, matterId);
         }
 
         /// <summary>Reopens the specified matter. Returns the matter with updated state.</summary>
@@ -2142,7 +2142,7 @@ namespace Google.Apis.Vault.v1
         /// <param name="matterId">The matter ID.</param>
         public virtual UndeleteRequest Undelete(Google.Apis.Vault.v1.Data.UndeleteMatterRequest body, string matterId)
         {
-            return new UndeleteRequest(service, body, matterId);
+            return new UndeleteRequest(this.service, body, matterId);
         }
 
         /// <summary>Undeletes the specified matter. Returns the matter with updated state.</summary>
@@ -2198,7 +2198,7 @@ namespace Google.Apis.Vault.v1
         /// <param name="matterId">The matter ID.</param>
         public virtual UpdateRequest Update(Google.Apis.Vault.v1.Data.Matter body, string matterId)
         {
-            return new UpdateRequest(service, body, matterId);
+            return new UpdateRequest(this.service, body, matterId);
         }
 
         /// <summary>
@@ -2276,7 +2276,7 @@ namespace Google.Apis.Vault.v1
         /// <param name="name">The name of the operation resource to be cancelled.</param>
         public virtual CancelRequest Cancel(Google.Apis.Vault.v1.Data.CancelOperationRequest body, string name)
         {
-            return new CancelRequest(service, body, name);
+            return new CancelRequest(this.service, body, name);
         }
 
         /// <summary>
@@ -2339,7 +2339,7 @@ namespace Google.Apis.Vault.v1
         /// <param name="name">The name of the operation resource to be deleted.</param>
         public virtual DeleteRequest Delete(string name)
         {
-            return new DeleteRequest(service, name);
+            return new DeleteRequest(this.service, name);
         }
 
         /// <summary>
@@ -2391,7 +2391,7 @@ namespace Google.Apis.Vault.v1
         /// <param name="name">The name of the operation resource.</param>
         public virtual GetRequest Get(string name)
         {
-            return new GetRequest(service, name);
+            return new GetRequest(this.service, name);
         }
 
         /// <summary>
@@ -2442,7 +2442,7 @@ namespace Google.Apis.Vault.v1
         /// <param name="name">The name of the operation's parent resource.</param>
         public virtual ListRequest List(string name)
         {
-            return new ListRequest(service, name);
+            return new ListRequest(this.service, name);
         }
 
         /// <summary>
@@ -2774,8 +2774,8 @@ namespace Google.Apis.Vault.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The matter ID of the associated matter.</summary>
@@ -2819,8 +2819,8 @@ namespace Google.Apis.Vault.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -2930,8 +2930,8 @@ namespace Google.Apis.Vault.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? VersionDateDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(VersionDateRaw);
-            set => VersionDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(VersionDateRaw);
+            set => VersionDateRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -2994,8 +2994,8 @@ namespace Google.Apis.Vault.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Additional export options.</summary>
@@ -3219,8 +3219,8 @@ namespace Google.Apis.Vault.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? HoldTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(HoldTimeRaw);
-            set => HoldTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(HoldTimeRaw);
+            set => HoldTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. The last name of the account holder.</summary>
@@ -3284,8 +3284,8 @@ namespace Google.Apis.Vault.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _startTimeRaw;
@@ -3323,8 +3323,8 @@ namespace Google.Apis.Vault.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -3387,8 +3387,8 @@ namespace Google.Apis.Vault.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _startTimeRaw;
@@ -3426,8 +3426,8 @@ namespace Google.Apis.Vault.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -3477,8 +3477,8 @@ namespace Google.Apis.Vault.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? HoldTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(HoldTimeRaw);
-            set => HoldTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(HoldTimeRaw);
+            set => HoldTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -3575,8 +3575,8 @@ namespace Google.Apis.Vault.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -3907,8 +3907,8 @@ namespace Google.Apis.Vault.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Required when **SearchMethod** is **ROOM**. (read-only)</summary>
@@ -3981,8 +3981,8 @@ namespace Google.Apis.Vault.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Required when **SearchMethod** is **TEAM_DRIVE**.</summary>
@@ -4105,8 +4105,8 @@ namespace Google.Apis.Vault.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The name of the saved query.</summary>

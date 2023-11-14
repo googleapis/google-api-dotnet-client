@@ -286,7 +286,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1
         /// <param name="app">The name of the app resource. Format: `projects/{project_number}/apps/{app_id}`</param>
         public virtual UploadRequest Upload(Google.Apis.FirebaseAppDistribution.v1.Data.GoogleFirebaseAppdistroV1UploadReleaseRequest body, string app)
         {
-            return new UploadRequest(service, body, app);
+            return new UploadRequest(this.service, body, app);
         }
 
         /// <summary>
@@ -558,7 +558,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>Deletes a feedback report.</summary>
@@ -609,7 +609,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Gets a feedback report.</summary>
@@ -662,7 +662,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>
@@ -771,7 +771,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1
                     /// <param name="name">The name of the operation resource to be cancelled.</param>
                     public virtual CancelRequest Cancel(Google.Apis.FirebaseAppDistribution.v1.Data.GoogleLongrunningCancelOperationRequest body, string name)
                     {
-                        return new CancelRequest(service, body, name);
+                        return new CancelRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -835,7 +835,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1
                     /// <param name="name">The name of the operation resource to be deleted.</param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -887,7 +887,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1
                     /// <param name="name">The name of the operation resource.</param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -938,7 +938,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1
                     /// <param name="name">The name of the operation's parent resource.</param>
                     public virtual ListRequest List(string name)
                     {
-                        return new ListRequest(service, name);
+                        return new ListRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -1031,7 +1031,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1
                     /// <param name="name">The name of the operation resource to wait on.</param>
                     public virtual WaitRequest Wait(Google.Apis.FirebaseAppDistribution.v1.Data.GoogleLongrunningWaitOperationRequest body, string name)
                     {
-                        return new WaitRequest(service, body, name);
+                        return new WaitRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -1096,7 +1096,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1
                 /// </param>
                 public virtual BatchDeleteRequest BatchDelete(Google.Apis.FirebaseAppDistribution.v1.Data.GoogleFirebaseAppdistroV1BatchDeleteReleasesRequest body, string parent)
                 {
-                    return new BatchDeleteRequest(service, body, parent);
+                    return new BatchDeleteRequest(this.service, body, parent);
                 }
 
                 /// <summary>Deletes releases. A maximum of 100 releases can be deleted per request.</summary>
@@ -1160,7 +1160,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1
                 /// </param>
                 public virtual DistributeRequest Distribute(Google.Apis.FirebaseAppDistribution.v1.Data.GoogleFirebaseAppdistroV1DistributeReleaseRequest body, string name)
                 {
-                    return new DistributeRequest(service, body, name);
+                    return new DistributeRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -1223,7 +1223,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets a release.</summary>
@@ -1274,7 +1274,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists releases. By default, sorts by `createTime` in descending order.</summary>
@@ -1394,7 +1394,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.FirebaseAppDistribution.v1.Data.GoogleFirebaseAppdistroV1Release body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates a release.</summary>
@@ -1465,7 +1465,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1
             /// </param>
             public virtual GetAabInfoRequest GetAabInfo(string name)
             {
-                return new GetAabInfoRequest(service, name);
+                return new GetAabInfoRequest(this.service, name);
             }
 
             /// <summary>Gets Android App Bundle (AAB) information for a Firebase app.</summary>
@@ -1538,7 +1538,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1
             /// </param>
             public virtual BatchJoinRequest BatchJoin(Google.Apis.FirebaseAppDistribution.v1.Data.GoogleFirebaseAppdistroV1BatchJoinGroupRequest body, string group)
             {
-                return new BatchJoinRequest(service, body, group);
+                return new BatchJoinRequest(this.service, body, group);
             }
 
             /// <summary>
@@ -1603,7 +1603,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1
             /// </param>
             public virtual BatchLeaveRequest BatchLeave(Google.Apis.FirebaseAppDistribution.v1.Data.GoogleFirebaseAppdistroV1BatchLeaveGroupRequest body, string group)
             {
-                return new BatchLeaveRequest(service, body, group);
+                return new BatchLeaveRequest(this.service, body, group);
             }
 
             /// <summary>
@@ -1665,7 +1665,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1
             /// </param>
             public virtual CreateRequest Create(Google.Apis.FirebaseAppDistribution.v1.Data.GoogleFirebaseAppdistroV1Group body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>Create a group.</summary>
@@ -1739,7 +1739,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>Delete a group.</summary>
@@ -1789,7 +1789,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Get a group.</summary>
@@ -1840,7 +1840,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>List groups.</summary>
@@ -1923,7 +1923,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.FirebaseAppDistribution.v1.Data.GoogleFirebaseAppdistroV1Group body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>Update a group.</summary>
@@ -2014,7 +2014,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1
             /// </param>
             public virtual BatchAddRequest BatchAdd(Google.Apis.FirebaseAppDistribution.v1.Data.GoogleFirebaseAppdistroV1BatchAddTestersRequest body, string project)
             {
-                return new BatchAddRequest(service, body, project);
+                return new BatchAddRequest(this.service, body, project);
             }
 
             /// <summary>
@@ -2076,7 +2076,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1
             /// </param>
             public virtual BatchRemoveRequest BatchRemove(Google.Apis.FirebaseAppDistribution.v1.Data.GoogleFirebaseAppdistroV1BatchRemoveTestersRequest body, string project)
             {
-                return new BatchRemoveRequest(service, body, project);
+                return new BatchRemoveRequest(this.service, body, project);
             }
 
             /// <summary>
@@ -2134,7 +2134,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists testers and their resource ids.</summary>
@@ -2237,7 +2237,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.FirebaseAppDistribution.v1.Data.GoogleFirebaseAppdistroV1Tester body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -2962,8 +2962,8 @@ namespace Google.Apis.FirebaseAppDistribution.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. A link to the Firebase console displaying the feedback report.</summary>
@@ -3144,8 +3144,8 @@ namespace Google.Apis.FirebaseAppDistribution.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -3262,8 +3262,8 @@ namespace Google.Apis.FirebaseAppDistribution.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LastActivityTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastActivityTimeRaw);
-            set => LastActivityTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastActivityTimeRaw);
+            set => LastActivityTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>

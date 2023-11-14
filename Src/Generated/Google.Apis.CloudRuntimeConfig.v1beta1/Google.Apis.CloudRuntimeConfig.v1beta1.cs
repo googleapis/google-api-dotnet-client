@@ -325,7 +325,7 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
                 /// <param name="name">The name of the operation resource.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -383,7 +383,7 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
                 /// </param>
                 public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.CloudRuntimeConfig.v1beta1.Data.TestIamPermissionsRequest body, string resource)
                 {
-                    return new TestIamPermissionsRequest(service, body, resource);
+                    return new TestIamPermissionsRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -471,7 +471,7 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.CloudRuntimeConfig.v1beta1.Data.Variable body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -557,7 +557,7 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -624,7 +624,7 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets information about a single variable.</summary>
@@ -679,7 +679,7 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>
@@ -803,7 +803,7 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
                 /// </param>
                 public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.CloudRuntimeConfig.v1beta1.Data.TestIamPermissionsRequest body, string resource)
                 {
-                    return new TestIamPermissionsRequest(service, body, resource);
+                    return new TestIamPermissionsRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -868,7 +868,7 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
                 /// </param>
                 public virtual UpdateRequest Update(Google.Apis.CloudRuntimeConfig.v1beta1.Data.Variable body, string name)
                 {
-                    return new UpdateRequest(service, body, name);
+                    return new UpdateRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates an existing variable with a new value.</summary>
@@ -934,7 +934,7 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
                 /// </param>
                 public virtual WatchRequest Watch(Google.Apis.CloudRuntimeConfig.v1beta1.Data.WatchVariableRequest body, string name)
                 {
-                    return new WatchRequest(service, body, name);
+                    return new WatchRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -1023,7 +1023,7 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.CloudRuntimeConfig.v1beta1.Data.Waiter body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -1104,7 +1104,7 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes the waiter with the specified name.</summary>
@@ -1155,7 +1155,7 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets information about a single waiter.</summary>
@@ -1206,7 +1206,7 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>List waiters within the given configuration.</summary>
@@ -1295,7 +1295,7 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
                 /// </param>
                 public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.CloudRuntimeConfig.v1beta1.Data.TestIamPermissionsRequest body, string resource)
                 {
-                    return new TestIamPermissionsRequest(service, body, resource);
+                    return new TestIamPermissionsRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -1363,7 +1363,7 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
             /// </param>
             public virtual CreateRequest Create(Google.Apis.CloudRuntimeConfig.v1beta1.Data.RuntimeConfig body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -1440,7 +1440,7 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>Deletes a RuntimeConfig resource.</summary>
@@ -1490,7 +1490,7 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets information about a RuntimeConfig resource.</summary>
@@ -1544,7 +1544,7 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
             /// </param>
             public virtual GetIamPolicyRequest GetIamPolicy(string resource)
             {
-                return new GetIamPolicyRequest(service, resource);
+                return new GetIamPolicyRequest(this.service, resource);
             }
 
             /// <summary>
@@ -1620,7 +1620,7 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists all the RuntimeConfig resources within project.</summary>
@@ -1705,7 +1705,7 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
             /// </param>
             public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.CloudRuntimeConfig.v1beta1.Data.SetIamPolicyRequest body, string resource)
             {
-                return new SetIamPolicyRequest(service, body, resource);
+                return new SetIamPolicyRequest(this.service, body, resource);
             }
 
             /// <summary>
@@ -1773,7 +1773,7 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
             /// </param>
             public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.CloudRuntimeConfig.v1beta1.Data.TestIamPermissionsRequest body, string resource)
             {
-                return new TestIamPermissionsRequest(service, body, resource);
+                return new TestIamPermissionsRequest(this.service, body, resource);
             }
 
             /// <summary>
@@ -1838,7 +1838,7 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
             /// </param>
             public virtual UpdateRequest Update(Google.Apis.CloudRuntimeConfig.v1beta1.Data.RuntimeConfig body, string name)
             {
-                return new UpdateRequest(service, body, name);
+                return new UpdateRequest(this.service, body, name);
             }
 
             /// <summary>Updates a RuntimeConfig resource. The configuration must exist beforehand.</summary>
@@ -2381,8 +2381,8 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -2444,8 +2444,8 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -2539,8 +2539,8 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? NewerThanDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(NewerThanRaw);
-            set => NewerThanRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(NewerThanRaw);
+            set => NewerThanRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>

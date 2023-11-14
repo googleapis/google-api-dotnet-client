@@ -325,7 +325,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         /// </param>
         public virtual DeleteRequest Delete(string project, string instance, long id)
         {
-            return new DeleteRequest(service, project, instance, id);
+            return new DeleteRequest(this.service, project, instance, id);
         }
 
         /// <summary>Deletes the backup taken by a backup run.</summary>
@@ -401,7 +401,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         /// <param name="id">The ID of this backup run.</param>
         public virtual GetRequest Get(string project, string instance, long id)
         {
-            return new GetRequest(service, project, instance, id);
+            return new GetRequest(this.service, project, instance, id);
         }
 
         /// <summary>Retrieves a resource containing information about a backup run.</summary>
@@ -474,7 +474,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         /// <param name="instance">Cloud SQL instance ID. This does not include the project ID.</param>
         public virtual InsertRequest Insert(Google.Apis.SQLAdmin.v1beta4.Data.BackupRun body, string project, string instance)
         {
-            return new InsertRequest(service, body, project, instance);
+            return new InsertRequest(this.service, body, project, instance);
         }
 
         /// <summary>Creates a new backup run on demand.</summary>
@@ -545,7 +545,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         /// </param>
         public virtual ListRequest List(string project, string instance)
         {
-            return new ListRequest(service, project, instance);
+            return new ListRequest(this.service, project, instance);
         }
 
         /// <summary>
@@ -655,7 +655,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         /// <param name="instance">Cloud SQL instance ID. This does not include the project ID.</param>
         public virtual GenerateEphemeralCertRequest GenerateEphemeralCert(Google.Apis.SQLAdmin.v1beta4.Data.GenerateEphemeralCertRequest body, string project, string instance)
         {
-            return new GenerateEphemeralCertRequest(service, body, project, instance);
+            return new GenerateEphemeralCertRequest(this.service, body, project, instance);
         }
 
         /// <summary>
@@ -725,7 +725,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         /// <param name="instance">Cloud SQL instance ID. This does not include the project ID.</param>
         public virtual GetRequest Get(string project, string instance)
         {
-            return new GetRequest(service, project, instance);
+            return new GetRequest(this.service, project, instance);
         }
 
         /// <summary>Retrieves connect settings about a Cloud SQL instance.</summary>
@@ -747,9 +747,36 @@ namespace Google.Apis.SQLAdmin.v1beta4
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
 
-            /// <summary>Optional. Optional snapshot read timestamp to trade freshness for performance.</summary>
+            private object _readTime;
+
+            /// <summary>
+            /// String representation of <see cref="ReadTimeDateTimeOffset"/>, formatted for inclusion in the HTTP
+            /// request.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("readTime", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual object ReadTime { get; set; }
+            public virtual string ReadTimeRaw { get; private set; }
+
+            /// <summary><seealso cref="object"/> representation of <see cref="ReadTimeRaw"/>.</summary>
+            [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ReadTimeDateTimeOffset instead.")]
+            public virtual object ReadTime
+            {
+                get => _readTime;
+                set
+                {
+                    ReadTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                    _readTime = value;
+                }
+            }
+
+            public virtual System.DateTimeOffset? ReadTimeDateTimeOffset
+            {
+                get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ReadTimeRaw);
+                set
+                {
+                    ReadTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                    _readTime = value;
+                }
+            }
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
@@ -812,7 +839,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         /// <param name="database">Name of the database to be deleted in the instance.</param>
         public virtual DeleteRequest Delete(string project, string instance, string database)
         {
-            return new DeleteRequest(service, project, instance, database);
+            return new DeleteRequest(this.service, project, instance, database);
         }
 
         /// <summary>Deletes a database from a Cloud SQL instance.</summary>
@@ -885,7 +912,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         /// <param name="database">Name of the database in the instance.</param>
         public virtual GetRequest Get(string project, string instance, string database)
         {
-            return new GetRequest(service, project, instance, database);
+            return new GetRequest(this.service, project, instance, database);
         }
 
         /// <summary>Retrieves a resource containing information about a database inside a Cloud SQL instance.</summary>
@@ -961,7 +988,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         /// <param name="instance">Database instance ID. This does not include the project ID.</param>
         public virtual InsertRequest Insert(Google.Apis.SQLAdmin.v1beta4.Data.Database body, string project, string instance)
         {
-            return new InsertRequest(service, body, project, instance);
+            return new InsertRequest(this.service, body, project, instance);
         }
 
         /// <summary>
@@ -1030,7 +1057,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         /// <param name="instance">Cloud SQL instance ID. This does not include the project ID.</param>
         public virtual ListRequest List(string project, string instance)
         {
-            return new ListRequest(service, project, instance);
+            return new ListRequest(this.service, project, instance);
         }
 
         /// <summary>Lists databases in the specified Cloud SQL instance.</summary>
@@ -1094,7 +1121,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         /// <param name="database">Name of the database to be updated in the instance.</param>
         public virtual PatchRequest Patch(Google.Apis.SQLAdmin.v1beta4.Data.Database body, string project, string instance, string database)
         {
-            return new PatchRequest(service, body, project, instance, database);
+            return new PatchRequest(this.service, body, project, instance, database);
         }
 
         /// <summary>
@@ -1178,7 +1205,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         /// <param name="database">Name of the database to be updated in the instance.</param>
         public virtual UpdateRequest Update(Google.Apis.SQLAdmin.v1beta4.Data.Database body, string project, string instance, string database)
         {
-            return new UpdateRequest(service, body, project, instance, database);
+            return new UpdateRequest(this.service, body, project, instance, database);
         }
 
         /// <summary>Updates a resource containing information about a database inside a Cloud SQL instance.</summary>
@@ -1270,7 +1297,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         /// <summary>Lists all available database flags for Cloud SQL instances.</summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>Lists all available database flags for Cloud SQL instances.</summary>
@@ -1337,7 +1364,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         /// <param name="instance">Cloud SQL instance ID. This does not include the project ID.</param>
         public virtual AddServerCaRequest AddServerCa(string project, string instance)
         {
-            return new AddServerCaRequest(service, project, instance);
+            return new AddServerCaRequest(this.service, project, instance);
         }
 
         /// <summary>
@@ -1406,7 +1433,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         /// </param>
         public virtual CloneRequest Clone(Google.Apis.SQLAdmin.v1beta4.Data.InstancesCloneRequest body, string project, string instance)
         {
-            return new CloneRequest(service, body, project, instance);
+            return new CloneRequest(this.service, body, project, instance);
         }
 
         /// <summary>
@@ -1477,7 +1504,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         /// <param name="instance">Cloud SQL instance ID. This does not include the project ID.</param>
         public virtual DeleteRequest Delete(string project, string instance)
         {
-            return new DeleteRequest(service, project, instance);
+            return new DeleteRequest(this.service, project, instance);
         }
 
         /// <summary>Deletes a Cloud SQL instance.</summary>
@@ -1539,7 +1566,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         /// <param name="instance">Required. The name of the Cloud SQL instance.</param>
         public virtual DemoteRequest Demote(Google.Apis.SQLAdmin.v1beta4.Data.InstancesDemoteRequest body, string project, string instance)
         {
-            return new DemoteRequest(service, body, project, instance);
+            return new DemoteRequest(this.service, body, project, instance);
         }
 
         /// <summary>
@@ -1610,7 +1637,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         /// <param name="instance">Cloud SQL instance name.</param>
         public virtual DemoteMasterRequest DemoteMaster(Google.Apis.SQLAdmin.v1beta4.Data.InstancesDemoteMasterRequest body, string project, string instance)
         {
-            return new DemoteMasterRequest(service, body, project, instance);
+            return new DemoteMasterRequest(this.service, body, project, instance);
         }
 
         /// <summary>
@@ -1681,7 +1708,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         /// <param name="instance">The Cloud SQL instance ID. This doesn't include the project ID.</param>
         public virtual ExportRequest Export(Google.Apis.SQLAdmin.v1beta4.Data.InstancesExportRequest body, string project, string instance)
         {
-            return new ExportRequest(service, body, project, instance);
+            return new ExportRequest(this.service, body, project, instance);
         }
 
         /// <summary>
@@ -1756,7 +1783,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         /// <param name="instance">Cloud SQL instance ID. This does not include the project ID.</param>
         public virtual FailoverRequest Failover(Google.Apis.SQLAdmin.v1beta4.Data.InstancesFailoverRequest body, string project, string instance)
         {
-            return new FailoverRequest(service, body, project, instance);
+            return new FailoverRequest(this.service, body, project, instance);
         }
 
         /// <summary>
@@ -1828,7 +1855,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         /// <param name="instance">Database instance ID. This does not include the project ID.</param>
         public virtual GetRequest Get(string project, string instance)
         {
-            return new GetRequest(service, project, instance);
+            return new GetRequest(this.service, project, instance);
         }
 
         /// <summary>Retrieves a resource containing information about a Cloud SQL instance.</summary>
@@ -1888,7 +1915,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         /// <param name="instance">Cloud SQL instance ID. This does not include the project ID.</param>
         public virtual ImportRequest Import(Google.Apis.SQLAdmin.v1beta4.Data.InstancesImportRequest body, string project, string instance)
         {
-            return new ImportRequest(service, body, project, instance);
+            return new ImportRequest(this.service, body, project, instance);
         }
 
         /// <summary>Imports data into a Cloud SQL instance from a SQL dump or CSV file in Cloud Storage.</summary>
@@ -1956,7 +1983,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         /// </param>
         public virtual InsertRequest Insert(Google.Apis.SQLAdmin.v1beta4.Data.DatabaseInstance body, string project)
         {
-            return new InsertRequest(service, body, project);
+            return new InsertRequest(this.service, body, project);
         }
 
         /// <summary>Creates a new Cloud SQL instance.</summary>
@@ -2010,7 +2037,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         /// <param name="project">Project ID of the project for which to list Cloud SQL instances.</param>
         public virtual ListRequest List(string project)
         {
-            return new ListRequest(service, project);
+            return new ListRequest(this.service, project);
         }
 
         /// <summary>Lists instances under a given project.</summary>
@@ -2107,7 +2134,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         /// <param name="instance">Cloud SQL instance ID. This does not include the project ID.</param>
         public virtual ListServerCasRequest ListServerCas(string project, string instance)
         {
-            return new ListServerCasRequest(service, project, instance);
+            return new ListServerCasRequest(this.service, project, instance);
         }
 
         /// <summary>
@@ -2174,7 +2201,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         /// <param name="instance">Cloud SQL instance ID. This does not include the project ID.</param>
         public virtual PatchRequest Patch(Google.Apis.SQLAdmin.v1beta4.Data.DatabaseInstance body, string project, string instance)
         {
-            return new PatchRequest(service, body, project, instance);
+            return new PatchRequest(this.service, body, project, instance);
         }
 
         /// <summary>
@@ -2246,7 +2273,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         /// <param name="instance">Cloud SQL read replica instance name.</param>
         public virtual PromoteReplicaRequest PromoteReplica(string project, string instance)
         {
-            return new PromoteReplicaRequest(service, project, instance);
+            return new PromoteReplicaRequest(this.service, project, instance);
         }
 
         /// <summary>
@@ -2325,7 +2352,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         /// <param name="instance">Cloud SQL instance ID. This does not include the project ID.</param>
         public virtual ReencryptRequest Reencrypt(Google.Apis.SQLAdmin.v1beta4.Data.InstancesReencryptRequest body, string project, string instance)
         {
-            return new ReencryptRequest(service, body, project, instance);
+            return new ReencryptRequest(this.service, body, project, instance);
         }
 
         /// <summary>Reencrypt CMEK instance with latest key version.</summary>
@@ -2393,7 +2420,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         /// <param name="instance">Cloud SQL instance ID. This does not include the project ID.</param>
         public virtual ResetSslConfigRequest ResetSslConfig(string project, string instance)
         {
-            return new ResetSslConfigRequest(service, project, instance);
+            return new ResetSslConfigRequest(this.service, project, instance);
         }
 
         /// <summary>
@@ -2454,7 +2481,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         /// <param name="instance">Cloud SQL instance ID. This does not include the project ID.</param>
         public virtual RestartRequest Restart(string project, string instance)
         {
-            return new RestartRequest(service, project, instance);
+            return new RestartRequest(this.service, project, instance);
         }
 
         /// <summary>Restarts a Cloud SQL instance.</summary>
@@ -2516,7 +2543,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         /// <param name="instance">Cloud SQL instance ID. This does not include the project ID.</param>
         public virtual RestoreBackupRequest RestoreBackup(Google.Apis.SQLAdmin.v1beta4.Data.InstancesRestoreBackupRequest body, string project, string instance)
         {
-            return new RestoreBackupRequest(service, body, project, instance);
+            return new RestoreBackupRequest(this.service, body, project, instance);
         }
 
         /// <summary>
@@ -2588,7 +2615,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         /// <param name="instance">Cloud SQL instance ID. This does not include the project ID.</param>
         public virtual RotateServerCaRequest RotateServerCa(Google.Apis.SQLAdmin.v1beta4.Data.InstancesRotateServerCaRequest body, string project, string instance)
         {
-            return new RotateServerCaRequest(service, body, project, instance);
+            return new RotateServerCaRequest(this.service, body, project, instance);
         }
 
         /// <summary>
@@ -2657,7 +2684,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         /// <param name="instance">Cloud SQL read replica instance name.</param>
         public virtual StartReplicaRequest StartReplica(string project, string instance)
         {
-            return new StartReplicaRequest(service, project, instance);
+            return new StartReplicaRequest(this.service, project, instance);
         }
 
         /// <summary>Starts the replication in the read replica instance.</summary>
@@ -2716,7 +2743,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         /// <param name="instance">Cloud SQL read replica instance name.</param>
         public virtual StopReplicaRequest StopReplica(string project, string instance)
         {
-            return new StopReplicaRequest(service, project, instance);
+            return new StopReplicaRequest(this.service, project, instance);
         }
 
         /// <summary>Stops the replication in the read replica instance.</summary>
@@ -2775,7 +2802,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         /// <param name="instance">Cloud SQL read replica instance name.</param>
         public virtual SwitchoverRequest Switchover(string project, string instance)
         {
-            return new SwitchoverRequest(service, project, instance);
+            return new SwitchoverRequest(this.service, project, instance);
         }
 
         /// <summary>Switches over from the primary instance to a replica instance.</summary>
@@ -2850,7 +2877,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         /// <param name="instance">Cloud SQL instance ID. This does not include the project ID.</param>
         public virtual TruncateLogRequest TruncateLog(Google.Apis.SQLAdmin.v1beta4.Data.InstancesTruncateLogRequest body, string project, string instance)
         {
-            return new TruncateLogRequest(service, body, project, instance);
+            return new TruncateLogRequest(this.service, body, project, instance);
         }
 
         /// <summary>Truncate MySQL general and slow query log tables MySQL only.</summary>
@@ -2919,7 +2946,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         /// <param name="instance">Cloud SQL instance ID. This does not include the project ID.</param>
         public virtual UpdateRequest Update(Google.Apis.SQLAdmin.v1beta4.Data.DatabaseInstance body, string project, string instance)
         {
-            return new UpdateRequest(service, body, project, instance);
+            return new UpdateRequest(this.service, body, project, instance);
         }
 
         /// <summary>
@@ -3002,7 +3029,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         /// <param name="operation">Instance operation ID.</param>
         public virtual CancelRequest Cancel(string project, string operation)
         {
-            return new CancelRequest(service, project, operation);
+            return new CancelRequest(this.service, project, operation);
         }
 
         /// <summary>Cancels an instance operation that has been performed on an instance.</summary>
@@ -3061,7 +3088,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         /// <param name="operation">Instance operation ID.</param>
         public virtual GetRequest Get(string project, string operation)
         {
-            return new GetRequest(service, project, operation);
+            return new GetRequest(this.service, project, operation);
         }
 
         /// <summary>Retrieves an instance operation that has been performed on an instance.</summary>
@@ -3122,7 +3149,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         /// <param name="project">Project ID of the project that contains the instance.</param>
         public virtual ListRequest List(string project)
         {
-            return new ListRequest(service, project);
+            return new ListRequest(this.service, project);
         }
 
         /// <summary>
@@ -3242,7 +3269,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
             /// <param name="instance">Cloud SQL instance ID. This does not include the project ID.</param>
             public virtual GetDiskShrinkConfigRequest GetDiskShrinkConfig(string project, string instance)
             {
-                return new GetDiskShrinkConfigRequest(service, project, instance);
+                return new GetDiskShrinkConfigRequest(this.service, project, instance);
             }
 
             /// <summary>Get Disk Shrink Config for a given instance.</summary>
@@ -3301,7 +3328,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
             /// <param name="instance">Cloud SQL instance ID. This does not include the project ID.</param>
             public virtual GetLatestRecoveryTimeRequest GetLatestRecoveryTime(string project, string instance)
             {
-                return new GetLatestRecoveryTimeRequest(service, project, instance);
+                return new GetLatestRecoveryTimeRequest(this.service, project, instance);
             }
 
             /// <summary>Get Latest Recovery Time for a given instance.</summary>
@@ -3361,7 +3388,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
             /// <param name="instance">Cloud SQL instance ID. This does not include the project ID.</param>
             public virtual PerformDiskShrinkRequest PerformDiskShrink(Google.Apis.SQLAdmin.v1beta4.Data.PerformDiskShrinkContext body, string project, string instance)
             {
-                return new PerformDiskShrinkRequest(service, body, project, instance);
+                return new PerformDiskShrinkRequest(this.service, body, project, instance);
             }
 
             /// <summary>Perform Disk Shrink on primary instance.</summary>
@@ -3428,7 +3455,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
             /// <param name="instance">Cloud SQL instance ID. This does not include the project ID.</param>
             public virtual RescheduleMaintenanceRequest RescheduleMaintenance(Google.Apis.SQLAdmin.v1beta4.Data.SqlInstancesRescheduleMaintenanceRequestBody body, string project, string instance)
             {
-                return new RescheduleMaintenanceRequest(service, body, project, instance);
+                return new RescheduleMaintenanceRequest(this.service, body, project, instance);
             }
 
             /// <summary>Reschedules the maintenance on the given instance.</summary>
@@ -3495,7 +3522,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
             /// <param name="instance">Cloud SQL read replica instance name.</param>
             public virtual ResetReplicaSizeRequest ResetReplicaSize(Google.Apis.SQLAdmin.v1beta4.Data.SqlInstancesResetReplicaSizeRequest body, string project, string instance)
             {
-                return new ResetReplicaSizeRequest(service, body, project, instance);
+                return new ResetReplicaSizeRequest(this.service, body, project, instance);
             }
 
             /// <summary>Reset Replica Size to primary instance disk size.</summary>
@@ -3562,7 +3589,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
             /// <param name="instance">Cloud SQL instance ID. This does not include the project ID.</param>
             public virtual StartExternalSyncRequest StartExternalSync(Google.Apis.SQLAdmin.v1beta4.Data.SqlInstancesStartExternalSyncRequest body, string project, string instance)
             {
-                return new StartExternalSyncRequest(service, body, project, instance);
+                return new StartExternalSyncRequest(this.service, body, project, instance);
             }
 
             /// <summary>Start External primary instance migration.</summary>
@@ -3629,7 +3656,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
             /// <param name="instance">Cloud SQL instance ID. This does not include the project ID.</param>
             public virtual VerifyExternalSyncSettingsRequest VerifyExternalSyncSettings(Google.Apis.SQLAdmin.v1beta4.Data.SqlInstancesVerifyExternalSyncSettingsRequest body, string project, string instance)
             {
-                return new VerifyExternalSyncSettingsRequest(service, body, project, instance);
+                return new VerifyExternalSyncSettingsRequest(this.service, body, project, instance);
             }
 
             /// <summary>Verify External primary instance external sync settings.</summary>
@@ -3716,7 +3743,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         /// <param name="instance">Cloud SQL instance ID. This does not include the project ID.</param>
         public virtual CreateEphemeralRequest CreateEphemeral(Google.Apis.SQLAdmin.v1beta4.Data.SslCertsCreateEphemeralRequest body, string project, string instance)
         {
-            return new CreateEphemeralRequest(service, body, project, instance);
+            return new CreateEphemeralRequest(this.service, body, project, instance);
         }
 
         /// <summary>
@@ -3790,7 +3817,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         /// <param name="sha1Fingerprint">Sha1 FingerPrint.</param>
         public virtual DeleteRequest Delete(string project, string instance, string sha1Fingerprint)
         {
-            return new DeleteRequest(service, project, instance, sha1Fingerprint);
+            return new DeleteRequest(this.service, project, instance, sha1Fingerprint);
         }
 
         /// <summary>
@@ -3869,7 +3896,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         /// <param name="sha1Fingerprint">Sha1 FingerPrint.</param>
         public virtual GetRequest Get(string project, string instance, string sha1Fingerprint)
         {
-            return new GetRequest(service, project, instance, sha1Fingerprint);
+            return new GetRequest(this.service, project, instance, sha1Fingerprint);
         }
 
         /// <summary>
@@ -3948,7 +3975,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         /// <param name="instance">Cloud SQL instance ID. This does not include the project ID.</param>
         public virtual InsertRequest Insert(Google.Apis.SQLAdmin.v1beta4.Data.SslCertsInsertRequest body, string project, string instance)
         {
-            return new InsertRequest(service, body, project, instance);
+            return new InsertRequest(this.service, body, project, instance);
         }
 
         /// <summary>
@@ -4017,7 +4044,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         /// <param name="instance">Cloud SQL instance ID. This does not include the project ID.</param>
         public virtual ListRequest List(string project, string instance)
         {
-            return new ListRequest(service, project, instance);
+            return new ListRequest(this.service, project, instance);
         }
 
         /// <summary>Lists all of the current SSL certificates for the instance.</summary>
@@ -4093,7 +4120,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         /// <param name="project">Project ID of the project for which to list tiers.</param>
         public virtual ListRequest List(string project)
         {
-            return new ListRequest(service, project);
+            return new ListRequest(this.service, project);
         }
 
         /// <summary>
@@ -4157,7 +4184,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         /// <param name="instance">Database instance ID. This does not include the project ID.</param>
         public virtual DeleteRequest Delete(string project, string instance)
         {
-            return new DeleteRequest(service, project, instance);
+            return new DeleteRequest(this.service, project, instance);
         }
 
         /// <summary>Deletes a user from a Cloud SQL instance.</summary>
@@ -4241,7 +4268,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         /// <param name="name">User of the instance.</param>
         public virtual GetRequest Get(string project, string instance, string name)
         {
-            return new GetRequest(service, project, instance, name);
+            return new GetRequest(this.service, project, instance, name);
         }
 
         /// <summary>Retrieves a resource containing information about a user.</summary>
@@ -4326,7 +4353,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         /// <param name="instance">Database instance ID. This does not include the project ID.</param>
         public virtual InsertRequest Insert(Google.Apis.SQLAdmin.v1beta4.Data.User body, string project, string instance)
         {
-            return new InsertRequest(service, body, project, instance);
+            return new InsertRequest(this.service, body, project, instance);
         }
 
         /// <summary>Creates a new user in a Cloud SQL instance.</summary>
@@ -4392,7 +4419,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         /// <param name="instance">Database instance ID. This does not include the project ID.</param>
         public virtual ListRequest List(string project, string instance)
         {
-            return new ListRequest(service, project, instance);
+            return new ListRequest(this.service, project, instance);
         }
 
         /// <summary>Lists users in the specified Cloud SQL instance.</summary>
@@ -4452,7 +4479,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         /// <param name="instance">Database instance ID. This does not include the project ID.</param>
         public virtual UpdateRequest Update(Google.Apis.SQLAdmin.v1beta4.Data.User body, string project, string instance)
         {
-            return new UpdateRequest(service, body, project, instance);
+            return new UpdateRequest(this.service, body, project, instance);
         }
 
         /// <summary>Updates an existing user in a Cloud SQL instance.</summary>
@@ -4581,8 +4608,8 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ExpirationTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpirationTimeRaw);
-            set => ExpirationTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpirationTimeRaw);
+            set => ExpirationTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>This is always `sql#aclEntry`.</summary>
@@ -4784,8 +4811,8 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _enqueuedTimeRaw;
@@ -4824,8 +4851,8 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EnqueuedTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EnqueuedTimeRaw);
-            set => EnqueuedTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EnqueuedTimeRaw);
+            set => EnqueuedTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -4890,8 +4917,8 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The status of this run.</summary>
@@ -4950,8 +4977,8 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? WindowStartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(WindowStartTimeRaw);
-            set => WindowStartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(WindowStartTimeRaw);
+            set => WindowStartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -5070,8 +5097,8 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? PointInTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(PointInTimeRaw);
-            set => PointInTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(PointInTimeRaw);
+            set => PointInTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -5269,8 +5296,8 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -5961,8 +5988,8 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ReadTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ReadTimeRaw);
-            set => ReadTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ReadTimeRaw);
+            set => ReadTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Optional. If set, it will contain the cert valid duration.</summary>
@@ -6091,8 +6118,8 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
             [Newtonsoft.Json.JsonIgnoreAttribute]
             public virtual System.DateTimeOffset? StopAtDateTimeOffset
             {
-                get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StopAtRaw);
-                set => StopAtRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+                get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StopAtRaw);
+                set => StopAtRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
             }
 
             /// <summary>
@@ -6497,8 +6524,8 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? TimeToRetireDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(TimeToRetireRaw);
-            set => TimeToRetireRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(TimeToRetireRaw);
+            set => TimeToRetireRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -6746,8 +6773,8 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>If errors occurred during processing of this operation, this field will be populated.</summary>
@@ -6798,8 +6825,8 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? InsertTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(InsertTimeRaw);
-            set => InsertTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(InsertTimeRaw);
+            set => InsertTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>This is always `sql#operation`.</summary>
@@ -6861,8 +6888,8 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The status of an operation.</summary>
@@ -6970,8 +6997,8 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _endTimeRaw;
@@ -7007,8 +7034,8 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. Human-readable status of the operation, if any.</summary>
@@ -7091,8 +7118,8 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? PasswordExpirationTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(PasswordExpirationTimeRaw);
-            set => PasswordExpirationTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(PasswordExpirationTimeRaw);
+            set => PasswordExpirationTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -7244,8 +7271,8 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ScheduleTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ScheduleTimeRaw);
-            set => ScheduleTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ScheduleTimeRaw);
+            set => ScheduleTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -7580,8 +7607,8 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LatestRecoveryTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LatestRecoveryTimeRaw);
-            set => LatestRecoveryTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LatestRecoveryTimeRaw);
+            set => LatestRecoveryTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -7735,8 +7762,8 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ScheduleDeadlineTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ScheduleDeadlineTimeRaw);
-            set => ScheduleDeadlineTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ScheduleDeadlineTimeRaw);
+            set => ScheduleDeadlineTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _startTimeRaw;
@@ -7772,8 +7799,8 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -7884,8 +7911,8 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _expirationTimeRaw;
@@ -7926,8 +7953,8 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ExpirationTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpirationTimeRaw);
-            set => ExpirationTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpirationTimeRaw);
+            set => ExpirationTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Name of the database instance.</summary>

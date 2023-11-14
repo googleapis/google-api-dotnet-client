@@ -265,7 +265,7 @@ namespace Google.Apis.AbusiveExperienceReport.v1
         /// </param>
         public virtual GetRequest Get(string name)
         {
-            return new GetRequest(service, name);
+            return new GetRequest(this.service, name);
         }
 
         /// <summary>Gets a site's Abusive Experience Report summary.</summary>
@@ -327,7 +327,7 @@ namespace Google.Apis.AbusiveExperienceReport.v1
         /// <summary>Lists sites that are failing in the Abusive Experience Report.</summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>Lists sites that are failing in the Abusive Experience Report.</summary>
@@ -403,8 +403,8 @@ namespace Google.Apis.AbusiveExperienceReport.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EnforcementTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EnforcementTimeRaw);
-            set => EnforcementTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EnforcementTimeRaw);
+            set => EnforcementTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The site's [enforcement status](https://support.google.com/webtools/answer/7538608).</summary>
@@ -446,8 +446,8 @@ namespace Google.Apis.AbusiveExperienceReport.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LastChangeTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastChangeTimeRaw);
-            set => LastChangeTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastChangeTimeRaw);
+            set => LastChangeTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>

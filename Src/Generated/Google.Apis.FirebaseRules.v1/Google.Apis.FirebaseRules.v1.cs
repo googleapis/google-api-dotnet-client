@@ -323,7 +323,7 @@ namespace Google.Apis.FirebaseRules.v1
             /// </param>
             public virtual CreateRequest Create(Google.Apis.FirebaseRules.v1.Data.Release body, string name)
             {
-                return new CreateRequest(service, body, name);
+                return new CreateRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -391,7 +391,7 @@ namespace Google.Apis.FirebaseRules.v1
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>Delete a `Release` by resource name.</summary>
@@ -441,7 +441,7 @@ namespace Google.Apis.FirebaseRules.v1
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Get a `Release` by name.</summary>
@@ -490,7 +490,7 @@ namespace Google.Apis.FirebaseRules.v1
             /// </param>
             public virtual GetExecutableRequest GetExecutable(string name)
             {
-                return new GetExecutableRequest(service, name);
+                return new GetExecutableRequest(this.service, name);
             }
 
             /// <summary>Get the `Release` executable to use when enforcing rules.</summary>
@@ -574,7 +574,7 @@ namespace Google.Apis.FirebaseRules.v1
             /// <param name="name">Required. Resource name for the project. Format: `projects/{project_id}`</param>
             public virtual ListRequest List(string name)
             {
-                return new ListRequest(service, name);
+                return new ListRequest(this.service, name);
             }
 
             /// <summary>
@@ -680,7 +680,7 @@ namespace Google.Apis.FirebaseRules.v1
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.FirebaseRules.v1.Data.UpdateReleaseRequest body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -762,7 +762,7 @@ namespace Google.Apis.FirebaseRules.v1
             /// </param>
             public virtual CreateRequest Create(Google.Apis.FirebaseRules.v1.Data.Ruleset body, string name)
             {
-                return new CreateRequest(service, body, name);
+                return new CreateRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -825,7 +825,7 @@ namespace Google.Apis.FirebaseRules.v1
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>
@@ -878,7 +878,7 @@ namespace Google.Apis.FirebaseRules.v1
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Get a `Ruleset` by name including the full `Source` contents.</summary>
@@ -929,7 +929,7 @@ namespace Google.Apis.FirebaseRules.v1
             /// <param name="name">Required. Resource name for the project. Format: `projects/{project_id}`</param>
             public virtual ListRequest List(string name)
             {
-                return new ListRequest(service, name);
+                return new ListRequest(this.service, name);
             }
 
             /// <summary>
@@ -1038,7 +1038,7 @@ namespace Google.Apis.FirebaseRules.v1
         /// </param>
         public virtual TestRequest Test(Google.Apis.FirebaseRules.v1.Data.TestRulesetRequest body, string name)
         {
-            return new TestRequest(service, body, name);
+            return new TestRequest(this.service, body, name);
         }
 
         /// <summary>
@@ -1270,8 +1270,8 @@ namespace Google.Apis.FirebaseRules.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? SyncTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(SyncTimeRaw);
-            set => SyncTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(SyncTimeRaw);
+            set => SyncTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _updateTimeRaw;
@@ -1307,8 +1307,8 @@ namespace Google.Apis.FirebaseRules.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -1420,8 +1420,8 @@ namespace Google.Apis.FirebaseRules.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Required. Format: `projects/{project_id}/releases/{release_id}`</summary>
@@ -1468,8 +1468,8 @@ namespace Google.Apis.FirebaseRules.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -1531,8 +1531,8 @@ namespace Google.Apis.FirebaseRules.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. The metadata for this ruleset.</summary>

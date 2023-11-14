@@ -328,7 +328,7 @@ namespace Google.Apis.BigQueryConnectionService.v1beta1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.BigQueryConnectionService.v1beta1.Data.Connection body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a new connection.</summary>
@@ -398,7 +398,7 @@ namespace Google.Apis.BigQueryConnectionService.v1beta1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes connection and associated credential.</summary>
@@ -449,7 +449,7 @@ namespace Google.Apis.BigQueryConnectionService.v1beta1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Returns specified connection.</summary>
@@ -505,7 +505,7 @@ namespace Google.Apis.BigQueryConnectionService.v1beta1
                 /// </param>
                 public virtual GetIamPolicyRequest GetIamPolicy(Google.Apis.BigQueryConnectionService.v1beta1.Data.GetIamPolicyRequest body, string resource)
                 {
-                    return new GetIamPolicyRequest(service, body, resource);
+                    return new GetIamPolicyRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -566,7 +566,7 @@ namespace Google.Apis.BigQueryConnectionService.v1beta1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Returns a list of connections in the given project.</summary>
@@ -645,7 +645,7 @@ namespace Google.Apis.BigQueryConnectionService.v1beta1
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.BigQueryConnectionService.v1beta1.Data.Connection body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -723,7 +723,7 @@ namespace Google.Apis.BigQueryConnectionService.v1beta1
                 /// </param>
                 public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.BigQueryConnectionService.v1beta1.Data.SetIamPolicyRequest body, string resource)
                 {
-                    return new SetIamPolicyRequest(service, body, resource);
+                    return new SetIamPolicyRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -792,7 +792,7 @@ namespace Google.Apis.BigQueryConnectionService.v1beta1
                 /// </param>
                 public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.BigQueryConnectionService.v1beta1.Data.TestIamPermissionsRequest body, string resource)
                 {
-                    return new TestIamPermissionsRequest(service, body, resource);
+                    return new TestIamPermissionsRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -857,7 +857,7 @@ namespace Google.Apis.BigQueryConnectionService.v1beta1
                 /// </param>
                 public virtual UpdateCredentialRequest UpdateCredential(Google.Apis.BigQueryConnectionService.v1beta1.Data.ConnectionCredential body, string name)
                 {
-                    return new UpdateCredentialRequest(service, body, name);
+                    return new UpdateCredentialRequest(this.service, body, name);
                 }
 
                 /// <summary>Sets the credential for the specified connection.</summary>

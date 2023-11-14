@@ -304,7 +304,7 @@ namespace Google.Apis.CloudTasks.v2beta2
             /// <param name="body">The body of the request.</param>
             public virtual UpdateRequest Update(Google.Apis.CloudTasks.v2beta2.Data.HttpBody body)
             {
-                return new UpdateRequest(service, body);
+                return new UpdateRequest(this.service, body);
             }
 
             /// <summary>
@@ -443,7 +443,7 @@ namespace Google.Apis.CloudTasks.v2beta2
                     /// </param>
                     public virtual AcknowledgeRequest Acknowledge(Google.Apis.CloudTasks.v2beta2.Data.AcknowledgeTaskRequest body, string name)
                     {
-                        return new AcknowledgeRequest(service, body, name);
+                        return new AcknowledgeRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -519,7 +519,7 @@ namespace Google.Apis.CloudTasks.v2beta2
                     /// </param>
                     public virtual BufferRequest Buffer(Google.Apis.CloudTasks.v2beta2.Data.BufferTaskRequest body, string queue, string taskId)
                     {
-                        return new BufferRequest(service, body, queue, taskId);
+                        return new BufferRequest(this.service, body, queue, taskId);
                     }
 
                     /// <summary>
@@ -605,7 +605,7 @@ namespace Google.Apis.CloudTasks.v2beta2
                     /// </param>
                     public virtual CancelLeaseRequest CancelLease(Google.Apis.CloudTasks.v2beta2.Data.CancelLeaseRequest body, string name)
                     {
-                        return new CancelLeaseRequest(service, body, name);
+                        return new CancelLeaseRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -672,7 +672,7 @@ namespace Google.Apis.CloudTasks.v2beta2
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.CloudTasks.v2beta2.Data.CreateTaskRequest body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>
@@ -737,7 +737,7 @@ namespace Google.Apis.CloudTasks.v2beta2
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -791,7 +791,7 @@ namespace Google.Apis.CloudTasks.v2beta2
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Gets a task.</summary>
@@ -901,7 +901,7 @@ namespace Google.Apis.CloudTasks.v2beta2
                     /// </param>
                     public virtual LeaseRequest Lease(Google.Apis.CloudTasks.v2beta2.Data.LeaseTasksRequest body, string parent)
                     {
-                        return new LeaseRequest(service, body, parent);
+                        return new LeaseRequest(this.service, body, parent);
                     }
 
                     /// <summary>
@@ -971,7 +971,7 @@ namespace Google.Apis.CloudTasks.v2beta2
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>
@@ -1114,7 +1114,7 @@ namespace Google.Apis.CloudTasks.v2beta2
                     /// </param>
                     public virtual RenewLeaseRequest RenewLease(Google.Apis.CloudTasks.v2beta2.Data.RenewLeaseRequest body, string name)
                     {
-                        return new RenewLeaseRequest(service, body, name);
+                        return new RenewLeaseRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -1188,7 +1188,7 @@ namespace Google.Apis.CloudTasks.v2beta2
                     /// </param>
                     public virtual RunRequest Run(Google.Apis.CloudTasks.v2beta2.Data.RunTaskRequest body, string name)
                     {
-                        return new RunRequest(service, body, name);
+                        return new RunRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -1266,7 +1266,7 @@ namespace Google.Apis.CloudTasks.v2beta2
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.CloudTasks.v2beta2.Data.Queue body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -1341,7 +1341,7 @@ namespace Google.Apis.CloudTasks.v2beta2
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -1403,7 +1403,7 @@ namespace Google.Apis.CloudTasks.v2beta2
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets a queue.</summary>
@@ -1477,7 +1477,7 @@ namespace Google.Apis.CloudTasks.v2beta2
                 /// </param>
                 public virtual GetIamPolicyRequest GetIamPolicy(Google.Apis.CloudTasks.v2beta2.Data.GetIamPolicyRequest body, string resource)
                 {
-                    return new GetIamPolicyRequest(service, body, resource);
+                    return new GetIamPolicyRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -1540,7 +1540,7 @@ namespace Google.Apis.CloudTasks.v2beta2
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists queues. Queues are returned in lexicographical order.</summary>
@@ -1674,7 +1674,7 @@ namespace Google.Apis.CloudTasks.v2beta2
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.CloudTasks.v2beta2.Data.Queue body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -1766,7 +1766,7 @@ namespace Google.Apis.CloudTasks.v2beta2
                 /// </param>
                 public virtual PauseRequest Pause(Google.Apis.CloudTasks.v2beta2.Data.PauseQueueRequest body, string name)
                 {
-                    return new PauseRequest(service, body, name);
+                    return new PauseRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -1832,7 +1832,7 @@ namespace Google.Apis.CloudTasks.v2beta2
                 /// </param>
                 public virtual PurgeRequest Purge(Google.Apis.CloudTasks.v2beta2.Data.PurgeQueueRequest body, string name)
                 {
-                    return new PurgeRequest(service, body, name);
+                    return new PurgeRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -1900,7 +1900,7 @@ namespace Google.Apis.CloudTasks.v2beta2
                 /// </param>
                 public virtual ResumeRequest Resume(Google.Apis.CloudTasks.v2beta2.Data.ResumeQueueRequest body, string name)
                 {
-                    return new ResumeRequest(service, body, name);
+                    return new ResumeRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -1971,7 +1971,7 @@ namespace Google.Apis.CloudTasks.v2beta2
                 /// </param>
                 public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.CloudTasks.v2beta2.Data.SetIamPolicyRequest body, string resource)
                 {
-                    return new SetIamPolicyRequest(service, body, resource);
+                    return new SetIamPolicyRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -2042,7 +2042,7 @@ namespace Google.Apis.CloudTasks.v2beta2
                 /// </param>
                 public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.CloudTasks.v2beta2.Data.TestIamPermissionsRequest body, string resource)
                 {
-                    return new TestIamPermissionsRequest(service, body, resource);
+                    return new TestIamPermissionsRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -2104,7 +2104,7 @@ namespace Google.Apis.CloudTasks.v2beta2
             /// <param name="name">Resource name for the location.</param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets information about a location.</summary>
@@ -2154,7 +2154,7 @@ namespace Google.Apis.CloudTasks.v2beta2
             /// </param>
             public virtual GetCmekConfigRequest GetCmekConfig(string name)
             {
-                return new GetCmekConfigRequest(service, name);
+                return new GetCmekConfigRequest(this.service, name);
             }
 
             /// <summary>
@@ -2204,7 +2204,7 @@ namespace Google.Apis.CloudTasks.v2beta2
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
             {
-                return new ListRequest(service, name);
+                return new ListRequest(this.service, name);
             }
 
             /// <summary>Lists information about the supported locations for this service.</summary>
@@ -2301,7 +2301,7 @@ namespace Google.Apis.CloudTasks.v2beta2
             /// </param>
             public virtual UpdateCmekConfigRequest UpdateCmekConfig(Google.Apis.CloudTasks.v2beta2.Data.CmekConfig body, string name)
             {
-                return new UpdateCmekConfigRequest(service, body, name);
+                return new UpdateCmekConfigRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -2411,8 +2411,8 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ScheduleTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ScheduleTimeRaw);
-            set => ScheduleTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ScheduleTimeRaw);
+            set => ScheduleTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -2634,8 +2634,8 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? DispatchTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DispatchTimeRaw);
-            set => DispatchTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DispatchTimeRaw);
+            set => DispatchTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -2681,8 +2681,8 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ResponseTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ResponseTimeRaw);
-            set => ResponseTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ResponseTimeRaw);
+            set => ResponseTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _scheduleTimeRaw;
@@ -2721,8 +2721,8 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ScheduleTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ScheduleTimeRaw);
-            set => ScheduleTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ScheduleTimeRaw);
+            set => ScheduleTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -2855,8 +2855,8 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ScheduleTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ScheduleTimeRaw);
-            set => ScheduleTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ScheduleTimeRaw);
+            set => ScheduleTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -3597,8 +3597,8 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? PurgeTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(PurgeTimeRaw);
-            set => PurgeTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(PurgeTimeRaw);
+            set => PurgeTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -3724,8 +3724,8 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? OldestEstimatedArrivalTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(OldestEstimatedArrivalTimeRaw);
-            set => OldestEstimatedArrivalTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(OldestEstimatedArrivalTimeRaw);
+            set => OldestEstimatedArrivalTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -3847,8 +3847,8 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ScheduleTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ScheduleTimeRaw);
-            set => ScheduleTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ScheduleTimeRaw);
+            set => ScheduleTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -4032,8 +4032,8 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -4101,8 +4101,8 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ScheduleTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ScheduleTimeRaw);
-            set => ScheduleTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ScheduleTimeRaw);
+            set => ScheduleTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. The task status.</summary>

@@ -327,7 +327,7 @@ namespace Google.Apis.Firestore.v1beta1
                 /// </param>
                 public virtual BatchGetRequest BatchGet(Google.Apis.Firestore.v1beta1.Data.BatchGetDocumentsRequest body, string database)
                 {
-                    return new BatchGetRequest(service, body, database);
+                    return new BatchGetRequest(this.service, body, database);
                 }
 
                 /// <summary>
@@ -392,7 +392,7 @@ namespace Google.Apis.Firestore.v1beta1
                 /// </param>
                 public virtual BatchWriteRequest BatchWrite(Google.Apis.Firestore.v1beta1.Data.BatchWriteRequest body, string database)
                 {
-                    return new BatchWriteRequest(service, body, database);
+                    return new BatchWriteRequest(this.service, body, database);
                 }
 
                 /// <summary>
@@ -454,7 +454,7 @@ namespace Google.Apis.Firestore.v1beta1
                 /// </param>
                 public virtual BeginTransactionRequest BeginTransaction(Google.Apis.Firestore.v1beta1.Data.BeginTransactionRequest body, string database)
                 {
-                    return new BeginTransactionRequest(service, body, database);
+                    return new BeginTransactionRequest(this.service, body, database);
                 }
 
                 /// <summary>Starts a new transaction.</summary>
@@ -511,7 +511,7 @@ namespace Google.Apis.Firestore.v1beta1
                 /// </param>
                 public virtual CommitRequest Commit(Google.Apis.Firestore.v1beta1.Data.CommitRequest body, string database)
                 {
-                    return new CommitRequest(service, body, database);
+                    return new CommitRequest(this.service, body, database);
                 }
 
                 /// <summary>Commits a transaction, while optionally updating documents.</summary>
@@ -573,7 +573,7 @@ namespace Google.Apis.Firestore.v1beta1
                 /// </param>
                 public virtual CreateDocumentRequest CreateDocument(Google.Apis.Firestore.v1beta1.Data.Document body, string parent, string collectionId)
                 {
-                    return new CreateDocumentRequest(service, body, parent, collectionId);
+                    return new CreateDocumentRequest(this.service, body, parent, collectionId);
                 }
 
                 /// <summary>Creates a new document.</summary>
@@ -676,7 +676,7 @@ namespace Google.Apis.Firestore.v1beta1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes a document.</summary>
@@ -703,12 +703,38 @@ namespace Google.Apis.Firestore.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("currentDocument.exists", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> CurrentDocumentExists { get; set; }
 
+                    private object _currentDocumentUpdateTime;
+
                     /// <summary>
-                    /// When set, the target document must exist and have been last updated at that time. Timestamp must
-                    /// be microsecond aligned.
+                    /// String representation of <see cref="CurrentDocumentUpdateTimeDateTimeOffset"/>, formatted for
+                    /// inclusion in the HTTP request.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("currentDocument.updateTime", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual object CurrentDocumentUpdateTime { get; set; }
+                    public virtual string CurrentDocumentUpdateTimeRaw { get; private set; }
+
+                    /// <summary>
+                    /// <seealso cref="object"/> representation of <see cref="CurrentDocumentUpdateTimeRaw"/>.
+                    /// </summary>
+                    [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CurrentDocumentUpdateTimeDateTimeOffset instead.")]
+                    public virtual object CurrentDocumentUpdateTime
+                    {
+                        get => _currentDocumentUpdateTime;
+                        set
+                        {
+                            CurrentDocumentUpdateTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                            _currentDocumentUpdateTime = value;
+                        }
+                    }
+
+                    public virtual System.DateTimeOffset? CurrentDocumentUpdateTimeDateTimeOffset
+                    {
+                        get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CurrentDocumentUpdateTimeRaw);
+                        set
+                        {
+                            CurrentDocumentUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                            _currentDocumentUpdateTime = value;
+                        }
+                    }
 
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "delete";
@@ -757,7 +783,7 @@ namespace Google.Apis.Firestore.v1beta1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets a single document.</summary>
@@ -783,13 +809,36 @@ namespace Google.Apis.Firestore.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("mask.fieldPaths", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual Google.Apis.Util.Repeatable<string> MaskFieldPaths { get; set; }
 
+                    private object _readTime;
+
                     /// <summary>
-                    /// Reads the version of the document at the given time. This must be a microsecond precision
-                    /// timestamp within the past one hour, or if Point-in-Time Recovery is enabled, can additionally be
-                    /// a whole minute timestamp within the past 7 days.
+                    /// String representation of <see cref="ReadTimeDateTimeOffset"/>, formatted for inclusion in the
+                    /// HTTP request.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("readTime", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual object ReadTime { get; set; }
+                    public virtual string ReadTimeRaw { get; private set; }
+
+                    /// <summary><seealso cref="object"/> representation of <see cref="ReadTimeRaw"/>.</summary>
+                    [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ReadTimeDateTimeOffset instead.")]
+                    public virtual object ReadTime
+                    {
+                        get => _readTime;
+                        set
+                        {
+                            ReadTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                            _readTime = value;
+                        }
+                    }
+
+                    public virtual System.DateTimeOffset? ReadTimeDateTimeOffset
+                    {
+                        get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ReadTimeRaw);
+                        set
+                        {
+                            ReadTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                            _readTime = value;
+                        }
+                    }
 
                     /// <summary>Reads the document in a transaction.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("transaction", Google.Apis.Util.RequestParameterType.Query)]
@@ -858,7 +907,7 @@ namespace Google.Apis.Firestore.v1beta1
                 /// </param>
                 public virtual ListRequest List(string parent, string collectionId)
                 {
-                    return new ListRequest(service, parent, collectionId);
+                    return new ListRequest(this.service, parent, collectionId);
                 }
 
                 /// <summary>Lists documents.</summary>
@@ -919,13 +968,36 @@ namespace Google.Apis.Firestore.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
+                    private object _readTime;
+
                     /// <summary>
-                    /// Perform the read at the provided time. This must be a microsecond precision timestamp within the
-                    /// past one hour, or if Point-in-Time Recovery is enabled, can additionally be a whole minute
-                    /// timestamp within the past 7 days.
+                    /// String representation of <see cref="ReadTimeDateTimeOffset"/>, formatted for inclusion in the
+                    /// HTTP request.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("readTime", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual object ReadTime { get; set; }
+                    public virtual string ReadTimeRaw { get; private set; }
+
+                    /// <summary><seealso cref="object"/> representation of <see cref="ReadTimeRaw"/>.</summary>
+                    [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ReadTimeDateTimeOffset instead.")]
+                    public virtual object ReadTime
+                    {
+                        get => _readTime;
+                        set
+                        {
+                            ReadTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                            _readTime = value;
+                        }
+                    }
+
+                    public virtual System.DateTimeOffset? ReadTimeDateTimeOffset
+                    {
+                        get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ReadTimeRaw);
+                        set
+                        {
+                            ReadTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                            _readTime = value;
+                        }
+                    }
 
                     /// <summary>
                     /// If the list should show missing documents. A document is missing if it does not exist, but there
@@ -1037,7 +1109,7 @@ namespace Google.Apis.Firestore.v1beta1
                 /// </param>
                 public virtual ListCollectionIdsRequest ListCollectionIds(Google.Apis.Firestore.v1beta1.Data.ListCollectionIdsRequest body, string parent)
                 {
-                    return new ListCollectionIdsRequest(service, body, parent);
+                    return new ListCollectionIdsRequest(this.service, body, parent);
                 }
 
                 /// <summary>Lists all the collection IDs underneath a document.</summary>
@@ -1104,7 +1176,7 @@ namespace Google.Apis.Firestore.v1beta1
                 /// </param>
                 public virtual ListDocumentsRequest ListDocuments(string parent, string collectionId)
                 {
-                    return new ListDocumentsRequest(service, parent, collectionId);
+                    return new ListDocumentsRequest(this.service, parent, collectionId);
                 }
 
                 /// <summary>Lists documents.</summary>
@@ -1165,13 +1237,36 @@ namespace Google.Apis.Firestore.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
+                    private object _readTime;
+
                     /// <summary>
-                    /// Perform the read at the provided time. This must be a microsecond precision timestamp within the
-                    /// past one hour, or if Point-in-Time Recovery is enabled, can additionally be a whole minute
-                    /// timestamp within the past 7 days.
+                    /// String representation of <see cref="ReadTimeDateTimeOffset"/>, formatted for inclusion in the
+                    /// HTTP request.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("readTime", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual object ReadTime { get; set; }
+                    public virtual string ReadTimeRaw { get; private set; }
+
+                    /// <summary><seealso cref="object"/> representation of <see cref="ReadTimeRaw"/>.</summary>
+                    [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ReadTimeDateTimeOffset instead.")]
+                    public virtual object ReadTime
+                    {
+                        get => _readTime;
+                        set
+                        {
+                            ReadTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                            _readTime = value;
+                        }
+                    }
+
+                    public virtual System.DateTimeOffset? ReadTimeDateTimeOffset
+                    {
+                        get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ReadTimeRaw);
+                        set
+                        {
+                            ReadTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                            _readTime = value;
+                        }
+                    }
 
                     /// <summary>
                     /// If the list should show missing documents. A document is missing if it does not exist, but there
@@ -1283,7 +1378,7 @@ namespace Google.Apis.Firestore.v1beta1
                 /// </param>
                 public virtual ListenRequest Listen(Google.Apis.Firestore.v1beta1.Data.ListenRequest body, string database)
                 {
-                    return new ListenRequest(service, body, database);
+                    return new ListenRequest(this.service, body, database);
                 }
 
                 /// <summary>
@@ -1348,7 +1443,7 @@ namespace Google.Apis.Firestore.v1beta1
                 /// </param>
                 public virtual PartitionQueryRequest PartitionQuery(Google.Apis.Firestore.v1beta1.Data.PartitionQueryRequest body, string parent)
                 {
-                    return new PartitionQueryRequest(service, body, parent);
+                    return new PartitionQueryRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -1412,7 +1507,7 @@ namespace Google.Apis.Firestore.v1beta1
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.Firestore.v1beta1.Data.Document body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates or inserts a document.</summary>
@@ -1440,12 +1535,38 @@ namespace Google.Apis.Firestore.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("currentDocument.exists", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> CurrentDocumentExists { get; set; }
 
+                    private object _currentDocumentUpdateTime;
+
                     /// <summary>
-                    /// When set, the target document must exist and have been last updated at that time. Timestamp must
-                    /// be microsecond aligned.
+                    /// String representation of <see cref="CurrentDocumentUpdateTimeDateTimeOffset"/>, formatted for
+                    /// inclusion in the HTTP request.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("currentDocument.updateTime", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual object CurrentDocumentUpdateTime { get; set; }
+                    public virtual string CurrentDocumentUpdateTimeRaw { get; private set; }
+
+                    /// <summary>
+                    /// <seealso cref="object"/> representation of <see cref="CurrentDocumentUpdateTimeRaw"/>.
+                    /// </summary>
+                    [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CurrentDocumentUpdateTimeDateTimeOffset instead.")]
+                    public virtual object CurrentDocumentUpdateTime
+                    {
+                        get => _currentDocumentUpdateTime;
+                        set
+                        {
+                            CurrentDocumentUpdateTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                            _currentDocumentUpdateTime = value;
+                        }
+                    }
+
+                    public virtual System.DateTimeOffset? CurrentDocumentUpdateTimeDateTimeOffset
+                    {
+                        get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CurrentDocumentUpdateTimeRaw);
+                        set
+                        {
+                            CurrentDocumentUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                            _currentDocumentUpdateTime = value;
+                        }
+                    }
 
                     /// <summary>
                     /// The list of field paths in the mask. See Document.fields for a field path syntax reference.
@@ -1528,7 +1649,7 @@ namespace Google.Apis.Firestore.v1beta1
                 /// </param>
                 public virtual RollbackRequest Rollback(Google.Apis.Firestore.v1beta1.Data.RollbackRequest body, string database)
                 {
-                    return new RollbackRequest(service, body, database);
+                    return new RollbackRequest(this.service, body, database);
                 }
 
                 /// <summary>Rolls back a transaction.</summary>
@@ -1597,7 +1718,7 @@ namespace Google.Apis.Firestore.v1beta1
                 /// </param>
                 public virtual RunAggregationQueryRequest RunAggregationQuery(Google.Apis.Firestore.v1beta1.Data.RunAggregationQueryRequest body, string parent)
                 {
-                    return new RunAggregationQueryRequest(service, body, parent);
+                    return new RunAggregationQueryRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -1670,7 +1791,7 @@ namespace Google.Apis.Firestore.v1beta1
                 /// </param>
                 public virtual RunQueryRequest RunQuery(Google.Apis.Firestore.v1beta1.Data.RunQueryRequest body, string parent)
                 {
-                    return new RunQueryRequest(service, body, parent);
+                    return new RunQueryRequest(this.service, body, parent);
                 }
 
                 /// <summary>Runs a query.</summary>
@@ -1735,7 +1856,7 @@ namespace Google.Apis.Firestore.v1beta1
                 /// </param>
                 public virtual WriteRequest Write(Google.Apis.Firestore.v1beta1.Data.WriteRequest body, string database)
                 {
-                    return new WriteRequest(service, body, database);
+                    return new WriteRequest(this.service, body, database);
                 }
 
                 /// <summary>
@@ -1822,7 +1943,7 @@ namespace Google.Apis.Firestore.v1beta1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Firestore.v1beta1.Data.GoogleFirestoreAdminV1beta1Index body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -1886,7 +2007,7 @@ namespace Google.Apis.Firestore.v1beta1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes an index.</summary>
@@ -1936,7 +2057,7 @@ namespace Google.Apis.Firestore.v1beta1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets an index.</summary>
@@ -1986,7 +2107,7 @@ namespace Google.Apis.Firestore.v1beta1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists the indexes that match the specified filters.</summary>
@@ -2078,7 +2199,7 @@ namespace Google.Apis.Firestore.v1beta1
             /// </param>
             public virtual ExportDocumentsRequest ExportDocuments(Google.Apis.Firestore.v1beta1.Data.GoogleFirestoreAdminV1beta1ExportDocumentsRequest body, string name)
             {
-                return new ExportDocumentsRequest(service, body, name);
+                return new ExportDocumentsRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -2146,7 +2267,7 @@ namespace Google.Apis.Firestore.v1beta1
             /// </param>
             public virtual ImportDocumentsRequest ImportDocuments(Google.Apis.Firestore.v1beta1.Data.GoogleFirestoreAdminV1beta1ImportDocumentsRequest body, string name)
             {
-                return new ImportDocumentsRequest(service, body, name);
+                return new ImportDocumentsRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -2350,8 +2471,8 @@ namespace Google.Apis.Firestore.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ReadTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ReadTimeRaw);
-            set => ReadTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ReadTimeRaw);
+            set => ReadTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Reads documents in a transaction.</summary>
@@ -2412,8 +2533,8 @@ namespace Google.Apis.Firestore.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ReadTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ReadTimeRaw);
-            set => ReadTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ReadTimeRaw);
+            set => ReadTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -2607,8 +2728,8 @@ namespace Google.Apis.Firestore.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CommitTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CommitTimeRaw);
-            set => CommitTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CommitTimeRaw);
+            set => CommitTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -2720,8 +2841,8 @@ namespace Google.Apis.Firestore.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         [Newtonsoft.Json.JsonPropertyAttribute("fields")]
@@ -2771,8 +2892,8 @@ namespace Google.Apis.Firestore.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -2850,8 +2971,8 @@ namespace Google.Apis.Firestore.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ReadTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ReadTimeRaw);
-            set => ReadTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ReadTimeRaw);
+            set => ReadTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>A set of target IDs for targets that previously matched this entity.</summary>
@@ -2927,8 +3048,8 @@ namespace Google.Apis.Firestore.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ReadTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ReadTimeRaw);
-            set => ReadTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ReadTimeRaw);
+            set => ReadTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>A set of target IDs for targets that previously matched this document.</summary>
@@ -3213,8 +3334,8 @@ namespace Google.Apis.Firestore.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The operation state of the restore.</summary>
@@ -3258,8 +3379,8 @@ namespace Google.Apis.Firestore.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -3315,8 +3436,8 @@ namespace Google.Apis.Firestore.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The state of the export operation.</summary>
@@ -3368,8 +3489,8 @@ namespace Google.Apis.Firestore.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -3453,8 +3574,8 @@ namespace Google.Apis.Firestore.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The location of the documents being imported.</summary>
@@ -3506,8 +3627,8 @@ namespace Google.Apis.Firestore.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -3626,8 +3747,8 @@ namespace Google.Apis.Firestore.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -3674,8 +3795,8 @@ namespace Google.Apis.Firestore.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -3834,8 +3955,8 @@ namespace Google.Apis.Firestore.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ReadTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ReadTimeRaw);
-            set => ReadTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ReadTimeRaw);
+            set => ReadTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -4024,8 +4145,8 @@ namespace Google.Apis.Firestore.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ReadTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ReadTimeRaw);
-            set => ReadTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ReadTimeRaw);
+            set => ReadTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -4110,8 +4231,8 @@ namespace Google.Apis.Firestore.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -4192,8 +4313,8 @@ namespace Google.Apis.Firestore.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ReadTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ReadTimeRaw);
-            set => ReadTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ReadTimeRaw);
+            set => ReadTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -4272,8 +4393,8 @@ namespace Google.Apis.Firestore.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ReadTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ReadTimeRaw);
-            set => ReadTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ReadTimeRaw);
+            set => ReadTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>An aggregation query.</summary>
@@ -4332,8 +4453,8 @@ namespace Google.Apis.Firestore.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ReadTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ReadTimeRaw);
-            set => ReadTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ReadTimeRaw);
+            set => ReadTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>A single aggregation result. Not present when reporting partial progress.</summary>
@@ -4398,8 +4519,8 @@ namespace Google.Apis.Firestore.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ReadTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ReadTimeRaw);
-            set => ReadTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ReadTimeRaw);
+            set => ReadTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>A structured query.</summary>
@@ -4468,8 +4589,8 @@ namespace Google.Apis.Firestore.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ReadTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ReadTimeRaw);
-            set => ReadTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ReadTimeRaw);
+            set => ReadTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -4698,8 +4819,8 @@ namespace Google.Apis.Firestore.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ReadTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ReadTimeRaw);
-            set => ReadTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ReadTimeRaw);
+            set => ReadTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -4773,8 +4894,8 @@ namespace Google.Apis.Firestore.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ReadTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ReadTimeRaw);
-            set => ReadTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ReadTimeRaw);
+            set => ReadTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -4920,8 +5041,8 @@ namespace Google.Apis.Firestore.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? TimestampValueDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(TimestampValueRaw);
-            set => TimestampValueRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(TimestampValueRaw);
+            set => TimestampValueRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -5055,8 +5176,8 @@ namespace Google.Apis.Firestore.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CommitTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CommitTimeRaw);
-            set => CommitTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CommitTimeRaw);
+            set => CommitTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ID of the stream. Only set on the first message, when a new stream was created.</summary>
@@ -5123,8 +5244,8 @@ namespace Google.Apis.Firestore.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>

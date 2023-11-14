@@ -339,7 +339,7 @@ namespace Google.Apis.GKEOnPrem.v1
                     /// <param name="name">The name of the operation resource.</param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -390,7 +390,7 @@ namespace Google.Apis.GKEOnPrem.v1
                     /// <param name="name">The name of the operation's parent resource.</param>
                     public virtual ListRequest List(string name)
                     {
-                        return new ListRequest(service, name);
+                        return new ListRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -483,7 +483,7 @@ namespace Google.Apis.GKEOnPrem.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.GKEOnPrem.v1.Data.BareMetalAdminCluster body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -579,7 +579,7 @@ namespace Google.Apis.GKEOnPrem.v1
                 /// </param>
                 public virtual EnrollRequest Enroll(Google.Apis.GKEOnPrem.v1.Data.EnrollBareMetalAdminClusterRequest body, string parent)
                 {
-                    return new EnrollRequest(service, body, parent);
+                    return new EnrollRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -642,7 +642,7 @@ namespace Google.Apis.GKEOnPrem.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets details of a single bare metal admin cluster.</summary>
@@ -739,7 +739,7 @@ namespace Google.Apis.GKEOnPrem.v1
                 /// </param>
                 public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                 {
-                    return new GetIamPolicyRequest(service, resource);
+                    return new GetIamPolicyRequest(this.service, resource);
                 }
 
                 /// <summary>
@@ -815,7 +815,7 @@ namespace Google.Apis.GKEOnPrem.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists bare metal admin clusters in a given project and location.</summary>
@@ -933,7 +933,7 @@ namespace Google.Apis.GKEOnPrem.v1
                 /// <param name="name">Immutable. The bare metal admin cluster resource name.</param>
                 public virtual PatchRequest Patch(Google.Apis.GKEOnPrem.v1.Data.BareMetalAdminCluster body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates the parameters of a single bare metal admin cluster.</summary>
@@ -1018,7 +1018,7 @@ namespace Google.Apis.GKEOnPrem.v1
                 /// </param>
                 public virtual QueryVersionConfigRequest QueryVersionConfig(string parent)
                 {
-                    return new QueryVersionConfigRequest(service, parent);
+                    return new QueryVersionConfigRequest(this.service, parent);
                 }
 
                 /// <summary>Queries the bare metal admin cluster version config.</summary>
@@ -1090,7 +1090,7 @@ namespace Google.Apis.GKEOnPrem.v1
                 /// </param>
                 public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.GKEOnPrem.v1.Data.SetIamPolicyRequest body, string resource)
                 {
-                    return new SetIamPolicyRequest(service, body, resource);
+                    return new SetIamPolicyRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -1159,7 +1159,7 @@ namespace Google.Apis.GKEOnPrem.v1
                 /// </param>
                 public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.GKEOnPrem.v1.Data.TestIamPermissionsRequest body, string resource)
                 {
-                    return new TestIamPermissionsRequest(service, body, resource);
+                    return new TestIamPermissionsRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -1228,7 +1228,7 @@ namespace Google.Apis.GKEOnPrem.v1
                 /// </param>
                 public virtual UnenrollRequest Unenroll(string name)
                 {
-                    return new UnenrollRequest(service, name);
+                    return new UnenrollRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -1399,7 +1399,7 @@ namespace Google.Apis.GKEOnPrem.v1
                         /// <param name="name">The name of the operation resource.</param>
                         public virtual GetRequest Get(string name)
                         {
-                            return new GetRequest(service, name);
+                            return new GetRequest(this.service, name);
                         }
 
                         /// <summary>
@@ -1450,7 +1450,7 @@ namespace Google.Apis.GKEOnPrem.v1
                         /// <param name="name">The name of the operation's parent resource.</param>
                         public virtual ListRequest List(string name)
                         {
-                            return new ListRequest(service, name);
+                            return new ListRequest(this.service, name);
                         }
 
                         /// <summary>
@@ -1541,7 +1541,7 @@ namespace Google.Apis.GKEOnPrem.v1
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.GKEOnPrem.v1.Data.BareMetalNodePool body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>
@@ -1632,7 +1632,7 @@ namespace Google.Apis.GKEOnPrem.v1
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>Deletes a single bare metal node pool.</summary>
@@ -1751,7 +1751,7 @@ namespace Google.Apis.GKEOnPrem.v1
                     /// </param>
                     public virtual EnrollRequest Enroll(Google.Apis.GKEOnPrem.v1.Data.EnrollBareMetalNodePoolRequest body, string parent)
                     {
-                        return new EnrollRequest(service, body, parent);
+                        return new EnrollRequest(this.service, body, parent);
                     }
 
                     /// <summary>
@@ -1813,7 +1813,7 @@ namespace Google.Apis.GKEOnPrem.v1
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Gets details of a single bare metal node pool.</summary>
@@ -1909,7 +1909,7 @@ namespace Google.Apis.GKEOnPrem.v1
                     /// </param>
                     public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                     {
-                        return new GetIamPolicyRequest(service, resource);
+                        return new GetIamPolicyRequest(this.service, resource);
                     }
 
                     /// <summary>
@@ -1988,7 +1988,7 @@ namespace Google.Apis.GKEOnPrem.v1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>
@@ -2112,7 +2112,7 @@ namespace Google.Apis.GKEOnPrem.v1
                     /// <param name="name">Immutable. The bare metal node pool resource name.</param>
                     public virtual PatchRequest Patch(Google.Apis.GKEOnPrem.v1.Data.BareMetalNodePool body, string name)
                     {
-                        return new PatchRequest(service, body, name);
+                        return new PatchRequest(this.service, body, name);
                     }
 
                     /// <summary>Updates the parameters of a single bare metal node pool.</summary>
@@ -2218,7 +2218,7 @@ namespace Google.Apis.GKEOnPrem.v1
                     /// </param>
                     public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.GKEOnPrem.v1.Data.SetIamPolicyRequest body, string resource)
                     {
-                        return new SetIamPolicyRequest(service, body, resource);
+                        return new SetIamPolicyRequest(this.service, body, resource);
                     }
 
                     /// <summary>
@@ -2287,7 +2287,7 @@ namespace Google.Apis.GKEOnPrem.v1
                     /// </param>
                     public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.GKEOnPrem.v1.Data.TestIamPermissionsRequest body, string resource)
                     {
-                        return new TestIamPermissionsRequest(service, body, resource);
+                        return new TestIamPermissionsRequest(this.service, body, resource);
                     }
 
                     /// <summary>
@@ -2351,7 +2351,7 @@ namespace Google.Apis.GKEOnPrem.v1
                     /// </param>
                     public virtual UnenrollRequest Unenroll(string name)
                     {
-                        return new UnenrollRequest(service, name);
+                        return new UnenrollRequest(this.service, name);
                     }
 
                     /// <summary>Unenrolls a bare metal node pool from Anthos On-Prem API.</summary>
@@ -2464,7 +2464,7 @@ namespace Google.Apis.GKEOnPrem.v1
                     /// <param name="name">The name of the operation resource.</param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -2515,7 +2515,7 @@ namespace Google.Apis.GKEOnPrem.v1
                     /// <param name="name">The name of the operation's parent resource.</param>
                     public virtual ListRequest List(string name)
                     {
-                        return new ListRequest(service, name);
+                        return new ListRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -2604,7 +2604,7 @@ namespace Google.Apis.GKEOnPrem.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.GKEOnPrem.v1.Data.BareMetalCluster body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a new bare metal cluster in a given project and location.</summary>
@@ -2690,7 +2690,7 @@ namespace Google.Apis.GKEOnPrem.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes a single bare metal Cluster.</summary>
@@ -2819,7 +2819,7 @@ namespace Google.Apis.GKEOnPrem.v1
                 /// </param>
                 public virtual EnrollRequest Enroll(Google.Apis.GKEOnPrem.v1.Data.EnrollBareMetalClusterRequest body, string parent)
                 {
-                    return new EnrollRequest(service, body, parent);
+                    return new EnrollRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -2882,7 +2882,7 @@ namespace Google.Apis.GKEOnPrem.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets details of a single bare metal Cluster.</summary>
@@ -2979,7 +2979,7 @@ namespace Google.Apis.GKEOnPrem.v1
                 /// </param>
                 public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                 {
-                    return new GetIamPolicyRequest(service, resource);
+                    return new GetIamPolicyRequest(this.service, resource);
                 }
 
                 /// <summary>
@@ -3055,7 +3055,7 @@ namespace Google.Apis.GKEOnPrem.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists bare metal clusters in a given project and location.</summary>
@@ -3188,7 +3188,7 @@ namespace Google.Apis.GKEOnPrem.v1
                 /// <param name="name">Immutable. The bare metal user cluster resource name.</param>
                 public virtual PatchRequest Patch(Google.Apis.GKEOnPrem.v1.Data.BareMetalCluster body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates the parameters of a single bare metal Cluster.</summary>
@@ -3289,7 +3289,7 @@ namespace Google.Apis.GKEOnPrem.v1
                 /// </param>
                 public virtual QueryVersionConfigRequest QueryVersionConfig(string parent)
                 {
-                    return new QueryVersionConfigRequest(service, parent);
+                    return new QueryVersionConfigRequest(this.service, parent);
                 }
 
                 /// <summary>Queries the bare metal user cluster version config.</summary>
@@ -3391,7 +3391,7 @@ namespace Google.Apis.GKEOnPrem.v1
                 /// </param>
                 public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.GKEOnPrem.v1.Data.SetIamPolicyRequest body, string resource)
                 {
-                    return new SetIamPolicyRequest(service, body, resource);
+                    return new SetIamPolicyRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -3460,7 +3460,7 @@ namespace Google.Apis.GKEOnPrem.v1
                 /// </param>
                 public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.GKEOnPrem.v1.Data.TestIamPermissionsRequest body, string resource)
                 {
-                    return new TestIamPermissionsRequest(service, body, resource);
+                    return new TestIamPermissionsRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -3529,7 +3529,7 @@ namespace Google.Apis.GKEOnPrem.v1
                 /// </param>
                 public virtual UnenrollRequest Unenroll(string name)
                 {
-                    return new UnenrollRequest(service, name);
+                    return new UnenrollRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -3665,7 +3665,7 @@ namespace Google.Apis.GKEOnPrem.v1
                 /// <param name="name">The name of the operation resource to be cancelled.</param>
                 public virtual CancelRequest Cancel(Google.Apis.GKEOnPrem.v1.Data.CancelOperationRequest body, string name)
                 {
-                    return new CancelRequest(service, body, name);
+                    return new CancelRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -3728,7 +3728,7 @@ namespace Google.Apis.GKEOnPrem.v1
                 /// <param name="name">The name of the operation resource to be deleted.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -3780,7 +3780,7 @@ namespace Google.Apis.GKEOnPrem.v1
                 /// <param name="name">The name of the operation resource.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -3831,7 +3831,7 @@ namespace Google.Apis.GKEOnPrem.v1
                 /// <param name="name">The name of the operation's parent resource.</param>
                 public virtual ListRequest List(string name)
                 {
-                    return new ListRequest(service, name);
+                    return new ListRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -3954,7 +3954,7 @@ namespace Google.Apis.GKEOnPrem.v1
                     /// <param name="name">The name of the operation resource.</param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -4005,7 +4005,7 @@ namespace Google.Apis.GKEOnPrem.v1
                     /// <param name="name">The name of the operation's parent resource.</param>
                     public virtual ListRequest List(string name)
                     {
-                        return new ListRequest(service, name);
+                        return new ListRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -4099,7 +4099,7 @@ namespace Google.Apis.GKEOnPrem.v1
                 /// </param>
                 public virtual EnrollRequest Enroll(Google.Apis.GKEOnPrem.v1.Data.EnrollVmwareAdminClusterRequest body, string parent)
                 {
-                    return new EnrollRequest(service, body, parent);
+                    return new EnrollRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -4162,7 +4162,7 @@ namespace Google.Apis.GKEOnPrem.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets details of a single VMware admin cluster.</summary>
@@ -4259,7 +4259,7 @@ namespace Google.Apis.GKEOnPrem.v1
                 /// </param>
                 public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                 {
-                    return new GetIamPolicyRequest(service, resource);
+                    return new GetIamPolicyRequest(this.service, resource);
                 }
 
                 /// <summary>
@@ -4335,7 +4335,7 @@ namespace Google.Apis.GKEOnPrem.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists VMware admin clusters in a given project and location.</summary>
@@ -4453,7 +4453,7 @@ namespace Google.Apis.GKEOnPrem.v1
                 /// <param name="name">Immutable. The VMware admin cluster resource name.</param>
                 public virtual PatchRequest Patch(Google.Apis.GKEOnPrem.v1.Data.VmwareAdminCluster body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates the parameters of a single VMware admin cluster.</summary>
@@ -4543,7 +4543,7 @@ namespace Google.Apis.GKEOnPrem.v1
                 /// </param>
                 public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.GKEOnPrem.v1.Data.SetIamPolicyRequest body, string resource)
                 {
-                    return new SetIamPolicyRequest(service, body, resource);
+                    return new SetIamPolicyRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -4612,7 +4612,7 @@ namespace Google.Apis.GKEOnPrem.v1
                 /// </param>
                 public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.GKEOnPrem.v1.Data.TestIamPermissionsRequest body, string resource)
                 {
-                    return new TestIamPermissionsRequest(service, body, resource);
+                    return new TestIamPermissionsRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -4681,7 +4681,7 @@ namespace Google.Apis.GKEOnPrem.v1
                 /// </param>
                 public virtual UnenrollRequest Unenroll(string name)
                 {
-                    return new UnenrollRequest(service, name);
+                    return new UnenrollRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -4816,7 +4816,7 @@ namespace Google.Apis.GKEOnPrem.v1
                     /// <param name="name">The name of the operation resource.</param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -4867,7 +4867,7 @@ namespace Google.Apis.GKEOnPrem.v1
                     /// <param name="name">The name of the operation's parent resource.</param>
                     public virtual ListRequest List(string name)
                     {
-                        return new ListRequest(service, name);
+                        return new ListRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -4990,7 +4990,7 @@ namespace Google.Apis.GKEOnPrem.v1
                         /// <param name="name">The name of the operation resource.</param>
                         public virtual GetRequest Get(string name)
                         {
-                            return new GetRequest(service, name);
+                            return new GetRequest(this.service, name);
                         }
 
                         /// <summary>
@@ -5041,7 +5041,7 @@ namespace Google.Apis.GKEOnPrem.v1
                         /// <param name="name">The name of the operation's parent resource.</param>
                         public virtual ListRequest List(string name)
                         {
-                            return new ListRequest(service, name);
+                            return new ListRequest(this.service, name);
                         }
 
                         /// <summary>
@@ -5132,7 +5132,7 @@ namespace Google.Apis.GKEOnPrem.v1
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.GKEOnPrem.v1.Data.VmwareNodePool body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>
@@ -5223,7 +5223,7 @@ namespace Google.Apis.GKEOnPrem.v1
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>Deletes a single VMware node pool.</summary>
@@ -5335,7 +5335,7 @@ namespace Google.Apis.GKEOnPrem.v1
                     /// <param name="parent">Required. The parent resource where the node pool is enrolled in.</param>
                     public virtual EnrollRequest Enroll(Google.Apis.GKEOnPrem.v1.Data.EnrollVmwareNodePoolRequest body, string parent)
                     {
-                        return new EnrollRequest(service, body, parent);
+                        return new EnrollRequest(this.service, body, parent);
                     }
 
                     /// <summary>Enrolls a VMware node pool to Anthos On-Prem API</summary>
@@ -5390,7 +5390,7 @@ namespace Google.Apis.GKEOnPrem.v1
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Gets details of a single VMware node pool.</summary>
@@ -5486,7 +5486,7 @@ namespace Google.Apis.GKEOnPrem.v1
                     /// </param>
                     public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                     {
-                        return new GetIamPolicyRequest(service, resource);
+                        return new GetIamPolicyRequest(this.service, resource);
                     }
 
                     /// <summary>
@@ -5563,7 +5563,7 @@ namespace Google.Apis.GKEOnPrem.v1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists VMware node pools in a given project, location and VMWare cluster.</summary>
@@ -5685,7 +5685,7 @@ namespace Google.Apis.GKEOnPrem.v1
                     /// <param name="name">Immutable. The resource name of this node pool.</param>
                     public virtual PatchRequest Patch(Google.Apis.GKEOnPrem.v1.Data.VmwareNodePool body, string name)
                     {
-                        return new PatchRequest(service, body, name);
+                        return new PatchRequest(this.service, body, name);
                     }
 
                     /// <summary>Updates the parameters of a single VMware node pool.</summary>
@@ -5775,7 +5775,7 @@ namespace Google.Apis.GKEOnPrem.v1
                     /// </param>
                     public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.GKEOnPrem.v1.Data.SetIamPolicyRequest body, string resource)
                     {
-                        return new SetIamPolicyRequest(service, body, resource);
+                        return new SetIamPolicyRequest(this.service, body, resource);
                     }
 
                     /// <summary>
@@ -5844,7 +5844,7 @@ namespace Google.Apis.GKEOnPrem.v1
                     /// </param>
                     public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.GKEOnPrem.v1.Data.TestIamPermissionsRequest body, string resource)
                     {
-                        return new TestIamPermissionsRequest(service, body, resource);
+                        return new TestIamPermissionsRequest(this.service, body, resource);
                     }
 
                     /// <summary>
@@ -5908,7 +5908,7 @@ namespace Google.Apis.GKEOnPrem.v1
                     /// </param>
                     public virtual UnenrollRequest Unenroll(string name)
                     {
-                        return new UnenrollRequest(service, name);
+                        return new UnenrollRequest(this.service, name);
                     }
 
                     /// <summary>Unenrolls a VMware node pool to Anthos On-Prem API</summary>
@@ -6005,7 +6005,7 @@ namespace Google.Apis.GKEOnPrem.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.GKEOnPrem.v1.Data.VmwareCluster body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a new VMware user cluster in a given project and location.</summary>
@@ -6090,7 +6090,7 @@ namespace Google.Apis.GKEOnPrem.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes a single VMware Cluster.</summary>
@@ -6219,7 +6219,7 @@ namespace Google.Apis.GKEOnPrem.v1
                 /// </param>
                 public virtual EnrollRequest Enroll(Google.Apis.GKEOnPrem.v1.Data.EnrollVmwareClusterRequest body, string parent)
                 {
-                    return new EnrollRequest(service, body, parent);
+                    return new EnrollRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -6282,7 +6282,7 @@ namespace Google.Apis.GKEOnPrem.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets details of a single VMware Cluster.</summary>
@@ -6379,7 +6379,7 @@ namespace Google.Apis.GKEOnPrem.v1
                 /// </param>
                 public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                 {
-                    return new GetIamPolicyRequest(service, resource);
+                    return new GetIamPolicyRequest(this.service, resource);
                 }
 
                 /// <summary>
@@ -6455,7 +6455,7 @@ namespace Google.Apis.GKEOnPrem.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists VMware Clusters in a given project and location.</summary>
@@ -6588,7 +6588,7 @@ namespace Google.Apis.GKEOnPrem.v1
                 /// <param name="name">Immutable. The VMware user cluster resource name.</param>
                 public virtual PatchRequest Patch(Google.Apis.GKEOnPrem.v1.Data.VmwareCluster body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates the parameters of a single VMware cluster.</summary>
@@ -6673,7 +6673,7 @@ namespace Google.Apis.GKEOnPrem.v1
                 /// </param>
                 public virtual QueryVersionConfigRequest QueryVersionConfig(string parent)
                 {
-                    return new QueryVersionConfigRequest(service, parent);
+                    return new QueryVersionConfigRequest(this.service, parent);
                 }
 
                 /// <summary>Queries the VMware user cluster version config.</summary>
@@ -6774,7 +6774,7 @@ namespace Google.Apis.GKEOnPrem.v1
                 /// </param>
                 public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.GKEOnPrem.v1.Data.SetIamPolicyRequest body, string resource)
                 {
-                    return new SetIamPolicyRequest(service, body, resource);
+                    return new SetIamPolicyRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -6843,7 +6843,7 @@ namespace Google.Apis.GKEOnPrem.v1
                 /// </param>
                 public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.GKEOnPrem.v1.Data.TestIamPermissionsRequest body, string resource)
                 {
-                    return new TestIamPermissionsRequest(service, body, resource);
+                    return new TestIamPermissionsRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -6912,7 +6912,7 @@ namespace Google.Apis.GKEOnPrem.v1
                 /// </param>
                 public virtual UnenrollRequest Unenroll(string name)
                 {
-                    return new UnenrollRequest(service, name);
+                    return new UnenrollRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -7023,7 +7023,7 @@ namespace Google.Apis.GKEOnPrem.v1
             /// <param name="name">Resource name for the location.</param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets information about a location.</summary>
@@ -7068,7 +7068,7 @@ namespace Google.Apis.GKEOnPrem.v1
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
             {
-                return new ListRequest(service, name);
+                return new ListRequest(this.service, name);
             }
 
             /// <summary>Lists information about the supported locations for this service.</summary>
@@ -7258,8 +7258,8 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _deleteTimeRaw;
@@ -7298,8 +7298,8 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? DeleteTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DeleteTimeRaw);
-            set => DeleteTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DeleteTimeRaw);
+            set => DeleteTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>A human readable description of this bare metal admin cluster.</summary>
@@ -7428,8 +7428,8 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. ValidationCheck representing the result of the preflight check.</summary>
@@ -7911,8 +7911,8 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _deleteTimeRaw;
@@ -7951,8 +7951,8 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? DeleteTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DeleteTimeRaw);
-            set => DeleteTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DeleteTimeRaw);
+            set => DeleteTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>A human readable description of this bare metal user cluster.</summary>
@@ -8081,8 +8081,8 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The cluster upgrade policy.</summary>
@@ -8526,8 +8526,8 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _deleteTimeRaw;
@@ -8566,8 +8566,8 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? DeleteTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DeleteTimeRaw);
-            set => DeleteTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DeleteTimeRaw);
+            set => DeleteTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The display name for the bare metal node pool.</summary>
@@ -8639,8 +8639,8 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The worker node pool upgrade policy.</summary>
@@ -9474,8 +9474,8 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _endTimeRaw;
@@ -9511,8 +9511,8 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. Detailed progress information for the operation.</summary>
@@ -9594,8 +9594,8 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Progress metric bundle.</summary>
@@ -9639,8 +9639,8 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. State of the stage.</summary>
@@ -9797,8 +9797,8 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LastTransitionTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastTransitionTimeRaw);
-            set => LastTransitionTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastTransitionTimeRaw);
+            set => LastTransitionTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Human-readable message indicating details about last transition.</summary>
@@ -10133,8 +10133,8 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>A human readable description of this VMware admin cluster.</summary>
@@ -10248,8 +10248,8 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The VMware admin cluster VCenter configuration.</summary>
@@ -10653,8 +10653,8 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>VmwareDataplaneV2Config specifies configuration for Dataplane V2.</summary>
@@ -10694,8 +10694,8 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? DeleteTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DeleteTimeRaw);
-            set => DeleteTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DeleteTimeRaw);
+            set => DeleteTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>A human readable description of this VMware user cluster.</summary>
@@ -10806,8 +10806,8 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Specifies upgrade policy for the cluster.</summary>
@@ -11240,8 +11240,8 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _deleteTimeRaw;
@@ -11280,8 +11280,8 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? DeleteTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DeleteTimeRaw);
-            set => DeleteTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DeleteTimeRaw);
+            set => DeleteTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The display name for the node pool.</summary>
@@ -11357,8 +11357,8 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
     }
 

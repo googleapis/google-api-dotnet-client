@@ -280,7 +280,7 @@ namespace Google.Apis.MyBusinessVerifications.v1
             /// <param name="name">Required. Resource name of the verification to complete.</param>
             public virtual CompleteRequest Complete(Google.Apis.MyBusinessVerifications.v1.Data.CompleteVerificationRequest body, string name)
             {
-                return new CompleteRequest(service, body, name);
+                return new CompleteRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -337,7 +337,7 @@ namespace Google.Apis.MyBusinessVerifications.v1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>List verifications of a location, ordered by create time.</summary>
@@ -411,7 +411,7 @@ namespace Google.Apis.MyBusinessVerifications.v1
         /// <param name="location">Required. The location to verify.</param>
         public virtual FetchVerificationOptionsRequest FetchVerificationOptions(Google.Apis.MyBusinessVerifications.v1.Data.FetchVerificationOptionsRequest body, string location)
         {
-            return new FetchVerificationOptionsRequest(service, body, location);
+            return new FetchVerificationOptionsRequest(this.service, body, location);
         }
 
         /// <summary>Reports all eligible verification options for a location in a specific language.</summary>
@@ -463,7 +463,7 @@ namespace Google.Apis.MyBusinessVerifications.v1
         /// <param name="name">Required. Resource name of the location.</param>
         public virtual GetVoiceOfMerchantStateRequest GetVoiceOfMerchantState(string name)
         {
-            return new GetVoiceOfMerchantStateRequest(service, name);
+            return new GetVoiceOfMerchantStateRequest(this.service, name);
         }
 
         /// <summary>Gets the VoiceOfMerchant state.</summary>
@@ -509,7 +509,7 @@ namespace Google.Apis.MyBusinessVerifications.v1
         /// <param name="name">Required. Resource name of the location to verify.</param>
         public virtual VerifyRequest Verify(Google.Apis.MyBusinessVerifications.v1.Data.VerifyLocationRequest body, string name)
         {
-            return new VerifyRequest(service, body, name);
+            return new VerifyRequest(this.service, body, name);
         }
 
         /// <summary>Starts the verification process for a location.</summary>
@@ -857,8 +857,8 @@ namespace Google.Apis.MyBusinessVerifications.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The method of the verification.</summary>

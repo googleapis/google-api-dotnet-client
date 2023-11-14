@@ -285,7 +285,7 @@ namespace Google.Apis.Keep.v1
         /// <param name="name">Required. The name of the attachment.</param>
         public virtual DownloadRequest Download(string name)
         {
-            return new DownloadRequest(service, name);
+            return new DownloadRequest(this.service, name);
         }
 
         /// <summary>
@@ -474,7 +474,7 @@ namespace Google.Apis.Keep.v1
             /// </param>
             public virtual BatchCreateRequest BatchCreate(Google.Apis.Keep.v1.Data.BatchCreatePermissionsRequest body, string parent)
             {
-                return new BatchCreateRequest(service, body, parent);
+                return new BatchCreateRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -542,7 +542,7 @@ namespace Google.Apis.Keep.v1
             /// </param>
             public virtual BatchDeleteRequest BatchDelete(Google.Apis.Keep.v1.Data.BatchDeletePermissionsRequest body, string parent)
             {
-                return new BatchDeleteRequest(service, body, parent);
+                return new BatchDeleteRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -604,7 +604,7 @@ namespace Google.Apis.Keep.v1
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.Keep.v1.Data.Note body)
         {
-            return new CreateRequest(service, body);
+            return new CreateRequest(this.service, body);
         }
 
         /// <summary>Creates a new note.</summary>
@@ -646,7 +646,7 @@ namespace Google.Apis.Keep.v1
         /// <param name="name">Required. Name of the note to delete.</param>
         public virtual DeleteRequest Delete(string name)
         {
-            return new DeleteRequest(service, name);
+            return new DeleteRequest(this.service, name);
         }
 
         /// <summary>
@@ -694,7 +694,7 @@ namespace Google.Apis.Keep.v1
         /// <param name="name">Required. Name of the resource.</param>
         public virtual GetRequest Get(string name)
         {
-            return new GetRequest(service, name);
+            return new GetRequest(this.service, name);
         }
 
         /// <summary>Gets a note.</summary>
@@ -746,7 +746,7 @@ namespace Google.Apis.Keep.v1
         /// </summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>
@@ -1019,8 +1019,8 @@ namespace Google.Apis.Keep.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -1075,8 +1075,8 @@ namespace Google.Apis.Keep.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? TrashTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(TrashTimeRaw);
-            set => TrashTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(TrashTimeRaw);
+            set => TrashTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -1118,8 +1118,8 @@ namespace Google.Apis.Keep.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>

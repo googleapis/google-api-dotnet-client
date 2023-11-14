@@ -307,7 +307,7 @@ namespace Google.Apis.Blogger.v3
         /// <param name="blogId"><c>null</c></param>
         public virtual GetRequest Get(string userId, string blogId)
         {
-            return new GetRequest(service, userId, blogId);
+            return new GetRequest(this.service, userId, blogId);
         }
 
         /// <summary>Gets one blog and user info pair by blog id and user id.</summary>
@@ -389,7 +389,7 @@ namespace Google.Apis.Blogger.v3
         /// <param name="blogId"><c>null</c></param>
         public virtual GetRequest Get(string blogId)
         {
-            return new GetRequest(service, blogId);
+            return new GetRequest(this.service, blogId);
         }
 
         /// <summary>Gets a blog by id.</summary>
@@ -474,7 +474,7 @@ namespace Google.Apis.Blogger.v3
         /// <param name="url"><c>null</c></param>
         public virtual GetByUrlRequest GetByUrl(string url)
         {
-            return new GetByUrlRequest(service, url);
+            return new GetByUrlRequest(this.service, url);
         }
 
         /// <summary>Gets a blog by url.</summary>
@@ -548,7 +548,7 @@ namespace Google.Apis.Blogger.v3
         /// <param name="userId"><c>null</c></param>
         public virtual ListByUserRequest ListByUser(string userId)
         {
-            return new ListByUserRequest(service, userId);
+            return new ListByUserRequest(this.service, userId);
         }
 
         /// <summary>Lists blogs by user.</summary>
@@ -719,7 +719,7 @@ namespace Google.Apis.Blogger.v3
         /// <param name="commentId"><c>null</c></param>
         public virtual ApproveRequest Approve(string blogId, string postId, string commentId)
         {
-            return new ApproveRequest(service, blogId, postId, commentId);
+            return new ApproveRequest(this.service, blogId, postId, commentId);
         }
 
         /// <summary>Marks a comment as not spam by blog id, post id and comment id.</summary>
@@ -789,7 +789,7 @@ namespace Google.Apis.Blogger.v3
         /// <param name="commentId"><c>null</c></param>
         public virtual DeleteRequest Delete(string blogId, string postId, string commentId)
         {
-            return new DeleteRequest(service, blogId, postId, commentId);
+            return new DeleteRequest(this.service, blogId, postId, commentId);
         }
 
         /// <summary>Deletes a comment by blog id, post id and comment id.</summary>
@@ -859,7 +859,7 @@ namespace Google.Apis.Blogger.v3
         /// <param name="commentId"><c>null</c></param>
         public virtual GetRequest Get(string blogId, string postId, string commentId)
         {
-            return new GetRequest(service, blogId, postId, commentId);
+            return new GetRequest(this.service, blogId, postId, commentId);
         }
 
         /// <summary>Gets a comment by id.</summary>
@@ -958,7 +958,7 @@ namespace Google.Apis.Blogger.v3
         /// <param name="postId"><c>null</c></param>
         public virtual ListRequest List(string blogId, string postId)
         {
-            return new ListRequest(service, blogId, postId);
+            return new ListRequest(this.service, blogId, postId);
         }
 
         /// <summary>Lists comments.</summary>
@@ -1129,7 +1129,7 @@ namespace Google.Apis.Blogger.v3
         /// <param name="blogId"><c>null</c></param>
         public virtual ListByBlogRequest ListByBlog(string blogId)
         {
-            return new ListByBlogRequest(service, blogId);
+            return new ListByBlogRequest(this.service, blogId);
         }
 
         /// <summary>Lists comments by blog.</summary>
@@ -1263,7 +1263,7 @@ namespace Google.Apis.Blogger.v3
         /// <param name="commentId"><c>null</c></param>
         public virtual MarkAsSpamRequest MarkAsSpam(string blogId, string postId, string commentId)
         {
-            return new MarkAsSpamRequest(service, blogId, postId, commentId);
+            return new MarkAsSpamRequest(this.service, blogId, postId, commentId);
         }
 
         /// <summary>Marks a comment as spam by blog id, post id and comment id.</summary>
@@ -1333,7 +1333,7 @@ namespace Google.Apis.Blogger.v3
         /// <param name="commentId"><c>null</c></param>
         public virtual RemoveContentRequest RemoveContent(string blogId, string postId, string commentId)
         {
-            return new RemoveContentRequest(service, blogId, postId, commentId);
+            return new RemoveContentRequest(this.service, blogId, postId, commentId);
         }
 
         /// <summary>Removes the content of a comment by blog id, post id and comment id.</summary>
@@ -1416,7 +1416,7 @@ namespace Google.Apis.Blogger.v3
         /// <param name="blogId"><c>null</c></param>
         public virtual GetRequest Get(string blogId)
         {
-            return new GetRequest(service, blogId);
+            return new GetRequest(this.service, blogId);
         }
 
         /// <summary>Gets page views by blog id.</summary>
@@ -1505,7 +1505,7 @@ namespace Google.Apis.Blogger.v3
         /// <param name="pageId"><c>null</c></param>
         public virtual DeleteRequest Delete(string blogId, string pageId)
         {
-            return new DeleteRequest(service, blogId, pageId);
+            return new DeleteRequest(this.service, blogId, pageId);
         }
 
         /// <summary>Deletes a page by blog id and page id.</summary>
@@ -1574,7 +1574,7 @@ namespace Google.Apis.Blogger.v3
         /// <param name="pageId"><c>null</c></param>
         public virtual GetRequest Get(string blogId, string pageId)
         {
-            return new GetRequest(service, blogId, pageId);
+            return new GetRequest(this.service, blogId, pageId);
         }
 
         /// <summary>Gets a page by blog id and page id.</summary>
@@ -1661,7 +1661,7 @@ namespace Google.Apis.Blogger.v3
         /// <param name="blogId"><c>null</c></param>
         public virtual InsertRequest Insert(Google.Apis.Blogger.v3.Data.Page body, string blogId)
         {
-            return new InsertRequest(service, body, blogId);
+            return new InsertRequest(this.service, body, blogId);
         }
 
         /// <summary>Inserts a page.</summary>
@@ -1723,7 +1723,7 @@ namespace Google.Apis.Blogger.v3
         /// <param name="blogId"><c>null</c></param>
         public virtual ListRequest List(string blogId)
         {
-            return new ListRequest(service, blogId);
+            return new ListRequest(this.service, blogId);
         }
 
         /// <summary>Lists pages.</summary>
@@ -1861,7 +1861,7 @@ namespace Google.Apis.Blogger.v3
         /// <param name="pageId"><c>null</c></param>
         public virtual PatchRequest Patch(Google.Apis.Blogger.v3.Data.Page body, string blogId, string pageId)
         {
-            return new PatchRequest(service, body, blogId, pageId);
+            return new PatchRequest(this.service, body, blogId, pageId);
         }
 
         /// <summary>Patches a page.</summary>
@@ -1947,7 +1947,7 @@ namespace Google.Apis.Blogger.v3
         /// <param name="pageId"><c>null</c></param>
         public virtual PublishRequest Publish(string blogId, string pageId)
         {
-            return new PublishRequest(service, blogId, pageId);
+            return new PublishRequest(this.service, blogId, pageId);
         }
 
         /// <summary>Publishes a page.</summary>
@@ -2004,7 +2004,7 @@ namespace Google.Apis.Blogger.v3
         /// <param name="pageId"><c>null</c></param>
         public virtual RevertRequest Revert(string blogId, string pageId)
         {
-            return new RevertRequest(service, blogId, pageId);
+            return new RevertRequest(this.service, blogId, pageId);
         }
 
         /// <summary>Reverts a published or scheduled page to draft state.</summary>
@@ -2062,7 +2062,7 @@ namespace Google.Apis.Blogger.v3
         /// <param name="pageId"><c>null</c></param>
         public virtual UpdateRequest Update(Google.Apis.Blogger.v3.Data.Page body, string blogId, string pageId)
         {
-            return new UpdateRequest(service, body, blogId, pageId);
+            return new UpdateRequest(this.service, body, blogId, pageId);
         }
 
         /// <summary>Updates a page by blog id and page id.</summary>
@@ -2164,7 +2164,7 @@ namespace Google.Apis.Blogger.v3
         /// <param name="postId"><c>null</c></param>
         public virtual GetRequest Get(string userId, string blogId, string postId)
         {
-            return new GetRequest(service, userId, blogId, postId);
+            return new GetRequest(this.service, userId, blogId, postId);
         }
 
         /// <summary>Gets one post and user info pair, by post_id and user_id.</summary>
@@ -2244,7 +2244,7 @@ namespace Google.Apis.Blogger.v3
         /// <param name="blogId"><c>null</c></param>
         public virtual ListRequest List(string userId, string blogId)
         {
-            return new ListRequest(service, userId, blogId);
+            return new ListRequest(this.service, userId, blogId);
         }
 
         /// <summary>Lists post and user info pairs.</summary>
@@ -2471,7 +2471,7 @@ namespace Google.Apis.Blogger.v3
         /// <param name="postId"><c>null</c></param>
         public virtual DeleteRequest Delete(string blogId, string postId)
         {
-            return new DeleteRequest(service, blogId, postId);
+            return new DeleteRequest(this.service, blogId, postId);
         }
 
         /// <summary>Deletes a post by blog id and post id.</summary>
@@ -2540,7 +2540,7 @@ namespace Google.Apis.Blogger.v3
         /// <param name="postId"><c>null</c></param>
         public virtual GetRequest Get(string blogId, string postId)
         {
-            return new GetRequest(service, blogId, postId);
+            return new GetRequest(this.service, blogId, postId);
         }
 
         /// <summary>Gets a post by blog id and post id</summary>
@@ -2660,7 +2660,7 @@ namespace Google.Apis.Blogger.v3
         /// <param name="path"><c>null</c></param>
         public virtual GetByPathRequest GetByPath(string blogId, string path)
         {
-            return new GetByPathRequest(service, blogId, path);
+            return new GetByPathRequest(this.service, blogId, path);
         }
 
         /// <summary>Gets a post by path.</summary>
@@ -2758,7 +2758,7 @@ namespace Google.Apis.Blogger.v3
         /// <param name="blogId"><c>null</c></param>
         public virtual InsertRequest Insert(Google.Apis.Blogger.v3.Data.Post body, string blogId)
         {
-            return new InsertRequest(service, body, blogId);
+            return new InsertRequest(this.service, body, blogId);
         }
 
         /// <summary>Inserts a post.</summary>
@@ -2842,7 +2842,7 @@ namespace Google.Apis.Blogger.v3
         /// <param name="blogId"><c>null</c></param>
         public virtual ListRequest List(string blogId)
         {
-            return new ListRequest(service, blogId);
+            return new ListRequest(this.service, blogId);
         }
 
         /// <summary>Lists posts.</summary>
@@ -3082,7 +3082,7 @@ namespace Google.Apis.Blogger.v3
         /// <param name="postId"><c>null</c></param>
         public virtual PatchRequest Patch(Google.Apis.Blogger.v3.Data.Post body, string blogId, string postId)
         {
-            return new PatchRequest(service, body, blogId, postId);
+            return new PatchRequest(this.service, body, blogId, postId);
         }
 
         /// <summary>Patches a post.</summary>
@@ -3201,7 +3201,7 @@ namespace Google.Apis.Blogger.v3
         /// <param name="postId"><c>null</c></param>
         public virtual PublishRequest Publish(string blogId, string postId)
         {
-            return new PublishRequest(service, blogId, postId);
+            return new PublishRequest(this.service, blogId, postId);
         }
 
         /// <summary>Publishes a post.</summary>
@@ -3269,7 +3269,7 @@ namespace Google.Apis.Blogger.v3
         /// <param name="postId"><c>null</c></param>
         public virtual RevertRequest Revert(string blogId, string postId)
         {
-            return new RevertRequest(service, blogId, postId);
+            return new RevertRequest(this.service, blogId, postId);
         }
 
         /// <summary>Reverts a published or scheduled post to draft state.</summary>
@@ -3326,7 +3326,7 @@ namespace Google.Apis.Blogger.v3
         /// <param name="q"><c>null</c></param>
         public virtual SearchRequest Search(string blogId, string q)
         {
-            return new SearchRequest(service, blogId, q);
+            return new SearchRequest(this.service, blogId, q);
         }
 
         /// <summary>Searches for posts matching given query terms in the specified blog.</summary>
@@ -3421,7 +3421,7 @@ namespace Google.Apis.Blogger.v3
         /// <param name="postId"><c>null</c></param>
         public virtual UpdateRequest Update(Google.Apis.Blogger.v3.Data.Post body, string blogId, string postId)
         {
-            return new UpdateRequest(service, body, blogId, postId);
+            return new UpdateRequest(this.service, body, blogId, postId);
         }
 
         /// <summary>Updates a post by blog id and post id.</summary>
@@ -3554,7 +3554,7 @@ namespace Google.Apis.Blogger.v3
         /// <param name="userId"><c>null</c></param>
         public virtual GetRequest Get(string userId)
         {
-            return new GetRequest(service, userId);
+            return new GetRequest(this.service, userId);
         }
 
         /// <summary>Gets one user by user_id.</summary>

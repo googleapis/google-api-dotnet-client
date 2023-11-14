@@ -209,7 +209,7 @@ namespace Google.Apis.SiteVerification.v1
         /// <param name="id">The id of a verified site or domain.</param>
         public virtual DeleteRequest Delete(string id)
         {
-            return new DeleteRequest(service, id);
+            return new DeleteRequest(this.service, id);
         }
 
         /// <summary>Relinquish ownership of a website or domain.</summary>
@@ -254,7 +254,7 @@ namespace Google.Apis.SiteVerification.v1
         /// <param name="id">The id of a verified site or domain.</param>
         public virtual GetRequest Get(string id)
         {
-            return new GetRequest(service, id);
+            return new GetRequest(this.service, id);
         }
 
         /// <summary>Get the most current data for a website or domain.</summary>
@@ -299,7 +299,7 @@ namespace Google.Apis.SiteVerification.v1
         /// <param name="body">The body of the request.</param>
         public virtual GetTokenRequest GetToken(Google.Apis.SiteVerification.v1.Data.SiteVerificationWebResourceGettokenRequest body)
         {
-            return new GetTokenRequest(service, body);
+            return new GetTokenRequest(this.service, body);
         }
 
         /// <summary>Get a verification token for placing on a website or domain.</summary>
@@ -339,7 +339,7 @@ namespace Google.Apis.SiteVerification.v1
         /// <param name="verificationMethod">The method to use for verifying a site or domain.</param>
         public virtual InsertRequest Insert(Google.Apis.SiteVerification.v1.Data.SiteVerificationWebResourceResource body, string verificationMethod)
         {
-            return new InsertRequest(service, body, verificationMethod);
+            return new InsertRequest(this.service, body, verificationMethod);
         }
 
         /// <summary>Attempt verification of a website or domain.</summary>
@@ -390,7 +390,7 @@ namespace Google.Apis.SiteVerification.v1
         /// <summary>Get the list of your verified websites and domains.</summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>Get the list of your verified websites and domains.</summary>
@@ -425,7 +425,7 @@ namespace Google.Apis.SiteVerification.v1
         /// <param name="id">The id of a verified site or domain.</param>
         public virtual PatchRequest Patch(Google.Apis.SiteVerification.v1.Data.SiteVerificationWebResourceResource body, string id)
         {
-            return new PatchRequest(service, body, id);
+            return new PatchRequest(this.service, body, id);
         }
 
         /// <summary>
@@ -480,7 +480,7 @@ namespace Google.Apis.SiteVerification.v1
         /// <param name="id">The id of a verified site or domain.</param>
         public virtual UpdateRequest Update(Google.Apis.SiteVerification.v1.Data.SiteVerificationWebResourceResource body, string id)
         {
-            return new UpdateRequest(service, body, id);
+            return new UpdateRequest(this.service, body, id);
         }
 
         /// <summary>Modify the list of owners for your website or domain.</summary>

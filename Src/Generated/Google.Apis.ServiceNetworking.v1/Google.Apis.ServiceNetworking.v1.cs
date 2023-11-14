@@ -296,7 +296,7 @@ namespace Google.Apis.ServiceNetworking.v1
         /// <param name="name">The name of the operation resource to be cancelled.</param>
         public virtual CancelRequest Cancel(Google.Apis.ServiceNetworking.v1.Data.CancelOperationRequest body, string name)
         {
-            return new CancelRequest(service, body, name);
+            return new CancelRequest(this.service, body, name);
         }
 
         /// <summary>
@@ -359,7 +359,7 @@ namespace Google.Apis.ServiceNetworking.v1
         /// <param name="name">The name of the operation resource to be deleted.</param>
         public virtual DeleteRequest Delete(string name)
         {
-            return new DeleteRequest(service, name);
+            return new DeleteRequest(this.service, name);
         }
 
         /// <summary>
@@ -411,7 +411,7 @@ namespace Google.Apis.ServiceNetworking.v1
         /// <param name="name">The name of the operation resource.</param>
         public virtual GetRequest Get(string name)
         {
-            return new GetRequest(service, name);
+            return new GetRequest(this.service, name);
         }
 
         /// <summary>
@@ -462,7 +462,7 @@ namespace Google.Apis.ServiceNetworking.v1
         /// <param name="name">The name of the operation's parent resource.</param>
         public virtual ListRequest List(string name)
         {
-            return new ListRequest(service, name);
+            return new ListRequest(this.service, name);
         }
 
         /// <summary>
@@ -593,7 +593,7 @@ namespace Google.Apis.ServiceNetworking.v1
             /// </param>
             public virtual CreateRequest Create(Google.Apis.ServiceNetworking.v1.Data.Connection body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -661,7 +661,7 @@ namespace Google.Apis.ServiceNetworking.v1
             /// </param>
             public virtual DeleteConnectionRequest DeleteConnection(Google.Apis.ServiceNetworking.v1.Data.DeleteConnectionRequest body, string name)
             {
-                return new DeleteConnectionRequest(service, body, name);
+                return new DeleteConnectionRequest(this.service, body, name);
             }
 
             /// <summary>Deletes a private service access connection.</summary>
@@ -723,7 +723,7 @@ namespace Google.Apis.ServiceNetworking.v1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>List the private connections that are configured in a service consumer's VPC network.</summary>
@@ -797,7 +797,7 @@ namespace Google.Apis.ServiceNetworking.v1
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.ServiceNetworking.v1.Data.Connection body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>Updates the allocated ranges that are assigned to a connection.</summary>
@@ -910,7 +910,7 @@ namespace Google.Apis.ServiceNetworking.v1
             /// </param>
             public virtual AddRequest Add(Google.Apis.ServiceNetworking.v1.Data.AddDnsRecordSetRequest body, string parent)
             {
-                return new AddRequest(service, body, parent);
+                return new AddRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -975,7 +975,7 @@ namespace Google.Apis.ServiceNetworking.v1
             /// </param>
             public virtual GetRequest Get(string parent)
             {
-                return new GetRequest(service, parent);
+                return new GetRequest(this.service, parent);
             }
 
             /// <summary>
@@ -1087,7 +1087,7 @@ namespace Google.Apis.ServiceNetworking.v1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>
@@ -1178,7 +1178,7 @@ namespace Google.Apis.ServiceNetworking.v1
             /// </param>
             public virtual RemoveRequest Remove(Google.Apis.ServiceNetworking.v1.Data.RemoveDnsRecordSetRequest body, string parent)
             {
-                return new RemoveRequest(service, body, parent);
+                return new RemoveRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -1245,7 +1245,7 @@ namespace Google.Apis.ServiceNetworking.v1
             /// </param>
             public virtual UpdateRequest Update(Google.Apis.ServiceNetworking.v1.Data.UpdateDnsRecordSetRequest body, string parent)
             {
-                return new UpdateRequest(service, body, parent);
+                return new UpdateRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -1330,7 +1330,7 @@ namespace Google.Apis.ServiceNetworking.v1
             /// </param>
             public virtual AddRequest Add(Google.Apis.ServiceNetworking.v1.Data.AddDnsZoneRequest body, string parent)
             {
-                return new AddRequest(service, body, parent);
+                return new AddRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -1397,7 +1397,7 @@ namespace Google.Apis.ServiceNetworking.v1
             /// </param>
             public virtual RemoveRequest Remove(Google.Apis.ServiceNetworking.v1.Data.RemoveDnsZoneRequest body, string parent)
             {
-                return new RemoveRequest(service, body, parent);
+                return new RemoveRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -1538,7 +1538,7 @@ namespace Google.Apis.ServiceNetworking.v1
                         /// </param>
                         public virtual GetRequest Get(string name)
                         {
-                            return new GetRequest(service, name);
+                            return new GetRequest(this.service, name);
                         }
 
                         /// <summary>
@@ -1603,7 +1603,7 @@ namespace Google.Apis.ServiceNetworking.v1
                         /// </param>
                         public virtual ListRequest List(string parent)
                         {
-                            return new ListRequest(service, parent);
+                            return new ListRequest(this.service, parent);
                         }
 
                         /// <summary>
@@ -1688,7 +1688,7 @@ namespace Google.Apis.ServiceNetworking.v1
                         /// </param>
                         public virtual CreateRequest Create(Google.Apis.ServiceNetworking.v1.Data.PeeredDnsDomain body, string parent)
                         {
-                            return new CreateRequest(service, body, parent);
+                            return new CreateRequest(this.service, body, parent);
                         }
 
                         /// <summary>
@@ -1760,7 +1760,7 @@ namespace Google.Apis.ServiceNetworking.v1
                         /// </param>
                         public virtual DeleteRequest Delete(string name)
                         {
-                            return new DeleteRequest(service, name);
+                            return new DeleteRequest(this.service, name);
                         }
 
                         /// <summary>Deletes a peered DNS domain.</summary>
@@ -1821,7 +1821,7 @@ namespace Google.Apis.ServiceNetworking.v1
                         /// </param>
                         public virtual ListRequest List(string parent)
                         {
-                            return new ListRequest(service, parent);
+                            return new ListRequest(this.service, parent);
                         }
 
                         /// <summary>Lists peered DNS domains for a connection.</summary>
@@ -1886,7 +1886,7 @@ namespace Google.Apis.ServiceNetworking.v1
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -1968,7 +1968,7 @@ namespace Google.Apis.ServiceNetworking.v1
                     /// </param>
                     public virtual GetVpcServiceControlsRequest GetVpcServiceControls(string name)
                     {
-                        return new GetVpcServiceControlsRequest(service, name);
+                        return new GetVpcServiceControlsRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -2035,7 +2035,7 @@ namespace Google.Apis.ServiceNetworking.v1
                     /// </param>
                     public virtual UpdateConsumerConfigRequest UpdateConsumerConfig(Google.Apis.ServiceNetworking.v1.Data.UpdateConsumerConfigRequest body, string parent)
                     {
-                        return new UpdateConsumerConfigRequest(service, body, parent);
+                        return new UpdateConsumerConfigRequest(this.service, body, parent);
                     }
 
                     /// <summary>
@@ -2126,7 +2126,7 @@ namespace Google.Apis.ServiceNetworking.v1
             /// </param>
             public virtual AddRequest Add(Google.Apis.ServiceNetworking.v1.Data.AddRolesRequest body, string parent)
             {
-                return new AddRequest(service, body, parent);
+                return new AddRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -2199,7 +2199,7 @@ namespace Google.Apis.ServiceNetworking.v1
         /// </param>
         public virtual AddSubnetworkRequest AddSubnetwork(Google.Apis.ServiceNetworking.v1.Data.AddSubnetworkRequest body, string parent)
         {
-            return new AddSubnetworkRequest(service, body, parent);
+            return new AddSubnetworkRequest(this.service, body, parent);
         }
 
         /// <summary>
@@ -2267,7 +2267,7 @@ namespace Google.Apis.ServiceNetworking.v1
         /// </param>
         public virtual DisableVpcServiceControlsRequest DisableVpcServiceControls(Google.Apis.ServiceNetworking.v1.Data.DisableVpcServiceControlsRequest body, string parent)
         {
-            return new DisableVpcServiceControlsRequest(service, body, parent);
+            return new DisableVpcServiceControlsRequest(this.service, body, parent);
         }
 
         /// <summary>Disables VPC service controls for a connection.</summary>
@@ -2326,7 +2326,7 @@ namespace Google.Apis.ServiceNetworking.v1
         /// </param>
         public virtual EnableVpcServiceControlsRequest EnableVpcServiceControls(Google.Apis.ServiceNetworking.v1.Data.EnableVpcServiceControlsRequest body, string parent)
         {
-            return new EnableVpcServiceControlsRequest(service, body, parent);
+            return new EnableVpcServiceControlsRequest(this.service, body, parent);
         }
 
         /// <summary>Enables VPC service controls for a connection.</summary>
@@ -2390,7 +2390,7 @@ namespace Google.Apis.ServiceNetworking.v1
         /// </param>
         public virtual SearchRangeRequest SearchRange(Google.Apis.ServiceNetworking.v1.Data.SearchRangeRequest body, string parent)
         {
-            return new SearchRangeRequest(service, body, parent);
+            return new SearchRangeRequest(this.service, body, parent);
         }
 
         /// <summary>
@@ -2458,7 +2458,7 @@ namespace Google.Apis.ServiceNetworking.v1
         /// </param>
         public virtual ValidateRequest Validate(Google.Apis.ServiceNetworking.v1.Data.ValidateConsumerConfigRequest body, string parent)
         {
-            return new ValidateRequest(service, body, parent);
+            return new ValidateRequest(this.service, body, parent);
         }
 
         /// <summary>

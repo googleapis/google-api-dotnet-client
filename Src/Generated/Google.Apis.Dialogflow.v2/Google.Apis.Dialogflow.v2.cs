@@ -366,7 +366,7 @@ namespace Google.Apis.Dialogflow.v2
                     /// </param>
                     public virtual BatchCreateRequest BatchCreate(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2BatchCreateEntitiesRequest body, string parent)
                     {
-                        return new BatchCreateRequest(service, body, parent);
+                        return new BatchCreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>
@@ -445,7 +445,7 @@ namespace Google.Apis.Dialogflow.v2
                     /// </param>
                     public virtual BatchDeleteRequest BatchDelete(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2BatchDeleteEntitiesRequest body, string parent)
                     {
-                        return new BatchDeleteRequest(service, body, parent);
+                        return new BatchDeleteRequest(this.service, body, parent);
                     }
 
                     /// <summary>
@@ -526,7 +526,7 @@ namespace Google.Apis.Dialogflow.v2
                     /// </param>
                     public virtual BatchUpdateRequest BatchUpdate(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2BatchUpdateEntitiesRequest body, string parent)
                     {
-                        return new BatchUpdateRequest(service, body, parent);
+                        return new BatchUpdateRequest(this.service, body, parent);
                     }
 
                     /// <summary>
@@ -606,7 +606,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// </param>
                 public virtual BatchDeleteRequest BatchDelete(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2BatchDeleteEntityTypesRequest body, string parent)
                 {
-                    return new BatchDeleteRequest(service, body, parent);
+                    return new BatchDeleteRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -679,7 +679,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// </param>
                 public virtual BatchUpdateRequest BatchUpdate(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2BatchUpdateEntityTypesRequest body, string parent)
                 {
-                    return new BatchUpdateRequest(service, body, parent);
+                    return new BatchUpdateRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -747,7 +747,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2EntityType body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -824,7 +824,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -876,7 +876,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Retrieves the specified entity type.</summary>
@@ -941,7 +941,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Returns the list of all entity types in the specified agent.</summary>
@@ -1036,7 +1036,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2EntityType body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -1164,7 +1164,7 @@ namespace Google.Apis.Dialogflow.v2
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Returns the list of all intents in the specified agent.</summary>
@@ -1346,7 +1346,7 @@ namespace Google.Apis.Dialogflow.v2
                             /// </param>
                             public virtual CreateRequest Create(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Context body, string parent)
                             {
-                                return new CreateRequest(service, body, parent);
+                                return new CreateRequest(this.service, body, parent);
                             }
 
                             /// <summary>
@@ -1411,7 +1411,7 @@ namespace Google.Apis.Dialogflow.v2
                             /// </param>
                             public virtual DeleteRequest Delete(string name)
                             {
-                                return new DeleteRequest(service, name);
+                                return new DeleteRequest(this.service, name);
                             }
 
                             /// <summary>Deletes the specified context.</summary>
@@ -1467,7 +1467,7 @@ namespace Google.Apis.Dialogflow.v2
                             /// </param>
                             public virtual GetRequest Get(string name)
                             {
-                                return new GetRequest(service, name);
+                                return new GetRequest(this.service, name);
                             }
 
                             /// <summary>Retrieves the specified context.</summary>
@@ -1522,7 +1522,7 @@ namespace Google.Apis.Dialogflow.v2
                             /// </param>
                             public virtual ListRequest List(string parent)
                             {
-                                return new ListRequest(service, parent);
+                                return new ListRequest(this.service, parent);
                             }
 
                             /// <summary>Returns the list of all contexts in the specified session.</summary>
@@ -1612,7 +1612,7 @@ namespace Google.Apis.Dialogflow.v2
                             /// </param>
                             public virtual PatchRequest Patch(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Context body, string name)
                             {
-                                return new PatchRequest(service, body, name);
+                                return new PatchRequest(this.service, body, name);
                             }
 
                             /// <summary>Updates the specified context.</summary>
@@ -1715,7 +1715,7 @@ namespace Google.Apis.Dialogflow.v2
                             /// </param>
                             public virtual CreateRequest Create(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SessionEntityType body, string parent)
                             {
-                                return new CreateRequest(service, body, parent);
+                                return new CreateRequest(this.service, body, parent);
                             }
 
                             /// <summary>
@@ -1787,7 +1787,7 @@ namespace Google.Apis.Dialogflow.v2
                             /// </param>
                             public virtual DeleteRequest Delete(string name)
                             {
-                                return new DeleteRequest(service, name);
+                                return new DeleteRequest(this.service, name);
                             }
 
                             /// <summary>
@@ -1852,7 +1852,7 @@ namespace Google.Apis.Dialogflow.v2
                             /// </param>
                             public virtual GetRequest Get(string name)
                             {
-                                return new GetRequest(service, name);
+                                return new GetRequest(this.service, name);
                             }
 
                             /// <summary>
@@ -1916,7 +1916,7 @@ namespace Google.Apis.Dialogflow.v2
                             /// </param>
                             public virtual ListRequest List(string parent)
                             {
-                                return new ListRequest(service, parent);
+                                return new ListRequest(this.service, parent);
                             }
 
                             /// <summary>
@@ -2011,7 +2011,7 @@ namespace Google.Apis.Dialogflow.v2
                             /// </param>
                             public virtual PatchRequest Patch(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SessionEntityType body, string name)
                             {
-                                return new PatchRequest(service, body, name);
+                                return new PatchRequest(this.service, body, name);
                             }
 
                             /// <summary>
@@ -2092,7 +2092,7 @@ namespace Google.Apis.Dialogflow.v2
                         /// </param>
                         public virtual DeleteContextsRequest DeleteContexts(string parent)
                         {
-                            return new DeleteContextsRequest(service, parent);
+                            return new DeleteContextsRequest(this.service, parent);
                         }
 
                         /// <summary>Deletes all active contexts in the specified session.</summary>
@@ -2164,7 +2164,7 @@ namespace Google.Apis.Dialogflow.v2
                         /// </param>
                         public virtual DetectIntentRequest DetectIntent(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2DetectIntentRequest body, string session)
                         {
-                            return new DetectIntentRequest(service, body, session);
+                            return new DetectIntentRequest(this.service, body, session);
                         }
 
                         /// <summary>
@@ -2243,7 +2243,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Environment body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates an agent environment.</summary>
@@ -2313,7 +2313,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes the specified agent environment.</summary>
@@ -2365,7 +2365,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Retrieves the specified agent environment.</summary>
@@ -2418,7 +2418,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// </param>
                 public virtual GetHistoryRequest GetHistory(string parent)
                 {
-                    return new GetHistoryRequest(service, parent);
+                    return new GetHistoryRequest(this.service, parent);
                 }
 
                 /// <summary>Gets the history of the specified environment.</summary>
@@ -2497,7 +2497,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Returns the list of all non-default environments of the specified agent.</summary>
@@ -2586,7 +2586,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Environment body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -2710,7 +2710,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// </param>
                 public virtual BatchDeleteRequest BatchDelete(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2BatchDeleteIntentsRequest body, string parent)
                 {
-                    return new BatchDeleteRequest(service, body, parent);
+                    return new BatchDeleteRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -2783,7 +2783,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// </param>
                 public virtual BatchUpdateRequest BatchUpdate(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2BatchUpdateIntentsRequest body, string parent)
                 {
-                    return new BatchUpdateRequest(service, body, parent);
+                    return new BatchUpdateRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -2848,7 +2848,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// <param name="parent">Required. The agent to create a intent for. Format: `projects//agent`.</param>
                 public virtual CreateRequest Create(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Intent body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -2950,7 +2950,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -3002,7 +3002,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// <param name="name">Required. The name of the intent. Format: `projects//agent/intents/`.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Retrieves the specified intent.</summary>
@@ -3092,7 +3092,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Returns the list of all intents in the specified agent.</summary>
@@ -3216,7 +3216,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Intent body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -3371,7 +3371,7 @@ namespace Google.Apis.Dialogflow.v2
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Document body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>
@@ -3440,7 +3440,7 @@ namespace Google.Apis.Dialogflow.v2
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -3497,7 +3497,7 @@ namespace Google.Apis.Dialogflow.v2
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Retrieves the specified document.</summary>
@@ -3548,7 +3548,7 @@ namespace Google.Apis.Dialogflow.v2
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Returns the list of all documents of the knowledge base.</summary>
@@ -3652,7 +3652,7 @@ namespace Google.Apis.Dialogflow.v2
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Document body, string name)
                     {
-                        return new PatchRequest(service, body, name);
+                        return new PatchRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -3741,7 +3741,7 @@ namespace Google.Apis.Dialogflow.v2
                     /// </param>
                     public virtual ReloadRequest Reload(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ReloadDocumentRequest body, string name)
                     {
-                        return new ReloadRequest(service, body, name);
+                        return new ReloadRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -3810,7 +3810,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2KnowledgeBase body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a knowledge base.</summary>
@@ -3866,7 +3866,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes the specified knowledge base.</summary>
@@ -3931,7 +3931,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Retrieves the specified knowledge base.</summary>
@@ -3981,7 +3981,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Returns the list of all knowledge bases of the specified agent.</summary>
@@ -4081,7 +4081,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2KnowledgeBase body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates the specified knowledge base.</summary>
@@ -4195,7 +4195,7 @@ namespace Google.Apis.Dialogflow.v2
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Context body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>
@@ -4259,7 +4259,7 @@ namespace Google.Apis.Dialogflow.v2
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>Deletes the specified context.</summary>
@@ -4314,7 +4314,7 @@ namespace Google.Apis.Dialogflow.v2
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Retrieves the specified context.</summary>
@@ -4368,7 +4368,7 @@ namespace Google.Apis.Dialogflow.v2
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Returns the list of all contexts in the specified session.</summary>
@@ -4456,7 +4456,7 @@ namespace Google.Apis.Dialogflow.v2
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Context body, string name)
                     {
-                        return new PatchRequest(service, body, name);
+                        return new PatchRequest(this.service, body, name);
                     }
 
                     /// <summary>Updates the specified context.</summary>
@@ -4557,7 +4557,7 @@ namespace Google.Apis.Dialogflow.v2
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SessionEntityType body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>
@@ -4628,7 +4628,7 @@ namespace Google.Apis.Dialogflow.v2
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -4692,7 +4692,7 @@ namespace Google.Apis.Dialogflow.v2
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -4755,7 +4755,7 @@ namespace Google.Apis.Dialogflow.v2
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>
@@ -4850,7 +4850,7 @@ namespace Google.Apis.Dialogflow.v2
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SessionEntityType body, string name)
                     {
-                        return new PatchRequest(service, body, name);
+                        return new PatchRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -4930,7 +4930,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// </param>
                 public virtual DeleteContextsRequest DeleteContexts(string parent)
                 {
-                    return new DeleteContextsRequest(service, parent);
+                    return new DeleteContextsRequest(this.service, parent);
                 }
 
                 /// <summary>Deletes all active contexts in the specified session.</summary>
@@ -5001,7 +5001,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// </param>
                 public virtual DetectIntentRequest DetectIntent(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2DetectIntentRequest body, string session)
                 {
-                    return new DetectIntentRequest(service, body, session);
+                    return new DetectIntentRequest(this.service, body, session);
                 }
 
                 /// <summary>
@@ -5097,7 +5097,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Version body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -5157,7 +5157,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Delete the specified agent version.</summary>
@@ -5208,7 +5208,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Retrieves the specified agent version.</summary>
@@ -5259,7 +5259,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Returns the list of all versions of the specified agent.</summary>
@@ -5342,7 +5342,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Version body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -5423,7 +5423,7 @@ namespace Google.Apis.Dialogflow.v2
             /// </param>
             public virtual ExportRequest Export(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ExportAgentRequest body, string parent)
             {
-                return new ExportRequest(service, body, parent);
+                return new ExportRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -5483,7 +5483,7 @@ namespace Google.Apis.Dialogflow.v2
             /// <param name="name">Required. The name of the fulfillment. Format: `projects//agent/fulfillment`.</param>
             public virtual GetFulfillmentRequest GetFulfillment(string name)
             {
-                return new GetFulfillmentRequest(service, name);
+                return new GetFulfillmentRequest(this.service, name);
             }
 
             /// <summary>Retrieves the fulfillment.</summary>
@@ -5533,7 +5533,7 @@ namespace Google.Apis.Dialogflow.v2
             /// </param>
             public virtual GetValidationResultRequest GetValidationResult(string parent)
             {
-                return new GetValidationResultRequest(service, parent);
+                return new GetValidationResultRequest(this.service, parent);
             }
 
             /// <summary>
@@ -5614,7 +5614,7 @@ namespace Google.Apis.Dialogflow.v2
             /// </param>
             public virtual ImportRequest Import(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ImportAgentRequest body, string parent)
             {
-                return new ImportRequest(service, body, parent);
+                return new ImportRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -5699,7 +5699,7 @@ namespace Google.Apis.Dialogflow.v2
             /// </param>
             public virtual RestoreRequest Restore(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2RestoreAgentRequest body, string parent)
             {
-                return new RestoreRequest(service, body, parent);
+                return new RestoreRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -5772,7 +5772,7 @@ namespace Google.Apis.Dialogflow.v2
             /// <param name="parent">Required. The project to list agents from. Format: `projects/`.</param>
             public virtual SearchRequest Search(string parent)
             {
-                return new SearchRequest(service, parent);
+                return new SearchRequest(this.service, parent);
             }
 
             /// <summary>
@@ -5860,7 +5860,7 @@ namespace Google.Apis.Dialogflow.v2
             /// </param>
             public virtual TrainRequest Train(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2TrainAgentRequest body, string parent)
             {
-                return new TrainRequest(service, body, parent);
+                return new TrainRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -5927,7 +5927,7 @@ namespace Google.Apis.Dialogflow.v2
             /// </param>
             public virtual UpdateFulfillmentRequest UpdateFulfillment(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Fulfillment body, string name)
             {
-                return new UpdateFulfillmentRequest(service, body, name);
+                return new UpdateFulfillmentRequest(this.service, body, name);
             }
 
             /// <summary>Updates the fulfillment.</summary>
@@ -6021,7 +6021,7 @@ namespace Google.Apis.Dialogflow.v2
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>
@@ -6120,7 +6120,7 @@ namespace Google.Apis.Dialogflow.v2
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2AnswerRecord body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>Updates the specified answer record.</summary>
@@ -6206,7 +6206,7 @@ namespace Google.Apis.Dialogflow.v2
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Retrieves the specified conversation dataset.</summary>
@@ -6262,7 +6262,7 @@ namespace Google.Apis.Dialogflow.v2
             /// </param>
             public virtual ImportConversationDataRequest ImportConversationData(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ImportConversationDataRequest body, string name)
             {
-                return new ImportConversationDataRequest(service, body, name);
+                return new ImportConversationDataRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -6325,7 +6325,7 @@ namespace Google.Apis.Dialogflow.v2
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Returns the list of all conversation datasets in the specified project and location.</summary>
@@ -6439,7 +6439,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets an evaluation of conversation model.</summary>
@@ -6489,7 +6489,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists evaluations of a conversation model.</summary>
@@ -6570,7 +6570,7 @@ namespace Google.Apis.Dialogflow.v2
             /// <param name="parent">The project to create conversation model for. Format: `projects/`</param>
             public virtual CreateRequest Create(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ConversationModel body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -6635,7 +6635,7 @@ namespace Google.Apis.Dialogflow.v2
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>
@@ -6699,7 +6699,7 @@ namespace Google.Apis.Dialogflow.v2
             /// </param>
             public virtual DeployRequest Deploy(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2DeployConversationModelRequest body, string name)
             {
-                return new DeployRequest(service, body, name);
+                return new DeployRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -6763,7 +6763,7 @@ namespace Google.Apis.Dialogflow.v2
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets conversation model.</summary>
@@ -6812,7 +6812,7 @@ namespace Google.Apis.Dialogflow.v2
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists conversation models.</summary>
@@ -6895,7 +6895,7 @@ namespace Google.Apis.Dialogflow.v2
             /// </param>
             public virtual UndeployRequest Undeploy(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2UndeployConversationModelRequest body, string name)
             {
-                return new UndeployRequest(service, body, name);
+                return new UndeployRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -6984,7 +6984,7 @@ namespace Google.Apis.Dialogflow.v2
             /// </param>
             public virtual ClearSuggestionFeatureConfigRequest ClearSuggestionFeatureConfig(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ClearSuggestionFeatureConfigRequest body, string conversationProfile)
             {
-                return new ClearSuggestionFeatureConfigRequest(service, body, conversationProfile);
+                return new ClearSuggestionFeatureConfigRequest(this.service, body, conversationProfile);
             }
 
             /// <summary>
@@ -7051,7 +7051,7 @@ namespace Google.Apis.Dialogflow.v2
             /// </param>
             public virtual CreateRequest Create(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ConversationProfile body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -7112,7 +7112,7 @@ namespace Google.Apis.Dialogflow.v2
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>Deletes the specified conversation profile.</summary>
@@ -7163,7 +7163,7 @@ namespace Google.Apis.Dialogflow.v2
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Retrieves the specified conversation profile.</summary>
@@ -7213,7 +7213,7 @@ namespace Google.Apis.Dialogflow.v2
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Returns the list of all conversation profiles in the specified project.</summary>
@@ -7294,7 +7294,7 @@ namespace Google.Apis.Dialogflow.v2
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ConversationProfile body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -7379,7 +7379,7 @@ namespace Google.Apis.Dialogflow.v2
             /// </param>
             public virtual SetSuggestionFeatureConfigRequest SetSuggestionFeatureConfig(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SetSuggestionFeatureConfigRequest body, string conversationProfile)
             {
-                return new SetSuggestionFeatureConfigRequest(service, body, conversationProfile);
+                return new SetSuggestionFeatureConfigRequest(this.service, body, conversationProfile);
             }
 
             /// <summary>
@@ -7490,7 +7490,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>
@@ -7630,7 +7630,7 @@ namespace Google.Apis.Dialogflow.v2
                     /// </param>
                     public virtual SuggestArticlesRequest SuggestArticles(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SuggestArticlesRequest body, string parent)
                     {
-                        return new SuggestArticlesRequest(service, body, parent);
+                        return new SuggestArticlesRequest(this.service, body, parent);
                     }
 
                     /// <summary>
@@ -7693,7 +7693,7 @@ namespace Google.Apis.Dialogflow.v2
                     /// </param>
                     public virtual SuggestFaqAnswersRequest SuggestFaqAnswers(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SuggestFaqAnswersRequest body, string parent)
                     {
-                        return new SuggestFaqAnswersRequest(service, body, parent);
+                        return new SuggestFaqAnswersRequest(this.service, body, parent);
                     }
 
                     /// <summary>
@@ -7754,7 +7754,7 @@ namespace Google.Apis.Dialogflow.v2
                     /// </param>
                     public virtual SuggestSmartRepliesRequest SuggestSmartReplies(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SuggestSmartRepliesRequest body, string parent)
                     {
-                        return new SuggestSmartRepliesRequest(service, body, parent);
+                        return new SuggestSmartRepliesRequest(this.service, body, parent);
                     }
 
                     /// <summary>Gets smart replies for a participant based on specific historical messages.</summary>
@@ -7819,7 +7819,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// </param>
                 public virtual AnalyzeContentRequest AnalyzeContent(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2AnalyzeContentRequest body, string participant)
                 {
-                    return new AnalyzeContentRequest(service, body, participant);
+                    return new AnalyzeContentRequest(this.service, body, participant);
                 }
 
                 /// <summary>
@@ -7883,7 +7883,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Participant body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a new participant in a conversation.</summary>
@@ -7940,7 +7940,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Retrieves a conversation participant.</summary>
@@ -7991,7 +7991,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Returns the list of all participants in the specified conversation.</summary>
@@ -8070,7 +8070,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Participant body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates the specified participant.</summary>
@@ -8159,7 +8159,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// </param>
                 public virtual SearchKnowledgeRequest SearchKnowledge(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SearchKnowledgeRequest body, string conversation)
                 {
-                    return new SearchKnowledgeRequest(service, body, conversation);
+                    return new SearchKnowledgeRequest(this.service, body, conversation);
                 }
 
                 /// <summary>Get answers for the given query based on knowledge documents.</summary>
@@ -8220,7 +8220,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// </param>
                 public virtual SuggestConversationSummaryRequest SuggestConversationSummary(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SuggestConversationSummaryRequest body, string conversation)
                 {
-                    return new SuggestConversationSummaryRequest(service, body, conversation);
+                    return new SuggestConversationSummaryRequest(this.service, body, conversation);
                 }
 
                 /// <summary>
@@ -8285,7 +8285,7 @@ namespace Google.Apis.Dialogflow.v2
             /// </param>
             public virtual CompleteRequest Complete(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2CompleteConversationRequest body, string name)
             {
-                return new CompleteRequest(service, body, name);
+                return new CompleteRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -8354,7 +8354,7 @@ namespace Google.Apis.Dialogflow.v2
             /// </param>
             public virtual CreateRequest Create(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Conversation body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -8439,7 +8439,7 @@ namespace Google.Apis.Dialogflow.v2
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Retrieves the specific conversation.</summary>
@@ -8488,7 +8488,7 @@ namespace Google.Apis.Dialogflow.v2
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Returns the list of all conversations in the specified project.</summary>
@@ -8627,7 +8627,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Document body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -8696,7 +8696,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -8759,7 +8759,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// </param>
                 public virtual ExportRequest Export(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ExportDocumentRequest body, string name)
                 {
-                    return new ExportRequest(service, body, name);
+                    return new ExportRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -8822,7 +8822,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Retrieves the specified document.</summary>
@@ -8880,7 +8880,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// </param>
                 public virtual ImportRequest Import(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ImportDocumentsRequest body, string parent)
                 {
-                    return new ImportRequest(service, body, parent);
+                    return new ImportRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -8944,7 +8944,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Returns the list of all documents of the knowledge base.</summary>
@@ -9048,7 +9048,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Document body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -9136,7 +9136,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// </param>
                 public virtual ReloadRequest Reload(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ReloadDocumentRequest body, string name)
                 {
-                    return new ReloadRequest(service, body, name);
+                    return new ReloadRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -9204,7 +9204,7 @@ namespace Google.Apis.Dialogflow.v2
             /// </param>
             public virtual CreateRequest Create(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2KnowledgeBase body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>Creates a knowledge base.</summary>
@@ -9260,7 +9260,7 @@ namespace Google.Apis.Dialogflow.v2
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>Deletes the specified knowledge base.</summary>
@@ -9324,7 +9324,7 @@ namespace Google.Apis.Dialogflow.v2
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Retrieves the specified knowledge base.</summary>
@@ -9373,7 +9373,7 @@ namespace Google.Apis.Dialogflow.v2
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Returns the list of all knowledge bases of the specified agent.</summary>
@@ -9472,7 +9472,7 @@ namespace Google.Apis.Dialogflow.v2
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2KnowledgeBase body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>Updates the specified knowledge base.</summary>
@@ -9640,7 +9640,7 @@ namespace Google.Apis.Dialogflow.v2
                         /// </param>
                         public virtual BatchCreateRequest BatchCreate(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2BatchCreateEntitiesRequest body, string parent)
                         {
-                            return new BatchCreateRequest(service, body, parent);
+                            return new BatchCreateRequest(this.service, body, parent);
                         }
 
                         /// <summary>
@@ -9719,7 +9719,7 @@ namespace Google.Apis.Dialogflow.v2
                         /// </param>
                         public virtual BatchDeleteRequest BatchDelete(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2BatchDeleteEntitiesRequest body, string parent)
                         {
-                            return new BatchDeleteRequest(service, body, parent);
+                            return new BatchDeleteRequest(this.service, body, parent);
                         }
 
                         /// <summary>
@@ -9800,7 +9800,7 @@ namespace Google.Apis.Dialogflow.v2
                         /// </param>
                         public virtual BatchUpdateRequest BatchUpdate(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2BatchUpdateEntitiesRequest body, string parent)
                         {
-                            return new BatchUpdateRequest(service, body, parent);
+                            return new BatchUpdateRequest(this.service, body, parent);
                         }
 
                         /// <summary>
@@ -9881,7 +9881,7 @@ namespace Google.Apis.Dialogflow.v2
                     /// </param>
                     public virtual BatchDeleteRequest BatchDelete(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2BatchDeleteEntityTypesRequest body, string parent)
                     {
-                        return new BatchDeleteRequest(service, body, parent);
+                        return new BatchDeleteRequest(this.service, body, parent);
                     }
 
                     /// <summary>
@@ -9957,7 +9957,7 @@ namespace Google.Apis.Dialogflow.v2
                     /// </param>
                     public virtual BatchUpdateRequest BatchUpdate(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2BatchUpdateEntityTypesRequest body, string parent)
                     {
-                        return new BatchUpdateRequest(service, body, parent);
+                        return new BatchUpdateRequest(this.service, body, parent);
                     }
 
                     /// <summary>
@@ -10028,7 +10028,7 @@ namespace Google.Apis.Dialogflow.v2
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2EntityType body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>
@@ -10107,7 +10107,7 @@ namespace Google.Apis.Dialogflow.v2
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -10159,7 +10159,7 @@ namespace Google.Apis.Dialogflow.v2
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Retrieves the specified entity type.</summary>
@@ -10224,7 +10224,7 @@ namespace Google.Apis.Dialogflow.v2
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Returns the list of all entity types in the specified agent.</summary>
@@ -10323,7 +10323,7 @@ namespace Google.Apis.Dialogflow.v2
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2EntityType body, string name)
                     {
-                        return new PatchRequest(service, body, name);
+                        return new PatchRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -10451,7 +10451,7 @@ namespace Google.Apis.Dialogflow.v2
                         /// </param>
                         public virtual ListRequest List(string parent)
                         {
-                            return new ListRequest(service, parent);
+                            return new ListRequest(this.service, parent);
                         }
 
                         /// <summary>Returns the list of all intents in the specified agent.</summary>
@@ -10635,7 +10635,7 @@ namespace Google.Apis.Dialogflow.v2
                                 /// </param>
                                 public virtual CreateRequest Create(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Context body, string parent)
                                 {
-                                    return new CreateRequest(service, body, parent);
+                                    return new CreateRequest(this.service, body, parent);
                                 }
 
                                 /// <summary>
@@ -10700,7 +10700,7 @@ namespace Google.Apis.Dialogflow.v2
                                 /// </param>
                                 public virtual DeleteRequest Delete(string name)
                                 {
-                                    return new DeleteRequest(service, name);
+                                    return new DeleteRequest(this.service, name);
                                 }
 
                                 /// <summary>Deletes the specified context.</summary>
@@ -10756,7 +10756,7 @@ namespace Google.Apis.Dialogflow.v2
                                 /// </param>
                                 public virtual GetRequest Get(string name)
                                 {
-                                    return new GetRequest(service, name);
+                                    return new GetRequest(this.service, name);
                                 }
 
                                 /// <summary>Retrieves the specified context.</summary>
@@ -10811,7 +10811,7 @@ namespace Google.Apis.Dialogflow.v2
                                 /// </param>
                                 public virtual ListRequest List(string parent)
                                 {
-                                    return new ListRequest(service, parent);
+                                    return new ListRequest(this.service, parent);
                                 }
 
                                 /// <summary>Returns the list of all contexts in the specified session.</summary>
@@ -10901,7 +10901,7 @@ namespace Google.Apis.Dialogflow.v2
                                 /// </param>
                                 public virtual PatchRequest Patch(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Context body, string name)
                                 {
-                                    return new PatchRequest(service, body, name);
+                                    return new PatchRequest(this.service, body, name);
                                 }
 
                                 /// <summary>Updates the specified context.</summary>
@@ -11004,7 +11004,7 @@ namespace Google.Apis.Dialogflow.v2
                                 /// </param>
                                 public virtual CreateRequest Create(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SessionEntityType body, string parent)
                                 {
-                                    return new CreateRequest(service, body, parent);
+                                    return new CreateRequest(this.service, body, parent);
                                 }
 
                                 /// <summary>
@@ -11076,7 +11076,7 @@ namespace Google.Apis.Dialogflow.v2
                                 /// </param>
                                 public virtual DeleteRequest Delete(string name)
                                 {
-                                    return new DeleteRequest(service, name);
+                                    return new DeleteRequest(this.service, name);
                                 }
 
                                 /// <summary>
@@ -11141,7 +11141,7 @@ namespace Google.Apis.Dialogflow.v2
                                 /// </param>
                                 public virtual GetRequest Get(string name)
                                 {
-                                    return new GetRequest(service, name);
+                                    return new GetRequest(this.service, name);
                                 }
 
                                 /// <summary>
@@ -11205,7 +11205,7 @@ namespace Google.Apis.Dialogflow.v2
                                 /// </param>
                                 public virtual ListRequest List(string parent)
                                 {
-                                    return new ListRequest(service, parent);
+                                    return new ListRequest(this.service, parent);
                                 }
 
                                 /// <summary>
@@ -11300,7 +11300,7 @@ namespace Google.Apis.Dialogflow.v2
                                 /// </param>
                                 public virtual PatchRequest Patch(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SessionEntityType body, string name)
                                 {
-                                    return new PatchRequest(service, body, name);
+                                    return new PatchRequest(this.service, body, name);
                                 }
 
                                 /// <summary>
@@ -11381,7 +11381,7 @@ namespace Google.Apis.Dialogflow.v2
                             /// </param>
                             public virtual DeleteContextsRequest DeleteContexts(string parent)
                             {
-                                return new DeleteContextsRequest(service, parent);
+                                return new DeleteContextsRequest(this.service, parent);
                             }
 
                             /// <summary>Deletes all active contexts in the specified session.</summary>
@@ -11453,7 +11453,7 @@ namespace Google.Apis.Dialogflow.v2
                             /// </param>
                             public virtual DetectIntentRequest DetectIntent(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2DetectIntentRequest body, string session)
                             {
-                                return new DetectIntentRequest(service, body, session);
+                                return new DetectIntentRequest(this.service, body, session);
                             }
 
                             /// <summary>
@@ -11532,7 +11532,7 @@ namespace Google.Apis.Dialogflow.v2
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Environment body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>Creates an agent environment.</summary>
@@ -11603,7 +11603,7 @@ namespace Google.Apis.Dialogflow.v2
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>Deletes the specified agent environment.</summary>
@@ -11656,7 +11656,7 @@ namespace Google.Apis.Dialogflow.v2
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Retrieves the specified agent environment.</summary>
@@ -11709,7 +11709,7 @@ namespace Google.Apis.Dialogflow.v2
                     /// </param>
                     public virtual GetHistoryRequest GetHistory(string parent)
                     {
-                        return new GetHistoryRequest(service, parent);
+                        return new GetHistoryRequest(this.service, parent);
                     }
 
                     /// <summary>Gets the history of the specified environment.</summary>
@@ -11790,7 +11790,7 @@ namespace Google.Apis.Dialogflow.v2
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Returns the list of all non-default environments of the specified agent.</summary>
@@ -11881,7 +11881,7 @@ namespace Google.Apis.Dialogflow.v2
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Environment body, string name)
                     {
-                        return new PatchRequest(service, body, name);
+                        return new PatchRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -12006,7 +12006,7 @@ namespace Google.Apis.Dialogflow.v2
                     /// </param>
                     public virtual BatchDeleteRequest BatchDelete(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2BatchDeleteIntentsRequest body, string parent)
                     {
-                        return new BatchDeleteRequest(service, body, parent);
+                        return new BatchDeleteRequest(this.service, body, parent);
                     }
 
                     /// <summary>
@@ -12082,7 +12082,7 @@ namespace Google.Apis.Dialogflow.v2
                     /// </param>
                     public virtual BatchUpdateRequest BatchUpdate(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2BatchUpdateIntentsRequest body, string parent)
                     {
-                        return new BatchUpdateRequest(service, body, parent);
+                        return new BatchUpdateRequest(this.service, body, parent);
                     }
 
                     /// <summary>
@@ -12152,7 +12152,7 @@ namespace Google.Apis.Dialogflow.v2
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Intent body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>
@@ -12255,7 +12255,7 @@ namespace Google.Apis.Dialogflow.v2
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -12307,7 +12307,7 @@ namespace Google.Apis.Dialogflow.v2
                     /// <param name="name">Required. The name of the intent. Format: `projects//agent/intents/`.</param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Retrieves the specified intent.</summary>
@@ -12397,7 +12397,7 @@ namespace Google.Apis.Dialogflow.v2
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Returns the list of all intents in the specified agent.</summary>
@@ -12523,7 +12523,7 @@ namespace Google.Apis.Dialogflow.v2
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Intent body, string name)
                     {
-                        return new PatchRequest(service, body, name);
+                        return new PatchRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -12678,7 +12678,7 @@ namespace Google.Apis.Dialogflow.v2
                         /// </param>
                         public virtual CreateRequest Create(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Context body, string parent)
                         {
-                            return new CreateRequest(service, body, parent);
+                            return new CreateRequest(this.service, body, parent);
                         }
 
                         /// <summary>
@@ -12742,7 +12742,7 @@ namespace Google.Apis.Dialogflow.v2
                         /// </param>
                         public virtual DeleteRequest Delete(string name)
                         {
-                            return new DeleteRequest(service, name);
+                            return new DeleteRequest(this.service, name);
                         }
 
                         /// <summary>Deletes the specified context.</summary>
@@ -12798,7 +12798,7 @@ namespace Google.Apis.Dialogflow.v2
                         /// </param>
                         public virtual GetRequest Get(string name)
                         {
-                            return new GetRequest(service, name);
+                            return new GetRequest(this.service, name);
                         }
 
                         /// <summary>Retrieves the specified context.</summary>
@@ -12853,7 +12853,7 @@ namespace Google.Apis.Dialogflow.v2
                         /// </param>
                         public virtual ListRequest List(string parent)
                         {
-                            return new ListRequest(service, parent);
+                            return new ListRequest(this.service, parent);
                         }
 
                         /// <summary>Returns the list of all contexts in the specified session.</summary>
@@ -12943,7 +12943,7 @@ namespace Google.Apis.Dialogflow.v2
                         /// </param>
                         public virtual PatchRequest Patch(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Context body, string name)
                         {
-                            return new PatchRequest(service, body, name);
+                            return new PatchRequest(this.service, body, name);
                         }
 
                         /// <summary>Updates the specified context.</summary>
@@ -13046,7 +13046,7 @@ namespace Google.Apis.Dialogflow.v2
                         /// </param>
                         public virtual CreateRequest Create(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SessionEntityType body, string parent)
                         {
-                            return new CreateRequest(service, body, parent);
+                            return new CreateRequest(this.service, body, parent);
                         }
 
                         /// <summary>
@@ -13118,7 +13118,7 @@ namespace Google.Apis.Dialogflow.v2
                         /// </param>
                         public virtual DeleteRequest Delete(string name)
                         {
-                            return new DeleteRequest(service, name);
+                            return new DeleteRequest(this.service, name);
                         }
 
                         /// <summary>
@@ -13183,7 +13183,7 @@ namespace Google.Apis.Dialogflow.v2
                         /// </param>
                         public virtual GetRequest Get(string name)
                         {
-                            return new GetRequest(service, name);
+                            return new GetRequest(this.service, name);
                         }
 
                         /// <summary>
@@ -13247,7 +13247,7 @@ namespace Google.Apis.Dialogflow.v2
                         /// </param>
                         public virtual ListRequest List(string parent)
                         {
-                            return new ListRequest(service, parent);
+                            return new ListRequest(this.service, parent);
                         }
 
                         /// <summary>
@@ -13342,7 +13342,7 @@ namespace Google.Apis.Dialogflow.v2
                         /// </param>
                         public virtual PatchRequest Patch(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SessionEntityType body, string name)
                         {
-                            return new PatchRequest(service, body, name);
+                            return new PatchRequest(this.service, body, name);
                         }
 
                         /// <summary>
@@ -13423,7 +13423,7 @@ namespace Google.Apis.Dialogflow.v2
                     /// </param>
                     public virtual DeleteContextsRequest DeleteContexts(string parent)
                     {
-                        return new DeleteContextsRequest(service, parent);
+                        return new DeleteContextsRequest(this.service, parent);
                     }
 
                     /// <summary>Deletes all active contexts in the specified session.</summary>
@@ -13494,7 +13494,7 @@ namespace Google.Apis.Dialogflow.v2
                     /// </param>
                     public virtual DetectIntentRequest DetectIntent(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2DetectIntentRequest body, string session)
                     {
-                        return new DetectIntentRequest(service, body, session);
+                        return new DetectIntentRequest(this.service, body, session);
                     }
 
                     /// <summary>
@@ -13592,7 +13592,7 @@ namespace Google.Apis.Dialogflow.v2
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Version body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>
@@ -13653,7 +13653,7 @@ namespace Google.Apis.Dialogflow.v2
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>Delete the specified agent version.</summary>
@@ -13704,7 +13704,7 @@ namespace Google.Apis.Dialogflow.v2
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Retrieves the specified agent version.</summary>
@@ -13755,7 +13755,7 @@ namespace Google.Apis.Dialogflow.v2
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Returns the list of all versions of the specified agent.</summary>
@@ -13840,7 +13840,7 @@ namespace Google.Apis.Dialogflow.v2
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Version body, string name)
                     {
-                        return new PatchRequest(service, body, name);
+                        return new PatchRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -13921,7 +13921,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// </param>
                 public virtual ExportRequest Export(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ExportAgentRequest body, string parent)
                 {
-                    return new ExportRequest(service, body, parent);
+                    return new ExportRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -13983,7 +13983,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// </param>
                 public virtual GetFulfillmentRequest GetFulfillment(string name)
                 {
-                    return new GetFulfillmentRequest(service, name);
+                    return new GetFulfillmentRequest(this.service, name);
                 }
 
                 /// <summary>Retrieves the fulfillment.</summary>
@@ -14033,7 +14033,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// </param>
                 public virtual GetValidationResultRequest GetValidationResult(string parent)
                 {
-                    return new GetValidationResultRequest(service, parent);
+                    return new GetValidationResultRequest(this.service, parent);
                 }
 
                 /// <summary>
@@ -14116,7 +14116,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// </param>
                 public virtual ImportRequest Import(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ImportAgentRequest body, string parent)
                 {
-                    return new ImportRequest(service, body, parent);
+                    return new ImportRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -14202,7 +14202,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// </param>
                 public virtual RestoreRequest Restore(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2RestoreAgentRequest body, string parent)
                 {
-                    return new RestoreRequest(service, body, parent);
+                    return new RestoreRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -14275,7 +14275,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// <param name="parent">Required. The project to list agents from. Format: `projects/`.</param>
                 public virtual SearchRequest Search(string parent)
                 {
-                    return new SearchRequest(service, parent);
+                    return new SearchRequest(this.service, parent);
                 }
 
                 /// <summary>
@@ -14364,7 +14364,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// </param>
                 public virtual TrainRequest Train(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2TrainAgentRequest body, string parent)
                 {
-                    return new TrainRequest(service, body, parent);
+                    return new TrainRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -14432,7 +14432,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// </param>
                 public virtual UpdateFulfillmentRequest UpdateFulfillment(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Fulfillment body, string name)
                 {
-                    return new UpdateFulfillmentRequest(service, body, name);
+                    return new UpdateFulfillmentRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates the fulfillment.</summary>
@@ -14526,7 +14526,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>
@@ -14625,7 +14625,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2AnswerRecord body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates the specified answer record.</summary>
@@ -14717,7 +14717,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ConversationDataset body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -14784,7 +14784,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -14840,7 +14840,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Retrieves the specified conversation dataset.</summary>
@@ -14897,7 +14897,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// </param>
                 public virtual ImportConversationDataRequest ImportConversationData(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ImportConversationDataRequest body, string name)
                 {
-                    return new ImportConversationDataRequest(service, body, name);
+                    return new ImportConversationDataRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -14962,7 +14962,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>
@@ -15079,7 +15079,7 @@ namespace Google.Apis.Dialogflow.v2
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2CreateConversationModelEvaluationRequest body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>Creates evaluation of a conversation model.</summary>
@@ -15137,7 +15137,7 @@ namespace Google.Apis.Dialogflow.v2
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Gets an evaluation of conversation model.</summary>
@@ -15187,7 +15187,7 @@ namespace Google.Apis.Dialogflow.v2
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists evaluations of a conversation model.</summary>
@@ -15270,7 +15270,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// <param name="parent">The project to create conversation model for. Format: `projects/`</param>
                 public virtual CreateRequest Create(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ConversationModel body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -15335,7 +15335,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -15399,7 +15399,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// </param>
                 public virtual DeployRequest Deploy(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2DeployConversationModelRequest body, string name)
                 {
-                    return new DeployRequest(service, body, name);
+                    return new DeployRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -15463,7 +15463,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets conversation model.</summary>
@@ -15512,7 +15512,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists conversation models.</summary>
@@ -15597,7 +15597,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// </param>
                 public virtual UndeployRequest Undeploy(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2UndeployConversationModelRequest body, string name)
                 {
-                    return new UndeployRequest(service, body, name);
+                    return new UndeployRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -15687,7 +15687,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// </param>
                 public virtual ClearSuggestionFeatureConfigRequest ClearSuggestionFeatureConfig(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ClearSuggestionFeatureConfigRequest body, string conversationProfile)
                 {
-                    return new ClearSuggestionFeatureConfigRequest(service, body, conversationProfile);
+                    return new ClearSuggestionFeatureConfigRequest(this.service, body, conversationProfile);
                 }
 
                 /// <summary>
@@ -15755,7 +15755,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ConversationProfile body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -15816,7 +15816,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes the specified conversation profile.</summary>
@@ -15867,7 +15867,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Retrieves the specified conversation profile.</summary>
@@ -15917,7 +15917,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Returns the list of all conversation profiles in the specified project.</summary>
@@ -15998,7 +15998,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ConversationProfile body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -16083,7 +16083,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// </param>
                 public virtual SetSuggestionFeatureConfigRequest SetSuggestionFeatureConfig(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SetSuggestionFeatureConfigRequest body, string conversationProfile)
                 {
-                    return new SetSuggestionFeatureConfigRequest(service, body, conversationProfile);
+                    return new SetSuggestionFeatureConfigRequest(this.service, body, conversationProfile);
                 }
 
                 /// <summary>
@@ -16194,7 +16194,7 @@ namespace Google.Apis.Dialogflow.v2
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>
@@ -16336,7 +16336,7 @@ namespace Google.Apis.Dialogflow.v2
                         /// </param>
                         public virtual SuggestArticlesRequest SuggestArticles(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SuggestArticlesRequest body, string parent)
                         {
-                            return new SuggestArticlesRequest(service, body, parent);
+                            return new SuggestArticlesRequest(this.service, body, parent);
                         }
 
                         /// <summary>
@@ -16399,7 +16399,7 @@ namespace Google.Apis.Dialogflow.v2
                         /// </param>
                         public virtual SuggestFaqAnswersRequest SuggestFaqAnswers(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SuggestFaqAnswersRequest body, string parent)
                         {
-                            return new SuggestFaqAnswersRequest(service, body, parent);
+                            return new SuggestFaqAnswersRequest(this.service, body, parent);
                         }
 
                         /// <summary>
@@ -16462,7 +16462,7 @@ namespace Google.Apis.Dialogflow.v2
                         /// </param>
                         public virtual SuggestSmartRepliesRequest SuggestSmartReplies(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SuggestSmartRepliesRequest body, string parent)
                         {
-                            return new SuggestSmartRepliesRequest(service, body, parent);
+                            return new SuggestSmartRepliesRequest(this.service, body, parent);
                         }
 
                         /// <summary>
@@ -16529,7 +16529,7 @@ namespace Google.Apis.Dialogflow.v2
                     /// </param>
                     public virtual AnalyzeContentRequest AnalyzeContent(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2AnalyzeContentRequest body, string participant)
                     {
-                        return new AnalyzeContentRequest(service, body, participant);
+                        return new AnalyzeContentRequest(this.service, body, participant);
                     }
 
                     /// <summary>
@@ -16593,7 +16593,7 @@ namespace Google.Apis.Dialogflow.v2
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Participant body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>Creates a new participant in a conversation.</summary>
@@ -16651,7 +16651,7 @@ namespace Google.Apis.Dialogflow.v2
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Retrieves a conversation participant.</summary>
@@ -16702,7 +16702,7 @@ namespace Google.Apis.Dialogflow.v2
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Returns the list of all participants in the specified conversation.</summary>
@@ -16783,7 +16783,7 @@ namespace Google.Apis.Dialogflow.v2
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Participant body, string name)
                     {
-                        return new PatchRequest(service, body, name);
+                        return new PatchRequest(this.service, body, name);
                     }
 
                     /// <summary>Updates the specified participant.</summary>
@@ -16872,7 +16872,7 @@ namespace Google.Apis.Dialogflow.v2
                     /// </param>
                     public virtual SearchKnowledgeRequest SearchKnowledge(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SearchKnowledgeRequest body, string conversation)
                     {
-                        return new SearchKnowledgeRequest(service, body, conversation);
+                        return new SearchKnowledgeRequest(this.service, body, conversation);
                     }
 
                     /// <summary>Get answers for the given query based on knowledge documents.</summary>
@@ -16934,7 +16934,7 @@ namespace Google.Apis.Dialogflow.v2
                     /// </param>
                     public virtual SuggestConversationSummaryRequest SuggestConversationSummary(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SuggestConversationSummaryRequest body, string conversation)
                     {
-                        return new SuggestConversationSummaryRequest(service, body, conversation);
+                        return new SuggestConversationSummaryRequest(this.service, body, conversation);
                     }
 
                     /// <summary>
@@ -17000,7 +17000,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// </param>
                 public virtual CompleteRequest Complete(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2CompleteConversationRequest body, string name)
                 {
-                    return new CompleteRequest(service, body, name);
+                    return new CompleteRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -17071,7 +17071,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Conversation body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -17156,7 +17156,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Retrieves the specific conversation.</summary>
@@ -17205,7 +17205,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Returns the list of all conversations in the specified project.</summary>
@@ -17345,7 +17345,7 @@ namespace Google.Apis.Dialogflow.v2
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Document body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>
@@ -17414,7 +17414,7 @@ namespace Google.Apis.Dialogflow.v2
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -17478,7 +17478,7 @@ namespace Google.Apis.Dialogflow.v2
                     /// </param>
                     public virtual ExportRequest Export(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ExportDocumentRequest body, string name)
                     {
-                        return new ExportRequest(service, body, name);
+                        return new ExportRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -17542,7 +17542,7 @@ namespace Google.Apis.Dialogflow.v2
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Retrieves the specified document.</summary>
@@ -17601,7 +17601,7 @@ namespace Google.Apis.Dialogflow.v2
                     /// </param>
                     public virtual ImportRequest Import(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ImportDocumentsRequest body, string parent)
                     {
-                        return new ImportRequest(service, body, parent);
+                        return new ImportRequest(this.service, body, parent);
                     }
 
                     /// <summary>
@@ -17666,7 +17666,7 @@ namespace Google.Apis.Dialogflow.v2
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Returns the list of all documents of the knowledge base.</summary>
@@ -17770,7 +17770,7 @@ namespace Google.Apis.Dialogflow.v2
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Document body, string name)
                     {
-                        return new PatchRequest(service, body, name);
+                        return new PatchRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -17859,7 +17859,7 @@ namespace Google.Apis.Dialogflow.v2
                     /// </param>
                     public virtual ReloadRequest Reload(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ReloadDocumentRequest body, string name)
                     {
-                        return new ReloadRequest(service, body, name);
+                        return new ReloadRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -17928,7 +17928,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2KnowledgeBase body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a knowledge base.</summary>
@@ -17984,7 +17984,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes the specified knowledge base.</summary>
@@ -18049,7 +18049,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Retrieves the specified knowledge base.</summary>
@@ -18099,7 +18099,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Returns the list of all knowledge bases of the specified agent.</summary>
@@ -18199,7 +18199,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2KnowledgeBase body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates the specified knowledge base.</summary>
@@ -18294,7 +18294,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// <param name="name">The name of the operation resource to be cancelled.</param>
                 public virtual CancelRequest Cancel(string name)
                 {
-                    return new CancelRequest(service, name);
+                    return new CancelRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -18349,7 +18349,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// <param name="name">The name of the operation resource.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -18400,7 +18400,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// <param name="name">The name of the operation's parent resource.</param>
                 public virtual ListRequest List(string name)
                 {
-                    return new ListRequest(service, name);
+                    return new ListRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -18508,7 +18508,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// </param>
                 public virtual GenerateStatelessSummaryRequest GenerateStatelessSummary(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2GenerateStatelessSummaryRequest body, string parent)
                 {
-                    return new GenerateStatelessSummaryRequest(service, body, parent);
+                    return new GenerateStatelessSummaryRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -18568,7 +18568,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// </param>
                 public virtual SearchKnowledgeRequest SearchKnowledge(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SearchKnowledgeRequest body, string parent)
                 {
-                    return new SearchKnowledgeRequest(service, body, parent);
+                    return new SearchKnowledgeRequest(this.service, body, parent);
                 }
 
                 /// <summary>Get answers for the given query based on knowledge documents.</summary>
@@ -18626,7 +18626,7 @@ namespace Google.Apis.Dialogflow.v2
             /// </param>
             public virtual DeleteAgentRequest DeleteAgent(string parent)
             {
-                return new DeleteAgentRequest(service, parent);
+                return new DeleteAgentRequest(this.service, parent);
             }
 
             /// <summary>Deletes the specified agent.</summary>
@@ -18673,7 +18673,7 @@ namespace Google.Apis.Dialogflow.v2
             /// <param name="name">Resource name for the location.</param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets information about a location.</summary>
@@ -18720,7 +18720,7 @@ namespace Google.Apis.Dialogflow.v2
             /// </param>
             public virtual GetAgentRequest GetAgent(string parent)
             {
-                return new GetAgentRequest(service, parent);
+                return new GetAgentRequest(this.service, parent);
             }
 
             /// <summary>Retrieves the specified agent.</summary>
@@ -18767,7 +18767,7 @@ namespace Google.Apis.Dialogflow.v2
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
             {
-                return new ListRequest(service, name);
+                return new ListRequest(this.service, name);
             }
 
             /// <summary>Lists information about the supported locations for this service.</summary>
@@ -18860,7 +18860,7 @@ namespace Google.Apis.Dialogflow.v2
             /// <param name="parent">Required. The project of this agent. Format: `projects/`.</param>
             public virtual SetAgentRequest SetAgent(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Agent body, string parent)
             {
-                return new SetAgentRequest(service, body, parent);
+                return new SetAgentRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -18952,7 +18952,7 @@ namespace Google.Apis.Dialogflow.v2
             /// <param name="name">The name of the operation resource to be cancelled.</param>
             public virtual CancelRequest Cancel(string name)
             {
-                return new CancelRequest(service, name);
+                return new CancelRequest(this.service, name);
             }
 
             /// <summary>
@@ -19007,7 +19007,7 @@ namespace Google.Apis.Dialogflow.v2
             /// <param name="name">The name of the operation resource.</param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>
@@ -19058,7 +19058,7 @@ namespace Google.Apis.Dialogflow.v2
             /// <param name="name">The name of the operation's parent resource.</param>
             public virtual ListRequest List(string name)
             {
-                return new ListRequest(service, name);
+                return new ListRequest(this.service, name);
             }
 
             /// <summary>
@@ -19165,7 +19165,7 @@ namespace Google.Apis.Dialogflow.v2
             /// </param>
             public virtual GenerateStatelessSummaryRequest GenerateStatelessSummary(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2GenerateStatelessSummaryRequest body, string parent)
             {
-                return new GenerateStatelessSummaryRequest(service, body, parent);
+                return new GenerateStatelessSummaryRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -19225,7 +19225,7 @@ namespace Google.Apis.Dialogflow.v2
             /// </param>
             public virtual SearchKnowledgeRequest SearchKnowledge(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SearchKnowledgeRequest body, string parent)
             {
-                return new SearchKnowledgeRequest(service, body, parent);
+                return new SearchKnowledgeRequest(this.service, body, parent);
             }
 
             /// <summary>Get answers for the given query based on knowledge documents.</summary>
@@ -19282,7 +19282,7 @@ namespace Google.Apis.Dialogflow.v2
         /// </param>
         public virtual DeleteAgentRequest DeleteAgent(string parent)
         {
-            return new DeleteAgentRequest(service, parent);
+            return new DeleteAgentRequest(this.service, parent);
         }
 
         /// <summary>Deletes the specified agent.</summary>
@@ -19331,7 +19331,7 @@ namespace Google.Apis.Dialogflow.v2
         /// </param>
         public virtual GetAgentRequest GetAgent(string parent)
         {
-            return new GetAgentRequest(service, parent);
+            return new GetAgentRequest(this.service, parent);
         }
 
         /// <summary>Retrieves the specified agent.</summary>
@@ -19382,7 +19382,7 @@ namespace Google.Apis.Dialogflow.v2
         /// <param name="parent">Required. The project of this agent. Format: `projects/`.</param>
         public virtual SetAgentRequest SetAgent(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Agent body, string parent)
         {
-            return new SetAgentRequest(service, body, parent);
+            return new SetAgentRequest(this.service, body, parent);
         }
 
         /// <summary>
@@ -19613,8 +19613,8 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? RunTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(RunTimeRaw);
-            set => RunTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(RunTimeRaw);
+            set => RunTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>A list of individual test case results names in this continuous test run.</summary>
@@ -19884,8 +19884,8 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -21317,8 +21317,8 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreationTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreationTimeRaw);
-            set => CreationTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreationTimeRaw);
+            set => CreationTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -21433,8 +21433,8 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? TestTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(TestTimeRaw);
-            set => TestTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(TestTimeRaw);
+            set => TestTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -21514,8 +21514,8 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? TestTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(TestTimeRaw);
-            set => TestTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(TestTimeRaw);
+            set => TestTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -22173,8 +22173,8 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? RunTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(RunTimeRaw);
-            set => RunTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(RunTimeRaw);
+            set => RunTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>A list of individual test case results names in this continuous test run.</summary>
@@ -22444,8 +22444,8 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -23873,8 +23873,8 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreationTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreationTimeRaw);
-            set => CreationTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreationTimeRaw);
+            set => CreationTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -23989,8 +23989,8 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? TestTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(TestTimeRaw);
-            set => TestTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(TestTimeRaw);
+            set => TestTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -24070,8 +24070,8 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? TestTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(TestTimeRaw);
-            set => TestTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(TestTimeRaw);
+            set => TestTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -24747,8 +24747,8 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _submitTimeRaw;
@@ -24784,8 +24784,8 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? SubmitTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(SubmitTimeRaw);
-            set => SubmitTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(SubmitTimeRaw);
+            set => SubmitTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Text of actual submitted summary.</summary>
@@ -24996,8 +24996,8 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ClickTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ClickTimeRaw);
-            set => ClickTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ClickTimeRaw);
+            set => ClickTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -25045,8 +25045,8 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? DisplayTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DisplayTimeRaw);
-            set => DisplayTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DisplayTimeRaw);
+            set => DisplayTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -25431,8 +25431,8 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -25580,8 +25580,8 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. The current state of the Conversation.</summary>
@@ -25631,8 +25631,8 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -25687,8 +25687,8 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Optional. The description of the dataset. Maximum of 10000 bytes.</summary>
@@ -25794,8 +25794,8 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Required. Datasets used to create model.</summary>
@@ -25868,8 +25868,8 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Optional. The display name of the model evaluation. At most 64 bytes long.</summary>
@@ -25959,8 +25959,8 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Required. Human readable name for this profile. Max length 1024 bytes.</summary>
@@ -26063,8 +26063,8 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -26135,8 +26135,8 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>State of CreateConversationModel operation.</summary>
@@ -26200,8 +26200,8 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>State of CreateConversationModel operation.</summary>
@@ -26261,8 +26261,8 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -26311,8 +26311,8 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -26549,8 +26549,8 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? TimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(TimeRaw);
-            set => TimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(TimeRaw);
+            set => TimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -26753,8 +26753,8 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -26829,8 +26829,8 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The developer-provided description for this environment history entry.</summary>
@@ -27707,8 +27707,8 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -29241,8 +29241,8 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -29303,8 +29303,8 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? SendTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(SendTimeRaw);
-            set => SendTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(SendTimeRaw);
+            set => SendTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. The sentiment analysis result for the message.</summary>
@@ -30006,8 +30006,8 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -30620,8 +30620,8 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -30717,8 +30717,8 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Optional. The developer-provided description of this version.</summary>
@@ -30999,8 +30999,8 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -32697,8 +32697,8 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -32759,8 +32759,8 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? SendTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(SendTimeRaw);
-            set => SendTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(SendTimeRaw);
+            set => SendTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. The sentiment analysis result for the message.</summary>
@@ -33073,8 +33073,8 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>

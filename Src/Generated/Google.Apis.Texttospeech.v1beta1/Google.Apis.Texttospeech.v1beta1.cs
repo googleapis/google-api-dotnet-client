@@ -325,7 +325,7 @@ namespace Google.Apis.Texttospeech.v1beta1
                 /// <param name="name">The name of the operation resource.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -376,7 +376,7 @@ namespace Google.Apis.Texttospeech.v1beta1
                 /// <param name="name">The name of the operation's parent resource.</param>
                 public virtual ListRequest List(string name)
                 {
-                    return new ListRequest(service, name);
+                    return new ListRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -462,7 +462,7 @@ namespace Google.Apis.Texttospeech.v1beta1
             /// <param name="parent">The resource states of the request in the form of `projects/*/locations/*`.</param>
             public virtual SynthesizeLongAudioRequest SynthesizeLongAudio(Google.Apis.Texttospeech.v1beta1.Data.SynthesizeLongAudioRequest body, string parent)
             {
-                return new SynthesizeLongAudioRequest(service, body, parent);
+                return new SynthesizeLongAudioRequest(this.service, body, parent);
             }
 
             /// <summary>Synthesizes long form text asynchronously.</summary>
@@ -532,7 +532,7 @@ namespace Google.Apis.Texttospeech.v1beta1
         /// <param name="body">The body of the request.</param>
         public virtual SynthesizeRequest Synthesize(Google.Apis.Texttospeech.v1beta1.Data.SynthesizeSpeechRequest body)
         {
-            return new SynthesizeRequest(service, body);
+            return new SynthesizeRequest(this.service, body);
         }
 
         /// <summary>
@@ -587,7 +587,7 @@ namespace Google.Apis.Texttospeech.v1beta1
         /// <summary>Returns a list of Voice supported for synthesis.</summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>Returns a list of Voice supported for synthesis.</summary>
@@ -747,8 +747,8 @@ namespace Google.Apis.Texttospeech.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -915,8 +915,8 @@ namespace Google.Apis.Texttospeech.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>

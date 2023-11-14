@@ -312,7 +312,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
             /// <param name="name">Required. The name of the job to cancel.</param>
             public virtual CancelRequest Cancel(Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1CancelJobRequest body, string name)
             {
-                return new CancelRequest(service, body, name);
+                return new CancelRequest(this.service, body, name);
             }
 
             /// <summary>Cancels a running job.</summary>
@@ -365,7 +365,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
             /// <param name="parent">Required. The project name.</param>
             public virtual CreateRequest Create(Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Job body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>Creates a training or a batch prediction job.</summary>
@@ -417,7 +417,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
             /// <param name="name">Required. The name of the job to get the description of.</param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Describes a job.</summary>
@@ -468,7 +468,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
             /// </param>
             public virtual GetIamPolicyRequest GetIamPolicy(string resource)
             {
-                return new GetIamPolicyRequest(service, resource);
+                return new GetIamPolicyRequest(this.service, resource);
             }
 
             /// <summary>
@@ -544,7 +544,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
             /// <param name="parent">Required. The name of the project for which to list jobs.</param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>
@@ -644,7 +644,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
             /// <param name="name">Required. The job name.</param>
             public virtual PatchRequest Patch(Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Job body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -725,7 +725,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
             /// </param>
             public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleIamV1SetIamPolicyRequest body, string resource)
             {
-                return new SetIamPolicyRequest(service, body, resource);
+                return new SetIamPolicyRequest(this.service, body, resource);
             }
 
             /// <summary>
@@ -793,7 +793,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
             /// </param>
             public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleIamV1TestIamPermissionsRequest body, string resource)
             {
-                return new TestIamPermissionsRequest(service, body, resource);
+                return new TestIamPermissionsRequest(this.service, body, resource);
             }
 
             /// <summary>
@@ -898,7 +898,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 /// <param name="name">The name of the operation resource to be cancelled.</param>
                 public virtual CancelRequest Cancel(string name)
                 {
-                    return new CancelRequest(service, name);
+                    return new CancelRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -953,7 +953,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 /// <param name="name">The name of the operation resource.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -1041,7 +1041,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                     /// <param name="name">Required. The trial name.</param>
                     public virtual AddMeasurementRequest AddMeasurement(Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1AddTrialMeasurementRequest body, string name)
                     {
-                        return new AddMeasurementRequest(service, body, name);
+                        return new AddMeasurementRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -1100,7 +1100,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                     /// <param name="name">Required. The trial name.</param>
                     public virtual CheckEarlyStoppingStateRequest CheckEarlyStoppingState(Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1CheckTrialEarlyStoppingStateRequest body, string name)
                     {
-                        return new CheckEarlyStoppingStateRequest(service, body, name);
+                        return new CheckEarlyStoppingStateRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -1156,7 +1156,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                     /// <param name="name">Required. The trial name.metat</param>
                     public virtual CompleteRequest Complete(Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1CompleteTrialRequest body, string name)
                     {
-                        return new CompleteRequest(service, body, name);
+                        return new CompleteRequest(this.service, body, name);
                     }
 
                     /// <summary>Marks a trial as complete.</summary>
@@ -1209,7 +1209,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                     /// <param name="parent">Required. The name of the study that the trial belongs to.</param>
                     public virtual CreateRequest Create(Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Trial body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>Adds a user provided trial to a study.</summary>
@@ -1261,7 +1261,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                     /// <param name="name">Required. The trial name.</param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>Deletes a trial.</summary>
@@ -1306,7 +1306,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                     /// <param name="name">Required. The trial name.</param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Gets a trial.</summary>
@@ -1351,7 +1351,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                     /// <param name="parent">Required. The name of the study that the trial belongs to.</param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists the trials associated with a study.</summary>
@@ -1403,7 +1403,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                     /// </param>
                     public virtual ListOptimalTrialsRequest ListOptimalTrials(Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1ListOptimalTrialsRequest body, string parent)
                     {
-                        return new ListOptimalTrialsRequest(service, body, parent);
+                        return new ListOptimalTrialsRequest(this.service, body, parent);
                     }
 
                     /// <summary>
@@ -1460,7 +1460,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                     /// <param name="name">Required. The trial name.</param>
                     public virtual StopRequest Stop(Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1StopTrialRequest body, string name)
                     {
-                        return new StopRequest(service, body, name);
+                        return new StopRequest(this.service, body, name);
                     }
 
                     /// <summary>Stops a trial.</summary>
@@ -1517,7 +1517,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                     /// <param name="parent">Required. The name of the study that the trial belongs to.</param>
                     public virtual SuggestRequest Suggest(Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1SuggestTrialsRequest body, string parent)
                     {
-                        return new SuggestRequest(service, body, parent);
+                        return new SuggestRequest(this.service, body, parent);
                     }
 
                     /// <summary>
@@ -1578,7 +1578,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Study body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a study.</summary>
@@ -1648,7 +1648,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 /// <param name="name">Required. The study name.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes a study.</summary>
@@ -1693,7 +1693,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 /// <param name="name">Required. The study name.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets a study.</summary>
@@ -1741,7 +1741,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists all the studies in a region for an associated project.</summary>
@@ -1792,7 +1792,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
             /// <param name="name">Required. The name of the location.</param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>
@@ -1842,7 +1842,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>List all locations that provides at least one type of CMLE capability.</summary>
@@ -1964,7 +1964,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 /// <param name="parent">Required. The name of the model.</param>
                 public virtual CreateRequest Create(Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Version body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -2029,7 +2029,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -2085,7 +2085,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 /// <param name="name">Required. The name of the version.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -2139,7 +2139,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 /// <param name="parent">Required. The name of the model for which to list the version.</param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>
@@ -2236,7 +2236,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 /// <param name="name">Required. The name of the model.</param>
                 public virtual PatchRequest Patch(Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Version body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -2324,7 +2324,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 /// </param>
                 public virtual SetDefaultRequest SetDefault(Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1SetDefaultVersionRequest body, string name)
                 {
-                    return new SetDefaultRequest(service, body, name);
+                    return new SetDefaultRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -2389,7 +2389,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
             /// <param name="parent">Required. The project name.</param>
             public virtual CreateRequest Create(Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Model body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -2447,7 +2447,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
             /// <param name="name">Required. The name of the model.</param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>
@@ -2498,7 +2498,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
             /// <param name="name">Required. The name of the model.</param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>
@@ -2552,7 +2552,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
             /// </param>
             public virtual GetIamPolicyRequest GetIamPolicy(string resource)
             {
-                return new GetIamPolicyRequest(service, resource);
+                return new GetIamPolicyRequest(this.service, resource);
             }
 
             /// <summary>
@@ -2629,7 +2629,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
             /// <param name="parent">Required. The name of the project whose models are to be listed.</param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>
@@ -2725,7 +2725,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
             /// <param name="name">Required. The project name.</param>
             public virtual PatchRequest Patch(Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Model body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -2806,7 +2806,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
             /// </param>
             public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleIamV1SetIamPolicyRequest body, string resource)
             {
-                return new SetIamPolicyRequest(service, body, resource);
+                return new SetIamPolicyRequest(this.service, body, resource);
             }
 
             /// <summary>
@@ -2874,7 +2874,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
             /// </param>
             public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleIamV1TestIamPermissionsRequest body, string resource)
             {
-                return new TestIamPermissionsRequest(service, body, resource);
+                return new TestIamPermissionsRequest(this.service, body, resource);
             }
 
             /// <summary>
@@ -2960,7 +2960,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
             /// <param name="name">The name of the operation resource to be cancelled.</param>
             public virtual CancelRequest Cancel(string name)
             {
-                return new CancelRequest(service, name);
+                return new CancelRequest(this.service, name);
             }
 
             /// <summary>
@@ -3015,7 +3015,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
             /// <param name="name">The name of the operation resource.</param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>
@@ -3066,7 +3066,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
             /// <param name="name">The name of the operation's parent resource.</param>
             public virtual ListRequest List(string name)
             {
-                return new ListRequest(service, name);
+                return new ListRequest(this.service, name);
             }
 
             /// <summary>
@@ -3158,7 +3158,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
         /// </param>
         public virtual ExplainRequest Explain(Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1ExplainRequest body, string name)
         {
-            return new ExplainRequest(service, body, name);
+            return new ExplainRequest(this.service, body, name);
         }
 
         /// <summary>
@@ -3220,7 +3220,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
         /// <param name="name">Required. The project name.</param>
         public virtual GetConfigRequest GetConfig(string name)
         {
-            return new GetConfigRequest(service, name);
+            return new GetConfigRequest(this.service, name);
         }
 
         /// <summary>
@@ -3276,7 +3276,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
         /// </param>
         public virtual PredictRequest Predict(Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1PredictRequest body, string name)
         {
-            return new PredictRequest(service, body, name);
+            return new PredictRequest(this.service, body, name);
         }
 
         /// <summary>
@@ -3569,8 +3569,8 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The name of the study that the trial belongs to.</summary>
@@ -3631,8 +3631,8 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>True if the Trial should stop.</summary>
@@ -3672,8 +3672,8 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -4029,8 +4029,8 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The final objective metric seen for this trial.</summary>
@@ -4078,8 +4078,8 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. The detailed state of the trial.</summary>
@@ -4243,8 +4243,8 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _endTimeRaw;
@@ -4280,8 +4280,8 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. The details of a failure or a cancellation.</summary>
@@ -4358,8 +4358,8 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. The detailed state of a job.</summary>
@@ -4666,8 +4666,8 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _endTimeRaw;
@@ -4703,8 +4703,8 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Indicates whether a request to cancel this operation has been made.</summary>
@@ -4760,8 +4760,8 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Contains the version associated with the operation.</summary>
@@ -5193,8 +5193,8 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -5443,8 +5443,8 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The name of the study that the trial belongs to.</summary>
@@ -5517,8 +5517,8 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _startTimeRaw;
@@ -5554,8 +5554,8 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The state of the study.</summary>
@@ -5906,8 +5906,8 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The final measurement containing the objective value.</summary>
@@ -5969,8 +5969,8 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The detailed state of a trial.</summary>
@@ -6076,8 +6076,8 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -6192,8 +6192,8 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LastMigrationTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastMigrationTimeRaw);
-            set => LastMigrationTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastMigrationTimeRaw);
+            set => LastMigrationTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _lastUseTimeRaw;
@@ -6229,8 +6229,8 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LastUseTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastUseTimeRaw);
-            set => LastUseTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastUseTimeRaw);
+            set => LastUseTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>

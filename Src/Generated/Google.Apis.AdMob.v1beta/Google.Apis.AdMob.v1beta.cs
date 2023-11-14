@@ -324,7 +324,7 @@ namespace Google.Apis.AdMob.v1beta
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>List the adapters of the ad source.</summary>
@@ -405,7 +405,7 @@ namespace Google.Apis.AdMob.v1beta
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>List the ad sources.</summary>
@@ -509,7 +509,7 @@ namespace Google.Apis.AdMob.v1beta
             /// </param>
             public virtual BatchCreateRequest BatchCreate(Google.Apis.AdMob.v1beta.Data.BatchCreateAdUnitMappingsRequest body, string parent)
             {
-                return new BatchCreateRequest(service, body, parent);
+                return new BatchCreateRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -613,7 +613,7 @@ namespace Google.Apis.AdMob.v1beta
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.AdMob.v1beta.Data.AdUnitMapping body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -678,7 +678,7 @@ namespace Google.Apis.AdMob.v1beta
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>
@@ -787,7 +787,7 @@ namespace Google.Apis.AdMob.v1beta
             /// </param>
             public virtual CreateRequest Create(Google.Apis.AdMob.v1beta.Data.AdUnit body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -847,7 +847,7 @@ namespace Google.Apis.AdMob.v1beta
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>List the ad units under the specified AdMob account.</summary>
@@ -949,7 +949,7 @@ namespace Google.Apis.AdMob.v1beta
             /// </param>
             public virtual CreateRequest Create(Google.Apis.AdMob.v1beta.Data.App body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -1009,7 +1009,7 @@ namespace Google.Apis.AdMob.v1beta
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>List the apps under the specified AdMob account.</summary>
@@ -1107,7 +1107,7 @@ namespace Google.Apis.AdMob.v1beta
             /// </param>
             public virtual GenerateRequest Generate(Google.Apis.AdMob.v1beta.Data.GenerateCampaignReportRequest body, string parent)
             {
-                return new GenerateRequest(service, body, parent);
+                return new GenerateRequest(this.service, body, parent);
             }
 
             /// <summary>Generates Campaign Report based on provided specifications.</summary>
@@ -1205,7 +1205,7 @@ namespace Google.Apis.AdMob.v1beta
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.AdMob.v1beta.Data.MediationAbExperiment body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -1271,7 +1271,7 @@ namespace Google.Apis.AdMob.v1beta
                 /// </param>
                 public virtual StopRequest Stop(Google.Apis.AdMob.v1beta.Data.StopMediationAbExperimentRequest body, string name)
                 {
-                    return new StopRequest(service, body, name);
+                    return new StopRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -1336,7 +1336,7 @@ namespace Google.Apis.AdMob.v1beta
             /// </param>
             public virtual CreateRequest Create(Google.Apis.AdMob.v1beta.Data.MediationGroup body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -1399,7 +1399,7 @@ namespace Google.Apis.AdMob.v1beta
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>
@@ -1511,7 +1511,7 @@ namespace Google.Apis.AdMob.v1beta
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.AdMob.v1beta.Data.MediationGroup body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -1619,7 +1619,7 @@ namespace Google.Apis.AdMob.v1beta
             /// </param>
             public virtual GenerateRequest Generate(Google.Apis.AdMob.v1beta.Data.GenerateMediationReportRequest body, string parent)
             {
-                return new GenerateRequest(service, body, parent);
+                return new GenerateRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -1700,7 +1700,7 @@ namespace Google.Apis.AdMob.v1beta
             /// </param>
             public virtual GenerateRequest Generate(Google.Apis.AdMob.v1beta.Data.GenerateNetworkReportRequest body, string parent)
             {
-                return new GenerateRequest(service, body, parent);
+                return new GenerateRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -1760,7 +1760,7 @@ namespace Google.Apis.AdMob.v1beta
         /// </param>
         public virtual GetRequest Get(string name)
         {
-            return new GetRequest(service, name);
+            return new GetRequest(this.service, name);
         }
 
         /// <summary>Gets information about the specified AdMob publisher account.</summary>
@@ -1809,7 +1809,7 @@ namespace Google.Apis.AdMob.v1beta
         /// </summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>
@@ -2557,11 +2557,55 @@ namespace Google.Apis.AdMob.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>Output only. The time at which the experiment was ended or target to end (in UTC).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
         /// <summary>
         /// Output only. Unique identifier for the mediation A/B experiment. It is an output only property.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("experimentId")]
         public virtual string ExperimentId { get; set; }
+
+        /// <summary>
+        /// Output only. The mediation group id this experiment belongs to. This can be used for filtering the
+        /// experiments in the list experiments API.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mediationGroupId")]
+        public virtual string MediationGroupId { get; set; }
 
         /// <summary>
         /// Resource name for this experiment. The format is accounts/{publisher_id}/
@@ -2570,6 +2614,43 @@ namespace Google.Apis.AdMob.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        private string _startTimeRaw;
+
+        private object _startTime;
+
+        /// <summary>Output only. The time at which the experiment was started (in UTC).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>Output only. The state of the experiment. It is an output only field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
@@ -2589,6 +2670,10 @@ namespace Google.Apis.AdMob.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("treatmentTrafficPercentage")]
         public virtual System.Nullable<long> TreatmentTrafficPercentage { get; set; }
+
+        /// <summary>Output only. The variant leader for the experiment according to some key metrics.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("variantLeader")]
+        public virtual string VariantLeader { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

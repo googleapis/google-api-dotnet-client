@@ -274,7 +274,7 @@ namespace Google.Apis.Dfareporting.v3_5
         /// <param name="advertiserId">Advertiser ID of this creative. This is a required field.</param>
         public virtual UploadRequest Upload(Google.Apis.Dfareporting.v3_5.Data.CreativeAssetMetadata body, long profileId, long advertiserId)
         {
-            return new UploadRequest(service, body, profileId, advertiserId);
+            return new UploadRequest(this.service, body, profileId, advertiserId);
         }
 
         /// <summary>Inserts a new creative asset.</summary>

@@ -303,7 +303,7 @@ namespace Google.Apis.FirebaseML.v1beta2
             /// </param>
             public virtual CreateRequest Create(Google.Apis.FirebaseML.v1beta2.Data.Model body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -363,7 +363,7 @@ namespace Google.Apis.FirebaseML.v1beta2
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>Deletes a model</summary>
@@ -417,7 +417,7 @@ namespace Google.Apis.FirebaseML.v1beta2
             /// </param>
             public virtual DownloadRequest Download(string name)
             {
-                return new DownloadRequest(service, name);
+                return new DownloadRequest(this.service, name);
             }
 
             /// <summary>
@@ -471,7 +471,7 @@ namespace Google.Apis.FirebaseML.v1beta2
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets a model resource.</summary>
@@ -522,7 +522,7 @@ namespace Google.Apis.FirebaseML.v1beta2
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists the models</summary>
@@ -610,7 +610,7 @@ namespace Google.Apis.FirebaseML.v1beta2
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.FirebaseML.v1beta2.Data.Model body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>Updates a model. The longrunning operation will eventually return a Model.</summary>
@@ -698,7 +698,7 @@ namespace Google.Apis.FirebaseML.v1beta2
             /// <param name="name">The name of the operation resource.</param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>
@@ -789,8 +789,8 @@ namespace Google.Apis.FirebaseML.v1beta2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpireTimeRaw);
-            set => ExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. The format of the model being downloaded.</summary>
@@ -873,8 +873,8 @@ namespace Google.Apis.FirebaseML.v1beta2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -944,8 +944,8 @@ namespace Google.Apis.FirebaseML.v1beta2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
     }
 

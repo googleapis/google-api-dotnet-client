@@ -346,7 +346,7 @@ namespace Google.Apis.FirebaseRealtimeDatabase.v1beta
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.FirebaseRealtimeDatabase.v1beta.Data.DatabaseInstance body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -439,7 +439,7 @@ namespace Google.Apis.FirebaseRealtimeDatabase.v1beta
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -500,7 +500,7 @@ namespace Google.Apis.FirebaseRealtimeDatabase.v1beta
                 /// </param>
                 public virtual DisableRequest Disable(Google.Apis.FirebaseRealtimeDatabase.v1beta.Data.DisableDatabaseInstanceRequest body, string name)
                 {
-                    return new DisableRequest(service, body, name);
+                    return new DisableRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -566,7 +566,7 @@ namespace Google.Apis.FirebaseRealtimeDatabase.v1beta
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets the DatabaseInstance identified by the specified resource name.</summary>
@@ -627,7 +627,7 @@ namespace Google.Apis.FirebaseRealtimeDatabase.v1beta
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>
@@ -733,7 +733,7 @@ namespace Google.Apis.FirebaseRealtimeDatabase.v1beta
                 /// </param>
                 public virtual ReenableRequest Reenable(Google.Apis.FirebaseRealtimeDatabase.v1beta.Data.ReenableDatabaseInstanceRequest body, string name)
                 {
-                    return new ReenableRequest(service, body, name);
+                    return new ReenableRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -800,7 +800,7 @@ namespace Google.Apis.FirebaseRealtimeDatabase.v1beta
                 /// </param>
                 public virtual UndeleteRequest Undelete(Google.Apis.FirebaseRealtimeDatabase.v1beta.Data.UndeleteDatabaseInstanceRequest body, string name)
                 {
-                    return new UndeleteRequest(service, body, name);
+                    return new UndeleteRequest(this.service, body, name);
                 }
 
                 /// <summary>

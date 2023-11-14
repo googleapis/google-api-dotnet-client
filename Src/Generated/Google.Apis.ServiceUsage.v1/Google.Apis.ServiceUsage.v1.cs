@@ -306,7 +306,7 @@ namespace Google.Apis.ServiceUsage.v1
         /// <param name="name">The name of the operation resource to be cancelled.</param>
         public virtual CancelRequest Cancel(Google.Apis.ServiceUsage.v1.Data.CancelOperationRequest body, string name)
         {
-            return new CancelRequest(service, body, name);
+            return new CancelRequest(this.service, body, name);
         }
 
         /// <summary>
@@ -369,7 +369,7 @@ namespace Google.Apis.ServiceUsage.v1
         /// <param name="name">The name of the operation resource to be deleted.</param>
         public virtual DeleteRequest Delete(string name)
         {
-            return new DeleteRequest(service, name);
+            return new DeleteRequest(this.service, name);
         }
 
         /// <summary>
@@ -421,7 +421,7 @@ namespace Google.Apis.ServiceUsage.v1
         /// <param name="name">The name of the operation resource.</param>
         public virtual GetRequest Get(string name)
         {
-            return new GetRequest(service, name);
+            return new GetRequest(this.service, name);
         }
 
         /// <summary>
@@ -471,7 +471,7 @@ namespace Google.Apis.ServiceUsage.v1
         /// </summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>
@@ -577,7 +577,7 @@ namespace Google.Apis.ServiceUsage.v1
         /// </param>
         public virtual BatchEnableRequest BatchEnable(Google.Apis.ServiceUsage.v1.Data.BatchEnableServicesRequest body, string parent)
         {
-            return new BatchEnableRequest(service, body, parent);
+            return new BatchEnableRequest(this.service, body, parent);
         }
 
         /// <summary>
@@ -640,7 +640,7 @@ namespace Google.Apis.ServiceUsage.v1
         /// </param>
         public virtual BatchGetRequest BatchGet(string parent)
         {
-            return new BatchGetRequest(service, parent);
+            return new BatchGetRequest(this.service, parent);
         }
 
         /// <summary>Returns the service configurations and enabled states for a given list of services.</summary>
@@ -715,7 +715,7 @@ namespace Google.Apis.ServiceUsage.v1
         /// </param>
         public virtual DisableRequest Disable(Google.Apis.ServiceUsage.v1.Data.DisableServiceRequest body, string name)
         {
-            return new DisableRequest(service, body, name);
+            return new DisableRequest(this.service, body, name);
         }
 
         /// <summary>
@@ -782,7 +782,7 @@ namespace Google.Apis.ServiceUsage.v1
         /// </param>
         public virtual EnableRequest Enable(Google.Apis.ServiceUsage.v1.Data.EnableServiceRequest body, string name)
         {
-            return new EnableRequest(service, body, name);
+            return new EnableRequest(this.service, body, name);
         }
 
         /// <summary>Enable a service so that it can be used with a project.</summary>
@@ -842,7 +842,7 @@ namespace Google.Apis.ServiceUsage.v1
         /// </param>
         public virtual GetRequest Get(string name)
         {
-            return new GetRequest(service, name);
+            return new GetRequest(this.service, name);
         }
 
         /// <summary>Returns the service configuration and enabled state for a given service.</summary>
@@ -902,7 +902,7 @@ namespace Google.Apis.ServiceUsage.v1
         /// </param>
         public virtual ListRequest List(string parent)
         {
-            return new ListRequest(service, parent);
+            return new ListRequest(this.service, parent);
         }
 
         /// <summary>
@@ -1631,8 +1631,8 @@ namespace Google.Apis.ServiceUsage.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
     }
 

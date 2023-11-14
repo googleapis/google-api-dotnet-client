@@ -344,7 +344,7 @@ namespace Google.Apis.CloudDeploy.v1
                     /// </param>
                     public virtual CancelRequest Cancel(Google.Apis.CloudDeploy.v1.Data.CancelAutomationRunRequest body, string name)
                     {
-                        return new CancelRequest(service, body, name);
+                        return new CancelRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -406,7 +406,7 @@ namespace Google.Apis.CloudDeploy.v1
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Gets details of a single AutomationRun.</summary>
@@ -457,7 +457,7 @@ namespace Google.Apis.CloudDeploy.v1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists AutomationRuns in a given project and location.</summary>
@@ -585,7 +585,7 @@ namespace Google.Apis.CloudDeploy.v1
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.CloudDeploy.v1.Data.Automation body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>Creates a new Automation in a given project and location.</summary>
@@ -692,7 +692,7 @@ namespace Google.Apis.CloudDeploy.v1
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>Deletes a single Automation resource.</summary>
@@ -811,7 +811,7 @@ namespace Google.Apis.CloudDeploy.v1
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Gets details of a single Automation.</summary>
@@ -862,7 +862,7 @@ namespace Google.Apis.CloudDeploy.v1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists Automations in a given project and location.</summary>
@@ -970,7 +970,7 @@ namespace Google.Apis.CloudDeploy.v1
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.CloudDeploy.v1.Data.Automation body, string name)
                     {
-                        return new PatchRequest(service, body, name);
+                        return new PatchRequest(this.service, body, name);
                     }
 
                     /// <summary>Updates the parameters of a single Automation resource.</summary>
@@ -1151,7 +1151,7 @@ namespace Google.Apis.CloudDeploy.v1
                             /// </param>
                             public virtual GetRequest Get(string name)
                             {
-                                return new GetRequest(service, name);
+                                return new GetRequest(this.service, name);
                             }
 
                             /// <summary>Gets details of a single JobRun.</summary>
@@ -1201,7 +1201,7 @@ namespace Google.Apis.CloudDeploy.v1
                             /// </param>
                             public virtual ListRequest List(string parent)
                             {
-                                return new ListRequest(service, parent);
+                                return new ListRequest(this.service, parent);
                             }
 
                             /// <summary>Lists JobRuns in a given project and location.</summary>
@@ -1315,7 +1315,7 @@ namespace Google.Apis.CloudDeploy.v1
                             /// </param>
                             public virtual TerminateRequest Terminate(Google.Apis.CloudDeploy.v1.Data.TerminateJobRunRequest body, string name)
                             {
-                                return new TerminateRequest(service, body, name);
+                                return new TerminateRequest(this.service, body, name);
                             }
 
                             /// <summary>Terminates a Job Run in a given project and location.</summary>
@@ -1377,7 +1377,7 @@ namespace Google.Apis.CloudDeploy.v1
                         /// </param>
                         public virtual AdvanceRequest Advance(Google.Apis.CloudDeploy.v1.Data.AdvanceRolloutRequest body, string name)
                         {
-                            return new AdvanceRequest(service, body, name);
+                            return new AdvanceRequest(this.service, body, name);
                         }
 
                         /// <summary>Advances a Rollout in a given project and location.</summary>
@@ -1438,7 +1438,7 @@ namespace Google.Apis.CloudDeploy.v1
                         /// </param>
                         public virtual ApproveRequest Approve(Google.Apis.CloudDeploy.v1.Data.ApproveRolloutRequest body, string name)
                         {
-                            return new ApproveRequest(service, body, name);
+                            return new ApproveRequest(this.service, body, name);
                         }
 
                         /// <summary>Approves a Rollout.</summary>
@@ -1499,7 +1499,7 @@ namespace Google.Apis.CloudDeploy.v1
                         /// </param>
                         public virtual CancelRequest Cancel(Google.Apis.CloudDeploy.v1.Data.CancelRolloutRequest body, string name)
                         {
-                            return new CancelRequest(service, body, name);
+                            return new CancelRequest(this.service, body, name);
                         }
 
                         /// <summary>Cancels a Rollout in a given project and location.</summary>
@@ -1559,7 +1559,7 @@ namespace Google.Apis.CloudDeploy.v1
                         /// </param>
                         public virtual CreateRequest Create(Google.Apis.CloudDeploy.v1.Data.Rollout body, string parent)
                         {
-                            return new CreateRequest(service, body, parent);
+                            return new CreateRequest(this.service, body, parent);
                         }
 
                         /// <summary>Creates a new Rollout in a given project and location.</summary>
@@ -1682,7 +1682,7 @@ namespace Google.Apis.CloudDeploy.v1
                         /// </param>
                         public virtual GetRequest Get(string name)
                         {
-                            return new GetRequest(service, name);
+                            return new GetRequest(this.service, name);
                         }
 
                         /// <summary>Gets details of a single Rollout.</summary>
@@ -1735,7 +1735,7 @@ namespace Google.Apis.CloudDeploy.v1
                         /// </param>
                         public virtual IgnoreJobRequest IgnoreJob(Google.Apis.CloudDeploy.v1.Data.IgnoreJobRequest body, string rollout)
                         {
-                            return new IgnoreJobRequest(service, body, rollout);
+                            return new IgnoreJobRequest(this.service, body, rollout);
                         }
 
                         /// <summary>Ignores the specified Job in a Rollout.</summary>
@@ -1793,7 +1793,7 @@ namespace Google.Apis.CloudDeploy.v1
                         /// </param>
                         public virtual ListRequest List(string parent)
                         {
-                            return new ListRequest(service, parent);
+                            return new ListRequest(this.service, parent);
                         }
 
                         /// <summary>Lists Rollouts in a given project and location.</summary>
@@ -1906,7 +1906,7 @@ namespace Google.Apis.CloudDeploy.v1
                         /// </param>
                         public virtual RetryJobRequest RetryJob(Google.Apis.CloudDeploy.v1.Data.RetryJobRequest body, string rollout)
                         {
-                            return new RetryJobRequest(service, body, rollout);
+                            return new RetryJobRequest(this.service, body, rollout);
                         }
 
                         /// <summary>Retries the specified Job in a Rollout.</summary>
@@ -1968,7 +1968,7 @@ namespace Google.Apis.CloudDeploy.v1
                     /// </param>
                     public virtual AbandonRequest Abandon(Google.Apis.CloudDeploy.v1.Data.AbandonReleaseRequest body, string name)
                     {
-                        return new AbandonRequest(service, body, name);
+                        return new AbandonRequest(this.service, body, name);
                     }
 
                     /// <summary>Abandons a Release in the Delivery Pipeline.</summary>
@@ -2028,7 +2028,7 @@ namespace Google.Apis.CloudDeploy.v1
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.CloudDeploy.v1.Data.Release body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>Creates a new Release in a given project and location.</summary>
@@ -2135,7 +2135,7 @@ namespace Google.Apis.CloudDeploy.v1
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Gets details of a single Release.</summary>
@@ -2185,7 +2185,7 @@ namespace Google.Apis.CloudDeploy.v1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists Releases in a given project and location.</summary>
@@ -2297,7 +2297,7 @@ namespace Google.Apis.CloudDeploy.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.CloudDeploy.v1.Data.DeliveryPipeline body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a new DeliveryPipeline in a given project and location.</summary>
@@ -2403,7 +2403,7 @@ namespace Google.Apis.CloudDeploy.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes a single DeliveryPipeline.</summary>
@@ -2535,7 +2535,7 @@ namespace Google.Apis.CloudDeploy.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets details of a single DeliveryPipeline.</summary>
@@ -2590,7 +2590,7 @@ namespace Google.Apis.CloudDeploy.v1
                 /// </param>
                 public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                 {
-                    return new GetIamPolicyRequest(service, resource);
+                    return new GetIamPolicyRequest(this.service, resource);
                 }
 
                 /// <summary>
@@ -2666,7 +2666,7 @@ namespace Google.Apis.CloudDeploy.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists DeliveryPipelines in a given project and location.</summary>
@@ -2776,7 +2776,7 @@ namespace Google.Apis.CloudDeploy.v1
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.CloudDeploy.v1.Data.DeliveryPipeline body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates the parameters of a single DeliveryPipeline.</summary>
@@ -2903,7 +2903,7 @@ namespace Google.Apis.CloudDeploy.v1
                 /// </param>
                 public virtual RollbackTargetRequest RollbackTarget(Google.Apis.CloudDeploy.v1.Data.RollbackTargetRequest body, string name)
                 {
-                    return new RollbackTargetRequest(service, body, name);
+                    return new RollbackTargetRequest(this.service, body, name);
                 }
 
                 /// <summary>Creates a `Rollout` to roll back the specified target.</summary>
@@ -2966,7 +2966,7 @@ namespace Google.Apis.CloudDeploy.v1
                 /// </param>
                 public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.CloudDeploy.v1.Data.SetIamPolicyRequest body, string resource)
                 {
-                    return new SetIamPolicyRequest(service, body, resource);
+                    return new SetIamPolicyRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -3035,7 +3035,7 @@ namespace Google.Apis.CloudDeploy.v1
                 /// </param>
                 public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.CloudDeploy.v1.Data.TestIamPermissionsRequest body, string resource)
                 {
-                    return new TestIamPermissionsRequest(service, body, resource);
+                    return new TestIamPermissionsRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -3122,7 +3122,7 @@ namespace Google.Apis.CloudDeploy.v1
                 /// <param name="name">The name of the operation resource to be cancelled.</param>
                 public virtual CancelRequest Cancel(Google.Apis.CloudDeploy.v1.Data.CancelOperationRequest body, string name)
                 {
-                    return new CancelRequest(service, body, name);
+                    return new CancelRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -3185,7 +3185,7 @@ namespace Google.Apis.CloudDeploy.v1
                 /// <param name="name">The name of the operation resource to be deleted.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -3237,7 +3237,7 @@ namespace Google.Apis.CloudDeploy.v1
                 /// <param name="name">The name of the operation resource.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -3288,7 +3288,7 @@ namespace Google.Apis.CloudDeploy.v1
                 /// <param name="name">The name of the operation's parent resource.</param>
                 public virtual ListRequest List(string name)
                 {
-                    return new ListRequest(service, name);
+                    return new ListRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -3394,7 +3394,7 @@ namespace Google.Apis.CloudDeploy.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.CloudDeploy.v1.Data.Target body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a new Target in a given project and location.</summary>
@@ -3500,7 +3500,7 @@ namespace Google.Apis.CloudDeploy.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes a single Target.</summary>
@@ -3617,7 +3617,7 @@ namespace Google.Apis.CloudDeploy.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets details of a single Target.</summary>
@@ -3672,7 +3672,7 @@ namespace Google.Apis.CloudDeploy.v1
                 /// </param>
                 public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                 {
-                    return new GetIamPolicyRequest(service, resource);
+                    return new GetIamPolicyRequest(this.service, resource);
                 }
 
                 /// <summary>
@@ -3748,7 +3748,7 @@ namespace Google.Apis.CloudDeploy.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists Targets in a given project and location.</summary>
@@ -3859,7 +3859,7 @@ namespace Google.Apis.CloudDeploy.v1
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.CloudDeploy.v1.Data.Target body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates the parameters of a single Target.</summary>
@@ -3990,7 +3990,7 @@ namespace Google.Apis.CloudDeploy.v1
                 /// </param>
                 public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.CloudDeploy.v1.Data.SetIamPolicyRequest body, string resource)
                 {
-                    return new SetIamPolicyRequest(service, body, resource);
+                    return new SetIamPolicyRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -4059,7 +4059,7 @@ namespace Google.Apis.CloudDeploy.v1
                 /// </param>
                 public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.CloudDeploy.v1.Data.TestIamPermissionsRequest body, string resource)
                 {
-                    return new TestIamPermissionsRequest(service, body, resource);
+                    return new TestIamPermissionsRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -4121,7 +4121,7 @@ namespace Google.Apis.CloudDeploy.v1
             /// <param name="name">Resource name for the location.</param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets information about a location.</summary>
@@ -4166,7 +4166,7 @@ namespace Google.Apis.CloudDeploy.v1
             /// <param name="name">Required. Name of requested configuration.</param>
             public virtual GetConfigRequest GetConfig(string name)
             {
-                return new GetConfigRequest(service, name);
+                return new GetConfigRequest(this.service, name);
             }
 
             /// <summary>Gets the configuration for a location.</summary>
@@ -4211,7 +4211,7 @@ namespace Google.Apis.CloudDeploy.v1
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
             {
-                return new ListRequest(service, name);
+                return new ListRequest(this.service, name);
             }
 
             /// <summary>Lists information about the supported locations for this service.</summary>
@@ -4551,8 +4551,8 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Optional. Description of the `Automation`. Max length is 255 characters.</summary>
@@ -4644,8 +4644,8 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
     }
 
@@ -4797,8 +4797,8 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -4845,8 +4845,8 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpireTimeRaw);
-            set => ExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -4925,8 +4925,8 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _waitUntilTimeRaw;
@@ -4965,8 +4965,8 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? WaitUntilTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(WaitUntilTimeRaw);
-            set => WaitUntilTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(WaitUntilTimeRaw);
+            set => WaitUntilTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
     }
 
@@ -5416,8 +5416,8 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Description of the `DeliveryPipeline`. Max length is 255 characters.</summary>
@@ -5495,8 +5495,8 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
     }
 
@@ -5907,8 +5907,8 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. Information specific to a deploy `JobRun`.</summary>
@@ -5948,8 +5948,8 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -6015,8 +6015,8 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. The current state of the `JobRun`.</summary>
@@ -6413,8 +6413,8 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _endTimeRaw;
@@ -6450,8 +6450,8 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -6634,8 +6634,8 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -6969,8 +6969,8 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. Snapshot of the parent pipeline taken at release creation time.</summary>
@@ -7042,8 +7042,8 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? RenderEndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(RenderEndTimeRaw);
-            set => RenderEndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(RenderEndTimeRaw);
+            set => RenderEndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _renderStartTimeRaw;
@@ -7081,8 +7081,8 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? RenderStartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(RenderStartTimeRaw);
-            set => RenderStartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(RenderStartTimeRaw);
+            set => RenderStartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. Current state of the render operation.</summary>
@@ -7563,8 +7563,8 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ApproveTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ApproveTimeRaw);
-            set => ApproveTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ApproveTimeRaw);
+            set => ApproveTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -7607,8 +7607,8 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _deployEndTimeRaw;
@@ -7644,8 +7644,8 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? DeployEndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DeployEndTimeRaw);
-            set => DeployEndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DeployEndTimeRaw);
+            set => DeployEndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -7690,8 +7690,8 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? DeployStartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DeployStartTimeRaw);
-            set => DeployStartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DeployStartTimeRaw);
+            set => DeployStartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -7738,8 +7738,8 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EnqueueTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EnqueueTimeRaw);
-            set => EnqueueTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EnqueueTimeRaw);
+            set => EnqueueTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -7989,8 +7989,8 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? MaintenanceModeTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(MaintenanceModeTimeRaw);
-            set => MaintenanceModeTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(MaintenanceModeTimeRaw);
+            set => MaintenanceModeTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The skaffold support state for this release's version of skaffold.</summary>
@@ -8036,8 +8036,8 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? SupportExpirationTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(SupportExpirationTimeRaw);
-            set => SupportExpirationTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(SupportExpirationTimeRaw);
+            set => SupportExpirationTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -8082,8 +8082,8 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? MaintenanceModeTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(MaintenanceModeTimeRaw);
-            set => MaintenanceModeTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(MaintenanceModeTimeRaw);
+            set => MaintenanceModeTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Date when this version is expected to no longer be supported.</summary>
@@ -8125,8 +8125,8 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? SupportExpirationTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(SupportExpirationTimeRaw);
-            set => SupportExpirationTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(SupportExpirationTimeRaw);
+            set => SupportExpirationTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Release version number. For example, "1.20.3".</summary>
@@ -8285,8 +8285,8 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Optional. The deploy parameters to use for this target.</summary>
@@ -8386,8 +8386,8 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
     }
 
@@ -8543,8 +8543,8 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>

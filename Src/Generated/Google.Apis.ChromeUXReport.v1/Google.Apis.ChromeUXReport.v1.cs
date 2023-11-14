@@ -262,7 +262,7 @@ namespace Google.Apis.ChromeUXReport.v1
         /// <param name="body">The body of the request.</param>
         public virtual QueryHistoryRecordRequest QueryHistoryRecord(Google.Apis.ChromeUXReport.v1.Data.QueryHistoryRequest body)
         {
-            return new QueryHistoryRecordRequest(service, body);
+            return new QueryHistoryRecordRequest(this.service, body);
         }
 
         /// <summary>
@@ -308,7 +308,7 @@ namespace Google.Apis.ChromeUXReport.v1
         /// <param name="body">The body of the request.</param>
         public virtual QueryRecordRequest QueryRecord(Google.Apis.ChromeUXReport.v1.Data.QueryRequest body)
         {
-            return new QueryRecordRequest(service, body);
+            return new QueryRecordRequest(this.service, body);
         }
 
         /// <summary>

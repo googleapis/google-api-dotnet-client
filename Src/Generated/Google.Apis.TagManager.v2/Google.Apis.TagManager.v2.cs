@@ -356,7 +356,7 @@ namespace Google.Apis.TagManager.v2
                 /// </param>
                 public virtual GetRequest Get(string path)
                 {
-                    return new GetRequest(service, path);
+                    return new GetRequest(this.service, path);
                 }
 
                 /// <summary>Gets a Destination.</summary>
@@ -409,7 +409,7 @@ namespace Google.Apis.TagManager.v2
                 /// </param>
                 public virtual LinkRequest Link(string parent)
                 {
-                    return new LinkRequest(service, parent);
+                    return new LinkRequest(this.service, parent);
                 }
 
                 /// <summary>
@@ -489,7 +489,7 @@ namespace Google.Apis.TagManager.v2
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists all Destinations linked to a GTM Container.</summary>
@@ -558,7 +558,7 @@ namespace Google.Apis.TagManager.v2
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.TagManager.v2.Data.Environment body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a GTM Environment.</summary>
@@ -615,7 +615,7 @@ namespace Google.Apis.TagManager.v2
                 /// </param>
                 public virtual DeleteRequest Delete(string path)
                 {
-                    return new DeleteRequest(service, path);
+                    return new DeleteRequest(this.service, path);
                 }
 
                 /// <summary>Deletes a GTM Environment.</summary>
@@ -666,7 +666,7 @@ namespace Google.Apis.TagManager.v2
                 /// </param>
                 public virtual GetRequest Get(string path)
                 {
-                    return new GetRequest(service, path);
+                    return new GetRequest(this.service, path);
                 }
 
                 /// <summary>Gets a GTM Environment.</summary>
@@ -716,7 +716,7 @@ namespace Google.Apis.TagManager.v2
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists all GTM Environments of a GTM Container.</summary>
@@ -779,7 +779,7 @@ namespace Google.Apis.TagManager.v2
                 /// </param>
                 public virtual ReauthorizeRequest Reauthorize(Google.Apis.TagManager.v2.Data.Environment body, string path)
                 {
-                    return new ReauthorizeRequest(service, body, path);
+                    return new ReauthorizeRequest(this.service, body, path);
                 }
 
                 /// <summary>Re-generates the authorization code for a GTM Environment.</summary>
@@ -838,7 +838,7 @@ namespace Google.Apis.TagManager.v2
                 /// </param>
                 public virtual UpdateRequest Update(Google.Apis.TagManager.v2.Data.Environment body, string path)
                 {
-                    return new UpdateRequest(service, body, path);
+                    return new UpdateRequest(this.service, body, path);
                 }
 
                 /// <summary>Updates a GTM Environment.</summary>
@@ -927,7 +927,7 @@ namespace Google.Apis.TagManager.v2
                 /// </param>
                 public virtual LatestRequest Latest(string parent)
                 {
-                    return new LatestRequest(service, parent);
+                    return new LatestRequest(this.service, parent);
                 }
 
                 /// <summary>Gets the latest container version header</summary>
@@ -976,7 +976,7 @@ namespace Google.Apis.TagManager.v2
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists all Container Versions of a GTM Container.</summary>
@@ -1068,7 +1068,7 @@ namespace Google.Apis.TagManager.v2
                 /// </param>
                 public virtual DeleteRequest Delete(string path)
                 {
-                    return new DeleteRequest(service, path);
+                    return new DeleteRequest(this.service, path);
                 }
 
                 /// <summary>Deletes a Container Version.</summary>
@@ -1119,7 +1119,7 @@ namespace Google.Apis.TagManager.v2
                 /// </param>
                 public virtual GetRequest Get(string path)
                 {
-                    return new GetRequest(service, path);
+                    return new GetRequest(this.service, path);
                 }
 
                 /// <summary>Gets a Container Version.</summary>
@@ -1183,7 +1183,7 @@ namespace Google.Apis.TagManager.v2
                 /// </param>
                 public virtual LiveRequest Live(string parent)
                 {
-                    return new LiveRequest(service, parent);
+                    return new LiveRequest(this.service, parent);
                 }
 
                 /// <summary>Gets the live (i.e. published) container version</summary>
@@ -1233,7 +1233,7 @@ namespace Google.Apis.TagManager.v2
                 /// </param>
                 public virtual PublishRequest Publish(string path)
                 {
-                    return new PublishRequest(service, path);
+                    return new PublishRequest(this.service, path);
                 }
 
                 /// <summary>Publishes a Container Version.</summary>
@@ -1300,7 +1300,7 @@ namespace Google.Apis.TagManager.v2
                 /// </param>
                 public virtual SetLatestRequest SetLatest(string path)
                 {
-                    return new SetLatestRequest(service, path);
+                    return new SetLatestRequest(this.service, path);
                 }
 
                 /// <summary>
@@ -1353,7 +1353,7 @@ namespace Google.Apis.TagManager.v2
                 /// </param>
                 public virtual UndeleteRequest Undelete(string path)
                 {
-                    return new UndeleteRequest(service, path);
+                    return new UndeleteRequest(this.service, path);
                 }
 
                 /// <summary>Undeletes a Container Version.</summary>
@@ -1405,7 +1405,7 @@ namespace Google.Apis.TagManager.v2
                 /// </param>
                 public virtual UpdateRequest Update(Google.Apis.TagManager.v2.Data.ContainerVersion body, string path)
                 {
-                    return new UpdateRequest(service, body, path);
+                    return new UpdateRequest(this.service, body, path);
                 }
 
                 /// <summary>Updates a Container Version.</summary>
@@ -1522,7 +1522,7 @@ namespace Google.Apis.TagManager.v2
                     /// </param>
                     public virtual CreateRequest Create(string parent)
                     {
-                        return new CreateRequest(service, parent);
+                        return new CreateRequest(this.service, parent);
                     }
 
                     /// <summary>Creates one or more GTM Built-In Variables.</summary>
@@ -2057,7 +2057,7 @@ namespace Google.Apis.TagManager.v2
                     /// </param>
                     public virtual DeleteRequest Delete(string path)
                     {
-                        return new DeleteRequest(service, path);
+                        return new DeleteRequest(this.service, path);
                     }
 
                     /// <summary>Deletes one or more GTM Built-In Variables.</summary>
@@ -2592,7 +2592,7 @@ namespace Google.Apis.TagManager.v2
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists all the enabled Built-In Variables of a GTM Container.</summary>
@@ -2655,7 +2655,7 @@ namespace Google.Apis.TagManager.v2
                     /// </param>
                     public virtual RevertRequest Revert(string path)
                     {
-                        return new RevertRequest(service, path);
+                        return new RevertRequest(this.service, path);
                     }
 
                     /// <summary>Reverts changes to a GTM Built-In Variables in a GTM Workspace.</summary>
@@ -3197,7 +3197,7 @@ namespace Google.Apis.TagManager.v2
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.TagManager.v2.Data.Client body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>Creates a GTM Client.</summary>
@@ -3255,7 +3255,7 @@ namespace Google.Apis.TagManager.v2
                     /// </param>
                     public virtual DeleteRequest Delete(string path)
                     {
-                        return new DeleteRequest(service, path);
+                        return new DeleteRequest(this.service, path);
                     }
 
                     /// <summary>Deletes a GTM Client.</summary>
@@ -3306,7 +3306,7 @@ namespace Google.Apis.TagManager.v2
                     /// </param>
                     public virtual GetRequest Get(string path)
                     {
-                        return new GetRequest(service, path);
+                        return new GetRequest(this.service, path);
                     }
 
                     /// <summary>Gets a GTM Client.</summary>
@@ -3357,7 +3357,7 @@ namespace Google.Apis.TagManager.v2
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists all GTM Clients of a GTM container workspace.</summary>
@@ -3420,7 +3420,7 @@ namespace Google.Apis.TagManager.v2
                     /// </param>
                     public virtual RevertRequest Revert(string path)
                     {
-                        return new RevertRequest(service, path);
+                        return new RevertRequest(this.service, path);
                     }
 
                     /// <summary>Reverts changes to a GTM Client in a GTM Workspace.</summary>
@@ -3486,7 +3486,7 @@ namespace Google.Apis.TagManager.v2
                     /// </param>
                     public virtual UpdateRequest Update(Google.Apis.TagManager.v2.Data.Client body, string path)
                     {
-                        return new UpdateRequest(service, body, path);
+                        return new UpdateRequest(this.service, body, path);
                     }
 
                     /// <summary>Updates a GTM Client.</summary>
@@ -3577,7 +3577,7 @@ namespace Google.Apis.TagManager.v2
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.TagManager.v2.Data.Folder body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>Creates a GTM Folder.</summary>
@@ -3635,7 +3635,7 @@ namespace Google.Apis.TagManager.v2
                     /// </param>
                     public virtual DeleteRequest Delete(string path)
                     {
-                        return new DeleteRequest(service, path);
+                        return new DeleteRequest(this.service, path);
                     }
 
                     /// <summary>Deletes a GTM Folder.</summary>
@@ -3686,7 +3686,7 @@ namespace Google.Apis.TagManager.v2
                     /// </param>
                     public virtual EntitiesRequest Entities(string path)
                     {
-                        return new EntitiesRequest(service, path);
+                        return new EntitiesRequest(this.service, path);
                     }
 
                     /// <summary>List all entities in a GTM Folder.</summary>
@@ -3749,7 +3749,7 @@ namespace Google.Apis.TagManager.v2
                     /// </param>
                     public virtual GetRequest Get(string path)
                     {
-                        return new GetRequest(service, path);
+                        return new GetRequest(this.service, path);
                     }
 
                     /// <summary>Gets a GTM Folder.</summary>
@@ -3800,7 +3800,7 @@ namespace Google.Apis.TagManager.v2
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists all GTM Folders of a Container.</summary>
@@ -3867,7 +3867,7 @@ namespace Google.Apis.TagManager.v2
                     /// </param>
                     public virtual MoveEntitiesToFolderRequest MoveEntitiesToFolder(Google.Apis.TagManager.v2.Data.Folder body, string path)
                     {
-                        return new MoveEntitiesToFolderRequest(service, body, path);
+                        return new MoveEntitiesToFolderRequest(this.service, body, path);
                     }
 
                     /// <summary>
@@ -3964,7 +3964,7 @@ namespace Google.Apis.TagManager.v2
                     /// </param>
                     public virtual RevertRequest Revert(string path)
                     {
-                        return new RevertRequest(service, path);
+                        return new RevertRequest(this.service, path);
                     }
 
                     /// <summary>Reverts changes to a GTM Folder in a GTM Workspace.</summary>
@@ -4030,7 +4030,7 @@ namespace Google.Apis.TagManager.v2
                     /// </param>
                     public virtual UpdateRequest Update(Google.Apis.TagManager.v2.Data.Folder body, string path)
                     {
-                        return new UpdateRequest(service, body, path);
+                        return new UpdateRequest(this.service, body, path);
                     }
 
                     /// <summary>Updates a GTM Folder.</summary>
@@ -4121,7 +4121,7 @@ namespace Google.Apis.TagManager.v2
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.TagManager.v2.Data.GtagConfig body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>Creates a Google tag config.</summary>
@@ -4179,7 +4179,7 @@ namespace Google.Apis.TagManager.v2
                     /// </param>
                     public virtual DeleteRequest Delete(string path)
                     {
-                        return new DeleteRequest(service, path);
+                        return new DeleteRequest(this.service, path);
                     }
 
                     /// <summary>Deletes a Google tag config.</summary>
@@ -4230,7 +4230,7 @@ namespace Google.Apis.TagManager.v2
                     /// </param>
                     public virtual GetRequest Get(string path)
                     {
-                        return new GetRequest(service, path);
+                        return new GetRequest(this.service, path);
                     }
 
                     /// <summary>Gets a Google tag config.</summary>
@@ -4281,7 +4281,7 @@ namespace Google.Apis.TagManager.v2
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists all Google tag configs in a Container.</summary>
@@ -4345,7 +4345,7 @@ namespace Google.Apis.TagManager.v2
                     /// </param>
                     public virtual UpdateRequest Update(Google.Apis.TagManager.v2.Data.GtagConfig body, string path)
                     {
-                        return new UpdateRequest(service, body, path);
+                        return new UpdateRequest(this.service, body, path);
                     }
 
                     /// <summary>Updates a Google tag config.</summary>
@@ -4436,7 +4436,7 @@ namespace Google.Apis.TagManager.v2
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.TagManager.v2.Data.Tag body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>Creates a GTM Tag.</summary>
@@ -4494,7 +4494,7 @@ namespace Google.Apis.TagManager.v2
                     /// </param>
                     public virtual DeleteRequest Delete(string path)
                     {
-                        return new DeleteRequest(service, path);
+                        return new DeleteRequest(this.service, path);
                     }
 
                     /// <summary>Deletes a GTM Tag.</summary>
@@ -4545,7 +4545,7 @@ namespace Google.Apis.TagManager.v2
                     /// </param>
                     public virtual GetRequest Get(string path)
                     {
-                        return new GetRequest(service, path);
+                        return new GetRequest(this.service, path);
                     }
 
                     /// <summary>Gets a GTM Tag.</summary>
@@ -4596,7 +4596,7 @@ namespace Google.Apis.TagManager.v2
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists all GTM Tags of a Container.</summary>
@@ -4659,7 +4659,7 @@ namespace Google.Apis.TagManager.v2
                     /// </param>
                     public virtual RevertRequest Revert(string path)
                     {
-                        return new RevertRequest(service, path);
+                        return new RevertRequest(this.service, path);
                     }
 
                     /// <summary>Reverts changes to a GTM Tag in a GTM Workspace.</summary>
@@ -4725,7 +4725,7 @@ namespace Google.Apis.TagManager.v2
                     /// </param>
                     public virtual UpdateRequest Update(Google.Apis.TagManager.v2.Data.Tag body, string path)
                     {
-                        return new UpdateRequest(service, body, path);
+                        return new UpdateRequest(this.service, body, path);
                     }
 
                     /// <summary>Updates a GTM Tag.</summary>
@@ -4816,7 +4816,7 @@ namespace Google.Apis.TagManager.v2
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.TagManager.v2.Data.CustomTemplate body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>Creates a GTM Custom Template.</summary>
@@ -4874,7 +4874,7 @@ namespace Google.Apis.TagManager.v2
                     /// </param>
                     public virtual DeleteRequest Delete(string path)
                     {
-                        return new DeleteRequest(service, path);
+                        return new DeleteRequest(this.service, path);
                     }
 
                     /// <summary>Deletes a GTM Template.</summary>
@@ -4925,7 +4925,7 @@ namespace Google.Apis.TagManager.v2
                     /// </param>
                     public virtual GetRequest Get(string path)
                     {
-                        return new GetRequest(service, path);
+                        return new GetRequest(this.service, path);
                     }
 
                     /// <summary>Gets a GTM Template.</summary>
@@ -4976,7 +4976,7 @@ namespace Google.Apis.TagManager.v2
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists all GTM Templates of a GTM container workspace.</summary>
@@ -5039,7 +5039,7 @@ namespace Google.Apis.TagManager.v2
                     /// </param>
                     public virtual RevertRequest Revert(string path)
                     {
-                        return new RevertRequest(service, path);
+                        return new RevertRequest(this.service, path);
                     }
 
                     /// <summary>Reverts changes to a GTM Template in a GTM Workspace.</summary>
@@ -5105,7 +5105,7 @@ namespace Google.Apis.TagManager.v2
                     /// </param>
                     public virtual UpdateRequest Update(Google.Apis.TagManager.v2.Data.CustomTemplate body, string path)
                     {
-                        return new UpdateRequest(service, body, path);
+                        return new UpdateRequest(this.service, body, path);
                     }
 
                     /// <summary>Updates a GTM Template.</summary>
@@ -5196,7 +5196,7 @@ namespace Google.Apis.TagManager.v2
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.TagManager.v2.Data.Transformation body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>Creates a GTM Transformation.</summary>
@@ -5254,7 +5254,7 @@ namespace Google.Apis.TagManager.v2
                     /// </param>
                     public virtual DeleteRequest Delete(string path)
                     {
-                        return new DeleteRequest(service, path);
+                        return new DeleteRequest(this.service, path);
                     }
 
                     /// <summary>Deletes a GTM Transformation.</summary>
@@ -5305,7 +5305,7 @@ namespace Google.Apis.TagManager.v2
                     /// </param>
                     public virtual GetRequest Get(string path)
                     {
-                        return new GetRequest(service, path);
+                        return new GetRequest(this.service, path);
                     }
 
                     /// <summary>Gets a GTM Transformation.</summary>
@@ -5356,7 +5356,7 @@ namespace Google.Apis.TagManager.v2
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists all GTM Transformations of a GTM container workspace.</summary>
@@ -5419,7 +5419,7 @@ namespace Google.Apis.TagManager.v2
                     /// </param>
                     public virtual RevertRequest Revert(string path)
                     {
-                        return new RevertRequest(service, path);
+                        return new RevertRequest(this.service, path);
                     }
 
                     /// <summary>Reverts changes to a GTM Transformation in a GTM Workspace.</summary>
@@ -5485,7 +5485,7 @@ namespace Google.Apis.TagManager.v2
                     /// </param>
                     public virtual UpdateRequest Update(Google.Apis.TagManager.v2.Data.Transformation body, string path)
                     {
-                        return new UpdateRequest(service, body, path);
+                        return new UpdateRequest(this.service, body, path);
                     }
 
                     /// <summary>Updates a GTM Transformation.</summary>
@@ -5576,7 +5576,7 @@ namespace Google.Apis.TagManager.v2
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.TagManager.v2.Data.Trigger body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>Creates a GTM Trigger.</summary>
@@ -5634,7 +5634,7 @@ namespace Google.Apis.TagManager.v2
                     /// </param>
                     public virtual DeleteRequest Delete(string path)
                     {
-                        return new DeleteRequest(service, path);
+                        return new DeleteRequest(this.service, path);
                     }
 
                     /// <summary>Deletes a GTM Trigger.</summary>
@@ -5685,7 +5685,7 @@ namespace Google.Apis.TagManager.v2
                     /// </param>
                     public virtual GetRequest Get(string path)
                     {
-                        return new GetRequest(service, path);
+                        return new GetRequest(this.service, path);
                     }
 
                     /// <summary>Gets a GTM Trigger.</summary>
@@ -5736,7 +5736,7 @@ namespace Google.Apis.TagManager.v2
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists all GTM Triggers of a Container.</summary>
@@ -5799,7 +5799,7 @@ namespace Google.Apis.TagManager.v2
                     /// </param>
                     public virtual RevertRequest Revert(string path)
                     {
-                        return new RevertRequest(service, path);
+                        return new RevertRequest(this.service, path);
                     }
 
                     /// <summary>Reverts changes to a GTM Trigger in a GTM Workspace.</summary>
@@ -5865,7 +5865,7 @@ namespace Google.Apis.TagManager.v2
                     /// </param>
                     public virtual UpdateRequest Update(Google.Apis.TagManager.v2.Data.Trigger body, string path)
                     {
-                        return new UpdateRequest(service, body, path);
+                        return new UpdateRequest(this.service, body, path);
                     }
 
                     /// <summary>Updates a GTM Trigger.</summary>
@@ -5956,7 +5956,7 @@ namespace Google.Apis.TagManager.v2
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.TagManager.v2.Data.Variable body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>Creates a GTM Variable.</summary>
@@ -6014,7 +6014,7 @@ namespace Google.Apis.TagManager.v2
                     /// </param>
                     public virtual DeleteRequest Delete(string path)
                     {
-                        return new DeleteRequest(service, path);
+                        return new DeleteRequest(this.service, path);
                     }
 
                     /// <summary>Deletes a GTM Variable.</summary>
@@ -6065,7 +6065,7 @@ namespace Google.Apis.TagManager.v2
                     /// </param>
                     public virtual GetRequest Get(string path)
                     {
-                        return new GetRequest(service, path);
+                        return new GetRequest(this.service, path);
                     }
 
                     /// <summary>Gets a GTM Variable.</summary>
@@ -6116,7 +6116,7 @@ namespace Google.Apis.TagManager.v2
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists all GTM Variables of a Container.</summary>
@@ -6179,7 +6179,7 @@ namespace Google.Apis.TagManager.v2
                     /// </param>
                     public virtual RevertRequest Revert(string path)
                     {
-                        return new RevertRequest(service, path);
+                        return new RevertRequest(this.service, path);
                     }
 
                     /// <summary>Reverts changes to a GTM Variable in a GTM Workspace.</summary>
@@ -6245,7 +6245,7 @@ namespace Google.Apis.TagManager.v2
                     /// </param>
                     public virtual UpdateRequest Update(Google.Apis.TagManager.v2.Data.Variable body, string path)
                     {
-                        return new UpdateRequest(service, body, path);
+                        return new UpdateRequest(this.service, body, path);
                     }
 
                     /// <summary>Updates a GTM Variable.</summary>
@@ -6336,7 +6336,7 @@ namespace Google.Apis.TagManager.v2
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.TagManager.v2.Data.Zone body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>Creates a GTM Zone.</summary>
@@ -6394,7 +6394,7 @@ namespace Google.Apis.TagManager.v2
                     /// </param>
                     public virtual DeleteRequest Delete(string path)
                     {
-                        return new DeleteRequest(service, path);
+                        return new DeleteRequest(this.service, path);
                     }
 
                     /// <summary>Deletes a GTM Zone.</summary>
@@ -6445,7 +6445,7 @@ namespace Google.Apis.TagManager.v2
                     /// </param>
                     public virtual GetRequest Get(string path)
                     {
-                        return new GetRequest(service, path);
+                        return new GetRequest(this.service, path);
                     }
 
                     /// <summary>Gets a GTM Zone.</summary>
@@ -6496,7 +6496,7 @@ namespace Google.Apis.TagManager.v2
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists all GTM Zones of a GTM container workspace.</summary>
@@ -6559,7 +6559,7 @@ namespace Google.Apis.TagManager.v2
                     /// </param>
                     public virtual RevertRequest Revert(string path)
                     {
-                        return new RevertRequest(service, path);
+                        return new RevertRequest(this.service, path);
                     }
 
                     /// <summary>Reverts changes to a GTM Zone in a GTM Workspace.</summary>
@@ -6625,7 +6625,7 @@ namespace Google.Apis.TagManager.v2
                     /// </param>
                     public virtual UpdateRequest Update(Google.Apis.TagManager.v2.Data.Zone body, string path)
                     {
-                        return new UpdateRequest(service, body, path);
+                        return new UpdateRequest(this.service, body, path);
                     }
 
                     /// <summary>Updates a GTM Zone.</summary>
@@ -6698,7 +6698,7 @@ namespace Google.Apis.TagManager.v2
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.TagManager.v2.Data.Workspace body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a Workspace.</summary>
@@ -6760,7 +6760,7 @@ namespace Google.Apis.TagManager.v2
                 /// </param>
                 public virtual CreateVersionRequest CreateVersion(Google.Apis.TagManager.v2.Data.CreateContainerVersionRequestVersionOptions body, string path)
                 {
-                    return new CreateVersionRequest(service, body, path);
+                    return new CreateVersionRequest(this.service, body, path);
                 }
 
                 /// <summary>
@@ -6821,7 +6821,7 @@ namespace Google.Apis.TagManager.v2
                 /// </param>
                 public virtual DeleteRequest Delete(string path)
                 {
-                    return new DeleteRequest(service, path);
+                    return new DeleteRequest(this.service, path);
                 }
 
                 /// <summary>Deletes a Workspace.</summary>
@@ -6872,7 +6872,7 @@ namespace Google.Apis.TagManager.v2
                 /// </param>
                 public virtual GetRequest Get(string path)
                 {
-                    return new GetRequest(service, path);
+                    return new GetRequest(this.service, path);
                 }
 
                 /// <summary>Gets a Workspace.</summary>
@@ -6923,7 +6923,7 @@ namespace Google.Apis.TagManager.v2
                 /// </param>
                 public virtual GetStatusRequest GetStatus(string path)
                 {
-                    return new GetStatusRequest(service, path);
+                    return new GetStatusRequest(this.service, path);
                 }
 
                 /// <summary>Finds conflicting and modified entities in the workspace.</summary>
@@ -6973,7 +6973,7 @@ namespace Google.Apis.TagManager.v2
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists all Workspaces that belong to a GTM Container.</summary>
@@ -7039,7 +7039,7 @@ namespace Google.Apis.TagManager.v2
                 /// </param>
                 public virtual QuickPreviewRequest QuickPreview(string path)
                 {
-                    return new QuickPreviewRequest(service, path);
+                    return new QuickPreviewRequest(this.service, path);
                 }
 
                 /// <summary>
@@ -7097,7 +7097,7 @@ namespace Google.Apis.TagManager.v2
                 /// </param>
                 public virtual ResolveConflictRequest ResolveConflict(Google.Apis.TagManager.v2.Data.Entity body, string path)
                 {
-                    return new ResolveConflictRequest(service, body, path);
+                    return new ResolveConflictRequest(this.service, body, path);
                 }
 
                 /// <summary>
@@ -7176,7 +7176,7 @@ namespace Google.Apis.TagManager.v2
                 /// </param>
                 public virtual SyncRequest Sync(string path)
                 {
-                    return new SyncRequest(service, path);
+                    return new SyncRequest(this.service, path);
                 }
 
                 /// <summary>
@@ -7231,7 +7231,7 @@ namespace Google.Apis.TagManager.v2
                 /// </param>
                 public virtual UpdateRequest Update(Google.Apis.TagManager.v2.Data.Workspace body, string path)
                 {
-                    return new UpdateRequest(service, body, path);
+                    return new UpdateRequest(this.service, body, path);
                 }
 
                 /// <summary>Updates a Workspace.</summary>
@@ -7303,7 +7303,7 @@ namespace Google.Apis.TagManager.v2
             /// </param>
             public virtual CombineRequest Combine(string path)
             {
-                return new CombineRequest(service, path);
+                return new CombineRequest(this.service, path);
             }
 
             /// <summary>Combines Containers.</summary>
@@ -7406,7 +7406,7 @@ namespace Google.Apis.TagManager.v2
             /// <param name="parent">GTM Account's API relative path. Example: accounts/{account_id}.</param>
             public virtual CreateRequest Create(Google.Apis.TagManager.v2.Data.Container body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>Creates a Container.</summary>
@@ -7460,7 +7460,7 @@ namespace Google.Apis.TagManager.v2
             /// </param>
             public virtual DeleteRequest Delete(string path)
             {
-                return new DeleteRequest(service, path);
+                return new DeleteRequest(this.service, path);
             }
 
             /// <summary>Deletes a Container.</summary>
@@ -7509,7 +7509,7 @@ namespace Google.Apis.TagManager.v2
             /// </param>
             public virtual GetRequest Get(string path)
             {
-                return new GetRequest(service, path);
+                return new GetRequest(this.service, path);
             }
 
             /// <summary>Gets a Container.</summary>
@@ -7556,7 +7556,7 @@ namespace Google.Apis.TagManager.v2
             /// <param name="parent">GTM Account's API relative path. Example: accounts/{account_id}.</param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists all Containers that belongs to a GTM Account.</summary>
@@ -7612,7 +7612,7 @@ namespace Google.Apis.TagManager.v2
             /// <summary>Looks up a Container by destination ID.</summary>
             public virtual LookupRequest Lookup()
             {
-                return new LookupRequest(service);
+                return new LookupRequest(this.service);
             }
 
             /// <summary>Looks up a Container by destination ID.</summary>
@@ -7661,7 +7661,7 @@ namespace Google.Apis.TagManager.v2
             /// </param>
             public virtual MoveTagIdRequest MoveTagId(string path)
             {
-                return new MoveTagIdRequest(service, path);
+                return new MoveTagIdRequest(this.service, path);
             }
 
             /// <summary>Move Tag ID out of a Container.</summary>
@@ -7788,7 +7788,7 @@ namespace Google.Apis.TagManager.v2
             /// </param>
             public virtual SnippetRequest Snippet(string path)
             {
-                return new SnippetRequest(service, path);
+                return new SnippetRequest(this.service, path);
             }
 
             /// <summary>Gets the tagging snippet for a Container.</summary>
@@ -7839,7 +7839,7 @@ namespace Google.Apis.TagManager.v2
             /// </param>
             public virtual UpdateRequest Update(Google.Apis.TagManager.v2.Data.Container body, string path)
             {
-                return new UpdateRequest(service, body, path);
+                return new UpdateRequest(this.service, body, path);
             }
 
             /// <summary>Updates a Container.</summary>
@@ -7926,7 +7926,7 @@ namespace Google.Apis.TagManager.v2
             /// <param name="parent">GTM Account's API relative path. Example: accounts/{account_id}</param>
             public virtual CreateRequest Create(Google.Apis.TagManager.v2.Data.UserPermission body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>Creates a user's Account &amp; Container access.</summary>
@@ -7981,7 +7981,7 @@ namespace Google.Apis.TagManager.v2
             /// </param>
             public virtual DeleteRequest Delete(string path)
             {
-                return new DeleteRequest(service, path);
+                return new DeleteRequest(this.service, path);
             }
 
             /// <summary>Removes a user from the account, revoking access to it and all of its containers.</summary>
@@ -8032,7 +8032,7 @@ namespace Google.Apis.TagManager.v2
             /// </param>
             public virtual GetRequest Get(string path)
             {
-                return new GetRequest(service, path);
+                return new GetRequest(this.service, path);
             }
 
             /// <summary>Gets a user's Account &amp; Container access.</summary>
@@ -8083,7 +8083,7 @@ namespace Google.Apis.TagManager.v2
             /// <param name="parent">GTM Account's API relative path. Example: accounts/{account_id}</param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>
@@ -8147,7 +8147,7 @@ namespace Google.Apis.TagManager.v2
             /// </param>
             public virtual UpdateRequest Update(Google.Apis.TagManager.v2.Data.UserPermission body, string path)
             {
-                return new UpdateRequest(service, body, path);
+                return new UpdateRequest(this.service, body, path);
             }
 
             /// <summary>Updates a user's Account &amp; Container access.</summary>
@@ -8203,7 +8203,7 @@ namespace Google.Apis.TagManager.v2
         /// <param name="path">GTM Account's API relative path. Example: accounts/{account_id}</param>
         public virtual GetRequest Get(string path)
         {
-            return new GetRequest(service, path);
+            return new GetRequest(this.service, path);
         }
 
         /// <summary>Gets a GTM Account.</summary>
@@ -8247,7 +8247,7 @@ namespace Google.Apis.TagManager.v2
         /// <summary>Lists all GTM Accounts that a user has access to.</summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>Lists all GTM Accounts that a user has access to.</summary>
@@ -8304,7 +8304,7 @@ namespace Google.Apis.TagManager.v2
         /// <param name="path">GTM Account's API relative path. Example: accounts/{account_id}</param>
         public virtual UpdateRequest Update(Google.Apis.TagManager.v2.Data.Account body, string path)
         {
-            return new UpdateRequest(service, body, path);
+            return new UpdateRequest(this.service, body, path);
         }
 
         /// <summary>Updates a GTM Account.</summary>
@@ -9154,8 +9154,8 @@ namespace Google.Apis.TagManager.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? AuthorizationTimestampDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(AuthorizationTimestampRaw);
-            set => AuthorizationTimestampRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(AuthorizationTimestampRaw);
+            set => AuthorizationTimestampRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>GTM Container ID.</summary>

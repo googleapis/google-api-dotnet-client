@@ -340,7 +340,7 @@ namespace Google.Apis.Connectors.v2
                     /// </param>
                     public virtual ExecuteRequest Execute(Google.Apis.Connectors.v2.Data.ExecuteActionRequest body, string name)
                     {
-                        return new ExecuteRequest(service, body, name);
+                        return new ExecuteRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -401,7 +401,7 @@ namespace Google.Apis.Connectors.v2
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Gets the schema of the given action.</summary>
@@ -452,7 +452,7 @@ namespace Google.Apis.Connectors.v2
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Gets the schema of all the actions supported by the connector.</summary>
@@ -599,7 +599,7 @@ namespace Google.Apis.Connectors.v2
                         /// </param>
                         public virtual CreateRequest Create(Google.Apis.Connectors.v2.Data.Entity body, string parent)
                         {
-                            return new CreateRequest(service, body, parent);
+                            return new CreateRequest(this.service, body, parent);
                         }
 
                         /// <summary>
@@ -664,7 +664,7 @@ namespace Google.Apis.Connectors.v2
                         /// </param>
                         public virtual DeleteRequest Delete(string name)
                         {
-                            return new DeleteRequest(service, name);
+                            return new DeleteRequest(this.service, name);
                         }
 
                         /// <summary>
@@ -720,7 +720,7 @@ namespace Google.Apis.Connectors.v2
                         /// </param>
                         public virtual DeleteEntitiesWithConditionsRequest DeleteEntitiesWithConditions(string entityType)
                         {
-                            return new DeleteEntitiesWithConditionsRequest(service, entityType);
+                            return new DeleteEntitiesWithConditionsRequest(this.service, entityType);
                         }
 
                         /// <summary>
@@ -794,7 +794,7 @@ namespace Google.Apis.Connectors.v2
                         /// </param>
                         public virtual GetRequest Get(string name)
                         {
-                            return new GetRequest(service, name);
+                            return new GetRequest(this.service, name);
                         }
 
                         /// <summary>
@@ -856,7 +856,7 @@ namespace Google.Apis.Connectors.v2
                         /// </param>
                         public virtual ListRequest List(string parent)
                         {
-                            return new ListRequest(service, parent);
+                            return new ListRequest(this.service, parent);
                         }
 
                         /// <summary>
@@ -976,7 +976,7 @@ namespace Google.Apis.Connectors.v2
                         /// </param>
                         public virtual PatchRequest Patch(Google.Apis.Connectors.v2.Data.Entity body, string name)
                         {
-                            return new PatchRequest(service, body, name);
+                            return new PatchRequest(this.service, body, name);
                         }
 
                         /// <summary>
@@ -1042,7 +1042,7 @@ namespace Google.Apis.Connectors.v2
                         /// </param>
                         public virtual UpdateEntitiesWithConditionsRequest UpdateEntitiesWithConditions(Google.Apis.Connectors.v2.Data.Entity body, string entityType)
                         {
-                            return new UpdateEntitiesWithConditionsRequest(service, body, entityType);
+                            return new UpdateEntitiesWithConditionsRequest(this.service, body, entityType);
                         }
 
                         /// <summary>
@@ -1122,7 +1122,7 @@ namespace Google.Apis.Connectors.v2
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Gets metadata of given entity type</summary>
@@ -1173,7 +1173,7 @@ namespace Google.Apis.Connectors.v2
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists metadata related to all entity types present in the external system.</summary>
@@ -1285,7 +1285,7 @@ namespace Google.Apis.Connectors.v2
                 /// </param>
                 public virtual ExecuteSqlQueryRequest ExecuteSqlQuery(Google.Apis.Connectors.v2.Data.ExecuteSqlQueryRequest body, string connection)
                 {
-                    return new ExecuteSqlQueryRequest(service, body, connection);
+                    return new ExecuteSqlQueryRequest(this.service, body, connection);
                 }
 
                 /// <summary>
