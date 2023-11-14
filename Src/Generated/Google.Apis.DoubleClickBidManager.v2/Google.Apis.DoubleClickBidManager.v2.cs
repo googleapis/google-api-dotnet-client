@@ -291,7 +291,7 @@ namespace Google.Apis.DoubleClickBidManager.v2
             /// <param name="reportId">Required. ID of the report to retrieve.</param>
             public virtual GetRequest Get(long queryId, long reportId)
             {
-                return new GetRequest(service, queryId, reportId);
+                return new GetRequest(this.service, queryId, reportId);
             }
 
             /// <summary>Retrieves a report.</summary>
@@ -349,7 +349,7 @@ namespace Google.Apis.DoubleClickBidManager.v2
             /// <param name="queryId">Required. ID of the query with which the reports are associated.</param>
             public virtual ListRequest List(long queryId)
             {
-                return new ListRequest(service, queryId);
+                return new ListRequest(this.service, queryId);
             }
 
             /// <summary>Lists reports associated with a query.</summary>
@@ -440,7 +440,7 @@ namespace Google.Apis.DoubleClickBidManager.v2
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.DoubleClickBidManager.v2.Data.Query body)
         {
-            return new CreateRequest(service, body);
+            return new CreateRequest(this.service, body);
         }
 
         /// <summary>Creates a query.</summary>
@@ -479,7 +479,7 @@ namespace Google.Apis.DoubleClickBidManager.v2
         /// <param name="queryId">Required. ID of query to delete.</param>
         public virtual DeleteRequest Delete(long queryId)
         {
-            return new DeleteRequest(service, queryId);
+            return new DeleteRequest(this.service, queryId);
         }
 
         /// <summary>Deletes a query as well as the associated reports.</summary>
@@ -524,7 +524,7 @@ namespace Google.Apis.DoubleClickBidManager.v2
         /// <param name="queryId">Required. ID of query to retrieve.</param>
         public virtual GetRequest Get(long queryId)
         {
-            return new GetRequest(service, queryId);
+            return new GetRequest(this.service, queryId);
         }
 
         /// <summary>Retrieves a query.</summary>
@@ -568,7 +568,7 @@ namespace Google.Apis.DoubleClickBidManager.v2
         /// <summary>Lists queries created by the current user.</summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>Lists queries created by the current user.</summary>
@@ -646,7 +646,7 @@ namespace Google.Apis.DoubleClickBidManager.v2
         /// <param name="queryId">Required. ID of query to run.</param>
         public virtual RunRequest Run(Google.Apis.DoubleClickBidManager.v2.Data.RunQueryRequest body, long queryId)
         {
-            return new RunRequest(service, body, queryId);
+            return new RunRequest(this.service, body, queryId);
         }
 
         /// <summary>Runs a stored query to generate a report.</summary>
@@ -1137,8 +1137,8 @@ namespace Google.Apis.DoubleClickBidManager.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? FinishTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(FinishTimeRaw);
-            set => FinishTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(FinishTimeRaw);
+            set => FinishTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The file type of the report.</summary>

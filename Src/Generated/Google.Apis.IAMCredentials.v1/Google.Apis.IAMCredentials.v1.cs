@@ -301,7 +301,7 @@ namespace Google.Apis.IAMCredentials.v1
             /// </param>
             public virtual GenerateAccessTokenRequest GenerateAccessToken(Google.Apis.IAMCredentials.v1.Data.GenerateAccessTokenRequest body, string name)
             {
-                return new GenerateAccessTokenRequest(service, body, name);
+                return new GenerateAccessTokenRequest(this.service, body, name);
             }
 
             /// <summary>Generates an OAuth 2.0 access token for a service account.</summary>
@@ -362,7 +362,7 @@ namespace Google.Apis.IAMCredentials.v1
             /// </param>
             public virtual GenerateIdTokenRequest GenerateIdToken(Google.Apis.IAMCredentials.v1.Data.GenerateIdTokenRequest body, string name)
             {
-                return new GenerateIdTokenRequest(service, body, name);
+                return new GenerateIdTokenRequest(this.service, body, name);
             }
 
             /// <summary>Generates an OpenID Connect ID token for a service account.</summary>
@@ -423,7 +423,7 @@ namespace Google.Apis.IAMCredentials.v1
             /// </param>
             public virtual SignBlobRequest SignBlob(Google.Apis.IAMCredentials.v1.Data.SignBlobRequest body, string name)
             {
-                return new SignBlobRequest(service, body, name);
+                return new SignBlobRequest(this.service, body, name);
             }
 
             /// <summary>Signs a blob using a service account's system-managed private key.</summary>
@@ -484,7 +484,7 @@ namespace Google.Apis.IAMCredentials.v1
             /// </param>
             public virtual SignJwtRequest SignJwt(Google.Apis.IAMCredentials.v1.Data.SignJwtRequest body, string name)
             {
-                return new SignJwtRequest(service, body, name);
+                return new SignJwtRequest(this.service, body, name);
             }
 
             /// <summary>Signs a JWT using a service account's system-managed private key.</summary>
@@ -617,8 +617,8 @@ namespace Google.Apis.IAMCredentials.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpireTimeRaw);
-            set => ExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>

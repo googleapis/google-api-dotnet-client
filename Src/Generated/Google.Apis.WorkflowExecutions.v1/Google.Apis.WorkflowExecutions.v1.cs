@@ -357,7 +357,7 @@ namespace Google.Apis.WorkflowExecutions.v1
                         /// </param>
                         public virtual ListRequest List(string parent)
                         {
-                            return new ListRequest(service, parent);
+                            return new ListRequest(this.service, parent);
                         }
 
                         /// <summary>
@@ -460,7 +460,7 @@ namespace Google.Apis.WorkflowExecutions.v1
                         /// </param>
                         public virtual GetRequest Get(string name)
                         {
-                            return new GetRequest(service, name);
+                            return new GetRequest(this.service, name);
                         }
 
                         /// <summary>Gets a step entry.</summary>
@@ -514,7 +514,7 @@ namespace Google.Apis.WorkflowExecutions.v1
                         /// </param>
                         public virtual ListRequest List(string parent)
                         {
-                            return new ListRequest(service, parent);
+                            return new ListRequest(this.service, parent);
                         }
 
                         /// <summary>
@@ -651,7 +651,7 @@ namespace Google.Apis.WorkflowExecutions.v1
                     /// </param>
                     public virtual CancelRequest Cancel(Google.Apis.WorkflowExecutions.v1.Data.CancelExecutionRequest body, string name)
                     {
-                        return new CancelRequest(service, body, name);
+                        return new CancelRequest(this.service, body, name);
                     }
 
                     /// <summary>Cancels an execution of the given name.</summary>
@@ -711,7 +711,7 @@ namespace Google.Apis.WorkflowExecutions.v1
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.WorkflowExecutions.v1.Data.Execution body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>Creates a new execution using the latest revision of the given workflow.</summary>
@@ -773,7 +773,7 @@ namespace Google.Apis.WorkflowExecutions.v1
                     /// </param>
                     public virtual ExportDataRequest ExportData(string name)
                     {
-                        return new ExportDataRequest(service, name);
+                        return new ExportDataRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -827,7 +827,7 @@ namespace Google.Apis.WorkflowExecutions.v1
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Returns an execution of the given name.</summary>
@@ -919,7 +919,7 @@ namespace Google.Apis.WorkflowExecutions.v1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>
@@ -1085,7 +1085,7 @@ namespace Google.Apis.WorkflowExecutions.v1
                 /// </param>
                 public virtual TriggerPubsubExecutionRequest TriggerPubsubExecution(Google.Apis.WorkflowExecutions.v1.Data.TriggerPubsubExecutionRequest body, string workflow)
                 {
-                    return new TriggerPubsubExecutionRequest(service, body, workflow);
+                    return new TriggerPubsubExecutionRequest(this.service, body, workflow);
                 }
 
                 /// <summary>
@@ -1263,8 +1263,8 @@ namespace Google.Apis.WorkflowExecutions.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -1330,8 +1330,8 @@ namespace Google.Apis.WorkflowExecutions.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. Current state of the execution.</summary>
@@ -1555,8 +1555,8 @@ namespace Google.Apis.WorkflowExecutions.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? PublishTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(PublishTimeRaw);
-            set => PublishTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(PublishTimeRaw);
+            set => PublishTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -1676,8 +1676,8 @@ namespace Google.Apis.WorkflowExecutions.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. The numeric ID of this step entry, used for navigation.</summary>
@@ -1756,8 +1756,8 @@ namespace Google.Apis.WorkflowExecutions.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>

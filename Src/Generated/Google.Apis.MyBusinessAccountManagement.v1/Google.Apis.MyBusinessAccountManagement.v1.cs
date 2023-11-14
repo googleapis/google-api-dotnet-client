@@ -288,7 +288,7 @@ namespace Google.Apis.MyBusinessAccountManagement.v1
             /// </param>
             public virtual CreateRequest Create(Google.Apis.MyBusinessAccountManagement.v1.Data.Admin body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -349,7 +349,7 @@ namespace Google.Apis.MyBusinessAccountManagement.v1
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>Removes the specified admin from the specified account.</summary>
@@ -400,7 +400,7 @@ namespace Google.Apis.MyBusinessAccountManagement.v1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists the admins for the specified account.</summary>
@@ -453,7 +453,7 @@ namespace Google.Apis.MyBusinessAccountManagement.v1
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.MyBusinessAccountManagement.v1.Data.Admin body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>Updates the Admin for the specified Account Admin.</summary>
@@ -545,7 +545,7 @@ namespace Google.Apis.MyBusinessAccountManagement.v1
             /// </param>
             public virtual AcceptRequest Accept(Google.Apis.MyBusinessAccountManagement.v1.Data.AcceptInvitationRequest body, string name)
             {
-                return new AcceptRequest(service, body, name);
+                return new AcceptRequest(this.service, body, name);
             }
 
             /// <summary>Accepts the specified invitation.</summary>
@@ -604,7 +604,7 @@ namespace Google.Apis.MyBusinessAccountManagement.v1
             /// </param>
             public virtual DeclineRequest Decline(Google.Apis.MyBusinessAccountManagement.v1.Data.DeclineInvitationRequest body, string name)
             {
-                return new DeclineRequest(service, body, name);
+                return new DeclineRequest(this.service, body, name);
             }
 
             /// <summary>Declines the specified invitation.</summary>
@@ -662,7 +662,7 @@ namespace Google.Apis.MyBusinessAccountManagement.v1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists pending invitations for the specified account.</summary>
@@ -730,7 +730,7 @@ namespace Google.Apis.MyBusinessAccountManagement.v1
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.MyBusinessAccountManagement.v1.Data.Account body)
         {
-            return new CreateRequest(service, body);
+            return new CreateRequest(this.service, body);
         }
 
         /// <summary>
@@ -777,7 +777,7 @@ namespace Google.Apis.MyBusinessAccountManagement.v1
         /// <param name="name">Required. The name of the account to fetch.</param>
         public virtual GetRequest Get(string name)
         {
-            return new GetRequest(service, name);
+            return new GetRequest(this.service, name);
         }
 
         /// <summary>
@@ -827,7 +827,7 @@ namespace Google.Apis.MyBusinessAccountManagement.v1
         /// </summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>
@@ -925,7 +925,7 @@ namespace Google.Apis.MyBusinessAccountManagement.v1
         /// <param name="name">Immutable. The resource name, in the format `accounts/{account_id}`.</param>
         public virtual PatchRequest Patch(Google.Apis.MyBusinessAccountManagement.v1.Data.Account body, string name)
         {
-            return new PatchRequest(service, body, name);
+            return new PatchRequest(this.service, body, name);
         }
 
         /// <summary>
@@ -1045,7 +1045,7 @@ namespace Google.Apis.MyBusinessAccountManagement.v1
             /// </param>
             public virtual CreateRequest Create(Google.Apis.MyBusinessAccountManagement.v1.Data.Admin body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -1104,7 +1104,7 @@ namespace Google.Apis.MyBusinessAccountManagement.v1
             /// <param name="name">Required. The resource name of the admin to remove from the location.</param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>Removes the specified admin as a manager of the specified location.</summary>
@@ -1151,7 +1151,7 @@ namespace Google.Apis.MyBusinessAccountManagement.v1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists all of the admins for the specified location.</summary>
@@ -1205,7 +1205,7 @@ namespace Google.Apis.MyBusinessAccountManagement.v1
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.MyBusinessAccountManagement.v1.Data.Admin body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -1283,7 +1283,7 @@ namespace Google.Apis.MyBusinessAccountManagement.v1
         /// <param name="name">Required. The name of the location to transfer. `locations/{location_id}`.</param>
         public virtual TransferRequest Transfer(Google.Apis.MyBusinessAccountManagement.v1.Data.TransferLocationRequest body, string name)
         {
-            return new TransferRequest(service, body, name);
+            return new TransferRequest(this.service, body, name);
         }
 
         /// <summary>

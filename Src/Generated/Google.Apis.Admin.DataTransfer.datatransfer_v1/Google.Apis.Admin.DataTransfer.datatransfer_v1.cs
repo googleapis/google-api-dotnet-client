@@ -282,7 +282,7 @@ namespace Google.Apis.Admin.DataTransfer.datatransfer_v1
         /// <param name="applicationId">ID of the application resource to be retrieved.</param>
         public virtual GetRequest Get(long applicationId)
         {
-            return new GetRequest(service, applicationId);
+            return new GetRequest(this.service, applicationId);
         }
 
         /// <summary>Retrieves information about an application for the given application ID.</summary>
@@ -326,7 +326,7 @@ namespace Google.Apis.Admin.DataTransfer.datatransfer_v1
         /// <summary>Lists the applications available for data transfer for a customer.</summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>Lists the applications available for data transfer for a customer.</summary>
@@ -411,7 +411,7 @@ namespace Google.Apis.Admin.DataTransfer.datatransfer_v1
         /// </param>
         public virtual GetRequest Get(string dataTransferId)
         {
-            return new GetRequest(service, dataTransferId);
+            return new GetRequest(this.service, dataTransferId);
         }
 
         /// <summary>Retrieves a data transfer request by its resource ID.</summary>
@@ -461,7 +461,7 @@ namespace Google.Apis.Admin.DataTransfer.datatransfer_v1
         /// <param name="body">The body of the request.</param>
         public virtual InsertRequest Insert(Google.Apis.Admin.DataTransfer.datatransfer_v1.Data.DataTransfer body)
         {
-            return new InsertRequest(service, body);
+            return new InsertRequest(this.service, body);
         }
 
         /// <summary>
@@ -502,7 +502,7 @@ namespace Google.Apis.Admin.DataTransfer.datatransfer_v1
         /// <summary>Lists the transfers for a customer by source user, destination user, or status.</summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>Lists the transfers for a customer by source user, destination user, or status.</summary>
@@ -741,8 +741,8 @@ namespace Google.Apis.Admin.DataTransfer.datatransfer_v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? RequestTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(RequestTimeRaw);
-            set => RequestTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(RequestTimeRaw);
+            set => RequestTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="RequestTimeRaw"/>.</summary>

@@ -266,7 +266,7 @@ namespace Google.Apis.Digitalassetlinks.v1
         /// <param name="body">The body of the request.</param>
         public virtual BulkCheckRequest BulkCheck(Google.Apis.Digitalassetlinks.v1.Data.BulkCheckRequest body)
         {
-            return new BulkCheckRequest(service, body);
+            return new BulkCheckRequest(this.service, body);
         }
 
         /// <summary>
@@ -322,7 +322,7 @@ namespace Google.Apis.Digitalassetlinks.v1
         /// </summary>
         public virtual CheckRequest Check()
         {
-            return new CheckRequest(service);
+            return new CheckRequest(this.service);
         }
 
         /// <summary>
@@ -538,7 +538,7 @@ namespace Google.Apis.Digitalassetlinks.v1
         /// </summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>

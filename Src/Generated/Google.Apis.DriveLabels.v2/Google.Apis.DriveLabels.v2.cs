@@ -324,7 +324,7 @@ namespace Google.Apis.DriveLabels.v2
             /// <param name="parent">Required. Label on which Locks are applied. Format: labels/{label}</param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists the LabelLocks on a Label.</summary>
@@ -419,7 +419,7 @@ namespace Google.Apis.DriveLabels.v2
             /// </param>
             public virtual BatchDeleteRequest BatchDelete(Google.Apis.DriveLabels.v2.Data.GoogleAppsDriveLabelsV2BatchDeleteLabelPermissionsRequest body, string parent)
             {
-                return new BatchDeleteRequest(service, body, parent);
+                return new BatchDeleteRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -487,7 +487,7 @@ namespace Google.Apis.DriveLabels.v2
             /// </param>
             public virtual BatchUpdateRequest BatchUpdate(Google.Apis.DriveLabels.v2.Data.GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsRequest body, string parent)
             {
-                return new BatchUpdateRequest(service, body, parent);
+                return new BatchUpdateRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -554,7 +554,7 @@ namespace Google.Apis.DriveLabels.v2
             /// </param>
             public virtual CreateRequest Create(Google.Apis.DriveLabels.v2.Data.GoogleAppsDriveLabelsV2LabelPermission body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -630,7 +630,7 @@ namespace Google.Apis.DriveLabels.v2
             /// <param name="name">Required. Label Permission resource name.</param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>
@@ -695,7 +695,7 @@ namespace Google.Apis.DriveLabels.v2
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists a Label's permissions.</summary>
@@ -819,7 +819,7 @@ namespace Google.Apis.DriveLabels.v2
                 /// <param name="parent">Required. Label on which Locks are applied. Format: labels/{label}</param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists the LabelLocks on a Label.</summary>
@@ -914,7 +914,7 @@ namespace Google.Apis.DriveLabels.v2
                 /// </param>
                 public virtual BatchDeleteRequest BatchDelete(Google.Apis.DriveLabels.v2.Data.GoogleAppsDriveLabelsV2BatchDeleteLabelPermissionsRequest body, string parent)
                 {
-                    return new BatchDeleteRequest(service, body, parent);
+                    return new BatchDeleteRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -982,7 +982,7 @@ namespace Google.Apis.DriveLabels.v2
                 /// </param>
                 public virtual BatchUpdateRequest BatchUpdate(Google.Apis.DriveLabels.v2.Data.GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsRequest body, string parent)
                 {
-                    return new BatchUpdateRequest(service, body, parent);
+                    return new BatchUpdateRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -1049,7 +1049,7 @@ namespace Google.Apis.DriveLabels.v2
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.DriveLabels.v2.Data.GoogleAppsDriveLabelsV2LabelPermission body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -1126,7 +1126,7 @@ namespace Google.Apis.DriveLabels.v2
                 /// <param name="name">Required. Label Permission resource name.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -1192,7 +1192,7 @@ namespace Google.Apis.DriveLabels.v2
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists a Label's permissions.</summary>
@@ -1285,7 +1285,7 @@ namespace Google.Apis.DriveLabels.v2
             /// <param name="parent">Required. The parent Label resource name.</param>
             public virtual UpdatePermissionsRequest UpdatePermissions(Google.Apis.DriveLabels.v2.Data.GoogleAppsDriveLabelsV2LabelPermission body, string parent)
             {
-                return new UpdatePermissionsRequest(service, body, parent);
+                return new UpdatePermissionsRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -1357,7 +1357,7 @@ namespace Google.Apis.DriveLabels.v2
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.DriveLabels.v2.Data.GoogleAppsDriveLabelsV2Label body)
         {
-            return new CreateRequest(service, body);
+            return new CreateRequest(this.service, body);
         }
 
         /// <summary>Creates a new Label.</summary>
@@ -1429,7 +1429,7 @@ namespace Google.Apis.DriveLabels.v2
         /// <param name="name">Required. Label resource name.</param>
         public virtual DeleteRequest Delete(string name)
         {
-            return new DeleteRequest(service, name);
+            return new DeleteRequest(this.service, name);
         }
 
         /// <summary>
@@ -1512,7 +1512,7 @@ namespace Google.Apis.DriveLabels.v2
         /// <param name="name">Required. The resource name of the Label to update.</param>
         public virtual DeltaRequest Delta(Google.Apis.DriveLabels.v2.Data.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequest body, string name)
         {
-            return new DeltaRequest(service, body, name);
+            return new DeltaRequest(this.service, body, name);
         }
 
         /// <summary>
@@ -1574,7 +1574,7 @@ namespace Google.Apis.DriveLabels.v2
         /// <param name="name">Required. Label resource name.</param>
         public virtual DisableRequest Disable(Google.Apis.DriveLabels.v2.Data.GoogleAppsDriveLabelsV2DisableLabelRequest body, string name)
         {
-            return new DisableRequest(service, body, name);
+            return new DisableRequest(this.service, body, name);
         }
 
         /// <summary>
@@ -1636,7 +1636,7 @@ namespace Google.Apis.DriveLabels.v2
         /// <param name="name">Required. Label resource name.</param>
         public virtual EnableRequest Enable(Google.Apis.DriveLabels.v2.Data.GoogleAppsDriveLabelsV2EnableLabelRequest body, string name)
         {
-            return new EnableRequest(service, body, name);
+            return new EnableRequest(this.service, body, name);
         }
 
         /// <summary>
@@ -1700,7 +1700,7 @@ namespace Google.Apis.DriveLabels.v2
         /// </param>
         public virtual GetRequest Get(string name)
         {
-            return new GetRequest(service, name);
+            return new GetRequest(this.service, name);
         }
 
         /// <summary>
@@ -1806,7 +1806,7 @@ namespace Google.Apis.DriveLabels.v2
         /// <summary>List labels.</summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>List labels.</summary>
@@ -2010,7 +2010,7 @@ namespace Google.Apis.DriveLabels.v2
         /// <param name="name">Required. Label resource name.</param>
         public virtual PublishRequest Publish(Google.Apis.DriveLabels.v2.Data.GoogleAppsDriveLabelsV2PublishLabelRequest body, string name)
         {
-            return new PublishRequest(service, body, name);
+            return new PublishRequest(this.service, body, name);
         }
 
         /// <summary>
@@ -2076,7 +2076,7 @@ namespace Google.Apis.DriveLabels.v2
         /// <param name="name">Required. The resource name of the Label to update.</param>
         public virtual UpdateLabelCopyModeRequest UpdateLabelCopyMode(Google.Apis.DriveLabels.v2.Data.GoogleAppsDriveLabelsV2UpdateLabelCopyModeRequest body, string name)
         {
-            return new UpdateLabelCopyModeRequest(service, body, name);
+            return new UpdateLabelCopyModeRequest(this.service, body, name);
         }
 
         /// <summary>
@@ -2136,7 +2136,7 @@ namespace Google.Apis.DriveLabels.v2
         /// <param name="parent">Required. The parent Label resource name.</param>
         public virtual UpdatePermissionsRequest UpdatePermissions(Google.Apis.DriveLabels.v2.Data.GoogleAppsDriveLabelsV2LabelPermission body, string parent)
         {
-            return new UpdatePermissionsRequest(service, body, parent);
+            return new UpdatePermissionsRequest(this.service, body, parent);
         }
 
         /// <summary>
@@ -2224,7 +2224,7 @@ namespace Google.Apis.DriveLabels.v2
         /// </summary>
         public virtual GetLabelRequest GetLabel()
         {
-            return new GetLabelRequest(service);
+            return new GetLabelRequest(this.service);
         }
 
         /// <summary>
@@ -2288,7 +2288,7 @@ namespace Google.Apis.DriveLabels.v2
         /// </param>
         public virtual GetCapabilitiesRequest GetCapabilities(string name)
         {
-            return new GetCapabilitiesRequest(service, name);
+            return new GetCapabilitiesRequest(this.service, name);
         }
 
         /// <summary>Gets the user capabilities.</summary>
@@ -3104,8 +3104,8 @@ namespace Google.Apis.DriveLabels.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. The user who created this field.</summary>
@@ -3151,8 +3151,8 @@ namespace Google.Apis.DriveLabels.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? DisableTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DisableTimeRaw);
-            set => DisableTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DisableTimeRaw);
+            set => DisableTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -3246,8 +3246,8 @@ namespace Google.Apis.DriveLabels.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. The user who modified this field.</summary>
@@ -3529,8 +3529,8 @@ namespace Google.Apis.DriveLabels.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. The user who created this choice.</summary>
@@ -3572,8 +3572,8 @@ namespace Google.Apis.DriveLabels.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? DisableTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DisableTimeRaw);
-            set => DisableTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DisableTimeRaw);
+            set => DisableTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -3639,8 +3639,8 @@ namespace Google.Apis.DriveLabels.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? PublishTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(PublishTimeRaw);
-            set => PublishTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(PublishTimeRaw);
+            set => PublishTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -3686,8 +3686,8 @@ namespace Google.Apis.DriveLabels.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. The user who updated this choice last.</summary>
@@ -3903,8 +3903,8 @@ namespace Google.Apis.DriveLabels.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. The user who created this label.</summary>
@@ -3950,8 +3950,8 @@ namespace Google.Apis.DriveLabels.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? DisableTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DisableTimeRaw);
-            set => DisableTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DisableTimeRaw);
+            set => DisableTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -4042,8 +4042,8 @@ namespace Google.Apis.DriveLabels.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? PublishTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(PublishTimeRaw);
-            set => PublishTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(PublishTimeRaw);
+            set => PublishTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -4087,8 +4087,8 @@ namespace Google.Apis.DriveLabels.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? RevisionCreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(RevisionCreateTimeRaw);
-            set => RevisionCreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(RevisionCreateTimeRaw);
+            set => RevisionCreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. The user who created this label revision.</summary>
@@ -4250,8 +4250,8 @@ namespace Google.Apis.DriveLabels.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -4297,8 +4297,8 @@ namespace Google.Apis.DriveLabels.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? DeleteTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DeleteTimeRaw);
-            set => DeleteTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DeleteTimeRaw);
+            set => DeleteTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ID of the Field that should be locked. Empty if the whole Label should be locked.</summary>

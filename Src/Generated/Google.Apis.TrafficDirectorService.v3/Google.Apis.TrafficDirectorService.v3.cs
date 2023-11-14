@@ -278,7 +278,7 @@ namespace Google.Apis.TrafficDirectorService.v3
         /// <param name="body">The body of the request.</param>
         public virtual ClientStatusRequest ClientStatus(Google.Apis.TrafficDirectorService.v3.Data.ClientStatusRequest body)
         {
-            return new ClientStatusRequest(service, body);
+            return new ClientStatusRequest(this.service, body);
         }
 
         /// <summary></summary>
@@ -554,8 +554,8 @@ namespace Google.Apis.TrafficDirectorService.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LastUpdatedDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastUpdatedRaw);
-            set => LastUpdatedRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastUpdatedRaw);
+            set => LastUpdatedRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -622,8 +622,8 @@ namespace Google.Apis.TrafficDirectorService.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LastUpdatedDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastUpdatedRaw);
-            set => LastUpdatedRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastUpdatedRaw);
+            set => LastUpdatedRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -718,8 +718,8 @@ namespace Google.Apis.TrafficDirectorService.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LastUpdatedDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastUpdatedRaw);
-            set => LastUpdatedRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastUpdatedRaw);
+            set => LastUpdatedRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The listener config.</summary>
@@ -786,8 +786,8 @@ namespace Google.Apis.TrafficDirectorService.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LastUpdatedDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastUpdatedRaw);
-            set => LastUpdatedRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastUpdatedRaw);
+            set => LastUpdatedRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The route config.</summary>
@@ -853,8 +853,8 @@ namespace Google.Apis.TrafficDirectorService.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LastUpdatedDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastUpdatedRaw);
-            set => LastUpdatedRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastUpdatedRaw);
+            set => LastUpdatedRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The name assigned to the scoped route configurations.</summary>
@@ -1020,8 +1020,8 @@ namespace Google.Apis.TrafficDirectorService.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LastUpdatedDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastUpdatedRaw);
-            set => LastUpdatedRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastUpdatedRaw);
+            set => LastUpdatedRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Name of the xDS resource</summary>
@@ -1113,8 +1113,8 @@ namespace Google.Apis.TrafficDirectorService.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LastUpdatedDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastUpdatedRaw);
-            set => LastUpdatedRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastUpdatedRaw);
+            set => LastUpdatedRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The name assigned to the scoped route configurations.</summary>
@@ -1538,8 +1538,8 @@ namespace Google.Apis.TrafficDirectorService.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LastUpdatedDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastUpdatedRaw);
-            set => LastUpdatedRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastUpdatedRaw);
+            set => LastUpdatedRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -1585,8 +1585,8 @@ namespace Google.Apis.TrafficDirectorService.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LastUpdatedDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastUpdatedRaw);
-            set => LastUpdatedRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastUpdatedRaw);
+            set => LastUpdatedRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -1629,8 +1629,8 @@ namespace Google.Apis.TrafficDirectorService.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LastUpdatedDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastUpdatedRaw);
-            set => LastUpdatedRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastUpdatedRaw);
+            set => LastUpdatedRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The listener config.</summary>
@@ -1676,8 +1676,8 @@ namespace Google.Apis.TrafficDirectorService.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LastUpdatedDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastUpdatedRaw);
-            set => LastUpdatedRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastUpdatedRaw);
+            set => LastUpdatedRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The route config.</summary>
@@ -1808,8 +1808,8 @@ namespace Google.Apis.TrafficDirectorService.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LastUpdateAttemptDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastUpdateAttemptRaw);
-            set => LastUpdateAttemptRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastUpdateAttemptRaw);
+            set => LastUpdateAttemptRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>This is the version of the rejected resource. [#not-implemented-hide:]</summary>

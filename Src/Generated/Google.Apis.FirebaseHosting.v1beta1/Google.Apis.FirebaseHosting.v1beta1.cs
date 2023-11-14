@@ -326,7 +326,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
             /// <param name="name">The name of the operation resource.</param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>
@@ -439,7 +439,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.FirebaseHosting.v1beta1.Data.Release body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>
@@ -521,7 +521,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -581,7 +581,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>
@@ -667,7 +667,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.FirebaseHosting.v1beta1.Data.Channel body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a new channel in the specified site.</summary>
@@ -738,7 +738,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -791,7 +791,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Retrieves information for the specified channel of the specified site.</summary>
@@ -843,7 +843,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>
@@ -926,7 +926,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.FirebaseHosting.v1beta1.Data.Channel body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -1035,7 +1035,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     /// <param name="name">The name of the operation resource.</param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -1083,7 +1083,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     /// <param name="name">The name of the operation's parent resource.</param>
                     public virtual ListRequest List(string name)
                     {
-                        return new ListRequest(service, name);
+                        return new ListRequest(this.service, name);
                     }
 
                     /// <summary>Lists operations that match the specified filter in the request.</summary>
@@ -1168,7 +1168,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.FirebaseHosting.v1beta1.Data.CustomDomain body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a `CustomDomain`.</summary>
@@ -1250,7 +1250,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 /// <param name="name">Required. The name of the `CustomDomain` to delete.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes the specified `CustomDomain`.</summary>
@@ -1337,7 +1337,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 /// <param name="name">Required. The name of the `CustomDomain` to get.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets the specified `CustomDomain`.</summary>
@@ -1387,7 +1387,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>
@@ -1482,7 +1482,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 /// <param name="name">Output only. The fully-qualified name of the `CustomDomain`.</param>
                 public virtual PatchRequest Patch(Google.Apis.FirebaseHosting.v1beta1.Data.CustomDomain body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates the specified `CustomDomain`.</summary>
@@ -1581,7 +1581,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 /// <param name="name">Required. The name of the `CustomDomain` to delete.</param>
                 public virtual UndeleteRequest Undelete(Google.Apis.FirebaseHosting.v1beta1.Data.UndeleteCustomDomainRequest body, string name)
                 {
-                    return new UndeleteRequest(service, body, name);
+                    return new UndeleteRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -1657,7 +1657,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.FirebaseHosting.v1beta1.Data.Domain body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a domain mapping on the specified site.</summary>
@@ -1711,7 +1711,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 /// <param name="name">Required. The name of the domain association to delete.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes the existing domain mapping on the specified site.</summary>
@@ -1756,7 +1756,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 /// <param name="name">Required. The name of the domain configuration to get.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets a domain mapping on the specified site.</summary>
@@ -1803,7 +1803,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists the domains for the specified site.</summary>
@@ -1880,7 +1880,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 /// </param>
                 public virtual UpdateRequest Update(Google.Apis.FirebaseHosting.v1beta1.Data.Domain body, string name)
                 {
-                    return new UpdateRequest(service, body, name);
+                    return new UpdateRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -1962,7 +1962,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.FirebaseHosting.v1beta1.Data.Release body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -2044,7 +2044,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -2104,7 +2104,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>
@@ -2224,7 +2224,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists the remaining files to be uploaded for the specified version.</summary>
@@ -2339,7 +2339,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 /// </param>
                 public virtual CloneRequest Clone(Google.Apis.FirebaseHosting.v1beta1.Data.CloneVersionRequest body, string parent)
                 {
-                    return new CloneRequest(service, body, parent);
+                    return new CloneRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -2398,7 +2398,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.FirebaseHosting.v1beta1.Data.Version body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a new version for the specified site.</summary>
@@ -2485,7 +2485,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes the specified version.</summary>
@@ -2540,7 +2540,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -2598,7 +2598,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>
@@ -2704,7 +2704,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.FirebaseHosting.v1beta1.Data.Version body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -2784,7 +2784,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 /// </param>
                 public virtual PopulateFilesRequest PopulateFiles(Google.Apis.FirebaseHosting.v1beta1.Data.PopulateVersionFilesRequest body, string parent)
                 {
-                    return new PopulateFilesRequest(service, body, parent);
+                    return new PopulateFilesRequest(this.service, body, parent);
                 }
 
                 /// <summary> Adds content files to the specified version. Each file must be under 2 GB.</summary>
@@ -2847,7 +2847,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
             /// </param>
             public virtual CreateRequest Create(Google.Apis.FirebaseHosting.v1beta1.Data.Site body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -2941,7 +2941,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>Deletes the specified Hosting Site from the specified parent Firebase project.</summary>
@@ -2995,7 +2995,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets the specified Hosting Site.</summary>
@@ -3048,7 +3048,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
             /// </param>
             public virtual GetConfigRequest GetConfig(string name)
             {
-                return new GetConfigRequest(service, name);
+                return new GetConfigRequest(this.service, name);
             }
 
             /// <summary>Gets the Hosting metadata for a specific site.</summary>
@@ -3098,7 +3098,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists each Hosting Site associated with the specified parent Firebase project.</summary>
@@ -3185,7 +3185,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.FirebaseHosting.v1beta1.Data.Site body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>Updates attributes of the specified Hosting Site.</summary>
@@ -3260,7 +3260,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
             /// </param>
             public virtual UpdateConfigRequest UpdateConfig(Google.Apis.FirebaseHosting.v1beta1.Data.SiteConfig body, string name)
             {
-                return new UpdateConfigRequest(service, body, name);
+                return new UpdateConfigRequest(this.service, body, name);
             }
 
             /// <summary>Sets the Hosting metadata for a specific site.</summary>
@@ -3392,7 +3392,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.FirebaseHosting.v1beta1.Data.Release body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -3474,7 +3474,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -3534,7 +3534,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>
@@ -3620,7 +3620,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
             /// </param>
             public virtual CreateRequest Create(Google.Apis.FirebaseHosting.v1beta1.Data.Channel body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>Creates a new channel in the specified site.</summary>
@@ -3689,7 +3689,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>
@@ -3742,7 +3742,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Retrieves information for the specified channel of the specified site.</summary>
@@ -3790,7 +3790,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
             /// <param name="parent">Required. The site for which to list channels, in the format: sites/SITE_ID</param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists the channels for the specified site. All sites have a default `live` channel.</summary>
@@ -3871,7 +3871,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.FirebaseHosting.v1beta1.Data.Channel body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -3961,7 +3961,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
             /// </param>
             public virtual CreateRequest Create(Google.Apis.FirebaseHosting.v1beta1.Data.Domain body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>Creates a domain mapping on the specified site.</summary>
@@ -4015,7 +4015,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
             /// <param name="name">Required. The name of the domain association to delete.</param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>Deletes the existing domain mapping on the specified site.</summary>
@@ -4060,7 +4060,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
             /// <param name="name">Required. The name of the domain configuration to get.</param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets a domain mapping on the specified site.</summary>
@@ -4107,7 +4107,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists the domains for the specified site.</summary>
@@ -4180,7 +4180,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
             /// </param>
             public virtual UpdateRequest Update(Google.Apis.FirebaseHosting.v1beta1.Data.Domain body, string name)
             {
-                return new UpdateRequest(service, body, name);
+                return new UpdateRequest(this.service, body, name);
             }
 
             /// <summary>Updates the specified domain mapping, creating the mapping as if it does not exist.</summary>
@@ -4260,7 +4260,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
             /// </param>
             public virtual CreateRequest Create(Google.Apis.FirebaseHosting.v1beta1.Data.Release body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -4340,7 +4340,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>
@@ -4399,7 +4399,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>
@@ -4519,7 +4519,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists the remaining files to be uploaded for the specified version.</summary>
@@ -4632,7 +4632,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
             /// </param>
             public virtual CloneRequest Clone(Google.Apis.FirebaseHosting.v1beta1.Data.CloneVersionRequest body, string parent)
             {
-                return new CloneRequest(service, body, parent);
+                return new CloneRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -4689,7 +4689,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
             /// </param>
             public virtual CreateRequest Create(Google.Apis.FirebaseHosting.v1beta1.Data.Version body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>Creates a new version for the specified site.</summary>
@@ -4774,7 +4774,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>Deletes the specified version.</summary>
@@ -4828,7 +4828,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>
@@ -4885,7 +4885,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>
@@ -4991,7 +4991,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.FirebaseHosting.v1beta1.Data.Version body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -5070,7 +5070,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
             /// </param>
             public virtual PopulateFilesRequest PopulateFiles(Google.Apis.FirebaseHosting.v1beta1.Data.PopulateVersionFilesRequest body, string parent)
             {
-                return new PopulateFilesRequest(service, body, parent);
+                return new PopulateFilesRequest(this.service, body, parent);
             }
 
             /// <summary> Adds content files to the specified version. Each file must be under 2 GB.</summary>
@@ -5127,7 +5127,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
         /// </param>
         public virtual GetConfigRequest GetConfig(string name)
         {
-            return new GetConfigRequest(service, name);
+            return new GetConfigRequest(this.service, name);
         }
 
         /// <summary>Gets the Hosting metadata for a specific site.</summary>
@@ -5177,7 +5177,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
         /// </param>
         public virtual UpdateConfigRequest UpdateConfig(Google.Apis.FirebaseHosting.v1beta1.Data.SiteConfig body, string name)
         {
-            return new UpdateConfigRequest(service, body, name);
+            return new UpdateConfigRequest(this.service, body, name);
         }
 
         /// <summary>Sets the Hosting metadata for a specific site.</summary>
@@ -5364,8 +5364,8 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _expireTimeRaw;
@@ -5404,8 +5404,8 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpireTimeRaw);
-            set => ExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -5480,8 +5480,8 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _expireTimeRaw;
@@ -5520,8 +5520,8 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpireTimeRaw);
-            set => ExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Text labels used for extra metadata and/or filtering.</summary>
@@ -5585,8 +5585,8 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -5728,8 +5728,8 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _deleteTimeRaw;
@@ -5769,8 +5769,8 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? DeleteTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DeleteTimeRaw);
-            set => DeleteTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DeleteTimeRaw);
+            set => DeleteTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -5817,8 +5817,8 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpireTimeRaw);
-            set => ExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. The `HostState` of the domain name this `CustomDomain` refers to.</summary>
@@ -5901,8 +5901,8 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
     }
 
@@ -6058,8 +6058,8 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CheckTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CheckTimeRaw);
-            set => CheckTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CheckTimeRaw);
+            set => CheckTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The set of DNS records Hosting needs to serve secure content on the domain.</summary>
@@ -6133,8 +6133,8 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -6200,8 +6200,8 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? DnsFetchTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DnsFetchTimeRaw);
-            set => DnsFetchTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DnsFetchTimeRaw);
+            set => DnsFetchTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The DNS record match status as of the last DNS fetch.</summary>
@@ -6326,8 +6326,8 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LastCheckTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastCheckTimeRaw);
-            set => LastCheckTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastCheckTimeRaw);
+            set => LastCheckTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. The path to the file.</summary>
@@ -6697,8 +6697,8 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ReleaseTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ReleaseTimeRaw);
-            set => ReleaseTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ReleaseTimeRaw);
+            set => ReleaseTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. Identifies the user who created the release.</summary>
@@ -6970,8 +6970,8 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. Identifies the user who created the version.</summary>
@@ -7011,8 +7011,8 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? DeleteTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DeleteTimeRaw);
-            set => DeleteTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DeleteTimeRaw);
+            set => DeleteTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. Identifies the user who `DELETED` the version.</summary>
@@ -7059,8 +7059,8 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? FinalizeTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(FinalizeTimeRaw);
-            set => FinalizeTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(FinalizeTimeRaw);
+            set => FinalizeTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. Identifies the user who `FINALIZED` the version.</summary>

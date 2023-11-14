@@ -359,7 +359,7 @@ namespace Google.Apis.Networkconnectivity.v1
                         /// <param name="name">Required. The name of the route table resource.</param>
                         public virtual GetRequest Get(string name)
                         {
-                            return new GetRequest(service, name);
+                            return new GetRequest(this.service, name);
                         }
 
                         /// <summary>Gets details about a Network Connectivity Center group.</summary>
@@ -411,7 +411,7 @@ namespace Google.Apis.Networkconnectivity.v1
                         /// </param>
                         public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                         {
-                            return new GetIamPolicyRequest(service, resource);
+                            return new GetIamPolicyRequest(this.service, resource);
                         }
 
                         /// <summary>
@@ -485,7 +485,7 @@ namespace Google.Apis.Networkconnectivity.v1
                         /// <param name="parent">Required. The parent resource's name.</param>
                         public virtual ListRequest List(string parent)
                         {
-                            return new ListRequest(service, parent);
+                            return new ListRequest(this.service, parent);
                         }
 
                         /// <summary>Lists groups in a given hub.</summary>
@@ -586,7 +586,7 @@ namespace Google.Apis.Networkconnectivity.v1
                         /// </param>
                         public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Networkconnectivity.v1.Data.SetIamPolicyRequest body, string resource)
                         {
-                            return new SetIamPolicyRequest(service, body, resource);
+                            return new SetIamPolicyRequest(this.service, body, resource);
                         }
 
                         /// <summary>
@@ -655,7 +655,7 @@ namespace Google.Apis.Networkconnectivity.v1
                         /// </param>
                         public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Networkconnectivity.v1.Data.TestIamPermissionsRequest body, string resource)
                         {
-                            return new TestIamPermissionsRequest(service, body, resource);
+                            return new TestIamPermissionsRequest(this.service, body, resource);
                         }
 
                         /// <summary>
@@ -752,7 +752,7 @@ namespace Google.Apis.Networkconnectivity.v1
                             /// <param name="name">Required. The name of the route resource.</param>
                             public virtual GetRequest Get(string name)
                             {
-                                return new GetRequest(service, name);
+                                return new GetRequest(this.service, name);
                             }
 
                             /// <summary>Gets details about the specified route.</summary>
@@ -797,7 +797,7 @@ namespace Google.Apis.Networkconnectivity.v1
                             /// <param name="parent">Required. The parent resource's name.</param>
                             public virtual ListRequest List(string parent)
                             {
-                                return new ListRequest(service, parent);
+                                return new ListRequest(this.service, parent);
                             }
 
                             /// <summary>Lists routes in a given project.</summary>
@@ -891,7 +891,7 @@ namespace Google.Apis.Networkconnectivity.v1
                         /// <param name="name">Required. The name of the route table resource.</param>
                         public virtual GetRequest Get(string name)
                         {
-                            return new GetRequest(service, name);
+                            return new GetRequest(this.service, name);
                         }
 
                         /// <summary>Gets details about a Network Connectivity Center route table.</summary>
@@ -936,7 +936,7 @@ namespace Google.Apis.Networkconnectivity.v1
                         /// <param name="parent">Required. The parent resource's name.</param>
                         public virtual ListRequest List(string parent)
                         {
-                            return new ListRequest(service, parent);
+                            return new ListRequest(this.service, parent);
                         }
 
                         /// <summary>Lists route tables in a given project.</summary>
@@ -1031,7 +1031,7 @@ namespace Google.Apis.Networkconnectivity.v1
                     /// <param name="name">Required. The name of the hub into which to accept the spoke.</param>
                     public virtual AcceptSpokeRequest AcceptSpoke(Google.Apis.Networkconnectivity.v1.Data.AcceptHubSpokeRequest body, string name)
                     {
-                        return new AcceptSpokeRequest(service, body, name);
+                        return new AcceptSpokeRequest(this.service, body, name);
                     }
 
                     /// <summary>Accepts a proposal to attach a Network Connectivity Center spoke to a hub.</summary>
@@ -1084,7 +1084,7 @@ namespace Google.Apis.Networkconnectivity.v1
                     /// <param name="parent">Required. The parent resource.</param>
                     public virtual CreateRequest Create(Google.Apis.Networkconnectivity.v1.Data.Hub body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>Creates a new Network Connectivity Center hub in the specified project.</summary>
@@ -1170,7 +1170,7 @@ namespace Google.Apis.Networkconnectivity.v1
                     /// <param name="name">Required. The name of the hub to delete.</param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>Deletes a Network Connectivity Center hub.</summary>
@@ -1237,7 +1237,7 @@ namespace Google.Apis.Networkconnectivity.v1
                     /// <param name="name">Required. The name of the hub resource to get.</param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Gets details about a Network Connectivity Center hub.</summary>
@@ -1289,7 +1289,7 @@ namespace Google.Apis.Networkconnectivity.v1
                     /// </param>
                     public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                     {
-                        return new GetIamPolicyRequest(service, resource);
+                        return new GetIamPolicyRequest(this.service, resource);
                     }
 
                     /// <summary>
@@ -1363,7 +1363,7 @@ namespace Google.Apis.Networkconnectivity.v1
                     /// <param name="parent">Required. The parent resource's name.</param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists the Network Connectivity Center hubs associated with a given project.</summary>
@@ -1460,7 +1460,7 @@ namespace Google.Apis.Networkconnectivity.v1
                     /// <param name="name">Required. The name of the hub.</param>
                     public virtual ListSpokesRequest ListSpokes(string name)
                     {
-                        return new ListSpokesRequest(service, name);
+                        return new ListSpokesRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -1622,7 +1622,7 @@ namespace Google.Apis.Networkconnectivity.v1
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.Networkconnectivity.v1.Data.Hub body, string name)
                     {
-                        return new PatchRequest(service, body, name);
+                        return new PatchRequest(this.service, body, name);
                     }
 
                     /// <summary>Updates the description and/or labels of a Network Connectivity Center hub.</summary>
@@ -1721,7 +1721,7 @@ namespace Google.Apis.Networkconnectivity.v1
                     /// <param name="name">Required. The name of the hub from which to reject the spoke.</param>
                     public virtual RejectSpokeRequest RejectSpoke(Google.Apis.Networkconnectivity.v1.Data.RejectHubSpokeRequest body, string name)
                     {
-                        return new RejectSpokeRequest(service, body, name);
+                        return new RejectSpokeRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -1785,7 +1785,7 @@ namespace Google.Apis.Networkconnectivity.v1
                     /// </param>
                     public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Networkconnectivity.v1.Data.SetIamPolicyRequest body, string resource)
                     {
-                        return new SetIamPolicyRequest(service, body, resource);
+                        return new SetIamPolicyRequest(this.service, body, resource);
                     }
 
                     /// <summary>
@@ -1854,7 +1854,7 @@ namespace Google.Apis.Networkconnectivity.v1
                     /// </param>
                     public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Networkconnectivity.v1.Data.TestIamPermissionsRequest body, string resource)
                     {
-                        return new TestIamPermissionsRequest(service, body, resource);
+                        return new TestIamPermissionsRequest(this.service, body, resource);
                     }
 
                     /// <summary>
@@ -1934,7 +1934,7 @@ namespace Google.Apis.Networkconnectivity.v1
                     /// <param name="parent">Required. The parent resource's name of the PolicyBasedRoute.</param>
                     public virtual CreateRequest Create(Google.Apis.Networkconnectivity.v1.Data.PolicyBasedRoute body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>Creates a new policy-based route in a given project and location.</summary>
@@ -2020,7 +2020,7 @@ namespace Google.Apis.Networkconnectivity.v1
                     /// <param name="name">Required. Name of the policy-based route resource to delete.</param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>Deletes a single policy-based route.</summary>
@@ -2087,7 +2087,7 @@ namespace Google.Apis.Networkconnectivity.v1
                     /// <param name="name">Required. Name of the PolicyBasedRoute resource to get.</param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Gets details of a single policy-based route.</summary>
@@ -2139,7 +2139,7 @@ namespace Google.Apis.Networkconnectivity.v1
                     /// </param>
                     public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                     {
-                        return new GetIamPolicyRequest(service, resource);
+                        return new GetIamPolicyRequest(this.service, resource);
                     }
 
                     /// <summary>
@@ -2213,7 +2213,7 @@ namespace Google.Apis.Networkconnectivity.v1
                     /// <param name="parent">Required. The parent resource's name.</param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists policy-based routes in a given project and location.</summary>
@@ -2314,7 +2314,7 @@ namespace Google.Apis.Networkconnectivity.v1
                     /// </param>
                     public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Networkconnectivity.v1.Data.SetIamPolicyRequest body, string resource)
                     {
-                        return new SetIamPolicyRequest(service, body, resource);
+                        return new SetIamPolicyRequest(this.service, body, resource);
                     }
 
                     /// <summary>
@@ -2383,7 +2383,7 @@ namespace Google.Apis.Networkconnectivity.v1
                     /// </param>
                     public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Networkconnectivity.v1.Data.TestIamPermissionsRequest body, string resource)
                     {
-                        return new TestIamPermissionsRequest(service, body, resource);
+                        return new TestIamPermissionsRequest(this.service, body, resource);
                     }
 
                     /// <summary>
@@ -2464,7 +2464,7 @@ namespace Google.Apis.Networkconnectivity.v1
                 /// <param name="parent">Required. The parent resource's name of the internal range.</param>
                 public virtual CreateRequest Create(Google.Apis.Networkconnectivity.v1.Data.InternalRange body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a new internal range in a given project and location.</summary>
@@ -2552,7 +2552,7 @@ namespace Google.Apis.Networkconnectivity.v1
                 /// <param name="name">Required. The name of the internal range to delete.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes a single internal range.</summary>
@@ -2618,7 +2618,7 @@ namespace Google.Apis.Networkconnectivity.v1
                 /// <param name="name">Required. Name of the InternalRange to get.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets details of a single internal range.</summary>
@@ -2663,7 +2663,7 @@ namespace Google.Apis.Networkconnectivity.v1
                 /// <param name="parent">Required. The parent resource's name.</param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists internal ranges in a given project and location.</summary>
@@ -2761,7 +2761,7 @@ namespace Google.Apis.Networkconnectivity.v1
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.Networkconnectivity.v1.Data.InternalRange body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates the parameters of a single internal range.</summary>
@@ -2881,7 +2881,7 @@ namespace Google.Apis.Networkconnectivity.v1
                 /// <param name="name">The name of the operation resource to be cancelled.</param>
                 public virtual CancelRequest Cancel(Google.Apis.Networkconnectivity.v1.Data.GoogleLongrunningCancelOperationRequest body, string name)
                 {
-                    return new CancelRequest(service, body, name);
+                    return new CancelRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -2944,7 +2944,7 @@ namespace Google.Apis.Networkconnectivity.v1
                 /// <param name="name">The name of the operation resource to be deleted.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -2996,7 +2996,7 @@ namespace Google.Apis.Networkconnectivity.v1
                 /// <param name="name">The name of the operation resource.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -3047,7 +3047,7 @@ namespace Google.Apis.Networkconnectivity.v1
                 /// <param name="name">The name of the operation's parent resource.</param>
                 public virtual ListRequest List(string name)
                 {
-                    return new ListRequest(service, name);
+                    return new ListRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -3149,7 +3149,7 @@ namespace Google.Apis.Networkconnectivity.v1
                 /// <param name="name">Required. The name of the ServiceClass to delete.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes a single ServiceClass.</summary>
@@ -3230,7 +3230,7 @@ namespace Google.Apis.Networkconnectivity.v1
                 /// <param name="name">Required. Name of the ServiceClass to get.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets details of a single ServiceClass.</summary>
@@ -3282,7 +3282,7 @@ namespace Google.Apis.Networkconnectivity.v1
                 /// </param>
                 public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                 {
-                    return new GetIamPolicyRequest(service, resource);
+                    return new GetIamPolicyRequest(this.service, resource);
                 }
 
                 /// <summary>
@@ -3357,7 +3357,7 @@ namespace Google.Apis.Networkconnectivity.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists ServiceClasses in a given project and location.</summary>
@@ -3455,7 +3455,7 @@ namespace Google.Apis.Networkconnectivity.v1
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.Networkconnectivity.v1.Data.ServiceClass body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates the parameters of a single ServiceClass.</summary>
@@ -3557,7 +3557,7 @@ namespace Google.Apis.Networkconnectivity.v1
                 /// </param>
                 public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Networkconnectivity.v1.Data.SetIamPolicyRequest body, string resource)
                 {
-                    return new SetIamPolicyRequest(service, body, resource);
+                    return new SetIamPolicyRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -3626,7 +3626,7 @@ namespace Google.Apis.Networkconnectivity.v1
                 /// </param>
                 public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Networkconnectivity.v1.Data.TestIamPermissionsRequest body, string resource)
                 {
-                    return new TestIamPermissionsRequest(service, body, resource);
+                    return new TestIamPermissionsRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -3709,7 +3709,7 @@ namespace Google.Apis.Networkconnectivity.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Networkconnectivity.v1.Data.ServiceConnectionMap body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a new ServiceConnectionMap in a given project and location.</summary>
@@ -3801,7 +3801,7 @@ namespace Google.Apis.Networkconnectivity.v1
                 /// <param name="name">Required. The name of the ServiceConnectionMap to delete.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes a single ServiceConnectionMap.</summary>
@@ -3882,7 +3882,7 @@ namespace Google.Apis.Networkconnectivity.v1
                 /// <param name="name">Required. Name of the ServiceConnectionMap to get.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets details of a single ServiceConnectionMap.</summary>
@@ -3934,7 +3934,7 @@ namespace Google.Apis.Networkconnectivity.v1
                 /// </param>
                 public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                 {
-                    return new GetIamPolicyRequest(service, resource);
+                    return new GetIamPolicyRequest(this.service, resource);
                 }
 
                 /// <summary>
@@ -4009,7 +4009,7 @@ namespace Google.Apis.Networkconnectivity.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists ServiceConnectionMaps in a given project and location.</summary>
@@ -4107,7 +4107,7 @@ namespace Google.Apis.Networkconnectivity.v1
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.Networkconnectivity.v1.Data.ServiceConnectionMap body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates the parameters of a single ServiceConnectionMap.</summary>
@@ -4209,7 +4209,7 @@ namespace Google.Apis.Networkconnectivity.v1
                 /// </param>
                 public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Networkconnectivity.v1.Data.SetIamPolicyRequest body, string resource)
                 {
-                    return new SetIamPolicyRequest(service, body, resource);
+                    return new SetIamPolicyRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -4278,7 +4278,7 @@ namespace Google.Apis.Networkconnectivity.v1
                 /// </param>
                 public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Networkconnectivity.v1.Data.TestIamPermissionsRequest body, string resource)
                 {
-                    return new TestIamPermissionsRequest(service, body, resource);
+                    return new TestIamPermissionsRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -4361,7 +4361,7 @@ namespace Google.Apis.Networkconnectivity.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Networkconnectivity.v1.Data.ServiceConnectionPolicy body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a new ServiceConnectionPolicy in a given project and location.</summary>
@@ -4453,7 +4453,7 @@ namespace Google.Apis.Networkconnectivity.v1
                 /// <param name="name">Required. The name of the ServiceConnectionPolicy to delete.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes a single ServiceConnectionPolicy.</summary>
@@ -4534,7 +4534,7 @@ namespace Google.Apis.Networkconnectivity.v1
                 /// <param name="name">Required. Name of the ServiceConnectionPolicy to get.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets details of a single ServiceConnectionPolicy.</summary>
@@ -4586,7 +4586,7 @@ namespace Google.Apis.Networkconnectivity.v1
                 /// </param>
                 public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                 {
-                    return new GetIamPolicyRequest(service, resource);
+                    return new GetIamPolicyRequest(this.service, resource);
                 }
 
                 /// <summary>
@@ -4661,7 +4661,7 @@ namespace Google.Apis.Networkconnectivity.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists ServiceConnectionPolicies in a given project and location.</summary>
@@ -4759,7 +4759,7 @@ namespace Google.Apis.Networkconnectivity.v1
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.Networkconnectivity.v1.Data.ServiceConnectionPolicy body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates the parameters of a single ServiceConnectionPolicy.</summary>
@@ -4861,7 +4861,7 @@ namespace Google.Apis.Networkconnectivity.v1
                 /// </param>
                 public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Networkconnectivity.v1.Data.SetIamPolicyRequest body, string resource)
                 {
-                    return new SetIamPolicyRequest(service, body, resource);
+                    return new SetIamPolicyRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -4930,7 +4930,7 @@ namespace Google.Apis.Networkconnectivity.v1
                 /// </param>
                 public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Networkconnectivity.v1.Data.TestIamPermissionsRequest body, string resource)
                 {
-                    return new TestIamPermissionsRequest(service, body, resource);
+                    return new TestIamPermissionsRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -5013,7 +5013,7 @@ namespace Google.Apis.Networkconnectivity.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Networkconnectivity.v1.Data.ServiceConnectionToken body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a new ServiceConnectionToken in a given project and location.</summary>
@@ -5105,7 +5105,7 @@ namespace Google.Apis.Networkconnectivity.v1
                 /// <param name="name">Required. The name of the ServiceConnectionToken to delete.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes a single ServiceConnectionToken.</summary>
@@ -5186,7 +5186,7 @@ namespace Google.Apis.Networkconnectivity.v1
                 /// <param name="name">Required. Name of the ServiceConnectionToken to get.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets details of a single ServiceConnectionToken.</summary>
@@ -5233,7 +5233,7 @@ namespace Google.Apis.Networkconnectivity.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists ServiceConnectionTokens in a given project and location.</summary>
@@ -5345,7 +5345,7 @@ namespace Google.Apis.Networkconnectivity.v1
                 /// <param name="parent">Required. The parent resource.</param>
                 public virtual CreateRequest Create(Google.Apis.Networkconnectivity.v1.Data.Spoke body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a Network Connectivity Center spoke.</summary>
@@ -5431,7 +5431,7 @@ namespace Google.Apis.Networkconnectivity.v1
                 /// <param name="name">Required. The name of the spoke to delete.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes a Network Connectivity Center spoke.</summary>
@@ -5498,7 +5498,7 @@ namespace Google.Apis.Networkconnectivity.v1
                 /// <param name="name">Required. The name of the spoke resource.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets details about a Network Connectivity Center spoke.</summary>
@@ -5550,7 +5550,7 @@ namespace Google.Apis.Networkconnectivity.v1
                 /// </param>
                 public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                 {
-                    return new GetIamPolicyRequest(service, resource);
+                    return new GetIamPolicyRequest(this.service, resource);
                 }
 
                 /// <summary>
@@ -5623,7 +5623,7 @@ namespace Google.Apis.Networkconnectivity.v1
                 /// <param name="parent">Required. The parent resource.</param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists the Network Connectivity Center spokes in a specified project and location.</summary>
@@ -5720,7 +5720,7 @@ namespace Google.Apis.Networkconnectivity.v1
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.Networkconnectivity.v1.Data.Spoke body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates the parameters of a Network Connectivity Center spoke.</summary>
@@ -5822,7 +5822,7 @@ namespace Google.Apis.Networkconnectivity.v1
                 /// </param>
                 public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Networkconnectivity.v1.Data.SetIamPolicyRequest body, string resource)
                 {
-                    return new SetIamPolicyRequest(service, body, resource);
+                    return new SetIamPolicyRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -5891,7 +5891,7 @@ namespace Google.Apis.Networkconnectivity.v1
                 /// </param>
                 public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Networkconnectivity.v1.Data.TestIamPermissionsRequest body, string resource)
                 {
-                    return new TestIamPermissionsRequest(service, body, resource);
+                    return new TestIamPermissionsRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -5953,7 +5953,7 @@ namespace Google.Apis.Networkconnectivity.v1
             /// <param name="name">Resource name for the location.</param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets information about a location.</summary>
@@ -5998,7 +5998,7 @@ namespace Google.Apis.Networkconnectivity.v1
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
             {
-                return new ListRequest(service, name);
+                return new ListRequest(this.service, name);
             }
 
             /// <summary>Lists information about the supported locations for this service.</summary>
@@ -6585,8 +6585,8 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Optional. The description of the group.</summary>
@@ -6652,8 +6652,8 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -6701,8 +6701,8 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>An optional description of the hub.</summary>
@@ -6791,8 +6791,8 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -6853,8 +6853,8 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>A description of this resource.</summary>
@@ -6943,8 +6943,8 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The type of usage set for this InternalRange.</summary>
@@ -7435,8 +7435,8 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _endTimeRaw;
@@ -7472,8 +7472,8 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -7617,8 +7617,8 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -7717,8 +7717,8 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Optional. VM instances to which this policy-based route applies to.</summary>
@@ -7891,8 +7891,8 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>An optional description of the route.</summary>
@@ -7985,8 +7985,8 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -8028,8 +8028,8 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>An optional description of the route table.</summary>
@@ -8095,8 +8095,8 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -8181,8 +8181,8 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>A description of this resource.</summary>
@@ -8248,8 +8248,8 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
     }
 
@@ -8297,8 +8297,8 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>A description of this resource.</summary>
@@ -8383,8 +8383,8 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
     }
 
@@ -8424,8 +8424,8 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>A description of this resource.</summary>
@@ -8514,8 +8514,8 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
     }
 
@@ -8555,8 +8555,8 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>A description of this resource.</summary>
@@ -8603,8 +8603,8 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpireTimeRaw);
-            set => ExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>User-defined labels.</summary>
@@ -8663,8 +8663,8 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
     }
 
@@ -8730,8 +8730,8 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>An optional description of the spoke.</summary>
@@ -8832,8 +8832,8 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>

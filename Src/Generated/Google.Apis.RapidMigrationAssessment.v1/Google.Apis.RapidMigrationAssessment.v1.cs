@@ -317,7 +317,7 @@ namespace Google.Apis.RapidMigrationAssessment.v1
                 /// <param name="parent">Required. Name of the parent (project+location).</param>
                 public virtual CreateRequest Create(Google.Apis.RapidMigrationAssessment.v1.Data.Annotation body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates an Annotation</summary>
@@ -381,7 +381,7 @@ namespace Google.Apis.RapidMigrationAssessment.v1
                 /// <param name="name">Required. Name of the resource.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets details of a single Annotation.</summary>
@@ -447,7 +447,7 @@ namespace Google.Apis.RapidMigrationAssessment.v1
                 /// <param name="parent">Required. Name of the parent (project+location).</param>
                 public virtual CreateRequest Create(Google.Apis.RapidMigrationAssessment.v1.Data.Collector body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -528,7 +528,7 @@ namespace Google.Apis.RapidMigrationAssessment.v1
                 /// <param name="name">Required. Name of the resource.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -597,7 +597,7 @@ namespace Google.Apis.RapidMigrationAssessment.v1
                 /// <param name="name">Required. Name of the resource.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets details of a single Collector.</summary>
@@ -642,7 +642,7 @@ namespace Google.Apis.RapidMigrationAssessment.v1
                 /// <param name="parent">Required. Parent value for ListCollectorsRequest.</param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists Collectors in a given project and location.</summary>
@@ -739,7 +739,7 @@ namespace Google.Apis.RapidMigrationAssessment.v1
                 /// <param name="name">name of resource.</param>
                 public virtual PatchRequest Patch(Google.Apis.RapidMigrationAssessment.v1.Data.Collector body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates the parameters of a single Collector.</summary>
@@ -830,7 +830,7 @@ namespace Google.Apis.RapidMigrationAssessment.v1
                 /// <param name="name">Required. Name of the resource.</param>
                 public virtual PauseRequest Pause(Google.Apis.RapidMigrationAssessment.v1.Data.PauseCollectorRequest body, string name)
                 {
-                    return new PauseRequest(service, body, name);
+                    return new PauseRequest(this.service, body, name);
                 }
 
                 /// <summary>Pauses the given collector.</summary>
@@ -883,7 +883,7 @@ namespace Google.Apis.RapidMigrationAssessment.v1
                 /// <param name="name">Required. Name of the resource.</param>
                 public virtual RegisterRequest Register(Google.Apis.RapidMigrationAssessment.v1.Data.RegisterCollectorRequest body, string name)
                 {
-                    return new RegisterRequest(service, body, name);
+                    return new RegisterRequest(this.service, body, name);
                 }
 
                 /// <summary>Registers the given collector.</summary>
@@ -936,7 +936,7 @@ namespace Google.Apis.RapidMigrationAssessment.v1
                 /// <param name="name">Required. Name of the resource.</param>
                 public virtual ResumeRequest Resume(Google.Apis.RapidMigrationAssessment.v1.Data.ResumeCollectorRequest body, string name)
                 {
-                    return new ResumeRequest(service, body, name);
+                    return new ResumeRequest(this.service, body, name);
                 }
 
                 /// <summary>Resumes the given collector.</summary>
@@ -1014,7 +1014,7 @@ namespace Google.Apis.RapidMigrationAssessment.v1
                 /// <param name="name">The name of the operation resource to be cancelled.</param>
                 public virtual CancelRequest Cancel(Google.Apis.RapidMigrationAssessment.v1.Data.CancelOperationRequest body, string name)
                 {
-                    return new CancelRequest(service, body, name);
+                    return new CancelRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -1077,7 +1077,7 @@ namespace Google.Apis.RapidMigrationAssessment.v1
                 /// <param name="name">The name of the operation resource to be deleted.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -1129,7 +1129,7 @@ namespace Google.Apis.RapidMigrationAssessment.v1
                 /// <param name="name">The name of the operation resource.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -1180,7 +1180,7 @@ namespace Google.Apis.RapidMigrationAssessment.v1
                 /// <param name="name">The name of the operation's parent resource.</param>
                 public virtual ListRequest List(string name)
                 {
-                    return new ListRequest(service, name);
+                    return new ListRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -1265,7 +1265,7 @@ namespace Google.Apis.RapidMigrationAssessment.v1
             /// <param name="name">Resource name for the location.</param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets information about a location.</summary>
@@ -1310,7 +1310,7 @@ namespace Google.Apis.RapidMigrationAssessment.v1
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
             {
-                return new ListRequest(service, name);
+                return new ListRequest(this.service, name);
             }
 
             /// <summary>Lists information about the supported locations for this service.</summary>
@@ -1435,8 +1435,8 @@ namespace Google.Apis.RapidMigrationAssessment.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Labels as key value pairs.</summary>
@@ -1484,8 +1484,8 @@ namespace Google.Apis.RapidMigrationAssessment.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -1549,8 +1549,8 @@ namespace Google.Apis.RapidMigrationAssessment.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>User specified description of the Collector.</summary>
@@ -1622,8 +1622,8 @@ namespace Google.Apis.RapidMigrationAssessment.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. Reference to MC Source vsphere_scan.</summary>
@@ -1820,8 +1820,8 @@ namespace Google.Apis.RapidMigrationAssessment.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _endTimeRaw;
@@ -1857,8 +1857,8 @@ namespace Google.Apis.RapidMigrationAssessment.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>

@@ -304,7 +304,7 @@ namespace Google.Apis.SmartDeviceManagement.v1
             /// <param name="name">The name of the device requested. For example: "enterprises/XYZ/devices/123"</param>
             public virtual ExecuteCommandRequest ExecuteCommand(Google.Apis.SmartDeviceManagement.v1.Data.GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandRequest body, string name)
             {
-                return new ExecuteCommandRequest(service, body, name);
+                return new ExecuteCommandRequest(this.service, body, name);
             }
 
             /// <summary>Executes a command to device managed by the enterprise.</summary>
@@ -356,7 +356,7 @@ namespace Google.Apis.SmartDeviceManagement.v1
             /// <param name="name">The name of the device requested. For example: "enterprises/XYZ/devices/123"</param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets a device managed by the enterprise.</summary>
@@ -401,7 +401,7 @@ namespace Google.Apis.SmartDeviceManagement.v1
             /// <param name="parent">The parent enterprise to list devices under. E.g. "enterprises/XYZ".</param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists devices managed by the enterprise.</summary>
@@ -499,7 +499,7 @@ namespace Google.Apis.SmartDeviceManagement.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets a room managed by the enterprise.</summary>
@@ -548,7 +548,7 @@ namespace Google.Apis.SmartDeviceManagement.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists rooms managed by the enterprise.</summary>
@@ -598,7 +598,7 @@ namespace Google.Apis.SmartDeviceManagement.v1
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets a structure managed by the enterprise.</summary>
@@ -645,7 +645,7 @@ namespace Google.Apis.SmartDeviceManagement.v1
             /// <param name="parent">The parent enterprise to list structures under. E.g. "enterprises/XYZ".</param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists structures managed by the enterprise.</summary>

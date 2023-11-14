@@ -297,7 +297,7 @@ namespace Google.Apis.SecretManager.v1beta1
             /// <param name="name">Resource name for the location.</param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets information about a location.</summary>
@@ -342,7 +342,7 @@ namespace Google.Apis.SecretManager.v1beta1
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
             {
-                return new ListRequest(service, name);
+                return new ListRequest(this.service, name);
             }
 
             /// <summary>Lists information about the supported locations for this service.</summary>
@@ -472,7 +472,7 @@ namespace Google.Apis.SecretManager.v1beta1
                 /// </param>
                 public virtual AccessRequest Access(string name)
                 {
-                    return new AccessRequest(service, name);
+                    return new AccessRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -530,7 +530,7 @@ namespace Google.Apis.SecretManager.v1beta1
                 /// </param>
                 public virtual DestroyRequest Destroy(Google.Apis.SecretManager.v1beta1.Data.DestroySecretVersionRequest body, string name)
                 {
-                    return new DestroyRequest(service, body, name);
+                    return new DestroyRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -592,7 +592,7 @@ namespace Google.Apis.SecretManager.v1beta1
                 /// </param>
                 public virtual DisableRequest Disable(Google.Apis.SecretManager.v1beta1.Data.DisableSecretVersionRequest body, string name)
                 {
-                    return new DisableRequest(service, body, name);
+                    return new DisableRequest(this.service, body, name);
                 }
 
                 /// <summary>Disables a SecretVersion. Sets the state of the SecretVersion to DISABLED.</summary>
@@ -651,7 +651,7 @@ namespace Google.Apis.SecretManager.v1beta1
                 /// </param>
                 public virtual EnableRequest Enable(Google.Apis.SecretManager.v1beta1.Data.EnableSecretVersionRequest body, string name)
                 {
-                    return new EnableRequest(service, body, name);
+                    return new EnableRequest(this.service, body, name);
                 }
 
                 /// <summary>Enables a SecretVersion. Sets the state of the SecretVersion to ENABLED.</summary>
@@ -712,7 +712,7 @@ namespace Google.Apis.SecretManager.v1beta1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -767,7 +767,7 @@ namespace Google.Apis.SecretManager.v1beta1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists SecretVersions. This call does not return secret data.</summary>
@@ -852,7 +852,7 @@ namespace Google.Apis.SecretManager.v1beta1
             /// </param>
             public virtual AddVersionRequest AddVersion(Google.Apis.SecretManager.v1beta1.Data.AddSecretVersionRequest body, string parent)
             {
-                return new AddVersionRequest(service, body, parent);
+                return new AddVersionRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -912,7 +912,7 @@ namespace Google.Apis.SecretManager.v1beta1
             /// </param>
             public virtual CreateRequest Create(Google.Apis.SecretManager.v1beta1.Data.Secret body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>Creates a new Secret containing no SecretVersions.</summary>
@@ -984,7 +984,7 @@ namespace Google.Apis.SecretManager.v1beta1
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>Deletes a Secret.</summary>
@@ -1033,7 +1033,7 @@ namespace Google.Apis.SecretManager.v1beta1
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets metadata for a given Secret.</summary>
@@ -1084,7 +1084,7 @@ namespace Google.Apis.SecretManager.v1beta1
             /// </param>
             public virtual GetIamPolicyRequest GetIamPolicy(string resource)
             {
-                return new GetIamPolicyRequest(service, resource);
+                return new GetIamPolicyRequest(this.service, resource);
             }
 
             /// <summary>
@@ -1159,7 +1159,7 @@ namespace Google.Apis.SecretManager.v1beta1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists Secrets.</summary>
@@ -1238,7 +1238,7 @@ namespace Google.Apis.SecretManager.v1beta1
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.SecretManager.v1beta1.Data.Secret body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>Updates metadata of an existing Secret.</summary>
@@ -1311,7 +1311,7 @@ namespace Google.Apis.SecretManager.v1beta1
             /// </param>
             public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.SecretManager.v1beta1.Data.SetIamPolicyRequest body, string resource)
             {
-                return new SetIamPolicyRequest(service, body, resource);
+                return new SetIamPolicyRequest(this.service, body, resource);
             }
 
             /// <summary>
@@ -1379,7 +1379,7 @@ namespace Google.Apis.SecretManager.v1beta1
             /// </param>
             public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.SecretManager.v1beta1.Data.TestIamPermissionsRequest body, string resource)
             {
-                return new TestIamPermissionsRequest(service, body, resource);
+                return new TestIamPermissionsRequest(this.service, body, resource);
             }
 
             /// <summary>
@@ -1886,8 +1886,8 @@ namespace Google.Apis.SecretManager.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -1965,8 +1965,8 @@ namespace Google.Apis.SecretManager.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _destroyTimeRaw;
@@ -2004,8 +2004,8 @@ namespace Google.Apis.SecretManager.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? DestroyTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DestroyTimeRaw);
-            set => DestroyTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DestroyTimeRaw);
+            set => DestroyTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>

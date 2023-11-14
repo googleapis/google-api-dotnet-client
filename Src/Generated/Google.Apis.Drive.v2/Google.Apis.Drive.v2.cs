@@ -375,7 +375,7 @@ namespace Google.Apis.Drive.v2
         /// <summary>Gets the information about the current user along with Drive API settings</summary>
         public virtual GetRequest Get()
         {
-            return new GetRequest(service);
+            return new GetRequest(this.service);
         }
 
         /// <summary>Gets the information about the current user along with Drive API settings</summary>
@@ -462,7 +462,7 @@ namespace Google.Apis.Drive.v2
         /// <param name="appId">The ID of the app.</param>
         public virtual GetRequest Get(string appId)
         {
-            return new GetRequest(service, appId);
+            return new GetRequest(this.service, appId);
         }
 
         /// <summary>Gets a specific app.</summary>
@@ -506,7 +506,7 @@ namespace Google.Apis.Drive.v2
         /// <summary>Lists a user's installed apps.</summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>Lists a user's installed apps.</summary>
@@ -602,7 +602,7 @@ namespace Google.Apis.Drive.v2
         /// <param name="changeId">The ID of the change.</param>
         public virtual GetRequest Get(string changeId)
         {
-            return new GetRequest(service, changeId);
+            return new GetRequest(this.service, changeId);
         }
 
         /// <summary>
@@ -696,7 +696,7 @@ namespace Google.Apis.Drive.v2
         /// <summary>Gets the starting pageToken for listing future changes.</summary>
         public virtual GetStartPageTokenRequest GetStartPageToken()
         {
-            return new GetStartPageTokenRequest(service);
+            return new GetStartPageTokenRequest(this.service);
         }
 
         /// <summary>Gets the starting pageToken for listing future changes.</summary>
@@ -778,7 +778,7 @@ namespace Google.Apis.Drive.v2
         /// <summary>Lists the changes for a user or shared drive.</summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>Lists the changes for a user or shared drive.</summary>
@@ -1013,7 +1013,7 @@ namespace Google.Apis.Drive.v2
         /// <param name="body">The body of the request.</param>
         public virtual WatchRequest Watch(Google.Apis.Drive.v2.Data.Channel body)
         {
-            return new WatchRequest(service, body);
+            return new WatchRequest(this.service, body);
         }
 
         /// <summary>Subscribe to changes for a user.</summary>
@@ -1270,7 +1270,7 @@ namespace Google.Apis.Drive.v2
         /// <param name="body">The body of the request.</param>
         public virtual StopRequest Stop(Google.Apis.Drive.v2.Data.Channel body)
         {
-            return new StopRequest(service, body);
+            return new StopRequest(this.service, body);
         }
 
         /// <summary>Stops watching resources through this channel.</summary>
@@ -1325,7 +1325,7 @@ namespace Google.Apis.Drive.v2
         /// <param name="childId">The ID of the child.</param>
         public virtual DeleteRequest Delete(string folderId, string childId)
         {
-            return new DeleteRequest(service, folderId, childId);
+            return new DeleteRequest(this.service, folderId, childId);
         }
 
         /// <summary>Removes a child from a folder.</summary>
@@ -1399,7 +1399,7 @@ namespace Google.Apis.Drive.v2
         /// <param name="childId">The ID of the child.</param>
         public virtual GetRequest Get(string folderId, string childId)
         {
-            return new GetRequest(service, folderId, childId);
+            return new GetRequest(this.service, folderId, childId);
         }
 
         /// <summary>Gets a specific child reference.</summary>
@@ -1458,7 +1458,7 @@ namespace Google.Apis.Drive.v2
         /// <param name="folderId">The ID of the folder.</param>
         public virtual InsertRequest Insert(Google.Apis.Drive.v2.Data.ChildReference body, string folderId)
         {
-            return new InsertRequest(service, body, folderId);
+            return new InsertRequest(this.service, body, folderId);
         }
 
         /// <summary>Inserts a file into a folder.</summary>
@@ -1548,7 +1548,7 @@ namespace Google.Apis.Drive.v2
         /// <param name="folderId">The ID of the folder.</param>
         public virtual ListRequest List(string folderId)
         {
-            return new ListRequest(service, folderId);
+            return new ListRequest(this.service, folderId);
         }
 
         /// <summary>Lists a folder's children.</summary>
@@ -1663,7 +1663,7 @@ namespace Google.Apis.Drive.v2
         /// <param name="commentId">The ID of the comment.</param>
         public virtual DeleteRequest Delete(string fileId, string commentId)
         {
-            return new DeleteRequest(service, fileId, commentId);
+            return new DeleteRequest(this.service, fileId, commentId);
         }
 
         /// <summary>Deletes a comment.</summary>
@@ -1722,7 +1722,7 @@ namespace Google.Apis.Drive.v2
         /// <param name="commentId">The ID of the comment.</param>
         public virtual GetRequest Get(string fileId, string commentId)
         {
-            return new GetRequest(service, fileId, commentId);
+            return new GetRequest(this.service, fileId, commentId);
         }
 
         /// <summary>Gets a comment by ID.</summary>
@@ -1795,7 +1795,7 @@ namespace Google.Apis.Drive.v2
         /// <param name="fileId">The ID of the file.</param>
         public virtual InsertRequest Insert(Google.Apis.Drive.v2.Data.Comment body, string fileId)
         {
-            return new InsertRequest(service, body, fileId);
+            return new InsertRequest(this.service, body, fileId);
         }
 
         /// <summary>Creates a new comment on the given file.</summary>
@@ -1847,7 +1847,7 @@ namespace Google.Apis.Drive.v2
         /// <param name="fileId">The ID of the file.</param>
         public virtual ListRequest List(string fileId)
         {
-            return new ListRequest(service, fileId);
+            return new ListRequest(this.service, fileId);
         }
 
         /// <summary>Lists a file's comments.</summary>
@@ -1951,7 +1951,7 @@ namespace Google.Apis.Drive.v2
         /// <param name="commentId">The ID of the comment.</param>
         public virtual PatchRequest Patch(Google.Apis.Drive.v2.Data.Comment body, string fileId, string commentId)
         {
-            return new PatchRequest(service, body, fileId, commentId);
+            return new PatchRequest(this.service, body, fileId, commentId);
         }
 
         /// <summary>Updates an existing comment.</summary>
@@ -2018,7 +2018,7 @@ namespace Google.Apis.Drive.v2
         /// <param name="commentId">The ID of the comment.</param>
         public virtual UpdateRequest Update(Google.Apis.Drive.v2.Data.Comment body, string fileId, string commentId)
         {
-            return new UpdateRequest(service, body, fileId, commentId);
+            return new UpdateRequest(this.service, body, fileId, commentId);
         }
 
         /// <summary>Updates an existing comment.</summary>
@@ -2101,7 +2101,7 @@ namespace Google.Apis.Drive.v2
         /// <param name="driveId">The ID of the shared drive.</param>
         public virtual DeleteRequest Delete(string driveId)
         {
-            return new DeleteRequest(service, driveId);
+            return new DeleteRequest(this.service, driveId);
         }
 
         /// <summary>
@@ -2179,7 +2179,7 @@ namespace Google.Apis.Drive.v2
         /// <param name="driveId">The ID of the shared drive.</param>
         public virtual GetRequest Get(string driveId)
         {
-            return new GetRequest(service, driveId);
+            return new GetRequest(this.service, driveId);
         }
 
         /// <summary>Gets a shared drive's metadata by ID.</summary>
@@ -2239,7 +2239,7 @@ namespace Google.Apis.Drive.v2
         /// <param name="driveId">The ID of the shared drive.</param>
         public virtual HideRequest Hide(string driveId)
         {
-            return new HideRequest(service, driveId);
+            return new HideRequest(this.service, driveId);
         }
 
         /// <summary>Hides a shared drive from the default view.</summary>
@@ -2290,7 +2290,7 @@ namespace Google.Apis.Drive.v2
         /// </param>
         public virtual InsertRequest Insert(Google.Apis.Drive.v2.Data.Drive body, string requestId)
         {
-            return new InsertRequest(service, body, requestId);
+            return new InsertRequest(this.service, body, requestId);
         }
 
         /// <summary>Creates a new shared drive.</summary>
@@ -2350,7 +2350,7 @@ namespace Google.Apis.Drive.v2
         /// </summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>
@@ -2437,7 +2437,7 @@ namespace Google.Apis.Drive.v2
         /// <param name="driveId">The ID of the shared drive.</param>
         public virtual UnhideRequest Unhide(string driveId)
         {
-            return new UnhideRequest(service, driveId);
+            return new UnhideRequest(this.service, driveId);
         }
 
         /// <summary>Restores a shared drive to the default view.</summary>
@@ -2483,7 +2483,7 @@ namespace Google.Apis.Drive.v2
         /// <param name="driveId">The ID of the shared drive.</param>
         public virtual UpdateRequest Update(Google.Apis.Drive.v2.Data.Drive body, string driveId)
         {
-            return new UpdateRequest(service, body, driveId);
+            return new UpdateRequest(this.service, body, driveId);
         }
 
         /// <summary>Updates the metadata for a shared drive.</summary>
@@ -2566,7 +2566,7 @@ namespace Google.Apis.Drive.v2
         /// <param name="fileId">The ID of the file to copy.</param>
         public virtual CopyRequest Copy(Google.Apis.Drive.v2.Data.File body, string fileId)
         {
-            return new CopyRequest(service, body, fileId);
+            return new CopyRequest(this.service, body, fileId);
         }
 
         /// <summary>Creates a copy of the specified file.</summary>
@@ -2794,7 +2794,7 @@ namespace Google.Apis.Drive.v2
         /// <param name="fileId">The ID of the file to delete.</param>
         public virtual DeleteRequest Delete(string fileId)
         {
-            return new DeleteRequest(service, fileId);
+            return new DeleteRequest(this.service, fileId);
         }
 
         /// <summary>
@@ -2881,7 +2881,7 @@ namespace Google.Apis.Drive.v2
         /// <summary>Permanently deletes all of the user's trashed files.</summary>
         public virtual EmptyTrashRequest EmptyTrash()
         {
-            return new EmptyTrashRequest(service);
+            return new EmptyTrashRequest(this.service);
         }
 
         /// <summary>Permanently deletes all of the user's trashed files.</summary>
@@ -2944,7 +2944,7 @@ namespace Google.Apis.Drive.v2
         /// <param name="mimeType">Required. The MIME type of the format requested for this export.</param>
         public virtual ExportRequest Export(string fileId, string mimeType)
         {
-            return new ExportRequest(service, fileId, mimeType);
+            return new ExportRequest(this.service, fileId, mimeType);
         }
 
         /// <summary>
@@ -3090,7 +3090,7 @@ namespace Google.Apis.Drive.v2
         /// <summary>Generates a set of file IDs which can be provided in insert or copy requests.</summary>
         public virtual GenerateIdsRequest GenerateIds()
         {
-            return new GenerateIdsRequest(service);
+            return new GenerateIdsRequest(this.service);
         }
 
         /// <summary>Generates a set of file IDs which can be provided in insert or copy requests.</summary>
@@ -3170,7 +3170,7 @@ namespace Google.Apis.Drive.v2
         /// <param name="fileId">The ID for the file in question.</param>
         public virtual GetRequest Get(string fileId)
         {
-            return new GetRequest(service, fileId);
+            return new GetRequest(this.service, fileId);
         }
 
         /// <summary>
@@ -3439,7 +3439,7 @@ namespace Google.Apis.Drive.v2
         /// <param name="body">The body of the request.</param>
         public virtual InsertRequest Insert(Google.Apis.Drive.v2.Data.File body)
         {
-            return new InsertRequest(service, body);
+            return new InsertRequest(this.service, body);
         }
 
         /// <summary>
@@ -3892,7 +3892,7 @@ namespace Google.Apis.Drive.v2
         /// </summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>
@@ -4168,7 +4168,7 @@ namespace Google.Apis.Drive.v2
         /// <param name="fileId">The ID for the file.</param>
         public virtual ListLabelsRequest ListLabels(string fileId)
         {
-            return new ListLabelsRequest(service, fileId);
+            return new ListLabelsRequest(this.service, fileId);
         }
 
         /// <summary>Lists the labels on a file.</summary>
@@ -4243,7 +4243,7 @@ namespace Google.Apis.Drive.v2
         /// <param name="fileId">The ID of the file to which the labels belong.</param>
         public virtual ModifyLabelsRequest ModifyLabels(Google.Apis.Drive.v2.Data.ModifyLabelsRequest body, string fileId)
         {
-            return new ModifyLabelsRequest(service, body, fileId);
+            return new ModifyLabelsRequest(this.service, body, fileId);
         }
 
         /// <summary>
@@ -4302,7 +4302,7 @@ namespace Google.Apis.Drive.v2
         /// <param name="fileId">The ID of the file to update.</param>
         public virtual PatchRequest Patch(Google.Apis.Drive.v2.Data.File body, string fileId)
         {
-            return new PatchRequest(service, body, fileId);
+            return new PatchRequest(this.service, body, fileId);
         }
 
         /// <summary>
@@ -4636,7 +4636,7 @@ namespace Google.Apis.Drive.v2
         /// <param name="fileId">The ID of the file to update.</param>
         public virtual TouchRequest Touch(string fileId)
         {
-            return new TouchRequest(service, fileId);
+            return new TouchRequest(this.service, fileId);
         }
 
         /// <summary>Set the file's updated time to the current server time.</summary>
@@ -4736,7 +4736,7 @@ namespace Google.Apis.Drive.v2
         /// <param name="fileId">The ID of the file to trash.</param>
         public virtual TrashRequest Trash(string fileId)
         {
-            return new TrashRequest(service, fileId);
+            return new TrashRequest(this.service, fileId);
         }
 
         /// <summary>
@@ -4839,7 +4839,7 @@ namespace Google.Apis.Drive.v2
         /// <param name="fileId">The ID of the file to untrash.</param>
         public virtual UntrashRequest Untrash(string fileId)
         {
-            return new UntrashRequest(service, fileId);
+            return new UntrashRequest(this.service, fileId);
         }
 
         /// <summary>
@@ -4948,7 +4948,7 @@ namespace Google.Apis.Drive.v2
         /// <param name="fileId">The ID of the file to update.</param>
         public virtual UpdateRequest Update(Google.Apis.Drive.v2.Data.File body, string fileId)
         {
-            return new UpdateRequest(service, body, fileId);
+            return new UpdateRequest(this.service, body, fileId);
         }
 
         /// <summary>
@@ -5560,7 +5560,7 @@ namespace Google.Apis.Drive.v2
         /// <param name="fileId">The ID for the file in question.</param>
         public virtual WatchRequest Watch(Google.Apis.Drive.v2.Data.Channel body, string fileId)
         {
-            return new WatchRequest(service, body, fileId);
+            return new WatchRequest(this.service, body, fileId);
         }
 
         /// <summary>Subscribes to changes to a file.</summary>
@@ -5747,7 +5747,7 @@ namespace Google.Apis.Drive.v2
         /// <param name="parentId">The ID of the parent.</param>
         public virtual DeleteRequest Delete(string fileId, string parentId)
         {
-            return new DeleteRequest(service, fileId, parentId);
+            return new DeleteRequest(this.service, fileId, parentId);
         }
 
         /// <summary>Removes a parent from a file.</summary>
@@ -5821,7 +5821,7 @@ namespace Google.Apis.Drive.v2
         /// <param name="parentId">The ID of the parent.</param>
         public virtual GetRequest Get(string fileId, string parentId)
         {
-            return new GetRequest(service, fileId, parentId);
+            return new GetRequest(this.service, fileId, parentId);
         }
 
         /// <summary>Gets a specific parent reference.</summary>
@@ -5880,7 +5880,7 @@ namespace Google.Apis.Drive.v2
         /// <param name="fileId">The ID of the file.</param>
         public virtual InsertRequest Insert(Google.Apis.Drive.v2.Data.ParentReference body, string fileId)
         {
-            return new InsertRequest(service, body, fileId);
+            return new InsertRequest(this.service, body, fileId);
         }
 
         /// <summary>Adds a parent folder for a file.</summary>
@@ -5970,7 +5970,7 @@ namespace Google.Apis.Drive.v2
         /// <param name="fileId">The ID of the file.</param>
         public virtual ListRequest List(string fileId)
         {
-            return new ListRequest(service, fileId);
+            return new ListRequest(this.service, fileId);
         }
 
         /// <summary>Lists a file's parents.</summary>
@@ -6034,7 +6034,7 @@ namespace Google.Apis.Drive.v2
         /// <param name="permissionId">The ID for the permission.</param>
         public virtual DeleteRequest Delete(string fileId, string permissionId)
         {
-            return new DeleteRequest(service, fileId, permissionId);
+            return new DeleteRequest(this.service, fileId, permissionId);
         }
 
         /// <summary>
@@ -6136,7 +6136,7 @@ namespace Google.Apis.Drive.v2
         /// <param name="permissionId">The ID for the permission.</param>
         public virtual GetRequest Get(string fileId, string permissionId)
         {
-            return new GetRequest(service, fileId, permissionId);
+            return new GetRequest(this.service, fileId, permissionId);
         }
 
         /// <summary>Gets a permission by ID.</summary>
@@ -6234,7 +6234,7 @@ namespace Google.Apis.Drive.v2
         /// <param name="email">The email address for which to return a permission ID</param>
         public virtual GetIdForEmailRequest GetIdForEmail(string email)
         {
-            return new GetIdForEmailRequest(service, email);
+            return new GetIdForEmailRequest(this.service, email);
         }
 
         /// <summary>Returns the permission ID for an email address.</summary>
@@ -6283,7 +6283,7 @@ namespace Google.Apis.Drive.v2
         /// <param name="fileId">The ID for the file or shared drive.</param>
         public virtual InsertRequest Insert(Google.Apis.Drive.v2.Data.Permission body, string fileId)
         {
-            return new InsertRequest(service, body, fileId);
+            return new InsertRequest(this.service, body, fileId);
         }
 
         /// <summary>
@@ -6433,7 +6433,7 @@ namespace Google.Apis.Drive.v2
         /// <param name="fileId">The ID for the file or shared drive.</param>
         public virtual ListRequest List(string fileId)
         {
-            return new ListRequest(service, fileId);
+            return new ListRequest(this.service, fileId);
         }
 
         /// <summary>Lists a file's or shared drive's permissions.</summary>
@@ -6568,7 +6568,7 @@ namespace Google.Apis.Drive.v2
         /// <param name="permissionId">The ID for the permission.</param>
         public virtual PatchRequest Patch(Google.Apis.Drive.v2.Data.Permission body, string fileId, string permissionId)
         {
-            return new PatchRequest(service, body, fileId, permissionId);
+            return new PatchRequest(this.service, body, fileId, permissionId);
         }
 
         /// <summary>
@@ -6708,7 +6708,7 @@ namespace Google.Apis.Drive.v2
         /// <param name="permissionId">The ID for the permission.</param>
         public virtual UpdateRequest Update(Google.Apis.Drive.v2.Data.Permission body, string fileId, string permissionId)
         {
-            return new UpdateRequest(service, body, fileId, permissionId);
+            return new UpdateRequest(this.service, body, fileId, permissionId);
         }
 
         /// <summary>
@@ -6859,7 +6859,7 @@ namespace Google.Apis.Drive.v2
         /// <param name="propertyKey">The key of the property.</param>
         public virtual DeleteRequest Delete(string fileId, string propertyKey)
         {
-            return new DeleteRequest(service, fileId, propertyKey);
+            return new DeleteRequest(this.service, fileId, propertyKey);
         }
 
         /// <summary>Deletes a property.</summary>
@@ -6930,7 +6930,7 @@ namespace Google.Apis.Drive.v2
         /// <param name="propertyKey">The key of the property.</param>
         public virtual GetRequest Get(string fileId, string propertyKey)
         {
-            return new GetRequest(service, fileId, propertyKey);
+            return new GetRequest(this.service, fileId, propertyKey);
         }
 
         /// <summary>Gets a property by its key.</summary>
@@ -7001,7 +7001,7 @@ namespace Google.Apis.Drive.v2
         /// <param name="fileId">The ID of the file.</param>
         public virtual InsertRequest Insert(Google.Apis.Drive.v2.Data.Property body, string fileId)
         {
-            return new InsertRequest(service, body, fileId);
+            return new InsertRequest(this.service, body, fileId);
         }
 
         /// <summary>Adds a property to a file, or updates it if it already exists.</summary>
@@ -7053,7 +7053,7 @@ namespace Google.Apis.Drive.v2
         /// <param name="fileId">The ID of the file.</param>
         public virtual ListRequest List(string fileId)
         {
-            return new ListRequest(service, fileId);
+            return new ListRequest(this.service, fileId);
         }
 
         /// <summary>Lists a file's properties.</summary>
@@ -7100,7 +7100,7 @@ namespace Google.Apis.Drive.v2
         /// <param name="propertyKey">The key of the property.</param>
         public virtual PatchRequest Patch(Google.Apis.Drive.v2.Data.Property body, string fileId, string propertyKey)
         {
-            return new PatchRequest(service, body, fileId, propertyKey);
+            return new PatchRequest(this.service, body, fileId, propertyKey);
         }
 
         /// <summary>Updates a property.</summary>
@@ -7181,7 +7181,7 @@ namespace Google.Apis.Drive.v2
         /// <param name="propertyKey">The key of the property.</param>
         public virtual UpdateRequest Update(Google.Apis.Drive.v2.Data.Property body, string fileId, string propertyKey)
         {
-            return new UpdateRequest(service, body, fileId, propertyKey);
+            return new UpdateRequest(this.service, body, fileId, propertyKey);
         }
 
         /// <summary>Updates a property.</summary>
@@ -7277,7 +7277,7 @@ namespace Google.Apis.Drive.v2
         /// <param name="replyId">The ID of the reply.</param>
         public virtual DeleteRequest Delete(string fileId, string commentId, string replyId)
         {
-            return new DeleteRequest(service, fileId, commentId, replyId);
+            return new DeleteRequest(this.service, fileId, commentId, replyId);
         }
 
         /// <summary>Deletes a reply.</summary>
@@ -7350,7 +7350,7 @@ namespace Google.Apis.Drive.v2
         /// <param name="replyId">The ID of the reply.</param>
         public virtual GetRequest Get(string fileId, string commentId, string replyId)
         {
-            return new GetRequest(service, fileId, commentId, replyId);
+            return new GetRequest(this.service, fileId, commentId, replyId);
         }
 
         /// <summary>Gets a reply.</summary>
@@ -7435,7 +7435,7 @@ namespace Google.Apis.Drive.v2
         /// <param name="commentId">The ID of the comment.</param>
         public virtual InsertRequest Insert(Google.Apis.Drive.v2.Data.CommentReply body, string fileId, string commentId)
         {
-            return new InsertRequest(service, body, fileId, commentId);
+            return new InsertRequest(this.service, body, fileId, commentId);
         }
 
         /// <summary>Creates a new reply to the given comment.</summary>
@@ -7501,7 +7501,7 @@ namespace Google.Apis.Drive.v2
         /// <param name="commentId">The ID of the comment.</param>
         public virtual ListRequest List(string fileId, string commentId)
         {
-            return new ListRequest(service, fileId, commentId);
+            return new ListRequest(this.service, fileId, commentId);
         }
 
         /// <summary>Lists all of the replies to a comment.</summary>
@@ -7603,7 +7603,7 @@ namespace Google.Apis.Drive.v2
         /// <param name="replyId">The ID of the reply.</param>
         public virtual PatchRequest Patch(Google.Apis.Drive.v2.Data.CommentReply body, string fileId, string commentId, string replyId)
         {
-            return new PatchRequest(service, body, fileId, commentId, replyId);
+            return new PatchRequest(this.service, body, fileId, commentId, replyId);
         }
 
         /// <summary>Updates an existing reply.</summary>
@@ -7684,7 +7684,7 @@ namespace Google.Apis.Drive.v2
         /// <param name="replyId">The ID of the reply.</param>
         public virtual UpdateRequest Update(Google.Apis.Drive.v2.Data.CommentReply body, string fileId, string commentId, string replyId)
         {
-            return new UpdateRequest(service, body, fileId, commentId, replyId);
+            return new UpdateRequest(this.service, body, fileId, commentId, replyId);
         }
 
         /// <summary>Updates an existing reply.</summary>
@@ -7782,7 +7782,7 @@ namespace Google.Apis.Drive.v2
         /// <param name="revisionId">The ID of the revision.</param>
         public virtual DeleteRequest Delete(string fileId, string revisionId)
         {
-            return new DeleteRequest(service, fileId, revisionId);
+            return new DeleteRequest(this.service, fileId, revisionId);
         }
 
         /// <summary>
@@ -7845,7 +7845,7 @@ namespace Google.Apis.Drive.v2
         /// <param name="revisionId">The ID of the revision.</param>
         public virtual GetRequest Get(string fileId, string revisionId)
         {
-            return new GetRequest(service, fileId, revisionId);
+            return new GetRequest(this.service, fileId, revisionId);
         }
 
         /// <summary>Gets a specific revision.</summary>
@@ -7903,7 +7903,7 @@ namespace Google.Apis.Drive.v2
         /// <param name="fileId">The ID of the file.</param>
         public virtual ListRequest List(string fileId)
         {
-            return new ListRequest(service, fileId);
+            return new ListRequest(this.service, fileId);
         }
 
         /// <summary>Lists a file's revisions.</summary>
@@ -7977,7 +7977,7 @@ namespace Google.Apis.Drive.v2
         /// <param name="revisionId">The ID for the revision.</param>
         public virtual PatchRequest Patch(Google.Apis.Drive.v2.Data.Revision body, string fileId, string revisionId)
         {
-            return new PatchRequest(service, body, fileId, revisionId);
+            return new PatchRequest(this.service, body, fileId, revisionId);
         }
 
         /// <summary>Updates a revision.</summary>
@@ -8044,7 +8044,7 @@ namespace Google.Apis.Drive.v2
         /// <param name="revisionId">The ID for the revision.</param>
         public virtual UpdateRequest Update(Google.Apis.Drive.v2.Data.Revision body, string fileId, string revisionId)
         {
-            return new UpdateRequest(service, body, fileId, revisionId);
+            return new UpdateRequest(this.service, body, fileId, revisionId);
         }
 
         /// <summary>Updates a revision.</summary>
@@ -8124,7 +8124,7 @@ namespace Google.Apis.Drive.v2
         /// <param name="teamDriveId">The ID of the Team Drive</param>
         public virtual DeleteRequest Delete(string teamDriveId)
         {
-            return new DeleteRequest(service, teamDriveId);
+            return new DeleteRequest(this.service, teamDriveId);
         }
 
         /// <summary>Deprecated: Use `drives.delete` instead.</summary>
@@ -8169,7 +8169,7 @@ namespace Google.Apis.Drive.v2
         /// <param name="teamDriveId">The ID of the Team Drive</param>
         public virtual GetRequest Get(string teamDriveId)
         {
-            return new GetRequest(service, teamDriveId);
+            return new GetRequest(this.service, teamDriveId);
         }
 
         /// <summary>Deprecated: Use `drives.get` instead.</summary>
@@ -8235,7 +8235,7 @@ namespace Google.Apis.Drive.v2
         /// </param>
         public virtual InsertRequest Insert(Google.Apis.Drive.v2.Data.TeamDrive body, string requestId)
         {
-            return new InsertRequest(service, body, requestId);
+            return new InsertRequest(this.service, body, requestId);
         }
 
         /// <summary>Deprecated: Use `drives.insert` instead.</summary>
@@ -8291,7 +8291,7 @@ namespace Google.Apis.Drive.v2
         /// <summary>Deprecated: Use `drives.list` instead.</summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>Deprecated: Use `drives.list` instead.</summary>
@@ -8375,7 +8375,7 @@ namespace Google.Apis.Drive.v2
         /// <param name="teamDriveId">The ID of the Team Drive</param>
         public virtual UpdateRequest Update(Google.Apis.Drive.v2.Data.TeamDrive body, string teamDriveId)
         {
-            return new UpdateRequest(service, body, teamDriveId);
+            return new UpdateRequest(this.service, body, teamDriveId);
         }
 
         /// <summary>Deprecated: Use `drives.update` instead.</summary>
@@ -8904,8 +8904,8 @@ namespace Google.Apis.Drive.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ModificationDateDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ModificationDateRaw);
-            set => ModificationDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(ModificationDateRaw);
+            set => ModificationDateRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="ModificationDateRaw"/>.</summary>
@@ -9143,8 +9143,8 @@ namespace Google.Apis.Drive.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreatedDateDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreatedDateRaw);
-            set => CreatedDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(CreatedDateRaw);
+            set => CreatedDateRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="CreatedDateRaw"/>.</summary>
@@ -9187,8 +9187,8 @@ namespace Google.Apis.Drive.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ModifiedDateDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ModifiedDateRaw);
-            set => ModifiedDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(ModifiedDateRaw);
+            set => ModifiedDateRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="ModifiedDateRaw"/>.</summary>
@@ -9297,8 +9297,8 @@ namespace Google.Apis.Drive.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreatedDateDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreatedDateRaw);
-            set => CreatedDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(CreatedDateRaw);
+            set => CreatedDateRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="CreatedDateRaw"/>.</summary>
@@ -9333,8 +9333,8 @@ namespace Google.Apis.Drive.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ModifiedDateDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ModifiedDateRaw);
-            set => ModifiedDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(ModifiedDateRaw);
+            set => ModifiedDateRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="ModifiedDateRaw"/>.</summary>
@@ -9439,8 +9439,8 @@ namespace Google.Apis.Drive.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? RestrictionDateDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(RestrictionDateRaw);
-            set => RestrictionDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(RestrictionDateRaw);
+            set => RestrictionDateRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="RestrictionDateRaw"/>.</summary>
@@ -9500,8 +9500,8 @@ namespace Google.Apis.Drive.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreatedDateDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreatedDateRaw);
-            set => CreatedDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(CreatedDateRaw);
+            set => CreatedDateRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="CreatedDateRaw"/>.</summary>
@@ -9825,8 +9825,8 @@ namespace Google.Apis.Drive.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreatedDateDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreatedDateRaw);
-            set => CreatedDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(CreatedDateRaw);
+            set => CreatedDateRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="CreatedDateRaw"/>.</summary>
@@ -9990,8 +9990,8 @@ namespace Google.Apis.Drive.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LastViewedByMeDateDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastViewedByMeDateRaw);
-            set => LastViewedByMeDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(LastViewedByMeDateRaw);
+            set => LastViewedByMeDateRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="LastViewedByMeDateRaw"/>.</summary>
@@ -10017,8 +10017,8 @@ namespace Google.Apis.Drive.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? MarkedViewedByMeDateDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(MarkedViewedByMeDateRaw);
-            set => MarkedViewedByMeDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(MarkedViewedByMeDateRaw);
+            set => MarkedViewedByMeDateRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary>
@@ -10059,8 +10059,8 @@ namespace Google.Apis.Drive.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ModifiedByMeDateDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ModifiedByMeDateRaw);
-            set => ModifiedByMeDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(ModifiedByMeDateRaw);
+            set => ModifiedByMeDateRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="ModifiedByMeDateRaw"/>.</summary>
@@ -10083,8 +10083,8 @@ namespace Google.Apis.Drive.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ModifiedDateDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ModifiedDateRaw);
-            set => ModifiedDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(ModifiedDateRaw);
+            set => ModifiedDateRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="ModifiedDateRaw"/>.</summary>
@@ -10197,8 +10197,8 @@ namespace Google.Apis.Drive.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? SharedWithMeDateDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(SharedWithMeDateRaw);
-            set => SharedWithMeDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(SharedWithMeDateRaw);
+            set => SharedWithMeDateRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="SharedWithMeDateRaw"/>.</summary>
@@ -10268,8 +10268,8 @@ namespace Google.Apis.Drive.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? TrashedDateDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(TrashedDateRaw);
-            set => TrashedDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(TrashedDateRaw);
+            set => TrashedDateRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="TrashedDateRaw"/>.</summary>
@@ -11159,8 +11159,8 @@ namespace Google.Apis.Drive.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ExpirationDateDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpirationDateRaw);
-            set => ExpirationDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(ExpirationDateRaw);
+            set => ExpirationDateRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="ExpirationDateRaw"/>.</summary>
@@ -11476,8 +11476,8 @@ namespace Google.Apis.Drive.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ModifiedDateDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ModifiedDateRaw);
-            set => ModifiedDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(ModifiedDateRaw);
+            set => ModifiedDateRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="ModifiedDateRaw"/>.</summary>
@@ -11618,8 +11618,8 @@ namespace Google.Apis.Drive.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreatedDateDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreatedDateRaw);
-            set => CreatedDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(CreatedDateRaw);
+            set => CreatedDateRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="CreatedDateRaw"/>.</summary>

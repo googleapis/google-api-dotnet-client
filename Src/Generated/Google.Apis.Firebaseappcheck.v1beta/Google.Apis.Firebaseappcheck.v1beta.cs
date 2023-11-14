@@ -298,7 +298,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta
         /// </param>
         public virtual GetRequest Get(string name)
         {
-            return new GetRequest(service, name);
+            return new GetRequest(this.service, name);
         }
 
         /// <summary>
@@ -376,7 +376,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta
         /// </param>
         public virtual ExchangeAppAttestAssertionRequest ExchangeAppAttestAssertion(Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaExchangeAppAttestAssertionRequest body, string app)
         {
-            return new ExchangeAppAttestAssertionRequest(service, body, app);
+            return new ExchangeAppAttestAssertionRequest(this.service, body, app);
         }
 
         /// <summary>
@@ -453,7 +453,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta
         /// </param>
         public virtual ExchangeAppAttestAttestationRequest ExchangeAppAttestAttestation(Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationRequest body, string app)
         {
-            return new ExchangeAppAttestAttestationRequest(service, body, app);
+            return new ExchangeAppAttestAttestationRequest(this.service, body, app);
         }
 
         /// <summary>
@@ -531,7 +531,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta
         /// </param>
         public virtual ExchangeDebugTokenRequest ExchangeDebugToken(Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaExchangeDebugTokenRequest body, string app)
         {
-            return new ExchangeDebugTokenRequest(service, body, app);
+            return new ExchangeDebugTokenRequest(this.service, body, app);
         }
 
         /// <summary>
@@ -608,7 +608,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta
         /// </param>
         public virtual GenerateAppAttestChallengeRequest GenerateAppAttestChallenge(Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaGenerateAppAttestChallengeRequest body, string app)
         {
-            return new GenerateAppAttestChallengeRequest(service, body, app);
+            return new GenerateAppAttestChallengeRequest(this.service, body, app);
         }
 
         /// <summary>
@@ -738,7 +738,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta
                 /// </param>
                 public virtual BatchGetRequest BatchGet(string parent)
                 {
-                    return new BatchGetRequest(service, parent);
+                    return new BatchGetRequest(this.service, parent);
                 }
 
                 /// <summary>Atomically gets the AppAttestConfigs for the specified list of apps.</summary>
@@ -814,7 +814,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets the AppAttestConfig for the specified app.</summary>
@@ -873,7 +873,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaAppAttestConfig body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -977,7 +977,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaDebugToken body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -1048,7 +1048,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -1110,7 +1110,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -1172,7 +1172,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>
@@ -1268,7 +1268,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaDebugToken body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -1371,7 +1371,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta
                 /// </param>
                 public virtual BatchGetRequest BatchGet(string parent)
                 {
-                    return new BatchGetRequest(service, parent);
+                    return new BatchGetRequest(this.service, parent);
                 }
 
                 /// <summary>
@@ -1454,7 +1454,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -1517,7 +1517,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaDeviceCheckConfig body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -1618,7 +1618,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta
                 /// </param>
                 public virtual BatchGetRequest BatchGet(string parent)
                 {
-                    return new BatchGetRequest(service, parent);
+                    return new BatchGetRequest(this.service, parent);
                 }
 
                 /// <summary>Atomically gets the PlayIntegrityConfigs for the specified list of apps.</summary>
@@ -1695,7 +1695,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets the PlayIntegrityConfig for the specified app.</summary>
@@ -1754,7 +1754,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaPlayIntegrityConfig body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -1857,7 +1857,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta
                 /// </param>
                 public virtual BatchGetRequest BatchGet(string parent)
                 {
-                    return new BatchGetRequest(service, parent);
+                    return new BatchGetRequest(this.service, parent);
                 }
 
                 /// <summary>
@@ -1939,7 +1939,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -2002,7 +2002,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaRecaptchaConfig body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -2104,7 +2104,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta
                 /// </param>
                 public virtual BatchGetRequest BatchGet(string parent)
                 {
-                    return new BatchGetRequest(service, parent);
+                    return new BatchGetRequest(this.service, parent);
                 }
 
                 /// <summary>Atomically gets the RecaptchaEnterpriseConfigs for the specified list of apps.</summary>
@@ -2182,7 +2182,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets the RecaptchaEnterpriseConfig for the specified app.</summary>
@@ -2242,7 +2242,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaRecaptchaEnterpriseConfig body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -2346,7 +2346,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta
                 /// </param>
                 public virtual BatchGetRequest BatchGet(string parent)
                 {
-                    return new BatchGetRequest(service, parent);
+                    return new BatchGetRequest(this.service, parent);
                 }
 
                 /// <summary>
@@ -2429,7 +2429,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -2492,7 +2492,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaRecaptchaV3Config body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -2593,7 +2593,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta
                 /// </param>
                 public virtual BatchGetRequest BatchGet(string parent)
                 {
-                    return new BatchGetRequest(service, parent);
+                    return new BatchGetRequest(this.service, parent);
                 }
 
                 /// <summary>Atomically gets the SafetyNetConfigs for the specified list of apps.</summary>
@@ -2669,7 +2669,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets the SafetyNetConfig for the specified app.</summary>
@@ -2728,7 +2728,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaSafetyNetConfig body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -2816,7 +2816,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta
             /// </param>
             public virtual ExchangeAppAttestAssertionRequest ExchangeAppAttestAssertion(Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaExchangeAppAttestAssertionRequest body, string app)
             {
-                return new ExchangeAppAttestAssertionRequest(service, body, app);
+                return new ExchangeAppAttestAssertionRequest(this.service, body, app);
             }
 
             /// <summary>
@@ -2893,7 +2893,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta
             /// </param>
             public virtual ExchangeAppAttestAttestationRequest ExchangeAppAttestAttestation(Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationRequest body, string app)
             {
-                return new ExchangeAppAttestAttestationRequest(service, body, app);
+                return new ExchangeAppAttestAttestationRequest(this.service, body, app);
             }
 
             /// <summary>
@@ -2970,7 +2970,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta
             /// </param>
             public virtual ExchangeCustomTokenRequest ExchangeCustomToken(Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaExchangeCustomTokenRequest body, string app)
             {
-                return new ExchangeCustomTokenRequest(service, body, app);
+                return new ExchangeCustomTokenRequest(this.service, body, app);
             }
 
             /// <summary>
@@ -3046,7 +3046,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta
             /// </param>
             public virtual ExchangeDebugTokenRequest ExchangeDebugToken(Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaExchangeDebugTokenRequest body, string app)
             {
-                return new ExchangeDebugTokenRequest(service, body, app);
+                return new ExchangeDebugTokenRequest(this.service, body, app);
             }
 
             /// <summary>
@@ -3122,7 +3122,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta
             /// </param>
             public virtual ExchangeDeviceCheckTokenRequest ExchangeDeviceCheckToken(Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaExchangeDeviceCheckTokenRequest body, string app)
             {
-                return new ExchangeDeviceCheckTokenRequest(service, body, app);
+                return new ExchangeDeviceCheckTokenRequest(this.service, body, app);
             }
 
             /// <summary>
@@ -3198,7 +3198,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta
             /// </param>
             public virtual ExchangePlayIntegrityTokenRequest ExchangePlayIntegrityToken(Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaExchangePlayIntegrityTokenRequest body, string app)
             {
-                return new ExchangePlayIntegrityTokenRequest(service, body, app);
+                return new ExchangePlayIntegrityTokenRequest(this.service, body, app);
             }
 
             /// <summary>
@@ -3275,7 +3275,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta
             /// </param>
             public virtual ExchangeRecaptchaEnterpriseTokenRequest ExchangeRecaptchaEnterpriseToken(Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaExchangeRecaptchaEnterpriseTokenRequest body, string app)
             {
-                return new ExchangeRecaptchaEnterpriseTokenRequest(service, body, app);
+                return new ExchangeRecaptchaEnterpriseTokenRequest(this.service, body, app);
             }
 
             /// <summary>
@@ -3351,7 +3351,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta
             /// </param>
             public virtual ExchangeRecaptchaTokenRequest ExchangeRecaptchaToken(Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaExchangeRecaptchaTokenRequest body, string app)
             {
-                return new ExchangeRecaptchaTokenRequest(service, body, app);
+                return new ExchangeRecaptchaTokenRequest(this.service, body, app);
             }
 
             /// <summary>
@@ -3426,7 +3426,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta
             /// </param>
             public virtual ExchangeRecaptchaV3TokenRequest ExchangeRecaptchaV3Token(Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaExchangeRecaptchaV3TokenRequest body, string app)
             {
-                return new ExchangeRecaptchaV3TokenRequest(service, body, app);
+                return new ExchangeRecaptchaV3TokenRequest(this.service, body, app);
             }
 
             /// <summary>
@@ -3502,7 +3502,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta
             /// </param>
             public virtual ExchangeSafetyNetTokenRequest ExchangeSafetyNetToken(Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaExchangeSafetyNetTokenRequest body, string app)
             {
-                return new ExchangeSafetyNetTokenRequest(service, body, app);
+                return new ExchangeSafetyNetTokenRequest(this.service, body, app);
             }
 
             /// <summary>
@@ -3579,7 +3579,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta
             /// </param>
             public virtual GenerateAppAttestChallengeRequest GenerateAppAttestChallenge(Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaGenerateAppAttestChallengeRequest body, string app)
             {
-                return new GenerateAppAttestChallengeRequest(service, body, app);
+                return new GenerateAppAttestChallengeRequest(this.service, body, app);
             }
 
             /// <summary>
@@ -3657,7 +3657,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta
             /// </param>
             public virtual GeneratePlayIntegrityChallengeRequest GeneratePlayIntegrityChallenge(Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaGeneratePlayIntegrityChallengeRequest body, string app)
             {
-                return new GeneratePlayIntegrityChallengeRequest(service, body, app);
+                return new GeneratePlayIntegrityChallengeRequest(this.service, body, app);
             }
 
             /// <summary>
@@ -3748,7 +3748,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta
             /// </param>
             public virtual BatchUpdateRequest BatchUpdate(Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaBatchUpdateServicesRequest body, string parent)
             {
-                return new BatchUpdateRequest(service, body, parent);
+                return new BatchUpdateRequest(this.service, body, parent);
             }
 
             /// <summary>Atomically updates the specified Service configurations.</summary>
@@ -3817,7 +3817,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets the Service configuration for the specified service name.</summary>
@@ -3881,7 +3881,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>
@@ -3979,7 +3979,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaService body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>Updates the specified Service configuration.</summary>
@@ -4082,7 +4082,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta
         /// </param>
         public virtual VerifyAppCheckTokenRequest VerifyAppCheckToken(Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaVerifyAppCheckTokenRequest body, string project)
         {
-            return new VerifyAppCheckTokenRequest(service, body, project);
+            return new VerifyAppCheckTokenRequest(this.service, body, project);
         }
 
         /// <summary>
@@ -5065,8 +5065,8 @@ namespace Google.Apis.Firebaseappcheck.v1beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
     }
 

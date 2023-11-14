@@ -328,7 +328,7 @@ namespace Google.Apis.CloudDataplex.v1
                 /// </param>
                 public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                 {
-                    return new GetIamPolicyRequest(service, resource);
+                    return new GetIamPolicyRequest(this.service, resource);
                 }
 
                 /// <summary>
@@ -407,7 +407,7 @@ namespace Google.Apis.CloudDataplex.v1
                 /// </param>
                 public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.CloudDataplex.v1.Data.GoogleIamV1SetIamPolicyRequest body, string resource)
                 {
-                    return new SetIamPolicyRequest(service, body, resource);
+                    return new SetIamPolicyRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -474,7 +474,7 @@ namespace Google.Apis.CloudDataplex.v1
                 /// </param>
                 public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.CloudDataplex.v1.Data.GoogleIamV1TestIamPermissionsRequest body, string resource)
                 {
-                    return new TestIamPermissionsRequest(service, body, resource);
+                    return new TestIamPermissionsRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -556,7 +556,7 @@ namespace Google.Apis.CloudDataplex.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1DataAttributeBinding body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Create a DataAttributeBinding resource.</summary>
@@ -647,7 +647,7 @@ namespace Google.Apis.CloudDataplex.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -717,7 +717,7 @@ namespace Google.Apis.CloudDataplex.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Retrieves a DataAttributeBinding resource.</summary>
@@ -771,7 +771,7 @@ namespace Google.Apis.CloudDataplex.v1
                 /// </param>
                 public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                 {
-                    return new GetIamPolicyRequest(service, resource);
+                    return new GetIamPolicyRequest(this.service, resource);
                 }
 
                 /// <summary>
@@ -845,7 +845,7 @@ namespace Google.Apis.CloudDataplex.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists DataAttributeBinding resources in a project and location.</summary>
@@ -956,7 +956,7 @@ namespace Google.Apis.CloudDataplex.v1
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1DataAttributeBinding body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates a DataAttributeBinding resource.</summary>
@@ -1044,7 +1044,7 @@ namespace Google.Apis.CloudDataplex.v1
                 /// </param>
                 public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.CloudDataplex.v1.Data.GoogleIamV1SetIamPolicyRequest body, string resource)
                 {
-                    return new SetIamPolicyRequest(service, body, resource);
+                    return new SetIamPolicyRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -1111,7 +1111,7 @@ namespace Google.Apis.CloudDataplex.v1
                 /// </param>
                 public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.CloudDataplex.v1.Data.GoogleIamV1TestIamPermissionsRequest body, string resource)
                 {
-                    return new TestIamPermissionsRequest(service, body, resource);
+                    return new TestIamPermissionsRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -1211,7 +1211,7 @@ namespace Google.Apis.CloudDataplex.v1
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Gets a DataScanJob resource.</summary>
@@ -1293,7 +1293,7 @@ namespace Google.Apis.CloudDataplex.v1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists DataScanJobs under the given DataScan.</summary>
@@ -1399,7 +1399,7 @@ namespace Google.Apis.CloudDataplex.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1DataScan body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a DataScan resource.</summary>
@@ -1488,7 +1488,7 @@ namespace Google.Apis.CloudDataplex.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes a DataScan resource.</summary>
@@ -1541,7 +1541,7 @@ namespace Google.Apis.CloudDataplex.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets a DataScan resource.</summary>
@@ -1624,7 +1624,7 @@ namespace Google.Apis.CloudDataplex.v1
                 /// </param>
                 public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                 {
-                    return new GetIamPolicyRequest(service, resource);
+                    return new GetIamPolicyRequest(this.service, resource);
                 }
 
                 /// <summary>
@@ -1699,7 +1699,7 @@ namespace Google.Apis.CloudDataplex.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists DataScans.</summary>
@@ -1811,7 +1811,7 @@ namespace Google.Apis.CloudDataplex.v1
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1DataScan body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates a DataScan resource.</summary>
@@ -1899,7 +1899,7 @@ namespace Google.Apis.CloudDataplex.v1
                 /// </param>
                 public virtual RunRequest Run(Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1RunDataScanRequest body, string name)
                 {
-                    return new RunRequest(service, body, name);
+                    return new RunRequest(this.service, body, name);
                 }
 
                 /// <summary>Runs an on-demand execution of a DataScan</summary>
@@ -1963,7 +1963,7 @@ namespace Google.Apis.CloudDataplex.v1
                 /// </param>
                 public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.CloudDataplex.v1.Data.GoogleIamV1SetIamPolicyRequest body, string resource)
                 {
-                    return new SetIamPolicyRequest(service, body, resource);
+                    return new SetIamPolicyRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -2030,7 +2030,7 @@ namespace Google.Apis.CloudDataplex.v1
                 /// </param>
                 public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.CloudDataplex.v1.Data.GoogleIamV1TestIamPermissionsRequest body, string resource)
                 {
-                    return new TestIamPermissionsRequest(service, body, resource);
+                    return new TestIamPermissionsRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -2130,7 +2130,7 @@ namespace Google.Apis.CloudDataplex.v1
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1DataAttribute body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>Create a DataAttribute resource.</summary>
@@ -2218,7 +2218,7 @@ namespace Google.Apis.CloudDataplex.v1
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>Deletes a Data Attribute resource.</summary>
@@ -2284,7 +2284,7 @@ namespace Google.Apis.CloudDataplex.v1
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Retrieves a Data Attribute resource.</summary>
@@ -2338,7 +2338,7 @@ namespace Google.Apis.CloudDataplex.v1
                     /// </param>
                     public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                     {
-                        return new GetIamPolicyRequest(service, resource);
+                        return new GetIamPolicyRequest(this.service, resource);
                     }
 
                     /// <summary>
@@ -2414,7 +2414,7 @@ namespace Google.Apis.CloudDataplex.v1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists Data Attribute resources in a DataTaxonomy.</summary>
@@ -2522,7 +2522,7 @@ namespace Google.Apis.CloudDataplex.v1
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1DataAttribute body, string name)
                     {
-                        return new PatchRequest(service, body, name);
+                        return new PatchRequest(this.service, body, name);
                     }
 
                     /// <summary>Updates a DataAttribute resource.</summary>
@@ -2610,7 +2610,7 @@ namespace Google.Apis.CloudDataplex.v1
                     /// </param>
                     public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.CloudDataplex.v1.Data.GoogleIamV1SetIamPolicyRequest body, string resource)
                     {
-                        return new SetIamPolicyRequest(service, body, resource);
+                        return new SetIamPolicyRequest(this.service, body, resource);
                     }
 
                     /// <summary>
@@ -2678,7 +2678,7 @@ namespace Google.Apis.CloudDataplex.v1
                     /// </param>
                     public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.CloudDataplex.v1.Data.GoogleIamV1TestIamPermissionsRequest body, string resource)
                     {
-                        return new TestIamPermissionsRequest(service, body, resource);
+                        return new TestIamPermissionsRequest(this.service, body, resource);
                     }
 
                     /// <summary>
@@ -2744,7 +2744,7 @@ namespace Google.Apis.CloudDataplex.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1DataTaxonomy body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Create a DataTaxonomy resource.</summary>
@@ -2835,7 +2835,7 @@ namespace Google.Apis.CloudDataplex.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -2904,7 +2904,7 @@ namespace Google.Apis.CloudDataplex.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Retrieves a DataTaxonomy resource.</summary>
@@ -2958,7 +2958,7 @@ namespace Google.Apis.CloudDataplex.v1
                 /// </param>
                 public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                 {
-                    return new GetIamPolicyRequest(service, resource);
+                    return new GetIamPolicyRequest(this.service, resource);
                 }
 
                 /// <summary>
@@ -3033,7 +3033,7 @@ namespace Google.Apis.CloudDataplex.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists DataTaxonomy resources in a project and location.</summary>
@@ -3141,7 +3141,7 @@ namespace Google.Apis.CloudDataplex.v1
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1DataTaxonomy body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates a DataTaxonomy resource.</summary>
@@ -3229,7 +3229,7 @@ namespace Google.Apis.CloudDataplex.v1
                 /// </param>
                 public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.CloudDataplex.v1.Data.GoogleIamV1SetIamPolicyRequest body, string resource)
                 {
-                    return new SetIamPolicyRequest(service, body, resource);
+                    return new SetIamPolicyRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -3296,7 +3296,7 @@ namespace Google.Apis.CloudDataplex.v1
                 /// </param>
                 public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.CloudDataplex.v1.Data.GoogleIamV1TestIamPermissionsRequest body, string resource)
                 {
-                    return new TestIamPermissionsRequest(service, body, resource);
+                    return new TestIamPermissionsRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -3380,7 +3380,7 @@ namespace Google.Apis.CloudDataplex.v1
                 /// </param>
                 public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                 {
-                    return new GetIamPolicyRequest(service, resource);
+                    return new GetIamPolicyRequest(this.service, resource);
                 }
 
                 /// <summary>
@@ -3459,7 +3459,7 @@ namespace Google.Apis.CloudDataplex.v1
                 /// </param>
                 public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.CloudDataplex.v1.Data.GoogleIamV1SetIamPolicyRequest body, string resource)
                 {
-                    return new SetIamPolicyRequest(service, body, resource);
+                    return new SetIamPolicyRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -3526,7 +3526,7 @@ namespace Google.Apis.CloudDataplex.v1
                 /// </param>
                 public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.CloudDataplex.v1.Data.GoogleIamV1TestIamPermissionsRequest body, string resource)
                 {
-                    return new TestIamPermissionsRequest(service, body, resource);
+                    return new TestIamPermissionsRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -3610,7 +3610,7 @@ namespace Google.Apis.CloudDataplex.v1
                 /// </param>
                 public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                 {
-                    return new GetIamPolicyRequest(service, resource);
+                    return new GetIamPolicyRequest(this.service, resource);
                 }
 
                 /// <summary>
@@ -3689,7 +3689,7 @@ namespace Google.Apis.CloudDataplex.v1
                 /// </param>
                 public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.CloudDataplex.v1.Data.GoogleIamV1SetIamPolicyRequest body, string resource)
                 {
-                    return new SetIamPolicyRequest(service, body, resource);
+                    return new SetIamPolicyRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -3756,7 +3756,7 @@ namespace Google.Apis.CloudDataplex.v1
                 /// </param>
                 public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.CloudDataplex.v1.Data.GoogleIamV1TestIamPermissionsRequest body, string resource)
                 {
-                    return new TestIamPermissionsRequest(service, body, resource);
+                    return new TestIamPermissionsRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -3840,7 +3840,7 @@ namespace Google.Apis.CloudDataplex.v1
                 /// </param>
                 public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                 {
-                    return new GetIamPolicyRequest(service, resource);
+                    return new GetIamPolicyRequest(this.service, resource);
                 }
 
                 /// <summary>
@@ -3919,7 +3919,7 @@ namespace Google.Apis.CloudDataplex.v1
                 /// </param>
                 public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.CloudDataplex.v1.Data.GoogleIamV1SetIamPolicyRequest body, string resource)
                 {
-                    return new SetIamPolicyRequest(service, body, resource);
+                    return new SetIamPolicyRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -3986,7 +3986,7 @@ namespace Google.Apis.CloudDataplex.v1
                 /// </param>
                 public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.CloudDataplex.v1.Data.GoogleIamV1TestIamPermissionsRequest body, string resource)
                 {
-                    return new TestIamPermissionsRequest(service, body, resource);
+                    return new TestIamPermissionsRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -4090,7 +4090,7 @@ namespace Google.Apis.CloudDataplex.v1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists action resources in a lake.</summary>
@@ -4192,7 +4192,7 @@ namespace Google.Apis.CloudDataplex.v1
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1Content body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>Create a content.</summary>
@@ -4264,7 +4264,7 @@ namespace Google.Apis.CloudDataplex.v1
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>Delete a content.</summary>
@@ -4315,7 +4315,7 @@ namespace Google.Apis.CloudDataplex.v1
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Get a content resource.</summary>
@@ -4401,7 +4401,7 @@ namespace Google.Apis.CloudDataplex.v1
                     /// </param>
                     public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                     {
-                        return new GetIamPolicyRequest(service, resource);
+                        return new GetIamPolicyRequest(this.service, resource);
                     }
 
                     /// <summary>
@@ -4479,7 +4479,7 @@ namespace Google.Apis.CloudDataplex.v1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>List content.</summary>
@@ -4579,7 +4579,7 @@ namespace Google.Apis.CloudDataplex.v1
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1Content body, string name)
                     {
-                        return new PatchRequest(service, body, name);
+                        return new PatchRequest(this.service, body, name);
                     }
 
                     /// <summary>Update a content. Only supports full resource update.</summary>
@@ -4667,7 +4667,7 @@ namespace Google.Apis.CloudDataplex.v1
                     /// </param>
                     public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.CloudDataplex.v1.Data.GoogleIamV1SetIamPolicyRequest body, string resource)
                     {
-                        return new SetIamPolicyRequest(service, body, resource);
+                        return new SetIamPolicyRequest(this.service, body, resource);
                     }
 
                     /// <summary>
@@ -4736,7 +4736,7 @@ namespace Google.Apis.CloudDataplex.v1
                     /// </param>
                     public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.CloudDataplex.v1.Data.GoogleIamV1TestIamPermissionsRequest body, string resource)
                     {
-                        return new TestIamPermissionsRequest(service, body, resource);
+                        return new TestIamPermissionsRequest(this.service, body, resource);
                     }
 
                     /// <summary>
@@ -4820,7 +4820,7 @@ namespace Google.Apis.CloudDataplex.v1
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1Content body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>Create a content.</summary>
@@ -4892,7 +4892,7 @@ namespace Google.Apis.CloudDataplex.v1
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>Delete a content.</summary>
@@ -4943,7 +4943,7 @@ namespace Google.Apis.CloudDataplex.v1
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Get a content resource.</summary>
@@ -5029,7 +5029,7 @@ namespace Google.Apis.CloudDataplex.v1
                     /// </param>
                     public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                     {
-                        return new GetIamPolicyRequest(service, resource);
+                        return new GetIamPolicyRequest(this.service, resource);
                     }
 
                     /// <summary>
@@ -5107,7 +5107,7 @@ namespace Google.Apis.CloudDataplex.v1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>List content.</summary>
@@ -5207,7 +5207,7 @@ namespace Google.Apis.CloudDataplex.v1
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1Content body, string name)
                     {
-                        return new PatchRequest(service, body, name);
+                        return new PatchRequest(this.service, body, name);
                     }
 
                     /// <summary>Update a content. Only supports full resource update.</summary>
@@ -5295,7 +5295,7 @@ namespace Google.Apis.CloudDataplex.v1
                     /// </param>
                     public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.CloudDataplex.v1.Data.GoogleIamV1SetIamPolicyRequest body, string resource)
                     {
-                        return new SetIamPolicyRequest(service, body, resource);
+                        return new SetIamPolicyRequest(this.service, body, resource);
                     }
 
                     /// <summary>
@@ -5364,7 +5364,7 @@ namespace Google.Apis.CloudDataplex.v1
                     /// </param>
                     public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.CloudDataplex.v1.Data.GoogleIamV1TestIamPermissionsRequest body, string resource)
                     {
-                        return new TestIamPermissionsRequest(service, body, resource);
+                        return new TestIamPermissionsRequest(this.service, body, resource);
                     }
 
                     /// <summary>
@@ -5465,7 +5465,7 @@ namespace Google.Apis.CloudDataplex.v1
                         /// </param>
                         public virtual ListRequest List(string parent)
                         {
-                            return new ListRequest(service, parent);
+                            return new ListRequest(this.service, parent);
                         }
 
                         /// <summary>Lists session resources in an environment.</summary>
@@ -5569,7 +5569,7 @@ namespace Google.Apis.CloudDataplex.v1
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1Environment body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>Create an environment resource.</summary>
@@ -5660,7 +5660,7 @@ namespace Google.Apis.CloudDataplex.v1
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -5714,7 +5714,7 @@ namespace Google.Apis.CloudDataplex.v1
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Get environment resource.</summary>
@@ -5768,7 +5768,7 @@ namespace Google.Apis.CloudDataplex.v1
                     /// </param>
                     public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                     {
-                        return new GetIamPolicyRequest(service, resource);
+                        return new GetIamPolicyRequest(this.service, resource);
                     }
 
                     /// <summary>
@@ -5844,7 +5844,7 @@ namespace Google.Apis.CloudDataplex.v1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists environments under the given lake.</summary>
@@ -5952,7 +5952,7 @@ namespace Google.Apis.CloudDataplex.v1
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1Environment body, string name)
                     {
-                        return new PatchRequest(service, body, name);
+                        return new PatchRequest(this.service, body, name);
                     }
 
                     /// <summary>Update the environment resource.</summary>
@@ -6040,7 +6040,7 @@ namespace Google.Apis.CloudDataplex.v1
                     /// </param>
                     public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.CloudDataplex.v1.Data.GoogleIamV1SetIamPolicyRequest body, string resource)
                     {
-                        return new SetIamPolicyRequest(service, body, resource);
+                        return new SetIamPolicyRequest(this.service, body, resource);
                     }
 
                     /// <summary>
@@ -6108,7 +6108,7 @@ namespace Google.Apis.CloudDataplex.v1
                     /// </param>
                     public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.CloudDataplex.v1.Data.GoogleIamV1TestIamPermissionsRequest body, string resource)
                     {
-                        return new TestIamPermissionsRequest(service, body, resource);
+                        return new TestIamPermissionsRequest(this.service, body, resource);
                     }
 
                     /// <summary>
@@ -6209,7 +6209,7 @@ namespace Google.Apis.CloudDataplex.v1
                         /// </param>
                         public virtual CancelRequest Cancel(Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1CancelJobRequest body, string name)
                         {
-                            return new CancelRequest(service, body, name);
+                            return new CancelRequest(this.service, body, name);
                         }
 
                         /// <summary>Cancel jobs running for the task resource.</summary>
@@ -6267,7 +6267,7 @@ namespace Google.Apis.CloudDataplex.v1
                         /// </param>
                         public virtual GetRequest Get(string name)
                         {
-                            return new GetRequest(service, name);
+                            return new GetRequest(this.service, name);
                         }
 
                         /// <summary>Get job resource.</summary>
@@ -6318,7 +6318,7 @@ namespace Google.Apis.CloudDataplex.v1
                         /// </param>
                         public virtual ListRequest List(string parent)
                         {
-                            return new ListRequest(service, parent);
+                            return new ListRequest(this.service, parent);
                         }
 
                         /// <summary>Lists Jobs under the given task.</summary>
@@ -6403,7 +6403,7 @@ namespace Google.Apis.CloudDataplex.v1
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1Task body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>Creates a task resource within a lake.</summary>
@@ -6487,7 +6487,7 @@ namespace Google.Apis.CloudDataplex.v1
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>Delete the task resource.</summary>
@@ -6538,7 +6538,7 @@ namespace Google.Apis.CloudDataplex.v1
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Get task resource.</summary>
@@ -6592,7 +6592,7 @@ namespace Google.Apis.CloudDataplex.v1
                     /// </param>
                     public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                     {
-                        return new GetIamPolicyRequest(service, resource);
+                        return new GetIamPolicyRequest(this.service, resource);
                     }
 
                     /// <summary>
@@ -6668,7 +6668,7 @@ namespace Google.Apis.CloudDataplex.v1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists tasks under the given lake.</summary>
@@ -6776,7 +6776,7 @@ namespace Google.Apis.CloudDataplex.v1
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1Task body, string name)
                     {
-                        return new PatchRequest(service, body, name);
+                        return new PatchRequest(this.service, body, name);
                     }
 
                     /// <summary>Update the task resource.</summary>
@@ -6861,7 +6861,7 @@ namespace Google.Apis.CloudDataplex.v1
                     /// </param>
                     public virtual RunRequest Run(Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1RunTaskRequest body, string name)
                     {
-                        return new RunRequest(service, body, name);
+                        return new RunRequest(this.service, body, name);
                     }
 
                     /// <summary>Run an on demand execution of a Task.</summary>
@@ -6923,7 +6923,7 @@ namespace Google.Apis.CloudDataplex.v1
                     /// </param>
                     public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.CloudDataplex.v1.Data.GoogleIamV1SetIamPolicyRequest body, string resource)
                     {
-                        return new SetIamPolicyRequest(service, body, resource);
+                        return new SetIamPolicyRequest(this.service, body, resource);
                     }
 
                     /// <summary>
@@ -6991,7 +6991,7 @@ namespace Google.Apis.CloudDataplex.v1
                     /// </param>
                     public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.CloudDataplex.v1.Data.GoogleIamV1TestIamPermissionsRequest body, string resource)
                     {
-                        return new TestIamPermissionsRequest(service, body, resource);
+                        return new TestIamPermissionsRequest(this.service, body, resource);
                     }
 
                     /// <summary>
@@ -7093,7 +7093,7 @@ namespace Google.Apis.CloudDataplex.v1
                         /// </param>
                         public virtual ListRequest List(string parent)
                         {
-                            return new ListRequest(service, parent);
+                            return new ListRequest(this.service, parent);
                         }
 
                         /// <summary>Lists action resources in a zone.</summary>
@@ -7212,7 +7212,7 @@ namespace Google.Apis.CloudDataplex.v1
                             /// </param>
                             public virtual ListRequest List(string parent)
                             {
-                                return new ListRequest(service, parent);
+                                return new ListRequest(this.service, parent);
                             }
 
                             /// <summary>Lists action resources in an asset.</summary>
@@ -7297,7 +7297,7 @@ namespace Google.Apis.CloudDataplex.v1
                         /// </param>
                         public virtual CreateRequest Create(Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1Asset body, string parent)
                         {
-                            return new CreateRequest(service, body, parent);
+                            return new CreateRequest(this.service, body, parent);
                         }
 
                         /// <summary>Creates an asset resource.</summary>
@@ -7389,7 +7389,7 @@ namespace Google.Apis.CloudDataplex.v1
                         /// </param>
                         public virtual DeleteRequest Delete(string name)
                         {
-                            return new DeleteRequest(service, name);
+                            return new DeleteRequest(this.service, name);
                         }
 
                         /// <summary>
@@ -7443,7 +7443,7 @@ namespace Google.Apis.CloudDataplex.v1
                         /// </param>
                         public virtual GetRequest Get(string name)
                         {
-                            return new GetRequest(service, name);
+                            return new GetRequest(this.service, name);
                         }
 
                         /// <summary>Retrieves an asset resource.</summary>
@@ -7498,7 +7498,7 @@ namespace Google.Apis.CloudDataplex.v1
                         /// </param>
                         public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                         {
-                            return new GetIamPolicyRequest(service, resource);
+                            return new GetIamPolicyRequest(this.service, resource);
                         }
 
                         /// <summary>
@@ -7575,7 +7575,7 @@ namespace Google.Apis.CloudDataplex.v1
                         /// </param>
                         public virtual ListRequest List(string parent)
                         {
-                            return new ListRequest(service, parent);
+                            return new ListRequest(this.service, parent);
                         }
 
                         /// <summary>Lists asset resources in a zone.</summary>
@@ -7683,7 +7683,7 @@ namespace Google.Apis.CloudDataplex.v1
                         /// </param>
                         public virtual PatchRequest Patch(Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1Asset body, string name)
                         {
-                            return new PatchRequest(service, body, name);
+                            return new PatchRequest(this.service, body, name);
                         }
 
                         /// <summary>Updates an asset resource.</summary>
@@ -7772,7 +7772,7 @@ namespace Google.Apis.CloudDataplex.v1
                         /// </param>
                         public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.CloudDataplex.v1.Data.GoogleIamV1SetIamPolicyRequest body, string resource)
                         {
-                            return new SetIamPolicyRequest(service, body, resource);
+                            return new SetIamPolicyRequest(this.service, body, resource);
                         }
 
                         /// <summary>
@@ -7841,7 +7841,7 @@ namespace Google.Apis.CloudDataplex.v1
                         /// </param>
                         public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.CloudDataplex.v1.Data.GoogleIamV1TestIamPermissionsRequest body, string resource)
                         {
-                            return new TestIamPermissionsRequest(service, body, resource);
+                            return new TestIamPermissionsRequest(this.service, body, resource);
                         }
 
                         /// <summary>
@@ -7942,7 +7942,7 @@ namespace Google.Apis.CloudDataplex.v1
                             /// </param>
                             public virtual CreateRequest Create(Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1Partition body, string parent)
                             {
-                                return new CreateRequest(service, body, parent);
+                                return new CreateRequest(this.service, body, parent);
                             }
 
                             /// <summary>Create a metadata partition.</summary>
@@ -8017,7 +8017,7 @@ namespace Google.Apis.CloudDataplex.v1
                             /// </param>
                             public virtual DeleteRequest Delete(string name)
                             {
-                                return new DeleteRequest(service, name);
+                                return new DeleteRequest(this.service, name);
                             }
 
                             /// <summary>Delete a metadata partition.</summary>
@@ -8084,7 +8084,7 @@ namespace Google.Apis.CloudDataplex.v1
                             /// </param>
                             public virtual GetRequest Get(string name)
                             {
-                                return new GetRequest(service, name);
+                                return new GetRequest(this.service, name);
                             }
 
                             /// <summary>Get a metadata partition of an entity.</summary>
@@ -8137,7 +8137,7 @@ namespace Google.Apis.CloudDataplex.v1
                             /// </param>
                             public virtual ListRequest List(string parent)
                             {
-                                return new ListRequest(service, parent);
+                                return new ListRequest(this.service, parent);
                             }
 
                             /// <summary>List metadata partitions of an entity.</summary>
@@ -8244,7 +8244,7 @@ namespace Google.Apis.CloudDataplex.v1
                         /// </param>
                         public virtual CreateRequest Create(Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1Entity body, string parent)
                         {
-                            return new CreateRequest(service, body, parent);
+                            return new CreateRequest(this.service, body, parent);
                         }
 
                         /// <summary>Create a metadata entity.</summary>
@@ -8316,7 +8316,7 @@ namespace Google.Apis.CloudDataplex.v1
                         /// </param>
                         public virtual DeleteRequest Delete(string name)
                         {
-                            return new DeleteRequest(service, name);
+                            return new DeleteRequest(this.service, name);
                         }
 
                         /// <summary>Delete a metadata entity.</summary>
@@ -8382,7 +8382,7 @@ namespace Google.Apis.CloudDataplex.v1
                         /// </param>
                         public virtual GetRequest Get(string name)
                         {
-                            return new GetRequest(service, name);
+                            return new GetRequest(this.service, name);
                         }
 
                         /// <summary>Get a metadata entity.</summary>
@@ -8471,7 +8471,7 @@ namespace Google.Apis.CloudDataplex.v1
                         /// </param>
                         public virtual ListRequest List(string parent)
                         {
-                            return new ListRequest(service, parent);
+                            return new ListRequest(this.service, parent);
                         }
 
                         /// <summary>List metadata entities in a zone.</summary>
@@ -8603,7 +8603,7 @@ namespace Google.Apis.CloudDataplex.v1
                         /// </param>
                         public virtual UpdateRequest Update(Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1Entity body, string name)
                         {
-                            return new UpdateRequest(service, body, name);
+                            return new UpdateRequest(this.service, body, name);
                         }
 
                         /// <summary>Update a metadata entity. Only supports full resource update.</summary>
@@ -8677,7 +8677,7 @@ namespace Google.Apis.CloudDataplex.v1
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1Zone body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>Creates a zone resource within a lake.</summary>
@@ -8771,7 +8771,7 @@ namespace Google.Apis.CloudDataplex.v1
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -8825,7 +8825,7 @@ namespace Google.Apis.CloudDataplex.v1
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Retrieves a zone resource.</summary>
@@ -8879,7 +8879,7 @@ namespace Google.Apis.CloudDataplex.v1
                     /// </param>
                     public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                     {
-                        return new GetIamPolicyRequest(service, resource);
+                        return new GetIamPolicyRequest(this.service, resource);
                     }
 
                     /// <summary>
@@ -8955,7 +8955,7 @@ namespace Google.Apis.CloudDataplex.v1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists zone resources in a lake.</summary>
@@ -9063,7 +9063,7 @@ namespace Google.Apis.CloudDataplex.v1
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1Zone body, string name)
                     {
-                        return new PatchRequest(service, body, name);
+                        return new PatchRequest(this.service, body, name);
                     }
 
                     /// <summary>Updates a zone resource.</summary>
@@ -9151,7 +9151,7 @@ namespace Google.Apis.CloudDataplex.v1
                     /// </param>
                     public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.CloudDataplex.v1.Data.GoogleIamV1SetIamPolicyRequest body, string resource)
                     {
-                        return new SetIamPolicyRequest(service, body, resource);
+                        return new SetIamPolicyRequest(this.service, body, resource);
                     }
 
                     /// <summary>
@@ -9219,7 +9219,7 @@ namespace Google.Apis.CloudDataplex.v1
                     /// </param>
                     public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.CloudDataplex.v1.Data.GoogleIamV1TestIamPermissionsRequest body, string resource)
                     {
-                        return new TestIamPermissionsRequest(service, body, resource);
+                        return new TestIamPermissionsRequest(this.service, body, resource);
                     }
 
                     /// <summary>
@@ -9285,7 +9285,7 @@ namespace Google.Apis.CloudDataplex.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1Lake body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a lake resource.</summary>
@@ -9376,7 +9376,7 @@ namespace Google.Apis.CloudDataplex.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -9429,7 +9429,7 @@ namespace Google.Apis.CloudDataplex.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Retrieves a lake resource.</summary>
@@ -9483,7 +9483,7 @@ namespace Google.Apis.CloudDataplex.v1
                 /// </param>
                 public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                 {
-                    return new GetIamPolicyRequest(service, resource);
+                    return new GetIamPolicyRequest(this.service, resource);
                 }
 
                 /// <summary>
@@ -9558,7 +9558,7 @@ namespace Google.Apis.CloudDataplex.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists lake resources in a project and location.</summary>
@@ -9666,7 +9666,7 @@ namespace Google.Apis.CloudDataplex.v1
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1Lake body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates a lake resource.</summary>
@@ -9754,7 +9754,7 @@ namespace Google.Apis.CloudDataplex.v1
                 /// </param>
                 public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.CloudDataplex.v1.Data.GoogleIamV1SetIamPolicyRequest body, string resource)
                 {
-                    return new SetIamPolicyRequest(service, body, resource);
+                    return new SetIamPolicyRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -9821,7 +9821,7 @@ namespace Google.Apis.CloudDataplex.v1
                 /// </param>
                 public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.CloudDataplex.v1.Data.GoogleIamV1TestIamPermissionsRequest body, string resource)
                 {
-                    return new TestIamPermissionsRequest(service, body, resource);
+                    return new TestIamPermissionsRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -9907,7 +9907,7 @@ namespace Google.Apis.CloudDataplex.v1
                 /// <param name="name">The name of the operation resource to be cancelled.</param>
                 public virtual CancelRequest Cancel(Google.Apis.CloudDataplex.v1.Data.GoogleLongrunningCancelOperationRequest body, string name)
                 {
-                    return new CancelRequest(service, body, name);
+                    return new CancelRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -9970,7 +9970,7 @@ namespace Google.Apis.CloudDataplex.v1
                 /// <param name="name">The name of the operation resource to be deleted.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -10022,7 +10022,7 @@ namespace Google.Apis.CloudDataplex.v1
                 /// <param name="name">The name of the operation resource.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -10073,7 +10073,7 @@ namespace Google.Apis.CloudDataplex.v1
                 /// <param name="name">The name of the operation's parent resource.</param>
                 public virtual ListRequest List(string name)
                 {
-                    return new ListRequest(service, name);
+                    return new ListRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -10158,7 +10158,7 @@ namespace Google.Apis.CloudDataplex.v1
             /// <param name="name">Resource name for the location.</param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets information about a location.</summary>
@@ -10203,7 +10203,7 @@ namespace Google.Apis.CloudDataplex.v1
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
             {
-                return new ListRequest(service, name);
+                return new ListRequest(this.service, name);
             }
 
             /// <summary>Lists information about the supported locations for this service.</summary>
@@ -10358,8 +10358,8 @@ namespace Google.Apis.CloudDataplex.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? DetectTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DetectTimeRaw);
-            set => DetectTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DetectTimeRaw);
+            set => DetectTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Details for issues related to applying security policy.</summary>
@@ -10575,8 +10575,8 @@ namespace Google.Apis.CloudDataplex.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Optional. Description of the asset.</summary>
@@ -10665,8 +10665,8 @@ namespace Google.Apis.CloudDataplex.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -10804,8 +10804,8 @@ namespace Google.Apis.CloudDataplex.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LastRunTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastRunTimeRaw);
-            set => LastRunTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastRunTimeRaw);
+            set => LastRunTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Additional information about the current state.</summary>
@@ -10853,8 +10853,8 @@ namespace Google.Apis.CloudDataplex.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -10957,8 +10957,8 @@ namespace Google.Apis.CloudDataplex.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -11012,8 +11012,8 @@ namespace Google.Apis.CloudDataplex.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -11066,8 +11066,8 @@ namespace Google.Apis.CloudDataplex.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -11117,8 +11117,8 @@ namespace Google.Apis.CloudDataplex.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Required. Content data in string format.</summary>
@@ -11195,8 +11195,8 @@ namespace Google.Apis.CloudDataplex.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -11289,8 +11289,8 @@ namespace Google.Apis.CloudDataplex.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -11379,8 +11379,8 @@ namespace Google.Apis.CloudDataplex.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
     }
 
@@ -11430,8 +11430,8 @@ namespace Google.Apis.CloudDataplex.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Optional. Description of the DataAttributeBinding.</summary>
@@ -11518,8 +11518,8 @@ namespace Google.Apis.CloudDataplex.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
     }
 
@@ -12384,8 +12384,8 @@ namespace Google.Apis.CloudDataplex.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Required. The data source for DataScan.</summary>
@@ -12486,8 +12486,8 @@ namespace Google.Apis.CloudDataplex.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -12533,8 +12533,8 @@ namespace Google.Apis.CloudDataplex.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Data profile result for data profile type data scan.</summary>
@@ -12590,8 +12590,8 @@ namespace Google.Apis.CloudDataplex.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The identifier of the specific data scan job this log entry is for.</summary>
@@ -12647,8 +12647,8 @@ namespace Google.Apis.CloudDataplex.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The status of the data scan job.</summary>
@@ -12847,8 +12847,8 @@ namespace Google.Apis.CloudDataplex.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LatestJobEndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LatestJobEndTimeRaw);
-            set => LatestJobEndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LatestJobEndTimeRaw);
+            set => LatestJobEndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _latestJobStartTimeRaw;
@@ -12886,8 +12886,8 @@ namespace Google.Apis.CloudDataplex.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LatestJobStartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LatestJobStartTimeRaw);
-            set => LatestJobStartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LatestJobStartTimeRaw);
+            set => LatestJobStartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -12946,8 +12946,8 @@ namespace Google.Apis.CloudDataplex.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. Additional information about the current state.</summary>
@@ -12995,8 +12995,8 @@ namespace Google.Apis.CloudDataplex.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. Execution state for the DataScanJob.</summary>
@@ -13085,8 +13085,8 @@ namespace Google.Apis.CloudDataplex.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Optional. Description of the DataTaxonomy.</summary>
@@ -13155,8 +13155,8 @@ namespace Google.Apis.CloudDataplex.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
     }
 
@@ -13329,8 +13329,8 @@ namespace Google.Apis.CloudDataplex.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -13442,8 +13442,8 @@ namespace Google.Apis.CloudDataplex.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
     }
 
@@ -13517,8 +13517,8 @@ namespace Google.Apis.CloudDataplex.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Optional. Description of the environment.</summary>
@@ -13600,8 +13600,8 @@ namespace Google.Apis.CloudDataplex.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -13800,8 +13800,8 @@ namespace Google.Apis.CloudDataplex.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. Spec related to how a task is executed.</summary>
@@ -13870,8 +13870,8 @@ namespace Google.Apis.CloudDataplex.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. Execution state for the job.</summary>
@@ -13928,8 +13928,8 @@ namespace Google.Apis.CloudDataplex.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Job execution trigger.</summary>
@@ -13989,8 +13989,8 @@ namespace Google.Apis.CloudDataplex.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The job state on completion.</summary>
@@ -14052,8 +14052,8 @@ namespace Google.Apis.CloudDataplex.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Optional. Description of the lake.</summary>
@@ -14134,8 +14134,8 @@ namespace Google.Apis.CloudDataplex.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -14204,8 +14204,8 @@ namespace Google.Apis.CloudDataplex.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -14548,8 +14548,8 @@ namespace Google.Apis.CloudDataplex.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _endTimeRaw;
@@ -14585,8 +14585,8 @@ namespace Google.Apis.CloudDataplex.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -14878,8 +14878,8 @@ namespace Google.Apis.CloudDataplex.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -15126,8 +15126,8 @@ namespace Google.Apis.CloudDataplex.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Optional. Description of the task.</summary>
@@ -15213,8 +15213,8 @@ namespace Google.Apis.CloudDataplex.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -15304,8 +15304,8 @@ namespace Google.Apis.CloudDataplex.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -15559,8 +15559,8 @@ namespace Google.Apis.CloudDataplex.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Required. Immutable. Trigger type of the user-specified Task.</summary>
@@ -15655,8 +15655,8 @@ namespace Google.Apis.CloudDataplex.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Optional. Description of the zone.</summary>
@@ -15736,8 +15736,8 @@ namespace Google.Apis.CloudDataplex.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>

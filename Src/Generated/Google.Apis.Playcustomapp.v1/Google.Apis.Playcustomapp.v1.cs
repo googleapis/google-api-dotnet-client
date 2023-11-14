@@ -293,7 +293,7 @@ namespace Google.Apis.Playcustomapp.v1
             /// <param name="account">Developer account ID.</param>
             public virtual CreateRequest Create(Google.Apis.Playcustomapp.v1.Data.CustomApp body, long account)
             {
-                return new CreateRequest(service, body, account);
+                return new CreateRequest(this.service, body, account);
             }
 
             /// <summary>Creates a new custom app.</summary>

@@ -278,7 +278,7 @@ namespace Google.Apis.MyBusinessLodging.v1
             /// </param>
             public virtual GetGoogleUpdatedRequest GetGoogleUpdated(string name)
             {
-                return new GetGoogleUpdatedRequest(service, name);
+                return new GetGoogleUpdatedRequest(this.service, name);
             }
 
             /// <summary>Returns the Google updated Lodging of a specific location.</summary>
@@ -343,7 +343,7 @@ namespace Google.Apis.MyBusinessLodging.v1
         /// </param>
         public virtual GetLodgingRequest GetLodging(string name)
         {
-            return new GetLodgingRequest(service, name);
+            return new GetLodgingRequest(this.service, name);
         }
 
         /// <summary>Returns the Lodging of a specific location.</summary>
@@ -408,7 +408,7 @@ namespace Google.Apis.MyBusinessLodging.v1
         /// </param>
         public virtual UpdateLodgingRequest UpdateLodging(Google.Apis.MyBusinessLodging.v1.Data.Lodging body, string name)
         {
-            return new UpdateLodgingRequest(service, body, name);
+            return new UpdateLodgingRequest(this.service, body, name);
         }
 
         /// <summary>Updates the Lodging of a specific location.</summary>
@@ -2364,8 +2364,8 @@ namespace Google.Apis.MyBusinessLodging.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>

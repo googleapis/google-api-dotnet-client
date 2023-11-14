@@ -265,7 +265,7 @@ namespace Google.Apis.PolyService.v1
         /// <param name="name">Required. An asset's name in the form `assets/{ASSET_ID}`.</param>
         public virtual GetRequest Get(string name)
         {
-            return new GetRequest(service, name);
+            return new GetRequest(this.service, name);
         }
 
         /// <summary>
@@ -315,7 +315,7 @@ namespace Google.Apis.PolyService.v1
         /// </summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>
@@ -530,7 +530,7 @@ namespace Google.Apis.PolyService.v1
             /// </param>
             public virtual ListRequest List(string name)
             {
-                return new ListRequest(service, name);
+                return new ListRequest(this.service, name);
             }
 
             /// <summary>
@@ -700,7 +700,7 @@ namespace Google.Apis.PolyService.v1
             /// </param>
             public virtual ListRequest List(string name)
             {
-                return new ListRequest(service, name);
+                return new ListRequest(this.service, name);
             }
 
             /// <summary>
@@ -861,8 +861,8 @@ namespace Google.Apis.PolyService.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The human-readable description, set by the asset's author.</summary>
@@ -948,8 +948,8 @@ namespace Google.Apis.PolyService.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The visibility of the asset and who can access it.</summary>

@@ -322,7 +322,7 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1beta2
                 /// </param>
                 public virtual ApplyParametersRequest ApplyParameters(Google.Apis.CloudMemorystoreforMemcached.v1beta2.Data.ApplyParametersRequest body, string name)
                 {
-                    return new ApplyParametersRequest(service, body, name);
+                    return new ApplyParametersRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -383,7 +383,7 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1beta2
                 /// </param>
                 public virtual ApplySoftwareUpdateRequest ApplySoftwareUpdate(Google.Apis.CloudMemorystoreforMemcached.v1beta2.Data.ApplySoftwareUpdateRequest body, string instance)
                 {
-                    return new ApplySoftwareUpdateRequest(service, body, instance);
+                    return new ApplySoftwareUpdateRequest(this.service, body, instance);
                 }
 
                 /// <summary>Updates software on the selected nodes of the Instance.</summary>
@@ -441,7 +441,7 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1beta2
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.CloudMemorystoreforMemcached.v1beta2.Data.Instance body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a new Instance in a given location.</summary>
@@ -518,7 +518,7 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1beta2
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes a single Instance.</summary>
@@ -571,7 +571,7 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1beta2
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets details of a single Instance.</summary>
@@ -623,7 +623,7 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1beta2
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists Instances in a given location.</summary>
@@ -734,7 +734,7 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1beta2
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.CloudMemorystoreforMemcached.v1beta2.Data.Instance body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates an existing Instance in a given project and location.</summary>
@@ -809,7 +809,7 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1beta2
                 /// </param>
                 public virtual RescheduleMaintenanceRequest RescheduleMaintenance(Google.Apis.CloudMemorystoreforMemcached.v1beta2.Data.RescheduleMaintenanceRequest body, string instance)
                 {
-                    return new RescheduleMaintenanceRequest(service, body, instance);
+                    return new RescheduleMaintenanceRequest(this.service, body, instance);
                 }
 
                 /// <summary>Performs the apply phase of the RescheduleMaintenance verb.</summary>
@@ -872,7 +872,7 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1beta2
                 /// </param>
                 public virtual UpdateParametersRequest UpdateParameters(Google.Apis.CloudMemorystoreforMemcached.v1beta2.Data.UpdateParametersRequest body, string name)
                 {
-                    return new UpdateParametersRequest(service, body, name);
+                    return new UpdateParametersRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -937,7 +937,7 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1beta2
                 /// </param>
                 public virtual UpgradeRequest Upgrade(Google.Apis.CloudMemorystoreforMemcached.v1beta2.Data.GoogleCloudMemcacheV1beta2UpgradeInstanceRequest body, string name)
                 {
-                    return new UpgradeRequest(service, body, name);
+                    return new UpgradeRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -1021,7 +1021,7 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1beta2
                 /// <param name="name">The name of the operation resource to be cancelled.</param>
                 public virtual CancelRequest Cancel(Google.Apis.CloudMemorystoreforMemcached.v1beta2.Data.CancelOperationRequest body, string name)
                 {
-                    return new CancelRequest(service, body, name);
+                    return new CancelRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -1084,7 +1084,7 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1beta2
                 /// <param name="name">The name of the operation resource to be deleted.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -1136,7 +1136,7 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1beta2
                 /// <param name="name">The name of the operation resource.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -1187,7 +1187,7 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1beta2
                 /// <param name="name">The name of the operation's parent resource.</param>
                 public virtual ListRequest List(string name)
                 {
-                    return new ListRequest(service, name);
+                    return new ListRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -1272,7 +1272,7 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1beta2
             /// <param name="name">Resource name for the location.</param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets information about a location.</summary>
@@ -1317,7 +1317,7 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1beta2
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
             {
-                return new ListRequest(service, name);
+                return new ListRequest(this.service, name);
             }
 
             /// <summary>Lists information about the supported locations for this service.</summary>
@@ -1589,8 +1589,8 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1beta2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -1633,8 +1633,8 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1beta2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -1696,8 +1696,8 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1beta2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _endTimeRaw;
@@ -1733,8 +1733,8 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1beta2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. Human-readable status of the operation, if any.</summary>
@@ -1832,8 +1832,8 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1beta2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -1969,8 +1969,8 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1beta2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -2023,8 +2023,8 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1beta2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -2073,8 +2073,8 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1beta2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ScheduleDeadlineTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ScheduleDeadlineTimeRaw);
-            set => ScheduleDeadlineTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ScheduleDeadlineTimeRaw);
+            set => ScheduleDeadlineTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _startTimeRaw;
@@ -2110,8 +2110,8 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1beta2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -2315,8 +2315,8 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1beta2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. Endpoint for the Discovery API.</summary>
@@ -2442,8 +2442,8 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1beta2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -2609,8 +2609,8 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1beta2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -2678,8 +2678,8 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1beta2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -2722,8 +2722,8 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1beta2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _scheduleDeadlineTimeRaw;
@@ -2763,8 +2763,8 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1beta2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ScheduleDeadlineTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ScheduleDeadlineTimeRaw);
-            set => ScheduleDeadlineTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ScheduleDeadlineTimeRaw);
+            set => ScheduleDeadlineTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _startTimeRaw;
@@ -2800,8 +2800,8 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1beta2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -2997,8 +2997,8 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1beta2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _endTimeRaw;
@@ -3034,8 +3034,8 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1beta2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. Human-readable status of the operation, if any.</summary>
@@ -3097,8 +3097,8 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1beta2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ScheduleTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ScheduleTimeRaw);
-            set => ScheduleTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ScheduleTimeRaw);
+            set => ScheduleTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>

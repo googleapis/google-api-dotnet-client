@@ -320,7 +320,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             /// </param>
             public virtual CalculateRequest Calculate(string name)
             {
-                return new CalculateRequest(service, name);
+                return new CalculateRequest(this.service, name);
             }
 
             /// <summary>
@@ -405,7 +405,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             /// </param>
             public virtual CalculateRequest Calculate(string name)
             {
-                return new CalculateRequest(service, name);
+                return new CalculateRequest(this.service, name);
             }
 
             /// <summary>
@@ -489,7 +489,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             /// </param>
             public virtual CalculateRequest Calculate(string name)
             {
-                return new CalculateRequest(service, name);
+                return new CalculateRequest(this.service, name);
             }
 
             /// <summary>
@@ -573,7 +573,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             /// </param>
             public virtual CalculateRequest Calculate(string name)
             {
-                return new CalculateRequest(service, name);
+                return new CalculateRequest(this.service, name);
             }
 
             /// <summary>
@@ -658,7 +658,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             /// </param>
             public virtual CalculateRequest Calculate(string name)
             {
-                return new CalculateRequest(service, name);
+                return new CalculateRequest(this.service, name);
             }
 
             /// <summary>
@@ -742,7 +742,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             /// </param>
             public virtual CalculateRequest Calculate(string name)
             {
-                return new CalculateRequest(service, name);
+                return new CalculateRequest(this.service, name);
             }
 
             /// <summary>
@@ -809,7 +809,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
         /// </param>
         public virtual GetContainerThreatDetectionSettingsRequest GetContainerThreatDetectionSettings(string name)
         {
-            return new GetContainerThreatDetectionSettingsRequest(service, name);
+            return new GetContainerThreatDetectionSettingsRequest(this.service, name);
         }
 
         /// <summary>
@@ -875,7 +875,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
         /// </param>
         public virtual GetEventThreatDetectionSettingsRequest GetEventThreatDetectionSettings(string name)
         {
-            return new GetEventThreatDetectionSettingsRequest(service, name);
+            return new GetEventThreatDetectionSettingsRequest(this.service, name);
         }
 
         /// <summary>
@@ -941,7 +941,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
         /// </param>
         public virtual GetRapidVulnerabilityDetectionSettingsRequest GetRapidVulnerabilityDetectionSettings(string name)
         {
-            return new GetRapidVulnerabilityDetectionSettingsRequest(service, name);
+            return new GetRapidVulnerabilityDetectionSettingsRequest(this.service, name);
         }
 
         /// <summary>
@@ -1001,7 +1001,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
         /// </param>
         public virtual GetSecurityCenterSettingsRequest GetSecurityCenterSettings(string name)
         {
-            return new GetSecurityCenterSettingsRequest(service, name);
+            return new GetSecurityCenterSettingsRequest(this.service, name);
         }
 
         /// <summary>Get the SecurityCenterSettings resource.</summary>
@@ -1060,7 +1060,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
         /// </param>
         public virtual GetSecurityHealthAnalyticsSettingsRequest GetSecurityHealthAnalyticsSettings(string name)
         {
-            return new GetSecurityHealthAnalyticsSettingsRequest(service, name);
+            return new GetSecurityHealthAnalyticsSettingsRequest(this.service, name);
         }
 
         /// <summary>
@@ -1126,7 +1126,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
         /// </param>
         public virtual GetVirtualMachineThreatDetectionSettingsRequest GetVirtualMachineThreatDetectionSettings(string name)
         {
-            return new GetVirtualMachineThreatDetectionSettingsRequest(service, name);
+            return new GetVirtualMachineThreatDetectionSettingsRequest(this.service, name);
         }
 
         /// <summary>
@@ -1192,7 +1192,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
         /// </param>
         public virtual GetWebSecurityScannerSettingsRequest GetWebSecurityScannerSettings(string name)
         {
-            return new GetWebSecurityScannerSettingsRequest(service, name);
+            return new GetWebSecurityScannerSettingsRequest(this.service, name);
         }
 
         /// <summary>
@@ -1253,7 +1253,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
         /// </param>
         public virtual UpdateContainerThreatDetectionSettingsRequest UpdateContainerThreatDetectionSettings(Google.Apis.SecurityCommandCenter.v1beta2.Data.ContainerThreatDetectionSettings body, string name)
         {
-            return new UpdateContainerThreatDetectionSettingsRequest(service, body, name);
+            return new UpdateContainerThreatDetectionSettingsRequest(this.service, body, name);
         }
 
         /// <summary>Update the ContainerThreatDetectionSettings resource.</summary>
@@ -1327,7 +1327,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
         /// </param>
         public virtual UpdateEventThreatDetectionSettingsRequest UpdateEventThreatDetectionSettings(Google.Apis.SecurityCommandCenter.v1beta2.Data.EventThreatDetectionSettings body, string name)
         {
-            return new UpdateEventThreatDetectionSettingsRequest(service, body, name);
+            return new UpdateEventThreatDetectionSettingsRequest(this.service, body, name);
         }
 
         /// <summary>Update the EventThreatDetectionSettings resource.</summary>
@@ -1401,7 +1401,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
         /// </param>
         public virtual UpdateRapidVulnerabilityDetectionSettingsRequest UpdateRapidVulnerabilityDetectionSettings(Google.Apis.SecurityCommandCenter.v1beta2.Data.RapidVulnerabilityDetectionSettings body, string name)
         {
-            return new UpdateRapidVulnerabilityDetectionSettingsRequest(service, body, name);
+            return new UpdateRapidVulnerabilityDetectionSettingsRequest(this.service, body, name);
         }
 
         /// <summary>Update the RapidVulnerabilityDetectionSettings resource.</summary>
@@ -1475,7 +1475,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
         /// </param>
         public virtual UpdateSecurityHealthAnalyticsSettingsRequest UpdateSecurityHealthAnalyticsSettings(Google.Apis.SecurityCommandCenter.v1beta2.Data.SecurityHealthAnalyticsSettings body, string name)
         {
-            return new UpdateSecurityHealthAnalyticsSettingsRequest(service, body, name);
+            return new UpdateSecurityHealthAnalyticsSettingsRequest(this.service, body, name);
         }
 
         /// <summary>Update the SecurityHealthAnalyticsSettings resource.</summary>
@@ -1549,7 +1549,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
         /// </param>
         public virtual UpdateVirtualMachineThreatDetectionSettingsRequest UpdateVirtualMachineThreatDetectionSettings(Google.Apis.SecurityCommandCenter.v1beta2.Data.VirtualMachineThreatDetectionSettings body, string name)
         {
-            return new UpdateVirtualMachineThreatDetectionSettingsRequest(service, body, name);
+            return new UpdateVirtualMachineThreatDetectionSettingsRequest(this.service, body, name);
         }
 
         /// <summary>Update the VirtualMachineThreatDetectionSettings resource.</summary>
@@ -1623,7 +1623,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
         /// </param>
         public virtual UpdateWebSecurityScannerSettingsRequest UpdateWebSecurityScannerSettings(Google.Apis.SecurityCommandCenter.v1beta2.Data.WebSecurityScannerSettings body, string name)
         {
-            return new UpdateWebSecurityScannerSettingsRequest(service, body, name);
+            return new UpdateWebSecurityScannerSettingsRequest(this.service, body, name);
         }
 
         /// <summary>Update the WebSecurityScannerSettings resource.</summary>
@@ -1740,7 +1740,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             /// </param>
             public virtual CalculateRequest Calculate(string name)
             {
-                return new CalculateRequest(service, name);
+                return new CalculateRequest(this.service, name);
             }
 
             /// <summary>
@@ -1825,7 +1825,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             /// </param>
             public virtual CalculateRequest Calculate(string name)
             {
-                return new CalculateRequest(service, name);
+                return new CalculateRequest(this.service, name);
             }
 
             /// <summary>
@@ -1909,7 +1909,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             /// </param>
             public virtual CalculateRequest Calculate(string name)
             {
-                return new CalculateRequest(service, name);
+                return new CalculateRequest(this.service, name);
             }
 
             /// <summary>
@@ -1993,7 +1993,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             /// </param>
             public virtual CalculateRequest Calculate(string name)
             {
-                return new CalculateRequest(service, name);
+                return new CalculateRequest(this.service, name);
             }
 
             /// <summary>
@@ -2078,7 +2078,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             /// </param>
             public virtual CalculateRequest Calculate(string name)
             {
-                return new CalculateRequest(service, name);
+                return new CalculateRequest(this.service, name);
             }
 
             /// <summary>
@@ -2162,7 +2162,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             /// </param>
             public virtual CalculateRequest Calculate(string name)
             {
-                return new CalculateRequest(service, name);
+                return new CalculateRequest(this.service, name);
             }
 
             /// <summary>
@@ -2229,7 +2229,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
         /// </param>
         public virtual GetContainerThreatDetectionSettingsRequest GetContainerThreatDetectionSettings(string name)
         {
-            return new GetContainerThreatDetectionSettingsRequest(service, name);
+            return new GetContainerThreatDetectionSettingsRequest(this.service, name);
         }
 
         /// <summary>
@@ -2295,7 +2295,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
         /// </param>
         public virtual GetEventThreatDetectionSettingsRequest GetEventThreatDetectionSettings(string name)
         {
-            return new GetEventThreatDetectionSettingsRequest(service, name);
+            return new GetEventThreatDetectionSettingsRequest(this.service, name);
         }
 
         /// <summary>
@@ -2361,7 +2361,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
         /// </param>
         public virtual GetRapidVulnerabilityDetectionSettingsRequest GetRapidVulnerabilityDetectionSettings(string name)
         {
-            return new GetRapidVulnerabilityDetectionSettingsRequest(service, name);
+            return new GetRapidVulnerabilityDetectionSettingsRequest(this.service, name);
         }
 
         /// <summary>
@@ -2421,7 +2421,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
         /// </param>
         public virtual GetSecurityCenterSettingsRequest GetSecurityCenterSettings(string name)
         {
-            return new GetSecurityCenterSettingsRequest(service, name);
+            return new GetSecurityCenterSettingsRequest(this.service, name);
         }
 
         /// <summary>Get the SecurityCenterSettings resource.</summary>
@@ -2480,7 +2480,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
         /// </param>
         public virtual GetSecurityHealthAnalyticsSettingsRequest GetSecurityHealthAnalyticsSettings(string name)
         {
-            return new GetSecurityHealthAnalyticsSettingsRequest(service, name);
+            return new GetSecurityHealthAnalyticsSettingsRequest(this.service, name);
         }
 
         /// <summary>
@@ -2537,7 +2537,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
         /// </param>
         public virtual GetSubscriptionRequest GetSubscription(string name)
         {
-            return new GetSubscriptionRequest(service, name);
+            return new GetSubscriptionRequest(this.service, name);
         }
 
         /// <summary>Get the Subscription resource.</summary>
@@ -2595,7 +2595,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
         /// </param>
         public virtual GetVirtualMachineThreatDetectionSettingsRequest GetVirtualMachineThreatDetectionSettings(string name)
         {
-            return new GetVirtualMachineThreatDetectionSettingsRequest(service, name);
+            return new GetVirtualMachineThreatDetectionSettingsRequest(this.service, name);
         }
 
         /// <summary>
@@ -2661,7 +2661,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
         /// </param>
         public virtual GetWebSecurityScannerSettingsRequest GetWebSecurityScannerSettings(string name)
         {
-            return new GetWebSecurityScannerSettingsRequest(service, name);
+            return new GetWebSecurityScannerSettingsRequest(this.service, name);
         }
 
         /// <summary>
@@ -2722,7 +2722,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
         /// </param>
         public virtual UpdateContainerThreatDetectionSettingsRequest UpdateContainerThreatDetectionSettings(Google.Apis.SecurityCommandCenter.v1beta2.Data.ContainerThreatDetectionSettings body, string name)
         {
-            return new UpdateContainerThreatDetectionSettingsRequest(service, body, name);
+            return new UpdateContainerThreatDetectionSettingsRequest(this.service, body, name);
         }
 
         /// <summary>Update the ContainerThreatDetectionSettings resource.</summary>
@@ -2796,7 +2796,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
         /// </param>
         public virtual UpdateEventThreatDetectionSettingsRequest UpdateEventThreatDetectionSettings(Google.Apis.SecurityCommandCenter.v1beta2.Data.EventThreatDetectionSettings body, string name)
         {
-            return new UpdateEventThreatDetectionSettingsRequest(service, body, name);
+            return new UpdateEventThreatDetectionSettingsRequest(this.service, body, name);
         }
 
         /// <summary>Update the EventThreatDetectionSettings resource.</summary>
@@ -2870,7 +2870,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
         /// </param>
         public virtual UpdateRapidVulnerabilityDetectionSettingsRequest UpdateRapidVulnerabilityDetectionSettings(Google.Apis.SecurityCommandCenter.v1beta2.Data.RapidVulnerabilityDetectionSettings body, string name)
         {
-            return new UpdateRapidVulnerabilityDetectionSettingsRequest(service, body, name);
+            return new UpdateRapidVulnerabilityDetectionSettingsRequest(this.service, body, name);
         }
 
         /// <summary>Update the RapidVulnerabilityDetectionSettings resource.</summary>
@@ -2944,7 +2944,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
         /// </param>
         public virtual UpdateSecurityHealthAnalyticsSettingsRequest UpdateSecurityHealthAnalyticsSettings(Google.Apis.SecurityCommandCenter.v1beta2.Data.SecurityHealthAnalyticsSettings body, string name)
         {
-            return new UpdateSecurityHealthAnalyticsSettingsRequest(service, body, name);
+            return new UpdateSecurityHealthAnalyticsSettingsRequest(this.service, body, name);
         }
 
         /// <summary>Update the SecurityHealthAnalyticsSettings resource.</summary>
@@ -3018,7 +3018,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
         /// </param>
         public virtual UpdateVirtualMachineThreatDetectionSettingsRequest UpdateVirtualMachineThreatDetectionSettings(Google.Apis.SecurityCommandCenter.v1beta2.Data.VirtualMachineThreatDetectionSettings body, string name)
         {
-            return new UpdateVirtualMachineThreatDetectionSettingsRequest(service, body, name);
+            return new UpdateVirtualMachineThreatDetectionSettingsRequest(this.service, body, name);
         }
 
         /// <summary>Update the VirtualMachineThreatDetectionSettings resource.</summary>
@@ -3092,7 +3092,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
         /// </param>
         public virtual UpdateWebSecurityScannerSettingsRequest UpdateWebSecurityScannerSettings(Google.Apis.SecurityCommandCenter.v1beta2.Data.WebSecurityScannerSettings body, string name)
         {
-            return new UpdateWebSecurityScannerSettingsRequest(service, body, name);
+            return new UpdateWebSecurityScannerSettingsRequest(this.service, body, name);
         }
 
         /// <summary>Update the WebSecurityScannerSettings resource.</summary>
@@ -3210,7 +3210,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             /// </param>
             public virtual CalculateRequest Calculate(string name)
             {
-                return new CalculateRequest(service, name);
+                return new CalculateRequest(this.service, name);
             }
 
             /// <summary>
@@ -3295,7 +3295,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             /// </param>
             public virtual CalculateRequest Calculate(string name)
             {
-                return new CalculateRequest(service, name);
+                return new CalculateRequest(this.service, name);
             }
 
             /// <summary>
@@ -3417,7 +3417,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                     /// </param>
                     public virtual CalculateRequest Calculate(string name)
                     {
-                        return new CalculateRequest(service, name);
+                        return new CalculateRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -3488,7 +3488,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                 /// </param>
                 public virtual GetContainerThreatDetectionSettingsRequest GetContainerThreatDetectionSettings(string name)
                 {
-                    return new GetContainerThreatDetectionSettingsRequest(service, name);
+                    return new GetContainerThreatDetectionSettingsRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -3552,7 +3552,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                 /// </param>
                 public virtual UpdateContainerThreatDetectionSettingsRequest UpdateContainerThreatDetectionSettings(Google.Apis.SecurityCommandCenter.v1beta2.Data.ContainerThreatDetectionSettings body, string name)
                 {
-                    return new UpdateContainerThreatDetectionSettingsRequest(service, body, name);
+                    return new UpdateContainerThreatDetectionSettingsRequest(this.service, body, name);
                 }
 
                 /// <summary>Update the ContainerThreatDetectionSettings resource.</summary>
@@ -3652,7 +3652,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             /// </param>
             public virtual CalculateRequest Calculate(string name)
             {
-                return new CalculateRequest(service, name);
+                return new CalculateRequest(this.service, name);
             }
 
             /// <summary>
@@ -3736,7 +3736,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             /// </param>
             public virtual CalculateRequest Calculate(string name)
             {
-                return new CalculateRequest(service, name);
+                return new CalculateRequest(this.service, name);
             }
 
             /// <summary>
@@ -3821,7 +3821,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             /// </param>
             public virtual CalculateRequest Calculate(string name)
             {
-                return new CalculateRequest(service, name);
+                return new CalculateRequest(this.service, name);
             }
 
             /// <summary>
@@ -3905,7 +3905,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             /// </param>
             public virtual CalculateRequest Calculate(string name)
             {
-                return new CalculateRequest(service, name);
+                return new CalculateRequest(this.service, name);
             }
 
             /// <summary>
@@ -3972,7 +3972,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
         /// </param>
         public virtual GetContainerThreatDetectionSettingsRequest GetContainerThreatDetectionSettings(string name)
         {
-            return new GetContainerThreatDetectionSettingsRequest(service, name);
+            return new GetContainerThreatDetectionSettingsRequest(this.service, name);
         }
 
         /// <summary>
@@ -4038,7 +4038,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
         /// </param>
         public virtual GetEventThreatDetectionSettingsRequest GetEventThreatDetectionSettings(string name)
         {
-            return new GetEventThreatDetectionSettingsRequest(service, name);
+            return new GetEventThreatDetectionSettingsRequest(this.service, name);
         }
 
         /// <summary>
@@ -4104,7 +4104,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
         /// </param>
         public virtual GetRapidVulnerabilityDetectionSettingsRequest GetRapidVulnerabilityDetectionSettings(string name)
         {
-            return new GetRapidVulnerabilityDetectionSettingsRequest(service, name);
+            return new GetRapidVulnerabilityDetectionSettingsRequest(this.service, name);
         }
 
         /// <summary>
@@ -4164,7 +4164,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
         /// </param>
         public virtual GetSecurityCenterSettingsRequest GetSecurityCenterSettings(string name)
         {
-            return new GetSecurityCenterSettingsRequest(service, name);
+            return new GetSecurityCenterSettingsRequest(this.service, name);
         }
 
         /// <summary>Get the SecurityCenterSettings resource.</summary>
@@ -4223,7 +4223,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
         /// </param>
         public virtual GetSecurityHealthAnalyticsSettingsRequest GetSecurityHealthAnalyticsSettings(string name)
         {
-            return new GetSecurityHealthAnalyticsSettingsRequest(service, name);
+            return new GetSecurityHealthAnalyticsSettingsRequest(this.service, name);
         }
 
         /// <summary>
@@ -4289,7 +4289,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
         /// </param>
         public virtual GetVirtualMachineThreatDetectionSettingsRequest GetVirtualMachineThreatDetectionSettings(string name)
         {
-            return new GetVirtualMachineThreatDetectionSettingsRequest(service, name);
+            return new GetVirtualMachineThreatDetectionSettingsRequest(this.service, name);
         }
 
         /// <summary>
@@ -4355,7 +4355,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
         /// </param>
         public virtual GetWebSecurityScannerSettingsRequest GetWebSecurityScannerSettings(string name)
         {
-            return new GetWebSecurityScannerSettingsRequest(service, name);
+            return new GetWebSecurityScannerSettingsRequest(this.service, name);
         }
 
         /// <summary>
@@ -4416,7 +4416,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
         /// </param>
         public virtual UpdateContainerThreatDetectionSettingsRequest UpdateContainerThreatDetectionSettings(Google.Apis.SecurityCommandCenter.v1beta2.Data.ContainerThreatDetectionSettings body, string name)
         {
-            return new UpdateContainerThreatDetectionSettingsRequest(service, body, name);
+            return new UpdateContainerThreatDetectionSettingsRequest(this.service, body, name);
         }
 
         /// <summary>Update the ContainerThreatDetectionSettings resource.</summary>
@@ -4490,7 +4490,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
         /// </param>
         public virtual UpdateEventThreatDetectionSettingsRequest UpdateEventThreatDetectionSettings(Google.Apis.SecurityCommandCenter.v1beta2.Data.EventThreatDetectionSettings body, string name)
         {
-            return new UpdateEventThreatDetectionSettingsRequest(service, body, name);
+            return new UpdateEventThreatDetectionSettingsRequest(this.service, body, name);
         }
 
         /// <summary>Update the EventThreatDetectionSettings resource.</summary>
@@ -4564,7 +4564,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
         /// </param>
         public virtual UpdateRapidVulnerabilityDetectionSettingsRequest UpdateRapidVulnerabilityDetectionSettings(Google.Apis.SecurityCommandCenter.v1beta2.Data.RapidVulnerabilityDetectionSettings body, string name)
         {
-            return new UpdateRapidVulnerabilityDetectionSettingsRequest(service, body, name);
+            return new UpdateRapidVulnerabilityDetectionSettingsRequest(this.service, body, name);
         }
 
         /// <summary>Update the RapidVulnerabilityDetectionSettings resource.</summary>
@@ -4638,7 +4638,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
         /// </param>
         public virtual UpdateSecurityHealthAnalyticsSettingsRequest UpdateSecurityHealthAnalyticsSettings(Google.Apis.SecurityCommandCenter.v1beta2.Data.SecurityHealthAnalyticsSettings body, string name)
         {
-            return new UpdateSecurityHealthAnalyticsSettingsRequest(service, body, name);
+            return new UpdateSecurityHealthAnalyticsSettingsRequest(this.service, body, name);
         }
 
         /// <summary>Update the SecurityHealthAnalyticsSettings resource.</summary>
@@ -4712,7 +4712,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
         /// </param>
         public virtual UpdateVirtualMachineThreatDetectionSettingsRequest UpdateVirtualMachineThreatDetectionSettings(Google.Apis.SecurityCommandCenter.v1beta2.Data.VirtualMachineThreatDetectionSettings body, string name)
         {
-            return new UpdateVirtualMachineThreatDetectionSettingsRequest(service, body, name);
+            return new UpdateVirtualMachineThreatDetectionSettingsRequest(this.service, body, name);
         }
 
         /// <summary>Update the VirtualMachineThreatDetectionSettings resource.</summary>
@@ -4786,7 +4786,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
         /// </param>
         public virtual UpdateWebSecurityScannerSettingsRequest UpdateWebSecurityScannerSettings(Google.Apis.SecurityCommandCenter.v1beta2.Data.WebSecurityScannerSettings body, string name)
         {
-            return new UpdateWebSecurityScannerSettingsRequest(service, body, name);
+            return new UpdateWebSecurityScannerSettingsRequest(this.service, body, name);
         }
 
         /// <summary>Update the WebSecurityScannerSettings resource.</summary>
@@ -5035,8 +5035,8 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LatestCalculationTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LatestCalculationTimeRaw);
-            set => LatestCalculationTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LatestCalculationTimeRaw);
+            set => LatestCalculationTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -5164,8 +5164,8 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? TimestampDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(TimestampRaw);
-            set => TimestampRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(TimestampRaw);
+            set => TimestampRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -5293,8 +5293,8 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -5389,8 +5389,8 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -5576,8 +5576,8 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _startTimeRaw;
@@ -5613,8 +5613,8 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The type of subscription</summary>
@@ -5713,8 +5713,8 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -5957,8 +5957,8 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Database associated with the finding.</summary>
@@ -6008,8 +6008,8 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EventTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EventTimeRaw);
-            set => EventTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EventTimeRaw);
+            set => EventTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Represents exfiltrations associated with the finding.</summary>
@@ -6131,8 +6131,8 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? MuteUpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(MuteUpdateTimeRaw);
-            set => MuteUpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(MuteUpdateTimeRaw);
+            set => MuteUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -6286,8 +6286,8 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -6375,8 +6375,8 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -6561,8 +6561,8 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ExternalSystemUpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExternalSystemUpdateTimeRaw);
-            set => ExternalSystemUpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExternalSystemUpdateTimeRaw);
+            set => ExternalSystemUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -6631,8 +6631,8 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>A description of the mute config.</summary>
@@ -6710,8 +6710,8 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -6850,8 +6850,8 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Description of the resource value config.</summary>
@@ -6930,8 +6930,8 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -7032,8 +7032,8 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -7112,8 +7112,8 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _eventTimeRaw;
@@ -7154,8 +7154,8 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EventTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EventTimeRaw);
-            set => EventTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EventTimeRaw);
+            set => EventTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -7833,8 +7833,8 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -7931,8 +7931,8 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? OnboardingTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(OnboardingTimeRaw);
-            set => OnboardingTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(OnboardingTimeRaw);
+            set => OnboardingTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -8007,8 +8007,8 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -8221,8 +8221,8 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -8298,8 +8298,8 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>

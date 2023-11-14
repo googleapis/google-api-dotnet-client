@@ -290,7 +290,7 @@ namespace Google.Apis.CloudShell.v1
         /// <param name="name">The name of the operation resource to be cancelled.</param>
         public virtual CancelRequest Cancel(Google.Apis.CloudShell.v1.Data.CancelOperationRequest body, string name)
         {
-            return new CancelRequest(service, body, name);
+            return new CancelRequest(this.service, body, name);
         }
 
         /// <summary>
@@ -353,7 +353,7 @@ namespace Google.Apis.CloudShell.v1
         /// <param name="name">The name of the operation resource to be deleted.</param>
         public virtual DeleteRequest Delete(string name)
         {
-            return new DeleteRequest(service, name);
+            return new DeleteRequest(this.service, name);
         }
 
         /// <summary>
@@ -405,7 +405,7 @@ namespace Google.Apis.CloudShell.v1
         /// <param name="name">The name of the operation resource.</param>
         public virtual GetRequest Get(string name)
         {
-            return new GetRequest(service, name);
+            return new GetRequest(this.service, name);
         }
 
         /// <summary>
@@ -456,7 +456,7 @@ namespace Google.Apis.CloudShell.v1
         /// <param name="name">The name of the operation's parent resource.</param>
         public virtual ListRequest List(string name)
         {
-            return new ListRequest(service, name);
+            return new ListRequest(this.service, name);
         }
 
         /// <summary>
@@ -580,7 +580,7 @@ namespace Google.Apis.CloudShell.v1
             /// </param>
             public virtual AddPublicKeyRequest AddPublicKey(Google.Apis.CloudShell.v1.Data.AddPublicKeyRequest body, string environment)
             {
-                return new AddPublicKeyRequest(service, body, environment);
+                return new AddPublicKeyRequest(this.service, body, environment);
             }
 
             /// <summary>
@@ -644,7 +644,7 @@ namespace Google.Apis.CloudShell.v1
             /// </param>
             public virtual AuthorizeRequest Authorize(Google.Apis.CloudShell.v1.Data.AuthorizeEnvironmentRequest body, string name)
             {
-                return new AuthorizeRequest(service, body, name);
+                return new AuthorizeRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -706,7 +706,7 @@ namespace Google.Apis.CloudShell.v1
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets an environment. Returns NOT_FOUND if the environment does not exist.</summary>
@@ -761,7 +761,7 @@ namespace Google.Apis.CloudShell.v1
             /// </param>
             public virtual RemovePublicKeyRequest RemovePublicKey(Google.Apis.CloudShell.v1.Data.RemovePublicKeyRequest body, string environment)
             {
-                return new RemovePublicKeyRequest(service, body, environment);
+                return new RemovePublicKeyRequest(this.service, body, environment);
             }
 
             /// <summary>
@@ -829,7 +829,7 @@ namespace Google.Apis.CloudShell.v1
             /// </param>
             public virtual StartRequest Start(Google.Apis.CloudShell.v1.Data.StartEnvironmentRequest body, string name)
             {
-                return new StartRequest(service, body, name);
+                return new StartRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -974,8 +974,8 @@ namespace Google.Apis.CloudShell.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpireTimeRaw);
-            set => ExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The OAuth ID token that should be sent to the environment.</summary>

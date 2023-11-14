@@ -278,7 +278,7 @@ namespace Google.Apis.GamesConfiguration.v1configuration
         /// <param name="achievementId">The ID of the achievement used by this method.</param>
         public virtual DeleteRequest Delete(string achievementId)
         {
-            return new DeleteRequest(service, achievementId);
+            return new DeleteRequest(this.service, achievementId);
         }
 
         /// <summary>Delete the achievement configuration with the given ID.</summary>
@@ -323,7 +323,7 @@ namespace Google.Apis.GamesConfiguration.v1configuration
         /// <param name="achievementId">The ID of the achievement used by this method.</param>
         public virtual GetRequest Get(string achievementId)
         {
-            return new GetRequest(service, achievementId);
+            return new GetRequest(this.service, achievementId);
         }
 
         /// <summary>Retrieves the metadata of the achievement configuration with the given ID.</summary>
@@ -369,7 +369,7 @@ namespace Google.Apis.GamesConfiguration.v1configuration
         /// <param name="applicationId">The application ID from the Google Play developer console.</param>
         public virtual InsertRequest Insert(Google.Apis.GamesConfiguration.v1configuration.Data.AchievementConfiguration body, string applicationId)
         {
-            return new InsertRequest(service, body, applicationId);
+            return new InsertRequest(this.service, body, applicationId);
         }
 
         /// <summary>Insert a new achievement configuration in this application.</summary>
@@ -421,7 +421,7 @@ namespace Google.Apis.GamesConfiguration.v1configuration
         /// <param name="applicationId">The application ID from the Google Play developer console.</param>
         public virtual ListRequest List(string applicationId)
         {
-            return new ListRequest(service, applicationId);
+            return new ListRequest(this.service, applicationId);
         }
 
         /// <summary>Returns a list of the achievement configurations in this application.</summary>
@@ -494,7 +494,7 @@ namespace Google.Apis.GamesConfiguration.v1configuration
         /// <param name="achievementId">The ID of the achievement used by this method.</param>
         public virtual UpdateRequest Update(Google.Apis.GamesConfiguration.v1configuration.Data.AchievementConfiguration body, string achievementId)
         {
-            return new UpdateRequest(service, body, achievementId);
+            return new UpdateRequest(this.service, body, achievementId);
         }
 
         /// <summary>Update the metadata of the achievement configuration with the given ID.</summary>
@@ -561,7 +561,7 @@ namespace Google.Apis.GamesConfiguration.v1configuration
         /// <param name="leaderboardId">The ID of the leaderboard.</param>
         public virtual DeleteRequest Delete(string leaderboardId)
         {
-            return new DeleteRequest(service, leaderboardId);
+            return new DeleteRequest(this.service, leaderboardId);
         }
 
         /// <summary>Delete the leaderboard configuration with the given ID.</summary>
@@ -606,7 +606,7 @@ namespace Google.Apis.GamesConfiguration.v1configuration
         /// <param name="leaderboardId">The ID of the leaderboard.</param>
         public virtual GetRequest Get(string leaderboardId)
         {
-            return new GetRequest(service, leaderboardId);
+            return new GetRequest(this.service, leaderboardId);
         }
 
         /// <summary>Retrieves the metadata of the leaderboard configuration with the given ID.</summary>
@@ -652,7 +652,7 @@ namespace Google.Apis.GamesConfiguration.v1configuration
         /// <param name="applicationId">The application ID from the Google Play developer console.</param>
         public virtual InsertRequest Insert(Google.Apis.GamesConfiguration.v1configuration.Data.LeaderboardConfiguration body, string applicationId)
         {
-            return new InsertRequest(service, body, applicationId);
+            return new InsertRequest(this.service, body, applicationId);
         }
 
         /// <summary>Insert a new leaderboard configuration in this application.</summary>
@@ -704,7 +704,7 @@ namespace Google.Apis.GamesConfiguration.v1configuration
         /// <param name="applicationId">The application ID from the Google Play developer console.</param>
         public virtual ListRequest List(string applicationId)
         {
-            return new ListRequest(service, applicationId);
+            return new ListRequest(this.service, applicationId);
         }
 
         /// <summary>Returns a list of the leaderboard configurations in this application.</summary>
@@ -777,7 +777,7 @@ namespace Google.Apis.GamesConfiguration.v1configuration
         /// <param name="leaderboardId">The ID of the leaderboard.</param>
         public virtual UpdateRequest Update(Google.Apis.GamesConfiguration.v1configuration.Data.LeaderboardConfiguration body, string leaderboardId)
         {
-            return new UpdateRequest(service, body, leaderboardId);
+            return new UpdateRequest(this.service, body, leaderboardId);
         }
 
         /// <summary>Update the metadata of the leaderboard configuration with the given ID.</summary>

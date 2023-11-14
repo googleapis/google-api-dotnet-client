@@ -337,7 +337,7 @@ namespace Google.Apis.ToolResults.v1beta3
                     /// <param name="clusterId">A Cluster id Required.</param>
                     public virtual GetRequest Get(string projectId, string historyId, string executionId, string clusterId)
                     {
-                        return new GetRequest(service, projectId, historyId, executionId, clusterId);
+                        return new GetRequest(this.service, projectId, historyId, executionId, clusterId);
                     }
 
                     /// <summary>Retrieves a single screenshot cluster by its ID</summary>
@@ -429,7 +429,7 @@ namespace Google.Apis.ToolResults.v1beta3
                     /// <param name="executionId">An Execution id. Required.</param>
                     public virtual ListRequest List(string projectId, string historyId, string executionId)
                     {
-                        return new ListRequest(service, projectId, historyId, executionId);
+                        return new ListRequest(this.service, projectId, historyId, executionId);
                     }
 
                     /// <summary>
@@ -531,7 +531,7 @@ namespace Google.Apis.ToolResults.v1beta3
                     /// <param name="environmentId">Required. An Environment id.</param>
                     public virtual GetRequest Get(string projectId, string historyId, string executionId, string environmentId)
                     {
-                        return new GetRequest(service, projectId, historyId, executionId, environmentId);
+                        return new GetRequest(this.service, projectId, historyId, executionId, environmentId);
                     }
 
                     /// <summary>
@@ -626,7 +626,7 @@ namespace Google.Apis.ToolResults.v1beta3
                     /// <param name="executionId">Required. An Execution id.</param>
                     public virtual ListRequest List(string projectId, string historyId, string executionId)
                     {
-                        return new ListRequest(service, projectId, historyId, executionId);
+                        return new ListRequest(this.service, projectId, historyId, executionId);
                     }
 
                     /// <summary>
@@ -776,7 +776,7 @@ namespace Google.Apis.ToolResults.v1beta3
                         /// <param name="stepId">A tool results step ID.</param>
                         public virtual CreateRequest Create(Google.Apis.ToolResults.v1beta3.Data.PerfMetricsSummary body, string projectId, string historyId, string executionId, string stepId)
                         {
-                            return new CreateRequest(service, body, projectId, historyId, executionId, stepId);
+                            return new CreateRequest(this.service, body, projectId, historyId, executionId, stepId);
                         }
 
                         /// <summary>
@@ -920,7 +920,7 @@ namespace Google.Apis.ToolResults.v1beta3
                             /// <param name="sampleSeriesId">A sample series id</param>
                             public virtual BatchCreateRequest BatchCreate(Google.Apis.ToolResults.v1beta3.Data.BatchCreatePerfSamplesRequest body, string projectId, string historyId, string executionId, string stepId, string sampleSeriesId)
                             {
-                                return new BatchCreateRequest(service, body, projectId, historyId, executionId, stepId, sampleSeriesId);
+                                return new BatchCreateRequest(this.service, body, projectId, historyId, executionId, stepId, sampleSeriesId);
                             }
 
                             /// <summary>
@@ -1044,7 +1044,7 @@ namespace Google.Apis.ToolResults.v1beta3
                             /// <param name="sampleSeriesId">A sample series id</param>
                             public virtual ListRequest List(string projectId, string historyId, string executionId, string stepId, string sampleSeriesId)
                             {
-                                return new ListRequest(service, projectId, historyId, executionId, stepId, sampleSeriesId);
+                                return new ListRequest(this.service, projectId, historyId, executionId, stepId, sampleSeriesId);
                             }
 
                             /// <summary>
@@ -1185,7 +1185,7 @@ namespace Google.Apis.ToolResults.v1beta3
                         /// <param name="stepId">A tool results step ID.</param>
                         public virtual CreateRequest Create(Google.Apis.ToolResults.v1beta3.Data.PerfSampleSeries body, string projectId, string historyId, string executionId, string stepId)
                         {
-                            return new CreateRequest(service, body, projectId, historyId, executionId, stepId);
+                            return new CreateRequest(this.service, body, projectId, historyId, executionId, stepId);
                         }
 
                         /// <summary>
@@ -1287,7 +1287,7 @@ namespace Google.Apis.ToolResults.v1beta3
                         /// <param name="sampleSeriesId">A sample series id</param>
                         public virtual GetRequest Get(string projectId, string historyId, string executionId, string stepId, string sampleSeriesId)
                         {
-                            return new GetRequest(service, projectId, historyId, executionId, stepId, sampleSeriesId);
+                            return new GetRequest(this.service, projectId, historyId, executionId, stepId, sampleSeriesId);
                         }
 
                         /// <summary>
@@ -1395,7 +1395,7 @@ namespace Google.Apis.ToolResults.v1beta3
                         /// <param name="stepId">A tool results step ID.</param>
                         public virtual ListRequest List(string projectId, string historyId, string executionId, string stepId)
                         {
-                            return new ListRequest(service, projectId, historyId, executionId, stepId);
+                            return new ListRequest(this.service, projectId, historyId, executionId, stepId);
                         }
 
                         /// <summary>
@@ -1567,7 +1567,7 @@ namespace Google.Apis.ToolResults.v1beta3
                         /// <param name="testCaseId">A Test Case id. Required.</param>
                         public virtual GetRequest Get(string projectId, string historyId, string executionId, string stepId, string testCaseId)
                         {
-                            return new GetRequest(service, projectId, historyId, executionId, stepId, testCaseId);
+                            return new GetRequest(this.service, projectId, historyId, executionId, stepId, testCaseId);
                         }
 
                         /// <summary>
@@ -1681,7 +1681,7 @@ namespace Google.Apis.ToolResults.v1beta3
                         /// </param>
                         public virtual ListRequest List(string projectId, string historyId, string executionId, string stepId)
                         {
-                            return new ListRequest(service, projectId, historyId, executionId, stepId);
+                            return new ListRequest(this.service, projectId, historyId, executionId, stepId);
                         }
 
                         /// <summary>
@@ -1825,7 +1825,7 @@ namespace Google.Apis.ToolResults.v1beta3
                         /// <param name="stepId">A Step id. Required.</param>
                         public virtual ListRequest List(string projectId, string historyId, string executionId, string stepId)
                         {
-                            return new ListRequest(service, projectId, historyId, executionId, stepId);
+                            return new ListRequest(this.service, projectId, historyId, executionId, stepId);
                         }
 
                         /// <summary>
@@ -1952,7 +1952,7 @@ namespace Google.Apis.ToolResults.v1beta3
                     /// </param>
                     public virtual AccessibilityClustersRequest AccessibilityClusters(string name)
                     {
-                        return new AccessibilityClustersRequest(service, name);
+                        return new AccessibilityClustersRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -2031,7 +2031,7 @@ namespace Google.Apis.ToolResults.v1beta3
                     /// <param name="executionId">Required. An Execution id.</param>
                     public virtual CreateRequest Create(Google.Apis.ToolResults.v1beta3.Data.Step body, string projectId, string historyId, string executionId)
                     {
-                        return new CreateRequest(service, body, projectId, historyId, executionId);
+                        return new CreateRequest(this.service, body, projectId, historyId, executionId);
                     }
 
                     /// <summary>
@@ -2136,7 +2136,7 @@ namespace Google.Apis.ToolResults.v1beta3
                     /// <param name="stepId">A Step id. Required.</param>
                     public virtual GetRequest Get(string projectId, string historyId, string executionId, string stepId)
                     {
-                        return new GetRequest(service, projectId, historyId, executionId, stepId);
+                        return new GetRequest(this.service, projectId, historyId, executionId, stepId);
                     }
 
                     /// <summary>
@@ -2230,7 +2230,7 @@ namespace Google.Apis.ToolResults.v1beta3
                     /// <param name="stepId">A tool results step ID.</param>
                     public virtual GetPerfMetricsSummaryRequest GetPerfMetricsSummary(string projectId, string historyId, string executionId, string stepId)
                     {
-                        return new GetPerfMetricsSummaryRequest(service, projectId, historyId, executionId, stepId);
+                        return new GetPerfMetricsSummaryRequest(this.service, projectId, historyId, executionId, stepId);
                     }
 
                     /// <summary>
@@ -2326,7 +2326,7 @@ namespace Google.Apis.ToolResults.v1beta3
                     /// <param name="executionId">A Execution id. Required.</param>
                     public virtual ListRequest List(string projectId, string historyId, string executionId)
                     {
-                        return new ListRequest(service, projectId, historyId, executionId);
+                        return new ListRequest(this.service, projectId, historyId, executionId);
                     }
 
                     /// <summary>
@@ -2441,7 +2441,7 @@ namespace Google.Apis.ToolResults.v1beta3
                     /// <param name="stepId">A Step id. Required.</param>
                     public virtual PatchRequest Patch(Google.Apis.ToolResults.v1beta3.Data.Step body, string projectId, string historyId, string executionId, string stepId)
                     {
-                        return new PatchRequest(service, body, projectId, historyId, executionId, stepId);
+                        return new PatchRequest(this.service, body, projectId, historyId, executionId, stepId);
                     }
 
                     /// <summary>
@@ -2565,7 +2565,7 @@ namespace Google.Apis.ToolResults.v1beta3
                     /// </param>
                     public virtual PublishXunitXmlFilesRequest PublishXunitXmlFiles(Google.Apis.ToolResults.v1beta3.Data.PublishXunitXmlFilesRequest body, string projectId, string historyId, string executionId, string stepId)
                     {
-                        return new PublishXunitXmlFilesRequest(service, body, projectId, historyId, executionId, stepId);
+                        return new PublishXunitXmlFilesRequest(this.service, body, projectId, historyId, executionId, stepId);
                     }
 
                     /// <summary>
@@ -2670,7 +2670,7 @@ namespace Google.Apis.ToolResults.v1beta3
                 /// <param name="historyId">A History id. Required.</param>
                 public virtual CreateRequest Create(Google.Apis.ToolResults.v1beta3.Data.Execution body, string projectId, string historyId)
                 {
-                    return new CreateRequest(service, body, projectId, historyId);
+                    return new CreateRequest(this.service, body, projectId, historyId);
                 }
 
                 /// <summary>
@@ -2761,7 +2761,7 @@ namespace Google.Apis.ToolResults.v1beta3
                 /// <param name="executionId">An Execution id. Required.</param>
                 public virtual GetRequest Get(string projectId, string historyId, string executionId)
                 {
-                    return new GetRequest(service, projectId, historyId, executionId);
+                    return new GetRequest(this.service, projectId, historyId, executionId);
                 }
 
                 /// <summary>
@@ -2843,7 +2843,7 @@ namespace Google.Apis.ToolResults.v1beta3
                 /// <param name="historyId">A History id. Required.</param>
                 public virtual ListRequest List(string projectId, string historyId)
                 {
-                    return new ListRequest(service, projectId, historyId);
+                    return new ListRequest(this.service, projectId, historyId);
                 }
 
                 /// <summary>
@@ -2942,7 +2942,7 @@ namespace Google.Apis.ToolResults.v1beta3
                 /// <param name="executionId">Required.</param>
                 public virtual PatchRequest Patch(Google.Apis.ToolResults.v1beta3.Data.Execution body, string projectId, string historyId, string executionId)
                 {
-                    return new PatchRequest(service, body, projectId, historyId, executionId);
+                    return new PatchRequest(this.service, body, projectId, historyId, executionId);
                 }
 
                 /// <summary>
@@ -3046,7 +3046,7 @@ namespace Google.Apis.ToolResults.v1beta3
             /// <param name="projectId">A Project id. Required.</param>
             public virtual CreateRequest Create(Google.Apis.ToolResults.v1beta3.Data.History body, string projectId)
             {
-                return new CreateRequest(service, body, projectId);
+                return new CreateRequest(this.service, body, projectId);
             }
 
             /// <summary>
@@ -3122,7 +3122,7 @@ namespace Google.Apis.ToolResults.v1beta3
             /// <param name="historyId">A History id. Required.</param>
             public virtual GetRequest Get(string projectId, string historyId)
             {
-                return new GetRequest(service, projectId, historyId);
+                return new GetRequest(this.service, projectId, historyId);
             }
 
             /// <summary>
@@ -3189,7 +3189,7 @@ namespace Google.Apis.ToolResults.v1beta3
             /// <param name="projectId">A Project id. Required.</param>
             public virtual ListRequest List(string projectId)
             {
-                return new ListRequest(service, projectId);
+                return new ListRequest(this.service, projectId);
             }
 
             /// <summary>
@@ -3282,7 +3282,7 @@ namespace Google.Apis.ToolResults.v1beta3
         /// <param name="projectId">A Project id. Required.</param>
         public virtual GetSettingsRequest GetSettings(string projectId)
         {
-            return new GetSettingsRequest(service, projectId);
+            return new GetSettingsRequest(this.service, projectId);
         }
 
         /// <summary>
@@ -3344,7 +3344,7 @@ namespace Google.Apis.ToolResults.v1beta3
         /// <param name="projectId">A Project id. Required.</param>
         public virtual InitializeSettingsRequest InitializeSettings(string projectId)
         {
-            return new InitializeSettingsRequest(service, projectId);
+            return new InitializeSettingsRequest(this.service, projectId);
         }
 
         /// <summary>

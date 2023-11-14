@@ -307,7 +307,7 @@ namespace Google.Apis.ChecksService.v1alpha
                 /// <param name="name">The name of the operation resource to be cancelled.</param>
                 public virtual CancelRequest Cancel(Google.Apis.ChecksService.v1alpha.Data.CancelOperationRequest body, string name)
                 {
-                    return new CancelRequest(service, body, name);
+                    return new CancelRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -370,7 +370,7 @@ namespace Google.Apis.ChecksService.v1alpha
                 /// <param name="name">The name of the operation resource to be deleted.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -422,7 +422,7 @@ namespace Google.Apis.ChecksService.v1alpha
                 /// <param name="name">The name of the operation resource.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -473,7 +473,7 @@ namespace Google.Apis.ChecksService.v1alpha
                 /// <param name="name">The name of the operation's parent resource.</param>
                 public virtual ListRequest List(string name)
                 {
-                    return new ListRequest(service, name);
+                    return new ListRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -566,7 +566,7 @@ namespace Google.Apis.ChecksService.v1alpha
                 /// <param name="name">The name of the operation resource to wait on.</param>
                 public virtual WaitRequest Wait(Google.Apis.ChecksService.v1alpha.Data.WaitOperationRequest body, string name)
                 {
-                    return new WaitRequest(service, body, name);
+                    return new WaitRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -650,7 +650,7 @@ namespace Google.Apis.ChecksService.v1alpha
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -721,7 +721,7 @@ namespace Google.Apis.ChecksService.v1alpha
                 /// <param name="parent">Required. Resource name of the app. Example: `accounts/123/apps/456`</param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>
@@ -833,7 +833,7 @@ namespace Google.Apis.ChecksService.v1alpha
             /// <param name="name">Required. Resource name of the app. Example: `accounts/123/apps/456`</param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets an app.</summary>
@@ -878,7 +878,7 @@ namespace Google.Apis.ChecksService.v1alpha
             /// <param name="parent">Required. The parent account. Example: `accounts/123`</param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists the apps under the given account.</summary>
@@ -989,7 +989,7 @@ namespace Google.Apis.ChecksService.v1alpha
         /// <param name="parent">Required. Resource name of the app. Example: `accounts/123/apps/456`</param>
         public virtual UploadRequest Upload(Google.Apis.ChecksService.v1alpha.Data.GoogleChecksReportV1alphaAnalyzeUploadRequest body, string parent)
         {
-            return new UploadRequest(service, body, parent);
+            return new UploadRequest(this.service, body, parent);
         }
 
         /// <summary>
@@ -1611,8 +1611,8 @@ namespace Google.Apis.ChecksService.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? FirstFailingTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(FirstFailingTimeRaw);
-            set => FirstFailingTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(FirstFailingTimeRaw);
+            set => FirstFailingTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _lastFailingTimeRaw;
@@ -1650,8 +1650,8 @@ namespace Google.Apis.ChecksService.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LastFailingTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastFailingTimeRaw);
-            set => LastFailingTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastFailingTimeRaw);
+            set => LastFailingTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -1779,8 +1779,8 @@ namespace Google.Apis.ChecksService.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? FirstDetectedTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(FirstDetectedTimeRaw);
-            set => FirstDetectedTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(FirstDetectedTimeRaw);
+            set => FirstDetectedTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -1828,8 +1828,8 @@ namespace Google.Apis.ChecksService.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LastDetectedTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastDetectedTimeRaw);
-            set => LastDetectedTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastDetectedTimeRaw);
+            set => LastDetectedTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>

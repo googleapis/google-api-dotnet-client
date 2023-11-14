@@ -279,7 +279,7 @@ namespace Google.Apis.Localservices.v1
         /// </summary>
         public virtual SearchRequest Search()
         {
-            return new SearchRequest(service);
+            return new SearchRequest(this.service);
         }
 
         /// <summary>
@@ -463,7 +463,7 @@ namespace Google.Apis.Localservices.v1
         /// </summary>
         public virtual SearchRequest Search()
         {
-            return new SearchRequest(service);
+            return new SearchRequest(this.service);
         }
 
         /// <summary>
@@ -767,8 +767,8 @@ namespace Google.Apis.Localservices.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? BookingAppointmentTimestampDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(BookingAppointmentTimestampRaw);
-            set => BookingAppointmentTimestampRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(BookingAppointmentTimestampRaw);
+            set => BookingAppointmentTimestampRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Consumer email associated with the booking lead.</summary>
@@ -868,8 +868,8 @@ namespace Google.Apis.Localservices.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LeadCreationTimestampDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LeadCreationTimestampRaw);
-            set => LeadCreationTimestampRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LeadCreationTimestampRaw);
+            set => LeadCreationTimestampRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Unique identifier of a Detailed Lead Report.</summary>
@@ -961,8 +961,8 @@ namespace Google.Apis.Localservices.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ChargedCallTimestampDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ChargedCallTimestampRaw);
-            set => ChargedCallTimestampRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ChargedCallTimestampRaw);
+            set => ChargedCallTimestampRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Duration of the charged phone call in seconds.</summary>

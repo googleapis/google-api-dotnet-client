@@ -302,7 +302,7 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
             /// </param>
             public virtual ListRequest List(string projectName)
             {
-                return new ListRequest(service, projectName);
+                return new ListRequest(this.service, projectName);
             }
 
             /// <summary>Lists the specified events.</summary>
@@ -499,7 +499,7 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
             /// </param>
             public virtual ReportRequest Report(Google.Apis.Clouderrorreporting.v1beta1.Data.ReportedErrorEvent body, string projectName)
             {
-                return new ReportRequest(service, body, projectName);
+                return new ReportRequest(this.service, body, projectName);
             }
 
             /// <summary>
@@ -585,7 +585,7 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
             /// </param>
             public virtual ListRequest List(string projectName)
             {
-                return new ListRequest(service, projectName);
+                return new ListRequest(this.service, projectName);
             }
 
             /// <summary>Lists the specified groups.</summary>
@@ -641,12 +641,36 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                     ALIGNMENTEQUALATEND = 2,
                 }
 
+                private object _alignmentTime;
+
                 /// <summary>
-                /// Optional. Time where the timed counts shall be aligned if rounded alignment is chosen. Default is
-                /// 00:00 UTC.
+                /// String representation of <see cref="AlignmentTimeDateTimeOffset"/>, formatted for inclusion in the
+                /// HTTP request.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("alignmentTime", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual object AlignmentTime { get; set; }
+                public virtual string AlignmentTimeRaw { get; private set; }
+
+                /// <summary><seealso cref="object"/> representation of <see cref="AlignmentTimeRaw"/>.</summary>
+                [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use AlignmentTimeDateTimeOffset instead.")]
+                public virtual object AlignmentTime
+                {
+                    get => _alignmentTime;
+                    set
+                    {
+                        AlignmentTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                        _alignmentTime = value;
+                    }
+                }
+
+                public virtual System.DateTimeOffset? AlignmentTimeDateTimeOffset
+                {
+                    get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(AlignmentTimeRaw);
+                    set
+                    {
+                        AlignmentTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                        _alignmentTime = value;
+                    }
+                }
 
                 /// <summary>
                 /// Optional. List all ErrorGroupStats with these IDs. The `group_id` is a unique identifier for a
@@ -913,7 +937,7 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
             /// </param>
             public virtual GetRequest Get(string groupName)
             {
-                return new GetRequest(service, groupName);
+                return new GetRequest(this.service, groupName);
             }
 
             /// <summary>Get the specified group.</summary>
@@ -972,7 +996,7 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
             /// </param>
             public virtual UpdateRequest Update(Google.Apis.Clouderrorreporting.v1beta1.Data.ErrorGroup body, string name)
             {
-                return new UpdateRequest(service, body, name);
+                return new UpdateRequest(this.service, body, name);
             }
 
             /// <summary>Replace the data for the specified group. Fails if the group does not exist.</summary>
@@ -1035,7 +1059,7 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
         /// </param>
         public virtual DeleteEventsRequest DeleteEvents(string projectName)
         {
-            return new DeleteEventsRequest(service, projectName);
+            return new DeleteEventsRequest(this.service, projectName);
         }
 
         /// <summary>Deletes all error events of a given project.</summary>
@@ -1170,8 +1194,8 @@ namespace Google.Apis.Clouderrorreporting.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EventTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EventTimeRaw);
-            set => EventTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EventTimeRaw);
+            set => EventTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The stack trace that was reported or logged by the service.</summary>
@@ -1287,8 +1311,8 @@ namespace Google.Apis.Clouderrorreporting.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? FirstSeenTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(FirstSeenTimeRaw);
-            set => FirstSeenTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(FirstSeenTimeRaw);
+            set => FirstSeenTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Group data that is independent of the filter criteria.</summary>
@@ -1331,8 +1355,8 @@ namespace Google.Apis.Clouderrorreporting.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LastSeenTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastSeenTimeRaw);
-            set => LastSeenTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastSeenTimeRaw);
+            set => LastSeenTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The total number of services with a non-zero error count for the given filter criteria.</summary>
@@ -1445,8 +1469,8 @@ namespace Google.Apis.Clouderrorreporting.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? TimeRangeBeginDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(TimeRangeBeginRaw);
-            set => TimeRangeBeginRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(TimeRangeBeginRaw);
+            set => TimeRangeBeginRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -1506,8 +1530,8 @@ namespace Google.Apis.Clouderrorreporting.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? TimeRangeBeginDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(TimeRangeBeginRaw);
-            set => TimeRangeBeginRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(TimeRangeBeginRaw);
+            set => TimeRangeBeginRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -1568,8 +1592,8 @@ namespace Google.Apis.Clouderrorreporting.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EventTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EventTimeRaw);
-            set => EventTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EventTimeRaw);
+            set => EventTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -1729,8 +1753,8 @@ namespace Google.Apis.Clouderrorreporting.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _startTimeRaw;
@@ -1766,8 +1790,8 @@ namespace Google.Apis.Clouderrorreporting.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>

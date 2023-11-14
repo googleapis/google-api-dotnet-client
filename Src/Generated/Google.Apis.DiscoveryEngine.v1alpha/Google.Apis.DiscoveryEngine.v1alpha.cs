@@ -285,7 +285,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
         /// </param>
         public virtual LookupWidgetConfigRequest LookupWidgetConfig(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaLookupWidgetConfigRequest body, string location)
         {
-            return new LookupWidgetConfigRequest(service, body, location);
+            return new LookupWidgetConfigRequest(this.service, body, location);
         }
 
         /// <summary>Gets the Widget Config using the uuid.</summary>
@@ -347,7 +347,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
         /// </param>
         public virtual WidgetCompleteQueryRequest WidgetCompleteQuery(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaWidgetCompleteQueryRequest body, string location)
         {
-            return new WidgetCompleteQueryRequest(service, body, location);
+            return new WidgetCompleteQueryRequest(this.service, body, location);
         }
 
         /// <summary>
@@ -410,7 +410,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
         /// </param>
         public virtual WidgetConverseConversationRequest WidgetConverseConversation(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaWidgetConverseConversationRequest body, string location)
         {
-            return new WidgetConverseConversationRequest(service, body, location);
+            return new WidgetConverseConversationRequest(this.service, body, location);
         }
 
         /// <summary>Converse a conversation with Widget.</summary>
@@ -471,7 +471,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
         /// </param>
         public virtual WidgetSearchRequest WidgetSearch(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaWidgetSearchRequest body, string location)
         {
-            return new WidgetSearchRequest(service, body, location);
+            return new WidgetSearchRequest(this.service, body, location);
         }
 
         /// <summary>
@@ -576,9 +576,185 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                 public CollectionsResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
+                    DataConnector = new DataConnectorResource(service);
                     DataStores = new DataStoresResource(service);
                     Engines = new EnginesResource(service);
                     Operations = new OperationsResource(service);
+                }
+
+                /// <summary>Gets the DataConnector resource.</summary>
+                public virtual DataConnectorResource DataConnector { get; }
+
+                /// <summary>The "dataConnector" collection of methods.</summary>
+                public class DataConnectorResource
+                {
+                    private const string Resource = "dataConnector";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public DataConnectorResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                        Operations = new OperationsResource(service);
+                    }
+
+                    /// <summary>Gets the Operations resource.</summary>
+                    public virtual OperationsResource Operations { get; }
+
+                    /// <summary>The "operations" collection of methods.</summary>
+                    public class OperationsResource
+                    {
+                        private const string Resource = "operations";
+
+                        /// <summary>The service which this resource belongs to.</summary>
+                        private readonly Google.Apis.Services.IClientService service;
+
+                        /// <summary>Constructs a new resource.</summary>
+                        public OperationsResource(Google.Apis.Services.IClientService service)
+                        {
+                            this.service = service;
+                        }
+
+                        /// <summary>
+                        /// Gets the latest state of a long-running operation. Clients can use this method to poll the
+                        /// operation result at intervals as recommended by the API service.
+                        /// </summary>
+                        /// <param name="name">The name of the operation resource.</param>
+                        public virtual GetRequest Get(string name)
+                        {
+                            return new GetRequest(this.service, name);
+                        }
+
+                        /// <summary>
+                        /// Gets the latest state of a long-running operation. Clients can use this method to poll the
+                        /// operation result at intervals as recommended by the API service.
+                        /// </summary>
+                        public class GetRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleLongrunningOperation>
+                        {
+                            /// <summary>Constructs a new Get request.</summary>
+                            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>The name of the operation resource.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "get";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1alpha/{+name}";
+
+                            /// <summary>Initializes Get parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/dataConnector/operations/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>
+                        /// Lists operations that match the specified filter in the request. If the server doesn't
+                        /// support this method, it returns `UNIMPLEMENTED`.
+                        /// </summary>
+                        /// <param name="name">The name of the operation's parent resource.</param>
+                        public virtual ListRequest List(string name)
+                        {
+                            return new ListRequest(this.service, name);
+                        }
+
+                        /// <summary>
+                        /// Lists operations that match the specified filter in the request. If the server doesn't
+                        /// support this method, it returns `UNIMPLEMENTED`.
+                        /// </summary>
+                        public class ListRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleLongrunningListOperationsResponse>
+                        {
+                            /// <summary>Constructs a new List request.</summary>
+                            public ListRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>The name of the operation's parent resource.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>The standard list filter.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string Filter { get; set; }
+
+                            /// <summary>The standard list page size.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<int> PageSize { get; set; }
+
+                            /// <summary>The standard list page token.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string PageToken { get; set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "list";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1alpha/{+name}/operations";
+
+                            /// <summary>Initializes List parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/dataConnector$",
+                                });
+                                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "filter",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+                    }
                 }
 
                 /// <summary>Gets the DataStores resource.</summary>
@@ -650,7 +826,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                             /// </param>
                             public virtual CreateRequest Create(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaDocument body, string parent)
                             {
-                                return new CreateRequest(service, body, parent);
+                                return new CreateRequest(this.service, body, parent);
                             }
 
                             /// <summary>Creates a Document.</summary>
@@ -731,7 +907,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                             /// </param>
                             public virtual DeleteRequest Delete(string name)
                             {
-                                return new DeleteRequest(service, name);
+                                return new DeleteRequest(this.service, name);
                             }
 
                             /// <summary>Deletes a Document.</summary>
@@ -788,7 +964,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                             /// </param>
                             public virtual GetRequest Get(string name)
                             {
-                                return new GetRequest(service, name);
+                                return new GetRequest(this.service, name);
                             }
 
                             /// <summary>Gets a Document.</summary>
@@ -848,7 +1024,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                             /// </param>
                             public virtual ImportRequest Import(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaImportDocumentsRequest body, string parent)
                             {
-                                return new ImportRequest(service, body, parent);
+                                return new ImportRequest(this.service, body, parent);
                             }
 
                             /// <summary>
@@ -914,7 +1090,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                             /// </param>
                             public virtual ListRequest List(string parent)
                             {
-                                return new ListRequest(service, parent);
+                                return new ListRequest(this.service, parent);
                             }
 
                             /// <summary>Gets a list of Documents.</summary>
@@ -1005,7 +1181,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                             /// </param>
                             public virtual PatchRequest Patch(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaDocument body, string name)
                             {
-                                return new PatchRequest(service, body, name);
+                                return new PatchRequest(this.service, body, name);
                             }
 
                             /// <summary>Updates a Document.</summary>
@@ -1085,7 +1261,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                             /// </param>
                             public virtual PurgeRequest Purge(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaPurgeDocumentsRequest body, string parent)
                             {
-                                return new PurgeRequest(service, body, parent);
+                                return new PurgeRequest(this.service, body, parent);
                             }
 
                             /// <summary>
@@ -1167,7 +1343,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                             /// <param name="name">The name of the operation resource.</param>
                             public virtual GetRequest Get(string name)
                             {
-                                return new GetRequest(service, name);
+                                return new GetRequest(this.service, name);
                             }
 
                             /// <summary>
@@ -1218,7 +1394,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                             /// <param name="name">The name of the operation's parent resource.</param>
                             public virtual ListRequest List(string name)
                             {
-                                return new ListRequest(service, name);
+                                return new ListRequest(this.service, name);
                             }
 
                             /// <summary>
@@ -1329,7 +1505,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         /// </param>
                         public virtual ConverseRequest Converse(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaConverseConversationRequest body, string name)
                         {
-                            return new ConverseRequest(service, body, name);
+                            return new ConverseRequest(this.service, body, name);
                         }
 
                         /// <summary>Converses a conversation.</summary>
@@ -1395,7 +1571,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         /// </param>
                         public virtual CreateRequest Create(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaConversation body, string parent)
                         {
-                            return new CreateRequest(service, body, parent);
+                            return new CreateRequest(this.service, body, parent);
                         }
 
                         /// <summary>
@@ -1459,7 +1635,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         /// </param>
                         public virtual DeleteRequest Delete(string name)
                         {
-                            return new DeleteRequest(service, name);
+                            return new DeleteRequest(this.service, name);
                         }
 
                         /// <summary>
@@ -1513,7 +1689,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         /// </param>
                         public virtual GetRequest Get(string name)
                         {
-                            return new GetRequest(service, name);
+                            return new GetRequest(this.service, name);
                         }
 
                         /// <summary>Gets a Conversation.</summary>
@@ -1564,7 +1740,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         /// </param>
                         public virtual ListRequest List(string parent)
                         {
-                            return new ListRequest(service, parent);
+                            return new ListRequest(this.service, parent);
                         }
 
                         /// <summary>Lists all Conversations by their parent DataStore.</summary>
@@ -1680,7 +1856,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         /// </param>
                         public virtual PatchRequest Patch(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaConversation body, string name)
                         {
-                            return new PatchRequest(service, body, name);
+                            return new PatchRequest(this.service, body, name);
                         }
 
                         /// <summary>
@@ -1792,7 +1968,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                             /// <param name="name">The name of the operation resource.</param>
                             public virtual GetRequest Get(string name)
                             {
-                                return new GetRequest(service, name);
+                                return new GetRequest(this.service, name);
                             }
 
                             /// <summary>
@@ -1843,7 +2019,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                             /// <param name="name">The name of the operation's parent resource.</param>
                             public virtual ListRequest List(string name)
                             {
-                                return new ListRequest(service, name);
+                                return new ListRequest(this.service, name);
                             }
 
                             /// <summary>
@@ -1949,7 +2125,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         /// <param name="name">The name of the operation resource.</param>
                         public virtual GetRequest Get(string name)
                         {
-                            return new GetRequest(service, name);
+                            return new GetRequest(this.service, name);
                         }
 
                         /// <summary>
@@ -2000,7 +2176,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         /// <param name="name">The name of the operation's parent resource.</param>
                         public virtual ListRequest List(string name)
                         {
-                            return new ListRequest(service, name);
+                            return new ListRequest(this.service, name);
                         }
 
                         /// <summary>
@@ -2123,7 +2299,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                             /// <param name="name">The name of the operation resource.</param>
                             public virtual GetRequest Get(string name)
                             {
-                                return new GetRequest(service, name);
+                                return new GetRequest(this.service, name);
                             }
 
                             /// <summary>
@@ -2174,7 +2350,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                             /// <param name="name">The name of the operation's parent resource.</param>
                             public virtual ListRequest List(string name)
                             {
-                                return new ListRequest(service, name);
+                                return new ListRequest(this.service, name);
                             }
 
                             /// <summary>
@@ -2263,7 +2439,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         /// </param>
                         public virtual CreateRequest Create(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaSchema body, string parent)
                         {
-                            return new CreateRequest(service, body, parent);
+                            return new CreateRequest(this.service, body, parent);
                         }
 
                         /// <summary>Creates a Schema.</summary>
@@ -2338,7 +2514,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         /// </param>
                         public virtual DeleteRequest Delete(string name)
                         {
-                            return new DeleteRequest(service, name);
+                            return new DeleteRequest(this.service, name);
                         }
 
                         /// <summary>Deletes a Schema.</summary>
@@ -2389,7 +2565,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         /// </param>
                         public virtual GetRequest Get(string name)
                         {
-                            return new GetRequest(service, name);
+                            return new GetRequest(this.service, name);
                         }
 
                         /// <summary>Gets a Schema.</summary>
@@ -2440,7 +2616,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         /// </param>
                         public virtual ListRequest List(string parent)
                         {
-                            return new ListRequest(service, parent);
+                            return new ListRequest(this.service, parent);
                         }
 
                         /// <summary>Gets a list of Schemas.</summary>
@@ -2525,7 +2701,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         /// </param>
                         public virtual PatchRequest Patch(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaSchema body, string name)
                         {
-                            return new PatchRequest(service, body, name);
+                            return new PatchRequest(this.service, body, name);
                         }
 
                         /// <summary>Updates a Schema.</summary>
@@ -2624,7 +2800,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         /// </param>
                         public virtual RecommendRequest Recommend(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaRecommendRequest body, string servingConfig)
                         {
-                            return new RecommendRequest(service, body, servingConfig);
+                            return new RecommendRequest(this.service, body, servingConfig);
                         }
 
                         /// <summary>Makes a recommendation, which requires a contextual user event.</summary>
@@ -2693,7 +2869,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         /// </param>
                         public virtual SearchRequest Search(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaSearchRequest body, string servingConfig)
                         {
-                            return new SearchRequest(service, body, servingConfig);
+                            return new SearchRequest(this.service, body, servingConfig);
                         }
 
                         /// <summary>Performs a search.</summary>
@@ -2792,7 +2968,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                             /// <param name="name">The name of the operation resource.</param>
                             public virtual GetRequest Get(string name)
                             {
-                                return new GetRequest(service, name);
+                                return new GetRequest(this.service, name);
                             }
 
                             /// <summary>
@@ -2843,7 +3019,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                             /// <param name="name">The name of the operation's parent resource.</param>
                             public virtual ListRequest List(string name)
                             {
-                                return new ListRequest(service, name);
+                                return new ListRequest(this.service, name);
                             }
 
                             /// <summary>
@@ -2966,7 +3142,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                                 /// <param name="name">The name of the operation resource.</param>
                                 public virtual GetRequest Get(string name)
                                 {
-                                    return new GetRequest(service, name);
+                                    return new GetRequest(this.service, name);
                                 }
 
                                 /// <summary>
@@ -3017,7 +3193,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                                 /// <param name="name">The name of the operation's parent resource.</param>
                                 public virtual ListRequest List(string name)
                                 {
-                                    return new ListRequest(service, name);
+                                    return new ListRequest(this.service, name);
                                 }
 
                                 /// <summary>
@@ -3107,7 +3283,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         /// </param>
                         public virtual RecrawlUrisRequest RecrawlUris(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaRecrawlUrisRequest body, string siteSearchEngine)
                         {
-                            return new RecrawlUrisRequest(service, body, siteSearchEngine);
+                            return new RecrawlUrisRequest(this.service, body, siteSearchEngine);
                         }
 
                         /// <summary>Request on-demand recrawl for a list of URIs.</summary>
@@ -3188,7 +3364,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         /// </param>
                         public virtual CollectRequest Collect(string parent)
                         {
-                            return new CollectRequest(service, parent);
+                            return new CollectRequest(this.service, parent);
                         }
 
                         /// <summary>
@@ -3295,7 +3471,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         /// </param>
                         public virtual ImportRequest Import(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaImportUserEventsRequest body, string parent)
                         {
-                            return new ImportRequest(service, body, parent);
+                            return new ImportRequest(this.service, body, parent);
                         }
 
                         /// <summary>
@@ -3363,7 +3539,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         /// </param>
                         public virtual PurgeRequest Purge(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaPurgeUserEventsRequest body, string parent)
                         {
-                            return new PurgeRequest(service, body, parent);
+                            return new PurgeRequest(this.service, body, parent);
                         }
 
                         /// <summary>
@@ -3427,7 +3603,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         /// </param>
                         public virtual WriteRequest Write(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaUserEvent body, string parent)
                         {
-                            return new WriteRequest(service, body, parent);
+                            return new WriteRequest(this.service, body, parent);
                         }
 
                         /// <summary>Writes a single user event.</summary>
@@ -3486,7 +3662,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     /// </param>
                     public virtual CompleteQueryRequest CompleteQuery(string dataStore)
                     {
-                        return new CompleteQueryRequest(service, dataStore);
+                        return new CompleteQueryRequest(this.service, dataStore);
                     }
 
                     /// <summary>Completes the specified user input with keyword suggestions.</summary>
@@ -3612,7 +3788,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaDataStore body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>
@@ -3709,7 +3885,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>Deletes a DataStore.</summary>
@@ -3766,7 +3942,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Gets a DataStore.</summary>
@@ -3822,7 +3998,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists all the DataStores associated with the project.</summary>
@@ -3924,7 +4100,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaDataStore body, string name)
                     {
-                        return new PatchRequest(service, body, name);
+                        return new PatchRequest(this.service, body, name);
                     }
 
                     /// <summary>Updates a DataStore</summary>
@@ -4035,7 +4211,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         /// <param name="name">The name of the operation resource.</param>
                         public virtual GetRequest Get(string name)
                         {
-                            return new GetRequest(service, name);
+                            return new GetRequest(this.service, name);
                         }
 
                         /// <summary>
@@ -4086,7 +4262,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         /// <param name="name">The name of the operation's parent resource.</param>
                         public virtual ListRequest List(string name)
                         {
-                            return new ListRequest(service, name);
+                            return new ListRequest(this.service, name);
                         }
 
                         /// <summary>
@@ -4198,7 +4374,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         /// </param>
                         public virtual RecommendRequest Recommend(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaRecommendRequest body, string servingConfig)
                         {
-                            return new RecommendRequest(service, body, servingConfig);
+                            return new RecommendRequest(this.service, body, servingConfig);
                         }
 
                         /// <summary>Makes a recommendation, which requires a contextual user event.</summary>
@@ -4267,7 +4443,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         /// </param>
                         public virtual SearchRequest Search(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaSearchRequest body, string servingConfig)
                         {
-                            return new SearchRequest(service, body, servingConfig);
+                            return new SearchRequest(this.service, body, servingConfig);
                         }
 
                         /// <summary>Performs a search.</summary>
@@ -4331,7 +4507,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaEngine body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>Creates a Engine.</summary>
@@ -4409,11 +4585,11 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>Deletes a Engine.</summary>
-                    public class DeleteRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleProtobufEmpty>
+                    public class DeleteRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleLongrunningOperation>
                     {
                         /// <summary>Constructs a new Delete request.</summary>
                         public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
@@ -4463,7 +4639,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Gets a Engine.</summary>
@@ -4514,7 +4690,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists all the Engines associated with the project.</summary>
@@ -4607,7 +4783,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaEngine body, string name)
                     {
-                        return new PatchRequest(service, body, name);
+                        return new PatchRequest(this.service, body, name);
                     }
 
                     /// <summary>Updates an Engine</summary>
@@ -4687,7 +4863,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     /// </param>
                     public virtual PauseRequest Pause(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaPauseEngineRequest body, string name)
                     {
-                        return new PauseRequest(service, body, name);
+                        return new PauseRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -4752,7 +4928,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     /// </param>
                     public virtual ResumeRequest Resume(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaResumeEngineRequest body, string name)
                     {
-                        return new ResumeRequest(service, body, name);
+                        return new ResumeRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -4816,7 +4992,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     /// </param>
                     public virtual TuneRequest Tune(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaTuneEngineRequest body, string name)
                     {
-                        return new TuneRequest(service, body, name);
+                        return new TuneRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -4894,7 +5070,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     /// <param name="name">The name of the operation resource.</param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -4945,7 +5121,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     /// <param name="name">The name of the operation's parent resource.</param>
                     public virtual ListRequest List(string name)
                     {
-                        return new ListRequest(service, name);
+                        return new ListRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -5096,7 +5272,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         /// </param>
                         public virtual CreateRequest Create(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaDocument body, string parent)
                         {
-                            return new CreateRequest(service, body, parent);
+                            return new CreateRequest(this.service, body, parent);
                         }
 
                         /// <summary>Creates a Document.</summary>
@@ -5177,7 +5353,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         /// </param>
                         public virtual DeleteRequest Delete(string name)
                         {
-                            return new DeleteRequest(service, name);
+                            return new DeleteRequest(this.service, name);
                         }
 
                         /// <summary>Deletes a Document.</summary>
@@ -5234,7 +5410,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         /// </param>
                         public virtual GetRequest Get(string name)
                         {
-                            return new GetRequest(service, name);
+                            return new GetRequest(this.service, name);
                         }
 
                         /// <summary>Gets a Document.</summary>
@@ -5294,7 +5470,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         /// </param>
                         public virtual ImportRequest Import(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaImportDocumentsRequest body, string parent)
                         {
-                            return new ImportRequest(service, body, parent);
+                            return new ImportRequest(this.service, body, parent);
                         }
 
                         /// <summary>
@@ -5360,7 +5536,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         /// </param>
                         public virtual ListRequest List(string parent)
                         {
-                            return new ListRequest(service, parent);
+                            return new ListRequest(this.service, parent);
                         }
 
                         /// <summary>Gets a list of Documents.</summary>
@@ -5450,7 +5626,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         /// </param>
                         public virtual PatchRequest Patch(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaDocument body, string name)
                         {
-                            return new PatchRequest(service, body, name);
+                            return new PatchRequest(this.service, body, name);
                         }
 
                         /// <summary>Updates a Document.</summary>
@@ -5530,7 +5706,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         /// </param>
                         public virtual PurgeRequest Purge(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaPurgeDocumentsRequest body, string parent)
                         {
-                            return new PurgeRequest(service, body, parent);
+                            return new PurgeRequest(this.service, body, parent);
                         }
 
                         /// <summary>
@@ -5612,7 +5788,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         /// <param name="name">The name of the operation resource.</param>
                         public virtual GetRequest Get(string name)
                         {
-                            return new GetRequest(service, name);
+                            return new GetRequest(this.service, name);
                         }
 
                         /// <summary>
@@ -5663,7 +5839,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         /// <param name="name">The name of the operation's parent resource.</param>
                         public virtual ListRequest List(string name)
                         {
-                            return new ListRequest(service, name);
+                            return new ListRequest(this.service, name);
                         }
 
                         /// <summary>
@@ -5774,7 +5950,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     /// </param>
                     public virtual ConverseRequest Converse(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaConverseConversationRequest body, string name)
                     {
-                        return new ConverseRequest(service, body, name);
+                        return new ConverseRequest(this.service, body, name);
                     }
 
                     /// <summary>Converses a conversation.</summary>
@@ -5840,7 +6016,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaConversation body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>
@@ -5904,7 +6080,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -5958,7 +6134,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Gets a Conversation.</summary>
@@ -6009,7 +6185,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists all Conversations by their parent DataStore.</summary>
@@ -6125,7 +6301,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaConversation body, string name)
                     {
-                        return new PatchRequest(service, body, name);
+                        return new PatchRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -6237,7 +6413,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         /// <param name="name">The name of the operation resource.</param>
                         public virtual GetRequest Get(string name)
                         {
-                            return new GetRequest(service, name);
+                            return new GetRequest(this.service, name);
                         }
 
                         /// <summary>
@@ -6288,7 +6464,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         /// <param name="name">The name of the operation's parent resource.</param>
                         public virtual ListRequest List(string name)
                         {
-                            return new ListRequest(service, name);
+                            return new ListRequest(this.service, name);
                         }
 
                         /// <summary>
@@ -6394,7 +6570,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     /// <param name="name">The name of the operation resource.</param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -6445,7 +6621,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     /// <param name="name">The name of the operation's parent resource.</param>
                     public virtual ListRequest List(string name)
                     {
-                        return new ListRequest(service, name);
+                        return new ListRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -6551,7 +6727,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaSchema body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>Creates a Schema.</summary>
@@ -6625,7 +6801,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>Deletes a Schema.</summary>
@@ -6676,7 +6852,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Gets a Schema.</summary>
@@ -6727,7 +6903,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Gets a list of Schemas.</summary>
@@ -6812,7 +6988,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaSchema body, string name)
                     {
-                        return new PatchRequest(service, body, name);
+                        return new PatchRequest(this.service, body, name);
                     }
 
                     /// <summary>Updates a Schema.</summary>
@@ -6911,7 +7087,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     /// </param>
                     public virtual RecommendRequest Recommend(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaRecommendRequest body, string servingConfig)
                     {
-                        return new RecommendRequest(service, body, servingConfig);
+                        return new RecommendRequest(this.service, body, servingConfig);
                     }
 
                     /// <summary>Makes a recommendation, which requires a contextual user event.</summary>
@@ -6980,7 +7156,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     /// </param>
                     public virtual SearchRequest Search(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaSearchRequest body, string servingConfig)
                     {
-                        return new SearchRequest(service, body, servingConfig);
+                        return new SearchRequest(this.service, body, servingConfig);
                     }
 
                     /// <summary>Performs a search.</summary>
@@ -7061,7 +7237,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     /// </param>
                     public virtual RecrawlUrisRequest RecrawlUris(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaRecrawlUrisRequest body, string siteSearchEngine)
                     {
-                        return new RecrawlUrisRequest(service, body, siteSearchEngine);
+                        return new RecrawlUrisRequest(this.service, body, siteSearchEngine);
                     }
 
                     /// <summary>Request on-demand recrawl for a list of URIs.</summary>
@@ -7141,7 +7317,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     /// </param>
                     public virtual CollectRequest Collect(string parent)
                     {
-                        return new CollectRequest(service, parent);
+                        return new CollectRequest(this.service, parent);
                     }
 
                     /// <summary>
@@ -7247,7 +7423,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     /// </param>
                     public virtual ImportRequest Import(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaImportUserEventsRequest body, string parent)
                     {
-                        return new ImportRequest(service, body, parent);
+                        return new ImportRequest(this.service, body, parent);
                     }
 
                     /// <summary>
@@ -7315,7 +7491,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     /// </param>
                     public virtual PurgeRequest Purge(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaPurgeUserEventsRequest body, string parent)
                     {
-                        return new PurgeRequest(service, body, parent);
+                        return new PurgeRequest(this.service, body, parent);
                     }
 
                     /// <summary>
@@ -7378,7 +7554,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     /// </param>
                     public virtual WriteRequest Write(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaUserEvent body, string parent)
                     {
-                        return new WriteRequest(service, body, parent);
+                        return new WriteRequest(this.service, body, parent);
                     }
 
                     /// <summary>Writes a single user event.</summary>
@@ -7437,7 +7613,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                 /// </param>
                 public virtual CompleteQueryRequest CompleteQuery(string dataStore)
                 {
-                    return new CompleteQueryRequest(service, dataStore);
+                    return new CompleteQueryRequest(this.service, dataStore);
                 }
 
                 /// <summary>Completes the specified user input with keyword suggestions.</summary>
@@ -7562,7 +7738,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaDataStore body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -7659,7 +7835,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes a DataStore.</summary>
@@ -7716,7 +7892,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets a DataStore.</summary>
@@ -7772,7 +7948,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists all the DataStores associated with the project.</summary>
@@ -7874,7 +8050,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaDataStore body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates a DataStore</summary>
@@ -7966,7 +8142,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                 /// <param name="name">The name of the operation resource.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -8017,7 +8193,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                 /// <param name="name">The name of the operation's parent resource.</param>
                 public virtual ListRequest List(string name)
                 {
-                    return new ListRequest(service, name);
+                    return new ListRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -8123,7 +8299,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
             /// <param name="name">The name of the operation resource.</param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>
@@ -8174,7 +8350,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
             /// <param name="name">The name of the operation's parent resource.</param>
             public virtual ListRequest List(string name)
             {
-                return new ListRequest(service, name);
+                return new ListRequest(this.service, name);
             }
 
             /// <summary>
@@ -8462,8 +8638,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _updateTimeRaw;
@@ -8499,8 +8675,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -8543,8 +8719,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _updateTimeRaw;
@@ -8580,8 +8756,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -8627,8 +8803,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Count of entries that encountered errors while processing.</summary>
@@ -8672,8 +8848,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -8752,8 +8928,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Count of entries that encountered errors while processing.</summary>
@@ -8797,8 +8973,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -8872,8 +9048,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Count of entries that encountered errors while processing.</summary>
@@ -8917,8 +9093,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -9005,8 +9181,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _updateTimeRaw;
@@ -9042,8 +9218,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -9254,8 +9430,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Conversation messages.</summary>
@@ -9302,8 +9478,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The state of the Conversation.</summary>
@@ -9371,8 +9547,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Search reply.</summary>
@@ -9508,8 +9684,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _updateTimeRaw;
@@ -9545,8 +9721,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -9592,8 +9768,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _updateTimeRaw;
@@ -9629,8 +9805,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -9673,8 +9849,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _updateTimeRaw;
@@ -9710,8 +9886,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -9785,8 +9961,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. The id of the default Schema asscociated to this data store.</summary>
@@ -9863,8 +10039,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _updateTimeRaw;
@@ -9900,8 +10076,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -9947,8 +10123,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _updateTimeRaw;
@@ -9984,8 +10160,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -10028,8 +10204,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _updateTimeRaw;
@@ -10065,8 +10241,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -10266,8 +10442,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -10286,6 +10462,14 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on
+        /// DataStore: If unspecified, default to `GENERIC`. Vertical on Engine has to match vertical of the DataStore
+        /// liniked to the engine.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("industryVertical")]
+        public virtual string IndustryVertical { get; set; }
 
         /// <summary>
         /// Configurations for the Media Engine. Only applicable on the data stores with solution_type
@@ -10357,8 +10541,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -10371,7 +10555,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>
         /// The configurationt generate the Dialogflow agent that is associated to this Engine. Note that these
         /// configurations are one-time consumed by and passed to Dialogflow service. It means they cannot be retrieved
-        /// using GetEngine or ListEngine API after engine creation.
+        /// using EngineService.GetEngine or EngineService.ListEngines API after engine creation.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agentCreationConfig")]
         public virtual GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigAgentCreationConfig AgentCreationConfig { get; set; }
@@ -10380,9 +10564,9 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// The resource name of an exist Dialogflow agent to link to this Chat Engine. Customers can either provide
         /// `agent_creation_config` to create agent or provide an agent name that links the agent with the Chat engine.
         /// Format: `projects//locations//agents/`. Note that the `dialogflow_agent_to_link` are one-time consumed by
-        /// and passed to Dialogflow service. It means they cannot be retrieved using GetEngine or ListEngine API after
-        /// engine creation. Please use Engine.chat_engine_metadata.dialogflow_agent for actual agent association after
-        /// Engine is created.
+        /// and passed to Dialogflow service. It means they cannot be retrieved using EngineService.GetEngine or
+        /// EngineService.ListEngines API after engine creation. Please use chat_engine_metadata.dialogflow_agent for
+        /// actual agent association after Engine is created.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dialogflowAgentToLink")]
         public virtual string DialogflowAgentToLink { get; set; }
@@ -10393,8 +10577,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
 
     /// <summary>
     /// Configurations for generating a Dialogflow agent. Note that these configurations are one-time consumed by and
-    /// passed to Dialogflow service. It means they cannot be retrieved using GetEngine or ListEngine API after engine
-    /// creation.
+    /// passed to Dialogflow service. It means they cannot be retrieved using EngineService.GetEngine or
+    /// EngineService.ListEngines API after engine creation.
     /// </summary>
     public class GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigAgentCreationConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10559,8 +10743,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LastTuneTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastTuneTimeRaw);
-            set => LastTuneTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastTuneTimeRaw);
+            set => LastTuneTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. The serving state of the engine: `ACTIVE`, `NOT_ACTIVE`.</summary>
@@ -10768,8 +10952,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Count of entries that encountered errors while processing.</summary>
@@ -10813,8 +10997,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -10963,8 +11147,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Count of entries that encountered errors while processing.</summary>
@@ -11008,8 +11192,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -11349,8 +11533,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Count of entries that encountered errors while processing.</summary>
@@ -11394,8 +11578,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -11482,8 +11666,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Count of entries that encountered errors while processing.</summary>
@@ -11527,8 +11711,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -11751,8 +11935,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -11807,8 +11991,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Total number of unique URIs in the request that are not in invalid_uris.</summary>
@@ -12011,6 +12195,17 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("branch")]
         public virtual string Branch { get; set; }
+
+        /// <summary>
+        /// The default filter that is applied when a user performs a search without checking any filters on the search
+        /// page. The filter applied to every search request when quality improvement such as query expansion is needed.
+        /// In the case a query does not have a sufficient amount of results this filter will be used to determine
+        /// whether or not to enable the query expansion flow. The original filter will still be used for the query
+        /// expanded search. This field is strongly recommended to achieve high search quality. For more information
+        /// about filter syntax, see SearchRequest.filter.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("canonicalFilter")]
+        public virtual string CanonicalFilter { get; set; }
 
         /// <summary>A specification for configuring the behavior of content search.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentSearchSpec")]
@@ -12836,8 +13031,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? VerifyTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(VerifyTimeRaw);
-            set => VerifyTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(VerifyTimeRaw);
+            set => VerifyTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -12923,8 +13118,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -13073,8 +13268,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _updateTimeRaw;
@@ -13110,8 +13305,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -13218,8 +13413,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EventTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EventTimeRaw);
-            set => EventTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EventTimeRaw);
+            set => EventTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -13448,8 +13643,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. The type of the parent data store.</summary>
@@ -13564,8 +13759,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -13735,8 +13930,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _updateTimeRaw;
@@ -13772,8 +13967,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -13816,8 +14011,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _updateTimeRaw;
@@ -13853,8 +14048,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -13900,8 +14095,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Count of entries that encountered errors while processing.</summary>
@@ -13945,8 +14140,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -14025,8 +14220,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Count of entries that encountered errors while processing.</summary>
@@ -14070,8 +14265,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -14145,8 +14340,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Count of entries that encountered errors while processing.</summary>
@@ -14190,8 +14385,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -14278,8 +14473,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _updateTimeRaw;
@@ -14315,8 +14510,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>

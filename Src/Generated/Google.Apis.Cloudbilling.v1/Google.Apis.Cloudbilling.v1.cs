@@ -328,7 +328,7 @@ namespace Google.Apis.Cloudbilling.v1
             /// </param>
             public virtual ListRequest List(string name)
             {
-                return new ListRequest(service, name);
+                return new ListRequest(this.service, name);
             }
 
             /// <summary>
@@ -440,7 +440,7 @@ namespace Google.Apis.Cloudbilling.v1
             /// </param>
             public virtual CreateRequest Create(Google.Apis.Cloudbilling.v1.Data.BillingAccount body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -513,7 +513,7 @@ namespace Google.Apis.Cloudbilling.v1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>
@@ -620,7 +620,7 @@ namespace Google.Apis.Cloudbilling.v1
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.Cloudbilling.v1.Data.BillingAccount body)
         {
-            return new CreateRequest(service, body);
+            return new CreateRequest(this.service, body);
         }
 
         /// <summary>
@@ -690,7 +690,7 @@ namespace Google.Apis.Cloudbilling.v1
         /// </param>
         public virtual GetRequest Get(string name)
         {
-            return new GetRequest(service, name);
+            return new GetRequest(this.service, name);
         }
 
         /// <summary>
@@ -748,7 +748,7 @@ namespace Google.Apis.Cloudbilling.v1
         /// </param>
         public virtual GetIamPolicyRequest GetIamPolicy(string resource)
         {
-            return new GetIamPolicyRequest(service, resource);
+            return new GetIamPolicyRequest(this.service, resource);
         }
 
         /// <summary>
@@ -823,7 +823,7 @@ namespace Google.Apis.Cloudbilling.v1
         /// </summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>
@@ -923,7 +923,7 @@ namespace Google.Apis.Cloudbilling.v1
         /// </param>
         public virtual MoveRequest Move(Google.Apis.Cloudbilling.v1.Data.MoveBillingAccountRequest body, string name)
         {
-            return new MoveRequest(service, body, name);
+            return new MoveRequest(this.service, body, name);
         }
 
         /// <summary>Changes which parent organization a billing account belongs to.</summary>
@@ -984,7 +984,7 @@ namespace Google.Apis.Cloudbilling.v1
         /// <param name="name">Required. The name of the billing account resource to be updated.</param>
         public virtual PatchRequest Patch(Google.Apis.Cloudbilling.v1.Data.BillingAccount body, string name)
         {
-            return new PatchRequest(service, body, name);
+            return new PatchRequest(this.service, body, name);
         }
 
         /// <summary>
@@ -1060,7 +1060,7 @@ namespace Google.Apis.Cloudbilling.v1
         /// </param>
         public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Cloudbilling.v1.Data.SetIamPolicyRequest body, string resource)
         {
-            return new SetIamPolicyRequest(service, body, resource);
+            return new SetIamPolicyRequest(this.service, body, resource);
         }
 
         /// <summary>
@@ -1127,7 +1127,7 @@ namespace Google.Apis.Cloudbilling.v1
         /// </param>
         public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Cloudbilling.v1.Data.TestIamPermissionsRequest body, string resource)
         {
-            return new TestIamPermissionsRequest(service, body, resource);
+            return new TestIamPermissionsRequest(this.service, body, resource);
         }
 
         /// <summary>
@@ -1233,7 +1233,7 @@ namespace Google.Apis.Cloudbilling.v1
             /// </param>
             public virtual CreateRequest Create(Google.Apis.Cloudbilling.v1.Data.BillingAccount body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -1306,7 +1306,7 @@ namespace Google.Apis.Cloudbilling.v1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>
@@ -1410,7 +1410,7 @@ namespace Google.Apis.Cloudbilling.v1
             /// </param>
             public virtual MoveRequest Move(string destinationParent, string name)
             {
-                return new MoveRequest(service, destinationParent, name);
+                return new MoveRequest(this.service, destinationParent, name);
             }
 
             /// <summary>Changes which parent organization a billing account belongs to.</summary>
@@ -1498,7 +1498,7 @@ namespace Google.Apis.Cloudbilling.v1
         /// </param>
         public virtual GetBillingInfoRequest GetBillingInfo(string name)
         {
-            return new GetBillingInfoRequest(service, name);
+            return new GetBillingInfoRequest(this.service, name);
         }
 
         /// <summary>
@@ -1573,7 +1573,7 @@ namespace Google.Apis.Cloudbilling.v1
         /// </param>
         public virtual UpdateBillingInfoRequest UpdateBillingInfo(Google.Apis.Cloudbilling.v1.Data.ProjectBillingInfo body, string name)
         {
-            return new UpdateBillingInfoRequest(service, body, name);
+            return new UpdateBillingInfoRequest(this.service, body, name);
         }
 
         /// <summary>
@@ -1680,7 +1680,7 @@ namespace Google.Apis.Cloudbilling.v1
             /// <param name="parent">Required. The name of the service. Example: "services/DA34-426B-A397"</param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists all publicly available SKUs for a given cloud service.</summary>
@@ -1704,14 +1704,36 @@ namespace Google.Apis.Cloudbilling.v1
                 [Google.Apis.Util.RequestParameterAttribute("currencyCode", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string CurrencyCode { get; set; }
 
+                private object _endTime;
+
                 /// <summary>
-                /// Optional exclusive end time of the time range for which the pricing versions will be returned.
-                /// Timestamps in the future are not allowed. The time range has to be within a single calendar month in
-                /// America/Los_Angeles timezone. Time range as a whole is optional. If not specified, the latest
-                /// pricing will be returned (up to 12 hours old at most).
+                /// String representation of <see cref="EndTimeDateTimeOffset"/>, formatted for inclusion in the HTTP
+                /// request.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("endTime", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual object EndTime { get; set; }
+                public virtual string EndTimeRaw { get; private set; }
+
+                /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+                [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+                public virtual object EndTime
+                {
+                    get => _endTime;
+                    set
+                    {
+                        EndTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                        _endTime = value;
+                    }
+                }
+
+                public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+                {
+                    get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+                    set
+                    {
+                        EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                        _endTime = value;
+                    }
+                }
 
                 /// <summary>Requested page size. Defaults to 5000.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
@@ -1724,14 +1746,36 @@ namespace Google.Apis.Cloudbilling.v1
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
+                private object _startTime;
+
                 /// <summary>
-                /// Optional inclusive start time of the time range for which the pricing versions will be returned.
-                /// Timestamps in the future are not allowed. The time range has to be within a single calendar month in
-                /// America/Los_Angeles timezone. Time range as a whole is optional. If not specified, the latest
-                /// pricing will be returned (up to 12 hours old at most).
+                /// String representation of <see cref="StartTimeDateTimeOffset"/>, formatted for inclusion in the HTTP
+                /// request.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual object StartTime { get; set; }
+                public virtual string StartTimeRaw { get; private set; }
+
+                /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+                [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+                public virtual object StartTime
+                {
+                    get => _startTime;
+                    set
+                    {
+                        StartTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                        _startTime = value;
+                    }
+                }
+
+                public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+                {
+                    get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+                    set
+                    {
+                        StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                        _startTime = value;
+                    }
+                }
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
@@ -1801,7 +1845,7 @@ namespace Google.Apis.Cloudbilling.v1
         /// <summary>Lists all public cloud services.</summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>Lists all public cloud services.</summary>
@@ -2415,8 +2459,8 @@ namespace Google.Apis.Cloudbilling.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EffectiveTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EffectiveTimeRaw);
-            set => EffectiveTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EffectiveTimeRaw);
+            set => EffectiveTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Expresses the pricing formula. See `PricingExpression` for an example.</summary>

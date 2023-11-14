@@ -293,7 +293,7 @@ namespace Google.Apis.WebRisk.v1
         /// </summary>
         public virtual SearchRequest Search()
         {
-            return new SearchRequest(service);
+            return new SearchRequest(this.service);
         }
 
         /// <summary>
@@ -435,7 +435,7 @@ namespace Google.Apis.WebRisk.v1
             /// <param name="name">The name of the operation resource to be cancelled.</param>
             public virtual CancelRequest Cancel(Google.Apis.WebRisk.v1.Data.GoogleLongrunningCancelOperationRequest body, string name)
             {
-                return new CancelRequest(service, body, name);
+                return new CancelRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -498,7 +498,7 @@ namespace Google.Apis.WebRisk.v1
             /// <param name="name">The name of the operation resource to be deleted.</param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>
@@ -550,7 +550,7 @@ namespace Google.Apis.WebRisk.v1
             /// <param name="name">The name of the operation resource.</param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>
@@ -601,7 +601,7 @@ namespace Google.Apis.WebRisk.v1
             /// <param name="name">The name of the operation's parent resource.</param>
             public virtual ListRequest List(string name)
             {
-                return new ListRequest(service, name);
+                return new ListRequest(this.service, name);
             }
 
             /// <summary>
@@ -713,7 +713,7 @@ namespace Google.Apis.WebRisk.v1
             /// </param>
             public virtual CreateRequest Create(Google.Apis.WebRisk.v1.Data.GoogleCloudWebriskV1Submission body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -794,7 +794,7 @@ namespace Google.Apis.WebRisk.v1
         /// </summary>
         public virtual ComputeDiffRequest ComputeDiff()
         {
-            return new ComputeDiffRequest(service);
+            return new ComputeDiffRequest(this.service);
         }
 
         /// <summary>
@@ -977,7 +977,7 @@ namespace Google.Apis.WebRisk.v1
         /// </summary>
         public virtual SearchRequest Search()
         {
-            return new SearchRequest(service);
+            return new SearchRequest(this.service);
         }
 
         /// <summary>
@@ -1133,8 +1133,8 @@ namespace Google.Apis.WebRisk.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? RecommendedNextDiffDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(RecommendedNextDiffRaw);
-            set => RecommendedNextDiffRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(RecommendedNextDiffRaw);
+            set => RecommendedNextDiffRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>A set of entries to remove from a local threat type's list. This field may be empty.</summary>
@@ -1275,8 +1275,8 @@ namespace Google.Apis.WebRisk.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? NegativeExpireTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(NegativeExpireTimeRaw);
-            set => NegativeExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(NegativeExpireTimeRaw);
+            set => NegativeExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -1328,8 +1328,8 @@ namespace Google.Apis.WebRisk.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpireTimeRaw);
-            set => ExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -1395,8 +1395,8 @@ namespace Google.Apis.WebRisk.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpireTimeRaw);
-            set => ExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ThreatList this threat belongs to.</summary>

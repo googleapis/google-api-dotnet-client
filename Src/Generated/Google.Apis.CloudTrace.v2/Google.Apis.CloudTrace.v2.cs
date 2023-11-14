@@ -327,7 +327,7 @@ namespace Google.Apis.CloudTrace.v2
                 /// </param>
                 public virtual CreateSpanRequest CreateSpan(Google.Apis.CloudTrace.v2.Data.Span body, string name)
                 {
-                    return new CreateSpanRequest(service, body, name);
+                    return new CreateSpanRequest(this.service, body, name);
                 }
 
                 /// <summary>Creates a new span.</summary>
@@ -389,7 +389,7 @@ namespace Google.Apis.CloudTrace.v2
             /// </param>
             public virtual BatchWriteRequest BatchWrite(Google.Apis.CloudTrace.v2.Data.BatchWriteSpansRequest body, string name)
             {
-                return new BatchWriteRequest(service, body, name);
+                return new BatchWriteRequest(this.service, body, name);
             }
 
             /// <summary>Batch writes new spans to new or existing traces. You cannot update existing spans.</summary>
@@ -684,8 +684,8 @@ namespace Google.Apis.CloudTrace.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Links associated with the span. You can have up to 128 links per Span.</summary>
@@ -767,8 +767,8 @@ namespace Google.Apis.CloudTrace.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Optional. The final status for this span.</summary>
@@ -939,8 +939,8 @@ namespace Google.Apis.CloudTrace.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? TimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(TimeRaw);
-            set => TimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(TimeRaw);
+            set => TimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>

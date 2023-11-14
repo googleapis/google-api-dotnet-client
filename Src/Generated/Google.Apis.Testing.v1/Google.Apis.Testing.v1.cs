@@ -296,7 +296,7 @@ namespace Google.Apis.Testing.v1
         /// <param name="body">The body of the request.</param>
         public virtual GetApkDetailsRequest GetApkDetails(Google.Apis.Testing.v1.Data.FileReference body)
         {
-            return new GetApkDetailsRequest(service, body);
+            return new GetApkDetailsRequest(this.service, body);
         }
 
         /// <summary>Gets the details of an Android application APK.</summary>
@@ -376,7 +376,7 @@ namespace Google.Apis.Testing.v1
             /// </param>
             public virtual CancelRequest Cancel(Google.Apis.Testing.v1.Data.CancelDeviceSessionRequest body, string name)
             {
-                return new CancelRequest(service, body, name);
+                return new CancelRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -437,7 +437,7 @@ namespace Google.Apis.Testing.v1
             /// </param>
             public virtual CreateRequest Create(Google.Apis.Testing.v1.Data.DeviceSession body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>POST /v1/projects/{project_id}/deviceSessions</summary>
@@ -498,7 +498,7 @@ namespace Google.Apis.Testing.v1
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>
@@ -551,7 +551,7 @@ namespace Google.Apis.Testing.v1
             /// <param name="parent">Required. The name of the parent to request, e.g. "projects/{project_id}"</param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>
@@ -643,7 +643,7 @@ namespace Google.Apis.Testing.v1
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.Testing.v1.Data.DeviceSession body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -736,7 +736,7 @@ namespace Google.Apis.Testing.v1
             /// <param name="testMatrixId">Test matrix that will be canceled.</param>
             public virtual CancelRequest Cancel(string projectId, string testMatrixId)
             {
-                return new CancelRequest(service, projectId, testMatrixId);
+                return new CancelRequest(this.service, projectId, testMatrixId);
             }
 
             /// <summary>
@@ -808,7 +808,7 @@ namespace Google.Apis.Testing.v1
             /// <param name="projectId">The GCE project under which this job will run.</param>
             public virtual CreateRequest Create(Google.Apis.Testing.v1.Data.TestMatrix body, string projectId)
             {
-                return new CreateRequest(service, body, projectId);
+                return new CreateRequest(this.service, body, projectId);
             }
 
             /// <summary>
@@ -891,7 +891,7 @@ namespace Google.Apis.Testing.v1
             /// <param name="testMatrixId">Unique test matrix id which was assigned by the service.</param>
             public virtual GetRequest Get(string projectId, string testMatrixId)
             {
-                return new GetRequest(service, projectId, testMatrixId);
+                return new GetRequest(this.service, projectId, testMatrixId);
             }
 
             /// <summary>
@@ -975,7 +975,7 @@ namespace Google.Apis.Testing.v1
         /// <param name="environmentType">Required. The type of environment that should be listed.</param>
         public virtual GetRequest Get(GetRequest.EnvironmentTypeEnum environmentType)
         {
-            return new GetRequest(service, environmentType);
+            return new GetRequest(this.service, environmentType);
         }
 
         /// <summary>
@@ -1748,8 +1748,8 @@ namespace Google.Apis.Testing.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ActiveStartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ActiveStartTimeRaw);
-            set => ActiveStartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ActiveStartTimeRaw);
+            set => ActiveStartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Required. The requested device</summary>
@@ -1789,8 +1789,8 @@ namespace Google.Apis.Testing.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. The title of the DeviceSession to be presented in the UI.</summary>
@@ -1833,8 +1833,8 @@ namespace Google.Apis.Testing.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpireTimeRaw);
-            set => ExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -1942,8 +1942,8 @@ namespace Google.Apis.Testing.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? MeasurementTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(MeasurementTimeRaw);
-            set => MeasurementTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(MeasurementTimeRaw);
+            set => MeasurementTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -2760,8 +2760,8 @@ namespace Google.Apis.Testing.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EventTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EventTimeRaw);
-            set => EventTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EventTimeRaw);
+            set => EventTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. The session_state tracked by this event</summary>
@@ -2996,8 +2996,8 @@ namespace Google.Apis.Testing.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? TimestampDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(TimestampRaw);
-            set => TimestampRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(TimestampRaw);
+            set => TimestampRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. Where the results for this execution are written.</summary>
@@ -3107,8 +3107,8 @@ namespace Google.Apis.Testing.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? TimestampDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(TimestampRaw);
-            set => TimestampRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(TimestampRaw);
+            set => TimestampRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>

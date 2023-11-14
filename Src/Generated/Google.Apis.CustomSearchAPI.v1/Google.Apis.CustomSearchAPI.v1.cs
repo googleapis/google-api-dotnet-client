@@ -278,7 +278,7 @@ namespace Google.Apis.CustomSearchAPI.v1
             /// </summary>
             public virtual ListRequest List()
             {
-                return new ListRequest(service);
+                return new ListRequest(this.service);
             }
 
             /// <summary>
@@ -1025,7 +1025,7 @@ namespace Google.Apis.CustomSearchAPI.v1
         /// </summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>

@@ -282,7 +282,7 @@ namespace Google.Apis.Tasks.v1
         /// <param name="tasklist">Task list identifier.</param>
         public virtual DeleteRequest Delete(string tasklist)
         {
-            return new DeleteRequest(service, tasklist);
+            return new DeleteRequest(this.service, tasklist);
         }
 
         /// <summary>Deletes the authenticated user's specified task list.</summary>
@@ -327,7 +327,7 @@ namespace Google.Apis.Tasks.v1
         /// <param name="tasklist">Task list identifier.</param>
         public virtual GetRequest Get(string tasklist)
         {
-            return new GetRequest(service, tasklist);
+            return new GetRequest(this.service, tasklist);
         }
 
         /// <summary>Returns the authenticated user's specified task list.</summary>
@@ -372,7 +372,7 @@ namespace Google.Apis.Tasks.v1
         /// <param name="body">The body of the request.</param>
         public virtual InsertRequest Insert(Google.Apis.Tasks.v1.Data.TaskList body)
         {
-            return new InsertRequest(service, body);
+            return new InsertRequest(this.service, body);
         }
 
         /// <summary>Creates a new task list and adds it to the authenticated user's task lists.</summary>
@@ -410,7 +410,7 @@ namespace Google.Apis.Tasks.v1
         /// <summary>Returns all the authenticated user's task lists.</summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>Returns all the authenticated user's task lists.</summary>
@@ -471,7 +471,7 @@ namespace Google.Apis.Tasks.v1
         /// <param name="tasklist">Task list identifier.</param>
         public virtual PatchRequest Patch(Google.Apis.Tasks.v1.Data.TaskList body, string tasklist)
         {
-            return new PatchRequest(service, body, tasklist);
+            return new PatchRequest(this.service, body, tasklist);
         }
 
         /// <summary>
@@ -526,7 +526,7 @@ namespace Google.Apis.Tasks.v1
         /// <param name="tasklist">Task list identifier.</param>
         public virtual UpdateRequest Update(Google.Apis.Tasks.v1.Data.TaskList body, string tasklist)
         {
-            return new UpdateRequest(service, body, tasklist);
+            return new UpdateRequest(this.service, body, tasklist);
         }
 
         /// <summary>Updates the authenticated user's specified task list.</summary>
@@ -596,7 +596,7 @@ namespace Google.Apis.Tasks.v1
         /// <param name="tasklist">Task list identifier.</param>
         public virtual ClearRequest Clear(string tasklist)
         {
-            return new ClearRequest(service, tasklist);
+            return new ClearRequest(this.service, tasklist);
         }
 
         /// <summary>
@@ -645,7 +645,7 @@ namespace Google.Apis.Tasks.v1
         /// <param name="task">Task identifier.</param>
         public virtual DeleteRequest Delete(string tasklist, string task)
         {
-            return new DeleteRequest(service, tasklist, task);
+            return new DeleteRequest(this.service, tasklist, task);
         }
 
         /// <summary>Deletes the specified task from the task list.</summary>
@@ -704,7 +704,7 @@ namespace Google.Apis.Tasks.v1
         /// <param name="task">Task identifier.</param>
         public virtual GetRequest Get(string tasklist, string task)
         {
-            return new GetRequest(service, tasklist, task);
+            return new GetRequest(this.service, tasklist, task);
         }
 
         /// <summary>Returns the specified task.</summary>
@@ -763,7 +763,7 @@ namespace Google.Apis.Tasks.v1
         /// <param name="tasklist">Task list identifier.</param>
         public virtual InsertRequest Insert(Google.Apis.Tasks.v1.Data.Task body, string tasklist)
         {
-            return new InsertRequest(service, body, tasklist);
+            return new InsertRequest(this.service, body, tasklist);
         }
 
         /// <summary>Creates a new task on the specified task list.</summary>
@@ -844,7 +844,7 @@ namespace Google.Apis.Tasks.v1
         /// <param name="tasklist">Task list identifier.</param>
         public virtual ListRequest List(string tasklist)
         {
-            return new ListRequest(service, tasklist);
+            return new ListRequest(this.service, tasklist);
         }
 
         /// <summary>Returns all tasks in the specified task list.</summary>
@@ -1038,7 +1038,7 @@ namespace Google.Apis.Tasks.v1
         /// <param name="task">Task identifier.</param>
         public virtual MoveRequest Move(string tasklist, string task)
         {
-            return new MoveRequest(service, tasklist, task);
+            return new MoveRequest(this.service, tasklist, task);
         }
 
         /// <summary>
@@ -1130,7 +1130,7 @@ namespace Google.Apis.Tasks.v1
         /// <param name="task">Task identifier.</param>
         public virtual PatchRequest Patch(Google.Apis.Tasks.v1.Data.Task body, string tasklist, string task)
         {
-            return new PatchRequest(service, body, tasklist, task);
+            return new PatchRequest(this.service, body, tasklist, task);
         }
 
         /// <summary>Updates the specified task. This method supports patch semantics.</summary>
@@ -1197,7 +1197,7 @@ namespace Google.Apis.Tasks.v1
         /// <param name="task">Task identifier.</param>
         public virtual UpdateRequest Update(Google.Apis.Tasks.v1.Data.Task body, string tasklist, string task)
         {
-            return new UpdateRequest(service, body, tasklist, task);
+            return new UpdateRequest(this.service, body, tasklist, task);
         }
 
         /// <summary>Updates the specified task.</summary>

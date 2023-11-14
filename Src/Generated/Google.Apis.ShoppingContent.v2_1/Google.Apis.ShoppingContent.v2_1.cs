@@ -444,7 +444,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             /// <param name="accountId">Required. The merchant id of the account these credentials belong to.</param>
             public virtual CreateRequest Create(Google.Apis.ShoppingContent.v2_1.Data.AccountCredentials body, long accountId)
             {
-                return new CreateRequest(service, body, accountId);
+                return new CreateRequest(this.service, body, accountId);
             }
 
             /// <summary>
@@ -518,7 +518,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             /// <param name="accountId">Required. The id of the account this label belongs to.</param>
             public virtual CreateRequest Create(Google.Apis.ShoppingContent.v2_1.Data.AccountLabel body, long accountId)
             {
-                return new CreateRequest(service, body, accountId);
+                return new CreateRequest(this.service, body, accountId);
             }
 
             /// <summary>Creates a new label, not assigned to any account.</summary>
@@ -571,7 +571,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             /// <param name="labelId">Required. The id of the label to delete.</param>
             public virtual DeleteRequest Delete(long accountId, long labelId)
             {
-                return new DeleteRequest(service, accountId, labelId);
+                return new DeleteRequest(this.service, accountId, labelId);
             }
 
             /// <summary>Deletes a label and removes it from all accounts to which it was assigned.</summary>
@@ -629,7 +629,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             /// <param name="accountId">Required. The account id for whose labels are to be listed.</param>
             public virtual ListRequest List(long accountId)
             {
-                return new ListRequest(service, accountId);
+                return new ListRequest(this.service, accountId);
             }
 
             /// <summary>Lists the labels assigned to an account.</summary>
@@ -708,7 +708,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             /// <param name="labelId">Required. The id of the label to update.</param>
             public virtual PatchRequest Patch(Google.Apis.ShoppingContent.v2_1.Data.AccountLabel body, long accountId, long labelId)
             {
-                return new PatchRequest(service, body, accountId, labelId);
+                return new PatchRequest(this.service, body, accountId, labelId);
             }
 
             /// <summary>Updates a label.</summary>
@@ -794,7 +794,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             /// </param>
             public virtual CreateRequest Create(Google.Apis.ShoppingContent.v2_1.Data.AccountReturnCarrier body, long accountId)
             {
-                return new CreateRequest(service, body, accountId);
+                return new CreateRequest(this.service, body, accountId);
             }
 
             /// <summary>Links return carrier to a merchant account.</summary>
@@ -853,7 +853,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             /// </param>
             public virtual DeleteRequest Delete(long accountId, long carrierAccountId)
             {
-                return new DeleteRequest(service, accountId, carrierAccountId);
+                return new DeleteRequest(this.service, accountId, carrierAccountId);
             }
 
             /// <summary>Delete a return carrier in the merchant account.</summary>
@@ -915,7 +915,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             /// </param>
             public virtual ListRequest List(long accountId)
             {
-                return new ListRequest(service, accountId);
+                return new ListRequest(this.service, accountId);
             }
 
             /// <summary>Lists available return carriers in the merchant account.</summary>
@@ -968,7 +968,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.ShoppingContent.v2_1.Data.AccountReturnCarrier body, long accountId, long carrierAccountId)
             {
-                return new PatchRequest(service, body, accountId, carrierAccountId);
+                return new PatchRequest(this.service, body, accountId, carrierAccountId);
             }
 
             /// <summary>Updates a return carrier in the merchant account.</summary>
@@ -1035,7 +1035,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <summary>Returns information about the authenticated user.</summary>
         public virtual AuthinfoRequest Authinfo()
         {
-            return new AuthinfoRequest(service);
+            return new AuthinfoRequest(this.service);
         }
 
         /// <summary>Returns information about the authenticated user.</summary>
@@ -1074,7 +1074,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="accountId">The ID of the account whose website is claimed.</param>
         public virtual ClaimwebsiteRequest Claimwebsite(ulong merchantId, ulong accountId)
         {
-            return new ClaimwebsiteRequest(service, merchantId, accountId);
+            return new ClaimwebsiteRequest(this.service, merchantId, accountId);
         }
 
         /// <summary>
@@ -1156,7 +1156,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="body">The body of the request.</param>
         public virtual CustombatchRequest Custombatch(Google.Apis.ShoppingContent.v2_1.Data.AccountsCustomBatchRequest body)
         {
-            return new CustombatchRequest(service, body);
+            return new CustombatchRequest(this.service, body);
         }
 
         /// <summary>
@@ -1201,7 +1201,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="accountId">The ID of the account.</param>
         public virtual DeleteRequest Delete(ulong merchantId, ulong accountId)
         {
-            return new DeleteRequest(service, merchantId, accountId);
+            return new DeleteRequest(this.service, merchantId, accountId);
         }
 
         /// <summary>Deletes a Merchant Center sub-account.</summary>
@@ -1278,7 +1278,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="accountId">The ID of the account.</param>
         public virtual GetRequest Get(ulong merchantId, ulong accountId)
         {
-            return new GetRequest(service, merchantId, accountId);
+            return new GetRequest(this.service, merchantId, accountId);
         }
 
         /// <summary>Retrieves a Merchant Center account.</summary>
@@ -1370,7 +1370,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="merchantId">The ID of the managing account. This must be a multi-client account.</param>
         public virtual InsertRequest Insert(Google.Apis.ShoppingContent.v2_1.Data.Account body, ulong merchantId)
         {
-            return new InsertRequest(service, body, merchantId);
+            return new InsertRequest(this.service, body, merchantId);
         }
 
         /// <summary>Creates a Merchant Center sub-account.</summary>
@@ -1429,7 +1429,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="accountId">The ID of the account that should be linked.</param>
         public virtual LinkRequest Link(Google.Apis.ShoppingContent.v2_1.Data.AccountsLinkRequest body, ulong merchantId, ulong accountId)
         {
-            return new LinkRequest(service, body, merchantId, accountId);
+            return new LinkRequest(this.service, body, merchantId, accountId);
         }
 
         /// <summary>
@@ -1499,7 +1499,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="merchantId">The ID of the managing account. This must be a multi-client account.</param>
         public virtual ListRequest List(ulong merchantId)
         {
-            return new ListRequest(service, merchantId);
+            return new ListRequest(this.service, merchantId);
         }
 
         /// <summary>Lists the sub-accounts in your Merchant Center account.</summary>
@@ -1626,7 +1626,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="accountId">The ID of the account for which to list links.</param>
         public virtual ListlinksRequest Listlinks(ulong merchantId, ulong accountId)
         {
-            return new ListlinksRequest(service, merchantId, accountId);
+            return new ListlinksRequest(this.service, merchantId, accountId);
         }
 
         /// <summary>Returns the list of accounts linked to your Merchant Center account.</summary>
@@ -1719,7 +1719,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="accountId">Required. The ID of the account.</param>
         public virtual RequestphoneverificationRequest Requestphoneverification(Google.Apis.ShoppingContent.v2_1.Data.RequestPhoneVerificationRequest body, long merchantId, long accountId)
         {
-            return new RequestphoneverificationRequest(service, body, merchantId, accountId);
+            return new RequestphoneverificationRequest(this.service, body, merchantId, accountId);
         }
 
         /// <summary>Request verification code to start phone verification.</summary>
@@ -1794,7 +1794,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="accountId">The ID of the account.</param>
         public virtual UpdateRequest Update(Google.Apis.ShoppingContent.v2_1.Data.Account body, ulong merchantId, ulong accountId)
         {
-            return new UpdateRequest(service, body, merchantId, accountId);
+            return new UpdateRequest(this.service, body, merchantId, accountId);
         }
 
         /// <summary>
@@ -1866,7 +1866,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="accountId">The ID of the account whose labels are updated.</param>
         public virtual UpdatelabelsRequest Updatelabels(Google.Apis.ShoppingContent.v2_1.Data.AccountsUpdateLabelsRequest body, ulong merchantId, ulong accountId)
         {
-            return new UpdatelabelsRequest(service, body, merchantId, accountId);
+            return new UpdatelabelsRequest(this.service, body, merchantId, accountId);
         }
 
         /// <summary>Updates labels that are assigned to the Merchant Center account by CSS user.</summary>
@@ -1940,7 +1940,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="accountId">Required. The ID of the account.</param>
         public virtual VerifyphonenumberRequest Verifyphonenumber(Google.Apis.ShoppingContent.v2_1.Data.VerifyPhoneNumberRequest body, long merchantId, long accountId)
         {
-            return new VerifyphonenumberRequest(service, body, merchantId, accountId);
+            return new VerifyphonenumberRequest(this.service, body, merchantId, accountId);
         }
 
         /// <summary>
@@ -2027,7 +2027,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="body">The body of the request.</param>
         public virtual CustombatchRequest Custombatch(Google.Apis.ShoppingContent.v2_1.Data.AccountstatusesCustomBatchRequest body)
         {
-            return new CustombatchRequest(service, body);
+            return new CustombatchRequest(this.service, body);
         }
 
         /// <summary>Retrieves multiple Merchant Center account statuses in a single request.</summary>
@@ -2073,7 +2073,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="accountId">The ID of the account.</param>
         public virtual GetRequest Get(ulong merchantId, ulong accountId)
         {
-            return new GetRequest(service, merchantId, accountId);
+            return new GetRequest(this.service, merchantId, accountId);
         }
 
         /// <summary>
@@ -2152,7 +2152,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="merchantId">The ID of the managing account. This must be a multi-client account.</param>
         public virtual ListRequest List(ulong merchantId)
         {
-            return new ListRequest(service, merchantId);
+            return new ListRequest(this.service, merchantId);
         }
 
         /// <summary>Lists the statuses of the sub-accounts in your Merchant Center account.</summary>
@@ -2263,7 +2263,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="body">The body of the request.</param>
         public virtual CustombatchRequest Custombatch(Google.Apis.ShoppingContent.v2_1.Data.AccounttaxCustomBatchRequest body)
         {
-            return new CustombatchRequest(service, body);
+            return new CustombatchRequest(this.service, body);
         }
 
         /// <summary>Retrieves and updates tax settings of multiple accounts in a single request.</summary>
@@ -2306,7 +2306,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="accountId">The ID of the account for which to get/update account tax settings.</param>
         public virtual GetRequest Get(ulong merchantId, ulong accountId)
         {
-            return new GetRequest(service, merchantId, accountId);
+            return new GetRequest(this.service, merchantId, accountId);
         }
 
         /// <summary>Retrieves the tax settings of the account.</summary>
@@ -2367,7 +2367,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="merchantId">The ID of the managing account. This must be a multi-client account.</param>
         public virtual ListRequest List(ulong merchantId)
         {
-            return new ListRequest(service, merchantId);
+            return new ListRequest(this.service, merchantId);
         }
 
         /// <summary>Lists the tax settings of the sub-accounts in your Merchant Center account.</summary>
@@ -2443,7 +2443,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="accountId">The ID of the account for which to get/update account tax settings.</param>
         public virtual UpdateRequest Update(Google.Apis.ShoppingContent.v2_1.Data.AccountTax body, ulong merchantId, ulong accountId)
         {
-            return new UpdateRequest(service, body, merchantId, accountId);
+            return new UpdateRequest(this.service, body, merchantId, accountId);
         }
 
         /// <summary>
@@ -2536,7 +2536,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// </param>
         public virtual ActivateRequest Activate(Google.Apis.ShoppingContent.v2_1.Data.ActivateBuyOnGoogleProgramRequest body, long merchantId, string regionCode)
         {
-            return new ActivateRequest(service, body, merchantId, regionCode);
+            return new ActivateRequest(this.service, body, merchantId, regionCode);
         }
 
         /// <summary>
@@ -2611,7 +2611,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// </param>
         public virtual GetRequest Get(long merchantId, string regionCode)
         {
-            return new GetRequest(service, merchantId, regionCode);
+            return new GetRequest(this.service, merchantId, regionCode);
         }
 
         /// <summary>Retrieves a status of the BoG program for your Merchant Center account.</summary>
@@ -2682,7 +2682,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// </param>
         public virtual OnboardRequest Onboard(Google.Apis.ShoppingContent.v2_1.Data.OnboardBuyOnGoogleProgramRequest body, long merchantId, string regionCode)
         {
-            return new OnboardRequest(service, body, merchantId, regionCode);
+            return new OnboardRequest(this.service, body, merchantId, regionCode);
         }
 
         /// <summary>
@@ -2760,7 +2760,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// </param>
         public virtual PatchRequest Patch(Google.Apis.ShoppingContent.v2_1.Data.BuyOnGoogleProgramStatus body, long merchantId, string regionCode)
         {
-            return new PatchRequest(service, body, merchantId, regionCode);
+            return new PatchRequest(this.service, body, merchantId, regionCode);
         }
 
         /// <summary>Updates the status of the BoG program for your Merchant Center account.</summary>
@@ -2850,7 +2850,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// </param>
         public virtual PauseRequest Pause(Google.Apis.ShoppingContent.v2_1.Data.PauseBuyOnGoogleProgramRequest body, long merchantId, string regionCode)
         {
-            return new PauseRequest(service, body, merchantId, regionCode);
+            return new PauseRequest(this.service, body, merchantId, regionCode);
         }
 
         /// <summary>
@@ -2928,7 +2928,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// </param>
         public virtual RequestreviewRequest Requestreview(Google.Apis.ShoppingContent.v2_1.Data.RequestReviewBuyOnGoogleProgramRequest body, long merchantId, string regionCode)
         {
-            return new RequestreviewRequest(service, body, merchantId, regionCode);
+            return new RequestreviewRequest(this.service, body, merchantId, regionCode);
         }
 
         /// <summary>
@@ -3021,7 +3021,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// </param>
         public virtual CreateRequest Create(Google.Apis.ShoppingContent.v2_1.Data.Collection body, long merchantId)
         {
-            return new CreateRequest(service, body, merchantId);
+            return new CreateRequest(this.service, body, merchantId);
         }
 
         /// <summary>
@@ -3085,7 +3085,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// </param>
         public virtual DeleteRequest Delete(long merchantId, string collectionId)
         {
-            return new DeleteRequest(service, merchantId, collectionId);
+            return new DeleteRequest(this.service, merchantId, collectionId);
         }
 
         /// <summary>Deletes a collection from your Merchant Center account.</summary>
@@ -3151,7 +3151,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="collectionId">Required. The REST ID of the collection.</param>
         public virtual GetRequest Get(long merchantId, string collectionId)
         {
-            return new GetRequest(service, merchantId, collectionId);
+            return new GetRequest(this.service, merchantId, collectionId);
         }
 
         /// <summary>Retrieves a collection from your Merchant Center account.</summary>
@@ -3217,7 +3217,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// </param>
         public virtual ListRequest List(long merchantId)
         {
-            return new ListRequest(service, merchantId);
+            return new ListRequest(this.service, merchantId);
         }
 
         /// <summary>
@@ -3318,7 +3318,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// </param>
         public virtual GetRequest Get(long merchantId, string collectionId)
         {
-            return new GetRequest(service, merchantId, collectionId);
+            return new GetRequest(this.service, merchantId, collectionId);
         }
 
         /// <summary>Gets the status of a collection from your Merchant Center account.</summary>
@@ -3383,7 +3383,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// </param>
         public virtual ListRequest List(long merchantId)
         {
-            return new ListRequest(service, merchantId);
+            return new ListRequest(this.service, merchantId);
         }
 
         /// <summary>Lists the statuses of the collections in your Merchant Center account.</summary>
@@ -3477,7 +3477,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="merchantId">Required. The ID of the account that owns the new conversion source.</param>
         public virtual CreateRequest Create(Google.Apis.ShoppingContent.v2_1.Data.ConversionSource body, long merchantId)
         {
-            return new CreateRequest(service, body, merchantId);
+            return new CreateRequest(this.service, body, merchantId);
         }
 
         /// <summary>Creates a new conversion source.</summary>
@@ -3533,7 +3533,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="conversionSourceId">Required. The ID of the conversion source to be deleted.</param>
         public virtual DeleteRequest Delete(long merchantId, string conversionSourceId)
         {
-            return new DeleteRequest(service, merchantId, conversionSourceId);
+            return new DeleteRequest(this.service, merchantId, conversionSourceId);
         }
 
         /// <summary>
@@ -3595,7 +3595,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="conversionSourceId">Required. The REST ID of the collection.</param>
         public virtual GetRequest Get(long merchantId, string conversionSourceId)
         {
-            return new GetRequest(service, merchantId, conversionSourceId);
+            return new GetRequest(this.service, merchantId, conversionSourceId);
         }
 
         /// <summary>Fetches a conversion source.</summary>
@@ -3653,7 +3653,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="merchantId">Required. The ID of the account that owns the new conversion source.</param>
         public virtual ListRequest List(long merchantId)
         {
-            return new ListRequest(service, merchantId);
+            return new ListRequest(this.service, merchantId);
         }
 
         /// <summary>Retrieves the list of conversion sources the caller has access to.</summary>
@@ -3740,7 +3740,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="conversionSourceId">Required. The ID of the conversion source to be updated.</param>
         public virtual PatchRequest Patch(Google.Apis.ShoppingContent.v2_1.Data.ConversionSource body, long merchantId, string conversionSourceId)
         {
-            return new PatchRequest(service, body, merchantId, conversionSourceId);
+            return new PatchRequest(this.service, body, merchantId, conversionSourceId);
         }
 
         /// <summary>Updates information of an existing conversion source.</summary>
@@ -3819,7 +3819,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="conversionSourceId">Required. The ID of the conversion source to be undeleted.</param>
         public virtual UndeleteRequest Undelete(Google.Apis.ShoppingContent.v2_1.Data.UndeleteConversionSourceRequest body, long merchantId, string conversionSourceId)
         {
-            return new UndeleteRequest(service, body, merchantId, conversionSourceId);
+            return new UndeleteRequest(this.service, body, merchantId, conversionSourceId);
         }
 
         /// <summary>Re-enables an archived conversion source.</summary>
@@ -3904,7 +3904,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="cssDomainId">Required. The ID of the CSS domain to return.</param>
         public virtual GetRequest Get(long cssGroupId, long cssDomainId)
         {
-            return new GetRequest(service, cssGroupId, cssDomainId);
+            return new GetRequest(this.service, cssGroupId, cssDomainId);
         }
 
         /// <summary>Retrieves a single CSS domain by ID.</summary>
@@ -3966,7 +3966,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="cssGroupId">Required. The CSS group ID of CSS domains to be listed.</param>
         public virtual ListRequest List(long cssGroupId)
         {
-            return new ListRequest(service, cssGroupId);
+            return new ListRequest(this.service, cssGroupId);
         }
 
         /// <summary>Lists CSS domains affiliated with a CSS group.</summary>
@@ -4045,7 +4045,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="cssDomainId">Required. The ID of the updated CSS domain.</param>
         public virtual UpdatelabelsRequest Updatelabels(Google.Apis.ShoppingContent.v2_1.Data.LabelIds body, long cssGroupId, long cssDomainId)
         {
-            return new UpdatelabelsRequest(service, body, cssGroupId, cssDomainId);
+            return new UpdatelabelsRequest(this.service, body, cssGroupId, cssDomainId);
         }
 
         /// <summary>Updates labels that are assigned to a CSS domain by its CSS group.</summary>
@@ -4125,7 +4125,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="body">The body of the request.</param>
         public virtual CustombatchRequest Custombatch(Google.Apis.ShoppingContent.v2_1.Data.DatafeedsCustomBatchRequest body)
         {
-            return new CustombatchRequest(service, body);
+            return new CustombatchRequest(this.service, body);
         }
 
         /// <summary>Deletes, fetches, gets, inserts and updates multiple datafeeds in a single request.</summary>
@@ -4167,7 +4167,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="datafeedId">The ID of the datafeed.</param>
         public virtual DeleteRequest Delete(ulong merchantId, ulong datafeedId)
         {
-            return new DeleteRequest(service, merchantId, datafeedId);
+            return new DeleteRequest(this.service, merchantId, datafeedId);
         }
 
         /// <summary>Deletes a datafeed configuration from your Merchant Center account.</summary>
@@ -4235,7 +4235,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="datafeedId">The ID of the datafeed to be fetched.</param>
         public virtual FetchnowRequest Fetchnow(ulong merchantId, ulong datafeedId)
         {
-            return new FetchnowRequest(service, merchantId, datafeedId);
+            return new FetchnowRequest(this.service, merchantId, datafeedId);
         }
 
         /// <summary>
@@ -4303,7 +4303,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="datafeedId">The ID of the datafeed.</param>
         public virtual GetRequest Get(ulong merchantId, ulong datafeedId)
         {
-            return new GetRequest(service, merchantId, datafeedId);
+            return new GetRequest(this.service, merchantId, datafeedId);
         }
 
         /// <summary>Retrieves a datafeed configuration from your Merchant Center account.</summary>
@@ -4366,7 +4366,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// </param>
         public virtual InsertRequest Insert(Google.Apis.ShoppingContent.v2_1.Data.Datafeed body, ulong merchantId)
         {
-            return new InsertRequest(service, body, merchantId);
+            return new InsertRequest(this.service, body, merchantId);
         }
 
         /// <summary>Registers a datafeed configuration with your Merchant Center account.</summary>
@@ -4422,7 +4422,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// </param>
         public virtual ListRequest List(ulong merchantId)
         {
-            return new ListRequest(service, merchantId);
+            return new ListRequest(this.service, merchantId);
         }
 
         /// <summary>Lists the configurations for datafeeds in your Merchant Center account.</summary>
@@ -4500,7 +4500,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="datafeedId">The ID of the datafeed.</param>
         public virtual UpdateRequest Update(Google.Apis.ShoppingContent.v2_1.Data.Datafeed body, ulong merchantId, ulong datafeedId)
         {
-            return new UpdateRequest(service, body, merchantId, datafeedId);
+            return new UpdateRequest(this.service, body, merchantId, datafeedId);
         }
 
         /// <summary>
@@ -4585,7 +4585,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="body">The body of the request.</param>
         public virtual CustombatchRequest Custombatch(Google.Apis.ShoppingContent.v2_1.Data.DatafeedstatusesCustomBatchRequest body)
         {
-            return new CustombatchRequest(service, body);
+            return new CustombatchRequest(this.service, body);
         }
 
         /// <summary>Gets multiple Merchant Center datafeed statuses in a single request.</summary>
@@ -4627,7 +4627,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="datafeedId">The ID of the datafeed.</param>
         public virtual GetRequest Get(ulong merchantId, ulong datafeedId)
         {
-            return new GetRequest(service, merchantId, datafeedId);
+            return new GetRequest(this.service, merchantId, datafeedId);
         }
 
         /// <summary>Retrieves the status of a datafeed from your Merchant Center account.</summary>
@@ -4737,7 +4737,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// </param>
         public virtual ListRequest List(ulong merchantId)
         {
-            return new ListRequest(service, merchantId);
+            return new ListRequest(this.service, merchantId);
         }
 
         /// <summary>Lists the statuses of the datafeeds in your Merchant Center account.</summary>
@@ -4841,7 +4841,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             /// <param name="merchantId">Required. The ID of the account.</param>
             public virtual DeleteRequest Delete(long merchantId)
             {
-                return new DeleteRequest(service, merchantId);
+                return new DeleteRequest(this.service, merchantId);
             }
 
             /// <summary>Deletes `Checkout` settings and unenrolls merchant from `Checkout` program.</summary>
@@ -4889,7 +4889,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             /// <param name="merchantId">Required. The ID of the account.</param>
             public virtual GetRequest Get(long merchantId)
             {
-                return new GetRequest(service, merchantId);
+                return new GetRequest(this.service, merchantId);
             }
 
             /// <summary>
@@ -4938,7 +4938,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             /// <param name="merchantId">Required. The ID of the account.</param>
             public virtual InsertRequest Insert(Google.Apis.ShoppingContent.v2_1.Data.InsertCheckoutSettingsRequest body, long merchantId)
             {
-                return new InsertRequest(service, body, merchantId);
+                return new InsertRequest(this.service, body, merchantId);
             }
 
             /// <summary>Enrolls merchant in `Checkout` program.</summary>
@@ -4995,7 +4995,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="merchantId">Required. The ID of the account.</param>
         public virtual GetRequest Get(long merchantId)
         {
-            return new GetRequest(service, merchantId);
+            return new GetRequest(this.service, merchantId);
         }
 
         /// <summary>
@@ -5048,7 +5048,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="merchantId">Required. The ID of the account.</param>
         public virtual RequestreviewRequest Requestreview(Google.Apis.ShoppingContent.v2_1.Data.RequestReviewFreeListingsRequest body, long merchantId)
         {
-            return new RequestreviewRequest(service, body, merchantId);
+            return new RequestreviewRequest(this.service, body, merchantId);
         }
 
         /// <summary>
@@ -5118,7 +5118,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="body">The body of the request.</param>
         public virtual CustombatchRequest Custombatch(Google.Apis.ShoppingContent.v2_1.Data.LiasettingsCustomBatchRequest body)
         {
-            return new CustombatchRequest(service, body);
+            return new CustombatchRequest(this.service, body);
         }
 
         /// <summary>Retrieves and/or updates the LIA settings of multiple accounts in a single request.</summary>
@@ -5161,7 +5161,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="accountId">The ID of the account for which to get or update LIA settings.</param>
         public virtual GetRequest Get(ulong merchantId, ulong accountId)
         {
-            return new GetRequest(service, merchantId, accountId);
+            return new GetRequest(this.service, merchantId, accountId);
         }
 
         /// <summary>Retrieves the LIA settings of the account.</summary>
@@ -5226,7 +5226,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="accountId">The ID of the account for which to retrieve accessible Business Profiles.</param>
         public virtual GetaccessiblegmbaccountsRequest Getaccessiblegmbaccounts(ulong merchantId, ulong accountId)
         {
-            return new GetaccessiblegmbaccountsRequest(service, merchantId, accountId);
+            return new GetaccessiblegmbaccountsRequest(this.service, merchantId, accountId);
         }
 
         /// <summary>Retrieves the list of accessible Business Profiles.</summary>
@@ -5287,7 +5287,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="merchantId">The ID of the managing account. This must be a multi-client account.</param>
         public virtual ListRequest List(ulong merchantId)
         {
-            return new ListRequest(service, merchantId);
+            return new ListRequest(this.service, merchantId);
         }
 
         /// <summary>Lists the LIA settings of the sub-accounts in your Merchant Center account.</summary>
@@ -5357,7 +5357,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// </summary>
         public virtual ListposdataprovidersRequest Listposdataproviders()
         {
-            return new ListposdataprovidersRequest(service);
+            return new ListposdataprovidersRequest(this.service);
         }
 
         /// <summary>
@@ -5396,7 +5396,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="gmbEmail">The email of the Business Profile.</param>
         public virtual RequestgmbaccessRequest Requestgmbaccess(ulong merchantId, ulong accountId, string gmbEmail)
         {
-            return new RequestgmbaccessRequest(service, merchantId, accountId, gmbEmail);
+            return new RequestgmbaccessRequest(this.service, merchantId, accountId, gmbEmail);
         }
 
         /// <summary>Requests access to a specified Business Profile.</summary>
@@ -5477,7 +5477,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="country">The country for which inventory validation is requested.</param>
         public virtual RequestinventoryverificationRequest Requestinventoryverification(ulong merchantId, ulong accountId, string country)
         {
-            return new RequestinventoryverificationRequest(service, merchantId, accountId, country);
+            return new RequestinventoryverificationRequest(this.service, merchantId, accountId, country);
         }
 
         /// <summary>Requests inventory validation for the specified country.</summary>
@@ -5561,7 +5561,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="contactEmail">The email of the inventory verification contact.</param>
         public virtual SetinventoryverificationcontactRequest Setinventoryverificationcontact(ulong merchantId, ulong accountId, string country, string language, string contactName, string contactEmail)
         {
-            return new SetinventoryverificationcontactRequest(service, merchantId, accountId, country, language, contactName, contactEmail);
+            return new SetinventoryverificationcontactRequest(this.service, merchantId, accountId, country, language, contactName, contactEmail);
         }
 
         /// <summary>Sets the inventory verification contract for the specified country.</summary>
@@ -5683,7 +5683,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="accountId">The ID of the account for which to retrieve accessible Business Profiles.</param>
         public virtual SetomnichannelexperienceRequest Setomnichannelexperience(ulong merchantId, ulong accountId)
         {
-            return new SetomnichannelexperienceRequest(service, merchantId, accountId);
+            return new SetomnichannelexperienceRequest(this.service, merchantId, accountId);
         }
 
         /// <summary>
@@ -5798,7 +5798,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="country">The country for which the POS data provider is selected.</param>
         public virtual SetposdataproviderRequest Setposdataprovider(ulong merchantId, ulong accountId, string country)
         {
-            return new SetposdataproviderRequest(service, merchantId, accountId, country);
+            return new SetposdataproviderRequest(this.service, merchantId, accountId, country);
         }
 
         /// <summary>Sets the POS data provider for the specified country.</summary>
@@ -5903,7 +5903,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="accountId">The ID of the account for which to get or update LIA settings.</param>
         public virtual UpdateRequest Update(Google.Apis.ShoppingContent.v2_1.Data.LiaSettings body, ulong merchantId, ulong accountId)
         {
-            return new UpdateRequest(service, body, merchantId, accountId);
+            return new UpdateRequest(this.service, body, merchantId, accountId);
         }
 
         /// <summary>
@@ -5988,7 +5988,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="body">The body of the request.</param>
         public virtual CustombatchRequest Custombatch(Google.Apis.ShoppingContent.v2_1.Data.LocalinventoryCustomBatchRequest body)
         {
-            return new CustombatchRequest(service, body);
+            return new CustombatchRequest(this.service, body);
         }
 
         /// <summary>Updates local inventory for multiple products or stores in a single request.</summary>
@@ -6031,7 +6031,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="productId">The REST ID of the product for which to update local inventory.</param>
         public virtual InsertRequest Insert(Google.Apis.ShoppingContent.v2_1.Data.LocalInventory body, ulong merchantId, string productId)
         {
-            return new InsertRequest(service, body, merchantId, productId);
+            return new InsertRequest(this.service, body, merchantId, productId);
         }
 
         /// <summary>Updates the local inventory of a product in your Merchant Center account.</summary>
@@ -6117,7 +6117,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="merchantId">Required. The ID of the account to fetch issues for.</param>
         public virtual RenderaccountissuesRequest Renderaccountissues(Google.Apis.ShoppingContent.v2_1.Data.RenderAccountIssuesRequestPayload body, long merchantId)
         {
-            return new RenderaccountissuesRequest(service, body, merchantId);
+            return new RenderaccountissuesRequest(this.service, body, merchantId);
         }
 
         /// <summary>
@@ -6211,7 +6211,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// </param>
         public virtual RenderproductissuesRequest Renderproductissues(Google.Apis.ShoppingContent.v2_1.Data.RenderProductIssuesRequestPayload body, long merchantId, string productId)
         {
-            return new RenderproductissuesRequest(service, body, merchantId, productId);
+            return new RenderproductissuesRequest(this.service, body, merchantId, productId);
         }
 
         /// <summary>
@@ -6335,7 +6335,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="orderId">The ID of the order.</param>
         public virtual CreatechargeinvoiceRequest Createchargeinvoice(Google.Apis.ShoppingContent.v2_1.Data.OrderinvoicesCreateChargeInvoiceRequest body, ulong merchantId, string orderId)
         {
-            return new CreatechargeinvoiceRequest(service, body, merchantId, orderId);
+            return new CreatechargeinvoiceRequest(this.service, body, merchantId, orderId);
         }
 
         /// <summary>
@@ -6411,7 +6411,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="orderId">The ID of the order.</param>
         public virtual CreaterefundinvoiceRequest Createrefundinvoice(Google.Apis.ShoppingContent.v2_1.Data.OrderinvoicesCreateRefundInvoiceRequest body, ulong merchantId, string orderId)
         {
-            return new CreaterefundinvoiceRequest(service, body, merchantId, orderId);
+            return new CreaterefundinvoiceRequest(this.service, body, merchantId, orderId);
         }
 
         /// <summary>
@@ -6497,7 +6497,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// </param>
         public virtual ListdisbursementsRequest Listdisbursements(ulong merchantId)
         {
-            return new ListdisbursementsRequest(service, merchantId);
+            return new ListdisbursementsRequest(this.service, merchantId);
         }
 
         /// <summary>Retrieves a report for disbursements from your Merchant Center account.</summary>
@@ -6595,7 +6595,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="disbursementId">The Google-provided ID of the disbursement (found in Wallet).</param>
         public virtual ListtransactionsRequest Listtransactions(ulong merchantId, string disbursementId)
         {
-            return new ListtransactionsRequest(service, merchantId, disbursementId);
+            return new ListtransactionsRequest(this.service, merchantId, disbursementId);
         }
 
         /// <summary>Retrieves a list of transactions for a disbursement from your Merchant Center account.</summary>
@@ -6743,7 +6743,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             /// <param name="returnId">Required. Provide the Google-generated merchant order return ID.</param>
             public virtual CreateRequest Create(Google.Apis.ShoppingContent.v2_1.Data.ReturnShippingLabel body, long merchantId, string returnId)
             {
-                return new CreateRequest(service, body, merchantId, returnId);
+                return new CreateRequest(this.service, body, merchantId, returnId);
             }
 
             /// <summary>
@@ -6818,7 +6818,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="returnId">The ID of the return.</param>
         public virtual AcknowledgeRequest Acknowledge(Google.Apis.ShoppingContent.v2_1.Data.OrderreturnsAcknowledgeRequest body, ulong merchantId, string returnId)
         {
-            return new AcknowledgeRequest(service, body, merchantId, returnId);
+            return new AcknowledgeRequest(this.service, body, merchantId, returnId);
         }
 
         /// <summary>Acks an order return in your Merchant Center account.</summary>
@@ -6886,7 +6886,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// </param>
         public virtual CreateorderreturnRequest Createorderreturn(Google.Apis.ShoppingContent.v2_1.Data.OrderreturnsCreateOrderReturnRequest body, ulong merchantId)
         {
-            return new CreateorderreturnRequest(service, body, merchantId);
+            return new CreateorderreturnRequest(this.service, body, merchantId);
         }
 
         /// <summary>Create return in your Merchant Center account.</summary>
@@ -6941,7 +6941,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="returnId">Merchant order return ID generated by Google.</param>
         public virtual GetRequest Get(ulong merchantId, string returnId)
         {
-            return new GetRequest(service, merchantId, returnId);
+            return new GetRequest(this.service, merchantId, returnId);
         }
 
         /// <summary>Retrieves an order return from your Merchant Center account.</summary>
@@ -7001,7 +7001,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// </param>
         public virtual ListRequest List(ulong merchantId)
         {
-            return new ListRequest(service, merchantId);
+            return new ListRequest(this.service, merchantId);
         }
 
         /// <summary>Lists order returns in your Merchant Center account.</summary>
@@ -7333,7 +7333,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="returnId">The ID of the return.</param>
         public virtual ProcessRequest Process(Google.Apis.ShoppingContent.v2_1.Data.OrderreturnsProcessRequest body, ulong merchantId, string returnId)
         {
-            return new ProcessRequest(service, body, merchantId, returnId);
+            return new ProcessRequest(this.service, body, merchantId, returnId);
         }
 
         /// <summary>Processes return in your Merchant Center account.</summary>
@@ -7417,7 +7417,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="orderId">The ID of the order.</param>
         public virtual AcknowledgeRequest Acknowledge(Google.Apis.ShoppingContent.v2_1.Data.OrdersAcknowledgeRequest body, ulong merchantId, string orderId)
         {
-            return new AcknowledgeRequest(service, body, merchantId, orderId);
+            return new AcknowledgeRequest(this.service, body, merchantId, orderId);
         }
 
         /// <summary>Marks an order as acknowledged.</summary>
@@ -7485,7 +7485,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="orderId">The ID of the test order to modify.</param>
         public virtual AdvancetestorderRequest Advancetestorder(ulong merchantId, string orderId)
         {
-            return new AdvancetestorderRequest(service, merchantId, orderId);
+            return new AdvancetestorderRequest(this.service, merchantId, orderId);
         }
 
         /// <summary>Sandbox only. Moves a test order from state "`inProgress`" to state "`pendingShipment`".</summary>
@@ -7547,7 +7547,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="orderId">The ID of the order to cancel.</param>
         public virtual CancelRequest Cancel(Google.Apis.ShoppingContent.v2_1.Data.OrdersCancelRequest body, ulong merchantId, string orderId)
         {
-            return new CancelRequest(service, body, merchantId, orderId);
+            return new CancelRequest(this.service, body, merchantId, orderId);
         }
 
         /// <summary>Cancels all line items in an order, making a full refund.</summary>
@@ -7616,7 +7616,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="orderId">The ID of the order.</param>
         public virtual CancellineitemRequest Cancellineitem(Google.Apis.ShoppingContent.v2_1.Data.OrdersCancelLineItemRequest body, ulong merchantId, string orderId)
         {
-            return new CancellineitemRequest(service, body, merchantId, orderId);
+            return new CancellineitemRequest(this.service, body, merchantId, orderId);
         }
 
         /// <summary>Cancels a line item, making a full refund.</summary>
@@ -7685,7 +7685,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="orderId">The ID of the test order to cancel.</param>
         public virtual CanceltestorderbycustomerRequest Canceltestorderbycustomer(Google.Apis.ShoppingContent.v2_1.Data.OrdersCancelTestOrderByCustomerRequest body, ulong merchantId, string orderId)
         {
-            return new CanceltestorderbycustomerRequest(service, body, merchantId, orderId);
+            return new CanceltestorderbycustomerRequest(this.service, body, merchantId, orderId);
         }
 
         /// <summary>Sandbox only. Cancels a test order for customer-initiated cancellation.</summary>
@@ -7764,7 +7764,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="orderId">Required. The ID of the Order.</param>
         public virtual CaptureOrderRequest CaptureOrder(Google.Apis.ShoppingContent.v2_1.Data.CaptureOrderRequest body, long merchantId, string orderId)
         {
-            return new CaptureOrderRequest(service, body, merchantId, orderId);
+            return new CaptureOrderRequest(this.service, body, merchantId, orderId);
         }
 
         /// <summary>
@@ -7844,7 +7844,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// </param>
         public virtual CreatetestorderRequest Createtestorder(Google.Apis.ShoppingContent.v2_1.Data.OrdersCreateTestOrderRequest body, ulong merchantId)
         {
-            return new CreatetestorderRequest(service, body, merchantId);
+            return new CreatetestorderRequest(this.service, body, merchantId);
         }
 
         /// <summary>Sandbox only. Creates a test order.</summary>
@@ -7902,7 +7902,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="orderId">The ID of the order.</param>
         public virtual CreatetestreturnRequest Createtestreturn(Google.Apis.ShoppingContent.v2_1.Data.OrdersCreateTestReturnRequest body, ulong merchantId, string orderId)
         {
-            return new CreatetestreturnRequest(service, body, merchantId, orderId);
+            return new CreatetestreturnRequest(this.service, body, merchantId, orderId);
         }
 
         /// <summary>Sandbox only. Creates a test return.</summary>
@@ -7970,7 +7970,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="orderId">The ID of the order.</param>
         public virtual GetRequest Get(ulong merchantId, string orderId)
         {
-            return new GetRequest(service, merchantId, orderId);
+            return new GetRequest(this.service, merchantId, orderId);
         }
 
         /// <summary>Retrieves an order from your Merchant Center account.</summary>
@@ -8031,7 +8031,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="merchantOrderId">The merchant order ID to be looked for.</param>
         public virtual GetbymerchantorderidRequest Getbymerchantorderid(ulong merchantId, string merchantOrderId)
         {
-            return new GetbymerchantorderidRequest(service, merchantId, merchantOrderId);
+            return new GetbymerchantorderidRequest(this.service, merchantId, merchantOrderId);
         }
 
         /// <summary>Retrieves an order using merchant order ID.</summary>
@@ -8094,7 +8094,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="templateName">The name of the template to retrieve.</param>
         public virtual GettestordertemplateRequest Gettestordertemplate(ulong merchantId, GettestordertemplateRequest.TemplateNameEnum templateName)
         {
-            return new GettestordertemplateRequest(service, merchantId, templateName);
+            return new GettestordertemplateRequest(this.service, merchantId, templateName);
         }
 
         /// <summary>
@@ -8207,7 +8207,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="orderId">The ID of the order.</param>
         public virtual InstorerefundlineitemRequest Instorerefundlineitem(Google.Apis.ShoppingContent.v2_1.Data.OrdersInStoreRefundLineItemRequest body, ulong merchantId, string orderId)
         {
-            return new InstorerefundlineitemRequest(service, body, merchantId, orderId);
+            return new InstorerefundlineitemRequest(this.service, body, merchantId, orderId);
         }
 
         /// <summary>
@@ -8281,7 +8281,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// </param>
         public virtual ListRequest List(ulong merchantId)
         {
-            return new ListRequest(service, merchantId);
+            return new ListRequest(this.service, merchantId);
         }
 
         /// <summary>Lists the orders in your Merchant Center account.</summary>
@@ -8503,7 +8503,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="orderId">The ID of the order to refund.</param>
         public virtual RefunditemRequest Refunditem(Google.Apis.ShoppingContent.v2_1.Data.OrdersRefundItemRequest body, ulong merchantId, string orderId)
         {
-            return new RefunditemRequest(service, body, merchantId, orderId);
+            return new RefunditemRequest(this.service, body, merchantId, orderId);
         }
 
         /// <summary>Issues a partial or total refund for items and shipment.</summary>
@@ -8572,7 +8572,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="orderId">The ID of the order to refund.</param>
         public virtual RefundorderRequest Refundorder(Google.Apis.ShoppingContent.v2_1.Data.OrdersRefundOrderRequest body, ulong merchantId, string orderId)
         {
-            return new RefundorderRequest(service, body, merchantId, orderId);
+            return new RefundorderRequest(this.service, body, merchantId, orderId);
         }
 
         /// <summary>Issues a partial or total refund for an order.</summary>
@@ -8641,7 +8641,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="orderId">The ID of the order.</param>
         public virtual RejectreturnlineitemRequest Rejectreturnlineitem(Google.Apis.ShoppingContent.v2_1.Data.OrdersRejectReturnLineItemRequest body, ulong merchantId, string orderId)
         {
-            return new RejectreturnlineitemRequest(service, body, merchantId, orderId);
+            return new RejectreturnlineitemRequest(this.service, body, merchantId, orderId);
         }
 
         /// <summary>Rejects return on an line item.</summary>
@@ -8715,7 +8715,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="orderId">The ID of the order.</param>
         public virtual ReturnrefundlineitemRequest Returnrefundlineitem(Google.Apis.ShoppingContent.v2_1.Data.OrdersReturnRefundLineItemRequest body, ulong merchantId, string orderId)
         {
-            return new ReturnrefundlineitemRequest(service, body, merchantId, orderId);
+            return new ReturnrefundlineitemRequest(this.service, body, merchantId, orderId);
         }
 
         /// <summary>
@@ -8794,7 +8794,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="orderId">The ID of the order.</param>
         public virtual SetlineitemmetadataRequest Setlineitemmetadata(Google.Apis.ShoppingContent.v2_1.Data.OrdersSetLineItemMetadataRequest body, ulong merchantId, string orderId)
         {
-            return new SetlineitemmetadataRequest(service, body, merchantId, orderId);
+            return new SetlineitemmetadataRequest(this.service, body, merchantId, orderId);
         }
 
         /// <summary>
@@ -8868,7 +8868,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="orderId">The ID of the order.</param>
         public virtual ShiplineitemsRequest Shiplineitems(Google.Apis.ShoppingContent.v2_1.Data.OrdersShipLineItemsRequest body, ulong merchantId, string orderId)
         {
-            return new ShiplineitemsRequest(service, body, merchantId, orderId);
+            return new ShiplineitemsRequest(this.service, body, merchantId, orderId);
         }
 
         /// <summary>Marks line item(s) as shipped.</summary>
@@ -8937,7 +8937,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="orderId">The ID of the order.</param>
         public virtual UpdatelineitemshippingdetailsRequest Updatelineitemshippingdetails(Google.Apis.ShoppingContent.v2_1.Data.OrdersUpdateLineItemShippingDetailsRequest body, ulong merchantId, string orderId)
         {
-            return new UpdatelineitemshippingdetailsRequest(service, body, merchantId, orderId);
+            return new UpdatelineitemshippingdetailsRequest(this.service, body, merchantId, orderId);
         }
 
         /// <summary>Updates ship by and delivery by dates for a line item.</summary>
@@ -9006,7 +9006,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="orderId">The ID of the order.</param>
         public virtual UpdatemerchantorderidRequest Updatemerchantorderid(Google.Apis.ShoppingContent.v2_1.Data.OrdersUpdateMerchantOrderIdRequest body, ulong merchantId, string orderId)
         {
-            return new UpdatemerchantorderidRequest(service, body, merchantId, orderId);
+            return new UpdatemerchantorderidRequest(this.service, body, merchantId, orderId);
         }
 
         /// <summary>Updates the merchant order ID for a given order.</summary>
@@ -9075,7 +9075,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="orderId">The ID of the order.</param>
         public virtual UpdateshipmentRequest Updateshipment(Google.Apis.ShoppingContent.v2_1.Data.OrdersUpdateShipmentRequest body, ulong merchantId, string orderId)
         {
-            return new UpdateshipmentRequest(service, body, merchantId, orderId);
+            return new UpdateshipmentRequest(this.service, body, merchantId, orderId);
         }
 
         /// <summary>Updates a shipment's status, carrier, and/or tracking ID.</summary>
@@ -9156,7 +9156,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="merchantId">The ID of the merchant for which the order signal is created.</param>
         public virtual CreateRequest Create(Google.Apis.ShoppingContent.v2_1.Data.OrderTrackingSignal body, long merchantId)
         {
-            return new CreateRequest(service, body, merchantId);
+            return new CreateRequest(this.service, body, merchantId);
         }
 
         /// <summary>Creates new order tracking signal.</summary>
@@ -9223,7 +9223,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="body">The body of the request.</param>
         public virtual CustombatchRequest Custombatch(Google.Apis.ShoppingContent.v2_1.Data.PosCustomBatchRequest body)
         {
-            return new CustombatchRequest(service, body);
+            return new CustombatchRequest(this.service, body);
         }
 
         /// <summary>Batches multiple POS-related calls in a single request.</summary>
@@ -9264,7 +9264,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="storeCode">A store code that is unique per merchant.</param>
         public virtual DeleteRequest Delete(ulong merchantId, ulong targetMerchantId, string storeCode)
         {
-            return new DeleteRequest(service, merchantId, targetMerchantId, storeCode);
+            return new DeleteRequest(this.service, merchantId, targetMerchantId, storeCode);
         }
 
         /// <summary>Deletes a store for the given merchant.</summary>
@@ -9337,7 +9337,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="storeCode">A store code that is unique per merchant.</param>
         public virtual GetRequest Get(ulong merchantId, ulong targetMerchantId, string storeCode)
         {
-            return new GetRequest(service, merchantId, targetMerchantId, storeCode);
+            return new GetRequest(this.service, merchantId, targetMerchantId, storeCode);
         }
 
         /// <summary>Retrieves information about the given store.</summary>
@@ -9410,7 +9410,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="targetMerchantId">The ID of the target merchant.</param>
         public virtual InsertRequest Insert(Google.Apis.ShoppingContent.v2_1.Data.PosStore body, ulong merchantId, ulong targetMerchantId)
         {
-            return new InsertRequest(service, body, merchantId, targetMerchantId);
+            return new InsertRequest(this.service, body, merchantId, targetMerchantId);
         }
 
         /// <summary>Creates a store for the given merchant.</summary>
@@ -9477,7 +9477,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="targetMerchantId">The ID of the target merchant.</param>
         public virtual InventoryRequest Inventory(Google.Apis.ShoppingContent.v2_1.Data.PosInventoryRequest body, ulong merchantId, ulong targetMerchantId)
         {
-            return new InventoryRequest(service, body, merchantId, targetMerchantId);
+            return new InventoryRequest(this.service, body, merchantId, targetMerchantId);
         }
 
         /// <summary>Submit inventory for the given merchant.</summary>
@@ -9543,7 +9543,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="targetMerchantId">The ID of the target merchant.</param>
         public virtual ListRequest List(ulong merchantId, ulong targetMerchantId)
         {
-            return new ListRequest(service, merchantId, targetMerchantId);
+            return new ListRequest(this.service, merchantId, targetMerchantId);
         }
 
         /// <summary>Lists the stores of the target merchant.</summary>
@@ -9603,7 +9603,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="targetMerchantId">The ID of the target merchant.</param>
         public virtual SaleRequest Sale(Google.Apis.ShoppingContent.v2_1.Data.PosSaleRequest body, ulong merchantId, ulong targetMerchantId)
         {
-            return new SaleRequest(service, body, merchantId, targetMerchantId);
+            return new SaleRequest(this.service, body, merchantId, targetMerchantId);
         }
 
         /// <summary>Submit a sale event for the given merchant.</summary>
@@ -9687,7 +9687,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// </param>
         public virtual CreateRequest Create(Google.Apis.ShoppingContent.v2_1.Data.ProductDeliveryTime body, long merchantId)
         {
-            return new CreateRequest(service, body, merchantId);
+            return new CreateRequest(this.service, body, merchantId);
         }
 
         /// <summary>Creates or updates the delivery time of a product.</summary>
@@ -9748,7 +9748,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// </param>
         public virtual DeleteRequest Delete(long merchantId, string productId)
         {
-            return new DeleteRequest(service, merchantId, productId);
+            return new DeleteRequest(this.service, merchantId, productId);
         }
 
         /// <summary>Deletes the delivery time of a product.</summary>
@@ -9818,7 +9818,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// </param>
         public virtual GetRequest Get(long merchantId, string productId)
         {
-            return new GetRequest(service, merchantId, productId);
+            return new GetRequest(this.service, merchantId, productId);
         }
 
         /// <summary>Gets `productDeliveryTime` by `productId`.</summary>
@@ -9897,7 +9897,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="body">The body of the request.</param>
         public virtual CustombatchRequest Custombatch(Google.Apis.ShoppingContent.v2_1.Data.ProductsCustomBatchRequest body)
         {
-            return new CustombatchRequest(service, body);
+            return new CustombatchRequest(this.service, body);
         }
 
         /// <summary>Retrieves, inserts, and deletes multiple products in a single request.</summary>
@@ -9939,7 +9939,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="productId">The REST ID of the product.</param>
         public virtual DeleteRequest Delete(ulong merchantId, string productId)
         {
-            return new DeleteRequest(service, merchantId, productId);
+            return new DeleteRequest(this.service, merchantId, productId);
         }
 
         /// <summary>Deletes a product from your Merchant Center account.</summary>
@@ -10017,7 +10017,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="productId">The REST ID of the product.</param>
         public virtual GetRequest Get(ulong merchantId, string productId)
         {
-            return new GetRequest(service, merchantId, productId);
+            return new GetRequest(this.service, merchantId, productId);
         }
 
         /// <summary>Retrieves a product from your Merchant Center account.</summary>
@@ -10083,7 +10083,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// </param>
         public virtual InsertRequest Insert(Google.Apis.ShoppingContent.v2_1.Data.Product body, ulong merchantId)
         {
-            return new InsertRequest(service, body, merchantId);
+            return new InsertRequest(this.service, body, merchantId);
         }
 
         /// <summary>
@@ -10160,7 +10160,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// </param>
         public virtual ListRequest List(ulong merchantId)
         {
-            return new ListRequest(service, merchantId);
+            return new ListRequest(this.service, merchantId);
         }
 
         /// <summary>
@@ -10244,7 +10244,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="productId">The REST ID of the product for which to update.</param>
         public virtual UpdateRequest Update(Google.Apis.ShoppingContent.v2_1.Data.Product body, ulong merchantId, string productId)
         {
-            return new UpdateRequest(service, body, merchantId, productId);
+            return new UpdateRequest(this.service, body, merchantId, productId);
         }
 
         /// <summary>
@@ -10369,7 +10369,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             /// </param>
             public virtual ListRequest List(long merchantId, string productId)
             {
-                return new ListRequest(service, merchantId, productId);
+                return new ListRequest(this.service, merchantId, productId);
             }
 
             /// <summary>Lists the metrics report for a given Repricing product.</summary>
@@ -10506,7 +10506,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="body">The body of the request.</param>
         public virtual CustombatchRequest Custombatch(Google.Apis.ShoppingContent.v2_1.Data.ProductstatusesCustomBatchRequest body)
         {
-            return new CustombatchRequest(service, body);
+            return new CustombatchRequest(this.service, body);
         }
 
         /// <summary>Gets the statuses of multiple products in a single request.</summary>
@@ -10548,7 +10548,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="productId">The REST ID of the product.</param>
         public virtual GetRequest Get(ulong merchantId, string productId)
         {
-            return new GetRequest(service, merchantId, productId);
+            return new GetRequest(this.service, merchantId, productId);
         }
 
         /// <summary>Gets the status of a product from your Merchant Center account.</summary>
@@ -10625,7 +10625,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// </param>
         public virtual ListRequest List(ulong merchantId)
         {
-            return new ListRequest(service, merchantId);
+            return new ListRequest(this.service, merchantId);
         }
 
         /// <summary>Lists the statuses of the products in your Merchant Center account.</summary>
@@ -10735,7 +10735,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="merchantId">Required. The ID of the account that contains the collection.</param>
         public virtual CreateRequest Create(Google.Apis.ShoppingContent.v2_1.Data.Promotion body, long merchantId)
         {
-            return new CreateRequest(service, body, merchantId);
+            return new CreateRequest(this.service, body, merchantId);
         }
 
         /// <summary>
@@ -10793,7 +10793,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="id">Required. REST ID of the promotion to retrieve.</param>
         public virtual GetRequest Get(long merchantId, string id)
         {
-            return new GetRequest(service, merchantId, id);
+            return new GetRequest(this.service, merchantId, id);
         }
 
         /// <summary>Retrieves a promotion from your Merchant Center account.</summary>
@@ -10851,7 +10851,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="merchantId">Required. The ID of the account that contains the collection.</param>
         public virtual ListRequest List(long merchantId)
         {
-            return new ListRequest(service, merchantId);
+            return new ListRequest(this.service, merchantId);
         }
 
         /// <summary>List all promotions from your Merchant Center account.</summary>
@@ -10972,7 +10972,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="merchantId">The ID of the account for which to get pubsub notification settings.</param>
         public virtual GetRequest Get(ulong merchantId)
         {
-            return new GetRequest(service, merchantId);
+            return new GetRequest(this.service, merchantId);
         }
 
         /// <summary>Retrieves a Merchant Center account's pubsub notification settings.</summary>
@@ -11021,7 +11021,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="merchantId">The ID of the account.</param>
         public virtual UpdateRequest Update(Google.Apis.ShoppingContent.v2_1.Data.PubsubNotificationSettings body, ulong merchantId)
         {
-            return new UpdateRequest(service, body, merchantId);
+            return new UpdateRequest(this.service, body, merchantId);
         }
 
         /// <summary>
@@ -11093,7 +11093,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// </param>
         public virtual ListRequest List(long merchantId)
         {
-            return new ListRequest(service, merchantId);
+            return new ListRequest(this.service, merchantId);
         }
 
         /// <summary>Lists the daily call quota and usage per method for your Merchant Center account.</summary>
@@ -11183,7 +11183,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="merchantId">Required. The ID of the account to fetch recommendations for.</param>
         public virtual GenerateRequest Generate(long merchantId)
         {
-            return new GenerateRequest(service, merchantId);
+            return new GenerateRequest(this.service, merchantId);
         }
 
         /// <summary>Generates recommendations for a merchant.</summary>
@@ -11262,7 +11262,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="merchantId">Required. The ID of the account that wants to report an interaction.</param>
         public virtual ReportInteractionRequest ReportInteraction(Google.Apis.ShoppingContent.v2_1.Data.ReportInteractionRequest body, long merchantId)
         {
-            return new ReportInteractionRequest(service, body, merchantId);
+            return new ReportInteractionRequest(this.service, body, merchantId);
         }
 
         /// <summary>Reports an interaction on a recommendation for a merchant.</summary>
@@ -11329,7 +11329,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="body">The body of the request.</param>
         public virtual CustombatchRequest Custombatch(Google.Apis.ShoppingContent.v2_1.Data.RegionalinventoryCustomBatchRequest body)
         {
-            return new CustombatchRequest(service, body);
+            return new CustombatchRequest(this.service, body);
         }
 
         /// <summary>Updates regional inventory for multiple products or regions in a single request.</summary>
@@ -11375,7 +11375,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="productId">The REST ID of the product for which to update the regional inventory.</param>
         public virtual InsertRequest Insert(Google.Apis.ShoppingContent.v2_1.Data.RegionalInventory body, ulong merchantId, string productId)
         {
-            return new InsertRequest(service, body, merchantId, productId);
+            return new InsertRequest(this.service, body, merchantId, productId);
         }
 
         /// <summary>
@@ -11461,7 +11461,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="merchantId">Required. The id of the merchant for which to create region definition.</param>
         public virtual CreateRequest Create(Google.Apis.ShoppingContent.v2_1.Data.Region body, long merchantId)
         {
-            return new CreateRequest(service, body, merchantId);
+            return new CreateRequest(this.service, body, merchantId);
         }
 
         /// <summary>Creates a region definition in your Merchant Center account.</summary>
@@ -11526,7 +11526,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="regionId">Required. The id of the region to delete.</param>
         public virtual DeleteRequest Delete(long merchantId, string regionId)
         {
-            return new DeleteRequest(service, merchantId, regionId);
+            return new DeleteRequest(this.service, merchantId, regionId);
         }
 
         /// <summary>Deletes a region definition from your Merchant Center account.</summary>
@@ -11585,7 +11585,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="regionId">Required. The id of the region to retrieve.</param>
         public virtual GetRequest Get(long merchantId, string regionId)
         {
-            return new GetRequest(service, merchantId, regionId);
+            return new GetRequest(this.service, merchantId, regionId);
         }
 
         /// <summary>Retrieves a region defined in your Merchant Center account.</summary>
@@ -11643,7 +11643,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="merchantId">Required. The id of the merchant for which to list region definitions.</param>
         public virtual ListRequest List(long merchantId)
         {
-            return new ListRequest(service, merchantId);
+            return new ListRequest(this.service, merchantId);
         }
 
         /// <summary>Lists the regions in your Merchant Center account.</summary>
@@ -11721,7 +11721,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="regionId">Required. The id of the region to update.</param>
         public virtual PatchRequest Patch(Google.Apis.ShoppingContent.v2_1.Data.Region body, long merchantId, string regionId)
         {
-            return new PatchRequest(service, body, merchantId, regionId);
+            return new PatchRequest(this.service, body, merchantId, regionId);
         }
 
         /// <summary>Updates a region definition in your Merchant Center account.</summary>
@@ -11822,7 +11822,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// </param>
         public virtual SearchRequest Search(Google.Apis.ShoppingContent.v2_1.Data.SearchRequest body, long merchantId)
         {
-            return new SearchRequest(service, body, merchantId);
+            return new SearchRequest(this.service, body, merchantId);
         }
 
         /// <summary>
@@ -11916,7 +11916,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             /// <param name="ruleId">Required. Id of the Repricing rule.</param>
             public virtual ListRequest List(long merchantId, string ruleId)
             {
-                return new ListRequest(service, merchantId, ruleId);
+                return new ListRequest(this.service, merchantId, ruleId);
             }
 
             /// <summary>
@@ -12041,7 +12041,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="merchantId">Required. The id of the merchant who owns the repricing rule.</param>
         public virtual CreateRequest Create(Google.Apis.ShoppingContent.v2_1.Data.RepricingRule body, long merchantId)
         {
-            return new CreateRequest(service, body, merchantId);
+            return new CreateRequest(this.service, body, merchantId);
         }
 
         /// <summary>Creates a repricing rule for your Merchant Center account.</summary>
@@ -12106,7 +12106,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="ruleId">Required. The id of the rule to Delete.</param>
         public virtual DeleteRequest Delete(long merchantId, string ruleId)
         {
-            return new DeleteRequest(service, merchantId, ruleId);
+            return new DeleteRequest(this.service, merchantId, ruleId);
         }
 
         /// <summary>Deletes a repricing rule in your Merchant Center account.</summary>
@@ -12165,7 +12165,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="ruleId">Required. The id of the rule to retrieve.</param>
         public virtual GetRequest Get(long merchantId, string ruleId)
         {
-            return new GetRequest(service, merchantId, ruleId);
+            return new GetRequest(this.service, merchantId, ruleId);
         }
 
         /// <summary>Retrieves a repricing rule from your Merchant Center account.</summary>
@@ -12223,7 +12223,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="merchantId">Required. The id of the merchant who owns the repricing rule.</param>
         public virtual ListRequest List(long merchantId)
         {
-            return new ListRequest(service, merchantId);
+            return new ListRequest(this.service, merchantId);
         }
 
         /// <summary>Lists the repricing rules in your Merchant Center account.</summary>
@@ -12336,7 +12336,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="ruleId">Required. The id of the rule to update.</param>
         public virtual PatchRequest Patch(Google.Apis.ShoppingContent.v2_1.Data.RepricingRule body, long merchantId, string ruleId)
         {
-            return new PatchRequest(service, body, merchantId, ruleId);
+            return new PatchRequest(this.service, body, merchantId, ruleId);
         }
 
         /// <summary>
@@ -12421,7 +12421,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="body">The body of the request.</param>
         public virtual CustombatchRequest Custombatch(Google.Apis.ShoppingContent.v2_1.Data.ReturnaddressCustomBatchRequest body)
         {
-            return new CustombatchRequest(service, body);
+            return new CustombatchRequest(this.service, body);
         }
 
         /// <summary>Batches multiple return address related calls in a single request.</summary>
@@ -12461,7 +12461,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="returnAddressId">Return address ID generated by Google.</param>
         public virtual DeleteRequest Delete(ulong merchantId, string returnAddressId)
         {
-            return new DeleteRequest(service, merchantId, returnAddressId);
+            return new DeleteRequest(this.service, merchantId, returnAddressId);
         }
 
         /// <summary>Deletes a return address for the given Merchant Center account.</summary>
@@ -12520,7 +12520,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="returnAddressId">Return address ID generated by Google.</param>
         public virtual GetRequest Get(ulong merchantId, string returnAddressId)
         {
-            return new GetRequest(service, merchantId, returnAddressId);
+            return new GetRequest(this.service, merchantId, returnAddressId);
         }
 
         /// <summary>Gets a return address of the Merchant Center account.</summary>
@@ -12579,7 +12579,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="merchantId">The Merchant Center account to insert a return address for.</param>
         public virtual InsertRequest Insert(Google.Apis.ShoppingContent.v2_1.Data.ReturnAddress body, ulong merchantId)
         {
-            return new InsertRequest(service, body, merchantId);
+            return new InsertRequest(this.service, body, merchantId);
         }
 
         /// <summary>Inserts a return address for the Merchant Center account.</summary>
@@ -12631,7 +12631,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="merchantId">The Merchant Center account to list return addresses for.</param>
         public virtual ListRequest List(ulong merchantId)
         {
-            return new ListRequest(service, merchantId);
+            return new ListRequest(this.service, merchantId);
         }
 
         /// <summary>Lists the return addresses of the Merchant Center account.</summary>
@@ -12730,7 +12730,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="body">The body of the request.</param>
         public virtual CustombatchRequest Custombatch(Google.Apis.ShoppingContent.v2_1.Data.ReturnpolicyCustomBatchRequest body)
         {
-            return new CustombatchRequest(service, body);
+            return new CustombatchRequest(this.service, body);
         }
 
         /// <summary>Batches multiple return policy related calls in a single request.</summary>
@@ -12770,7 +12770,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="returnPolicyId">Return policy ID generated by Google.</param>
         public virtual DeleteRequest Delete(ulong merchantId, string returnPolicyId)
         {
-            return new DeleteRequest(service, merchantId, returnPolicyId);
+            return new DeleteRequest(this.service, merchantId, returnPolicyId);
         }
 
         /// <summary>Deletes a return policy for the given Merchant Center account.</summary>
@@ -12829,7 +12829,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="returnPolicyId">Return policy ID generated by Google.</param>
         public virtual GetRequest Get(ulong merchantId, string returnPolicyId)
         {
-            return new GetRequest(service, merchantId, returnPolicyId);
+            return new GetRequest(this.service, merchantId, returnPolicyId);
         }
 
         /// <summary>Gets a return policy of the Merchant Center account.</summary>
@@ -12888,7 +12888,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="merchantId">The Merchant Center account to insert a return policy for.</param>
         public virtual InsertRequest Insert(Google.Apis.ShoppingContent.v2_1.Data.ReturnPolicy body, ulong merchantId)
         {
-            return new InsertRequest(service, body, merchantId);
+            return new InsertRequest(this.service, body, merchantId);
         }
 
         /// <summary>Inserts a return policy for the Merchant Center account.</summary>
@@ -12940,7 +12940,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="merchantId">The Merchant Center account to list return policies for.</param>
         public virtual ListRequest List(ulong merchantId)
         {
-            return new ListRequest(service, merchantId);
+            return new ListRequest(this.service, merchantId);
         }
 
         /// <summary>Lists the return policies of the Merchant Center account.</summary>
@@ -13003,7 +13003,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// </param>
         public virtual CreateRequest Create(Google.Apis.ShoppingContent.v2_1.Data.ReturnPolicyOnline body, long merchantId)
         {
-            return new CreateRequest(service, body, merchantId);
+            return new CreateRequest(this.service, body, merchantId);
         }
 
         /// <summary>Creates a new return policy.</summary>
@@ -13060,7 +13060,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="returnPolicyId">Required. The id of the return policy to delete.</param>
         public virtual DeleteRequest Delete(long merchantId, string returnPolicyId)
         {
-            return new DeleteRequest(service, merchantId, returnPolicyId);
+            return new DeleteRequest(this.service, merchantId, returnPolicyId);
         }
 
         /// <summary>Deletes an existing return policy.</summary>
@@ -13123,7 +13123,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="returnPolicyId">Required. The id of the return policy to retrieve.</param>
         public virtual GetRequest Get(long merchantId, string returnPolicyId)
         {
-            return new GetRequest(service, merchantId, returnPolicyId);
+            return new GetRequest(this.service, merchantId, returnPolicyId);
         }
 
         /// <summary>Gets an existing return policy.</summary>
@@ -13185,7 +13185,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// </param>
         public virtual ListRequest List(long merchantId)
         {
-            return new ListRequest(service, merchantId);
+            return new ListRequest(this.service, merchantId);
         }
 
         /// <summary>Lists all existing return policies.</summary>
@@ -13236,7 +13236,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="returnPolicyId">Required. The id of the return policy to update.</param>
         public virtual PatchRequest Patch(Google.Apis.ShoppingContent.v2_1.Data.ReturnPolicyOnline body, long merchantId, string returnPolicyId)
         {
-            return new PatchRequest(service, body, merchantId, returnPolicyId);
+            return new PatchRequest(this.service, body, merchantId, returnPolicyId);
         }
 
         /// <summary>Updates an existing return policy.</summary>
@@ -13319,7 +13319,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="settlementId">The Google-provided ID of the settlement.</param>
         public virtual GetRequest Get(ulong merchantId, string settlementId)
         {
-            return new GetRequest(service, merchantId, settlementId);
+            return new GetRequest(this.service, merchantId, settlementId);
         }
 
         /// <summary>Retrieves a settlement report from your Merchant Center account.</summary>
@@ -13377,7 +13377,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="merchantId">The Merchant Center account to list settlements for.</param>
         public virtual ListRequest List(ulong merchantId)
         {
-            return new ListRequest(service, merchantId);
+            return new ListRequest(this.service, merchantId);
         }
 
         /// <summary>Retrieves a list of settlement reports from your Merchant Center account.</summary>
@@ -13493,7 +13493,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="settlementId">The Google-provided ID of the settlement.</param>
         public virtual ListRequest List(ulong merchantId, string settlementId)
         {
-            return new ListRequest(service, merchantId, settlementId);
+            return new ListRequest(this.service, merchantId, settlementId);
         }
 
         /// <summary>Retrieves a list of transactions for the settlement.</summary>
@@ -13605,7 +13605,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="body">The body of the request.</param>
         public virtual CustombatchRequest Custombatch(Google.Apis.ShoppingContent.v2_1.Data.ShippingsettingsCustomBatchRequest body)
         {
-            return new CustombatchRequest(service, body);
+            return new CustombatchRequest(this.service, body);
         }
 
         /// <summary>Retrieves and updates the shipping settings of multiple accounts in a single request.</summary>
@@ -13648,7 +13648,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="accountId">The ID of the account for which to get/update shipping settings.</param>
         public virtual GetRequest Get(ulong merchantId, ulong accountId)
         {
-            return new GetRequest(service, merchantId, accountId);
+            return new GetRequest(this.service, merchantId, accountId);
         }
 
         /// <summary>Retrieves the shipping settings of the account.</summary>
@@ -13709,7 +13709,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="merchantId">The ID of the account for which to retrieve the supported carriers.</param>
         public virtual GetsupportedcarriersRequest Getsupportedcarriers(ulong merchantId)
         {
-            return new GetsupportedcarriersRequest(service, merchantId);
+            return new GetsupportedcarriersRequest(this.service, merchantId);
         }
 
         /// <summary>Retrieves supported carriers and carrier services for an account.</summary>
@@ -13754,7 +13754,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="merchantId">The ID of the account for which to retrieve the supported holidays.</param>
         public virtual GetsupportedholidaysRequest Getsupportedholidays(ulong merchantId)
         {
-            return new GetsupportedholidaysRequest(service, merchantId);
+            return new GetsupportedholidaysRequest(this.service, merchantId);
         }
 
         /// <summary>Retrieves supported holidays for an account.</summary>
@@ -13799,7 +13799,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="merchantId">The ID of the account for which to retrieve the supported pickup services.</param>
         public virtual GetsupportedpickupservicesRequest Getsupportedpickupservices(ulong merchantId)
         {
-            return new GetsupportedpickupservicesRequest(service, merchantId);
+            return new GetsupportedpickupservicesRequest(this.service, merchantId);
         }
 
         /// <summary>Retrieves supported pickup services for an account.</summary>
@@ -13844,7 +13844,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="merchantId">The ID of the managing account. This must be a multi-client account.</param>
         public virtual ListRequest List(ulong merchantId)
         {
-            return new ListRequest(service, merchantId);
+            return new ListRequest(this.service, merchantId);
         }
 
         /// <summary>Lists the shipping settings of the sub-accounts in your Merchant Center account.</summary>
@@ -13921,7 +13921,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="accountId">The ID of the account for which to get/update shipping settings.</param>
         public virtual UpdateRequest Update(Google.Apis.ShoppingContent.v2_1.Data.ShippingSettings body, ulong merchantId, ulong accountId)
         {
-            return new UpdateRequest(service, body, merchantId, accountId);
+            return new UpdateRequest(this.service, body, merchantId, accountId);
         }
 
         /// <summary>
@@ -14011,7 +14011,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="merchantId">Required. The ID of the account.</param>
         public virtual GetRequest Get(long merchantId)
         {
-            return new GetRequest(service, merchantId);
+            return new GetRequest(this.service, merchantId);
         }
 
         /// <summary>
@@ -14064,7 +14064,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="merchantId">Required. The ID of the account.</param>
         public virtual RequestreviewRequest Requestreview(Google.Apis.ShoppingContent.v2_1.Data.RequestReviewShoppingAdsRequest body, long merchantId)
         {
-            return new RequestreviewRequest(service, body, merchantId);
+            return new RequestreviewRequest(this.service, body, merchantId);
         }
 
         /// <summary>
@@ -16583,8 +16583,8 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpireTimeRaw);
-            set => ExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Immutable. Conversion Source of type "Link to Google Analytics Property".</summary>
@@ -17640,8 +17640,8 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CooldownTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CooldownTimeRaw);
-            set => CooldownTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CooldownTimeRaw);
+            set => CooldownTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -23674,8 +23674,8 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreationTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreationTimeRaw);
-            set => CreationTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreationTimeRaw);
+            set => CreationTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -25207,8 +25207,8 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _startTimeRaw;
@@ -25244,8 +25244,8 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -27102,8 +27102,8 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CooldownTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CooldownTimeRaw);
-            set => CooldownTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CooldownTimeRaw);
+            set => CooldownTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -27432,8 +27432,8 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _startTimeRaw;
@@ -27469,8 +27469,8 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>

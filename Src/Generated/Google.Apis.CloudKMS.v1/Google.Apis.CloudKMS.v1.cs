@@ -331,7 +331,7 @@ namespace Google.Apis.CloudKMS.v1
                 /// </param>
                 public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                 {
-                    return new GetIamPolicyRequest(service, resource);
+                    return new GetIamPolicyRequest(this.service, resource);
                 }
 
                 /// <summary>
@@ -412,7 +412,7 @@ namespace Google.Apis.CloudKMS.v1
                 /// </param>
                 public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.CloudKMS.v1.Data.SetIamPolicyRequest body, string resource)
                 {
-                    return new SetIamPolicyRequest(service, body, resource);
+                    return new SetIamPolicyRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -481,7 +481,7 @@ namespace Google.Apis.CloudKMS.v1
                 /// </param>
                 public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.CloudKMS.v1.Data.TestIamPermissionsRequest body, string resource)
                 {
-                    return new TestIamPermissionsRequest(service, body, resource);
+                    return new TestIamPermissionsRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -564,7 +564,7 @@ namespace Google.Apis.CloudKMS.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.CloudKMS.v1.Data.EkmConnection body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a new EkmConnection in a given Project and Location.</summary>
@@ -634,7 +634,7 @@ namespace Google.Apis.CloudKMS.v1
                 /// <param name="name">Required. The name of the EkmConnection to get.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Returns metadata for a given EkmConnection.</summary>
@@ -686,7 +686,7 @@ namespace Google.Apis.CloudKMS.v1
                 /// </param>
                 public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                 {
-                    return new GetIamPolicyRequest(service, resource);
+                    return new GetIamPolicyRequest(this.service, resource);
                 }
 
                 /// <summary>
@@ -762,7 +762,7 @@ namespace Google.Apis.CloudKMS.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists EkmConnections.</summary>
@@ -878,7 +878,7 @@ namespace Google.Apis.CloudKMS.v1
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.CloudKMS.v1.Data.EkmConnection body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates an EkmConnection's metadata.</summary>
@@ -953,7 +953,7 @@ namespace Google.Apis.CloudKMS.v1
                 /// </param>
                 public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.CloudKMS.v1.Data.SetIamPolicyRequest body, string resource)
                 {
-                    return new SetIamPolicyRequest(service, body, resource);
+                    return new SetIamPolicyRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -1022,7 +1022,7 @@ namespace Google.Apis.CloudKMS.v1
                 /// </param>
                 public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.CloudKMS.v1.Data.TestIamPermissionsRequest body, string resource)
                 {
-                    return new TestIamPermissionsRequest(service, body, resource);
+                    return new TestIamPermissionsRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -1088,7 +1088,7 @@ namespace Google.Apis.CloudKMS.v1
                 /// <param name="name">Required. The name of the EkmConnection to verify.</param>
                 public virtual VerifyConnectivityRequest VerifyConnectivity(string name)
                 {
-                    return new VerifyConnectivityRequest(service, name);
+                    return new VerifyConnectivityRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -1199,7 +1199,7 @@ namespace Google.Apis.CloudKMS.v1
                         /// </param>
                         public virtual AsymmetricDecryptRequest AsymmetricDecrypt(Google.Apis.CloudKMS.v1.Data.AsymmetricDecryptRequest body, string name)
                         {
-                            return new AsymmetricDecryptRequest(service, body, name);
+                            return new AsymmetricDecryptRequest(this.service, body, name);
                         }
 
                         /// <summary>
@@ -1262,7 +1262,7 @@ namespace Google.Apis.CloudKMS.v1
                         /// </param>
                         public virtual AsymmetricSignRequest AsymmetricSign(Google.Apis.CloudKMS.v1.Data.AsymmetricSignRequest body, string name)
                         {
-                            return new AsymmetricSignRequest(service, body, name);
+                            return new AsymmetricSignRequest(this.service, body, name);
                         }
 
                         /// <summary>
@@ -1325,7 +1325,7 @@ namespace Google.Apis.CloudKMS.v1
                         /// </param>
                         public virtual CreateRequest Create(Google.Apis.CloudKMS.v1.Data.CryptoKeyVersion body, string parent)
                         {
-                            return new CreateRequest(service, body, parent);
+                            return new CreateRequest(this.service, body, parent);
                         }
 
                         /// <summary>
@@ -1389,7 +1389,7 @@ namespace Google.Apis.CloudKMS.v1
                         /// <param name="name">Required. The resource name of the CryptoKeyVersion to destroy.</param>
                         public virtual DestroyRequest Destroy(Google.Apis.CloudKMS.v1.Data.DestroyCryptoKeyVersionRequest body, string name)
                         {
-                            return new DestroyRequest(service, body, name);
+                            return new DestroyRequest(this.service, body, name);
                         }
 
                         /// <summary>
@@ -1447,7 +1447,7 @@ namespace Google.Apis.CloudKMS.v1
                         /// <param name="name">Required. The name of the CryptoKeyVersion to get.</param>
                         public virtual GetRequest Get(string name)
                         {
-                            return new GetRequest(service, name);
+                            return new GetRequest(this.service, name);
                         }
 
                         /// <summary>Returns metadata for a given CryptoKeyVersion.</summary>
@@ -1495,7 +1495,7 @@ namespace Google.Apis.CloudKMS.v1
                         /// <param name="name">Required. The name of the CryptoKeyVersion public key to get.</param>
                         public virtual GetPublicKeyRequest GetPublicKey(string name)
                         {
-                            return new GetPublicKeyRequest(service, name);
+                            return new GetPublicKeyRequest(this.service, name);
                         }
 
                         /// <summary>
@@ -1552,7 +1552,7 @@ namespace Google.Apis.CloudKMS.v1
                         /// </param>
                         public virtual ImportRequest Import(Google.Apis.CloudKMS.v1.Data.ImportCryptoKeyVersionRequest body, string parent)
                         {
-                            return new ImportRequest(service, body, parent);
+                            return new ImportRequest(this.service, body, parent);
                         }
 
                         /// <summary>
@@ -1615,7 +1615,7 @@ namespace Google.Apis.CloudKMS.v1
                         /// </param>
                         public virtual ListRequest List(string parent)
                         {
-                            return new ListRequest(service, parent);
+                            return new ListRequest(this.service, parent);
                         }
 
                         /// <summary>Lists CryptoKeyVersions.</summary>
@@ -1761,7 +1761,7 @@ namespace Google.Apis.CloudKMS.v1
                         /// </param>
                         public virtual MacSignRequest MacSign(Google.Apis.CloudKMS.v1.Data.MacSignRequest body, string name)
                         {
-                            return new MacSignRequest(service, body, name);
+                            return new MacSignRequest(this.service, body, name);
                         }
 
                         /// <summary>
@@ -1824,7 +1824,7 @@ namespace Google.Apis.CloudKMS.v1
                         /// </param>
                         public virtual MacVerifyRequest MacVerify(Google.Apis.CloudKMS.v1.Data.MacVerifyRequest body, string name)
                         {
-                            return new MacVerifyRequest(service, body, name);
+                            return new MacVerifyRequest(this.service, body, name);
                         }
 
                         /// <summary>
@@ -1889,7 +1889,7 @@ namespace Google.Apis.CloudKMS.v1
                         /// </param>
                         public virtual PatchRequest Patch(Google.Apis.CloudKMS.v1.Data.CryptoKeyVersion body, string name)
                         {
-                            return new PatchRequest(service, body, name);
+                            return new PatchRequest(this.service, body, name);
                         }
 
                         /// <summary>
@@ -1966,7 +1966,7 @@ namespace Google.Apis.CloudKMS.v1
                         /// </param>
                         public virtual RawDecryptRequest RawDecrypt(Google.Apis.CloudKMS.v1.Data.RawDecryptRequest body, string name)
                         {
-                            return new RawDecryptRequest(service, body, name);
+                            return new RawDecryptRequest(this.service, body, name);
                         }
 
                         /// <summary>
@@ -2030,7 +2030,7 @@ namespace Google.Apis.CloudKMS.v1
                         /// </param>
                         public virtual RawEncryptRequest RawEncrypt(Google.Apis.CloudKMS.v1.Data.RawEncryptRequest body, string name)
                         {
-                            return new RawEncryptRequest(service, body, name);
+                            return new RawEncryptRequest(this.service, body, name);
                         }
 
                         /// <summary>
@@ -2092,7 +2092,7 @@ namespace Google.Apis.CloudKMS.v1
                         /// <param name="name">Required. The resource name of the CryptoKeyVersion to restore.</param>
                         public virtual RestoreRequest Restore(Google.Apis.CloudKMS.v1.Data.RestoreCryptoKeyVersionRequest body, string name)
                         {
-                            return new RestoreRequest(service, body, name);
+                            return new RestoreRequest(this.service, body, name);
                         }
 
                         /// <summary>
@@ -2152,7 +2152,7 @@ namespace Google.Apis.CloudKMS.v1
                     /// <param name="parent">Required. The name of the KeyRing associated with the CryptoKeys.</param>
                     public virtual CreateRequest Create(Google.Apis.CloudKMS.v1.Data.CryptoKey body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>
@@ -2244,7 +2244,7 @@ namespace Google.Apis.CloudKMS.v1
                     /// </param>
                     public virtual DecryptRequest Decrypt(Google.Apis.CloudKMS.v1.Data.DecryptRequest body, string name)
                     {
-                        return new DecryptRequest(service, body, name);
+                        return new DecryptRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -2308,7 +2308,7 @@ namespace Google.Apis.CloudKMS.v1
                     /// </param>
                     public virtual EncryptRequest Encrypt(Google.Apis.CloudKMS.v1.Data.EncryptRequest body, string name)
                     {
-                        return new EncryptRequest(service, body, name);
+                        return new EncryptRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -2368,7 +2368,7 @@ namespace Google.Apis.CloudKMS.v1
                     /// <param name="name">Required. The name of the CryptoKey to get.</param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -2422,7 +2422,7 @@ namespace Google.Apis.CloudKMS.v1
                     /// </param>
                     public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                     {
-                        return new GetIamPolicyRequest(service, resource);
+                        return new GetIamPolicyRequest(this.service, resource);
                     }
 
                     /// <summary>
@@ -2499,7 +2499,7 @@ namespace Google.Apis.CloudKMS.v1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists CryptoKeys.</summary>
@@ -2643,7 +2643,7 @@ namespace Google.Apis.CloudKMS.v1
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.CloudKMS.v1.Data.CryptoKey body, string name)
                     {
-                        return new PatchRequest(service, body, name);
+                        return new PatchRequest(this.service, body, name);
                     }
 
                     /// <summary>Update a CryptoKey.</summary>
@@ -2718,7 +2718,7 @@ namespace Google.Apis.CloudKMS.v1
                     /// </param>
                     public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.CloudKMS.v1.Data.SetIamPolicyRequest body, string resource)
                     {
-                        return new SetIamPolicyRequest(service, body, resource);
+                        return new SetIamPolicyRequest(this.service, body, resource);
                     }
 
                     /// <summary>
@@ -2787,7 +2787,7 @@ namespace Google.Apis.CloudKMS.v1
                     /// </param>
                     public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.CloudKMS.v1.Data.TestIamPermissionsRequest body, string resource)
                     {
-                        return new TestIamPermissionsRequest(service, body, resource);
+                        return new TestIamPermissionsRequest(this.service, body, resource);
                     }
 
                     /// <summary>
@@ -2852,7 +2852,7 @@ namespace Google.Apis.CloudKMS.v1
                     /// <param name="name">Required. The resource name of the CryptoKey to update.</param>
                     public virtual UpdatePrimaryVersionRequest UpdatePrimaryVersion(Google.Apis.CloudKMS.v1.Data.UpdateCryptoKeyPrimaryVersionRequest body, string name)
                     {
-                        return new UpdatePrimaryVersionRequest(service, body, name);
+                        return new UpdatePrimaryVersionRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -2926,7 +2926,7 @@ namespace Google.Apis.CloudKMS.v1
                     /// <param name="parent">Required. The name of the KeyRing associated with the ImportJobs.</param>
                     public virtual CreateRequest Create(Google.Apis.CloudKMS.v1.Data.ImportJob body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>Create a new ImportJob within a KeyRing. ImportJob.import_method is required.</summary>
@@ -2993,7 +2993,7 @@ namespace Google.Apis.CloudKMS.v1
                     /// <param name="name">Required. The name of the ImportJob to get.</param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Returns metadata for a given ImportJob.</summary>
@@ -3045,7 +3045,7 @@ namespace Google.Apis.CloudKMS.v1
                     /// </param>
                     public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                     {
-                        return new GetIamPolicyRequest(service, resource);
+                        return new GetIamPolicyRequest(this.service, resource);
                     }
 
                     /// <summary>
@@ -3122,7 +3122,7 @@ namespace Google.Apis.CloudKMS.v1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists ImportJobs.</summary>
@@ -3242,7 +3242,7 @@ namespace Google.Apis.CloudKMS.v1
                     /// </param>
                     public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.CloudKMS.v1.Data.SetIamPolicyRequest body, string resource)
                     {
-                        return new SetIamPolicyRequest(service, body, resource);
+                        return new SetIamPolicyRequest(this.service, body, resource);
                     }
 
                     /// <summary>
@@ -3311,7 +3311,7 @@ namespace Google.Apis.CloudKMS.v1
                     /// </param>
                     public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.CloudKMS.v1.Data.TestIamPermissionsRequest body, string resource)
                     {
-                        return new TestIamPermissionsRequest(service, body, resource);
+                        return new TestIamPermissionsRequest(this.service, body, resource);
                     }
 
                     /// <summary>
@@ -3377,7 +3377,7 @@ namespace Google.Apis.CloudKMS.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.CloudKMS.v1.Data.KeyRing body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Create a new KeyRing in a given Project and Location.</summary>
@@ -3447,7 +3447,7 @@ namespace Google.Apis.CloudKMS.v1
                 /// <param name="name">Required. The name of the KeyRing to get.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Returns metadata for a given KeyRing.</summary>
@@ -3499,7 +3499,7 @@ namespace Google.Apis.CloudKMS.v1
                 /// </param>
                 public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                 {
-                    return new GetIamPolicyRequest(service, resource);
+                    return new GetIamPolicyRequest(this.service, resource);
                 }
 
                 /// <summary>
@@ -3575,7 +3575,7 @@ namespace Google.Apis.CloudKMS.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists KeyRings.</summary>
@@ -3693,7 +3693,7 @@ namespace Google.Apis.CloudKMS.v1
                 /// </param>
                 public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.CloudKMS.v1.Data.SetIamPolicyRequest body, string resource)
                 {
-                    return new SetIamPolicyRequest(service, body, resource);
+                    return new SetIamPolicyRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -3762,7 +3762,7 @@ namespace Google.Apis.CloudKMS.v1
                 /// </param>
                 public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.CloudKMS.v1.Data.TestIamPermissionsRequest body, string resource)
                 {
-                    return new TestIamPermissionsRequest(service, body, resource);
+                    return new TestIamPermissionsRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -3828,7 +3828,7 @@ namespace Google.Apis.CloudKMS.v1
             /// </param>
             public virtual GenerateRandomBytesRequest GenerateRandomBytes(Google.Apis.CloudKMS.v1.Data.GenerateRandomBytesRequest body, string location)
             {
-                return new GenerateRandomBytesRequest(service, body, location);
+                return new GenerateRandomBytesRequest(this.service, body, location);
             }
 
             /// <summary>Generate random bytes using the Cloud KMS randomness source in the provided location.</summary>
@@ -3883,7 +3883,7 @@ namespace Google.Apis.CloudKMS.v1
             /// <param name="name">Resource name for the location.</param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets information about a location.</summary>
@@ -3928,7 +3928,7 @@ namespace Google.Apis.CloudKMS.v1
             /// <param name="name">Required. The name of the EkmConfig to get.</param>
             public virtual GetEkmConfigRequest GetEkmConfig(string name)
             {
-                return new GetEkmConfigRequest(service, name);
+                return new GetEkmConfigRequest(this.service, name);
             }
 
             /// <summary>Returns the EkmConfig singleton resource for a given project and location.</summary>
@@ -3973,7 +3973,7 @@ namespace Google.Apis.CloudKMS.v1
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
             {
-                return new ListRequest(service, name);
+                return new ListRequest(this.service, name);
             }
 
             /// <summary>Lists information about the supported locations for this service.</summary>
@@ -4065,7 +4065,7 @@ namespace Google.Apis.CloudKMS.v1
             /// </param>
             public virtual UpdateEkmConfigRequest UpdateEkmConfig(Google.Apis.CloudKMS.v1.Data.EkmConfig body, string name)
             {
-                return new UpdateEkmConfigRequest(service, body, name);
+                return new UpdateEkmConfigRequest(this.service, body, name);
             }
 
             /// <summary>Updates the EkmConfig singleton resource for a given project and location.</summary>
@@ -4443,8 +4443,8 @@ namespace Google.Apis.CloudKMS.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? NotAfterTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(NotAfterTimeRaw);
-            set => NotAfterTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(NotAfterTimeRaw);
+            set => NotAfterTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _notBeforeTimeRaw;
@@ -4482,8 +4482,8 @@ namespace Google.Apis.CloudKMS.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? NotBeforeTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(NotBeforeTimeRaw);
-            set => NotBeforeTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(NotBeforeTimeRaw);
+            set => NotBeforeTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. True if the certificate was parsed successfully.</summary>
@@ -4581,8 +4581,8 @@ namespace Google.Apis.CloudKMS.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -4660,8 +4660,8 @@ namespace Google.Apis.CloudKMS.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? NextRotationTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(NextRotationTimeRaw);
-            set => NextRotationTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(NextRotationTimeRaw);
+            set => NextRotationTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -4749,8 +4749,8 @@ namespace Google.Apis.CloudKMS.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _destroyEventTimeRaw;
@@ -4791,8 +4791,8 @@ namespace Google.Apis.CloudKMS.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? DestroyEventTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DestroyEventTimeRaw);
-            set => DestroyEventTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DestroyEventTimeRaw);
+            set => DestroyEventTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _destroyTimeRaw;
@@ -4831,8 +4831,8 @@ namespace Google.Apis.CloudKMS.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? DestroyTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DestroyTimeRaw);
-            set => DestroyTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DestroyTimeRaw);
+            set => DestroyTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -4882,8 +4882,8 @@ namespace Google.Apis.CloudKMS.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? GenerateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(GenerateTimeRaw);
-            set => GenerateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(GenerateTimeRaw);
+            set => GenerateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -4941,8 +4941,8 @@ namespace Google.Apis.CloudKMS.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ImportTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ImportTimeRaw);
-            set => ImportTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ImportTimeRaw);
+            set => ImportTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -5165,8 +5165,8 @@ namespace Google.Apis.CloudKMS.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -5528,8 +5528,8 @@ namespace Google.Apis.CloudKMS.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _expireEventTimeRaw;
@@ -5567,8 +5567,8 @@ namespace Google.Apis.CloudKMS.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ExpireEventTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpireEventTimeRaw);
-            set => ExpireEventTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpireEventTimeRaw);
+            set => ExpireEventTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _expireTimeRaw;
@@ -5607,8 +5607,8 @@ namespace Google.Apis.CloudKMS.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpireTimeRaw);
-            set => ExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _generateTimeRaw;
@@ -5644,8 +5644,8 @@ namespace Google.Apis.CloudKMS.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? GenerateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(GenerateTimeRaw);
-            set => GenerateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(GenerateTimeRaw);
+            set => GenerateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Required. Immutable. The wrapping method to be used for incoming key material.</summary>
@@ -5741,8 +5741,8 @@ namespace Google.Apis.CloudKMS.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>

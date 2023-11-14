@@ -376,7 +376,7 @@ namespace Google.Apis.Gmail.v1
             /// </param>
             public virtual CreateRequest Create(Google.Apis.Gmail.v1.Data.Draft body, string userId)
             {
-                return new CreateRequest(service, body, userId);
+                return new CreateRequest(this.service, body, userId);
             }
 
             /// <summary>Creates a new draft with the `DRAFT` label.</summary>
@@ -580,7 +580,7 @@ namespace Google.Apis.Gmail.v1
             /// <param name="id">The ID of the draft to delete.</param>
             public virtual DeleteRequest Delete(string userId, string id)
             {
-                return new DeleteRequest(service, userId, id);
+                return new DeleteRequest(this.service, userId, id);
             }
 
             /// <summary>Immediately and permanently deletes the specified draft. Does not simply trash it.</summary>
@@ -643,7 +643,7 @@ namespace Google.Apis.Gmail.v1
             /// <param name="id">The ID of the draft to retrieve.</param>
             public virtual GetRequest Get(string userId, string id)
             {
-                return new GetRequest(service, userId, id);
+                return new GetRequest(this.service, userId, id);
             }
 
             /// <summary>Gets the specified draft.</summary>
@@ -746,7 +746,7 @@ namespace Google.Apis.Gmail.v1
             /// </param>
             public virtual ListRequest List(string userId)
             {
-                return new ListRequest(service, userId);
+                return new ListRequest(this.service, userId);
             }
 
             /// <summary>Lists the drafts in the user's mailbox.</summary>
@@ -852,7 +852,7 @@ namespace Google.Apis.Gmail.v1
             /// </param>
             public virtual SendRequest Send(Google.Apis.Gmail.v1.Data.Draft body, string userId)
             {
-                return new SendRequest(service, body, userId);
+                return new SendRequest(this.service, body, userId);
             }
 
             /// <summary>
@@ -1061,7 +1061,7 @@ namespace Google.Apis.Gmail.v1
             /// <param name="id">The ID of the draft to update.</param>
             public virtual UpdateRequest Update(Google.Apis.Gmail.v1.Data.Draft body, string userId, string id)
             {
-                return new UpdateRequest(service, body, userId, id);
+                return new UpdateRequest(this.service, body, userId, id);
             }
 
             /// <summary>Replaces a draft's content.</summary>
@@ -1304,7 +1304,7 @@ namespace Google.Apis.Gmail.v1
             /// </param>
             public virtual ListRequest List(string userId)
             {
-                return new ListRequest(service, userId);
+                return new ListRequest(this.service, userId);
             }
 
             /// <summary>
@@ -1479,7 +1479,7 @@ namespace Google.Apis.Gmail.v1
             /// </param>
             public virtual CreateRequest Create(Google.Apis.Gmail.v1.Data.Label body, string userId)
             {
-                return new CreateRequest(service, body, userId);
+                return new CreateRequest(this.service, body, userId);
             }
 
             /// <summary>Creates a new label.</summary>
@@ -1539,7 +1539,7 @@ namespace Google.Apis.Gmail.v1
             /// <param name="id">The ID of the label to delete.</param>
             public virtual DeleteRequest Delete(string userId, string id)
             {
-                return new DeleteRequest(service, userId, id);
+                return new DeleteRequest(this.service, userId, id);
             }
 
             /// <summary>
@@ -1605,7 +1605,7 @@ namespace Google.Apis.Gmail.v1
             /// <param name="id">The ID of the label to retrieve.</param>
             public virtual GetRequest Get(string userId, string id)
             {
-                return new GetRequest(service, userId, id);
+                return new GetRequest(this.service, userId, id);
             }
 
             /// <summary>Gets the specified label.</summary>
@@ -1667,7 +1667,7 @@ namespace Google.Apis.Gmail.v1
             /// </param>
             public virtual ListRequest List(string userId)
             {
-                return new ListRequest(service, userId);
+                return new ListRequest(this.service, userId);
             }
 
             /// <summary>Lists all labels in the user's mailbox.</summary>
@@ -1718,7 +1718,7 @@ namespace Google.Apis.Gmail.v1
             /// <param name="id">The ID of the label to update.</param>
             public virtual PatchRequest Patch(Google.Apis.Gmail.v1.Data.Label body, string userId, string id)
             {
-                return new PatchRequest(service, body, userId, id);
+                return new PatchRequest(this.service, body, userId, id);
             }
 
             /// <summary>Patch the specified label.</summary>
@@ -1789,7 +1789,7 @@ namespace Google.Apis.Gmail.v1
             /// <param name="id">The ID of the label to update.</param>
             public virtual UpdateRequest Update(Google.Apis.Gmail.v1.Data.Label body, string userId, string id)
             {
-                return new UpdateRequest(service, body, userId, id);
+                return new UpdateRequest(this.service, body, userId, id);
             }
 
             /// <summary>Updates the specified label.</summary>
@@ -1896,7 +1896,7 @@ namespace Google.Apis.Gmail.v1
                 /// <param name="id">The ID of the attachment.</param>
                 public virtual GetRequest Get(string userId, string messageId, string id)
                 {
-                    return new GetRequest(service, userId, messageId, id);
+                    return new GetRequest(this.service, userId, messageId, id);
                 }
 
                 /// <summary>Gets the specified message attachment.</summary>
@@ -1976,7 +1976,7 @@ namespace Google.Apis.Gmail.v1
             /// </param>
             public virtual BatchDeleteRequest BatchDelete(Google.Apis.Gmail.v1.Data.BatchDeleteMessagesRequest body, string userId)
             {
-                return new BatchDeleteRequest(service, body, userId);
+                return new BatchDeleteRequest(this.service, body, userId);
             }
 
             /// <summary>
@@ -2036,7 +2036,7 @@ namespace Google.Apis.Gmail.v1
             /// </param>
             public virtual BatchModifyRequest BatchModify(Google.Apis.Gmail.v1.Data.BatchModifyMessagesRequest body, string userId)
             {
-                return new BatchModifyRequest(service, body, userId);
+                return new BatchModifyRequest(this.service, body, userId);
             }
 
             /// <summary>Modifies the labels on the specified messages.</summary>
@@ -2096,7 +2096,7 @@ namespace Google.Apis.Gmail.v1
             /// <param name="id">The ID of the message to delete.</param>
             public virtual DeleteRequest Delete(string userId, string id)
             {
-                return new DeleteRequest(service, userId, id);
+                return new DeleteRequest(this.service, userId, id);
             }
 
             /// <summary>
@@ -2165,7 +2165,7 @@ namespace Google.Apis.Gmail.v1
             /// </param>
             public virtual GetRequest Get(string userId, string id)
             {
-                return new GetRequest(service, userId, id);
+                return new GetRequest(this.service, userId, id);
             }
 
             /// <summary>Gets the specified message.</summary>
@@ -2290,7 +2290,7 @@ namespace Google.Apis.Gmail.v1
             /// </param>
             public virtual ImportRequest Import(Google.Apis.Gmail.v1.Data.Message body, string userId)
             {
-                return new ImportRequest(service, body, userId);
+                return new ImportRequest(this.service, body, userId);
             }
 
             /// <summary>
@@ -2611,7 +2611,7 @@ namespace Google.Apis.Gmail.v1
             /// </param>
             public virtual InsertRequest Insert(Google.Apis.Gmail.v1.Data.Message body, string userId)
             {
-                return new InsertRequest(service, body, userId);
+                return new InsertRequest(this.service, body, userId);
             }
 
             /// <summary>
@@ -2882,7 +2882,7 @@ namespace Google.Apis.Gmail.v1
             /// </param>
             public virtual ListRequest List(string userId)
             {
-                return new ListRequest(service, userId);
+                return new ListRequest(this.service, userId);
             }
 
             /// <summary>Lists the messages in the user's mailbox.</summary>
@@ -3005,7 +3005,7 @@ namespace Google.Apis.Gmail.v1
             /// <param name="id">The ID of the message to modify.</param>
             public virtual ModifyRequest Modify(Google.Apis.Gmail.v1.Data.ModifyMessageRequest body, string userId, string id)
             {
-                return new ModifyRequest(service, body, userId, id);
+                return new ModifyRequest(this.service, body, userId, id);
             }
 
             /// <summary>Modifies the labels on the specified message.</summary>
@@ -3078,7 +3078,7 @@ namespace Google.Apis.Gmail.v1
             /// </param>
             public virtual SendRequest Send(Google.Apis.Gmail.v1.Data.Message body, string userId)
             {
-                return new SendRequest(service, body, userId);
+                return new SendRequest(this.service, body, userId);
             }
 
             /// <summary>
@@ -3288,7 +3288,7 @@ namespace Google.Apis.Gmail.v1
             /// <param name="id">The ID of the message to Trash.</param>
             public virtual TrashRequest Trash(string userId, string id)
             {
-                return new TrashRequest(service, userId, id);
+                return new TrashRequest(this.service, userId, id);
             }
 
             /// <summary>Moves the specified message to the trash.</summary>
@@ -3351,7 +3351,7 @@ namespace Google.Apis.Gmail.v1
             /// <param name="id">The ID of the message to remove from Trash.</param>
             public virtual UntrashRequest Untrash(string userId, string id)
             {
-                return new UntrashRequest(service, userId, id);
+                return new UntrashRequest(this.service, userId, id);
             }
 
             /// <summary>Removes the specified message from the trash.</summary>
@@ -3478,7 +3478,7 @@ namespace Google.Apis.Gmail.v1
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.Gmail.v1.Data.CseIdentity body, string userId)
                     {
-                        return new CreateRequest(service, body, userId);
+                        return new CreateRequest(this.service, body, userId);
                     }
 
                     /// <summary>
@@ -3548,7 +3548,7 @@ namespace Google.Apis.Gmail.v1
                     /// </param>
                     public virtual DeleteRequest Delete(string userId, string cseEmailAddress)
                     {
-                        return new DeleteRequest(service, userId, cseEmailAddress);
+                        return new DeleteRequest(this.service, userId, cseEmailAddress);
                     }
 
                     /// <summary>
@@ -3623,7 +3623,7 @@ namespace Google.Apis.Gmail.v1
                     /// </param>
                     public virtual GetRequest Get(string userId, string cseEmailAddress)
                     {
-                        return new GetRequest(service, userId, cseEmailAddress);
+                        return new GetRequest(this.service, userId, cseEmailAddress);
                     }
 
                     /// <summary>Retrieves a client-side encryption identity configuration.</summary>
@@ -3690,7 +3690,7 @@ namespace Google.Apis.Gmail.v1
                     /// </param>
                     public virtual ListRequest List(string userId)
                     {
-                        return new ListRequest(service, userId);
+                        return new ListRequest(this.service, userId);
                     }
 
                     /// <summary>Lists the client-side encrypted identities for an authenticated user.</summary>
@@ -3779,7 +3779,7 @@ namespace Google.Apis.Gmail.v1
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.Gmail.v1.Data.CseIdentity body, string userId, string emailAddress)
                     {
-                        return new PatchRequest(service, body, userId, emailAddress);
+                        return new PatchRequest(this.service, body, userId, emailAddress);
                     }
 
                     /// <summary>
@@ -3876,7 +3876,7 @@ namespace Google.Apis.Gmail.v1
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.Gmail.v1.Data.CseKeyPair body, string userId)
                     {
-                        return new CreateRequest(service, body, userId);
+                        return new CreateRequest(this.service, body, userId);
                     }
 
                     /// <summary>
@@ -3944,7 +3944,7 @@ namespace Google.Apis.Gmail.v1
                     /// <param name="keyPairId">The identifier of the key pair to turn off.</param>
                     public virtual DisableRequest Disable(Google.Apis.Gmail.v1.Data.DisableCseKeyPairRequest body, string userId, string keyPairId)
                     {
-                        return new DisableRequest(service, body, userId, keyPairId);
+                        return new DisableRequest(this.service, body, userId, keyPairId);
                     }
 
                     /// <summary>
@@ -4025,7 +4025,7 @@ namespace Google.Apis.Gmail.v1
                     /// <param name="keyPairId">The identifier of the key pair to turn on.</param>
                     public virtual EnableRequest Enable(Google.Apis.Gmail.v1.Data.EnableCseKeyPairRequest body, string userId, string keyPairId)
                     {
-                        return new EnableRequest(service, body, userId, keyPairId);
+                        return new EnableRequest(this.service, body, userId, keyPairId);
                     }
 
                     /// <summary>
@@ -4100,7 +4100,7 @@ namespace Google.Apis.Gmail.v1
                     /// <param name="keyPairId">The identifier of the key pair to retrieve.</param>
                     public virtual GetRequest Get(string userId, string keyPairId)
                     {
-                        return new GetRequest(service, userId, keyPairId);
+                        return new GetRequest(this.service, userId, keyPairId);
                     }
 
                     /// <summary>Retrieves an existing client-side encryption key pair.</summary>
@@ -4164,7 +4164,7 @@ namespace Google.Apis.Gmail.v1
                     /// </param>
                     public virtual ListRequest List(string userId)
                     {
-                        return new ListRequest(service, userId);
+                        return new ListRequest(this.service, userId);
                     }
 
                     /// <summary>Lists client-side encryption key pairs for an authenticated user.</summary>
@@ -4253,7 +4253,7 @@ namespace Google.Apis.Gmail.v1
                     /// <param name="keyPairId">The identifier of the key pair to obliterate.</param>
                     public virtual ObliterateRequest Obliterate(Google.Apis.Gmail.v1.Data.ObliterateCseKeyPairRequest body, string userId, string keyPairId)
                     {
-                        return new ObliterateRequest(service, body, userId, keyPairId);
+                        return new ObliterateRequest(this.service, body, userId, keyPairId);
                     }
 
                     /// <summary>
@@ -4359,7 +4359,7 @@ namespace Google.Apis.Gmail.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Gmail.v1.Data.Delegate body, string userId)
                 {
-                    return new CreateRequest(service, body, userId);
+                    return new CreateRequest(this.service, body, userId);
                 }
 
                 /// <summary>
@@ -4431,7 +4431,7 @@ namespace Google.Apis.Gmail.v1
                 /// <param name="delegateEmail">The email address of the user to be removed as a delegate.</param>
                 public virtual DeleteRequest Delete(string userId, string delegateEmail)
                 {
-                    return new DeleteRequest(service, userId, delegateEmail);
+                    return new DeleteRequest(this.service, userId, delegateEmail);
                 }
 
                 /// <summary>
@@ -4505,7 +4505,7 @@ namespace Google.Apis.Gmail.v1
                 /// </param>
                 public virtual GetRequest Get(string userId, string delegateEmail)
                 {
-                    return new GetRequest(service, userId, delegateEmail);
+                    return new GetRequest(this.service, userId, delegateEmail);
                 }
 
                 /// <summary>
@@ -4574,7 +4574,7 @@ namespace Google.Apis.Gmail.v1
                 /// </param>
                 public virtual ListRequest List(string userId)
                 {
-                    return new ListRequest(service, userId);
+                    return new ListRequest(this.service, userId);
                 }
 
                 /// <summary>
@@ -4645,7 +4645,7 @@ namespace Google.Apis.Gmail.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Gmail.v1.Data.Filter body, string userId)
                 {
-                    return new CreateRequest(service, body, userId);
+                    return new CreateRequest(this.service, body, userId);
                 }
 
                 /// <summary>Creates a filter. Note: you can only create a maximum of 1,000 filters.</summary>
@@ -4702,7 +4702,7 @@ namespace Google.Apis.Gmail.v1
                 /// <param name="id">The ID of the filter to be deleted.</param>
                 public virtual DeleteRequest Delete(string userId, string id)
                 {
-                    return new DeleteRequest(service, userId, id);
+                    return new DeleteRequest(this.service, userId, id);
                 }
 
                 /// <summary>Immediately and permanently deletes the specified filter.</summary>
@@ -4765,7 +4765,7 @@ namespace Google.Apis.Gmail.v1
                 /// <param name="id">The ID of the filter to be fetched.</param>
                 public virtual GetRequest Get(string userId, string id)
                 {
-                    return new GetRequest(service, userId, id);
+                    return new GetRequest(this.service, userId, id);
                 }
 
                 /// <summary>Gets a filter.</summary>
@@ -4827,7 +4827,7 @@ namespace Google.Apis.Gmail.v1
                 /// </param>
                 public virtual ListRequest List(string userId)
                 {
-                    return new ListRequest(service, userId);
+                    return new ListRequest(this.service, userId);
                 }
 
                 /// <summary>Lists the message filters of a Gmail user.</summary>
@@ -4900,7 +4900,7 @@ namespace Google.Apis.Gmail.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Gmail.v1.Data.ForwardingAddress body, string userId)
                 {
-                    return new CreateRequest(service, body, userId);
+                    return new CreateRequest(this.service, body, userId);
                 }
 
                 /// <summary>
@@ -4966,7 +4966,7 @@ namespace Google.Apis.Gmail.v1
                 /// <param name="forwardingEmail">The forwarding address to be deleted.</param>
                 public virtual DeleteRequest Delete(string userId, string forwardingEmail)
                 {
-                    return new DeleteRequest(service, userId, forwardingEmail);
+                    return new DeleteRequest(this.service, userId, forwardingEmail);
                 }
 
                 /// <summary>
@@ -5033,7 +5033,7 @@ namespace Google.Apis.Gmail.v1
                 /// <param name="forwardingEmail">The forwarding address to be retrieved.</param>
                 public virtual GetRequest Get(string userId, string forwardingEmail)
                 {
-                    return new GetRequest(service, userId, forwardingEmail);
+                    return new GetRequest(this.service, userId, forwardingEmail);
                 }
 
                 /// <summary>Gets the specified forwarding address.</summary>
@@ -5095,7 +5095,7 @@ namespace Google.Apis.Gmail.v1
                 /// </param>
                 public virtual ListRequest List(string userId)
                 {
-                    return new ListRequest(service, userId);
+                    return new ListRequest(this.service, userId);
                 }
 
                 /// <summary>Lists the forwarding addresses for the specified account.</summary>
@@ -5184,7 +5184,7 @@ namespace Google.Apis.Gmail.v1
                     /// <param name="id">The immutable ID for the SmimeInfo.</param>
                     public virtual DeleteRequest Delete(string userId, string sendAsEmail, string id)
                     {
-                        return new DeleteRequest(service, userId, sendAsEmail, id);
+                        return new DeleteRequest(this.service, userId, sendAsEmail, id);
                     }
 
                     /// <summary>Deletes the specified S/MIME config for the specified send-as alias.</summary>
@@ -5266,7 +5266,7 @@ namespace Google.Apis.Gmail.v1
                     /// <param name="id">The immutable ID for the SmimeInfo.</param>
                     public virtual GetRequest Get(string userId, string sendAsEmail, string id)
                     {
-                        return new GetRequest(service, userId, sendAsEmail, id);
+                        return new GetRequest(this.service, userId, sendAsEmail, id);
                     }
 
                     /// <summary>Gets the specified S/MIME config for the specified send-as alias.</summary>
@@ -5351,7 +5351,7 @@ namespace Google.Apis.Gmail.v1
                     /// </param>
                     public virtual InsertRequest Insert(Google.Apis.Gmail.v1.Data.SmimeInfo body, string userId, string sendAsEmail)
                     {
-                        return new InsertRequest(service, body, userId, sendAsEmail);
+                        return new InsertRequest(this.service, body, userId, sendAsEmail);
                     }
 
                     /// <summary>
@@ -5429,7 +5429,7 @@ namespace Google.Apis.Gmail.v1
                     /// </param>
                     public virtual ListRequest List(string userId, string sendAsEmail)
                     {
-                        return new ListRequest(service, userId, sendAsEmail);
+                        return new ListRequest(this.service, userId, sendAsEmail);
                     }
 
                     /// <summary>Lists S/MIME configs for the specified send-as alias.</summary>
@@ -5498,7 +5498,7 @@ namespace Google.Apis.Gmail.v1
                     /// <param name="id">The immutable ID for the SmimeInfo.</param>
                     public virtual SetDefaultRequest SetDefault(string userId, string sendAsEmail, string id)
                     {
-                        return new SetDefaultRequest(service, userId, sendAsEmail, id);
+                        return new SetDefaultRequest(this.service, userId, sendAsEmail, id);
                     }
 
                     /// <summary>Sets the default S/MIME config for the specified send-as alias.</summary>
@@ -5586,7 +5586,7 @@ namespace Google.Apis.Gmail.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Gmail.v1.Data.SendAs body, string userId)
                 {
-                    return new CreateRequest(service, body, userId);
+                    return new CreateRequest(this.service, body, userId);
                 }
 
                 /// <summary>
@@ -5655,7 +5655,7 @@ namespace Google.Apis.Gmail.v1
                 /// <param name="sendAsEmail">The send-as alias to be deleted.</param>
                 public virtual DeleteRequest Delete(string userId, string sendAsEmail)
                 {
-                    return new DeleteRequest(service, userId, sendAsEmail);
+                    return new DeleteRequest(this.service, userId, sendAsEmail);
                 }
 
                 /// <summary>
@@ -5725,7 +5725,7 @@ namespace Google.Apis.Gmail.v1
                 /// <param name="sendAsEmail">The send-as alias to be retrieved.</param>
                 public virtual GetRequest Get(string userId, string sendAsEmail)
                 {
-                    return new GetRequest(service, userId, sendAsEmail);
+                    return new GetRequest(this.service, userId, sendAsEmail);
                 }
 
                 /// <summary>
@@ -5793,7 +5793,7 @@ namespace Google.Apis.Gmail.v1
                 /// </param>
                 public virtual ListRequest List(string userId)
                 {
-                    return new ListRequest(service, userId);
+                    return new ListRequest(this.service, userId);
                 }
 
                 /// <summary>
@@ -5847,7 +5847,7 @@ namespace Google.Apis.Gmail.v1
                 /// <param name="sendAsEmail">The send-as alias to be updated.</param>
                 public virtual PatchRequest Patch(Google.Apis.Gmail.v1.Data.SendAs body, string userId, string sendAsEmail)
                 {
-                    return new PatchRequest(service, body, userId, sendAsEmail);
+                    return new PatchRequest(this.service, body, userId, sendAsEmail);
                 }
 
                 /// <summary>Patch the specified send-as alias.</summary>
@@ -5922,7 +5922,7 @@ namespace Google.Apis.Gmail.v1
                 /// <param name="sendAsEmail">The send-as alias to be updated.</param>
                 public virtual UpdateRequest Update(Google.Apis.Gmail.v1.Data.SendAs body, string userId, string sendAsEmail)
                 {
-                    return new UpdateRequest(service, body, userId, sendAsEmail);
+                    return new UpdateRequest(this.service, body, userId, sendAsEmail);
                 }
 
                 /// <summary>
@@ -6000,7 +6000,7 @@ namespace Google.Apis.Gmail.v1
                 /// <param name="sendAsEmail">The send-as alias to be verified.</param>
                 public virtual VerifyRequest Verify(string userId, string sendAsEmail)
                 {
-                    return new VerifyRequest(service, userId, sendAsEmail);
+                    return new VerifyRequest(this.service, userId, sendAsEmail);
                 }
 
                 /// <summary>
@@ -6067,7 +6067,7 @@ namespace Google.Apis.Gmail.v1
             /// </param>
             public virtual GetAutoForwardingRequest GetAutoForwarding(string userId)
             {
-                return new GetAutoForwardingRequest(service, userId);
+                return new GetAutoForwardingRequest(this.service, userId);
             }
 
             /// <summary>Gets the auto-forwarding setting for the specified account.</summary>
@@ -6116,7 +6116,7 @@ namespace Google.Apis.Gmail.v1
             /// </param>
             public virtual GetImapRequest GetImap(string userId)
             {
-                return new GetImapRequest(service, userId);
+                return new GetImapRequest(this.service, userId);
             }
 
             /// <summary>Gets IMAP settings.</summary>
@@ -6165,7 +6165,7 @@ namespace Google.Apis.Gmail.v1
             /// </param>
             public virtual GetLanguageRequest GetLanguage(string userId)
             {
-                return new GetLanguageRequest(service, userId);
+                return new GetLanguageRequest(this.service, userId);
             }
 
             /// <summary>Gets language settings.</summary>
@@ -6214,7 +6214,7 @@ namespace Google.Apis.Gmail.v1
             /// </param>
             public virtual GetPopRequest GetPop(string userId)
             {
-                return new GetPopRequest(service, userId);
+                return new GetPopRequest(this.service, userId);
             }
 
             /// <summary>Gets POP settings.</summary>
@@ -6263,7 +6263,7 @@ namespace Google.Apis.Gmail.v1
             /// </param>
             public virtual GetVacationRequest GetVacation(string userId)
             {
-                return new GetVacationRequest(service, userId);
+                return new GetVacationRequest(this.service, userId);
             }
 
             /// <summary>Gets vacation responder settings.</summary>
@@ -6317,7 +6317,7 @@ namespace Google.Apis.Gmail.v1
             /// </param>
             public virtual UpdateAutoForwardingRequest UpdateAutoForwarding(Google.Apis.Gmail.v1.Data.AutoForwarding body, string userId)
             {
-                return new UpdateAutoForwardingRequest(service, body, userId);
+                return new UpdateAutoForwardingRequest(this.service, body, userId);
             }
 
             /// <summary>
@@ -6378,7 +6378,7 @@ namespace Google.Apis.Gmail.v1
             /// </param>
             public virtual UpdateImapRequest UpdateImap(Google.Apis.Gmail.v1.Data.ImapSettings body, string userId)
             {
-                return new UpdateImapRequest(service, body, userId);
+                return new UpdateImapRequest(this.service, body, userId);
             }
 
             /// <summary>Updates IMAP settings.</summary>
@@ -6440,7 +6440,7 @@ namespace Google.Apis.Gmail.v1
             /// </param>
             public virtual UpdateLanguageRequest UpdateLanguage(Google.Apis.Gmail.v1.Data.LanguageSettings body, string userId)
             {
-                return new UpdateLanguageRequest(service, body, userId);
+                return new UpdateLanguageRequest(this.service, body, userId);
             }
 
             /// <summary>
@@ -6502,7 +6502,7 @@ namespace Google.Apis.Gmail.v1
             /// </param>
             public virtual UpdatePopRequest UpdatePop(Google.Apis.Gmail.v1.Data.PopSettings body, string userId)
             {
-                return new UpdatePopRequest(service, body, userId);
+                return new UpdatePopRequest(this.service, body, userId);
             }
 
             /// <summary>Updates POP settings.</summary>
@@ -6559,7 +6559,7 @@ namespace Google.Apis.Gmail.v1
             /// </param>
             public virtual UpdateVacationRequest UpdateVacation(Google.Apis.Gmail.v1.Data.VacationSettings body, string userId)
             {
-                return new UpdateVacationRequest(service, body, userId);
+                return new UpdateVacationRequest(this.service, body, userId);
             }
 
             /// <summary>Updates vacation responder settings.</summary>
@@ -6637,7 +6637,7 @@ namespace Google.Apis.Gmail.v1
             /// <param name="id">ID of the Thread to delete.</param>
             public virtual DeleteRequest Delete(string userId, string id)
             {
-                return new DeleteRequest(service, userId, id);
+                return new DeleteRequest(this.service, userId, id);
             }
 
             /// <summary>
@@ -6703,7 +6703,7 @@ namespace Google.Apis.Gmail.v1
             /// <param name="id">The ID of the thread to retrieve.</param>
             public virtual GetRequest Get(string userId, string id)
             {
-                return new GetRequest(service, userId, id);
+                return new GetRequest(this.service, userId, id);
             }
 
             /// <summary>Gets the specified thread.</summary>
@@ -6810,7 +6810,7 @@ namespace Google.Apis.Gmail.v1
             /// </param>
             public virtual ListRequest List(string userId)
             {
-                return new ListRequest(service, userId);
+                return new ListRequest(this.service, userId);
             }
 
             /// <summary>Lists the threads in the user's mailbox.</summary>
@@ -6930,7 +6930,7 @@ namespace Google.Apis.Gmail.v1
             /// <param name="id">The ID of the thread to modify.</param>
             public virtual ModifyRequest Modify(Google.Apis.Gmail.v1.Data.ModifyThreadRequest body, string userId, string id)
             {
-                return new ModifyRequest(service, body, userId, id);
+                return new ModifyRequest(this.service, body, userId, id);
             }
 
             /// <summary>
@@ -7005,7 +7005,7 @@ namespace Google.Apis.Gmail.v1
             /// <param name="id">The ID of the thread to Trash.</param>
             public virtual TrashRequest Trash(string userId, string id)
             {
-                return new TrashRequest(service, userId, id);
+                return new TrashRequest(this.service, userId, id);
             }
 
             /// <summary>
@@ -7074,7 +7074,7 @@ namespace Google.Apis.Gmail.v1
             /// <param name="id">The ID of the thread to remove from Trash.</param>
             public virtual UntrashRequest Untrash(string userId, string id)
             {
-                return new UntrashRequest(service, userId, id);
+                return new UntrashRequest(this.service, userId, id);
             }
 
             /// <summary>
@@ -7140,7 +7140,7 @@ namespace Google.Apis.Gmail.v1
         /// </param>
         public virtual GetProfileRequest GetProfile(string userId)
         {
-            return new GetProfileRequest(service, userId);
+            return new GetProfileRequest(this.service, userId);
         }
 
         /// <summary>Gets the current user's Gmail profile.</summary>
@@ -7189,7 +7189,7 @@ namespace Google.Apis.Gmail.v1
         /// </param>
         public virtual StopRequest Stop(string userId)
         {
-            return new StopRequest(service, userId);
+            return new StopRequest(this.service, userId);
         }
 
         /// <summary>Stop receiving push notifications for the given user mailbox.</summary>
@@ -7239,7 +7239,7 @@ namespace Google.Apis.Gmail.v1
         /// </param>
         public virtual WatchRequest Watch(Google.Apis.Gmail.v1.Data.WatchRequest body, string userId)
         {
-            return new WatchRequest(service, body, userId);
+            return new WatchRequest(this.service, body, userId);
         }
 
         /// <summary>Set up or update a push notification watch on the given user mailbox.</summary>
@@ -7414,8 +7414,8 @@ namespace Google.Apis.Gmail.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? DisableTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DisableTimeRaw);
-            set => DisableTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DisableTimeRaw);
+            set => DisableTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. The current state of the key pair.</summary>

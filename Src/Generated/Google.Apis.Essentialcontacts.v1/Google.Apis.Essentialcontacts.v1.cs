@@ -310,7 +310,7 @@ namespace Google.Apis.Essentialcontacts.v1
             /// </param>
             public virtual ComputeRequest Compute(string parent)
             {
-                return new ComputeRequest(service, parent);
+                return new ComputeRequest(this.service, parent);
             }
 
             /// <summary>
@@ -486,7 +486,7 @@ namespace Google.Apis.Essentialcontacts.v1
             /// </param>
             public virtual CreateRequest Create(Google.Apis.Essentialcontacts.v1.Data.GoogleCloudEssentialcontactsV1Contact body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>Adds a new contact for a resource.</summary>
@@ -545,7 +545,7 @@ namespace Google.Apis.Essentialcontacts.v1
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>Deletes a contact.</summary>
@@ -598,7 +598,7 @@ namespace Google.Apis.Essentialcontacts.v1
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets a single contact.</summary>
@@ -650,7 +650,7 @@ namespace Google.Apis.Essentialcontacts.v1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists the contacts that have been set on a resource.</summary>
@@ -733,7 +733,7 @@ namespace Google.Apis.Essentialcontacts.v1
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.Essentialcontacts.v1.Data.GoogleCloudEssentialcontactsV1Contact body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>Updates a contact. Note: A contact's email address cannot be changed.</summary>
@@ -811,7 +811,7 @@ namespace Google.Apis.Essentialcontacts.v1
             /// </param>
             public virtual SendTestMessageRequest SendTestMessage(Google.Apis.Essentialcontacts.v1.Data.GoogleCloudEssentialcontactsV1SendTestMessageRequest body, string resource)
             {
-                return new SendTestMessageRequest(service, body, resource);
+                return new SendTestMessageRequest(this.service, body, resource);
             }
 
             /// <summary>
@@ -910,7 +910,7 @@ namespace Google.Apis.Essentialcontacts.v1
             /// </param>
             public virtual ComputeRequest Compute(string parent)
             {
-                return new ComputeRequest(service, parent);
+                return new ComputeRequest(this.service, parent);
             }
 
             /// <summary>
@@ -1086,7 +1086,7 @@ namespace Google.Apis.Essentialcontacts.v1
             /// </param>
             public virtual CreateRequest Create(Google.Apis.Essentialcontacts.v1.Data.GoogleCloudEssentialcontactsV1Contact body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>Adds a new contact for a resource.</summary>
@@ -1145,7 +1145,7 @@ namespace Google.Apis.Essentialcontacts.v1
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>Deletes a contact.</summary>
@@ -1198,7 +1198,7 @@ namespace Google.Apis.Essentialcontacts.v1
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets a single contact.</summary>
@@ -1250,7 +1250,7 @@ namespace Google.Apis.Essentialcontacts.v1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists the contacts that have been set on a resource.</summary>
@@ -1333,7 +1333,7 @@ namespace Google.Apis.Essentialcontacts.v1
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.Essentialcontacts.v1.Data.GoogleCloudEssentialcontactsV1Contact body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>Updates a contact. Note: A contact's email address cannot be changed.</summary>
@@ -1411,7 +1411,7 @@ namespace Google.Apis.Essentialcontacts.v1
             /// </param>
             public virtual SendTestMessageRequest SendTestMessage(Google.Apis.Essentialcontacts.v1.Data.GoogleCloudEssentialcontactsV1SendTestMessageRequest body, string resource)
             {
-                return new SendTestMessageRequest(service, body, resource);
+                return new SendTestMessageRequest(this.service, body, resource);
             }
 
             /// <summary>
@@ -1510,7 +1510,7 @@ namespace Google.Apis.Essentialcontacts.v1
             /// </param>
             public virtual ComputeRequest Compute(string parent)
             {
-                return new ComputeRequest(service, parent);
+                return new ComputeRequest(this.service, parent);
             }
 
             /// <summary>
@@ -1686,7 +1686,7 @@ namespace Google.Apis.Essentialcontacts.v1
             /// </param>
             public virtual CreateRequest Create(Google.Apis.Essentialcontacts.v1.Data.GoogleCloudEssentialcontactsV1Contact body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>Adds a new contact for a resource.</summary>
@@ -1745,7 +1745,7 @@ namespace Google.Apis.Essentialcontacts.v1
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>Deletes a contact.</summary>
@@ -1798,7 +1798,7 @@ namespace Google.Apis.Essentialcontacts.v1
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets a single contact.</summary>
@@ -1850,7 +1850,7 @@ namespace Google.Apis.Essentialcontacts.v1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists the contacts that have been set on a resource.</summary>
@@ -1933,7 +1933,7 @@ namespace Google.Apis.Essentialcontacts.v1
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.Essentialcontacts.v1.Data.GoogleCloudEssentialcontactsV1Contact body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>Updates a contact. Note: A contact's email address cannot be changed.</summary>
@@ -2011,7 +2011,7 @@ namespace Google.Apis.Essentialcontacts.v1
             /// </param>
             public virtual SendTestMessageRequest SendTestMessage(Google.Apis.Essentialcontacts.v1.Data.GoogleCloudEssentialcontactsV1SendTestMessageRequest body, string resource)
             {
-                return new SendTestMessageRequest(service, body, resource);
+                return new SendTestMessageRequest(this.service, body, resource);
             }
 
             /// <summary>
@@ -2158,8 +2158,8 @@ namespace Google.Apis.Essentialcontacts.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ValidateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ValidateTimeRaw);
-            set => ValidateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ValidateTimeRaw);
+            set => ValidateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>

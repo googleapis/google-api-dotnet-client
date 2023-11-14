@@ -296,7 +296,7 @@ namespace Google.Apis.Reseller.v1
         /// </param>
         public virtual GetRequest Get(string customerId)
         {
-            return new GetRequest(service, customerId);
+            return new GetRequest(this.service, customerId);
         }
 
         /// <summary>
@@ -363,7 +363,7 @@ namespace Google.Apis.Reseller.v1
         /// <param name="body">The body of the request.</param>
         public virtual InsertRequest Insert(Google.Apis.Reseller.v1.Data.Customer body)
         {
-            return new InsertRequest(service, body);
+            return new InsertRequest(this.service, body);
         }
 
         /// <summary>
@@ -442,7 +442,7 @@ namespace Google.Apis.Reseller.v1
         /// </param>
         public virtual PatchRequest Patch(Google.Apis.Reseller.v1.Data.Customer body, string customerId)
         {
-            return new PatchRequest(service, body, customerId);
+            return new PatchRequest(this.service, body, customerId);
         }
 
         /// <summary>
@@ -514,7 +514,7 @@ namespace Google.Apis.Reseller.v1
         /// </param>
         public virtual UpdateRequest Update(Google.Apis.Reseller.v1.Data.Customer body, string customerId)
         {
-            return new UpdateRequest(service, body, customerId);
+            return new UpdateRequest(this.service, body, customerId);
         }
 
         /// <summary>
@@ -589,7 +589,7 @@ namespace Google.Apis.Reseller.v1
         /// <summary>Returns all the details of the watch corresponding to the reseller.</summary>
         public virtual GetwatchdetailsRequest Getwatchdetails()
         {
-            return new GetwatchdetailsRequest(service);
+            return new GetwatchdetailsRequest(this.service);
         }
 
         /// <summary>Returns all the details of the watch corresponding to the reseller.</summary>
@@ -620,7 +620,7 @@ namespace Google.Apis.Reseller.v1
         /// <summary>Registers a Reseller for receiving notifications.</summary>
         public virtual RegisterRequest Register()
         {
-            return new RegisterRequest(service);
+            return new RegisterRequest(this.service);
         }
 
         /// <summary>Registers a Reseller for receiving notifications.</summary>
@@ -663,7 +663,7 @@ namespace Google.Apis.Reseller.v1
         /// <summary>Unregisters a Reseller for receiving notifications.</summary>
         public virtual UnregisterRequest Unregister()
         {
-            return new UnregisterRequest(service);
+            return new UnregisterRequest(this.service);
         }
 
         /// <summary>Unregisters a Reseller for receiving notifications.</summary>
@@ -737,7 +737,7 @@ namespace Google.Apis.Reseller.v1
         /// </param>
         public virtual ActivateRequest Activate(string customerId, string subscriptionId)
         {
-            return new ActivateRequest(service, customerId, subscriptionId);
+            return new ActivateRequest(this.service, customerId, subscriptionId);
         }
 
         /// <summary>
@@ -826,7 +826,7 @@ namespace Google.Apis.Reseller.v1
         /// </param>
         public virtual ChangePlanRequest ChangePlan(Google.Apis.Reseller.v1.Data.ChangePlanRequest body, string customerId, string subscriptionId)
         {
-            return new ChangePlanRequest(service, body, customerId, subscriptionId);
+            return new ChangePlanRequest(this.service, body, customerId, subscriptionId);
         }
 
         /// <summary>
@@ -922,7 +922,7 @@ namespace Google.Apis.Reseller.v1
         /// </param>
         public virtual ChangeRenewalSettingsRequest ChangeRenewalSettings(Google.Apis.Reseller.v1.Data.RenewalSettings body, string customerId, string subscriptionId)
         {
-            return new ChangeRenewalSettingsRequest(service, body, customerId, subscriptionId);
+            return new ChangeRenewalSettingsRequest(this.service, body, customerId, subscriptionId);
         }
 
         /// <summary>
@@ -1017,7 +1017,7 @@ namespace Google.Apis.Reseller.v1
         /// </param>
         public virtual ChangeSeatsRequest ChangeSeats(Google.Apis.Reseller.v1.Data.Seats body, string customerId, string subscriptionId)
         {
-            return new ChangeSeatsRequest(service, body, customerId, subscriptionId);
+            return new ChangeSeatsRequest(this.service, body, customerId, subscriptionId);
         }
 
         /// <summary>
@@ -1110,7 +1110,7 @@ namespace Google.Apis.Reseller.v1
         /// </param>
         public virtual DeleteRequest Delete(string customerId, string subscriptionId, DeleteRequest.DeletionTypeEnum deletionType)
         {
-            return new DeleteRequest(service, customerId, subscriptionId, deletionType);
+            return new DeleteRequest(this.service, customerId, subscriptionId, deletionType);
         }
 
         /// <summary>Cancels, suspends, or transfers a subscription to direct.</summary>
@@ -1234,7 +1234,7 @@ namespace Google.Apis.Reseller.v1
         /// </param>
         public virtual GetRequest Get(string customerId, string subscriptionId)
         {
-            return new GetRequest(service, customerId, subscriptionId);
+            return new GetRequest(this.service, customerId, subscriptionId);
         }
 
         /// <summary>
@@ -1323,7 +1323,7 @@ namespace Google.Apis.Reseller.v1
         /// </param>
         public virtual InsertRequest Insert(Google.Apis.Reseller.v1.Data.Subscription body, string customerId)
         {
-            return new InsertRequest(service, body, customerId);
+            return new InsertRequest(this.service, body, customerId);
         }
 
         /// <summary>
@@ -1469,7 +1469,7 @@ namespace Google.Apis.Reseller.v1
         /// </summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>
@@ -1600,7 +1600,7 @@ namespace Google.Apis.Reseller.v1
         /// </param>
         public virtual StartPaidServiceRequest StartPaidService(string customerId, string subscriptionId)
         {
-            return new StartPaidServiceRequest(service, customerId, subscriptionId);
+            return new StartPaidServiceRequest(this.service, customerId, subscriptionId);
         }
 
         /// <summary>
@@ -1691,7 +1691,7 @@ namespace Google.Apis.Reseller.v1
         /// </param>
         public virtual SuspendRequest Suspend(string customerId, string subscriptionId)
         {
-            return new SuspendRequest(service, customerId, subscriptionId);
+            return new SuspendRequest(this.service, customerId, subscriptionId);
         }
 
         /// <summary>

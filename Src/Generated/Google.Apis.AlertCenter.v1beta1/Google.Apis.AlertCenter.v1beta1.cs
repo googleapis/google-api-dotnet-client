@@ -299,7 +299,7 @@ namespace Google.Apis.AlertCenter.v1beta1
             /// <param name="alertId">Required. The identifier of the alert this feedback belongs to.</param>
             public virtual CreateRequest Create(Google.Apis.AlertCenter.v1beta1.Data.AlertFeedback body, string alertId)
             {
-                return new CreateRequest(service, body, alertId);
+                return new CreateRequest(this.service, body, alertId);
             }
 
             /// <summary>
@@ -377,7 +377,7 @@ namespace Google.Apis.AlertCenter.v1beta1
             /// </param>
             public virtual ListRequest List(string alertId)
             {
-                return new ListRequest(service, alertId);
+                return new ListRequest(this.service, alertId);
             }
 
             /// <summary>
@@ -462,7 +462,7 @@ namespace Google.Apis.AlertCenter.v1beta1
         /// <param name="body">The body of the request.</param>
         public virtual BatchDeleteRequest BatchDelete(Google.Apis.AlertCenter.v1beta1.Data.BatchDeleteAlertsRequest body)
         {
-            return new BatchDeleteRequest(service, body);
+            return new BatchDeleteRequest(this.service, body);
         }
 
         /// <summary>Performs batch delete operation on alerts.</summary>
@@ -501,7 +501,7 @@ namespace Google.Apis.AlertCenter.v1beta1
         /// <param name="body">The body of the request.</param>
         public virtual BatchUndeleteRequest BatchUndelete(Google.Apis.AlertCenter.v1beta1.Data.BatchUndeleteAlertsRequest body)
         {
-            return new BatchUndeleteRequest(service, body);
+            return new BatchUndeleteRequest(this.service, body);
         }
 
         /// <summary>Performs batch undelete operation on alerts.</summary>
@@ -544,7 +544,7 @@ namespace Google.Apis.AlertCenter.v1beta1
         /// <param name="alertId">Required. The identifier of the alert to delete.</param>
         public virtual DeleteRequest Delete(string alertId)
         {
-            return new DeleteRequest(service, alertId);
+            return new DeleteRequest(this.service, alertId);
         }
 
         /// <summary>
@@ -612,7 +612,7 @@ namespace Google.Apis.AlertCenter.v1beta1
         /// <param name="alertId">Required. The identifier of the alert to retrieve.</param>
         public virtual GetRequest Get(string alertId)
         {
-            return new GetRequest(service, alertId);
+            return new GetRequest(this.service, alertId);
         }
 
         /// <summary>
@@ -679,7 +679,7 @@ namespace Google.Apis.AlertCenter.v1beta1
         /// <param name="alertId">Required. The identifier of the alert this metadata belongs to.</param>
         public virtual GetMetadataRequest GetMetadata(string alertId)
         {
-            return new GetMetadataRequest(service, alertId);
+            return new GetMetadataRequest(this.service, alertId);
         }
 
         /// <summary>
@@ -743,7 +743,7 @@ namespace Google.Apis.AlertCenter.v1beta1
         /// <summary>Lists the alerts.</summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>Lists the alerts.</summary>
@@ -862,7 +862,7 @@ namespace Google.Apis.AlertCenter.v1beta1
         /// <param name="alertId">Required. The identifier of the alert to undelete.</param>
         public virtual UndeleteRequest Undelete(Google.Apis.AlertCenter.v1beta1.Data.UndeleteAlertRequest body, string alertId)
         {
-            return new UndeleteRequest(service, body, alertId);
+            return new UndeleteRequest(this.service, body, alertId);
         }
 
         /// <summary>
@@ -933,7 +933,7 @@ namespace Google.Apis.AlertCenter.v1beta1
         /// <summary>Returns customer-level settings.</summary>
         public virtual GetSettingsRequest GetSettings()
         {
-            return new GetSettingsRequest(service);
+            return new GetSettingsRequest(this.service);
         }
 
         /// <summary>Returns customer-level settings.</summary>
@@ -982,7 +982,7 @@ namespace Google.Apis.AlertCenter.v1beta1
         /// <param name="body">The body of the request.</param>
         public virtual UpdateSettingsRequest UpdateSettings(Google.Apis.AlertCenter.v1beta1.Data.Settings body)
         {
-            return new UpdateSettingsRequest(service, body);
+            return new UpdateSettingsRequest(this.service, body);
         }
 
         /// <summary>Updates the customer-level settings.</summary>
@@ -1207,8 +1207,8 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Description of the rule.</summary>
@@ -1282,8 +1282,8 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Rule window size. Possible values are 1 hour or 24 hours.</summary>
@@ -1334,8 +1334,8 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. The unique identifier of the Google Workspace account of the customer.</summary>
@@ -1388,8 +1388,8 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -1456,8 +1456,8 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -1501,8 +1501,8 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
     }
 
@@ -1546,8 +1546,8 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. The unique identifier of the Google Workspace account of the customer.</summary>
@@ -1645,8 +1645,8 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
     }
 
@@ -1695,8 +1695,8 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ExpirationTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpirationTimeRaw);
-            set => ExpirationTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpirationTimeRaw);
+            set => ExpirationTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The UID of the certificate.</summary>
@@ -1788,8 +1788,8 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? NextUpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(NextUpdateTimeRaw);
-            set => NextUpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(NextUpdateTimeRaw);
+            set => NextUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>List of products impacted by the outage.</summary>
@@ -1833,8 +1833,8 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ResolutionTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ResolutionTimeRaw);
-            set => ResolutionTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ResolutionTimeRaw);
+            set => ResolutionTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Current outage status.</summary>
@@ -2191,8 +2191,8 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? DateDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DateRaw);
-            set => DateRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DateRaw);
+            set => DateRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The hash of the message body text.</summary>
@@ -2248,8 +2248,8 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? SentTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(SentTimeRaw);
-            set => SentTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(SentTimeRaw);
+            set => SentTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The email subject text (only available for reported emails).</summary>
@@ -2375,8 +2375,8 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LoginTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LoginTimeRaw);
-            set => LoginTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LoginTimeRaw);
+            set => LoginTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -2769,8 +2769,8 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EventTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EventTimeRaw);
-            set => EventTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EventTimeRaw);
+            set => EventTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Event occurred when primary admin changed in customer's account</summary>

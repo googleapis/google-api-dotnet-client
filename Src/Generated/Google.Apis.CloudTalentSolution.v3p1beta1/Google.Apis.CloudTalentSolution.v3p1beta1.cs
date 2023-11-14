@@ -311,7 +311,7 @@ namespace Google.Apis.CloudTalentSolution.v3p1beta1
             /// <param name="parent">Parent project name.</param>
             public virtual CreateRequest Create(Google.Apis.CloudTalentSolution.v3p1beta1.Data.CreateClientEventRequest body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -390,7 +390,7 @@ namespace Google.Apis.CloudTalentSolution.v3p1beta1
             /// </param>
             public virtual CreateRequest Create(Google.Apis.CloudTalentSolution.v3p1beta1.Data.CreateCompanyRequest body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>Creates a new company entity.</summary>
@@ -448,7 +448,7 @@ namespace Google.Apis.CloudTalentSolution.v3p1beta1
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>Deletes specified company. Prerequisite: The company has no jobs associated with it.</summary>
@@ -500,7 +500,7 @@ namespace Google.Apis.CloudTalentSolution.v3p1beta1
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Retrieves specified company.</summary>
@@ -552,7 +552,7 @@ namespace Google.Apis.CloudTalentSolution.v3p1beta1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists all companies associated with the service account.</summary>
@@ -650,7 +650,7 @@ namespace Google.Apis.CloudTalentSolution.v3p1beta1
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.CloudTalentSolution.v3p1beta1.Data.UpdateCompanyRequest body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -731,7 +731,7 @@ namespace Google.Apis.CloudTalentSolution.v3p1beta1
             /// </param>
             public virtual BatchDeleteRequest BatchDelete(Google.Apis.CloudTalentSolution.v3p1beta1.Data.BatchDeleteJobsRequest body, string parent)
             {
-                return new BatchDeleteRequest(service, body, parent);
+                return new BatchDeleteRequest(this.service, body, parent);
             }
 
             /// <summary>Deletes a list of Jobs by filter.</summary>
@@ -793,7 +793,7 @@ namespace Google.Apis.CloudTalentSolution.v3p1beta1
             /// </param>
             public virtual CreateRequest Create(Google.Apis.CloudTalentSolution.v3p1beta1.Data.CreateJobRequest body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -857,7 +857,7 @@ namespace Google.Apis.CloudTalentSolution.v3p1beta1
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>
@@ -913,7 +913,7 @@ namespace Google.Apis.CloudTalentSolution.v3p1beta1
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>
@@ -966,7 +966,7 @@ namespace Google.Apis.CloudTalentSolution.v3p1beta1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists jobs by filter.</summary>
@@ -1123,7 +1123,7 @@ namespace Google.Apis.CloudTalentSolution.v3p1beta1
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.CloudTalentSolution.v3p1beta1.Data.UpdateJobRequest body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -1190,7 +1190,7 @@ namespace Google.Apis.CloudTalentSolution.v3p1beta1
             /// </param>
             public virtual SearchRequest Search(Google.Apis.CloudTalentSolution.v3p1beta1.Data.SearchJobsRequest body, string parent)
             {
-                return new SearchRequest(service, body, parent);
+                return new SearchRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -1258,7 +1258,7 @@ namespace Google.Apis.CloudTalentSolution.v3p1beta1
             /// </param>
             public virtual SearchForAlertRequest SearchForAlert(Google.Apis.CloudTalentSolution.v3p1beta1.Data.SearchJobsRequest body, string parent)
             {
-                return new SearchForAlertRequest(service, body, parent);
+                return new SearchForAlertRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -1340,7 +1340,7 @@ namespace Google.Apis.CloudTalentSolution.v3p1beta1
             /// <param name="name">The name of the operation resource.</param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>
@@ -1395,7 +1395,7 @@ namespace Google.Apis.CloudTalentSolution.v3p1beta1
         /// </param>
         public virtual CompleteRequest Complete(string name)
         {
-            return new CompleteRequest(service, name);
+            return new CompleteRequest(this.service, name);
         }
 
         /// <summary>
@@ -1707,8 +1707,8 @@ namespace Google.Apis.CloudTalentSolution.v3p1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -2574,8 +2574,8 @@ namespace Google.Apis.CloudTalentSolution.v3p1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? JobEndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(JobEndTimeRaw);
-            set => JobEndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(JobEndTimeRaw);
+            set => JobEndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Optional. The experience level associated with the job, such as "Entry Level".</summary>
@@ -2618,8 +2618,8 @@ namespace Google.Apis.CloudTalentSolution.v3p1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? JobStartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(JobStartTimeRaw);
-            set => JobStartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(JobStartTimeRaw);
+            set => JobStartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -2676,8 +2676,8 @@ namespace Google.Apis.CloudTalentSolution.v3p1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? PostingCreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(PostingCreateTimeRaw);
-            set => PostingCreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(PostingCreateTimeRaw);
+            set => PostingCreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _postingExpireTimeRaw;
@@ -2732,8 +2732,8 @@ namespace Google.Apis.CloudTalentSolution.v3p1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? PostingExpireTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(PostingExpireTimeRaw);
-            set => PostingExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(PostingExpireTimeRaw);
+            set => PostingExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _postingPublishTimeRaw;
@@ -2774,8 +2774,8 @@ namespace Google.Apis.CloudTalentSolution.v3p1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? PostingPublishTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(PostingPublishTimeRaw);
-            set => PostingPublishTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(PostingPublishTimeRaw);
+            set => PostingPublishTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -2823,8 +2823,8 @@ namespace Google.Apis.CloudTalentSolution.v3p1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? PostingUpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(PostingUpdateTimeRaw);
-            set => PostingUpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(PostingUpdateTimeRaw);
+            set => PostingUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Optional. Options for job processing.</summary>
@@ -3994,8 +3994,8 @@ namespace Google.Apis.CloudTalentSolution.v3p1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _startTimeRaw;
@@ -4031,8 +4031,8 @@ namespace Google.Apis.CloudTalentSolution.v3p1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>

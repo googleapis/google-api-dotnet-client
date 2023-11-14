@@ -323,7 +323,7 @@ namespace Google.Apis.Spanner.v1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>
@@ -484,7 +484,7 @@ namespace Google.Apis.Spanner.v1
                 /// <param name="name">The name of the operation resource to be cancelled.</param>
                 public virtual CancelRequest Cancel(string name)
                 {
-                    return new CancelRequest(service, name);
+                    return new CancelRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -540,7 +540,7 @@ namespace Google.Apis.Spanner.v1
                 /// <param name="name">The name of the operation resource to be deleted.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -592,7 +592,7 @@ namespace Google.Apis.Spanner.v1
                 /// <param name="name">The name of the operation resource.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -643,7 +643,7 @@ namespace Google.Apis.Spanner.v1
                 /// <param name="name">The name of the operation's parent resource.</param>
                 public virtual ListRequest List(string name)
                 {
-                    return new ListRequest(service, name);
+                    return new ListRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -771,7 +771,7 @@ namespace Google.Apis.Spanner.v1
                     /// <param name="name">The name of the operation resource to be cancelled.</param>
                     public virtual CancelRequest Cancel(string name)
                     {
-                        return new CancelRequest(service, name);
+                        return new CancelRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -828,7 +828,7 @@ namespace Google.Apis.Spanner.v1
                     /// <param name="name">The name of the operation resource to be deleted.</param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -880,7 +880,7 @@ namespace Google.Apis.Spanner.v1
                     /// <param name="name">The name of the operation resource.</param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -931,7 +931,7 @@ namespace Google.Apis.Spanner.v1
                     /// <param name="name">The name of the operation's parent resource.</param>
                     public virtual ListRequest List(string name)
                     {
-                        return new ListRequest(service, name);
+                        return new ListRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -1035,7 +1035,7 @@ namespace Google.Apis.Spanner.v1
             /// </param>
             public virtual CreateRequest Create(Google.Apis.Spanner.v1.Data.CreateInstanceConfigRequest body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -1111,7 +1111,7 @@ namespace Google.Apis.Spanner.v1
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>
@@ -1197,7 +1197,7 @@ namespace Google.Apis.Spanner.v1
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets information about a particular instance configuration.</summary>
@@ -1248,7 +1248,7 @@ namespace Google.Apis.Spanner.v1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists the supported instance configurations for a given project.</summary>
@@ -1344,7 +1344,7 @@ namespace Google.Apis.Spanner.v1
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.Spanner.v1.Data.UpdateInstanceConfigRequest body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -1463,7 +1463,7 @@ namespace Google.Apis.Spanner.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>
@@ -1640,7 +1640,7 @@ namespace Google.Apis.Spanner.v1
                     /// <param name="name">The name of the operation resource to be cancelled.</param>
                     public virtual CancelRequest Cancel(string name)
                     {
-                        return new CancelRequest(service, name);
+                        return new CancelRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -1697,7 +1697,7 @@ namespace Google.Apis.Spanner.v1
                     /// <param name="name">The name of the operation resource to be deleted.</param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -1749,7 +1749,7 @@ namespace Google.Apis.Spanner.v1
                     /// <param name="name">The name of the operation resource.</param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -1800,7 +1800,7 @@ namespace Google.Apis.Spanner.v1
                     /// <param name="name">The name of the operation's parent resource.</param>
                     public virtual ListRequest List(string name)
                     {
-                        return new ListRequest(service, name);
+                        return new ListRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -1896,7 +1896,7 @@ namespace Google.Apis.Spanner.v1
                 /// </param>
                 public virtual CopyRequest Copy(Google.Apis.Spanner.v1.Data.CopyBackupRequest body, string parent)
                 {
-                    return new CopyRequest(service, body, parent);
+                    return new CopyRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -1971,7 +1971,7 @@ namespace Google.Apis.Spanner.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Spanner.v1.Data.Backup body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -2108,7 +2108,7 @@ namespace Google.Apis.Spanner.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes a pending or completed Backup.</summary>
@@ -2157,7 +2157,7 @@ namespace Google.Apis.Spanner.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets metadata on a pending or completed Backup.</summary>
@@ -2214,7 +2214,7 @@ namespace Google.Apis.Spanner.v1
                 /// </param>
                 public virtual GetIamPolicyRequest GetIamPolicy(Google.Apis.Spanner.v1.Data.GetIamPolicyRequest body, string resource)
                 {
-                    return new GetIamPolicyRequest(service, body, resource);
+                    return new GetIamPolicyRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -2280,7 +2280,7 @@ namespace Google.Apis.Spanner.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>
@@ -2398,7 +2398,7 @@ namespace Google.Apis.Spanner.v1
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.Spanner.v1.Data.Backup body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates a pending or completed Backup.</summary>
@@ -2483,7 +2483,7 @@ namespace Google.Apis.Spanner.v1
                 /// </param>
                 public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Spanner.v1.Data.SetIamPolicyRequest body, string resource)
                 {
-                    return new SetIamPolicyRequest(service, body, resource);
+                    return new SetIamPolicyRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -2554,7 +2554,7 @@ namespace Google.Apis.Spanner.v1
                 /// </param>
                 public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Spanner.v1.Data.TestIamPermissionsRequest body, string resource)
                 {
-                    return new TestIamPermissionsRequest(service, body, resource);
+                    return new TestIamPermissionsRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -2641,7 +2641,7 @@ namespace Google.Apis.Spanner.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>
@@ -2800,7 +2800,7 @@ namespace Google.Apis.Spanner.v1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists Cloud Spanner database roles.</summary>
@@ -2890,7 +2890,7 @@ namespace Google.Apis.Spanner.v1
                     /// </param>
                     public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Spanner.v1.Data.TestIamPermissionsRequest body, string resource)
                     {
-                        return new TestIamPermissionsRequest(service, body, resource);
+                        return new TestIamPermissionsRequest(this.service, body, resource);
                     }
 
                     /// <summary>
@@ -2979,7 +2979,7 @@ namespace Google.Apis.Spanner.v1
                     /// <param name="name">The name of the operation resource to be cancelled.</param>
                     public virtual CancelRequest Cancel(string name)
                     {
-                        return new CancelRequest(service, name);
+                        return new CancelRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -3036,7 +3036,7 @@ namespace Google.Apis.Spanner.v1
                     /// <param name="name">The name of the operation resource to be deleted.</param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -3088,7 +3088,7 @@ namespace Google.Apis.Spanner.v1
                     /// <param name="name">The name of the operation resource.</param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -3139,7 +3139,7 @@ namespace Google.Apis.Spanner.v1
                     /// <param name="name">The name of the operation's parent resource.</param>
                     public virtual ListRequest List(string name)
                     {
-                        return new ListRequest(service, name);
+                        return new ListRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -3245,7 +3245,7 @@ namespace Google.Apis.Spanner.v1
                     /// <param name="database">Required. The database in which the new sessions are created.</param>
                     public virtual BatchCreateRequest BatchCreate(Google.Apis.Spanner.v1.Data.BatchCreateSessionsRequest body, string database)
                     {
-                        return new BatchCreateRequest(service, body, database);
+                        return new BatchCreateRequest(this.service, body, database);
                     }
 
                     /// <summary>
@@ -3313,7 +3313,7 @@ namespace Google.Apis.Spanner.v1
                     /// <param name="session">Required. The session in which the batch request is to be run.</param>
                     public virtual BatchWriteRequest BatchWrite(Google.Apis.Spanner.v1.Data.BatchWriteRequest body, string session)
                     {
-                        return new BatchWriteRequest(service, body, session);
+                        return new BatchWriteRequest(this.service, body, session);
                     }
 
                     /// <summary>
@@ -3381,7 +3381,7 @@ namespace Google.Apis.Spanner.v1
                     /// <param name="session">Required. The session in which the transaction runs.</param>
                     public virtual BeginTransactionRequest BeginTransaction(Google.Apis.Spanner.v1.Data.BeginTransactionRequest body, string session)
                     {
-                        return new BeginTransactionRequest(service, body, session);
+                        return new BeginTransactionRequest(this.service, body, session);
                     }
 
                     /// <summary>
@@ -3448,7 +3448,7 @@ namespace Google.Apis.Spanner.v1
                     /// </param>
                     public virtual CommitRequest Commit(Google.Apis.Spanner.v1.Data.CommitRequest body, string session)
                     {
-                        return new CommitRequest(service, body, session);
+                        return new CommitRequest(this.service, body, session);
                     }
 
                     /// <summary>
@@ -3523,7 +3523,7 @@ namespace Google.Apis.Spanner.v1
                     /// <param name="database">Required. The database in which the new session is created.</param>
                     public virtual CreateRequest Create(Google.Apis.Spanner.v1.Data.CreateSessionRequest body, string database)
                     {
-                        return new CreateRequest(service, body, database);
+                        return new CreateRequest(this.service, body, database);
                     }
 
                     /// <summary>
@@ -3589,7 +3589,7 @@ namespace Google.Apis.Spanner.v1
                     /// <param name="name">Required. The name of the session to delete.</param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -3647,7 +3647,7 @@ namespace Google.Apis.Spanner.v1
                     /// </param>
                     public virtual ExecuteBatchDmlRequest ExecuteBatchDml(Google.Apis.Spanner.v1.Data.ExecuteBatchDmlRequest body, string session)
                     {
-                        return new ExecuteBatchDmlRequest(service, body, session);
+                        return new ExecuteBatchDmlRequest(this.service, body, session);
                     }
 
                     /// <summary>
@@ -3714,7 +3714,7 @@ namespace Google.Apis.Spanner.v1
                     /// <param name="session">Required. The session in which the SQL query should be performed.</param>
                     public virtual ExecuteSqlRequest ExecuteSql(Google.Apis.Spanner.v1.Data.ExecuteSqlRequest body, string session)
                     {
-                        return new ExecuteSqlRequest(service, body, session);
+                        return new ExecuteSqlRequest(this.service, body, session);
                     }
 
                     /// <summary>
@@ -3778,7 +3778,7 @@ namespace Google.Apis.Spanner.v1
                     /// <param name="session">Required. The session in which the SQL query should be performed.</param>
                     public virtual ExecuteStreamingSqlRequest ExecuteStreamingSql(Google.Apis.Spanner.v1.Data.ExecuteSqlRequest body, string session)
                     {
-                        return new ExecuteStreamingSqlRequest(service, body, session);
+                        return new ExecuteStreamingSqlRequest(this.service, body, session);
                     }
 
                     /// <summary>
@@ -3837,7 +3837,7 @@ namespace Google.Apis.Spanner.v1
                     /// <param name="name">Required. The name of the session to retrieve.</param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -3885,7 +3885,7 @@ namespace Google.Apis.Spanner.v1
                     /// <param name="database">Required. The database in which to list sessions.</param>
                     public virtual ListRequest List(string database)
                     {
-                        return new ListRequest(service, database);
+                        return new ListRequest(this.service, database);
                     }
 
                     /// <summary>Lists all sessions in a given database.</summary>
@@ -3988,7 +3988,7 @@ namespace Google.Apis.Spanner.v1
                     /// <param name="session">Required. The session used to create the partitions.</param>
                     public virtual PartitionQueryRequest PartitionQuery(Google.Apis.Spanner.v1.Data.PartitionQueryRequest body, string session)
                     {
-                        return new PartitionQueryRequest(service, body, session);
+                        return new PartitionQueryRequest(this.service, body, session);
                     }
 
                     /// <summary>
@@ -4060,7 +4060,7 @@ namespace Google.Apis.Spanner.v1
                     /// <param name="session">Required. The session used to create the partitions.</param>
                     public virtual PartitionReadRequest PartitionRead(Google.Apis.Spanner.v1.Data.PartitionReadRequest body, string session)
                     {
-                        return new PartitionReadRequest(service, body, session);
+                        return new PartitionReadRequest(this.service, body, session);
                     }
 
                     /// <summary>
@@ -4130,7 +4130,7 @@ namespace Google.Apis.Spanner.v1
                     /// <param name="session">Required. The session in which the read should be performed.</param>
                     public virtual ReadRequest Read(Google.Apis.Spanner.v1.Data.ReadRequest body, string session)
                     {
-                        return new ReadRequest(service, body, session);
+                        return new ReadRequest(this.service, body, session);
                     }
 
                     /// <summary>
@@ -4197,7 +4197,7 @@ namespace Google.Apis.Spanner.v1
                     /// </param>
                     public virtual RollbackRequest Rollback(Google.Apis.Spanner.v1.Data.RollbackRequest body, string session)
                     {
-                        return new RollbackRequest(service, body, session);
+                        return new RollbackRequest(this.service, body, session);
                     }
 
                     /// <summary>
@@ -4259,7 +4259,7 @@ namespace Google.Apis.Spanner.v1
                     /// <param name="session">Required. The session in which the read should be performed.</param>
                     public virtual StreamingReadRequest StreamingRead(Google.Apis.Spanner.v1.Data.ReadRequest body, string session)
                     {
-                        return new StreamingReadRequest(service, body, session);
+                        return new StreamingReadRequest(this.service, body, session);
                     }
 
                     /// <summary>
@@ -4325,7 +4325,7 @@ namespace Google.Apis.Spanner.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Spanner.v1.Data.CreateDatabaseRequest body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -4389,7 +4389,7 @@ namespace Google.Apis.Spanner.v1
                 /// <param name="database">Required. The database to be dropped.</param>
                 public virtual DropDatabaseRequest DropDatabase(string database)
                 {
-                    return new DropDatabaseRequest(service, database);
+                    return new DropDatabaseRequest(this.service, database);
                 }
 
                 /// <summary>
@@ -4441,7 +4441,7 @@ namespace Google.Apis.Spanner.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets the state of a Cloud Spanner database.</summary>
@@ -4495,7 +4495,7 @@ namespace Google.Apis.Spanner.v1
                 /// </param>
                 public virtual GetDdlRequest GetDdl(string database)
                 {
-                    return new GetDdlRequest(service, database);
+                    return new GetDdlRequest(this.service, database);
                 }
 
                 /// <summary>
@@ -4556,7 +4556,7 @@ namespace Google.Apis.Spanner.v1
                 /// </param>
                 public virtual GetIamPolicyRequest GetIamPolicy(Google.Apis.Spanner.v1.Data.GetIamPolicyRequest body, string resource)
                 {
-                    return new GetIamPolicyRequest(service, body, resource);
+                    return new GetIamPolicyRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -4620,7 +4620,7 @@ namespace Google.Apis.Spanner.v1
                 /// </param>
                 public virtual GetScansRequest GetScans(string name)
                 {
-                    return new GetScansRequest(service, name);
+                    return new GetScansRequest(this.service, name);
                 }
 
                 /// <summary>Request a specific scan with Database-specific data for Cloud Key Visualizer.</summary>
@@ -4640,18 +4640,67 @@ namespace Google.Apis.Spanner.v1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>The upper bound for the time range to retrieve Scan data for.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("endTime", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual object EndTime { get; set; }
+                    private object _endTime;
 
                     /// <summary>
-                    /// These fields restrict the Database-specific information returned in the `Scan.data` field. If a
-                    /// `View` is provided that does not include the `Scan.data` field, these are ignored. This range of
-                    /// time must be entirely contained within the defined time range of the targeted scan. The lower
-                    /// bound for the time range to retrieve Scan data for.
+                    /// String representation of <see cref="EndTimeDateTimeOffset"/>, formatted for inclusion in the
+                    /// HTTP request.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("endTime", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string EndTimeRaw { get; private set; }
+
+                    /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+                    [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+                    public virtual object EndTime
+                    {
+                        get => _endTime;
+                        set
+                        {
+                            EndTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                            _endTime = value;
+                        }
+                    }
+
+                    public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+                    {
+                        get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+                        set
+                        {
+                            EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                            _endTime = value;
+                        }
+                    }
+
+                    private object _startTime;
+
+                    /// <summary>
+                    /// String representation of <see cref="StartTimeDateTimeOffset"/>, formatted for inclusion in the
+                    /// HTTP request.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual object StartTime { get; set; }
+                    public virtual string StartTimeRaw { get; private set; }
+
+                    /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+                    [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+                    public virtual object StartTime
+                    {
+                        get => _startTime;
+                        set
+                        {
+                            StartTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                            _startTime = value;
+                        }
+                    }
+
+                    public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+                    {
+                        get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+                        set
+                        {
+                            StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                            _startTime = value;
+                        }
+                    }
 
                     /// <summary>
                     /// Specifies which parts of the Scan should be returned in the response. Note, if left unspecified,
@@ -4740,7 +4789,7 @@ namespace Google.Apis.Spanner.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists Cloud Spanner databases.</summary>
@@ -4836,7 +4885,7 @@ namespace Google.Apis.Spanner.v1
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.Spanner.v1.Data.Database body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -4935,7 +4984,7 @@ namespace Google.Apis.Spanner.v1
                 /// </param>
                 public virtual RestoreRequest Restore(Google.Apis.Spanner.v1.Data.RestoreDatabaseRequest body, string parent)
                 {
-                    return new RestoreRequest(service, body, parent);
+                    return new RestoreRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -5010,7 +5059,7 @@ namespace Google.Apis.Spanner.v1
                 /// </param>
                 public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Spanner.v1.Data.SetIamPolicyRequest body, string resource)
                 {
-                    return new SetIamPolicyRequest(service, body, resource);
+                    return new SetIamPolicyRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -5081,7 +5130,7 @@ namespace Google.Apis.Spanner.v1
                 /// </param>
                 public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Spanner.v1.Data.TestIamPermissionsRequest body, string resource)
                 {
-                    return new TestIamPermissionsRequest(service, body, resource);
+                    return new TestIamPermissionsRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -5149,7 +5198,7 @@ namespace Google.Apis.Spanner.v1
                 /// <param name="database">Required. The database to update.</param>
                 public virtual UpdateDdlRequest UpdateDdl(Google.Apis.Spanner.v1.Data.UpdateDatabaseDdlRequest body, string database)
                 {
-                    return new UpdateDdlRequest(service, body, database);
+                    return new UpdateDdlRequest(this.service, body, database);
                 }
 
                 /// <summary>
@@ -5250,7 +5299,7 @@ namespace Google.Apis.Spanner.v1
                     /// <param name="name">The name of the operation resource to be cancelled.</param>
                     public virtual CancelRequest Cancel(string name)
                     {
-                        return new CancelRequest(service, name);
+                        return new CancelRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -5307,7 +5356,7 @@ namespace Google.Apis.Spanner.v1
                     /// <param name="name">The name of the operation resource to be deleted.</param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -5359,7 +5408,7 @@ namespace Google.Apis.Spanner.v1
                     /// <param name="name">The name of the operation resource.</param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -5410,7 +5459,7 @@ namespace Google.Apis.Spanner.v1
                     /// <param name="name">The name of the operation's parent resource.</param>
                     public virtual ListRequest List(string name)
                     {
-                        return new ListRequest(service, name);
+                        return new ListRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -5520,7 +5569,7 @@ namespace Google.Apis.Spanner.v1
                 /// <param name="name">The name of the operation resource to be cancelled.</param>
                 public virtual CancelRequest Cancel(string name)
                 {
-                    return new CancelRequest(service, name);
+                    return new CancelRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -5576,7 +5625,7 @@ namespace Google.Apis.Spanner.v1
                 /// <param name="name">The name of the operation resource to be deleted.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -5628,7 +5677,7 @@ namespace Google.Apis.Spanner.v1
                 /// <param name="name">The name of the operation resource.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -5679,7 +5728,7 @@ namespace Google.Apis.Spanner.v1
                 /// <param name="name">The name of the operation's parent resource.</param>
                 public virtual ListRequest List(string name)
                 {
-                    return new ListRequest(service, name);
+                    return new ListRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -5780,7 +5829,7 @@ namespace Google.Apis.Spanner.v1
             /// </param>
             public virtual CreateRequest Create(Google.Apis.Spanner.v1.Data.CreateInstanceRequest body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -5854,7 +5903,7 @@ namespace Google.Apis.Spanner.v1
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>
@@ -5907,7 +5956,7 @@ namespace Google.Apis.Spanner.v1
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets information about a particular instance.</summary>
@@ -5977,7 +6026,7 @@ namespace Google.Apis.Spanner.v1
             /// </param>
             public virtual GetIamPolicyRequest GetIamPolicy(Google.Apis.Spanner.v1.Data.GetIamPolicyRequest body, string resource)
             {
-                return new GetIamPolicyRequest(service, body, resource);
+                return new GetIamPolicyRequest(this.service, body, resource);
             }
 
             /// <summary>
@@ -6039,7 +6088,7 @@ namespace Google.Apis.Spanner.v1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists all instances in the given project.</summary>
@@ -6072,12 +6121,36 @@ namespace Google.Apis.Spanner.v1
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
+                private object _instanceDeadline;
+
                 /// <summary>
-                /// Deadline used while retrieving metadata for instances. Instances whose metadata cannot be retrieved
-                /// within this deadline will be added to unreachable in ListInstancesResponse.
+                /// String representation of <see cref="InstanceDeadlineDateTimeOffset"/>, formatted for inclusion in
+                /// the HTTP request.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("instanceDeadline", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual object InstanceDeadline { get; set; }
+                public virtual string InstanceDeadlineRaw { get; private set; }
+
+                /// <summary><seealso cref="object"/> representation of <see cref="InstanceDeadlineRaw"/>.</summary>
+                [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use InstanceDeadlineDateTimeOffset instead.")]
+                public virtual object InstanceDeadline
+                {
+                    get => _instanceDeadline;
+                    set
+                    {
+                        InstanceDeadlineRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                        _instanceDeadline = value;
+                    }
+                }
+
+                public virtual System.DateTimeOffset? InstanceDeadlineDateTimeOffset
+                {
+                    get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(InstanceDeadlineRaw);
+                    set
+                    {
+                        InstanceDeadlineRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                        _instanceDeadline = value;
+                    }
+                }
 
                 /// <summary>
                 /// Number of instances to be returned in the response. If 0 or less, defaults to the server's maximum
@@ -6173,7 +6246,7 @@ namespace Google.Apis.Spanner.v1
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.Spanner.v1.Data.UpdateInstanceRequest body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -6253,7 +6326,7 @@ namespace Google.Apis.Spanner.v1
             /// </param>
             public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Spanner.v1.Data.SetIamPolicyRequest body, string resource)
             {
-                return new SetIamPolicyRequest(service, body, resource);
+                return new SetIamPolicyRequest(this.service, body, resource);
             }
 
             /// <summary>
@@ -6322,7 +6395,7 @@ namespace Google.Apis.Spanner.v1
             /// </param>
             public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Spanner.v1.Data.TestIamPermissionsRequest body, string resource)
             {
-                return new TestIamPermissionsRequest(service, body, resource);
+                return new TestIamPermissionsRequest(this.service, body, resource);
             }
 
             /// <summary>
@@ -6402,7 +6475,7 @@ namespace Google.Apis.Spanner.v1
         /// </param>
         public virtual ListRequest List(string parent)
         {
-            return new ListRequest(service, parent);
+            return new ListRequest(this.service, parent);
         }
 
         /// <summary>Return available scans given a Database-specific resource name.</summary>
@@ -6642,8 +6715,8 @@ namespace Google.Apis.Spanner.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -6699,8 +6772,8 @@ namespace Google.Apis.Spanner.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpireTimeRaw);
-            set => ExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _maxExpireTimeRaw;
@@ -6740,8 +6813,8 @@ namespace Google.Apis.Spanner.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? MaxExpireTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(MaxExpireTimeRaw);
-            set => MaxExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(MaxExpireTimeRaw);
+            set => MaxExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -6819,8 +6892,8 @@ namespace Google.Apis.Spanner.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? VersionTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(VersionTimeRaw);
-            set => VersionTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(VersionTimeRaw);
+            set => VersionTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -6867,8 +6940,8 @@ namespace Google.Apis.Spanner.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Name of the database the backup was created from.</summary>
@@ -6912,8 +6985,8 @@ namespace Google.Apis.Spanner.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? VersionTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(VersionTimeRaw);
-            set => VersionTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(VersionTimeRaw);
+            set => VersionTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -7006,8 +7079,8 @@ namespace Google.Apis.Spanner.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CommitTimestampDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CommitTimestampRaw);
-            set => CommitTimestampRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CommitTimestampRaw);
+            set => CommitTimestampRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -7209,8 +7282,8 @@ namespace Google.Apis.Spanner.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CommitTimestampDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CommitTimestampRaw);
-            set => CommitTimestampRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CommitTimestampRaw);
+            set => CommitTimestampRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -7322,8 +7395,8 @@ namespace Google.Apis.Spanner.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CancelTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CancelTimeRaw);
-            set => CancelTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CancelTimeRaw);
+            set => CancelTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -7403,8 +7476,8 @@ namespace Google.Apis.Spanner.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpireTimeRaw);
-            set => ExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -7462,8 +7535,8 @@ namespace Google.Apis.Spanner.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CancelTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CancelTimeRaw);
-            set => CancelTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CancelTimeRaw);
+            set => CancelTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The name of the database the backup is created from.</summary>
@@ -7577,8 +7650,8 @@ namespace Google.Apis.Spanner.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CancelTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CancelTimeRaw);
-            set => CancelTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CancelTimeRaw);
+            set => CancelTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The target instance config end state.</summary>
@@ -7661,8 +7734,8 @@ namespace Google.Apis.Spanner.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CancelTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CancelTimeRaw);
-            set => CancelTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CancelTimeRaw);
+            set => CancelTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _endTimeRaw;
@@ -7698,8 +7771,8 @@ namespace Google.Apis.Spanner.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The instance being created.</summary>
@@ -7739,8 +7812,8 @@ namespace Google.Apis.Spanner.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -7814,8 +7887,8 @@ namespace Google.Apis.Spanner.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. The dialect of the Cloud Spanner Database.</summary>
@@ -7870,8 +7943,8 @@ namespace Google.Apis.Spanner.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EarliestVersionTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EarliestVersionTimeRaw);
-            set => EarliestVersionTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EarliestVersionTimeRaw);
+            set => EarliestVersionTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -8418,8 +8491,8 @@ namespace Google.Apis.Spanner.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpireTimeRaw);
-            set => ExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _upgradeTimeRaw;
@@ -8457,8 +8530,8 @@ namespace Google.Apis.Spanner.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpgradeTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpgradeTimeRaw);
-            set => UpgradeTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpgradeTimeRaw);
+            set => UpgradeTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -8633,8 +8706,8 @@ namespace Google.Apis.Spanner.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -8741,8 +8814,8 @@ namespace Google.Apis.Spanner.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -8882,8 +8955,8 @@ namespace Google.Apis.Spanner.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Percent completion of the operation. Values are between 0 and 100 inclusive.</summary>
@@ -8923,8 +8996,8 @@ namespace Google.Apis.Spanner.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -9553,8 +9626,8 @@ namespace Google.Apis.Spanner.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Percent completion of the operation. Values are between 0 and 100 inclusive.</summary>
@@ -9594,8 +9667,8 @@ namespace Google.Apis.Spanner.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -10131,8 +10204,8 @@ namespace Google.Apis.Spanner.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? MinReadTimestampDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(MinReadTimestampRaw);
-            set => MinReadTimestampRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(MinReadTimestampRaw);
+            set => MinReadTimestampRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _readTimestampRaw;
@@ -10175,8 +10248,8 @@ namespace Google.Apis.Spanner.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ReadTimestampDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ReadTimestampRaw);
-            set => ReadTimestampRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ReadTimestampRaw);
+            set => ReadTimestampRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -10430,8 +10503,8 @@ namespace Google.Apis.Spanner.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CancelTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CancelTimeRaw);
-            set => CancelTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CancelTimeRaw);
+            set => CancelTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Name of the database being created and restored to.</summary>
@@ -10648,8 +10721,8 @@ namespace Google.Apis.Spanner.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -10699,8 +10772,8 @@ namespace Google.Apis.Spanner.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -10752,8 +10825,8 @@ namespace Google.Apis.Spanner.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _startTimeRaw;
@@ -10792,8 +10865,8 @@ namespace Google.Apis.Spanner.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -10841,8 +10914,8 @@ namespace Google.Apis.Spanner.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ApproximateLastUseTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ApproximateLastUseTimeRaw);
-            set => ApproximateLastUseTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ApproximateLastUseTimeRaw);
+            set => ApproximateLastUseTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _createTimeRaw;
@@ -10878,8 +10951,8 @@ namespace Google.Apis.Spanner.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The database role which created this session.</summary>
@@ -11086,8 +11159,8 @@ namespace Google.Apis.Spanner.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ReadTimestampDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ReadTimestampRaw);
-            set => ReadTimestampRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ReadTimestampRaw);
+            set => ReadTimestampRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -11449,8 +11522,8 @@ namespace Google.Apis.Spanner.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CancelTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CancelTimeRaw);
-            set => CancelTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CancelTimeRaw);
+            set => CancelTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The progress of the UpdateDatabase operation.</summary>
@@ -11521,8 +11594,8 @@ namespace Google.Apis.Spanner.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CancelTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CancelTimeRaw);
-            set => CancelTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CancelTimeRaw);
+            set => CancelTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The desired instance config after updating.</summary>
@@ -11605,8 +11678,8 @@ namespace Google.Apis.Spanner.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CancelTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CancelTimeRaw);
-            set => CancelTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CancelTimeRaw);
+            set => CancelTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _endTimeRaw;
@@ -11642,8 +11715,8 @@ namespace Google.Apis.Spanner.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The desired end state of the update.</summary>
@@ -11683,8 +11756,8 @@ namespace Google.Apis.Spanner.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>

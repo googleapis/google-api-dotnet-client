@@ -315,7 +315,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// </param>
             public virtual GroupRequest Group(Google.Apis.SecurityCommandCenter.v1.Data.GroupAssetsRequest body, string parent)
             {
-                return new GroupRequest(service, body, parent);
+                return new GroupRequest(this.service, body, parent);
             }
 
             /// <summary>Filters an organization's assets and groups them by their specified properties.</summary>
@@ -374,7 +374,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists an organization's assets.</summary>
@@ -479,13 +479,36 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
+                private object _readTime;
+
                 /// <summary>
-                /// Time used as a reference point when filtering assets. The filter is limited to assets existing at
-                /// the supplied time and their values are those at that specific time. Absence of this field will
-                /// default to the API's version of NOW.
+                /// String representation of <see cref="ReadTimeDateTimeOffset"/>, formatted for inclusion in the HTTP
+                /// request.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("readTime", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual object ReadTime { get; set; }
+                public virtual string ReadTimeRaw { get; private set; }
+
+                /// <summary><seealso cref="object"/> representation of <see cref="ReadTimeRaw"/>.</summary>
+                [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ReadTimeDateTimeOffset instead.")]
+                public virtual object ReadTime
+                {
+                    get => _readTime;
+                    set
+                    {
+                        ReadTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                        _readTime = value;
+                    }
+                }
+
+                public virtual System.DateTimeOffset? ReadTimeDateTimeOffset
+                {
+                    get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ReadTimeRaw);
+                    set
+                    {
+                        ReadTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                        _readTime = value;
+                    }
+                }
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
@@ -577,7 +600,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// </param>
             public virtual UpdateSecurityMarksRequest UpdateSecurityMarks(Google.Apis.SecurityCommandCenter.v1.Data.SecurityMarks body, string name)
             {
-                return new UpdateSecurityMarksRequest(service, body, name);
+                return new UpdateSecurityMarksRequest(this.service, body, name);
             }
 
             /// <summary>Updates security marks.</summary>
@@ -600,13 +623,36 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                private object _startTime;
+
                 /// <summary>
-                /// The time at which the updated SecurityMarks take effect. If not set uses current server time.
-                /// Updates will be applied to the SecurityMarks that are active immediately preceding this time. Must
-                /// be earlier or equal to the server time.
+                /// String representation of <see cref="StartTimeDateTimeOffset"/>, formatted for inclusion in the HTTP
+                /// request.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual object StartTime { get; set; }
+                public virtual string StartTimeRaw { get; private set; }
+
+                /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+                [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+                public virtual object StartTime
+                {
+                    get => _startTime;
+                    set
+                    {
+                        StartTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                        _startTime = value;
+                    }
+                }
+
+                public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+                {
+                    get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+                    set
+                    {
+                        StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                        _startTime = value;
+                    }
+                }
 
                 /// <summary>
                 /// The FieldMask to use when updating the security marks resource. The field mask must not contain
@@ -688,7 +734,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// </param>
             public virtual CreateRequest Create(Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1BigQueryExport body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>Creates a BigQuery export.</summary>
@@ -763,7 +809,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>Deletes an existing BigQuery export.</summary>
@@ -816,7 +862,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets a BigQuery export.</summary>
@@ -873,7 +919,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>
@@ -966,7 +1012,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1BigQueryExport body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>Updates a BigQuery export.</summary>
@@ -1062,7 +1108,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// </param>
             public virtual BulkMuteRequest BulkMute(Google.Apis.SecurityCommandCenter.v1.Data.BulkMuteFindingsRequest body, string parent)
             {
-                return new BulkMuteRequest(service, body, parent);
+                return new BulkMuteRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -1163,7 +1209,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes an existing mute config.</summary>
@@ -1222,7 +1268,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets a mute config.</summary>
@@ -1282,7 +1328,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1MuteConfig body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates a mute config.</summary>
@@ -1378,7 +1424,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// </param>
             public virtual CreateRequest Create(Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1MuteConfig body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>Creates a mute config.</summary>
@@ -1456,7 +1502,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>Deletes an existing mute config.</summary>
@@ -1515,7 +1561,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets a mute config.</summary>
@@ -1570,7 +1616,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists mute configs.</summary>
@@ -1658,7 +1704,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1MuteConfig body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>Updates a mute config.</summary>
@@ -1751,7 +1797,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// </param>
             public virtual CreateRequest Create(Google.Apis.SecurityCommandCenter.v1.Data.NotificationConfig body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>Creates a notification config.</summary>
@@ -1826,7 +1872,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>Deletes a notification config.</summary>
@@ -1881,7 +1927,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets a notification config.</summary>
@@ -1934,7 +1980,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists notification configs.</summary>
@@ -2023,7 +2069,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.SecurityCommandCenter.v1.Data.NotificationConfig body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -2146,7 +2192,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -2215,7 +2261,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -2273,7 +2319,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Retrieves a SecurityHealthAnalyticsCustomModule.</summary>
@@ -2332,7 +2378,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>
@@ -2421,7 +2467,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// </param>
                 public virtual ListDescendantRequest ListDescendant(string parent)
                 {
-                    return new ListDescendantRequest(service, parent);
+                    return new ListDescendantRequest(this.service, parent);
                 }
 
                 /// <summary>
@@ -2514,7 +2560,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -2595,7 +2641,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// </param>
                 public virtual SimulateRequest Simulate(Google.Apis.SecurityCommandCenter.v1.Data.SimulateSecurityHealthAnalyticsCustomModuleRequest body, string parent)
                 {
-                    return new SimulateRequest(service, body, parent);
+                    return new SimulateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Simulates a given SecurityHealthAnalyticsCustomModule and Resource.</summary>
@@ -2674,7 +2720,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Retrieves an EffectiveSecurityHealthAnalyticsCustomModule.</summary>
@@ -2733,7 +2779,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>
@@ -2875,7 +2921,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1ExternalSystem body, string name)
                     {
-                        return new PatchRequest(service, body, name);
+                        return new PatchRequest(this.service, body, name);
                     }
 
                     /// <summary>Updates external system. This is for a given finding.</summary>
@@ -2960,7 +3006,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// </param>
                 public virtual GroupRequest Group(Google.Apis.SecurityCommandCenter.v1.Data.GroupFindingsRequest body, string parent)
                 {
-                    return new GroupRequest(service, body, parent);
+                    return new GroupRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -3032,7 +3078,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>
@@ -3139,13 +3185,36 @@ namespace Google.Apis.SecurityCommandCenter.v1
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
+                    private object _readTime;
+
                     /// <summary>
-                    /// Time used as a reference point when filtering findings. The filter is limited to findings
-                    /// existing at the supplied time and their values are those at that specific time. Absence of this
-                    /// field will default to the API's version of NOW.
+                    /// String representation of <see cref="ReadTimeDateTimeOffset"/>, formatted for inclusion in the
+                    /// HTTP request.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("readTime", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual object ReadTime { get; set; }
+                    public virtual string ReadTimeRaw { get; private set; }
+
+                    /// <summary><seealso cref="object"/> representation of <see cref="ReadTimeRaw"/>.</summary>
+                    [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ReadTimeDateTimeOffset instead.")]
+                    public virtual object ReadTime
+                    {
+                        get => _readTime;
+                        set
+                        {
+                            ReadTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                            _readTime = value;
+                        }
+                    }
+
+                    public virtual System.DateTimeOffset? ReadTimeDateTimeOffset
+                    {
+                        get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ReadTimeRaw);
+                        set
+                        {
+                            ReadTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                            _readTime = value;
+                        }
+                    }
 
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
@@ -3240,7 +3309,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.SecurityCommandCenter.v1.Data.Finding body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -3324,7 +3393,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// </param>
                 public virtual SetMuteRequest SetMute(Google.Apis.SecurityCommandCenter.v1.Data.SetMuteRequest body, string name)
                 {
-                    return new SetMuteRequest(service, body, name);
+                    return new SetMuteRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates the mute state of a finding.</summary>
@@ -3389,7 +3458,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// </param>
                 public virtual SetStateRequest SetState(Google.Apis.SecurityCommandCenter.v1.Data.SetFindingStateRequest body, string name)
                 {
-                    return new SetStateRequest(service, body, name);
+                    return new SetStateRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates the state of a finding.</summary>
@@ -3453,7 +3522,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// </param>
                 public virtual UpdateSecurityMarksRequest UpdateSecurityMarks(Google.Apis.SecurityCommandCenter.v1.Data.SecurityMarks body, string name)
                 {
-                    return new UpdateSecurityMarksRequest(service, body, name);
+                    return new UpdateSecurityMarksRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates security marks.</summary>
@@ -3476,13 +3545,36 @@ namespace Google.Apis.SecurityCommandCenter.v1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
+                    private object _startTime;
+
                     /// <summary>
-                    /// The time at which the updated SecurityMarks take effect. If not set uses current server time.
-                    /// Updates will be applied to the SecurityMarks that are active immediately preceding this time.
-                    /// Must be earlier or equal to the server time.
+                    /// String representation of <see cref="StartTimeDateTimeOffset"/>, formatted for inclusion in the
+                    /// HTTP request.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual object StartTime { get; set; }
+                    public virtual string StartTimeRaw { get; private set; }
+
+                    /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+                    [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+                    public virtual object StartTime
+                    {
+                        get => _startTime;
+                        set
+                        {
+                            StartTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                            _startTime = value;
+                        }
+                    }
+
+                    public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+                    {
+                        get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+                        set
+                        {
+                            StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                            _startTime = value;
+                        }
+                    }
 
                     /// <summary>
                     /// The FieldMask to use when updating the security marks resource. The field mask must not contain
@@ -3546,7 +3638,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists all sources belonging to an organization.</summary>
@@ -3673,7 +3765,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// </param>
             public virtual GroupRequest Group(Google.Apis.SecurityCommandCenter.v1.Data.GroupAssetsRequest body, string parent)
             {
-                return new GroupRequest(service, body, parent);
+                return new GroupRequest(this.service, body, parent);
             }
 
             /// <summary>Filters an organization's assets and groups them by their specified properties.</summary>
@@ -3732,7 +3824,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists an organization's assets.</summary>
@@ -3837,13 +3929,36 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
+                private object _readTime;
+
                 /// <summary>
-                /// Time used as a reference point when filtering assets. The filter is limited to assets existing at
-                /// the supplied time and their values are those at that specific time. Absence of this field will
-                /// default to the API's version of NOW.
+                /// String representation of <see cref="ReadTimeDateTimeOffset"/>, formatted for inclusion in the HTTP
+                /// request.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("readTime", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual object ReadTime { get; set; }
+                public virtual string ReadTimeRaw { get; private set; }
+
+                /// <summary><seealso cref="object"/> representation of <see cref="ReadTimeRaw"/>.</summary>
+                [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ReadTimeDateTimeOffset instead.")]
+                public virtual object ReadTime
+                {
+                    get => _readTime;
+                    set
+                    {
+                        ReadTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                        _readTime = value;
+                    }
+                }
+
+                public virtual System.DateTimeOffset? ReadTimeDateTimeOffset
+                {
+                    get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ReadTimeRaw);
+                    set
+                    {
+                        ReadTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                        _readTime = value;
+                    }
+                }
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
@@ -3937,7 +4052,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// </param>
             public virtual RunDiscoveryRequest RunDiscovery(Google.Apis.SecurityCommandCenter.v1.Data.RunAssetDiscoveryRequest body, string parent)
             {
-                return new RunDiscoveryRequest(service, body, parent);
+                return new RunDiscoveryRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -4002,7 +4117,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// </param>
             public virtual UpdateSecurityMarksRequest UpdateSecurityMarks(Google.Apis.SecurityCommandCenter.v1.Data.SecurityMarks body, string name)
             {
-                return new UpdateSecurityMarksRequest(service, body, name);
+                return new UpdateSecurityMarksRequest(this.service, body, name);
             }
 
             /// <summary>Updates security marks.</summary>
@@ -4025,13 +4140,36 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                private object _startTime;
+
                 /// <summary>
-                /// The time at which the updated SecurityMarks take effect. If not set uses current server time.
-                /// Updates will be applied to the SecurityMarks that are active immediately preceding this time. Must
-                /// be earlier or equal to the server time.
+                /// String representation of <see cref="StartTimeDateTimeOffset"/>, formatted for inclusion in the HTTP
+                /// request.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual object StartTime { get; set; }
+                public virtual string StartTimeRaw { get; private set; }
+
+                /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+                [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+                public virtual object StartTime
+                {
+                    get => _startTime;
+                    set
+                    {
+                        StartTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                        _startTime = value;
+                    }
+                }
+
+                public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+                {
+                    get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+                    set
+                    {
+                        StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                        _startTime = value;
+                    }
+                }
 
                 /// <summary>
                 /// The FieldMask to use when updating the security marks resource. The field mask must not contain
@@ -4113,7 +4251,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// </param>
             public virtual CreateRequest Create(Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1BigQueryExport body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>Creates a BigQuery export.</summary>
@@ -4188,7 +4326,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>Deletes an existing BigQuery export.</summary>
@@ -4241,7 +4379,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets a BigQuery export.</summary>
@@ -4298,7 +4436,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>
@@ -4391,7 +4529,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1BigQueryExport body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>Updates a BigQuery export.</summary>
@@ -4502,7 +4640,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.SecurityCommandCenter.v1.Data.EventThreatDetectionCustomModule body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates an Event Threat Detection custom module.</summary>
@@ -4560,7 +4698,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes an Event Threat Detection custom module.</summary>
@@ -4611,7 +4749,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets an Event Threat Detection custom module.</summary>
@@ -4662,7 +4800,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists Event Threat Detection custom modules.</summary>
@@ -4748,7 +4886,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.SecurityCommandCenter.v1.Data.EventThreatDetectionCustomModule body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates an Event Threat Detection custom module.</summary>
@@ -4824,7 +4962,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// </param>
             public virtual ValidateCustomModuleRequest ValidateCustomModule(Google.Apis.SecurityCommandCenter.v1.Data.ValidateEventThreatDetectionCustomModuleRequest body, string parent)
             {
-                return new ValidateCustomModuleRequest(service, body, parent);
+                return new ValidateCustomModuleRequest(this.service, body, parent);
             }
 
             /// <summary>Validates the given Event Threat Detection custom module.</summary>
@@ -4904,7 +5042,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// </param>
             public virtual BulkMuteRequest BulkMute(Google.Apis.SecurityCommandCenter.v1.Data.BulkMuteFindingsRequest body, string parent)
             {
-                return new BulkMuteRequest(service, body, parent);
+                return new BulkMuteRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -5005,7 +5143,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes an existing mute config.</summary>
@@ -5064,7 +5202,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets a mute config.</summary>
@@ -5124,7 +5262,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1MuteConfig body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates a mute config.</summary>
@@ -5220,7 +5358,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// </param>
             public virtual CreateRequest Create(Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1MuteConfig body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>Creates a mute config.</summary>
@@ -5298,7 +5436,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>Deletes an existing mute config.</summary>
@@ -5357,7 +5495,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets a mute config.</summary>
@@ -5412,7 +5550,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists mute configs.</summary>
@@ -5500,7 +5638,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1MuteConfig body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>Updates a mute config.</summary>
@@ -5593,7 +5731,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// </param>
             public virtual CreateRequest Create(Google.Apis.SecurityCommandCenter.v1.Data.NotificationConfig body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>Creates a notification config.</summary>
@@ -5668,7 +5806,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>Deletes a notification config.</summary>
@@ -5723,7 +5861,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets a notification config.</summary>
@@ -5776,7 +5914,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists notification configs.</summary>
@@ -5865,7 +6003,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.SecurityCommandCenter.v1.Data.NotificationConfig body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -5966,7 +6104,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// <param name="name">The name of the operation resource to be cancelled.</param>
             public virtual CancelRequest Cancel(string name)
             {
-                return new CancelRequest(service, name);
+                return new CancelRequest(this.service, name);
             }
 
             /// <summary>
@@ -6022,7 +6160,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// <param name="name">The name of the operation resource to be deleted.</param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>
@@ -6074,7 +6212,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// <param name="name">The name of the operation resource.</param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>
@@ -6125,7 +6263,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// <param name="name">The name of the operation's parent resource.</param>
             public virtual ListRequest List(string name)
             {
-                return new ListRequest(service, name);
+                return new ListRequest(this.service, name);
             }
 
             /// <summary>
@@ -6234,7 +6372,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// </param>
             public virtual BatchCreateRequest BatchCreate(Google.Apis.SecurityCommandCenter.v1.Data.BatchCreateResourceValueConfigsRequest body, string parent)
             {
-                return new BatchCreateRequest(service, body, parent);
+                return new BatchCreateRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -6292,7 +6430,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// <param name="name">Required. Name of the ResourceValueConfig to delete</param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>Deletes a ResourceValueConfig.</summary>
@@ -6340,7 +6478,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets a ResourceValueConfig.</summary>
@@ -6391,7 +6529,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists all ResourceValueConfigs.</summary>
@@ -6473,7 +6611,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// <param name="name">Name for the resource value config</param>
             public virtual PatchRequest Patch(Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1ResourceValueConfig body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>Updates an existing ResourceValueConfigs with new rules.</summary>
@@ -6584,7 +6722,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -6653,7 +6791,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -6711,7 +6849,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Retrieves a SecurityHealthAnalyticsCustomModule.</summary>
@@ -6770,7 +6908,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>
@@ -6859,7 +6997,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// </param>
                 public virtual ListDescendantRequest ListDescendant(string parent)
                 {
-                    return new ListDescendantRequest(service, parent);
+                    return new ListDescendantRequest(this.service, parent);
                 }
 
                 /// <summary>
@@ -6952,7 +7090,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -7033,7 +7171,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// </param>
                 public virtual SimulateRequest Simulate(Google.Apis.SecurityCommandCenter.v1.Data.SimulateSecurityHealthAnalyticsCustomModuleRequest body, string parent)
                 {
-                    return new SimulateRequest(service, body, parent);
+                    return new SimulateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Simulates a given SecurityHealthAnalyticsCustomModule and Resource.</summary>
@@ -7112,7 +7250,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Retrieves an EffectiveSecurityHealthAnalyticsCustomModule.</summary>
@@ -7171,7 +7309,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>
@@ -7317,7 +7455,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>
@@ -7437,7 +7575,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists the valued resources for a set of simulation results and filter.</summary>
@@ -7558,7 +7696,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>
@@ -7698,7 +7836,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>
@@ -7801,7 +7939,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists the valued resources for a set of simulation results and filter.</summary>
@@ -7901,7 +8039,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Get the simulation by name or the latest simulation for the given organization.</summary>
@@ -8010,7 +8148,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1ExternalSystem body, string name)
                     {
-                        return new PatchRequest(service, body, name);
+                        return new PatchRequest(this.service, body, name);
                     }
 
                     /// <summary>Updates external system. This is for a given finding.</summary>
@@ -8089,7 +8227,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.SecurityCommandCenter.v1.Data.Finding body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -8173,7 +8311,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// </param>
                 public virtual GroupRequest Group(Google.Apis.SecurityCommandCenter.v1.Data.GroupFindingsRequest body, string parent)
                 {
-                    return new GroupRequest(service, body, parent);
+                    return new GroupRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -8245,7 +8383,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>
@@ -8352,13 +8490,36 @@ namespace Google.Apis.SecurityCommandCenter.v1
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
+                    private object _readTime;
+
                     /// <summary>
-                    /// Time used as a reference point when filtering findings. The filter is limited to findings
-                    /// existing at the supplied time and their values are those at that specific time. Absence of this
-                    /// field will default to the API's version of NOW.
+                    /// String representation of <see cref="ReadTimeDateTimeOffset"/>, formatted for inclusion in the
+                    /// HTTP request.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("readTime", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual object ReadTime { get; set; }
+                    public virtual string ReadTimeRaw { get; private set; }
+
+                    /// <summary><seealso cref="object"/> representation of <see cref="ReadTimeRaw"/>.</summary>
+                    [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ReadTimeDateTimeOffset instead.")]
+                    public virtual object ReadTime
+                    {
+                        get => _readTime;
+                        set
+                        {
+                            ReadTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                            _readTime = value;
+                        }
+                    }
+
+                    public virtual System.DateTimeOffset? ReadTimeDateTimeOffset
+                    {
+                        get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ReadTimeRaw);
+                        set
+                        {
+                            ReadTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                            _readTime = value;
+                        }
+                    }
 
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
@@ -8453,7 +8614,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.SecurityCommandCenter.v1.Data.Finding body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -8537,7 +8698,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// </param>
                 public virtual SetMuteRequest SetMute(Google.Apis.SecurityCommandCenter.v1.Data.SetMuteRequest body, string name)
                 {
-                    return new SetMuteRequest(service, body, name);
+                    return new SetMuteRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates the mute state of a finding.</summary>
@@ -8602,7 +8763,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// </param>
                 public virtual SetStateRequest SetState(Google.Apis.SecurityCommandCenter.v1.Data.SetFindingStateRequest body, string name)
                 {
-                    return new SetStateRequest(service, body, name);
+                    return new SetStateRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates the state of a finding.</summary>
@@ -8666,7 +8827,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// </param>
                 public virtual UpdateSecurityMarksRequest UpdateSecurityMarks(Google.Apis.SecurityCommandCenter.v1.Data.SecurityMarks body, string name)
                 {
-                    return new UpdateSecurityMarksRequest(service, body, name);
+                    return new UpdateSecurityMarksRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates security marks.</summary>
@@ -8689,13 +8850,36 @@ namespace Google.Apis.SecurityCommandCenter.v1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
+                    private object _startTime;
+
                     /// <summary>
-                    /// The time at which the updated SecurityMarks take effect. If not set uses current server time.
-                    /// Updates will be applied to the SecurityMarks that are active immediately preceding this time.
-                    /// Must be earlier or equal to the server time.
+                    /// String representation of <see cref="StartTimeDateTimeOffset"/>, formatted for inclusion in the
+                    /// HTTP request.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual object StartTime { get; set; }
+                    public virtual string StartTimeRaw { get; private set; }
+
+                    /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+                    [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+                    public virtual object StartTime
+                    {
+                        get => _startTime;
+                        set
+                        {
+                            StartTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                            _startTime = value;
+                        }
+                    }
+
+                    public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+                    {
+                        get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+                        set
+                        {
+                            StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                            _startTime = value;
+                        }
+                    }
 
                     /// <summary>
                     /// The FieldMask to use when updating the security marks resource. The field mask must not contain
@@ -8760,7 +8944,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// </param>
             public virtual CreateRequest Create(Google.Apis.SecurityCommandCenter.v1.Data.Source body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>Creates a source.</summary>
@@ -8818,7 +9002,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets a source.</summary>
@@ -8870,7 +9054,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// </param>
             public virtual GetIamPolicyRequest GetIamPolicy(Google.Apis.SecurityCommandCenter.v1.Data.GetIamPolicyRequest body, string resource)
             {
-                return new GetIamPolicyRequest(service, body, resource);
+                return new GetIamPolicyRequest(this.service, body, resource);
             }
 
             /// <summary>Gets the access control policy on the specified Source.</summary>
@@ -8929,7 +9113,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists all sources belonging to an organization.</summary>
@@ -9012,7 +9196,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.SecurityCommandCenter.v1.Data.Source body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>Updates a source.</summary>
@@ -9086,7 +9270,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// </param>
             public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.SecurityCommandCenter.v1.Data.SetIamPolicyRequest body, string resource)
             {
-                return new SetIamPolicyRequest(service, body, resource);
+                return new SetIamPolicyRequest(this.service, body, resource);
             }
 
             /// <summary>Sets the access control policy on the specified Source.</summary>
@@ -9146,7 +9330,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// </param>
             public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.SecurityCommandCenter.v1.Data.TestIamPermissionsRequest body, string resource)
             {
-                return new TestIamPermissionsRequest(service, body, resource);
+                return new TestIamPermissionsRequest(this.service, body, resource);
             }
 
             /// <summary>Returns the permissions that a caller has on the specified source.</summary>
@@ -9206,7 +9390,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
         /// </param>
         public virtual GetOrganizationSettingsRequest GetOrganizationSettings(string name)
         {
-            return new GetOrganizationSettingsRequest(service, name);
+            return new GetOrganizationSettingsRequest(this.service, name);
         }
 
         /// <summary>Gets the settings for an organization.</summary>
@@ -9259,7 +9443,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
         /// </param>
         public virtual UpdateOrganizationSettingsRequest UpdateOrganizationSettings(Google.Apis.SecurityCommandCenter.v1.Data.OrganizationSettings body, string name)
         {
-            return new UpdateOrganizationSettingsRequest(service, body, name);
+            return new UpdateOrganizationSettingsRequest(this.service, body, name);
         }
 
         /// <summary>Updates an organization's settings.</summary>
@@ -9373,7 +9557,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// </param>
             public virtual GroupRequest Group(Google.Apis.SecurityCommandCenter.v1.Data.GroupAssetsRequest body, string parent)
             {
-                return new GroupRequest(service, body, parent);
+                return new GroupRequest(this.service, body, parent);
             }
 
             /// <summary>Filters an organization's assets and groups them by their specified properties.</summary>
@@ -9432,7 +9616,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists an organization's assets.</summary>
@@ -9537,13 +9721,36 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
+                private object _readTime;
+
                 /// <summary>
-                /// Time used as a reference point when filtering assets. The filter is limited to assets existing at
-                /// the supplied time and their values are those at that specific time. Absence of this field will
-                /// default to the API's version of NOW.
+                /// String representation of <see cref="ReadTimeDateTimeOffset"/>, formatted for inclusion in the HTTP
+                /// request.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("readTime", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual object ReadTime { get; set; }
+                public virtual string ReadTimeRaw { get; private set; }
+
+                /// <summary><seealso cref="object"/> representation of <see cref="ReadTimeRaw"/>.</summary>
+                [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ReadTimeDateTimeOffset instead.")]
+                public virtual object ReadTime
+                {
+                    get => _readTime;
+                    set
+                    {
+                        ReadTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                        _readTime = value;
+                    }
+                }
+
+                public virtual System.DateTimeOffset? ReadTimeDateTimeOffset
+                {
+                    get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ReadTimeRaw);
+                    set
+                    {
+                        ReadTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                        _readTime = value;
+                    }
+                }
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
@@ -9635,7 +9842,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// </param>
             public virtual UpdateSecurityMarksRequest UpdateSecurityMarks(Google.Apis.SecurityCommandCenter.v1.Data.SecurityMarks body, string name)
             {
-                return new UpdateSecurityMarksRequest(service, body, name);
+                return new UpdateSecurityMarksRequest(this.service, body, name);
             }
 
             /// <summary>Updates security marks.</summary>
@@ -9658,13 +9865,36 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                private object _startTime;
+
                 /// <summary>
-                /// The time at which the updated SecurityMarks take effect. If not set uses current server time.
-                /// Updates will be applied to the SecurityMarks that are active immediately preceding this time. Must
-                /// be earlier or equal to the server time.
+                /// String representation of <see cref="StartTimeDateTimeOffset"/>, formatted for inclusion in the HTTP
+                /// request.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual object StartTime { get; set; }
+                public virtual string StartTimeRaw { get; private set; }
+
+                /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+                [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+                public virtual object StartTime
+                {
+                    get => _startTime;
+                    set
+                    {
+                        StartTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                        _startTime = value;
+                    }
+                }
+
+                public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+                {
+                    get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+                    set
+                    {
+                        StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                        _startTime = value;
+                    }
+                }
 
                 /// <summary>
                 /// The FieldMask to use when updating the security marks resource. The field mask must not contain
@@ -9746,7 +9976,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// </param>
             public virtual CreateRequest Create(Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1BigQueryExport body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>Creates a BigQuery export.</summary>
@@ -9821,7 +10051,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>Deletes an existing BigQuery export.</summary>
@@ -9874,7 +10104,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets a BigQuery export.</summary>
@@ -9931,7 +10161,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>
@@ -10024,7 +10254,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1BigQueryExport body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>Updates a BigQuery export.</summary>
@@ -10120,7 +10350,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// </param>
             public virtual BulkMuteRequest BulkMute(Google.Apis.SecurityCommandCenter.v1.Data.BulkMuteFindingsRequest body, string parent)
             {
-                return new BulkMuteRequest(service, body, parent);
+                return new BulkMuteRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -10221,7 +10451,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes an existing mute config.</summary>
@@ -10280,7 +10510,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets a mute config.</summary>
@@ -10340,7 +10570,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1MuteConfig body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates a mute config.</summary>
@@ -10436,7 +10666,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// </param>
             public virtual CreateRequest Create(Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1MuteConfig body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>Creates a mute config.</summary>
@@ -10514,7 +10744,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>Deletes an existing mute config.</summary>
@@ -10573,7 +10803,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets a mute config.</summary>
@@ -10628,7 +10858,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists mute configs.</summary>
@@ -10716,7 +10946,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1MuteConfig body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>Updates a mute config.</summary>
@@ -10809,7 +11039,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// </param>
             public virtual CreateRequest Create(Google.Apis.SecurityCommandCenter.v1.Data.NotificationConfig body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>Creates a notification config.</summary>
@@ -10884,7 +11114,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>Deletes a notification config.</summary>
@@ -10939,7 +11169,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets a notification config.</summary>
@@ -10992,7 +11222,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists notification configs.</summary>
@@ -11081,7 +11311,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.SecurityCommandCenter.v1.Data.NotificationConfig body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -11204,7 +11434,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -11273,7 +11503,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -11331,7 +11561,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Retrieves a SecurityHealthAnalyticsCustomModule.</summary>
@@ -11390,7 +11620,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>
@@ -11479,7 +11709,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// </param>
                 public virtual ListDescendantRequest ListDescendant(string parent)
                 {
-                    return new ListDescendantRequest(service, parent);
+                    return new ListDescendantRequest(this.service, parent);
                 }
 
                 /// <summary>
@@ -11572,7 +11802,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -11653,7 +11883,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// </param>
                 public virtual SimulateRequest Simulate(Google.Apis.SecurityCommandCenter.v1.Data.SimulateSecurityHealthAnalyticsCustomModuleRequest body, string parent)
                 {
-                    return new SimulateRequest(service, body, parent);
+                    return new SimulateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Simulates a given SecurityHealthAnalyticsCustomModule and Resource.</summary>
@@ -11732,7 +11962,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Retrieves an EffectiveSecurityHealthAnalyticsCustomModule.</summary>
@@ -11791,7 +12021,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>
@@ -11933,7 +12163,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1ExternalSystem body, string name)
                     {
-                        return new PatchRequest(service, body, name);
+                        return new PatchRequest(this.service, body, name);
                     }
 
                     /// <summary>Updates external system. This is for a given finding.</summary>
@@ -12018,7 +12248,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// </param>
                 public virtual GroupRequest Group(Google.Apis.SecurityCommandCenter.v1.Data.GroupFindingsRequest body, string parent)
                 {
-                    return new GroupRequest(service, body, parent);
+                    return new GroupRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -12090,7 +12320,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>
@@ -12197,13 +12427,36 @@ namespace Google.Apis.SecurityCommandCenter.v1
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
+                    private object _readTime;
+
                     /// <summary>
-                    /// Time used as a reference point when filtering findings. The filter is limited to findings
-                    /// existing at the supplied time and their values are those at that specific time. Absence of this
-                    /// field will default to the API's version of NOW.
+                    /// String representation of <see cref="ReadTimeDateTimeOffset"/>, formatted for inclusion in the
+                    /// HTTP request.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("readTime", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual object ReadTime { get; set; }
+                    public virtual string ReadTimeRaw { get; private set; }
+
+                    /// <summary><seealso cref="object"/> representation of <see cref="ReadTimeRaw"/>.</summary>
+                    [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ReadTimeDateTimeOffset instead.")]
+                    public virtual object ReadTime
+                    {
+                        get => _readTime;
+                        set
+                        {
+                            ReadTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                            _readTime = value;
+                        }
+                    }
+
+                    public virtual System.DateTimeOffset? ReadTimeDateTimeOffset
+                    {
+                        get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ReadTimeRaw);
+                        set
+                        {
+                            ReadTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                            _readTime = value;
+                        }
+                    }
 
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
@@ -12298,7 +12551,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.SecurityCommandCenter.v1.Data.Finding body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -12382,7 +12635,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// </param>
                 public virtual SetMuteRequest SetMute(Google.Apis.SecurityCommandCenter.v1.Data.SetMuteRequest body, string name)
                 {
-                    return new SetMuteRequest(service, body, name);
+                    return new SetMuteRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates the mute state of a finding.</summary>
@@ -12447,7 +12700,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// </param>
                 public virtual SetStateRequest SetState(Google.Apis.SecurityCommandCenter.v1.Data.SetFindingStateRequest body, string name)
                 {
-                    return new SetStateRequest(service, body, name);
+                    return new SetStateRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates the state of a finding.</summary>
@@ -12511,7 +12764,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// </param>
                 public virtual UpdateSecurityMarksRequest UpdateSecurityMarks(Google.Apis.SecurityCommandCenter.v1.Data.SecurityMarks body, string name)
                 {
-                    return new UpdateSecurityMarksRequest(service, body, name);
+                    return new UpdateSecurityMarksRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates security marks.</summary>
@@ -12534,13 +12787,36 @@ namespace Google.Apis.SecurityCommandCenter.v1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
+                    private object _startTime;
+
                     /// <summary>
-                    /// The time at which the updated SecurityMarks take effect. If not set uses current server time.
-                    /// Updates will be applied to the SecurityMarks that are active immediately preceding this time.
-                    /// Must be earlier or equal to the server time.
+                    /// String representation of <see cref="StartTimeDateTimeOffset"/>, formatted for inclusion in the
+                    /// HTTP request.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual object StartTime { get; set; }
+                    public virtual string StartTimeRaw { get; private set; }
+
+                    /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+                    [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+                    public virtual object StartTime
+                    {
+                        get => _startTime;
+                        set
+                        {
+                            StartTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                            _startTime = value;
+                        }
+                    }
+
+                    public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+                    {
+                        get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+                        set
+                        {
+                            StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                            _startTime = value;
+                        }
+                    }
 
                     /// <summary>
                     /// The FieldMask to use when updating the security marks resource. The field mask must not contain
@@ -12604,7 +12880,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists all sources belonging to an organization.</summary>
@@ -12855,8 +13131,8 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -12929,8 +13205,8 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -13015,8 +13291,8 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LatestCalculationTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LatestCalculationTimeRaw);
-            set => LatestCalculationTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LatestCalculationTimeRaw);
+            set => LatestCalculationTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -13398,8 +13674,8 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? TimestampDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(TimestampRaw);
-            set => TimestampRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(TimestampRaw);
+            set => TimestampRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -13510,8 +13786,8 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -13861,8 +14137,8 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -14105,8 +14381,8 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Database associated with the finding.</summary>
@@ -14156,8 +14432,8 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EventTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EventTimeRaw);
-            set => EventTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EventTimeRaw);
+            set => EventTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Represents exfiltrations associated with the finding.</summary>
@@ -14279,8 +14555,8 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? MuteUpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(MuteUpdateTimeRaw);
-            set => MuteUpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(MuteUpdateTimeRaw);
+            set => MuteUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -14464,8 +14740,8 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -14553,8 +14829,8 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -14739,8 +15015,8 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ExternalSystemUpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExternalSystemUpdateTimeRaw);
-            set => ExternalSystemUpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExternalSystemUpdateTimeRaw);
+            set => ExternalSystemUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -14809,8 +15085,8 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>A description of the mute config.</summary>
@@ -14888,8 +15164,8 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -15028,8 +15304,8 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Description of the resource value config.</summary>
@@ -15108,8 +15384,8 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -15210,8 +15486,8 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -15290,8 +15566,8 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _eventTimeRaw;
@@ -15332,8 +15608,8 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EventTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EventTimeRaw);
-            set => EventTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EventTimeRaw);
+            set => EventTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -15638,8 +15914,8 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ReadTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ReadTimeRaw);
-            set => ReadTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ReadTimeRaw);
+            set => ReadTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -15693,8 +15969,8 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ReadTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ReadTimeRaw);
-            set => ReadTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ReadTimeRaw);
+            set => ReadTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The total number of results matching the query.</summary>
@@ -15810,8 +16086,8 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ReadTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ReadTimeRaw);
-            set => ReadTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ReadTimeRaw);
+            set => ReadTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -15865,8 +16141,8 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ReadTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ReadTimeRaw);
-            set => ReadTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ReadTimeRaw);
+            set => ReadTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The total number of results matching the query.</summary>
@@ -16137,8 +16413,8 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ReadTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ReadTimeRaw);
-            set => ReadTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ReadTimeRaw);
+            set => ReadTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The total number of assets matching the query.</summary>
@@ -16289,8 +16565,8 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ReadTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ReadTimeRaw);
-            set => ReadTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ReadTimeRaw);
+            set => ReadTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The total number of findings matching the query.</summary>
@@ -17199,8 +17475,8 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Required. The desired State of the finding.</summary>
@@ -17354,8 +17630,8 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Full resource name of the Simulation: organizations/123/simulations/456</summary>

@@ -319,7 +319,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
                 /// <param name="parent">Required. The parent which owns this collection of connection profiles.</param>
                 public virtual CreateRequest Create(Google.Apis.DatabaseMigrationService.v1.Data.ConnectionProfile body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a new connection profile in a given project and location.</summary>
@@ -433,7 +433,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
                 /// <param name="name">Required. Name of the connection profile resource to delete.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -513,7 +513,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
                 /// <param name="name">Required. Name of the connection profile resource to get.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets details of a single connection profile.</summary>
@@ -565,7 +565,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
                 /// </param>
                 public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                 {
-                    return new GetIamPolicyRequest(service, resource);
+                    return new GetIamPolicyRequest(this.service, resource);
                 }
 
                 /// <summary>
@@ -638,7 +638,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
                 /// <param name="parent">Required. The parent which owns this collection of connection profiles.</param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Retrieves a list of all connection profiles in a given project and location.</summary>
@@ -751,7 +751,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.DatabaseMigrationService.v1.Data.ConnectionProfile body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Update the configuration of a single connection profile.</summary>
@@ -876,7 +876,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
                 /// </param>
                 public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.DatabaseMigrationService.v1.Data.SetIamPolicyRequest body, string resource)
                 {
-                    return new SetIamPolicyRequest(service, body, resource);
+                    return new SetIamPolicyRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -945,7 +945,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
                 /// </param>
                 public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.DatabaseMigrationService.v1.Data.TestIamPermissionsRequest body, string resource)
                 {
-                    return new TestIamPermissionsRequest(service, body, resource);
+                    return new TestIamPermissionsRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -1043,7 +1043,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
                     /// <param name="parent">Required. The parent which owns this collection of mapping rules.</param>
                     public virtual CreateRequest Create(Google.Apis.DatabaseMigrationService.v1.Data.MappingRule body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>Creates a new mapping rule for a given conversion workspace.</summary>
@@ -1124,7 +1124,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
                     /// <param name="name">Required. Name of the mapping rule resource to delete.</param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>Deletes a single mapping rule.</summary>
@@ -1191,7 +1191,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Gets the details of a mapping rule.</summary>
@@ -1248,7 +1248,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
                     /// </param>
                     public virtual ImportRequest Import(Google.Apis.DatabaseMigrationService.v1.Data.ImportMappingRulesRequest body, string parent)
                     {
-                        return new ImportRequest(service, body, parent);
+                        return new ImportRequest(this.service, body, parent);
                     }
 
                     /// <summary>
@@ -1309,7 +1309,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists the mapping rules for a specific conversion workspace.</summary>
@@ -1394,7 +1394,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
                 /// </param>
                 public virtual ApplyRequest Apply(Google.Apis.DatabaseMigrationService.v1.Data.ApplyConversionWorkspaceRequest body, string name)
                 {
-                    return new ApplyRequest(service, body, name);
+                    return new ApplyRequest(this.service, body, name);
                 }
 
                 /// <summary>Applies draft tree onto a specific destination database.</summary>
@@ -1451,7 +1451,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
                 /// <param name="name">Required. Name of the conversion workspace resource to commit.</param>
                 public virtual CommitRequest Commit(Google.Apis.DatabaseMigrationService.v1.Data.CommitConversionWorkspaceRequest body, string name)
                 {
-                    return new CommitRequest(service, body, name);
+                    return new CommitRequest(this.service, body, name);
                 }
 
                 /// <summary>Marks all the data in the conversion workspace as committed.</summary>
@@ -1507,7 +1507,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
                 /// </param>
                 public virtual ConvertRequest Convert(Google.Apis.DatabaseMigrationService.v1.Data.ConvertConversionWorkspaceRequest body, string name)
                 {
-                    return new ConvertRequest(service, body, name);
+                    return new ConvertRequest(this.service, body, name);
                 }
 
                 /// <summary>Creates a draft tree schema for the destination database.</summary>
@@ -1565,7 +1565,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.DatabaseMigrationService.v1.Data.ConversionWorkspace body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a new conversion workspace in a given project and location.</summary>
@@ -1646,7 +1646,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
                 /// <param name="name">Required. Name of the conversion workspace resource to delete.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes a single conversion workspace.</summary>
@@ -1726,7 +1726,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
                 /// </param>
                 public virtual DescribeConversionWorkspaceRevisionsRequest DescribeConversionWorkspaceRevisions(string conversionWorkspace)
                 {
-                    return new DescribeConversionWorkspaceRevisionsRequest(service, conversionWorkspace);
+                    return new DescribeConversionWorkspaceRevisionsRequest(this.service, conversionWorkspace);
                 }
 
                 /// <summary>Retrieves a list of committed revisions of a specific conversion workspace.</summary>
@@ -1794,7 +1794,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
                 /// </param>
                 public virtual DescribeDatabaseEntitiesRequest DescribeDatabaseEntities(string conversionWorkspace)
                 {
-                    return new DescribeDatabaseEntitiesRequest(service, conversionWorkspace);
+                    return new DescribeDatabaseEntitiesRequest(this.service, conversionWorkspace);
                 }
 
                 /// <summary>
@@ -1992,7 +1992,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
                 /// <param name="name">Required. Name of the conversion workspace resource to get.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets details of a single conversion workspace.</summary>
@@ -2044,7 +2044,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
                 /// </param>
                 public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                 {
-                    return new GetIamPolicyRequest(service, resource);
+                    return new GetIamPolicyRequest(this.service, resource);
                 }
 
                 /// <summary>
@@ -2119,7 +2119,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists conversion workspaces in a given project and location.</summary>
@@ -2220,7 +2220,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.DatabaseMigrationService.v1.Data.ConversionWorkspace body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates the parameters of a single conversion workspace.</summary>
@@ -2308,7 +2308,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
                 /// <param name="name">Required. Name of the conversion workspace resource to roll back to.</param>
                 public virtual RollbackRequest Rollback(Google.Apis.DatabaseMigrationService.v1.Data.RollbackConversionWorkspaceRequest body, string name)
                 {
-                    return new RollbackRequest(service, body, name);
+                    return new RollbackRequest(this.service, body, name);
                 }
 
                 /// <summary>Rolls back a conversion workspace to the last committed snapshot.</summary>
@@ -2367,7 +2367,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
                 /// </param>
                 public virtual SearchBackgroundJobsRequest SearchBackgroundJobs(string conversionWorkspace)
                 {
-                    return new SearchBackgroundJobsRequest(service, conversionWorkspace);
+                    return new SearchBackgroundJobsRequest(this.service, conversionWorkspace);
                 }
 
                 /// <summary>
@@ -2391,12 +2391,38 @@ namespace Google.Apis.DatabaseMigrationService.v1
                     [Google.Apis.Util.RequestParameterAttribute("conversionWorkspace", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ConversionWorkspace { get; private set; }
 
+                    private object _completedUntilTime;
+
                     /// <summary>
-                    /// Optional. If provided, only returns jobs that completed until (not including) the given
-                    /// timestamp.
+                    /// String representation of <see cref="CompletedUntilTimeDateTimeOffset"/>, formatted for inclusion
+                    /// in the HTTP request.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("completedUntilTime", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual object CompletedUntilTime { get; set; }
+                    public virtual string CompletedUntilTimeRaw { get; private set; }
+
+                    /// <summary>
+                    /// <seealso cref="object"/> representation of <see cref="CompletedUntilTimeRaw"/>.
+                    /// </summary>
+                    [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CompletedUntilTimeDateTimeOffset instead.")]
+                    public virtual object CompletedUntilTime
+                    {
+                        get => _completedUntilTime;
+                        set
+                        {
+                            CompletedUntilTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                            _completedUntilTime = value;
+                        }
+                    }
+
+                    public virtual System.DateTimeOffset? CompletedUntilTimeDateTimeOffset
+                    {
+                        get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CompletedUntilTimeRaw);
+                        set
+                        {
+                            CompletedUntilTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                            _completedUntilTime = value;
+                        }
+                    }
 
                     /// <summary>
                     /// Optional. The maximum number of jobs to return. The service may return fewer than this value. If
@@ -2466,7 +2492,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
                 /// </param>
                 public virtual SeedRequest Seed(Google.Apis.DatabaseMigrationService.v1.Data.SeedConversionWorkspaceRequest body, string name)
                 {
-                    return new SeedRequest(service, body, name);
+                    return new SeedRequest(this.service, body, name);
                 }
 
                 /// <summary>Imports a snapshot of the source database into the conversion workspace.</summary>
@@ -2529,7 +2555,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
                 /// </param>
                 public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.DatabaseMigrationService.v1.Data.SetIamPolicyRequest body, string resource)
                 {
-                    return new SetIamPolicyRequest(service, body, resource);
+                    return new SetIamPolicyRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -2598,7 +2624,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
                 /// </param>
                 public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.DatabaseMigrationService.v1.Data.TestIamPermissionsRequest body, string resource)
                 {
-                    return new TestIamPermissionsRequest(service, body, resource);
+                    return new TestIamPermissionsRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -2678,7 +2704,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
                 /// <param name="parent">Required. The parent which owns this collection of migration jobs.</param>
                 public virtual CreateRequest Create(Google.Apis.DatabaseMigrationService.v1.Data.MigrationJob body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a new migration job in a given project and location.</summary>
@@ -2759,7 +2785,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
                 /// <param name="name">Required. Name of the migration job resource to delete.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes a single migration job.</summary>
@@ -2841,7 +2867,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
                 /// <param name="name">Name of the migration job resource to demote its destination.</param>
                 public virtual DemoteDestinationRequest DemoteDestination(Google.Apis.DatabaseMigrationService.v1.Data.DemoteDestinationRequest body, string name)
                 {
-                    return new DemoteDestinationRequest(service, body, name);
+                    return new DemoteDestinationRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -2898,7 +2924,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
                 /// <param name="migrationJob">Name of the migration job resource to generate the SSH script.</param>
                 public virtual GenerateSshScriptRequest GenerateSshScript(Google.Apis.DatabaseMigrationService.v1.Data.GenerateSshScriptRequest body, string migrationJob)
                 {
-                    return new GenerateSshScriptRequest(service, body, migrationJob);
+                    return new GenerateSshScriptRequest(this.service, body, migrationJob);
                 }
 
                 /// <summary>Generate a SSH configuration script to configure the reverse SSH connectivity.</summary>
@@ -2955,7 +2981,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
                 /// </param>
                 public virtual GenerateTcpProxyScriptRequest GenerateTcpProxyScript(Google.Apis.DatabaseMigrationService.v1.Data.GenerateTcpProxyScriptRequest body, string migrationJob)
                 {
-                    return new GenerateTcpProxyScriptRequest(service, body, migrationJob);
+                    return new GenerateTcpProxyScriptRequest(this.service, body, migrationJob);
                 }
 
                 /// <summary>
@@ -3009,7 +3035,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
                 /// <param name="name">Required. Name of the migration job resource to get.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets details of a single migration job.</summary>
@@ -3061,7 +3087,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
                 /// </param>
                 public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                 {
-                    return new GetIamPolicyRequest(service, resource);
+                    return new GetIamPolicyRequest(this.service, resource);
                 }
 
                 /// <summary>
@@ -3134,7 +3160,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
                 /// <param name="parent">Required. The parent which owns this collection of migrationJobs.</param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists migration jobs in a given project and location.</summary>
@@ -3251,7 +3277,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.DatabaseMigrationService.v1.Data.MigrationJob body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates the parameters of a single migration job.</summary>
@@ -3342,7 +3368,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
                 /// <param name="name">Name of the migration job resource to promote.</param>
                 public virtual PromoteRequest Promote(Google.Apis.DatabaseMigrationService.v1.Data.PromoteMigrationJobRequest body, string name)
                 {
-                    return new PromoteRequest(service, body, name);
+                    return new PromoteRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -3401,7 +3427,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
                 /// <param name="name">Name of the migration job resource to restart.</param>
                 public virtual RestartRequest Restart(Google.Apis.DatabaseMigrationService.v1.Data.RestartMigrationJobRequest body, string name)
                 {
-                    return new RestartRequest(service, body, name);
+                    return new RestartRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -3459,7 +3485,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
                 /// <param name="name">Name of the migration job resource to resume.</param>
                 public virtual ResumeRequest Resume(Google.Apis.DatabaseMigrationService.v1.Data.ResumeMigrationJobRequest body, string name)
                 {
-                    return new ResumeRequest(service, body, name);
+                    return new ResumeRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -3521,7 +3547,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
                 /// </param>
                 public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.DatabaseMigrationService.v1.Data.SetIamPolicyRequest body, string resource)
                 {
-                    return new SetIamPolicyRequest(service, body, resource);
+                    return new SetIamPolicyRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -3581,7 +3607,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
                 /// <param name="name">Name of the migration job resource to start.</param>
                 public virtual StartRequest Start(Google.Apis.DatabaseMigrationService.v1.Data.StartMigrationJobRequest body, string name)
                 {
-                    return new StartRequest(service, body, name);
+                    return new StartRequest(this.service, body, name);
                 }
 
                 /// <summary>Start an already created migration job.</summary>
@@ -3634,7 +3660,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
                 /// <param name="name">Name of the migration job resource to stop.</param>
                 public virtual StopRequest Stop(Google.Apis.DatabaseMigrationService.v1.Data.StopMigrationJobRequest body, string name)
                 {
-                    return new StopRequest(service, body, name);
+                    return new StopRequest(this.service, body, name);
                 }
 
                 /// <summary>Stops a running migration job.</summary>
@@ -3696,7 +3722,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
                 /// </param>
                 public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.DatabaseMigrationService.v1.Data.TestIamPermissionsRequest body, string resource)
                 {
-                    return new TestIamPermissionsRequest(service, body, resource);
+                    return new TestIamPermissionsRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -3761,7 +3787,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
                 /// <param name="name">Name of the migration job resource to verify.</param>
                 public virtual VerifyRequest Verify(Google.Apis.DatabaseMigrationService.v1.Data.VerifyMigrationJobRequest body, string name)
                 {
-                    return new VerifyRequest(service, body, name);
+                    return new VerifyRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -3842,7 +3868,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
                 /// <param name="name">The name of the operation resource to be cancelled.</param>
                 public virtual CancelRequest Cancel(Google.Apis.DatabaseMigrationService.v1.Data.CancelOperationRequest body, string name)
                 {
-                    return new CancelRequest(service, body, name);
+                    return new CancelRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -3905,7 +3931,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
                 /// <param name="name">The name of the operation resource to be deleted.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -3957,7 +3983,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
                 /// <param name="name">The name of the operation resource.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -4008,7 +4034,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
                 /// <param name="name">The name of the operation's parent resource.</param>
                 public virtual ListRequest List(string name)
                 {
-                    return new ListRequest(service, name);
+                    return new ListRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -4111,7 +4137,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
                 /// <param name="parent">Required. The parent that owns the collection of PrivateConnections.</param>
                 public virtual CreateRequest Create(Google.Apis.DatabaseMigrationService.v1.Data.PrivateConnection body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a new private connection in a given project and location.</summary>
@@ -4204,7 +4230,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
                 /// <param name="name">Required. The name of the private connection to delete.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes a single Database Migration Service private connection.</summary>
@@ -4266,7 +4292,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
                 /// <param name="name">Required. The name of the private connection to get.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets details of a single private connection.</summary>
@@ -4318,7 +4344,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
                 /// </param>
                 public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                 {
-                    return new GetIamPolicyRequest(service, resource);
+                    return new GetIamPolicyRequest(this.service, resource);
                 }
 
                 /// <summary>
@@ -4391,7 +4417,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
                 /// <param name="parent">Required. The parent that owns the collection of private connections.</param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Retrieves a list of private connections in a given project and location.</summary>
@@ -4505,7 +4531,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
                 /// </param>
                 public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.DatabaseMigrationService.v1.Data.SetIamPolicyRequest body, string resource)
                 {
-                    return new SetIamPolicyRequest(service, body, resource);
+                    return new SetIamPolicyRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -4574,7 +4600,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
                 /// </param>
                 public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.DatabaseMigrationService.v1.Data.TestIamPermissionsRequest body, string resource)
                 {
-                    return new TestIamPermissionsRequest(service, body, resource);
+                    return new TestIamPermissionsRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -4642,7 +4668,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
             /// </param>
             public virtual FetchStaticIpsRequest FetchStaticIps(string name)
             {
-                return new FetchStaticIpsRequest(service, name);
+                return new FetchStaticIpsRequest(this.service, name);
             }
 
             /// <summary>
@@ -4717,7 +4743,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
             /// <param name="name">Resource name for the location.</param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets information about a location.</summary>
@@ -4762,7 +4788,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
             {
-                return new ListRequest(service, name);
+                return new ListRequest(this.service, name);
             }
 
             /// <summary>Lists information about the supported locations for this service.</summary>
@@ -5079,8 +5105,8 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? FinishTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(FinishTimeRaw);
-            set => FinishTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(FinishTimeRaw);
+            set => FinishTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The background job log entry ID.</summary>
@@ -5139,8 +5165,8 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -5538,8 +5564,8 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The connection profile display name.</summary>
@@ -5621,8 +5647,8 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -5718,8 +5744,8 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Required. The destination engine details.</summary>
@@ -5784,8 +5810,8 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LatestCommitTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LatestCommitTimeRaw);
-            set => LatestCommitTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LatestCommitTimeRaw);
+            set => LatestCommitTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -5832,8 +5858,8 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -6515,8 +6541,8 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _endTimeRaw;
@@ -6552,8 +6578,8 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -6932,8 +6958,8 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? RevisionCreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(RevisionCreateTimeRaw);
-            set => RevisionCreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(RevisionCreateTimeRaw);
+            set => RevisionCreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -7094,8 +7120,8 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Required. The resource name (URI) of the destination connection profile.</summary>
@@ -7161,8 +7187,8 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. The error details in case of state FAILED.</summary>
@@ -7263,8 +7289,8 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The details of the VPC network that the source database is located in.</summary>
@@ -7797,8 +7823,8 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The private connection display name.</summary>
@@ -7858,8 +7884,8 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>VPC peering configuration.</summary>
@@ -8342,8 +8368,8 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpireTimeRaw);
-            set => ExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>A label to identify this entry.</summary>

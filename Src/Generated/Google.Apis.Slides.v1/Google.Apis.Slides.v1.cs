@@ -331,7 +331,7 @@ namespace Google.Apis.Slides.v1
             /// <param name="pageObjectId">The object ID of the page to retrieve.</param>
             public virtual GetRequest Get(string presentationId, string pageObjectId)
             {
-                return new GetRequest(service, presentationId, pageObjectId);
+                return new GetRequest(this.service, presentationId, pageObjectId);
             }
 
             /// <summary>Gets the latest version of the specified page in the presentation.</summary>
@@ -394,7 +394,7 @@ namespace Google.Apis.Slides.v1
             /// <param name="pageObjectId">The object ID of the page whose thumbnail to retrieve.</param>
             public virtual GetThumbnailRequest GetThumbnail(string presentationId, string pageObjectId)
             {
-                return new GetThumbnailRequest(service, presentationId, pageObjectId);
+                return new GetThumbnailRequest(this.service, presentationId, pageObjectId);
             }
 
             /// <summary>
@@ -536,7 +536,7 @@ namespace Google.Apis.Slides.v1
         /// <param name="presentationId">The presentation to apply the updates to.</param>
         public virtual BatchUpdateRequest BatchUpdate(Google.Apis.Slides.v1.Data.BatchUpdatePresentationRequest body, string presentationId)
         {
-            return new BatchUpdateRequest(service, body, presentationId);
+            return new BatchUpdateRequest(this.service, body, presentationId);
         }
 
         /// <summary>
@@ -603,7 +603,7 @@ namespace Google.Apis.Slides.v1
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.Slides.v1.Data.Presentation body)
         {
-            return new CreateRequest(service, body);
+            return new CreateRequest(this.service, body);
         }
 
         /// <summary>
@@ -646,7 +646,7 @@ namespace Google.Apis.Slides.v1
         /// <param name="presentationId">The ID of the presentation to retrieve.</param>
         public virtual GetRequest Get(string presentationId)
         {
-            return new GetRequest(service, presentationId);
+            return new GetRequest(this.service, presentationId);
         }
 
         /// <summary>Gets the latest version of the specified presentation.</summary>

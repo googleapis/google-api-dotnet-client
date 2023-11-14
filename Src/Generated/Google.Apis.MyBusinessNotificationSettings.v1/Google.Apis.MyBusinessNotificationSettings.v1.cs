@@ -258,7 +258,7 @@ namespace Google.Apis.MyBusinessNotificationSettings.v1
         /// <param name="name">Required. The resource name of the notification setting we are trying to fetch.</param>
         public virtual GetNotificationSettingRequest GetNotificationSetting(string name)
         {
-            return new GetNotificationSettingRequest(service, name);
+            return new GetNotificationSettingRequest(this.service, name);
         }
 
         /// <summary>Returns the pubsub notification settings for the account.</summary>
@@ -312,7 +312,7 @@ namespace Google.Apis.MyBusinessNotificationSettings.v1
         /// </param>
         public virtual UpdateNotificationSettingRequest UpdateNotificationSetting(Google.Apis.MyBusinessNotificationSettings.v1.Data.NotificationSetting body, string name)
         {
-            return new UpdateNotificationSettingRequest(service, body, name);
+            return new UpdateNotificationSettingRequest(this.service, body, name);
         }
 
         /// <summary>

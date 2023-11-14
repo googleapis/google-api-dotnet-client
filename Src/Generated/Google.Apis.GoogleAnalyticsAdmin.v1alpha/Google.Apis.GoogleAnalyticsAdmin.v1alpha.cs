@@ -297,7 +297,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
         /// <summary>Returns summaries of all accounts accessible by the caller.</summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>Returns summaries of all accounts accessible by the caller.</summary>
@@ -402,7 +402,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// </param>
             public virtual BatchCreateRequest BatchCreate(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaBatchCreateAccessBindingsRequest body, string parent)
             {
-                return new BatchCreateRequest(service, body, parent);
+                return new BatchCreateRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -466,7 +466,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// </param>
             public virtual BatchDeleteRequest BatchDelete(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaBatchDeleteAccessBindingsRequest body, string parent)
             {
-                return new BatchDeleteRequest(service, body, parent);
+                return new BatchDeleteRequest(this.service, body, parent);
             }
 
             /// <summary>Deletes information about multiple users' links to an account or property.</summary>
@@ -525,7 +525,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// </param>
             public virtual BatchGetRequest BatchGet(string parent)
             {
-                return new BatchGetRequest(service, parent);
+                return new BatchGetRequest(this.service, parent);
             }
 
             /// <summary>Gets information about multiple access bindings to an account or property.</summary>
@@ -594,7 +594,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// </param>
             public virtual BatchUpdateRequest BatchUpdate(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaBatchUpdateAccessBindingsRequest body, string parent)
             {
-                return new BatchUpdateRequest(service, body, parent);
+                return new BatchUpdateRequest(this.service, body, parent);
             }
 
             /// <summary>Updates information about multiple access bindings to an account or property.</summary>
@@ -651,7 +651,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// <param name="parent">Required. Formats: - accounts/{account} - properties/{property}</param>
             public virtual CreateRequest Create(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaAccessBinding body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>Creates an access binding on an account or property.</summary>
@@ -706,7 +706,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>Deletes an access binding on an account or property.</summary>
@@ -757,7 +757,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets information about an access binding.</summary>
@@ -806,7 +806,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// <param name="parent">Required. Formats: - accounts/{account} - properties/{property}</param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists all access bindings on an account or property.</summary>
@@ -887,7 +887,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaAccessBinding body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>Updates an access binding on an account or property.</summary>
@@ -952,7 +952,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
         /// </param>
         public virtual DeleteRequest Delete(string name)
         {
-            return new DeleteRequest(service, name);
+            return new DeleteRequest(this.service, name);
         }
 
         /// <summary>
@@ -1007,7 +1007,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
         /// </param>
         public virtual GetRequest Get(string name)
         {
-            return new GetRequest(service, name);
+            return new GetRequest(this.service, name);
         }
 
         /// <summary>Lookup for a single Account.</summary>
@@ -1057,7 +1057,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
         /// </param>
         public virtual GetDataSharingSettingsRequest GetDataSharingSettings(string name)
         {
-            return new GetDataSharingSettingsRequest(service, name);
+            return new GetDataSharingSettingsRequest(this.service, name);
         }
 
         /// <summary>Get data sharing settings on an account. Data sharing settings are singletons.</summary>
@@ -1108,7 +1108,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
         /// </summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>
@@ -1194,7 +1194,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
         /// </param>
         public virtual PatchRequest Patch(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaAccount body, string name)
         {
-            return new PatchRequest(service, body, name);
+            return new PatchRequest(this.service, body, name);
         }
 
         /// <summary>Updates an account.</summary>
@@ -1264,7 +1264,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
         /// <param name="body">The body of the request.</param>
         public virtual ProvisionAccountTicketRequest ProvisionAccountTicket(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaProvisionAccountTicketRequest body)
         {
-            return new ProvisionAccountTicketRequest(service, body);
+            return new ProvisionAccountTicketRequest(this.service, body);
         }
 
         /// <summary>Requests a ticket for creating an account.</summary>
@@ -1318,7 +1318,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
         /// </param>
         public virtual RunAccessReportRequest RunAccessReport(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaRunAccessReportRequest body, string entity)
         {
-            return new RunAccessReportRequest(service, body, entity);
+            return new RunAccessReportRequest(this.service, body, entity);
         }
 
         /// <summary>
@@ -1388,7 +1388,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
         /// <param name="account">Required. The account resource for which to return change history resources.</param>
         public virtual SearchChangeHistoryEventsRequest SearchChangeHistoryEvents(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequest body, string account)
         {
-            return new SearchChangeHistoryEventsRequest(service, body, account);
+            return new SearchChangeHistoryEventsRequest(this.service, body, account);
         }
 
         /// <summary>
@@ -1499,7 +1499,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// </param>
             public virtual BatchCreateRequest BatchCreate(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaBatchCreateAccessBindingsRequest body, string parent)
             {
-                return new BatchCreateRequest(service, body, parent);
+                return new BatchCreateRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -1563,7 +1563,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// </param>
             public virtual BatchDeleteRequest BatchDelete(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaBatchDeleteAccessBindingsRequest body, string parent)
             {
-                return new BatchDeleteRequest(service, body, parent);
+                return new BatchDeleteRequest(this.service, body, parent);
             }
 
             /// <summary>Deletes information about multiple users' links to an account or property.</summary>
@@ -1622,7 +1622,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// </param>
             public virtual BatchGetRequest BatchGet(string parent)
             {
-                return new BatchGetRequest(service, parent);
+                return new BatchGetRequest(this.service, parent);
             }
 
             /// <summary>Gets information about multiple access bindings to an account or property.</summary>
@@ -1691,7 +1691,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// </param>
             public virtual BatchUpdateRequest BatchUpdate(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaBatchUpdateAccessBindingsRequest body, string parent)
             {
-                return new BatchUpdateRequest(service, body, parent);
+                return new BatchUpdateRequest(this.service, body, parent);
             }
 
             /// <summary>Updates information about multiple access bindings to an account or property.</summary>
@@ -1748,7 +1748,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// <param name="parent">Required. Formats: - accounts/{account} - properties/{property}</param>
             public virtual CreateRequest Create(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaAccessBinding body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>Creates an access binding on an account or property.</summary>
@@ -1803,7 +1803,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>Deletes an access binding on an account or property.</summary>
@@ -1854,7 +1854,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets information about an access binding.</summary>
@@ -1903,7 +1903,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// <param name="parent">Required. Formats: - accounts/{account} - properties/{property}</param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists all access bindings on an account or property.</summary>
@@ -1984,7 +1984,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaAccessBinding body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>Updates an access binding on an account or property.</summary>
@@ -2062,7 +2062,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// </param>
             public virtual CreateRequest Create(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaAdSenseLink body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>Creates an AdSenseLink.</summary>
@@ -2120,7 +2120,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>Deletes an AdSenseLink.</summary>
@@ -2171,7 +2171,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Looks up a single AdSenseLink.</summary>
@@ -2221,7 +2221,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists AdSenseLinks on a property.</summary>
@@ -2319,7 +2319,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// <param name="name">Required. Example format: properties/1234/audiences/5678</param>
             public virtual ArchiveRequest Archive(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaArchiveAudienceRequest body, string name)
             {
-                return new ArchiveRequest(service, body, name);
+                return new ArchiveRequest(this.service, body, name);
             }
 
             /// <summary>Archives an Audience on a property.</summary>
@@ -2372,7 +2372,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// <param name="parent">Required. Example format: properties/1234</param>
             public virtual CreateRequest Create(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaAudience body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>Creates an Audience.</summary>
@@ -2429,7 +2429,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>
@@ -2482,7 +2482,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// <param name="parent">Required. Example format: properties/1234</param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>
@@ -2565,7 +2565,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaAudience body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>Updates an Audience on a property.</summary>
@@ -2657,7 +2657,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Lookup for a single BigQuery Link.</summary>
@@ -2708,7 +2708,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists BigQuery Links on a property.</summary>
@@ -2809,7 +2809,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// </param>
             public virtual CreateRequest Create(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaChannelGroup body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>Creates a ChannelGroup.</summary>
@@ -2865,7 +2865,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>Deletes a ChannelGroup on a property.</summary>
@@ -2914,7 +2914,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Lookup for a single ChannelGroup.</summary>
@@ -2963,7 +2963,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists ChannelGroups on a property.</summary>
@@ -3045,7 +3045,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaChannelGroup body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>Updates a ChannelGroup.</summary>
@@ -3138,7 +3138,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// </param>
             public virtual CreateRequest Create(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaConversionEvent body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>Creates a conversion event with the specified attributes.</summary>
@@ -3196,7 +3196,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>Deletes a conversion event in a property.</summary>
@@ -3248,7 +3248,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Retrieve a single conversion event.</summary>
@@ -3302,7 +3302,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>
@@ -3385,7 +3385,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaConversionEvent body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>Updates a conversion event with the specified attributes.</summary>
@@ -3478,7 +3478,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// </param>
             public virtual ArchiveRequest Archive(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaArchiveCustomDimensionRequest body, string name)
             {
-                return new ArchiveRequest(service, body, name);
+                return new ArchiveRequest(this.service, body, name);
             }
 
             /// <summary>Archives a CustomDimension on a property.</summary>
@@ -3534,7 +3534,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// <param name="parent">Required. Example format: properties/1234</param>
             public virtual CreateRequest Create(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaCustomDimension body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>Creates a CustomDimension.</summary>
@@ -3588,7 +3588,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Lookup for a single CustomDimension.</summary>
@@ -3636,7 +3636,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// <param name="parent">Required. Example format: properties/1234</param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists CustomDimensions on a property.</summary>
@@ -3716,7 +3716,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaCustomDimension body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>Updates a CustomDimension on a property.</summary>
@@ -3807,7 +3807,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// </param>
             public virtual ArchiveRequest Archive(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaArchiveCustomMetricRequest body, string name)
             {
-                return new ArchiveRequest(service, body, name);
+                return new ArchiveRequest(this.service, body, name);
             }
 
             /// <summary>Archives a CustomMetric on a property.</summary>
@@ -3863,7 +3863,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// <param name="parent">Required. Example format: properties/1234</param>
             public virtual CreateRequest Create(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaCustomMetric body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>Creates a CustomMetric.</summary>
@@ -3917,7 +3917,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Lookup for a single CustomMetric.</summary>
@@ -3964,7 +3964,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// <param name="parent">Required. Example format: properties/1234</param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists CustomMetrics on a property.</summary>
@@ -4044,7 +4044,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaCustomMetric body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>Updates a CustomMetric on a property.</summary>
@@ -4153,7 +4153,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 /// <param name="parent">Required. Example format: properties/123/dataStreams/456</param>
                 public virtual CreateRequest Create(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaEventCreateRule body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates an EventCreateRule.</summary>
@@ -4207,7 +4207,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes an EventCreateRule.</summary>
@@ -4255,7 +4255,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Lookup for a single EventCreateRule.</summary>
@@ -4303,7 +4303,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 /// <param name="parent">Required. Example format: properties/123/dataStreams/456</param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists EventCreateRules on a web data stream.</summary>
@@ -4383,7 +4383,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaEventCreateRule body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates an EventCreateRule.</summary>
@@ -4476,7 +4476,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a measurement protocol secret.</summary>
@@ -4534,7 +4534,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes target MeasurementProtocolSecret.</summary>
@@ -4585,7 +4585,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Lookup for a single "GA4" MeasurementProtocolSecret.</summary>
@@ -4636,7 +4636,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Returns child MeasurementProtocolSecrets under the specified parent Property.</summary>
@@ -4719,7 +4719,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates a measurement protocol secret.</summary>
@@ -4811,7 +4811,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaSKAdNetworkConversionValueSchema body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a SKAdNetworkConversionValueSchema.</summary>
@@ -4869,7 +4869,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes target SKAdNetworkConversionValueSchema.</summary>
@@ -4920,7 +4920,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Looks up a single SKAdNetworkConversionValueSchema.</summary>
@@ -4974,7 +4974,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>
@@ -5062,7 +5062,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaSKAdNetworkConversionValueSchema body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates a SKAdNetworkConversionValueSchema.</summary>
@@ -5134,7 +5134,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// <param name="parent">Required. Example format: properties/1234</param>
             public virtual CreateRequest Create(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaDataStream body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>Creates a DataStream.</summary>
@@ -5188,7 +5188,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>Deletes a DataStream on a property.</summary>
@@ -5237,7 +5237,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Lookup for a single DataStream.</summary>
@@ -5288,7 +5288,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// </param>
             public virtual GetDataRedactionSettingsRequest GetDataRedactionSettings(string name)
             {
-                return new GetDataRedactionSettingsRequest(service, name);
+                return new GetDataRedactionSettingsRequest(this.service, name);
             }
 
             /// <summary>Lookup for a single DataRedactionSettings.</summary>
@@ -5344,7 +5344,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// </param>
             public virtual GetEnhancedMeasurementSettingsRequest GetEnhancedMeasurementSettings(string name)
             {
-                return new GetEnhancedMeasurementSettingsRequest(service, name);
+                return new GetEnhancedMeasurementSettingsRequest(this.service, name);
             }
 
             /// <summary>
@@ -5402,7 +5402,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// </param>
             public virtual GetGlobalSiteTagRequest GetGlobalSiteTag(string name)
             {
-                return new GetGlobalSiteTagRequest(service, name);
+                return new GetGlobalSiteTagRequest(this.service, name);
             }
 
             /// <summary>
@@ -5453,7 +5453,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// <param name="parent">Required. Example format: properties/1234</param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists DataStreams on a property.</summary>
@@ -5533,7 +5533,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaDataStream body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>Updates a DataStream on a property.</summary>
@@ -5608,7 +5608,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// </param>
             public virtual UpdateDataRedactionSettingsRequest UpdateDataRedactionSettings(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaDataRedactionSettings body, string name)
             {
-                return new UpdateDataRedactionSettingsRequest(service, body, name);
+                return new UpdateDataRedactionSettingsRequest(this.service, body, name);
             }
 
             /// <summary>Updates a DataRedactionSettings on a property.</summary>
@@ -5688,7 +5688,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// </param>
             public virtual UpdateEnhancedMeasurementSettingsRequest UpdateEnhancedMeasurementSettings(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings body, string name)
             {
-                return new UpdateEnhancedMeasurementSettingsRequest(service, body, name);
+                return new UpdateEnhancedMeasurementSettingsRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -5788,7 +5788,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// </param>
             public virtual ApproveRequest Approve(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalRequest body, string name)
             {
-                return new ApproveRequest(service, body, name);
+                return new ApproveRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -5854,7 +5854,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// </param>
             public virtual CancelRequest Cancel(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaCancelDisplayVideo360AdvertiserLinkProposalRequest body, string name)
             {
-                return new CancelRequest(service, body, name);
+                return new CancelRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -5914,7 +5914,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// <param name="parent">Required. Example format: properties/1234</param>
             public virtual CreateRequest Create(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>Creates a DisplayVideo360AdvertiserLinkProposal.</summary>
@@ -5972,7 +5972,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>
@@ -6026,7 +6026,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Lookup for a single DisplayVideo360AdvertiserLinkProposal.</summary>
@@ -6074,7 +6074,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// <param name="parent">Required. Example format: properties/1234</param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists DisplayVideo360AdvertiserLinkProposals on a property.</summary>
@@ -6174,7 +6174,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// <param name="parent">Required. Example format: properties/1234</param>
             public virtual CreateRequest Create(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -6234,7 +6234,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>Deletes a DisplayVideo360AdvertiserLink on a property.</summary>
@@ -6285,7 +6285,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Look up a single DisplayVideo360AdvertiserLink</summary>
@@ -6333,7 +6333,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// <param name="parent">Required. Example format: properties/1234</param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists all DisplayVideo360AdvertiserLinks on a property.</summary>
@@ -6414,7 +6414,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>Updates a DisplayVideo360AdvertiserLink on a property.</summary>
@@ -6504,7 +6504,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// <param name="parent">Required. Example format: properties/1234</param>
             public virtual CreateRequest Create(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaExpandedDataSet body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>Creates a ExpandedDataSet.</summary>
@@ -6556,7 +6556,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// <param name="name">Required. Example format: properties/1234/expandedDataSets/5678</param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>Deletes a ExpandedDataSet on a property.</summary>
@@ -6603,7 +6603,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Lookup for a single ExpandedDataSet.</summary>
@@ -6651,7 +6651,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// <param name="parent">Required. Example format: properties/1234</param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists ExpandedDataSets on a property.</summary>
@@ -6731,7 +6731,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaExpandedDataSet body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>Updates a ExpandedDataSet on a property.</summary>
@@ -6821,7 +6821,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// <param name="parent">Required. Format: properties/{property_id} Example: properties/1234</param>
             public virtual CreateRequest Create(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaFirebaseLink body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>Creates a FirebaseLink. Properties can have at most one FirebaseLink.</summary>
@@ -6876,7 +6876,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>Deletes a FirebaseLink on a property</summary>
@@ -6924,7 +6924,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// <param name="parent">Required. Format: properties/{property_id} Example: properties/1234</param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists FirebaseLinks on a property. Properties can have at most one FirebaseLink.</summary>
@@ -7020,7 +7020,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// <param name="parent">Required. Example format: properties/1234</param>
             public virtual CreateRequest Create(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaGoogleAdsLink body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>Creates a GoogleAdsLink.</summary>
@@ -7072,7 +7072,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// <param name="name">Required. Example format: properties/1234/googleAdsLinks/5678</param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>Deletes a GoogleAdsLink on a property</summary>
@@ -7117,7 +7117,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// <param name="parent">Required. Example format: properties/1234</param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists GoogleAdsLinks on a property.</summary>
@@ -7197,7 +7197,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaGoogleAdsLink body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>Updates a GoogleAdsLink on a property</summary>
@@ -7290,7 +7290,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// <param name="parent">Required. Format: properties/{property_id} Example: properties/1234</param>
             public virtual CreateRequest Create(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaRollupPropertySourceLink body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -7351,7 +7351,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>
@@ -7410,7 +7410,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>
@@ -7468,7 +7468,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>
@@ -7570,7 +7570,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// <param name="parent">Required. Example format: properties/1234</param>
             public virtual CreateRequest Create(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaSearchAds360Link body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>Creates a SearchAds360Link.</summary>
@@ -7625,7 +7625,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>Deletes a SearchAds360Link on a property.</summary>
@@ -7675,7 +7675,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Look up a single SearchAds360Link</summary>
@@ -7723,7 +7723,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// <param name="parent">Required. Example format: properties/1234</param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists all SearchAds360Links on a property.</summary>
@@ -7803,7 +7803,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaSearchAds360Link body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>Updates a SearchAds360Link on a property.</summary>
@@ -7896,7 +7896,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// </param>
             public virtual CreateRequest Create(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaSubpropertyEventFilter body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>Creates a subproperty Event Filter.</summary>
@@ -7955,7 +7955,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>Deletes a subproperty event filter.</summary>
@@ -8008,7 +8008,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Lookup for a single subproperty Event Filter.</summary>
@@ -8059,7 +8059,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>List all subproperty Event Filters on a property.</summary>
@@ -8144,7 +8144,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaSubpropertyEventFilter body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>Updates a subproperty Event Filter.</summary>
@@ -8222,7 +8222,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
         /// <param name="property">Required. The property for which to acknowledge user data collection.</param>
         public virtual AcknowledgeUserDataCollectionRequest AcknowledgeUserDataCollection(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionRequest body, string property)
         {
-            return new AcknowledgeUserDataCollectionRequest(service, body, property);
+            return new AcknowledgeUserDataCollectionRequest(this.service, body, property);
         }
 
         /// <summary>
@@ -8278,7 +8278,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaProperty body)
         {
-            return new CreateRequest(service, body);
+            return new CreateRequest(this.service, body);
         }
 
         /// <summary>Creates an "GA4" property with the specified location and attributes.</summary>
@@ -8320,7 +8320,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
         /// <param name="body">The body of the request.</param>
         public virtual CreateConnectedSiteTagRequest CreateConnectedSiteTag(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaCreateConnectedSiteTagRequest body)
         {
-            return new CreateConnectedSiteTagRequest(service, body);
+            return new CreateConnectedSiteTagRequest(this.service, body);
         }
 
         /// <summary>
@@ -8362,7 +8362,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
         /// <param name="body">The body of the request.</param>
         public virtual CreateRollupPropertyRequest CreateRollupProperty(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaCreateRollupPropertyRequest body)
         {
-            return new CreateRollupPropertyRequest(service, body);
+            return new CreateRollupPropertyRequest(this.service, body);
         }
 
         /// <summary>Create a roll-up property and all roll-up property source links.</summary>
@@ -8403,7 +8403,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
         /// <param name="body">The body of the request.</param>
         public virtual CreateSubpropertyRequest CreateSubproperty(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaCreateSubpropertyRequest body)
         {
-            return new CreateSubpropertyRequest(service, body);
+            return new CreateSubpropertyRequest(this.service, body);
         }
 
         /// <summary>
@@ -8453,7 +8453,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
         /// </param>
         public virtual DeleteRequest Delete(string name)
         {
-            return new DeleteRequest(service, name);
+            return new DeleteRequest(this.service, name);
         }
 
         /// <summary>
@@ -8509,7 +8509,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
         /// <param name="body">The body of the request.</param>
         public virtual DeleteConnectedSiteTagRequest DeleteConnectedSiteTag(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaDeleteConnectedSiteTagRequest body)
         {
-            return new DeleteConnectedSiteTagRequest(service, body);
+            return new DeleteConnectedSiteTagRequest(this.service, body);
         }
 
         /// <summary>
@@ -8553,7 +8553,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
         /// <param name="body">The body of the request.</param>
         public virtual FetchAutomatedGa4ConfigurationOptOutRequest FetchAutomatedGa4ConfigurationOptOut(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaFetchAutomatedGa4ConfigurationOptOutRequest body)
         {
-            return new FetchAutomatedGa4ConfigurationOptOutRequest(service, body);
+            return new FetchAutomatedGa4ConfigurationOptOutRequest(this.service, body);
         }
 
         /// <summary>
@@ -8597,7 +8597,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
         /// </summary>
         public virtual FetchConnectedGa4PropertyRequest FetchConnectedGa4Property()
         {
-            return new FetchConnectedGa4PropertyRequest(service);
+            return new FetchConnectedGa4PropertyRequest(this.service);
         }
 
         /// <summary>
@@ -8650,7 +8650,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
         /// </param>
         public virtual GetRequest Get(string name)
         {
-            return new GetRequest(service, name);
+            return new GetRequest(this.service, name);
         }
 
         /// <summary>Lookup for a single "GA4" Property.</summary>
@@ -8701,7 +8701,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
         /// </param>
         public virtual GetAttributionSettingsRequest GetAttributionSettings(string name)
         {
-            return new GetAttributionSettingsRequest(service, name);
+            return new GetAttributionSettingsRequest(this.service, name);
         }
 
         /// <summary>Lookup for a AttributionSettings singleton.</summary>
@@ -8752,7 +8752,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
         /// </param>
         public virtual GetDataRetentionSettingsRequest GetDataRetentionSettings(string name)
         {
-            return new GetDataRetentionSettingsRequest(service, name);
+            return new GetDataRetentionSettingsRequest(this.service, name);
         }
 
         /// <summary>Returns the singleton data retention settings for this property.</summary>
@@ -8803,7 +8803,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
         /// </param>
         public virtual GetGoogleSignalsSettingsRequest GetGoogleSignalsSettings(string name)
         {
-            return new GetGoogleSignalsSettingsRequest(service, name);
+            return new GetGoogleSignalsSettingsRequest(this.service, name);
         }
 
         /// <summary>Lookup for Google Signals settings for a property.</summary>
@@ -8854,7 +8854,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
         /// </summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>
@@ -8964,7 +8964,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
         /// <param name="body">The body of the request.</param>
         public virtual ListConnectedSiteTagsRequest ListConnectedSiteTags(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaListConnectedSiteTagsRequest body)
         {
-            return new ListConnectedSiteTagsRequest(service, body);
+            return new ListConnectedSiteTagsRequest(this.service, body);
         }
 
         /// <summary>
@@ -9009,7 +9009,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
         /// </param>
         public virtual PatchRequest Patch(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaProperty body, string name)
         {
-            return new PatchRequest(service, body, name);
+            return new PatchRequest(this.service, body, name);
         }
 
         /// <summary>Updates a property.</summary>
@@ -9094,7 +9094,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
         /// </param>
         public virtual RunAccessReportRequest RunAccessReport(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaRunAccessReportRequest body, string entity)
         {
-            return new RunAccessReportRequest(service, body, entity);
+            return new RunAccessReportRequest(this.service, body, entity);
         }
 
         /// <summary>
@@ -9164,7 +9164,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
         /// <param name="body">The body of the request.</param>
         public virtual SetAutomatedGa4ConfigurationOptOutRequest SetAutomatedGa4ConfigurationOptOut(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaSetAutomatedGa4ConfigurationOptOutRequest body)
         {
-            return new SetAutomatedGa4ConfigurationOptOutRequest(service, body);
+            return new SetAutomatedGa4ConfigurationOptOutRequest(this.service, body);
         }
 
         /// <summary>
@@ -9210,7 +9210,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
         /// </param>
         public virtual UpdateAttributionSettingsRequest UpdateAttributionSettings(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaAttributionSettings body, string name)
         {
-            return new UpdateAttributionSettingsRequest(service, body, name);
+            return new UpdateAttributionSettingsRequest(this.service, body, name);
         }
 
         /// <summary>Updates attribution settings on a property.</summary>
@@ -9285,7 +9285,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
         /// </param>
         public virtual UpdateDataRetentionSettingsRequest UpdateDataRetentionSettings(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaDataRetentionSettings body, string name)
         {
-            return new UpdateDataRetentionSettingsRequest(service, body, name);
+            return new UpdateDataRetentionSettingsRequest(this.service, body, name);
         }
 
         /// <summary>Updates the singleton data retention settings for this property.</summary>
@@ -9360,7 +9360,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
         /// </param>
         public virtual UpdateGoogleSignalsSettingsRequest UpdateGoogleSignalsSettings(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaGoogleSignalsSettings body, string name)
         {
-            return new UpdateGoogleSignalsSettingsRequest(service, body, name);
+            return new UpdateGoogleSignalsSettingsRequest(this.service, body, name);
         }
 
         /// <summary>Updates Google Signals settings for a property.</summary>
@@ -9850,8 +9850,8 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -9908,8 +9908,8 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -10552,8 +10552,8 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>If set true, enables daily data export to the linked Google Cloud project.</summary>
@@ -10786,8 +10786,8 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ChangeTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ChangeTimeRaw);
-            set => ChangeTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ChangeTimeRaw);
+            set => ChangeTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -10830,7 +10830,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
-        /// <summary>Required. The grouping rules of channels. Maximum number of rules is 25.</summary>
+        /// <summary>Required. The grouping rules of channels. Maximum number of rules is 50.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groupingRule")]
         public virtual System.Collections.Generic.IList<GoogleAnalyticsAdminV1alphaGroupingRule> GroupingRule { get; set; }
 
@@ -11007,8 +11007,8 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -11452,8 +11452,8 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -11511,8 +11511,8 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Data specific to web streams. Must be populated if type is WEB_DATA_STREAM.</summary>
@@ -11941,8 +11941,8 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? DataCollectionStartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DataCollectionStartTimeRaw);
-            set => DataCollectionStartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DataCollectionStartTimeRaw);
+            set => DataCollectionStartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Optional. The description of the ExpandedDataSet. Max 50 chars.</summary>
@@ -12160,8 +12160,8 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. Example format: properties/1234/firebaseLinks/5678</summary>
@@ -12254,8 +12254,8 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -12309,8 +12309,8 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -12980,8 +12980,8 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -13027,8 +13027,8 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? DeleteTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DeleteTimeRaw);
-            set => DeleteTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DeleteTimeRaw);
+            set => DeleteTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -13074,8 +13074,8 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpireTimeRaw);
-            set => ExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Industry associated with this property Example: AUTOMOTIVE, FOOD_AND_DRINK</summary>
@@ -13149,8 +13149,8 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -13530,8 +13530,8 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EarliestChangeTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EarliestChangeTimeRaw);
-            set => EarliestChangeTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EarliestChangeTimeRaw);
+            set => EarliestChangeTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _latestChangeTimeRaw;
@@ -13569,8 +13569,8 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LatestChangeTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LatestChangeTimeRaw);
-            set => LatestChangeTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LatestChangeTimeRaw);
+            set => LatestChangeTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>

@@ -323,7 +323,7 @@ namespace Google.Apis.CloudOSLogin.v1
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>Deletes a POSIX account.</summary>
@@ -391,7 +391,7 @@ namespace Google.Apis.CloudOSLogin.v1
             /// <param name="parent">Required. The unique ID for the user in format `users/{user}`.</param>
             public virtual CreateRequest Create(Google.Apis.CloudOSLogin.v1.Data.SshPublicKey body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>Create an SSH public key</summary>
@@ -446,7 +446,7 @@ namespace Google.Apis.CloudOSLogin.v1
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>Deletes an SSH public key.</summary>
@@ -498,7 +498,7 @@ namespace Google.Apis.CloudOSLogin.v1
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Retrieves an SSH public key.</summary>
@@ -553,7 +553,7 @@ namespace Google.Apis.CloudOSLogin.v1
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.CloudOSLogin.v1.Data.SshPublicKey body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -626,7 +626,7 @@ namespace Google.Apis.CloudOSLogin.v1
         /// <param name="name">Required. The unique ID for the user in format `users/{user}`.</param>
         public virtual GetLoginProfileRequest GetLoginProfile(string name)
         {
-            return new GetLoginProfileRequest(service, name);
+            return new GetLoginProfileRequest(this.service, name);
         }
 
         /// <summary>
@@ -701,7 +701,7 @@ namespace Google.Apis.CloudOSLogin.v1
         /// <param name="parent">Required. The unique ID for the user in format `users/{user}`.</param>
         public virtual ImportSshPublicKeyRequest ImportSshPublicKey(Google.Apis.CloudOSLogin.v1.Data.SshPublicKey body, string parent)
         {
-            return new ImportSshPublicKeyRequest(service, body, parent);
+            return new ImportSshPublicKeyRequest(this.service, body, parent);
         }
 
         /// <summary>

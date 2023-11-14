@@ -306,7 +306,7 @@ namespace Google.Apis.Firebasestorage.v1beta
             /// </param>
             public virtual AddFirebaseRequest AddFirebase(Google.Apis.Firebasestorage.v1beta.Data.AddFirebaseRequest body, string bucket)
             {
-                return new AddFirebaseRequest(service, body, bucket);
+                return new AddFirebaseRequest(this.service, body, bucket);
             }
 
             /// <summary>Links a Google Cloud Storage bucket to a Firebase project.</summary>
@@ -364,7 +364,7 @@ namespace Google.Apis.Firebasestorage.v1beta
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets a single linked storage bucket.</summary>
@@ -414,7 +414,7 @@ namespace Google.Apis.Firebasestorage.v1beta
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists the linked storage buckets for a project.</summary>
@@ -495,7 +495,7 @@ namespace Google.Apis.Firebasestorage.v1beta
             /// </param>
             public virtual RemoveFirebaseRequest RemoveFirebase(Google.Apis.Firebasestorage.v1beta.Data.RemoveFirebaseRequest body, string bucket)
             {
-                return new RemoveFirebaseRequest(service, body, bucket);
+                return new RemoveFirebaseRequest(this.service, body, bucket);
             }
 
             /// <summary>Unlinks a linked Google Cloud Storage bucket from a Firebase project.</summary>
@@ -615,8 +615,8 @@ namespace Google.Apis.Firebasestorage.v1beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _lastUpdateTimeRaw;
@@ -654,8 +654,8 @@ namespace Google.Apis.Firebasestorage.v1beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LastUpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastUpdateTimeRaw);
-            set => LastUpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastUpdateTimeRaw);
+            set => LastUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The current state of the migration.</summary>
@@ -702,8 +702,8 @@ namespace Google.Apis.Firebasestorage.v1beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _lastUpdateTimeRaw;
@@ -741,8 +741,8 @@ namespace Google.Apis.Firebasestorage.v1beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LastUpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastUpdateTimeRaw);
-            set => LastUpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastUpdateTimeRaw);
+            set => LastUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The current state of the migration.</summary>

@@ -286,7 +286,7 @@ namespace Google.Apis.Doubleclicksearch.v2
         /// <param name="startRow">The 0-based starting index for retrieving conversions results.</param>
         public virtual GetRequest Get(long agencyId, long advertiserId, long engineAccountId, int endDate, int rowCount, int startDate, long startRow)
         {
-            return new GetRequest(service, agencyId, advertiserId, engineAccountId, endDate, rowCount, startDate, startRow);
+            return new GetRequest(this.service, agencyId, advertiserId, engineAccountId, endDate, rowCount, startDate, startRow);
         }
 
         /// <summary>Retrieves a list of conversions from a DoubleClick Search engine account.</summary>
@@ -473,7 +473,7 @@ namespace Google.Apis.Doubleclicksearch.v2
         /// <param name="startRow">The 0-based starting index for retrieving conversions results.</param>
         public virtual GetByCustomerIdRequest GetByCustomerId(string customerId, int endDate, int rowCount, int startDate, long startRow)
         {
-            return new GetByCustomerIdRequest(service, customerId, endDate, rowCount, startDate, startRow);
+            return new GetByCustomerIdRequest(this.service, customerId, endDate, rowCount, startDate, startRow);
         }
 
         /// <summary>Retrieves a list of conversions from a DoubleClick Search engine account.</summary>
@@ -654,7 +654,7 @@ namespace Google.Apis.Doubleclicksearch.v2
         /// <param name="body">The body of the request.</param>
         public virtual InsertRequest Insert(Google.Apis.Doubleclicksearch.v2.Data.ConversionList body)
         {
-            return new InsertRequest(service, body);
+            return new InsertRequest(this.service, body);
         }
 
         /// <summary>Inserts a batch of new conversions into DoubleClick Search.</summary>
@@ -693,7 +693,7 @@ namespace Google.Apis.Doubleclicksearch.v2
         /// <param name="body">The body of the request.</param>
         public virtual UpdateRequest Update(Google.Apis.Doubleclicksearch.v2.Data.ConversionList body)
         {
-            return new UpdateRequest(service, body);
+            return new UpdateRequest(this.service, body);
         }
 
         /// <summary>Updates a batch of conversions in DoubleClick Search.</summary>
@@ -732,7 +732,7 @@ namespace Google.Apis.Doubleclicksearch.v2
         /// <param name="body">The body of the request.</param>
         public virtual UpdateAvailabilityRequest UpdateAvailability(Google.Apis.Doubleclicksearch.v2.Data.UpdateAvailabilityRequest body)
         {
-            return new UpdateAvailabilityRequest(service, body);
+            return new UpdateAvailabilityRequest(this.service, body);
         }
 
         /// <summary>Updates the availabilities of a batch of floodlight activities in DoubleClick Search.</summary>
@@ -786,7 +786,7 @@ namespace Google.Apis.Doubleclicksearch.v2
         /// <param name="body">The body of the request.</param>
         public virtual GenerateRequest Generate(Google.Apis.Doubleclicksearch.v2.Data.ReportRequest body)
         {
-            return new GenerateRequest(service, body);
+            return new GenerateRequest(this.service, body);
         }
 
         /// <summary>Generates and returns a report immediately.</summary>
@@ -825,7 +825,7 @@ namespace Google.Apis.Doubleclicksearch.v2
         /// <param name="reportId">ID of the report request being polled.</param>
         public virtual GetRequest Get(string reportId)
         {
-            return new GetRequest(service, reportId);
+            return new GetRequest(this.service, reportId);
         }
 
         /// <summary>Polls for the status of a report request.</summary>
@@ -871,7 +871,7 @@ namespace Google.Apis.Doubleclicksearch.v2
         /// <param name="reportFragment">The index of the report fragment to download.</param>
         public virtual GetFileRequest GetFile(string reportId, int reportFragment)
         {
-            return new GetFileRequest(service, reportId, reportFragment);
+            return new GetFileRequest(this.service, reportId, reportFragment);
         }
 
         /// <summary>Downloads a report file encoded in UTF-8.</summary>
@@ -1020,7 +1020,7 @@ namespace Google.Apis.Doubleclicksearch.v2
         /// <param name="advertiserId">Legacy SA360 advertiser ID.</param>
         public virtual GetIdMappingFileRequest GetIdMappingFile(long agencyId, long advertiserId)
         {
-            return new GetIdMappingFileRequest(service, agencyId, advertiserId);
+            return new GetIdMappingFileRequest(this.service, agencyId, advertiserId);
         }
 
         /// <summary>
@@ -1168,7 +1168,7 @@ namespace Google.Apis.Doubleclicksearch.v2
         /// <param name="body">The body of the request.</param>
         public virtual RequestRequest Request(Google.Apis.Doubleclicksearch.v2.Data.ReportRequest body)
         {
-            return new RequestRequest(service, body);
+            return new RequestRequest(this.service, body);
         }
 
         /// <summary>Inserts a report request into the reporting system.</summary>
@@ -1223,7 +1223,7 @@ namespace Google.Apis.Doubleclicksearch.v2
         /// <param name="advertiserId">DS ID of the advertiser.</param>
         public virtual ListRequest List(long agencyId, long advertiserId)
         {
-            return new ListRequest(service, agencyId, advertiserId);
+            return new ListRequest(this.service, agencyId, advertiserId);
         }
 
         /// <summary>Retrieve the list of saved columns for a specified advertiser.</summary>

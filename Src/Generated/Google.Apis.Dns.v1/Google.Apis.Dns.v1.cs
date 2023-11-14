@@ -336,7 +336,7 @@ namespace Google.Apis.Dns.v1
         /// </param>
         public virtual CreateRequest Create(Google.Apis.Dns.v1.Data.Change body, string project, string managedZone)
         {
-            return new CreateRequest(service, body, project, managedZone);
+            return new CreateRequest(this.service, body, project, managedZone);
         }
 
         /// <summary>Atomically updates the ResourceRecordSet collection.</summary>
@@ -424,7 +424,7 @@ namespace Google.Apis.Dns.v1
         /// </param>
         public virtual GetRequest Get(string project, string managedZone, string changeId)
         {
-            return new GetRequest(service, project, managedZone, changeId);
+            return new GetRequest(this.service, project, managedZone, changeId);
         }
 
         /// <summary>Fetches the representation of an existing Change.</summary>
@@ -517,7 +517,7 @@ namespace Google.Apis.Dns.v1
         /// </param>
         public virtual ListRequest List(string project, string managedZone)
         {
-            return new ListRequest(service, project, managedZone);
+            return new ListRequest(this.service, project, managedZone);
         }
 
         /// <summary>Enumerates Changes to a ResourceRecordSet collection.</summary>
@@ -658,7 +658,7 @@ namespace Google.Apis.Dns.v1
         /// <param name="dnsKeyId">The identifier of the requested DnsKey.</param>
         public virtual GetRequest Get(string project, string managedZone, string dnsKeyId)
         {
-            return new GetRequest(service, project, managedZone, dnsKeyId);
+            return new GetRequest(this.service, project, managedZone, dnsKeyId);
         }
 
         /// <summary>Fetches the representation of an existing DnsKey.</summary>
@@ -764,7 +764,7 @@ namespace Google.Apis.Dns.v1
         /// </param>
         public virtual ListRequest List(string project, string managedZone)
         {
-            return new ListRequest(service, project, managedZone);
+            return new ListRequest(this.service, project, managedZone);
         }
 
         /// <summary>Enumerates DnsKeys to a ResourceRecordSet collection.</summary>
@@ -886,7 +886,7 @@ namespace Google.Apis.Dns.v1
         /// <param name="operation">Identifies the operation addressed by this request (ID of the operation).</param>
         public virtual GetRequest Get(string project, string managedZone, string operation)
         {
-            return new GetRequest(service, project, managedZone, operation);
+            return new GetRequest(this.service, project, managedZone, operation);
         }
 
         /// <summary>Fetches the representation of an existing Operation.</summary>
@@ -973,7 +973,7 @@ namespace Google.Apis.Dns.v1
         /// <param name="managedZone">Identifies the managed zone addressed by this request.</param>
         public virtual ListRequest List(string project, string managedZone)
         {
-            return new ListRequest(service, project, managedZone);
+            return new ListRequest(this.service, project, managedZone);
         }
 
         /// <summary>Enumerates Operations for the given ManagedZone.</summary>
@@ -1101,7 +1101,7 @@ namespace Google.Apis.Dns.v1
         /// <param name="project">Identifies the project addressed by this request.</param>
         public virtual CreateRequest Create(Google.Apis.Dns.v1.Data.ManagedZone body, string project)
         {
-            return new CreateRequest(service, body, project);
+            return new CreateRequest(this.service, body, project);
         }
 
         /// <summary>Creates a new ManagedZone.</summary>
@@ -1171,7 +1171,7 @@ namespace Google.Apis.Dns.v1
         /// </param>
         public virtual DeleteRequest Delete(string project, string managedZone)
         {
-            return new DeleteRequest(service, project, managedZone);
+            return new DeleteRequest(this.service, project, managedZone);
         }
 
         /// <summary>Deletes a previously created ManagedZone.</summary>
@@ -1249,7 +1249,7 @@ namespace Google.Apis.Dns.v1
         /// </param>
         public virtual GetRequest Get(string project, string managedZone)
         {
-            return new GetRequest(service, project, managedZone);
+            return new GetRequest(this.service, project, managedZone);
         }
 
         /// <summary>Fetches the representation of an existing ManagedZone.</summary>
@@ -1331,7 +1331,7 @@ namespace Google.Apis.Dns.v1
         /// </param>
         public virtual GetIamPolicyRequest GetIamPolicy(Google.Apis.Dns.v1.Data.GoogleIamV1GetIamPolicyRequest body, string resource)
         {
-            return new GetIamPolicyRequest(service, body, resource);
+            return new GetIamPolicyRequest(this.service, body, resource);
         }
 
         /// <summary>
@@ -1389,7 +1389,7 @@ namespace Google.Apis.Dns.v1
         /// <param name="project">Identifies the project addressed by this request.</param>
         public virtual ListRequest List(string project)
         {
-            return new ListRequest(service, project);
+            return new ListRequest(this.service, project);
         }
 
         /// <summary>Enumerates ManagedZones that have been created but not yet deleted.</summary>
@@ -1480,7 +1480,7 @@ namespace Google.Apis.Dns.v1
         /// </param>
         public virtual PatchRequest Patch(Google.Apis.Dns.v1.Data.ManagedZone body, string project, string managedZone)
         {
-            return new PatchRequest(service, body, project, managedZone);
+            return new PatchRequest(this.service, body, project, managedZone);
         }
 
         /// <summary>Applies a partial update to an existing ManagedZone.</summary>
@@ -1569,7 +1569,7 @@ namespace Google.Apis.Dns.v1
         /// </param>
         public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Dns.v1.Data.GoogleIamV1SetIamPolicyRequest body, string resource)
         {
-            return new SetIamPolicyRequest(service, body, resource);
+            return new SetIamPolicyRequest(this.service, body, resource);
         }
 
         /// <summary>
@@ -1636,7 +1636,7 @@ namespace Google.Apis.Dns.v1
         /// </param>
         public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Dns.v1.Data.GoogleIamV1TestIamPermissionsRequest body, string resource)
         {
-            return new TestIamPermissionsRequest(service, body, resource);
+            return new TestIamPermissionsRequest(this.service, body, resource);
         }
 
         /// <summary>
@@ -1700,7 +1700,7 @@ namespace Google.Apis.Dns.v1
         /// </param>
         public virtual UpdateRequest Update(Google.Apis.Dns.v1.Data.ManagedZone body, string project, string managedZone)
         {
-            return new UpdateRequest(service, body, project, managedZone);
+            return new UpdateRequest(this.service, body, project, managedZone);
         }
 
         /// <summary>Updates an existing ManagedZone.</summary>
@@ -1798,7 +1798,7 @@ namespace Google.Apis.Dns.v1
         /// <param name="project">Identifies the project addressed by this request.</param>
         public virtual CreateRequest Create(Google.Apis.Dns.v1.Data.Policy body, string project)
         {
-            return new CreateRequest(service, body, project);
+            return new CreateRequest(this.service, body, project);
         }
 
         /// <summary>Creates a new Policy.</summary>
@@ -1868,7 +1868,7 @@ namespace Google.Apis.Dns.v1
         /// <param name="policy">User given friendly name of the policy addressed by this request.</param>
         public virtual DeleteRequest Delete(string project, string policy)
         {
-            return new DeleteRequest(service, project, policy);
+            return new DeleteRequest(this.service, project, policy);
         }
 
         /// <summary>
@@ -1944,7 +1944,7 @@ namespace Google.Apis.Dns.v1
         /// <param name="policy">User given friendly name of the policy addressed by this request.</param>
         public virtual GetRequest Get(string project, string policy)
         {
-            return new GetRequest(service, project, policy);
+            return new GetRequest(this.service, project, policy);
         }
 
         /// <summary>Fetches the representation of an existing Policy.</summary>
@@ -2017,7 +2017,7 @@ namespace Google.Apis.Dns.v1
         /// <param name="project">Identifies the project addressed by this request.</param>
         public virtual ListRequest List(string project)
         {
-            return new ListRequest(service, project);
+            return new ListRequest(this.service, project);
         }
 
         /// <summary>Enumerates all Policies associated with a project.</summary>
@@ -2094,7 +2094,7 @@ namespace Google.Apis.Dns.v1
         /// <param name="policy">User given friendly name of the policy addressed by this request.</param>
         public virtual PatchRequest Patch(Google.Apis.Dns.v1.Data.Policy body, string project, string policy)
         {
-            return new PatchRequest(service, body, project, policy);
+            return new PatchRequest(this.service, body, project, policy);
         }
 
         /// <summary>Applies a partial update to an existing Policy.</summary>
@@ -2176,7 +2176,7 @@ namespace Google.Apis.Dns.v1
         /// <param name="policy">User given friendly name of the policy addressed by this request.</param>
         public virtual UpdateRequest Update(Google.Apis.Dns.v1.Data.Policy body, string project, string policy)
         {
-            return new UpdateRequest(service, body, project, policy);
+            return new UpdateRequest(this.service, body, project, policy);
         }
 
         /// <summary>Updates an existing Policy.</summary>
@@ -2271,7 +2271,7 @@ namespace Google.Apis.Dns.v1
         /// <param name="project">Identifies the project addressed by this request.</param>
         public virtual GetRequest Get(string project)
         {
-            return new GetRequest(service, project);
+            return new GetRequest(this.service, project);
         }
 
         /// <summary>Fetches the representation of an existing Project.</summary>
@@ -2350,7 +2350,7 @@ namespace Google.Apis.Dns.v1
         /// </param>
         public virtual CreateRequest Create(Google.Apis.Dns.v1.Data.ResourceRecordSet body, string project, string managedZone)
         {
-            return new CreateRequest(service, body, project, managedZone);
+            return new CreateRequest(this.service, body, project, managedZone);
         }
 
         /// <summary>Creates a new ResourceRecordSet.</summary>
@@ -2437,7 +2437,7 @@ namespace Google.Apis.Dns.v1
         /// <param name="type">RRSet type.</param>
         public virtual DeleteRequest Delete(string project, string managedZone, string name, string type)
         {
-            return new DeleteRequest(service, project, managedZone, name, type);
+            return new DeleteRequest(this.service, project, managedZone, name, type);
         }
 
         /// <summary>Deletes a previously created ResourceRecordSet.</summary>
@@ -2543,7 +2543,7 @@ namespace Google.Apis.Dns.v1
         /// <param name="type">RRSet type.</param>
         public virtual GetRequest Get(string project, string managedZone, string name, string type)
         {
-            return new GetRequest(service, project, managedZone, name, type);
+            return new GetRequest(this.service, project, managedZone, name, type);
         }
 
         /// <summary>Fetches the representation of an existing ResourceRecordSet.</summary>
@@ -2647,7 +2647,7 @@ namespace Google.Apis.Dns.v1
         /// </param>
         public virtual ListRequest List(string project, string managedZone)
         {
-            return new ListRequest(service, project, managedZone);
+            return new ListRequest(this.service, project, managedZone);
         }
 
         /// <summary>Enumerates ResourceRecordSets that you have created but not yet deleted.</summary>
@@ -2770,7 +2770,7 @@ namespace Google.Apis.Dns.v1
         /// <param name="type">RRSet type.</param>
         public virtual PatchRequest Patch(Google.Apis.Dns.v1.Data.ResourceRecordSet body, string project, string managedZone, string name, string type)
         {
-            return new PatchRequest(service, body, project, managedZone, name, type);
+            return new PatchRequest(this.service, body, project, managedZone, name, type);
         }
 
         /// <summary>Applies a partial update to an existing ResourceRecordSet.</summary>
@@ -2894,7 +2894,7 @@ namespace Google.Apis.Dns.v1
         /// <param name="project">Identifies the project addressed by this request.</param>
         public virtual CreateRequest Create(Google.Apis.Dns.v1.Data.ResponsePolicy body, string project)
         {
-            return new CreateRequest(service, body, project);
+            return new CreateRequest(this.service, body, project);
         }
 
         /// <summary>Creates a new Response Policy</summary>
@@ -2965,7 +2965,7 @@ namespace Google.Apis.Dns.v1
         /// <param name="responsePolicy">User assigned name of the Response Policy addressed by this request.</param>
         public virtual DeleteRequest Delete(string project, string responsePolicy)
         {
-            return new DeleteRequest(service, project, responsePolicy);
+            return new DeleteRequest(this.service, project, responsePolicy);
         }
 
         /// <summary>
@@ -3042,7 +3042,7 @@ namespace Google.Apis.Dns.v1
         /// <param name="responsePolicy">User assigned name of the Response Policy addressed by this request.</param>
         public virtual GetRequest Get(string project, string responsePolicy)
         {
-            return new GetRequest(service, project, responsePolicy);
+            return new GetRequest(this.service, project, responsePolicy);
         }
 
         /// <summary>Fetches the representation of an existing Response Policy.</summary>
@@ -3115,7 +3115,7 @@ namespace Google.Apis.Dns.v1
         /// <param name="project">Identifies the project addressed by this request.</param>
         public virtual ListRequest List(string project)
         {
-            return new ListRequest(service, project);
+            return new ListRequest(this.service, project);
         }
 
         /// <summary>Enumerates all Response Policies associated with a project.</summary>
@@ -3192,7 +3192,7 @@ namespace Google.Apis.Dns.v1
         /// <param name="responsePolicy">User assigned name of the response policy addressed by this request.</param>
         public virtual PatchRequest Patch(Google.Apis.Dns.v1.Data.ResponsePolicy body, string project, string responsePolicy)
         {
-            return new PatchRequest(service, body, project, responsePolicy);
+            return new PatchRequest(this.service, body, project, responsePolicy);
         }
 
         /// <summary>Applies a partial update to an existing Response Policy.</summary>
@@ -3274,7 +3274,7 @@ namespace Google.Apis.Dns.v1
         /// <param name="responsePolicy">User assigned name of the Response Policy addressed by this request.</param>
         public virtual UpdateRequest Update(Google.Apis.Dns.v1.Data.ResponsePolicy body, string project, string responsePolicy)
         {
-            return new UpdateRequest(service, body, project, responsePolicy);
+            return new UpdateRequest(this.service, body, project, responsePolicy);
         }
 
         /// <summary>Updates an existing Response Policy.</summary>
@@ -3373,7 +3373,7 @@ namespace Google.Apis.Dns.v1
         /// </param>
         public virtual CreateRequest Create(Google.Apis.Dns.v1.Data.ResponsePolicyRule body, string project, string responsePolicy)
         {
-            return new CreateRequest(service, body, project, responsePolicy);
+            return new CreateRequest(this.service, body, project, responsePolicy);
         }
 
         /// <summary>Creates a new Response Policy Rule.</summary>
@@ -3459,7 +3459,7 @@ namespace Google.Apis.Dns.v1
         /// </param>
         public virtual DeleteRequest Delete(string project, string responsePolicy, string responsePolicyRule)
         {
-            return new DeleteRequest(service, project, responsePolicy, responsePolicyRule);
+            return new DeleteRequest(this.service, project, responsePolicy, responsePolicyRule);
         }
 
         /// <summary>Deletes a previously created Response Policy Rule.</summary>
@@ -3551,7 +3551,7 @@ namespace Google.Apis.Dns.v1
         /// </param>
         public virtual GetRequest Get(string project, string responsePolicy, string responsePolicyRule)
         {
-            return new GetRequest(service, project, responsePolicy, responsePolicyRule);
+            return new GetRequest(this.service, project, responsePolicy, responsePolicyRule);
         }
 
         /// <summary>Fetches the representation of an existing Response Policy Rule.</summary>
@@ -3638,7 +3638,7 @@ namespace Google.Apis.Dns.v1
         /// <param name="responsePolicy">User assigned name of the Response Policy to list.</param>
         public virtual ListRequest List(string project, string responsePolicy)
         {
-            return new ListRequest(service, project, responsePolicy);
+            return new ListRequest(this.service, project, responsePolicy);
         }
 
         /// <summary>Enumerates all Response Policy Rules associated with a project.</summary>
@@ -3733,7 +3733,7 @@ namespace Google.Apis.Dns.v1
         /// </param>
         public virtual PatchRequest Patch(Google.Apis.Dns.v1.Data.ResponsePolicyRule body, string project, string responsePolicy, string responsePolicyRule)
         {
-            return new PatchRequest(service, body, project, responsePolicy, responsePolicyRule);
+            return new PatchRequest(this.service, body, project, responsePolicy, responsePolicyRule);
         }
 
         /// <summary>Applies a partial update to an existing Response Policy Rule.</summary>
@@ -3833,7 +3833,7 @@ namespace Google.Apis.Dns.v1
         /// </param>
         public virtual UpdateRequest Update(Google.Apis.Dns.v1.Data.ResponsePolicyRule body, string project, string responsePolicy, string responsePolicyRule)
         {
-            return new UpdateRequest(service, body, project, responsePolicy, responsePolicyRule);
+            return new UpdateRequest(this.service, body, project, responsePolicy, responsePolicyRule);
         }
 
         /// <summary>Updates an existing Response Policy Rule.</summary>

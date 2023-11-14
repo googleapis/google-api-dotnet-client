@@ -337,7 +337,7 @@ namespace Google.Apis.CloudBuild.v2
                     /// </param>
                     public virtual AccessReadTokenRequest AccessReadToken(Google.Apis.CloudBuild.v2.Data.FetchReadTokenRequest body, string repository)
                     {
-                        return new AccessReadTokenRequest(service, body, repository);
+                        return new AccessReadTokenRequest(this.service, body, repository);
                     }
 
                     /// <summary>Fetches read token of a given repository.</summary>
@@ -396,7 +396,7 @@ namespace Google.Apis.CloudBuild.v2
                     /// </param>
                     public virtual AccessReadWriteTokenRequest AccessReadWriteToken(Google.Apis.CloudBuild.v2.Data.FetchReadWriteTokenRequest body, string repository)
                     {
-                        return new AccessReadWriteTokenRequest(service, body, repository);
+                        return new AccessReadWriteTokenRequest(this.service, body, repository);
                     }
 
                     /// <summary>Fetches read/write token of a given repository.</summary>
@@ -456,7 +456,7 @@ namespace Google.Apis.CloudBuild.v2
                     /// </param>
                     public virtual BatchCreateRequest BatchCreate(Google.Apis.CloudBuild.v2.Data.BatchCreateRepositoriesRequest body, string parent)
                     {
-                        return new BatchCreateRequest(service, body, parent);
+                        return new BatchCreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>Creates multiple repositories inside a connection.</summary>
@@ -516,7 +516,7 @@ namespace Google.Apis.CloudBuild.v2
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.CloudBuild.v2.Data.Repository body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>Creates a Repository.</summary>
@@ -591,7 +591,7 @@ namespace Google.Apis.CloudBuild.v2
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>Deletes a single repository.</summary>
@@ -669,7 +669,7 @@ namespace Google.Apis.CloudBuild.v2
                     /// </param>
                     public virtual FetchGitRefsRequest FetchGitRefs(string repository)
                     {
-                        return new FetchGitRefsRequest(service, repository);
+                        return new FetchGitRefsRequest(this.service, repository);
                     }
 
                     /// <summary>Fetch the list of branches or tags for a given repository.</summary>
@@ -772,7 +772,7 @@ namespace Google.Apis.CloudBuild.v2
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Gets details of a single repository.</summary>
@@ -823,7 +823,7 @@ namespace Google.Apis.CloudBuild.v2
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists Repositories in a given connection.</summary>
@@ -916,7 +916,7 @@ namespace Google.Apis.CloudBuild.v2
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.CloudBuild.v2.Data.Connection body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a Connection.</summary>
@@ -989,7 +989,7 @@ namespace Google.Apis.CloudBuild.v2
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes a single connection.</summary>
@@ -1068,7 +1068,7 @@ namespace Google.Apis.CloudBuild.v2
                 /// </param>
                 public virtual FetchLinkableRepositoriesRequest FetchLinkableRepositories(string connection)
                 {
-                    return new FetchLinkableRepositoriesRequest(service, connection);
+                    return new FetchLinkableRepositoriesRequest(this.service, connection);
                 }
 
                 /// <summary>
@@ -1144,7 +1144,7 @@ namespace Google.Apis.CloudBuild.v2
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets details of a single connection.</summary>
@@ -1199,7 +1199,7 @@ namespace Google.Apis.CloudBuild.v2
                 /// </param>
                 public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                 {
-                    return new GetIamPolicyRequest(service, resource);
+                    return new GetIamPolicyRequest(this.service, resource);
                 }
 
                 /// <summary>
@@ -1274,7 +1274,7 @@ namespace Google.Apis.CloudBuild.v2
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists Connections in a given project and location.</summary>
@@ -1350,7 +1350,7 @@ namespace Google.Apis.CloudBuild.v2
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.CloudBuild.v2.Data.Connection body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates a single connection.</summary>
@@ -1452,7 +1452,7 @@ namespace Google.Apis.CloudBuild.v2
                 /// </param>
                 public virtual ProcessWebhookRequest ProcessWebhook(Google.Apis.CloudBuild.v2.Data.HttpBody body, string parent)
                 {
-                    return new ProcessWebhookRequest(service, body, parent);
+                    return new ProcessWebhookRequest(this.service, body, parent);
                 }
 
                 /// <summary>ProcessWebhook is called by the external SCM for notifying of events.</summary>
@@ -1529,7 +1529,7 @@ namespace Google.Apis.CloudBuild.v2
                 /// </param>
                 public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.CloudBuild.v2.Data.SetIamPolicyRequest body, string resource)
                 {
-                    return new SetIamPolicyRequest(service, body, resource);
+                    return new SetIamPolicyRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -1598,7 +1598,7 @@ namespace Google.Apis.CloudBuild.v2
                 /// </param>
                 public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.CloudBuild.v2.Data.TestIamPermissionsRequest body, string resource)
                 {
-                    return new TestIamPermissionsRequest(service, body, resource);
+                    return new TestIamPermissionsRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -1685,7 +1685,7 @@ namespace Google.Apis.CloudBuild.v2
                 /// <param name="name">The name of the operation resource to be cancelled.</param>
                 public virtual CancelRequest Cancel(Google.Apis.CloudBuild.v2.Data.CancelOperationRequest body, string name)
                 {
-                    return new CancelRequest(service, body, name);
+                    return new CancelRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -1747,7 +1747,7 @@ namespace Google.Apis.CloudBuild.v2
                 /// <param name="name">The name of the operation resource.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -1796,7 +1796,7 @@ namespace Google.Apis.CloudBuild.v2
             /// <param name="name">Resource name for the location.</param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets information about a location.</summary>
@@ -1841,7 +1841,7 @@ namespace Google.Apis.CloudBuild.v2
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
             {
-                return new ListRequest(service, name);
+                return new ListRequest(this.service, name);
             }
 
             /// <summary>Lists information about the supported locations for this service.</summary>
@@ -2143,8 +2143,8 @@ namespace Google.Apis.CloudBuild.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -2223,8 +2223,8 @@ namespace Google.Apis.CloudBuild.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
     }
 
@@ -2437,8 +2437,8 @@ namespace Google.Apis.CloudBuild.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ExpirationTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpirationTimeRaw);
-            set => ExpirationTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpirationTimeRaw);
+            set => ExpirationTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The token content.</summary>
@@ -2494,8 +2494,8 @@ namespace Google.Apis.CloudBuild.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ExpirationTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpirationTimeRaw);
-            set => ExpirationTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpirationTimeRaw);
+            set => ExpirationTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The token content.</summary>
@@ -2564,8 +2564,8 @@ namespace Google.Apis.CloudBuild.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LastTransitionTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastTransitionTimeRaw);
-            set => LastTransitionTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastTransitionTimeRaw);
+            set => LastTransitionTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>A human readable message indicating details about the transition.</summary>
@@ -2734,8 +2734,8 @@ namespace Google.Apis.CloudBuild.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _endTimeRaw;
@@ -2771,8 +2771,8 @@ namespace Google.Apis.CloudBuild.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -3061,8 +3061,8 @@ namespace Google.Apis.CloudBuild.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _endTimeRaw;
@@ -3098,8 +3098,8 @@ namespace Google.Apis.CloudBuild.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. Human-readable status of the operation, if any.</summary>
@@ -3252,8 +3252,8 @@ namespace Google.Apis.CloudBuild.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CompletionTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CompletionTimeRaw);
-            set => CompletionTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CompletionTimeRaw);
+            set => CompletionTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. Kubernetes Conditions convention for PipelineRun status and error.</summary>
@@ -3293,13 +3293,55 @@ namespace Google.Apis.CloudBuild.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Needed for declarative-friendly resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
+
+        private string _finallyStartTimeRaw;
+
+        private object _finallyStartTime;
+
+        /// <summary>
+        /// Output only. FinallyStartTime is when all non-finally tasks have been completed and only finally tasks are
+        /// being executed. +optional
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("finallyStartTime")]
+        public virtual string FinallyStartTimeRaw
+        {
+            get => _finallyStartTimeRaw;
+            set
+            {
+                _finallyStartTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _finallyStartTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="FinallyStartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use FinallyStartTimeDateTimeOffset instead.")]
+        public virtual object FinallyStartTime
+        {
+            get => _finallyStartTime;
+            set
+            {
+                _finallyStartTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _finallyStartTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="FinallyStartTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? FinallyStartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(FinallyStartTimeRaw);
+            set => FinallyStartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>
         /// Output only. The `PipelineRun` name with format
@@ -3369,8 +3411,8 @@ namespace Google.Apis.CloudBuild.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -3417,8 +3459,8 @@ namespace Google.Apis.CloudBuild.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. The WorkerPool used to run this PipelineRun.</summary>
@@ -3692,8 +3734,8 @@ namespace Google.Apis.CloudBuild.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -3747,8 +3789,8 @@ namespace Google.Apis.CloudBuild.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. External ID of the webhook created for the repository.</summary>
@@ -3796,8 +3838,8 @@ namespace Google.Apis.CloudBuild.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _endTimeRaw;
@@ -3833,8 +3875,8 @@ namespace Google.Apis.CloudBuild.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. ID of the pipeline run created by RunWorkflow.</summary>
@@ -4379,6 +4421,13 @@ namespace Google.Apis.CloudBuild.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("secret")]
         public virtual SecretVolumeSource Secret { get; set; }
 
+        /// <summary>
+        /// Optional. SubPath is optionally a directory on the volume which should be used for this binding (i.e. the
+        /// volume will be mounted at this sub directory). +optional
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subPath")]
+        public virtual string SubPath { get; set; }
+
         /// <summary>Volume claim that will be created in the same namespace.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("volumeClaim")]
         public virtual VolumeClaim VolumeClaim { get; set; }
@@ -4425,6 +4474,13 @@ namespace Google.Apis.CloudBuild.v2.Data
         /// <summary>Name of the workspace as declared by the task.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Optional. SubPath is optionally a directory on the volume which should be used for this binding (i.e. the
+        /// volume will be mounted at this sub directory). +optional
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subPath")]
+        public virtual string SubPath { get; set; }
 
         /// <summary>Name of the workspace declared by the pipeline.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workspace")]

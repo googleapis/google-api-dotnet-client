@@ -265,7 +265,7 @@ namespace Google.Apis.CivicInfo.v2
         /// <summary>Searches for political divisions by their natural name or OCD ID.</summary>
         public virtual SearchRequest Search()
         {
-            return new SearchRequest(service);
+            return new SearchRequest(this.service);
         }
 
         /// <summary>Searches for political divisions by their natural name or OCD ID.</summary>
@@ -327,7 +327,7 @@ namespace Google.Apis.CivicInfo.v2
         /// <summary>List of available elections to query.</summary>
         public virtual ElectionQueryRequest ElectionQuery()
         {
-            return new ElectionQueryRequest(service);
+            return new ElectionQueryRequest(this.service);
         }
 
         /// <summary>List of available elections to query.</summary>
@@ -371,7 +371,7 @@ namespace Google.Apis.CivicInfo.v2
         /// <param name="address">The registered address of the voter to look up.</param>
         public virtual VoterInfoQueryRequest VoterInfoQuery(string address)
         {
-            return new VoterInfoQueryRequest(service, address);
+            return new VoterInfoQueryRequest(this.service, address);
         }
 
         /// <summary>Looks up information relevant to a voter based on the voter's registered address.</summary>
@@ -489,7 +489,7 @@ namespace Google.Apis.CivicInfo.v2
         /// <summary>Looks up political geography and representative information for a single address.</summary>
         public virtual RepresentativeInfoByAddressRequest RepresentativeInfoByAddress()
         {
-            return new RepresentativeInfoByAddressRequest(service);
+            return new RepresentativeInfoByAddressRequest(this.service);
         }
 
         /// <summary>Looks up political geography and representative information for a single address.</summary>
@@ -708,7 +708,7 @@ namespace Google.Apis.CivicInfo.v2
         /// <param name="ocdId">The Open Civic Data division identifier of the division to look up.</param>
         public virtual RepresentativeInfoByDivisionRequest RepresentativeInfoByDivision(string ocdId)
         {
-            return new RepresentativeInfoByDivisionRequest(service, ocdId);
+            return new RepresentativeInfoByDivisionRequest(this.service, ocdId);
         }
 
         /// <summary>Looks up representative information for a single geographic division.</summary>

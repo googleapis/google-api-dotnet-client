@@ -339,7 +339,7 @@ namespace Google.Apis.Dataflow.v1b3
                 /// <param name="jobId">The job id.</param>
                 public virtual GetConfigRequest GetConfig(Google.Apis.Dataflow.v1b3.Data.GetDebugConfigRequest body, string projectId, string jobId)
                 {
-                    return new GetConfigRequest(service, body, projectId, jobId);
+                    return new GetConfigRequest(this.service, body, projectId, jobId);
                 }
 
                 /// <summary>Get encoded debug configuration for component. Not cacheable.</summary>
@@ -406,7 +406,7 @@ namespace Google.Apis.Dataflow.v1b3
                 /// <param name="jobId">The job id.</param>
                 public virtual SendCaptureRequest SendCapture(Google.Apis.Dataflow.v1b3.Data.SendDebugCaptureRequest body, string projectId, string jobId)
                 {
-                    return new SendCaptureRequest(service, body, projectId, jobId);
+                    return new SendCaptureRequest(this.service, body, projectId, jobId);
                 }
 
                 /// <summary>Send encoded debug capture data for component.</summary>
@@ -496,7 +496,7 @@ namespace Google.Apis.Dataflow.v1b3
                 /// <param name="jobId">The job to get messages about.</param>
                 public virtual ListRequest List(string projectId, string jobId)
                 {
-                    return new ListRequest(service, projectId, jobId);
+                    return new ListRequest(this.service, projectId, jobId);
                 }
 
                 /// <summary>
@@ -524,12 +524,36 @@ namespace Google.Apis.Dataflow.v1b3
                     [Google.Apis.Util.RequestParameterAttribute("jobId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string JobId { get; private set; }
 
+                    private object _endTime;
+
                     /// <summary>
-                    /// Return only messages with timestamps &amp;lt; end_time. The default is now (i.e. return up to
-                    /// the latest messages available).
+                    /// String representation of <see cref="EndTimeDateTimeOffset"/>, formatted for inclusion in the
+                    /// HTTP request.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("endTime", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual object EndTime { get; set; }
+                    public virtual string EndTimeRaw { get; private set; }
+
+                    /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+                    [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+                    public virtual object EndTime
+                    {
+                        get => _endTime;
+                        set
+                        {
+                            EndTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                            _endTime = value;
+                        }
+                    }
+
+                    public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+                    {
+                        get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+                        set
+                        {
+                            EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                            _endTime = value;
+                        }
+                    }
 
                     /// <summary>
                     /// The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
@@ -605,12 +629,36 @@ namespace Google.Apis.Dataflow.v1b3
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
+                    private object _startTime;
+
                     /// <summary>
-                    /// If specified, return only messages with timestamps &amp;gt;= start_time. The default is the job
-                    /// creation time (i.e. beginning of messages).
+                    /// String representation of <see cref="StartTimeDateTimeOffset"/>, formatted for inclusion in the
+                    /// HTTP request.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual object StartTime { get; set; }
+                    public virtual string StartTimeRaw { get; private set; }
+
+                    /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+                    [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+                    public virtual object StartTime
+                    {
+                        get => _startTime;
+                        set
+                        {
+                            StartTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                            _startTime = value;
+                        }
+                    }
+
+                    public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+                    {
+                        get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+                        set
+                        {
+                            StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                            _startTime = value;
+                        }
+                    }
 
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
@@ -716,7 +764,7 @@ namespace Google.Apis.Dataflow.v1b3
                 /// <param name="jobId">Identifies the workflow job this worker belongs to.</param>
                 public virtual LeaseRequest Lease(Google.Apis.Dataflow.v1b3.Data.LeaseWorkItemRequest body, string projectId, string jobId)
                 {
-                    return new LeaseRequest(service, body, projectId, jobId);
+                    return new LeaseRequest(this.service, body, projectId, jobId);
                 }
 
                 /// <summary>Leases a dataflow WorkItem to run.</summary>
@@ -783,7 +831,7 @@ namespace Google.Apis.Dataflow.v1b3
                 /// <param name="jobId">The job which the WorkItem is part of.</param>
                 public virtual ReportStatusRequest ReportStatus(Google.Apis.Dataflow.v1b3.Data.ReportWorkItemStatusRequest body, string projectId, string jobId)
                 {
-                    return new ReportStatusRequest(service, body, projectId, jobId);
+                    return new ReportStatusRequest(this.service, body, projectId, jobId);
                 }
 
                 /// <summary>Reports the status of dataflow WorkItems leased by a worker.</summary>
@@ -852,7 +900,7 @@ namespace Google.Apis.Dataflow.v1b3
             /// <param name="projectId">The project which owns the jobs.</param>
             public virtual AggregatedRequest Aggregated(string projectId)
             {
-                return new AggregatedRequest(service, projectId);
+                return new AggregatedRequest(this.service, projectId);
             }
 
             /// <summary>
@@ -1049,7 +1097,7 @@ namespace Google.Apis.Dataflow.v1b3
             /// <param name="projectId">The ID of the Cloud Platform project that the job belongs to.</param>
             public virtual CreateRequest Create(Google.Apis.Dataflow.v1b3.Data.Job body, string projectId)
             {
-                return new CreateRequest(service, body, projectId);
+                return new CreateRequest(this.service, body, projectId);
             }
 
             /// <summary>
@@ -1184,7 +1232,7 @@ namespace Google.Apis.Dataflow.v1b3
             /// <param name="jobId">The job ID.</param>
             public virtual GetRequest Get(string projectId, string jobId)
             {
-                return new GetRequest(service, projectId, jobId);
+                return new GetRequest(this.service, projectId, jobId);
             }
 
             /// <summary>
@@ -1313,7 +1361,7 @@ namespace Google.Apis.Dataflow.v1b3
             /// <param name="jobId">The job to get metrics for.</param>
             public virtual GetMetricsRequest GetMetrics(string projectId, string jobId)
             {
-                return new GetMetricsRequest(service, projectId, jobId);
+                return new GetMetricsRequest(this.service, projectId, jobId);
             }
 
             /// <summary>
@@ -1347,12 +1395,36 @@ namespace Google.Apis.Dataflow.v1b3
                 [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Location { get; set; }
 
+                private object _startTime;
+
                 /// <summary>
-                /// Return only metric data that has changed since this time. Default is to return all information about
-                /// all metrics for the job.
+                /// String representation of <see cref="StartTimeDateTimeOffset"/>, formatted for inclusion in the HTTP
+                /// request.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual object StartTime { get; set; }
+                public virtual string StartTimeRaw { get; private set; }
+
+                /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+                [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+                public virtual object StartTime
+                {
+                    get => _startTime;
+                    set
+                    {
+                        StartTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                        _startTime = value;
+                    }
+                }
+
+                public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+                {
+                    get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+                    set
+                    {
+                        StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                        _startTime = value;
+                    }
+                }
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "getMetrics";
@@ -1414,7 +1486,7 @@ namespace Google.Apis.Dataflow.v1b3
             /// <param name="projectId">The project which owns the jobs.</param>
             public virtual ListRequest List(string projectId)
             {
-                return new ListRequest(service, projectId);
+                return new ListRequest(this.service, projectId);
             }
 
             /// <summary>
@@ -1612,7 +1684,7 @@ namespace Google.Apis.Dataflow.v1b3
             /// <param name="jobId">The job to be snapshotted.</param>
             public virtual SnapshotRequest Snapshot(Google.Apis.Dataflow.v1b3.Data.SnapshotJobRequest body, string projectId, string jobId)
             {
-                return new SnapshotRequest(service, body, projectId, jobId);
+                return new SnapshotRequest(this.service, body, projectId, jobId);
             }
 
             /// <summary>Snapshot the state of a streaming job.</summary>
@@ -1684,7 +1756,7 @@ namespace Google.Apis.Dataflow.v1b3
             /// <param name="jobId">The job ID.</param>
             public virtual UpdateRequest Update(Google.Apis.Dataflow.v1b3.Data.Job body, string projectId, string jobId)
             {
-                return new UpdateRequest(service, body, projectId, jobId);
+                return new UpdateRequest(this.service, body, projectId, jobId);
             }
 
             /// <summary>
@@ -1833,7 +1905,7 @@ namespace Google.Apis.Dataflow.v1b3
                 /// </param>
                 public virtual LaunchRequest Launch(Google.Apis.Dataflow.v1b3.Data.LaunchFlexTemplateRequest body, string projectId, string location)
                 {
-                    return new LaunchRequest(service, body, projectId, location);
+                    return new LaunchRequest(this.service, body, projectId, location);
                 }
 
                 /// <summary>Launch a job with a FlexTemplate.</summary>
@@ -1948,7 +2020,7 @@ namespace Google.Apis.Dataflow.v1b3
                     /// <param name="jobId">The job id.</param>
                     public virtual GetConfigRequest GetConfig(Google.Apis.Dataflow.v1b3.Data.GetDebugConfigRequest body, string projectId, string location, string jobId)
                     {
-                        return new GetConfigRequest(service, body, projectId, location, jobId);
+                        return new GetConfigRequest(this.service, body, projectId, location, jobId);
                     }
 
                     /// <summary>Get encoded debug configuration for component. Not cacheable.</summary>
@@ -2035,7 +2107,7 @@ namespace Google.Apis.Dataflow.v1b3
                     /// <param name="jobId">The job id.</param>
                     public virtual SendCaptureRequest SendCapture(Google.Apis.Dataflow.v1b3.Data.SendDebugCaptureRequest body, string projectId, string location, string jobId)
                     {
-                        return new SendCaptureRequest(service, body, projectId, location, jobId);
+                        return new SendCaptureRequest(this.service, body, projectId, location, jobId);
                     }
 
                     /// <summary>Send encoded debug capture data for component.</summary>
@@ -2145,7 +2217,7 @@ namespace Google.Apis.Dataflow.v1b3
                     /// <param name="jobId">The job to get messages about.</param>
                     public virtual ListRequest List(string projectId, string location, string jobId)
                     {
-                        return new ListRequest(service, projectId, location, jobId);
+                        return new ListRequest(this.service, projectId, location, jobId);
                     }
 
                     /// <summary>
@@ -2181,12 +2253,36 @@ namespace Google.Apis.Dataflow.v1b3
                         [Google.Apis.Util.RequestParameterAttribute("jobId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string JobId { get; private set; }
 
+                        private object _endTime;
+
                         /// <summary>
-                        /// Return only messages with timestamps &amp;lt; end_time. The default is now (i.e. return up
-                        /// to the latest messages available).
+                        /// String representation of <see cref="EndTimeDateTimeOffset"/>, formatted for inclusion in the
+                        /// HTTP request.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("endTime", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual object EndTime { get; set; }
+                        public virtual string EndTimeRaw { get; private set; }
+
+                        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+                        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+                        public virtual object EndTime
+                        {
+                            get => _endTime;
+                            set
+                            {
+                                EndTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                                _endTime = value;
+                            }
+                        }
+
+                        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+                        {
+                            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+                            set
+                            {
+                                EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                                _endTime = value;
+                            }
+                        }
 
                         /// <summary>Filter to only get messages with importance &gt;= level</summary>
                         [Google.Apis.Util.RequestParameterAttribute("minimumImportance", Google.Apis.Util.RequestParameterType.Query)]
@@ -2257,12 +2353,36 @@ namespace Google.Apis.Dataflow.v1b3
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
 
+                        private object _startTime;
+
                         /// <summary>
-                        /// If specified, return only messages with timestamps &amp;gt;= start_time. The default is the
-                        /// job creation time (i.e. beginning of messages).
+                        /// String representation of <see cref="StartTimeDateTimeOffset"/>, formatted for inclusion in
+                        /// the HTTP request.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual object StartTime { get; set; }
+                        public virtual string StartTimeRaw { get; private set; }
+
+                        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+                        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+                        public virtual object StartTime
+                        {
+                            get => _startTime;
+                            set
+                            {
+                                StartTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                                _startTime = value;
+                            }
+                        }
+
+                        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+                        {
+                            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+                            set
+                            {
+                                StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                                _startTime = value;
+                            }
+                        }
 
                         /// <summary>Gets the method name.</summary>
                         public override string MethodName => "list";
@@ -2368,7 +2488,7 @@ namespace Google.Apis.Dataflow.v1b3
                     /// <param name="jobId">If specified, list snapshots created from this job.</param>
                     public virtual ListRequest List(string projectId, string location, string jobId)
                     {
-                        return new ListRequest(service, projectId, location, jobId);
+                        return new ListRequest(this.service, projectId, location, jobId);
                     }
 
                     /// <summary>Lists snapshots.</summary>
@@ -2466,7 +2586,7 @@ namespace Google.Apis.Dataflow.v1b3
                     /// <param name="stageId">The stage for which to fetch information.</param>
                     public virtual GetExecutionDetailsRequest GetExecutionDetails(string projectId, string location, string jobId, string stageId)
                     {
-                        return new GetExecutionDetailsRequest(service, projectId, location, jobId, stageId);
+                        return new GetExecutionDetailsRequest(this.service, projectId, location, jobId, stageId);
                     }
 
                     /// <summary>
@@ -2504,9 +2624,36 @@ namespace Google.Apis.Dataflow.v1b3
                         [Google.Apis.Util.RequestParameterAttribute("stageId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string StageId { get; private set; }
 
-                        /// <summary>Upper time bound of work items to include, by start time.</summary>
+                        private object _endTime;
+
+                        /// <summary>
+                        /// String representation of <see cref="EndTimeDateTimeOffset"/>, formatted for inclusion in the
+                        /// HTTP request.
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("endTime", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual object EndTime { get; set; }
+                        public virtual string EndTimeRaw { get; private set; }
+
+                        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+                        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+                        public virtual object EndTime
+                        {
+                            get => _endTime;
+                            set
+                            {
+                                EndTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                                _endTime = value;
+                            }
+                        }
+
+                        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+                        {
+                            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+                            set
+                            {
+                                EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                                _endTime = value;
+                            }
+                        }
 
                         /// <summary>
                         /// If specified, determines the maximum number of work items to return. If unspecified, the
@@ -2523,9 +2670,36 @@ namespace Google.Apis.Dataflow.v1b3
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
 
-                        /// <summary>Lower time bound of work items to include, by start time.</summary>
+                        private object _startTime;
+
+                        /// <summary>
+                        /// String representation of <see cref="StartTimeDateTimeOffset"/>, formatted for inclusion in
+                        /// the HTTP request.
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual object StartTime { get; set; }
+                        public virtual string StartTimeRaw { get; private set; }
+
+                        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+                        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+                        public virtual object StartTime
+                        {
+                            get => _startTime;
+                            set
+                            {
+                                StartTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                                _startTime = value;
+                            }
+                        }
+
+                        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+                        {
+                            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+                            set
+                            {
+                                StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                                _startTime = value;
+                            }
+                        }
 
                         /// <summary>Gets the method name.</summary>
                         public override string MethodName => "getExecutionDetails";
@@ -2635,7 +2809,7 @@ namespace Google.Apis.Dataflow.v1b3
                     /// <param name="jobId">Identifies the workflow job this worker belongs to.</param>
                     public virtual LeaseRequest Lease(Google.Apis.Dataflow.v1b3.Data.LeaseWorkItemRequest body, string projectId, string location, string jobId)
                     {
-                        return new LeaseRequest(service, body, projectId, location, jobId);
+                        return new LeaseRequest(this.service, body, projectId, location, jobId);
                     }
 
                     /// <summary>Leases a dataflow WorkItem to run.</summary>
@@ -2722,7 +2896,7 @@ namespace Google.Apis.Dataflow.v1b3
                     /// <param name="jobId">The job which the WorkItem is part of.</param>
                     public virtual ReportStatusRequest ReportStatus(Google.Apis.Dataflow.v1b3.Data.ReportWorkItemStatusRequest body, string projectId, string location, string jobId)
                     {
-                        return new ReportStatusRequest(service, body, projectId, location, jobId);
+                        return new ReportStatusRequest(this.service, body, projectId, location, jobId);
                     }
 
                     /// <summary>Reports the status of dataflow WorkItems leased by a worker.</summary>
@@ -2814,7 +2988,7 @@ namespace Google.Apis.Dataflow.v1b3
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Dataflow.v1b3.Data.Job body, string projectId, string location)
                 {
-                    return new CreateRequest(service, body, projectId, location);
+                    return new CreateRequest(this.service, body, projectId, location);
                 }
 
                 /// <summary>
@@ -2955,7 +3129,7 @@ namespace Google.Apis.Dataflow.v1b3
                 /// <param name="jobId">The job ID.</param>
                 public virtual GetRequest Get(string projectId, string location, string jobId)
                 {
-                    return new GetRequest(service, projectId, location, jobId);
+                    return new GetRequest(this.service, projectId, location, jobId);
                 }
 
                 /// <summary>
@@ -3088,7 +3262,7 @@ namespace Google.Apis.Dataflow.v1b3
                 /// <param name="jobId">The job to get execution details for.</param>
                 public virtual GetExecutionDetailsRequest GetExecutionDetails(string projectId, string location, string jobId)
                 {
-                    return new GetExecutionDetailsRequest(service, projectId, location, jobId);
+                    return new GetExecutionDetailsRequest(this.service, projectId, location, jobId);
                 }
 
                 /// <summary>
@@ -3206,7 +3380,7 @@ namespace Google.Apis.Dataflow.v1b3
                 /// <param name="jobId">The job to get metrics for.</param>
                 public virtual GetMetricsRequest GetMetrics(string projectId, string location, string jobId)
                 {
-                    return new GetMetricsRequest(service, projectId, location, jobId);
+                    return new GetMetricsRequest(this.service, projectId, location, jobId);
                 }
 
                 /// <summary>
@@ -3242,12 +3416,36 @@ namespace Google.Apis.Dataflow.v1b3
                     [Google.Apis.Util.RequestParameterAttribute("jobId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string JobId { get; private set; }
 
+                    private object _startTime;
+
                     /// <summary>
-                    /// Return only metric data that has changed since this time. Default is to return all information
-                    /// about all metrics for the job.
+                    /// String representation of <see cref="StartTimeDateTimeOffset"/>, formatted for inclusion in the
+                    /// HTTP request.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual object StartTime { get; set; }
+                    public virtual string StartTimeRaw { get; private set; }
+
+                    /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+                    [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+                    public virtual object StartTime
+                    {
+                        get => _startTime;
+                        set
+                        {
+                            StartTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                            _startTime = value;
+                        }
+                    }
+
+                    public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+                    {
+                        get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+                        set
+                        {
+                            StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                            _startTime = value;
+                        }
+                    }
 
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "getMetrics";
@@ -3313,7 +3511,7 @@ namespace Google.Apis.Dataflow.v1b3
                 /// </param>
                 public virtual ListRequest List(string projectId, string location)
                 {
-                    return new ListRequest(service, projectId, location);
+                    return new ListRequest(this.service, projectId, location);
                 }
 
                 /// <summary>
@@ -3518,7 +3716,7 @@ namespace Google.Apis.Dataflow.v1b3
                 /// <param name="jobId">The job to be snapshotted.</param>
                 public virtual SnapshotRequest Snapshot(Google.Apis.Dataflow.v1b3.Data.SnapshotJobRequest body, string projectId, string location, string jobId)
                 {
-                    return new SnapshotRequest(service, body, projectId, location, jobId);
+                    return new SnapshotRequest(this.service, body, projectId, location, jobId);
                 }
 
                 /// <summary>Snapshot the state of a streaming job.</summary>
@@ -3607,7 +3805,7 @@ namespace Google.Apis.Dataflow.v1b3
                 /// <param name="jobId">The job ID.</param>
                 public virtual UpdateRequest Update(Google.Apis.Dataflow.v1b3.Data.Job body, string projectId, string location, string jobId)
                 {
-                    return new UpdateRequest(service, body, projectId, location, jobId);
+                    return new UpdateRequest(this.service, body, projectId, location, jobId);
                 }
 
                 /// <summary>
@@ -3731,7 +3929,7 @@ namespace Google.Apis.Dataflow.v1b3
                 /// <param name="snapshotId">The ID of the snapshot.</param>
                 public virtual DeleteRequest Delete(string projectId, string location, string snapshotId)
                 {
-                    return new DeleteRequest(service, projectId, location, snapshotId);
+                    return new DeleteRequest(this.service, projectId, location, snapshotId);
                 }
 
                 /// <summary>Deletes a snapshot.</summary>
@@ -3804,7 +4002,7 @@ namespace Google.Apis.Dataflow.v1b3
                 /// <param name="snapshotId">The ID of the snapshot.</param>
                 public virtual GetRequest Get(string projectId, string location, string snapshotId)
                 {
-                    return new GetRequest(service, projectId, location, snapshotId);
+                    return new GetRequest(this.service, projectId, location, snapshotId);
                 }
 
                 /// <summary>Gets information about a snapshot.</summary>
@@ -3876,7 +4074,7 @@ namespace Google.Apis.Dataflow.v1b3
                 /// <param name="location">The location to list snapshots in.</param>
                 public virtual ListRequest List(string projectId, string location)
                 {
-                    return new ListRequest(service, projectId, location);
+                    return new ListRequest(this.service, projectId, location);
                 }
 
                 /// <summary>Lists snapshots.</summary>
@@ -3974,7 +4172,7 @@ namespace Google.Apis.Dataflow.v1b3
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Dataflow.v1b3.Data.CreateJobFromTemplateRequest body, string projectId, string location)
                 {
-                    return new CreateRequest(service, body, projectId, location);
+                    return new CreateRequest(this.service, body, projectId, location);
                 }
 
                 /// <summary>
@@ -4051,7 +4249,7 @@ namespace Google.Apis.Dataflow.v1b3
                 /// </param>
                 public virtual GetRequest Get(string projectId, string location)
                 {
-                    return new GetRequest(service, projectId, location);
+                    return new GetRequest(this.service, projectId, location);
                 }
 
                 /// <summary>Get the template associated with a template.</summary>
@@ -4156,7 +4354,7 @@ namespace Google.Apis.Dataflow.v1b3
                 /// </param>
                 public virtual LaunchRequest Launch(Google.Apis.Dataflow.v1b3.Data.LaunchTemplateParameters body, string projectId, string location)
                 {
-                    return new LaunchRequest(service, body, projectId, location);
+                    return new LaunchRequest(this.service, body, projectId, location);
                 }
 
                 /// <summary>Launch a template.</summary>
@@ -4289,7 +4487,7 @@ namespace Google.Apis.Dataflow.v1b3
             /// </param>
             public virtual WorkerMessagesRequest WorkerMessages(Google.Apis.Dataflow.v1b3.Data.SendWorkerMessagesRequest body, string projectId, string location)
             {
-                return new WorkerMessagesRequest(service, body, projectId, location);
+                return new WorkerMessagesRequest(this.service, body, projectId, location);
             }
 
             /// <summary>Send a worker_message to the service.</summary>
@@ -4376,7 +4574,7 @@ namespace Google.Apis.Dataflow.v1b3
             /// <param name="snapshotId">The ID of the snapshot.</param>
             public virtual GetRequest Get(string projectId, string snapshotId)
             {
-                return new GetRequest(service, projectId, snapshotId);
+                return new GetRequest(this.service, projectId, snapshotId);
             }
 
             /// <summary>Gets information about a snapshot.</summary>
@@ -4446,7 +4644,7 @@ namespace Google.Apis.Dataflow.v1b3
             /// <param name="projectId">The project ID to list snapshots for.</param>
             public virtual ListRequest List(string projectId)
             {
-                return new ListRequest(service, projectId);
+                return new ListRequest(this.service, projectId);
             }
 
             /// <summary>Lists snapshots.</summary>
@@ -4537,7 +4735,7 @@ namespace Google.Apis.Dataflow.v1b3
             /// <param name="projectId">Required. The ID of the Cloud Platform project that the job belongs to.</param>
             public virtual CreateRequest Create(Google.Apis.Dataflow.v1b3.Data.CreateJobFromTemplateRequest body, string projectId)
             {
-                return new CreateRequest(service, body, projectId);
+                return new CreateRequest(this.service, body, projectId);
             }
 
             /// <summary>
@@ -4592,7 +4790,7 @@ namespace Google.Apis.Dataflow.v1b3
             /// <param name="projectId">Required. The ID of the Cloud Platform project that the job belongs to.</param>
             public virtual GetRequest Get(string projectId)
             {
-                return new GetRequest(service, projectId);
+                return new GetRequest(this.service, projectId);
             }
 
             /// <summary>Get the template associated with a template.</summary>
@@ -4688,7 +4886,7 @@ namespace Google.Apis.Dataflow.v1b3
             /// <param name="projectId">Required. The ID of the Cloud Platform project that the job belongs to.</param>
             public virtual LaunchRequest Launch(Google.Apis.Dataflow.v1b3.Data.LaunchTemplateParameters body, string projectId)
             {
-                return new LaunchRequest(service, body, projectId);
+                return new LaunchRequest(this.service, body, projectId);
             }
 
             /// <summary>Launch a template.</summary>
@@ -4813,7 +5011,7 @@ namespace Google.Apis.Dataflow.v1b3
         /// <param name="projectId">The ID of the Cloud Platform project that the snapshot belongs to.</param>
         public virtual DeleteSnapshotsRequest DeleteSnapshots(string projectId)
         {
-            return new DeleteSnapshotsRequest(service, projectId);
+            return new DeleteSnapshotsRequest(this.service, projectId);
         }
 
         /// <summary>Deletes a snapshot.</summary>
@@ -4883,7 +5081,7 @@ namespace Google.Apis.Dataflow.v1b3
         /// <param name="projectId">The project to send the WorkerMessages to.</param>
         public virtual WorkerMessagesRequest WorkerMessages(Google.Apis.Dataflow.v1b3.Data.SendWorkerMessagesRequest body, string projectId)
         {
-            return new WorkerMessagesRequest(service, body, projectId);
+            return new WorkerMessagesRequest(this.service, body, projectId);
         }
 
         /// <summary>Send a worker_message to the service.</summary>
@@ -5077,8 +5275,8 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? TimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(TimeRaw);
-            set => TimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(TimeRaw);
+            set => TimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>A short and friendly name for the worker pool this event refers to.</summary>
@@ -5186,8 +5384,8 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? TimestampDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(TimestampRaw);
-            set => TimestampRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(TimestampRaw);
+            set => TimestampRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Total active CPU time across all cores (ie., non-idle) in milliseconds since start-up.</summary>
@@ -5792,8 +5990,8 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? TimestampValueDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(TimestampValueRaw);
-            set => TimestampValueRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(TimestampValueRaw);
+            set => TimestampValueRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>An optional full URL.</summary>
@@ -6019,8 +6217,8 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CurrentStateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CurrentStateTimeRaw);
-            set => CurrentStateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CurrentStateTimeRaw);
+            set => CurrentStateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The name of the execution stage.</summary>
@@ -6527,8 +6725,8 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? TimestampDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(TimestampRaw);
-            set => TimestampRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(TimestampRaw);
+            set => TimestampRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The value of the variable represented by this gauge.</summary>
@@ -6616,8 +6814,8 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>If this is specified, the job's initial state is populated from the given snapshot.</summary>
@@ -6668,8 +6866,8 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CurrentStateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CurrentStateTimeRaw);
-            set => CurrentStateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CurrentStateTimeRaw);
+            set => CurrentStateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The environment for the job.</summary>
@@ -6818,8 +7016,8 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -6950,8 +7148,8 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? TimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(TimeRaw);
-            set => TimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(TimeRaw);
+            set => TimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -7041,8 +7239,8 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? MetricTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(MetricTimeRaw);
-            set => MetricTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(MetricTimeRaw);
+            set => MetricTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>All metrics for this job.</summary>
@@ -7289,8 +7487,8 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CurrentWorkerTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CurrentWorkerTimeRaw);
-            set => CurrentWorkerTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CurrentWorkerTimeRaw);
+            set => CurrentWorkerTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -7472,8 +7670,8 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? TimestampDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(TimestampRaw);
-            set => TimestampRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(TimestampRaw);
+            set => TimestampRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Total memory (RSS) usage since start up in GB * ms.</summary>
@@ -7632,8 +7830,8 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -7982,8 +8180,8 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? TimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(TimeRaw);
-            set => TimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(TimeRaw);
+            set => TimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The value of the point.</summary>
@@ -8146,8 +8344,8 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpireTimeRaw);
-            set => ExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The name of the Pubsub snapshot.</summary>
@@ -8211,8 +8409,8 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CurrentWorkerTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CurrentWorkerTimeRaw);
-            set => CurrentWorkerTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CurrentWorkerTimeRaw);
+            set => CurrentWorkerTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -8765,8 +8963,8 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreationTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreationTimeRaw);
-            set => CreationTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreationTimeRaw);
+            set => CreationTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>User specified description of the snapshot. Maybe empty.</summary>
@@ -9207,8 +9405,8 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Metrics for this stage.</summary>
@@ -9256,8 +9454,8 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>State of this stage.</summary>
@@ -9423,8 +9621,8 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -9691,8 +9889,8 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _startTimeRaw;
@@ -9728,8 +9926,8 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The system watermark lag at the time of the straggler detection.</summary>
@@ -10009,8 +10207,8 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LeaseExpireTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LeaseExpireTimeRaw);
-            set => LeaseExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LeaseExpireTimeRaw);
+            set => LeaseExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Additional information for MapTask WorkItems.</summary>
@@ -10100,8 +10298,8 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Metrics for this work item.</summary>
@@ -10145,8 +10343,8 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>State of this work item.</summary>
@@ -10222,8 +10420,8 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LeaseExpireTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LeaseExpireTimeRaw);
-            set => LeaseExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LeaseExpireTimeRaw);
+            set => LeaseExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -10446,8 +10644,8 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? VmStartupTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(VmStartupTimeRaw);
-            set => VmStartupTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(VmStartupTimeRaw);
+            set => VmStartupTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -10516,8 +10714,8 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ContainerStartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ContainerStartTimeRaw);
-            set => ContainerStartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ContainerStartTimeRaw);
+            set => ContainerStartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The event being reported.</summary>
@@ -10581,8 +10779,8 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? TimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(TimeRaw);
-            set => TimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(TimeRaw);
+            set => TimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The health of a worker.</summary>

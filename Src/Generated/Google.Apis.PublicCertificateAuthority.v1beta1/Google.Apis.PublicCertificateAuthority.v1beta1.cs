@@ -318,7 +318,7 @@ namespace Google.Apis.PublicCertificateAuthority.v1beta1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.PublicCertificateAuthority.v1beta1.Data.ExternalAccountKey body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a new ExternalAccountKey bound to the project.</summary>

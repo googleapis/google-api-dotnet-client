@@ -318,7 +318,7 @@ namespace Google.Apis.VMMigrationService.v1
                 /// <param name="group">Required. The full path name of the Group to add to.</param>
                 public virtual AddGroupMigrationRequest AddGroupMigration(Google.Apis.VMMigrationService.v1.Data.AddGroupMigrationRequest body, string group)
                 {
-                    return new AddGroupMigrationRequest(service, body, group);
+                    return new AddGroupMigrationRequest(this.service, body, group);
                 }
 
                 /// <summary>Adds a MigratingVm to a Group.</summary>
@@ -371,7 +371,7 @@ namespace Google.Apis.VMMigrationService.v1
                 /// <param name="parent">Required. The Group's parent.</param>
                 public virtual CreateRequest Create(Google.Apis.VMMigrationService.v1.Data.Group body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a new Group in a given project and location.</summary>
@@ -456,7 +456,7 @@ namespace Google.Apis.VMMigrationService.v1
                 /// <param name="name">Required. The Group name.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes a single Group.</summary>
@@ -522,7 +522,7 @@ namespace Google.Apis.VMMigrationService.v1
                 /// <param name="name">Required. The group name.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets details of a single Group.</summary>
@@ -567,7 +567,7 @@ namespace Google.Apis.VMMigrationService.v1
                 /// <param name="parent">Required. The parent, which owns this collection of groups.</param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists Groups in a given project and location.</summary>
@@ -669,7 +669,7 @@ namespace Google.Apis.VMMigrationService.v1
                 /// <param name="name">Output only. The Group name.</param>
                 public virtual PatchRequest Patch(Google.Apis.VMMigrationService.v1.Data.Group body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates the parameters of a single Group.</summary>
@@ -760,7 +760,7 @@ namespace Google.Apis.VMMigrationService.v1
                 /// <param name="group">Required. The name of the Group.</param>
                 public virtual RemoveGroupMigrationRequest RemoveGroupMigration(Google.Apis.VMMigrationService.v1.Data.RemoveGroupMigrationRequest body, string group)
                 {
-                    return new RemoveGroupMigrationRequest(service, body, group);
+                    return new RemoveGroupMigrationRequest(this.service, body, group);
                 }
 
                 /// <summary>Removes a MigratingVm from a Group.</summary>
@@ -838,7 +838,7 @@ namespace Google.Apis.VMMigrationService.v1
                 /// <param name="name">The name of the operation resource to be cancelled.</param>
                 public virtual CancelRequest Cancel(Google.Apis.VMMigrationService.v1.Data.CancelOperationRequest body, string name)
                 {
-                    return new CancelRequest(service, body, name);
+                    return new CancelRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -901,7 +901,7 @@ namespace Google.Apis.VMMigrationService.v1
                 /// <param name="name">The name of the operation resource to be deleted.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -953,7 +953,7 @@ namespace Google.Apis.VMMigrationService.v1
                 /// <param name="name">The name of the operation resource.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -1004,7 +1004,7 @@ namespace Google.Apis.VMMigrationService.v1
                 /// <param name="name">The name of the operation's parent resource.</param>
                 public virtual ListRequest List(string name)
                 {
-                    return new ListRequest(service, name);
+                    return new ListRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -1131,7 +1131,7 @@ namespace Google.Apis.VMMigrationService.v1
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.VMMigrationService.v1.Data.DatacenterConnector body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>Creates a new DatacenterConnector in a given Source.</summary>
@@ -1221,7 +1221,7 @@ namespace Google.Apis.VMMigrationService.v1
                     /// <param name="name">Required. The DatacenterConnector name.</param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>Deletes a single DatacenterConnector.</summary>
@@ -1288,7 +1288,7 @@ namespace Google.Apis.VMMigrationService.v1
                     /// <param name="name">Required. The name of the DatacenterConnector.</param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Gets details of a single DatacenterConnector.</summary>
@@ -1333,7 +1333,7 @@ namespace Google.Apis.VMMigrationService.v1
                     /// <param name="parent">Required. The parent, which owns this collection of connectors.</param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists DatacenterConnectors in a given Source.</summary>
@@ -1437,7 +1437,7 @@ namespace Google.Apis.VMMigrationService.v1
                     /// <param name="datacenterConnector">Required. The DatacenterConnector name.</param>
                     public virtual UpgradeApplianceRequest UpgradeAppliance(Google.Apis.VMMigrationService.v1.Data.UpgradeApplianceRequest body, string datacenterConnector)
                     {
-                        return new UpgradeApplianceRequest(service, body, datacenterConnector);
+                        return new UpgradeApplianceRequest(this.service, body, datacenterConnector);
                     }
 
                     /// <summary>
@@ -1530,7 +1530,7 @@ namespace Google.Apis.VMMigrationService.v1
                         /// <param name="name">Required. The clone job id</param>
                         public virtual CancelRequest Cancel(Google.Apis.VMMigrationService.v1.Data.CancelCloneJobRequest body, string name)
                         {
-                            return new CancelRequest(service, body, name);
+                            return new CancelRequest(this.service, body, name);
                         }
 
                         /// <summary>Initiates the cancellation of a running clone job.</summary>
@@ -1583,7 +1583,7 @@ namespace Google.Apis.VMMigrationService.v1
                         /// <param name="parent">Required. The Clone's parent.</param>
                         public virtual CreateRequest Create(Google.Apis.VMMigrationService.v1.Data.CloneJob body, string parent)
                         {
-                            return new CreateRequest(service, body, parent);
+                            return new CreateRequest(this.service, body, parent);
                         }
 
                         /// <summary>Initiates a Clone of a specific migrating VM.</summary>
@@ -1669,7 +1669,7 @@ namespace Google.Apis.VMMigrationService.v1
                         /// <param name="name">Required. The name of the CloneJob.</param>
                         public virtual GetRequest Get(string name)
                         {
-                            return new GetRequest(service, name);
+                            return new GetRequest(this.service, name);
                         }
 
                         /// <summary>Gets details of a single CloneJob.</summary>
@@ -1714,7 +1714,7 @@ namespace Google.Apis.VMMigrationService.v1
                         /// <param name="parent">Required. The parent, which owns this collection of source VMs.</param>
                         public virtual ListRequest List(string parent)
                         {
-                            return new ListRequest(service, parent);
+                            return new ListRequest(this.service, parent);
                         }
 
                         /// <summary>Lists CloneJobs of a given migrating VM.</summary>
@@ -1834,7 +1834,7 @@ namespace Google.Apis.VMMigrationService.v1
                         /// <param name="name">Required. The cutover job id</param>
                         public virtual CancelRequest Cancel(Google.Apis.VMMigrationService.v1.Data.CancelCutoverJobRequest body, string name)
                         {
-                            return new CancelRequest(service, body, name);
+                            return new CancelRequest(this.service, body, name);
                         }
 
                         /// <summary>Initiates the cancellation of a running cutover job.</summary>
@@ -1890,7 +1890,7 @@ namespace Google.Apis.VMMigrationService.v1
                         /// <param name="parent">Required. The Cutover's parent.</param>
                         public virtual CreateRequest Create(Google.Apis.VMMigrationService.v1.Data.CutoverJob body, string parent)
                         {
-                            return new CreateRequest(service, body, parent);
+                            return new CreateRequest(this.service, body, parent);
                         }
 
                         /// <summary>
@@ -1979,7 +1979,7 @@ namespace Google.Apis.VMMigrationService.v1
                         /// <param name="name">Required. The name of the CutoverJob.</param>
                         public virtual GetRequest Get(string name)
                         {
-                            return new GetRequest(service, name);
+                            return new GetRequest(this.service, name);
                         }
 
                         /// <summary>Gets details of a single CutoverJob.</summary>
@@ -2026,7 +2026,7 @@ namespace Google.Apis.VMMigrationService.v1
                         /// </param>
                         public virtual ListRequest List(string parent)
                         {
-                            return new ListRequest(service, parent);
+                            return new ListRequest(this.service, parent);
                         }
 
                         /// <summary>Lists CutoverJobs of a given migrating VM.</summary>
@@ -2145,7 +2145,7 @@ namespace Google.Apis.VMMigrationService.v1
                         /// <param name="name">Required. The name of the ReplicationCycle.</param>
                         public virtual GetRequest Get(string name)
                         {
-                            return new GetRequest(service, name);
+                            return new GetRequest(this.service, name);
                         }
 
                         /// <summary>Gets details of a single ReplicationCycle.</summary>
@@ -2192,7 +2192,7 @@ namespace Google.Apis.VMMigrationService.v1
                         /// </param>
                         public virtual ListRequest List(string parent)
                         {
-                            return new ListRequest(service, parent);
+                            return new ListRequest(this.service, parent);
                         }
 
                         /// <summary>Lists ReplicationCycles in a given MigratingVM.</summary>
@@ -2297,7 +2297,7 @@ namespace Google.Apis.VMMigrationService.v1
                     /// <param name="parent">Required. The MigratingVm's parent.</param>
                     public virtual CreateRequest Create(Google.Apis.VMMigrationService.v1.Data.MigratingVm body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>Creates a new MigratingVm in a given Source.</summary>
@@ -2383,7 +2383,7 @@ namespace Google.Apis.VMMigrationService.v1
                     /// <param name="name">Required. The name of the MigratingVm.</param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>Deletes a single MigratingVm.</summary>
@@ -2432,7 +2432,7 @@ namespace Google.Apis.VMMigrationService.v1
                     /// <param name="migratingVm">Required. The name of the MigratingVm.</param>
                     public virtual FinalizeMigrationRequest FinalizeMigration(Google.Apis.VMMigrationService.v1.Data.FinalizeMigrationRequest body, string migratingVm)
                     {
-                        return new FinalizeMigrationRequest(service, body, migratingVm);
+                        return new FinalizeMigrationRequest(this.service, body, migratingVm);
                     }
 
                     /// <summary>
@@ -2487,7 +2487,7 @@ namespace Google.Apis.VMMigrationService.v1
                     /// <param name="name">Required. The name of the MigratingVm.</param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Gets details of a single MigratingVm.</summary>
@@ -2563,7 +2563,7 @@ namespace Google.Apis.VMMigrationService.v1
                     /// <param name="parent">Required. The parent, which owns this collection of MigratingVms.</param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists MigratingVms in a given Source.</summary>
@@ -2696,7 +2696,7 @@ namespace Google.Apis.VMMigrationService.v1
                     /// <param name="name">Output only. The identifier of the MigratingVm.</param>
                     public virtual PatchRequest Patch(Google.Apis.VMMigrationService.v1.Data.MigratingVm body, string name)
                     {
-                        return new PatchRequest(service, body, name);
+                        return new PatchRequest(this.service, body, name);
                     }
 
                     /// <summary>Updates the parameters of a single MigratingVm.</summary>
@@ -2791,7 +2791,7 @@ namespace Google.Apis.VMMigrationService.v1
                     /// <param name="migratingVm">Required. The name of the MigratingVm.</param>
                     public virtual PauseMigrationRequest PauseMigration(Google.Apis.VMMigrationService.v1.Data.PauseMigrationRequest body, string migratingVm)
                     {
-                        return new PauseMigrationRequest(service, body, migratingVm);
+                        return new PauseMigrationRequest(this.service, body, migratingVm);
                     }
 
                     /// <summary>
@@ -2852,7 +2852,7 @@ namespace Google.Apis.VMMigrationService.v1
                     /// <param name="migratingVm">Required. The name of the MigratingVm.</param>
                     public virtual ResumeMigrationRequest ResumeMigration(Google.Apis.VMMigrationService.v1.Data.ResumeMigrationRequest body, string migratingVm)
                     {
-                        return new ResumeMigrationRequest(service, body, migratingVm);
+                        return new ResumeMigrationRequest(this.service, body, migratingVm);
                     }
 
                     /// <summary>
@@ -2913,7 +2913,7 @@ namespace Google.Apis.VMMigrationService.v1
                     /// <param name="migratingVm">Required. The name of the MigratingVm.</param>
                     public virtual StartMigrationRequest StartMigration(Google.Apis.VMMigrationService.v1.Data.StartMigrationRequest body, string migratingVm)
                     {
-                        return new StartMigrationRequest(service, body, migratingVm);
+                        return new StartMigrationRequest(this.service, body, migratingVm);
                     }
 
                     /// <summary>
@@ -2987,7 +2987,7 @@ namespace Google.Apis.VMMigrationService.v1
                     /// <param name="parent">Required. The Utilization Report's parent.</param>
                     public virtual CreateRequest Create(Google.Apis.VMMigrationService.v1.Data.UtilizationReport body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>Creates a new UtilizationReport.</summary>
@@ -3077,7 +3077,7 @@ namespace Google.Apis.VMMigrationService.v1
                     /// <param name="name">Required. The Utilization Report name.</param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>Deletes a single Utilization Report.</summary>
@@ -3144,7 +3144,7 @@ namespace Google.Apis.VMMigrationService.v1
                     /// <param name="name">Required. The Utilization Report name.</param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Gets a single Utilization Report.</summary>
@@ -3222,7 +3222,7 @@ namespace Google.Apis.VMMigrationService.v1
                     /// <param name="parent">Required. The Utilization Reports parent.</param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists Utilization Reports of the given Source.</summary>
@@ -3358,7 +3358,7 @@ namespace Google.Apis.VMMigrationService.v1
                 /// <param name="parent">Required. The Source's parent.</param>
                 public virtual CreateRequest Create(Google.Apis.VMMigrationService.v1.Data.Source body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a new Source in a given project and location.</summary>
@@ -3443,7 +3443,7 @@ namespace Google.Apis.VMMigrationService.v1
                 /// <param name="name">Required. The Source name.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes a single Source.</summary>
@@ -3514,7 +3514,7 @@ namespace Google.Apis.VMMigrationService.v1
                 /// <param name="source">Required. The name of the Source.</param>
                 public virtual FetchInventoryRequest FetchInventory(string source)
                 {
-                    return new FetchInventoryRequest(service, source);
+                    return new FetchInventoryRequest(this.service, source);
                 }
 
                 /// <summary>
@@ -3612,7 +3612,7 @@ namespace Google.Apis.VMMigrationService.v1
                 /// <param name="name">Required. The Source name.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets details of a single Source.</summary>
@@ -3657,7 +3657,7 @@ namespace Google.Apis.VMMigrationService.v1
                 /// <param name="parent">Required. The parent, which owns this collection of sources.</param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists Sources in a given project and location.</summary>
@@ -3759,7 +3759,7 @@ namespace Google.Apis.VMMigrationService.v1
                 /// <param name="name">Output only. The Source name.</param>
                 public virtual PatchRequest Patch(Google.Apis.VMMigrationService.v1.Data.Source body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates the parameters of a single Source.</summary>
@@ -3871,7 +3871,7 @@ namespace Google.Apis.VMMigrationService.v1
                 /// <param name="parent">Required. The TargetProject's parent.</param>
                 public virtual CreateRequest Create(Google.Apis.VMMigrationService.v1.Data.TargetProject body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -3962,7 +3962,7 @@ namespace Google.Apis.VMMigrationService.v1
                 /// <param name="name">Required. The TargetProject name.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -4034,7 +4034,7 @@ namespace Google.Apis.VMMigrationService.v1
                 /// <param name="name">Required. The TargetProject name.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -4085,7 +4085,7 @@ namespace Google.Apis.VMMigrationService.v1
                 /// <param name="parent">Required. The parent, which owns this collection of targets.</param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>
@@ -4193,7 +4193,7 @@ namespace Google.Apis.VMMigrationService.v1
                 /// <param name="name">Output only. The name of the target project.</param>
                 public virtual PatchRequest Patch(Google.Apis.VMMigrationService.v1.Data.TargetProject body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -4287,7 +4287,7 @@ namespace Google.Apis.VMMigrationService.v1
             /// <param name="name">Resource name for the location.</param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets information about a location.</summary>
@@ -4332,7 +4332,7 @@ namespace Google.Apis.VMMigrationService.v1
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
             {
-                return new ListRequest(service, name);
+                return new ListRequest(this.service, name);
             }
 
             /// <summary>Lists information about the supported locations for this service.</summary>
@@ -4992,8 +4992,8 @@ namespace Google.Apis.VMMigrationService.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _endTimeRaw;
@@ -5029,8 +5029,8 @@ namespace Google.Apis.VMMigrationService.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. Provides details for the errors that led to the Clone Job's state.</summary>
@@ -5078,8 +5078,8 @@ namespace Google.Apis.VMMigrationService.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StateTimeRaw);
-            set => StateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StateTimeRaw);
+            set => StateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. The clone steps list representing its progress.</summary>
@@ -5130,8 +5130,8 @@ namespace Google.Apis.VMMigrationService.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Instantiating migrated VM step.</summary>
@@ -5175,8 +5175,8 @@ namespace Google.Apis.VMMigrationService.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -5511,8 +5511,8 @@ namespace Google.Apis.VMMigrationService.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _endTimeRaw;
@@ -5548,8 +5548,8 @@ namespace Google.Apis.VMMigrationService.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. Provides details for the errors that led to the Cutover Job's state.</summary>
@@ -5605,8 +5605,8 @@ namespace Google.Apis.VMMigrationService.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StateTimeRaw);
-            set => StateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StateTimeRaw);
+            set => StateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. The cutover steps list representing its progress.</summary>
@@ -5653,8 +5653,8 @@ namespace Google.Apis.VMMigrationService.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Final sync step.</summary>
@@ -5710,8 +5710,8 @@ namespace Google.Apis.VMMigrationService.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -5754,8 +5754,8 @@ namespace Google.Apis.VMMigrationService.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Initializing replication step.</summary>
@@ -5803,8 +5803,8 @@ namespace Google.Apis.VMMigrationService.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -5875,8 +5875,8 @@ namespace Google.Apis.VMMigrationService.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -5937,8 +5937,8 @@ namespace Google.Apis.VMMigrationService.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StateTimeRaw);
-            set => StateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StateTimeRaw);
+            set => StateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _updateTimeRaw;
@@ -5974,8 +5974,8 @@ namespace Google.Apis.VMMigrationService.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. The status of the current / last upgradeAppliance operation.</summary>
@@ -6189,8 +6189,8 @@ namespace Google.Apis.VMMigrationService.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The description of the VMs in a Source of type Vmware.</summary>
@@ -6244,8 +6244,8 @@ namespace Google.Apis.VMMigrationService.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>User-provided description of the group.</summary>
@@ -6297,8 +6297,8 @@ namespace Google.Apis.VMMigrationService.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -6671,8 +6671,8 @@ namespace Google.Apis.VMMigrationService.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. Details of the current running replication cycle.</summary>
@@ -6792,8 +6792,8 @@ namespace Google.Apis.VMMigrationService.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StateTimeRaw);
-            set => StateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StateTimeRaw);
+            set => StateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _updateTimeRaw;
@@ -6829,8 +6829,8 @@ namespace Google.Apis.VMMigrationService.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. Details of the VM from a Vmware source.</summary>
@@ -6892,8 +6892,8 @@ namespace Google.Apis.VMMigrationService.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ErrorTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ErrorTimeRaw);
-            set => ErrorTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ErrorTimeRaw);
+            set => ErrorTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. URL(s) pointing to additional information on handling the current error.</summary>
@@ -6959,8 +6959,8 @@ namespace Google.Apis.VMMigrationService.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? WarningTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(WarningTimeRaw);
-            set => WarningTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(WarningTimeRaw);
+            set => WarningTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -7118,8 +7118,8 @@ namespace Google.Apis.VMMigrationService.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _endTimeRaw;
@@ -7155,8 +7155,8 @@ namespace Google.Apis.VMMigrationService.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -7327,8 +7327,8 @@ namespace Google.Apis.VMMigrationService.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Provides details on the state of the cycle in case of an error.</summary>
@@ -7379,8 +7379,8 @@ namespace Google.Apis.VMMigrationService.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>State of the ReplicationCycle.</summary>
@@ -7439,8 +7439,8 @@ namespace Google.Apis.VMMigrationService.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LastSyncTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastSyncTimeRaw);
-            set => LastSyncTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastSyncTimeRaw);
+            set => LastSyncTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -7548,8 +7548,8 @@ namespace Google.Apis.VMMigrationService.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>User-provided description of the source.</summary>
@@ -7601,8 +7601,8 @@ namespace Google.Apis.VMMigrationService.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Vmware type source details.</summary>
@@ -7703,8 +7703,8 @@ namespace Google.Apis.VMMigrationService.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The target project's description.</summary>
@@ -7752,8 +7752,8 @@ namespace Google.Apis.VMMigrationService.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -7823,8 +7823,8 @@ namespace Google.Apis.VMMigrationService.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The state of the upgradeAppliance operation.</summary>
@@ -7878,8 +7878,8 @@ namespace Google.Apis.VMMigrationService.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The report display name, as assigned by the user.</summary>
@@ -7927,8 +7927,8 @@ namespace Google.Apis.VMMigrationService.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? FrameEndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(FrameEndTimeRaw);
-            set => FrameEndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(FrameEndTimeRaw);
+            set => FrameEndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. The report unique name.</summary>
@@ -7972,8 +7972,8 @@ namespace Google.Apis.VMMigrationService.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StateTimeRaw);
-            set => StateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StateTimeRaw);
+            set => StateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Time frame of the report.</summary>
@@ -8051,8 +8051,8 @@ namespace Google.Apis.VMMigrationService.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LastOsCapabilitiesUpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastOsCapabilitiesUpdateTimeRaw);
-            set => LastOsCapabilitiesUpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastOsCapabilitiesUpdateTimeRaw);
+            set => LastOsCapabilitiesUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>

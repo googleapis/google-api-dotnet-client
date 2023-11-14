@@ -286,7 +286,7 @@ namespace Google.Apis.CloudIAP.v1beta1
         /// </param>
         public virtual GetIamPolicyRequest GetIamPolicy(Google.Apis.CloudIAP.v1beta1.Data.GetIamPolicyRequest body, string resource)
         {
-            return new GetIamPolicyRequest(service, body, resource);
+            return new GetIamPolicyRequest(this.service, body, resource);
         }
 
         /// <summary>
@@ -353,7 +353,7 @@ namespace Google.Apis.CloudIAP.v1beta1
         /// </param>
         public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.CloudIAP.v1beta1.Data.SetIamPolicyRequest body, string resource)
         {
-            return new SetIamPolicyRequest(service, body, resource);
+            return new SetIamPolicyRequest(this.service, body, resource);
         }
 
         /// <summary>
@@ -421,7 +421,7 @@ namespace Google.Apis.CloudIAP.v1beta1
         /// </param>
         public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.CloudIAP.v1beta1.Data.TestIamPermissionsRequest body, string resource)
         {
-            return new TestIamPermissionsRequest(service, body, resource);
+            return new TestIamPermissionsRequest(this.service, body, resource);
         }
 
         /// <summary>

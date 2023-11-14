@@ -305,7 +305,7 @@ namespace Google.Apis.Vision.v1
         /// <param name="body">The body of the request.</param>
         public virtual AnnotateRequest Annotate(Google.Apis.Vision.v1.Data.BatchAnnotateFilesRequest body)
         {
-            return new AnnotateRequest(service, body);
+            return new AnnotateRequest(this.service, body);
         }
 
         /// <summary>
@@ -354,7 +354,7 @@ namespace Google.Apis.Vision.v1
         /// <param name="body">The body of the request.</param>
         public virtual AsyncBatchAnnotateRequest AsyncBatchAnnotate(Google.Apis.Vision.v1.Data.AsyncBatchAnnotateFilesRequest body)
         {
-            return new AsyncBatchAnnotateRequest(service, body);
+            return new AsyncBatchAnnotateRequest(this.service, body);
         }
 
         /// <summary>
@@ -413,7 +413,7 @@ namespace Google.Apis.Vision.v1
         /// <param name="body">The body of the request.</param>
         public virtual AnnotateRequest Annotate(Google.Apis.Vision.v1.Data.BatchAnnotateImagesRequest body)
         {
-            return new AnnotateRequest(service, body);
+            return new AnnotateRequest(this.service, body);
         }
 
         /// <summary>Run image detection and annotation for a batch of images.</summary>
@@ -458,7 +458,7 @@ namespace Google.Apis.Vision.v1
         /// <param name="body">The body of the request.</param>
         public virtual AsyncBatchAnnotateRequest AsyncBatchAnnotate(Google.Apis.Vision.v1.Data.AsyncBatchAnnotateImagesRequest body)
         {
-            return new AsyncBatchAnnotateRequest(service, body);
+            return new AsyncBatchAnnotateRequest(this.service, body);
         }
 
         /// <summary>
@@ -539,7 +539,7 @@ namespace Google.Apis.Vision.v1
             /// <param name="name">The name of the operation resource.</param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>
@@ -611,7 +611,7 @@ namespace Google.Apis.Vision.v1
         /// <param name="name">The name of the operation resource to be cancelled.</param>
         public virtual CancelRequest Cancel(Google.Apis.Vision.v1.Data.CancelOperationRequest body, string name)
         {
-            return new CancelRequest(service, body, name);
+            return new CancelRequest(this.service, body, name);
         }
 
         /// <summary>
@@ -674,7 +674,7 @@ namespace Google.Apis.Vision.v1
         /// <param name="name">The name of the operation resource to be deleted.</param>
         public virtual DeleteRequest Delete(string name)
         {
-            return new DeleteRequest(service, name);
+            return new DeleteRequest(this.service, name);
         }
 
         /// <summary>
@@ -726,7 +726,7 @@ namespace Google.Apis.Vision.v1
         /// <param name="name">The name of the operation resource.</param>
         public virtual GetRequest Get(string name)
         {
-            return new GetRequest(service, name);
+            return new GetRequest(this.service, name);
         }
 
         /// <summary>
@@ -777,7 +777,7 @@ namespace Google.Apis.Vision.v1
         /// <param name="name">The name of the operation's parent resource.</param>
         public virtual ListRequest List(string name)
         {
-            return new ListRequest(service, name);
+            return new ListRequest(this.service, name);
         }
 
         /// <summary>
@@ -908,7 +908,7 @@ namespace Google.Apis.Vision.v1
             /// </param>
             public virtual AnnotateRequest Annotate(Google.Apis.Vision.v1.Data.BatchAnnotateFilesRequest body, string parent)
             {
-                return new AnnotateRequest(service, body, parent);
+                return new AnnotateRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -981,7 +981,7 @@ namespace Google.Apis.Vision.v1
             /// </param>
             public virtual AsyncBatchAnnotateRequest AsyncBatchAnnotate(Google.Apis.Vision.v1.Data.AsyncBatchAnnotateFilesRequest body, string parent)
             {
-                return new AsyncBatchAnnotateRequest(service, body, parent);
+                return new AsyncBatchAnnotateRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -1067,7 +1067,7 @@ namespace Google.Apis.Vision.v1
             /// </param>
             public virtual AnnotateRequest Annotate(Google.Apis.Vision.v1.Data.BatchAnnotateImagesRequest body, string parent)
             {
-                return new AnnotateRequest(service, body, parent);
+                return new AnnotateRequest(this.service, body, parent);
             }
 
             /// <summary>Run image detection and annotation for a batch of images.</summary>
@@ -1136,7 +1136,7 @@ namespace Google.Apis.Vision.v1
             /// </param>
             public virtual AsyncBatchAnnotateRequest AsyncBatchAnnotate(Google.Apis.Vision.v1.Data.AsyncBatchAnnotateImagesRequest body, string parent)
             {
-                return new AsyncBatchAnnotateRequest(service, body, parent);
+                return new AsyncBatchAnnotateRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -1250,7 +1250,7 @@ namespace Google.Apis.Vision.v1
                 /// </param>
                 public virtual AnnotateRequest Annotate(Google.Apis.Vision.v1.Data.BatchAnnotateFilesRequest body, string parent)
                 {
-                    return new AnnotateRequest(service, body, parent);
+                    return new AnnotateRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -1324,7 +1324,7 @@ namespace Google.Apis.Vision.v1
                 /// </param>
                 public virtual AsyncBatchAnnotateRequest AsyncBatchAnnotate(Google.Apis.Vision.v1.Data.AsyncBatchAnnotateFilesRequest body, string parent)
                 {
-                    return new AsyncBatchAnnotateRequest(service, body, parent);
+                    return new AsyncBatchAnnotateRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -1411,7 +1411,7 @@ namespace Google.Apis.Vision.v1
                 /// </param>
                 public virtual AnnotateRequest Annotate(Google.Apis.Vision.v1.Data.BatchAnnotateImagesRequest body, string parent)
                 {
-                    return new AnnotateRequest(service, body, parent);
+                    return new AnnotateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Run image detection and annotation for a batch of images.</summary>
@@ -1480,7 +1480,7 @@ namespace Google.Apis.Vision.v1
                 /// </param>
                 public virtual AsyncBatchAnnotateRequest AsyncBatchAnnotate(Google.Apis.Vision.v1.Data.AsyncBatchAnnotateImagesRequest body, string parent)
                 {
-                    return new AsyncBatchAnnotateRequest(service, body, parent);
+                    return new AsyncBatchAnnotateRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -1564,7 +1564,7 @@ namespace Google.Apis.Vision.v1
                 /// <param name="name">The name of the operation resource.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -1655,7 +1655,7 @@ namespace Google.Apis.Vision.v1
                     /// </param>
                     public virtual ListRequest List(string name)
                     {
-                        return new ListRequest(service, name);
+                        return new ListRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -1740,7 +1740,7 @@ namespace Google.Apis.Vision.v1
                 /// </param>
                 public virtual AddProductRequest AddProduct(Google.Apis.Vision.v1.Data.AddProductToProductSetRequest body, string name)
                 {
-                    return new AddProductRequest(service, body, name);
+                    return new AddProductRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -1806,7 +1806,7 @@ namespace Google.Apis.Vision.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Vision.v1.Data.ProductSet body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -1886,7 +1886,7 @@ namespace Google.Apis.Vision.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -1943,7 +1943,7 @@ namespace Google.Apis.Vision.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -2005,7 +2005,7 @@ namespace Google.Apis.Vision.v1
                 /// </param>
                 public virtual ImportRequest Import(Google.Apis.Vision.v1.Data.ImportProductSetsRequest body, string parent)
                 {
-                    return new ImportRequest(service, body, parent);
+                    return new ImportRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -2073,7 +2073,7 @@ namespace Google.Apis.Vision.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>
@@ -2157,7 +2157,7 @@ namespace Google.Apis.Vision.v1
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.Vision.v1.Data.ProductSet body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -2236,7 +2236,7 @@ namespace Google.Apis.Vision.v1
                 /// </param>
                 public virtual RemoveProductRequest RemoveProduct(Google.Apis.Vision.v1.Data.RemoveProductFromProductSetRequest body, string name)
                 {
-                    return new RemoveProductRequest(service, body, name);
+                    return new RemoveProductRequest(this.service, body, name);
                 }
 
                 /// <summary>Removes a Product from the specified ProductSet.</summary>
@@ -2342,7 +2342,7 @@ namespace Google.Apis.Vision.v1
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.Vision.v1.Data.ReferenceImage body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>
@@ -2432,7 +2432,7 @@ namespace Google.Apis.Vision.v1
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -2490,7 +2490,7 @@ namespace Google.Apis.Vision.v1
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -2547,7 +2547,7 @@ namespace Google.Apis.Vision.v1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>
@@ -2635,7 +2635,7 @@ namespace Google.Apis.Vision.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Vision.v1.Data.Product body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -2717,7 +2717,7 @@ namespace Google.Apis.Vision.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -2775,7 +2775,7 @@ namespace Google.Apis.Vision.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -2832,7 +2832,7 @@ namespace Google.Apis.Vision.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>
@@ -2920,7 +2920,7 @@ namespace Google.Apis.Vision.v1
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.Vision.v1.Data.Product body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -3017,7 +3017,7 @@ namespace Google.Apis.Vision.v1
                 /// </param>
                 public virtual PurgeRequest Purge(Google.Apis.Vision.v1.Data.PurgeProductsRequest body, string parent)
                 {
-                    return new PurgeRequest(service, body, parent);
+                    return new PurgeRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -3107,7 +3107,7 @@ namespace Google.Apis.Vision.v1
             /// <param name="name">The name of the operation resource.</param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>
@@ -3570,8 +3570,8 @@ namespace Google.Apis.Vision.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The current state of the batch operation.</summary>
@@ -3611,8 +3611,8 @@ namespace Google.Apis.Vision.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? SubmitTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(SubmitTimeRaw);
-            set => SubmitTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(SubmitTimeRaw);
+            set => SubmitTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -4671,8 +4671,8 @@ namespace Google.Apis.Vision.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Current state of the batch operation.</summary>
@@ -4712,8 +4712,8 @@ namespace Google.Apis.Vision.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -4924,8 +4924,8 @@ namespace Google.Apis.Vision.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? IndexTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(IndexTimeRaw);
-            set => IndexTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(IndexTimeRaw);
+            set => IndexTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -5925,8 +5925,8 @@ namespace Google.Apis.Vision.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Current state of the batch operation.</summary>
@@ -5966,8 +5966,8 @@ namespace Google.Apis.Vision.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -6178,8 +6178,8 @@ namespace Google.Apis.Vision.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? IndexTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(IndexTimeRaw);
-            set => IndexTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(IndexTimeRaw);
+            set => IndexTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -6754,8 +6754,8 @@ namespace Google.Apis.Vision.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The current state of the batch operation.</summary>
@@ -6795,8 +6795,8 @@ namespace Google.Apis.Vision.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? SubmitTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(SubmitTimeRaw);
-            set => SubmitTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(SubmitTimeRaw);
+            set => SubmitTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -7291,8 +7291,8 @@ namespace Google.Apis.Vision.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Current state of the batch operation.</summary>
@@ -7332,8 +7332,8 @@ namespace Google.Apis.Vision.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -7544,8 +7544,8 @@ namespace Google.Apis.Vision.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? IndexTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(IndexTimeRaw);
-            set => IndexTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(IndexTimeRaw);
+            set => IndexTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -8177,8 +8177,8 @@ namespace Google.Apis.Vision.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The current state of the batch operation.</summary>
@@ -8218,8 +8218,8 @@ namespace Google.Apis.Vision.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? SubmitTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(SubmitTimeRaw);
-            set => SubmitTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(SubmitTimeRaw);
+            set => SubmitTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -8756,8 +8756,8 @@ namespace Google.Apis.Vision.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Current state of the batch operation.</summary>
@@ -8797,8 +8797,8 @@ namespace Google.Apis.Vision.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -9009,8 +9009,8 @@ namespace Google.Apis.Vision.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? IndexTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(IndexTimeRaw);
-            set => IndexTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(IndexTimeRaw);
+            set => IndexTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -10015,8 +10015,8 @@ namespace Google.Apis.Vision.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Current state of the batch operation.</summary>
@@ -10056,8 +10056,8 @@ namespace Google.Apis.Vision.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -10290,8 +10290,8 @@ namespace Google.Apis.Vision.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? IndexTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(IndexTimeRaw);
-            set => IndexTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(IndexTimeRaw);
+            set => IndexTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -10366,8 +10366,8 @@ namespace Google.Apis.Vision.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? IndexTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(IndexTimeRaw);
-            set => IndexTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(IndexTimeRaw);
+            set => IndexTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>

@@ -311,7 +311,7 @@ namespace Google.Apis.Datastore.v1
             /// <param name="projectId">Project ID against which to make the request.</param>
             public virtual CreateRequest Create(Google.Apis.Datastore.v1.Data.GoogleDatastoreAdminV1Index body, string projectId)
             {
-                return new CreateRequest(service, body, projectId);
+                return new CreateRequest(this.service, body, projectId);
             }
 
             /// <summary>
@@ -377,7 +377,7 @@ namespace Google.Apis.Datastore.v1
             /// <param name="indexId">The resource ID of the index to delete.</param>
             public virtual DeleteRequest Delete(string projectId, string indexId)
             {
-                return new DeleteRequest(service, projectId, indexId);
+                return new DeleteRequest(this.service, projectId, indexId);
             }
 
             /// <summary>
@@ -442,7 +442,7 @@ namespace Google.Apis.Datastore.v1
             /// <param name="indexId">The resource ID of the index to get.</param>
             public virtual GetRequest Get(string projectId, string indexId)
             {
-                return new GetRequest(service, projectId, indexId);
+                return new GetRequest(this.service, projectId, indexId);
             }
 
             /// <summary>Gets an index.</summary>
@@ -503,7 +503,7 @@ namespace Google.Apis.Datastore.v1
             /// <param name="projectId">Project ID against which to make the request.</param>
             public virtual ListRequest List(string projectId)
             {
-                return new ListRequest(service, projectId);
+                return new ListRequest(this.service, projectId);
             }
 
             /// <summary>
@@ -613,7 +613,7 @@ namespace Google.Apis.Datastore.v1
             /// <param name="name">The name of the operation resource to be cancelled.</param>
             public virtual CancelRequest Cancel(string name)
             {
-                return new CancelRequest(service, name);
+                return new CancelRequest(this.service, name);
             }
 
             /// <summary>
@@ -669,7 +669,7 @@ namespace Google.Apis.Datastore.v1
             /// <param name="name">The name of the operation resource to be deleted.</param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>
@@ -721,7 +721,7 @@ namespace Google.Apis.Datastore.v1
             /// <param name="name">The name of the operation resource.</param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>
@@ -772,7 +772,7 @@ namespace Google.Apis.Datastore.v1
             /// <param name="name">The name of the operation's parent resource.</param>
             public virtual ListRequest List(string name)
             {
-                return new ListRequest(service, name);
+                return new ListRequest(this.service, name);
             }
 
             /// <summary>
@@ -860,7 +860,7 @@ namespace Google.Apis.Datastore.v1
         /// <param name="projectId">Required. The ID of the project against which to make the request.</param>
         public virtual AllocateIdsRequest AllocateIds(Google.Apis.Datastore.v1.Data.AllocateIdsRequest body, string projectId)
         {
-            return new AllocateIdsRequest(service, body, projectId);
+            return new AllocateIdsRequest(this.service, body, projectId);
         }
 
         /// <summary>
@@ -915,7 +915,7 @@ namespace Google.Apis.Datastore.v1
         /// <param name="projectId">Required. The ID of the project against which to make the request.</param>
         public virtual BeginTransactionRequest BeginTransaction(Google.Apis.Datastore.v1.Data.BeginTransactionRequest body, string projectId)
         {
-            return new BeginTransactionRequest(service, body, projectId);
+            return new BeginTransactionRequest(this.service, body, projectId);
         }
 
         /// <summary>Begins a new transaction.</summary>
@@ -968,7 +968,7 @@ namespace Google.Apis.Datastore.v1
         /// <param name="projectId">Required. The ID of the project against which to make the request.</param>
         public virtual CommitRequest Commit(Google.Apis.Datastore.v1.Data.CommitRequest body, string projectId)
         {
-            return new CommitRequest(service, body, projectId);
+            return new CommitRequest(this.service, body, projectId);
         }
 
         /// <summary>Commits a transaction, optionally creating, deleting or modifying some entities.</summary>
@@ -1027,7 +1027,7 @@ namespace Google.Apis.Datastore.v1
         /// <param name="projectId">Required. Project ID against which to make the request.</param>
         public virtual ExportRequest Export(Google.Apis.Datastore.v1.Data.GoogleDatastoreAdminV1ExportEntitiesRequest body, string projectId)
         {
-            return new ExportRequest(service, body, projectId);
+            return new ExportRequest(this.service, body, projectId);
         }
 
         /// <summary>
@@ -1091,7 +1091,7 @@ namespace Google.Apis.Datastore.v1
         /// <param name="projectId">Required. Project ID against which to make the request.</param>
         public virtual ImportRequest Import(Google.Apis.Datastore.v1.Data.GoogleDatastoreAdminV1ImportEntitiesRequest body, string projectId)
         {
-            return new ImportRequest(service, body, projectId);
+            return new ImportRequest(this.service, body, projectId);
         }
 
         /// <summary>
@@ -1149,7 +1149,7 @@ namespace Google.Apis.Datastore.v1
         /// <param name="projectId">Required. The ID of the project against which to make the request.</param>
         public virtual LookupRequest Lookup(Google.Apis.Datastore.v1.Data.LookupRequest body, string projectId)
         {
-            return new LookupRequest(service, body, projectId);
+            return new LookupRequest(this.service, body, projectId);
         }
 
         /// <summary>Looks up entities by key.</summary>
@@ -1202,7 +1202,7 @@ namespace Google.Apis.Datastore.v1
         /// <param name="projectId">Required. The ID of the project against which to make the request.</param>
         public virtual ReserveIdsRequest ReserveIds(Google.Apis.Datastore.v1.Data.ReserveIdsRequest body, string projectId)
         {
-            return new ReserveIdsRequest(service, body, projectId);
+            return new ReserveIdsRequest(this.service, body, projectId);
         }
 
         /// <summary>Prevents the supplied keys' IDs from being auto-allocated by Cloud Datastore.</summary>
@@ -1255,7 +1255,7 @@ namespace Google.Apis.Datastore.v1
         /// <param name="projectId">Required. The ID of the project against which to make the request.</param>
         public virtual RollbackRequest Rollback(Google.Apis.Datastore.v1.Data.RollbackRequest body, string projectId)
         {
-            return new RollbackRequest(service, body, projectId);
+            return new RollbackRequest(this.service, body, projectId);
         }
 
         /// <summary>Rolls back a transaction.</summary>
@@ -1308,7 +1308,7 @@ namespace Google.Apis.Datastore.v1
         /// <param name="projectId">Required. The ID of the project against which to make the request.</param>
         public virtual RunAggregationQueryRequest RunAggregationQuery(Google.Apis.Datastore.v1.Data.RunAggregationQueryRequest body, string projectId)
         {
-            return new RunAggregationQueryRequest(service, body, projectId);
+            return new RunAggregationQueryRequest(this.service, body, projectId);
         }
 
         /// <summary>Runs an aggregation query.</summary>
@@ -1361,7 +1361,7 @@ namespace Google.Apis.Datastore.v1
         /// <param name="projectId">Required. The ID of the project against which to make the request.</param>
         public virtual RunQueryRequest RunQuery(Google.Apis.Datastore.v1.Data.RunQueryRequest body, string projectId)
         {
-            return new RunQueryRequest(service, body, projectId);
+            return new RunQueryRequest(this.service, body, projectId);
         }
 
         /// <summary>Queries for entities.</summary>
@@ -1536,8 +1536,8 @@ namespace Google.Apis.Datastore.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ReadTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ReadTimeRaw);
-            set => ReadTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ReadTimeRaw);
+            set => ReadTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -1715,8 +1715,8 @@ namespace Google.Apis.Datastore.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CommitTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CommitTimeRaw);
-            set => CommitTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CommitTimeRaw);
+            set => CommitTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The number of index entries updated during the commit, or zero if none were updated.</summary>
@@ -1844,8 +1844,8 @@ namespace Google.Apis.Datastore.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -1895,8 +1895,8 @@ namespace Google.Apis.Datastore.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -1963,8 +1963,8 @@ namespace Google.Apis.Datastore.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -2011,8 +2011,8 @@ namespace Google.Apis.Datastore.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The current state of the Operation.</summary>
@@ -2406,8 +2406,8 @@ namespace Google.Apis.Datastore.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -2454,8 +2454,8 @@ namespace Google.Apis.Datastore.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The current state of the Operation.</summary>
@@ -2838,8 +2838,8 @@ namespace Google.Apis.Datastore.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ReadTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ReadTimeRaw);
-            set => ReadTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ReadTimeRaw);
+            set => ReadTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -2917,8 +2917,8 @@ namespace Google.Apis.Datastore.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -2975,8 +2975,8 @@ namespace Google.Apis.Datastore.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The automatically allocated key. Set only when the mutation allocated a key.</summary>
@@ -3020,8 +3020,8 @@ namespace Google.Apis.Datastore.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -3278,8 +3278,8 @@ namespace Google.Apis.Datastore.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ReadTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ReadTimeRaw);
-            set => ReadTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ReadTimeRaw);
+            set => ReadTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -3346,8 +3346,8 @@ namespace Google.Apis.Datastore.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ReadTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ReadTimeRaw);
-            set => ReadTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ReadTimeRaw);
+            set => ReadTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -3405,8 +3405,8 @@ namespace Google.Apis.Datastore.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ReadTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ReadTimeRaw);
-            set => ReadTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ReadTimeRaw);
+            set => ReadTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -3762,8 +3762,8 @@ namespace Google.Apis.Datastore.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? TimestampValueDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(TimestampValueRaw);
-            set => TimestampValueRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(TimestampValueRaw);
+            set => TimestampValueRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>

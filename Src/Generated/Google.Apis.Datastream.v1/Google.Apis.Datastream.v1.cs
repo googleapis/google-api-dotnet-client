@@ -318,7 +318,7 @@ namespace Google.Apis.Datastream.v1
                 /// <param name="parent">Required. The parent that owns the collection of ConnectionProfiles.</param>
                 public virtual CreateRequest Create(Google.Apis.Datastream.v1.Data.ConnectionProfile body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Use this method to create a connection profile in a project and location.</summary>
@@ -430,7 +430,7 @@ namespace Google.Apis.Datastream.v1
                 /// <param name="name">Required. The name of the connection profile resource to delete.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Use this method to delete a connection profile.</summary>
@@ -504,7 +504,7 @@ namespace Google.Apis.Datastream.v1
                 /// </param>
                 public virtual DiscoverRequest Discover(Google.Apis.Datastream.v1.Data.DiscoverConnectionProfileRequest body, string parent)
                 {
-                    return new DiscoverRequest(service, body, parent);
+                    return new DiscoverRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -563,7 +563,7 @@ namespace Google.Apis.Datastream.v1
                 /// <param name="name">Required. The name of the connection profile resource to get.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Use this method to get details about a connection profile.</summary>
@@ -608,7 +608,7 @@ namespace Google.Apis.Datastream.v1
                 /// <param name="parent">Required. The parent that owns the collection of connection profiles.</param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Use this method to list connection profiles created in a project and location.</summary>
@@ -709,7 +709,7 @@ namespace Google.Apis.Datastream.v1
                 /// <param name="name">Output only. The resource's name.</param>
                 public virtual PatchRequest Patch(Google.Apis.Datastream.v1.Data.ConnectionProfile body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Use this method to update the parameters of a connection profile.</summary>
@@ -852,7 +852,7 @@ namespace Google.Apis.Datastream.v1
                 /// <param name="name">The name of the operation resource to be cancelled.</param>
                 public virtual CancelRequest Cancel(Google.Apis.Datastream.v1.Data.CancelOperationRequest body, string name)
                 {
-                    return new CancelRequest(service, body, name);
+                    return new CancelRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -915,7 +915,7 @@ namespace Google.Apis.Datastream.v1
                 /// <param name="name">The name of the operation resource to be deleted.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -967,7 +967,7 @@ namespace Google.Apis.Datastream.v1
                 /// <param name="name">The name of the operation resource.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -1018,7 +1018,7 @@ namespace Google.Apis.Datastream.v1
                 /// <param name="name">The name of the operation's parent resource.</param>
                 public virtual ListRequest List(string name)
                 {
-                    return new ListRequest(service, name);
+                    return new ListRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -1142,7 +1142,7 @@ namespace Google.Apis.Datastream.v1
                     /// <param name="parent">Required. The parent that owns the collection of Routes.</param>
                     public virtual CreateRequest Create(Google.Apis.Datastream.v1.Data.Route body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>
@@ -1231,7 +1231,7 @@ namespace Google.Apis.Datastream.v1
                     /// <param name="name">Required. The name of the Route resource to delete.</param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>Use this method to delete a route.</summary>
@@ -1298,7 +1298,7 @@ namespace Google.Apis.Datastream.v1
                     /// <param name="name">Required. The name of the Route resource to get.</param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Use this method to get details about a route.</summary>
@@ -1346,7 +1346,7 @@ namespace Google.Apis.Datastream.v1
                     /// <param name="parent">Required. The parent that owns the collection of Routess.</param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>
@@ -1452,7 +1452,7 @@ namespace Google.Apis.Datastream.v1
                 /// <param name="parent">Required. The parent that owns the collection of PrivateConnections.</param>
                 public virtual CreateRequest Create(Google.Apis.Datastream.v1.Data.PrivateConnection body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Use this method to create a private connectivity configuration.</summary>
@@ -1549,7 +1549,7 @@ namespace Google.Apis.Datastream.v1
                 /// <param name="name">Required. The name of the private connectivity configuration to delete.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Use this method to delete a private connectivity configuration.</summary>
@@ -1630,7 +1630,7 @@ namespace Google.Apis.Datastream.v1
                 /// <param name="name">Required. The name of the private connectivity configuration to get.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Use this method to get details about a private connectivity configuration.</summary>
@@ -1679,7 +1679,7 @@ namespace Google.Apis.Datastream.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>
@@ -1820,7 +1820,7 @@ namespace Google.Apis.Datastream.v1
                     /// <param name="name">Required. The name of the stream object resource to get.</param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Use this method to get details about a stream object.</summary>
@@ -1865,7 +1865,7 @@ namespace Google.Apis.Datastream.v1
                     /// <param name="parent">Required. The parent stream that owns the collection of objects.</param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Use this method to list the objects of a specific stream.</summary>
@@ -1942,7 +1942,7 @@ namespace Google.Apis.Datastream.v1
                     /// <param name="parent">Required. The parent stream that owns the collection of objects.</param>
                     public virtual LookupRequest Lookup(Google.Apis.Datastream.v1.Data.LookupStreamObjectRequest body, string parent)
                     {
-                        return new LookupRequest(service, body, parent);
+                        return new LookupRequest(this.service, body, parent);
                     }
 
                     /// <summary>Use this method to look up a stream object by its source object identifier.</summary>
@@ -1997,7 +1997,7 @@ namespace Google.Apis.Datastream.v1
                     /// </param>
                     public virtual StartBackfillJobRequest StartBackfillJob(Google.Apis.Datastream.v1.Data.StartBackfillJobRequest body, string datastreamObject)
                     {
-                        return new StartBackfillJobRequest(service, body, datastreamObject);
+                        return new StartBackfillJobRequest(this.service, body, datastreamObject);
                     }
 
                     /// <summary>Use this method to start a backfill job for the specified stream object.</summary>
@@ -2054,7 +2054,7 @@ namespace Google.Apis.Datastream.v1
                     /// </param>
                     public virtual StopBackfillJobRequest StopBackfillJob(Google.Apis.Datastream.v1.Data.StopBackfillJobRequest body, string datastreamObject)
                     {
-                        return new StopBackfillJobRequest(service, body, datastreamObject);
+                        return new StopBackfillJobRequest(this.service, body, datastreamObject);
                     }
 
                     /// <summary>Use this method to stop a backfill job for the specified stream object.</summary>
@@ -2110,7 +2110,7 @@ namespace Google.Apis.Datastream.v1
                 /// <param name="parent">Required. The parent that owns the collection of streams.</param>
                 public virtual CreateRequest Create(Google.Apis.Datastream.v1.Data.Stream body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Use this method to create a stream.</summary>
@@ -2221,7 +2221,7 @@ namespace Google.Apis.Datastream.v1
                 /// <param name="name">Required. The name of the stream resource to delete.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Use this method to delete a stream.</summary>
@@ -2287,7 +2287,7 @@ namespace Google.Apis.Datastream.v1
                 /// <param name="name">Required. The name of the stream resource to get.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Use this method to get details about a stream.</summary>
@@ -2332,7 +2332,7 @@ namespace Google.Apis.Datastream.v1
                 /// <param name="parent">Required. The parent that owns the collection of streams.</param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Use this method to list streams in a project and location.</summary>
@@ -2433,7 +2433,7 @@ namespace Google.Apis.Datastream.v1
                 /// <param name="name">Output only. The stream's name.</param>
                 public virtual PatchRequest Patch(Google.Apis.Datastream.v1.Data.Stream body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Use this method to update the configuration of a stream.</summary>
@@ -2557,7 +2557,7 @@ namespace Google.Apis.Datastream.v1
                 /// </param>
                 public virtual RunRequest Run(Google.Apis.Datastream.v1.Data.RunStreamRequest body, string name)
                 {
-                    return new RunRequest(service, body, name);
+                    return new RunRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -2619,7 +2619,7 @@ namespace Google.Apis.Datastream.v1
             /// </param>
             public virtual FetchStaticIpsRequest FetchStaticIps(string name)
             {
-                return new FetchStaticIpsRequest(service, name);
+                return new FetchStaticIpsRequest(this.service, name);
             }
 
             /// <summary>The FetchStaticIps API call exposes the static IP addresses used by Datastream.</summary>
@@ -2693,7 +2693,7 @@ namespace Google.Apis.Datastream.v1
             /// <param name="name">Resource name for the location.</param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets information about a location.</summary>
@@ -2738,7 +2738,7 @@ namespace Google.Apis.Datastream.v1
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
             {
-                return new ListRequest(service, name);
+                return new ListRequest(this.service, name);
             }
 
             /// <summary>Lists information about the supported locations for this service.</summary>
@@ -2895,8 +2895,8 @@ namespace Google.Apis.Datastream.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LastEndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastEndTimeRaw);
-            set => LastEndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastEndTimeRaw);
+            set => LastEndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _lastStartTimeRaw;
@@ -2932,8 +2932,8 @@ namespace Google.Apis.Datastream.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LastStartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastStartTimeRaw);
-            set => LastStartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastStartTimeRaw);
+            set => LastStartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. Backfill job state.</summary>
@@ -3053,8 +3053,8 @@ namespace Google.Apis.Datastream.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Required. Display name.</summary>
@@ -3130,8 +3130,8 @@ namespace Google.Apis.Datastream.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -3304,8 +3304,8 @@ namespace Google.Apis.Datastream.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ErrorTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ErrorTimeRaw);
-            set => ErrorTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ErrorTimeRaw);
+            set => ErrorTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -3920,8 +3920,8 @@ namespace Google.Apis.Datastream.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _endTimeRaw;
@@ -3957,8 +3957,8 @@ namespace Google.Apis.Datastream.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -4381,8 +4381,8 @@ namespace Google.Apis.Datastream.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Required. Display name.</summary>
@@ -4438,8 +4438,8 @@ namespace Google.Apis.Datastream.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>VPC Peering Config.</summary>
@@ -4503,8 +4503,8 @@ namespace Google.Apis.Datastream.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Required. Destination address for connection</summary>
@@ -4560,8 +4560,8 @@ namespace Google.Apis.Datastream.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -4786,8 +4786,8 @@ namespace Google.Apis.Datastream.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -4851,8 +4851,8 @@ namespace Google.Apis.Datastream.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LastRecoveryTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastRecoveryTimeRaw);
-            set => LastRecoveryTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastRecoveryTimeRaw);
+            set => LastRecoveryTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. The stream's name.</summary>
@@ -4900,8 +4900,8 @@ namespace Google.Apis.Datastream.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -4955,8 +4955,8 @@ namespace Google.Apis.Datastream.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Required. Display name.</summary>
@@ -5008,8 +5008,8 @@ namespace Google.Apis.Datastream.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>

@@ -318,7 +318,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1
                 /// <param name="parent">Required. Value for parent.</param>
                 public virtual CreateRequest Create(Google.Apis.CloudAlloyDBAdmin.v1.Data.Backup body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a new Backup in a given project and location.</summary>
@@ -419,7 +419,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes a single Backup.</summary>
@@ -517,7 +517,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1
                 /// <param name="name">Required. Name of the resource</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets details of a single Backup.</summary>
@@ -562,7 +562,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1
                 /// <param name="parent">Required. Parent value for ListBackupsRequest</param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists Backups in a given project and location.</summary>
@@ -666,7 +666,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.CloudAlloyDBAdmin.v1.Data.Backup body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates the parameters of a single Backup.</summary>
@@ -833,7 +833,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.CloudAlloyDBAdmin.v1.Data.Instance body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>Creates a new Instance in a given project and location.</summary>
@@ -941,7 +941,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1
                     /// </param>
                     public virtual CreatesecondaryRequest Createsecondary(Google.Apis.CloudAlloyDBAdmin.v1.Data.Instance body, string parent)
                     {
-                        return new CreatesecondaryRequest(service, body, parent);
+                        return new CreatesecondaryRequest(this.service, body, parent);
                     }
 
                     /// <summary>Creates a new SECONDARY Instance in a given project and location.</summary>
@@ -1048,7 +1048,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>Deletes a single Instance.</summary>
@@ -1156,7 +1156,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1
                     /// </param>
                     public virtual FailoverRequest Failover(Google.Apis.CloudAlloyDBAdmin.v1.Data.FailoverInstanceRequest body, string name)
                     {
-                        return new FailoverRequest(service, body, name);
+                        return new FailoverRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -1217,7 +1217,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Gets details of a single Instance.</summary>
@@ -1302,7 +1302,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1
                     /// </param>
                     public virtual GetConnectionInfoRequest GetConnectionInfo(string parent)
                     {
-                        return new GetConnectionInfoRequest(service, parent);
+                        return new GetConnectionInfoRequest(this.service, parent);
                     }
 
                     /// <summary>Get instance metadata used for a connection.</summary>
@@ -1376,7 +1376,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1
                     /// </param>
                     public virtual InjectFaultRequest InjectFault(Google.Apis.CloudAlloyDBAdmin.v1.Data.InjectFaultRequest body, string name)
                     {
-                        return new InjectFaultRequest(service, body, name);
+                        return new InjectFaultRequest(this.service, body, name);
                     }
 
                     /// <summary>Injects fault in an instance. Imperative only.</summary>
@@ -1436,7 +1436,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists Instances in a given project and location.</summary>
@@ -1546,7 +1546,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.CloudAlloyDBAdmin.v1.Data.Instance body, string name)
                     {
-                        return new PatchRequest(service, body, name);
+                        return new PatchRequest(this.service, body, name);
                     }
 
                     /// <summary>Updates the parameters of a single Instance.</summary>
@@ -1679,7 +1679,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1
                     /// </param>
                     public virtual RestartRequest Restart(Google.Apis.CloudAlloyDBAdmin.v1.Data.RestartInstanceRequest body, string name)
                     {
-                        return new RestartRequest(service, body, name);
+                        return new RestartRequest(this.service, body, name);
                     }
 
                     /// <summary>Restart an Instance in a cluster. Imperative only.</summary>
@@ -1753,7 +1753,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1
                     /// <param name="parent">Required. Value for parent.</param>
                     public virtual CreateRequest Create(Google.Apis.CloudAlloyDBAdmin.v1.Data.User body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>Creates a new User in a given project, location, and cluster.</summary>
@@ -1856,7 +1856,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>Deletes a single User.</summary>
@@ -1943,7 +1943,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Gets details of a single User.</summary>
@@ -1991,7 +1991,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1
                     /// <param name="parent">Required. Parent value for ListUsersRequest</param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists Users in a given project and location.</summary>
@@ -2091,7 +2091,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.CloudAlloyDBAdmin.v1.Data.User body, string name)
                     {
-                        return new PatchRequest(service, body, name);
+                        return new PatchRequest(this.service, body, name);
                     }
 
                     /// <summary>Updates the parameters of a single User.</summary>
@@ -2216,7 +2216,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.CloudAlloyDBAdmin.v1.Data.Cluster body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a new Cluster in a given project and location.</summary>
@@ -2325,7 +2325,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1
                 /// </param>
                 public virtual CreatesecondaryRequest Createsecondary(Google.Apis.CloudAlloyDBAdmin.v1.Data.Cluster body, string parent)
                 {
-                    return new CreatesecondaryRequest(service, body, parent);
+                    return new CreatesecondaryRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -2433,7 +2433,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes a single Cluster.</summary>
@@ -2553,7 +2553,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1
                 /// </param>
                 public virtual GenerateClientCertificateRequest GenerateClientCertificate(Google.Apis.CloudAlloyDBAdmin.v1.Data.GenerateClientCertificateRequest body, string parent)
                 {
-                    return new GenerateClientCertificateRequest(service, body, parent);
+                    return new GenerateClientCertificateRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -2616,7 +2616,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets details of a single Cluster.</summary>
@@ -2707,7 +2707,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists Clusters in a given project and location.</summary>
@@ -2814,7 +2814,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.CloudAlloyDBAdmin.v1.Data.Cluster body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates the parameters of a single Cluster.</summary>
@@ -2947,7 +2947,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1
                 /// </param>
                 public virtual PromoteRequest Promote(Google.Apis.CloudAlloyDBAdmin.v1.Data.PromoteClusterRequest body, string name)
                 {
-                    return new PromoteRequest(service, body, name);
+                    return new PromoteRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -3012,7 +3012,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1
                 /// </param>
                 public virtual RestoreRequest Restore(Google.Apis.CloudAlloyDBAdmin.v1.Data.RestoreClusterRequest body, string parent)
                 {
-                    return new RestoreRequest(service, body, parent);
+                    return new RestoreRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -3096,7 +3096,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1
                 /// <param name="name">The name of the operation resource to be cancelled.</param>
                 public virtual CancelRequest Cancel(Google.Apis.CloudAlloyDBAdmin.v1.Data.CancelOperationRequest body, string name)
                 {
-                    return new CancelRequest(service, body, name);
+                    return new CancelRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -3159,7 +3159,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1
                 /// <param name="name">The name of the operation resource to be deleted.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -3211,7 +3211,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1
                 /// <param name="name">The name of the operation resource.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -3262,7 +3262,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1
                 /// <param name="name">The name of the operation's parent resource.</param>
                 public virtual ListRequest List(string name)
                 {
-                    return new ListRequest(service, name);
+                    return new ListRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -3369,7 +3369,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists SupportedDatabaseFlags for a given project and location.</summary>
@@ -3447,7 +3447,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1
             /// <param name="name">Resource name for the location.</param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets information about a location.</summary>
@@ -3492,7 +3492,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
             {
-                return new ListRequest(service, name);
+                return new ListRequest(this.service, name);
             }
 
             /// <summary>Lists information about the supported locations for this service.</summary>
@@ -3690,8 +3690,8 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -3734,8 +3734,8 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? DeleteTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DeleteTimeRaw);
-            set => DeleteTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DeleteTimeRaw);
+            set => DeleteTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>User-provided description of the backup.</summary>
@@ -3805,8 +3805,8 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ExpiryTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpiryTimeRaw);
-            set => ExpiryTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpiryTimeRaw);
+            set => ExpiryTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Labels as key value pairs</summary>
@@ -3884,8 +3884,8 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
     }
 
@@ -4024,8 +4024,8 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -4069,8 +4069,8 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? DeleteTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DeleteTimeRaw);
-            set => DeleteTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DeleteTimeRaw);
+            set => DeleteTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>User-settable and human-readable display name for the Cluster.</summary>
@@ -4194,8 +4194,8 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
     }
 
@@ -4290,8 +4290,8 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EarliestRestorableTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EarliestRestorableTimeRaw);
-            set => EarliestRestorableTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EarliestRestorableTimeRaw);
+            set => EarliestRestorableTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _enabledTimeRaw;
@@ -4330,8 +4330,8 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EnabledTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EnabledTimeRaw);
-            set => EnabledTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EnabledTimeRaw);
+            set => EnabledTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -4394,8 +4394,8 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? PointInTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(PointInTimeRaw);
-            set => PointInTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(PointInTimeRaw);
+            set => PointInTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -4696,8 +4696,8 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -4745,8 +4745,8 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? DeleteTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DeleteTimeRaw);
-            set => DeleteTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DeleteTimeRaw);
+            set => DeleteTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>User-settable and human-readable display name for the Instance.</summary>
@@ -4864,8 +4864,8 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. This is set for the read-write VM of the PRIMARY instance only.</summary>
@@ -5166,8 +5166,8 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _endTimeRaw;
@@ -5203,8 +5203,8 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -5570,8 +5570,8 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -5614,8 +5614,8 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The status of this run. REQUIRED</summary>
@@ -5680,8 +5680,8 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? FeedTimestampDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(FeedTimestampRaw);
-            set => FeedTimestampRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(FeedTimestampRaw);
+            set => FeedTimestampRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Required. Type feed to be ingested into condor</summary>
@@ -5758,8 +5758,8 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EventTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EventTimeRaw);
-            set => EventTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EventTimeRaw);
+            set => EventTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -5896,8 +5896,8 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreationTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreationTimeRaw);
-            set => CreationTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreationTimeRaw);
+            set => CreationTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Current state of the instance.</summary>
@@ -5988,8 +5988,8 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdationTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdationTimeRaw);
-            set => UpdationTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdationTimeRaw);
+            set => UpdationTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>

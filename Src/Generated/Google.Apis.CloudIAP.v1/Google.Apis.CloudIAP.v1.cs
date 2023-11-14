@@ -326,7 +326,7 @@ namespace Google.Apis.CloudIAP.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.CloudIAP.v1.Data.IdentityAwareProxyClient body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -391,7 +391,7 @@ namespace Google.Apis.CloudIAP.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -448,7 +448,7 @@ namespace Google.Apis.CloudIAP.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -500,7 +500,7 @@ namespace Google.Apis.CloudIAP.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists the existing clients for the brand.</summary>
@@ -586,7 +586,7 @@ namespace Google.Apis.CloudIAP.v1
                 /// </param>
                 public virtual ResetSecretRequest ResetSecret(Google.Apis.CloudIAP.v1.Data.ResetIdentityAwareProxyClientSecretRequest body, string name)
                 {
-                    return new ResetSecretRequest(service, body, name);
+                    return new ResetSecretRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -656,7 +656,7 @@ namespace Google.Apis.CloudIAP.v1
             /// </param>
             public virtual CreateRequest Create(Google.Apis.CloudIAP.v1.Data.Brand body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -720,7 +720,7 @@ namespace Google.Apis.CloudIAP.v1
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Retrieves the OAuth brand of the project.</summary>
@@ -770,7 +770,7 @@ namespace Google.Apis.CloudIAP.v1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists the existing brands for the project.</summary>
@@ -875,7 +875,7 @@ namespace Google.Apis.CloudIAP.v1
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.CloudIAP.v1.Data.TunnelDestGroup body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>Creates a new TunnelDestGroup.</summary>
@@ -948,7 +948,7 @@ namespace Google.Apis.CloudIAP.v1
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>Deletes a TunnelDestGroup.</summary>
@@ -999,7 +999,7 @@ namespace Google.Apis.CloudIAP.v1
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Retrieves an existing TunnelDestGroup.</summary>
@@ -1054,7 +1054,7 @@ namespace Google.Apis.CloudIAP.v1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>
@@ -1142,7 +1142,7 @@ namespace Google.Apis.CloudIAP.v1
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.CloudIAP.v1.Data.TunnelDestGroup body, string name)
                     {
-                        return new PatchRequest(service, body, name);
+                        return new PatchRequest(this.service, body, name);
                     }
 
                     /// <summary>Updates a TunnelDestGroup.</summary>
@@ -1239,7 +1239,7 @@ namespace Google.Apis.CloudIAP.v1
         /// </param>
         public virtual GetIamPolicyRequest GetIamPolicy(Google.Apis.CloudIAP.v1.Data.GetIamPolicyRequest body, string resource)
         {
-            return new GetIamPolicyRequest(service, body, resource);
+            return new GetIamPolicyRequest(this.service, body, resource);
         }
 
         /// <summary>
@@ -1301,7 +1301,7 @@ namespace Google.Apis.CloudIAP.v1
         /// </param>
         public virtual GetIapSettingsRequest GetIapSettings(string name)
         {
-            return new GetIapSettingsRequest(service, name);
+            return new GetIapSettingsRequest(this.service, name);
         }
 
         /// <summary>Gets the IAP settings on a particular IAP protected resource.</summary>
@@ -1357,7 +1357,7 @@ namespace Google.Apis.CloudIAP.v1
         /// </param>
         public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.CloudIAP.v1.Data.SetIamPolicyRequest body, string resource)
         {
-            return new SetIamPolicyRequest(service, body, resource);
+            return new SetIamPolicyRequest(this.service, body, resource);
         }
 
         /// <summary>
@@ -1424,7 +1424,7 @@ namespace Google.Apis.CloudIAP.v1
         /// </param>
         public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.CloudIAP.v1.Data.TestIamPermissionsRequest body, string resource)
         {
-            return new TestIamPermissionsRequest(service, body, resource);
+            return new TestIamPermissionsRequest(this.service, body, resource);
         }
 
         /// <summary>
@@ -1487,7 +1487,7 @@ namespace Google.Apis.CloudIAP.v1
         /// <param name="name">Required. The resource name of the IAP protected resource.</param>
         public virtual UpdateIapSettingsRequest UpdateIapSettings(Google.Apis.CloudIAP.v1.Data.IapSettings body, string name)
         {
-            return new UpdateIapSettingsRequest(service, body, name);
+            return new UpdateIapSettingsRequest(this.service, body, name);
         }
 
         /// <summary>
@@ -1559,7 +1559,7 @@ namespace Google.Apis.CloudIAP.v1
         /// <param name="name">Required. The resource name of the IAP protected resource.</param>
         public virtual ValidateAttributeExpressionRequest ValidateAttributeExpression(string name)
         {
-            return new ValidateAttributeExpressionRequest(service, name);
+            return new ValidateAttributeExpressionRequest(this.service, name);
         }
 
         /// <summary>Validates a given CEL expression conforms to IAP restrictions.</summary>

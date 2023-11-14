@@ -356,7 +356,7 @@ namespace Google.Apis.Recommender.v1beta1
                     /// <param name="name">Required. Name of the insight.</param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -416,7 +416,7 @@ namespace Google.Apis.Recommender.v1beta1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>
@@ -532,7 +532,7 @@ namespace Google.Apis.Recommender.v1beta1
                     /// <param name="name">Required. Name of the insight.</param>
                     public virtual MarkAcceptedRequest MarkAccepted(Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1MarkInsightAcceptedRequest body, string name)
                     {
-                        return new MarkAcceptedRequest(service, body, name);
+                        return new MarkAcceptedRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -598,7 +598,7 @@ namespace Google.Apis.Recommender.v1beta1
                 /// </param>
                 public virtual GetConfigRequest GetConfig(string name)
                 {
-                    return new GetConfigRequest(service, name);
+                    return new GetConfigRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -657,7 +657,7 @@ namespace Google.Apis.Recommender.v1beta1
                 /// </param>
                 public virtual UpdateConfigRequest UpdateConfig(Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1InsightTypeConfig body, string name)
                 {
-                    return new UpdateConfigRequest(service, body, name);
+                    return new UpdateConfigRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -779,7 +779,7 @@ namespace Google.Apis.Recommender.v1beta1
                     /// <param name="name">Required. Name of the recommendation.</param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -839,7 +839,7 @@ namespace Google.Apis.Recommender.v1beta1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>
@@ -957,7 +957,7 @@ namespace Google.Apis.Recommender.v1beta1
                     /// <param name="name">Required. Name of the recommendation.</param>
                     public virtual MarkClaimedRequest MarkClaimed(Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1MarkRecommendationClaimedRequest body, string name)
                     {
-                        return new MarkClaimedRequest(service, body, name);
+                        return new MarkClaimedRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -1021,7 +1021,7 @@ namespace Google.Apis.Recommender.v1beta1
                     /// <param name="name">Required. Name of the recommendation.</param>
                     public virtual MarkDismissedRequest MarkDismissed(Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1MarkRecommendationDismissedRequest body, string name)
                     {
-                        return new MarkDismissedRequest(service, body, name);
+                        return new MarkDismissedRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -1086,7 +1086,7 @@ namespace Google.Apis.Recommender.v1beta1
                     /// <param name="name">Required. Name of the recommendation.</param>
                     public virtual MarkFailedRequest MarkFailed(Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1MarkRecommendationFailedRequest body, string name)
                     {
-                        return new MarkFailedRequest(service, body, name);
+                        return new MarkFailedRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -1153,7 +1153,7 @@ namespace Google.Apis.Recommender.v1beta1
                     /// <param name="name">Required. Name of the recommendation.</param>
                     public virtual MarkSucceededRequest MarkSucceeded(Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1MarkRecommendationSucceededRequest body, string name)
                     {
-                        return new MarkSucceededRequest(service, body, name);
+                        return new MarkSucceededRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -1222,7 +1222,7 @@ namespace Google.Apis.Recommender.v1beta1
                 /// </param>
                 public virtual GetConfigRequest GetConfig(string name)
                 {
-                    return new GetConfigRequest(service, name);
+                    return new GetConfigRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -1280,7 +1280,7 @@ namespace Google.Apis.Recommender.v1beta1
                 /// </param>
                 public virtual UpdateConfigRequest UpdateConfig(Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1RecommenderConfig body, string name)
                 {
-                    return new UpdateConfigRequest(service, body, name);
+                    return new UpdateConfigRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates a Recommender Config. This will create a new revision of the config.</summary>
@@ -1436,7 +1436,7 @@ namespace Google.Apis.Recommender.v1beta1
                     /// <param name="name">Required. Name of the insight.</param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -1496,7 +1496,7 @@ namespace Google.Apis.Recommender.v1beta1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>
@@ -1612,7 +1612,7 @@ namespace Google.Apis.Recommender.v1beta1
                     /// <param name="name">Required. Name of the insight.</param>
                     public virtual MarkAcceptedRequest MarkAccepted(Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1MarkInsightAcceptedRequest body, string name)
                     {
-                        return new MarkAcceptedRequest(service, body, name);
+                        return new MarkAcceptedRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -1709,7 +1709,7 @@ namespace Google.Apis.Recommender.v1beta1
                     /// <param name="name">Required. Name of the recommendation.</param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -1769,7 +1769,7 @@ namespace Google.Apis.Recommender.v1beta1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>
@@ -1887,7 +1887,7 @@ namespace Google.Apis.Recommender.v1beta1
                     /// <param name="name">Required. Name of the recommendation.</param>
                     public virtual MarkClaimedRequest MarkClaimed(Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1MarkRecommendationClaimedRequest body, string name)
                     {
-                        return new MarkClaimedRequest(service, body, name);
+                        return new MarkClaimedRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -1951,7 +1951,7 @@ namespace Google.Apis.Recommender.v1beta1
                     /// <param name="name">Required. Name of the recommendation.</param>
                     public virtual MarkDismissedRequest MarkDismissed(Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1MarkRecommendationDismissedRequest body, string name)
                     {
-                        return new MarkDismissedRequest(service, body, name);
+                        return new MarkDismissedRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -2016,7 +2016,7 @@ namespace Google.Apis.Recommender.v1beta1
                     /// <param name="name">Required. Name of the recommendation.</param>
                     public virtual MarkFailedRequest MarkFailed(Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1MarkRecommendationFailedRequest body, string name)
                     {
-                        return new MarkFailedRequest(service, body, name);
+                        return new MarkFailedRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -2083,7 +2083,7 @@ namespace Google.Apis.Recommender.v1beta1
                     /// <param name="name">Required. Name of the recommendation.</param>
                     public virtual MarkSucceededRequest MarkSucceeded(Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1MarkRecommendationSucceededRequest body, string name)
                     {
-                        return new MarkSucceededRequest(service, body, name);
+                        return new MarkSucceededRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -2159,7 +2159,7 @@ namespace Google.Apis.Recommender.v1beta1
         /// <summary>Lists available InsightTypes. No IAM permissions are required.</summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>Lists available InsightTypes. No IAM permissions are required.</summary>
@@ -2293,7 +2293,7 @@ namespace Google.Apis.Recommender.v1beta1
                     /// <param name="name">Required. Name of the insight.</param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -2353,7 +2353,7 @@ namespace Google.Apis.Recommender.v1beta1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>
@@ -2469,7 +2469,7 @@ namespace Google.Apis.Recommender.v1beta1
                     /// <param name="name">Required. Name of the insight.</param>
                     public virtual MarkAcceptedRequest MarkAccepted(Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1MarkInsightAcceptedRequest body, string name)
                     {
-                        return new MarkAcceptedRequest(service, body, name);
+                        return new MarkAcceptedRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -2535,7 +2535,7 @@ namespace Google.Apis.Recommender.v1beta1
                 /// </param>
                 public virtual GetConfigRequest GetConfig(string name)
                 {
-                    return new GetConfigRequest(service, name);
+                    return new GetConfigRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -2594,7 +2594,7 @@ namespace Google.Apis.Recommender.v1beta1
                 /// </param>
                 public virtual UpdateConfigRequest UpdateConfig(Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1InsightTypeConfig body, string name)
                 {
-                    return new UpdateConfigRequest(service, body, name);
+                    return new UpdateConfigRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -2716,7 +2716,7 @@ namespace Google.Apis.Recommender.v1beta1
                     /// <param name="name">Required. Name of the recommendation.</param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -2776,7 +2776,7 @@ namespace Google.Apis.Recommender.v1beta1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>
@@ -2894,7 +2894,7 @@ namespace Google.Apis.Recommender.v1beta1
                     /// <param name="name">Required. Name of the recommendation.</param>
                     public virtual MarkClaimedRequest MarkClaimed(Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1MarkRecommendationClaimedRequest body, string name)
                     {
-                        return new MarkClaimedRequest(service, body, name);
+                        return new MarkClaimedRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -2958,7 +2958,7 @@ namespace Google.Apis.Recommender.v1beta1
                     /// <param name="name">Required. Name of the recommendation.</param>
                     public virtual MarkDismissedRequest MarkDismissed(Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1MarkRecommendationDismissedRequest body, string name)
                     {
-                        return new MarkDismissedRequest(service, body, name);
+                        return new MarkDismissedRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -3023,7 +3023,7 @@ namespace Google.Apis.Recommender.v1beta1
                     /// <param name="name">Required. Name of the recommendation.</param>
                     public virtual MarkFailedRequest MarkFailed(Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1MarkRecommendationFailedRequest body, string name)
                     {
-                        return new MarkFailedRequest(service, body, name);
+                        return new MarkFailedRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -3090,7 +3090,7 @@ namespace Google.Apis.Recommender.v1beta1
                     /// <param name="name">Required. Name of the recommendation.</param>
                     public virtual MarkSucceededRequest MarkSucceeded(Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1MarkRecommendationSucceededRequest body, string name)
                     {
-                        return new MarkSucceededRequest(service, body, name);
+                        return new MarkSucceededRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -3159,7 +3159,7 @@ namespace Google.Apis.Recommender.v1beta1
                 /// </param>
                 public virtual GetConfigRequest GetConfig(string name)
                 {
-                    return new GetConfigRequest(service, name);
+                    return new GetConfigRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -3217,7 +3217,7 @@ namespace Google.Apis.Recommender.v1beta1
                 /// </param>
                 public virtual UpdateConfigRequest UpdateConfig(Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1RecommenderConfig body, string name)
                 {
-                    return new UpdateConfigRequest(service, body, name);
+                    return new UpdateConfigRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates a Recommender Config. This will create a new revision of the config.</summary>
@@ -3373,7 +3373,7 @@ namespace Google.Apis.Recommender.v1beta1
                     /// <param name="name">Required. Name of the insight.</param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -3433,7 +3433,7 @@ namespace Google.Apis.Recommender.v1beta1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>
@@ -3549,7 +3549,7 @@ namespace Google.Apis.Recommender.v1beta1
                     /// <param name="name">Required. Name of the insight.</param>
                     public virtual MarkAcceptedRequest MarkAccepted(Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1MarkInsightAcceptedRequest body, string name)
                     {
-                        return new MarkAcceptedRequest(service, body, name);
+                        return new MarkAcceptedRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -3615,7 +3615,7 @@ namespace Google.Apis.Recommender.v1beta1
                 /// </param>
                 public virtual GetConfigRequest GetConfig(string name)
                 {
-                    return new GetConfigRequest(service, name);
+                    return new GetConfigRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -3674,7 +3674,7 @@ namespace Google.Apis.Recommender.v1beta1
                 /// </param>
                 public virtual UpdateConfigRequest UpdateConfig(Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1InsightTypeConfig body, string name)
                 {
-                    return new UpdateConfigRequest(service, body, name);
+                    return new UpdateConfigRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -3796,7 +3796,7 @@ namespace Google.Apis.Recommender.v1beta1
                     /// <param name="name">Required. Name of the recommendation.</param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -3856,7 +3856,7 @@ namespace Google.Apis.Recommender.v1beta1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>
@@ -3974,7 +3974,7 @@ namespace Google.Apis.Recommender.v1beta1
                     /// <param name="name">Required. Name of the recommendation.</param>
                     public virtual MarkClaimedRequest MarkClaimed(Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1MarkRecommendationClaimedRequest body, string name)
                     {
-                        return new MarkClaimedRequest(service, body, name);
+                        return new MarkClaimedRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -4038,7 +4038,7 @@ namespace Google.Apis.Recommender.v1beta1
                     /// <param name="name">Required. Name of the recommendation.</param>
                     public virtual MarkDismissedRequest MarkDismissed(Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1MarkRecommendationDismissedRequest body, string name)
                     {
-                        return new MarkDismissedRequest(service, body, name);
+                        return new MarkDismissedRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -4103,7 +4103,7 @@ namespace Google.Apis.Recommender.v1beta1
                     /// <param name="name">Required. Name of the recommendation.</param>
                     public virtual MarkFailedRequest MarkFailed(Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1MarkRecommendationFailedRequest body, string name)
                     {
-                        return new MarkFailedRequest(service, body, name);
+                        return new MarkFailedRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -4170,7 +4170,7 @@ namespace Google.Apis.Recommender.v1beta1
                     /// <param name="name">Required. Name of the recommendation.</param>
                     public virtual MarkSucceededRequest MarkSucceeded(Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1MarkRecommendationSucceededRequest body, string name)
                     {
-                        return new MarkSucceededRequest(service, body, name);
+                        return new MarkSucceededRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -4239,7 +4239,7 @@ namespace Google.Apis.Recommender.v1beta1
                 /// </param>
                 public virtual GetConfigRequest GetConfig(string name)
                 {
-                    return new GetConfigRequest(service, name);
+                    return new GetConfigRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -4297,7 +4297,7 @@ namespace Google.Apis.Recommender.v1beta1
                 /// </param>
                 public virtual UpdateConfigRequest UpdateConfig(Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1RecommenderConfig body, string name)
                 {
-                    return new UpdateConfigRequest(service, body, name);
+                    return new UpdateConfigRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates a Recommender Config. This will create a new revision of the config.</summary>
@@ -4394,7 +4394,7 @@ namespace Google.Apis.Recommender.v1beta1
         /// <summary>Lists all available Recommenders. No IAM permissions are required.</summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>Lists all available Recommenders. No IAM permissions are required.</summary>
@@ -4572,8 +4572,8 @@ namespace Google.Apis.Recommender.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LastRefreshTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastRefreshTimeRaw);
-            set => LastRefreshTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastRefreshTimeRaw);
+            set => LastRefreshTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Name of the insight.</summary>
@@ -4716,8 +4716,8 @@ namespace Google.Apis.Recommender.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
     }
 
@@ -5058,8 +5058,8 @@ namespace Google.Apis.Recommender.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LastRefreshTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastRefreshTimeRaw);
-            set => LastRefreshTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastRefreshTimeRaw);
+            set => LastRefreshTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Name of recommendation.</summary>
@@ -5224,8 +5224,8 @@ namespace Google.Apis.Recommender.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
     }
 

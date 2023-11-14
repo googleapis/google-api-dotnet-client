@@ -337,7 +337,7 @@ namespace Google.Apis.WebSecurityScanner.v1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>List CrawledUrls under a given ScanRun.</summary>
@@ -437,7 +437,7 @@ namespace Google.Apis.WebSecurityScanner.v1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>List all FindingTypeStats under a given ScanRun.</summary>
@@ -506,7 +506,7 @@ namespace Google.Apis.WebSecurityScanner.v1
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Gets a Finding.</summary>
@@ -557,7 +557,7 @@ namespace Google.Apis.WebSecurityScanner.v1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>List Findings under a given ScanRun.</summary>
@@ -655,7 +655,7 @@ namespace Google.Apis.WebSecurityScanner.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets a ScanRun.</summary>
@@ -708,7 +708,7 @@ namespace Google.Apis.WebSecurityScanner.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>
@@ -792,7 +792,7 @@ namespace Google.Apis.WebSecurityScanner.v1
                 /// </param>
                 public virtual StopRequest Stop(Google.Apis.WebSecurityScanner.v1.Data.StopScanRunRequest body, string name)
                 {
-                    return new StopRequest(service, body, name);
+                    return new StopRequest(this.service, body, name);
                 }
 
                 /// <summary>Stops a ScanRun. The stopped ScanRun is returned.</summary>
@@ -852,7 +852,7 @@ namespace Google.Apis.WebSecurityScanner.v1
             /// </param>
             public virtual CreateRequest Create(Google.Apis.WebSecurityScanner.v1.Data.ScanConfig body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>Creates a new ScanConfig.</summary>
@@ -910,7 +910,7 @@ namespace Google.Apis.WebSecurityScanner.v1
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>Deletes an existing ScanConfig and its child resources.</summary>
@@ -961,7 +961,7 @@ namespace Google.Apis.WebSecurityScanner.v1
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets a ScanConfig.</summary>
@@ -1012,7 +1012,7 @@ namespace Google.Apis.WebSecurityScanner.v1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists ScanConfigs under a given project.</summary>
@@ -1094,7 +1094,7 @@ namespace Google.Apis.WebSecurityScanner.v1
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.WebSecurityScanner.v1.Data.ScanConfig body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>Updates a ScanConfig. This method support partial update of a ScanConfig.</summary>
@@ -1168,7 +1168,7 @@ namespace Google.Apis.WebSecurityScanner.v1
             /// </param>
             public virtual StartRequest Start(Google.Apis.WebSecurityScanner.v1.Data.StartScanRunRequest body, string name)
             {
-                return new StartRequest(service, body, name);
+                return new StartRequest(this.service, body, name);
             }
 
             /// <summary>Start a ScanRun according to the given ScanConfig.</summary>
@@ -1733,8 +1733,8 @@ namespace Google.Apis.WebSecurityScanner.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -1807,8 +1807,8 @@ namespace Google.Apis.WebSecurityScanner.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -1918,8 +1918,8 @@ namespace Google.Apis.WebSecurityScanner.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ScheduleTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ScheduleTimeRaw);
-            set => ScheduleTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ScheduleTimeRaw);
+            set => ScheduleTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>

@@ -295,7 +295,7 @@ namespace Google.Apis.SA360.v0
             /// <param name="resourceName">Required. The resource name of the custom column to fetch.</param>
             public virtual GetRequest Get(string resourceName)
             {
-                return new GetRequest(service, resourceName);
+                return new GetRequest(this.service, resourceName);
             }
 
             /// <summary>Returns the requested custom column in full detail.</summary>
@@ -342,7 +342,7 @@ namespace Google.Apis.SA360.v0
             /// </param>
             public virtual ListRequest List(string customerId)
             {
-                return new ListRequest(service, customerId);
+                return new ListRequest(this.service, customerId);
             }
 
             /// <summary>Returns all the custom columns associated with the customer in full detail.</summary>
@@ -409,7 +409,7 @@ namespace Google.Apis.SA360.v0
             /// <param name="customerId">Required. The ID of the customer being queried.</param>
             public virtual SearchRequest Search(Google.Apis.SA360.v0.Data.GoogleAdsSearchads360V0ServicesSearchSearchAds360Request body, string customerId)
             {
-                return new SearchRequest(service, body, customerId);
+                return new SearchRequest(this.service, body, customerId);
             }
 
             /// <summary>
@@ -468,7 +468,7 @@ namespace Google.Apis.SA360.v0
         /// </summary>
         public virtual ListAccessibleCustomersRequest ListAccessibleCustomers()
         {
-            return new ListAccessibleCustomersRequest(service);
+            return new ListAccessibleCustomersRequest(this.service);
         }
 
         /// <summary>
@@ -522,7 +522,7 @@ namespace Google.Apis.SA360.v0
         /// <param name="resourceName">Required. The resource name of the field to get.</param>
         public virtual GetRequest Get(string resourceName)
         {
-            return new GetRequest(service, resourceName);
+            return new GetRequest(this.service, resourceName);
         }
 
         /// <summary>
@@ -573,7 +573,7 @@ namespace Google.Apis.SA360.v0
         /// <param name="body">The body of the request.</param>
         public virtual SearchRequest Search(Google.Apis.SA360.v0.Data.GoogleAdsSearchads360V0ServicesSearchSearchAds360FieldsRequest body)
         {
-            return new SearchRequest(service, body);
+            return new SearchRequest(this.service, body);
         }
 
         /// <summary>

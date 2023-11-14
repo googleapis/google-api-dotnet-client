@@ -307,7 +307,7 @@ namespace Google.Apis.ServiceManagement.v1
         /// <param name="name">The name of the operation resource.</param>
         public virtual GetRequest Get(string name)
         {
-            return new GetRequest(service, name);
+            return new GetRequest(this.service, name);
         }
 
         /// <summary>
@@ -354,7 +354,7 @@ namespace Google.Apis.ServiceManagement.v1
         /// <summary>Lists service operations that match the specified filter in the request.</summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>Lists service operations that match the specified filter in the request.</summary>
@@ -491,7 +491,7 @@ namespace Google.Apis.ServiceManagement.v1
             /// </param>
             public virtual CreateRequest Create(Google.Apis.ServiceManagement.v1.Data.Service body, string serviceName)
             {
-                return new CreateRequest(service, body, serviceName);
+                return new CreateRequest(this.service, body, serviceName);
             }
 
             /// <summary>
@@ -560,7 +560,7 @@ namespace Google.Apis.ServiceManagement.v1
             /// </param>
             public virtual GetRequest Get(string serviceName, string configId)
             {
-                return new GetRequest(service, serviceName, configId);
+                return new GetRequest(this.service, serviceName, configId);
             }
 
             /// <summary>Gets a service configuration (version) for a managed service.</summary>
@@ -659,7 +659,7 @@ namespace Google.Apis.ServiceManagement.v1
             /// </param>
             public virtual ListRequest List(string serviceName)
             {
-                return new ListRequest(service, serviceName);
+                return new ListRequest(this.service, serviceName);
             }
 
             /// <summary>
@@ -748,7 +748,7 @@ namespace Google.Apis.ServiceManagement.v1
             /// </param>
             public virtual SubmitRequest Submit(Google.Apis.ServiceManagement.v1.Data.SubmitConfigSourceRequest body, string serviceName)
             {
-                return new SubmitRequest(service, body, serviceName);
+                return new SubmitRequest(this.service, body, serviceName);
             }
 
             /// <summary>
@@ -835,7 +835,7 @@ namespace Google.Apis.ServiceManagement.v1
             /// </param>
             public virtual GetIamPolicyRequest GetIamPolicy(Google.Apis.ServiceManagement.v1.Data.GetIamPolicyRequest body, string resource)
             {
-                return new GetIamPolicyRequest(service, body, resource);
+                return new GetIamPolicyRequest(this.service, body, resource);
             }
 
             /// <summary>
@@ -901,7 +901,7 @@ namespace Google.Apis.ServiceManagement.v1
             /// </param>
             public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.ServiceManagement.v1.Data.SetIamPolicyRequest body, string resource)
             {
-                return new SetIamPolicyRequest(service, body, resource);
+                return new SetIamPolicyRequest(this.service, body, resource);
             }
 
             /// <summary>
@@ -969,7 +969,7 @@ namespace Google.Apis.ServiceManagement.v1
             /// </param>
             public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.ServiceManagement.v1.Data.TestIamPermissionsRequest body, string resource)
             {
-                return new TestIamPermissionsRequest(service, body, resource);
+                return new TestIamPermissionsRequest(this.service, body, resource);
             }
 
             /// <summary>
@@ -1061,7 +1061,7 @@ namespace Google.Apis.ServiceManagement.v1
             /// </param>
             public virtual CreateRequest Create(Google.Apis.ServiceManagement.v1.Data.Rollout body, string serviceName)
             {
-                return new CreateRequest(service, body, serviceName);
+                return new CreateRequest(this.service, body, serviceName);
             }
 
             /// <summary>
@@ -1130,7 +1130,7 @@ namespace Google.Apis.ServiceManagement.v1
             /// <param name="rolloutId">Required. The id of the rollout resource.</param>
             public virtual GetRequest Get(string serviceName, string rolloutId)
             {
-                return new GetRequest(service, serviceName, rolloutId);
+                return new GetRequest(this.service, serviceName, rolloutId);
             }
 
             /// <summary>Gets a service configuration rollout.</summary>
@@ -1199,7 +1199,7 @@ namespace Google.Apis.ServiceManagement.v1
             /// </param>
             public virtual ListRequest List(string serviceName)
             {
-                return new ListRequest(service, serviceName);
+                return new ListRequest(this.service, serviceName);
             }
 
             /// <summary>
@@ -1300,7 +1300,7 @@ namespace Google.Apis.ServiceManagement.v1
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.ServiceManagement.v1.Data.ManagedService body)
         {
-            return new CreateRequest(service, body);
+            return new CreateRequest(this.service, body);
         }
 
         /// <summary>
@@ -1351,7 +1351,7 @@ namespace Google.Apis.ServiceManagement.v1
         /// </param>
         public virtual DeleteRequest Delete(string serviceName)
         {
-            return new DeleteRequest(service, serviceName);
+            return new DeleteRequest(this.service, serviceName);
         }
 
         /// <summary>
@@ -1411,7 +1411,7 @@ namespace Google.Apis.ServiceManagement.v1
         /// <param name="body">The body of the request.</param>
         public virtual GenerateConfigReportRequest GenerateConfigReport(Google.Apis.ServiceManagement.v1.Data.GenerateConfigReportRequest body)
         {
-            return new GenerateConfigReportRequest(service, body);
+            return new GenerateConfigReportRequest(this.service, body);
         }
 
         /// <summary>
@@ -1460,7 +1460,7 @@ namespace Google.Apis.ServiceManagement.v1
         /// </param>
         public virtual GetRequest Get(string serviceName)
         {
-            return new GetRequest(service, serviceName);
+            return new GetRequest(this.service, serviceName);
         }
 
         /// <summary>Gets a managed service. Authentication is required unless the service is public.</summary>
@@ -1511,7 +1511,7 @@ namespace Google.Apis.ServiceManagement.v1
         /// </param>
         public virtual GetConfigRequest GetConfig(string serviceName)
         {
-            return new GetConfigRequest(service, serviceName);
+            return new GetConfigRequest(this.service, serviceName);
         }
 
         /// <summary>Gets a service configuration (version) for a managed service.</summary>
@@ -1610,7 +1610,7 @@ namespace Google.Apis.ServiceManagement.v1
         /// </param>
         public virtual GetIamPolicyRequest GetIamPolicy(Google.Apis.ServiceManagement.v1.Data.GetIamPolicyRequest body, string resource)
         {
-            return new GetIamPolicyRequest(service, body, resource);
+            return new GetIamPolicyRequest(this.service, body, resource);
         }
 
         /// <summary>
@@ -1670,7 +1670,7 @@ namespace Google.Apis.ServiceManagement.v1
         /// </summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>
@@ -1766,7 +1766,7 @@ namespace Google.Apis.ServiceManagement.v1
         /// </param>
         public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.ServiceManagement.v1.Data.SetIamPolicyRequest body, string resource)
         {
-            return new SetIamPolicyRequest(service, body, resource);
+            return new SetIamPolicyRequest(this.service, body, resource);
         }
 
         /// <summary>
@@ -1833,7 +1833,7 @@ namespace Google.Apis.ServiceManagement.v1
         /// </param>
         public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.ServiceManagement.v1.Data.TestIamPermissionsRequest body, string resource)
         {
-            return new TestIamPermissionsRequest(service, body, resource);
+            return new TestIamPermissionsRequest(this.service, body, resource);
         }
 
         /// <summary>
@@ -1900,7 +1900,7 @@ namespace Google.Apis.ServiceManagement.v1
         /// </param>
         public virtual UndeleteRequest Undelete(string serviceName)
         {
-            return new UndeleteRequest(service, serviceName);
+            return new UndeleteRequest(this.service, serviceName);
         }
 
         /// <summary>
@@ -4283,8 +4283,8 @@ namespace Google.Apis.ServiceManagement.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Detailed status information for each step. The order is undetermined.</summary>
@@ -4704,8 +4704,8 @@ namespace Google.Apis.ServiceManagement.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The user who created the Rollout. Readonly.</summary>

@@ -294,7 +294,7 @@ namespace Google.Apis.MyBusinessQA.v1
                 /// <param name="name">Required. The name of the question to delete an answer for.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes the answer written by the current user to a question.</summary>
@@ -339,7 +339,7 @@ namespace Google.Apis.MyBusinessQA.v1
                 /// <param name="parent">Required. The name of the question to fetch answers for.</param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Returns the paginated list of answers for a specified question.</summary>
@@ -430,7 +430,7 @@ namespace Google.Apis.MyBusinessQA.v1
                 /// <param name="parent">Required. The name of the question to write an answer for.</param>
                 public virtual UpsertRequest Upsert(Google.Apis.MyBusinessQA.v1.Data.UpsertAnswerRequest body, string parent)
                 {
-                    return new UpsertRequest(service, body, parent);
+                    return new UpsertRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -487,7 +487,7 @@ namespace Google.Apis.MyBusinessQA.v1
             /// <param name="parent">Required. The name of the location to write a question for.</param>
             public virtual CreateRequest Create(Google.Apis.MyBusinessQA.v1.Data.Question body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>Adds a question for the specified location.</summary>
@@ -539,7 +539,7 @@ namespace Google.Apis.MyBusinessQA.v1
             /// <param name="name">Required. The name of the question to delete.</param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>Deletes a specific question written by the current user.</summary>
@@ -587,7 +587,7 @@ namespace Google.Apis.MyBusinessQA.v1
             /// <param name="parent">Required. The name of the location to fetch questions for.</param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>
@@ -711,7 +711,7 @@ namespace Google.Apis.MyBusinessQA.v1
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.MyBusinessQA.v1.Data.Question body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>Updates a specific question written by the current user.</summary>
@@ -820,8 +820,8 @@ namespace Google.Apis.MyBusinessQA.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. The unique name for the answer locations/*/questions/*/answers/*</summary>
@@ -868,8 +868,8 @@ namespace Google.Apis.MyBusinessQA.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. The number of upvotes for the answer.</summary>
@@ -996,8 +996,8 @@ namespace Google.Apis.MyBusinessQA.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -1058,8 +1058,8 @@ namespace Google.Apis.MyBusinessQA.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. The number of upvotes for the question.</summary>

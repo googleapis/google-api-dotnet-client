@@ -267,7 +267,7 @@ namespace Google.Apis.TravelImpactModel.v1
         /// <param name="body">The body of the request.</param>
         public virtual ComputeFlightEmissionsRequest ComputeFlightEmissions(Google.Apis.TravelImpactModel.v1.Data.ComputeFlightEmissionsRequest body)
         {
-            return new ComputeFlightEmissionsRequest(service, body);
+            return new ComputeFlightEmissionsRequest(this.service, body);
         }
 
         /// <summary>

@@ -302,7 +302,7 @@ namespace Google.Apis.OSConfig.v1beta
             /// </param>
             public virtual CreateRequest Create(Google.Apis.OSConfig.v1beta.Data.GuestPolicy body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>Create an OS Config guest policy.</summary>
@@ -376,7 +376,7 @@ namespace Google.Apis.OSConfig.v1beta
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>Delete an OS Config guest policy.</summary>
@@ -427,7 +427,7 @@ namespace Google.Apis.OSConfig.v1beta
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Get an OS Config guest policy.</summary>
@@ -477,7 +477,7 @@ namespace Google.Apis.OSConfig.v1beta
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Get a page of OS Config guest policies.</summary>
@@ -556,7 +556,7 @@ namespace Google.Apis.OSConfig.v1beta
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.OSConfig.v1beta.Data.GuestPolicy body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>Update an OS Config guest policy.</summary>
@@ -644,7 +644,7 @@ namespace Google.Apis.OSConfig.v1beta
             /// </param>
             public virtual CreateRequest Create(Google.Apis.OSConfig.v1beta.Data.PatchDeployment body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>Create an OS Config patch deployment.</summary>
@@ -715,7 +715,7 @@ namespace Google.Apis.OSConfig.v1beta
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>Delete an OS Config patch deployment.</summary>
@@ -764,7 +764,7 @@ namespace Google.Apis.OSConfig.v1beta
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Get an OS Config patch deployment.</summary>
@@ -811,7 +811,7 @@ namespace Google.Apis.OSConfig.v1beta
             /// <param name="parent">Required. The resource name of the parent in the form `projects/*`.</param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Get a page of OS Config patch deployments.</summary>
@@ -888,7 +888,7 @@ namespace Google.Apis.OSConfig.v1beta
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.OSConfig.v1beta.Data.PatchDeployment body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>Update an OS Config patch deployment.</summary>
@@ -964,7 +964,7 @@ namespace Google.Apis.OSConfig.v1beta
             /// </param>
             public virtual PauseRequest Pause(Google.Apis.OSConfig.v1beta.Data.PausePatchDeploymentRequest body, string name)
             {
-                return new PauseRequest(service, body, name);
+                return new PauseRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -1027,7 +1027,7 @@ namespace Google.Apis.OSConfig.v1beta
             /// </param>
             public virtual ResumeRequest Resume(Google.Apis.OSConfig.v1beta.Data.ResumePatchDeploymentRequest body, string name)
             {
-                return new ResumeRequest(service, body, name);
+                return new ResumeRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -1122,7 +1122,7 @@ namespace Google.Apis.OSConfig.v1beta
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Get a list of instance details for a given patch job.</summary>
@@ -1215,7 +1215,7 @@ namespace Google.Apis.OSConfig.v1beta
             /// <param name="name">Required. Name of the patch in the form `projects/*/patchJobs/*`</param>
             public virtual CancelRequest Cancel(Google.Apis.OSConfig.v1beta.Data.CancelPatchJobRequest body, string name)
             {
-                return new CancelRequest(service, body, name);
+                return new CancelRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -1270,7 +1270,7 @@ namespace Google.Apis.OSConfig.v1beta
             /// <param name="parent">Required. The project in which to run this patch in the form `projects/*`</param>
             public virtual ExecuteRequest Execute(Google.Apis.OSConfig.v1beta.Data.ExecutePatchJobRequest body, string parent)
             {
-                return new ExecuteRequest(service, body, parent);
+                return new ExecuteRequest(this.service, body, parent);
             }
 
             /// <summary>Patch VM instances by creating and running a patch job.</summary>
@@ -1325,7 +1325,7 @@ namespace Google.Apis.OSConfig.v1beta
             /// <param name="name">Required. Name of the patch in the form `projects/*/patchJobs/*`</param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>
@@ -1373,7 +1373,7 @@ namespace Google.Apis.OSConfig.v1beta
             /// <param name="parent">Required. In the form of `projects/*`</param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Get a list of patch jobs.</summary>
@@ -1500,7 +1500,7 @@ namespace Google.Apis.OSConfig.v1beta
                 /// <param name="instance">Required. The VM instance whose policies are being looked up.</param>
                 public virtual LookupEffectiveGuestPolicyRequest LookupEffectiveGuestPolicy(Google.Apis.OSConfig.v1beta.Data.LookupEffectiveGuestPolicyRequest body, string instance)
                 {
-                    return new LookupEffectiveGuestPolicyRequest(service, body, instance);
+                    return new LookupEffectiveGuestPolicyRequest(this.service, body, instance);
                 }
 
                 /// <summary>
@@ -1990,8 +1990,8 @@ namespace Google.Apis.OSConfig.v1beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? RolloutStartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(RolloutStartTimeRaw);
-            set => RolloutStartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(RolloutStartTimeRaw);
+            set => RolloutStartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>State of the rollout</summary>
@@ -2033,8 +2033,8 @@ namespace Google.Apis.OSConfig.v1beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? RolloutUpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(RolloutUpdateTimeRaw);
-            set => RolloutUpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(RolloutUpdateTimeRaw);
+            set => RolloutUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -2092,8 +2092,8 @@ namespace Google.Apis.OSConfig.v1beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Description of the guest policy. Length of the description is limited to 1024 characters.</summary>
@@ -2162,8 +2162,8 @@ namespace Google.Apis.OSConfig.v1beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
     }
 
@@ -2329,8 +2329,8 @@ namespace Google.Apis.OSConfig.v1beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? RolloutStartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(RolloutStartTimeRaw);
-            set => RolloutStartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(RolloutStartTimeRaw);
+            set => RolloutStartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>State of the rollout</summary>
@@ -2372,8 +2372,8 @@ namespace Google.Apis.OSConfig.v1beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? RolloutUpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(RolloutUpdateTimeRaw);
-            set => RolloutUpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(RolloutUpdateTimeRaw);
+            set => RolloutUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -2419,8 +2419,8 @@ namespace Google.Apis.OSConfig.v1beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ExecuteTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExecuteTimeRaw);
-            set => ExecuteTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExecuteTimeRaw);
+            set => ExecuteTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -2577,8 +2577,8 @@ namespace Google.Apis.OSConfig.v1beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -2633,8 +2633,8 @@ namespace Google.Apis.OSConfig.v1beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LastExecuteTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastExecuteTimeRaw);
-            set => LastExecuteTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastExecuteTimeRaw);
+            set => LastExecuteTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -2701,8 +2701,8 @@ namespace Google.Apis.OSConfig.v1beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -2807,8 +2807,8 @@ namespace Google.Apis.OSConfig.v1beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Description of the patch job. Length of the description is limited to 1024 characters.</summary>
@@ -2902,8 +2902,8 @@ namespace Google.Apis.OSConfig.v1beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -3092,8 +3092,8 @@ namespace Google.Apis.OSConfig.v1beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Required. The frequency unit of this recurring schedule.</summary>
@@ -3135,8 +3135,8 @@ namespace Google.Apis.OSConfig.v1beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LastExecuteTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastExecuteTimeRaw);
-            set => LastExecuteTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastExecuteTimeRaw);
+            set => LastExecuteTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Required. Schedule with monthly executions.</summary>
@@ -3178,8 +3178,8 @@ namespace Google.Apis.OSConfig.v1beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? NextExecuteTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(NextExecuteTimeRaw);
-            set => NextExecuteTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(NextExecuteTimeRaw);
+            set => NextExecuteTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _startTimeRaw;
@@ -3218,8 +3218,8 @@ namespace Google.Apis.OSConfig.v1beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Required. Time of the day to run a recurring deployment.</summary>

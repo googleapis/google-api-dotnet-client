@@ -287,7 +287,7 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta2
         /// <param name="body">The body of the request.</param>
         public virtual AnalyzeEntitiesRequest AnalyzeEntities(Google.Apis.CloudNaturalLanguage.v1beta2.Data.AnalyzeEntitiesRequest body)
         {
-            return new AnalyzeEntitiesRequest(service, body);
+            return new AnalyzeEntitiesRequest(this.service, body);
         }
 
         /// <summary>
@@ -332,7 +332,7 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta2
         /// <param name="body">The body of the request.</param>
         public virtual AnalyzeEntitySentimentRequest AnalyzeEntitySentiment(Google.Apis.CloudNaturalLanguage.v1beta2.Data.AnalyzeEntitySentimentRequest body)
         {
-            return new AnalyzeEntitySentimentRequest(service, body);
+            return new AnalyzeEntitySentimentRequest(this.service, body);
         }
 
         /// <summary>
@@ -374,7 +374,7 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta2
         /// <param name="body">The body of the request.</param>
         public virtual AnalyzeSentimentRequest AnalyzeSentiment(Google.Apis.CloudNaturalLanguage.v1beta2.Data.AnalyzeSentimentRequest body)
         {
-            return new AnalyzeSentimentRequest(service, body);
+            return new AnalyzeSentimentRequest(this.service, body);
         }
 
         /// <summary>Analyzes the sentiment of the provided text.</summary>
@@ -416,7 +416,7 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta2
         /// <param name="body">The body of the request.</param>
         public virtual AnalyzeSyntaxRequest AnalyzeSyntax(Google.Apis.CloudNaturalLanguage.v1beta2.Data.AnalyzeSyntaxRequest body)
         {
-            return new AnalyzeSyntaxRequest(service, body);
+            return new AnalyzeSyntaxRequest(this.service, body);
         }
 
         /// <summary>
@@ -460,7 +460,7 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta2
         /// <param name="body">The body of the request.</param>
         public virtual AnnotateTextRequest AnnotateText(Google.Apis.CloudNaturalLanguage.v1beta2.Data.AnnotateTextRequest body)
         {
-            return new AnnotateTextRequest(service, body);
+            return new AnnotateTextRequest(this.service, body);
         }
 
         /// <summary>
@@ -501,7 +501,7 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta2
         /// <param name="body">The body of the request.</param>
         public virtual ClassifyTextRequest ClassifyText(Google.Apis.CloudNaturalLanguage.v1beta2.Data.ClassifyTextRequest body)
         {
-            return new ClassifyTextRequest(service, body);
+            return new ClassifyTextRequest(this.service, body);
         }
 
         /// <summary>Classifies a document into categories.</summary>
@@ -540,7 +540,7 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta2
         /// <param name="body">The body of the request.</param>
         public virtual ModerateTextRequest ModerateText(Google.Apis.CloudNaturalLanguage.v1beta2.Data.ModerateTextRequest body)
         {
-            return new ModerateTextRequest(service, body);
+            return new ModerateTextRequest(this.service, body);
         }
 
         /// <summary>Moderates a document for harmful and sensitive categories.</summary>

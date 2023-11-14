@@ -319,13 +319,13 @@ namespace Google.Apis.MapsPlaces.v1
             /// <summary>Get a photo media with a photo reference string.</summary>
             /// <param name="name">
             /// Required. The resource name of a photo media in the format:
-            /// `places/place_id/photos/photo_reference/media`. The resource name of a photo as returned in a Place
-            /// object's photos.name field comes with the format `places/place_id/photos/photo_reference`. You need to
-            /// append `/media` at the end of the photo resource to get the photo media resource name.
+            /// `"places/place_id/photos/photo_reference/media"`. The resource name of a photo as returned in a Place
+            /// object's `photos.name` field comes with the format `"places/place_id/photos/photo_reference"`. You need
+            /// to append `"/media"` at the end of the photo resource to get the photo media resource name.
             /// </param>
             public virtual GetMediaRequest GetMedia(string name)
             {
-                return new GetMediaRequest(service, name);
+                return new GetMediaRequest(this.service, name);
             }
 
             /// <summary>Get a photo media with a photo reference string.</summary>
@@ -340,9 +340,9 @@ namespace Google.Apis.MapsPlaces.v1
 
                 /// <summary>
                 /// Required. The resource name of a photo media in the format:
-                /// `places/place_id/photos/photo_reference/media`. The resource name of a photo as returned in a Place
-                /// object's photos.name field comes with the format `places/place_id/photos/photo_reference`. You need
-                /// to append `/media` at the end of the photo resource to get the photo media resource name.
+                /// `"places/place_id/photos/photo_reference/media"`. The resource name of a photo as returned in a
+                /// Place object's `photos.name` field comes with the format `"places/place_id/photos/photo_reference"`.
+                /// You need to append `"/media"` at the end of the photo resource to get the photo media resource name.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -435,7 +435,7 @@ namespace Google.Apis.MapsPlaces.v1
         /// </param>
         public virtual GetRequest Get(string name)
         {
-            return new GetRequest(service, name);
+            return new GetRequest(this.service, name);
         }
 
         /// <summary>Get place details with a place id (in a name) string.</summary>
@@ -516,7 +516,7 @@ namespace Google.Apis.MapsPlaces.v1
         /// <param name="body">The body of the request.</param>
         public virtual SearchNearbyRequest SearchNearby(Google.Apis.MapsPlaces.v1.Data.GoogleMapsPlacesV1SearchNearbyRequest body)
         {
-            return new SearchNearbyRequest(service, body);
+            return new SearchNearbyRequest(this.service, body);
         }
 
         /// <summary>Search for places near locations.</summary>
@@ -555,7 +555,7 @@ namespace Google.Apis.MapsPlaces.v1
         /// <param name="body">The body of the request.</param>
         public virtual SearchTextRequest SearchText(Google.Apis.MapsPlaces.v1.Data.GoogleMapsPlacesV1SearchTextRequest body)
         {
-            return new SearchTextRequest(service, body);
+            return new SearchTextRequest(this.service, body);
         }
 
         /// <summary>Text query based place search.</summary>
@@ -725,8 +725,8 @@ namespace Google.Apis.MapsPlaces.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? AvailabilityLastUpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(AvailabilityLastUpdateTimeRaw);
-            set => AvailabilityLastUpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(AvailabilityLastUpdateTimeRaw);
+            set => AvailabilityLastUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Number of connectors in this aggregation that are currently available.</summary>
@@ -813,8 +813,8 @@ namespace Google.Apis.MapsPlaces.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -1503,8 +1503,8 @@ namespace Google.Apis.MapsPlaces.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? PublishTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(PublishTimeRaw);
-            set => PublishTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(PublishTimeRaw);
+            set => PublishTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>A number between 1.0 and 5.0, also called the number of stars.</summary>
@@ -1745,7 +1745,10 @@ namespace Google.Apis.MapsPlaces.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("circle")]
         public virtual GoogleMapsPlacesV1Circle Circle { get; set; }
 
-        /// <summary>A rectangle box defined by northeast and southwest corner.</summary>
+        /// <summary>
+        /// A rectangle box defined by northeast and southwest corner. `rectangle.high()` must be the northeast point of
+        /// the rectangle viewport. `rectangle.low()` must be the southwest point of the rectangle viewport.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rectangle")]
         public virtual GoogleGeoTypeViewport Rectangle { get; set; }
 
@@ -1759,7 +1762,10 @@ namespace Google.Apis.MapsPlaces.v1.Data
     /// </summary>
     public class GoogleMapsPlacesV1SearchTextRequestLocationRestriction : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A rectangle box defined by northeast and southwest corner.</summary>
+        /// <summary>
+        /// A rectangle box defined by northeast and southwest corner. `rectangle.high()` must be the northeast point of
+        /// the rectangle viewport. `rectangle.low()` must be the southwest point of the rectangle viewport.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rectangle")]
         public virtual GoogleGeoTypeViewport Rectangle { get; set; }
 

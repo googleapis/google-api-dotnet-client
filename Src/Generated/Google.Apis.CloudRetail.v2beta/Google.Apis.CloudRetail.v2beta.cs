@@ -349,7 +349,7 @@ namespace Google.Apis.CloudRetail.v2beta
                     /// </param>
                     public virtual AddCatalogAttributeRequest AddCatalogAttribute(Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaAddCatalogAttributeRequest body, string attributesConfig)
                     {
-                        return new AddCatalogAttributeRequest(service, body, attributesConfig);
+                        return new AddCatalogAttributeRequest(this.service, body, attributesConfig);
                     }
 
                     /// <summary>
@@ -411,7 +411,7 @@ namespace Google.Apis.CloudRetail.v2beta
                     /// </param>
                     public virtual BatchRemoveCatalogAttributesRequest BatchRemoveCatalogAttributes(Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaBatchRemoveCatalogAttributesRequest body, string attributesConfig)
                     {
-                        return new BatchRemoveCatalogAttributesRequest(service, body, attributesConfig);
+                        return new BatchRemoveCatalogAttributesRequest(this.service, body, attributesConfig);
                     }
 
                     /// <summary>Removes all specified CatalogAttributes from the AttributesConfig.</summary>
@@ -474,7 +474,7 @@ namespace Google.Apis.CloudRetail.v2beta
                     /// </param>
                     public virtual RemoveCatalogAttributeRequest RemoveCatalogAttribute(Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaRemoveCatalogAttributeRequest body, string attributesConfig)
                     {
-                        return new RemoveCatalogAttributeRequest(service, body, attributesConfig);
+                        return new RemoveCatalogAttributeRequest(this.service, body, attributesConfig);
                     }
 
                     /// <summary>
@@ -540,7 +540,7 @@ namespace Google.Apis.CloudRetail.v2beta
                     /// </param>
                     public virtual ReplaceCatalogAttributeRequest ReplaceCatalogAttribute(Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaReplaceCatalogAttributeRequest body, string attributesConfig)
                     {
-                        return new ReplaceCatalogAttributeRequest(service, body, attributesConfig);
+                        return new ReplaceCatalogAttributeRequest(this.service, body, attributesConfig);
                     }
 
                     /// <summary>
@@ -639,7 +639,7 @@ namespace Google.Apis.CloudRetail.v2beta
                         /// <param name="name">The name of the operation resource.</param>
                         public virtual GetRequest Get(string name)
                         {
-                            return new GetRequest(service, name);
+                            return new GetRequest(this.service, name);
                         }
 
                         /// <summary>
@@ -724,7 +724,7 @@ namespace Google.Apis.CloudRetail.v2beta
                         /// </param>
                         public virtual AddFulfillmentPlacesRequest AddFulfillmentPlaces(Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaAddFulfillmentPlacesRequest body, string product)
                         {
-                            return new AddFulfillmentPlacesRequest(service, body, product);
+                            return new AddFulfillmentPlacesRequest(this.service, body, product);
                         }
 
                         /// <summary>
@@ -812,7 +812,7 @@ namespace Google.Apis.CloudRetail.v2beta
                         /// </param>
                         public virtual AddLocalInventoriesRequest AddLocalInventories(Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaAddLocalInventoriesRequest body, string product)
                         {
-                            return new AddLocalInventoriesRequest(service, body, product);
+                            return new AddLocalInventoriesRequest(this.service, body, product);
                         }
 
                         /// <summary>
@@ -885,7 +885,7 @@ namespace Google.Apis.CloudRetail.v2beta
                         /// </param>
                         public virtual CreateRequest Create(Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaProduct body, string parent)
                         {
-                            return new CreateRequest(service, body, parent);
+                            return new CreateRequest(this.service, body, parent);
                         }
 
                         /// <summary>Creates a Product.</summary>
@@ -968,7 +968,7 @@ namespace Google.Apis.CloudRetail.v2beta
                         /// </param>
                         public virtual DeleteRequest Delete(string name)
                         {
-                            return new DeleteRequest(service, name);
+                            return new DeleteRequest(this.service, name);
                         }
 
                         /// <summary>Deletes a Product.</summary>
@@ -1028,7 +1028,7 @@ namespace Google.Apis.CloudRetail.v2beta
                         /// </param>
                         public virtual GetRequest Get(string name)
                         {
-                            return new GetRequest(service, name);
+                            return new GetRequest(this.service, name);
                         }
 
                         /// <summary>Gets a Product.</summary>
@@ -1088,7 +1088,7 @@ namespace Google.Apis.CloudRetail.v2beta
                         /// </param>
                         public virtual ImportRequest Import(Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaImportProductsRequest body, string parent)
                         {
-                            return new ImportRequest(service, body, parent);
+                            return new ImportRequest(this.service, body, parent);
                         }
 
                         /// <summary>
@@ -1155,7 +1155,7 @@ namespace Google.Apis.CloudRetail.v2beta
                         /// </param>
                         public virtual ListRequest List(string parent)
                         {
-                            return new ListRequest(service, parent);
+                            return new ListRequest(this.service, parent);
                         }
 
                         /// <summary>Gets a list of Products.</summary>
@@ -1283,7 +1283,7 @@ namespace Google.Apis.CloudRetail.v2beta
                         /// </param>
                         public virtual PatchRequest Patch(Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaProduct body, string name)
                         {
-                            return new PatchRequest(service, body, name);
+                            return new PatchRequest(this.service, body, name);
                         }
 
                         /// <summary>Updates a Product.</summary>
@@ -1384,7 +1384,7 @@ namespace Google.Apis.CloudRetail.v2beta
                         /// </param>
                         public virtual PurgeRequest Purge(Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaPurgeProductsRequest body, string parent)
                         {
-                            return new PurgeRequest(service, body, parent);
+                            return new PurgeRequest(this.service, body, parent);
                         }
 
                         /// <summary>
@@ -1467,7 +1467,7 @@ namespace Google.Apis.CloudRetail.v2beta
                         /// </param>
                         public virtual RemoveFulfillmentPlacesRequest RemoveFulfillmentPlaces(Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaRemoveFulfillmentPlacesRequest body, string product)
                         {
-                            return new RemoveFulfillmentPlacesRequest(service, body, product);
+                            return new RemoveFulfillmentPlacesRequest(this.service, body, product);
                         }
 
                         /// <summary>
@@ -1553,7 +1553,7 @@ namespace Google.Apis.CloudRetail.v2beta
                         /// </param>
                         public virtual RemoveLocalInventoriesRequest RemoveLocalInventories(Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaRemoveLocalInventoriesRequest body, string product)
                         {
-                            return new RemoveLocalInventoriesRequest(service, body, product);
+                            return new RemoveLocalInventoriesRequest(this.service, body, product);
                         }
 
                         /// <summary>
@@ -1643,7 +1643,7 @@ namespace Google.Apis.CloudRetail.v2beta
                         /// </param>
                         public virtual SetInventoryRequest SetInventory(Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaSetInventoryRequest body, string name)
                         {
-                            return new SetInventoryRequest(service, body, name);
+                            return new SetInventoryRequest(this.service, body, name);
                         }
 
                         /// <summary>
@@ -1746,7 +1746,7 @@ namespace Google.Apis.CloudRetail.v2beta
                     /// </param>
                     public virtual ImportRequest Import(Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaImportCompletionDataRequest body, string parent)
                     {
-                        return new ImportRequest(service, body, parent);
+                        return new ImportRequest(this.service, body, parent);
                     }
 
                     /// <summary>
@@ -1831,7 +1831,7 @@ namespace Google.Apis.CloudRetail.v2beta
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaControl body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>
@@ -1909,7 +1909,7 @@ namespace Google.Apis.CloudRetail.v2beta
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -1962,7 +1962,7 @@ namespace Google.Apis.CloudRetail.v2beta
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Gets a Control.</summary>
@@ -2013,7 +2013,7 @@ namespace Google.Apis.CloudRetail.v2beta
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists all Controls by their parent Catalog.</summary>
@@ -2113,7 +2113,7 @@ namespace Google.Apis.CloudRetail.v2beta
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaControl body, string name)
                     {
-                        return new PatchRequest(service, body, name);
+                        return new PatchRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -2207,7 +2207,7 @@ namespace Google.Apis.CloudRetail.v2beta
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaModel body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>Creates a new model.</summary>
@@ -2280,7 +2280,7 @@ namespace Google.Apis.CloudRetail.v2beta
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>Deletes an existing model.</summary>
@@ -2331,7 +2331,7 @@ namespace Google.Apis.CloudRetail.v2beta
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Gets a model.</summary>
@@ -2382,7 +2382,7 @@ namespace Google.Apis.CloudRetail.v2beta
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists all the models linked to this event store.</summary>
@@ -2468,7 +2468,7 @@ namespace Google.Apis.CloudRetail.v2beta
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaModel body, string name)
                     {
-                        return new PatchRequest(service, body, name);
+                        return new PatchRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -2546,7 +2546,7 @@ namespace Google.Apis.CloudRetail.v2beta
                     /// </param>
                     public virtual PauseRequest Pause(Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaPauseModelRequest body, string name)
                     {
-                        return new PauseRequest(service, body, name);
+                        return new PauseRequest(this.service, body, name);
                     }
 
                     /// <summary>Pauses the training of an existing model.</summary>
@@ -2605,7 +2605,7 @@ namespace Google.Apis.CloudRetail.v2beta
                     /// </param>
                     public virtual ResumeRequest Resume(Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaResumeModelRequest body, string name)
                     {
-                        return new ResumeRequest(service, body, name);
+                        return new ResumeRequest(this.service, body, name);
                     }
 
                     /// <summary>Resumes the training of an existing model.</summary>
@@ -2664,7 +2664,7 @@ namespace Google.Apis.CloudRetail.v2beta
                     /// </param>
                     public virtual TuneRequest Tune(Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaTuneModelRequest body, string name)
                     {
-                        return new TuneRequest(service, body, name);
+                        return new TuneRequest(this.service, body, name);
                     }
 
                     /// <summary>Tunes an existing model.</summary>
@@ -2740,7 +2740,7 @@ namespace Google.Apis.CloudRetail.v2beta
                     /// <param name="name">The name of the operation resource.</param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -2791,7 +2791,7 @@ namespace Google.Apis.CloudRetail.v2beta
                     /// <param name="name">The name of the operation's parent resource.</param>
                     public virtual ListRequest List(string name)
                     {
-                        return new ListRequest(service, name);
+                        return new ListRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -2904,7 +2904,7 @@ namespace Google.Apis.CloudRetail.v2beta
                     /// </param>
                     public virtual PredictRequest Predict(Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaPredictRequest body, string placement)
                     {
-                        return new PredictRequest(service, body, placement);
+                        return new PredictRequest(this.service, body, placement);
                     }
 
                     /// <summary>Makes a recommendation prediction.</summary>
@@ -2977,7 +2977,7 @@ namespace Google.Apis.CloudRetail.v2beta
                     /// </param>
                     public virtual SearchRequest Search(Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaSearchRequest body, string placement)
                     {
-                        return new SearchRequest(service, body, placement);
+                        return new SearchRequest(this.service, body, placement);
                     }
 
                     /// <summary>
@@ -3067,7 +3067,7 @@ namespace Google.Apis.CloudRetail.v2beta
                     /// </param>
                     public virtual AddControlRequest AddControl(Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaAddControlRequest body, string servingConfig)
                     {
-                        return new AddControlRequest(service, body, servingConfig);
+                        return new AddControlRequest(this.service, body, servingConfig);
                     }
 
                     /// <summary>
@@ -3135,7 +3135,7 @@ namespace Google.Apis.CloudRetail.v2beta
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaServingConfig body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>
@@ -3214,7 +3214,7 @@ namespace Google.Apis.CloudRetail.v2beta
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -3269,7 +3269,7 @@ namespace Google.Apis.CloudRetail.v2beta
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -3322,7 +3322,7 @@ namespace Google.Apis.CloudRetail.v2beta
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists all ServingConfigs linked to this catalog.</summary>
@@ -3403,7 +3403,7 @@ namespace Google.Apis.CloudRetail.v2beta
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaServingConfig body, string name)
                     {
-                        return new PatchRequest(service, body, name);
+                        return new PatchRequest(this.service, body, name);
                     }
 
                     /// <summary>Updates a ServingConfig.</summary>
@@ -3483,7 +3483,7 @@ namespace Google.Apis.CloudRetail.v2beta
                     /// </param>
                     public virtual PredictRequest Predict(Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaPredictRequest body, string placement)
                     {
-                        return new PredictRequest(service, body, placement);
+                        return new PredictRequest(this.service, body, placement);
                     }
 
                     /// <summary>Makes a recommendation prediction.</summary>
@@ -3553,7 +3553,7 @@ namespace Google.Apis.CloudRetail.v2beta
                     /// </param>
                     public virtual RemoveControlRequest RemoveControl(Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaRemoveControlRequest body, string servingConfig)
                     {
-                        return new RemoveControlRequest(service, body, servingConfig);
+                        return new RemoveControlRequest(this.service, body, servingConfig);
                     }
 
                     /// <summary>
@@ -3621,7 +3621,7 @@ namespace Google.Apis.CloudRetail.v2beta
                     /// </param>
                     public virtual SearchRequest Search(Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaSearchRequest body, string placement)
                     {
-                        return new SearchRequest(service, body, placement);
+                        return new SearchRequest(this.service, body, placement);
                     }
 
                     /// <summary>
@@ -3708,7 +3708,7 @@ namespace Google.Apis.CloudRetail.v2beta
                     /// </param>
                     public virtual CollectRequest Collect(string parent)
                     {
-                        return new CollectRequest(service, parent);
+                        return new CollectRequest(this.service, parent);
                     }
 
                     /// <summary>
@@ -3842,7 +3842,7 @@ namespace Google.Apis.CloudRetail.v2beta
                     /// <param name="parent">Required. `projects/1234/locations/global/catalogs/default_catalog`</param>
                     public virtual ImportRequest Import(Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaImportUserEventsRequest body, string parent)
                     {
-                        return new ImportRequest(service, body, parent);
+                        return new ImportRequest(this.service, body, parent);
                     }
 
                     /// <summary>
@@ -3907,7 +3907,7 @@ namespace Google.Apis.CloudRetail.v2beta
                     /// </param>
                     public virtual PurgeRequest Purge(Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaPurgeUserEventsRequest body, string parent)
                     {
-                        return new PurgeRequest(service, body, parent);
+                        return new PurgeRequest(this.service, body, parent);
                     }
 
                     /// <summary>
@@ -3977,7 +3977,7 @@ namespace Google.Apis.CloudRetail.v2beta
                     /// </param>
                     public virtual RejoinRequest Rejoin(Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaRejoinUserEventsRequest body, string parent)
                     {
-                        return new RejoinRequest(service, body, parent);
+                        return new RejoinRequest(this.service, body, parent);
                     }
 
                     /// <summary>
@@ -4043,7 +4043,7 @@ namespace Google.Apis.CloudRetail.v2beta
                     /// </param>
                     public virtual WriteRequest Write(Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaUserEvent body, string parent)
                     {
-                        return new WriteRequest(service, body, parent);
+                        return new WriteRequest(this.service, body, parent);
                     }
 
                     /// <summary>Writes a single user event.</summary>
@@ -4122,7 +4122,7 @@ namespace Google.Apis.CloudRetail.v2beta
                 /// </param>
                 public virtual CompleteQueryRequest CompleteQuery(string catalog)
                 {
-                    return new CompleteQueryRequest(service, catalog);
+                    return new CompleteQueryRequest(this.service, catalog);
                 }
 
                 /// <summary>
@@ -4297,7 +4297,7 @@ namespace Google.Apis.CloudRetail.v2beta
                 /// </param>
                 public virtual GetAttributesConfigRequest GetAttributesConfig(string name)
                 {
-                    return new GetAttributesConfigRequest(service, name);
+                    return new GetAttributesConfigRequest(this.service, name);
                 }
 
                 /// <summary>Gets an AttributesConfig.</summary>
@@ -4348,7 +4348,7 @@ namespace Google.Apis.CloudRetail.v2beta
                 /// </param>
                 public virtual GetCompletionConfigRequest GetCompletionConfig(string name)
                 {
-                    return new GetCompletionConfigRequest(service, name);
+                    return new GetCompletionConfigRequest(this.service, name);
                 }
 
                 /// <summary>Gets a CompletionConfig.</summary>
@@ -4401,7 +4401,7 @@ namespace Google.Apis.CloudRetail.v2beta
                 /// </param>
                 public virtual GetDefaultBranchRequest GetDefaultBranch(string catalog)
                 {
-                    return new GetDefaultBranchRequest(service, catalog);
+                    return new GetDefaultBranchRequest(this.service, catalog);
                 }
 
                 /// <summary>
@@ -4456,7 +4456,7 @@ namespace Google.Apis.CloudRetail.v2beta
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists all the Catalogs associated with the project.</summary>
@@ -4539,7 +4539,7 @@ namespace Google.Apis.CloudRetail.v2beta
                 /// <param name="name">Required. Immutable. The fully qualified resource name of the catalog.</param>
                 public virtual PatchRequest Patch(Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaCatalog body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates the Catalogs.</summary>
@@ -4624,7 +4624,7 @@ namespace Google.Apis.CloudRetail.v2beta
                 /// </param>
                 public virtual SetDefaultBranchRequest SetDefaultBranch(Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaSetDefaultBranchRequest body, string catalog)
                 {
-                    return new SetDefaultBranchRequest(service, body, catalog);
+                    return new SetDefaultBranchRequest(this.service, body, catalog);
                 }
 
                 /// <summary>
@@ -4704,7 +4704,7 @@ namespace Google.Apis.CloudRetail.v2beta
                 /// </param>
                 public virtual UpdateAttributesConfigRequest UpdateAttributesConfig(Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaAttributesConfig body, string name)
                 {
-                    return new UpdateAttributesConfigRequest(service, body, name);
+                    return new UpdateAttributesConfigRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -4784,7 +4784,7 @@ namespace Google.Apis.CloudRetail.v2beta
                 /// </param>
                 public virtual UpdateCompletionConfigRequest UpdateCompletionConfig(Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaCompletionConfig body, string name)
                 {
-                    return new UpdateCompletionConfigRequest(service, body, name);
+                    return new UpdateCompletionConfigRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates the CompletionConfigs.</summary>
@@ -4876,7 +4876,7 @@ namespace Google.Apis.CloudRetail.v2beta
                 /// <param name="name">The name of the operation resource.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -4927,7 +4927,7 @@ namespace Google.Apis.CloudRetail.v2beta
                 /// <param name="name">The name of the operation's parent resource.</param>
                 public virtual ListRequest List(string name)
                 {
-                    return new ListRequest(service, name);
+                    return new ListRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -5033,7 +5033,7 @@ namespace Google.Apis.CloudRetail.v2beta
             /// <param name="name">The name of the operation resource.</param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>
@@ -5084,7 +5084,7 @@ namespace Google.Apis.CloudRetail.v2beta
             /// <param name="name">The name of the operation's parent resource.</param>
             public virtual ListRequest List(string name)
             {
-                return new ListRequest(service, name);
+                return new ListRequest(this.service, name);
             }
 
             /// <summary>
@@ -5462,8 +5462,8 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Count of entries that encountered errors while processing.</summary>
@@ -5519,8 +5519,8 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -5606,8 +5606,8 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -5666,8 +5666,8 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LastTuneTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastTuneTimeRaw);
-            set => LastTuneTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastTuneTimeRaw);
+            set => LastTuneTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Optional. Additional model features config.</summary>
@@ -5778,8 +5778,8 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -5874,8 +5874,8 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Count of entries that encountered errors while processing.</summary>
@@ -5919,8 +5919,8 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -6171,8 +6171,8 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _updateTimeRaw;
@@ -6208,8 +6208,8 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -6305,8 +6305,8 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _updateTimeRaw;
@@ -6342,8 +6342,8 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -6473,8 +6473,8 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Count of entries that encountered errors while processing.</summary>
@@ -6534,8 +6534,8 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -6716,8 +6716,8 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -6776,8 +6776,8 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LastTuneTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastTuneTimeRaw);
-            set => LastTuneTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastTuneTimeRaw);
+            set => LastTuneTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Optional. Additional model features config.</summary>
@@ -6892,8 +6892,8 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -7072,8 +7072,8 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Count of entries that encountered errors while processing.</summary>
@@ -7117,8 +7117,8 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -7370,8 +7370,8 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? AddTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(AddTimeRaw);
-            set => AddTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(AddTimeRaw);
+            set => AddTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -7477,8 +7477,8 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? AddTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(AddTimeRaw);
-            set => AddTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(AddTimeRaw);
+            set => AddTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -7872,8 +7872,8 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _startTimeRaw;
@@ -7914,8 +7914,8 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -8250,8 +8250,8 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _startTimeRaw;
@@ -8287,8 +8287,8 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -8389,8 +8389,8 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _updateTimeRaw;
@@ -8426,8 +8426,8 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -8587,8 +8587,8 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _updateTimeRaw;
@@ -8624,8 +8624,8 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -8792,8 +8792,8 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? SetTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(SetTimeRaw);
-            set => SetTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(SetTimeRaw);
+            set => SetTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -8921,8 +8921,8 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Count of entries that encountered errors while processing.</summary>
@@ -8978,8 +8978,8 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -9456,8 +9456,8 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -9516,8 +9516,8 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LastTuneTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastTuneTimeRaw);
-            set => LastTuneTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastTuneTimeRaw);
+            set => LastTuneTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Optional. Additional model features config.</summary>
@@ -9628,8 +9628,8 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -9913,8 +9913,8 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? PriceEffectiveTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(PriceEffectiveTimeRaw);
-            set => PriceEffectiveTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(PriceEffectiveTimeRaw);
+            set => PriceEffectiveTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _priceExpireTimeRaw;
@@ -9956,8 +9956,8 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? PriceExpireTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(PriceExpireTimeRaw);
-            set => PriceExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(PriceExpireTimeRaw);
+            set => PriceExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -10069,8 +10069,8 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? AvailableTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(AvailableTimeRaw);
-            set => AvailableTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(AvailableTimeRaw);
+            set => AvailableTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -10178,8 +10178,8 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpireTimeRaw);
-            set => ExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -10330,8 +10330,8 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? PublishTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(PublishTimeRaw);
-            set => PublishTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(PublishTimeRaw);
+            set => PublishTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The rating of this product.</summary>
@@ -10622,8 +10622,8 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Count of entries that encountered errors while processing.</summary>
@@ -10667,8 +10667,8 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -10921,8 +10921,8 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? RemoveTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(RemoveTimeRaw);
-            set => RemoveTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(RemoveTimeRaw);
+            set => RemoveTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -11013,8 +11013,8 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? RemoveTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(RemoveTimeRaw);
-            set => RemoveTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(RemoveTimeRaw);
+            set => RemoveTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -12289,8 +12289,8 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? SetTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(SetTimeRaw);
-            set => SetTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(SetTimeRaw);
+            set => SetTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -12431,8 +12431,8 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EventTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EventTimeRaw);
-            set => EventTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EventTimeRaw);
+            set => EventTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>

@@ -342,7 +342,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.ApigeeRegistry.v1.Data.Artifact body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>Creates a specified artifact.</summary>
@@ -414,7 +414,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>Removes a specified artifact.</summary>
@@ -463,7 +463,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Returns a specified artifact.</summary>
@@ -517,7 +517,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                     /// </param>
                     public virtual GetContentsRequest GetContents(string name)
                     {
-                        return new GetContentsRequest(service, name);
+                        return new GetContentsRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -576,7 +576,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                     /// </param>
                     public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                     {
-                        return new GetIamPolicyRequest(service, resource);
+                        return new GetIamPolicyRequest(this.service, resource);
                     }
 
                     /// <summary>
@@ -652,7 +652,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Returns matching artifacts.</summary>
@@ -762,7 +762,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                     /// <param name="name">Resource name.</param>
                     public virtual ReplaceArtifactRequest ReplaceArtifact(Google.Apis.ApigeeRegistry.v1.Data.Artifact body, string name)
                     {
-                        return new ReplaceArtifactRequest(service, body, name);
+                        return new ReplaceArtifactRequest(this.service, body, name);
                     }
 
                     /// <summary>Used to replace a specified artifact.</summary>
@@ -822,7 +822,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                     /// </param>
                     public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.ApigeeRegistry.v1.Data.SetIamPolicyRequest body, string resource)
                     {
-                        return new SetIamPolicyRequest(service, body, resource);
+                        return new SetIamPolicyRequest(this.service, body, resource);
                     }
 
                     /// <summary>
@@ -891,7 +891,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                     /// </param>
                     public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.ApigeeRegistry.v1.Data.TestIamPermissionsRequest body, string resource)
                     {
-                        return new TestIamPermissionsRequest(service, body, resource);
+                        return new TestIamPermissionsRequest(this.service, body, resource);
                     }
 
                     /// <summary>
@@ -991,7 +991,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                         /// </param>
                         public virtual CreateRequest Create(Google.Apis.ApigeeRegistry.v1.Data.Artifact body, string parent)
                         {
-                            return new CreateRequest(service, body, parent);
+                            return new CreateRequest(this.service, body, parent);
                         }
 
                         /// <summary>Creates a specified artifact.</summary>
@@ -1063,7 +1063,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                         /// </param>
                         public virtual DeleteRequest Delete(string name)
                         {
-                            return new DeleteRequest(service, name);
+                            return new DeleteRequest(this.service, name);
                         }
 
                         /// <summary>Removes a specified artifact.</summary>
@@ -1112,7 +1112,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                         /// </param>
                         public virtual GetRequest Get(string name)
                         {
-                            return new GetRequest(service, name);
+                            return new GetRequest(this.service, name);
                         }
 
                         /// <summary>Returns a specified artifact.</summary>
@@ -1166,7 +1166,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                         /// </param>
                         public virtual GetContentsRequest GetContents(string name)
                         {
-                            return new GetContentsRequest(service, name);
+                            return new GetContentsRequest(this.service, name);
                         }
 
                         /// <summary>
@@ -1220,7 +1220,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                         /// </param>
                         public virtual ListRequest List(string parent)
                         {
-                            return new ListRequest(service, parent);
+                            return new ListRequest(this.service, parent);
                         }
 
                         /// <summary>Returns matching artifacts.</summary>
@@ -1330,7 +1330,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                         /// <param name="name">Resource name.</param>
                         public virtual ReplaceArtifactRequest ReplaceArtifact(Google.Apis.ApigeeRegistry.v1.Data.Artifact body, string name)
                         {
-                            return new ReplaceArtifactRequest(service, body, name);
+                            return new ReplaceArtifactRequest(this.service, body, name);
                         }
 
                         /// <summary>Used to replace a specified artifact.</summary>
@@ -1387,7 +1387,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.ApigeeRegistry.v1.Data.ApiDeployment body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>Creates a specified deployment.</summary>
@@ -1463,7 +1463,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -1531,7 +1531,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                     /// </param>
                     public virtual DeleteRevisionRequest DeleteRevision(string name)
                     {
-                        return new DeleteRevisionRequest(service, name);
+                        return new DeleteRevisionRequest(this.service, name);
                     }
 
                     /// <summary>Deletes a revision of a deployment.</summary>
@@ -1583,7 +1583,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Returns a specified deployment.</summary>
@@ -1638,7 +1638,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                     /// </param>
                     public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                     {
-                        return new GetIamPolicyRequest(service, resource);
+                        return new GetIamPolicyRequest(this.service, resource);
                     }
 
                     /// <summary>
@@ -1715,7 +1715,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Returns matching deployments.</summary>
@@ -1828,7 +1828,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                     /// <param name="name">Required. The name of the deployment to list revisions for.</param>
                     public virtual ListRevisionsRequest ListRevisions(string name)
                     {
-                        return new ListRevisionsRequest(service, name);
+                        return new ListRevisionsRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -1919,7 +1919,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                     /// <param name="name">Resource name.</param>
                     public virtual PatchRequest Patch(Google.Apis.ApigeeRegistry.v1.Data.ApiDeployment body, string name)
                     {
-                        return new PatchRequest(service, body, name);
+                        return new PatchRequest(this.service, body, name);
                     }
 
                     /// <summary>Used to modify a specified deployment.</summary>
@@ -2006,7 +2006,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                     /// <param name="name">Required. The deployment being rolled back.</param>
                     public virtual RollbackRequest Rollback(Google.Apis.ApigeeRegistry.v1.Data.RollbackApiDeploymentRequest body, string name)
                     {
-                        return new RollbackRequest(service, body, name);
+                        return new RollbackRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -2069,7 +2069,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                     /// </param>
                     public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.ApigeeRegistry.v1.Data.SetIamPolicyRequest body, string resource)
                     {
-                        return new SetIamPolicyRequest(service, body, resource);
+                        return new SetIamPolicyRequest(this.service, body, resource);
                     }
 
                     /// <summary>
@@ -2132,7 +2132,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                     /// </param>
                     public virtual TagRevisionRequest TagRevision(Google.Apis.ApigeeRegistry.v1.Data.TagApiDeploymentRevisionRequest body, string name)
                     {
-                        return new TagRevisionRequest(service, body, name);
+                        return new TagRevisionRequest(this.service, body, name);
                     }
 
                     /// <summary>Adds a tag to a specified revision of a deployment.</summary>
@@ -2197,7 +2197,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                     /// </param>
                     public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.ApigeeRegistry.v1.Data.TestIamPermissionsRequest body, string resource)
                     {
-                        return new TestIamPermissionsRequest(service, body, resource);
+                        return new TestIamPermissionsRequest(this.service, body, resource);
                     }
 
                     /// <summary>
@@ -2298,7 +2298,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                         /// </param>
                         public virtual CreateRequest Create(Google.Apis.ApigeeRegistry.v1.Data.Artifact body, string parent)
                         {
-                            return new CreateRequest(service, body, parent);
+                            return new CreateRequest(this.service, body, parent);
                         }
 
                         /// <summary>Creates a specified artifact.</summary>
@@ -2370,7 +2370,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                         /// </param>
                         public virtual DeleteRequest Delete(string name)
                         {
-                            return new DeleteRequest(service, name);
+                            return new DeleteRequest(this.service, name);
                         }
 
                         /// <summary>Removes a specified artifact.</summary>
@@ -2419,7 +2419,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                         /// </param>
                         public virtual GetRequest Get(string name)
                         {
-                            return new GetRequest(service, name);
+                            return new GetRequest(this.service, name);
                         }
 
                         /// <summary>Returns a specified artifact.</summary>
@@ -2473,7 +2473,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                         /// </param>
                         public virtual GetContentsRequest GetContents(string name)
                         {
-                            return new GetContentsRequest(service, name);
+                            return new GetContentsRequest(this.service, name);
                         }
 
                         /// <summary>
@@ -2532,7 +2532,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                         /// </param>
                         public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                         {
-                            return new GetIamPolicyRequest(service, resource);
+                            return new GetIamPolicyRequest(this.service, resource);
                         }
 
                         /// <summary>
@@ -2608,7 +2608,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                         /// </param>
                         public virtual ListRequest List(string parent)
                         {
-                            return new ListRequest(service, parent);
+                            return new ListRequest(this.service, parent);
                         }
 
                         /// <summary>Returns matching artifacts.</summary>
@@ -2718,7 +2718,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                         /// <param name="name">Resource name.</param>
                         public virtual ReplaceArtifactRequest ReplaceArtifact(Google.Apis.ApigeeRegistry.v1.Data.Artifact body, string name)
                         {
-                            return new ReplaceArtifactRequest(service, body, name);
+                            return new ReplaceArtifactRequest(this.service, body, name);
                         }
 
                         /// <summary>Used to replace a specified artifact.</summary>
@@ -2778,7 +2778,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                         /// </param>
                         public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.ApigeeRegistry.v1.Data.SetIamPolicyRequest body, string resource)
                         {
-                            return new SetIamPolicyRequest(service, body, resource);
+                            return new SetIamPolicyRequest(this.service, body, resource);
                         }
 
                         /// <summary>
@@ -2847,7 +2847,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                         /// </param>
                         public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.ApigeeRegistry.v1.Data.TestIamPermissionsRequest body, string resource)
                         {
-                            return new TestIamPermissionsRequest(service, body, resource);
+                            return new TestIamPermissionsRequest(this.service, body, resource);
                         }
 
                         /// <summary>
@@ -2947,7 +2947,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                             /// </param>
                             public virtual CreateRequest Create(Google.Apis.ApigeeRegistry.v1.Data.Artifact body, string parent)
                             {
-                                return new CreateRequest(service, body, parent);
+                                return new CreateRequest(this.service, body, parent);
                             }
 
                             /// <summary>Creates a specified artifact.</summary>
@@ -3019,7 +3019,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                             /// </param>
                             public virtual DeleteRequest Delete(string name)
                             {
-                                return new DeleteRequest(service, name);
+                                return new DeleteRequest(this.service, name);
                             }
 
                             /// <summary>Removes a specified artifact.</summary>
@@ -3068,7 +3068,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                             /// </param>
                             public virtual GetRequest Get(string name)
                             {
-                                return new GetRequest(service, name);
+                                return new GetRequest(this.service, name);
                             }
 
                             /// <summary>Returns a specified artifact.</summary>
@@ -3122,7 +3122,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                             /// </param>
                             public virtual GetContentsRequest GetContents(string name)
                             {
-                                return new GetContentsRequest(service, name);
+                                return new GetContentsRequest(this.service, name);
                             }
 
                             /// <summary>
@@ -3181,7 +3181,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                             /// </param>
                             public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                             {
-                                return new GetIamPolicyRequest(service, resource);
+                                return new GetIamPolicyRequest(this.service, resource);
                             }
 
                             /// <summary>
@@ -3258,7 +3258,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                             /// </param>
                             public virtual ListRequest List(string parent)
                             {
-                                return new ListRequest(service, parent);
+                                return new ListRequest(this.service, parent);
                             }
 
                             /// <summary>Returns matching artifacts.</summary>
@@ -3368,7 +3368,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                             /// <param name="name">Resource name.</param>
                             public virtual ReplaceArtifactRequest ReplaceArtifact(Google.Apis.ApigeeRegistry.v1.Data.Artifact body, string name)
                             {
-                                return new ReplaceArtifactRequest(service, body, name);
+                                return new ReplaceArtifactRequest(this.service, body, name);
                             }
 
                             /// <summary>Used to replace a specified artifact.</summary>
@@ -3428,7 +3428,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                             /// </param>
                             public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.ApigeeRegistry.v1.Data.SetIamPolicyRequest body, string resource)
                             {
-                                return new SetIamPolicyRequest(service, body, resource);
+                                return new SetIamPolicyRequest(this.service, body, resource);
                             }
 
                             /// <summary>
@@ -3497,7 +3497,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                             /// </param>
                             public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.ApigeeRegistry.v1.Data.TestIamPermissionsRequest body, string resource)
                             {
-                                return new TestIamPermissionsRequest(service, body, resource);
+                                return new TestIamPermissionsRequest(this.service, body, resource);
                             }
 
                             /// <summary>
@@ -3563,7 +3563,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                         /// </param>
                         public virtual CreateRequest Create(Google.Apis.ApigeeRegistry.v1.Data.ApiSpec body, string parent)
                         {
-                            return new CreateRequest(service, body, parent);
+                            return new CreateRequest(this.service, body, parent);
                         }
 
                         /// <summary>Creates a specified spec.</summary>
@@ -3639,7 +3639,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                         /// </param>
                         public virtual DeleteRequest Delete(string name)
                         {
-                            return new DeleteRequest(service, name);
+                            return new DeleteRequest(this.service, name);
                         }
 
                         /// <summary>
@@ -3708,7 +3708,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                         /// </param>
                         public virtual DeleteRevisionRequest DeleteRevision(string name)
                         {
-                            return new DeleteRevisionRequest(service, name);
+                            return new DeleteRevisionRequest(this.service, name);
                         }
 
                         /// <summary>Deletes a revision of a spec.</summary>
@@ -3760,7 +3760,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                         /// </param>
                         public virtual GetRequest Get(string name)
                         {
-                            return new GetRequest(service, name);
+                            return new GetRequest(this.service, name);
                         }
 
                         /// <summary>Returns a specified spec.</summary>
@@ -3815,7 +3815,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                         /// </param>
                         public virtual GetContentsRequest GetContents(string name)
                         {
-                            return new GetContentsRequest(service, name);
+                            return new GetContentsRequest(this.service, name);
                         }
 
                         /// <summary>
@@ -3874,7 +3874,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                         /// </param>
                         public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                         {
-                            return new GetIamPolicyRequest(service, resource);
+                            return new GetIamPolicyRequest(this.service, resource);
                         }
 
                         /// <summary>
@@ -3951,7 +3951,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                         /// </param>
                         public virtual ListRequest List(string parent)
                         {
-                            return new ListRequest(service, parent);
+                            return new ListRequest(this.service, parent);
                         }
 
                         /// <summary>Returns matching specs.</summary>
@@ -4064,7 +4064,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                         /// <param name="name">Required. The name of the spec to list revisions for.</param>
                         public virtual ListRevisionsRequest ListRevisions(string name)
                         {
-                            return new ListRevisionsRequest(service, name);
+                            return new ListRevisionsRequest(this.service, name);
                         }
 
                         /// <summary>
@@ -4155,7 +4155,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                         /// <param name="name">Resource name.</param>
                         public virtual PatchRequest Patch(Google.Apis.ApigeeRegistry.v1.Data.ApiSpec body, string name)
                         {
-                            return new PatchRequest(service, body, name);
+                            return new PatchRequest(this.service, body, name);
                         }
 
                         /// <summary>Used to modify a specified spec.</summary>
@@ -4243,7 +4243,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                         /// <param name="name">Required. The spec being rolled back.</param>
                         public virtual RollbackRequest Rollback(Google.Apis.ApigeeRegistry.v1.Data.RollbackApiSpecRequest body, string name)
                         {
-                            return new RollbackRequest(service, body, name);
+                            return new RollbackRequest(this.service, body, name);
                         }
 
                         /// <summary>
@@ -4306,7 +4306,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                         /// </param>
                         public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.ApigeeRegistry.v1.Data.SetIamPolicyRequest body, string resource)
                         {
-                            return new SetIamPolicyRequest(service, body, resource);
+                            return new SetIamPolicyRequest(this.service, body, resource);
                         }
 
                         /// <summary>
@@ -4369,7 +4369,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                         /// </param>
                         public virtual TagRevisionRequest TagRevision(Google.Apis.ApigeeRegistry.v1.Data.TagApiSpecRevisionRequest body, string name)
                         {
-                            return new TagRevisionRequest(service, body, name);
+                            return new TagRevisionRequest(this.service, body, name);
                         }
 
                         /// <summary>Adds a tag to a specified revision of a spec.</summary>
@@ -4434,7 +4434,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                         /// </param>
                         public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.ApigeeRegistry.v1.Data.TestIamPermissionsRequest body, string resource)
                         {
-                            return new TestIamPermissionsRequest(service, body, resource);
+                            return new TestIamPermissionsRequest(this.service, body, resource);
                         }
 
                         /// <summary>
@@ -4500,7 +4500,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.ApigeeRegistry.v1.Data.ApiVersion body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>Creates a specified version.</summary>
@@ -4573,7 +4573,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>Removes a specified version and all of the resources that it owns.</summary>
@@ -4639,7 +4639,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Returns a specified version.</summary>
@@ -4694,7 +4694,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                     /// </param>
                     public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                     {
-                        return new GetIamPolicyRequest(service, resource);
+                        return new GetIamPolicyRequest(this.service, resource);
                     }
 
                     /// <summary>
@@ -4771,7 +4771,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Returns matching versions.</summary>
@@ -4882,7 +4882,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                     /// <param name="name">Resource name.</param>
                     public virtual PatchRequest Patch(Google.Apis.ApigeeRegistry.v1.Data.ApiVersion body, string name)
                     {
-                        return new PatchRequest(service, body, name);
+                        return new PatchRequest(this.service, body, name);
                     }
 
                     /// <summary>Used to modify a specified version.</summary>
@@ -4973,7 +4973,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                     /// </param>
                     public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.ApigeeRegistry.v1.Data.SetIamPolicyRequest body, string resource)
                     {
-                        return new SetIamPolicyRequest(service, body, resource);
+                        return new SetIamPolicyRequest(this.service, body, resource);
                     }
 
                     /// <summary>
@@ -5042,7 +5042,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                     /// </param>
                     public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.ApigeeRegistry.v1.Data.TestIamPermissionsRequest body, string resource)
                     {
-                        return new TestIamPermissionsRequest(service, body, resource);
+                        return new TestIamPermissionsRequest(this.service, body, resource);
                     }
 
                     /// <summary>
@@ -5107,7 +5107,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.ApigeeRegistry.v1.Data.Api body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a specified API.</summary>
@@ -5179,7 +5179,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Removes a specified API and all of the resources that it owns.</summary>
@@ -5243,7 +5243,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Returns a specified API.</summary>
@@ -5297,7 +5297,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                 /// </param>
                 public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                 {
-                    return new GetIamPolicyRequest(service, resource);
+                    return new GetIamPolicyRequest(this.service, resource);
                 }
 
                 /// <summary>
@@ -5372,7 +5372,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Returns matching APIs.</summary>
@@ -5482,7 +5482,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                 /// <param name="name">Resource name.</param>
                 public virtual PatchRequest Patch(Google.Apis.ApigeeRegistry.v1.Data.Api body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Used to modify a specified API.</summary>
@@ -5573,7 +5573,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                 /// </param>
                 public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.ApigeeRegistry.v1.Data.SetIamPolicyRequest body, string resource)
                 {
-                    return new SetIamPolicyRequest(service, body, resource);
+                    return new SetIamPolicyRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -5642,7 +5642,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                 /// </param>
                 public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.ApigeeRegistry.v1.Data.TestIamPermissionsRequest body, string resource)
                 {
-                    return new TestIamPermissionsRequest(service, body, resource);
+                    return new TestIamPermissionsRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -5724,7 +5724,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.ApigeeRegistry.v1.Data.Artifact body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a specified artifact.</summary>
@@ -5796,7 +5796,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Removes a specified artifact.</summary>
@@ -5843,7 +5843,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Returns a specified artifact.</summary>
@@ -5897,7 +5897,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                 /// </param>
                 public virtual GetContentsRequest GetContents(string name)
                 {
-                    return new GetContentsRequest(service, name);
+                    return new GetContentsRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -5956,7 +5956,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                 /// </param>
                 public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                 {
-                    return new GetIamPolicyRequest(service, resource);
+                    return new GetIamPolicyRequest(this.service, resource);
                 }
 
                 /// <summary>
@@ -6031,7 +6031,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Returns matching artifacts.</summary>
@@ -6141,7 +6141,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                 /// <param name="name">Resource name.</param>
                 public virtual ReplaceArtifactRequest ReplaceArtifact(Google.Apis.ApigeeRegistry.v1.Data.Artifact body, string name)
                 {
-                    return new ReplaceArtifactRequest(service, body, name);
+                    return new ReplaceArtifactRequest(this.service, body, name);
                 }
 
                 /// <summary>Used to replace a specified artifact.</summary>
@@ -6201,7 +6201,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                 /// </param>
                 public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.ApigeeRegistry.v1.Data.SetIamPolicyRequest body, string resource)
                 {
-                    return new SetIamPolicyRequest(service, body, resource);
+                    return new SetIamPolicyRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -6270,7 +6270,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                 /// </param>
                 public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.ApigeeRegistry.v1.Data.TestIamPermissionsRequest body, string resource)
                 {
-                    return new TestIamPermissionsRequest(service, body, resource);
+                    return new TestIamPermissionsRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -6356,7 +6356,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                 /// </param>
                 public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                 {
-                    return new GetIamPolicyRequest(service, resource);
+                    return new GetIamPolicyRequest(this.service, resource);
                 }
 
                 /// <summary>
@@ -6437,7 +6437,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                 /// </param>
                 public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.ApigeeRegistry.v1.Data.SetIamPolicyRequest body, string resource)
                 {
-                    return new SetIamPolicyRequest(service, body, resource);
+                    return new SetIamPolicyRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -6506,7 +6506,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                 /// </param>
                 public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.ApigeeRegistry.v1.Data.TestIamPermissionsRequest body, string resource)
                 {
-                    return new TestIamPermissionsRequest(service, body, resource);
+                    return new TestIamPermissionsRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -6588,7 +6588,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.ApigeeRegistry.v1.Data.Instance body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Provisions instance resources for the Registry.</summary>
@@ -6659,7 +6659,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes the Registry instance.</summary>
@@ -6708,7 +6708,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets details of a single Instance.</summary>
@@ -6762,7 +6762,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                 /// </param>
                 public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                 {
-                    return new GetIamPolicyRequest(service, resource);
+                    return new GetIamPolicyRequest(this.service, resource);
                 }
 
                 /// <summary>
@@ -6843,7 +6843,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                 /// </param>
                 public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.ApigeeRegistry.v1.Data.SetIamPolicyRequest body, string resource)
                 {
-                    return new SetIamPolicyRequest(service, body, resource);
+                    return new SetIamPolicyRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -6912,7 +6912,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                 /// </param>
                 public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.ApigeeRegistry.v1.Data.TestIamPermissionsRequest body, string resource)
                 {
-                    return new TestIamPermissionsRequest(service, body, resource);
+                    return new TestIamPermissionsRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -6999,7 +6999,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                 /// <param name="name">The name of the operation resource to be cancelled.</param>
                 public virtual CancelRequest Cancel(Google.Apis.ApigeeRegistry.v1.Data.CancelOperationRequest body, string name)
                 {
-                    return new CancelRequest(service, body, name);
+                    return new CancelRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -7062,7 +7062,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                 /// <param name="name">The name of the operation resource to be deleted.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -7114,7 +7114,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                 /// <param name="name">The name of the operation resource.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -7165,7 +7165,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                 /// <param name="name">The name of the operation's parent resource.</param>
                 public virtual ListRequest List(string name)
                 {
-                    return new ListRequest(service, name);
+                    return new ListRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -7274,7 +7274,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                 /// </param>
                 public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                 {
-                    return new GetIamPolicyRequest(service, resource);
+                    return new GetIamPolicyRequest(this.service, resource);
                 }
 
                 /// <summary>
@@ -7355,7 +7355,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                 /// </param>
                 public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.ApigeeRegistry.v1.Data.SetIamPolicyRequest body, string resource)
                 {
-                    return new SetIamPolicyRequest(service, body, resource);
+                    return new SetIamPolicyRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -7424,7 +7424,7 @@ namespace Google.Apis.ApigeeRegistry.v1
                 /// </param>
                 public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.ApigeeRegistry.v1.Data.TestIamPermissionsRequest body, string resource)
                 {
-                    return new TestIamPermissionsRequest(service, body, resource);
+                    return new TestIamPermissionsRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -7486,7 +7486,7 @@ namespace Google.Apis.ApigeeRegistry.v1
             /// <param name="name">Resource name for the location.</param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets information about a location.</summary>
@@ -7531,7 +7531,7 @@ namespace Google.Apis.ApigeeRegistry.v1
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
             {
-                return new ListRequest(service, name);
+                return new ListRequest(this.service, name);
             }
 
             /// <summary>Lists information about the supported locations for this service.</summary>
@@ -7673,8 +7673,8 @@ namespace Google.Apis.ApigeeRegistry.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>A detailed description.</summary>
@@ -7747,8 +7747,8 @@ namespace Google.Apis.ApigeeRegistry.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -7817,8 +7817,8 @@ namespace Google.Apis.ApigeeRegistry.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>A detailed description.</summary>
@@ -7899,8 +7899,8 @@ namespace Google.Apis.ApigeeRegistry.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? RevisionCreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(RevisionCreateTimeRaw);
-            set => RevisionCreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(RevisionCreateTimeRaw);
+            set => RevisionCreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -7945,8 +7945,8 @@ namespace Google.Apis.ApigeeRegistry.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? RevisionUpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(RevisionUpdateTimeRaw);
-            set => RevisionUpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(RevisionUpdateTimeRaw);
+            set => RevisionUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -8010,8 +8010,8 @@ namespace Google.Apis.ApigeeRegistry.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>A detailed description.</summary>
@@ -8090,8 +8090,8 @@ namespace Google.Apis.ApigeeRegistry.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? RevisionCreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(RevisionCreateTimeRaw);
-            set => RevisionCreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(RevisionCreateTimeRaw);
+            set => RevisionCreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -8136,8 +8136,8 @@ namespace Google.Apis.ApigeeRegistry.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? RevisionUpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(RevisionUpdateTimeRaw);
-            set => RevisionUpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(RevisionUpdateTimeRaw);
+            set => RevisionUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -8203,8 +8203,8 @@ namespace Google.Apis.ApigeeRegistry.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>A detailed description.</summary>
@@ -8278,8 +8278,8 @@ namespace Google.Apis.ApigeeRegistry.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -8344,8 +8344,8 @@ namespace Google.Apis.ApigeeRegistry.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -8419,8 +8419,8 @@ namespace Google.Apis.ApigeeRegistry.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -8519,8 +8519,8 @@ namespace Google.Apis.ApigeeRegistry.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CommitTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CommitTimeRaw);
-            set => CommitTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CommitTimeRaw);
+            set => CommitTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. Path of the open source repository: github.com/apigee/registry.</summary>
@@ -8692,8 +8692,8 @@ namespace Google.Apis.ApigeeRegistry.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -8743,8 +8743,8 @@ namespace Google.Apis.ApigeeRegistry.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -9030,8 +9030,8 @@ namespace Google.Apis.ApigeeRegistry.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _endTimeRaw;
@@ -9067,8 +9067,8 @@ namespace Google.Apis.ApigeeRegistry.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Human-readable status of the operation, if any.</summary>

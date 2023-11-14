@@ -360,7 +360,7 @@ namespace Google.Apis.CloudIdentity.v1beta1
             /// </param>
             public virtual CancelRequest Cancel(Google.Apis.CloudIdentity.v1beta1.Data.CancelUserInvitationRequest body, string name)
             {
-                return new CancelRequest(service, body, name);
+                return new CancelRequest(this.service, body, name);
             }
 
             /// <summary>Cancels a UserInvitation that was already sent.</summary>
@@ -422,7 +422,7 @@ namespace Google.Apis.CloudIdentity.v1beta1
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>
@@ -483,7 +483,7 @@ namespace Google.Apis.CloudIdentity.v1beta1
             /// </param>
             public virtual IsInvitableUserRequest IsInvitableUser(string name)
             {
-                return new IsInvitableUserRequest(service, name);
+                return new IsInvitableUserRequest(this.service, name);
             }
 
             /// <summary>
@@ -544,7 +544,7 @@ namespace Google.Apis.CloudIdentity.v1beta1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>
@@ -668,7 +668,7 @@ namespace Google.Apis.CloudIdentity.v1beta1
             /// </param>
             public virtual SendRequest Send(Google.Apis.CloudIdentity.v1beta1.Data.SendUserInvitationRequest body, string name)
             {
-                return new SendRequest(service, body, name);
+                return new SendRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -791,7 +791,7 @@ namespace Google.Apis.CloudIdentity.v1beta1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets the client state for the device user</summary>
@@ -874,7 +874,7 @@ namespace Google.Apis.CloudIdentity.v1beta1
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.CloudIdentity.v1beta1.Data.ClientState body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -973,7 +973,7 @@ namespace Google.Apis.CloudIdentity.v1beta1
             /// </param>
             public virtual ApproveRequest Approve(Google.Apis.CloudIdentity.v1beta1.Data.ApproveDeviceUserRequest body, string name)
             {
-                return new ApproveRequest(service, body, name);
+                return new ApproveRequest(this.service, body, name);
             }
 
             /// <summary>Approves device to access user data.</summary>
@@ -1034,7 +1034,7 @@ namespace Google.Apis.CloudIdentity.v1beta1
             /// </param>
             public virtual BlockRequest Block(Google.Apis.CloudIdentity.v1beta1.Data.BlockDeviceUserRequest body, string name)
             {
-                return new BlockRequest(service, body, name);
+                return new BlockRequest(this.service, body, name);
             }
 
             /// <summary>Blocks device from accessing user data</summary>
@@ -1098,7 +1098,7 @@ namespace Google.Apis.CloudIdentity.v1beta1
             /// </param>
             public virtual CancelWipeRequest CancelWipe(Google.Apis.CloudIdentity.v1beta1.Data.CancelWipeDeviceUserRequest body, string name)
             {
-                return new CancelWipeRequest(service, body, name);
+                return new CancelWipeRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -1161,7 +1161,7 @@ namespace Google.Apis.CloudIdentity.v1beta1
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>Deletes the specified DeviceUser. This also revokes the user's access to device data.</summary>
@@ -1231,7 +1231,7 @@ namespace Google.Apis.CloudIdentity.v1beta1
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Retrieves the specified DeviceUser</summary>
@@ -1300,7 +1300,7 @@ namespace Google.Apis.CloudIdentity.v1beta1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists/Searches DeviceUsers.</summary>
@@ -1436,7 +1436,7 @@ namespace Google.Apis.CloudIdentity.v1beta1
             /// </param>
             public virtual LookupRequest Lookup(string parent)
             {
-                return new LookupRequest(service, parent);
+                return new LookupRequest(this.service, parent);
             }
 
             /// <summary>
@@ -1576,7 +1576,7 @@ namespace Google.Apis.CloudIdentity.v1beta1
             /// </param>
             public virtual WipeRequest Wipe(Google.Apis.CloudIdentity.v1beta1.Data.WipeDeviceUserRequest body, string name)
             {
-                return new WipeRequest(service, body, name);
+                return new WipeRequest(this.service, body, name);
             }
 
             /// <summary>Wipes the user's account on a device.</summary>
@@ -1640,7 +1640,7 @@ namespace Google.Apis.CloudIdentity.v1beta1
         /// </param>
         public virtual CancelWipeRequest CancelWipe(Google.Apis.CloudIdentity.v1beta1.Data.CancelWipeDeviceRequest body, string name)
         {
-            return new CancelWipeRequest(service, body, name);
+            return new CancelWipeRequest(this.service, body, name);
         }
 
         /// <summary>
@@ -1702,7 +1702,7 @@ namespace Google.Apis.CloudIdentity.v1beta1
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.CloudIdentity.v1beta1.Data.CreateDeviceRequest body)
         {
-            return new CreateRequest(service, body);
+            return new CreateRequest(this.service, body);
         }
 
         /// <summary>
@@ -1748,7 +1748,7 @@ namespace Google.Apis.CloudIdentity.v1beta1
         /// </param>
         public virtual DeleteRequest Delete(string name)
         {
-            return new DeleteRequest(service, name);
+            return new DeleteRequest(this.service, name);
         }
 
         /// <summary>Deletes the specified device.</summary>
@@ -1816,7 +1816,7 @@ namespace Google.Apis.CloudIdentity.v1beta1
         /// </param>
         public virtual GetRequest Get(string name)
         {
-            return new GetRequest(service, name);
+            return new GetRequest(this.service, name);
         }
 
         /// <summary>Retrieves the specified device.</summary>
@@ -1878,7 +1878,7 @@ namespace Google.Apis.CloudIdentity.v1beta1
         /// <summary>Lists/Searches devices.</summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>Lists/Searches devices.</summary>
@@ -2027,7 +2027,7 @@ namespace Google.Apis.CloudIdentity.v1beta1
         /// </param>
         public virtual WipeRequest Wipe(Google.Apis.CloudIdentity.v1beta1.Data.WipeDeviceRequest body, string name)
         {
-            return new WipeRequest(service, body, name);
+            return new WipeRequest(this.service, body, name);
         }
 
         /// <summary>Wipes all data on the specified device.</summary>
@@ -2126,7 +2126,7 @@ namespace Google.Apis.CloudIdentity.v1beta1
             /// </param>
             public virtual CheckTransitiveMembershipRequest CheckTransitiveMembership(string parent)
             {
-                return new CheckTransitiveMembershipRequest(service, parent);
+                return new CheckTransitiveMembershipRequest(this.service, parent);
             }
 
             /// <summary>
@@ -2202,7 +2202,7 @@ namespace Google.Apis.CloudIdentity.v1beta1
             /// </param>
             public virtual CreateRequest Create(Google.Apis.CloudIdentity.v1beta1.Data.Membership body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>Creates a `Membership`.</summary>
@@ -2260,7 +2260,7 @@ namespace Google.Apis.CloudIdentity.v1beta1
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>Deletes a `Membership`.</summary>
@@ -2311,7 +2311,7 @@ namespace Google.Apis.CloudIdentity.v1beta1
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Retrieves a `Membership`.</summary>
@@ -2372,7 +2372,7 @@ namespace Google.Apis.CloudIdentity.v1beta1
             /// </param>
             public virtual GetMembershipGraphRequest GetMembershipGraph(string parent)
             {
-                return new GetMembershipGraphRequest(service, parent);
+                return new GetMembershipGraphRequest(this.service, parent);
             }
 
             /// <summary>
@@ -2450,7 +2450,7 @@ namespace Google.Apis.CloudIdentity.v1beta1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists the `Membership`s within a `Group`.</summary>
@@ -2562,7 +2562,7 @@ namespace Google.Apis.CloudIdentity.v1beta1
             /// </param>
             public virtual LookupRequest Lookup(string parent)
             {
-                return new LookupRequest(service, parent);
+                return new LookupRequest(this.service, parent);
             }
 
             /// <summary>
@@ -2650,7 +2650,7 @@ namespace Google.Apis.CloudIdentity.v1beta1
             /// </param>
             public virtual ModifyMembershipRolesRequest ModifyMembershipRoles(Google.Apis.CloudIdentity.v1beta1.Data.ModifyMembershipRolesRequest body, string name)
             {
-                return new ModifyMembershipRolesRequest(service, body, name);
+                return new ModifyMembershipRolesRequest(this.service, body, name);
             }
 
             /// <summary>Modifies the `MembershipRole`s of a `Membership`.</summary>
@@ -2710,7 +2710,7 @@ namespace Google.Apis.CloudIdentity.v1beta1
             /// </param>
             public virtual SearchDirectGroupsRequest SearchDirectGroups(string parent)
             {
-                return new SearchDirectGroupsRequest(service, parent);
+                return new SearchDirectGroupsRequest(this.service, parent);
             }
 
             /// <summary>Searches direct groups of a member.</summary>
@@ -2829,7 +2829,7 @@ namespace Google.Apis.CloudIdentity.v1beta1
             /// </param>
             public virtual SearchTransitiveGroupsRequest SearchTransitiveGroups(string parent)
             {
-                return new SearchTransitiveGroupsRequest(service, parent);
+                return new SearchTransitiveGroupsRequest(this.service, parent);
             }
 
             /// <summary>
@@ -2938,7 +2938,7 @@ namespace Google.Apis.CloudIdentity.v1beta1
             /// </param>
             public virtual SearchTransitiveMembershipsRequest SearchTransitiveMemberships(string parent)
             {
-                return new SearchTransitiveMembershipsRequest(service, parent);
+                return new SearchTransitiveMembershipsRequest(this.service, parent);
             }
 
             /// <summary>
@@ -3017,7 +3017,7 @@ namespace Google.Apis.CloudIdentity.v1beta1
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.CloudIdentity.v1beta1.Data.Group body)
         {
-            return new CreateRequest(service, body);
+            return new CreateRequest(this.service, body);
         }
 
         /// <summary>Creates a `Group`.</summary>
@@ -3091,7 +3091,7 @@ namespace Google.Apis.CloudIdentity.v1beta1
         /// </param>
         public virtual DeleteRequest Delete(string name)
         {
-            return new DeleteRequest(service, name);
+            return new DeleteRequest(this.service, name);
         }
 
         /// <summary>Deletes a `Group`.</summary>
@@ -3142,7 +3142,7 @@ namespace Google.Apis.CloudIdentity.v1beta1
         /// </param>
         public virtual GetRequest Get(string name)
         {
-            return new GetRequest(service, name);
+            return new GetRequest(this.service, name);
         }
 
         /// <summary>Retrieves a `Group`.</summary>
@@ -3192,7 +3192,7 @@ namespace Google.Apis.CloudIdentity.v1beta1
         /// </param>
         public virtual GetSecuritySettingsRequest GetSecuritySettings(string name)
         {
-            return new GetSecuritySettingsRequest(service, name);
+            return new GetSecuritySettingsRequest(this.service, name);
         }
 
         /// <summary>Get Security Settings</summary>
@@ -3253,7 +3253,7 @@ namespace Google.Apis.CloudIdentity.v1beta1
         /// <summary>Lists the `Group` resources under a customer or namespace.</summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>Lists the `Group` resources under a customer or namespace.</summary>
@@ -3362,7 +3362,7 @@ namespace Google.Apis.CloudIdentity.v1beta1
         /// </summary>
         public virtual LookupRequest Lookup()
         {
-            return new LookupRequest(service);
+            return new LookupRequest(this.service);
         }
 
         /// <summary>
@@ -3434,7 +3434,7 @@ namespace Google.Apis.CloudIdentity.v1beta1
         /// </param>
         public virtual PatchRequest Patch(Google.Apis.CloudIdentity.v1beta1.Data.Group body, string name)
         {
-            return new PatchRequest(service, body, name);
+            return new PatchRequest(this.service, body, name);
         }
 
         /// <summary>Updates a `Group`.</summary>
@@ -3503,7 +3503,7 @@ namespace Google.Apis.CloudIdentity.v1beta1
         /// <summary>Searches for `Group` resources matching a specified query.</summary>
         public virtual SearchRequest Search()
         {
-            return new SearchRequest(service);
+            return new SearchRequest(this.service);
         }
 
         /// <summary>Searches for `Group` resources matching a specified query.</summary>
@@ -3633,7 +3633,7 @@ namespace Google.Apis.CloudIdentity.v1beta1
         /// </param>
         public virtual UpdateSecuritySettingsRequest UpdateSecuritySettings(Google.Apis.CloudIdentity.v1beta1.Data.SecuritySettings body, string name)
         {
-            return new UpdateSecuritySettingsRequest(service, body, name);
+            return new UpdateSecuritySettingsRequest(this.service, body, name);
         }
 
         /// <summary>Update Security Settings</summary>
@@ -3740,7 +3740,7 @@ namespace Google.Apis.CloudIdentity.v1beta1
             /// </param>
             public virtual AddRequest Add(Google.Apis.CloudIdentity.v1beta1.Data.AddIdpCredentialRequest body, string parent)
             {
-                return new AddRequest(service, body, parent);
+                return new AddRequest(this.service, body, parent);
             }
 
             /// <summary>Adds an IdpCredential. Up to 2 credentials are allowed.</summary>
@@ -3798,7 +3798,7 @@ namespace Google.Apis.CloudIdentity.v1beta1
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>Deletes an IdpCredential.</summary>
@@ -3850,7 +3850,7 @@ namespace Google.Apis.CloudIdentity.v1beta1
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets an IdpCredential.</summary>
@@ -3902,7 +3902,7 @@ namespace Google.Apis.CloudIdentity.v1beta1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Returns a list of IdpCredentials in an InboundSamlSsoProfile.</summary>
@@ -3981,7 +3981,7 @@ namespace Google.Apis.CloudIdentity.v1beta1
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.CloudIdentity.v1beta1.Data.InboundSamlSsoProfile body)
         {
-            return new CreateRequest(service, body);
+            return new CreateRequest(this.service, body);
         }
 
         /// <summary>Creates an InboundSamlSsoProfile for a customer.</summary>
@@ -4023,7 +4023,7 @@ namespace Google.Apis.CloudIdentity.v1beta1
         /// </param>
         public virtual DeleteRequest Delete(string name)
         {
-            return new DeleteRequest(service, name);
+            return new DeleteRequest(this.service, name);
         }
 
         /// <summary>Deletes an InboundSamlSsoProfile.</summary>
@@ -4074,7 +4074,7 @@ namespace Google.Apis.CloudIdentity.v1beta1
         /// </param>
         public virtual GetRequest Get(string name)
         {
-            return new GetRequest(service, name);
+            return new GetRequest(this.service, name);
         }
 
         /// <summary>Gets an InboundSamlSsoProfile.</summary>
@@ -4121,7 +4121,7 @@ namespace Google.Apis.CloudIdentity.v1beta1
         /// <summary>Lists InboundSamlSsoProfiles for a customer.</summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>Lists InboundSamlSsoProfiles for a customer.</summary>
@@ -4206,7 +4206,7 @@ namespace Google.Apis.CloudIdentity.v1beta1
         /// </param>
         public virtual PatchRequest Patch(Google.Apis.CloudIdentity.v1beta1.Data.InboundSamlSsoProfile body, string name)
         {
-            return new PatchRequest(service, body, name);
+            return new PatchRequest(this.service, body, name);
         }
 
         /// <summary>Updates an InboundSamlSsoProfile.</summary>
@@ -4290,7 +4290,7 @@ namespace Google.Apis.CloudIdentity.v1beta1
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.CloudIdentity.v1beta1.Data.InboundSsoAssignment body)
         {
-            return new CreateRequest(service, body);
+            return new CreateRequest(this.service, body);
         }
 
         /// <summary>
@@ -4337,7 +4337,7 @@ namespace Google.Apis.CloudIdentity.v1beta1
         /// </param>
         public virtual DeleteRequest Delete(string name)
         {
-            return new DeleteRequest(service, name);
+            return new DeleteRequest(this.service, name);
         }
 
         /// <summary>
@@ -4391,7 +4391,7 @@ namespace Google.Apis.CloudIdentity.v1beta1
         /// </param>
         public virtual GetRequest Get(string name)
         {
-            return new GetRequest(service, name);
+            return new GetRequest(this.service, name);
         }
 
         /// <summary>Gets an InboundSsoAssignment.</summary>
@@ -4438,7 +4438,7 @@ namespace Google.Apis.CloudIdentity.v1beta1
         /// <summary>Lists the InboundSsoAssignments for a `Customer`.</summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>Lists the InboundSsoAssignments for a `Customer`.</summary>
@@ -4530,7 +4530,7 @@ namespace Google.Apis.CloudIdentity.v1beta1
         /// </param>
         public virtual PatchRequest Patch(Google.Apis.CloudIdentity.v1beta1.Data.InboundSsoAssignment body, string name)
         {
-            return new PatchRequest(service, body, name);
+            return new PatchRequest(this.service, body, name);
         }
 
         /// <summary>
@@ -4644,7 +4644,7 @@ namespace Google.Apis.CloudIdentity.v1beta1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>
@@ -4779,7 +4779,7 @@ namespace Google.Apis.CloudIdentity.v1beta1
             /// </param>
             public virtual MoveRequest Move(Google.Apis.CloudIdentity.v1beta1.Data.MoveOrgMembershipRequest body, string name)
             {
-                return new MoveRequest(service, body, name);
+                return new MoveRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -5095,8 +5095,8 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ValidityExpirationTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ValidityExpirationTimeRaw);
-            set => ValidityExpirationTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ValidityExpirationTimeRaw);
+            set => ValidityExpirationTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _validityStartTimeRaw;
@@ -5134,8 +5134,8 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ValidityStartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ValidityStartTimeRaw);
-            set => ValidityStartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ValidityStartTimeRaw);
+            set => ValidityStartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -5226,8 +5226,8 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -5290,8 +5290,8 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LastUpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastUpdateTimeRaw);
-            set => LastUpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastUpdateTimeRaw);
+            set => LastUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The management state of the resource as specified by the API client.</summary>
@@ -5467,8 +5467,8 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Unique identifier for the device.</summary>
@@ -5540,8 +5540,8 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LastSyncTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastSyncTimeRaw);
-            set => LastSyncTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastSyncTimeRaw);
+            set => LastSyncTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. Management state of the device</summary>
@@ -5627,8 +5627,8 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? SecurityPatchTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(SecurityPatchTimeRaw);
-            set => SecurityPatchTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(SecurityPatchTimeRaw);
+            set => SecurityPatchTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Serial Number of device. Example: HT82V1A01076.</summary>
@@ -5686,8 +5686,8 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _firstSyncTimeRaw;
@@ -5723,8 +5723,8 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? FirstSyncTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(FirstSyncTimeRaw);
-            set => FirstSyncTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(FirstSyncTimeRaw);
+            set => FirstSyncTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. Default locale used on device, in IETF BCP-47 format.</summary>
@@ -5764,8 +5764,8 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LastSyncTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastSyncTimeRaw);
-            set => LastSyncTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastSyncTimeRaw);
+            set => LastSyncTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. Management state of the user on the device.</summary>
@@ -5890,8 +5890,8 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StatusTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StatusTimeRaw);
-            set => StatusTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StatusTimeRaw);
+            set => StatusTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -5976,8 +5976,8 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpireTimeRaw);
-            set => ExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -6168,8 +6168,8 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -6236,8 +6236,8 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LastUpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastUpdateTimeRaw);
-            set => LastUpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastUpdateTimeRaw);
+            set => LastUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The management state of the resource as specified by the API client.</summary>
@@ -6377,8 +6377,8 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Unique identifier for the device.</summary>
@@ -6446,8 +6446,8 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LastSyncTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastSyncTimeRaw);
-            set => LastSyncTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastSyncTimeRaw);
+            set => LastSyncTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. Management state of the device</summary>
@@ -6533,8 +6533,8 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? SecurityPatchTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(SecurityPatchTimeRaw);
-            set => SecurityPatchTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(SecurityPatchTimeRaw);
+            set => SecurityPatchTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Serial Number of device. Example: HT82V1A01076.</summary>
@@ -6592,8 +6592,8 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _firstSyncTimeRaw;
@@ -6629,8 +6629,8 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? FirstSyncTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(FirstSyncTimeRaw);
-            set => FirstSyncTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(FirstSyncTimeRaw);
+            set => FirstSyncTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. Default locale used on device, in IETF BCP-47 format.</summary>
@@ -6670,8 +6670,8 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LastSyncTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastSyncTimeRaw);
-            set => LastSyncTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastSyncTimeRaw);
+            set => LastSyncTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. Management state of the user on the device.</summary>
@@ -6811,8 +6811,8 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -6900,8 +6900,8 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -6992,8 +6992,8 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -7408,8 +7408,8 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. Delivery setting associated with the membership.</summary>
@@ -7481,8 +7481,8 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -8096,8 +8096,8 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>

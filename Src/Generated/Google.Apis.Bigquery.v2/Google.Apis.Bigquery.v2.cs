@@ -290,7 +290,7 @@ namespace Google.Apis.Bigquery.v2
         /// <param name="datasetId">Dataset ID of dataset being deleted</param>
         public virtual DeleteRequest Delete(string projectId, string datasetId)
         {
-            return new DeleteRequest(service, projectId, datasetId);
+            return new DeleteRequest(this.service, projectId, datasetId);
         }
 
         /// <summary>
@@ -368,7 +368,7 @@ namespace Google.Apis.Bigquery.v2
         /// <param name="datasetId">Dataset ID of the requested dataset</param>
         public virtual GetRequest Get(string projectId, string datasetId)
         {
-            return new GetRequest(service, projectId, datasetId);
+            return new GetRequest(this.service, projectId, datasetId);
         }
 
         /// <summary>Returns the dataset specified by datasetID.</summary>
@@ -442,7 +442,7 @@ namespace Google.Apis.Bigquery.v2
         /// <param name="projectId">Project ID of the new dataset</param>
         public virtual InsertRequest Insert(Google.Apis.Bigquery.v2.Data.Dataset body, string projectId)
         {
-            return new InsertRequest(service, body, projectId);
+            return new InsertRequest(this.service, body, projectId);
         }
 
         /// <summary>Creates a new empty dataset.</summary>
@@ -496,7 +496,7 @@ namespace Google.Apis.Bigquery.v2
         /// <param name="projectId">Project ID of the datasets to be listed</param>
         public virtual ListRequest List(string projectId)
         {
-            return new ListRequest(service, projectId);
+            return new ListRequest(this.service, projectId);
         }
 
         /// <summary>
@@ -602,7 +602,7 @@ namespace Google.Apis.Bigquery.v2
         /// <param name="datasetId">Dataset ID of the dataset being updated</param>
         public virtual PatchRequest Patch(Google.Apis.Bigquery.v2.Data.Dataset body, string projectId, string datasetId)
         {
-            return new PatchRequest(service, body, projectId, datasetId);
+            return new PatchRequest(this.service, body, projectId, datasetId);
         }
 
         /// <summary>
@@ -676,7 +676,7 @@ namespace Google.Apis.Bigquery.v2
         /// <param name="datasetId">Dataset ID of the dataset being updated</param>
         public virtual UpdateRequest Update(Google.Apis.Bigquery.v2.Data.Dataset body, string projectId, string datasetId)
         {
-            return new UpdateRequest(service, body, projectId, datasetId);
+            return new UpdateRequest(this.service, body, projectId, datasetId);
         }
 
         /// <summary>
@@ -763,7 +763,7 @@ namespace Google.Apis.Bigquery.v2
         /// <param name="jobId">[Required] Job ID of the job to cancel</param>
         public virtual CancelRequest Cancel(string projectId, string jobId)
         {
-            return new CancelRequest(service, projectId, jobId);
+            return new CancelRequest(this.service, projectId, jobId);
         }
 
         /// <summary>
@@ -846,7 +846,7 @@ namespace Google.Apis.Bigquery.v2
         /// </param>
         public virtual DeleteRequest Delete(string projectId, string jobId)
         {
-            return new DeleteRequest(service, projectId, jobId);
+            return new DeleteRequest(this.service, projectId, jobId);
         }
 
         /// <summary>
@@ -929,7 +929,7 @@ namespace Google.Apis.Bigquery.v2
         /// <param name="jobId">[Required] Job ID of the requested job</param>
         public virtual GetRequest Get(string projectId, string jobId)
         {
-            return new GetRequest(service, projectId, jobId);
+            return new GetRequest(this.service, projectId, jobId);
         }
 
         /// <summary>
@@ -1006,7 +1006,7 @@ namespace Google.Apis.Bigquery.v2
         /// <param name="jobId">[Required] Job ID of the query job</param>
         public virtual GetQueryResultsRequest GetQueryResults(string projectId, string jobId)
         {
-            return new GetQueryResultsRequest(service, projectId, jobId);
+            return new GetQueryResultsRequest(this.service, projectId, jobId);
         }
 
         /// <summary>Retrieves the results of a query job.</summary>
@@ -1131,7 +1131,7 @@ namespace Google.Apis.Bigquery.v2
         /// <param name="projectId">Project ID of the project that will be billed for the job</param>
         public virtual InsertRequest Insert(Google.Apis.Bigquery.v2.Data.Job body, string projectId)
         {
-            return new InsertRequest(service, body, projectId);
+            return new InsertRequest(this.service, body, projectId);
         }
 
         /// <summary>Starts a new asynchronous job. Requires the Can View project role.</summary>
@@ -1289,7 +1289,7 @@ namespace Google.Apis.Bigquery.v2
         /// <param name="projectId">Project ID of the jobs to list</param>
         public virtual ListRequest List(string projectId)
         {
-            return new ListRequest(service, projectId);
+            return new ListRequest(this.service, projectId);
         }
 
         /// <summary>
@@ -1487,7 +1487,7 @@ namespace Google.Apis.Bigquery.v2
         /// <param name="projectId">Project ID of the project billed for the query</param>
         public virtual QueryRequest Query(Google.Apis.Bigquery.v2.Data.QueryRequest body, string projectId)
         {
-            return new QueryRequest(service, body, projectId);
+            return new QueryRequest(this.service, body, projectId);
         }
 
         /// <summary>
@@ -1559,7 +1559,7 @@ namespace Google.Apis.Bigquery.v2
         /// <param name="modelId">Required. Model ID of the model to delete.</param>
         public virtual DeleteRequest Delete(string projectId, string datasetId, string modelId)
         {
-            return new DeleteRequest(service, projectId, datasetId, modelId);
+            return new DeleteRequest(this.service, projectId, datasetId, modelId);
         }
 
         /// <summary>Deletes the model specified by modelId from the dataset.</summary>
@@ -1632,7 +1632,7 @@ namespace Google.Apis.Bigquery.v2
         /// <param name="modelId">Required. Model ID of the requested model.</param>
         public virtual GetRequest Get(string projectId, string datasetId, string modelId)
         {
-            return new GetRequest(service, projectId, datasetId, modelId);
+            return new GetRequest(this.service, projectId, datasetId, modelId);
         }
 
         /// <summary>Gets the specified model resource by model ID.</summary>
@@ -1707,7 +1707,7 @@ namespace Google.Apis.Bigquery.v2
         /// <param name="datasetId">Required. Dataset ID of the models to list.</param>
         public virtual ListRequest List(string projectId, string datasetId)
         {
-            return new ListRequest(service, projectId, datasetId);
+            return new ListRequest(this.service, projectId, datasetId);
         }
 
         /// <summary>
@@ -1798,7 +1798,7 @@ namespace Google.Apis.Bigquery.v2
         /// <param name="modelId">Required. Model ID of the model to patch.</param>
         public virtual PatchRequest Patch(Google.Apis.Bigquery.v2.Data.Model body, string projectId, string datasetId, string modelId)
         {
-            return new PatchRequest(service, body, projectId, datasetId, modelId);
+            return new PatchRequest(this.service, body, projectId, datasetId, modelId);
         }
 
         /// <summary>Patch specific fields in the specified model.</summary>
@@ -1894,7 +1894,7 @@ namespace Google.Apis.Bigquery.v2
         /// <param name="projectId">Project ID for which the service account is requested.</param>
         public virtual GetServiceAccountRequest GetServiceAccount(string projectId)
         {
-            return new GetServiceAccountRequest(service, projectId);
+            return new GetServiceAccountRequest(this.service, projectId);
         }
 
         /// <summary>
@@ -1941,7 +1941,7 @@ namespace Google.Apis.Bigquery.v2
         /// <summary>Lists all projects to which you have been granted any project role.</summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>Lists all projects to which you have been granted any project role.</summary>
@@ -2014,7 +2014,7 @@ namespace Google.Apis.Bigquery.v2
         /// <param name="routineId">Required. Routine ID of the routine to delete</param>
         public virtual DeleteRequest Delete(string projectId, string datasetId, string routineId)
         {
-            return new DeleteRequest(service, projectId, datasetId, routineId);
+            return new DeleteRequest(this.service, projectId, datasetId, routineId);
         }
 
         /// <summary>Deletes the routine specified by routineId from the dataset.</summary>
@@ -2087,7 +2087,7 @@ namespace Google.Apis.Bigquery.v2
         /// <param name="routineId">Required. Routine ID of the requested routine</param>
         public virtual GetRequest Get(string projectId, string datasetId, string routineId)
         {
-            return new GetRequest(service, projectId, datasetId, routineId);
+            return new GetRequest(this.service, projectId, datasetId, routineId);
         }
 
         /// <summary>Gets the specified routine resource by routine ID.</summary>
@@ -2175,7 +2175,7 @@ namespace Google.Apis.Bigquery.v2
         /// <param name="datasetId">Required. Dataset ID of the new routine</param>
         public virtual InsertRequest Insert(Google.Apis.Bigquery.v2.Data.Routine body, string projectId, string datasetId)
         {
-            return new InsertRequest(service, body, projectId, datasetId);
+            return new InsertRequest(this.service, body, projectId, datasetId);
         }
 
         /// <summary>Creates a new routine in the dataset.</summary>
@@ -2241,7 +2241,7 @@ namespace Google.Apis.Bigquery.v2
         /// <param name="datasetId">Required. Dataset ID of the routines to list</param>
         public virtual ListRequest List(string projectId, string datasetId)
         {
-            return new ListRequest(service, projectId, datasetId);
+            return new ListRequest(this.service, projectId, datasetId);
         }
 
         /// <summary>Lists all routines in the specified dataset. Requires the READER dataset role.</summary>
@@ -2363,7 +2363,7 @@ namespace Google.Apis.Bigquery.v2
         /// <param name="routineId">Required. Routine ID of the routine to update</param>
         public virtual UpdateRequest Update(Google.Apis.Bigquery.v2.Data.Routine body, string projectId, string datasetId, string routineId)
         {
-            return new UpdateRequest(service, body, projectId, datasetId, routineId);
+            return new UpdateRequest(this.service, body, projectId, datasetId, routineId);
         }
 
         /// <summary>
@@ -2465,7 +2465,7 @@ namespace Google.Apis.Bigquery.v2
         /// </param>
         public virtual GetIamPolicyRequest GetIamPolicy(Google.Apis.Bigquery.v2.Data.GetIamPolicyRequest body, string resource)
         {
-            return new GetIamPolicyRequest(service, body, resource);
+            return new GetIamPolicyRequest(this.service, body, resource);
         }
 
         /// <summary>
@@ -2525,7 +2525,7 @@ namespace Google.Apis.Bigquery.v2
         /// <param name="tableId">Required. Table ID of the table to list row access policies.</param>
         public virtual ListRequest List(string projectId, string datasetId, string tableId)
         {
-            return new ListRequest(service, projectId, datasetId, tableId);
+            return new ListRequest(this.service, projectId, datasetId, tableId);
         }
 
         /// <summary>Lists all row access policies on the specified table.</summary>
@@ -2632,7 +2632,7 @@ namespace Google.Apis.Bigquery.v2
         /// </param>
         public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Bigquery.v2.Data.TestIamPermissionsRequest body, string resource)
         {
-            return new TestIamPermissionsRequest(service, body, resource);
+            return new TestIamPermissionsRequest(this.service, body, resource);
         }
 
         /// <summary>
@@ -2713,7 +2713,7 @@ namespace Google.Apis.Bigquery.v2
         /// <param name="tableId">Table ID of the destination table.</param>
         public virtual InsertAllRequest InsertAll(Google.Apis.Bigquery.v2.Data.TableDataInsertAllRequest body, string projectId, string datasetId, string tableId)
         {
-            return new InsertAllRequest(service, body, projectId, datasetId, tableId);
+            return new InsertAllRequest(this.service, body, projectId, datasetId, tableId);
         }
 
         /// <summary>
@@ -2796,7 +2796,7 @@ namespace Google.Apis.Bigquery.v2
         /// <param name="tableId">Table ID of the table to read</param>
         public virtual ListRequest List(string projectId, string datasetId, string tableId)
         {
-            return new ListRequest(service, projectId, datasetId, tableId);
+            return new ListRequest(this.service, projectId, datasetId, tableId);
         }
 
         /// <summary>Retrieves table data from a specified set of rows. Requires the READER dataset role.</summary>
@@ -2935,7 +2935,7 @@ namespace Google.Apis.Bigquery.v2
         /// <param name="tableId">Table ID of the table to delete</param>
         public virtual DeleteRequest Delete(string projectId, string datasetId, string tableId)
         {
-            return new DeleteRequest(service, projectId, datasetId, tableId);
+            return new DeleteRequest(this.service, projectId, datasetId, tableId);
         }
 
         /// <summary>
@@ -3014,7 +3014,7 @@ namespace Google.Apis.Bigquery.v2
         /// <param name="tableId">Table ID of the requested table</param>
         public virtual GetRequest Get(string projectId, string datasetId, string tableId)
         {
-            return new GetRequest(service, projectId, datasetId, tableId);
+            return new GetRequest(this.service, projectId, datasetId, tableId);
         }
 
         /// <summary>
@@ -3155,7 +3155,7 @@ namespace Google.Apis.Bigquery.v2
         /// </param>
         public virtual GetIamPolicyRequest GetIamPolicy(Google.Apis.Bigquery.v2.Data.GetIamPolicyRequest body, string resource)
         {
-            return new GetIamPolicyRequest(service, body, resource);
+            return new GetIamPolicyRequest(this.service, body, resource);
         }
 
         /// <summary>
@@ -3215,7 +3215,7 @@ namespace Google.Apis.Bigquery.v2
         /// <param name="datasetId">Dataset ID of the new table</param>
         public virtual InsertRequest Insert(Google.Apis.Bigquery.v2.Data.Table body, string projectId, string datasetId)
         {
-            return new InsertRequest(service, body, projectId, datasetId);
+            return new InsertRequest(this.service, body, projectId, datasetId);
         }
 
         /// <summary>Creates a new, empty table in the dataset.</summary>
@@ -3281,7 +3281,7 @@ namespace Google.Apis.Bigquery.v2
         /// <param name="datasetId">Dataset ID of the tables to list</param>
         public virtual ListRequest List(string projectId, string datasetId)
         {
-            return new ListRequest(service, projectId, datasetId);
+            return new ListRequest(this.service, projectId, datasetId);
         }
 
         /// <summary>Lists all tables in the specified dataset. Requires the READER dataset role.</summary>
@@ -3370,7 +3370,7 @@ namespace Google.Apis.Bigquery.v2
         /// <param name="tableId">Table ID of the table to update</param>
         public virtual PatchRequest Patch(Google.Apis.Bigquery.v2.Data.Table body, string projectId, string datasetId, string tableId)
         {
-            return new PatchRequest(service, body, projectId, datasetId, tableId);
+            return new PatchRequest(this.service, body, projectId, datasetId, tableId);
         }
 
         /// <summary>
@@ -3471,7 +3471,7 @@ namespace Google.Apis.Bigquery.v2
         /// </param>
         public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Bigquery.v2.Data.SetIamPolicyRequest body, string resource)
         {
-            return new SetIamPolicyRequest(service, body, resource);
+            return new SetIamPolicyRequest(this.service, body, resource);
         }
 
         /// <summary>
@@ -3538,7 +3538,7 @@ namespace Google.Apis.Bigquery.v2
         /// </param>
         public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Bigquery.v2.Data.TestIamPermissionsRequest body, string resource)
         {
-            return new TestIamPermissionsRequest(service, body, resource);
+            return new TestIamPermissionsRequest(this.service, body, resource);
         }
 
         /// <summary>
@@ -3604,7 +3604,7 @@ namespace Google.Apis.Bigquery.v2
         /// <param name="tableId">Table ID of the table to update</param>
         public virtual UpdateRequest Update(Google.Apis.Bigquery.v2.Data.Table body, string projectId, string datasetId, string tableId)
         {
-            return new UpdateRequest(service, body, projectId, datasetId, tableId);
+            return new UpdateRequest(this.service, body, projectId, datasetId, tableId);
         }
 
         /// <summary>
@@ -4477,8 +4477,8 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="StartTimeRaw"/>.</summary>
@@ -4594,8 +4594,8 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CloneTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CloneTimeRaw);
-            set => CloneTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(CloneTimeRaw);
+            set => CloneTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="CloneTimeRaw"/>.</summary>
@@ -5174,8 +5174,8 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ExpirationTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpirationTimeRaw);
-            set => ExpirationTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(ExpirationTimeRaw);
+            set => ExpirationTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="ExpirationTimeRaw"/>.</summary>
@@ -8711,8 +8711,8 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreationTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreationTimeRaw);
-            set => CreationTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreationTimeRaw);
+            set => CreationTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. A hash of this resource.</summary>
@@ -8765,8 +8765,8 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LastModifiedTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastModifiedTimeRaw);
-            set => LastModifiedTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastModifiedTimeRaw);
+            set => LastModifiedTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Required. Reference describing the ID of this row access policy.</summary>
@@ -8922,8 +8922,8 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? SnapshotTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(SnapshotTimeRaw);
-            set => SnapshotTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(SnapshotTimeRaw);
+            set => SnapshotTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="SnapshotTimeRaw"/>.</summary>
@@ -10396,8 +10396,8 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>

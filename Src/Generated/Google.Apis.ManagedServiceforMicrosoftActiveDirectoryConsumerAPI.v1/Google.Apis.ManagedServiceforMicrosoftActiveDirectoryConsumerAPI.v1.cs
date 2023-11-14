@@ -363,7 +363,7 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1
                         /// </param>
                         public virtual CreateRequest Create(Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Data.Backup body, string parent)
                         {
-                            return new CreateRequest(service, body, parent);
+                            return new CreateRequest(this.service, body, parent);
                         }
 
                         /// <summary>Creates a Backup for a domain.</summary>
@@ -438,7 +438,7 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1
                         /// </param>
                         public virtual DeleteRequest Delete(string name)
                         {
-                            return new DeleteRequest(service, name);
+                            return new DeleteRequest(this.service, name);
                         }
 
                         /// <summary>Deletes identified Backup.</summary>
@@ -489,7 +489,7 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1
                         /// </param>
                         public virtual GetRequest Get(string name)
                         {
-                            return new GetRequest(service, name);
+                            return new GetRequest(this.service, name);
                         }
 
                         /// <summary>Gets details of a single Backup.</summary>
@@ -544,7 +544,7 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1
                         /// </param>
                         public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                         {
-                            return new GetIamPolicyRequest(service, resource);
+                            return new GetIamPolicyRequest(this.service, resource);
                         }
 
                         /// <summary>
@@ -621,7 +621,7 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1
                         /// </param>
                         public virtual ListRequest List(string parent)
                         {
-                            return new ListRequest(service, parent);
+                            return new ListRequest(this.service, parent);
                         }
 
                         /// <summary>Lists Backup in a given project.</summary>
@@ -731,7 +731,7 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1
                         /// </param>
                         public virtual PatchRequest Patch(Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Data.Backup body, string name)
                         {
-                            return new PatchRequest(service, body, name);
+                            return new PatchRequest(this.service, body, name);
                         }
 
                         /// <summary>Updates the labels for specified Backup.</summary>
@@ -810,7 +810,7 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1
                         /// </param>
                         public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Data.SetIamPolicyRequest body, string resource)
                         {
-                            return new SetIamPolicyRequest(service, body, resource);
+                            return new SetIamPolicyRequest(this.service, body, resource);
                         }
 
                         /// <summary>
@@ -879,7 +879,7 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1
                         /// </param>
                         public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Data.TestIamPermissionsRequest body, string resource)
                         {
-                            return new TestIamPermissionsRequest(service, body, resource);
+                            return new TestIamPermissionsRequest(this.service, body, resource);
                         }
 
                         /// <summary>
@@ -961,7 +961,7 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1
                         /// </param>
                         public virtual GetRequest Get(string name)
                         {
-                            return new GetRequest(service, name);
+                            return new GetRequest(this.service, name);
                         }
 
                         /// <summary>Gets details of a single sqlIntegration.</summary>
@@ -1012,7 +1012,7 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1
                         /// </param>
                         public virtual ListRequest List(string parent)
                         {
-                            return new ListRequest(service, parent);
+                            return new ListRequest(this.service, parent);
                         }
 
                         /// <summary>Lists SqlIntegrations in a given domain.</summary>
@@ -1126,7 +1126,7 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1
                     /// </param>
                     public virtual AttachTrustRequest AttachTrust(Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Data.AttachTrustRequest body, string name)
                     {
-                        return new AttachTrustRequest(service, body, name);
+                        return new AttachTrustRequest(this.service, body, name);
                     }
 
                     /// <summary>Adds an AD trust to a domain.</summary>
@@ -1185,7 +1185,7 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1
                     /// </param>
                     public virtual CheckMigrationPermissionRequest CheckMigrationPermission(Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Data.CheckMigrationPermissionRequest body, string domain)
                     {
-                        return new CheckMigrationPermissionRequest(service, body, domain);
+                        return new CheckMigrationPermissionRequest(this.service, body, domain);
                     }
 
                     /// <summary>CheckMigrationPermission API gets the current state of DomainMigration</summary>
@@ -1244,7 +1244,7 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Data.Domain body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>Creates a Microsoft AD domain.</summary>
@@ -1321,7 +1321,7 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>Deletes a domain.</summary>
@@ -1373,7 +1373,7 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1
                     /// </param>
                     public virtual DetachTrustRequest DetachTrust(Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Data.DetachTrustRequest body, string name)
                     {
-                        return new DetachTrustRequest(service, body, name);
+                        return new DetachTrustRequest(this.service, body, name);
                     }
 
                     /// <summary>Removes an AD trust.</summary>
@@ -1432,7 +1432,7 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1
                     /// </param>
                     public virtual DisableMigrationRequest DisableMigration(Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Data.DisableMigrationRequest body, string domain)
                     {
-                        return new DisableMigrationRequest(service, body, domain);
+                        return new DisableMigrationRequest(this.service, body, domain);
                     }
 
                     /// <summary>Disable Domain Migration</summary>
@@ -1491,7 +1491,7 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1
                     /// </param>
                     public virtual DomainJoinMachineRequest DomainJoinMachine(Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Data.DomainJoinMachineRequest body, string domain)
                     {
-                        return new DomainJoinMachineRequest(service, body, domain);
+                        return new DomainJoinMachineRequest(this.service, body, domain);
                     }
 
                     /// <summary>DomainJoinMachine API joins a Compute Engine VM to the domain</summary>
@@ -1550,7 +1550,7 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1
                     /// </param>
                     public virtual EnableMigrationRequest EnableMigration(Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Data.EnableMigrationRequest body, string domain)
                     {
-                        return new EnableMigrationRequest(service, body, domain);
+                        return new EnableMigrationRequest(this.service, body, domain);
                     }
 
                     /// <summary>Enable Domain Migration</summary>
@@ -1609,7 +1609,7 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1
                     /// </param>
                     public virtual ExtendSchemaRequest ExtendSchema(Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Data.ExtendSchemaRequest body, string domain)
                     {
-                        return new ExtendSchemaRequest(service, body, domain);
+                        return new ExtendSchemaRequest(this.service, body, domain);
                     }
 
                     /// <summary>Extend Schema for Domain</summary>
@@ -1667,7 +1667,7 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Gets information about a domain.</summary>
@@ -1722,7 +1722,7 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1
                     /// </param>
                     public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                     {
-                        return new GetIamPolicyRequest(service, resource);
+                        return new GetIamPolicyRequest(this.service, resource);
                     }
 
                     /// <summary>
@@ -1799,7 +1799,7 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1
                     /// </param>
                     public virtual GetLdapssettingsRequest GetLdapssettings(string name)
                     {
-                        return new GetLdapssettingsRequest(service, name);
+                        return new GetLdapssettingsRequest(this.service, name);
                     }
 
                     /// <summary>Gets the domain ldaps settings.</summary>
@@ -1850,7 +1850,7 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists domains in a project.</summary>
@@ -1965,7 +1965,7 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Data.Domain body, string name)
                     {
-                        return new PatchRequest(service, body, name);
+                        return new PatchRequest(this.service, body, name);
                     }
 
                     /// <summary>Updates the metadata and configuration of a domain.</summary>
@@ -2040,7 +2040,7 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1
                     /// </param>
                     public virtual ReconfigureTrustRequest ReconfigureTrust(Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Data.ReconfigureTrustRequest body, string name)
                     {
-                        return new ReconfigureTrustRequest(service, body, name);
+                        return new ReconfigureTrustRequest(this.service, body, name);
                     }
 
                     /// <summary>Updates the DNS conditional forwarder.</summary>
@@ -2099,7 +2099,7 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1
                     /// </param>
                     public virtual ResetAdminPasswordRequest ResetAdminPassword(Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Data.ResetAdminPasswordRequest body, string name)
                     {
-                        return new ResetAdminPasswordRequest(service, body, name);
+                        return new ResetAdminPasswordRequest(this.service, body, name);
                     }
 
                     /// <summary>Resets a domain's administrator password.</summary>
@@ -2155,7 +2155,7 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1
                     /// <param name="name">Required. Resource name for the domain to which the backup belongs</param>
                     public virtual RestoreRequest Restore(Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Data.RestoreDomainRequest body, string name)
                     {
-                        return new RestoreRequest(service, body, name);
+                        return new RestoreRequest(this.service, body, name);
                     }
 
                     /// <summary>RestoreDomain restores domain backup mentioned in the RestoreDomainRequest</summary>
@@ -2215,7 +2215,7 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1
                     /// </param>
                     public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Data.SetIamPolicyRequest body, string resource)
                     {
-                        return new SetIamPolicyRequest(service, body, resource);
+                        return new SetIamPolicyRequest(this.service, body, resource);
                     }
 
                     /// <summary>
@@ -2284,7 +2284,7 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1
                     /// </param>
                     public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Data.TestIamPermissionsRequest body, string resource)
                     {
-                        return new TestIamPermissionsRequest(service, body, resource);
+                        return new TestIamPermissionsRequest(this.service, body, resource);
                     }
 
                     /// <summary>
@@ -2349,7 +2349,7 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1
                     /// </param>
                     public virtual UpdateLdapssettingsRequest UpdateLdapssettings(Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Data.LDAPSSettings body, string name)
                     {
-                        return new UpdateLdapssettingsRequest(service, body, name);
+                        return new UpdateLdapssettingsRequest(this.service, body, name);
                     }
 
                     /// <summary>Patches a single ldaps settings.</summary>
@@ -2427,7 +2427,7 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1
                     /// </param>
                     public virtual ValidateTrustRequest ValidateTrust(Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Data.ValidateTrustRequest body, string name)
                     {
-                        return new ValidateTrustRequest(service, body, name);
+                        return new ValidateTrustRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -2512,7 +2512,7 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1
                     /// <param name="name">The name of the operation resource to be cancelled.</param>
                     public virtual CancelRequest Cancel(Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Data.CancelOperationRequest body, string name)
                     {
-                        return new CancelRequest(service, body, name);
+                        return new CancelRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -2576,7 +2576,7 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1
                     /// <param name="name">The name of the operation resource to be deleted.</param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -2628,7 +2628,7 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1
                     /// <param name="name">The name of the operation resource.</param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -2679,7 +2679,7 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1
                     /// <param name="name">The name of the operation's parent resource.</param>
                     public virtual ListRequest List(string name)
                     {
-                        return new ListRequest(service, name);
+                        return new ListRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -2785,7 +2785,7 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Data.Peering body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>Creates a Peering for Managed AD instance.</summary>
@@ -2858,7 +2858,7 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>Deletes identified Peering.</summary>
@@ -2909,7 +2909,7 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Gets details of a single Peering.</summary>
@@ -2964,7 +2964,7 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1
                     /// </param>
                     public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                     {
-                        return new GetIamPolicyRequest(service, resource);
+                        return new GetIamPolicyRequest(this.service, resource);
                     }
 
                     /// <summary>
@@ -3041,7 +3041,7 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists Peerings in a given project.</summary>
@@ -3154,7 +3154,7 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Data.Peering body, string name)
                     {
-                        return new PatchRequest(service, body, name);
+                        return new PatchRequest(this.service, body, name);
                     }
 
                     /// <summary>Updates the labels for specified Peering.</summary>
@@ -3232,7 +3232,7 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1
                     /// </param>
                     public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Data.SetIamPolicyRequest body, string resource)
                     {
-                        return new SetIamPolicyRequest(service, body, resource);
+                        return new SetIamPolicyRequest(this.service, body, resource);
                     }
 
                     /// <summary>
@@ -3301,7 +3301,7 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1
                     /// </param>
                     public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Data.TestIamPermissionsRequest body, string resource)
                     {
-                        return new TestIamPermissionsRequest(service, body, resource);
+                        return new TestIamPermissionsRequest(this.service, body, resource);
                     }
 
                     /// <summary>
@@ -3364,7 +3364,7 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1
             /// <param name="name">Resource name for the location.</param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets information about a location.</summary>
@@ -3409,7 +3409,7 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
             {
-                return new ListRequest(service, name);
+                return new ListRequest(this.service, name);
             }
 
             /// <summary>Lists information about the supported locations for this service.</summary>
@@ -3545,8 +3545,8 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Da
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Optional. Resource labels to represent user provided metadata.</summary>
@@ -3607,8 +3607,8 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Da
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -3710,8 +3710,8 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Da
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpireTimeRaw);
-            set => ExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The issuer of this certificate.</summary>
@@ -3914,8 +3914,8 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Da
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -3998,8 +3998,8 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Da
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -4168,8 +4168,8 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Da
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _endTimeRaw;
@@ -4205,8 +4205,8 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Da
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -4269,8 +4269,8 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Da
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _endTimeRaw;
@@ -4306,8 +4306,8 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Da
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -4370,8 +4370,8 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Da
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _endTimeRaw;
@@ -4407,8 +4407,8 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Da
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -4493,8 +4493,8 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Da
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -4630,8 +4630,8 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Da
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -4684,8 +4684,8 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Da
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -4734,8 +4734,8 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Da
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ScheduleDeadlineTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ScheduleDeadlineTimeRaw);
-            set => ScheduleDeadlineTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ScheduleDeadlineTimeRaw);
+            set => ScheduleDeadlineTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _startTimeRaw;
@@ -4771,8 +4771,8 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Da
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -5013,8 +5013,8 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Da
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -5203,8 +5203,8 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Da
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -5272,8 +5272,8 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Da
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -5422,8 +5422,8 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Da
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _endTimeRaw;
@@ -5459,8 +5459,8 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Da
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. Human-readable status of the operation, if any.</summary>
@@ -5523,8 +5523,8 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Da
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -5588,8 +5588,8 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Da
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -5787,8 +5787,8 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Da
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -5839,8 +5839,8 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Da
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -5974,8 +5974,8 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Da
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _lastTrustHeartbeatTimeRaw;
@@ -6013,8 +6013,8 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Da
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LastTrustHeartbeatTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastTrustHeartbeatTimeRaw);
-            set => LastTrustHeartbeatTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastTrustHeartbeatTimeRaw);
+            set => LastTrustHeartbeatTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -6093,8 +6093,8 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Da
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>

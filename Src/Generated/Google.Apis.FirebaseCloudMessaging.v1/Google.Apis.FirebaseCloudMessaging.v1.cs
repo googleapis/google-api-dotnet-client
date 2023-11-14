@@ -307,7 +307,7 @@ namespace Google.Apis.FirebaseCloudMessaging.v1
             /// </param>
             public virtual SendRequest Send(Google.Apis.FirebaseCloudMessaging.v1.Data.SendMessageRequest body, string parent)
             {
-                return new SendRequest(service, body, parent);
+                return new SendRequest(this.service, body, parent);
             }
 
             /// <summary>Send a message to specified target (a registration token, topic or condition).</summary>
@@ -552,8 +552,8 @@ namespace Google.Apis.FirebaseCloudMessaging.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EventTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EventTimeRaw);
-            set => EventTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EventTimeRaw);
+            set => EventTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>

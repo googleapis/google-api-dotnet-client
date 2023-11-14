@@ -272,7 +272,7 @@ namespace Google.Apis.GroupsMigration.v1
         /// <param name="groupId">The group ID</param>
         public virtual InsertRequest Insert(string groupId)
         {
-            return new InsertRequest(service, groupId);
+            return new InsertRequest(this.service, groupId);
         }
 
         /// <summary>Inserts a new mail into the archive of the Google group.</summary>

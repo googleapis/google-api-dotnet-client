@@ -324,7 +324,7 @@ namespace Google.Apis.Sheets.v4
             /// <param name="metadataId">The ID of the developer metadata to retrieve.</param>
             public virtual GetRequest Get(string spreadsheetId, int metadataId)
             {
-                return new GetRequest(service, spreadsheetId, metadataId);
+                return new GetRequest(this.service, spreadsheetId, metadataId);
             }
 
             /// <summary>
@@ -391,7 +391,7 @@ namespace Google.Apis.Sheets.v4
             /// <param name="spreadsheetId">The ID of the spreadsheet to retrieve metadata from.</param>
             public virtual SearchRequest Search(Google.Apis.Sheets.v4.Data.SearchDeveloperMetadataRequest body, string spreadsheetId)
             {
-                return new SearchRequest(service, body, spreadsheetId);
+                return new SearchRequest(this.service, body, spreadsheetId);
             }
 
             /// <summary>
@@ -471,7 +471,7 @@ namespace Google.Apis.Sheets.v4
             /// <param name="sheetId">The ID of the sheet to copy.</param>
             public virtual CopyToRequest CopyTo(Google.Apis.Sheets.v4.Data.CopySheetToAnotherSpreadsheetRequest body, string spreadsheetId, int sheetId)
             {
-                return new CopyToRequest(service, body, spreadsheetId, sheetId);
+                return new CopyToRequest(this.service, body, spreadsheetId, sheetId);
             }
 
             /// <summary>
@@ -570,7 +570,7 @@ namespace Google.Apis.Sheets.v4
             /// </param>
             public virtual AppendRequest Append(Google.Apis.Sheets.v4.Data.ValueRange body, string spreadsheetId, string range)
             {
-                return new AppendRequest(service, body, spreadsheetId, range);
+                return new AppendRequest(this.service, body, spreadsheetId, range);
             }
 
             /// <summary>
@@ -815,7 +815,7 @@ namespace Google.Apis.Sheets.v4
             /// <param name="spreadsheetId">The ID of the spreadsheet to update.</param>
             public virtual BatchClearRequest BatchClear(Google.Apis.Sheets.v4.Data.BatchClearValuesRequest body, string spreadsheetId)
             {
-                return new BatchClearRequest(service, body, spreadsheetId);
+                return new BatchClearRequest(this.service, body, spreadsheetId);
             }
 
             /// <summary>
@@ -876,7 +876,7 @@ namespace Google.Apis.Sheets.v4
             /// <param name="spreadsheetId">The ID of the spreadsheet to update.</param>
             public virtual BatchClearByDataFilterRequest BatchClearByDataFilter(Google.Apis.Sheets.v4.Data.BatchClearValuesByDataFilterRequest body, string spreadsheetId)
             {
-                return new BatchClearByDataFilterRequest(service, body, spreadsheetId);
+                return new BatchClearByDataFilterRequest(this.service, body, spreadsheetId);
             }
 
             /// <summary>
@@ -935,7 +935,7 @@ namespace Google.Apis.Sheets.v4
             /// <param name="spreadsheetId">The ID of the spreadsheet to retrieve data from.</param>
             public virtual BatchGetRequest BatchGet(string spreadsheetId)
             {
-                return new BatchGetRequest(service, spreadsheetId);
+                return new BatchGetRequest(this.service, spreadsheetId);
             }
 
             /// <summary>
@@ -1129,7 +1129,7 @@ namespace Google.Apis.Sheets.v4
             /// <param name="spreadsheetId">The ID of the spreadsheet to retrieve data from.</param>
             public virtual BatchGetByDataFilterRequest BatchGetByDataFilter(Google.Apis.Sheets.v4.Data.BatchGetValuesByDataFilterRequest body, string spreadsheetId)
             {
-                return new BatchGetByDataFilterRequest(service, body, spreadsheetId);
+                return new BatchGetByDataFilterRequest(this.service, body, spreadsheetId);
             }
 
             /// <summary>
@@ -1189,7 +1189,7 @@ namespace Google.Apis.Sheets.v4
             /// <param name="spreadsheetId">The ID of the spreadsheet to update.</param>
             public virtual BatchUpdateRequest BatchUpdate(Google.Apis.Sheets.v4.Data.BatchUpdateValuesRequest body, string spreadsheetId)
             {
-                return new BatchUpdateRequest(service, body, spreadsheetId);
+                return new BatchUpdateRequest(this.service, body, spreadsheetId);
             }
 
             /// <summary>
@@ -1248,7 +1248,7 @@ namespace Google.Apis.Sheets.v4
             /// <param name="spreadsheetId">The ID of the spreadsheet to update.</param>
             public virtual BatchUpdateByDataFilterRequest BatchUpdateByDataFilter(Google.Apis.Sheets.v4.Data.BatchUpdateValuesByDataFilterRequest body, string spreadsheetId)
             {
-                return new BatchUpdateByDataFilterRequest(service, body, spreadsheetId);
+                return new BatchUpdateByDataFilterRequest(this.service, body, spreadsheetId);
             }
 
             /// <summary>
@@ -1310,7 +1310,7 @@ namespace Google.Apis.Sheets.v4
             /// </param>
             public virtual ClearRequest Clear(Google.Apis.Sheets.v4.Data.ClearValuesRequest body, string spreadsheetId, string range)
             {
-                return new ClearRequest(service, body, spreadsheetId, range);
+                return new ClearRequest(this.service, body, spreadsheetId, range);
             }
 
             /// <summary>
@@ -1386,7 +1386,7 @@ namespace Google.Apis.Sheets.v4
             /// </param>
             public virtual GetRequest Get(string spreadsheetId, string range)
             {
-                return new GetRequest(service, spreadsheetId, range);
+                return new GetRequest(this.service, spreadsheetId, range);
             }
 
             /// <summary>
@@ -1578,7 +1578,7 @@ namespace Google.Apis.Sheets.v4
             /// <param name="range">The [A1 notation](/sheets/api/guides/concepts#cell) of the values to update.</param>
             public virtual UpdateRequest Update(Google.Apis.Sheets.v4.Data.ValueRange body, string spreadsheetId, string range)
             {
-                return new UpdateRequest(service, body, spreadsheetId, range);
+                return new UpdateRequest(this.service, body, spreadsheetId, range);
             }
 
             /// <summary>
@@ -1797,7 +1797,7 @@ namespace Google.Apis.Sheets.v4
         /// <param name="spreadsheetId">The spreadsheet to apply the updates to.</param>
         public virtual BatchUpdateRequest BatchUpdate(Google.Apis.Sheets.v4.Data.BatchUpdateSpreadsheetRequest body, string spreadsheetId)
         {
-            return new BatchUpdateRequest(service, body, spreadsheetId);
+            return new BatchUpdateRequest(this.service, body, spreadsheetId);
         }
 
         /// <summary>
@@ -1859,7 +1859,7 @@ namespace Google.Apis.Sheets.v4
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.Sheets.v4.Data.Spreadsheet body)
         {
-            return new CreateRequest(service, body);
+            return new CreateRequest(this.service, body);
         }
 
         /// <summary>Creates a spreadsheet, returning the newly created spreadsheet.</summary>
@@ -1910,7 +1910,7 @@ namespace Google.Apis.Sheets.v4
         /// <param name="spreadsheetId">The spreadsheet to request.</param>
         public virtual GetRequest Get(string spreadsheetId)
         {
-            return new GetRequest(service, spreadsheetId);
+            return new GetRequest(this.service, spreadsheetId);
         }
 
         /// <summary>
@@ -2004,7 +2004,7 @@ namespace Google.Apis.Sheets.v4
         /// <param name="spreadsheetId">The spreadsheet to request.</param>
         public virtual GetByDataFilterRequest GetByDataFilter(Google.Apis.Sheets.v4.Data.GetSpreadsheetByDataFilterRequest body, string spreadsheetId)
         {
-            return new GetByDataFilterRequest(service, body, spreadsheetId);
+            return new GetByDataFilterRequest(this.service, body, spreadsheetId);
         }
 
         /// <summary>
@@ -4196,8 +4196,8 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LastRefreshTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastRefreshTimeRaw);
-            set => LastRefreshTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastRefreshTimeRaw);
+            set => LastRefreshTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The state of the data execution.</summary>
@@ -5880,8 +5880,8 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _startTimeRaw;
@@ -5920,8 +5920,8 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>

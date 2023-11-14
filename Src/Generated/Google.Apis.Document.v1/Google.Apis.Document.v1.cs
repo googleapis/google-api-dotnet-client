@@ -286,7 +286,7 @@ namespace Google.Apis.Document.v1
         /// <param name="name">The name of the operation resource to be deleted.</param>
         public virtual DeleteRequest Delete(string name)
         {
-            return new DeleteRequest(service, name);
+            return new DeleteRequest(this.service, name);
         }
 
         /// <summary>
@@ -396,7 +396,7 @@ namespace Google.Apis.Document.v1
                 /// <param name="name">The name of the operation resource to be cancelled.</param>
                 public virtual CancelRequest Cancel(string name)
                 {
-                    return new CancelRequest(service, name);
+                    return new CancelRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -451,7 +451,7 @@ namespace Google.Apis.Document.v1
                 /// <param name="name">The name of the operation resource.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -502,7 +502,7 @@ namespace Google.Apis.Document.v1
                 /// <param name="name">The name of the operation's parent resource.</param>
                 public virtual ListRequest List(string name)
                 {
-                    return new ListRequest(service, name);
+                    return new ListRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -604,7 +604,7 @@ namespace Google.Apis.Document.v1
                 /// <param name="name">Required. The processor type resource name.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets a processor type detail.</summary>
@@ -652,7 +652,7 @@ namespace Google.Apis.Document.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists the processor types that exist.</summary>
@@ -770,7 +770,7 @@ namespace Google.Apis.Document.v1
                     /// </param>
                     public virtual ReviewDocumentRequest ReviewDocument(Google.Apis.Document.v1.Data.GoogleCloudDocumentaiV1ReviewDocumentRequest body, string humanReviewConfig)
                     {
-                        return new ReviewDocumentRequest(service, body, humanReviewConfig);
+                        return new ReviewDocumentRequest(this.service, body, humanReviewConfig);
                     }
 
                     /// <summary>
@@ -867,7 +867,7 @@ namespace Google.Apis.Document.v1
                         /// </param>
                         public virtual GetRequest Get(string name)
                         {
-                            return new GetRequest(service, name);
+                            return new GetRequest(this.service, name);
                         }
 
                         /// <summary>Retrieves a specific evaluation.</summary>
@@ -918,7 +918,7 @@ namespace Google.Apis.Document.v1
                         /// </param>
                         public virtual ListRequest List(string parent)
                         {
-                            return new ListRequest(service, parent);
+                            return new ListRequest(this.service, parent);
                         }
 
                         /// <summary>Retrieves a set of evaluations for a given processor version.</summary>
@@ -1005,7 +1005,7 @@ namespace Google.Apis.Document.v1
                     /// </param>
                     public virtual BatchProcessRequest BatchProcess(Google.Apis.Document.v1.Data.GoogleCloudDocumentaiV1BatchProcessRequest body, string name)
                     {
-                        return new BatchProcessRequest(service, body, name);
+                        return new BatchProcessRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -1066,7 +1066,7 @@ namespace Google.Apis.Document.v1
                     /// <param name="name">Required. The processor version resource name to be deleted.</param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -1114,7 +1114,7 @@ namespace Google.Apis.Document.v1
                     /// <param name="name">Required. The processor version resource name to be deployed.</param>
                     public virtual DeployRequest Deploy(Google.Apis.Document.v1.Data.GoogleCloudDocumentaiV1DeployProcessorVersionRequest body, string name)
                     {
-                        return new DeployRequest(service, body, name);
+                        return new DeployRequest(this.service, body, name);
                     }
 
                     /// <summary>Deploys the processor version.</summary>
@@ -1172,7 +1172,7 @@ namespace Google.Apis.Document.v1
                     /// </param>
                     public virtual EvaluateProcessorVersionRequest EvaluateProcessorVersion(Google.Apis.Document.v1.Data.GoogleCloudDocumentaiV1EvaluateProcessorVersionRequest body, string processorVersion)
                     {
-                        return new EvaluateProcessorVersionRequest(service, body, processorVersion);
+                        return new EvaluateProcessorVersionRequest(this.service, body, processorVersion);
                     }
 
                     /// <summary>
@@ -1229,7 +1229,7 @@ namespace Google.Apis.Document.v1
                     /// <param name="name">Required. The processor resource name.</param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Gets a processor version detail.</summary>
@@ -1277,7 +1277,7 @@ namespace Google.Apis.Document.v1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists all versions of a processor.</summary>
@@ -1362,7 +1362,7 @@ namespace Google.Apis.Document.v1
                     /// </param>
                     public virtual ProcessRequest Process(Google.Apis.Document.v1.Data.GoogleCloudDocumentaiV1ProcessRequest body, string name)
                     {
-                        return new ProcessRequest(service, body, name);
+                        return new ProcessRequest(this.service, body, name);
                     }
 
                     /// <summary>Processes a single document.</summary>
@@ -1425,7 +1425,7 @@ namespace Google.Apis.Document.v1
                     /// </param>
                     public virtual TrainRequest Train(Google.Apis.Document.v1.Data.GoogleCloudDocumentaiV1TrainProcessorVersionRequest body, string parent)
                     {
-                        return new TrainRequest(service, body, parent);
+                        return new TrainRequest(this.service, body, parent);
                     }
 
                     /// <summary>
@@ -1483,7 +1483,7 @@ namespace Google.Apis.Document.v1
                     /// <param name="name">Required. The processor version resource name to be undeployed.</param>
                     public virtual UndeployRequest Undeploy(Google.Apis.Document.v1.Data.GoogleCloudDocumentaiV1UndeployProcessorVersionRequest body, string name)
                     {
-                        return new UndeployRequest(service, body, name);
+                        return new UndeployRequest(this.service, body, name);
                     }
 
                     /// <summary>Undeploys the processor version.</summary>
@@ -1544,7 +1544,7 @@ namespace Google.Apis.Document.v1
                 /// </param>
                 public virtual BatchProcessRequest BatchProcess(Google.Apis.Document.v1.Data.GoogleCloudDocumentaiV1BatchProcessRequest body, string name)
                 {
-                    return new BatchProcessRequest(service, body, name);
+                    return new BatchProcessRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -1610,7 +1610,7 @@ namespace Google.Apis.Document.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Document.v1.Data.GoogleCloudDocumentaiV1Processor body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -1671,7 +1671,7 @@ namespace Google.Apis.Document.v1
                 /// <param name="name">Required. The processor resource name to be deleted.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -1720,7 +1720,7 @@ namespace Google.Apis.Document.v1
                 /// <param name="name">Required. The processor resource name to be disabled.</param>
                 public virtual DisableRequest Disable(Google.Apis.Document.v1.Data.GoogleCloudDocumentaiV1DisableProcessorRequest body, string name)
                 {
-                    return new DisableRequest(service, body, name);
+                    return new DisableRequest(this.service, body, name);
                 }
 
                 /// <summary>Disables a processor</summary>
@@ -1773,7 +1773,7 @@ namespace Google.Apis.Document.v1
                 /// <param name="name">Required. The processor resource name to be enabled.</param>
                 public virtual EnableRequest Enable(Google.Apis.Document.v1.Data.GoogleCloudDocumentaiV1EnableProcessorRequest body, string name)
                 {
-                    return new EnableRequest(service, body, name);
+                    return new EnableRequest(this.service, body, name);
                 }
 
                 /// <summary>Enables a processor</summary>
@@ -1825,7 +1825,7 @@ namespace Google.Apis.Document.v1
                 /// <param name="name">Required. The processor resource name.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets a processor detail.</summary>
@@ -1873,7 +1873,7 @@ namespace Google.Apis.Document.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists all processors which belong to this project.</summary>
@@ -1957,7 +1957,7 @@ namespace Google.Apis.Document.v1
                 /// </param>
                 public virtual ProcessRequest Process(Google.Apis.Document.v1.Data.GoogleCloudDocumentaiV1ProcessRequest body, string name)
                 {
-                    return new ProcessRequest(service, body, name);
+                    return new ProcessRequest(this.service, body, name);
                 }
 
                 /// <summary>Processes a single document.</summary>
@@ -2020,7 +2020,7 @@ namespace Google.Apis.Document.v1
                 /// </param>
                 public virtual SetDefaultProcessorVersionRequest SetDefaultProcessorVersion(Google.Apis.Document.v1.Data.GoogleCloudDocumentaiV1SetDefaultProcessorVersionRequest body, string processor)
                 {
-                    return new SetDefaultProcessorVersionRequest(service, body, processor);
+                    return new SetDefaultProcessorVersionRequest(this.service, body, processor);
                 }
 
                 /// <summary>
@@ -2080,7 +2080,7 @@ namespace Google.Apis.Document.v1
             /// </param>
             public virtual FetchProcessorTypesRequest FetchProcessorTypes(string parent)
             {
-                return new FetchProcessorTypesRequest(service, parent);
+                return new FetchProcessorTypesRequest(this.service, parent);
             }
 
             /// <summary>
@@ -2130,7 +2130,7 @@ namespace Google.Apis.Document.v1
             /// <param name="name">Resource name for the location.</param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets information about a location.</summary>
@@ -2175,7 +2175,7 @@ namespace Google.Apis.Document.v1
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
             {
-                return new ListRequest(service, name);
+                return new ListRequest(this.service, name);
             }
 
             /// <summary>Lists information about the supported locations for this service.</summary>
@@ -2285,7 +2285,7 @@ namespace Google.Apis.Document.v1
             /// <param name="name">The name of the operation resource.</param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>
@@ -2538,8 +2538,8 @@ namespace Google.Apis.Document.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>A related resource to this operation.</summary>
@@ -2587,8 +2587,8 @@ namespace Google.Apis.Document.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -3292,8 +3292,8 @@ namespace Google.Apis.Document.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The list of response details of each document.</summary>
@@ -3344,8 +3344,8 @@ namespace Google.Apis.Document.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -3462,8 +3462,8 @@ namespace Google.Apis.Document.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>A related resource to this operation.</summary>
@@ -3511,8 +3511,8 @@ namespace Google.Apis.Document.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -4568,8 +4568,8 @@ namespace Google.Apis.Document.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Human Review information of this revision.</summary>
@@ -4998,8 +4998,8 @@ namespace Google.Apis.Document.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Counters for the documents used in the evaluation.</summary>
@@ -5550,8 +5550,8 @@ namespace Google.Apis.Document.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The default processor version.</summary>
@@ -5696,8 +5696,8 @@ namespace Google.Apis.Document.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>If set, information about the eventual deprecation of this version.</summary>
@@ -5796,8 +5796,8 @@ namespace Google.Apis.Document.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? DeprecationTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DeprecationTimeRaw);
-            set => DeprecationTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DeprecationTimeRaw);
+            set => DeprecationTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>If set, the processor version that will be used as a replacement.</summary>
@@ -7070,8 +7070,8 @@ namespace Google.Apis.Document.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Human Review information of this revision.</summary>
@@ -7364,8 +7364,8 @@ namespace Google.Apis.Document.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The state of the current batch processing.</summary>
@@ -7409,8 +7409,8 @@ namespace Google.Apis.Document.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -8500,8 +8500,8 @@ namespace Google.Apis.Document.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Human Review information of this revision.</summary>
@@ -8802,8 +8802,8 @@ namespace Google.Apis.Document.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The state of the current batch processing.</summary>
@@ -8847,8 +8847,8 @@ namespace Google.Apis.Document.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -8996,8 +8996,8 @@ namespace Google.Apis.Document.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The list of response details of each document.</summary>
@@ -9048,8 +9048,8 @@ namespace Google.Apis.Document.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -9136,8 +9136,8 @@ namespace Google.Apis.Document.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>A related resource to this operation.</summary>
@@ -9185,8 +9185,8 @@ namespace Google.Apis.Document.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -9589,8 +9589,8 @@ namespace Google.Apis.Document.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The Crowd Compute question ID.</summary>
@@ -9641,8 +9641,8 @@ namespace Google.Apis.Document.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>

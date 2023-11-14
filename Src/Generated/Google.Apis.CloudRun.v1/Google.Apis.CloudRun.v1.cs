@@ -308,7 +308,7 @@ namespace Google.Apis.CloudRun.v1
             /// <param name="parent">Name of the parent Project resource. Example: `projects/myproject`.</param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>List authorized domains.</summary>
@@ -398,7 +398,7 @@ namespace Google.Apis.CloudRun.v1
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Get information about a configuration.</summary>
@@ -449,7 +449,7 @@ namespace Google.Apis.CloudRun.v1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>List configurations.</summary>
@@ -606,7 +606,7 @@ namespace Google.Apis.CloudRun.v1
             /// </param>
             public virtual CreateRequest Create(Google.Apis.CloudRun.v1.Data.DomainMapping body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>Create a new domain mapping.</summary>
@@ -681,7 +681,7 @@ namespace Google.Apis.CloudRun.v1
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>Delete a domain mapping.</summary>
@@ -789,7 +789,7 @@ namespace Google.Apis.CloudRun.v1
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Get information about a domain mapping.</summary>
@@ -842,7 +842,7 @@ namespace Google.Apis.CloudRun.v1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>List all domain mappings.</summary>
@@ -1008,7 +1008,7 @@ namespace Google.Apis.CloudRun.v1
             /// </param>
             public virtual CancelRequest Cancel(Google.Apis.CloudRun.v1.Data.CancelExecutionRequest body, string name)
             {
-                return new CancelRequest(service, body, name);
+                return new CancelRequest(this.service, body, name);
             }
 
             /// <summary>Cancel an execution.</summary>
@@ -1066,7 +1066,7 @@ namespace Google.Apis.CloudRun.v1
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>Delete an execution.</summary>
@@ -1155,7 +1155,7 @@ namespace Google.Apis.CloudRun.v1
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Get information about an execution.</summary>
@@ -1206,7 +1206,7 @@ namespace Google.Apis.CloudRun.v1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>List executions.</summary>
@@ -1363,7 +1363,7 @@ namespace Google.Apis.CloudRun.v1
             /// </param>
             public virtual CreateRequest Create(Google.Apis.CloudRun.v1.Data.Job body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>Create a job.</summary>
@@ -1421,7 +1421,7 @@ namespace Google.Apis.CloudRun.v1
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>Delete a job.</summary>
@@ -1512,7 +1512,7 @@ namespace Google.Apis.CloudRun.v1
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Get information about a job.</summary>
@@ -1563,7 +1563,7 @@ namespace Google.Apis.CloudRun.v1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>List jobs.</summary>
@@ -1706,7 +1706,7 @@ namespace Google.Apis.CloudRun.v1
             /// </param>
             public virtual ReplaceJobRequest ReplaceJob(Google.Apis.CloudRun.v1.Data.Job body, string name)
             {
-                return new ReplaceJobRequest(service, body, name);
+                return new ReplaceJobRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -1769,7 +1769,7 @@ namespace Google.Apis.CloudRun.v1
             /// </param>
             public virtual RunRequest Run(Google.Apis.CloudRun.v1.Data.RunJobRequest body, string name)
             {
-                return new RunRequest(service, body, name);
+                return new RunRequest(this.service, body, name);
             }
 
             /// <summary>Trigger creation of a new execution of this job.</summary>
@@ -1845,7 +1845,7 @@ namespace Google.Apis.CloudRun.v1
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>Delete a revision.</summary>
@@ -1950,7 +1950,7 @@ namespace Google.Apis.CloudRun.v1
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Get information about a revision.</summary>
@@ -2002,7 +2002,7 @@ namespace Google.Apis.CloudRun.v1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>List revisions.</summary>
@@ -2167,7 +2167,7 @@ namespace Google.Apis.CloudRun.v1
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Get information about a route.</summary>
@@ -2219,7 +2219,7 @@ namespace Google.Apis.CloudRun.v1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>List routes.</summary>
@@ -2390,7 +2390,7 @@ namespace Google.Apis.CloudRun.v1
             /// </param>
             public virtual CreateRequest Create(Google.Apis.CloudRun.v1.Data.Service body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -2473,7 +2473,7 @@ namespace Google.Apis.CloudRun.v1
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>
@@ -2582,7 +2582,7 @@ namespace Google.Apis.CloudRun.v1
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets information about a service.</summary>
@@ -2637,7 +2637,7 @@ namespace Google.Apis.CloudRun.v1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists services for the given project and region.</summary>
@@ -2783,7 +2783,7 @@ namespace Google.Apis.CloudRun.v1
             /// </param>
             public virtual ReplaceServiceRequest ReplaceService(Google.Apis.CloudRun.v1.Data.Service body, string name)
             {
-                return new ReplaceServiceRequest(service, body, name);
+                return new ReplaceServiceRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -2880,7 +2880,7 @@ namespace Google.Apis.CloudRun.v1
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Get information about a task.</summary>
@@ -2931,7 +2931,7 @@ namespace Google.Apis.CloudRun.v1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>List tasks.</summary>
@@ -3109,7 +3109,7 @@ namespace Google.Apis.CloudRun.v1
             /// <param name="parent">Name of the parent Project resource. Example: `projects/myproject`.</param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>List authorized domains.</summary>
@@ -3220,7 +3220,7 @@ namespace Google.Apis.CloudRun.v1
                 /// <param name="parent">Name of the parent Project resource. Example: `projects/myproject`.</param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>List authorized domains.</summary>
@@ -3310,7 +3310,7 @@ namespace Google.Apis.CloudRun.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Get information about a configuration.</summary>
@@ -3361,7 +3361,7 @@ namespace Google.Apis.CloudRun.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>List configurations.</summary>
@@ -3519,7 +3519,7 @@ namespace Google.Apis.CloudRun.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.CloudRun.v1.Data.DomainMapping body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Create a new domain mapping.</summary>
@@ -3594,7 +3594,7 @@ namespace Google.Apis.CloudRun.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Delete a domain mapping.</summary>
@@ -3702,7 +3702,7 @@ namespace Google.Apis.CloudRun.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Get information about a domain mapping.</summary>
@@ -3755,7 +3755,7 @@ namespace Google.Apis.CloudRun.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>List all domain mappings.</summary>
@@ -3925,7 +3925,7 @@ namespace Google.Apis.CloudRun.v1
                 /// </param>
                 public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                 {
-                    return new GetIamPolicyRequest(service, resource);
+                    return new GetIamPolicyRequest(this.service, resource);
                 }
 
                 /// <summary>
@@ -4005,7 +4005,7 @@ namespace Google.Apis.CloudRun.v1
                 /// </param>
                 public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.CloudRun.v1.Data.SetIamPolicyRequest body, string resource)
                 {
-                    return new SetIamPolicyRequest(service, body, resource);
+                    return new SetIamPolicyRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -4071,7 +4071,7 @@ namespace Google.Apis.CloudRun.v1
                 /// </param>
                 public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.CloudRun.v1.Data.TestIamPermissionsRequest body, string resource)
                 {
-                    return new TestIamPermissionsRequest(service, body, resource);
+                    return new TestIamPermissionsRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -4151,7 +4151,7 @@ namespace Google.Apis.CloudRun.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Delete a revision.</summary>
@@ -4257,7 +4257,7 @@ namespace Google.Apis.CloudRun.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Get information about a revision.</summary>
@@ -4310,7 +4310,7 @@ namespace Google.Apis.CloudRun.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>List revisions.</summary>
@@ -4476,7 +4476,7 @@ namespace Google.Apis.CloudRun.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Get information about a route.</summary>
@@ -4529,7 +4529,7 @@ namespace Google.Apis.CloudRun.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>List routes.</summary>
@@ -4701,7 +4701,7 @@ namespace Google.Apis.CloudRun.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.CloudRun.v1.Data.Service body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -4785,7 +4785,7 @@ namespace Google.Apis.CloudRun.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -4894,7 +4894,7 @@ namespace Google.Apis.CloudRun.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets information about a service.</summary>
@@ -4951,7 +4951,7 @@ namespace Google.Apis.CloudRun.v1
                 /// </param>
                 public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                 {
-                    return new GetIamPolicyRequest(service, resource);
+                    return new GetIamPolicyRequest(this.service, resource);
                 }
 
                 /// <summary>
@@ -5029,7 +5029,7 @@ namespace Google.Apis.CloudRun.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists services for the given project and region.</summary>
@@ -5177,7 +5177,7 @@ namespace Google.Apis.CloudRun.v1
                 /// </param>
                 public virtual ReplaceServiceRequest ReplaceService(Google.Apis.CloudRun.v1.Data.Service body, string name)
                 {
-                    return new ReplaceServiceRequest(service, body, name);
+                    return new ReplaceServiceRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -5260,7 +5260,7 @@ namespace Google.Apis.CloudRun.v1
                 /// </param>
                 public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.CloudRun.v1.Data.SetIamPolicyRequest body, string resource)
                 {
-                    return new SetIamPolicyRequest(service, body, resource);
+                    return new SetIamPolicyRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -5326,7 +5326,7 @@ namespace Google.Apis.CloudRun.v1
                 /// </param>
                 public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.CloudRun.v1.Data.TestIamPermissionsRequest body, string resource)
                 {
-                    return new TestIamPermissionsRequest(service, body, resource);
+                    return new TestIamPermissionsRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -5386,7 +5386,7 @@ namespace Google.Apis.CloudRun.v1
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
             {
-                return new ListRequest(service, name);
+                return new ListRequest(this.service, name);
             }
 
             /// <summary>Lists information about the supported locations for this service.</summary>
@@ -6231,8 +6231,8 @@ namespace Google.Apis.CloudRun.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CompletionTimestampDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CompletionTimestampRaw);
-            set => CompletionTimestampRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CompletionTimestampRaw);
+            set => CompletionTimestampRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _creationTimestampRaw;
@@ -6270,8 +6270,8 @@ namespace Google.Apis.CloudRun.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreationTimestampDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreationTimestampRaw);
-            set => CreationTimestampRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreationTimestampRaw);
+            set => CreationTimestampRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Optional. Name of the execution.</summary>
@@ -6356,8 +6356,8 @@ namespace Google.Apis.CloudRun.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CompletionTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CompletionTimeRaw);
-            set => CompletionTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CompletionTimeRaw);
+            set => CompletionTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -6426,8 +6426,8 @@ namespace Google.Apis.CloudRun.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Optional. The number of tasks which reached phase Succeeded.</summary>
@@ -6567,8 +6567,8 @@ namespace Google.Apis.CloudRun.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LastTransitionTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastTransitionTimeRaw);
-            set => LastTransitionTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastTransitionTimeRaw);
+            set => LastTransitionTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Optional. Human readable message indicating details about the current status.</summary>
@@ -7179,8 +7179,8 @@ namespace Google.Apis.CloudRun.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreationTimestampDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreationTimestampRaw);
-            set => CreationTimestampRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreationTimestampRaw);
+            set => CreationTimestampRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Not supported by Cloud Run</summary>
@@ -7225,8 +7225,8 @@ namespace Google.Apis.CloudRun.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? DeletionTimestampDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DeletionTimestampRaw);
-            set => DeletionTimestampRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DeletionTimestampRaw);
+            set => DeletionTimestampRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Not supported by Cloud Run</summary>
@@ -8336,8 +8336,8 @@ namespace Google.Apis.CloudRun.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CompletionTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CompletionTimeRaw);
-            set => CompletionTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CompletionTimeRaw);
+            set => CompletionTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -8408,8 +8408,8 @@ namespace Google.Apis.CloudRun.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>

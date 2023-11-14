@@ -351,7 +351,7 @@ namespace Google.Apis.Cloudchannel.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Cloudchannel.v1.Data.GoogleCloudChannelV1ChannelPartnerRepricingConfig body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -434,7 +434,7 @@ namespace Google.Apis.Cloudchannel.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -498,7 +498,7 @@ namespace Google.Apis.Cloudchannel.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -566,7 +566,7 @@ namespace Google.Apis.Cloudchannel.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>
@@ -691,7 +691,7 @@ namespace Google.Apis.Cloudchannel.v1
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.Cloudchannel.v1.Data.GoogleCloudChannelV1ChannelPartnerRepricingConfig body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -788,7 +788,7 @@ namespace Google.Apis.Cloudchannel.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Cloudchannel.v1.Data.GoogleCloudChannelV1Customer body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -855,7 +855,7 @@ namespace Google.Apis.Cloudchannel.v1
                 /// <param name="name">Required. The resource name of the customer to delete.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -914,7 +914,7 @@ namespace Google.Apis.Cloudchannel.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -981,7 +981,7 @@ namespace Google.Apis.Cloudchannel.v1
                 /// </param>
                 public virtual ImportRequest Import(Google.Apis.Cloudchannel.v1.Data.GoogleCloudChannelV1ImportCustomerRequest body, string parent)
                 {
-                    return new ImportRequest(service, body, parent);
+                    return new ImportRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -1053,7 +1053,7 @@ namespace Google.Apis.Cloudchannel.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>
@@ -1161,7 +1161,7 @@ namespace Google.Apis.Cloudchannel.v1
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.Cloudchannel.v1.Data.GoogleCloudChannelV1Customer body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -1250,7 +1250,7 @@ namespace Google.Apis.Cloudchannel.v1
             /// </param>
             public virtual CreateRequest Create(Google.Apis.Cloudchannel.v1.Data.GoogleCloudChannelV1ChannelPartnerLink body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -1325,7 +1325,7 @@ namespace Google.Apis.Cloudchannel.v1
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>
@@ -1417,7 +1417,7 @@ namespace Google.Apis.Cloudchannel.v1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>
@@ -1546,7 +1546,7 @@ namespace Google.Apis.Cloudchannel.v1
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.Cloudchannel.v1.Data.GoogleCloudChannelV1UpdateChannelPartnerLinkRequest body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -1671,7 +1671,7 @@ namespace Google.Apis.Cloudchannel.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Cloudchannel.v1.Data.GoogleCloudChannelV1CustomerRepricingConfig body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -1755,7 +1755,7 @@ namespace Google.Apis.Cloudchannel.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -1819,7 +1819,7 @@ namespace Google.Apis.Cloudchannel.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -1887,7 +1887,7 @@ namespace Google.Apis.Cloudchannel.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>
@@ -2012,7 +2012,7 @@ namespace Google.Apis.Cloudchannel.v1
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.Cloudchannel.v1.Data.GoogleCloudChannelV1CustomerRepricingConfig body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -2115,7 +2115,7 @@ namespace Google.Apis.Cloudchannel.v1
                 /// </param>
                 public virtual ActivateRequest Activate(Google.Apis.Cloudchannel.v1.Data.GoogleCloudChannelV1ActivateEntitlementRequest body, string name)
                 {
-                    return new ActivateRequest(service, body, name);
+                    return new ActivateRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -2200,7 +2200,7 @@ namespace Google.Apis.Cloudchannel.v1
                 /// </param>
                 public virtual CancelRequest Cancel(Google.Apis.Cloudchannel.v1.Data.GoogleCloudChannelV1CancelEntitlementRequest body, string name)
                 {
-                    return new CancelRequest(service, body, name);
+                    return new CancelRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -2282,7 +2282,7 @@ namespace Google.Apis.Cloudchannel.v1
                 /// </param>
                 public virtual ChangeOfferRequest ChangeOffer(Google.Apis.Cloudchannel.v1.Data.GoogleCloudChannelV1ChangeOfferRequest body, string name)
                 {
-                    return new ChangeOfferRequest(service, body, name);
+                    return new ChangeOfferRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -2362,7 +2362,7 @@ namespace Google.Apis.Cloudchannel.v1
                 /// </param>
                 public virtual ChangeParametersRequest ChangeParameters(Google.Apis.Cloudchannel.v1.Data.GoogleCloudChannelV1ChangeParametersRequest body, string name)
                 {
-                    return new ChangeParametersRequest(service, body, name);
+                    return new ChangeParametersRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -2443,7 +2443,7 @@ namespace Google.Apis.Cloudchannel.v1
                 /// </param>
                 public virtual ChangeRenewalSettingsRequest ChangeRenewalSettings(Google.Apis.Cloudchannel.v1.Data.GoogleCloudChannelV1ChangeRenewalSettingsRequest body, string name)
                 {
-                    return new ChangeRenewalSettingsRequest(service, body, name);
+                    return new ChangeRenewalSettingsRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -2531,7 +2531,7 @@ namespace Google.Apis.Cloudchannel.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Cloudchannel.v1.Data.GoogleCloudChannelV1CreateEntitlementRequest body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -2612,7 +2612,7 @@ namespace Google.Apis.Cloudchannel.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -2672,7 +2672,7 @@ namespace Google.Apis.Cloudchannel.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>
@@ -2769,7 +2769,7 @@ namespace Google.Apis.Cloudchannel.v1
                 /// </param>
                 public virtual ListEntitlementChangesRequest ListEntitlementChanges(string parent)
                 {
-                    return new ListEntitlementChangesRequest(service, parent);
+                    return new ListEntitlementChangesRequest(this.service, parent);
                 }
 
                 /// <summary>
@@ -2879,7 +2879,7 @@ namespace Google.Apis.Cloudchannel.v1
                 /// </param>
                 public virtual LookupOfferRequest LookupOffer(string entitlement)
                 {
-                    return new LookupOfferRequest(service, entitlement);
+                    return new LookupOfferRequest(this.service, entitlement);
                 }
 
                 /// <summary>
@@ -2946,7 +2946,7 @@ namespace Google.Apis.Cloudchannel.v1
                 /// </param>
                 public virtual StartPaidServiceRequest StartPaidService(Google.Apis.Cloudchannel.v1.Data.GoogleCloudChannelV1StartPaidServiceRequest body, string name)
                 {
-                    return new StartPaidServiceRequest(service, body, name);
+                    return new StartPaidServiceRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -3025,7 +3025,7 @@ namespace Google.Apis.Cloudchannel.v1
                 /// </param>
                 public virtual SuspendRequest Suspend(Google.Apis.Cloudchannel.v1.Data.GoogleCloudChannelV1SuspendEntitlementRequest body, string name)
                 {
-                    return new SuspendRequest(service, body, name);
+                    return new SuspendRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -3101,7 +3101,7 @@ namespace Google.Apis.Cloudchannel.v1
             /// </param>
             public virtual CreateRequest Create(Google.Apis.Cloudchannel.v1.Data.GoogleCloudChannelV1Customer body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -3168,7 +3168,7 @@ namespace Google.Apis.Cloudchannel.v1
             /// <param name="name">Required. The resource name of the customer to delete.</param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>
@@ -3226,7 +3226,7 @@ namespace Google.Apis.Cloudchannel.v1
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>
@@ -3292,7 +3292,7 @@ namespace Google.Apis.Cloudchannel.v1
             /// </param>
             public virtual ImportRequest Import(Google.Apis.Cloudchannel.v1.Data.GoogleCloudChannelV1ImportCustomerRequest body, string parent)
             {
-                return new ImportRequest(service, body, parent);
+                return new ImportRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -3363,7 +3363,7 @@ namespace Google.Apis.Cloudchannel.v1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>
@@ -3469,7 +3469,7 @@ namespace Google.Apis.Cloudchannel.v1
             /// </param>
             public virtual ListPurchasableOffersRequest ListPurchasableOffers(string customer)
             {
-                return new ListPurchasableOffersRequest(service, customer);
+                return new ListPurchasableOffersRequest(this.service, customer);
             }
 
             /// <summary>
@@ -3648,7 +3648,7 @@ namespace Google.Apis.Cloudchannel.v1
             /// </param>
             public virtual ListPurchasableSkusRequest ListPurchasableSkus(string customer)
             {
-                return new ListPurchasableSkusRequest(service, customer);
+                return new ListPurchasableSkusRequest(this.service, customer);
             }
 
             /// <summary>
@@ -3808,7 +3808,7 @@ namespace Google.Apis.Cloudchannel.v1
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.Cloudchannel.v1.Data.GoogleCloudChannelV1Customer body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -3894,7 +3894,7 @@ namespace Google.Apis.Cloudchannel.v1
             /// </param>
             public virtual ProvisionCloudIdentityRequest ProvisionCloudIdentity(Google.Apis.Cloudchannel.v1.Data.GoogleCloudChannelV1ProvisionCloudIdentityRequest body, string customer)
             {
-                return new ProvisionCloudIdentityRequest(service, body, customer);
+                return new ProvisionCloudIdentityRequest(this.service, body, customer);
             }
 
             /// <summary>
@@ -3969,7 +3969,7 @@ namespace Google.Apis.Cloudchannel.v1
             /// </param>
             public virtual QueryEligibleBillingAccountsRequest QueryEligibleBillingAccounts(string customer)
             {
-                return new QueryEligibleBillingAccountsRequest(service, customer);
+                return new QueryEligibleBillingAccountsRequest(this.service, customer);
             }
 
             /// <summary>
@@ -4057,7 +4057,7 @@ namespace Google.Apis.Cloudchannel.v1
             /// </param>
             public virtual TransferEntitlementsRequest TransferEntitlements(Google.Apis.Cloudchannel.v1.Data.GoogleCloudChannelV1TransferEntitlementsRequest body, string parent)
             {
-                return new TransferEntitlementsRequest(service, body, parent);
+                return new TransferEntitlementsRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -4145,7 +4145,7 @@ namespace Google.Apis.Cloudchannel.v1
             /// </param>
             public virtual TransferEntitlementsToGoogleRequest TransferEntitlementsToGoogle(Google.Apis.Cloudchannel.v1.Data.GoogleCloudChannelV1TransferEntitlementsToGoogleRequest body, string parent)
             {
-                return new TransferEntitlementsToGoogleRequest(service, body, parent);
+                return new TransferEntitlementsToGoogleRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -4238,7 +4238,7 @@ namespace Google.Apis.Cloudchannel.v1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>
@@ -4385,7 +4385,7 @@ namespace Google.Apis.Cloudchannel.v1
             /// </param>
             public virtual FetchReportResultsRequest FetchReportResults(Google.Apis.Cloudchannel.v1.Data.GoogleCloudChannelV1FetchReportResultsRequest body, string reportJob)
             {
-                return new FetchReportResultsRequest(service, body, reportJob);
+                return new FetchReportResultsRequest(this.service, body, reportJob);
             }
 
             /// <summary>Retrieves data generated by CloudChannelReportsService.RunReportJob.</summary>
@@ -4464,7 +4464,7 @@ namespace Google.Apis.Cloudchannel.v1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>
@@ -4575,7 +4575,7 @@ namespace Google.Apis.Cloudchannel.v1
             /// </param>
             public virtual RunRequest Run(Google.Apis.Cloudchannel.v1.Data.GoogleCloudChannelV1RunReportJobRequest body, string name)
             {
-                return new RunRequest(service, body, name);
+                return new RunRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -4687,7 +4687,7 @@ namespace Google.Apis.Cloudchannel.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>
@@ -4786,7 +4786,7 @@ namespace Google.Apis.Cloudchannel.v1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>
@@ -4884,7 +4884,7 @@ namespace Google.Apis.Cloudchannel.v1
         /// </param>
         public virtual CheckCloudIdentityAccountsExistRequest CheckCloudIdentityAccountsExist(Google.Apis.Cloudchannel.v1.Data.GoogleCloudChannelV1CheckCloudIdentityAccountsExistRequest body, string parent)
         {
-            return new CheckCloudIdentityAccountsExistRequest(service, body, parent);
+            return new CheckCloudIdentityAccountsExistRequest(this.service, body, parent);
         }
 
         /// <summary>
@@ -4953,7 +4953,7 @@ namespace Google.Apis.Cloudchannel.v1
         /// <param name="account">Required. Resource name of the account.</param>
         public virtual ListSubscribersRequest ListSubscribers(string account)
         {
-            return new ListSubscribersRequest(service, account);
+            return new ListSubscribersRequest(this.service, account);
         }
 
         /// <summary>
@@ -5048,7 +5048,7 @@ namespace Google.Apis.Cloudchannel.v1
         /// <param name="parent">Required. The resource name of the reseller's account.</param>
         public virtual ListTransferableOffersRequest ListTransferableOffers(Google.Apis.Cloudchannel.v1.Data.GoogleCloudChannelV1ListTransferableOffersRequest body, string parent)
         {
-            return new ListTransferableOffersRequest(service, body, parent);
+            return new ListTransferableOffersRequest(this.service, body, parent);
         }
 
         /// <summary>
@@ -5119,7 +5119,7 @@ namespace Google.Apis.Cloudchannel.v1
         /// </param>
         public virtual ListTransferableSkusRequest ListTransferableSkus(Google.Apis.Cloudchannel.v1.Data.GoogleCloudChannelV1ListTransferableSkusRequest body, string parent)
         {
-            return new ListTransferableSkusRequest(service, body, parent);
+            return new ListTransferableSkusRequest(this.service, body, parent);
         }
 
         /// <summary>
@@ -5189,7 +5189,7 @@ namespace Google.Apis.Cloudchannel.v1
         /// <param name="account">Required. Resource name of the account.</param>
         public virtual RegisterRequest Register(Google.Apis.Cloudchannel.v1.Data.GoogleCloudChannelV1RegisterSubscriberRequest body, string account)
         {
-            return new RegisterRequest(service, body, account);
+            return new RegisterRequest(this.service, body, account);
         }
 
         /// <summary>
@@ -5260,7 +5260,7 @@ namespace Google.Apis.Cloudchannel.v1
         /// <param name="account">Required. Resource name of the account.</param>
         public virtual UnregisterRequest Unregister(Google.Apis.Cloudchannel.v1.Data.GoogleCloudChannelV1UnregisterSubscriberRequest body, string account)
         {
-            return new UnregisterRequest(service, body, account);
+            return new UnregisterRequest(this.service, body, account);
         }
 
         /// <summary>
@@ -5345,7 +5345,7 @@ namespace Google.Apis.Cloudchannel.v1
         /// <param name="name">The name of the operation resource to be cancelled.</param>
         public virtual CancelRequest Cancel(Google.Apis.Cloudchannel.v1.Data.GoogleLongrunningCancelOperationRequest body, string name)
         {
-            return new CancelRequest(service, body, name);
+            return new CancelRequest(this.service, body, name);
         }
 
         /// <summary>
@@ -5408,7 +5408,7 @@ namespace Google.Apis.Cloudchannel.v1
         /// <param name="name">The name of the operation resource to be deleted.</param>
         public virtual DeleteRequest Delete(string name)
         {
-            return new DeleteRequest(service, name);
+            return new DeleteRequest(this.service, name);
         }
 
         /// <summary>
@@ -5460,7 +5460,7 @@ namespace Google.Apis.Cloudchannel.v1
         /// <param name="name">The name of the operation resource.</param>
         public virtual GetRequest Get(string name)
         {
-            return new GetRequest(service, name);
+            return new GetRequest(this.service, name);
         }
 
         /// <summary>
@@ -5511,7 +5511,7 @@ namespace Google.Apis.Cloudchannel.v1
         /// <param name="name">The name of the operation's parent resource.</param>
         public virtual ListRequest List(string name)
         {
-            return new ListRequest(service, name);
+            return new ListRequest(this.service, name);
         }
 
         /// <summary>
@@ -5634,7 +5634,7 @@ namespace Google.Apis.Cloudchannel.v1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>
@@ -5742,7 +5742,7 @@ namespace Google.Apis.Cloudchannel.v1
         /// </summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>
@@ -5942,8 +5942,8 @@ namespace Google.Apis.Cloudchannel.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. The 3-letter currency code defined in ISO 4217.</summary>
@@ -6132,8 +6132,8 @@ namespace Google.Apis.Cloudchannel.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. URI of the web page where partner accepts the link invitation.</summary>
@@ -6195,8 +6195,8 @@ namespace Google.Apis.Cloudchannel.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -6258,8 +6258,8 @@ namespace Google.Apis.Cloudchannel.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -6423,8 +6423,8 @@ namespace Google.Apis.Cloudchannel.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Optional. Renewal settings applicable for a commitment-based Offer.</summary>
@@ -6464,8 +6464,8 @@ namespace Google.Apis.Cloudchannel.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -6635,8 +6635,8 @@ namespace Google.Apis.Cloudchannel.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Required. The customer's primary domain. Must match the primary contact email's domain.</summary>
@@ -6705,8 +6705,8 @@ namespace Google.Apis.Cloudchannel.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -6799,8 +6799,8 @@ namespace Google.Apis.Cloudchannel.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -6911,8 +6911,8 @@ namespace Google.Apis.Cloudchannel.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -6997,8 +6997,8 @@ namespace Google.Apis.Cloudchannel.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -7053,8 +7053,8 @@ namespace Google.Apis.Cloudchannel.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -7694,8 +7694,8 @@ namespace Google.Apis.Cloudchannel.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Marketing information for the Offer.</summary>
@@ -7755,8 +7755,8 @@ namespace Google.Apis.Cloudchannel.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -8266,8 +8266,8 @@ namespace Google.Apis.Cloudchannel.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _startTimeRaw;
@@ -8303,8 +8303,8 @@ namespace Google.Apis.Cloudchannel.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The current state of the report generation process.</summary>
@@ -8792,8 +8792,8 @@ namespace Google.Apis.Cloudchannel.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -8970,8 +8970,8 @@ namespace Google.Apis.Cloudchannel.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Optional. Renewal settings applicable for a commitment-based Offer.</summary>
@@ -9011,8 +9011,8 @@ namespace Google.Apis.Cloudchannel.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -9135,8 +9135,8 @@ namespace Google.Apis.Cloudchannel.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -9237,8 +9237,8 @@ namespace Google.Apis.Cloudchannel.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -9498,8 +9498,8 @@ namespace Google.Apis.Cloudchannel.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _startTimeRaw;
@@ -9535,8 +9535,8 @@ namespace Google.Apis.Cloudchannel.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The current state of the report generation process.</summary>
@@ -9639,8 +9639,8 @@ namespace Google.Apis.Cloudchannel.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>

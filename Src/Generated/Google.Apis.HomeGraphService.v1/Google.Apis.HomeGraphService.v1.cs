@@ -282,7 +282,7 @@ namespace Google.Apis.HomeGraphService.v1
         /// <param name="agentUserId">Required. Third-party user ID.</param>
         public virtual DeleteRequest Delete(string agentUserId)
         {
-            return new DeleteRequest(service, agentUserId);
+            return new DeleteRequest(this.service, agentUserId);
         }
 
         /// <summary>
@@ -364,7 +364,7 @@ namespace Google.Apis.HomeGraphService.v1
         /// <param name="body">The body of the request.</param>
         public virtual QueryRequest Query(Google.Apis.HomeGraphService.v1.Data.QueryRequest body)
         {
-            return new QueryRequest(service, body);
+            return new QueryRequest(this.service, body);
         }
 
         /// <summary>
@@ -416,7 +416,7 @@ namespace Google.Apis.HomeGraphService.v1
         /// <param name="body">The body of the request.</param>
         public virtual ReportStateAndNotificationRequest ReportStateAndNotification(Google.Apis.HomeGraphService.v1.Data.ReportStateAndNotificationRequest body)
         {
-            return new ReportStateAndNotificationRequest(service, body);
+            return new ReportStateAndNotificationRequest(this.service, body);
         }
 
         /// <summary>
@@ -470,7 +470,7 @@ namespace Google.Apis.HomeGraphService.v1
         /// <param name="body">The body of the request.</param>
         public virtual RequestSyncRequest RequestSync(Google.Apis.HomeGraphService.v1.Data.RequestSyncDevicesRequest body)
         {
-            return new RequestSyncRequest(service, body);
+            return new RequestSyncRequest(this.service, body);
         }
 
         /// <summary>
@@ -519,7 +519,7 @@ namespace Google.Apis.HomeGraphService.v1
         /// <param name="body">The body of the request.</param>
         public virtual SyncRequest Sync(Google.Apis.HomeGraphService.v1.Data.SyncRequest body)
         {
-            return new SyncRequest(service, body);
+            return new SyncRequest(this.service, body);
         }
 
         /// <summary>

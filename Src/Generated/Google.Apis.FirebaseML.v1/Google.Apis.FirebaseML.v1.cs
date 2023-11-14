@@ -286,7 +286,7 @@ namespace Google.Apis.FirebaseML.v1
         /// <param name="name">The name of the operation resource to be cancelled.</param>
         public virtual CancelRequest Cancel(Google.Apis.FirebaseML.v1.Data.CancelOperationRequest body, string name)
         {
-            return new CancelRequest(service, body, name);
+            return new CancelRequest(this.service, body, name);
         }
 
         /// <summary>
@@ -349,7 +349,7 @@ namespace Google.Apis.FirebaseML.v1
         /// <param name="name">The name of the operation resource to be deleted.</param>
         public virtual DeleteRequest Delete(string name)
         {
-            return new DeleteRequest(service, name);
+            return new DeleteRequest(this.service, name);
         }
 
         /// <summary>
@@ -401,7 +401,7 @@ namespace Google.Apis.FirebaseML.v1
         /// <param name="name">The name of the operation's parent resource.</param>
         public virtual ListRequest List(string name)
         {
-            return new ListRequest(service, name);
+            return new ListRequest(this.service, name);
         }
 
         /// <summary>

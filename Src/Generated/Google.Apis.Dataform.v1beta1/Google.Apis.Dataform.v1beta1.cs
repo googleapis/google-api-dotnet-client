@@ -322,7 +322,7 @@ namespace Google.Apis.Dataform.v1beta1
                 /// </param>
                 public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                 {
-                    return new GetIamPolicyRequest(service, resource);
+                    return new GetIamPolicyRequest(this.service, resource);
                 }
 
                 /// <summary>
@@ -403,7 +403,7 @@ namespace Google.Apis.Dataform.v1beta1
                 /// </param>
                 public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Dataform.v1beta1.Data.SetIamPolicyRequest body, string resource)
                 {
-                    return new SetIamPolicyRequest(service, body, resource);
+                    return new SetIamPolicyRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -472,7 +472,7 @@ namespace Google.Apis.Dataform.v1beta1
                 /// </param>
                 public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Dataform.v1beta1.Data.TestIamPermissionsRequest body, string resource)
                 {
-                    return new TestIamPermissionsRequest(service, body, resource);
+                    return new TestIamPermissionsRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -577,7 +577,7 @@ namespace Google.Apis.Dataform.v1beta1
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.Dataform.v1beta1.Data.CompilationResult body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>Creates a new CompilationResult in a given project and location.</summary>
@@ -632,7 +632,7 @@ namespace Google.Apis.Dataform.v1beta1
                     /// <param name="name">Required. The compilation result's name.</param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Fetches a single CompilationResult.</summary>
@@ -680,7 +680,7 @@ namespace Google.Apis.Dataform.v1beta1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists CompilationResults in a given Repository.</summary>
@@ -759,7 +759,7 @@ namespace Google.Apis.Dataform.v1beta1
                     /// <param name="name">Required. The compilation result's name.</param>
                     public virtual QueryRequest Query(string name)
                     {
-                        return new QueryRequest(service, name);
+                        return new QueryRequest(this.service, name);
                     }
 
                     /// <summary>Returns CompilationResultActions in a given CompilationResult.</summary>
@@ -872,7 +872,7 @@ namespace Google.Apis.Dataform.v1beta1
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.Dataform.v1beta1.Data.ReleaseConfig body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>Creates a new ReleaseConfig in a given Repository.</summary>
@@ -942,7 +942,7 @@ namespace Google.Apis.Dataform.v1beta1
                     /// <param name="name">Required. The release config's name.</param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>Deletes a single ReleaseConfig.</summary>
@@ -987,7 +987,7 @@ namespace Google.Apis.Dataform.v1beta1
                     /// <param name="name">Required. The release config's name.</param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Fetches a single ReleaseConfig.</summary>
@@ -1035,7 +1035,7 @@ namespace Google.Apis.Dataform.v1beta1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists ReleaseConfigs in a given Repository.</summary>
@@ -1115,7 +1115,7 @@ namespace Google.Apis.Dataform.v1beta1
                     /// <param name="name">Output only. The release config's name.</param>
                     public virtual PatchRequest Patch(Google.Apis.Dataform.v1beta1.Data.ReleaseConfig body, string name)
                     {
-                        return new PatchRequest(service, body, name);
+                        return new PatchRequest(this.service, body, name);
                     }
 
                     /// <summary>Updates a single ReleaseConfig.</summary>
@@ -1204,7 +1204,7 @@ namespace Google.Apis.Dataform.v1beta1
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.Dataform.v1beta1.Data.WorkflowConfig body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>Creates a new WorkflowConfig in a given Repository.</summary>
@@ -1274,7 +1274,7 @@ namespace Google.Apis.Dataform.v1beta1
                     /// <param name="name">Required. The workflow config's name.</param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>Deletes a single WorkflowConfig.</summary>
@@ -1319,7 +1319,7 @@ namespace Google.Apis.Dataform.v1beta1
                     /// <param name="name">Required. The workflow config's name.</param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Fetches a single WorkflowConfig.</summary>
@@ -1367,7 +1367,7 @@ namespace Google.Apis.Dataform.v1beta1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists WorkflowConfigs in a given Repository.</summary>
@@ -1447,7 +1447,7 @@ namespace Google.Apis.Dataform.v1beta1
                     /// <param name="name">Output only. The workflow config's name.</param>
                     public virtual PatchRequest Patch(Google.Apis.Dataform.v1beta1.Data.WorkflowConfig body, string name)
                     {
-                        return new PatchRequest(service, body, name);
+                        return new PatchRequest(this.service, body, name);
                     }
 
                     /// <summary>Updates a single WorkflowConfig.</summary>
@@ -1533,7 +1533,7 @@ namespace Google.Apis.Dataform.v1beta1
                     /// <param name="name">Required. The workflow invocation resource's name.</param>
                     public virtual CancelRequest Cancel(Google.Apis.Dataform.v1beta1.Data.CancelWorkflowInvocationRequest body, string name)
                     {
-                        return new CancelRequest(service, body, name);
+                        return new CancelRequest(this.service, body, name);
                     }
 
                     /// <summary>Requests cancellation of a running WorkflowInvocation.</summary>
@@ -1589,7 +1589,7 @@ namespace Google.Apis.Dataform.v1beta1
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.Dataform.v1beta1.Data.WorkflowInvocation body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>Creates a new WorkflowInvocation in a given Repository.</summary>
@@ -1644,7 +1644,7 @@ namespace Google.Apis.Dataform.v1beta1
                     /// <param name="name">Required. The workflow invocation resource's name.</param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>Deletes a single WorkflowInvocation.</summary>
@@ -1689,7 +1689,7 @@ namespace Google.Apis.Dataform.v1beta1
                     /// <param name="name">Required. The workflow invocation resource's name.</param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Fetches a single WorkflowInvocation.</summary>
@@ -1737,7 +1737,7 @@ namespace Google.Apis.Dataform.v1beta1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists WorkflowInvocations in a given Repository.</summary>
@@ -1843,7 +1843,7 @@ namespace Google.Apis.Dataform.v1beta1
                     /// <param name="name">Required. The workflow invocation's name.</param>
                     public virtual QueryRequest Query(string name)
                     {
-                        return new QueryRequest(service, name);
+                        return new QueryRequest(this.service, name);
                     }
 
                     /// <summary>Returns WorkflowInvocationActions in a given WorkflowInvocation.</summary>
@@ -1938,7 +1938,7 @@ namespace Google.Apis.Dataform.v1beta1
                     /// <param name="name">Required. The workspace's name.</param>
                     public virtual CommitRequest Commit(Google.Apis.Dataform.v1beta1.Data.CommitWorkspaceChangesRequest body, string name)
                     {
-                        return new CommitRequest(service, body, name);
+                        return new CommitRequest(this.service, body, name);
                     }
 
                     /// <summary>Applies a Git commit for uncommitted files in a Workspace.</summary>
@@ -1994,7 +1994,7 @@ namespace Google.Apis.Dataform.v1beta1
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.Dataform.v1beta1.Data.Workspace body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>Creates a new Workspace in a given Repository.</summary>
@@ -2064,7 +2064,7 @@ namespace Google.Apis.Dataform.v1beta1
                     /// <param name="name">Required. The workspace resource's name.</param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>Deletes a single Workspace.</summary>
@@ -2109,7 +2109,7 @@ namespace Google.Apis.Dataform.v1beta1
                     /// <param name="workspace">Required. The workspace's name.</param>
                     public virtual FetchFileDiffRequest FetchFileDiff(string workspace)
                     {
-                        return new FetchFileDiffRequest(service, workspace);
+                        return new FetchFileDiffRequest(this.service, workspace);
                     }
 
                     /// <summary>Fetches Git diff for an uncommitted file in a Workspace.</summary>
@@ -2168,7 +2168,7 @@ namespace Google.Apis.Dataform.v1beta1
                     /// <param name="name">Required. The workspace's name.</param>
                     public virtual FetchFileGitStatusesRequest FetchFileGitStatuses(string name)
                     {
-                        return new FetchFileGitStatusesRequest(service, name);
+                        return new FetchFileGitStatusesRequest(this.service, name);
                     }
 
                     /// <summary>Fetches Git statuses for the files in a Workspace.</summary>
@@ -2213,7 +2213,7 @@ namespace Google.Apis.Dataform.v1beta1
                     /// <param name="name">Required. The workspace's name.</param>
                     public virtual FetchGitAheadBehindRequest FetchGitAheadBehind(string name)
                     {
-                        return new FetchGitAheadBehindRequest(service, name);
+                        return new FetchGitAheadBehindRequest(this.service, name);
                     }
 
                     /// <summary>Fetches Git ahead/behind against a remote branch.</summary>
@@ -2273,7 +2273,7 @@ namespace Google.Apis.Dataform.v1beta1
                     /// <param name="name">Required. The workspace's name.</param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Fetches a single Workspace.</summary>
@@ -2325,7 +2325,7 @@ namespace Google.Apis.Dataform.v1beta1
                     /// </param>
                     public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                     {
-                        return new GetIamPolicyRequest(service, resource);
+                        return new GetIamPolicyRequest(this.service, resource);
                     }
 
                     /// <summary>
@@ -2400,7 +2400,7 @@ namespace Google.Apis.Dataform.v1beta1
                     /// <param name="workspace">Required. The workspace's name.</param>
                     public virtual InstallNpmPackagesRequest InstallNpmPackages(Google.Apis.Dataform.v1beta1.Data.InstallNpmPackagesRequest body, string workspace)
                     {
-                        return new InstallNpmPackagesRequest(service, body, workspace);
+                        return new InstallNpmPackagesRequest(this.service, body, workspace);
                     }
 
                     /// <summary>Installs dependency NPM packages (inside a Workspace).</summary>
@@ -2455,7 +2455,7 @@ namespace Google.Apis.Dataform.v1beta1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists Workspaces in a given Repository.</summary>
@@ -2562,7 +2562,7 @@ namespace Google.Apis.Dataform.v1beta1
                     /// <param name="workspace">Required. The workspace's name.</param>
                     public virtual MakeDirectoryRequest MakeDirectory(Google.Apis.Dataform.v1beta1.Data.MakeDirectoryRequest body, string workspace)
                     {
-                        return new MakeDirectoryRequest(service, body, workspace);
+                        return new MakeDirectoryRequest(this.service, body, workspace);
                     }
 
                     /// <summary>Creates a directory inside a Workspace.</summary>
@@ -2617,7 +2617,7 @@ namespace Google.Apis.Dataform.v1beta1
                     /// <param name="workspace">Required. The workspace's name.</param>
                     public virtual MoveDirectoryRequest MoveDirectory(Google.Apis.Dataform.v1beta1.Data.MoveDirectoryRequest body, string workspace)
                     {
-                        return new MoveDirectoryRequest(service, body, workspace);
+                        return new MoveDirectoryRequest(this.service, body, workspace);
                     }
 
                     /// <summary>
@@ -2672,7 +2672,7 @@ namespace Google.Apis.Dataform.v1beta1
                     /// <param name="workspace">Required. The workspace's name.</param>
                     public virtual MoveFileRequest MoveFile(Google.Apis.Dataform.v1beta1.Data.MoveFileRequest body, string workspace)
                     {
-                        return new MoveFileRequest(service, body, workspace);
+                        return new MoveFileRequest(this.service, body, workspace);
                     }
 
                     /// <summary>Moves a file (inside a Workspace) to a new location.</summary>
@@ -2725,7 +2725,7 @@ namespace Google.Apis.Dataform.v1beta1
                     /// <param name="name">Required. The workspace's name.</param>
                     public virtual PullRequest Pull(Google.Apis.Dataform.v1beta1.Data.PullGitCommitsRequest body, string name)
                     {
-                        return new PullRequest(service, body, name);
+                        return new PullRequest(this.service, body, name);
                     }
 
                     /// <summary>Pulls Git commits from the Repository's remote into a Workspace.</summary>
@@ -2778,7 +2778,7 @@ namespace Google.Apis.Dataform.v1beta1
                     /// <param name="name">Required. The workspace's name.</param>
                     public virtual PushRequest Push(Google.Apis.Dataform.v1beta1.Data.PushGitCommitsRequest body, string name)
                     {
-                        return new PushRequest(service, body, name);
+                        return new PushRequest(this.service, body, name);
                     }
 
                     /// <summary>Pushes Git commits from a Workspace to the Repository's remote.</summary>
@@ -2830,7 +2830,7 @@ namespace Google.Apis.Dataform.v1beta1
                     /// <param name="workspace">Required. The workspace's name.</param>
                     public virtual QueryDirectoryContentsRequest QueryDirectoryContents(string workspace)
                     {
-                        return new QueryDirectoryContentsRequest(service, workspace);
+                        return new QueryDirectoryContentsRequest(this.service, workspace);
                     }
 
                     /// <summary>Returns the contents of a given Workspace directory.</summary>
@@ -2921,7 +2921,7 @@ namespace Google.Apis.Dataform.v1beta1
                     /// <param name="workspace">Required. The workspace's name.</param>
                     public virtual ReadFileRequest ReadFile(string workspace)
                     {
-                        return new ReadFileRequest(service, workspace);
+                        return new ReadFileRequest(this.service, workspace);
                     }
 
                     /// <summary>Returns the contents of a file (inside a Workspace).</summary>
@@ -2981,7 +2981,7 @@ namespace Google.Apis.Dataform.v1beta1
                     /// <param name="workspace">Required. The workspace's name.</param>
                     public virtual RemoveDirectoryRequest RemoveDirectory(Google.Apis.Dataform.v1beta1.Data.RemoveDirectoryRequest body, string workspace)
                     {
-                        return new RemoveDirectoryRequest(service, body, workspace);
+                        return new RemoveDirectoryRequest(this.service, body, workspace);
                     }
 
                     /// <summary>Deletes a directory (inside a Workspace) and all of its contents.</summary>
@@ -3034,7 +3034,7 @@ namespace Google.Apis.Dataform.v1beta1
                     /// <param name="workspace">Required. The workspace's name.</param>
                     public virtual RemoveFileRequest RemoveFile(Google.Apis.Dataform.v1beta1.Data.RemoveFileRequest body, string workspace)
                     {
-                        return new RemoveFileRequest(service, body, workspace);
+                        return new RemoveFileRequest(this.service, body, workspace);
                     }
 
                     /// <summary>Deletes a file (inside a Workspace).</summary>
@@ -3087,7 +3087,7 @@ namespace Google.Apis.Dataform.v1beta1
                     /// <param name="name">Required. The workspace's name.</param>
                     public virtual ResetRequest Reset(Google.Apis.Dataform.v1beta1.Data.ResetWorkspaceChangesRequest body, string name)
                     {
-                        return new ResetRequest(service, body, name);
+                        return new ResetRequest(this.service, body, name);
                     }
 
                     /// <summary>Performs a Git reset for uncommitted files in a Workspace.</summary>
@@ -3147,7 +3147,7 @@ namespace Google.Apis.Dataform.v1beta1
                     /// </param>
                     public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Dataform.v1beta1.Data.SetIamPolicyRequest body, string resource)
                     {
-                        return new SetIamPolicyRequest(service, body, resource);
+                        return new SetIamPolicyRequest(this.service, body, resource);
                     }
 
                     /// <summary>
@@ -3216,7 +3216,7 @@ namespace Google.Apis.Dataform.v1beta1
                     /// </param>
                     public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Dataform.v1beta1.Data.TestIamPermissionsRequest body, string resource)
                     {
-                        return new TestIamPermissionsRequest(service, body, resource);
+                        return new TestIamPermissionsRequest(this.service, body, resource);
                     }
 
                     /// <summary>
@@ -3278,7 +3278,7 @@ namespace Google.Apis.Dataform.v1beta1
                     /// <param name="workspace">Required. The workspace's name.</param>
                     public virtual WriteFileRequest WriteFile(Google.Apis.Dataform.v1beta1.Data.WriteFileRequest body, string workspace)
                     {
-                        return new WriteFileRequest(service, body, workspace);
+                        return new WriteFileRequest(this.service, body, workspace);
                     }
 
                     /// <summary>Writes to a file (inside a Workspace).</summary>
@@ -3335,7 +3335,7 @@ namespace Google.Apis.Dataform.v1beta1
                 /// <param name="name">Required. The repository's name.</param>
                 public virtual CommitRequest Commit(Google.Apis.Dataform.v1beta1.Data.CommitRepositoryChangesRequest body, string name)
                 {
-                    return new CommitRequest(service, body, name);
+                    return new CommitRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -3390,7 +3390,7 @@ namespace Google.Apis.Dataform.v1beta1
                 /// <param name="name">Required. The repository's name.</param>
                 public virtual ComputeAccessTokenStatusRequest ComputeAccessTokenStatus(string name)
                 {
-                    return new ComputeAccessTokenStatusRequest(service, name);
+                    return new ComputeAccessTokenStatusRequest(this.service, name);
                 }
 
                 /// <summary>Computes a Repository's Git access token status.</summary>
@@ -3439,7 +3439,7 @@ namespace Google.Apis.Dataform.v1beta1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Dataform.v1beta1.Data.Repository body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a new Repository in a given project and location.</summary>
@@ -3509,7 +3509,7 @@ namespace Google.Apis.Dataform.v1beta1
                 /// <param name="name">Required. The repository's name.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes a single Repository.</summary>
@@ -3572,7 +3572,7 @@ namespace Google.Apis.Dataform.v1beta1
                 /// <param name="name">Required. The repository's name.</param>
                 public virtual FetchHistoryRequest FetchHistory(string name)
                 {
-                    return new FetchHistoryRequest(service, name);
+                    return new FetchHistoryRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -3651,7 +3651,7 @@ namespace Google.Apis.Dataform.v1beta1
                 /// <param name="name">Required. The repository's name.</param>
                 public virtual FetchRemoteBranchesRequest FetchRemoteBranches(string name)
                 {
-                    return new FetchRemoteBranchesRequest(service, name);
+                    return new FetchRemoteBranchesRequest(this.service, name);
                 }
 
                 /// <summary>Fetches a Repository's remote branches.</summary>
@@ -3696,7 +3696,7 @@ namespace Google.Apis.Dataform.v1beta1
                 /// <param name="name">Required. The repository's name.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Fetches a single Repository.</summary>
@@ -3748,7 +3748,7 @@ namespace Google.Apis.Dataform.v1beta1
                 /// </param>
                 public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                 {
-                    return new GetIamPolicyRequest(service, resource);
+                    return new GetIamPolicyRequest(this.service, resource);
                 }
 
                 /// <summary>
@@ -3824,7 +3824,7 @@ namespace Google.Apis.Dataform.v1beta1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists Repositories in a given project and location.</summary>
@@ -3931,7 +3931,7 @@ namespace Google.Apis.Dataform.v1beta1
                 /// <param name="name">Output only. The repository's name.</param>
                 public virtual PatchRequest Patch(Google.Apis.Dataform.v1beta1.Data.Repository body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates a single Repository.</summary>
@@ -4001,7 +4001,7 @@ namespace Google.Apis.Dataform.v1beta1
                 /// <param name="name">Required. The repository's name.</param>
                 public virtual QueryDirectoryContentsRequest QueryDirectoryContents(string name)
                 {
-                    return new QueryDirectoryContentsRequest(service, name);
+                    return new QueryDirectoryContentsRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -4113,7 +4113,7 @@ namespace Google.Apis.Dataform.v1beta1
                 /// <param name="name">Required. The repository's name.</param>
                 public virtual ReadFileRequest ReadFile(string name)
                 {
-                    return new ReadFileRequest(service, name);
+                    return new ReadFileRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -4195,7 +4195,7 @@ namespace Google.Apis.Dataform.v1beta1
                 /// </param>
                 public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Dataform.v1beta1.Data.SetIamPolicyRequest body, string resource)
                 {
-                    return new SetIamPolicyRequest(service, body, resource);
+                    return new SetIamPolicyRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -4264,7 +4264,7 @@ namespace Google.Apis.Dataform.v1beta1
                 /// </param>
                 public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Dataform.v1beta1.Data.TestIamPermissionsRequest body, string resource)
                 {
-                    return new TestIamPermissionsRequest(service, body, resource);
+                    return new TestIamPermissionsRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -4326,7 +4326,7 @@ namespace Google.Apis.Dataform.v1beta1
             /// <param name="name">Resource name for the location.</param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets information about a location.</summary>
@@ -4371,7 +4371,7 @@ namespace Google.Apis.Dataform.v1beta1
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
             {
-                return new ListRequest(service, name);
+                return new ListRequest(this.service, name);
             }
 
             /// <summary>Lists information about the supported locations for this service.</summary>
@@ -4691,8 +4691,8 @@ namespace Google.Apis.Dataform.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CommitTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CommitTimeRaw);
-            set => CommitTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CommitTimeRaw);
+            set => CommitTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -5200,8 +5200,8 @@ namespace Google.Apis.Dataform.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _startTimeRaw;
@@ -5240,8 +5240,8 @@ namespace Google.Apis.Dataform.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -5577,8 +5577,8 @@ namespace Google.Apis.Dataform.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _endTimeRaw;
@@ -5614,8 +5614,8 @@ namespace Google.Apis.Dataform.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. Human-readable status of the operation, if any.</summary>
@@ -6150,8 +6150,8 @@ namespace Google.Apis.Dataform.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ExecutionTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExecutionTimeRaw);
-            set => ExecutionTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExecutionTimeRaw);
+            set => ExecutionTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -6215,8 +6215,8 @@ namespace Google.Apis.Dataform.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ReleaseTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ReleaseTimeRaw);
-            set => ReleaseTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ReleaseTimeRaw);
+            set => ReleaseTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>

@@ -352,7 +352,7 @@ namespace Google.Apis.PubsubLite.v1
                     /// <param name="name">The name of the operation resource to be cancelled.</param>
                     public virtual CancelRequest Cancel(Google.Apis.PubsubLite.v1.Data.CancelOperationRequest body, string name)
                     {
-                        return new CancelRequest(service, body, name);
+                        return new CancelRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -416,7 +416,7 @@ namespace Google.Apis.PubsubLite.v1
                     /// <param name="name">The name of the operation resource to be deleted.</param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -468,7 +468,7 @@ namespace Google.Apis.PubsubLite.v1
                     /// <param name="name">The name of the operation resource.</param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -519,7 +519,7 @@ namespace Google.Apis.PubsubLite.v1
                     /// <param name="name">The name of the operation's parent resource.</param>
                     public virtual ListRequest List(string name)
                     {
-                        return new ListRequest(service, name);
+                        return new ListRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -642,7 +642,7 @@ namespace Google.Apis.PubsubLite.v1
                         /// </param>
                         public virtual ListRequest List(string name)
                         {
-                            return new ListRequest(service, name);
+                            return new ListRequest(this.service, name);
                         }
 
                         /// <summary>Lists the topics attached to the specified reservation.</summary>
@@ -726,7 +726,7 @@ namespace Google.Apis.PubsubLite.v1
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.PubsubLite.v1.Data.Reservation body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>Creates a new reservation.</summary>
@@ -799,7 +799,7 @@ namespace Google.Apis.PubsubLite.v1
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>Deletes the specified reservation.</summary>
@@ -850,7 +850,7 @@ namespace Google.Apis.PubsubLite.v1
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Returns the reservation configuration.</summary>
@@ -901,7 +901,7 @@ namespace Google.Apis.PubsubLite.v1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Returns the list of reservations for the given project.</summary>
@@ -984,7 +984,7 @@ namespace Google.Apis.PubsubLite.v1
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.PubsubLite.v1.Data.Reservation body, string name)
                     {
-                        return new PatchRequest(service, body, name);
+                        return new PatchRequest(this.service, body, name);
                     }
 
                     /// <summary>Updates properties of the specified reservation.</summary>
@@ -1073,7 +1073,7 @@ namespace Google.Apis.PubsubLite.v1
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.PubsubLite.v1.Data.Subscription body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>Creates a new subscription.</summary>
@@ -1159,7 +1159,7 @@ namespace Google.Apis.PubsubLite.v1
                     /// <param name="name">Required. The name of the subscription to delete.</param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>Deletes the specified subscription.</summary>
@@ -1204,7 +1204,7 @@ namespace Google.Apis.PubsubLite.v1
                     /// <param name="name">Required. The name of the subscription whose configuration to return.</param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Returns the subscription configuration.</summary>
@@ -1252,7 +1252,7 @@ namespace Google.Apis.PubsubLite.v1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Returns the list of subscriptions for the given project.</summary>
@@ -1335,7 +1335,7 @@ namespace Google.Apis.PubsubLite.v1
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.PubsubLite.v1.Data.Subscription body, string name)
                     {
-                        return new PatchRequest(service, body, name);
+                        return new PatchRequest(this.service, body, name);
                     }
 
                     /// <summary>Updates properties of the specified subscription.</summary>
@@ -1416,7 +1416,7 @@ namespace Google.Apis.PubsubLite.v1
                     /// <param name="name">Required. The name of the subscription to seek.</param>
                     public virtual SeekRequest Seek(Google.Apis.PubsubLite.v1.Data.SeekSubscriptionRequest body, string name)
                     {
-                        return new SeekRequest(service, body, name);
+                        return new SeekRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -1517,7 +1517,7 @@ namespace Google.Apis.PubsubLite.v1
                         /// <param name="name">Required. The name of the topic whose subscriptions to list.</param>
                         public virtual ListRequest List(string name)
                         {
-                            return new ListRequest(service, name);
+                            return new ListRequest(this.service, name);
                         }
 
                         /// <summary>Lists the subscriptions attached to the specified topic.</summary>
@@ -1598,7 +1598,7 @@ namespace Google.Apis.PubsubLite.v1
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.PubsubLite.v1.Data.Topic body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>Creates a new topic.</summary>
@@ -1668,7 +1668,7 @@ namespace Google.Apis.PubsubLite.v1
                     /// <param name="name">Required. The name of the topic to delete.</param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>Deletes the specified topic.</summary>
@@ -1713,7 +1713,7 @@ namespace Google.Apis.PubsubLite.v1
                     /// <param name="name">Required. The name of the topic whose configuration to return.</param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Returns the topic configuration.</summary>
@@ -1758,7 +1758,7 @@ namespace Google.Apis.PubsubLite.v1
                     /// <param name="name">Required. The topic whose partition information to return.</param>
                     public virtual GetPartitionsRequest GetPartitions(string name)
                     {
-                        return new GetPartitionsRequest(service, name);
+                        return new GetPartitionsRequest(this.service, name);
                     }
 
                     /// <summary>Returns the partition information for the requested topic.</summary>
@@ -1806,7 +1806,7 @@ namespace Google.Apis.PubsubLite.v1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Returns the list of topics for the given project.</summary>
@@ -1889,7 +1889,7 @@ namespace Google.Apis.PubsubLite.v1
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.PubsubLite.v1.Data.Topic body, string name)
                     {
-                        return new PatchRequest(service, body, name);
+                        return new PatchRequest(this.service, body, name);
                     }
 
                     /// <summary>Updates properties of the specified topic.</summary>
@@ -2049,7 +2049,7 @@ namespace Google.Apis.PubsubLite.v1
                         /// </param>
                         public virtual ListRequest List(string parent)
                         {
-                            return new ListRequest(service, parent);
+                            return new ListRequest(this.service, parent);
                         }
 
                         /// <summary>Returns all committed cursor information for a subscription.</summary>
@@ -2130,7 +2130,7 @@ namespace Google.Apis.PubsubLite.v1
                     /// <param name="subscription">The subscription for which to update the cursor.</param>
                     public virtual CommitCursorRequest CommitCursor(Google.Apis.PubsubLite.v1.Data.CommitCursorRequest body, string subscription)
                     {
-                        return new CommitCursorRequest(service, body, subscription);
+                        return new CommitCursorRequest(this.service, body, subscription);
                     }
 
                     /// <summary>Updates the committed cursor.</summary>
@@ -2260,7 +2260,7 @@ namespace Google.Apis.PubsubLite.v1
                     /// <param name="topic">Required. The topic for which we should compute the head cursor.</param>
                     public virtual ComputeHeadCursorRequest ComputeHeadCursor(Google.Apis.PubsubLite.v1.Data.ComputeHeadCursorRequest body, string topic)
                     {
-                        return new ComputeHeadCursorRequest(service, body, topic);
+                        return new ComputeHeadCursorRequest(this.service, body, topic);
                     }
 
                     /// <summary>
@@ -2318,7 +2318,7 @@ namespace Google.Apis.PubsubLite.v1
                     /// <param name="topic">Required. The topic for which we should compute message stats.</param>
                     public virtual ComputeMessageStatsRequest ComputeMessageStats(Google.Apis.PubsubLite.v1.Data.ComputeMessageStatsRequest body, string topic)
                     {
-                        return new ComputeMessageStatsRequest(service, body, topic);
+                        return new ComputeMessageStatsRequest(this.service, body, topic);
                     }
 
                     /// <summary>Compute statistics about a range of messages in a given topic and partition.</summary>
@@ -2373,7 +2373,7 @@ namespace Google.Apis.PubsubLite.v1
                     /// <param name="topic">Required. The topic for which we should compute the cursor.</param>
                     public virtual ComputeTimeCursorRequest ComputeTimeCursor(Google.Apis.PubsubLite.v1.Data.ComputeTimeCursorRequest body, string topic)
                     {
-                        return new ComputeTimeCursorRequest(service, body, topic);
+                        return new ComputeTimeCursorRequest(this.service, body, topic);
                     }
 
                     /// <summary>
@@ -2569,8 +2569,8 @@ namespace Google.Apis.PubsubLite.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? MinimumEventTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(MinimumEventTimeRaw);
-            set => MinimumEventTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(MinimumEventTimeRaw);
+            set => MinimumEventTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _minimumPublishTimeRaw;
@@ -2611,8 +2611,8 @@ namespace Google.Apis.PubsubLite.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? MinimumPublishTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(MinimumPublishTimeRaw);
-            set => MinimumPublishTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(MinimumPublishTimeRaw);
+            set => MinimumPublishTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -2932,8 +2932,8 @@ namespace Google.Apis.PubsubLite.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _endTimeRaw;
@@ -2969,8 +2969,8 @@ namespace Google.Apis.PubsubLite.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -3232,8 +3232,8 @@ namespace Google.Apis.PubsubLite.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EventTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EventTimeRaw);
-            set => EventTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EventTimeRaw);
+            set => EventTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _publishTimeRaw;
@@ -3272,8 +3272,8 @@ namespace Google.Apis.PubsubLite.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? PublishTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(PublishTimeRaw);
-            set => PublishTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(PublishTimeRaw);
+            set => PublishTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>

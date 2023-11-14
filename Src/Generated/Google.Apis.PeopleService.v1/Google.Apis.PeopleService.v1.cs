@@ -369,7 +369,7 @@ namespace Google.Apis.PeopleService.v1
             /// <param name="resourceName">Required. The resource name of the contact group to modify.</param>
             public virtual ModifyRequest Modify(Google.Apis.PeopleService.v1.Data.ModifyContactGroupMembersRequest body, string resourceName)
             {
-                return new ModifyRequest(service, body, resourceName);
+                return new ModifyRequest(this.service, body, resourceName);
             }
 
             /// <summary>
@@ -428,7 +428,7 @@ namespace Google.Apis.PeopleService.v1
         /// </summary>
         public virtual BatchGetRequest BatchGet()
         {
-            return new BatchGetRequest(service);
+            return new BatchGetRequest(this.service);
         }
 
         /// <summary>
@@ -512,7 +512,7 @@ namespace Google.Apis.PeopleService.v1
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.PeopleService.v1.Data.CreateContactGroupRequest body)
         {
-            return new CreateRequest(service, body);
+            return new CreateRequest(this.service, body);
         }
 
         /// <summary>
@@ -558,7 +558,7 @@ namespace Google.Apis.PeopleService.v1
         /// <param name="resourceName">Required. The resource name of the contact group to delete.</param>
         public virtual DeleteRequest Delete(string resourceName)
         {
-            return new DeleteRequest(service, resourceName);
+            return new DeleteRequest(this.service, resourceName);
         }
 
         /// <summary>
@@ -620,7 +620,7 @@ namespace Google.Apis.PeopleService.v1
         /// <param name="resourceName">Required. The resource name of the contact group to get.</param>
         public virtual GetRequest Get(string resourceName)
         {
-            return new GetRequest(service, resourceName);
+            return new GetRequest(this.service, resourceName);
         }
 
         /// <summary>
@@ -699,7 +699,7 @@ namespace Google.Apis.PeopleService.v1
         /// </summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>
@@ -803,7 +803,7 @@ namespace Google.Apis.PeopleService.v1
         /// </param>
         public virtual UpdateRequest Update(Google.Apis.PeopleService.v1.Data.UpdateContactGroupRequest body, string resourceName)
         {
-            return new UpdateRequest(service, body, resourceName);
+            return new UpdateRequest(this.service, body, resourceName);
         }
 
         /// <summary>
@@ -882,7 +882,7 @@ namespace Google.Apis.PeopleService.v1
         /// <param name="resourceName">Required. The resource name of the "Other contact" to copy.</param>
         public virtual CopyOtherContactToMyContactsGroupRequest CopyOtherContactToMyContactsGroup(Google.Apis.PeopleService.v1.Data.CopyOtherContactToMyContactsGroupRequest body, string resourceName)
         {
-            return new CopyOtherContactToMyContactsGroupRequest(service, body, resourceName);
+            return new CopyOtherContactToMyContactsGroupRequest(this.service, body, resourceName);
         }
 
         /// <summary>
@@ -949,7 +949,7 @@ namespace Google.Apis.PeopleService.v1
         /// </summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>
@@ -1143,7 +1143,7 @@ namespace Google.Apis.PeopleService.v1
         /// </summary>
         public virtual SearchRequest Search()
         {
-            return new SearchRequest(service);
+            return new SearchRequest(this.service);
         }
 
         /// <summary>
@@ -1276,7 +1276,7 @@ namespace Google.Apis.PeopleService.v1
             /// </param>
             public virtual ListRequest List(string resourceName)
             {
-                return new ListRequest(service, resourceName);
+                return new ListRequest(this.service, resourceName);
             }
 
             /// <summary>
@@ -1529,7 +1529,7 @@ namespace Google.Apis.PeopleService.v1
         /// <param name="body">The body of the request.</param>
         public virtual BatchCreateContactsRequest BatchCreateContacts(Google.Apis.PeopleService.v1.Data.BatchCreateContactsRequest body)
         {
-            return new BatchCreateContactsRequest(service, body);
+            return new BatchCreateContactsRequest(this.service, body);
         }
 
         /// <summary>
@@ -1574,7 +1574,7 @@ namespace Google.Apis.PeopleService.v1
         /// <param name="body">The body of the request.</param>
         public virtual BatchDeleteContactsRequest BatchDeleteContacts(Google.Apis.PeopleService.v1.Data.BatchDeleteContactsRequest body)
         {
-            return new BatchDeleteContactsRequest(service, body);
+            return new BatchDeleteContactsRequest(this.service, body);
         }
 
         /// <summary>
@@ -1619,7 +1619,7 @@ namespace Google.Apis.PeopleService.v1
         /// <param name="body">The body of the request.</param>
         public virtual BatchUpdateContactsRequest BatchUpdateContacts(Google.Apis.PeopleService.v1.Data.BatchUpdateContactsRequest body)
         {
-            return new BatchUpdateContactsRequest(service, body);
+            return new BatchUpdateContactsRequest(this.service, body);
         }
 
         /// <summary>
@@ -1666,7 +1666,7 @@ namespace Google.Apis.PeopleService.v1
         /// <param name="body">The body of the request.</param>
         public virtual CreateContactRequest CreateContact(Google.Apis.PeopleService.v1.Data.Person body)
         {
-            return new CreateContactRequest(service, body);
+            return new CreateContactRequest(this.service, body);
         }
 
         /// <summary>
@@ -1785,7 +1785,7 @@ namespace Google.Apis.PeopleService.v1
         /// <param name="resourceName">Required. The resource name of the contact to delete.</param>
         public virtual DeleteContactRequest DeleteContact(string resourceName)
         {
-            return new DeleteContactRequest(service, resourceName);
+            return new DeleteContactRequest(this.service, resourceName);
         }
 
         /// <summary>
@@ -1836,7 +1836,7 @@ namespace Google.Apis.PeopleService.v1
         /// <param name="resourceName">Required. The resource name of the contact whose photo will be deleted.</param>
         public virtual DeleteContactPhotoRequest DeleteContactPhoto(string resourceName)
         {
-            return new DeleteContactPhotoRequest(service, resourceName);
+            return new DeleteContactPhotoRequest(this.service, resourceName);
         }
 
         /// <summary>
@@ -1964,7 +1964,7 @@ namespace Google.Apis.PeopleService.v1
         /// </param>
         public virtual GetRequest Get(string resourceName)
         {
-            return new GetRequest(service, resourceName);
+            return new GetRequest(this.service, resourceName);
         }
 
         /// <summary>
@@ -2107,7 +2107,7 @@ namespace Google.Apis.PeopleService.v1
         /// </summary>
         public virtual GetBatchGetRequest GetBatchGet()
         {
-            return new GetBatchGetRequest(service);
+            return new GetBatchGetRequest(this.service);
         }
 
         /// <summary>
@@ -2256,7 +2256,7 @@ namespace Google.Apis.PeopleService.v1
         /// </summary>
         public virtual ListDirectoryPeopleRequest ListDirectoryPeople()
         {
-            return new ListDirectoryPeopleRequest(service);
+            return new ListDirectoryPeopleRequest(this.service);
         }
 
         /// <summary>
@@ -2468,7 +2468,7 @@ namespace Google.Apis.PeopleService.v1
         /// </summary>
         public virtual SearchContactsRequest SearchContacts()
         {
-            return new SearchContactsRequest(service);
+            return new SearchContactsRequest(this.service);
         }
 
         /// <summary>
@@ -2608,7 +2608,7 @@ namespace Google.Apis.PeopleService.v1
         /// </summary>
         public virtual SearchDirectoryPeopleRequest SearchDirectoryPeople()
         {
-            return new SearchDirectoryPeopleRequest(service);
+            return new SearchDirectoryPeopleRequest(this.service);
         }
 
         /// <summary>
@@ -2808,7 +2808,7 @@ namespace Google.Apis.PeopleService.v1
         /// </param>
         public virtual UpdateContactRequest UpdateContact(Google.Apis.PeopleService.v1.Data.Person body, string resourceName)
         {
-            return new UpdateContactRequest(service, body, resourceName);
+            return new UpdateContactRequest(this.service, body, resourceName);
         }
 
         /// <summary>
@@ -2968,7 +2968,7 @@ namespace Google.Apis.PeopleService.v1
         /// <param name="resourceName">Required. Person resource name</param>
         public virtual UpdateContactPhotoRequest UpdateContactPhoto(Google.Apis.PeopleService.v1.Data.UpdateContactPhotoRequest body, string resourceName)
         {
-            return new UpdateContactPhotoRequest(service, body, resourceName);
+            return new UpdateContactPhotoRequest(this.service, body, resourceName);
         }
 
         /// <summary>
@@ -3461,8 +3461,8 @@ namespace Google.Apis.PeopleService.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -4918,8 +4918,8 @@ namespace Google.Apis.PeopleService.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
     }
 

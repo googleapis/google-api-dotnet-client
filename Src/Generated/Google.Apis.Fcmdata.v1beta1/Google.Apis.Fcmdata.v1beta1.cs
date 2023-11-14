@@ -317,7 +317,7 @@ namespace Google.Apis.Fcmdata.v1beta1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>List aggregate delivery data for the given Android application.</summary>

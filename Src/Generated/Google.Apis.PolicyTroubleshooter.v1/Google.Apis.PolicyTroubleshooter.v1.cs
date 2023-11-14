@@ -281,7 +281,7 @@ namespace Google.Apis.PolicyTroubleshooter.v1
         /// <param name="body">The body of the request.</param>
         public virtual TroubleshootRequest Troubleshoot(Google.Apis.PolicyTroubleshooter.v1.Data.GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyRequest body)
         {
-            return new TroubleshootRequest(service, body);
+            return new TroubleshootRequest(this.service, body);
         }
 
         /// <summary>

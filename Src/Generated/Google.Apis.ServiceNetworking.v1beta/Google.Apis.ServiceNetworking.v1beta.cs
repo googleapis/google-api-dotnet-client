@@ -291,7 +291,7 @@ namespace Google.Apis.ServiceNetworking.v1beta
         /// <param name="name">The name of the operation resource.</param>
         public virtual GetRequest Get(string name)
         {
-            return new GetRequest(service, name);
+            return new GetRequest(this.service, name);
         }
 
         /// <summary>
@@ -383,7 +383,7 @@ namespace Google.Apis.ServiceNetworking.v1beta
             /// </param>
             public virtual CreateRequest Create(Google.Apis.ServiceNetworking.v1beta.Data.GoogleCloudServicenetworkingV1betaConnection body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -449,7 +449,7 @@ namespace Google.Apis.ServiceNetworking.v1beta
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>List the private connections that are configured in a service consumer's VPC network.</summary>
@@ -531,7 +531,7 @@ namespace Google.Apis.ServiceNetworking.v1beta
         /// </param>
         public virtual AddSubnetworkRequest AddSubnetwork(Google.Apis.ServiceNetworking.v1beta.Data.AddSubnetworkRequest body, string parent)
         {
-            return new AddSubnetworkRequest(service, body, parent);
+            return new AddSubnetworkRequest(this.service, body, parent);
         }
 
         /// <summary>
@@ -605,7 +605,7 @@ namespace Google.Apis.ServiceNetworking.v1beta
         /// </param>
         public virtual SearchRangeRequest SearchRange(Google.Apis.ServiceNetworking.v1beta.Data.SearchRangeRequest body, string parent)
         {
-            return new SearchRangeRequest(service, body, parent);
+            return new SearchRangeRequest(this.service, body, parent);
         }
 
         /// <summary>
@@ -673,7 +673,7 @@ namespace Google.Apis.ServiceNetworking.v1beta
         /// </param>
         public virtual UpdateConnectionsRequest UpdateConnections(Google.Apis.ServiceNetworking.v1beta.Data.GoogleCloudServicenetworkingV1betaConnection body, string name)
         {
-            return new UpdateConnectionsRequest(service, body, name);
+            return new UpdateConnectionsRequest(this.service, body, name);
         }
 
         /// <summary>

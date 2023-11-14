@@ -299,7 +299,7 @@ namespace Google.Apis.ApiKeysService.v2
         /// </summary>
         public virtual LookupKeyRequest LookupKey()
         {
-            return new LookupKeyRequest(service);
+            return new LookupKeyRequest(this.service);
         }
 
         /// <summary>
@@ -365,7 +365,7 @@ namespace Google.Apis.ApiKeysService.v2
         /// <param name="name">The name of the operation resource.</param>
         public virtual GetRequest Get(string name)
         {
-            return new GetRequest(service, name);
+            return new GetRequest(this.service, name);
         }
 
         /// <summary>
@@ -468,7 +468,7 @@ namespace Google.Apis.ApiKeysService.v2
                 /// <param name="parent">Required. The project in which the API key is created.</param>
                 public virtual CreateRequest Create(Google.Apis.ApiKeysService.v2.Data.V2Key body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -545,7 +545,7 @@ namespace Google.Apis.ApiKeysService.v2
                 /// <param name="name">Required. The resource name of the API key to be deleted.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -612,7 +612,7 @@ namespace Google.Apis.ApiKeysService.v2
                 /// <param name="name">Required. The resource name of the API key to get.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -663,7 +663,7 @@ namespace Google.Apis.ApiKeysService.v2
                 /// <param name="name">Required. The resource name of the API key to be retrieved.</param>
                 public virtual GetKeyStringRequest GetKeyString(string name)
                 {
-                    return new GetKeyStringRequest(service, name);
+                    return new GetKeyStringRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -714,7 +714,7 @@ namespace Google.Apis.ApiKeysService.v2
                 /// <param name="parent">Required. Lists all API keys associated with this project.</param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>
@@ -809,7 +809,7 @@ namespace Google.Apis.ApiKeysService.v2
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.ApiKeysService.v2.Data.V2Key body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -891,7 +891,7 @@ namespace Google.Apis.ApiKeysService.v2
                 /// <param name="name">Required. The resource name of the API key to be undeleted.</param>
                 public virtual UndeleteRequest Undelete(Google.Apis.ApiKeysService.v2.Data.V2UndeleteKeyRequest body, string name)
                 {
-                    return new UndeleteRequest(service, body, name);
+                    return new UndeleteRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -1154,8 +1154,8 @@ namespace Google.Apis.ApiKeysService.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _deleteTimeRaw;
@@ -1193,8 +1193,8 @@ namespace Google.Apis.ApiKeysService.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? DeleteTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DeleteTimeRaw);
-            set => DeleteTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DeleteTimeRaw);
+            set => DeleteTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -1267,8 +1267,8 @@ namespace Google.Apis.ApiKeysService.v2.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
     }
 

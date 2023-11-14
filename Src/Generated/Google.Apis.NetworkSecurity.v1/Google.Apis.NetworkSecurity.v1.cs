@@ -323,7 +323,7 @@ namespace Google.Apis.NetworkSecurity.v1
                 /// </param>
                 public virtual AddItemsRequest AddItems(Google.Apis.NetworkSecurity.v1.Data.AddAddressGroupItemsRequest body, string addressGroup)
                 {
-                    return new AddItemsRequest(service, body, addressGroup);
+                    return new AddItemsRequest(this.service, body, addressGroup);
                 }
 
                 /// <summary>Adds items to an address group.</summary>
@@ -382,7 +382,7 @@ namespace Google.Apis.NetworkSecurity.v1
                 /// </param>
                 public virtual CloneItemsRequest CloneItems(Google.Apis.NetworkSecurity.v1.Data.CloneAddressGroupItemsRequest body, string addressGroup)
                 {
-                    return new CloneItemsRequest(service, body, addressGroup);
+                    return new CloneItemsRequest(this.service, body, addressGroup);
                 }
 
                 /// <summary>Clones items from one address group to another.</summary>
@@ -441,7 +441,7 @@ namespace Google.Apis.NetworkSecurity.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.NetworkSecurity.v1.Data.AddressGroup body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a new address group in a given project and location.</summary>
@@ -536,7 +536,7 @@ namespace Google.Apis.NetworkSecurity.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes an address group.</summary>
@@ -608,7 +608,7 @@ namespace Google.Apis.NetworkSecurity.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets details of a single address group.</summary>
@@ -659,7 +659,7 @@ namespace Google.Apis.NetworkSecurity.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists address groups in a given project and location.</summary>
@@ -737,7 +737,7 @@ namespace Google.Apis.NetworkSecurity.v1
                 /// </param>
                 public virtual ListReferencesRequest ListReferences(string addressGroup)
                 {
-                    return new ListReferencesRequest(service, addressGroup);
+                    return new ListReferencesRequest(this.service, addressGroup);
                 }
 
                 /// <summary>Lists references of an address group.</summary>
@@ -817,7 +817,7 @@ namespace Google.Apis.NetworkSecurity.v1
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.NetworkSecurity.v1.Data.AddressGroup body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates parameters of an address group.</summary>
@@ -914,7 +914,7 @@ namespace Google.Apis.NetworkSecurity.v1
                 /// </param>
                 public virtual RemoveItemsRequest RemoveItems(Google.Apis.NetworkSecurity.v1.Data.RemoveAddressGroupItemsRequest body, string addressGroup)
                 {
-                    return new RemoveItemsRequest(service, body, addressGroup);
+                    return new RemoveItemsRequest(this.service, body, addressGroup);
                 }
 
                 /// <summary>Removes items from an address group.</summary>
@@ -995,7 +995,7 @@ namespace Google.Apis.NetworkSecurity.v1
                 /// <param name="name">The name of the operation resource to be cancelled.</param>
                 public virtual CancelRequest Cancel(Google.Apis.NetworkSecurity.v1.Data.CancelOperationRequest body, string name)
                 {
-                    return new CancelRequest(service, body, name);
+                    return new CancelRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -1058,7 +1058,7 @@ namespace Google.Apis.NetworkSecurity.v1
                 /// <param name="name">The name of the operation resource to be deleted.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -1110,7 +1110,7 @@ namespace Google.Apis.NetworkSecurity.v1
                 /// <param name="name">The name of the operation resource.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -1161,7 +1161,7 @@ namespace Google.Apis.NetworkSecurity.v1
                 /// <param name="name">The name of the operation's parent resource.</param>
                 public virtual ListRequest List(string name)
                 {
-                    return new ListRequest(service, name);
+                    return new ListRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -1309,7 +1309,7 @@ namespace Google.Apis.NetworkSecurity.v1
                 /// </param>
                 public virtual AddItemsRequest AddItems(Google.Apis.NetworkSecurity.v1.Data.AddAddressGroupItemsRequest body, string addressGroup)
                 {
-                    return new AddItemsRequest(service, body, addressGroup);
+                    return new AddItemsRequest(this.service, body, addressGroup);
                 }
 
                 /// <summary>Adds items to an address group.</summary>
@@ -1368,7 +1368,7 @@ namespace Google.Apis.NetworkSecurity.v1
                 /// </param>
                 public virtual CloneItemsRequest CloneItems(Google.Apis.NetworkSecurity.v1.Data.CloneAddressGroupItemsRequest body, string addressGroup)
                 {
-                    return new CloneItemsRequest(service, body, addressGroup);
+                    return new CloneItemsRequest(this.service, body, addressGroup);
                 }
 
                 /// <summary>Clones items from one address group to another.</summary>
@@ -1427,7 +1427,7 @@ namespace Google.Apis.NetworkSecurity.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.NetworkSecurity.v1.Data.AddressGroup body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a new address group in a given project and location.</summary>
@@ -1522,7 +1522,7 @@ namespace Google.Apis.NetworkSecurity.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes a single address group.</summary>
@@ -1594,7 +1594,7 @@ namespace Google.Apis.NetworkSecurity.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets details of a single address group.</summary>
@@ -1649,7 +1649,7 @@ namespace Google.Apis.NetworkSecurity.v1
                 /// </param>
                 public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                 {
-                    return new GetIamPolicyRequest(service, resource);
+                    return new GetIamPolicyRequest(this.service, resource);
                 }
 
                 /// <summary>
@@ -1725,7 +1725,7 @@ namespace Google.Apis.NetworkSecurity.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists address groups in a given project and location.</summary>
@@ -1803,7 +1803,7 @@ namespace Google.Apis.NetworkSecurity.v1
                 /// </param>
                 public virtual ListReferencesRequest ListReferences(string addressGroup)
                 {
-                    return new ListReferencesRequest(service, addressGroup);
+                    return new ListReferencesRequest(this.service, addressGroup);
                 }
 
                 /// <summary>Lists references of an address group.</summary>
@@ -1883,7 +1883,7 @@ namespace Google.Apis.NetworkSecurity.v1
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.NetworkSecurity.v1.Data.AddressGroup body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates the parameters of a single address group.</summary>
@@ -1980,7 +1980,7 @@ namespace Google.Apis.NetworkSecurity.v1
                 /// </param>
                 public virtual RemoveItemsRequest RemoveItems(Google.Apis.NetworkSecurity.v1.Data.RemoveAddressGroupItemsRequest body, string addressGroup)
                 {
-                    return new RemoveItemsRequest(service, body, addressGroup);
+                    return new RemoveItemsRequest(this.service, body, addressGroup);
                 }
 
                 /// <summary>Removes items from an address group.</summary>
@@ -2043,7 +2043,7 @@ namespace Google.Apis.NetworkSecurity.v1
                 /// </param>
                 public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.NetworkSecurity.v1.Data.GoogleIamV1SetIamPolicyRequest body, string resource)
                 {
-                    return new SetIamPolicyRequest(service, body, resource);
+                    return new SetIamPolicyRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -2112,7 +2112,7 @@ namespace Google.Apis.NetworkSecurity.v1
                 /// </param>
                 public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.NetworkSecurity.v1.Data.GoogleIamV1TestIamPermissionsRequest body, string resource)
                 {
-                    return new TestIamPermissionsRequest(service, body, resource);
+                    return new TestIamPermissionsRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -2195,7 +2195,7 @@ namespace Google.Apis.NetworkSecurity.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.NetworkSecurity.v1.Data.AuthorizationPolicy body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a new AuthorizationPolicy in a given project and location.</summary>
@@ -2269,7 +2269,7 @@ namespace Google.Apis.NetworkSecurity.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes a single AuthorizationPolicy.</summary>
@@ -2320,7 +2320,7 @@ namespace Google.Apis.NetworkSecurity.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets details of a single AuthorizationPolicy.</summary>
@@ -2375,7 +2375,7 @@ namespace Google.Apis.NetworkSecurity.v1
                 /// </param>
                 public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                 {
-                    return new GetIamPolicyRequest(service, resource);
+                    return new GetIamPolicyRequest(this.service, resource);
                 }
 
                 /// <summary>
@@ -2451,7 +2451,7 @@ namespace Google.Apis.NetworkSecurity.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists AuthorizationPolicies in a given project and location.</summary>
@@ -2531,7 +2531,7 @@ namespace Google.Apis.NetworkSecurity.v1
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.NetworkSecurity.v1.Data.AuthorizationPolicy body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates the parameters of a single AuthorizationPolicy.</summary>
@@ -2611,7 +2611,7 @@ namespace Google.Apis.NetworkSecurity.v1
                 /// </param>
                 public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.NetworkSecurity.v1.Data.GoogleIamV1SetIamPolicyRequest body, string resource)
                 {
-                    return new SetIamPolicyRequest(service, body, resource);
+                    return new SetIamPolicyRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -2680,7 +2680,7 @@ namespace Google.Apis.NetworkSecurity.v1
                 /// </param>
                 public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.NetworkSecurity.v1.Data.GoogleIamV1TestIamPermissionsRequest body, string resource)
                 {
-                    return new TestIamPermissionsRequest(service, body, resource);
+                    return new TestIamPermissionsRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -2763,7 +2763,7 @@ namespace Google.Apis.NetworkSecurity.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.NetworkSecurity.v1.Data.ClientTlsPolicy body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a new ClientTlsPolicy in a given project and location.</summary>
@@ -2837,7 +2837,7 @@ namespace Google.Apis.NetworkSecurity.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes a single ClientTlsPolicy.</summary>
@@ -2888,7 +2888,7 @@ namespace Google.Apis.NetworkSecurity.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets details of a single ClientTlsPolicy.</summary>
@@ -2943,7 +2943,7 @@ namespace Google.Apis.NetworkSecurity.v1
                 /// </param>
                 public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                 {
-                    return new GetIamPolicyRequest(service, resource);
+                    return new GetIamPolicyRequest(this.service, resource);
                 }
 
                 /// <summary>
@@ -3019,7 +3019,7 @@ namespace Google.Apis.NetworkSecurity.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists ClientTlsPolicies in a given project and location.</summary>
@@ -3099,7 +3099,7 @@ namespace Google.Apis.NetworkSecurity.v1
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.NetworkSecurity.v1.Data.ClientTlsPolicy body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates the parameters of a single ClientTlsPolicy.</summary>
@@ -3179,7 +3179,7 @@ namespace Google.Apis.NetworkSecurity.v1
                 /// </param>
                 public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.NetworkSecurity.v1.Data.GoogleIamV1SetIamPolicyRequest body, string resource)
                 {
-                    return new SetIamPolicyRequest(service, body, resource);
+                    return new SetIamPolicyRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -3248,7 +3248,7 @@ namespace Google.Apis.NetworkSecurity.v1
                 /// </param>
                 public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.NetworkSecurity.v1.Data.GoogleIamV1TestIamPermissionsRequest body, string resource)
                 {
-                    return new TestIamPermissionsRequest(service, body, resource);
+                    return new TestIamPermissionsRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -3349,7 +3349,7 @@ namespace Google.Apis.NetworkSecurity.v1
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.NetworkSecurity.v1.Data.GatewaySecurityPolicyRule body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>Creates a new GatewaySecurityPolicy in a given project and location.</summary>
@@ -3422,7 +3422,7 @@ namespace Google.Apis.NetworkSecurity.v1
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>Deletes a single GatewaySecurityPolicyRule.</summary>
@@ -3473,7 +3473,7 @@ namespace Google.Apis.NetworkSecurity.v1
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Gets details of a single GatewaySecurityPolicyRule.</summary>
@@ -3525,7 +3525,7 @@ namespace Google.Apis.NetworkSecurity.v1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists GatewaySecurityPolicyRules in a given project and location.</summary>
@@ -3607,7 +3607,7 @@ namespace Google.Apis.NetworkSecurity.v1
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.NetworkSecurity.v1.Data.GatewaySecurityPolicyRule body, string name)
                     {
-                        return new PatchRequest(service, body, name);
+                        return new PatchRequest(this.service, body, name);
                     }
 
                     /// <summary>Updates the parameters of a single GatewaySecurityPolicyRule.</summary>
@@ -3685,7 +3685,7 @@ namespace Google.Apis.NetworkSecurity.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.NetworkSecurity.v1.Data.GatewaySecurityPolicy body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a new GatewaySecurityPolicy in a given project and location.</summary>
@@ -3759,7 +3759,7 @@ namespace Google.Apis.NetworkSecurity.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes a single GatewaySecurityPolicy.</summary>
@@ -3810,7 +3810,7 @@ namespace Google.Apis.NetworkSecurity.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets details of a single GatewaySecurityPolicy.</summary>
@@ -3861,7 +3861,7 @@ namespace Google.Apis.NetworkSecurity.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists GatewaySecurityPolicies in a given project and location.</summary>
@@ -3942,7 +3942,7 @@ namespace Google.Apis.NetworkSecurity.v1
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.NetworkSecurity.v1.Data.GatewaySecurityPolicy body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates the parameters of a single GatewaySecurityPolicy.</summary>
@@ -4041,7 +4041,7 @@ namespace Google.Apis.NetworkSecurity.v1
                 /// <param name="name">The name of the operation resource to be cancelled.</param>
                 public virtual CancelRequest Cancel(Google.Apis.NetworkSecurity.v1.Data.CancelOperationRequest body, string name)
                 {
-                    return new CancelRequest(service, body, name);
+                    return new CancelRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -4104,7 +4104,7 @@ namespace Google.Apis.NetworkSecurity.v1
                 /// <param name="name">The name of the operation resource to be deleted.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -4156,7 +4156,7 @@ namespace Google.Apis.NetworkSecurity.v1
                 /// <param name="name">The name of the operation resource.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -4207,7 +4207,7 @@ namespace Google.Apis.NetworkSecurity.v1
                 /// <param name="name">The name of the operation's parent resource.</param>
                 public virtual ListRequest List(string name)
                 {
-                    return new ListRequest(service, name);
+                    return new ListRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -4313,7 +4313,7 @@ namespace Google.Apis.NetworkSecurity.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.NetworkSecurity.v1.Data.ServerTlsPolicy body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a new ServerTlsPolicy in a given project and location.</summary>
@@ -4387,7 +4387,7 @@ namespace Google.Apis.NetworkSecurity.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes a single ServerTlsPolicy.</summary>
@@ -4438,7 +4438,7 @@ namespace Google.Apis.NetworkSecurity.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets details of a single ServerTlsPolicy.</summary>
@@ -4493,7 +4493,7 @@ namespace Google.Apis.NetworkSecurity.v1
                 /// </param>
                 public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                 {
-                    return new GetIamPolicyRequest(service, resource);
+                    return new GetIamPolicyRequest(this.service, resource);
                 }
 
                 /// <summary>
@@ -4569,7 +4569,7 @@ namespace Google.Apis.NetworkSecurity.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists ServerTlsPolicies in a given project and location.</summary>
@@ -4649,7 +4649,7 @@ namespace Google.Apis.NetworkSecurity.v1
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.NetworkSecurity.v1.Data.ServerTlsPolicy body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates the parameters of a single ServerTlsPolicy.</summary>
@@ -4729,7 +4729,7 @@ namespace Google.Apis.NetworkSecurity.v1
                 /// </param>
                 public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.NetworkSecurity.v1.Data.GoogleIamV1SetIamPolicyRequest body, string resource)
                 {
-                    return new SetIamPolicyRequest(service, body, resource);
+                    return new SetIamPolicyRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -4798,7 +4798,7 @@ namespace Google.Apis.NetworkSecurity.v1
                 /// </param>
                 public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.NetworkSecurity.v1.Data.GoogleIamV1TestIamPermissionsRequest body, string resource)
                 {
-                    return new TestIamPermissionsRequest(service, body, resource);
+                    return new TestIamPermissionsRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -4881,7 +4881,7 @@ namespace Google.Apis.NetworkSecurity.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.NetworkSecurity.v1.Data.TlsInspectionPolicy body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a new TlsInspectionPolicy in a given project and location.</summary>
@@ -4955,7 +4955,7 @@ namespace Google.Apis.NetworkSecurity.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes a single TlsInspectionPolicy.</summary>
@@ -5021,7 +5021,7 @@ namespace Google.Apis.NetworkSecurity.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets details of a single TlsInspectionPolicy.</summary>
@@ -5072,7 +5072,7 @@ namespace Google.Apis.NetworkSecurity.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists TlsInspectionPolicies in a given project and location.</summary>
@@ -5153,7 +5153,7 @@ namespace Google.Apis.NetworkSecurity.v1
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.NetworkSecurity.v1.Data.TlsInspectionPolicy body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates the parameters of a single TlsInspectionPolicy.</summary>
@@ -5248,7 +5248,7 @@ namespace Google.Apis.NetworkSecurity.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.NetworkSecurity.v1.Data.UrlList body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a new UrlList in a given project and location.</summary>
@@ -5322,7 +5322,7 @@ namespace Google.Apis.NetworkSecurity.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes a single UrlList.</summary>
@@ -5373,7 +5373,7 @@ namespace Google.Apis.NetworkSecurity.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets details of a single UrlList.</summary>
@@ -5424,7 +5424,7 @@ namespace Google.Apis.NetworkSecurity.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists UrlLists in a given project and location.</summary>
@@ -5504,7 +5504,7 @@ namespace Google.Apis.NetworkSecurity.v1
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.NetworkSecurity.v1.Data.UrlList body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates the parameters of a single UrlList.</summary>
@@ -5578,7 +5578,7 @@ namespace Google.Apis.NetworkSecurity.v1
             /// <param name="name">Resource name for the location.</param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets information about a location.</summary>
@@ -5623,7 +5623,7 @@ namespace Google.Apis.NetworkSecurity.v1
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
             {
-                return new ListRequest(service, name);
+                return new ListRequest(this.service, name);
             }
 
             /// <summary>Lists information about the supported locations for this service.</summary>
@@ -5775,8 +5775,8 @@ namespace Google.Apis.NetworkSecurity.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Optional. Free-text description of the resource.</summary>
@@ -5839,8 +5839,8 @@ namespace Google.Apis.NetworkSecurity.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -5893,8 +5893,8 @@ namespace Google.Apis.NetworkSecurity.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Optional. Free-text description of the resource.</summary>
@@ -5953,8 +5953,8 @@ namespace Google.Apis.NetworkSecurity.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -6032,8 +6032,8 @@ namespace Google.Apis.NetworkSecurity.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Optional. Free-text description of the resource.</summary>
@@ -6098,8 +6098,8 @@ namespace Google.Apis.NetworkSecurity.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -6257,8 +6257,8 @@ namespace Google.Apis.NetworkSecurity.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Optional. Free-text description of the resource.</summary>
@@ -6313,8 +6313,8 @@ namespace Google.Apis.NetworkSecurity.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -6368,8 +6368,8 @@ namespace Google.Apis.NetworkSecurity.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Optional. Free-text description of the resource.</summary>
@@ -6436,8 +6436,8 @@ namespace Google.Apis.NetworkSecurity.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -7100,8 +7100,8 @@ namespace Google.Apis.NetworkSecurity.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _endTimeRaw;
@@ -7137,8 +7137,8 @@ namespace Google.Apis.NetworkSecurity.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -7265,8 +7265,8 @@ namespace Google.Apis.NetworkSecurity.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Free-text description of the resource.</summary>
@@ -7335,8 +7335,8 @@ namespace Google.Apis.NetworkSecurity.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -7442,8 +7442,8 @@ namespace Google.Apis.NetworkSecurity.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -7539,8 +7539,8 @@ namespace Google.Apis.NetworkSecurity.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -7586,8 +7586,8 @@ namespace Google.Apis.NetworkSecurity.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Optional. Free-text description of the resource.</summary>
@@ -7635,8 +7635,8 @@ namespace Google.Apis.NetworkSecurity.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Required. FQDNs and URLs.</summary>

@@ -261,7 +261,7 @@ namespace Google.Apis.CloudSecurityToken.v1
         /// <param name="body">The body of the request.</param>
         public virtual IntrospectRequest Introspect(Google.Apis.CloudSecurityToken.v1.Data.GoogleIdentityStsV1IntrospectTokenRequest body)
         {
-            return new IntrospectRequest(service, body);
+            return new IntrospectRequest(this.service, body);
         }
 
         /// <summary>
@@ -312,7 +312,7 @@ namespace Google.Apis.CloudSecurityToken.v1
         /// <param name="body">The body of the request.</param>
         public virtual OauthtokenRequest Oauthtoken(Google.Apis.CloudSecurityToken.v1.Data.GoogleIdentityStsV1ExchangeOauthTokenRequest body)
         {
-            return new OauthtokenRequest(service, body);
+            return new OauthtokenRequest(this.service, body);
         }
 
         /// <summary>
@@ -366,7 +366,7 @@ namespace Google.Apis.CloudSecurityToken.v1
         /// <param name="body">The body of the request.</param>
         public virtual TokenRequest Token(Google.Apis.CloudSecurityToken.v1.Data.GoogleIdentityStsV1ExchangeTokenRequest body)
         {
-            return new TokenRequest(service, body);
+            return new TokenRequest(this.service, body);
         }
 
         /// <summary>

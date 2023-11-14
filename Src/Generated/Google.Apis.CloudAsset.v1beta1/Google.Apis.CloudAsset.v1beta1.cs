@@ -307,7 +307,7 @@ namespace Google.Apis.CloudAsset.v1beta1
             /// <param name="name">The name of the operation resource.</param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>
@@ -366,7 +366,7 @@ namespace Google.Apis.CloudAsset.v1beta1
         /// </param>
         public virtual ExportAssetsRequest ExportAssets(Google.Apis.CloudAsset.v1beta1.Data.ExportAssetsRequest body, string parent)
         {
-            return new ExportAssetsRequest(service, body, parent);
+            return new ExportAssetsRequest(this.service, body, parent);
         }
 
         /// <summary>
@@ -463,7 +463,7 @@ namespace Google.Apis.CloudAsset.v1beta1
             /// <param name="name">The name of the operation resource.</param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>
@@ -521,7 +521,7 @@ namespace Google.Apis.CloudAsset.v1beta1
         /// </param>
         public virtual BatchGetAssetsHistoryRequest BatchGetAssetsHistory(string parent)
         {
-            return new BatchGetAssetsHistoryRequest(service, parent);
+            return new BatchGetAssetsHistoryRequest(this.service, parent);
         }
 
         /// <summary>
@@ -577,15 +577,67 @@ namespace Google.Apis.CloudAsset.v1beta1
                 IAMPOLICY = 2,
             }
 
+            private object _readTimeWindowEndTime;
+
             /// <summary>
-            /// End time of the time window (inclusive). If not specified, the current timestamp is used instead.
+            /// String representation of <see cref="ReadTimeWindowEndTimeDateTimeOffset"/>, formatted for inclusion in
+            /// the HTTP request.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("readTimeWindow.endTime", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual object ReadTimeWindowEndTime { get; set; }
+            public virtual string ReadTimeWindowEndTimeRaw { get; private set; }
 
-            /// <summary>Start time of the time window (exclusive).</summary>
+            /// <summary><seealso cref="object"/> representation of <see cref="ReadTimeWindowEndTimeRaw"/>.</summary>
+            [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ReadTimeWindowEndTimeDateTimeOffset instead.")]
+            public virtual object ReadTimeWindowEndTime
+            {
+                get => _readTimeWindowEndTime;
+                set
+                {
+                    ReadTimeWindowEndTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                    _readTimeWindowEndTime = value;
+                }
+            }
+
+            public virtual System.DateTimeOffset? ReadTimeWindowEndTimeDateTimeOffset
+            {
+                get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ReadTimeWindowEndTimeRaw);
+                set
+                {
+                    ReadTimeWindowEndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                    _readTimeWindowEndTime = value;
+                }
+            }
+
+            private object _readTimeWindowStartTime;
+
+            /// <summary>
+            /// String representation of <see cref="ReadTimeWindowStartTimeDateTimeOffset"/>, formatted for inclusion in
+            /// the HTTP request.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("readTimeWindow.startTime", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual object ReadTimeWindowStartTime { get; set; }
+            public virtual string ReadTimeWindowStartTimeRaw { get; private set; }
+
+            /// <summary><seealso cref="object"/> representation of <see cref="ReadTimeWindowStartTimeRaw"/>.</summary>
+            [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ReadTimeWindowStartTimeDateTimeOffset instead.")]
+            public virtual object ReadTimeWindowStartTime
+            {
+                get => _readTimeWindowStartTime;
+                set
+                {
+                    ReadTimeWindowStartTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                    _readTimeWindowStartTime = value;
+                }
+            }
+
+            public virtual System.DateTimeOffset? ReadTimeWindowStartTimeDateTimeOffset
+            {
+                get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ReadTimeWindowStartTimeRaw);
+                set
+                {
+                    ReadTimeWindowStartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                    _readTimeWindowStartTime = value;
+                }
+            }
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "batchGetAssetsHistory";
@@ -657,7 +709,7 @@ namespace Google.Apis.CloudAsset.v1beta1
         /// </param>
         public virtual ExportAssetsRequest ExportAssets(Google.Apis.CloudAsset.v1beta1.Data.ExportAssetsRequest body, string parent)
         {
-            return new ExportAssetsRequest(service, body, parent);
+            return new ExportAssetsRequest(this.service, body, parent);
         }
 
         /// <summary>
@@ -754,7 +806,7 @@ namespace Google.Apis.CloudAsset.v1beta1
             /// <param name="name">The name of the operation resource.</param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>
@@ -812,7 +864,7 @@ namespace Google.Apis.CloudAsset.v1beta1
         /// </param>
         public virtual BatchGetAssetsHistoryRequest BatchGetAssetsHistory(string parent)
         {
-            return new BatchGetAssetsHistoryRequest(service, parent);
+            return new BatchGetAssetsHistoryRequest(this.service, parent);
         }
 
         /// <summary>
@@ -868,15 +920,67 @@ namespace Google.Apis.CloudAsset.v1beta1
                 IAMPOLICY = 2,
             }
 
+            private object _readTimeWindowEndTime;
+
             /// <summary>
-            /// End time of the time window (inclusive). If not specified, the current timestamp is used instead.
+            /// String representation of <see cref="ReadTimeWindowEndTimeDateTimeOffset"/>, formatted for inclusion in
+            /// the HTTP request.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("readTimeWindow.endTime", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual object ReadTimeWindowEndTime { get; set; }
+            public virtual string ReadTimeWindowEndTimeRaw { get; private set; }
 
-            /// <summary>Start time of the time window (exclusive).</summary>
+            /// <summary><seealso cref="object"/> representation of <see cref="ReadTimeWindowEndTimeRaw"/>.</summary>
+            [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ReadTimeWindowEndTimeDateTimeOffset instead.")]
+            public virtual object ReadTimeWindowEndTime
+            {
+                get => _readTimeWindowEndTime;
+                set
+                {
+                    ReadTimeWindowEndTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                    _readTimeWindowEndTime = value;
+                }
+            }
+
+            public virtual System.DateTimeOffset? ReadTimeWindowEndTimeDateTimeOffset
+            {
+                get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ReadTimeWindowEndTimeRaw);
+                set
+                {
+                    ReadTimeWindowEndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                    _readTimeWindowEndTime = value;
+                }
+            }
+
+            private object _readTimeWindowStartTime;
+
+            /// <summary>
+            /// String representation of <see cref="ReadTimeWindowStartTimeDateTimeOffset"/>, formatted for inclusion in
+            /// the HTTP request.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("readTimeWindow.startTime", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual object ReadTimeWindowStartTime { get; set; }
+            public virtual string ReadTimeWindowStartTimeRaw { get; private set; }
+
+            /// <summary><seealso cref="object"/> representation of <see cref="ReadTimeWindowStartTimeRaw"/>.</summary>
+            [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ReadTimeWindowStartTimeDateTimeOffset instead.")]
+            public virtual object ReadTimeWindowStartTime
+            {
+                get => _readTimeWindowStartTime;
+                set
+                {
+                    ReadTimeWindowStartTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                    _readTimeWindowStartTime = value;
+                }
+            }
+
+            public virtual System.DateTimeOffset? ReadTimeWindowStartTimeDateTimeOffset
+            {
+                get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ReadTimeWindowStartTimeRaw);
+                set
+                {
+                    ReadTimeWindowStartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                    _readTimeWindowStartTime = value;
+                }
+            }
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "batchGetAssetsHistory";
@@ -948,7 +1052,7 @@ namespace Google.Apis.CloudAsset.v1beta1
         /// </param>
         public virtual ExportAssetsRequest ExportAssets(Google.Apis.CloudAsset.v1beta1.Data.ExportAssetsRequest body, string parent)
         {
-            return new ExportAssetsRequest(service, body, parent);
+            return new ExportAssetsRequest(this.service, body, parent);
         }
 
         /// <summary>
@@ -1044,8 +1148,8 @@ namespace Google.Apis.CloudAsset.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -1307,8 +1411,8 @@ namespace Google.Apis.CloudAsset.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ReadTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ReadTimeRaw);
-            set => ReadTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ReadTimeRaw);
+            set => ReadTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -1505,8 +1609,8 @@ namespace Google.Apis.CloudAsset.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -1842,8 +1946,8 @@ namespace Google.Apis.CloudAsset.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Version of the `Policy`. Default version is 0;</summary>
@@ -2842,8 +2946,8 @@ namespace Google.Apis.CloudAsset.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _startTimeRaw;
@@ -2879,8 +2983,8 @@ namespace Google.Apis.CloudAsset.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>

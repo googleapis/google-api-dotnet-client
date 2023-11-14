@@ -302,7 +302,7 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>
@@ -461,7 +461,7 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets an auction package given its name.</summary>
@@ -511,7 +511,7 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>List the auction packages subscribed by a buyer and its clients.</summary>
@@ -592,7 +592,7 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1
             /// </param>
             public virtual SubscribeRequest Subscribe(Google.Apis.AuthorizedBuyersMarketplace.v1.Data.SubscribeAuctionPackageRequest body, string name)
             {
-                return new SubscribeRequest(service, body, name);
+                return new SubscribeRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -658,7 +658,7 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1
             /// </param>
             public virtual SubscribeClientsRequest SubscribeClients(Google.Apis.AuthorizedBuyersMarketplace.v1.Data.SubscribeClientsRequest body, string auctionPackage)
             {
-                return new SubscribeClientsRequest(service, body, auctionPackage);
+                return new SubscribeClientsRequest(this.service, body, auctionPackage);
             }
 
             /// <summary>
@@ -723,7 +723,7 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1
             /// </param>
             public virtual UnsubscribeRequest Unsubscribe(Google.Apis.AuthorizedBuyersMarketplace.v1.Data.UnsubscribeAuctionPackageRequest body, string name)
             {
-                return new UnsubscribeRequest(service, body, name);
+                return new UnsubscribeRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -787,7 +787,7 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1
             /// </param>
             public virtual UnsubscribeClientsRequest UnsubscribeClients(Google.Apis.AuthorizedBuyersMarketplace.v1.Data.UnsubscribeClientsRequest body, string auctionPackage)
             {
-                return new UnsubscribeClientsRequest(service, body, auctionPackage);
+                return new UnsubscribeClientsRequest(this.service, body, auctionPackage);
             }
 
             /// <summary>
@@ -888,7 +888,7 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1
                 /// </param>
                 public virtual ActivateRequest Activate(Google.Apis.AuthorizedBuyersMarketplace.v1.Data.ActivateClientUserRequest body, string name)
                 {
-                    return new ActivateRequest(service, body, name);
+                    return new ActivateRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -952,7 +952,7 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.AuthorizedBuyersMarketplace.v1.Data.ClientUser body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -1016,7 +1016,7 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1
                 /// </param>
                 public virtual DeactivateRequest Deactivate(Google.Apis.AuthorizedBuyersMarketplace.v1.Data.DeactivateClientUserRequest body, string name)
                 {
-                    return new DeactivateRequest(service, body, name);
+                    return new DeactivateRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -1080,7 +1080,7 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -1133,7 +1133,7 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Retrieves an existing client user.</summary>
@@ -1182,7 +1182,7 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists all client users for a specified client.</summary>
@@ -1263,7 +1263,7 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1
             /// <param name="name">Required. Format: `buyers/{buyerAccountId}/clients/{clientAccountId}`</param>
             public virtual ActivateRequest Activate(Google.Apis.AuthorizedBuyersMarketplace.v1.Data.ActivateClientRequest body, string name)
             {
-                return new ActivateRequest(service, body, name);
+                return new ActivateRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -1319,7 +1319,7 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1
             /// <param name="parent">Required. The name of the buyer. Format: `buyers/{accountId}`</param>
             public virtual CreateRequest Create(Google.Apis.AuthorizedBuyersMarketplace.v1.Data.Client body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>Creates a new client.</summary>
@@ -1375,7 +1375,7 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1
             /// <param name="name">Required. Format: `buyers/{buyerAccountId}/clients/{clientAccountId}`</param>
             public virtual DeactivateRequest Deactivate(Google.Apis.AuthorizedBuyersMarketplace.v1.Data.DeactivateClientRequest body, string name)
             {
-                return new DeactivateRequest(service, body, name);
+                return new DeactivateRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -1430,7 +1430,7 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1
             /// <param name="name">Required. Format: `buyers/{accountId}/clients/{clientAccountId}`</param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets a client with a given resource name.</summary>
@@ -1475,7 +1475,7 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1
             /// <param name="parent">Required. The name of the buyer. Format: `buyers/{accountId}`</param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists all the clients for the current buyer.</summary>
@@ -1569,7 +1569,7 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.AuthorizedBuyersMarketplace.v1.Data.Client body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>Updates an existing client.</summary>
@@ -1671,7 +1671,7 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1
             /// </param>
             public virtual AddCreativeRequest AddCreative(Google.Apis.AuthorizedBuyersMarketplace.v1.Data.AddCreativeRequest body, string deal)
             {
-                return new AddCreativeRequest(service, body, deal);
+                return new AddCreativeRequest(this.service, body, deal);
             }
 
             /// <summary>
@@ -1732,7 +1732,7 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1
             /// <param name="name">Required. Format: `buyers/{accountId}/finalizedDeals/{dealId}`</param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets a finalized deal given its name.</summary>
@@ -1785,7 +1785,7 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>
@@ -1908,7 +1908,7 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1
             /// <param name="name">Required. Format: `buyers/{accountId}/finalizedDeals/{dealId}`</param>
             public virtual PauseRequest Pause(Google.Apis.AuthorizedBuyersMarketplace.v1.Data.PauseFinalizedDealRequest body, string name)
             {
-                return new PauseRequest(service, body, name);
+                return new PauseRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -1969,7 +1969,7 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1
             /// <param name="name">Required. Format: `buyers/{accountId}/finalizedDeals/{dealId}`</param>
             public virtual ResumeRequest Resume(Google.Apis.AuthorizedBuyersMarketplace.v1.Data.ResumeFinalizedDealRequest body, string name)
             {
-                return new ResumeRequest(service, body, name);
+                return new ResumeRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -2034,7 +2034,7 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1
             /// <param name="deal">Required. Format: `buyers/{accountId}/finalizedDeals/{dealId}`</param>
             public virtual SetReadyToServeRequest SetReadyToServe(Google.Apis.AuthorizedBuyersMarketplace.v1.Data.SetReadyToServeRequest body, string deal)
             {
-                return new SetReadyToServeRequest(service, body, deal);
+                return new SetReadyToServeRequest(this.service, body, deal);
             }
 
             /// <summary>
@@ -2134,7 +2134,7 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1
                 /// </param>
                 public virtual BatchUpdateRequest BatchUpdate(Google.Apis.AuthorizedBuyersMarketplace.v1.Data.BatchUpdateDealsRequest body, string parent)
                 {
-                    return new BatchUpdateRequest(service, body, parent);
+                    return new BatchUpdateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Batch updates multiple deals in the same proposal.</summary>
@@ -2191,7 +2191,7 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets a deal given its name. The deal is returned at its head revision.</summary>
@@ -2242,7 +2242,7 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>
@@ -2333,7 +2333,7 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.AuthorizedBuyersMarketplace.v1.Data.Deal body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -2425,7 +2425,7 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1
             /// <param name="name">Name of the proposal. Format: `buyers/{accountId}/proposals/{proposalId}`</param>
             public virtual AcceptRequest Accept(Google.Apis.AuthorizedBuyersMarketplace.v1.Data.AcceptProposalRequest body, string name)
             {
-                return new AcceptRequest(service, body, name);
+                return new AcceptRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -2485,7 +2485,7 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1
             /// <param name="proposal">Name of the proposal. Format: `buyers/{accountId}/proposals/{proposalId}`</param>
             public virtual AddNoteRequest AddNote(Google.Apis.AuthorizedBuyersMarketplace.v1.Data.AddNoteRequest body, string proposal)
             {
-                return new AddNoteRequest(service, body, proposal);
+                return new AddNoteRequest(this.service, body, proposal);
             }
 
             /// <summary>Creates a note for this proposal and sends to the seller.</summary>
@@ -2545,7 +2545,7 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1
             /// <param name="proposal">Name of the proposal. Format: `buyers/{accountId}/proposals/{proposalId}`</param>
             public virtual CancelNegotiationRequest CancelNegotiation(Google.Apis.AuthorizedBuyersMarketplace.v1.Data.CancelNegotiationRequest body, string proposal)
             {
-                return new CancelNegotiationRequest(service, body, proposal);
+                return new CancelNegotiationRequest(this.service, body, proposal);
             }
 
             /// <summary>
@@ -2608,7 +2608,7 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>
@@ -2663,7 +2663,7 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>
@@ -2767,7 +2767,7 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.AuthorizedBuyersMarketplace.v1.Data.Proposal body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -2857,7 +2857,7 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1
             /// </param>
             public virtual SendRfpRequest SendRfp(Google.Apis.AuthorizedBuyersMarketplace.v1.Data.SendRfpRequest body, string buyer)
             {
-                return new SendRfpRequest(service, body, buyer);
+                return new SendRfpRequest(this.service, body, buyer);
             }
 
             /// <summary>
@@ -2938,7 +2938,7 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets the requested publisher profile by name.</summary>
@@ -2991,7 +2991,7 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>
@@ -3199,8 +3199,8 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -3268,8 +3268,8 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -3570,8 +3570,8 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. Metadata about the creatives of this deal.</summary>
@@ -3641,8 +3641,8 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? FlightEndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(FlightEndTimeRaw);
-            set => FlightEndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(FlightEndTimeRaw);
+            set => FlightEndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _flightStartTimeRaw;
@@ -3684,8 +3684,8 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? FlightStartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(FlightStartTimeRaw);
-            set => FlightStartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(FlightStartTimeRaw);
+            set => FlightStartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -3771,8 +3771,8 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -4191,8 +4191,8 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. The role who created the note.</summary>
@@ -4498,8 +4498,8 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -4738,8 +4738,8 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? FlightEndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(FlightEndTimeRaw);
-            set => FlightEndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(FlightEndTimeRaw);
+            set => FlightEndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _flightStartTimeRaw;
@@ -4780,8 +4780,8 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? FlightStartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(FlightStartTimeRaw);
-            set => FlightStartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(FlightStartTimeRaw);
+            set => FlightStartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Geo criteria IDs to be targeted. Refer to Geo tables.</summary>

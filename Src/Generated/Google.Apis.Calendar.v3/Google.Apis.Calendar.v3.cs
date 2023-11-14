@@ -263,7 +263,7 @@ namespace Google.Apis.Calendar.v3
         /// <param name="ruleId">ACL rule identifier.</param>
         public virtual DeleteRequest Delete(string calendarId, string ruleId)
         {
-            return new DeleteRequest(service, calendarId, ruleId);
+            return new DeleteRequest(this.service, calendarId, ruleId);
         }
 
         /// <summary>Deletes an access control rule.</summary>
@@ -328,7 +328,7 @@ namespace Google.Apis.Calendar.v3
         /// <param name="ruleId">ACL rule identifier.</param>
         public virtual GetRequest Get(string calendarId, string ruleId)
         {
-            return new GetRequest(service, calendarId, ruleId);
+            return new GetRequest(this.service, calendarId, ruleId);
         }
 
         /// <summary>Returns an access control rule.</summary>
@@ -393,7 +393,7 @@ namespace Google.Apis.Calendar.v3
         /// </param>
         public virtual InsertRequest Insert(Google.Apis.Calendar.v3.Data.AclRule body, string calendarId)
         {
-            return new InsertRequest(service, body, calendarId);
+            return new InsertRequest(this.service, body, calendarId);
         }
 
         /// <summary>Creates an access control rule.</summary>
@@ -465,7 +465,7 @@ namespace Google.Apis.Calendar.v3
         /// </param>
         public virtual ListRequest List(string calendarId)
         {
-            return new ListRequest(service, calendarId);
+            return new ListRequest(this.service, calendarId);
         }
 
         /// <summary>Returns the rules in the access control list for the calendar.</summary>
@@ -579,7 +579,7 @@ namespace Google.Apis.Calendar.v3
         /// <param name="ruleId">ACL rule identifier.</param>
         public virtual PatchRequest Patch(Google.Apis.Calendar.v3.Data.AclRule body, string calendarId, string ruleId)
         {
-            return new PatchRequest(service, body, calendarId, ruleId);
+            return new PatchRequest(this.service, body, calendarId, ruleId);
         }
 
         /// <summary>Updates an access control rule. This method supports patch semantics.</summary>
@@ -667,7 +667,7 @@ namespace Google.Apis.Calendar.v3
         /// <param name="ruleId">ACL rule identifier.</param>
         public virtual UpdateRequest Update(Google.Apis.Calendar.v3.Data.AclRule body, string calendarId, string ruleId)
         {
-            return new UpdateRequest(service, body, calendarId, ruleId);
+            return new UpdateRequest(this.service, body, calendarId, ruleId);
         }
 
         /// <summary>Updates an access control rule.</summary>
@@ -754,7 +754,7 @@ namespace Google.Apis.Calendar.v3
         /// </param>
         public virtual WatchRequest Watch(Google.Apis.Calendar.v3.Data.Channel body, string calendarId)
         {
-            return new WatchRequest(service, body, calendarId);
+            return new WatchRequest(this.service, body, calendarId);
         }
 
         /// <summary>Watch for changes to ACL resources.</summary>
@@ -888,7 +888,7 @@ namespace Google.Apis.Calendar.v3
         /// </param>
         public virtual DeleteRequest Delete(string calendarId)
         {
-            return new DeleteRequest(service, calendarId);
+            return new DeleteRequest(this.service, calendarId);
         }
 
         /// <summary>Removes a calendar from the user's calendar list.</summary>
@@ -939,7 +939,7 @@ namespace Google.Apis.Calendar.v3
         /// </param>
         public virtual GetRequest Get(string calendarId)
         {
-            return new GetRequest(service, calendarId);
+            return new GetRequest(this.service, calendarId);
         }
 
         /// <summary>Returns a calendar from the user's calendar list.</summary>
@@ -987,7 +987,7 @@ namespace Google.Apis.Calendar.v3
         /// <param name="body">The body of the request.</param>
         public virtual InsertRequest Insert(Google.Apis.Calendar.v3.Data.CalendarListEntry body)
         {
-            return new InsertRequest(service, body);
+            return new InsertRequest(this.service, body);
         }
 
         /// <summary>Inserts an existing calendar into the user's calendar list.</summary>
@@ -1041,7 +1041,7 @@ namespace Google.Apis.Calendar.v3
         /// <summary>Returns the calendars on the user's calendar list.</summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>Returns the calendars on the user's calendar list.</summary>
@@ -1190,7 +1190,7 @@ namespace Google.Apis.Calendar.v3
         /// </param>
         public virtual PatchRequest Patch(Google.Apis.Calendar.v3.Data.CalendarListEntry body, string calendarId)
         {
-            return new PatchRequest(service, body, calendarId);
+            return new PatchRequest(this.service, body, calendarId);
         }
 
         /// <summary>
@@ -1267,7 +1267,7 @@ namespace Google.Apis.Calendar.v3
         /// </param>
         public virtual UpdateRequest Update(Google.Apis.Calendar.v3.Data.CalendarListEntry body, string calendarId)
         {
-            return new UpdateRequest(service, body, calendarId);
+            return new UpdateRequest(this.service, body, calendarId);
         }
 
         /// <summary>Updates an existing calendar on the user's calendar list.</summary>
@@ -1338,7 +1338,7 @@ namespace Google.Apis.Calendar.v3
         /// <param name="body">The body of the request.</param>
         public virtual WatchRequest Watch(Google.Apis.Calendar.v3.Data.Channel body)
         {
-            return new WatchRequest(service, body);
+            return new WatchRequest(this.service, body);
         }
 
         /// <summary>Watch for changes to CalendarList resources.</summary>
@@ -1509,7 +1509,7 @@ namespace Google.Apis.Calendar.v3
         /// </param>
         public virtual ClearRequest Clear(string calendarId)
         {
-            return new ClearRequest(service, calendarId);
+            return new ClearRequest(this.service, calendarId);
         }
 
         /// <summary>
@@ -1565,7 +1565,7 @@ namespace Google.Apis.Calendar.v3
         /// </param>
         public virtual DeleteRequest Delete(string calendarId)
         {
-            return new DeleteRequest(service, calendarId);
+            return new DeleteRequest(this.service, calendarId);
         }
 
         /// <summary>
@@ -1618,7 +1618,7 @@ namespace Google.Apis.Calendar.v3
         /// </param>
         public virtual GetRequest Get(string calendarId)
         {
-            return new GetRequest(service, calendarId);
+            return new GetRequest(this.service, calendarId);
         }
 
         /// <summary>Returns metadata for a calendar.</summary>
@@ -1666,7 +1666,7 @@ namespace Google.Apis.Calendar.v3
         /// <param name="body">The body of the request.</param>
         public virtual InsertRequest Insert(Google.Apis.Calendar.v3.Data.Calendar body)
         {
-            return new InsertRequest(service, body);
+            return new InsertRequest(this.service, body);
         }
 
         /// <summary>Creates a secondary calendar.</summary>
@@ -1709,7 +1709,7 @@ namespace Google.Apis.Calendar.v3
         /// </param>
         public virtual PatchRequest Patch(Google.Apis.Calendar.v3.Data.Calendar body, string calendarId)
         {
-            return new PatchRequest(service, body, calendarId);
+            return new PatchRequest(this.service, body, calendarId);
         }
 
         /// <summary>Updates metadata for a calendar. This method supports patch semantics.</summary>
@@ -1768,7 +1768,7 @@ namespace Google.Apis.Calendar.v3
         /// </param>
         public virtual UpdateRequest Update(Google.Apis.Calendar.v3.Data.Calendar body, string calendarId)
         {
-            return new UpdateRequest(service, body, calendarId);
+            return new UpdateRequest(this.service, body, calendarId);
         }
 
         /// <summary>Updates metadata for a calendar.</summary>
@@ -1838,7 +1838,7 @@ namespace Google.Apis.Calendar.v3
         /// <param name="body">The body of the request.</param>
         public virtual StopRequest Stop(Google.Apis.Calendar.v3.Data.Channel body)
         {
-            return new StopRequest(service, body);
+            return new StopRequest(this.service, body);
         }
 
         /// <summary>Stop watching resources through this channel</summary>
@@ -1891,7 +1891,7 @@ namespace Google.Apis.Calendar.v3
         /// <summary>Returns the color definitions for calendars and events.</summary>
         public virtual GetRequest Get()
         {
-            return new GetRequest(service);
+            return new GetRequest(this.service);
         }
 
         /// <summary>Returns the color definitions for calendars and events.</summary>
@@ -1942,7 +1942,7 @@ namespace Google.Apis.Calendar.v3
         /// <param name="eventId">Event identifier.</param>
         public virtual DeleteRequest Delete(string calendarId, string eventId)
         {
-            return new DeleteRequest(service, calendarId, eventId);
+            return new DeleteRequest(this.service, calendarId, eventId);
         }
 
         /// <summary>Deletes an event.</summary>
@@ -2057,7 +2057,7 @@ namespace Google.Apis.Calendar.v3
         /// <param name="eventId">Event identifier.</param>
         public virtual GetRequest Get(string calendarId, string eventId)
         {
-            return new GetRequest(service, calendarId, eventId);
+            return new GetRequest(this.service, calendarId, eventId);
         }
 
         /// <summary>
@@ -2172,7 +2172,7 @@ namespace Google.Apis.Calendar.v3
         /// </param>
         public virtual ImportRequest Import(Google.Apis.Calendar.v3.Data.Event body, string calendarId)
         {
-            return new ImportRequest(service, body, calendarId);
+            return new ImportRequest(this.service, body, calendarId);
         }
 
         /// <summary>
@@ -2264,7 +2264,7 @@ namespace Google.Apis.Calendar.v3
         /// </param>
         public virtual InsertRequest Insert(Google.Apis.Calendar.v3.Data.Event body, string calendarId)
         {
-            return new InsertRequest(service, body, calendarId);
+            return new InsertRequest(this.service, body, calendarId);
         }
 
         /// <summary>Creates an event.</summary>
@@ -2423,7 +2423,7 @@ namespace Google.Apis.Calendar.v3
         /// <param name="eventId">Recurring event identifier.</param>
         public virtual InstancesRequest Instances(string calendarId, string eventId)
         {
-            return new InstancesRequest(service, calendarId, eventId);
+            return new InstancesRequest(this.service, calendarId, eventId);
         }
 
         /// <summary>Returns instances of the specified recurring event.</summary>
@@ -2489,15 +2489,55 @@ namespace Google.Apis.Calendar.v3
             /// Upper bound (exclusive) for an event's start time to filter by. Optional. The default is not to filter
             /// by start time. Must be an RFC3339 timestamp with mandatory time zone offset.
             /// </summary>
+            public virtual System.DateTimeOffset? TimeMaxDateTimeOffset
+            {
+                get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(TimeMaxRaw);
+                set => TimeMaxRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
+            }
+
+            /// <summary>
+            /// String representation of <see cref="TimeMaxDateTimeOffset"/>, formatted for inclusion in the HTTP
+            /// request.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("timeMax", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<System.DateTime> TimeMax { get; set; }
+            public virtual string TimeMaxRaw { get; private set; }
+
+            /// <summary>
+            /// <seealso cref="System.DateTime"/> representation of <see cref="TimeMaxDateTimeOffset"/>.
+            /// </summary>
+            [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use TimeMaxDateTimeOffset instead.")]
+            public virtual System.DateTime? TimeMax
+            {
+                get => Google.Apis.Util.Utilities.GetDateTimeFromString(TimeMaxRaw);
+                set => TimeMaxRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+            }
 
             /// <summary>
             /// Lower bound (inclusive) for an event's end time to filter by. Optional. The default is not to filter by
             /// end time. Must be an RFC3339 timestamp with mandatory time zone offset.
             /// </summary>
+            public virtual System.DateTimeOffset? TimeMinDateTimeOffset
+            {
+                get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(TimeMinRaw);
+                set => TimeMinRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
+            }
+
+            /// <summary>
+            /// String representation of <see cref="TimeMinDateTimeOffset"/>, formatted for inclusion in the HTTP
+            /// request.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("timeMin", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<System.DateTime> TimeMin { get; set; }
+            public virtual string TimeMinRaw { get; private set; }
+
+            /// <summary>
+            /// <seealso cref="System.DateTime"/> representation of <see cref="TimeMinDateTimeOffset"/>.
+            /// </summary>
+            [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use TimeMinDateTimeOffset instead.")]
+            public virtual System.DateTime? TimeMin
+            {
+                get => Google.Apis.Util.Utilities.GetDateTimeFromString(TimeMinRaw);
+                set => TimeMinRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+            }
 
             /// <summary>
             /// Time zone used in the response. Optional. The default is the time zone of the calendar.
@@ -2616,7 +2656,7 @@ namespace Google.Apis.Calendar.v3
         /// </param>
         public virtual ListRequest List(string calendarId)
         {
-            return new ListRequest(service, calendarId);
+            return new ListRequest(this.service, calendarId);
         }
 
         /// <summary>Returns events on the specified calendar.</summary>
@@ -2767,8 +2807,28 @@ namespace Google.Apis.Calendar.v3
             /// 2011-06-03T10:00:00-07:00, 2011-06-03T10:00:00Z. Milliseconds may be provided but are ignored. If
             /// timeMin is set, timeMax must be greater than timeMin.
             /// </summary>
+            public virtual System.DateTimeOffset? TimeMaxDateTimeOffset
+            {
+                get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(TimeMaxRaw);
+                set => TimeMaxRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
+            }
+
+            /// <summary>
+            /// String representation of <see cref="TimeMaxDateTimeOffset"/>, formatted for inclusion in the HTTP
+            /// request.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("timeMax", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<System.DateTime> TimeMax { get; set; }
+            public virtual string TimeMaxRaw { get; private set; }
+
+            /// <summary>
+            /// <seealso cref="System.DateTime"/> representation of <see cref="TimeMaxDateTimeOffset"/>.
+            /// </summary>
+            [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use TimeMaxDateTimeOffset instead.")]
+            public virtual System.DateTime? TimeMax
+            {
+                get => Google.Apis.Util.Utilities.GetDateTimeFromString(TimeMaxRaw);
+                set => TimeMaxRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+            }
 
             /// <summary>
             /// Lower bound (exclusive) for an event's end time to filter by. Optional. The default is not to filter by
@@ -2776,8 +2836,28 @@ namespace Google.Apis.Calendar.v3
             /// 2011-06-03T10:00:00-07:00, 2011-06-03T10:00:00Z. Milliseconds may be provided but are ignored. If
             /// timeMax is set, timeMin must be smaller than timeMax.
             /// </summary>
+            public virtual System.DateTimeOffset? TimeMinDateTimeOffset
+            {
+                get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(TimeMinRaw);
+                set => TimeMinRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
+            }
+
+            /// <summary>
+            /// String representation of <see cref="TimeMinDateTimeOffset"/>, formatted for inclusion in the HTTP
+            /// request.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("timeMin", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<System.DateTime> TimeMin { get; set; }
+            public virtual string TimeMinRaw { get; private set; }
+
+            /// <summary>
+            /// <seealso cref="System.DateTime"/> representation of <see cref="TimeMinDateTimeOffset"/>.
+            /// </summary>
+            [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use TimeMinDateTimeOffset instead.")]
+            public virtual System.DateTime? TimeMin
+            {
+                get => Google.Apis.Util.Utilities.GetDateTimeFromString(TimeMinRaw);
+                set => TimeMinRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+            }
 
             /// <summary>
             /// Time zone used in the response. Optional. The default is the time zone of the calendar.
@@ -2790,8 +2870,28 @@ namespace Google.Apis.Calendar.v3
             /// entries deleted since this time will always be included regardless of showDeleted. Optional. The default
             /// is not to filter by last modification time.
             /// </summary>
+            public virtual System.DateTimeOffset? UpdatedMinDateTimeOffset
+            {
+                get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(UpdatedMinRaw);
+                set => UpdatedMinRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
+            }
+
+            /// <summary>
+            /// String representation of <see cref="UpdatedMinDateTimeOffset"/>, formatted for inclusion in the HTTP
+            /// request.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("updatedMin", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<System.DateTime> UpdatedMin { get; set; }
+            public virtual string UpdatedMinRaw { get; private set; }
+
+            /// <summary>
+            /// <seealso cref="System.DateTime"/> representation of <see cref="UpdatedMinDateTimeOffset"/>.
+            /// </summary>
+            [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdatedMinDateTimeOffset instead.")]
+            public virtual System.DateTime? UpdatedMin
+            {
+                get => Google.Apis.Util.Utilities.GetDateTimeFromString(UpdatedMinRaw);
+                set => UpdatedMinRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+            }
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
@@ -2969,7 +3069,7 @@ namespace Google.Apis.Calendar.v3
         /// </param>
         public virtual MoveRequest Move(string calendarId, string eventId, string destination)
         {
-            return new MoveRequest(service, calendarId, eventId, destination);
+            return new MoveRequest(this.service, calendarId, eventId, destination);
         }
 
         /// <summary>Moves an event to another calendar, i.e. changes an event's organizer.</summary>
@@ -3092,7 +3192,7 @@ namespace Google.Apis.Calendar.v3
         /// <param name="eventId">Event identifier.</param>
         public virtual PatchRequest Patch(Google.Apis.Calendar.v3.Data.Event body, string calendarId, string eventId)
         {
-            return new PatchRequest(service, body, calendarId, eventId);
+            return new PatchRequest(this.service, body, calendarId, eventId);
         }
 
         /// <summary>Updates an event. This method supports patch semantics.</summary>
@@ -3277,7 +3377,7 @@ namespace Google.Apis.Calendar.v3
         /// <param name="text">The text describing the event to be created.</param>
         public virtual QuickAddRequest QuickAdd(string calendarId, string text)
         {
-            return new QuickAddRequest(service, calendarId, text);
+            return new QuickAddRequest(this.service, calendarId, text);
         }
 
         /// <summary>Creates an event based on a simple text string.</summary>
@@ -3390,7 +3490,7 @@ namespace Google.Apis.Calendar.v3
         /// <param name="eventId">Event identifier.</param>
         public virtual UpdateRequest Update(Google.Apis.Calendar.v3.Data.Event body, string calendarId, string eventId)
         {
-            return new UpdateRequest(service, body, calendarId, eventId);
+            return new UpdateRequest(this.service, body, calendarId, eventId);
         }
 
         /// <summary>Updates an event.</summary>
@@ -3575,7 +3675,7 @@ namespace Google.Apis.Calendar.v3
         /// </param>
         public virtual WatchRequest Watch(Google.Apis.Calendar.v3.Data.Channel body, string calendarId)
         {
-            return new WatchRequest(service, body, calendarId);
+            return new WatchRequest(this.service, body, calendarId);
         }
 
         /// <summary>Watch for changes to Events resources.</summary>
@@ -3727,8 +3827,28 @@ namespace Google.Apis.Calendar.v3
             /// 2011-06-03T10:00:00-07:00, 2011-06-03T10:00:00Z. Milliseconds may be provided but are ignored. If
             /// timeMin is set, timeMax must be greater than timeMin.
             /// </summary>
+            public virtual System.DateTimeOffset? TimeMaxDateTimeOffset
+            {
+                get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(TimeMaxRaw);
+                set => TimeMaxRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
+            }
+
+            /// <summary>
+            /// String representation of <see cref="TimeMaxDateTimeOffset"/>, formatted for inclusion in the HTTP
+            /// request.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("timeMax", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<System.DateTime> TimeMax { get; set; }
+            public virtual string TimeMaxRaw { get; private set; }
+
+            /// <summary>
+            /// <seealso cref="System.DateTime"/> representation of <see cref="TimeMaxDateTimeOffset"/>.
+            /// </summary>
+            [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use TimeMaxDateTimeOffset instead.")]
+            public virtual System.DateTime? TimeMax
+            {
+                get => Google.Apis.Util.Utilities.GetDateTimeFromString(TimeMaxRaw);
+                set => TimeMaxRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+            }
 
             /// <summary>
             /// Lower bound (exclusive) for an event's end time to filter by. Optional. The default is not to filter by
@@ -3736,8 +3856,28 @@ namespace Google.Apis.Calendar.v3
             /// 2011-06-03T10:00:00-07:00, 2011-06-03T10:00:00Z. Milliseconds may be provided but are ignored. If
             /// timeMax is set, timeMin must be smaller than timeMax.
             /// </summary>
+            public virtual System.DateTimeOffset? TimeMinDateTimeOffset
+            {
+                get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(TimeMinRaw);
+                set => TimeMinRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
+            }
+
+            /// <summary>
+            /// String representation of <see cref="TimeMinDateTimeOffset"/>, formatted for inclusion in the HTTP
+            /// request.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("timeMin", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<System.DateTime> TimeMin { get; set; }
+            public virtual string TimeMinRaw { get; private set; }
+
+            /// <summary>
+            /// <seealso cref="System.DateTime"/> representation of <see cref="TimeMinDateTimeOffset"/>.
+            /// </summary>
+            [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use TimeMinDateTimeOffset instead.")]
+            public virtual System.DateTime? TimeMin
+            {
+                get => Google.Apis.Util.Utilities.GetDateTimeFromString(TimeMinRaw);
+                set => TimeMinRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+            }
 
             /// <summary>
             /// Time zone used in the response. Optional. The default is the time zone of the calendar.
@@ -3750,8 +3890,28 @@ namespace Google.Apis.Calendar.v3
             /// entries deleted since this time will always be included regardless of showDeleted. Optional. The default
             /// is not to filter by last modification time.
             /// </summary>
+            public virtual System.DateTimeOffset? UpdatedMinDateTimeOffset
+            {
+                get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(UpdatedMinRaw);
+                set => UpdatedMinRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
+            }
+
+            /// <summary>
+            /// String representation of <see cref="UpdatedMinDateTimeOffset"/>, formatted for inclusion in the HTTP
+            /// request.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("updatedMin", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<System.DateTime> UpdatedMin { get; set; }
+            public virtual string UpdatedMinRaw { get; private set; }
+
+            /// <summary>
+            /// <seealso cref="System.DateTime"/> representation of <see cref="UpdatedMinDateTimeOffset"/>.
+            /// </summary>
+            [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdatedMinDateTimeOffset instead.")]
+            public virtual System.DateTime? UpdatedMin
+            {
+                get => Google.Apis.Util.Utilities.GetDateTimeFromString(UpdatedMinRaw);
+                set => UpdatedMinRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+            }
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Calendar.v3.Data.Channel Body { get; set; }
@@ -3946,7 +4106,7 @@ namespace Google.Apis.Calendar.v3
         /// <param name="body">The body of the request.</param>
         public virtual QueryRequest Query(Google.Apis.Calendar.v3.Data.FreeBusyRequest body)
         {
-            return new QueryRequest(service, body);
+            return new QueryRequest(this.service, body);
         }
 
         /// <summary>Returns free/busy information for a set of calendars.</summary>
@@ -4000,7 +4160,7 @@ namespace Google.Apis.Calendar.v3
         /// <param name="setting">The id of the user setting.</param>
         public virtual GetRequest Get(string setting)
         {
-            return new GetRequest(service, setting);
+            return new GetRequest(this.service, setting);
         }
 
         /// <summary>Returns a single user setting.</summary>
@@ -4044,7 +4204,7 @@ namespace Google.Apis.Calendar.v3
         /// <summary>Returns all user settings for the authenticated user.</summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>Returns all user settings for the authenticated user.</summary>
@@ -4121,7 +4281,7 @@ namespace Google.Apis.Calendar.v3
         /// <param name="body">The body of the request.</param>
         public virtual WatchRequest Watch(Google.Apis.Calendar.v3.Data.Channel body)
         {
-            return new WatchRequest(service, body);
+            return new WatchRequest(this.service, body);
         }
 
         /// <summary>Watch for changes to Settings resources.</summary>
@@ -4595,8 +4755,8 @@ namespace Google.Apis.Calendar.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdatedDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdatedRaw);
-            set => UpdatedRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(UpdatedRaw);
+            set => UpdatedRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="UpdatedRaw"/>.</summary>
@@ -4937,8 +5097,8 @@ namespace Google.Apis.Calendar.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreatedDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreatedRaw);
-            set => CreatedRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(CreatedRaw);
+            set => CreatedRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="CreatedRaw"/>.</summary>
@@ -5167,8 +5327,8 @@ namespace Google.Apis.Calendar.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdatedDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdatedRaw);
-            set => UpdatedRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(UpdatedRaw);
+            set => UpdatedRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="UpdatedRaw"/>.</summary>
@@ -5450,8 +5610,8 @@ namespace Google.Apis.Calendar.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? DateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DateTimeRaw);
-            set => DateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(DateTimeRaw);
+            set => DateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="DateTimeRaw"/>.</summary>
@@ -5628,8 +5788,8 @@ namespace Google.Apis.Calendar.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdatedDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdatedRaw);
-            set => UpdatedRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(UpdatedRaw);
+            set => UpdatedRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="UpdatedRaw"/>.</summary>
@@ -5697,8 +5857,8 @@ namespace Google.Apis.Calendar.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? TimeMaxDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(TimeMaxRaw);
-            set => TimeMaxRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(TimeMaxRaw);
+            set => TimeMaxRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="TimeMaxRaw"/>.</summary>
@@ -5718,8 +5878,8 @@ namespace Google.Apis.Calendar.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? TimeMinDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(TimeMinRaw);
-            set => TimeMinRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(TimeMinRaw);
+            set => TimeMinRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="TimeMinRaw"/>.</summary>
@@ -5771,8 +5931,8 @@ namespace Google.Apis.Calendar.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? TimeMaxDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(TimeMaxRaw);
-            set => TimeMaxRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(TimeMaxRaw);
+            set => TimeMaxRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="TimeMaxRaw"/>.</summary>
@@ -5792,8 +5952,8 @@ namespace Google.Apis.Calendar.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? TimeMinDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(TimeMinRaw);
-            set => TimeMinRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(TimeMinRaw);
+            set => TimeMinRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="TimeMinRaw"/>.</summary>
@@ -5870,8 +6030,8 @@ namespace Google.Apis.Calendar.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndRaw);
-            set => EndRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(EndRaw);
+            set => EndRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="EndRaw"/>.</summary>
@@ -5891,8 +6051,8 @@ namespace Google.Apis.Calendar.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartRaw);
-            set => StartRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(StartRaw);
+            set => StartRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="StartRaw"/>.</summary>

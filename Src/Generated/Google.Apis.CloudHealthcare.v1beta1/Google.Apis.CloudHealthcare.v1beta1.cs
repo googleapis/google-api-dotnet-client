@@ -369,7 +369,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// </param>
                         public virtual CreateRequest Create(Google.Apis.CloudHealthcare.v1beta1.Data.Annotation body, string parent)
                         {
-                            return new CreateRequest(service, body, parent);
+                            return new CreateRequest(this.service, body, parent);
                         }
 
                         /// <summary>
@@ -427,7 +427,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// <param name="name">The resource name of the Annotation to delete.</param>
                         public virtual DeleteRequest Delete(string name)
                         {
-                            return new DeleteRequest(service, name);
+                            return new DeleteRequest(this.service, name);
                         }
 
                         /// <summary>Deletes an Annotation or returns NOT_FOUND if it does not exist.</summary>
@@ -472,7 +472,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// <param name="name">The resource name of the Annotation to retrieve.</param>
                         public virtual GetRequest Get(string name)
                         {
-                            return new GetRequest(service, name);
+                            return new GetRequest(this.service, name);
                         }
 
                         /// <summary>Gets an Annotation.</summary>
@@ -519,7 +519,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// <param name="parent">Name of the Annotation store to retrieve Annotations from.</param>
                         public virtual ListRequest List(string parent)
                         {
-                            return new ListRequest(service, parent);
+                            return new ListRequest(this.service, parent);
                         }
 
                         /// <summary>
@@ -649,7 +649,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// </param>
                         public virtual PatchRequest Patch(Google.Apis.CloudHealthcare.v1beta1.Data.Annotation body, string name)
                         {
-                            return new PatchRequest(service, body, name);
+                            return new PatchRequest(this.service, body, name);
                         }
 
                         /// <summary>Updates the Annotation.</summary>
@@ -721,7 +721,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// <param name="parent">The name of the dataset this Annotation store belongs to.</param>
                     public virtual CreateRequest Create(Google.Apis.CloudHealthcare.v1beta1.Data.AnnotationStore body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>Creates a new Annotation store within the parent dataset.</summary>
@@ -790,7 +790,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// <param name="name">The resource name of the Annotation store to delete.</param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -847,7 +847,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// </param>
                     public virtual EvaluateRequest Evaluate(Google.Apis.CloudHealthcare.v1beta1.Data.EvaluateAnnotationStoreRequest body, string name)
                     {
-                        return new EvaluateRequest(service, body, name);
+                        return new EvaluateRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -918,7 +918,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// </param>
                     public virtual ExportRequest Export(Google.Apis.CloudHealthcare.v1beta1.Data.ExportAnnotationsRequest body, string name)
                     {
-                        return new ExportRequest(service, body, name);
+                        return new ExportRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -981,7 +981,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// <param name="name">The resource name of the Annotation store to get.</param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -1035,7 +1035,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// </param>
                     public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                     {
-                        return new GetIamPolicyRequest(service, resource);
+                        return new GetIamPolicyRequest(this.service, resource);
                     }
 
                     /// <summary>
@@ -1119,7 +1119,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// </param>
                     public virtual ImportRequest Import(Google.Apis.CloudHealthcare.v1beta1.Data.ImportAnnotationsRequest body, string name)
                     {
-                        return new ImportRequest(service, body, name);
+                        return new ImportRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -1180,7 +1180,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// <param name="parent">Name of the dataset.</param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists the Annotation stores in the given dataset for a source store.</summary>
@@ -1291,7 +1291,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.CloudHealthcare.v1beta1.Data.AnnotationStore body, string name)
                     {
-                        return new PatchRequest(service, body, name);
+                        return new PatchRequest(this.service, body, name);
                     }
 
                     /// <summary>Updates the specified Annotation store.</summary>
@@ -1369,7 +1369,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// </param>
                     public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.CloudHealthcare.v1beta1.Data.SetIamPolicyRequest body, string resource)
                     {
-                        return new SetIamPolicyRequest(service, body, resource);
+                        return new SetIamPolicyRequest(this.service, body, resource);
                     }
 
                     /// <summary>
@@ -1438,7 +1438,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// </param>
                     public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.CloudHealthcare.v1beta1.Data.TestIamPermissionsRequest body, string resource)
                     {
-                        return new TestIamPermissionsRequest(service, body, resource);
+                        return new TestIamPermissionsRequest(this.service, body, resource);
                     }
 
                     /// <summary>
@@ -1541,7 +1541,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// </param>
                         public virtual CreateRequest Create(Google.Apis.CloudHealthcare.v1beta1.Data.AttributeDefinition body, string parent)
                         {
-                            return new CreateRequest(service, body, parent);
+                            return new CreateRequest(this.service, body, parent);
                         }
 
                         /// <summary>Creates a new Attribute definition in the parent consent store.</summary>
@@ -1619,7 +1619,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// </param>
                         public virtual DeleteRequest Delete(string name)
                         {
-                            return new DeleteRequest(service, name);
+                            return new DeleteRequest(this.service, name);
                         }
 
                         /// <summary>
@@ -1671,7 +1671,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// <param name="name">Required. The resource name of the Attribute definition to get.</param>
                         public virtual GetRequest Get(string name)
                         {
-                            return new GetRequest(service, name);
+                            return new GetRequest(this.service, name);
                         }
 
                         /// <summary>Gets the specified Attribute definition.</summary>
@@ -1718,7 +1718,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// </param>
                         public virtual ListRequest List(string parent)
                         {
-                            return new ListRequest(service, parent);
+                            return new ListRequest(this.service, parent);
                         }
 
                         /// <summary>Lists the Attribute definitions in the specified consent store.</summary>
@@ -1833,7 +1833,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// </param>
                         public virtual PatchRequest Patch(Google.Apis.CloudHealthcare.v1beta1.Data.AttributeDefinition body, string name)
                         {
-                            return new PatchRequest(service, body, name);
+                            return new PatchRequest(this.service, body, name);
                         }
 
                         /// <summary>Updates the specified Attribute definition.</summary>
@@ -1929,7 +1929,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// </param>
                         public virtual CreateRequest Create(Google.Apis.CloudHealthcare.v1beta1.Data.ConsentArtifact body, string parent)
                         {
-                            return new CreateRequest(service, body, parent);
+                            return new CreateRequest(this.service, body, parent);
                         }
 
                         /// <summary>Creates a new Consent artifact in the parent consent store.</summary>
@@ -1990,7 +1990,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// </param>
                         public virtual DeleteRequest Delete(string name)
                         {
-                            return new DeleteRequest(service, name);
+                            return new DeleteRequest(this.service, name);
                         }
 
                         /// <summary>
@@ -2042,7 +2042,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// <param name="name">Required. The resource name of the Consent artifact to retrieve.</param>
                         public virtual GetRequest Get(string name)
                         {
-                            return new GetRequest(service, name);
+                            return new GetRequest(this.service, name);
                         }
 
                         /// <summary>Gets the specified Consent artifact.</summary>
@@ -2089,7 +2089,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// </param>
                         public virtual ListRequest List(string parent)
                         {
-                            return new ListRequest(service, parent);
+                            return new ListRequest(this.service, parent);
                         }
 
                         /// <summary>Lists the Consent artifacts in the specified consent store.</summary>
@@ -2228,7 +2228,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// </param>
                         public virtual ActivateRequest Activate(Google.Apis.CloudHealthcare.v1beta1.Data.ActivateConsentRequest body, string name)
                         {
-                            return new ActivateRequest(service, body, name);
+                            return new ActivateRequest(this.service, body, name);
                         }
 
                         /// <summary>
@@ -2290,7 +2290,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// <param name="parent">Required. Name of the consent store.</param>
                         public virtual CreateRequest Create(Google.Apis.CloudHealthcare.v1beta1.Data.Consent body, string parent)
                         {
-                            return new CreateRequest(service, body, parent);
+                            return new CreateRequest(this.service, body, parent);
                         }
 
                         /// <summary>Creates a new Consent in the parent consent store.</summary>
@@ -2350,7 +2350,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// </param>
                         public virtual DeleteRequest Delete(string name)
                         {
-                            return new DeleteRequest(service, name);
+                            return new DeleteRequest(this.service, name);
                         }
 
                         /// <summary>
@@ -2410,7 +2410,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// </param>
                         public virtual DeleteRevisionRequest DeleteRevision(string name)
                         {
-                            return new DeleteRevisionRequest(service, name);
+                            return new DeleteRevisionRequest(this.service, name);
                         }
 
                         /// <summary>
@@ -2470,7 +2470,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// </param>
                         public virtual GetRequest Get(string name)
                         {
-                            return new GetRequest(service, name);
+                            return new GetRequest(this.service, name);
                         }
 
                         /// <summary>
@@ -2525,7 +2525,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// <param name="parent">Required. Name of the consent store to retrieve Consents from.</param>
                         public virtual ListRequest List(string parent)
                         {
-                            return new ListRequest(service, parent);
+                            return new ListRequest(this.service, parent);
                         }
 
                         /// <summary>
@@ -2641,7 +2641,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// </param>
                         public virtual ListRevisionsRequest ListRevisions(string name)
                         {
-                            return new ListRevisionsRequest(service, name);
+                            return new ListRevisionsRequest(this.service, name);
                         }
 
                         /// <summary>
@@ -2763,7 +2763,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// </param>
                         public virtual PatchRequest Patch(Google.Apis.CloudHealthcare.v1beta1.Data.Consent body, string name)
                         {
-                            return new PatchRequest(service, body, name);
+                            return new PatchRequest(this.service, body, name);
                         }
 
                         /// <summary>
@@ -2850,7 +2850,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// </param>
                         public virtual RejectRequest Reject(Google.Apis.CloudHealthcare.v1beta1.Data.RejectConsentRequest body, string name)
                         {
-                            return new RejectRequest(service, body, name);
+                            return new RejectRequest(this.service, body, name);
                         }
 
                         /// <summary>
@@ -2921,7 +2921,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// </param>
                         public virtual RevokeRequest Revoke(Google.Apis.CloudHealthcare.v1beta1.Data.RevokeConsentRequest body, string name)
                         {
-                            return new RevokeRequest(service, body, name);
+                            return new RevokeRequest(this.service, body, name);
                         }
 
                         /// <summary>
@@ -3001,7 +3001,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// <param name="name">Required. The resource name of the User data mapping to archive.</param>
                         public virtual ArchiveRequest Archive(Google.Apis.CloudHealthcare.v1beta1.Data.ArchiveUserDataMappingRequest body, string name)
                         {
-                            return new ArchiveRequest(service, body, name);
+                            return new ArchiveRequest(this.service, body, name);
                         }
 
                         /// <summary>Archives the specified User data mapping.</summary>
@@ -3054,7 +3054,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// <param name="parent">Required. Name of the consent store.</param>
                         public virtual CreateRequest Create(Google.Apis.CloudHealthcare.v1beta1.Data.UserDataMapping body, string parent)
                         {
-                            return new CreateRequest(service, body, parent);
+                            return new CreateRequest(this.service, body, parent);
                         }
 
                         /// <summary>Creates a new User data mapping in the parent consent store.</summary>
@@ -3106,7 +3106,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// <param name="name">Required. The resource name of the User data mapping to delete.</param>
                         public virtual DeleteRequest Delete(string name)
                         {
-                            return new DeleteRequest(service, name);
+                            return new DeleteRequest(this.service, name);
                         }
 
                         /// <summary>Deletes the specified User data mapping.</summary>
@@ -3151,7 +3151,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// <param name="name">Required. The resource name of the User data mapping to retrieve.</param>
                         public virtual GetRequest Get(string name)
                         {
-                            return new GetRequest(service, name);
+                            return new GetRequest(this.service, name);
                         }
 
                         /// <summary>Gets the specified User data mapping.</summary>
@@ -3198,7 +3198,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// </param>
                         public virtual ListRequest List(string parent)
                         {
-                            return new ListRequest(service, parent);
+                            return new ListRequest(this.service, parent);
                         }
 
                         /// <summary>Lists the User data mappings in the specified consent store.</summary>
@@ -3312,7 +3312,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// </param>
                         public virtual PatchRequest Patch(Google.Apis.CloudHealthcare.v1beta1.Data.UserDataMapping body, string name)
                         {
-                            return new PatchRequest(service, body, name);
+                            return new PatchRequest(this.service, body, name);
                         }
 
                         /// <summary>Updates the specified User data mapping.</summary>
@@ -3392,7 +3392,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// </param>
                     public virtual CheckDataAccessRequest CheckDataAccess(Google.Apis.CloudHealthcare.v1beta1.Data.CheckDataAccessRequest body, string consentStore)
                     {
-                        return new CheckDataAccessRequest(service, body, consentStore);
+                        return new CheckDataAccessRequest(this.service, body, consentStore);
                     }
 
                     /// <summary>
@@ -3454,7 +3454,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// <param name="parent">Required. The name of the dataset this consent store belongs to.</param>
                     public virtual CreateRequest Create(Google.Apis.CloudHealthcare.v1beta1.Data.ConsentStore body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>
@@ -3524,7 +3524,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// <param name="name">Required. The resource name of the consent store to delete.</param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>Deletes the specified consent store and removes all the consent store's data.</summary>
@@ -3576,7 +3576,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// </param>
                     public virtual EvaluateUserConsentsRequest EvaluateUserConsents(Google.Apis.CloudHealthcare.v1beta1.Data.EvaluateUserConsentsRequest body, string consentStore)
                     {
-                        return new EvaluateUserConsentsRequest(service, body, consentStore);
+                        return new EvaluateUserConsentsRequest(this.service, body, consentStore);
                     }
 
                     /// <summary>
@@ -3632,7 +3632,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// <param name="name">Required. The resource name of the consent store to get.</param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Gets the specified consent store.</summary>
@@ -3684,7 +3684,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// </param>
                     public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                     {
-                        return new GetIamPolicyRequest(service, resource);
+                        return new GetIamPolicyRequest(this.service, resource);
                     }
 
                     /// <summary>
@@ -3758,7 +3758,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// <param name="parent">Required. Name of the dataset.</param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists the consent stores in the specified dataset.</summary>
@@ -3870,7 +3870,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.CloudHealthcare.v1beta1.Data.ConsentStore body, string name)
                     {
-                        return new PatchRequest(service, body, name);
+                        return new PatchRequest(this.service, body, name);
                     }
 
                     /// <summary>Updates the specified consent store.</summary>
@@ -3970,7 +3970,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// </param>
                     public virtual QueryAccessibleDataRequest QueryAccessibleData(Google.Apis.CloudHealthcare.v1beta1.Data.QueryAccessibleDataRequest body, string consentStore)
                     {
-                        return new QueryAccessibleDataRequest(service, body, consentStore);
+                        return new QueryAccessibleDataRequest(this.service, body, consentStore);
                     }
 
                     /// <summary>
@@ -4054,7 +4054,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// </param>
                     public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.CloudHealthcare.v1beta1.Data.SetIamPolicyRequest body, string resource)
                     {
-                        return new SetIamPolicyRequest(service, body, resource);
+                        return new SetIamPolicyRequest(this.service, body, resource);
                     }
 
                     /// <summary>
@@ -4123,7 +4123,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// </param>
                     public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.CloudHealthcare.v1beta1.Data.TestIamPermissionsRequest body, string resource)
                     {
-                        return new TestIamPermissionsRequest(service, body, resource);
+                        return new TestIamPermissionsRequest(this.service, body, resource);
                     }
 
                     /// <summary>
@@ -4281,7 +4281,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                                     /// </param>
                                     public virtual GetStorageInfoRequest GetStorageInfo(string resource)
                                     {
-                                        return new GetStorageInfoRequest(service, resource);
+                                        return new GetStorageInfoRequest(this.service, resource);
                                     }
 
                                     /// <summary>
@@ -4336,7 +4336,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                                 /// </param>
                                 public virtual GetSeriesMetricsRequest GetSeriesMetrics(string series)
                                 {
-                                    return new GetSeriesMetricsRequest(service, series);
+                                    return new GetSeriesMetricsRequest(this.service, series);
                                 }
 
                                 /// <summary>GetSeriesMetrics returns metrics for a series.</summary>
@@ -4388,7 +4388,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             /// </param>
                             public virtual GetStudyMetricsRequest GetStudyMetrics(string study)
                             {
-                                return new GetStudyMetricsRequest(service, study);
+                                return new GetStudyMetricsRequest(this.service, study);
                             }
 
                             /// <summary>GetStudyMetrics returns metrics for a study.</summary>
@@ -4448,7 +4448,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             /// </param>
                             public virtual SetBlobStorageSettingsRequest SetBlobStorageSettings(Google.Apis.CloudHealthcare.v1beta1.Data.SetBlobStorageSettingsRequest body, string resource)
                             {
-                                return new SetBlobStorageSettingsRequest(service, body, resource);
+                                return new SetBlobStorageSettingsRequest(this.service, body, resource);
                             }
 
                             /// <summary>
@@ -4601,7 +4601,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                                     /// </param>
                                     public virtual RetrieveFramesRequest RetrieveFrames(string parent, string dicomWebPath)
                                     {
-                                        return new RetrieveFramesRequest(service, parent, dicomWebPath);
+                                        return new RetrieveFramesRequest(this.service, parent, dicomWebPath);
                                     }
 
                                     /// <summary>
@@ -4691,7 +4691,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                                     /// </param>
                                     public virtual RetrieveRenderedRequest RetrieveRendered(string parent, string dicomWebPath)
                                     {
-                                        return new RetrieveRenderedRequest(service, parent, dicomWebPath);
+                                        return new RetrieveRenderedRequest(this.service, parent, dicomWebPath);
                                     }
 
                                     /// <summary>
@@ -4780,7 +4780,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                                 /// </param>
                                 public virtual DeleteRequest Delete(string parent, string dicomWebPath)
                                 {
-                                    return new DeleteRequest(service, parent, dicomWebPath);
+                                    return new DeleteRequest(this.service, parent, dicomWebPath);
                                 }
 
                                 /// <summary>
@@ -4869,7 +4869,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                                 /// </param>
                                 public virtual RetrieveInstanceRequest RetrieveInstance(string parent, string dicomWebPath)
                                 {
-                                    return new RetrieveInstanceRequest(service, parent, dicomWebPath);
+                                    return new RetrieveInstanceRequest(this.service, parent, dicomWebPath);
                                 }
 
                                 /// <summary>
@@ -4960,7 +4960,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                                 /// </param>
                                 public virtual RetrieveMetadataRequest RetrieveMetadata(string parent, string dicomWebPath)
                                 {
-                                    return new RetrieveMetadataRequest(service, parent, dicomWebPath);
+                                    return new RetrieveMetadataRequest(this.service, parent, dicomWebPath);
                                 }
 
                                 /// <summary>
@@ -5049,7 +5049,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                                 /// </param>
                                 public virtual RetrieveRenderedRequest RetrieveRendered(string parent, string dicomWebPath)
                                 {
-                                    return new RetrieveRenderedRequest(service, parent, dicomWebPath);
+                                    return new RetrieveRenderedRequest(this.service, parent, dicomWebPath);
                                 }
 
                                 /// <summary>
@@ -5137,7 +5137,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             /// </param>
                             public virtual DeleteRequest Delete(string parent, string dicomWebPath)
                             {
-                                return new DeleteRequest(service, parent, dicomWebPath);
+                                return new DeleteRequest(this.service, parent, dicomWebPath);
                             }
 
                             /// <summary>
@@ -5224,7 +5224,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             /// </param>
                             public virtual RetrieveMetadataRequest RetrieveMetadata(string parent, string dicomWebPath)
                             {
-                                return new RetrieveMetadataRequest(service, parent, dicomWebPath);
+                                return new RetrieveMetadataRequest(this.service, parent, dicomWebPath);
                             }
 
                             /// <summary>
@@ -5312,7 +5312,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             /// </param>
                             public virtual RetrieveSeriesRequest RetrieveSeries(string parent, string dicomWebPath)
                             {
-                                return new RetrieveSeriesRequest(service, parent, dicomWebPath);
+                                return new RetrieveSeriesRequest(this.service, parent, dicomWebPath);
                             }
 
                             /// <summary>
@@ -5399,7 +5399,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             /// </param>
                             public virtual SearchForInstancesRequest SearchForInstances(string parent, string dicomWebPath)
                             {
-                                return new SearchForInstancesRequest(service, parent, dicomWebPath);
+                                return new SearchForInstancesRequest(this.service, parent, dicomWebPath);
                             }
 
                             /// <summary>
@@ -5482,7 +5482,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// </param>
                         public virtual DeleteRequest Delete(string parent, string dicomWebPath)
                         {
-                            return new DeleteRequest(service, parent, dicomWebPath);
+                            return new DeleteRequest(this.service, parent, dicomWebPath);
                         }
 
                         /// <summary>
@@ -5564,7 +5564,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// </param>
                         public virtual RetrieveMetadataRequest RetrieveMetadata(string parent, string dicomWebPath)
                         {
-                            return new RetrieveMetadataRequest(service, parent, dicomWebPath);
+                            return new RetrieveMetadataRequest(this.service, parent, dicomWebPath);
                         }
 
                         /// <summary>
@@ -5651,7 +5651,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// </param>
                         public virtual RetrieveStudyRequest RetrieveStudy(string parent, string dicomWebPath)
                         {
-                            return new RetrieveStudyRequest(service, parent, dicomWebPath);
+                            return new RetrieveStudyRequest(this.service, parent, dicomWebPath);
                         }
 
                         /// <summary>
@@ -5737,7 +5737,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// </param>
                         public virtual SearchForInstancesRequest SearchForInstances(string parent, string dicomWebPath)
                         {
-                            return new SearchForInstancesRequest(service, parent, dicomWebPath);
+                            return new SearchForInstancesRequest(this.service, parent, dicomWebPath);
                         }
 
                         /// <summary>
@@ -5824,7 +5824,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// </param>
                         public virtual SearchForSeriesRequest SearchForSeries(string parent, string dicomWebPath)
                         {
-                            return new SearchForSeriesRequest(service, parent, dicomWebPath);
+                            return new SearchForSeriesRequest(this.service, parent, dicomWebPath);
                         }
 
                         /// <summary>
@@ -5912,7 +5912,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// </param>
                         public virtual StoreInstancesRequest StoreInstances(Google.Apis.CloudHealthcare.v1beta1.Data.HttpBody body, string parent, string dicomWebPath)
                         {
-                            return new StoreInstancesRequest(service, body, parent, dicomWebPath);
+                            return new StoreInstancesRequest(this.service, body, parent, dicomWebPath);
                         }
 
                         /// <summary>
@@ -5993,7 +5993,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// <param name="parent">The name of the dataset this DICOM store belongs to.</param>
                     public virtual CreateRequest Create(Google.Apis.CloudHealthcare.v1beta1.Data.DicomStore body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>Creates a new DICOM store within the parent dataset.</summary>
@@ -6072,7 +6072,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// </param>
                     public virtual DeidentifyRequest Deidentify(Google.Apis.CloudHealthcare.v1beta1.Data.DeidentifyDicomStoreRequest body, string sourceStore)
                     {
-                        return new DeidentifyRequest(service, body, sourceStore);
+                        return new DeidentifyRequest(this.service, body, sourceStore);
                     }
 
                     /// <summary>
@@ -6137,7 +6137,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// <param name="name">The resource name of the DICOM store to delete.</param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -6193,7 +6193,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// </param>
                     public virtual ExportRequest Export(Google.Apis.CloudHealthcare.v1beta1.Data.ExportDicomDataRequest body, string name)
                     {
-                        return new ExportRequest(service, body, name);
+                        return new ExportRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -6253,7 +6253,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// <param name="name">The resource name of the DICOM store to get.</param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Gets the specified DICOM store.</summary>
@@ -6298,7 +6298,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// <param name="name">The resource name of the DICOM store to get metrics for.</param>
                     public virtual GetDICOMStoreMetricsRequest GetDICOMStoreMetrics(string name)
                     {
-                        return new GetDICOMStoreMetricsRequest(service, name);
+                        return new GetDICOMStoreMetricsRequest(this.service, name);
                     }
 
                     /// <summary>Gets metrics associated with the DICOM store.</summary>
@@ -6350,7 +6350,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// </param>
                     public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                     {
-                        return new GetIamPolicyRequest(service, resource);
+                        return new GetIamPolicyRequest(this.service, resource);
                     }
 
                     /// <summary>
@@ -6433,7 +6433,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// </param>
                     public virtual ImportRequest Import(Google.Apis.CloudHealthcare.v1beta1.Data.ImportDicomDataRequest body, string name)
                     {
-                        return new ImportRequest(service, body, name);
+                        return new ImportRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -6493,7 +6493,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// <param name="parent">Name of the dataset.</param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists the DICOM stores in the given dataset.</summary>
@@ -6604,7 +6604,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.CloudHealthcare.v1beta1.Data.DicomStore body, string name)
                     {
-                        return new PatchRequest(service, body, name);
+                        return new PatchRequest(this.service, body, name);
                     }
 
                     /// <summary>Updates the specified DICOM store.</summary>
@@ -6688,7 +6688,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// </param>
                     public virtual SearchForInstancesRequest SearchForInstances(string parent, string dicomWebPath)
                     {
-                        return new SearchForInstancesRequest(service, parent, dicomWebPath);
+                        return new SearchForInstancesRequest(this.service, parent, dicomWebPath);
                     }
 
                     /// <summary>
@@ -6773,7 +6773,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// </param>
                     public virtual SearchForSeriesRequest SearchForSeries(string parent, string dicomWebPath)
                     {
-                        return new SearchForSeriesRequest(service, parent, dicomWebPath);
+                        return new SearchForSeriesRequest(this.service, parent, dicomWebPath);
                     }
 
                     /// <summary>
@@ -6857,7 +6857,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// </param>
                     public virtual SearchForStudiesRequest SearchForStudies(string parent, string dicomWebPath)
                     {
-                        return new SearchForStudiesRequest(service, parent, dicomWebPath);
+                        return new SearchForStudiesRequest(this.service, parent, dicomWebPath);
                     }
 
                     /// <summary>
@@ -6938,7 +6938,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// </param>
                     public virtual SetBlobStorageSettingsRequest SetBlobStorageSettings(Google.Apis.CloudHealthcare.v1beta1.Data.SetBlobStorageSettingsRequest body, string resource)
                     {
-                        return new SetBlobStorageSettingsRequest(service, body, resource);
+                        return new SetBlobStorageSettingsRequest(this.service, body, resource);
                     }
 
                     /// <summary>
@@ -7008,7 +7008,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// </param>
                     public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.CloudHealthcare.v1beta1.Data.SetIamPolicyRequest body, string resource)
                     {
-                        return new SetIamPolicyRequest(service, body, resource);
+                        return new SetIamPolicyRequest(this.service, body, resource);
                     }
 
                     /// <summary>
@@ -7083,7 +7083,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// </param>
                     public virtual StoreInstancesRequest StoreInstances(Google.Apis.CloudHealthcare.v1beta1.Data.HttpBody body, string parent, string dicomWebPath)
                     {
-                        return new StoreInstancesRequest(service, body, parent, dicomWebPath);
+                        return new StoreInstancesRequest(this.service, body, parent, dicomWebPath);
                     }
 
                     /// <summary>
@@ -7172,7 +7172,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// </param>
                     public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.CloudHealthcare.v1beta1.Data.TestIamPermissionsRequest body, string resource)
                     {
-                        return new TestIamPermissionsRequest(service, body, resource);
+                        return new TestIamPermissionsRequest(this.service, body, resource);
                     }
 
                     /// <summary>
@@ -7281,7 +7281,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// </param>
                         public virtual ConceptMapSearchTranslateRequest ConceptMapSearchTranslate(string parent)
                         {
-                            return new ConceptMapSearchTranslateRequest(service, parent);
+                            return new ConceptMapSearchTranslateRequest(this.service, parent);
                         }
 
                         /// <summary>
@@ -7432,7 +7432,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// <param name="name">The URL for the concept map to use for the translation.</param>
                         public virtual ConceptMapTranslateRequest ConceptMapTranslate(string name)
                         {
-                            return new ConceptMapTranslateRequest(service, name);
+                            return new ConceptMapTranslateRequest(this.service, name);
                         }
 
                         /// <summary>
@@ -7534,7 +7534,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// </param>
                         public virtual ConsentEnforcementStatusRequest ConsentEnforcementStatus(string name)
                         {
-                            return new ConsentEnforcementStatusRequest(service, name);
+                            return new ConsentEnforcementStatusRequest(this.service, name);
                         }
 
                         /// <summary>
@@ -7608,7 +7608,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// <param name="parent">Name of the FHIR store to retrieve resources from.</param>
                         public virtual ObservationLastnRequest ObservationLastn(string parent)
                         {
-                            return new ObservationLastnRequest(service, parent);
+                            return new ObservationLastnRequest(this.service, parent);
                         }
 
                         /// <summary>
@@ -7682,7 +7682,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// </param>
                         public virtual PatientConsentEnforcementStatusRequest PatientConsentEnforcementStatus(string name)
                         {
-                            return new PatientConsentEnforcementStatusRequest(service, name);
+                            return new PatientConsentEnforcementStatusRequest(this.service, name);
                         }
 
                         /// <summary>
@@ -7790,7 +7790,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// </param>
                         public virtual PatientEverythingRequest PatientEverything(string name)
                         {
-                            return new PatientEverythingRequest(service, name);
+                            return new PatientEverythingRequest(this.service, name);
                         }
 
                         /// <summary>
@@ -7963,7 +7963,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// </param>
                         public virtual ResourceIncomingReferencesRequest ResourceIncomingReferences(string parent)
                         {
-                            return new ResourceIncomingReferencesRequest(service, parent);
+                            return new ResourceIncomingReferencesRequest(this.service, parent);
                         }
 
                         /// <summary>
@@ -8103,7 +8103,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// <param name="name">The name of the resource to purge.</param>
                         public virtual ResourcePurgeRequest ResourcePurge(string name)
                         {
-                            return new ResourcePurgeRequest(service, name);
+                            return new ResourcePurgeRequest(this.service, name);
                         }
 
                         /// <summary>
@@ -8177,7 +8177,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// </param>
                         public virtual ResourceValidateRequest ResourceValidate(Google.Apis.CloudHealthcare.v1beta1.Data.HttpBody body, string parent, string type)
                         {
-                            return new ResourceValidateRequest(service, body, parent, type);
+                            return new ResourceValidateRequest(this.service, body, parent, type);
                         }
 
                         /// <summary>
@@ -8294,7 +8294,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// <param name="name">Name of the FHIR store to retrieve the capabilities for.</param>
                         public virtual CapabilitiesRequest Capabilities(string name)
                         {
-                            return new CapabilitiesRequest(service, name);
+                            return new CapabilitiesRequest(this.service, name);
                         }
 
                         /// <summary>
@@ -8379,7 +8379,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// </param>
                         public virtual ConditionalDeleteRequest ConditionalDelete(string parent, string type)
                         {
-                            return new ConditionalDeleteRequest(service, parent, type);
+                            return new ConditionalDeleteRequest(this.service, parent, type);
                         }
 
                         /// <summary>
@@ -8491,7 +8491,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// </param>
                         public virtual ConditionalPatchRequest ConditionalPatch(Google.Apis.CloudHealthcare.v1beta1.Data.HttpBody body, string parent, string type)
                         {
-                            return new ConditionalPatchRequest(service, body, parent, type);
+                            return new ConditionalPatchRequest(this.service, body, parent, type);
                         }
 
                         /// <summary>
@@ -8618,7 +8618,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// </param>
                         public virtual ConditionalUpdateRequest ConditionalUpdate(Google.Apis.CloudHealthcare.v1beta1.Data.HttpBody body, string parent, string type)
                         {
-                            return new ConditionalUpdateRequest(service, body, parent, type);
+                            return new ConditionalUpdateRequest(this.service, body, parent, type);
                         }
 
                         /// <summary>
@@ -8746,7 +8746,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// </param>
                         public virtual CreateRequest Create(Google.Apis.CloudHealthcare.v1beta1.Data.HttpBody body, string parent, string type)
                         {
-                            return new CreateRequest(service, body, parent, type);
+                            return new CreateRequest(this.service, body, parent, type);
                         }
 
                         /// <summary>
@@ -8848,7 +8848,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// <param name="name">The name of the resource to delete.</param>
                         public virtual DeleteRequest Delete(string name)
                         {
-                            return new DeleteRequest(service, name);
+                            return new DeleteRequest(this.service, name);
                         }
 
                         /// <summary>
@@ -8936,7 +8936,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// <param name="parent">Name of the FHIR store in which this bundle will be executed.</param>
                         public virtual ExecuteBundleRequest ExecuteBundle(Google.Apis.CloudHealthcare.v1beta1.Data.HttpBody body, string parent)
                         {
-                            return new ExecuteBundleRequest(service, body, parent);
+                            return new ExecuteBundleRequest(this.service, body, parent);
                         }
 
                         /// <summary>
@@ -9033,7 +9033,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// <param name="name">The name of the resource to retrieve.</param>
                         public virtual HistoryRequest History(string name)
                         {
-                            return new HistoryRequest(service, name);
+                            return new HistoryRequest(this.service, name);
                         }
 
                         /// <summary>
@@ -9174,7 +9174,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// <param name="name">The name of the resource to update.</param>
                         public virtual PatchRequest Patch(Google.Apis.CloudHealthcare.v1beta1.Data.HttpBody body, string name)
                         {
-                            return new PatchRequest(service, body, name);
+                            return new PatchRequest(this.service, body, name);
                         }
 
                         /// <summary>
@@ -9256,7 +9256,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// <param name="name">The name of the resource to retrieve.</param>
                         public virtual ReadRequest Read(string name)
                         {
-                            return new ReadRequest(service, name);
+                            return new ReadRequest(this.service, name);
                         }
 
                         /// <summary>
@@ -9373,7 +9373,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// <param name="parent">Name of the FHIR store to retrieve resources from.</param>
                         public virtual SearchRequest Search(Google.Apis.CloudHealthcare.v1beta1.Data.SearchResourcesRequest body, string parent)
                         {
-                            return new SearchRequest(service, body, parent);
+                            return new SearchRequest(this.service, body, parent);
                         }
 
                         /// <summary>
@@ -9543,7 +9543,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// </param>
                         public virtual SearchTypeRequest SearchType(Google.Apis.CloudHealthcare.v1beta1.Data.SearchResourcesRequest body, string parent, string resourceType)
                         {
-                            return new SearchTypeRequest(service, body, parent, resourceType);
+                            return new SearchTypeRequest(this.service, body, parent, resourceType);
                         }
 
                         /// <summary>
@@ -9689,7 +9689,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// <param name="name">The name of the resource to update.</param>
                         public virtual UpdateRequest Update(Google.Apis.CloudHealthcare.v1beta1.Data.HttpBody body, string name)
                         {
-                            return new UpdateRequest(service, body, name);
+                            return new UpdateRequest(this.service, body, name);
                         }
 
                         /// <summary>
@@ -9772,7 +9772,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// <param name="name">The name of the resource version to retrieve.</param>
                         public virtual VreadRequest Vread(string name)
                         {
-                            return new VreadRequest(service, name);
+                            return new VreadRequest(this.service, name);
                         }
 
                         /// <summary>
@@ -9847,7 +9847,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// </param>
                     public virtual ApplyAdminConsentsRequest ApplyAdminConsents(Google.Apis.CloudHealthcare.v1beta1.Data.ApplyAdminConsentsRequest body, string name)
                     {
-                        return new ApplyAdminConsentsRequest(service, body, name);
+                        return new ApplyAdminConsentsRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -9930,7 +9930,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// </param>
                     public virtual ApplyConsentsRequest ApplyConsents(Google.Apis.CloudHealthcare.v1beta1.Data.ApplyConsentsRequest body, string name)
                     {
-                        return new ApplyConsentsRequest(service, body, name);
+                        return new ApplyConsentsRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -10006,7 +10006,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// </param>
                     public virtual ConfigureSearchRequest ConfigureSearch(Google.Apis.CloudHealthcare.v1beta1.Data.ConfigureSearchRequest body, string name)
                     {
-                        return new ConfigureSearchRequest(service, body, name);
+                        return new ConfigureSearchRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -10068,7 +10068,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// <param name="parent">The name of the dataset this FHIR store belongs to.</param>
                     public virtual CreateRequest Create(Google.Apis.CloudHealthcare.v1beta1.Data.FhirStore body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>Creates a new FHIR store within the parent dataset.</summary>
@@ -10145,7 +10145,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// </param>
                     public virtual DeidentifyRequest Deidentify(Google.Apis.CloudHealthcare.v1beta1.Data.DeidentifyFhirStoreRequest body, string sourceStore)
                     {
-                        return new DeidentifyRequest(service, body, sourceStore);
+                        return new DeidentifyRequest(this.service, body, sourceStore);
                     }
 
                     /// <summary>
@@ -10206,7 +10206,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// <param name="name">The resource name of the FHIR store to delete.</param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>Deletes the specified FHIR store and removes all resources within it.</summary>
@@ -10262,7 +10262,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// </param>
                     public virtual ExportRequest Export(Google.Apis.CloudHealthcare.v1beta1.Data.ExportResourcesRequest body, string name)
                     {
-                        return new ExportRequest(service, body, name);
+                        return new ExportRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -10324,7 +10324,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// <param name="name">The resource name of the FHIR store to get.</param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Gets the configuration of the specified FHIR store.</summary>
@@ -10369,7 +10369,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// <param name="name">The resource name of the FHIR store to get metrics for.</param>
                     public virtual GetFHIRStoreMetricsRequest GetFHIRStoreMetrics(string name)
                     {
-                        return new GetFHIRStoreMetricsRequest(service, name);
+                        return new GetFHIRStoreMetricsRequest(this.service, name);
                     }
 
                     /// <summary>Gets metrics associated with the FHIR store.</summary>
@@ -10421,7 +10421,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// </param>
                     public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                     {
-                        return new GetIamPolicyRequest(service, resource);
+                        return new GetIamPolicyRequest(this.service, resource);
                     }
 
                     /// <summary>
@@ -10543,7 +10543,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// </param>
                     public virtual ImportRequest Import(Google.Apis.CloudHealthcare.v1beta1.Data.ImportResourcesRequest body, string name)
                     {
-                        return new ImportRequest(service, body, name);
+                        return new ImportRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -10642,7 +10642,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// <param name="parent">Name of the dataset.</param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists the FHIR stores in the given dataset.</summary>
@@ -10753,7 +10753,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.CloudHealthcare.v1beta1.Data.FhirStore body, string name)
                     {
-                        return new PatchRequest(service, body, name);
+                        return new PatchRequest(this.service, body, name);
                     }
 
                     /// <summary>Updates the configuration of the specified FHIR store.</summary>
@@ -10835,7 +10835,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// </param>
                     public virtual RollbackRequest Rollback(Google.Apis.CloudHealthcare.v1beta1.Data.RollbackFhirResourcesRequest body, string name)
                     {
-                        return new RollbackRequest(service, body, name);
+                        return new RollbackRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -10906,7 +10906,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// </param>
                     public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.CloudHealthcare.v1beta1.Data.SetIamPolicyRequest body, string resource)
                     {
-                        return new SetIamPolicyRequest(service, body, resource);
+                        return new SetIamPolicyRequest(this.service, body, resource);
                     }
 
                     /// <summary>
@@ -10975,7 +10975,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// </param>
                     public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.CloudHealthcare.v1beta1.Data.TestIamPermissionsRequest body, string resource)
                     {
-                        return new TestIamPermissionsRequest(service, body, resource);
+                        return new TestIamPermissionsRequest(this.service, body, resource);
                     }
 
                     /// <summary>
@@ -11075,7 +11075,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// </param>
                         public virtual BatchGetRequest BatchGet(string parent)
                         {
-                            return new BatchGetRequest(service, parent);
+                            return new BatchGetRequest(this.service, parent);
                         }
 
                         /// <summary>Gets multiple messages in the given HL7v2 store.</summary>
@@ -11202,7 +11202,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// <param name="parent">The name of the HL7v2 store this message belongs to.</param>
                         public virtual CreateRequest Create(Google.Apis.CloudHealthcare.v1beta1.Data.CreateMessageRequest body, string parent)
                         {
-                            return new CreateRequest(service, body, parent);
+                            return new CreateRequest(this.service, body, parent);
                         }
 
                         /// <summary>
@@ -11259,7 +11259,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// <param name="name">The resource name of the HL7v2 message to delete.</param>
                         public virtual DeleteRequest Delete(string name)
                         {
-                            return new DeleteRequest(service, name);
+                            return new DeleteRequest(this.service, name);
                         }
 
                         /// <summary>Deletes an HL7v2 message.</summary>
@@ -11304,7 +11304,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// <param name="name">The resource name of the HL7v2 message to retrieve.</param>
                         public virtual GetRequest Get(string name)
                         {
-                            return new GetRequest(service, name);
+                            return new GetRequest(this.service, name);
                         }
 
                         /// <summary>Gets an HL7v2 message.</summary>
@@ -11415,7 +11415,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// <param name="parent">The name of the HL7v2 store this message belongs to.</param>
                         public virtual IngestRequest Ingest(Google.Apis.CloudHealthcare.v1beta1.Data.IngestMessageRequest body, string parent)
                         {
-                            return new IngestRequest(service, body, parent);
+                            return new IngestRequest(this.service, body, parent);
                         }
 
                         /// <summary>
@@ -11479,7 +11479,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// <param name="parent">Name of the HL7v2 store to retrieve messages from.</param>
                         public virtual ListRequest List(string parent)
                         {
-                            return new ListRequest(service, parent);
+                            return new ListRequest(this.service, parent);
                         }
 
                         /// <summary>
@@ -11691,7 +11691,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// </param>
                         public virtual PatchRequest Patch(Google.Apis.CloudHealthcare.v1beta1.Data.Message body, string name)
                         {
-                            return new PatchRequest(service, body, name);
+                            return new PatchRequest(this.service, body, name);
                         }
 
                         /// <summary>
@@ -11769,7 +11769,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// <param name="parent">The name of the dataset this HL7v2 store belongs to.</param>
                     public virtual CreateRequest Create(Google.Apis.CloudHealthcare.v1beta1.Data.Hl7V2Store body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>Creates a new HL7v2 store within the parent dataset.</summary>
@@ -11836,7 +11836,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// <param name="name">The resource name of the HL7v2 store to delete.</param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>Deletes the specified HL7v2 store and removes all messages that it contains.</summary>
@@ -11892,7 +11892,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// </param>
                     public virtual ExportRequest Export(Google.Apis.CloudHealthcare.v1beta1.Data.ExportMessagesRequest body, string name)
                     {
-                        return new ExportRequest(service, body, name);
+                        return new ExportRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -11954,7 +11954,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// <param name="name">The resource name of the HL7v2 store to get.</param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Gets the specified HL7v2 store.</summary>
@@ -12002,7 +12002,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// </param>
                     public virtual GetHL7v2StoreMetricsRequest GetHL7v2StoreMetrics(string name)
                     {
-                        return new GetHL7v2StoreMetricsRequest(service, name);
+                        return new GetHL7v2StoreMetricsRequest(this.service, name);
                     }
 
                     /// <summary>Gets metrics associated with the HL7v2 store.</summary>
@@ -12057,7 +12057,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// </param>
                     public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                     {
-                        return new GetIamPolicyRequest(service, resource);
+                        return new GetIamPolicyRequest(this.service, resource);
                     }
 
                     /// <summary>
@@ -12155,7 +12155,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// </param>
                     public virtual ImportRequest Import(Google.Apis.CloudHealthcare.v1beta1.Data.ImportMessagesRequest body, string name)
                     {
-                        return new ImportRequest(service, body, name);
+                        return new ImportRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -12230,7 +12230,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// <param name="parent">Name of the dataset.</param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists the HL7v2 stores in the given dataset.</summary>
@@ -12341,7 +12341,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.CloudHealthcare.v1beta1.Data.Hl7V2Store body, string name)
                     {
-                        return new PatchRequest(service, body, name);
+                        return new PatchRequest(this.service, body, name);
                     }
 
                     /// <summary>Updates the HL7v2 store.</summary>
@@ -12419,7 +12419,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// </param>
                     public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.CloudHealthcare.v1beta1.Data.SetIamPolicyRequest body, string resource)
                     {
-                        return new SetIamPolicyRequest(service, body, resource);
+                        return new SetIamPolicyRequest(this.service, body, resource);
                     }
 
                     /// <summary>
@@ -12488,7 +12488,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// </param>
                     public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.CloudHealthcare.v1beta1.Data.TestIamPermissionsRequest body, string resource)
                     {
-                        return new TestIamPermissionsRequest(service, body, resource);
+                        return new TestIamPermissionsRequest(this.service, body, resource);
                     }
 
                     /// <summary>
@@ -12576,7 +12576,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// <param name="name">The name of the operation resource to be cancelled.</param>
                     public virtual CancelRequest Cancel(Google.Apis.CloudHealthcare.v1beta1.Data.CancelOperationRequest body, string name)
                     {
-                        return new CancelRequest(service, body, name);
+                        return new CancelRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -12639,7 +12639,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// <param name="name">The name of the operation resource.</param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -12690,7 +12690,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// <param name="name">The name of the operation's parent resource.</param>
                     public virtual ListRequest List(string name)
                     {
-                        return new ListRequest(service, name);
+                        return new ListRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -12783,7 +12783,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.CloudHealthcare.v1beta1.Data.Dataset body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -12868,7 +12868,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                 /// </param>
                 public virtual DeidentifyRequest Deidentify(Google.Apis.CloudHealthcare.v1beta1.Data.DeidentifyDatasetRequest body, string sourceDataset)
                 {
-                    return new DeidentifyRequest(service, body, sourceDataset);
+                    return new DeidentifyRequest(this.service, body, sourceDataset);
                 }
 
                 /// <summary>
@@ -12936,7 +12936,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -12990,7 +12990,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets any metadata associated with a dataset.</summary>
@@ -13045,7 +13045,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                 /// </param>
                 public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                 {
-                    return new GetIamPolicyRequest(service, resource);
+                    return new GetIamPolicyRequest(this.service, resource);
                 }
 
                 /// <summary>
@@ -13121,7 +13121,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists the health datasets in the current project.</summary>
@@ -13200,7 +13200,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.CloudHealthcare.v1beta1.Data.Dataset body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates dataset metadata.</summary>
@@ -13278,7 +13278,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                 /// </param>
                 public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.CloudHealthcare.v1beta1.Data.SetIamPolicyRequest body, string resource)
                 {
-                    return new SetIamPolicyRequest(service, body, resource);
+                    return new SetIamPolicyRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -13347,7 +13347,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                 /// </param>
                 public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.CloudHealthcare.v1beta1.Data.TestIamPermissionsRequest body, string resource)
                 {
-                    return new TestIamPermissionsRequest(service, body, resource);
+                    return new TestIamPermissionsRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -13452,7 +13452,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// </param>
                     public virtual AnalyzeEntitiesRequest AnalyzeEntities(Google.Apis.CloudHealthcare.v1beta1.Data.AnalyzeEntitiesRequest body, string nlpService)
                     {
-                        return new AnalyzeEntitiesRequest(service, body, nlpService);
+                        return new AnalyzeEntitiesRequest(this.service, body, nlpService);
                     }
 
                     /// <summary>
@@ -13513,7 +13513,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
             /// <param name="name">Resource name for the location.</param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets information about a location.</summary>
@@ -13558,7 +13558,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
             {
-                return new ListRequest(service, name);
+                return new ListRequest(this.service, name);
             }
 
             /// <summary>Lists information about the supported locations for this service.</summary>
@@ -13772,8 +13772,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpireTimeRaw);
-            set => ExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The time to live for this Consent from when it is marked as active.</summary>
@@ -14334,8 +14334,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StorageClassUpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StorageClassUpdateTimeRaw);
-            set => StorageClassUpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StorageClassUpdateTimeRaw);
+            set => StorageClassUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -14562,8 +14562,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpireTimeRaw);
-            set => ExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -14627,8 +14627,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? RevisionCreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(RevisionCreateTimeRaw);
-            set => RevisionCreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(RevisionCreateTimeRaw);
+            set => RevisionCreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -15671,8 +15671,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -15755,8 +15755,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -17618,8 +17618,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Raw message bytes.</summary>
@@ -17700,8 +17700,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? SendTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(SendTimeRaw);
-            set => SendTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(SendTimeRaw);
+            set => SendTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -17830,8 +17830,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _endTimeRaw;
@@ -17870,8 +17870,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -18385,8 +18385,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? RollbackTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(RollbackTimeRaw);
-            set => RollbackTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(RollbackTimeRaw);
+            set => RollbackTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Optional. If specified, revert only resources of these types</summary>
@@ -18757,8 +18757,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? SignatureTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(SignatureTimeRaw);
-            set => SignatureTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(SignatureTimeRaw);
+            set => SignatureTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Required. User's UUID provided by the client.</summary>
@@ -19101,8 +19101,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ArchiveTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ArchiveTimeRaw);
-            set => ArchiveTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ArchiveTimeRaw);
+            set => ArchiveTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. Indicates whether this mapping is archived.</summary>

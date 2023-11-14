@@ -323,7 +323,7 @@ namespace Google.Apis.CloudWorkstations.v1beta
                 /// <param name="name">The name of the operation resource to be cancelled.</param>
                 public virtual CancelRequest Cancel(Google.Apis.CloudWorkstations.v1beta.Data.CancelOperationRequest body, string name)
                 {
-                    return new CancelRequest(service, body, name);
+                    return new CancelRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -386,7 +386,7 @@ namespace Google.Apis.CloudWorkstations.v1beta
                 /// <param name="name">The name of the operation resource to be deleted.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -438,7 +438,7 @@ namespace Google.Apis.CloudWorkstations.v1beta
                 /// <param name="name">The name of the operation resource.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -489,7 +489,7 @@ namespace Google.Apis.CloudWorkstations.v1beta
                 /// <param name="name">The name of the operation's parent resource.</param>
                 public virtual ListRequest List(string name)
                 {
-                    return new ListRequest(service, name);
+                    return new ListRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -628,7 +628,7 @@ namespace Google.Apis.CloudWorkstations.v1beta
                         /// <param name="parent">Required. Parent resource name.</param>
                         public virtual CreateRequest Create(Google.Apis.CloudWorkstations.v1beta.Data.Workstation body, string parent)
                         {
-                            return new CreateRequest(service, body, parent);
+                            return new CreateRequest(this.service, body, parent);
                         }
 
                         /// <summary>Creates a new workstation.</summary>
@@ -707,7 +707,7 @@ namespace Google.Apis.CloudWorkstations.v1beta
                         /// <param name="name">Required. Name of the workstation to delete.</param>
                         public virtual DeleteRequest Delete(string name)
                         {
-                            return new DeleteRequest(service, name);
+                            return new DeleteRequest(this.service, name);
                         }
 
                         /// <summary>Deletes the specified workstation.</summary>
@@ -788,7 +788,7 @@ namespace Google.Apis.CloudWorkstations.v1beta
                         /// </param>
                         public virtual GenerateAccessTokenRequest GenerateAccessToken(Google.Apis.CloudWorkstations.v1beta.Data.GenerateAccessTokenRequest body, string workstation)
                         {
-                            return new GenerateAccessTokenRequest(service, body, workstation);
+                            return new GenerateAccessTokenRequest(this.service, body, workstation);
                         }
 
                         /// <summary>
@@ -845,7 +845,7 @@ namespace Google.Apis.CloudWorkstations.v1beta
                         /// <param name="name">Required. Name of the requested resource.</param>
                         public virtual GetRequest Get(string name)
                         {
-                            return new GetRequest(service, name);
+                            return new GetRequest(this.service, name);
                         }
 
                         /// <summary>Returns the requested workstation.</summary>
@@ -897,7 +897,7 @@ namespace Google.Apis.CloudWorkstations.v1beta
                         /// </param>
                         public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                         {
-                            return new GetIamPolicyRequest(service, resource);
+                            return new GetIamPolicyRequest(this.service, resource);
                         }
 
                         /// <summary>
@@ -971,7 +971,7 @@ namespace Google.Apis.CloudWorkstations.v1beta
                         /// <param name="parent">Required. Parent resource name.</param>
                         public virtual ListRequest List(string parent)
                         {
-                            return new ListRequest(service, parent);
+                            return new ListRequest(this.service, parent);
                         }
 
                         /// <summary>Returns all Workstations using the specified workstation configuration.</summary>
@@ -1045,7 +1045,7 @@ namespace Google.Apis.CloudWorkstations.v1beta
                         /// <param name="parent">Required. Parent resource name.</param>
                         public virtual ListUsableRequest ListUsable(string parent)
                         {
-                            return new ListUsableRequest(service, parent);
+                            return new ListUsableRequest(this.service, parent);
                         }
 
                         /// <summary>
@@ -1120,7 +1120,7 @@ namespace Google.Apis.CloudWorkstations.v1beta
                         /// <param name="name">Identifier. Full name of this workstation.</param>
                         public virtual PatchRequest Patch(Google.Apis.CloudWorkstations.v1beta.Data.Workstation body, string name)
                         {
-                            return new PatchRequest(service, body, name);
+                            return new PatchRequest(this.service, body, name);
                         }
 
                         /// <summary>Updates an existing workstation.</summary>
@@ -1225,7 +1225,7 @@ namespace Google.Apis.CloudWorkstations.v1beta
                         /// </param>
                         public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.CloudWorkstations.v1beta.Data.SetIamPolicyRequest body, string resource)
                         {
-                            return new SetIamPolicyRequest(service, body, resource);
+                            return new SetIamPolicyRequest(this.service, body, resource);
                         }
 
                         /// <summary>
@@ -1285,7 +1285,7 @@ namespace Google.Apis.CloudWorkstations.v1beta
                         /// <param name="name">Required. Name of the workstation to start.</param>
                         public virtual StartRequest Start(Google.Apis.CloudWorkstations.v1beta.Data.StartWorkstationRequest body, string name)
                         {
-                            return new StartRequest(service, body, name);
+                            return new StartRequest(this.service, body, name);
                         }
 
                         /// <summary>Starts running a workstation so that users can connect to it.</summary>
@@ -1338,7 +1338,7 @@ namespace Google.Apis.CloudWorkstations.v1beta
                         /// <param name="name">Required. Name of the workstation to stop.</param>
                         public virtual StopRequest Stop(Google.Apis.CloudWorkstations.v1beta.Data.StopWorkstationRequest body, string name)
                         {
-                            return new StopRequest(service, body, name);
+                            return new StopRequest(this.service, body, name);
                         }
 
                         /// <summary>Stops running a workstation, reducing costs.</summary>
@@ -1400,7 +1400,7 @@ namespace Google.Apis.CloudWorkstations.v1beta
                         /// </param>
                         public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.CloudWorkstations.v1beta.Data.TestIamPermissionsRequest body, string resource)
                         {
-                            return new TestIamPermissionsRequest(service, body, resource);
+                            return new TestIamPermissionsRequest(this.service, body, resource);
                         }
 
                         /// <summary>
@@ -1463,7 +1463,7 @@ namespace Google.Apis.CloudWorkstations.v1beta
                     /// <param name="parent">Required. Parent resource name.</param>
                     public virtual CreateRequest Create(Google.Apis.CloudWorkstations.v1beta.Data.WorkstationConfig body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>Creates a new workstation configuration.</summary>
@@ -1541,7 +1541,7 @@ namespace Google.Apis.CloudWorkstations.v1beta
                     /// <param name="name">Required. Name of the workstation configuration to delete.</param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>Deletes the specified workstation configuration.</summary>
@@ -1630,7 +1630,7 @@ namespace Google.Apis.CloudWorkstations.v1beta
                     /// <param name="name">Required. Name of the requested resource.</param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Returns the requested workstation configuration.</summary>
@@ -1682,7 +1682,7 @@ namespace Google.Apis.CloudWorkstations.v1beta
                     /// </param>
                     public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                     {
-                        return new GetIamPolicyRequest(service, resource);
+                        return new GetIamPolicyRequest(this.service, resource);
                     }
 
                     /// <summary>
@@ -1756,7 +1756,7 @@ namespace Google.Apis.CloudWorkstations.v1beta
                     /// <param name="parent">Required. Parent resource name.</param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Returns all workstation configurations in the specified cluster.</summary>
@@ -1830,7 +1830,7 @@ namespace Google.Apis.CloudWorkstations.v1beta
                     /// <param name="parent">Required. Parent resource name.</param>
                     public virtual ListUsableRequest ListUsable(string parent)
                     {
-                        return new ListUsableRequest(service, parent);
+                        return new ListUsableRequest(this.service, parent);
                     }
 
                     /// <summary>
@@ -1905,7 +1905,7 @@ namespace Google.Apis.CloudWorkstations.v1beta
                     /// <param name="name">Identifier. Full name of this workstation configuration.</param>
                     public virtual PatchRequest Patch(Google.Apis.CloudWorkstations.v1beta.Data.WorkstationConfig body, string name)
                     {
-                        return new PatchRequest(service, body, name);
+                        return new PatchRequest(this.service, body, name);
                     }
 
                     /// <summary>Updates an existing workstation configuration.</summary>
@@ -2008,7 +2008,7 @@ namespace Google.Apis.CloudWorkstations.v1beta
                     /// </param>
                     public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.CloudWorkstations.v1beta.Data.SetIamPolicyRequest body, string resource)
                     {
-                        return new SetIamPolicyRequest(service, body, resource);
+                        return new SetIamPolicyRequest(this.service, body, resource);
                     }
 
                     /// <summary>
@@ -2077,7 +2077,7 @@ namespace Google.Apis.CloudWorkstations.v1beta
                     /// </param>
                     public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.CloudWorkstations.v1beta.Data.TestIamPermissionsRequest body, string resource)
                     {
-                        return new TestIamPermissionsRequest(service, body, resource);
+                        return new TestIamPermissionsRequest(this.service, body, resource);
                     }
 
                     /// <summary>
@@ -2140,7 +2140,7 @@ namespace Google.Apis.CloudWorkstations.v1beta
                 /// <param name="parent">Required. Parent resource name.</param>
                 public virtual CreateRequest Create(Google.Apis.CloudWorkstations.v1beta.Data.WorkstationCluster body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a new workstation cluster.</summary>
@@ -2218,7 +2218,7 @@ namespace Google.Apis.CloudWorkstations.v1beta
                 /// <param name="name">Required. Name of the workstation cluster to delete.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes the specified workstation cluster.</summary>
@@ -2308,7 +2308,7 @@ namespace Google.Apis.CloudWorkstations.v1beta
                 /// <param name="name">Required. Name of the requested resource.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Returns the requested workstation cluster.</summary>
@@ -2353,7 +2353,7 @@ namespace Google.Apis.CloudWorkstations.v1beta
                 /// <param name="parent">Required. Parent resource name.</param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Returns all workstation clusters in the specified location.</summary>
@@ -2425,7 +2425,7 @@ namespace Google.Apis.CloudWorkstations.v1beta
                 /// <param name="name">Identifier. Full name of this workstation cluster.</param>
                 public virtual PatchRequest Patch(Google.Apis.CloudWorkstations.v1beta.Data.WorkstationCluster body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates an existing workstation cluster.</summary>
@@ -3053,8 +3053,8 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpireTimeRaw);
-            set => ExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -3111,8 +3111,8 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpireTimeRaw);
-            set => ExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -3344,8 +3344,8 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _endTimeRaw;
@@ -3381,8 +3381,8 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. Identifies whether the user has requested cancellation of the operation.</summary>
@@ -3698,8 +3698,8 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _deleteTimeRaw;
@@ -3735,8 +3735,8 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? DeleteTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DeleteTimeRaw);
-            set => DeleteTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DeleteTimeRaw);
+            set => DeleteTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Optional. Human-readable name for this workstation.</summary>
@@ -3815,8 +3815,8 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. Current state of the workstation.</summary>
@@ -3860,8 +3860,8 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
     }
 
@@ -3920,8 +3920,8 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -3964,8 +3964,8 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? DeleteTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DeleteTimeRaw);
-            set => DeleteTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DeleteTimeRaw);
+            set => DeleteTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Optional. Human-readable name for this workstation cluster.</summary>
@@ -4056,8 +4056,8 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
     }
 
@@ -4117,8 +4117,8 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -4161,8 +4161,8 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? DeleteTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DeleteTimeRaw);
-            set => DeleteTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DeleteTimeRaw);
+            set => DeleteTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -4315,8 +4315,8 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
     }
 }

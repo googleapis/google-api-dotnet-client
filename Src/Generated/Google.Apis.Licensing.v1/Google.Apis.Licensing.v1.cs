@@ -285,7 +285,7 @@ namespace Google.Apis.Licensing.v1
         /// </param>
         public virtual DeleteRequest Delete(string productId, string skuId, string userId)
         {
-            return new DeleteRequest(service, productId, skuId, userId);
+            return new DeleteRequest(this.service, productId, skuId, userId);
         }
 
         /// <summary>Revoke a license.</summary>
@@ -380,7 +380,7 @@ namespace Google.Apis.Licensing.v1
         /// </param>
         public virtual GetRequest Get(string productId, string skuId, string userId)
         {
-            return new GetRequest(service, productId, skuId, userId);
+            return new GetRequest(this.service, productId, skuId, userId);
         }
 
         /// <summary>Get a specific user's license by product SKU.</summary>
@@ -470,7 +470,7 @@ namespace Google.Apis.Licensing.v1
         /// </param>
         public virtual InsertRequest Insert(Google.Apis.Licensing.v1.Data.LicenseAssignmentInsert body, string productId, string skuId)
         {
-            return new InsertRequest(service, body, productId, skuId);
+            return new InsertRequest(this.service, body, productId, skuId);
         }
 
         /// <summary>Assign a license.</summary>
@@ -548,7 +548,7 @@ namespace Google.Apis.Licensing.v1
         /// </param>
         public virtual ListForProductRequest ListForProduct(string productId, string customerId)
         {
-            return new ListForProductRequest(service, productId, customerId);
+            return new ListForProductRequest(this.service, productId, customerId);
         }
 
         /// <summary>List all users assigned licenses for a specific product SKU.</summary>
@@ -654,7 +654,7 @@ namespace Google.Apis.Licensing.v1
         /// </param>
         public virtual ListForProductAndSkuRequest ListForProductAndSku(string productId, string skuId, string customerId)
         {
-            return new ListForProductAndSkuRequest(service, productId, skuId, customerId);
+            return new ListForProductAndSkuRequest(this.service, productId, skuId, customerId);
         }
 
         /// <summary>List all users assigned licenses for a specific product SKU.</summary>
@@ -782,7 +782,7 @@ namespace Google.Apis.Licensing.v1
         /// </param>
         public virtual PatchRequest Patch(Google.Apis.Licensing.v1.Data.LicenseAssignment body, string productId, string skuId, string userId)
         {
-            return new PatchRequest(service, body, productId, skuId, userId);
+            return new PatchRequest(this.service, body, productId, skuId, userId);
         }
 
         /// <summary>
@@ -888,7 +888,7 @@ namespace Google.Apis.Licensing.v1
         /// </param>
         public virtual UpdateRequest Update(Google.Apis.Licensing.v1.Data.LicenseAssignment body, string productId, string skuId, string userId)
         {
-            return new UpdateRequest(service, body, productId, skuId, userId);
+            return new UpdateRequest(this.service, body, productId, skuId, userId);
         }
 
         /// <summary>Reassign a user's product SKU with a different SKU in the same product.</summary>

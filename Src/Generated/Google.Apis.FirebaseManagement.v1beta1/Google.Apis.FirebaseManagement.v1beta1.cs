@@ -314,7 +314,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1
         /// </summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>
@@ -402,7 +402,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1
         /// <param name="name">The name of the operation resource.</param>
         public virtual GetRequest Get(string name)
         {
-            return new GetRequest(service, name);
+            return new GetRequest(this.service, name);
         }
 
         /// <summary>
@@ -513,7 +513,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.FirebaseManagement.v1beta1.Data.ShaCertificate body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Adds a ShaCertificate to the specified AndroidApp.</summary>
@@ -579,7 +579,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Removes a ShaCertificate from the specified AndroidApp.</summary>
@@ -638,7 +638,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists the SHA-1 and SHA-256 certificates for the specified AndroidApp.</summary>
@@ -700,7 +700,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1
             /// </param>
             public virtual CreateRequest Create(Google.Apis.FirebaseManagement.v1beta1.Data.AndroidApp body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -766,7 +766,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets the specified AndroidApp.</summary>
@@ -824,7 +824,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1
             /// </param>
             public virtual GetConfigRequest GetConfig(string name)
             {
-                return new GetConfigRequest(service, name);
+                return new GetConfigRequest(this.service, name);
             }
 
             /// <summary>Gets the configuration artifact associated with the specified AndroidApp.</summary>
@@ -884,7 +884,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>
@@ -993,7 +993,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.FirebaseManagement.v1beta1.Data.AndroidApp body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>Updates the attributes of the specified AndroidApp.</summary>
@@ -1077,7 +1077,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1
             /// </param>
             public virtual RemoveRequest Remove(Google.Apis.FirebaseManagement.v1beta1.Data.RemoveAndroidAppRequest body, string name)
             {
-                return new RemoveRequest(service, body, name);
+                return new RemoveRequest(this.service, body, name);
             }
 
             /// <summary>Removes the specified AndroidApp from the FirebaseProject.</summary>
@@ -1142,7 +1142,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1
             /// </param>
             public virtual UndeleteRequest Undelete(Google.Apis.FirebaseManagement.v1beta1.Data.UndeleteAndroidAppRequest body, string name)
             {
-                return new UndeleteRequest(service, body, name);
+                return new UndeleteRequest(this.service, body, name);
             }
 
             /// <summary>Restores the specified AndroidApp to the FirebaseProject.</summary>
@@ -1238,7 +1238,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>
@@ -1379,7 +1379,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1
             /// </param>
             public virtual FinalizeRequest Finalize(Google.Apis.FirebaseManagement.v1beta1.Data.FinalizeDefaultLocationRequest body, string parent)
             {
-                return new FinalizeRequest(service, body, parent);
+                return new FinalizeRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -1483,7 +1483,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1
             /// </param>
             public virtual CreateRequest Create(Google.Apis.FirebaseManagement.v1beta1.Data.IosApp body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -1549,7 +1549,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets the specified IosApp.</summary>
@@ -1606,7 +1606,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1
             /// </param>
             public virtual GetConfigRequest GetConfig(string name)
             {
-                return new GetConfigRequest(service, name);
+                return new GetConfigRequest(this.service, name);
             }
 
             /// <summary>Gets the configuration artifact associated with the specified IosApp.</summary>
@@ -1665,7 +1665,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>
@@ -1773,7 +1773,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.FirebaseManagement.v1beta1.Data.IosApp body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>Updates the attributes of the specified IosApp.</summary>
@@ -1856,7 +1856,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1
             /// </param>
             public virtual RemoveRequest Remove(Google.Apis.FirebaseManagement.v1beta1.Data.RemoveIosAppRequest body, string name)
             {
-                return new RemoveRequest(service, body, name);
+                return new RemoveRequest(this.service, body, name);
             }
 
             /// <summary>Removes the specified IosApp from the FirebaseProject.</summary>
@@ -1921,7 +1921,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1
             /// </param>
             public virtual UndeleteRequest Undelete(Google.Apis.FirebaseManagement.v1beta1.Data.UndeleteIosAppRequest body, string name)
             {
-                return new UndeleteRequest(service, body, name);
+                return new UndeleteRequest(this.service, body, name);
             }
 
             /// <summary>Restores the specified IosApp to the FirebaseProject.</summary>
@@ -2006,7 +2006,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1
             /// </param>
             public virtual CreateRequest Create(Google.Apis.FirebaseManagement.v1beta1.Data.WebApp body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -2072,7 +2072,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets the specified WebApp.</summary>
@@ -2129,7 +2129,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1
             /// </param>
             public virtual GetConfigRequest GetConfig(string name)
             {
-                return new GetConfigRequest(service, name);
+                return new GetConfigRequest(this.service, name);
             }
 
             /// <summary>Gets the configuration artifact associated with the specified WebApp.</summary>
@@ -2188,7 +2188,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>
@@ -2296,7 +2296,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.FirebaseManagement.v1beta1.Data.WebApp body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>Updates the attributes of the specified WebApp.</summary>
@@ -2379,7 +2379,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1
             /// </param>
             public virtual RemoveRequest Remove(Google.Apis.FirebaseManagement.v1beta1.Data.RemoveWebAppRequest body, string name)
             {
-                return new RemoveRequest(service, body, name);
+                return new RemoveRequest(this.service, body, name);
             }
 
             /// <summary>Removes the specified WebApp from the FirebaseProject.</summary>
@@ -2444,7 +2444,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1
             /// </param>
             public virtual UndeleteRequest Undelete(Google.Apis.FirebaseManagement.v1beta1.Data.UndeleteWebAppRequest body, string name)
             {
-                return new UndeleteRequest(service, body, name);
+                return new UndeleteRequest(this.service, body, name);
             }
 
             /// <summary>Restores the specified WebApp to the FirebaseProject.</summary>
@@ -2528,7 +2528,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1
         /// </param>
         public virtual AddFirebaseRequest AddFirebase(Google.Apis.FirebaseManagement.v1beta1.Data.AddFirebaseRequest body, string project)
         {
-            return new AddFirebaseRequest(service, body, project);
+            return new AddFirebaseRequest(this.service, body, project);
         }
 
         /// <summary>
@@ -2634,7 +2634,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1
         /// </param>
         public virtual AddGoogleAnalyticsRequest AddGoogleAnalytics(Google.Apis.FirebaseManagement.v1beta1.Data.AddGoogleAnalyticsRequest body, string parent)
         {
-            return new AddGoogleAnalyticsRequest(service, body, parent);
+            return new AddGoogleAnalyticsRequest(this.service, body, parent);
         }
 
         /// <summary>
@@ -2719,7 +2719,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1
         /// </param>
         public virtual GetRequest Get(string name)
         {
-            return new GetRequest(service, name);
+            return new GetRequest(this.service, name);
         }
 
         /// <summary>Gets the specified FirebaseProject.</summary>
@@ -2776,7 +2776,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1
         /// </param>
         public virtual GetAdminSdkConfigRequest GetAdminSdkConfig(string name)
         {
-            return new GetAdminSdkConfigRequest(service, name);
+            return new GetAdminSdkConfigRequest(this.service, name);
         }
 
         /// <summary>
@@ -2837,7 +2837,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1
         /// </param>
         public virtual GetAnalyticsDetailsRequest GetAnalyticsDetails(string name)
         {
-            return new GetAnalyticsDetailsRequest(service, name);
+            return new GetAnalyticsDetailsRequest(this.service, name);
         }
 
         /// <summary>
@@ -2895,7 +2895,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1
         /// </summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>
@@ -2989,7 +2989,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1
         /// </param>
         public virtual PatchRequest Patch(Google.Apis.FirebaseManagement.v1beta1.Data.FirebaseProject body, string name)
         {
-            return new PatchRequest(service, body, name);
+            return new PatchRequest(this.service, body, name);
         }
 
         /// <summary>
@@ -3082,7 +3082,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1
         /// </param>
         public virtual RemoveAnalyticsRequest RemoveAnalytics(Google.Apis.FirebaseManagement.v1beta1.Data.RemoveAnalyticsRequest body, string parent)
         {
-            return new RemoveAnalyticsRequest(service, body, parent);
+            return new RemoveAnalyticsRequest(this.service, body, parent);
         }
 
         /// <summary>
@@ -3155,7 +3155,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1
         /// </param>
         public virtual SearchAppsRequest SearchApps(string parent)
         {
-            return new SearchAppsRequest(service, parent);
+            return new SearchAppsRequest(this.service, parent);
         }
 
         /// <summary>
@@ -3488,8 +3488,8 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpireTimeRaw);
-            set => ExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -3702,8 +3702,8 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpireTimeRaw);
-            set => ExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -3890,8 +3890,8 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpireTimeRaw);
-            set => ExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -4552,8 +4552,8 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpireTimeRaw);
-            set => ExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>

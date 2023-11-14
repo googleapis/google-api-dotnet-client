@@ -297,7 +297,7 @@ namespace Google.Apis.MyBusinessBusinessInformation.v1
             /// <param name="parent">Required. The name of the account in which to create this location.</param>
             public virtual CreateRequest Create(Google.Apis.MyBusinessBusinessInformation.v1.Data.Location body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>Creates a new Location that will be owned by the logged in user.</summary>
@@ -382,7 +382,7 @@ namespace Google.Apis.MyBusinessBusinessInformation.v1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists the locations for the specified account.</summary>
@@ -527,7 +527,7 @@ namespace Google.Apis.MyBusinessBusinessInformation.v1
         /// </summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>
@@ -672,7 +672,7 @@ namespace Google.Apis.MyBusinessBusinessInformation.v1
         /// <summary>Returns a list of business categories for the provided language and GConcept ids.</summary>
         public virtual BatchGetRequest BatchGet()
         {
-            return new BatchGetRequest(service);
+            return new BatchGetRequest(this.service);
         }
 
         /// <summary>Returns a list of business categories for the provided language and GConcept ids.</summary>
@@ -781,7 +781,7 @@ namespace Google.Apis.MyBusinessBusinessInformation.v1
         /// </summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>
@@ -933,7 +933,7 @@ namespace Google.Apis.MyBusinessBusinessInformation.v1
         /// <param name="name">Required. The chain's resource name, in the format `chains/{chain_place_id}`.</param>
         public virtual GetRequest Get(string name)
         {
-            return new GetRequest(service, name);
+            return new GetRequest(this.service, name);
         }
 
         /// <summary>Gets the specified chain. Returns `NOT_FOUND` if the chain does not exist.</summary>
@@ -977,7 +977,7 @@ namespace Google.Apis.MyBusinessBusinessInformation.v1
         /// <summary>Searches the chain based on chain name.</summary>
         public virtual SearchRequest Search()
         {
-            return new SearchRequest(service);
+            return new SearchRequest(this.service);
         }
 
         /// <summary>Searches the chain based on chain name.</summary>
@@ -1054,7 +1054,7 @@ namespace Google.Apis.MyBusinessBusinessInformation.v1
         /// <param name="body">The body of the request.</param>
         public virtual SearchRequest Search(Google.Apis.MyBusinessBusinessInformation.v1.Data.SearchGoogleLocationsRequest body)
         {
-            return new SearchRequest(service, body);
+            return new SearchRequest(this.service, body);
         }
 
         /// <summary>Search all of the possible locations that are a match to the specified request.</summary>
@@ -1128,7 +1128,7 @@ namespace Google.Apis.MyBusinessBusinessInformation.v1
             /// </param>
             public virtual GetGoogleUpdatedRequest GetGoogleUpdated(string name)
             {
-                return new GetGoogleUpdatedRequest(service, name);
+                return new GetGoogleUpdatedRequest(this.service, name);
             }
 
             /// <summary>Gets the Google-updated version of the specified location.</summary>
@@ -1180,7 +1180,7 @@ namespace Google.Apis.MyBusinessBusinessInformation.v1
         /// <param name="name">Required. The name of the location to delete.</param>
         public virtual DeleteRequest Delete(string name)
         {
-            return new DeleteRequest(service, name);
+            return new DeleteRequest(this.service, name);
         }
 
         /// <summary>
@@ -1229,7 +1229,7 @@ namespace Google.Apis.MyBusinessBusinessInformation.v1
         /// <param name="name">Required. The name of the location to fetch.</param>
         public virtual GetRequest Get(string name)
         {
-            return new GetRequest(service, name);
+            return new GetRequest(this.service, name);
         }
 
         /// <summary>Returns the specified location.</summary>
@@ -1288,7 +1288,7 @@ namespace Google.Apis.MyBusinessBusinessInformation.v1
         /// </param>
         public virtual GetAttributesRequest GetAttributes(string name)
         {
-            return new GetAttributesRequest(service, name);
+            return new GetAttributesRequest(this.service, name);
         }
 
         /// <summary>Looks up all the attributes set for a given location.</summary>
@@ -1335,7 +1335,7 @@ namespace Google.Apis.MyBusinessBusinessInformation.v1
         /// <param name="name">Required. The name of the location to fetch.</param>
         public virtual GetGoogleUpdatedRequest GetGoogleUpdated(string name)
         {
-            return new GetGoogleUpdatedRequest(service, name);
+            return new GetGoogleUpdatedRequest(this.service, name);
         }
 
         /// <summary>Gets the Google-updated version of the specified location.</summary>
@@ -1393,7 +1393,7 @@ namespace Google.Apis.MyBusinessBusinessInformation.v1
         /// <param name="name">Google identifier for this location in the form: `locations/{location_id}`.</param>
         public virtual PatchRequest Patch(Google.Apis.MyBusinessBusinessInformation.v1.Data.Location body, string name)
         {
-            return new PatchRequest(service, body, name);
+            return new PatchRequest(this.service, body, name);
         }
 
         /// <summary>Updates the specified location.</summary>
@@ -1476,7 +1476,7 @@ namespace Google.Apis.MyBusinessBusinessInformation.v1
         /// </param>
         public virtual UpdateAttributesRequest UpdateAttributes(Google.Apis.MyBusinessBusinessInformation.v1.Data.Attributes body, string name)
         {
-            return new UpdateAttributesRequest(service, body, name);
+            return new UpdateAttributesRequest(this.service, body, name);
         }
 
         /// <summary>Update attributes for a given location.</summary>

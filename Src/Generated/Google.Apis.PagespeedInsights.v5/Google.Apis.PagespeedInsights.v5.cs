@@ -275,7 +275,7 @@ namespace Google.Apis.PagespeedInsights.v5
         /// <param name="url">Required. The URL to fetch and analyze</param>
         public virtual RunpagespeedRequest Runpagespeed(string url)
         {
-            return new RunpagespeedRequest(service, url);
+            return new RunpagespeedRequest(this.service, url);
         }
 
         /// <summary>

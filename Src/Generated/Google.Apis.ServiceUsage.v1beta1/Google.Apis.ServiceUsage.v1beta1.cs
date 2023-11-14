@@ -301,7 +301,7 @@ namespace Google.Apis.ServiceUsage.v1beta1
         /// <param name="name">The name of the operation resource.</param>
         public virtual GetRequest Get(string name)
         {
-            return new GetRequest(service, name);
+            return new GetRequest(this.service, name);
         }
 
         /// <summary>
@@ -351,7 +351,7 @@ namespace Google.Apis.ServiceUsage.v1beta1
         /// </summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>
@@ -514,7 +514,7 @@ namespace Google.Apis.ServiceUsage.v1beta1
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.ServiceUsage.v1beta1.Data.QuotaOverride body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>
@@ -655,7 +655,7 @@ namespace Google.Apis.ServiceUsage.v1beta1
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>Deletes an admin override.</summary>
@@ -784,7 +784,7 @@ namespace Google.Apis.ServiceUsage.v1beta1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists all admin overrides on this limit.</summary>
@@ -863,7 +863,7 @@ namespace Google.Apis.ServiceUsage.v1beta1
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.ServiceUsage.v1beta1.Data.QuotaOverride body, string name)
                     {
-                        return new PatchRequest(service, body, name);
+                        return new PatchRequest(this.service, body, name);
                     }
 
                     /// <summary>Updates an admin override.</summary>
@@ -1036,7 +1036,7 @@ namespace Google.Apis.ServiceUsage.v1beta1
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.ServiceUsage.v1beta1.Data.QuotaOverride body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>
@@ -1176,7 +1176,7 @@ namespace Google.Apis.ServiceUsage.v1beta1
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>Deletes a consumer override.</summary>
@@ -1305,7 +1305,7 @@ namespace Google.Apis.ServiceUsage.v1beta1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists all consumer overrides on this limit.</summary>
@@ -1384,7 +1384,7 @@ namespace Google.Apis.ServiceUsage.v1beta1
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.ServiceUsage.v1beta1.Data.QuotaOverride body, string name)
                     {
-                        return new PatchRequest(service, body, name);
+                        return new PatchRequest(this.service, body, name);
                     }
 
                     /// <summary>Updates a consumer override.</summary>
@@ -1534,7 +1534,7 @@ namespace Google.Apis.ServiceUsage.v1beta1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Retrieves a summary of quota information for a specific quota limit.</summary>
@@ -1623,7 +1623,7 @@ namespace Google.Apis.ServiceUsage.v1beta1
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Retrieves a summary of quota information for a specific quota metric</summary>
@@ -1715,7 +1715,7 @@ namespace Google.Apis.ServiceUsage.v1beta1
             /// </param>
             public virtual ImportAdminOverridesRequest ImportAdminOverrides(Google.Apis.ServiceUsage.v1beta1.Data.ImportAdminOverridesRequest body, string parent)
             {
-                return new ImportAdminOverridesRequest(service, body, parent);
+                return new ImportAdminOverridesRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -1780,7 +1780,7 @@ namespace Google.Apis.ServiceUsage.v1beta1
             /// </param>
             public virtual ImportConsumerOverridesRequest ImportConsumerOverrides(Google.Apis.ServiceUsage.v1beta1.Data.ImportConsumerOverridesRequest body, string parent)
             {
-                return new ImportConsumerOverridesRequest(service, body, parent);
+                return new ImportConsumerOverridesRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -1848,7 +1848,7 @@ namespace Google.Apis.ServiceUsage.v1beta1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>
@@ -1972,7 +1972,7 @@ namespace Google.Apis.ServiceUsage.v1beta1
         /// </param>
         public virtual BatchEnableRequest BatchEnable(Google.Apis.ServiceUsage.v1beta1.Data.BatchEnableServicesRequest body, string parent)
         {
-            return new BatchEnableRequest(service, body, parent);
+            return new BatchEnableRequest(this.service, body, parent);
         }
 
         /// <summary>
@@ -2040,7 +2040,7 @@ namespace Google.Apis.ServiceUsage.v1beta1
         /// </param>
         public virtual DisableRequest Disable(Google.Apis.ServiceUsage.v1beta1.Data.DisableServiceRequest body, string name)
         {
-            return new DisableRequest(service, body, name);
+            return new DisableRequest(this.service, body, name);
         }
 
         /// <summary>
@@ -2109,7 +2109,7 @@ namespace Google.Apis.ServiceUsage.v1beta1
         /// </param>
         public virtual EnableRequest Enable(Google.Apis.ServiceUsage.v1beta1.Data.EnableServiceRequest body, string name)
         {
-            return new EnableRequest(service, body, name);
+            return new EnableRequest(this.service, body, name);
         }
 
         /// <summary>
@@ -2173,7 +2173,7 @@ namespace Google.Apis.ServiceUsage.v1beta1
         /// </param>
         public virtual GenerateServiceIdentityRequest GenerateServiceIdentity(string parent)
         {
-            return new GenerateServiceIdentityRequest(service, parent);
+            return new GenerateServiceIdentityRequest(this.service, parent);
         }
 
         /// <summary>Generates service identity for service.</summary>
@@ -2226,7 +2226,7 @@ namespace Google.Apis.ServiceUsage.v1beta1
         /// </param>
         public virtual GetRequest Get(string name)
         {
-            return new GetRequest(service, name);
+            return new GetRequest(this.service, name);
         }
 
         /// <summary>Returns the service configuration and enabled state for a given service.</summary>
@@ -2283,7 +2283,7 @@ namespace Google.Apis.ServiceUsage.v1beta1
         /// </param>
         public virtual ListRequest List(string parent)
         {
-            return new ListRequest(service, parent);
+            return new ListRequest(this.service, parent);
         }
 
         /// <summary>
@@ -2992,8 +2992,8 @@ namespace Google.Apis.ServiceUsage.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
     }
 

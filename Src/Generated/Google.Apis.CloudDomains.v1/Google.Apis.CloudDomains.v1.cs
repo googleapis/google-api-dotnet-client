@@ -318,7 +318,7 @@ namespace Google.Apis.CloudDomains.v1
                 /// <param name="name">The name of the operation resource.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -369,7 +369,7 @@ namespace Google.Apis.CloudDomains.v1
                 /// <param name="name">The name of the operation's parent resource.</param>
                 public virtual ListRequest List(string name)
                 {
-                    return new ListRequest(service, name);
+                    return new ListRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -478,7 +478,7 @@ namespace Google.Apis.CloudDomains.v1
                 /// </param>
                 public virtual ConfigureContactSettingsRequest ConfigureContactSettings(Google.Apis.CloudDomains.v1.Data.ConfigureContactSettingsRequest body, string registration)
                 {
-                    return new ConfigureContactSettingsRequest(service, body, registration);
+                    return new ConfigureContactSettingsRequest(this.service, body, registration);
                 }
 
                 /// <summary>
@@ -540,7 +540,7 @@ namespace Google.Apis.CloudDomains.v1
                 /// </param>
                 public virtual ConfigureDnsSettingsRequest ConfigureDnsSettings(Google.Apis.CloudDomains.v1.Data.ConfigureDnsSettingsRequest body, string registration)
                 {
-                    return new ConfigureDnsSettingsRequest(service, body, registration);
+                    return new ConfigureDnsSettingsRequest(this.service, body, registration);
                 }
 
                 /// <summary>Updates a `Registration`'s DNS settings.</summary>
@@ -599,7 +599,7 @@ namespace Google.Apis.CloudDomains.v1
                 /// </param>
                 public virtual ConfigureManagementSettingsRequest ConfigureManagementSettings(Google.Apis.CloudDomains.v1.Data.ConfigureManagementSettingsRequest body, string registration)
                 {
-                    return new ConfigureManagementSettingsRequest(service, body, registration);
+                    return new ConfigureManagementSettingsRequest(this.service, body, registration);
                 }
 
                 /// <summary>Updates a `Registration`'s management settings.</summary>
@@ -669,7 +669,7 @@ namespace Google.Apis.CloudDomains.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -741,7 +741,7 @@ namespace Google.Apis.CloudDomains.v1
                 /// </param>
                 public virtual ExportRequest Export(Google.Apis.CloudDomains.v1.Data.ExportRegistrationRequest body, string name)
                 {
-                    return new ExportRequest(service, body, name);
+                    return new ExportRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -807,7 +807,7 @@ namespace Google.Apis.CloudDomains.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets the details of a `Registration` resource.</summary>
@@ -862,7 +862,7 @@ namespace Google.Apis.CloudDomains.v1
                 /// </param>
                 public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                 {
-                    return new GetIamPolicyRequest(service, resource);
+                    return new GetIamPolicyRequest(this.service, resource);
                 }
 
                 /// <summary>
@@ -944,7 +944,7 @@ namespace Google.Apis.CloudDomains.v1
                 /// </param>
                 public virtual ImportRequest Import(Google.Apis.CloudDomains.v1.Data.ImportDomainRequest body, string parent)
                 {
-                    return new ImportRequest(service, body, parent);
+                    return new ImportRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -1008,7 +1008,7 @@ namespace Google.Apis.CloudDomains.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists the `Registration` resources in a project.</summary>
@@ -1114,7 +1114,7 @@ namespace Google.Apis.CloudDomains.v1
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.CloudDomains.v1.Data.Registration body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -1200,7 +1200,7 @@ namespace Google.Apis.CloudDomains.v1
                 /// </param>
                 public virtual RegisterRequest Register(Google.Apis.CloudDomains.v1.Data.RegisterDomainRequest body, string parent)
                 {
-                    return new RegisterRequest(service, body, parent);
+                    return new RegisterRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -1270,7 +1270,7 @@ namespace Google.Apis.CloudDomains.v1
                 /// </param>
                 public virtual ResetAuthorizationCodeRequest ResetAuthorizationCode(Google.Apis.CloudDomains.v1.Data.ResetAuthorizationCodeRequest body, string registration)
                 {
-                    return new ResetAuthorizationCodeRequest(service, body, registration);
+                    return new ResetAuthorizationCodeRequest(this.service, body, registration);
                 }
 
                 /// <summary>
@@ -1335,7 +1335,7 @@ namespace Google.Apis.CloudDomains.v1
                 /// </param>
                 public virtual RetrieveAuthorizationCodeRequest RetrieveAuthorizationCode(string registration)
                 {
-                    return new RetrieveAuthorizationCodeRequest(service, registration);
+                    return new RetrieveAuthorizationCodeRequest(this.service, registration);
                 }
 
                 /// <summary>
@@ -1396,7 +1396,7 @@ namespace Google.Apis.CloudDomains.v1
                 /// </param>
                 public virtual RetrieveImportableDomainsRequest RetrieveImportableDomains(string location)
                 {
-                    return new RetrieveImportableDomainsRequest(service, location);
+                    return new RetrieveImportableDomainsRequest(this.service, location);
                 }
 
                 /// <summary>
@@ -1479,7 +1479,7 @@ namespace Google.Apis.CloudDomains.v1
                 /// </param>
                 public virtual RetrieveRegisterParametersRequest RetrieveRegisterParameters(string location)
                 {
-                    return new RetrieveRegisterParametersRequest(service, location);
+                    return new RetrieveRegisterParametersRequest(this.service, location);
                 }
 
                 /// <summary>
@@ -1549,7 +1549,7 @@ namespace Google.Apis.CloudDomains.v1
                 /// </param>
                 public virtual RetrieveTransferParametersRequest RetrieveTransferParameters(string location)
                 {
-                    return new RetrieveTransferParametersRequest(service, location);
+                    return new RetrieveTransferParametersRequest(this.service, location);
                 }
 
                 /// <summary>
@@ -1620,7 +1620,7 @@ namespace Google.Apis.CloudDomains.v1
                 /// </param>
                 public virtual SearchDomainsRequest SearchDomains(string location)
                 {
-                    return new SearchDomainsRequest(service, location);
+                    return new SearchDomainsRequest(this.service, location);
                 }
 
                 /// <summary>
@@ -1689,7 +1689,7 @@ namespace Google.Apis.CloudDomains.v1
                 /// </param>
                 public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.CloudDomains.v1.Data.SetIamPolicyRequest body, string resource)
                 {
-                    return new SetIamPolicyRequest(service, body, resource);
+                    return new SetIamPolicyRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -1758,7 +1758,7 @@ namespace Google.Apis.CloudDomains.v1
                 /// </param>
                 public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.CloudDomains.v1.Data.TestIamPermissionsRequest body, string resource)
                 {
-                    return new TestIamPermissionsRequest(service, body, resource);
+                    return new TestIamPermissionsRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -1837,7 +1837,7 @@ namespace Google.Apis.CloudDomains.v1
                 /// </param>
                 public virtual TransferRequest Transfer(Google.Apis.CloudDomains.v1.Data.TransferDomainRequest body, string parent)
                 {
-                    return new TransferRequest(service, body, parent);
+                    return new TransferRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -1908,7 +1908,7 @@ namespace Google.Apis.CloudDomains.v1
             /// <param name="name">Resource name for the location.</param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets information about a location.</summary>
@@ -1953,7 +1953,7 @@ namespace Google.Apis.CloudDomains.v1
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
             {
-                return new ListRequest(service, name);
+                return new ListRequest(this.service, name);
             }
 
             /// <summary>Lists information about the supported locations for this service.</summary>
@@ -2739,8 +2739,8 @@ namespace Google.Apis.CloudDomains.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _endTimeRaw;
@@ -2776,8 +2776,8 @@ namespace Google.Apis.CloudDomains.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Human-readable status of the operation, if any.</summary>
@@ -3110,8 +3110,8 @@ namespace Google.Apis.CloudDomains.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -3160,8 +3160,8 @@ namespace Google.Apis.CloudDomains.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpireTimeRaw);
-            set => ExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. The set of issues with the `Registration` that require attention.</summary>

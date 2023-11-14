@@ -442,7 +442,7 @@ namespace Google.Apis.YouTube.v3
         /// </param>
         public virtual InsertRequest Insert(Google.Apis.YouTube.v3.Data.AbuseReport body, Google.Apis.Util.Repeatable<string> part)
         {
-            return new InsertRequest(service, body, part);
+            return new InsertRequest(this.service, body, part);
         }
 
         /// <summary>Inserts a new resource into this collection.</summary>
@@ -518,7 +518,7 @@ namespace Google.Apis.YouTube.v3
         /// </param>
         public virtual ListRequest List(Google.Apis.Util.Repeatable<string> part)
         {
-            return new ListRequest(service, part);
+            return new ListRequest(this.service, part);
         }
 
         /// <summary>Retrieves a list of resources, possibly filtered.</summary>
@@ -566,11 +566,67 @@ namespace Google.Apis.YouTube.v3
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            [Google.Apis.Util.RequestParameterAttribute("publishedAfter", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual object PublishedAfter { get; set; }
+            private object _publishedAfter;
 
+            /// <summary>
+            /// String representation of <see cref="PublishedAfterDateTimeOffset"/>, formatted for inclusion in the HTTP
+            /// request.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("publishedAfter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PublishedAfterRaw { get; private set; }
+
+            /// <summary><seealso cref="object"/> representation of <see cref="PublishedAfterRaw"/>.</summary>
+            [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use PublishedAfterDateTimeOffset instead.")]
+            public virtual object PublishedAfter
+            {
+                get => _publishedAfter;
+                set
+                {
+                    PublishedAfterRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                    _publishedAfter = value;
+                }
+            }
+
+            public virtual System.DateTimeOffset? PublishedAfterDateTimeOffset
+            {
+                get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(PublishedAfterRaw);
+                set
+                {
+                    PublishedAfterRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                    _publishedAfter = value;
+                }
+            }
+
+            private object _publishedBefore;
+
+            /// <summary>
+            /// String representation of <see cref="PublishedBeforeDateTimeOffset"/>, formatted for inclusion in the
+            /// HTTP request.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("publishedBefore", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual object PublishedBefore { get; set; }
+            public virtual string PublishedBeforeRaw { get; private set; }
+
+            /// <summary><seealso cref="object"/> representation of <see cref="PublishedBeforeRaw"/>.</summary>
+            [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use PublishedBeforeDateTimeOffset instead.")]
+            public virtual object PublishedBefore
+            {
+                get => _publishedBefore;
+                set
+                {
+                    PublishedBeforeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                    _publishedBefore = value;
+                }
+            }
+
+            public virtual System.DateTimeOffset? PublishedBeforeDateTimeOffset
+            {
+                get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(PublishedBeforeRaw);
+                set
+                {
+                    PublishedBeforeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                    _publishedBefore = value;
+                }
+            }
 
             [Google.Apis.Util.RequestParameterAttribute("regionCode", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RegionCode { get; set; }
@@ -682,7 +738,7 @@ namespace Google.Apis.YouTube.v3
         /// <param name="id"><c>null</c></param>
         public virtual DeleteRequest Delete(string id)
         {
-            return new DeleteRequest(service, id);
+            return new DeleteRequest(this.service, id);
         }
 
         /// <summary>Deletes a resource.</summary>
@@ -758,7 +814,7 @@ namespace Google.Apis.YouTube.v3
         /// <param name="id">The ID of the caption track to download, required for One Platform.</param>
         public virtual DownloadRequest Download(string id)
         {
-            return new DownloadRequest(service, id);
+            return new DownloadRequest(this.service, id);
         }
 
         /// <summary>Downloads a caption track.</summary>
@@ -949,7 +1005,7 @@ namespace Google.Apis.YouTube.v3
         /// </param>
         public virtual InsertRequest Insert(Google.Apis.YouTube.v3.Data.Caption body, Google.Apis.Util.Repeatable<string> part)
         {
-            return new InsertRequest(service, body, part);
+            return new InsertRequest(this.service, body, part);
         }
 
         /// <summary>Inserts a new resource into this collection.</summary>
@@ -1221,7 +1277,7 @@ namespace Google.Apis.YouTube.v3
         /// <param name="videoId">Returns the captions for the specified video.</param>
         public virtual ListRequest List(Google.Apis.Util.Repeatable<string> part, string videoId)
         {
-            return new ListRequest(service, part, videoId);
+            return new ListRequest(this.service, part, videoId);
         }
 
         /// <summary>Retrieves a list of resources, possibly filtered.</summary>
@@ -1330,7 +1386,7 @@ namespace Google.Apis.YouTube.v3
         /// </param>
         public virtual UpdateRequest Update(Google.Apis.YouTube.v3.Data.Caption body, Google.Apis.Util.Repeatable<string> part)
         {
-            return new UpdateRequest(service, body, part);
+            return new UpdateRequest(this.service, body, part);
         }
 
         /// <summary>Updates an existing resource.</summary>
@@ -1613,7 +1669,7 @@ namespace Google.Apis.YouTube.v3
         /// <param name="body">The body of the request.</param>
         public virtual InsertRequest Insert(Google.Apis.YouTube.v3.Data.ChannelBannerResource body)
         {
-            return new InsertRequest(service, body);
+            return new InsertRequest(this.service, body);
         }
 
         /// <summary>Inserts a new resource into this collection.</summary>
@@ -1888,7 +1944,7 @@ namespace Google.Apis.YouTube.v3
         /// <param name="id"><c>null</c></param>
         public virtual DeleteRequest Delete(string id)
         {
-            return new DeleteRequest(service, id);
+            return new DeleteRequest(this.service, id);
         }
 
         /// <summary>Deletes a resource.</summary>
@@ -1957,7 +2013,7 @@ namespace Google.Apis.YouTube.v3
         /// </param>
         public virtual InsertRequest Insert(Google.Apis.YouTube.v3.Data.ChannelSection body, Google.Apis.Util.Repeatable<string> part)
         {
-            return new InsertRequest(service, body, part);
+            return new InsertRequest(this.service, body, part);
         }
 
         /// <summary>Inserts a new resource into this collection.</summary>
@@ -2064,7 +2120,7 @@ namespace Google.Apis.YouTube.v3
         /// </param>
         public virtual ListRequest List(Google.Apis.Util.Repeatable<string> part)
         {
-            return new ListRequest(service, part);
+            return new ListRequest(this.service, part);
         }
 
         /// <summary>Retrieves a list of resources, possibly filtered.</summary>
@@ -2189,7 +2245,7 @@ namespace Google.Apis.YouTube.v3
         /// </param>
         public virtual UpdateRequest Update(Google.Apis.YouTube.v3.Data.ChannelSection body, Google.Apis.Util.Repeatable<string> part)
         {
-            return new UpdateRequest(service, body, part);
+            return new UpdateRequest(this.service, body, part);
         }
 
         /// <summary>Updates an existing resource.</summary>
@@ -2286,7 +2342,7 @@ namespace Google.Apis.YouTube.v3
         /// </param>
         public virtual ListRequest List(Google.Apis.Util.Repeatable<string> part)
         {
-            return new ListRequest(service, part);
+            return new ListRequest(this.service, part);
         }
 
         /// <summary>Retrieves a list of resources, possibly filtered.</summary>
@@ -2484,7 +2540,7 @@ namespace Google.Apis.YouTube.v3
         /// </param>
         public virtual UpdateRequest Update(Google.Apis.YouTube.v3.Data.Channel body, Google.Apis.Util.Repeatable<string> part)
         {
-            return new UpdateRequest(service, body, part);
+            return new UpdateRequest(this.service, body, part);
         }
 
         /// <summary>Updates an existing resource.</summary>
@@ -2580,7 +2636,7 @@ namespace Google.Apis.YouTube.v3
         /// </param>
         public virtual InsertRequest Insert(Google.Apis.YouTube.v3.Data.CommentThread body, Google.Apis.Util.Repeatable<string> part)
         {
-            return new InsertRequest(service, body, part);
+            return new InsertRequest(this.service, body, part);
         }
 
         /// <summary>Inserts a new resource into this collection.</summary>
@@ -2638,7 +2694,7 @@ namespace Google.Apis.YouTube.v3
         /// </param>
         public virtual ListRequest List(Google.Apis.Util.Repeatable<string> part)
         {
-            return new ListRequest(service, part);
+            return new ListRequest(this.service, part);
         }
 
         /// <summary>Retrieves a list of resources, possibly filtered.</summary>
@@ -2891,7 +2947,7 @@ namespace Google.Apis.YouTube.v3
         /// <param name="id"><c>null</c></param>
         public virtual DeleteRequest Delete(string id)
         {
-            return new DeleteRequest(service, id);
+            return new DeleteRequest(this.service, id);
         }
 
         /// <summary>Deletes a resource.</summary>
@@ -2939,7 +2995,7 @@ namespace Google.Apis.YouTube.v3
         /// </param>
         public virtual InsertRequest Insert(Google.Apis.YouTube.v3.Data.Comment body, Google.Apis.Util.Repeatable<string> part)
         {
-            return new InsertRequest(service, body, part);
+            return new InsertRequest(this.service, body, part);
         }
 
         /// <summary>Inserts a new resource into this collection.</summary>
@@ -2997,7 +3053,7 @@ namespace Google.Apis.YouTube.v3
         /// </param>
         public virtual ListRequest List(Google.Apis.Util.Repeatable<string> part)
         {
-            return new ListRequest(service, part);
+            return new ListRequest(this.service, part);
         }
 
         /// <summary>Retrieves a list of resources, possibly filtered.</summary>
@@ -3131,7 +3187,7 @@ namespace Google.Apis.YouTube.v3
         /// <param name="id">Flags the comments with the given IDs as spam in the caller's opinion.</param>
         public virtual MarkAsSpamRequest MarkAsSpam(Google.Apis.Util.Repeatable<string> id)
         {
-            return new MarkAsSpamRequest(service, id);
+            return new MarkAsSpamRequest(this.service, id);
         }
 
         /// <summary>Expresses the caller's opinion that one or more comments should be flagged as spam.</summary>
@@ -3181,7 +3237,7 @@ namespace Google.Apis.YouTube.v3
         /// </param>
         public virtual SetModerationStatusRequest SetModerationStatus(Google.Apis.Util.Repeatable<string> id, SetModerationStatusRequest.ModerationStatusEnum moderationStatus)
         {
-            return new SetModerationStatusRequest(service, id, moderationStatus);
+            return new SetModerationStatusRequest(this.service, id, moderationStatus);
         }
 
         /// <summary>Sets the moderation status of one or more comments.</summary>
@@ -3287,7 +3343,7 @@ namespace Google.Apis.YouTube.v3
         /// </param>
         public virtual UpdateRequest Update(Google.Apis.YouTube.v3.Data.Comment body, Google.Apis.Util.Repeatable<string> part)
         {
-            return new UpdateRequest(service, body, part);
+            return new UpdateRequest(this.service, body, part);
         }
 
         /// <summary>Updates an existing resource.</summary>
@@ -3361,7 +3417,7 @@ namespace Google.Apis.YouTube.v3
         /// </param>
         public virtual ListRequest List(Google.Apis.Util.Repeatable<string> part)
         {
-            return new ListRequest(service, part);
+            return new ListRequest(this.service, part);
         }
 
         /// <summary>Retrieves a list of resources, possibly filtered.</summary>
@@ -3438,7 +3494,7 @@ namespace Google.Apis.YouTube.v3
         /// </param>
         public virtual ListRequest List(Google.Apis.Util.Repeatable<string> part)
         {
-            return new ListRequest(service, part);
+            return new ListRequest(this.service, part);
         }
 
         /// <summary>Retrieves a list of resources, possibly filtered.</summary>
@@ -3517,7 +3573,7 @@ namespace Google.Apis.YouTube.v3
         /// </param>
         public virtual BindRequest Bind(string id, Google.Apis.Util.Repeatable<string> part)
         {
-            return new BindRequest(service, id, part);
+            return new BindRequest(this.service, id, part);
         }
 
         /// <summary>Bind a broadcast to a stream.</summary>
@@ -3635,7 +3691,7 @@ namespace Google.Apis.YouTube.v3
         /// <param name="id">Broadcast to delete.</param>
         public virtual DeleteRequest Delete(string id)
         {
-            return new DeleteRequest(service, id);
+            return new DeleteRequest(this.service, id);
         }
 
         /// <summary>Delete a given broadcast.</summary>
@@ -3729,7 +3785,7 @@ namespace Google.Apis.YouTube.v3
         /// </param>
         public virtual InsertRequest Insert(Google.Apis.YouTube.v3.Data.LiveBroadcast body, Google.Apis.Util.Repeatable<string> part)
         {
-            return new InsertRequest(service, body, part);
+            return new InsertRequest(this.service, body, part);
         }
 
         /// <summary>Inserts a new stream for the authenticated user.</summary>
@@ -3829,7 +3885,7 @@ namespace Google.Apis.YouTube.v3
         /// <param name="body">The body of the request.</param>
         public virtual InsertCuepointRequest InsertCuepoint(Google.Apis.YouTube.v3.Data.Cuepoint body)
         {
-            return new InsertCuepointRequest(service, body);
+            return new InsertCuepointRequest(this.service, body);
         }
 
         /// <summary>Insert cuepoints in a broadcast</summary>
@@ -3944,7 +4000,7 @@ namespace Google.Apis.YouTube.v3
         /// </param>
         public virtual ListRequest List(Google.Apis.Util.Repeatable<string> part)
         {
-            return new ListRequest(service, part);
+            return new ListRequest(this.service, part);
         }
 
         /// <summary>Retrieve the list of broadcasts associated with the given channel.</summary>
@@ -4165,7 +4221,7 @@ namespace Google.Apis.YouTube.v3
         /// </param>
         public virtual TransitionRequest Transition(TransitionRequest.BroadcastStatusEnum broadcastStatus, string id, Google.Apis.Util.Repeatable<string> part)
         {
-            return new TransitionRequest(service, broadcastStatus, id, part);
+            return new TransitionRequest(this.service, broadcastStatus, id, part);
         }
 
         /// <summary>Transition a broadcast to a given status.</summary>
@@ -4319,7 +4375,7 @@ namespace Google.Apis.YouTube.v3
         /// </param>
         public virtual UpdateRequest Update(Google.Apis.YouTube.v3.Data.LiveBroadcast body, Google.Apis.Util.Repeatable<string> part)
         {
-            return new UpdateRequest(service, body, part);
+            return new UpdateRequest(this.service, body, part);
         }
 
         /// <summary>Updates an existing broadcast for the authenticated user.</summary>
@@ -4440,7 +4496,7 @@ namespace Google.Apis.YouTube.v3
         /// <param name="id"><c>null</c></param>
         public virtual DeleteRequest Delete(string id)
         {
-            return new DeleteRequest(service, id);
+            return new DeleteRequest(this.service, id);
         }
 
         /// <summary>Deletes a chat ban.</summary>
@@ -4489,7 +4545,7 @@ namespace Google.Apis.YouTube.v3
         /// </param>
         public virtual InsertRequest Insert(Google.Apis.YouTube.v3.Data.LiveChatBan body, Google.Apis.Util.Repeatable<string> part)
         {
-            return new InsertRequest(service, body, part);
+            return new InsertRequest(this.service, body, part);
         }
 
         /// <summary>Inserts a new resource into this collection.</summary>
@@ -4560,7 +4616,7 @@ namespace Google.Apis.YouTube.v3
         /// <param name="id"><c>null</c></param>
         public virtual DeleteRequest Delete(string id)
         {
-            return new DeleteRequest(service, id);
+            return new DeleteRequest(this.service, id);
         }
 
         /// <summary>Deletes a chat message.</summary>
@@ -4608,7 +4664,7 @@ namespace Google.Apis.YouTube.v3
         /// </param>
         public virtual InsertRequest Insert(Google.Apis.YouTube.v3.Data.LiveChatMessage body, Google.Apis.Util.Repeatable<string> part)
         {
-            return new InsertRequest(service, body, part);
+            return new InsertRequest(this.service, body, part);
         }
 
         /// <summary>Inserts a new resource into this collection.</summary>
@@ -4667,7 +4723,7 @@ namespace Google.Apis.YouTube.v3
         /// </param>
         public virtual ListRequest List(string liveChatId, Google.Apis.Util.Repeatable<string> part)
         {
-            return new ListRequest(service, liveChatId, part);
+            return new ListRequest(this.service, liveChatId, part);
         }
 
         /// <summary>Retrieves a list of resources, possibly filtered.</summary>
@@ -4797,7 +4853,7 @@ namespace Google.Apis.YouTube.v3
         /// <param name="id"><c>null</c></param>
         public virtual DeleteRequest Delete(string id)
         {
-            return new DeleteRequest(service, id);
+            return new DeleteRequest(this.service, id);
         }
 
         /// <summary>Deletes a chat moderator.</summary>
@@ -4846,7 +4902,7 @@ namespace Google.Apis.YouTube.v3
         /// </param>
         public virtual InsertRequest Insert(Google.Apis.YouTube.v3.Data.LiveChatModerator body, Google.Apis.Util.Repeatable<string> part)
         {
-            return new InsertRequest(service, body, part);
+            return new InsertRequest(this.service, body, part);
         }
 
         /// <summary>Inserts a new resource into this collection.</summary>
@@ -4906,7 +4962,7 @@ namespace Google.Apis.YouTube.v3
         /// </param>
         public virtual ListRequest List(string liveChatId, Google.Apis.Util.Repeatable<string> part)
         {
-            return new ListRequest(service, liveChatId, part);
+            return new ListRequest(this.service, liveChatId, part);
         }
 
         /// <summary>Retrieves a list of resources, possibly filtered.</summary>
@@ -5013,7 +5069,7 @@ namespace Google.Apis.YouTube.v3
         /// <param name="id"><c>null</c></param>
         public virtual DeleteRequest Delete(string id)
         {
-            return new DeleteRequest(service, id);
+            return new DeleteRequest(this.service, id);
         }
 
         /// <summary>Deletes an existing stream for the authenticated user.</summary>
@@ -5106,7 +5162,7 @@ namespace Google.Apis.YouTube.v3
         /// </param>
         public virtual InsertRequest Insert(Google.Apis.YouTube.v3.Data.LiveStream body, Google.Apis.Util.Repeatable<string> part)
         {
-            return new InsertRequest(service, body, part);
+            return new InsertRequest(this.service, body, part);
         }
 
         /// <summary>Inserts a new stream for the authenticated user.</summary>
@@ -5210,7 +5266,7 @@ namespace Google.Apis.YouTube.v3
         /// </param>
         public virtual ListRequest List(Google.Apis.Util.Repeatable<string> part)
         {
-            return new ListRequest(service, part);
+            return new ListRequest(this.service, part);
         }
 
         /// <summary>Retrieve the list of streams associated with the given channel. --</summary>
@@ -5365,7 +5421,7 @@ namespace Google.Apis.YouTube.v3
         /// </param>
         public virtual UpdateRequest Update(Google.Apis.YouTube.v3.Data.LiveStream body, Google.Apis.Util.Repeatable<string> part)
         {
-            return new UpdateRequest(service, body, part);
+            return new UpdateRequest(this.service, body, part);
         }
 
         /// <summary>Updates an existing stream for the authenticated user.</summary>
@@ -5486,7 +5542,7 @@ namespace Google.Apis.YouTube.v3
         /// </param>
         public virtual ListRequest List(Google.Apis.Util.Repeatable<string> part)
         {
-            return new ListRequest(service, part);
+            return new ListRequest(this.service, part);
         }
 
         /// <summary>Retrieves a list of members that match the request criteria for a channel.</summary>
@@ -5638,7 +5694,7 @@ namespace Google.Apis.YouTube.v3
         /// </param>
         public virtual ListRequest List(Google.Apis.Util.Repeatable<string> part)
         {
-            return new ListRequest(service, part);
+            return new ListRequest(this.service, part);
         }
 
         /// <summary>Retrieves a list of all pricing levels offered by a creator to the fans.</summary>
@@ -5700,7 +5756,7 @@ namespace Google.Apis.YouTube.v3
         /// <summary>Deletes a resource.</summary>
         public virtual DeleteRequest Delete()
         {
-            return new DeleteRequest(service);
+            return new DeleteRequest(this.service);
         }
 
         /// <summary>Deletes a resource.</summary>
@@ -5764,7 +5820,7 @@ namespace Google.Apis.YouTube.v3
         /// <param name="body">The body of the request.</param>
         public virtual InsertRequest Insert(Google.Apis.YouTube.v3.Data.PlaylistImage body)
         {
-            return new InsertRequest(service, body);
+            return new InsertRequest(this.service, body);
         }
 
         /// <summary>Inserts a new resource into this collection.</summary>
@@ -5858,7 +5914,7 @@ namespace Google.Apis.YouTube.v3
         /// <summary>Retrieves a list of resources, possibly filtered.</summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>Retrieves a list of resources, possibly filtered.</summary>
@@ -5993,7 +6049,7 @@ namespace Google.Apis.YouTube.v3
         /// <param name="body">The body of the request.</param>
         public virtual UpdateRequest Update(Google.Apis.YouTube.v3.Data.PlaylistImage body)
         {
-            return new UpdateRequest(service, body);
+            return new UpdateRequest(this.service, body);
         }
 
         /// <summary>Updates an existing resource.</summary>
@@ -6079,7 +6135,7 @@ namespace Google.Apis.YouTube.v3
         /// <param name="id"><c>null</c></param>
         public virtual DeleteRequest Delete(string id)
         {
-            return new DeleteRequest(service, id);
+            return new DeleteRequest(this.service, id);
         }
 
         /// <summary>Deletes a resource.</summary>
@@ -6147,7 +6203,7 @@ namespace Google.Apis.YouTube.v3
         /// </param>
         public virtual InsertRequest Insert(Google.Apis.YouTube.v3.Data.PlaylistItem body, Google.Apis.Util.Repeatable<string> part)
         {
-            return new InsertRequest(service, body, part);
+            return new InsertRequest(this.service, body, part);
         }
 
         /// <summary>Inserts a new resource into this collection.</summary>
@@ -6228,7 +6284,7 @@ namespace Google.Apis.YouTube.v3
         /// </param>
         public virtual ListRequest List(Google.Apis.Util.Repeatable<string> part)
         {
-            return new ListRequest(service, part);
+            return new ListRequest(this.service, part);
         }
 
         /// <summary>Retrieves a list of resources, possibly filtered.</summary>
@@ -6377,7 +6433,7 @@ namespace Google.Apis.YouTube.v3
         /// </param>
         public virtual UpdateRequest Update(Google.Apis.YouTube.v3.Data.PlaylistItem body, Google.Apis.Util.Repeatable<string> part)
         {
-            return new UpdateRequest(service, body, part);
+            return new UpdateRequest(this.service, body, part);
         }
 
         /// <summary>Updates an existing resource.</summary>
@@ -6474,7 +6530,7 @@ namespace Google.Apis.YouTube.v3
         /// <param name="id"><c>null</c></param>
         public virtual DeleteRequest Delete(string id)
         {
-            return new DeleteRequest(service, id);
+            return new DeleteRequest(this.service, id);
         }
 
         /// <summary>Deletes a resource.</summary>
@@ -6542,7 +6598,7 @@ namespace Google.Apis.YouTube.v3
         /// </param>
         public virtual InsertRequest Insert(Google.Apis.YouTube.v3.Data.Playlist body, Google.Apis.Util.Repeatable<string> part)
         {
-            return new InsertRequest(service, body, part);
+            return new InsertRequest(this.service, body, part);
         }
 
         /// <summary>Inserts a new resource into this collection.</summary>
@@ -6647,7 +6703,7 @@ namespace Google.Apis.YouTube.v3
         /// </param>
         public virtual ListRequest List(Google.Apis.Util.Repeatable<string> part)
         {
-            return new ListRequest(service, part);
+            return new ListRequest(this.service, part);
         }
 
         /// <summary>Retrieves a list of resources, possibly filtered.</summary>
@@ -6829,7 +6885,7 @@ namespace Google.Apis.YouTube.v3
         /// </param>
         public virtual UpdateRequest Update(Google.Apis.YouTube.v3.Data.Playlist body, Google.Apis.Util.Repeatable<string> part)
         {
-            return new UpdateRequest(service, body, part);
+            return new UpdateRequest(this.service, body, part);
         }
 
         /// <summary>Updates an existing resource.</summary>
@@ -6926,7 +6982,7 @@ namespace Google.Apis.YouTube.v3
         /// </param>
         public virtual ListRequest List(Google.Apis.Util.Repeatable<string> part)
         {
-            return new ListRequest(service, part);
+            return new ListRequest(this.service, part);
         }
 
         /// <summary>Retrieves a list of search resources</summary>
@@ -7084,13 +7140,67 @@ namespace Google.Apis.YouTube.v3
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>Filter on resources published after this date.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("publishedAfter", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual object PublishedAfter { get; set; }
+            private object _publishedAfter;
 
-            /// <summary>Filter on resources published before this date.</summary>
+            /// <summary>
+            /// String representation of <see cref="PublishedAfterDateTimeOffset"/>, formatted for inclusion in the HTTP
+            /// request.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("publishedAfter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PublishedAfterRaw { get; private set; }
+
+            /// <summary><seealso cref="object"/> representation of <see cref="PublishedAfterRaw"/>.</summary>
+            [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use PublishedAfterDateTimeOffset instead.")]
+            public virtual object PublishedAfter
+            {
+                get => _publishedAfter;
+                set
+                {
+                    PublishedAfterRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                    _publishedAfter = value;
+                }
+            }
+
+            public virtual System.DateTimeOffset? PublishedAfterDateTimeOffset
+            {
+                get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(PublishedAfterRaw);
+                set
+                {
+                    PublishedAfterRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                    _publishedAfter = value;
+                }
+            }
+
+            private object _publishedBefore;
+
+            /// <summary>
+            /// String representation of <see cref="PublishedBeforeDateTimeOffset"/>, formatted for inclusion in the
+            /// HTTP request.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("publishedBefore", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual object PublishedBefore { get; set; }
+            public virtual string PublishedBeforeRaw { get; private set; }
+
+            /// <summary><seealso cref="object"/> representation of <see cref="PublishedBeforeRaw"/>.</summary>
+            [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use PublishedBeforeDateTimeOffset instead.")]
+            public virtual object PublishedBefore
+            {
+                get => _publishedBefore;
+                set
+                {
+                    PublishedBeforeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                    _publishedBefore = value;
+                }
+            }
+
+            public virtual System.DateTimeOffset? PublishedBeforeDateTimeOffset
+            {
+                get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(PublishedBeforeRaw);
+                set
+                {
+                    PublishedBeforeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                    _publishedBefore = value;
+                }
+            }
 
             /// <summary>Textual search terms to match.</summary>
             [Google.Apis.Util.RequestParameterAttribute("q", Google.Apis.Util.RequestParameterType.Query)]
@@ -7635,7 +7745,7 @@ namespace Google.Apis.YouTube.v3
         /// <param name="id"><c>null</c></param>
         public virtual DeleteRequest Delete(string id)
         {
-            return new DeleteRequest(service, id);
+            return new DeleteRequest(this.service, id);
         }
 
         /// <summary>Deletes a resource.</summary>
@@ -7683,7 +7793,7 @@ namespace Google.Apis.YouTube.v3
         /// </param>
         public virtual InsertRequest Insert(Google.Apis.YouTube.v3.Data.Subscription body, Google.Apis.Util.Repeatable<string> part)
         {
-            return new InsertRequest(service, body, part);
+            return new InsertRequest(this.service, body, part);
         }
 
         /// <summary>Inserts a new resource into this collection.</summary>
@@ -7744,7 +7854,7 @@ namespace Google.Apis.YouTube.v3
         /// </param>
         public virtual ListRequest List(Google.Apis.Util.Repeatable<string> part)
         {
-            return new ListRequest(service, part);
+            return new ListRequest(this.service, part);
         }
 
         /// <summary>Retrieves a list of resources, possibly filtered.</summary>
@@ -7993,7 +8103,7 @@ namespace Google.Apis.YouTube.v3
         /// </param>
         public virtual ListRequest List(Google.Apis.Util.Repeatable<string> part)
         {
-            return new ListRequest(service, part);
+            return new ListRequest(this.service, part);
         }
 
         /// <summary>Retrieves a list of resources, possibly filtered.</summary>
@@ -8100,7 +8210,7 @@ namespace Google.Apis.YouTube.v3
         /// <param name="part"><c>null</c></param>
         public virtual InsertRequest Insert(Google.Apis.YouTube.v3.Data.TestItem body, Google.Apis.Util.Repeatable<string> part)
         {
-            return new InsertRequest(service, body, part);
+            return new InsertRequest(this.service, body, part);
         }
 
         /// <summary>POST method.</summary>
@@ -8178,7 +8288,7 @@ namespace Google.Apis.YouTube.v3
         /// <param name="type">Type of the link to be deleted.</param>
         public virtual DeleteRequest Delete(string linkingToken, DeleteRequest.TypeEnum type)
         {
-            return new DeleteRequest(service, linkingToken, type);
+            return new DeleteRequest(this.service, linkingToken, type);
         }
 
         /// <summary>Deletes a resource.</summary>
@@ -8279,7 +8389,7 @@ namespace Google.Apis.YouTube.v3
         /// </param>
         public virtual InsertRequest Insert(Google.Apis.YouTube.v3.Data.ThirdPartyLink body, Google.Apis.Util.Repeatable<string> part)
         {
-            return new InsertRequest(service, body, part);
+            return new InsertRequest(this.service, body, part);
         }
 
         /// <summary>Inserts a new resource into this collection.</summary>
@@ -8349,7 +8459,7 @@ namespace Google.Apis.YouTube.v3
         /// </param>
         public virtual ListRequest List(Google.Apis.Util.Repeatable<string> part)
         {
-            return new ListRequest(service, part);
+            return new ListRequest(this.service, part);
         }
 
         /// <summary>Retrieves a list of resources, possibly filtered.</summary>
@@ -8452,7 +8562,7 @@ namespace Google.Apis.YouTube.v3
         /// </param>
         public virtual UpdateRequest Update(Google.Apis.YouTube.v3.Data.ThirdPartyLink body, Google.Apis.Util.Repeatable<string> part)
         {
-            return new UpdateRequest(service, body, part);
+            return new UpdateRequest(this.service, body, part);
         }
 
         /// <summary>Updates an existing resource.</summary>
@@ -8537,7 +8647,7 @@ namespace Google.Apis.YouTube.v3
         /// <param name="videoId">Returns the Thumbnail with the given video IDs for Stubby or Apiary.</param>
         public virtual SetRequest Set(string videoId)
         {
-            return new SetRequest(service, videoId);
+            return new SetRequest(this.service, videoId);
         }
 
         /// <summary>
@@ -8775,7 +8885,7 @@ namespace Google.Apis.YouTube.v3
         /// </param>
         public virtual ListRequest List(Google.Apis.Util.Repeatable<string> part)
         {
-            return new ListRequest(service, part);
+            return new ListRequest(this.service, part);
         }
 
         /// <summary>Retrieves a list of resources, possibly filtered.</summary>
@@ -8852,7 +8962,7 @@ namespace Google.Apis.YouTube.v3
         /// </param>
         public virtual ListRequest List(Google.Apis.Util.Repeatable<string> part)
         {
-            return new ListRequest(service, part);
+            return new ListRequest(this.service, part);
         }
 
         /// <summary>Retrieves a list of resources, possibly filtered.</summary>
@@ -8949,7 +9059,7 @@ namespace Google.Apis.YouTube.v3
         /// <param name="id"><c>null</c></param>
         public virtual DeleteRequest Delete(string id)
         {
-            return new DeleteRequest(service, id);
+            return new DeleteRequest(this.service, id);
         }
 
         /// <summary>Deletes a resource.</summary>
@@ -9013,7 +9123,7 @@ namespace Google.Apis.YouTube.v3
         /// <param name="id"><c>null</c></param>
         public virtual GetRatingRequest GetRating(Google.Apis.Util.Repeatable<string> id)
         {
-            return new GetRatingRequest(service, id);
+            return new GetRatingRequest(this.service, id);
         }
 
         /// <summary>Retrieves the ratings that the authorized user gave to a list of specified videos.</summary>
@@ -9085,7 +9195,7 @@ namespace Google.Apis.YouTube.v3
         /// </param>
         public virtual InsertRequest Insert(Google.Apis.YouTube.v3.Data.Video body, Google.Apis.Util.Repeatable<string> part)
         {
-            return new InsertRequest(service, body, part);
+            return new InsertRequest(this.service, body, part);
         }
 
         /// <summary>Inserts a new resource into this collection.</summary>
@@ -9427,7 +9537,7 @@ namespace Google.Apis.YouTube.v3
         /// </param>
         public virtual ListRequest List(Google.Apis.Util.Repeatable<string> part)
         {
-            return new ListRequest(service, part);
+            return new ListRequest(this.service, part);
         }
 
         /// <summary>Retrieves a list of resources, possibly filtered.</summary>
@@ -9677,7 +9787,7 @@ namespace Google.Apis.YouTube.v3
         /// <param name="rating"><c>null</c></param>
         public virtual RateRequest Rate(string id, RateRequest.RatingEnum rating)
         {
-            return new RateRequest(service, id, rating);
+            return new RateRequest(this.service, id, rating);
         }
 
         /// <summary>Adds a like or dislike rating to a video or removes a rating from a video.</summary>
@@ -9748,7 +9858,7 @@ namespace Google.Apis.YouTube.v3
         /// <param name="body">The body of the request.</param>
         public virtual ReportAbuseRequest ReportAbuse(Google.Apis.YouTube.v3.Data.VideoAbuseReport body)
         {
-            return new ReportAbuseRequest(service, body);
+            return new ReportAbuseRequest(this.service, body);
         }
 
         /// <summary>Report abuse for a video.</summary>
@@ -9820,7 +9930,7 @@ namespace Google.Apis.YouTube.v3
         /// </param>
         public virtual UpdateRequest Update(Google.Apis.YouTube.v3.Data.Video body, Google.Apis.Util.Repeatable<string> part)
         {
-            return new UpdateRequest(service, body, part);
+            return new UpdateRequest(this.service, body, part);
         }
 
         /// <summary>Updates an existing resource.</summary>
@@ -9921,7 +10031,7 @@ namespace Google.Apis.YouTube.v3
         /// <param name="channelId"><c>null</c></param>
         public virtual SetRequest Set(Google.Apis.YouTube.v3.Data.InvideoBranding body, string channelId)
         {
-            return new SetRequest(service, body, channelId);
+            return new SetRequest(this.service, body, channelId);
         }
 
         /// <summary>Allows upload of watermark image and setting it for a channel.</summary>
@@ -10142,7 +10252,7 @@ namespace Google.Apis.YouTube.v3
         /// <param name="channelId"><c>null</c></param>
         public virtual UnsetRequest Unset(string channelId)
         {
-            return new UnsetRequest(service, channelId);
+            return new UnsetRequest(this.service, channelId);
         }
 
         /// <summary>Allows removal of channel watermark.</summary>
@@ -10239,7 +10349,7 @@ namespace Google.Apis.YouTube.v3
             /// <param name="body">The body of the request.</param>
             public virtual UpdateCommentThreadsRequest UpdateCommentThreads(Google.Apis.YouTube.v3.Data.CommentThread body)
             {
-                return new UpdateCommentThreadsRequest(service, body);
+                return new UpdateCommentThreadsRequest(this.service, body);
             }
 
             /// <summary>Updates an existing resource.</summary>
@@ -10761,8 +10871,8 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? PublishedAtDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(PublishedAtRaw);
-            set => PublishedAtRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(PublishedAtRaw);
+            set => PublishedAtRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="PublishedAtRaw"/>.</summary>
@@ -10905,8 +11015,8 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LastUpdatedDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastUpdatedRaw);
-            set => LastUpdatedRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(LastUpdatedRaw);
+            set => LastUpdatedRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="LastUpdatedRaw"/>.</summary>
@@ -11171,8 +11281,8 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? TimeLinkedDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(TimeLinkedRaw);
-            set => TimeLinkedRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(TimeLinkedRaw);
+            set => TimeLinkedRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="TimeLinkedRaw"/>.</summary>
@@ -11555,8 +11665,8 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? PublishedAtDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(PublishedAtRaw);
-            set => PublishedAtRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(PublishedAtRaw);
+            set => PublishedAtRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="PublishedAtRaw"/>.</summary>
@@ -11794,8 +11904,8 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? PublishedAtDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(PublishedAtRaw);
-            set => PublishedAtRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(PublishedAtRaw);
+            set => PublishedAtRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="PublishedAtRaw"/>.</summary>
@@ -11830,8 +11940,8 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdatedAtDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdatedAtRaw);
-            set => UpdatedAtRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(UpdatedAtRaw);
+            set => UpdatedAtRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="UpdatedAtRaw"/>.</summary>
@@ -12886,8 +12996,8 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? BoundStreamLastUpdateTimeMsDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(BoundStreamLastUpdateTimeMsRaw);
-            set => BoundStreamLastUpdateTimeMsRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(BoundStreamLastUpdateTimeMsRaw);
+            set => BoundStreamLastUpdateTimeMsRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary>
@@ -13079,8 +13189,8 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ActualEndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ActualEndTimeRaw);
-            set => ActualEndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(ActualEndTimeRaw);
+            set => ActualEndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="ActualEndTimeRaw"/>.</summary>
@@ -13105,8 +13215,8 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ActualStartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ActualStartTimeRaw);
-            set => ActualStartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(ActualStartTimeRaw);
+            set => ActualStartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="ActualStartTimeRaw"/>.</summary>
@@ -13147,8 +13257,8 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? PublishedAtDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(PublishedAtRaw);
-            set => PublishedAtRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(PublishedAtRaw);
+            set => PublishedAtRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="PublishedAtRaw"/>.</summary>
@@ -13170,8 +13280,8 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ScheduledEndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ScheduledEndTimeRaw);
-            set => ScheduledEndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(ScheduledEndTimeRaw);
+            set => ScheduledEndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="ScheduledEndTimeRaw"/>.</summary>
@@ -13193,8 +13303,8 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ScheduledStartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ScheduledStartTimeRaw);
-            set => ScheduledStartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(ScheduledStartTimeRaw);
+            set => ScheduledStartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="ScheduledStartTimeRaw"/>.</summary>
@@ -13528,8 +13638,8 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? OfflineAtDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(OfflineAtRaw);
-            set => OfflineAtRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(OfflineAtRaw);
+            set => OfflineAtRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="OfflineAtRaw"/>.</summary>
@@ -13639,8 +13749,8 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? PublishedAtDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(PublishedAtRaw);
-            set => PublishedAtRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(PublishedAtRaw);
+            set => PublishedAtRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="PublishedAtRaw"/>.</summary>
@@ -14041,8 +14151,8 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? PublishedAtDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(PublishedAtRaw);
-            set => PublishedAtRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(PublishedAtRaw);
+            set => PublishedAtRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="PublishedAtRaw"/>.</summary>
@@ -14588,8 +14698,8 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? VideoPublishedAtDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(VideoPublishedAtRaw);
-            set => VideoPublishedAtRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(VideoPublishedAtRaw);
+            set => VideoPublishedAtRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="VideoPublishedAtRaw"/>.</summary>
@@ -14690,8 +14800,8 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? PublishedAtDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(PublishedAtRaw);
-            set => PublishedAtRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(PublishedAtRaw);
+            set => PublishedAtRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="PublishedAtRaw"/>.</summary>
@@ -14846,8 +14956,8 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? PublishedAtDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(PublishedAtRaw);
-            set => PublishedAtRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(PublishedAtRaw);
+            set => PublishedAtRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="PublishedAtRaw"/>.</summary>
@@ -15070,8 +15180,8 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? PublishedAtDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(PublishedAtRaw);
-            set => PublishedAtRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(PublishedAtRaw);
+            set => PublishedAtRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="PublishedAtRaw"/>.</summary>
@@ -15222,8 +15332,8 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? PublishedAtDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(PublishedAtRaw);
-            set => PublishedAtRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(PublishedAtRaw);
+            set => PublishedAtRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="PublishedAtRaw"/>.</summary>
@@ -15363,8 +15473,8 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreatedAtDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreatedAtRaw);
-            set => CreatedAtRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(CreatedAtRaw);
+            set => CreatedAtRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="CreatedAtRaw"/>.</summary>
@@ -16279,8 +16389,8 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ActualEndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ActualEndTimeRaw);
-            set => ActualEndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(ActualEndTimeRaw);
+            set => ActualEndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="ActualEndTimeRaw"/>.</summary>
@@ -16304,8 +16414,8 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ActualStartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ActualStartTimeRaw);
-            set => ActualStartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(ActualStartTimeRaw);
+            set => ActualStartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="ActualStartTimeRaw"/>.</summary>
@@ -16340,8 +16450,8 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ScheduledEndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ScheduledEndTimeRaw);
-            set => ScheduledEndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(ScheduledEndTimeRaw);
+            set => ScheduledEndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="ScheduledEndTimeRaw"/>.</summary>
@@ -16363,8 +16473,8 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ScheduledStartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ScheduledStartTimeRaw);
-            set => ScheduledStartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(ScheduledStartTimeRaw);
+            set => ScheduledStartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="ScheduledStartTimeRaw"/>.</summary>
@@ -16565,8 +16675,8 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? RecordingDateDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(RecordingDateRaw);
-            set => RecordingDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(RecordingDateRaw);
+            set => RecordingDateRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="RecordingDateRaw"/>.</summary>
@@ -16633,8 +16743,8 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? PublishedAtDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(PublishedAtRaw);
-            set => PublishedAtRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(PublishedAtRaw);
+            set => PublishedAtRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="PublishedAtRaw"/>.</summary>
@@ -16743,8 +16853,8 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? PublishAtDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(PublishAtRaw);
-            set => PublishAtRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(PublishAtRaw);
+            set => PublishAtRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="PublishAtRaw"/>.</summary>

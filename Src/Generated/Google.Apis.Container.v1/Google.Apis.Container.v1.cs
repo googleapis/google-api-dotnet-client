@@ -318,7 +318,7 @@ namespace Google.Apis.Container.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists subnetworks that are usable for creating clusters in a project.</summary>
@@ -476,7 +476,7 @@ namespace Google.Apis.Container.v1
                     /// </param>
                     public virtual CompleteUpgradeRequest CompleteUpgrade(Google.Apis.Container.v1.Data.CompleteNodePoolUpgradeRequest body, string name)
                     {
-                        return new CompleteUpgradeRequest(service, body, name);
+                        return new CompleteUpgradeRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -537,7 +537,7 @@ namespace Google.Apis.Container.v1
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.Container.v1.Data.CreateNodePoolRequest body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>Creates a node pool for a cluster.</summary>
@@ -595,7 +595,7 @@ namespace Google.Apis.Container.v1
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>Deletes a node pool from a cluster.</summary>
@@ -708,7 +708,7 @@ namespace Google.Apis.Container.v1
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Retrieves the requested node pool.</summary>
@@ -821,7 +821,7 @@ namespace Google.Apis.Container.v1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists the node pools for a cluster.</summary>
@@ -923,7 +923,7 @@ namespace Google.Apis.Container.v1
                     /// </param>
                     public virtual RollbackRequest Rollback(Google.Apis.Container.v1.Data.RollbackNodePoolUpgradeRequest body, string name)
                     {
-                        return new RollbackRequest(service, body, name);
+                        return new RollbackRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -985,7 +985,7 @@ namespace Google.Apis.Container.v1
                     /// </param>
                     public virtual SetAutoscalingRequest SetAutoscaling(Google.Apis.Container.v1.Data.SetNodePoolAutoscalingRequest body, string name)
                     {
-                        return new SetAutoscalingRequest(service, body, name);
+                        return new SetAutoscalingRequest(this.service, body, name);
                     }
 
                     /// <summary>Sets the autoscaling settings for the specified node pool.</summary>
@@ -1044,7 +1044,7 @@ namespace Google.Apis.Container.v1
                     /// </param>
                     public virtual SetManagementRequest SetManagement(Google.Apis.Container.v1.Data.SetNodePoolManagementRequest body, string name)
                     {
-                        return new SetManagementRequest(service, body, name);
+                        return new SetManagementRequest(this.service, body, name);
                     }
 
                     /// <summary>Sets the NodeManagement options for a node pool.</summary>
@@ -1106,7 +1106,7 @@ namespace Google.Apis.Container.v1
                     /// </param>
                     public virtual SetSizeRequest SetSize(Google.Apis.Container.v1.Data.SetNodePoolSizeRequest body, string name)
                     {
-                        return new SetSizeRequest(service, body, name);
+                        return new SetSizeRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -1168,7 +1168,7 @@ namespace Google.Apis.Container.v1
                     /// </param>
                     public virtual UpdateRequest Update(Google.Apis.Container.v1.Data.UpdateNodePoolRequest body, string name)
                     {
-                        return new UpdateRequest(service, body, name);
+                        return new UpdateRequest(this.service, body, name);
                     }
 
                     /// <summary>Updates the version and/or image type for the specified node pool.</summary>
@@ -1248,7 +1248,7 @@ namespace Google.Apis.Container.v1
                     /// </param>
                     public virtual GetOpenidConfigurationRequest GetOpenidConfiguration(string parent)
                     {
-                        return new GetOpenidConfigurationRequest(service, parent);
+                        return new GetOpenidConfigurationRequest(this.service, parent);
                     }
 
                     /// <summary>
@@ -1306,7 +1306,7 @@ namespace Google.Apis.Container.v1
                 /// </param>
                 public virtual CheckAutopilotCompatibilityRequest CheckAutopilotCompatibility(string name)
                 {
-                    return new CheckAutopilotCompatibilityRequest(service, name);
+                    return new CheckAutopilotCompatibilityRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -1360,7 +1360,7 @@ namespace Google.Apis.Container.v1
                 /// </param>
                 public virtual CompleteIpRotationRequest CompleteIpRotation(Google.Apis.Container.v1.Data.CompleteIPRotationRequest body, string name)
                 {
-                    return new CompleteIpRotationRequest(service, body, name);
+                    return new CompleteIpRotationRequest(this.service, body, name);
                 }
 
                 /// <summary>Completes master IP rotation.</summary>
@@ -1426,7 +1426,7 @@ namespace Google.Apis.Container.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Container.v1.Data.CreateClusterRequest body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -1496,7 +1496,7 @@ namespace Google.Apis.Container.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -1599,7 +1599,7 @@ namespace Google.Apis.Container.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets the details of a specific cluster.</summary>
@@ -1700,7 +1700,7 @@ namespace Google.Apis.Container.v1
                 /// </param>
                 public virtual GetJwksRequest GetJwks(string parent)
                 {
-                    return new GetJwksRequest(service, parent);
+                    return new GetJwksRequest(this.service, parent);
                 }
 
                 /// <summary>
@@ -1754,7 +1754,7 @@ namespace Google.Apis.Container.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists all clusters owned by a project in either the specified zone or all zones.</summary>
@@ -1838,7 +1838,7 @@ namespace Google.Apis.Container.v1
                 /// </param>
                 public virtual SetAddonsRequest SetAddons(Google.Apis.Container.v1.Data.SetAddonsConfigRequest body, string name)
                 {
-                    return new SetAddonsRequest(service, body, name);
+                    return new SetAddonsRequest(this.service, body, name);
                 }
 
                 /// <summary>Sets the addons for a specific cluster.</summary>
@@ -1897,7 +1897,7 @@ namespace Google.Apis.Container.v1
                 /// </param>
                 public virtual SetLegacyAbacRequest SetLegacyAbac(Google.Apis.Container.v1.Data.SetLegacyAbacRequest body, string name)
                 {
-                    return new SetLegacyAbacRequest(service, body, name);
+                    return new SetLegacyAbacRequest(this.service, body, name);
                 }
 
                 /// <summary>Enables or disables the ABAC authorization mechanism on a cluster.</summary>
@@ -1960,7 +1960,7 @@ namespace Google.Apis.Container.v1
                 /// </param>
                 public virtual SetLocationsRequest SetLocations(Google.Apis.Container.v1.Data.SetLocationsRequest body, string name)
                 {
-                    return new SetLocationsRequest(service, body, name);
+                    return new SetLocationsRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -2023,7 +2023,7 @@ namespace Google.Apis.Container.v1
                 /// </param>
                 public virtual SetLoggingRequest SetLogging(Google.Apis.Container.v1.Data.SetLoggingServiceRequest body, string name)
                 {
-                    return new SetLoggingRequest(service, body, name);
+                    return new SetLoggingRequest(this.service, body, name);
                 }
 
                 /// <summary>Sets the logging service for a specific cluster.</summary>
@@ -2082,7 +2082,7 @@ namespace Google.Apis.Container.v1
                 /// </param>
                 public virtual SetMaintenancePolicyRequest SetMaintenancePolicy(Google.Apis.Container.v1.Data.SetMaintenancePolicyRequest body, string name)
                 {
-                    return new SetMaintenancePolicyRequest(service, body, name);
+                    return new SetMaintenancePolicyRequest(this.service, body, name);
                 }
 
                 /// <summary>Sets the maintenance policy for a cluster.</summary>
@@ -2144,7 +2144,7 @@ namespace Google.Apis.Container.v1
                 /// </param>
                 public virtual SetMasterAuthRequest SetMasterAuth(Google.Apis.Container.v1.Data.SetMasterAuthRequest body, string name)
                 {
-                    return new SetMasterAuthRequest(service, body, name);
+                    return new SetMasterAuthRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -2206,7 +2206,7 @@ namespace Google.Apis.Container.v1
                 /// </param>
                 public virtual SetMonitoringRequest SetMonitoring(Google.Apis.Container.v1.Data.SetMonitoringServiceRequest body, string name)
                 {
-                    return new SetMonitoringRequest(service, body, name);
+                    return new SetMonitoringRequest(this.service, body, name);
                 }
 
                 /// <summary>Sets the monitoring service for a specific cluster.</summary>
@@ -2265,7 +2265,7 @@ namespace Google.Apis.Container.v1
                 /// </param>
                 public virtual SetNetworkPolicyRequest SetNetworkPolicy(Google.Apis.Container.v1.Data.SetNetworkPolicyRequest body, string name)
                 {
-                    return new SetNetworkPolicyRequest(service, body, name);
+                    return new SetNetworkPolicyRequest(this.service, body, name);
                 }
 
                 /// <summary>Enables or disables Network Policy for a cluster.</summary>
@@ -2324,7 +2324,7 @@ namespace Google.Apis.Container.v1
                 /// </param>
                 public virtual SetResourceLabelsRequest SetResourceLabels(Google.Apis.Container.v1.Data.SetLabelsRequest body, string name)
                 {
-                    return new SetResourceLabelsRequest(service, body, name);
+                    return new SetResourceLabelsRequest(this.service, body, name);
                 }
 
                 /// <summary>Sets labels on a cluster.</summary>
@@ -2383,7 +2383,7 @@ namespace Google.Apis.Container.v1
                 /// </param>
                 public virtual StartIpRotationRequest StartIpRotation(Google.Apis.Container.v1.Data.StartIPRotationRequest body, string name)
                 {
-                    return new StartIpRotationRequest(service, body, name);
+                    return new StartIpRotationRequest(this.service, body, name);
                 }
 
                 /// <summary>Starts master IP rotation.</summary>
@@ -2442,7 +2442,7 @@ namespace Google.Apis.Container.v1
                 /// </param>
                 public virtual UpdateRequest Update(Google.Apis.Container.v1.Data.UpdateClusterRequest body, string name)
                 {
-                    return new UpdateRequest(service, body, name);
+                    return new UpdateRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates the settings of a specific cluster.</summary>
@@ -2501,7 +2501,7 @@ namespace Google.Apis.Container.v1
                 /// </param>
                 public virtual UpdateMasterRequest UpdateMaster(Google.Apis.Container.v1.Data.UpdateMasterRequest body, string name)
                 {
-                    return new UpdateMasterRequest(service, body, name);
+                    return new UpdateMasterRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates the master for a specific cluster.</summary>
@@ -2578,7 +2578,7 @@ namespace Google.Apis.Container.v1
                 /// </param>
                 public virtual CancelRequest Cancel(Google.Apis.Container.v1.Data.CancelOperationRequest body, string name)
                 {
-                    return new CancelRequest(service, body, name);
+                    return new CancelRequest(this.service, body, name);
                 }
 
                 /// <summary>Cancels the specified operation.</summary>
@@ -2636,7 +2636,7 @@ namespace Google.Apis.Container.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets the specified operation.</summary>
@@ -2734,7 +2734,7 @@ namespace Google.Apis.Container.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists all operations in a project in a specific zone or all zones.</summary>
@@ -2818,7 +2818,7 @@ namespace Google.Apis.Container.v1
             /// </param>
             public virtual GetServerConfigRequest GetServerConfig(string name)
             {
-                return new GetServerConfigRequest(service, name);
+                return new GetServerConfigRequest(this.service, name);
             }
 
             /// <summary>Returns configuration info about the Google Kubernetes Engine service.</summary>
@@ -2971,7 +2971,7 @@ namespace Google.Apis.Container.v1
                     /// </param>
                     public virtual AutoscalingRequest Autoscaling(Google.Apis.Container.v1.Data.SetNodePoolAutoscalingRequest body, string projectId, string zone, string clusterId, string nodePoolId)
                     {
-                        return new AutoscalingRequest(service, body, projectId, zone, clusterId, nodePoolId);
+                        return new AutoscalingRequest(this.service, body, projectId, zone, clusterId, nodePoolId);
                     }
 
                     /// <summary>Sets the autoscaling settings for the specified node pool.</summary>
@@ -3090,7 +3090,7 @@ namespace Google.Apis.Container.v1
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.Container.v1.Data.CreateNodePoolRequest body, string projectId, string zone, string clusterId)
                     {
-                        return new CreateRequest(service, body, projectId, zone, clusterId);
+                        return new CreateRequest(this.service, body, projectId, zone, clusterId);
                     }
 
                     /// <summary>Creates a node pool for a cluster.</summary>
@@ -3196,7 +3196,7 @@ namespace Google.Apis.Container.v1
                     /// </param>
                     public virtual DeleteRequest Delete(string projectId, string zone, string clusterId, string nodePoolId)
                     {
-                        return new DeleteRequest(service, projectId, zone, clusterId, nodePoolId);
+                        return new DeleteRequest(this.service, projectId, zone, clusterId, nodePoolId);
                     }
 
                     /// <summary>Deletes a node pool from a cluster.</summary>
@@ -3326,7 +3326,7 @@ namespace Google.Apis.Container.v1
                     /// </param>
                     public virtual GetRequest Get(string projectId, string zone, string clusterId, string nodePoolId)
                     {
-                        return new GetRequest(service, projectId, zone, clusterId, nodePoolId);
+                        return new GetRequest(this.service, projectId, zone, clusterId, nodePoolId);
                     }
 
                     /// <summary>Retrieves the requested node pool.</summary>
@@ -3452,7 +3452,7 @@ namespace Google.Apis.Container.v1
                     /// </param>
                     public virtual ListRequest List(string projectId, string zone, string clusterId)
                     {
-                        return new ListRequest(service, projectId, zone, clusterId);
+                        return new ListRequest(this.service, projectId, zone, clusterId);
                     }
 
                     /// <summary>Lists the node pools for a cluster.</summary>
@@ -3570,7 +3570,7 @@ namespace Google.Apis.Container.v1
                     /// </param>
                     public virtual RollbackRequest Rollback(Google.Apis.Container.v1.Data.RollbackNodePoolUpgradeRequest body, string projectId, string zone, string clusterId, string nodePoolId)
                     {
-                        return new RollbackRequest(service, body, projectId, zone, clusterId, nodePoolId);
+                        return new RollbackRequest(this.service, body, projectId, zone, clusterId, nodePoolId);
                     }
 
                     /// <summary>
@@ -3696,7 +3696,7 @@ namespace Google.Apis.Container.v1
                     /// </param>
                     public virtual SetManagementRequest SetManagement(Google.Apis.Container.v1.Data.SetNodePoolManagementRequest body, string projectId, string zone, string clusterId, string nodePoolId)
                     {
-                        return new SetManagementRequest(service, body, projectId, zone, clusterId, nodePoolId);
+                        return new SetManagementRequest(this.service, body, projectId, zone, clusterId, nodePoolId);
                     }
 
                     /// <summary>Sets the NodeManagement options for a node pool.</summary>
@@ -3822,7 +3822,7 @@ namespace Google.Apis.Container.v1
                     /// </param>
                     public virtual SetSizeRequest SetSize(Google.Apis.Container.v1.Data.SetNodePoolSizeRequest body, string projectId, string zone, string clusterId, string nodePoolId)
                     {
-                        return new SetSizeRequest(service, body, projectId, zone, clusterId, nodePoolId);
+                        return new SetSizeRequest(this.service, body, projectId, zone, clusterId, nodePoolId);
                     }
 
                     /// <summary>
@@ -3948,7 +3948,7 @@ namespace Google.Apis.Container.v1
                     /// </param>
                     public virtual UpdateRequest Update(Google.Apis.Container.v1.Data.UpdateNodePoolRequest body, string projectId, string zone, string clusterId, string nodePoolId)
                     {
-                        return new UpdateRequest(service, body, projectId, zone, clusterId, nodePoolId);
+                        return new UpdateRequest(this.service, body, projectId, zone, clusterId, nodePoolId);
                     }
 
                     /// <summary>Updates the version and/or image type for the specified node pool.</summary>
@@ -4068,7 +4068,7 @@ namespace Google.Apis.Container.v1
                 /// </param>
                 public virtual AddonsRequest Addons(Google.Apis.Container.v1.Data.SetAddonsConfigRequest body, string projectId, string zone, string clusterId)
                 {
-                    return new AddonsRequest(service, body, projectId, zone, clusterId);
+                    return new AddonsRequest(this.service, body, projectId, zone, clusterId);
                 }
 
                 /// <summary>Sets the addons for a specific cluster.</summary>
@@ -4170,7 +4170,7 @@ namespace Google.Apis.Container.v1
                 /// </param>
                 public virtual CompleteIpRotationRequest CompleteIpRotation(Google.Apis.Container.v1.Data.CompleteIPRotationRequest body, string projectId, string zone, string clusterId)
                 {
-                    return new CompleteIpRotationRequest(service, body, projectId, zone, clusterId);
+                    return new CompleteIpRotationRequest(this.service, body, projectId, zone, clusterId);
                 }
 
                 /// <summary>Completes master IP rotation.</summary>
@@ -4276,7 +4276,7 @@ namespace Google.Apis.Container.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Container.v1.Data.CreateClusterRequest body, string projectId, string zone)
                 {
-                    return new CreateRequest(service, body, projectId, zone);
+                    return new CreateRequest(this.service, body, projectId, zone);
                 }
 
                 /// <summary>
@@ -4374,7 +4374,7 @@ namespace Google.Apis.Container.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string projectId, string zone, string clusterId)
                 {
-                    return new DeleteRequest(service, projectId, zone, clusterId);
+                    return new DeleteRequest(this.service, projectId, zone, clusterId);
                 }
 
                 /// <summary>
@@ -4489,7 +4489,7 @@ namespace Google.Apis.Container.v1
                 /// </param>
                 public virtual GetRequest Get(string projectId, string zone, string clusterId)
                 {
-                    return new GetRequest(service, projectId, zone, clusterId);
+                    return new GetRequest(this.service, projectId, zone, clusterId);
                 }
 
                 /// <summary>Gets the details of a specific cluster.</summary>
@@ -4600,7 +4600,7 @@ namespace Google.Apis.Container.v1
                 /// </param>
                 public virtual LegacyAbacRequest LegacyAbac(Google.Apis.Container.v1.Data.SetLegacyAbacRequest body, string projectId, string zone, string clusterId)
                 {
-                    return new LegacyAbacRequest(service, body, projectId, zone, clusterId);
+                    return new LegacyAbacRequest(this.service, body, projectId, zone, clusterId);
                 }
 
                 /// <summary>Enables or disables the ABAC authorization mechanism on a cluster.</summary>
@@ -4698,7 +4698,7 @@ namespace Google.Apis.Container.v1
                 /// </param>
                 public virtual ListRequest List(string projectId, string zone)
                 {
-                    return new ListRequest(service, projectId, zone);
+                    return new ListRequest(this.service, projectId, zone);
                 }
 
                 /// <summary>Lists all clusters owned by a project in either the specified zone or all zones.</summary>
@@ -4797,7 +4797,7 @@ namespace Google.Apis.Container.v1
                 /// </param>
                 public virtual LocationsRequest Locations(Google.Apis.Container.v1.Data.SetLocationsRequest body, string projectId, string zone, string clusterId)
                 {
-                    return new LocationsRequest(service, body, projectId, zone, clusterId);
+                    return new LocationsRequest(this.service, body, projectId, zone, clusterId);
                 }
 
                 /// <summary>
@@ -4904,7 +4904,7 @@ namespace Google.Apis.Container.v1
                 /// </param>
                 public virtual LoggingRequest Logging(Google.Apis.Container.v1.Data.SetLoggingServiceRequest body, string projectId, string zone, string clusterId)
                 {
-                    return new LoggingRequest(service, body, projectId, zone, clusterId);
+                    return new LoggingRequest(this.service, body, projectId, zone, clusterId);
                 }
 
                 /// <summary>Sets the logging service for a specific cluster.</summary>
@@ -5007,7 +5007,7 @@ namespace Google.Apis.Container.v1
                 /// </param>
                 public virtual MasterRequest Master(Google.Apis.Container.v1.Data.UpdateMasterRequest body, string projectId, string zone, string clusterId)
                 {
-                    return new MasterRequest(service, body, projectId, zone, clusterId);
+                    return new MasterRequest(this.service, body, projectId, zone, clusterId);
                 }
 
                 /// <summary>Updates the master for a specific cluster.</summary>
@@ -5110,7 +5110,7 @@ namespace Google.Apis.Container.v1
                 /// </param>
                 public virtual MonitoringRequest Monitoring(Google.Apis.Container.v1.Data.SetMonitoringServiceRequest body, string projectId, string zone, string clusterId)
                 {
-                    return new MonitoringRequest(service, body, projectId, zone, clusterId);
+                    return new MonitoringRequest(this.service, body, projectId, zone, clusterId);
                 }
 
                 /// <summary>Sets the monitoring service for a specific cluster.</summary>
@@ -5212,7 +5212,7 @@ namespace Google.Apis.Container.v1
                 /// </param>
                 public virtual ResourceLabelsRequest ResourceLabels(Google.Apis.Container.v1.Data.SetLabelsRequest body, string projectId, string zone, string clusterId)
                 {
-                    return new ResourceLabelsRequest(service, body, projectId, zone, clusterId);
+                    return new ResourceLabelsRequest(this.service, body, projectId, zone, clusterId);
                 }
 
                 /// <summary>Sets labels on a cluster.</summary>
@@ -5310,7 +5310,7 @@ namespace Google.Apis.Container.v1
                 /// <param name="clusterId">Required. The name of the cluster to update.</param>
                 public virtual SetMaintenancePolicyRequest SetMaintenancePolicy(Google.Apis.Container.v1.Data.SetMaintenancePolicyRequest body, string projectId, string zone, string clusterId)
                 {
-                    return new SetMaintenancePolicyRequest(service, body, projectId, zone, clusterId);
+                    return new SetMaintenancePolicyRequest(this.service, body, projectId, zone, clusterId);
                 }
 
                 /// <summary>Sets the maintenance policy for a cluster.</summary>
@@ -5411,7 +5411,7 @@ namespace Google.Apis.Container.v1
                 /// </param>
                 public virtual SetMasterAuthRequest SetMasterAuth(Google.Apis.Container.v1.Data.SetMasterAuthRequest body, string projectId, string zone, string clusterId)
                 {
-                    return new SetMasterAuthRequest(service, body, projectId, zone, clusterId);
+                    return new SetMasterAuthRequest(this.service, body, projectId, zone, clusterId);
                 }
 
                 /// <summary>
@@ -5516,7 +5516,7 @@ namespace Google.Apis.Container.v1
                 /// </param>
                 public virtual SetNetworkPolicyRequest SetNetworkPolicy(Google.Apis.Container.v1.Data.SetNetworkPolicyRequest body, string projectId, string zone, string clusterId)
                 {
-                    return new SetNetworkPolicyRequest(service, body, projectId, zone, clusterId);
+                    return new SetNetworkPolicyRequest(this.service, body, projectId, zone, clusterId);
                 }
 
                 /// <summary>Enables or disables Network Policy for a cluster.</summary>
@@ -5618,7 +5618,7 @@ namespace Google.Apis.Container.v1
                 /// </param>
                 public virtual StartIpRotationRequest StartIpRotation(Google.Apis.Container.v1.Data.StartIPRotationRequest body, string projectId, string zone, string clusterId)
                 {
-                    return new StartIpRotationRequest(service, body, projectId, zone, clusterId);
+                    return new StartIpRotationRequest(this.service, body, projectId, zone, clusterId);
                 }
 
                 /// <summary>Starts master IP rotation.</summary>
@@ -5721,7 +5721,7 @@ namespace Google.Apis.Container.v1
                 /// </param>
                 public virtual UpdateRequest Update(Google.Apis.Container.v1.Data.UpdateClusterRequest body, string projectId, string zone, string clusterId)
                 {
-                    return new UpdateRequest(service, body, projectId, zone, clusterId);
+                    return new UpdateRequest(this.service, body, projectId, zone, clusterId);
                 }
 
                 /// <summary>Updates the settings of a specific cluster.</summary>
@@ -5842,7 +5842,7 @@ namespace Google.Apis.Container.v1
                 /// </param>
                 public virtual CancelRequest Cancel(Google.Apis.Container.v1.Data.CancelOperationRequest body, string projectId, string zone, string operationId)
                 {
-                    return new CancelRequest(service, body, projectId, zone, operationId);
+                    return new CancelRequest(this.service, body, projectId, zone, operationId);
                 }
 
                 /// <summary>Cancels the specified operation.</summary>
@@ -5944,7 +5944,7 @@ namespace Google.Apis.Container.v1
                 /// </param>
                 public virtual GetRequest Get(string projectId, string zone, string operationId)
                 {
-                    return new GetRequest(service, projectId, zone, operationId);
+                    return new GetRequest(this.service, projectId, zone, operationId);
                 }
 
                 /// <summary>Gets the specified operation.</summary>
@@ -6050,7 +6050,7 @@ namespace Google.Apis.Container.v1
                 /// </param>
                 public virtual ListRequest List(string projectId, string zone)
                 {
-                    return new ListRequest(service, projectId, zone);
+                    return new ListRequest(this.service, projectId, zone);
                 }
 
                 /// <summary>Lists all operations in a project in a specific zone or all zones.</summary>
@@ -6141,7 +6141,7 @@ namespace Google.Apis.Container.v1
             /// </param>
             public virtual GetServerconfigRequest GetServerconfig(string projectId, string zone)
             {
-                return new GetServerconfigRequest(service, projectId, zone);
+                return new GetServerconfigRequest(this.service, projectId, zone);
             }
 
             /// <summary>Returns configuration info about the Google Kubernetes Engine service.</summary>
@@ -6528,8 +6528,8 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LastObservationDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastObservationRaw);
-            set => LastObservationRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastObservationRaw);
+            set => LastObservationRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The name of the resources which are subject to this issue.</summary>
@@ -10948,8 +10948,8 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>MaintenanceExclusionOptions provides maintenance exclusion related options.</summary>
@@ -10989,8 +10989,8 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -11348,8 +11348,8 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? OperationStartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(OperationStartTimeRaw);
-            set => OperationStartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(OperationStartTimeRaw);
+            set => OperationStartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>

@@ -282,7 +282,7 @@ namespace Google.Apis.CloudAsset.v1p5beta1
         /// </param>
         public virtual ListRequest List(string parent)
         {
-            return new ListRequest(service, parent);
+            return new ListRequest(this.service, parent);
         }
 
         /// <summary>Lists assets with time and resource types and returns paged results in response.</summary>
@@ -360,14 +360,36 @@ namespace Google.Apis.CloudAsset.v1p5beta1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
+            private object _readTime;
+
             /// <summary>
-            /// Timestamp to take an asset snapshot. This can only be set to a timestamp between the current time and
-            /// the current time minus 35 days (inclusive). If not specified, the current time will be used. Due to
-            /// delays in resource data collection and indexing, there is a volatile window during which running the
-            /// same query may get different results.
+            /// String representation of <see cref="ReadTimeDateTimeOffset"/>, formatted for inclusion in the HTTP
+            /// request.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("readTime", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual object ReadTime { get; set; }
+            public virtual string ReadTimeRaw { get; private set; }
+
+            /// <summary><seealso cref="object"/> representation of <see cref="ReadTimeRaw"/>.</summary>
+            [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ReadTimeDateTimeOffset instead.")]
+            public virtual object ReadTime
+            {
+                get => _readTime;
+                set
+                {
+                    ReadTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                    _readTime = value;
+                }
+            }
+
+            public virtual System.DateTimeOffset? ReadTimeDateTimeOffset
+            {
+                get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ReadTimeRaw);
+                set
+                {
+                    ReadTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                    _readTime = value;
+                }
+            }
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
@@ -472,8 +494,8 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -838,8 +860,8 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -1175,8 +1197,8 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Version of the `Policy`. Default version is 0;</summary>
@@ -1951,8 +1973,8 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ReadTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ReadTimeRaw);
-            set => ReadTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ReadTimeRaw);
+            set => ReadTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>

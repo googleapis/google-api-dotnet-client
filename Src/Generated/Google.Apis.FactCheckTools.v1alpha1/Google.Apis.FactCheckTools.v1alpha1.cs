@@ -275,7 +275,7 @@ namespace Google.Apis.FactCheckTools.v1alpha1
         /// <summary>Search through fact-checked claims.</summary>
         public virtual SearchRequest Search()
         {
-            return new SearchRequest(service);
+            return new SearchRequest(this.service);
         }
 
         /// <summary>Search through fact-checked claims.</summary>
@@ -422,7 +422,7 @@ namespace Google.Apis.FactCheckTools.v1alpha1
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.FactCheckTools.v1alpha1.Data.GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage body)
         {
-            return new CreateRequest(service, body);
+            return new CreateRequest(this.service, body);
         }
 
         /// <summary>Create `ClaimReview` markup on a page.</summary>
@@ -461,7 +461,7 @@ namespace Google.Apis.FactCheckTools.v1alpha1
         /// <param name="name">The name of the resource to delete, in the form of `pages/{page_id}`.</param>
         public virtual DeleteRequest Delete(string name)
         {
-            return new DeleteRequest(service, name);
+            return new DeleteRequest(this.service, name);
         }
 
         /// <summary>Delete all `ClaimReview` markup on a page.</summary>
@@ -506,7 +506,7 @@ namespace Google.Apis.FactCheckTools.v1alpha1
         /// <param name="name">The name of the resource to get, in the form of `pages/{page_id}`.</param>
         public virtual GetRequest Get(string name)
         {
-            return new GetRequest(service, name);
+            return new GetRequest(this.service, name);
         }
 
         /// <summary>Get all `ClaimReview` markup on a page.</summary>
@@ -550,7 +550,7 @@ namespace Google.Apis.FactCheckTools.v1alpha1
         /// <summary>List the `ClaimReview` markup pages for a specific URL or for an organization.</summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>List the `ClaimReview` markup pages for a specific URL or for an organization.</summary>
@@ -669,7 +669,7 @@ namespace Google.Apis.FactCheckTools.v1alpha1
         /// </param>
         public virtual UpdateRequest Update(Google.Apis.FactCheckTools.v1alpha1.Data.GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage body, string name)
         {
-            return new UpdateRequest(service, body, name);
+            return new UpdateRequest(this.service, body, name);
         }
 
         /// <summary>
@@ -763,8 +763,8 @@ namespace Google.Apis.FactCheckTools.v1alpha1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ClaimDateDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ClaimDateRaw);
-            set => ClaimDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ClaimDateRaw);
+            set => ClaimDateRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>One or more reviews of this claim (namely, a fact-checking article).</summary>
@@ -896,8 +896,8 @@ namespace Google.Apis.FactCheckTools.v1alpha1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ReviewDateDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ReviewDateRaw);
-            set => ReviewDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ReviewDateRaw);
+            set => ReviewDateRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Textual rating. For instance, "Mostly false".</summary>

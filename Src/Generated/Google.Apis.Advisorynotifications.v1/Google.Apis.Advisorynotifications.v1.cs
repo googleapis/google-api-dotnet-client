@@ -317,7 +317,7 @@ namespace Google.Apis.Advisorynotifications.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets a notification.</summary>
@@ -385,7 +385,7 @@ namespace Google.Apis.Advisorynotifications.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists notifications under a given parent.</summary>
@@ -521,7 +521,7 @@ namespace Google.Apis.Advisorynotifications.v1
             /// </param>
             public virtual GetSettingsRequest GetSettings(string name)
             {
-                return new GetSettingsRequest(service, name);
+                return new GetSettingsRequest(this.service, name);
             }
 
             /// <summary>Get notification settings.</summary>
@@ -573,7 +573,7 @@ namespace Google.Apis.Advisorynotifications.v1
             /// </param>
             public virtual UpdateSettingsRequest UpdateSettings(Google.Apis.Advisorynotifications.v1.Data.GoogleCloudAdvisorynotificationsV1Settings body, string name)
             {
-                return new UpdateSettingsRequest(service, body, name);
+                return new UpdateSettingsRequest(this.service, body, name);
             }
 
             /// <summary>Update notification settings.</summary>
@@ -741,8 +741,8 @@ namespace Google.Apis.Advisorynotifications.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _localizationTimeRaw;
@@ -780,8 +780,8 @@ namespace Google.Apis.Advisorynotifications.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LocalizationTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LocalizationTimeRaw);
-            set => LocalizationTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LocalizationTimeRaw);
+            set => LocalizationTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -835,8 +835,8 @@ namespace Google.Apis.Advisorynotifications.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>A list of messages in the notification.</summary>

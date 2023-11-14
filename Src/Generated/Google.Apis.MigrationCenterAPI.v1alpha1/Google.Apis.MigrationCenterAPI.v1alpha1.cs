@@ -321,7 +321,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1
                 /// <param name="parent">Required. Parent value for `AggregateAssetsValuesRequest`.</param>
                 public virtual AggregateValuesRequest AggregateValues(Google.Apis.MigrationCenterAPI.v1alpha1.Data.AggregateAssetsValuesRequest body, string parent)
                 {
-                    return new AggregateValuesRequest(service, body, parent);
+                    return new AggregateValuesRequest(this.service, body, parent);
                 }
 
                 /// <summary>Aggregates the requested fields based on provided function.</summary>
@@ -374,7 +374,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1
                 /// <param name="parent">Required. Parent value for batch asset delete.</param>
                 public virtual BatchDeleteRequest BatchDelete(Google.Apis.MigrationCenterAPI.v1alpha1.Data.BatchDeleteAssetsRequest body, string parent)
                 {
-                    return new BatchDeleteRequest(service, body, parent);
+                    return new BatchDeleteRequest(this.service, body, parent);
                 }
 
                 /// <summary>Deletes list of Assets.</summary>
@@ -427,7 +427,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1
                 /// <param name="parent">Required. Parent value for batch asset update.</param>
                 public virtual BatchUpdateRequest BatchUpdate(Google.Apis.MigrationCenterAPI.v1alpha1.Data.BatchUpdateAssetsRequest body, string parent)
                 {
-                    return new BatchUpdateRequest(service, body, parent);
+                    return new BatchUpdateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Updates the parameters of a list of assets.</summary>
@@ -479,7 +479,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1
                 /// <param name="name">Required. Name of the resource.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes an asset.</summary>
@@ -545,7 +545,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1
                 /// <param name="name">Required. Name of the resource.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets the details of an asset.</summary>
@@ -626,7 +626,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1
                 /// <param name="parent">Required. Parent value for `ListAssetsRequest`.</param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists all the assets in a given project and location.</summary>
@@ -774,7 +774,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1
                 /// <param name="name">Output only. The full name of the asset.</param>
                 public virtual PatchRequest Patch(Google.Apis.MigrationCenterAPI.v1alpha1.Data.Asset body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates the parameters of an asset.</summary>
@@ -865,7 +865,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1
                 /// <param name="parent">Required. Parent of the resource.</param>
                 public virtual ReportAssetFramesRequest ReportAssetFrames(Google.Apis.MigrationCenterAPI.v1alpha1.Data.Frames body, string parent)
                 {
-                    return new ReportAssetFramesRequest(service, body, parent);
+                    return new ReportAssetFramesRequest(this.service, body, parent);
                 }
 
                 /// <summary>Reports a set of frames.</summary>
@@ -948,7 +948,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1
                 /// <param name="group">Required. Group reference.</param>
                 public virtual AddAssetsRequest AddAssets(Google.Apis.MigrationCenterAPI.v1alpha1.Data.AddAssetsToGroupRequest body, string group)
                 {
-                    return new AddAssetsRequest(service, body, group);
+                    return new AddAssetsRequest(this.service, body, group);
                 }
 
                 /// <summary>Adds assets to a group.</summary>
@@ -1001,7 +1001,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1
                 /// <param name="parent">Required. Value for parent.</param>
                 public virtual CreateRequest Create(Google.Apis.MigrationCenterAPI.v1alpha1.Data.Group body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a new group in a given project and location.</summary>
@@ -1091,7 +1091,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1
                 /// <param name="name">Required. Name of the group resource.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes a group.</summary>
@@ -1157,7 +1157,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1
                 /// <param name="name">Required. Name of the resource.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets the details of a group.</summary>
@@ -1202,7 +1202,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1
                 /// <param name="parent">Required. Parent value for `ListGroupsRequest`.</param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists all groups in a given project and location.</summary>
@@ -1299,7 +1299,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1
                 /// <param name="name">Output only. The name of the group.</param>
                 public virtual PatchRequest Patch(Google.Apis.MigrationCenterAPI.v1alpha1.Data.Group body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates the parameters of a group.</summary>
@@ -1390,7 +1390,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1
                 /// <param name="group">Required. Group reference.</param>
                 public virtual RemoveAssetsRequest RemoveAssets(Google.Apis.MigrationCenterAPI.v1alpha1.Data.RemoveAssetsFromGroupRequest body, string group)
                 {
-                    return new RemoveAssetsRequest(service, body, group);
+                    return new RemoveAssetsRequest(this.service, body, group);
                 }
 
                 /// <summary>Removes assets from a group.</summary>
@@ -1479,7 +1479,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1
                     /// <param name="parent">Required. Name of the parent of the ImportDataFile.</param>
                     public virtual CreateRequest Create(Google.Apis.MigrationCenterAPI.v1alpha1.Data.ImportDataFile body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>Creates an import data file.</summary>
@@ -1565,7 +1565,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1
                     /// <param name="name">Required. Name of the ImportDataFile to delete.</param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>Delete an import data file.</summary>
@@ -1632,7 +1632,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1
                     /// <param name="name">Required. Name of the ImportDataFile.</param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Gets an import data file.</summary>
@@ -1677,7 +1677,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1
                     /// <param name="parent">Required. Name of the parent of the `ImportDataFiles` resource.</param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>List import data files.</summary>
@@ -1782,7 +1782,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1
                 /// <param name="parent">Required. Value for parent.</param>
                 public virtual CreateRequest Create(Google.Apis.MigrationCenterAPI.v1alpha1.Data.ImportJob body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates an import job.</summary>
@@ -1867,7 +1867,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1
                 /// <param name="name">Required. Name of the resource.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes an import job.</summary>
@@ -1948,7 +1948,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1
                 /// <param name="name">Required. Name of the resource.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets the details of an import job.</summary>
@@ -2026,7 +2026,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1
                 /// <param name="parent">Required. Parent value for `ListImportJobsRequest`.</param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists all import jobs.</summary>
@@ -2156,7 +2156,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1
                 /// <param name="name">Output only. The full name of the import job.</param>
                 public virtual PatchRequest Patch(Google.Apis.MigrationCenterAPI.v1alpha1.Data.ImportJob body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates an import job.</summary>
@@ -2247,7 +2247,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1
                 /// <param name="name">Required. The name of the import job to run.</param>
                 public virtual RunRequest Run(Google.Apis.MigrationCenterAPI.v1alpha1.Data.RunImportJobRequest body, string name)
                 {
-                    return new RunRequest(service, body, name);
+                    return new RunRequest(this.service, body, name);
                 }
 
                 /// <summary>Runs an import job.</summary>
@@ -2300,7 +2300,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1
                 /// <param name="name">Required. The name of the import job to validate.</param>
                 public virtual ValidateRequest Validate(Google.Apis.MigrationCenterAPI.v1alpha1.Data.ValidateImportJobRequest body, string name)
                 {
-                    return new ValidateRequest(service, body, name);
+                    return new ValidateRequest(this.service, body, name);
                 }
 
                 /// <summary>Validates an import job.</summary>
@@ -2378,7 +2378,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1
                 /// <param name="name">The name of the operation resource to be cancelled.</param>
                 public virtual CancelRequest Cancel(Google.Apis.MigrationCenterAPI.v1alpha1.Data.CancelOperationRequest body, string name)
                 {
-                    return new CancelRequest(service, body, name);
+                    return new CancelRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -2441,7 +2441,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1
                 /// <param name="name">The name of the operation resource to be deleted.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -2493,7 +2493,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1
                 /// <param name="name">The name of the operation resource.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -2544,7 +2544,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1
                 /// <param name="name">The name of the operation's parent resource.</param>
                 public virtual ListRequest List(string name)
                 {
-                    return new ListRequest(service, name);
+                    return new ListRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -2647,7 +2647,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1
                 /// <param name="parent">Required. Value for parent.</param>
                 public virtual CreateRequest Create(Google.Apis.MigrationCenterAPI.v1alpha1.Data.PreferenceSet body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a new preference set in a given project and location.</summary>
@@ -2731,7 +2731,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1
                 /// <param name="name">Required. Name of the group resource.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes a preference set.</summary>
@@ -2797,7 +2797,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1
                 /// <param name="name">Required. Name of the resource.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets the details of a preference set.</summary>
@@ -2842,7 +2842,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1
                 /// <param name="parent">Required. Parent value for `ListPreferenceSetsRequest`.</param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists all the preference sets in a given project and location.</summary>
@@ -2928,7 +2928,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1
                 /// <param name="name">Output only. Name of the preference set.</param>
                 public virtual PatchRequest Patch(Google.Apis.MigrationCenterAPI.v1alpha1.Data.PreferenceSet body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates the parameters of a preference set.</summary>
@@ -3055,7 +3055,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1
                     /// <param name="parent">Required. Value for parent.</param>
                     public virtual CreateRequest Create(Google.Apis.MigrationCenterAPI.v1alpha1.Data.Report body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>Creates a report.</summary>
@@ -3146,7 +3146,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1
                     /// <param name="name">Required. Name of the resource.</param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>Deletes a Report.</summary>
@@ -3213,7 +3213,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1
                     /// <param name="name">Required. Name of the resource.</param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Gets details of a single Report.</summary>
@@ -3298,7 +3298,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1
                     /// <param name="parent">Required. Parent value for `ListReportsRequest`.</param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists Reports in a given ReportConfig.</summary>
@@ -3438,7 +3438,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1
                 /// <param name="parent">Required. Value for parent.</param>
                 public virtual CreateRequest Create(Google.Apis.MigrationCenterAPI.v1alpha1.Data.ReportConfig body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a report configuration.</summary>
@@ -3528,7 +3528,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1
                 /// <param name="name">Required. Name of the resource.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes a ReportConfig.</summary>
@@ -3609,7 +3609,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1
                 /// <param name="name">Required. Name of the resource.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets details of a single ReportConfig.</summary>
@@ -3654,7 +3654,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1
                 /// <param name="parent">Required. Parent value for `ListReportConfigsRequest`.</param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists ReportConfigs in a given project and location.</summary>
@@ -3789,7 +3789,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Gets the details of an error frame.</summary>
@@ -3871,7 +3871,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1
                     /// <param name="parent">Required. Parent value (the source) for `ListErrorFramesRequest`.</param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists all error frames in a given source and location.</summary>
@@ -3979,7 +3979,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1
                 /// <param name="parent">Required. Value for parent.</param>
                 public virtual CreateRequest Create(Google.Apis.MigrationCenterAPI.v1alpha1.Data.Source body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a new source in a given project and location.</summary>
@@ -4069,7 +4069,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1
                 /// <param name="name">Required. Name of the resource.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes a source.</summary>
@@ -4135,7 +4135,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1
                 /// <param name="name">Required. Name of the resource.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets the details of a source.</summary>
@@ -4180,7 +4180,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1
                 /// <param name="parent">Required. Parent value for `ListSourcesRequest`.</param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists all the sources in a given project and location.</summary>
@@ -4277,7 +4277,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1
                 /// <param name="name">Output only. The full name of the source.</param>
                 public virtual PatchRequest Patch(Google.Apis.MigrationCenterAPI.v1alpha1.Data.Source body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates the parameters of a source.</summary>
@@ -4368,7 +4368,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1
             /// <param name="name">Resource name for the location.</param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets information about a location.</summary>
@@ -4413,7 +4413,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1
             /// <param name="name">Required. Name of the resource.</param>
             public virtual GetSettingsRequest GetSettings(string name)
             {
-                return new GetSettingsRequest(service, name);
+                return new GetSettingsRequest(this.service, name);
             }
 
             /// <summary>Gets the details of regional settings.</summary>
@@ -4458,7 +4458,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
             {
-                return new ListRequest(service, name);
+                return new ListRequest(this.service, name);
             }
 
             /// <summary>Lists information about the supported locations for this service.</summary>
@@ -4548,7 +4548,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1
             /// <param name="name">Output only. The name of the resource.</param>
             public virtual UpdateSettingsRequest UpdateSettings(Google.Apis.MigrationCenterAPI.v1alpha1.Data.Settings body, string name)
             {
-                return new UpdateSettingsRequest(service, body, name);
+                return new UpdateSettingsRequest(this.service, body, name);
             }
 
             /// <summary>Updates the regional-level project settings.</summary>
@@ -4909,8 +4909,8 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Optional. Indicates if the asset is hidden.</summary>
@@ -4954,8 +4954,8 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? HideTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(HideTimeRaw);
-            set => HideTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(HideTimeRaw);
+            set => HideTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. The list of insights associated with the asset.</summary>
@@ -5011,8 +5011,8 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. Asset information specific for virtual machines.</summary>
@@ -5073,8 +5073,8 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ReportTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ReportTimeRaw);
-            set => ReportTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ReportTimeRaw);
+            set => ReportTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Optional. Trace token is optionally provided to assist with debugging and traceability.</summary>
@@ -5699,8 +5699,8 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? IngestionTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(IngestionTimeRaw);
-            set => IngestionTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(IngestionTimeRaw);
+            set => IngestionTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. The identifier of the ErrorFrame.</summary>
@@ -5950,8 +5950,8 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Optional. The description of the group.</summary>
@@ -6003,8 +6003,8 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -6192,8 +6192,8 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Optional. User-friendly display name. Maximum length is 256 characters.</summary>
@@ -6275,8 +6275,8 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CompleteTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CompleteTimeRaw);
-            set => CompleteTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CompleteTimeRaw);
+            set => CompleteTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _createTimeRaw;
@@ -6312,8 +6312,8 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>User-friendly display name. Maximum length is 63 characters.</summary>
@@ -6377,8 +6377,8 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. The report with the validation results of the import job.</summary>
@@ -6486,8 +6486,8 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -7099,8 +7099,8 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _endTimeRaw;
@@ -7136,8 +7136,8 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -7231,8 +7231,8 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? SampleTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(SampleTimeRaw);
-            set => SampleTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(SampleTimeRaw);
+            set => SampleTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -7316,8 +7316,8 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>A description of the preference set.</summary>
@@ -7365,8 +7365,8 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>A set of preferences that applies to all virtual machines in the context.</summary>
@@ -7461,8 +7461,8 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Free-text description.</summary>
@@ -7522,8 +7522,8 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -7573,8 +7573,8 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Free-text description.</summary>
@@ -7626,8 +7626,8 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -8280,8 +8280,8 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Free-text description.</summary>
@@ -8355,8 +8355,8 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -8484,8 +8484,8 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UriExpirationTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UriExpirationTimeRaw);
-            set => UriExpirationTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UriExpirationTimeRaw);
+            set => UriExpirationTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -8609,8 +8609,8 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Guest OS information.</summary>
@@ -8756,7 +8756,8 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
 
         /// <summary>
         /// Region preferences for assets using this preference set. If you are unsure which value to set, the migration
-        /// service API region is often a good value to start with.
+        /// service API region is often a good value to start with. If PreferenceSet.RegionPreferences is specified, it
+        /// overrides this field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regionPreferences")]
         public virtual RegionPreferences RegionPreferences { get; set; }

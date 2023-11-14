@@ -300,7 +300,7 @@ namespace Google.Apis.Oauth2.v2
 
                 public virtual GetRequest Get()
                 {
-                    return new GetRequest(service);
+                    return new GetRequest(this.service);
                 }
 
                 public class GetRequest : Oauth2BaseServiceRequest<Google.Apis.Oauth2.v2.Data.Userinfo>
@@ -331,7 +331,7 @@ namespace Google.Apis.Oauth2.v2
 
         public virtual GetRequest Get()
         {
-            return new GetRequest(service);
+            return new GetRequest(this.service);
         }
 
         public class GetRequest : Oauth2BaseServiceRequest<Google.Apis.Oauth2.v2.Data.Userinfo>

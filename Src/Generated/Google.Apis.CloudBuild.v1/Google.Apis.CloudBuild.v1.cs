@@ -294,7 +294,7 @@ namespace Google.Apis.CloudBuild.v1
         /// <param name="body">The body of the request.</param>
         public virtual ReceiveRequest Receive(Google.Apis.CloudBuild.v1.Data.HttpBody body)
         {
-            return new ReceiveRequest(service, body);
+            return new ReceiveRequest(this.service, body);
         }
 
         /// <summary>ReceiveGitHubDotComWebhook is called when the API receives a github.com webhook.</summary>
@@ -364,7 +364,7 @@ namespace Google.Apis.CloudBuild.v1
         /// <param name="location">Required. The location where the webhook should be sent.</param>
         public virtual RegionalWebhookRequest RegionalWebhook(Google.Apis.CloudBuild.v1.Data.HttpBody body, string location)
         {
-            return new RegionalWebhookRequest(service, body, location);
+            return new RegionalWebhookRequest(this.service, body, location);
         }
 
         /// <summary>ReceiveRegionalWebhook is called when the API receives a regional GitHub webhook.</summary>
@@ -454,7 +454,7 @@ namespace Google.Apis.CloudBuild.v1
         /// <param name="name">The name of the operation resource to be cancelled.</param>
         public virtual CancelRequest Cancel(Google.Apis.CloudBuild.v1.Data.CancelOperationRequest body, string name)
         {
-            return new CancelRequest(service, body, name);
+            return new CancelRequest(this.service, body, name);
         }
 
         /// <summary>
@@ -516,7 +516,7 @@ namespace Google.Apis.CloudBuild.v1
         /// <param name="name">The name of the operation resource.</param>
         public virtual GetRequest Get(string name)
         {
-            return new GetRequest(service, name);
+            return new GetRequest(this.service, name);
         }
 
         /// <summary>
@@ -606,7 +606,7 @@ namespace Google.Apis.CloudBuild.v1
             /// </param>
             public virtual ApproveRequest Approve(Google.Apis.CloudBuild.v1.Data.ApproveBuildRequest body, string name)
             {
-                return new ApproveRequest(service, body, name);
+                return new ApproveRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -665,7 +665,7 @@ namespace Google.Apis.CloudBuild.v1
             /// <param name="id">Required. ID of the build.</param>
             public virtual CancelRequest Cancel(Google.Apis.CloudBuild.v1.Data.CancelBuildRequest body, string projectId, string id)
             {
-                return new CancelRequest(service, body, projectId, id);
+                return new CancelRequest(this.service, body, projectId, id);
             }
 
             /// <summary>Cancels a build in progress.</summary>
@@ -735,7 +735,7 @@ namespace Google.Apis.CloudBuild.v1
             /// <param name="projectId">Required. ID of the project.</param>
             public virtual CreateRequest Create(Google.Apis.CloudBuild.v1.Data.Build body, string projectId)
             {
-                return new CreateRequest(service, body, projectId);
+                return new CreateRequest(this.service, body, projectId);
             }
 
             /// <summary>
@@ -810,7 +810,7 @@ namespace Google.Apis.CloudBuild.v1
             /// <param name="id">Required. ID of the build.</param>
             public virtual GetRequest Get(string projectId, string id)
             {
-                return new GetRequest(service, projectId, id);
+                return new GetRequest(this.service, projectId, id);
             }
 
             /// <summary>
@@ -889,7 +889,7 @@ namespace Google.Apis.CloudBuild.v1
             /// <param name="projectId">Required. ID of the project.</param>
             public virtual ListRequest List(string projectId)
             {
-                return new ListRequest(service, projectId);
+                return new ListRequest(this.service, projectId);
             }
 
             /// <summary>
@@ -1007,7 +1007,7 @@ namespace Google.Apis.CloudBuild.v1
             /// <param name="id">Required. Build ID of the original build.</param>
             public virtual RetryRequest Retry(Google.Apis.CloudBuild.v1.Data.RetryBuildRequest body, string projectId, string id)
             {
-                return new RetryRequest(service, body, projectId, id);
+                return new RetryRequest(this.service, body, projectId, id);
             }
 
             /// <summary>
@@ -1106,7 +1106,7 @@ namespace Google.Apis.CloudBuild.v1
             /// </param>
             public virtual CreateRequest Create(Google.Apis.CloudBuild.v1.Data.GitHubEnterpriseConfig body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>Create an association between a GCP project and a GitHub Enterprise server.</summary>
@@ -1192,7 +1192,7 @@ namespace Google.Apis.CloudBuild.v1
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>Delete an association between a GCP project and a GitHub Enterprise server.</summary>
@@ -1267,7 +1267,7 @@ namespace Google.Apis.CloudBuild.v1
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Retrieve a GitHubEnterpriseConfig.</summary>
@@ -1341,7 +1341,7 @@ namespace Google.Apis.CloudBuild.v1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>List all GitHubEnterpriseConfigs for a given project.</summary>
@@ -1404,7 +1404,7 @@ namespace Google.Apis.CloudBuild.v1
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.CloudBuild.v1.Data.GitHubEnterpriseConfig body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>Update an association between a GCP project and a GitHub Enterprise server.</summary>
@@ -1539,7 +1539,7 @@ namespace Google.Apis.CloudBuild.v1
                     /// </param>
                     public virtual BatchCreateRequest BatchCreate(Google.Apis.CloudBuild.v1.Data.BatchCreateBitbucketServerConnectedRepositoriesRequest body, string parent)
                     {
-                        return new BatchCreateRequest(service, body, parent);
+                        return new BatchCreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>Batch connecting Bitbucket Server repositories to Cloud Build.</summary>
@@ -1614,7 +1614,7 @@ namespace Google.Apis.CloudBuild.v1
                     /// <param name="parent">Required. Name of the parent resource.</param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>
@@ -1694,7 +1694,7 @@ namespace Google.Apis.CloudBuild.v1
                 /// <param name="parent">Required. Name of the parent resource.</param>
                 public virtual CreateRequest Create(Google.Apis.CloudBuild.v1.Data.BitbucketServerConfig body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a new `BitbucketServerConfig`. This API is experimental.</summary>
@@ -1763,7 +1763,7 @@ namespace Google.Apis.CloudBuild.v1
                 /// <param name="name">Required. The config resource name.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Delete a `BitbucketServerConfig`. This API is experimental.</summary>
@@ -1808,7 +1808,7 @@ namespace Google.Apis.CloudBuild.v1
                 /// <param name="name">Required. The config resource name.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Retrieve a `BitbucketServerConfig`. This API is experimental.</summary>
@@ -1853,7 +1853,7 @@ namespace Google.Apis.CloudBuild.v1
                 /// <param name="parent">Required. Name of the parent resource.</param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>List all `BitbucketServerConfigs` for a given project. This API is experimental.</summary>
@@ -1931,7 +1931,7 @@ namespace Google.Apis.CloudBuild.v1
                 /// <param name="name">The resource name for the config.</param>
                 public virtual PatchRequest Patch(Google.Apis.CloudBuild.v1.Data.BitbucketServerConfig body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates an existing `BitbucketServerConfig`. This API is experimental.</summary>
@@ -2005,7 +2005,7 @@ namespace Google.Apis.CloudBuild.v1
                 /// </param>
                 public virtual RemoveBitbucketServerConnectedRepositoryRequest RemoveBitbucketServerConnectedRepository(Google.Apis.CloudBuild.v1.Data.RemoveBitbucketServerConnectedRepositoryRequest body, string config)
                 {
-                    return new RemoveBitbucketServerConnectedRepositoryRequest(service, body, config);
+                    return new RemoveBitbucketServerConnectedRepositoryRequest(this.service, body, config);
                 }
 
                 /// <summary>
@@ -2087,7 +2087,7 @@ namespace Google.Apis.CloudBuild.v1
                 /// </param>
                 public virtual ApproveRequest Approve(Google.Apis.CloudBuild.v1.Data.ApproveBuildRequest body, string name)
                 {
-                    return new ApproveRequest(service, body, name);
+                    return new ApproveRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -2147,7 +2147,7 @@ namespace Google.Apis.CloudBuild.v1
                 /// </param>
                 public virtual CancelRequest Cancel(Google.Apis.CloudBuild.v1.Data.CancelBuildRequest body, string name)
                 {
-                    return new CancelRequest(service, body, name);
+                    return new CancelRequest(this.service, body, name);
                 }
 
                 /// <summary>Cancels a build in progress.</summary>
@@ -2210,7 +2210,7 @@ namespace Google.Apis.CloudBuild.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.CloudBuild.v1.Data.Build body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -2287,7 +2287,7 @@ namespace Google.Apis.CloudBuild.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -2367,7 +2367,7 @@ namespace Google.Apis.CloudBuild.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>
@@ -2486,7 +2486,7 @@ namespace Google.Apis.CloudBuild.v1
                 /// </param>
                 public virtual RetryRequest Retry(Google.Apis.CloudBuild.v1.Data.RetryBuildRequest body, string name)
                 {
-                    return new RetryRequest(service, body, name);
+                    return new RetryRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -2597,7 +2597,7 @@ namespace Google.Apis.CloudBuild.v1
                     /// </param>
                     public virtual BatchCreateRequest BatchCreate(Google.Apis.CloudBuild.v1.Data.BatchCreateGitLabConnectedRepositoriesRequest body, string parent)
                     {
-                        return new BatchCreateRequest(service, body, parent);
+                        return new BatchCreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>
@@ -2672,7 +2672,7 @@ namespace Google.Apis.CloudBuild.v1
                     /// <param name="parent">Required. Name of the parent resource.</param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>List all repositories for a given `GitLabConfig`. This API is experimental</summary>
@@ -2749,7 +2749,7 @@ namespace Google.Apis.CloudBuild.v1
                 /// <param name="parent">Required. Name of the parent resource.</param>
                 public virtual CreateRequest Create(Google.Apis.CloudBuild.v1.Data.GitLabConfig body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a new `GitLabConfig`. This API is experimental</summary>
@@ -2818,7 +2818,7 @@ namespace Google.Apis.CloudBuild.v1
                 /// <param name="name">Required. The config resource name.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Delete a `GitLabConfig`. This API is experimental</summary>
@@ -2863,7 +2863,7 @@ namespace Google.Apis.CloudBuild.v1
                 /// <param name="name">Required. The config resource name.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Retrieves a `GitLabConfig`. This API is experimental</summary>
@@ -2908,7 +2908,7 @@ namespace Google.Apis.CloudBuild.v1
                 /// <param name="parent">Required. Name of the parent resource</param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>List all `GitLabConfigs` for a given project. This API is experimental</summary>
@@ -2986,7 +2986,7 @@ namespace Google.Apis.CloudBuild.v1
                 /// <param name="name">The resource name for the config.</param>
                 public virtual PatchRequest Patch(Google.Apis.CloudBuild.v1.Data.GitLabConfig body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates an existing `GitLabConfig`. This API is experimental</summary>
@@ -3060,7 +3060,7 @@ namespace Google.Apis.CloudBuild.v1
                 /// </param>
                 public virtual RemoveGitLabConnectedRepositoryRequest RemoveGitLabConnectedRepository(Google.Apis.CloudBuild.v1.Data.RemoveGitLabConnectedRepositoryRequest body, string config)
                 {
-                    return new RemoveGitLabConnectedRepositoryRequest(service, body, config);
+                    return new RemoveGitLabConnectedRepositoryRequest(this.service, body, config);
                 }
 
                 /// <summary>
@@ -3139,7 +3139,7 @@ namespace Google.Apis.CloudBuild.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.CloudBuild.v1.Data.GitHubEnterpriseConfig body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Create an association between a GCP project and a GitHub Enterprise server.</summary>
@@ -3225,7 +3225,7 @@ namespace Google.Apis.CloudBuild.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Delete an association between a GCP project and a GitHub Enterprise server.</summary>
@@ -3300,7 +3300,7 @@ namespace Google.Apis.CloudBuild.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Retrieve a GitHubEnterpriseConfig.</summary>
@@ -3374,7 +3374,7 @@ namespace Google.Apis.CloudBuild.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>List all GitHubEnterpriseConfigs for a given project.</summary>
@@ -3437,7 +3437,7 @@ namespace Google.Apis.CloudBuild.v1
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.CloudBuild.v1.Data.GitHubEnterpriseConfig body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Update an association between a GCP project and a GitHub Enterprise server.</summary>
@@ -3533,7 +3533,7 @@ namespace Google.Apis.CloudBuild.v1
                 /// <param name="name">The name of the operation resource to be cancelled.</param>
                 public virtual CancelRequest Cancel(Google.Apis.CloudBuild.v1.Data.CancelOperationRequest body, string name)
                 {
-                    return new CancelRequest(service, body, name);
+                    return new CancelRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -3595,7 +3595,7 @@ namespace Google.Apis.CloudBuild.v1
                 /// <param name="name">The name of the operation resource.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -3665,7 +3665,7 @@ namespace Google.Apis.CloudBuild.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.CloudBuild.v1.Data.BuildTrigger body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a new `BuildTrigger`.</summary>
@@ -3735,7 +3735,7 @@ namespace Google.Apis.CloudBuild.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes a `BuildTrigger` by its project ID and trigger ID.</summary>
@@ -3810,7 +3810,7 @@ namespace Google.Apis.CloudBuild.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Returns information about a `BuildTrigger`.</summary>
@@ -3884,7 +3884,7 @@ namespace Google.Apis.CloudBuild.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists existing `BuildTrigger`s.</summary>
@@ -3971,7 +3971,7 @@ namespace Google.Apis.CloudBuild.v1
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.CloudBuild.v1.Data.BuildTrigger body, string resourceName)
                 {
-                    return new PatchRequest(service, body, resourceName);
+                    return new PatchRequest(this.service, body, resourceName);
                 }
 
                 /// <summary>Updates a `BuildTrigger` by its project ID and trigger ID.</summary>
@@ -4074,7 +4074,7 @@ namespace Google.Apis.CloudBuild.v1
                 /// </param>
                 public virtual RunRequest Run(Google.Apis.CloudBuild.v1.Data.RunBuildTriggerRequest body, string name)
                 {
-                    return new RunRequest(service, body, name);
+                    return new RunRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -4141,7 +4141,7 @@ namespace Google.Apis.CloudBuild.v1
                 /// </param>
                 public virtual WebhookRequest Webhook(Google.Apis.CloudBuild.v1.Data.HttpBody body, string name)
                 {
-                    return new WebhookRequest(service, body, name);
+                    return new WebhookRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -4257,7 +4257,7 @@ namespace Google.Apis.CloudBuild.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.CloudBuild.v1.Data.WorkerPool body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a `WorkerPool`.</summary>
@@ -4344,7 +4344,7 @@ namespace Google.Apis.CloudBuild.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes a `WorkerPool`.</summary>
@@ -4439,7 +4439,7 @@ namespace Google.Apis.CloudBuild.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Returns details of a `WorkerPool`.</summary>
@@ -4490,7 +4490,7 @@ namespace Google.Apis.CloudBuild.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists `WorkerPool`s.</summary>
@@ -4574,7 +4574,7 @@ namespace Google.Apis.CloudBuild.v1
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.CloudBuild.v1.Data.WorkerPool body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates a `WorkerPool`.</summary>
@@ -4677,7 +4677,7 @@ namespace Google.Apis.CloudBuild.v1
             /// <param name="projectId">Required. ID of the project for which to configure automatic builds.</param>
             public virtual CreateRequest Create(Google.Apis.CloudBuild.v1.Data.BuildTrigger body, string projectId)
             {
-                return new CreateRequest(service, body, projectId);
+                return new CreateRequest(this.service, body, projectId);
             }
 
             /// <summary>Creates a new `BuildTrigger`.</summary>
@@ -4745,7 +4745,7 @@ namespace Google.Apis.CloudBuild.v1
             /// <param name="triggerId">Required. ID of the `BuildTrigger` to delete.</param>
             public virtual DeleteRequest Delete(string projectId, string triggerId)
             {
-                return new DeleteRequest(service, projectId, triggerId);
+                return new DeleteRequest(this.service, projectId, triggerId);
             }
 
             /// <summary>Deletes a `BuildTrigger` by its project ID and trigger ID.</summary>
@@ -4819,7 +4819,7 @@ namespace Google.Apis.CloudBuild.v1
             /// <param name="triggerId">Required. Identifier (`id` or `name`) of the `BuildTrigger` to get.</param>
             public virtual GetRequest Get(string projectId, string triggerId)
             {
-                return new GetRequest(service, projectId, triggerId);
+                return new GetRequest(this.service, projectId, triggerId);
             }
 
             /// <summary>Returns information about a `BuildTrigger`.</summary>
@@ -4892,7 +4892,7 @@ namespace Google.Apis.CloudBuild.v1
             /// <param name="projectId">Required. ID of the project for which to list BuildTriggers.</param>
             public virtual ListRequest List(string projectId)
             {
-                return new ListRequest(service, projectId);
+                return new ListRequest(this.service, projectId);
             }
 
             /// <summary>Lists existing `BuildTrigger`s.</summary>
@@ -4977,7 +4977,7 @@ namespace Google.Apis.CloudBuild.v1
             /// <param name="triggerId">Required. ID of the `BuildTrigger` to update.</param>
             public virtual PatchRequest Patch(Google.Apis.CloudBuild.v1.Data.BuildTrigger body, string projectId, string triggerId)
             {
-                return new PatchRequest(service, body, projectId, triggerId);
+                return new PatchRequest(this.service, body, projectId, triggerId);
             }
 
             /// <summary>Updates a `BuildTrigger` by its project ID and trigger ID.</summary>
@@ -5064,7 +5064,7 @@ namespace Google.Apis.CloudBuild.v1
             /// <param name="triggerId">Required. ID of the trigger.</param>
             public virtual RunRequest Run(Google.Apis.CloudBuild.v1.Data.RepoSource body, string projectId, string triggerId)
             {
-                return new RunRequest(service, body, projectId, triggerId);
+                return new RunRequest(this.service, body, projectId, triggerId);
             }
 
             /// <summary>
@@ -5154,7 +5154,7 @@ namespace Google.Apis.CloudBuild.v1
             /// <param name="trigger">Name of the trigger to run the payload against</param>
             public virtual WebhookRequest Webhook(Google.Apis.CloudBuild.v1.Data.HttpBody body, string projectId, string trigger)
             {
-                return new WebhookRequest(service, body, projectId, trigger);
+                return new WebhookRequest(this.service, body, projectId, trigger);
             }
 
             /// <summary>
@@ -5265,7 +5265,7 @@ namespace Google.Apis.CloudBuild.v1
         /// <param name="body">The body of the request.</param>
         public virtual WebhookRequest Webhook(Google.Apis.CloudBuild.v1.Data.HttpBody body)
         {
-            return new WebhookRequest(service, body);
+            return new WebhookRequest(this.service, body);
         }
 
         /// <summary>ReceiveWebhook is called when the API receives a GitHub webhook.</summary>
@@ -5370,8 +5370,8 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ApprovalTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ApprovalTimeRaw);
-            set => ApprovalTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ApprovalTimeRaw);
+            set => ApprovalTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -5569,8 +5569,8 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CompleteTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CompleteTimeRaw);
-            set => CompleteTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CompleteTimeRaw);
+            set => CompleteTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -5613,8 +5613,8 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -5679,8 +5679,8 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CompleteTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CompleteTimeRaw);
-            set => CompleteTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CompleteTimeRaw);
+            set => CompleteTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -5723,8 +5723,8 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -5778,8 +5778,8 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -6040,8 +6040,8 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. Contains information about the build when status=FAILURE.</summary>
@@ -6084,8 +6084,8 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? FinishTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(FinishTimeRaw);
-            set => FinishTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(FinishTimeRaw);
+            set => FinishTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. Unique identifier of the build.</summary>
@@ -6195,8 +6195,8 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. Status of the build.</summary>
@@ -6565,8 +6565,8 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Human-readable description of this trigger.</summary>
@@ -6831,8 +6831,8 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CompleteTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CompleteTimeRaw);
-            set => CompleteTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CompleteTimeRaw);
+            set => CompleteTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _createTimeRaw;
@@ -6868,8 +6868,8 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -6930,8 +6930,8 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CompleteTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CompleteTimeRaw);
-            set => CompleteTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CompleteTimeRaw);
+            set => CompleteTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _createTimeRaw;
@@ -6967,8 +6967,8 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -7018,8 +7018,8 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CompleteTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CompleteTimeRaw);
-            set => CompleteTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CompleteTimeRaw);
+            set => CompleteTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _createTimeRaw;
@@ -7055,8 +7055,8 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -7124,8 +7124,8 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CompleteTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CompleteTimeRaw);
-            set => CompleteTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CompleteTimeRaw);
+            set => CompleteTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _createTimeRaw;
@@ -7161,8 +7161,8 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -7219,8 +7219,8 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CompleteTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CompleteTimeRaw);
-            set => CompleteTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CompleteTimeRaw);
+            set => CompleteTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _createTimeRaw;
@@ -7256,8 +7256,8 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -7300,8 +7300,8 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CompleteTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CompleteTimeRaw);
-            set => CompleteTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CompleteTimeRaw);
+            set => CompleteTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _createTimeRaw;
@@ -7337,8 +7337,8 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -7388,8 +7388,8 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CompleteTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CompleteTimeRaw);
-            set => CompleteTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CompleteTimeRaw);
+            set => CompleteTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _createTimeRaw;
@@ -7425,8 +7425,8 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -7476,8 +7476,8 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CompleteTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CompleteTimeRaw);
-            set => CompleteTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CompleteTimeRaw);
+            set => CompleteTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _createTimeRaw;
@@ -7513,8 +7513,8 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -7662,8 +7662,8 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Name to display for this config.</summary>
@@ -7833,8 +7833,8 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Optional. GitLabEnterprise config.</summary>
@@ -8471,8 +8471,8 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _endTimeRaw;
@@ -8508,8 +8508,8 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. Human-readable status of the operation, if any.</summary>
@@ -8596,8 +8596,8 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CompleteTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CompleteTimeRaw);
-            set => CompleteTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CompleteTimeRaw);
+            set => CompleteTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _createTimeRaw;
@@ -8633,8 +8633,8 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -9227,8 +9227,8 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _startTimeRaw;
@@ -9264,8 +9264,8 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -9315,8 +9315,8 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CompleteTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CompleteTimeRaw);
-            set => CompleteTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CompleteTimeRaw);
+            set => CompleteTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _createTimeRaw;
@@ -9352,8 +9352,8 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -9396,8 +9396,8 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CompleteTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CompleteTimeRaw);
-            set => CompleteTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CompleteTimeRaw);
+            set => CompleteTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _createTimeRaw;
@@ -9433,8 +9433,8 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -9484,8 +9484,8 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CompleteTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CompleteTimeRaw);
-            set => CompleteTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CompleteTimeRaw);
+            set => CompleteTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _createTimeRaw;
@@ -9521,8 +9521,8 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -9572,8 +9572,8 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CompleteTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CompleteTimeRaw);
-            set => CompleteTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CompleteTimeRaw);
+            set => CompleteTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _createTimeRaw;
@@ -9609,8 +9609,8 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -9813,8 +9813,8 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _deleteTimeRaw;
@@ -9850,8 +9850,8 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? DeleteTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DeleteTimeRaw);
-            set => DeleteTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DeleteTimeRaw);
+            set => DeleteTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -9921,8 +9921,8 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
     }
 }

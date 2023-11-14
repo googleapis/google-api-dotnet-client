@@ -282,7 +282,7 @@ namespace Google.Apis.Safebrowsing.v4
         /// <param name="encodedRequest">A serialized FindFullHashesRequest proto.</param>
         public virtual GetRequest Get(string encodedRequest)
         {
-            return new GetRequest(service, encodedRequest);
+            return new GetRequest(this.service, encodedRequest);
         }
 
         /// <summary></summary>
@@ -368,7 +368,7 @@ namespace Google.Apis.Safebrowsing.v4
         /// <param name="encodedRequest">A serialized FetchThreatListUpdatesRequest proto.</param>
         public virtual GetRequest Get(string encodedRequest)
         {
-            return new GetRequest(service, encodedRequest);
+            return new GetRequest(this.service, encodedRequest);
         }
 
         /// <summary></summary>
@@ -454,7 +454,7 @@ namespace Google.Apis.Safebrowsing.v4
         /// <param name="body">The body of the request.</param>
         public virtual FindRequest Find(Google.Apis.Safebrowsing.v4.Data.GoogleSecuritySafebrowsingV4FindFullHashesRequest body)
         {
-            return new FindRequest(service, body);
+            return new FindRequest(this.service, body);
         }
 
         /// <summary>Finds the full hashes that match the requested hash prefixes.</summary>
@@ -511,7 +511,7 @@ namespace Google.Apis.Safebrowsing.v4
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.Safebrowsing.v4.Data.GoogleSecuritySafebrowsingV4ThreatHit body)
         {
-            return new CreateRequest(service, body);
+            return new CreateRequest(this.service, body);
         }
 
         /// <summary>
@@ -570,7 +570,7 @@ namespace Google.Apis.Safebrowsing.v4
         /// <param name="body">The body of the request.</param>
         public virtual FetchRequest Fetch(Google.Apis.Safebrowsing.v4.Data.GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequest body)
         {
-            return new FetchRequest(service, body);
+            return new FetchRequest(this.service, body);
         }
 
         /// <summary>
@@ -625,7 +625,7 @@ namespace Google.Apis.Safebrowsing.v4
         /// <summary>Lists the Safe Browsing threat lists available for download.</summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>Lists the Safe Browsing threat lists available for download.</summary>
@@ -672,7 +672,7 @@ namespace Google.Apis.Safebrowsing.v4
         /// <param name="body">The body of the request.</param>
         public virtual FindRequest Find(Google.Apis.Safebrowsing.v4.Data.GoogleSecuritySafebrowsingV4FindThreatMatchesRequest body)
         {
-            return new FindRequest(service, body);
+            return new FindRequest(this.service, body);
         }
 
         /// <summary>Finds the threat entries that match the Safe Browsing lists.</summary>

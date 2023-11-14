@@ -305,7 +305,7 @@ namespace Google.Apis.BinaryAuthorization.v1beta1
             /// <param name="parent">Required. The parent of this attestor.</param>
             public virtual CreateRequest Create(Google.Apis.BinaryAuthorization.v1beta1.Data.Attestor body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -374,7 +374,7 @@ namespace Google.Apis.BinaryAuthorization.v1beta1
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>Deletes an attestor. Returns NOT_FOUND if the attestor does not exist.</summary>
@@ -423,7 +423,7 @@ namespace Google.Apis.BinaryAuthorization.v1beta1
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets an attestor. Returns NOT_FOUND if the attestor does not exist.</summary>
@@ -476,7 +476,7 @@ namespace Google.Apis.BinaryAuthorization.v1beta1
             /// </param>
             public virtual GetIamPolicyRequest GetIamPolicy(string resource)
             {
-                return new GetIamPolicyRequest(service, resource);
+                return new GetIamPolicyRequest(this.service, resource);
             }
 
             /// <summary>
@@ -551,7 +551,7 @@ namespace Google.Apis.BinaryAuthorization.v1beta1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists attestors. Returns INVALID_ARGUMENT if the project does not exist.</summary>
@@ -636,7 +636,7 @@ namespace Google.Apis.BinaryAuthorization.v1beta1
             /// </param>
             public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.BinaryAuthorization.v1beta1.Data.SetIamPolicyRequest body, string resource)
             {
-                return new SetIamPolicyRequest(service, body, resource);
+                return new SetIamPolicyRequest(this.service, body, resource);
             }
 
             /// <summary>
@@ -704,7 +704,7 @@ namespace Google.Apis.BinaryAuthorization.v1beta1
             /// </param>
             public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.BinaryAuthorization.v1beta1.Data.TestIamPermissionsRequest body, string resource)
             {
-                return new TestIamPermissionsRequest(service, body, resource);
+                return new TestIamPermissionsRequest(this.service, body, resource);
             }
 
             /// <summary>
@@ -768,7 +768,7 @@ namespace Google.Apis.BinaryAuthorization.v1beta1
             /// </param>
             public virtual UpdateRequest Update(Google.Apis.BinaryAuthorization.v1beta1.Data.Attestor body, string name)
             {
-                return new UpdateRequest(service, body, name);
+                return new UpdateRequest(this.service, body, name);
             }
 
             /// <summary>Updates an attestor. Returns NOT_FOUND if the attestor does not exist.</summary>
@@ -827,7 +827,7 @@ namespace Google.Apis.BinaryAuthorization.v1beta1
             /// </param>
             public virtual ValidateAttestationOccurrenceRequest ValidateAttestationOccurrence(Google.Apis.BinaryAuthorization.v1beta1.Data.ValidateAttestationOccurrenceRequest body, string attestor)
             {
-                return new ValidateAttestationOccurrenceRequest(service, body, attestor);
+                return new ValidateAttestationOccurrenceRequest(this.service, body, attestor);
             }
 
             /// <summary>
@@ -908,7 +908,7 @@ namespace Google.Apis.BinaryAuthorization.v1beta1
             /// </param>
             public virtual GetIamPolicyRequest GetIamPolicy(string resource)
             {
-                return new GetIamPolicyRequest(service, resource);
+                return new GetIamPolicyRequest(this.service, resource);
             }
 
             /// <summary>
@@ -988,7 +988,7 @@ namespace Google.Apis.BinaryAuthorization.v1beta1
             /// </param>
             public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.BinaryAuthorization.v1beta1.Data.SetIamPolicyRequest body, string resource)
             {
-                return new SetIamPolicyRequest(service, body, resource);
+                return new SetIamPolicyRequest(this.service, body, resource);
             }
 
             /// <summary>
@@ -1056,7 +1056,7 @@ namespace Google.Apis.BinaryAuthorization.v1beta1
             /// </param>
             public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.BinaryAuthorization.v1beta1.Data.TestIamPermissionsRequest body, string resource)
             {
-                return new TestIamPermissionsRequest(service, body, resource);
+                return new TestIamPermissionsRequest(this.service, body, resource);
             }
 
             /// <summary>
@@ -1125,7 +1125,7 @@ namespace Google.Apis.BinaryAuthorization.v1beta1
         /// </param>
         public virtual GetPolicyRequest GetPolicy(string name)
         {
-            return new GetPolicyRequest(service, name);
+            return new GetPolicyRequest(this.service, name);
         }
 
         /// <summary>
@@ -1184,7 +1184,7 @@ namespace Google.Apis.BinaryAuthorization.v1beta1
         /// </param>
         public virtual UpdatePolicyRequest UpdatePolicy(Google.Apis.BinaryAuthorization.v1beta1.Data.Policy body, string name)
         {
-            return new UpdatePolicyRequest(service, body, name);
+            return new UpdatePolicyRequest(this.service, body, name);
         }
 
         /// <summary>
@@ -1261,7 +1261,7 @@ namespace Google.Apis.BinaryAuthorization.v1beta1
         /// </param>
         public virtual GetPolicyRequest GetPolicy(string name)
         {
-            return new GetPolicyRequest(service, name);
+            return new GetPolicyRequest(this.service, name);
         }
 
         /// <summary>Gets the current system policy in the specified location.</summary>
@@ -1448,8 +1448,8 @@ namespace Google.Apis.BinaryAuthorization.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>A Drydock ATTESTATION_AUTHORITY Note, created by the user.</summary>
@@ -1833,8 +1833,8 @@ namespace Google.Apis.BinaryAuthorization.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
     }
 

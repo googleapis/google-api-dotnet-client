@@ -1,0 +1,11 @@
+{
+  "Google.Apis.Looker.v1.LookerBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Looker.v1.LookerBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

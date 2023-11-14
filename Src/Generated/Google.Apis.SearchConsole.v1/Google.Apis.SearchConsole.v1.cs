@@ -300,7 +300,7 @@ namespace Google.Apis.SearchConsole.v1
         /// <param name="siteUrl">The site's URL, including protocol. For example: `http://www.example.com/`.</param>
         public virtual QueryRequest Query(Google.Apis.SearchConsole.v1.Data.SearchAnalyticsQueryRequest body, string siteUrl)
         {
-            return new QueryRequest(service, body, siteUrl);
+            return new QueryRequest(this.service, body, siteUrl);
         }
 
         /// <summary>
@@ -378,7 +378,7 @@ namespace Google.Apis.SearchConsole.v1
         /// </param>
         public virtual DeleteRequest Delete(string siteUrl, string feedpath)
         {
-            return new DeleteRequest(service, siteUrl, feedpath);
+            return new DeleteRequest(this.service, siteUrl, feedpath);
         }
 
         /// <summary>
@@ -442,7 +442,7 @@ namespace Google.Apis.SearchConsole.v1
         /// </param>
         public virtual GetRequest Get(string siteUrl, string feedpath)
         {
-            return new GetRequest(service, siteUrl, feedpath);
+            return new GetRequest(this.service, siteUrl, feedpath);
         }
 
         /// <summary>Retrieves information about a specific sitemap.</summary>
@@ -503,7 +503,7 @@ namespace Google.Apis.SearchConsole.v1
         /// <param name="siteUrl">The site's URL, including protocol. For example: `http://www.example.com/`.</param>
         public virtual ListRequest List(string siteUrl)
         {
-            return new ListRequest(service, siteUrl);
+            return new ListRequest(this.service, siteUrl);
         }
 
         /// <summary>
@@ -568,7 +568,7 @@ namespace Google.Apis.SearchConsole.v1
         /// </param>
         public virtual SubmitRequest Submit(string siteUrl, string feedpath)
         {
-            return new SubmitRequest(service, siteUrl, feedpath);
+            return new SubmitRequest(this.service, siteUrl, feedpath);
         }
 
         /// <summary>Submits a sitemap for a site.</summary>
@@ -641,7 +641,7 @@ namespace Google.Apis.SearchConsole.v1
         /// <param name="siteUrl">The URL of the site to add.</param>
         public virtual AddRequest Add(string siteUrl)
         {
-            return new AddRequest(service, siteUrl);
+            return new AddRequest(this.service, siteUrl);
         }
 
         /// <summary> Adds a site to the set of the user's sites in Search Console.</summary>
@@ -689,7 +689,7 @@ namespace Google.Apis.SearchConsole.v1
         /// </param>
         public virtual DeleteRequest Delete(string siteUrl)
         {
-            return new DeleteRequest(service, siteUrl);
+            return new DeleteRequest(this.service, siteUrl);
         }
 
         /// <summary> Removes a site from the set of the user's Search Console sites.</summary>
@@ -740,7 +740,7 @@ namespace Google.Apis.SearchConsole.v1
         /// </param>
         public virtual GetRequest Get(string siteUrl)
         {
-            return new GetRequest(service, siteUrl);
+            return new GetRequest(this.service, siteUrl);
         }
 
         /// <summary> Retrieves information about specific site.</summary>
@@ -787,7 +787,7 @@ namespace Google.Apis.SearchConsole.v1
         /// <summary> Lists the user's Search Console sites.</summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary> Lists the user's Search Console sites.</summary>
@@ -852,7 +852,7 @@ namespace Google.Apis.SearchConsole.v1
             /// <param name="body">The body of the request.</param>
             public virtual InspectRequest Inspect(Google.Apis.SearchConsole.v1.Data.InspectUrlIndexRequest body)
             {
-                return new InspectRequest(service, body);
+                return new InspectRequest(this.service, body);
             }
 
             /// <summary>Index inspection.</summary>
@@ -925,7 +925,7 @@ namespace Google.Apis.SearchConsole.v1
             /// <param name="body">The body of the request.</param>
             public virtual RunRequest Run(Google.Apis.SearchConsole.v1.Data.RunMobileFriendlyTestRequest body)
             {
-                return new RunRequest(service, body);
+                return new RunRequest(this.service, body);
             }
 
             /// <summary>Runs Mobile-Friendly Test for a given URL.</summary>
@@ -1024,8 +1024,8 @@ namespace Google.Apis.SearchConsole.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LastCrawlTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastCrawlTimeRaw);
-            set => LastCrawlTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastCrawlTimeRaw);
+            set => LastCrawlTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Whether or not Google could fetch the AMP.</summary>
@@ -1229,8 +1229,8 @@ namespace Google.Apis.SearchConsole.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LastCrawlTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastCrawlTimeRaw);
-            set => LastCrawlTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastCrawlTimeRaw);
+            set => LastCrawlTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -1706,8 +1706,8 @@ namespace Google.Apis.SearchConsole.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LastDownloadedDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastDownloadedRaw);
-            set => LastDownloadedRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastDownloadedRaw);
+            set => LastDownloadedRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _lastSubmittedRaw;
@@ -1745,8 +1745,8 @@ namespace Google.Apis.SearchConsole.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LastSubmittedDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastSubmittedRaw);
-            set => LastSubmittedRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastSubmittedRaw);
+            set => LastSubmittedRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The url of the sitemap.</summary>

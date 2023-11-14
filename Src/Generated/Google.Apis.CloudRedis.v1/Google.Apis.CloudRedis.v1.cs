@@ -328,7 +328,7 @@ namespace Google.Apis.CloudRedis.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.CloudRedis.v1.Data.Cluster body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -422,7 +422,7 @@ namespace Google.Apis.CloudRedis.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes a specific Redis cluster. Cluster stops serving and data is deleted.</summary>
@@ -487,7 +487,7 @@ namespace Google.Apis.CloudRedis.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets the details of a specific Redis cluster.</summary>
@@ -540,7 +540,7 @@ namespace Google.Apis.CloudRedis.v1
                 /// </param>
                 public virtual GetCertificateAuthorityRequest GetCertificateAuthority(string name)
                 {
-                    return new GetCertificateAuthorityRequest(service, name);
+                    return new GetCertificateAuthorityRequest(this.service, name);
                 }
 
                 /// <summary>Gets the details of certificate authority information for Redis cluster.</summary>
@@ -597,7 +597,7 @@ namespace Google.Apis.CloudRedis.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>
@@ -689,7 +689,7 @@ namespace Google.Apis.CloudRedis.v1
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.CloudRedis.v1.Data.Cluster body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -805,7 +805,7 @@ namespace Google.Apis.CloudRedis.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.CloudRedis.v1.Data.Instance body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -888,7 +888,7 @@ namespace Google.Apis.CloudRedis.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes a specific Redis instance. Instance stops serving and data is deleted.</summary>
@@ -946,7 +946,7 @@ namespace Google.Apis.CloudRedis.v1
                 /// </param>
                 public virtual ExportRequest Export(Google.Apis.CloudRedis.v1.Data.ExportInstanceRequest body, string name)
                 {
-                    return new ExportRequest(service, body, name);
+                    return new ExportRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -1014,7 +1014,7 @@ namespace Google.Apis.CloudRedis.v1
                 /// </param>
                 public virtual FailoverRequest Failover(Google.Apis.CloudRedis.v1.Data.FailoverInstanceRequest body, string name)
                 {
-                    return new FailoverRequest(service, body, name);
+                    return new FailoverRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -1077,7 +1077,7 @@ namespace Google.Apis.CloudRedis.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets the details of a specific Redis instance.</summary>
@@ -1133,7 +1133,7 @@ namespace Google.Apis.CloudRedis.v1
                 /// </param>
                 public virtual GetAuthStringRequest GetAuthString(string name)
                 {
-                    return new GetAuthStringRequest(service, name);
+                    return new GetAuthStringRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -1195,7 +1195,7 @@ namespace Google.Apis.CloudRedis.v1
                 /// </param>
                 public virtual ImportRequest Import(Google.Apis.CloudRedis.v1.Data.ImportInstanceRequest body, string name)
                 {
-                    return new ImportRequest(service, body, name);
+                    return new ImportRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -1264,7 +1264,7 @@ namespace Google.Apis.CloudRedis.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>
@@ -1359,7 +1359,7 @@ namespace Google.Apis.CloudRedis.v1
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.CloudRedis.v1.Data.Instance body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -1443,7 +1443,7 @@ namespace Google.Apis.CloudRedis.v1
                 /// </param>
                 public virtual RescheduleMaintenanceRequest RescheduleMaintenance(Google.Apis.CloudRedis.v1.Data.RescheduleMaintenanceRequest body, string name)
                 {
-                    return new RescheduleMaintenanceRequest(service, body, name);
+                    return new RescheduleMaintenanceRequest(this.service, body, name);
                 }
 
                 /// <summary>Reschedule maintenance for a given instance in a given project and location.</summary>
@@ -1504,7 +1504,7 @@ namespace Google.Apis.CloudRedis.v1
                 /// </param>
                 public virtual UpgradeRequest Upgrade(Google.Apis.CloudRedis.v1.Data.UpgradeInstanceRequest body, string name)
                 {
-                    return new UpgradeRequest(service, body, name);
+                    return new UpgradeRequest(this.service, body, name);
                 }
 
                 /// <summary>Upgrades Redis instance to the newer Redis version specified in the request.</summary>
@@ -1585,7 +1585,7 @@ namespace Google.Apis.CloudRedis.v1
                 /// <param name="name">The name of the operation resource to be cancelled.</param>
                 public virtual CancelRequest Cancel(string name)
                 {
-                    return new CancelRequest(service, name);
+                    return new CancelRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -1641,7 +1641,7 @@ namespace Google.Apis.CloudRedis.v1
                 /// <param name="name">The name of the operation resource to be deleted.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -1693,7 +1693,7 @@ namespace Google.Apis.CloudRedis.v1
                 /// <param name="name">The name of the operation resource.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -1744,7 +1744,7 @@ namespace Google.Apis.CloudRedis.v1
                 /// <param name="name">The name of the operation's parent resource.</param>
                 public virtual ListRequest List(string name)
                 {
-                    return new ListRequest(service, name);
+                    return new ListRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -1829,7 +1829,7 @@ namespace Google.Apis.CloudRedis.v1
             /// <param name="name">Resource name for the location.</param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets information about a location.</summary>
@@ -1874,7 +1874,7 @@ namespace Google.Apis.CloudRedis.v1
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
             {
-                return new ListRequest(service, name);
+                return new ListRequest(this.service, name);
             }
 
             /// <summary>Lists information about the supported locations for this service.</summary>
@@ -2033,8 +2033,8 @@ namespace Google.Apis.CloudRedis.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -2246,8 +2246,8 @@ namespace Google.Apis.CloudRedis.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _endTimeRaw;
@@ -2283,8 +2283,8 @@ namespace Google.Apis.CloudRedis.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Operation status details.</summary>
@@ -2404,8 +2404,8 @@ namespace Google.Apis.CloudRedis.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -2765,8 +2765,8 @@ namespace Google.Apis.CloudRedis.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -2809,8 +2809,8 @@ namespace Google.Apis.CloudRedis.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -2864,8 +2864,8 @@ namespace Google.Apis.CloudRedis.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _scheduleDeadlineTimeRaw;
@@ -2905,8 +2905,8 @@ namespace Google.Apis.CloudRedis.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ScheduleDeadlineTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ScheduleDeadlineTimeRaw);
-            set => ScheduleDeadlineTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ScheduleDeadlineTimeRaw);
+            set => ScheduleDeadlineTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _startTimeRaw;
@@ -2942,8 +2942,8 @@ namespace Google.Apis.CloudRedis.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -3061,8 +3061,8 @@ namespace Google.Apis.CloudRedis.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _endTimeRaw;
@@ -3098,8 +3098,8 @@ namespace Google.Apis.CloudRedis.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -3182,8 +3182,8 @@ namespace Google.Apis.CloudRedis.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? RdbNextSnapshotTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(RdbNextSnapshotTimeRaw);
-            set => RdbNextSnapshotTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(RdbNextSnapshotTimeRaw);
+            set => RdbNextSnapshotTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -3233,8 +3233,8 @@ namespace Google.Apis.CloudRedis.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? RdbSnapshotStartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(RdbSnapshotStartTimeRaw);
-            set => RdbSnapshotStartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(RdbSnapshotStartTimeRaw);
+            set => RdbSnapshotStartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -3347,8 +3347,8 @@ namespace Google.Apis.CloudRedis.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ScheduleTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ScheduleTimeRaw);
-            set => ScheduleTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ScheduleTimeRaw);
+            set => ScheduleTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -3470,8 +3470,8 @@ namespace Google.Apis.CloudRedis.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _expireTimeRaw;
@@ -3510,8 +3510,8 @@ namespace Google.Apis.CloudRedis.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpireTimeRaw);
-            set => ExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Serial number, as extracted from the certificate.</summary>

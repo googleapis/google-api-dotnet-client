@@ -521,7 +521,7 @@ namespace Google.Apis.Fitness.v1
                 /// <param name="dataSourceId">The data stream ID of the data source that created the dataset.</param>
                 public virtual ListRequest List(string userId, string dataSourceId)
                 {
-                    return new ListRequest(service, userId, dataSourceId);
+                    return new ListRequest(this.service, userId, dataSourceId);
                 }
 
                 /// <summary>Queries for user's data point changes for a particular data source.</summary>
@@ -644,7 +644,7 @@ namespace Google.Apis.Fitness.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string userId, string dataSourceId, string datasetId)
                 {
-                    return new DeleteRequest(service, userId, dataSourceId, datasetId);
+                    return new DeleteRequest(this.service, userId, dataSourceId, datasetId);
                 }
 
                 /// <summary>
@@ -742,7 +742,7 @@ namespace Google.Apis.Fitness.v1
                 /// </param>
                 public virtual GetRequest Get(string userId, string dataSourceId, string datasetId)
                 {
-                    return new GetRequest(service, userId, dataSourceId, datasetId);
+                    return new GetRequest(this.service, userId, dataSourceId, datasetId);
                 }
 
                 /// <summary>
@@ -870,7 +870,7 @@ namespace Google.Apis.Fitness.v1
                 /// <param name="datasetId">This field is not used, and can be safely omitted.</param>
                 public virtual PatchRequest Patch(Google.Apis.Fitness.v1.Data.Dataset body, string userId, string dataSourceId, string datasetId)
                 {
-                    return new PatchRequest(service, body, userId, dataSourceId, datasetId);
+                    return new PatchRequest(this.service, body, userId, dataSourceId, datasetId);
                 }
 
                 /// <summary>
@@ -980,7 +980,7 @@ namespace Google.Apis.Fitness.v1
             /// </param>
             public virtual CreateRequest Create(Google.Apis.Fitness.v1.Data.DataSource body, string userId)
             {
-                return new CreateRequest(service, body, userId);
+                return new CreateRequest(this.service, body, userId);
             }
 
             /// <summary>
@@ -1060,7 +1060,7 @@ namespace Google.Apis.Fitness.v1
             /// <param name="dataSourceId">The data stream ID of the data source to delete.</param>
             public virtual DeleteRequest Delete(string userId, string dataSourceId)
             {
-                return new DeleteRequest(service, userId, dataSourceId);
+                return new DeleteRequest(this.service, userId, dataSourceId);
             }
 
             /// <summary>
@@ -1127,7 +1127,7 @@ namespace Google.Apis.Fitness.v1
             /// <param name="dataSourceId">The data stream ID of the data source to retrieve.</param>
             public virtual GetRequest Get(string userId, string dataSourceId)
             {
-                return new GetRequest(service, userId, dataSourceId);
+                return new GetRequest(this.service, userId, dataSourceId);
             }
 
             /// <summary>Returns the specified data source.</summary>
@@ -1195,7 +1195,7 @@ namespace Google.Apis.Fitness.v1
             /// </param>
             public virtual ListRequest List(string userId)
             {
-                return new ListRequest(service, userId);
+                return new ListRequest(this.service, userId);
             }
 
             /// <summary>
@@ -1270,7 +1270,7 @@ namespace Google.Apis.Fitness.v1
             /// <param name="dataSourceId">The data stream ID of the data source to update.</param>
             public virtual UpdateRequest Update(Google.Apis.Fitness.v1.Data.DataSource body, string userId, string dataSourceId)
             {
-                return new UpdateRequest(service, body, userId, dataSourceId);
+                return new UpdateRequest(this.service, body, userId, dataSourceId);
             }
 
             /// <summary>
@@ -1368,7 +1368,7 @@ namespace Google.Apis.Fitness.v1
             /// </param>
             public virtual AggregateRequest Aggregate(Google.Apis.Fitness.v1.Data.AggregateRequest body, string userId)
             {
-                return new AggregateRequest(service, body, userId);
+                return new AggregateRequest(this.service, body, userId);
             }
 
             /// <summary>
@@ -1449,7 +1449,7 @@ namespace Google.Apis.Fitness.v1
             /// <param name="sessionId">The ID of the session to be deleted.</param>
             public virtual DeleteRequest Delete(string userId, string sessionId)
             {
-                return new DeleteRequest(service, userId, sessionId);
+                return new DeleteRequest(this.service, userId, sessionId);
             }
 
             /// <summary>Deletes a session specified by the given session ID.</summary>
@@ -1513,7 +1513,7 @@ namespace Google.Apis.Fitness.v1
             /// </param>
             public virtual ListRequest List(string userId)
             {
-                return new ListRequest(service, userId);
+                return new ListRequest(this.service, userId);
             }
 
             /// <summary>Lists sessions previously created.</summary>
@@ -1641,7 +1641,7 @@ namespace Google.Apis.Fitness.v1
             /// <param name="sessionId">The ID of the session to be created.</param>
             public virtual UpdateRequest Update(Google.Apis.Fitness.v1.Data.Session body, string userId, string sessionId)
             {
-                return new UpdateRequest(service, body, userId, sessionId);
+                return new UpdateRequest(this.service, body, userId, sessionId);
             }
 
             /// <summary>Updates or insert a given session.</summary>

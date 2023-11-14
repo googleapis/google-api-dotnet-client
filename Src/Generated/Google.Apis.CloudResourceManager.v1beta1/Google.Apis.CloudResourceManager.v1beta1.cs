@@ -295,7 +295,7 @@ namespace Google.Apis.CloudResourceManager.v1beta1
         /// </param>
         public virtual GetRequest Get(string name)
         {
-            return new GetRequest(service, name);
+            return new GetRequest(this.service, name);
         }
 
         /// <summary>Fetches an Organization resource identified by the specified resource name.</summary>
@@ -365,7 +365,7 @@ namespace Google.Apis.CloudResourceManager.v1beta1
         /// </param>
         public virtual GetIamPolicyRequest GetIamPolicy(Google.Apis.CloudResourceManager.v1beta1.Data.GetIamPolicyRequest body, string resource)
         {
-            return new GetIamPolicyRequest(service, body, resource);
+            return new GetIamPolicyRequest(this.service, body, resource);
         }
 
         /// <summary>
@@ -426,7 +426,7 @@ namespace Google.Apis.CloudResourceManager.v1beta1
         /// </summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>
@@ -517,7 +517,7 @@ namespace Google.Apis.CloudResourceManager.v1beta1
         /// </param>
         public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.CloudResourceManager.v1beta1.Data.SetIamPolicyRequest body, string resource)
         {
-            return new SetIamPolicyRequest(service, body, resource);
+            return new SetIamPolicyRequest(this.service, body, resource);
         }
 
         /// <summary>
@@ -582,7 +582,7 @@ namespace Google.Apis.CloudResourceManager.v1beta1
         /// </param>
         public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.CloudResourceManager.v1beta1.Data.TestIamPermissionsRequest body, string resource)
         {
-            return new TestIamPermissionsRequest(service, body, resource);
+            return new TestIamPermissionsRequest(this.service, body, resource);
         }
 
         /// <summary>
@@ -644,7 +644,7 @@ namespace Google.Apis.CloudResourceManager.v1beta1
         /// </param>
         public virtual UpdateRequest Update(Google.Apis.CloudResourceManager.v1beta1.Data.Organization body, string name)
         {
-            return new UpdateRequest(service, body, name);
+            return new UpdateRequest(this.service, body, name);
         }
 
         /// <summary>Updates an Organization resource identified by the specified resource name.</summary>
@@ -721,7 +721,7 @@ namespace Google.Apis.CloudResourceManager.v1beta1
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.CloudResourceManager.v1beta1.Data.Project body)
         {
-            return new CreateRequest(service, body);
+            return new CreateRequest(this.service, body);
         }
 
         /// <summary>
@@ -787,7 +787,7 @@ namespace Google.Apis.CloudResourceManager.v1beta1
         /// <param name="projectId">The Project ID (for example, `foo-bar-123`).</param>
         public virtual DeleteRequest Delete(string projectId)
         {
-            return new DeleteRequest(service, projectId);
+            return new DeleteRequest(this.service, projectId);
         }
 
         /// <summary>
@@ -843,7 +843,7 @@ namespace Google.Apis.CloudResourceManager.v1beta1
         /// <param name="projectId">Required. The Project ID (for example, `my-project-123`).</param>
         public virtual GetRequest Get(string projectId)
         {
-            return new GetRequest(service, projectId);
+            return new GetRequest(this.service, projectId);
         }
 
         /// <summary>
@@ -895,7 +895,7 @@ namespace Google.Apis.CloudResourceManager.v1beta1
         /// <param name="projectId">Required. The Project ID (for example, `my-project-123`).</param>
         public virtual GetAncestryRequest GetAncestry(Google.Apis.CloudResourceManager.v1beta1.Data.GetAncestryRequest body, string projectId)
         {
-            return new GetAncestryRequest(service, body, projectId);
+            return new GetAncestryRequest(this.service, body, projectId);
         }
 
         /// <summary>
@@ -958,7 +958,7 @@ namespace Google.Apis.CloudResourceManager.v1beta1
         /// </param>
         public virtual GetIamPolicyRequest GetIamPolicy(Google.Apis.CloudResourceManager.v1beta1.Data.GetIamPolicyRequest body, string resource)
         {
-            return new GetIamPolicyRequest(service, body, resource);
+            return new GetIamPolicyRequest(this.service, body, resource);
         }
 
         /// <summary>
@@ -1025,7 +1025,7 @@ namespace Google.Apis.CloudResourceManager.v1beta1
         /// </summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>
@@ -1149,7 +1149,7 @@ namespace Google.Apis.CloudResourceManager.v1beta1
         /// </param>
         public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.CloudResourceManager.v1beta1.Data.SetIamPolicyRequest body, string resource)
         {
-            return new SetIamPolicyRequest(service, body, resource);
+            return new SetIamPolicyRequest(this.service, body, resource);
         }
 
         /// <summary>
@@ -1229,7 +1229,7 @@ namespace Google.Apis.CloudResourceManager.v1beta1
         /// </param>
         public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.CloudResourceManager.v1beta1.Data.TestIamPermissionsRequest body, string resource)
         {
-            return new TestIamPermissionsRequest(service, body, resource);
+            return new TestIamPermissionsRequest(this.service, body, resource);
         }
 
         /// <summary>Returns permissions that a caller has on the specified Project.</summary>
@@ -1289,7 +1289,7 @@ namespace Google.Apis.CloudResourceManager.v1beta1
         /// <param name="projectId">Required. The project ID (for example, `foo-bar-123`).</param>
         public virtual UndeleteRequest Undelete(Google.Apis.CloudResourceManager.v1beta1.Data.UndeleteProjectRequest body, string projectId)
         {
-            return new UndeleteRequest(service, body, projectId);
+            return new UndeleteRequest(this.service, body, projectId);
         }
 
         /// <summary>
@@ -1349,7 +1349,7 @@ namespace Google.Apis.CloudResourceManager.v1beta1
         /// <param name="projectId">The project ID (for example, `my-project-123`).</param>
         public virtual UpdateRequest Update(Google.Apis.CloudResourceManager.v1beta1.Data.Project body, string projectId)
         {
-            return new UpdateRequest(service, body, projectId);
+            return new UpdateRequest(this.service, body, projectId);
         }
 
         /// <summary>
@@ -1628,8 +1628,8 @@ namespace Google.Apis.CloudResourceManager.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -1974,8 +1974,8 @@ namespace Google.Apis.CloudResourceManager.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreationTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreationTimeRaw);
-            set => CreationTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreationTimeRaw);
+            set => CreationTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -2146,8 +2146,8 @@ namespace Google.Apis.CloudResourceManager.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -2236,8 +2236,8 @@ namespace Google.Apis.CloudResourceManager.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>

@@ -533,7 +533,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="summaryAccountId">Account ID.</param>
         public virtual GetRequest Get(long profileId, long summaryAccountId)
         {
-            return new GetRequest(service, profileId, summaryAccountId);
+            return new GetRequest(this.service, profileId, summaryAccountId);
         }
 
         /// <summary>Gets the account's active ad summary by account ID.</summary>
@@ -607,7 +607,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="id">Account permission group ID.</param>
         public virtual GetRequest Get(long profileId, long id)
         {
-            return new GetRequest(service, profileId, id);
+            return new GetRequest(this.service, profileId, id);
         }
 
         /// <summary>Gets one account permission group by ID.</summary>
@@ -665,7 +665,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual ListRequest List(long profileId)
         {
-            return new ListRequest(service, profileId);
+            return new ListRequest(this.service, profileId);
         }
 
         /// <summary>Retrieves the list of account permission groups.</summary>
@@ -726,7 +726,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="id">Account permission ID.</param>
         public virtual GetRequest Get(long profileId, long id)
         {
-            return new GetRequest(service, profileId, id);
+            return new GetRequest(this.service, profileId, id);
         }
 
         /// <summary>Gets one account permission by ID.</summary>
@@ -784,7 +784,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual ListRequest List(long profileId)
         {
-            return new ListRequest(service, profileId);
+            return new ListRequest(this.service, profileId);
         }
 
         /// <summary>Retrieves the list of account permissions.</summary>
@@ -845,7 +845,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="id">User profile ID.</param>
         public virtual GetRequest Get(long profileId, long id)
         {
-            return new GetRequest(service, profileId, id);
+            return new GetRequest(this.service, profileId, id);
         }
 
         /// <summary>Gets one account user profile by ID.</summary>
@@ -904,7 +904,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual InsertRequest Insert(Google.Apis.Dfareporting.v4.Data.AccountUserProfile body, long profileId)
         {
-            return new InsertRequest(service, body, profileId);
+            return new InsertRequest(this.service, body, profileId);
         }
 
         /// <summary>Inserts a new account user profile.</summary>
@@ -958,7 +958,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual ListRequest List(long profileId)
         {
-            return new ListRequest(service, profileId);
+            return new ListRequest(this.service, profileId);
         }
 
         /// <summary>
@@ -1145,7 +1145,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="id">Required. AccountUserProfile ID.</param>
         public virtual PatchRequest Patch(Google.Apis.Dfareporting.v4.Data.AccountUserProfile body, long profileId, long id)
         {
-            return new PatchRequest(service, body, profileId, id);
+            return new PatchRequest(this.service, body, profileId, id);
         }
 
         /// <summary>Updates an existing user role. This method supports patch semantics.</summary>
@@ -1211,7 +1211,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual UpdateRequest Update(Google.Apis.Dfareporting.v4.Data.AccountUserProfile body, long profileId)
         {
-            return new UpdateRequest(service, body, profileId);
+            return new UpdateRequest(this.service, body, profileId);
         }
 
         /// <summary>Updates an existing account user profile.</summary>
@@ -1279,7 +1279,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="id">Account ID.</param>
         public virtual GetRequest Get(long profileId, long id)
         {
-            return new GetRequest(service, profileId, id);
+            return new GetRequest(this.service, profileId, id);
         }
 
         /// <summary>Gets one account by ID.</summary>
@@ -1337,7 +1337,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual ListRequest List(long profileId)
         {
-            return new ListRequest(service, profileId);
+            return new ListRequest(this.service, profileId);
         }
 
         /// <summary>Retrieves the list of accounts, possibly filtered. This method supports paging.</summary>
@@ -1500,7 +1500,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="id">Required. Account ID.</param>
         public virtual PatchRequest Patch(Google.Apis.Dfareporting.v4.Data.Account body, long profileId, long id)
         {
-            return new PatchRequest(service, body, profileId, id);
+            return new PatchRequest(this.service, body, profileId, id);
         }
 
         /// <summary>Updates an existing account. This method supports patch semantics.</summary>
@@ -1566,7 +1566,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual UpdateRequest Update(Google.Apis.Dfareporting.v4.Data.Account body, long profileId)
         {
-            return new UpdateRequest(service, body, profileId);
+            return new UpdateRequest(this.service, body, profileId);
         }
 
         /// <summary>Updates an existing account.</summary>
@@ -1634,7 +1634,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="id">Ad ID.</param>
         public virtual GetRequest Get(long profileId, long id)
         {
-            return new GetRequest(service, profileId, id);
+            return new GetRequest(this.service, profileId, id);
         }
 
         /// <summary>Gets one ad by ID.</summary>
@@ -1693,7 +1693,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual InsertRequest Insert(Google.Apis.Dfareporting.v4.Data.Ad body, long profileId)
         {
-            return new InsertRequest(service, body, profileId);
+            return new InsertRequest(this.service, body, profileId);
         }
 
         /// <summary>Inserts a new ad.</summary>
@@ -1745,7 +1745,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual ListRequest List(long profileId)
         {
-            return new ListRequest(service, profileId);
+            return new ListRequest(this.service, profileId);
         }
 
         /// <summary>Retrieves a list of ads, possibly filtered. This method supports paging.</summary>
@@ -2174,7 +2174,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="id">Required. RemarketingList ID.</param>
         public virtual PatchRequest Patch(Google.Apis.Dfareporting.v4.Data.Ad body, long profileId, long id)
         {
-            return new PatchRequest(service, body, profileId, id);
+            return new PatchRequest(this.service, body, profileId, id);
         }
 
         /// <summary>Updates an existing event tag. This method supports patch semantics.</summary>
@@ -2240,7 +2240,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual UpdateRequest Update(Google.Apis.Dfareporting.v4.Data.Ad body, long profileId)
         {
-            return new UpdateRequest(service, body, profileId);
+            return new UpdateRequest(this.service, body, profileId);
         }
 
         /// <summary>Updates an existing ad.</summary>
@@ -2308,7 +2308,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="id">Advertiser group ID.</param>
         public virtual DeleteRequest Delete(long profileId, long id)
         {
-            return new DeleteRequest(service, profileId, id);
+            return new DeleteRequest(this.service, profileId, id);
         }
 
         /// <summary>Deletes an existing advertiser group.</summary>
@@ -2367,7 +2367,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="id">Advertiser group ID.</param>
         public virtual GetRequest Get(long profileId, long id)
         {
-            return new GetRequest(service, profileId, id);
+            return new GetRequest(this.service, profileId, id);
         }
 
         /// <summary>Gets one advertiser group by ID.</summary>
@@ -2426,7 +2426,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual InsertRequest Insert(Google.Apis.Dfareporting.v4.Data.AdvertiserGroup body, long profileId)
         {
-            return new InsertRequest(service, body, profileId);
+            return new InsertRequest(this.service, body, profileId);
         }
 
         /// <summary>Inserts a new advertiser group.</summary>
@@ -2478,7 +2478,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual ListRequest List(long profileId)
         {
-            return new ListRequest(service, profileId);
+            return new ListRequest(this.service, profileId);
         }
 
         /// <summary>Retrieves a list of advertiser groups, possibly filtered. This method supports paging.</summary>
@@ -2627,7 +2627,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="id">Required. Advertiser Group ID.</param>
         public virtual PatchRequest Patch(Google.Apis.Dfareporting.v4.Data.AdvertiserGroup body, long profileId, long id)
         {
-            return new PatchRequest(service, body, profileId, id);
+            return new PatchRequest(this.service, body, profileId, id);
         }
 
         /// <summary>Updates an existing advertiser group. This method supports patch semantics.</summary>
@@ -2693,7 +2693,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual UpdateRequest Update(Google.Apis.Dfareporting.v4.Data.AdvertiserGroup body, long profileId)
         {
-            return new UpdateRequest(service, body, profileId);
+            return new UpdateRequest(this.service, body, profileId);
         }
 
         /// <summary>Updates an existing advertiser group.</summary>
@@ -2764,7 +2764,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="advertiserId">Advertiser ID of this invoice.</param>
         public virtual ListRequest List(long profileId, long advertiserId)
         {
-            return new ListRequest(service, profileId, advertiserId);
+            return new ListRequest(this.service, profileId, advertiserId);
         }
 
         /// <summary>
@@ -2877,7 +2877,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="id">Landing page ID.</param>
         public virtual GetRequest Get(long profileId, long id)
         {
-            return new GetRequest(service, profileId, id);
+            return new GetRequest(this.service, profileId, id);
         }
 
         /// <summary>Gets one landing page by ID.</summary>
@@ -2936,7 +2936,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual InsertRequest Insert(Google.Apis.Dfareporting.v4.Data.LandingPage body, long profileId)
         {
-            return new InsertRequest(service, body, profileId);
+            return new InsertRequest(this.service, body, profileId);
         }
 
         /// <summary>Inserts a new landing page.</summary>
@@ -2988,7 +2988,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual ListRequest List(long profileId)
         {
-            return new ListRequest(service, profileId);
+            return new ListRequest(this.service, profileId);
         }
 
         /// <summary>Retrieves a list of landing pages.</summary>
@@ -3188,7 +3188,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="id">Required. Landing Page ID.</param>
         public virtual PatchRequest Patch(Google.Apis.Dfareporting.v4.Data.LandingPage body, long profileId, long id)
         {
-            return new PatchRequest(service, body, profileId, id);
+            return new PatchRequest(this.service, body, profileId, id);
         }
 
         /// <summary>Updates an existing advertiser. This method supports patch semantics.</summary>
@@ -3254,7 +3254,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual UpdateRequest Update(Google.Apis.Dfareporting.v4.Data.LandingPage body, long profileId)
         {
-            return new UpdateRequest(service, body, profileId);
+            return new UpdateRequest(this.service, body, profileId);
         }
 
         /// <summary>Updates an existing landing page.</summary>
@@ -3322,7 +3322,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="id">Advertiser ID.</param>
         public virtual GetRequest Get(long profileId, long id)
         {
-            return new GetRequest(service, profileId, id);
+            return new GetRequest(this.service, profileId, id);
         }
 
         /// <summary>Gets one advertiser by ID.</summary>
@@ -3381,7 +3381,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual InsertRequest Insert(Google.Apis.Dfareporting.v4.Data.Advertiser body, long profileId)
         {
-            return new InsertRequest(service, body, profileId);
+            return new InsertRequest(this.service, body, profileId);
         }
 
         /// <summary>Inserts a new advertiser.</summary>
@@ -3433,7 +3433,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual ListRequest List(long profileId)
         {
-            return new ListRequest(service, profileId);
+            return new ListRequest(this.service, profileId);
         }
 
         /// <summary>Retrieves a list of advertisers, possibly filtered. This method supports paging.</summary>
@@ -3666,7 +3666,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="id">Required. Advertiser ID.</param>
         public virtual PatchRequest Patch(Google.Apis.Dfareporting.v4.Data.Advertiser body, long profileId, long id)
         {
-            return new PatchRequest(service, body, profileId, id);
+            return new PatchRequest(this.service, body, profileId, id);
         }
 
         /// <summary>Updates an existing advertiser. This method supports patch semantics.</summary>
@@ -3732,7 +3732,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual UpdateRequest Update(Google.Apis.Dfareporting.v4.Data.Advertiser body, long profileId)
         {
-            return new UpdateRequest(service, body, profileId);
+            return new UpdateRequest(this.service, body, profileId);
         }
 
         /// <summary>Updates an existing advertiser.</summary>
@@ -3805,7 +3805,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="billingProfileId">Billing profile ID of this billing assignment.</param>
         public virtual InsertRequest Insert(Google.Apis.Dfareporting.v4.Data.BillingAssignment body, long profileId, long billingProfileId)
         {
-            return new InsertRequest(service, body, profileId, billingProfileId);
+            return new InsertRequest(this.service, body, profileId, billingProfileId);
         }
 
         /// <summary>
@@ -3875,7 +3875,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="billingProfileId">Billing profile ID of this billing assignment.</param>
         public virtual ListRequest List(long profileId, long billingProfileId)
         {
-            return new ListRequest(service, profileId, billingProfileId);
+            return new ListRequest(this.service, profileId, billingProfileId);
         }
 
         /// <summary>Retrieves a list of billing assignments.</summary>
@@ -3949,7 +3949,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="id">Billing Profile ID.</param>
         public virtual GetRequest Get(long profileId, long id)
         {
-            return new GetRequest(service, profileId, id);
+            return new GetRequest(this.service, profileId, id);
         }
 
         /// <summary>Gets one billing profile by ID.</summary>
@@ -4007,7 +4007,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual ListRequest List(long profileId)
         {
-            return new ListRequest(service, profileId);
+            return new ListRequest(this.service, profileId);
         }
 
         /// <summary>Retrieves a list of billing profiles, possibly filtered. This method supports paging.</summary>
@@ -4237,7 +4237,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual UpdateRequest Update(Google.Apis.Dfareporting.v4.Data.BillingProfile body, long profileId)
         {
-            return new UpdateRequest(service, body, profileId);
+            return new UpdateRequest(this.service, body, profileId);
         }
 
         /// <summary>Updates an existing billing profile.</summary>
@@ -4305,7 +4305,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="billingProfileId">Billing profile ID of this billing rate.</param>
         public virtual ListRequest List(long profileId, long billingProfileId)
         {
-            return new ListRequest(service, profileId, billingProfileId);
+            return new ListRequest(this.service, profileId, billingProfileId);
         }
 
         /// <summary>Retrieves a list of billing rates. This method supports paging.</summary>
@@ -4378,7 +4378,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual ListRequest List(long profileId)
         {
-            return new ListRequest(service, profileId);
+            return new ListRequest(this.service, profileId);
         }
 
         /// <summary>Retrieves a list of browsers.</summary>
@@ -4443,7 +4443,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="campaignId">Campaign ID in this association.</param>
         public virtual InsertRequest Insert(Google.Apis.Dfareporting.v4.Data.CampaignCreativeAssociation body, long profileId, long campaignId)
         {
-            return new InsertRequest(service, body, profileId, campaignId);
+            return new InsertRequest(this.service, body, profileId, campaignId);
         }
 
         /// <summary>
@@ -4514,7 +4514,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="campaignId">Campaign ID in this association.</param>
         public virtual ListRequest List(long profileId, long campaignId)
         {
-            return new ListRequest(service, profileId, campaignId);
+            return new ListRequest(this.service, profileId, campaignId);
         }
 
         /// <summary>
@@ -4638,7 +4638,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="id">Campaign ID.</param>
         public virtual GetRequest Get(long profileId, long id)
         {
-            return new GetRequest(service, profileId, id);
+            return new GetRequest(this.service, profileId, id);
         }
 
         /// <summary>Gets one campaign by ID.</summary>
@@ -4697,7 +4697,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual InsertRequest Insert(Google.Apis.Dfareporting.v4.Data.Campaign body, long profileId)
         {
-            return new InsertRequest(service, body, profileId);
+            return new InsertRequest(this.service, body, profileId);
         }
 
         /// <summary>Inserts a new campaign.</summary>
@@ -4749,7 +4749,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual ListRequest List(long profileId)
         {
-            return new ListRequest(service, profileId);
+            return new ListRequest(this.service, profileId);
         }
 
         /// <summary>Retrieves a list of campaigns, possibly filtered. This method supports paging.</summary>
@@ -4984,7 +4984,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="id">Required. Campaign ID.</param>
         public virtual PatchRequest Patch(Google.Apis.Dfareporting.v4.Data.Campaign body, long profileId, long id)
         {
-            return new PatchRequest(service, body, profileId, id);
+            return new PatchRequest(this.service, body, profileId, id);
         }
 
         /// <summary>Updates an existing creative. This method supports patch semantics.</summary>
@@ -5050,7 +5050,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual UpdateRequest Update(Google.Apis.Dfareporting.v4.Data.Campaign body, long profileId)
         {
-            return new UpdateRequest(service, body, profileId);
+            return new UpdateRequest(this.service, body, profileId);
         }
 
         /// <summary>Updates an existing campaign.</summary>
@@ -5118,7 +5118,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="id">Change log ID.</param>
         public virtual GetRequest Get(long profileId, long id)
         {
-            return new GetRequest(service, profileId, id);
+            return new GetRequest(this.service, profileId, id);
         }
 
         /// <summary>Gets one change log by ID.</summary>
@@ -5176,7 +5176,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual ListRequest List(long profileId)
         {
-            return new ListRequest(service, profileId);
+            return new ListRequest(this.service, profileId);
         }
 
         /// <summary>Retrieves a list of change logs. This method supports paging.</summary>
@@ -5616,7 +5616,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual ListRequest List(long profileId)
         {
-            return new ListRequest(service, profileId);
+            return new ListRequest(this.service, profileId);
         }
 
         /// <summary>Retrieves a list of cities, possibly filtered.</summary>
@@ -5725,7 +5725,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="id">Connection type ID.</param>
         public virtual GetRequest Get(long profileId, long id)
         {
-            return new GetRequest(service, profileId, id);
+            return new GetRequest(this.service, profileId, id);
         }
 
         /// <summary>Gets one connection type by ID.</summary>
@@ -5783,7 +5783,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual ListRequest List(long profileId)
         {
-            return new ListRequest(service, profileId);
+            return new ListRequest(this.service, profileId);
         }
 
         /// <summary>Retrieves a list of connection types.</summary>
@@ -5844,7 +5844,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="id">Content category ID.</param>
         public virtual DeleteRequest Delete(long profileId, long id)
         {
-            return new DeleteRequest(service, profileId, id);
+            return new DeleteRequest(this.service, profileId, id);
         }
 
         /// <summary>Deletes an existing content category.</summary>
@@ -5903,7 +5903,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="id">Content category ID.</param>
         public virtual GetRequest Get(long profileId, long id)
         {
-            return new GetRequest(service, profileId, id);
+            return new GetRequest(this.service, profileId, id);
         }
 
         /// <summary>Gets one content category by ID.</summary>
@@ -5962,7 +5962,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual InsertRequest Insert(Google.Apis.Dfareporting.v4.Data.ContentCategory body, long profileId)
         {
-            return new InsertRequest(service, body, profileId);
+            return new InsertRequest(this.service, body, profileId);
         }
 
         /// <summary>Inserts a new content category.</summary>
@@ -6014,7 +6014,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual ListRequest List(long profileId)
         {
-            return new ListRequest(service, profileId);
+            return new ListRequest(this.service, profileId);
         }
 
         /// <summary>Retrieves a list of content categories, possibly filtered. This method supports paging.</summary>
@@ -6163,7 +6163,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="id">Required. ContentCategory ID.</param>
         public virtual PatchRequest Patch(Google.Apis.Dfareporting.v4.Data.ContentCategory body, long profileId, long id)
         {
-            return new PatchRequest(service, body, profileId, id);
+            return new PatchRequest(this.service, body, profileId, id);
         }
 
         /// <summary>Updates an existing content category. This method supports patch semantics.</summary>
@@ -6229,7 +6229,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual UpdateRequest Update(Google.Apis.Dfareporting.v4.Data.ContentCategory body, long profileId)
         {
-            return new UpdateRequest(service, body, profileId);
+            return new UpdateRequest(this.service, body, profileId);
         }
 
         /// <summary>Updates an existing content category.</summary>
@@ -6297,7 +6297,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual BatchinsertRequest Batchinsert(Google.Apis.Dfareporting.v4.Data.ConversionsBatchInsertRequest body, long profileId)
         {
-            return new BatchinsertRequest(service, body, profileId);
+            return new BatchinsertRequest(this.service, body, profileId);
         }
 
         /// <summary>Inserts conversions.</summary>
@@ -6350,7 +6350,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual BatchupdateRequest Batchupdate(Google.Apis.Dfareporting.v4.Data.ConversionsBatchUpdateRequest body, long profileId)
         {
-            return new BatchupdateRequest(service, body, profileId);
+            return new BatchupdateRequest(this.service, body, profileId);
         }
 
         /// <summary>Updates existing conversions.</summary>
@@ -6418,7 +6418,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="dartId">Country DART ID.</param>
         public virtual GetRequest Get(long profileId, long dartId)
         {
-            return new GetRequest(service, profileId, dartId);
+            return new GetRequest(this.service, profileId, dartId);
         }
 
         /// <summary>Gets one country by ID.</summary>
@@ -6476,7 +6476,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual ListRequest List(long profileId)
         {
-            return new ListRequest(service, profileId);
+            return new ListRequest(this.service, profileId);
         }
 
         /// <summary>Retrieves a list of countries.</summary>
@@ -6538,7 +6538,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="advertiserId">Advertiser ID of this creative. This is a required field.</param>
         public virtual InsertRequest Insert(Google.Apis.Dfareporting.v4.Data.CreativeAssetMetadata body, long profileId, long advertiserId)
         {
-            return new InsertRequest(service, body, profileId, advertiserId);
+            return new InsertRequest(this.service, body, profileId, advertiserId);
         }
 
         /// <summary>Inserts a new creative asset.</summary>
@@ -6765,7 +6765,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="id">Creative Field Value ID</param>
         public virtual DeleteRequest Delete(long profileId, long creativeFieldId, long id)
         {
-            return new DeleteRequest(service, profileId, creativeFieldId, id);
+            return new DeleteRequest(this.service, profileId, creativeFieldId, id);
         }
 
         /// <summary>Deletes an existing creative field value.</summary>
@@ -6838,7 +6838,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="id">Creative Field Value ID</param>
         public virtual GetRequest Get(long profileId, long creativeFieldId, long id)
         {
-            return new GetRequest(service, profileId, creativeFieldId, id);
+            return new GetRequest(this.service, profileId, creativeFieldId, id);
         }
 
         /// <summary>Gets one creative field value by ID.</summary>
@@ -6911,7 +6911,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="creativeFieldId">Creative field ID for this creative field value.</param>
         public virtual InsertRequest Insert(Google.Apis.Dfareporting.v4.Data.CreativeFieldValue body, long profileId, long creativeFieldId)
         {
-            return new InsertRequest(service, body, profileId, creativeFieldId);
+            return new InsertRequest(this.service, body, profileId, creativeFieldId);
         }
 
         /// <summary>Inserts a new creative field value.</summary>
@@ -6979,7 +6979,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="creativeFieldId">Creative field ID for this creative field value.</param>
         public virtual ListRequest List(long profileId, long creativeFieldId)
         {
-            return new ListRequest(service, profileId, creativeFieldId);
+            return new ListRequest(this.service, profileId, creativeFieldId);
         }
 
         /// <summary>
@@ -7140,7 +7140,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="id">CreativeFieldValue ID.</param>
         public virtual PatchRequest Patch(Google.Apis.Dfareporting.v4.Data.CreativeFieldValue body, long profileId, long creativeFieldId, long id)
         {
-            return new PatchRequest(service, body, profileId, creativeFieldId, id);
+            return new PatchRequest(this.service, body, profileId, creativeFieldId, id);
         }
 
         /// <summary>Updates an existing creative field value. This method supports patch semantics.</summary>
@@ -7220,7 +7220,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="creativeFieldId">Creative field ID for this creative field value.</param>
         public virtual UpdateRequest Update(Google.Apis.Dfareporting.v4.Data.CreativeFieldValue body, long profileId, long creativeFieldId)
         {
-            return new UpdateRequest(service, body, profileId, creativeFieldId);
+            return new UpdateRequest(this.service, body, profileId, creativeFieldId);
         }
 
         /// <summary>Updates an existing creative field value.</summary>
@@ -7301,7 +7301,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="id">Creative Field ID</param>
         public virtual DeleteRequest Delete(long profileId, long id)
         {
-            return new DeleteRequest(service, profileId, id);
+            return new DeleteRequest(this.service, profileId, id);
         }
 
         /// <summary>Deletes an existing creative field.</summary>
@@ -7360,7 +7360,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="id">Creative Field ID</param>
         public virtual GetRequest Get(long profileId, long id)
         {
-            return new GetRequest(service, profileId, id);
+            return new GetRequest(this.service, profileId, id);
         }
 
         /// <summary>Gets one creative field by ID.</summary>
@@ -7419,7 +7419,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual InsertRequest Insert(Google.Apis.Dfareporting.v4.Data.CreativeField body, long profileId)
         {
-            return new InsertRequest(service, body, profileId);
+            return new InsertRequest(this.service, body, profileId);
         }
 
         /// <summary>Inserts a new creative field.</summary>
@@ -7471,7 +7471,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual ListRequest List(long profileId)
         {
-            return new ListRequest(service, profileId);
+            return new ListRequest(this.service, profileId);
         }
 
         /// <summary>Retrieves a list of creative fields, possibly filtered. This method supports paging.</summary>
@@ -7633,7 +7633,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="id">CreativeField ID.</param>
         public virtual PatchRequest Patch(Google.Apis.Dfareporting.v4.Data.CreativeField body, long profileId, long id)
         {
-            return new PatchRequest(service, body, profileId, id);
+            return new PatchRequest(this.service, body, profileId, id);
         }
 
         /// <summary>Updates an existing creative field. This method supports patch semantics.</summary>
@@ -7699,7 +7699,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual UpdateRequest Update(Google.Apis.Dfareporting.v4.Data.CreativeField body, long profileId)
         {
-            return new UpdateRequest(service, body, profileId);
+            return new UpdateRequest(this.service, body, profileId);
         }
 
         /// <summary>Updates an existing creative field.</summary>
@@ -7767,7 +7767,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="id">Creative group ID.</param>
         public virtual GetRequest Get(long profileId, long id)
         {
-            return new GetRequest(service, profileId, id);
+            return new GetRequest(this.service, profileId, id);
         }
 
         /// <summary>Gets one creative group by ID.</summary>
@@ -7826,7 +7826,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual InsertRequest Insert(Google.Apis.Dfareporting.v4.Data.CreativeGroup body, long profileId)
         {
-            return new InsertRequest(service, body, profileId);
+            return new InsertRequest(this.service, body, profileId);
         }
 
         /// <summary>Inserts a new creative group.</summary>
@@ -7878,7 +7878,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual ListRequest List(long profileId)
         {
-            return new ListRequest(service, profileId);
+            return new ListRequest(this.service, profileId);
         }
 
         /// <summary>Retrieves a list of creative groups, possibly filtered. This method supports paging.</summary>
@@ -8052,7 +8052,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="id">Required. Creative Group ID.</param>
         public virtual PatchRequest Patch(Google.Apis.Dfareporting.v4.Data.CreativeGroup body, long profileId, long id)
         {
-            return new PatchRequest(service, body, profileId, id);
+            return new PatchRequest(this.service, body, profileId, id);
         }
 
         /// <summary>Updates an existing creative group. This method supports patch semantics.</summary>
@@ -8118,7 +8118,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual UpdateRequest Update(Google.Apis.Dfareporting.v4.Data.CreativeGroup body, long profileId)
         {
-            return new UpdateRequest(service, body, profileId);
+            return new UpdateRequest(this.service, body, profileId);
         }
 
         /// <summary>Updates an existing creative group.</summary>
@@ -8186,7 +8186,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="id">Creative ID.</param>
         public virtual GetRequest Get(long profileId, long id)
         {
-            return new GetRequest(service, profileId, id);
+            return new GetRequest(this.service, profileId, id);
         }
 
         /// <summary>Gets one creative by ID.</summary>
@@ -8245,7 +8245,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual InsertRequest Insert(Google.Apis.Dfareporting.v4.Data.Creative body, long profileId)
         {
-            return new InsertRequest(service, body, profileId);
+            return new InsertRequest(this.service, body, profileId);
         }
 
         /// <summary>Inserts a new creative.</summary>
@@ -8297,7 +8297,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual ListRequest List(long profileId)
         {
-            return new ListRequest(service, profileId);
+            return new ListRequest(this.service, profileId);
         }
 
         /// <summary>Retrieves a list of creatives, possibly filtered. This method supports paging.</summary>
@@ -8684,7 +8684,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="id">Required. Creative ID.</param>
         public virtual PatchRequest Patch(Google.Apis.Dfareporting.v4.Data.Creative body, long profileId, long id)
         {
-            return new PatchRequest(service, body, profileId, id);
+            return new PatchRequest(this.service, body, profileId, id);
         }
 
         /// <summary>Updates an existing creative. This method supports patch semantics.</summary>
@@ -8750,7 +8750,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual UpdateRequest Update(Google.Apis.Dfareporting.v4.Data.Creative body, long profileId)
         {
-            return new UpdateRequest(service, body, profileId);
+            return new UpdateRequest(this.service, body, profileId);
         }
 
         /// <summary>Updates an existing creative.</summary>
@@ -8818,7 +8818,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">The Campaign Manager 360 user profile ID.</param>
         public virtual QueryRequest Query(Google.Apis.Dfareporting.v4.Data.DimensionValueRequest body, long profileId)
         {
-            return new QueryRequest(service, body, profileId);
+            return new QueryRequest(this.service, body, profileId);
         }
 
         /// <summary>Retrieves list of report dimension values for a list of filters.</summary>
@@ -8910,7 +8910,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="id">Directory site ID.</param>
         public virtual GetRequest Get(long profileId, long id)
         {
-            return new GetRequest(service, profileId, id);
+            return new GetRequest(this.service, profileId, id);
         }
 
         /// <summary>Gets one directory site by ID.</summary>
@@ -8969,7 +8969,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual InsertRequest Insert(Google.Apis.Dfareporting.v4.Data.DirectorySite body, long profileId)
         {
-            return new InsertRequest(service, body, profileId);
+            return new InsertRequest(this.service, body, profileId);
         }
 
         /// <summary>Inserts a new directory site.</summary>
@@ -9021,7 +9021,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual ListRequest List(long profileId)
         {
-            return new ListRequest(service, profileId);
+            return new ListRequest(this.service, profileId);
         }
 
         /// <summary>Retrieves a list of directory sites, possibly filtered. This method supports paging.</summary>
@@ -9259,7 +9259,7 @@ namespace Google.Apis.Dfareporting.v4
         /// </param>
         public virtual DeleteRequest Delete(long profileId, long objectId, string name, DeleteRequest.ObjectTypeEnum objectType)
         {
-            return new DeleteRequest(service, profileId, objectId, name, objectType);
+            return new DeleteRequest(this.service, profileId, objectId, name, objectType);
         }
 
         /// <summary>Deletes an existing dynamic targeting key.</summary>
@@ -9371,7 +9371,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual InsertRequest Insert(Google.Apis.Dfareporting.v4.Data.DynamicTargetingKey body, long profileId)
         {
-            return new InsertRequest(service, body, profileId);
+            return new InsertRequest(this.service, body, profileId);
         }
 
         /// <summary>
@@ -9427,7 +9427,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual ListRequest List(long profileId)
         {
-            return new ListRequest(service, profileId);
+            return new ListRequest(this.service, profileId);
         }
 
         /// <summary>Retrieves a list of dynamic targeting keys.</summary>
@@ -9556,7 +9556,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="id">Event tag ID.</param>
         public virtual DeleteRequest Delete(long profileId, long id)
         {
-            return new DeleteRequest(service, profileId, id);
+            return new DeleteRequest(this.service, profileId, id);
         }
 
         /// <summary>Deletes an existing event tag.</summary>
@@ -9615,7 +9615,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="id">Event tag ID.</param>
         public virtual GetRequest Get(long profileId, long id)
         {
-            return new GetRequest(service, profileId, id);
+            return new GetRequest(this.service, profileId, id);
         }
 
         /// <summary>Gets one event tag by ID.</summary>
@@ -9674,7 +9674,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual InsertRequest Insert(Google.Apis.Dfareporting.v4.Data.EventTag body, long profileId)
         {
-            return new InsertRequest(service, body, profileId);
+            return new InsertRequest(this.service, body, profileId);
         }
 
         /// <summary>Inserts a new event tag.</summary>
@@ -9726,7 +9726,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual ListRequest List(long profileId)
         {
-            return new ListRequest(service, profileId);
+            return new ListRequest(this.service, profileId);
         }
 
         /// <summary>Retrieves a list of event tags, possibly filtered.</summary>
@@ -9975,7 +9975,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="id">Required. EventTag ID.</param>
         public virtual PatchRequest Patch(Google.Apis.Dfareporting.v4.Data.EventTag body, long profileId, long id)
         {
-            return new PatchRequest(service, body, profileId, id);
+            return new PatchRequest(this.service, body, profileId, id);
         }
 
         /// <summary>Updates an existing event tag. This method supports patch semantics.</summary>
@@ -10041,7 +10041,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual UpdateRequest Update(Google.Apis.Dfareporting.v4.Data.EventTag body, long profileId)
         {
-            return new UpdateRequest(service, body, profileId);
+            return new UpdateRequest(this.service, body, profileId);
         }
 
         /// <summary>Updates an existing event tag.</summary>
@@ -10111,7 +10111,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="fileId">The ID of the report file.</param>
         public virtual GetRequest Get(long reportId, long fileId)
         {
-            return new GetRequest(service, reportId, fileId);
+            return new GetRequest(this.service, reportId, fileId);
         }
 
         /// <summary>
@@ -10257,7 +10257,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">The Campaign Manager 360 user profile ID.</param>
         public virtual ListRequest List(long profileId)
         {
-            return new ListRequest(service, profileId);
+            return new ListRequest(this.service, profileId);
         }
 
         /// <summary>Lists files for a user profile.</summary>
@@ -10418,7 +10418,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="id">Floodlight activity ID.</param>
         public virtual DeleteRequest Delete(long profileId, long id)
         {
-            return new DeleteRequest(service, profileId, id);
+            return new DeleteRequest(this.service, profileId, id);
         }
 
         /// <summary>Deletes an existing floodlight activity.</summary>
@@ -10476,7 +10476,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual GeneratetagRequest Generatetag(long profileId)
         {
-            return new GeneratetagRequest(service, profileId);
+            return new GeneratetagRequest(this.service, profileId);
         }
 
         /// <summary>Generates a tag for a floodlight activity.</summary>
@@ -10534,7 +10534,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="id">Floodlight activity ID.</param>
         public virtual GetRequest Get(long profileId, long id)
         {
-            return new GetRequest(service, profileId, id);
+            return new GetRequest(this.service, profileId, id);
         }
 
         /// <summary>Gets one floodlight activity by ID.</summary>
@@ -10593,7 +10593,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual InsertRequest Insert(Google.Apis.Dfareporting.v4.Data.FloodlightActivity body, long profileId)
         {
-            return new InsertRequest(service, body, profileId);
+            return new InsertRequest(this.service, body, profileId);
         }
 
         /// <summary>Inserts a new floodlight activity.</summary>
@@ -10647,7 +10647,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual ListRequest List(long profileId)
         {
-            return new ListRequest(service, profileId);
+            return new ListRequest(this.service, profileId);
         }
 
         /// <summary>
@@ -10906,7 +10906,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="id">Required. EventTag ID.</param>
         public virtual PatchRequest Patch(Google.Apis.Dfareporting.v4.Data.FloodlightActivity body, long profileId, long id)
         {
-            return new PatchRequest(service, body, profileId, id);
+            return new PatchRequest(this.service, body, profileId, id);
         }
 
         /// <summary>Updates an existing event tag. This method supports patch semantics.</summary>
@@ -10972,7 +10972,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual UpdateRequest Update(Google.Apis.Dfareporting.v4.Data.FloodlightActivity body, long profileId)
         {
-            return new UpdateRequest(service, body, profileId);
+            return new UpdateRequest(this.service, body, profileId);
         }
 
         /// <summary>Updates an existing floodlight activity.</summary>
@@ -11040,7 +11040,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="id">Floodlight activity Group ID.</param>
         public virtual GetRequest Get(long profileId, long id)
         {
-            return new GetRequest(service, profileId, id);
+            return new GetRequest(this.service, profileId, id);
         }
 
         /// <summary>Gets one floodlight activity group by ID.</summary>
@@ -11099,7 +11099,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual InsertRequest Insert(Google.Apis.Dfareporting.v4.Data.FloodlightActivityGroup body, long profileId)
         {
-            return new InsertRequest(service, body, profileId);
+            return new InsertRequest(this.service, body, profileId);
         }
 
         /// <summary>Inserts a new floodlight activity group.</summary>
@@ -11153,7 +11153,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual ListRequest List(long profileId)
         {
-            return new ListRequest(service, profileId);
+            return new ListRequest(this.service, profileId);
         }
 
         /// <summary>
@@ -11366,7 +11366,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="id">Required. EventTag ID.</param>
         public virtual PatchRequest Patch(Google.Apis.Dfareporting.v4.Data.FloodlightActivityGroup body, long profileId, long id)
         {
-            return new PatchRequest(service, body, profileId, id);
+            return new PatchRequest(this.service, body, profileId, id);
         }
 
         /// <summary>Updates an existing event tag. This method supports patch semantics.</summary>
@@ -11432,7 +11432,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual UpdateRequest Update(Google.Apis.Dfareporting.v4.Data.FloodlightActivityGroup body, long profileId)
         {
-            return new UpdateRequest(service, body, profileId);
+            return new UpdateRequest(this.service, body, profileId);
         }
 
         /// <summary>Updates an existing floodlight activity group.</summary>
@@ -11500,7 +11500,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="id">Floodlight configuration ID.</param>
         public virtual GetRequest Get(long profileId, long id)
         {
-            return new GetRequest(service, profileId, id);
+            return new GetRequest(this.service, profileId, id);
         }
 
         /// <summary>Gets one floodlight configuration by ID.</summary>
@@ -11558,7 +11558,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual ListRequest List(long profileId)
         {
-            return new ListRequest(service, profileId);
+            return new ListRequest(this.service, profileId);
         }
 
         /// <summary>Retrieves a list of floodlight configurations, possibly filtered.</summary>
@@ -11620,7 +11620,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="id">Required. EventTag ID.</param>
         public virtual PatchRequest Patch(Google.Apis.Dfareporting.v4.Data.FloodlightConfiguration body, long profileId, long id)
         {
-            return new PatchRequest(service, body, profileId, id);
+            return new PatchRequest(this.service, body, profileId, id);
         }
 
         /// <summary>Updates an existing event tag. This method supports patch semantics.</summary>
@@ -11686,7 +11686,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual UpdateRequest Update(Google.Apis.Dfareporting.v4.Data.FloodlightConfiguration body, long profileId)
         {
-            return new UpdateRequest(service, body, profileId);
+            return new UpdateRequest(this.service, body, profileId);
         }
 
         /// <summary>Updates an existing floodlight configuration.</summary>
@@ -11755,7 +11755,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="id">Inventory item ID.</param>
         public virtual GetRequest Get(long profileId, long projectId, long id)
         {
-            return new GetRequest(service, profileId, projectId, id);
+            return new GetRequest(this.service, profileId, projectId, id);
         }
 
         /// <summary>Gets one inventory item by ID.</summary>
@@ -11827,7 +11827,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="projectId">Project ID for order documents.</param>
         public virtual ListRequest List(long profileId, long projectId)
         {
-            return new ListRequest(service, profileId, projectId);
+            return new ListRequest(this.service, profileId, projectId);
         }
 
         /// <summary>Retrieves a list of inventory items, possibly filtered. This method supports paging.</summary>
@@ -12044,7 +12044,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual ListRequest List(long profileId)
         {
-            return new ListRequest(service, profileId);
+            return new ListRequest(this.service, profileId);
         }
 
         /// <summary>Retrieves a list of languages.</summary>
@@ -12104,7 +12104,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual ListRequest List(long profileId)
         {
-            return new ListRequest(service, profileId);
+            return new ListRequest(this.service, profileId);
         }
 
         /// <summary>Retrieves a list of metros.</summary>
@@ -12165,7 +12165,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="id">Mobile app ID.</param>
         public virtual GetRequest Get(long profileId, string id)
         {
-            return new GetRequest(service, profileId, id);
+            return new GetRequest(this.service, profileId, id);
         }
 
         /// <summary>Gets one mobile app by ID.</summary>
@@ -12223,7 +12223,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual ListRequest List(long profileId)
         {
-            return new ListRequest(service, profileId);
+            return new ListRequest(this.service, profileId);
         }
 
         /// <summary>Retrieves list of available mobile apps.</summary>
@@ -12409,7 +12409,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="id">Mobile carrier ID.</param>
         public virtual GetRequest Get(long profileId, long id)
         {
-            return new GetRequest(service, profileId, id);
+            return new GetRequest(this.service, profileId, id);
         }
 
         /// <summary>Gets one mobile carrier by ID.</summary>
@@ -12467,7 +12467,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual ListRequest List(long profileId)
         {
-            return new ListRequest(service, profileId);
+            return new ListRequest(this.service, profileId);
         }
 
         /// <summary>Retrieves a list of mobile carriers.</summary>
@@ -12528,7 +12528,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="id">Operating system version ID.</param>
         public virtual GetRequest Get(long profileId, long id)
         {
-            return new GetRequest(service, profileId, id);
+            return new GetRequest(this.service, profileId, id);
         }
 
         /// <summary>Gets one operating system version by ID.</summary>
@@ -12586,7 +12586,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual ListRequest List(long profileId)
         {
-            return new ListRequest(service, profileId);
+            return new ListRequest(this.service, profileId);
         }
 
         /// <summary>Retrieves a list of operating system versions.</summary>
@@ -12647,7 +12647,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="dartId">Operating system DART ID.</param>
         public virtual GetRequest Get(long profileId, long dartId)
         {
-            return new GetRequest(service, profileId, dartId);
+            return new GetRequest(this.service, profileId, dartId);
         }
 
         /// <summary>Gets one operating system by DART ID.</summary>
@@ -12705,7 +12705,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual ListRequest List(long profileId)
         {
-            return new ListRequest(service, profileId);
+            return new ListRequest(this.service, profileId);
         }
 
         /// <summary>Retrieves a list of operating systems.</summary>
@@ -12767,7 +12767,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="id">Order ID.</param>
         public virtual GetRequest Get(long profileId, long projectId, long id)
         {
-            return new GetRequest(service, profileId, projectId, id);
+            return new GetRequest(this.service, profileId, projectId, id);
         }
 
         /// <summary>Gets one order by ID.</summary>
@@ -12839,7 +12839,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="projectId">Project ID for orders.</param>
         public virtual ListRequest List(long profileId, long projectId)
         {
-            return new ListRequest(service, profileId, projectId);
+            return new ListRequest(this.service, profileId, projectId);
         }
 
         /// <summary>Retrieves a list of orders, possibly filtered. This method supports paging.</summary>
@@ -13026,7 +13026,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="id">Placement group ID.</param>
         public virtual GetRequest Get(long profileId, long id)
         {
-            return new GetRequest(service, profileId, id);
+            return new GetRequest(this.service, profileId, id);
         }
 
         /// <summary>Gets one placement group by ID.</summary>
@@ -13085,7 +13085,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual InsertRequest Insert(Google.Apis.Dfareporting.v4.Data.PlacementGroup body, long profileId)
         {
-            return new InsertRequest(service, body, profileId);
+            return new InsertRequest(this.service, body, profileId);
         }
 
         /// <summary>Inserts a new placement group.</summary>
@@ -13137,7 +13137,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual ListRequest List(long profileId)
         {
-            return new ListRequest(service, profileId);
+            return new ListRequest(this.service, profileId);
         }
 
         /// <summary>Retrieves a list of placement groups, possibly filtered. This method supports paging.</summary>
@@ -13559,7 +13559,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="id">Required. Placement ID.</param>
         public virtual PatchRequest Patch(Google.Apis.Dfareporting.v4.Data.PlacementGroup body, long profileId, long id)
         {
-            return new PatchRequest(service, body, profileId, id);
+            return new PatchRequest(this.service, body, profileId, id);
         }
 
         /// <summary>Updates an existing placement group. This method supports patch semantics.</summary>
@@ -13625,7 +13625,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual UpdateRequest Update(Google.Apis.Dfareporting.v4.Data.PlacementGroup body, long profileId)
         {
-            return new UpdateRequest(service, body, profileId);
+            return new UpdateRequest(this.service, body, profileId);
         }
 
         /// <summary>Updates an existing placement group.</summary>
@@ -13693,7 +13693,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="id">Placement strategy ID.</param>
         public virtual DeleteRequest Delete(long profileId, long id)
         {
-            return new DeleteRequest(service, profileId, id);
+            return new DeleteRequest(this.service, profileId, id);
         }
 
         /// <summary>Deletes an existing placement strategy.</summary>
@@ -13752,7 +13752,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="id">Placement strategy ID.</param>
         public virtual GetRequest Get(long profileId, long id)
         {
-            return new GetRequest(service, profileId, id);
+            return new GetRequest(this.service, profileId, id);
         }
 
         /// <summary>Gets one placement strategy by ID.</summary>
@@ -13811,7 +13811,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual InsertRequest Insert(Google.Apis.Dfareporting.v4.Data.PlacementStrategy body, long profileId)
         {
-            return new InsertRequest(service, body, profileId);
+            return new InsertRequest(this.service, body, profileId);
         }
 
         /// <summary>Inserts a new placement strategy.</summary>
@@ -13863,7 +13863,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual ListRequest List(long profileId)
         {
-            return new ListRequest(service, profileId);
+            return new ListRequest(this.service, profileId);
         }
 
         /// <summary>Retrieves a list of placement strategies, possibly filtered. This method supports paging.</summary>
@@ -14013,7 +14013,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="id">Required. PlacementStrategy ID.</param>
         public virtual PatchRequest Patch(Google.Apis.Dfareporting.v4.Data.PlacementStrategy body, long profileId, long id)
         {
-            return new PatchRequest(service, body, profileId, id);
+            return new PatchRequest(this.service, body, profileId, id);
         }
 
         /// <summary>Updates an existing placement strategy. This method supports patch semantics.</summary>
@@ -14079,7 +14079,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual UpdateRequest Update(Google.Apis.Dfareporting.v4.Data.PlacementStrategy body, long profileId)
         {
-            return new UpdateRequest(service, body, profileId);
+            return new UpdateRequest(this.service, body, profileId);
         }
 
         /// <summary>Updates an existing placement strategy.</summary>
@@ -14146,7 +14146,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual GeneratetagsRequest Generatetags(long profileId)
         {
-            return new GeneratetagsRequest(service, profileId);
+            return new GeneratetagsRequest(this.service, profileId);
         }
 
         /// <summary>Generates tags for a placement.</summary>
@@ -14333,7 +14333,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="id">Placement ID.</param>
         public virtual GetRequest Get(long profileId, long id)
         {
-            return new GetRequest(service, profileId, id);
+            return new GetRequest(this.service, profileId, id);
         }
 
         /// <summary>Gets one placement by ID.</summary>
@@ -14392,7 +14392,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual InsertRequest Insert(Google.Apis.Dfareporting.v4.Data.Placement body, long profileId)
         {
-            return new InsertRequest(service, body, profileId);
+            return new InsertRequest(this.service, body, profileId);
         }
 
         /// <summary>Inserts a new placement.</summary>
@@ -14444,7 +14444,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual ListRequest List(long profileId)
         {
-            return new ListRequest(service, profileId);
+            return new ListRequest(this.service, profileId);
         }
 
         /// <summary>Retrieves a list of placements, possibly filtered. This method supports paging.</summary>
@@ -14940,7 +14940,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="id">Required. Placement ID.</param>
         public virtual PatchRequest Patch(Google.Apis.Dfareporting.v4.Data.Placement body, long profileId, long id)
         {
-            return new PatchRequest(service, body, profileId, id);
+            return new PatchRequest(this.service, body, profileId, id);
         }
 
         /// <summary>Updates an existing placement. This method supports patch semantics.</summary>
@@ -15006,7 +15006,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual UpdateRequest Update(Google.Apis.Dfareporting.v4.Data.Placement body, long profileId)
         {
-            return new UpdateRequest(service, body, profileId);
+            return new UpdateRequest(this.service, body, profileId);
         }
 
         /// <summary>Updates an existing placement.</summary>
@@ -15074,7 +15074,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="id">Platform type ID.</param>
         public virtual GetRequest Get(long profileId, long id)
         {
-            return new GetRequest(service, profileId, id);
+            return new GetRequest(this.service, profileId, id);
         }
 
         /// <summary>Gets one platform type by ID.</summary>
@@ -15132,7 +15132,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual ListRequest List(long profileId)
         {
-            return new ListRequest(service, profileId);
+            return new ListRequest(this.service, profileId);
         }
 
         /// <summary>Retrieves a list of platform types.</summary>
@@ -15193,7 +15193,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="code">Postal code ID.</param>
         public virtual GetRequest Get(long profileId, string code)
         {
-            return new GetRequest(service, profileId, code);
+            return new GetRequest(this.service, profileId, code);
         }
 
         /// <summary>Gets one postal code by ID.</summary>
@@ -15251,7 +15251,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual ListRequest List(long profileId)
         {
-            return new ListRequest(service, profileId);
+            return new ListRequest(this.service, profileId);
         }
 
         /// <summary>Retrieves a list of postal codes.</summary>
@@ -15312,7 +15312,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="id">Project ID.</param>
         public virtual GetRequest Get(long profileId, long id)
         {
-            return new GetRequest(service, profileId, id);
+            return new GetRequest(this.service, profileId, id);
         }
 
         /// <summary>Gets one project by ID.</summary>
@@ -15370,7 +15370,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual ListRequest List(long profileId)
         {
-            return new ListRequest(service, profileId);
+            return new ListRequest(this.service, profileId);
         }
 
         /// <summary>Retrieves a list of projects, possibly filtered. This method supports paging .</summary>
@@ -15544,7 +15544,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual ListRequest List(long profileId)
         {
-            return new ListRequest(service, profileId);
+            return new ListRequest(this.service, profileId);
         }
 
         /// <summary>Retrieves a list of regions.</summary>
@@ -15605,7 +15605,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="remarketingListId">Remarketing list ID.</param>
         public virtual GetRequest Get(long profileId, long remarketingListId)
         {
-            return new GetRequest(service, profileId, remarketingListId);
+            return new GetRequest(this.service, profileId, remarketingListId);
         }
 
         /// <summary>Gets one remarketing list share by remarketing list ID.</summary>
@@ -15665,7 +15665,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="id">Required. RemarketingList ID.</param>
         public virtual PatchRequest Patch(Google.Apis.Dfareporting.v4.Data.RemarketingListShare body, long profileId, long id)
         {
-            return new PatchRequest(service, body, profileId, id);
+            return new PatchRequest(this.service, body, profileId, id);
         }
 
         /// <summary>Updates an existing RemarketingListShare. This method supports patch semantics.</summary>
@@ -15731,7 +15731,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual UpdateRequest Update(Google.Apis.Dfareporting.v4.Data.RemarketingListShare body, long profileId)
         {
-            return new UpdateRequest(service, body, profileId);
+            return new UpdateRequest(this.service, body, profileId);
         }
 
         /// <summary>Updates an existing remarketing list share.</summary>
@@ -15799,7 +15799,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="id">Remarketing list ID.</param>
         public virtual GetRequest Get(long profileId, long id)
         {
-            return new GetRequest(service, profileId, id);
+            return new GetRequest(this.service, profileId, id);
         }
 
         /// <summary>Gets one remarketing list by ID.</summary>
@@ -15858,7 +15858,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual InsertRequest Insert(Google.Apis.Dfareporting.v4.Data.RemarketingList body, long profileId)
         {
-            return new InsertRequest(service, body, profileId);
+            return new InsertRequest(this.service, body, profileId);
         }
 
         /// <summary>Inserts a new remarketing list.</summary>
@@ -15911,7 +15911,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="advertiserId">Required. Select only remarketing lists owned by this advertiser.</param>
         public virtual ListRequest List(long profileId, long advertiserId)
         {
-            return new ListRequest(service, profileId, advertiserId);
+            return new ListRequest(this.service, profileId, advertiserId);
         }
 
         /// <summary>Retrieves a list of remarketing lists, possibly filtered. This method supports paging.</summary>
@@ -16085,7 +16085,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="id">Required. RemarketingList ID.</param>
         public virtual PatchRequest Patch(Google.Apis.Dfareporting.v4.Data.RemarketingList body, long profileId, long id)
         {
-            return new PatchRequest(service, body, profileId, id);
+            return new PatchRequest(this.service, body, profileId, id);
         }
 
         /// <summary>Updates an existing RemarketingList. This method supports patch semantics.</summary>
@@ -16151,7 +16151,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual UpdateRequest Update(Google.Apis.Dfareporting.v4.Data.RemarketingList body, long profileId)
         {
-            return new UpdateRequest(service, body, profileId);
+            return new UpdateRequest(this.service, body, profileId);
         }
 
         /// <summary>Updates an existing remarketing list.</summary>
@@ -16241,7 +16241,7 @@ namespace Google.Apis.Dfareporting.v4
             /// <param name="profileId">The Campaign Manager 360 user profile ID.</param>
             public virtual QueryRequest Query(Google.Apis.Dfareporting.v4.Data.Report body, long profileId)
             {
-                return new QueryRequest(service, body, profileId);
+                return new QueryRequest(this.service, body, profileId);
             }
 
             /// <summary>
@@ -16318,7 +16318,7 @@ namespace Google.Apis.Dfareporting.v4
             /// <param name="fileId">The ID of the report file.</param>
             public virtual GetRequest Get(long profileId, long reportId, long fileId)
             {
-                return new GetRequest(service, profileId, reportId, fileId);
+                return new GetRequest(this.service, profileId, reportId, fileId);
             }
 
             /// <summary>
@@ -16480,7 +16480,7 @@ namespace Google.Apis.Dfareporting.v4
             /// <param name="reportId">The ID of the parent report.</param>
             public virtual ListRequest List(long profileId, long reportId)
             {
-                return new ListRequest(service, profileId, reportId);
+                return new ListRequest(this.service, profileId, reportId);
             }
 
             /// <summary>Lists files for a report.</summary>
@@ -16612,7 +16612,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="reportId">The ID of the report.</param>
         public virtual DeleteRequest Delete(long profileId, long reportId)
         {
-            return new DeleteRequest(service, profileId, reportId);
+            return new DeleteRequest(this.service, profileId, reportId);
         }
 
         /// <summary>Deletes a report by its ID.</summary>
@@ -16671,7 +16671,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="reportId">The ID of the report.</param>
         public virtual GetRequest Get(long profileId, long reportId)
         {
-            return new GetRequest(service, profileId, reportId);
+            return new GetRequest(this.service, profileId, reportId);
         }
 
         /// <summary>Retrieves a report by its ID.</summary>
@@ -16730,7 +16730,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">The Campaign Manager 360 user profile ID.</param>
         public virtual InsertRequest Insert(Google.Apis.Dfareporting.v4.Data.Report body, long profileId)
         {
-            return new InsertRequest(service, body, profileId);
+            return new InsertRequest(this.service, body, profileId);
         }
 
         /// <summary>Creates a report.</summary>
@@ -16782,7 +16782,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">The Campaign Manager 360 user profile ID.</param>
         public virtual ListRequest List(long profileId)
         {
-            return new ListRequest(service, profileId);
+            return new ListRequest(this.service, profileId);
         }
 
         /// <summary>Retrieves list of reports.</summary>
@@ -16929,7 +16929,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="reportId">The ID of the report.</param>
         public virtual PatchRequest Patch(Google.Apis.Dfareporting.v4.Data.Report body, long profileId, long reportId)
         {
-            return new PatchRequest(service, body, profileId, reportId);
+            return new PatchRequest(this.service, body, profileId, reportId);
         }
 
         /// <summary>Updates an existing report. This method supports patch semantics.</summary>
@@ -16995,7 +16995,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="reportId">The ID of the report.</param>
         public virtual RunRequest Run(long profileId, long reportId)
         {
-            return new RunRequest(service, profileId, reportId);
+            return new RunRequest(this.service, profileId, reportId);
         }
 
         /// <summary>Runs a report.</summary>
@@ -17067,7 +17067,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="reportId">The ID of the report.</param>
         public virtual UpdateRequest Update(Google.Apis.Dfareporting.v4.Data.Report body, long profileId, long reportId)
         {
-            return new UpdateRequest(service, body, profileId, reportId);
+            return new UpdateRequest(this.service, body, profileId, reportId);
         }
 
         /// <summary>Updates a report.</summary>
@@ -17148,7 +17148,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="id">Site ID.</param>
         public virtual GetRequest Get(long profileId, long id)
         {
-            return new GetRequest(service, profileId, id);
+            return new GetRequest(this.service, profileId, id);
         }
 
         /// <summary>Gets one site by ID.</summary>
@@ -17207,7 +17207,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual InsertRequest Insert(Google.Apis.Dfareporting.v4.Data.Site body, long profileId)
         {
-            return new InsertRequest(service, body, profileId);
+            return new InsertRequest(this.service, body, profileId);
         }
 
         /// <summary>Inserts a new site.</summary>
@@ -17259,7 +17259,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual ListRequest List(long profileId)
         {
-            return new ListRequest(service, profileId);
+            return new ListRequest(this.service, profileId);
         }
 
         /// <summary>Retrieves a list of sites, possibly filtered. This method supports paging.</summary>
@@ -17519,7 +17519,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="id">Required. Site ID.</param>
         public virtual PatchRequest Patch(Google.Apis.Dfareporting.v4.Data.Site body, long profileId, long id)
         {
-            return new PatchRequest(service, body, profileId, id);
+            return new PatchRequest(this.service, body, profileId, id);
         }
 
         /// <summary>Updates an existing site. This method supports patch semantics.</summary>
@@ -17585,7 +17585,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual UpdateRequest Update(Google.Apis.Dfareporting.v4.Data.Site body, long profileId)
         {
-            return new UpdateRequest(service, body, profileId);
+            return new UpdateRequest(this.service, body, profileId);
         }
 
         /// <summary>Updates an existing site.</summary>
@@ -17653,7 +17653,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="id">Size ID.</param>
         public virtual GetRequest Get(long profileId, long id)
         {
-            return new GetRequest(service, profileId, id);
+            return new GetRequest(this.service, profileId, id);
         }
 
         /// <summary>Gets one size by ID.</summary>
@@ -17712,7 +17712,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual InsertRequest Insert(Google.Apis.Dfareporting.v4.Data.Size body, long profileId)
         {
-            return new InsertRequest(service, body, profileId);
+            return new InsertRequest(this.service, body, profileId);
         }
 
         /// <summary>Inserts a new size.</summary>
@@ -17768,7 +17768,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual ListRequest List(long profileId)
         {
-            return new ListRequest(service, profileId);
+            return new ListRequest(this.service, profileId);
         }
 
         /// <summary>
@@ -17881,7 +17881,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="id">Subaccount ID.</param>
         public virtual GetRequest Get(long profileId, long id)
         {
-            return new GetRequest(service, profileId, id);
+            return new GetRequest(this.service, profileId, id);
         }
 
         /// <summary>Gets one subaccount by ID.</summary>
@@ -17940,7 +17940,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual InsertRequest Insert(Google.Apis.Dfareporting.v4.Data.Subaccount body, long profileId)
         {
-            return new InsertRequest(service, body, profileId);
+            return new InsertRequest(this.service, body, profileId);
         }
 
         /// <summary>Inserts a new subaccount.</summary>
@@ -17992,7 +17992,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual ListRequest List(long profileId)
         {
-            return new ListRequest(service, profileId);
+            return new ListRequest(this.service, profileId);
         }
 
         /// <summary>Gets a list of subaccounts, possibly filtered. This method supports paging.</summary>
@@ -18141,7 +18141,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="id">Required. Subaccount ID.</param>
         public virtual PatchRequest Patch(Google.Apis.Dfareporting.v4.Data.Subaccount body, long profileId, long id)
         {
-            return new PatchRequest(service, body, profileId, id);
+            return new PatchRequest(this.service, body, profileId, id);
         }
 
         /// <summary>Updates an existing subaccount. This method supports patch semantics.</summary>
@@ -18207,7 +18207,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual UpdateRequest Update(Google.Apis.Dfareporting.v4.Data.Subaccount body, long profileId)
         {
-            return new UpdateRequest(service, body, profileId);
+            return new UpdateRequest(this.service, body, profileId);
         }
 
         /// <summary>Updates an existing subaccount.</summary>
@@ -18275,7 +18275,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="id">Remarketing list ID.</param>
         public virtual GetRequest Get(long profileId, long id)
         {
-            return new GetRequest(service, profileId, id);
+            return new GetRequest(this.service, profileId, id);
         }
 
         /// <summary>Gets one remarketing list by ID.</summary>
@@ -18338,7 +18338,7 @@ namespace Google.Apis.Dfareporting.v4
         /// </param>
         public virtual ListRequest List(long profileId, long advertiserId)
         {
-            return new ListRequest(service, profileId, advertiserId);
+            return new ListRequest(this.service, profileId, advertiserId);
         }
 
         /// <summary>
@@ -18516,7 +18516,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="id">Targeting template ID.</param>
         public virtual GetRequest Get(long profileId, long id)
         {
-            return new GetRequest(service, profileId, id);
+            return new GetRequest(this.service, profileId, id);
         }
 
         /// <summary>Gets one targeting template by ID.</summary>
@@ -18575,7 +18575,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual InsertRequest Insert(Google.Apis.Dfareporting.v4.Data.TargetingTemplate body, long profileId)
         {
-            return new InsertRequest(service, body, profileId);
+            return new InsertRequest(this.service, body, profileId);
         }
 
         /// <summary>Inserts a new targeting template.</summary>
@@ -18629,7 +18629,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual ListRequest List(long profileId)
         {
-            return new ListRequest(service, profileId);
+            return new ListRequest(this.service, profileId);
         }
 
         /// <summary>
@@ -18792,7 +18792,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="id">Required. RemarketingList ID.</param>
         public virtual PatchRequest Patch(Google.Apis.Dfareporting.v4.Data.TargetingTemplate body, long profileId, long id)
         {
-            return new PatchRequest(service, body, profileId, id);
+            return new PatchRequest(this.service, body, profileId, id);
         }
 
         /// <summary>Updates an existing targeting template. This method supports patch semantics.</summary>
@@ -18858,7 +18858,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual UpdateRequest Update(Google.Apis.Dfareporting.v4.Data.TargetingTemplate body, long profileId)
         {
-            return new UpdateRequest(service, body, profileId);
+            return new UpdateRequest(this.service, body, profileId);
         }
 
         /// <summary>Updates an existing targeting template.</summary>
@@ -18925,7 +18925,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">The user profile ID.</param>
         public virtual GetRequest Get(long profileId)
         {
-            return new GetRequest(service, profileId);
+            return new GetRequest(this.service, profileId);
         }
 
         /// <summary>Gets one user profile by ID.</summary>
@@ -18969,7 +18969,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <summary>Retrieves list of user profiles for a user.</summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>Retrieves list of user profiles for a user.</summary>
@@ -19017,7 +19017,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="id">User role permission group ID.</param>
         public virtual GetRequest Get(long profileId, long id)
         {
-            return new GetRequest(service, profileId, id);
+            return new GetRequest(this.service, profileId, id);
         }
 
         /// <summary>Gets one user role permission group by ID.</summary>
@@ -19075,7 +19075,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual ListRequest List(long profileId)
         {
-            return new ListRequest(service, profileId);
+            return new ListRequest(this.service, profileId);
         }
 
         /// <summary>Gets a list of all supported user role permission groups.</summary>
@@ -19136,7 +19136,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="id">User role permission ID.</param>
         public virtual GetRequest Get(long profileId, long id)
         {
-            return new GetRequest(service, profileId, id);
+            return new GetRequest(this.service, profileId, id);
         }
 
         /// <summary>Gets one user role permission by ID.</summary>
@@ -19194,7 +19194,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual ListRequest List(long profileId)
         {
-            return new ListRequest(service, profileId);
+            return new ListRequest(this.service, profileId);
         }
 
         /// <summary>Gets a list of user role permissions, possibly filtered.</summary>
@@ -19267,7 +19267,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="id">User role ID.</param>
         public virtual DeleteRequest Delete(long profileId, long id)
         {
-            return new DeleteRequest(service, profileId, id);
+            return new DeleteRequest(this.service, profileId, id);
         }
 
         /// <summary>Deletes an existing user role.</summary>
@@ -19326,7 +19326,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="id">User role ID.</param>
         public virtual GetRequest Get(long profileId, long id)
         {
-            return new GetRequest(service, profileId, id);
+            return new GetRequest(this.service, profileId, id);
         }
 
         /// <summary>Gets one user role by ID.</summary>
@@ -19385,7 +19385,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual InsertRequest Insert(Google.Apis.Dfareporting.v4.Data.UserRole body, long profileId)
         {
-            return new InsertRequest(service, body, profileId);
+            return new InsertRequest(this.service, body, profileId);
         }
 
         /// <summary>Inserts a new user role.</summary>
@@ -19437,7 +19437,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual ListRequest List(long profileId)
         {
-            return new ListRequest(service, profileId);
+            return new ListRequest(this.service, profileId);
         }
 
         /// <summary>Retrieves a list of user roles, possibly filtered. This method supports paging.</summary>
@@ -19610,7 +19610,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="id">Required. UserRole ID.</param>
         public virtual PatchRequest Patch(Google.Apis.Dfareporting.v4.Data.UserRole body, long profileId, long id)
         {
-            return new PatchRequest(service, body, profileId, id);
+            return new PatchRequest(this.service, body, profileId, id);
         }
 
         /// <summary>Updates an existing user role. This method supports patch semantics.</summary>
@@ -19676,7 +19676,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual UpdateRequest Update(Google.Apis.Dfareporting.v4.Data.UserRole body, long profileId)
         {
-            return new UpdateRequest(service, body, profileId);
+            return new UpdateRequest(this.service, body, profileId);
         }
 
         /// <summary>Updates an existing user role.</summary>
@@ -19744,7 +19744,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="id">Video format ID.</param>
         public virtual GetRequest Get(long profileId, int id)
         {
-            return new GetRequest(service, profileId, id);
+            return new GetRequest(this.service, profileId, id);
         }
 
         /// <summary>Gets one video format by ID.</summary>
@@ -19802,7 +19802,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual ListRequest List(long profileId)
         {
-            return new ListRequest(service, profileId);
+            return new ListRequest(this.service, profileId);
         }
 
         /// <summary>Lists available video formats.</summary>
@@ -20356,8 +20356,8 @@ namespace Google.Apis.Dfareporting.v4.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="EndTimeRaw"/>.</summary>
@@ -20450,8 +20450,8 @@ namespace Google.Apis.Dfareporting.v4.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="StartTimeRaw"/>.</summary>
@@ -21363,8 +21363,8 @@ namespace Google.Apis.Dfareporting.v4.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ChangeTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ChangeTimeRaw);
-            set => ChangeTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(ChangeTimeRaw);
+            set => ChangeTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="ChangeTimeRaw"/>.</summary>
@@ -23168,8 +23168,8 @@ namespace Google.Apis.Dfareporting.v4.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="EndTimeRaw"/>.</summary>
@@ -23211,8 +23211,8 @@ namespace Google.Apis.Dfareporting.v4.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="StartTimeRaw"/>.</summary>

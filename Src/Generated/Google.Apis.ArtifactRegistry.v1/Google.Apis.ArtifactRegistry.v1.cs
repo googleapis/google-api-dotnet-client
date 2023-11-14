@@ -328,7 +328,7 @@ namespace Google.Apis.ArtifactRegistry.v1
                 /// <param name="name">The name of the operation resource.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -429,7 +429,7 @@ namespace Google.Apis.ArtifactRegistry.v1
                     /// </param>
                     public virtual ImportRequest Import(Google.Apis.ArtifactRegistry.v1.Data.ImportAptArtifactsRequest body, string parent)
                     {
-                        return new ImportRequest(service, body, parent);
+                        return new ImportRequest(this.service, body, parent);
                     }
 
                     /// <summary>
@@ -492,7 +492,7 @@ namespace Google.Apis.ArtifactRegistry.v1
                     /// </param>
                     public virtual UploadRequest Upload(Google.Apis.ArtifactRegistry.v1.Data.UploadAptArtifactRequest body, string parent)
                     {
-                        return new UploadRequest(service, body, parent);
+                        return new UploadRequest(this.service, body, parent);
                     }
 
                     /// <summary>
@@ -718,7 +718,7 @@ namespace Google.Apis.ArtifactRegistry.v1
                     /// <param name="name">Required. The name of the docker images.</param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Gets a docker image.</summary>
@@ -765,7 +765,7 @@ namespace Google.Apis.ArtifactRegistry.v1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists docker images.</summary>
@@ -866,7 +866,7 @@ namespace Google.Apis.ArtifactRegistry.v1
                     /// <param name="name">Required. The name of the file to retrieve.</param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Gets a file.</summary>
@@ -914,7 +914,7 @@ namespace Google.Apis.ArtifactRegistry.v1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists files.</summary>
@@ -1041,7 +1041,7 @@ namespace Google.Apis.ArtifactRegistry.v1
                     /// </param>
                     public virtual UploadRequest Upload(Google.Apis.ArtifactRegistry.v1.Data.UploadGoModuleRequest body, string parent)
                     {
-                        return new UploadRequest(service, body, parent);
+                        return new UploadRequest(this.service, body, parent);
                     }
 
                     /// <summary>
@@ -1272,7 +1272,7 @@ namespace Google.Apis.ArtifactRegistry.v1
                     /// </param>
                     public virtual ImportRequest Import(Google.Apis.ArtifactRegistry.v1.Data.ImportGoogetArtifactsRequest body, string parent)
                     {
-                        return new ImportRequest(service, body, parent);
+                        return new ImportRequest(this.service, body, parent);
                     }
 
                     /// <summary>
@@ -1335,7 +1335,7 @@ namespace Google.Apis.ArtifactRegistry.v1
                     /// </param>
                     public virtual UploadRequest Upload(Google.Apis.ArtifactRegistry.v1.Data.UploadGoogetArtifactRequest body, string parent)
                     {
-                        return new UploadRequest(service, body, parent);
+                        return new UploadRequest(this.service, body, parent);
                     }
 
                     /// <summary>
@@ -1568,7 +1568,7 @@ namespace Google.Apis.ArtifactRegistry.v1
                     /// </param>
                     public virtual UploadRequest Upload(Google.Apis.ArtifactRegistry.v1.Data.UploadKfpArtifactRequest body, string parent)
                     {
-                        return new UploadRequest(service, body, parent);
+                        return new UploadRequest(this.service, body, parent);
                     }
 
                     /// <summary>
@@ -1798,7 +1798,7 @@ namespace Google.Apis.ArtifactRegistry.v1
                     /// <param name="name">Required. The name of the maven artifact.</param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Gets a maven artifact.</summary>
@@ -1845,7 +1845,7 @@ namespace Google.Apis.ArtifactRegistry.v1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists maven artifacts.</summary>
@@ -1934,7 +1934,7 @@ namespace Google.Apis.ArtifactRegistry.v1
                     /// <param name="name">Required. The name of the npm package.</param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Gets a npm package.</summary>
@@ -1981,7 +1981,7 @@ namespace Google.Apis.ArtifactRegistry.v1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists npm packages.</summary>
@@ -2090,7 +2090,7 @@ namespace Google.Apis.ArtifactRegistry.v1
                         /// <param name="parent">The name of the parent resource where the tag will be created.</param>
                         public virtual CreateRequest Create(Google.Apis.ArtifactRegistry.v1.Data.Tag body, string parent)
                         {
-                            return new CreateRequest(service, body, parent);
+                            return new CreateRequest(this.service, body, parent);
                         }
 
                         /// <summary>Creates a tag.</summary>
@@ -2154,7 +2154,7 @@ namespace Google.Apis.ArtifactRegistry.v1
                         /// <param name="name">The name of the tag to delete.</param>
                         public virtual DeleteRequest Delete(string name)
                         {
-                            return new DeleteRequest(service, name);
+                            return new DeleteRequest(this.service, name);
                         }
 
                         /// <summary>Deletes a tag.</summary>
@@ -2199,7 +2199,7 @@ namespace Google.Apis.ArtifactRegistry.v1
                         /// <param name="name">The name of the tag to retrieve.</param>
                         public virtual GetRequest Get(string name)
                         {
-                            return new GetRequest(service, name);
+                            return new GetRequest(this.service, name);
                         }
 
                         /// <summary>Gets a tag.</summary>
@@ -2247,7 +2247,7 @@ namespace Google.Apis.ArtifactRegistry.v1
                         /// </param>
                         public virtual ListRequest List(string parent)
                         {
-                            return new ListRequest(service, parent);
+                            return new ListRequest(this.service, parent);
                         }
 
                         /// <summary>Lists tags.</summary>
@@ -2345,7 +2345,7 @@ namespace Google.Apis.ArtifactRegistry.v1
                         /// </param>
                         public virtual PatchRequest Patch(Google.Apis.ArtifactRegistry.v1.Data.Tag body, string name)
                         {
-                            return new PatchRequest(service, body, name);
+                            return new PatchRequest(this.service, body, name);
                         }
 
                         /// <summary>Updates a tag.</summary>
@@ -2439,7 +2439,7 @@ namespace Google.Apis.ArtifactRegistry.v1
                         /// <param name="parent">The name of the repository holding all requested versions.</param>
                         public virtual BatchDeleteRequest BatchDelete(Google.Apis.ArtifactRegistry.v1.Data.BatchDeleteVersionsRequest body, string parent)
                         {
-                            return new BatchDeleteRequest(service, body, parent);
+                            return new BatchDeleteRequest(this.service, body, parent);
                         }
 
                         /// <summary>
@@ -2497,7 +2497,7 @@ namespace Google.Apis.ArtifactRegistry.v1
                         /// <param name="name">The name of the version to delete.</param>
                         public virtual DeleteRequest Delete(string name)
                         {
-                            return new DeleteRequest(service, name);
+                            return new DeleteRequest(this.service, name);
                         }
 
                         /// <summary>
@@ -2560,7 +2560,7 @@ namespace Google.Apis.ArtifactRegistry.v1
                         /// <param name="name">The name of the version to retrieve.</param>
                         public virtual GetRequest Get(string name)
                         {
-                            return new GetRequest(service, name);
+                            return new GetRequest(this.service, name);
                         }
 
                         /// <summary>Gets a version</summary>
@@ -2637,7 +2637,7 @@ namespace Google.Apis.ArtifactRegistry.v1
                         /// <param name="parent">The name of the parent resource whose versions will be listed.</param>
                         public virtual ListRequest List(string parent)
                         {
-                            return new ListRequest(service, parent);
+                            return new ListRequest(this.service, parent);
                         }
 
                         /// <summary>Lists versions.</summary>
@@ -2756,7 +2756,7 @@ namespace Google.Apis.ArtifactRegistry.v1
                     /// <param name="name">Required. The name of the package to delete.</param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -2804,7 +2804,7 @@ namespace Google.Apis.ArtifactRegistry.v1
                     /// <param name="name">Required. The name of the package to retrieve.</param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Gets a package.</summary>
@@ -2851,7 +2851,7 @@ namespace Google.Apis.ArtifactRegistry.v1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists packages.</summary>
@@ -2938,7 +2938,7 @@ namespace Google.Apis.ArtifactRegistry.v1
                     /// <param name="name">Required. The name of the python package.</param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Gets a python package.</summary>
@@ -2985,7 +2985,7 @@ namespace Google.Apis.ArtifactRegistry.v1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists python packages.</summary>
@@ -3081,7 +3081,7 @@ namespace Google.Apis.ArtifactRegistry.v1
                     /// </param>
                     public virtual ImportRequest Import(Google.Apis.ArtifactRegistry.v1.Data.ImportYumArtifactsRequest body, string parent)
                     {
-                        return new ImportRequest(service, body, parent);
+                        return new ImportRequest(this.service, body, parent);
                     }
 
                     /// <summary>
@@ -3144,7 +3144,7 @@ namespace Google.Apis.ArtifactRegistry.v1
                     /// </param>
                     public virtual UploadRequest Upload(Google.Apis.ArtifactRegistry.v1.Data.UploadYumArtifactRequest body, string parent)
                     {
-                        return new UploadRequest(service, body, parent);
+                        return new UploadRequest(this.service, body, parent);
                     }
 
                     /// <summary>
@@ -3359,7 +3359,7 @@ namespace Google.Apis.ArtifactRegistry.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.ArtifactRegistry.v1.Data.Repository body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -3432,7 +3432,7 @@ namespace Google.Apis.ArtifactRegistry.v1
                 /// <param name="name">Required. The name of the repository to delete.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -3481,7 +3481,7 @@ namespace Google.Apis.ArtifactRegistry.v1
                 /// <param name="name">Required. The name of the repository to retrieve.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets a repository.</summary>
@@ -3530,7 +3530,7 @@ namespace Google.Apis.ArtifactRegistry.v1
                 /// </param>
                 public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                 {
-                    return new GetIamPolicyRequest(service, resource);
+                    return new GetIamPolicyRequest(this.service, resource);
                 }
 
                 /// <summary>Gets the IAM policy for a given resource.</summary>
@@ -3602,7 +3602,7 @@ namespace Google.Apis.ArtifactRegistry.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists repositories.</summary>
@@ -3674,7 +3674,7 @@ namespace Google.Apis.ArtifactRegistry.v1
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.ArtifactRegistry.v1.Data.Repository body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates a repository.</summary>
@@ -3748,7 +3748,7 @@ namespace Google.Apis.ArtifactRegistry.v1
                 /// </param>
                 public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.ArtifactRegistry.v1.Data.SetIamPolicyRequest body, string resource)
                 {
-                    return new SetIamPolicyRequest(service, body, resource);
+                    return new SetIamPolicyRequest(this.service, body, resource);
                 }
 
                 /// <summary>Updates the IAM policy for a given resource.</summary>
@@ -3809,7 +3809,7 @@ namespace Google.Apis.ArtifactRegistry.v1
                 /// </param>
                 public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.ArtifactRegistry.v1.Data.TestIamPermissionsRequest body, string resource)
                 {
-                    return new TestIamPermissionsRequest(service, body, resource);
+                    return new TestIamPermissionsRequest(this.service, body, resource);
                 }
 
                 /// <summary>Tests if the caller has a list of permissions on a resource.</summary>
@@ -3866,7 +3866,7 @@ namespace Google.Apis.ArtifactRegistry.v1
             /// <param name="name">Resource name for the location.</param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets information about a location.</summary>
@@ -3911,7 +3911,7 @@ namespace Google.Apis.ArtifactRegistry.v1
             /// <param name="name">Required. The name of the VPCSCConfig resource.</param>
             public virtual GetVpcscConfigRequest GetVpcscConfig(string name)
             {
-                return new GetVpcscConfigRequest(service, name);
+                return new GetVpcscConfigRequest(this.service, name);
             }
 
             /// <summary>Retrieves the VPCSC Config for the Project.</summary>
@@ -3956,7 +3956,7 @@ namespace Google.Apis.ArtifactRegistry.v1
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
             {
-                return new ListRequest(service, name);
+                return new ListRequest(this.service, name);
             }
 
             /// <summary>Lists information about the supported locations for this service.</summary>
@@ -4050,7 +4050,7 @@ namespace Google.Apis.ArtifactRegistry.v1
             /// </param>
             public virtual UpdateVpcscConfigRequest UpdateVpcscConfig(Google.Apis.ArtifactRegistry.v1.Data.VPCSCConfig body, string name)
             {
-                return new UpdateVpcscConfigRequest(service, body, name);
+                return new UpdateVpcscConfigRequest(this.service, body, name);
             }
 
             /// <summary>Updates the VPCSC Config for the Project.</summary>
@@ -4119,7 +4119,7 @@ namespace Google.Apis.ArtifactRegistry.v1
         /// <param name="name">Required. The name of the projectSettings resource.</param>
         public virtual GetProjectSettingsRequest GetProjectSettings(string name)
         {
-            return new GetProjectSettingsRequest(service, name);
+            return new GetProjectSettingsRequest(this.service, name);
         }
 
         /// <summary>Retrieves the Settings for the Project.</summary>
@@ -4168,7 +4168,7 @@ namespace Google.Apis.ArtifactRegistry.v1
         /// </param>
         public virtual UpdateProjectSettingsRequest UpdateProjectSettings(Google.Apis.ArtifactRegistry.v1.Data.ProjectSettings body, string name)
         {
-            return new UpdateProjectSettingsRequest(service, body, name);
+            return new UpdateProjectSettingsRequest(this.service, body, name);
         }
 
         /// <summary>Updates the Settings for the Project.</summary>
@@ -4483,8 +4483,8 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? BuildTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(BuildTimeRaw);
-            set => BuildTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(BuildTimeRaw);
+            set => BuildTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -4549,8 +4549,8 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _uploadTimeRaw;
@@ -4586,8 +4586,8 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UploadTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UploadTimeRaw);
-            set => UploadTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UploadTimeRaw);
+            set => UploadTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -4720,8 +4720,8 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The resource name of a Go module.</summary>
@@ -4761,8 +4761,8 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -4831,8 +4831,8 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _fetchTimeRaw;
@@ -4871,8 +4871,8 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? FetchTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(FetchTimeRaw);
-            set => FetchTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(FetchTimeRaw);
+            set => FetchTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The hashes of the file content.</summary>
@@ -4928,8 +4928,8 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -5435,8 +5435,8 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Group ID for the artifact. Example: com.google.guava</summary>
@@ -5492,8 +5492,8 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Version of this artifact.</summary>
@@ -5569,8 +5569,8 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -5623,8 +5623,8 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Version of this package.</summary>
@@ -5732,8 +5732,8 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The display name of the package.</summary>
@@ -5782,8 +5782,8 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -5917,8 +5917,8 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -5968,8 +5968,8 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -6087,8 +6087,8 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The user-provided description of the repository.</summary>
@@ -6185,8 +6185,8 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Configuration specific for a Virtual Repository.</summary>
@@ -6578,8 +6578,8 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Optional. Description of the version, as specified in its metadata.</summary>
@@ -6640,8 +6640,8 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>

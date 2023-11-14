@@ -331,7 +331,7 @@ namespace Google.Apis.Area120Tables.v1alpha1
             /// </param>
             public virtual BatchCreateRequest BatchCreate(Google.Apis.Area120Tables.v1alpha1.Data.BatchCreateRowsRequest body, string parent)
             {
-                return new BatchCreateRequest(service, body, parent);
+                return new BatchCreateRequest(this.service, body, parent);
             }
 
             /// <summary>Creates multiple rows.</summary>
@@ -386,7 +386,7 @@ namespace Google.Apis.Area120Tables.v1alpha1
             /// </param>
             public virtual BatchDeleteRequest BatchDelete(Google.Apis.Area120Tables.v1alpha1.Data.BatchDeleteRowsRequest body, string parent)
             {
-                return new BatchDeleteRequest(service, body, parent);
+                return new BatchDeleteRequest(this.service, body, parent);
             }
 
             /// <summary>Deletes multiple rows.</summary>
@@ -443,7 +443,7 @@ namespace Google.Apis.Area120Tables.v1alpha1
             /// </param>
             public virtual BatchUpdateRequest BatchUpdate(Google.Apis.Area120Tables.v1alpha1.Data.BatchUpdateRowsRequest body, string parent)
             {
-                return new BatchUpdateRequest(service, body, parent);
+                return new BatchUpdateRequest(this.service, body, parent);
             }
 
             /// <summary>Updates multiple rows.</summary>
@@ -500,7 +500,7 @@ namespace Google.Apis.Area120Tables.v1alpha1
             /// </param>
             public virtual CreateRequest Create(Google.Apis.Area120Tables.v1alpha1.Data.Row body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>Creates a row.</summary>
@@ -576,7 +576,7 @@ namespace Google.Apis.Area120Tables.v1alpha1
             /// <param name="name">Required. The name of the row to delete. Format: tables/{table}/rows/{row}</param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>Deletes a row.</summary>
@@ -621,7 +621,7 @@ namespace Google.Apis.Area120Tables.v1alpha1
             /// <param name="name">Required. The name of the row to retrieve. Format: tables/{table}/rows/{row}</param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets a row. Returns NOT_FOUND if the row does not exist in the table.</summary>
@@ -690,7 +690,7 @@ namespace Google.Apis.Area120Tables.v1alpha1
             /// <param name="parent">Required. The parent table. Format: tables/{table}</param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists rows in a table. Returns NOT_FOUND if the table does not exist.</summary>
@@ -821,7 +821,7 @@ namespace Google.Apis.Area120Tables.v1alpha1
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.Area120Tables.v1alpha1.Data.Row body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>Updates a row.</summary>
@@ -913,7 +913,7 @@ namespace Google.Apis.Area120Tables.v1alpha1
         /// <param name="name">Required. The name of the table to retrieve. Format: tables/{table}</param>
         public virtual GetRequest Get(string name)
         {
-            return new GetRequest(service, name);
+            return new GetRequest(this.service, name);
         }
 
         /// <summary>Gets a table. Returns NOT_FOUND if the table does not exist.</summary>
@@ -957,7 +957,7 @@ namespace Google.Apis.Area120Tables.v1alpha1
         /// <summary>Lists tables for the user.</summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>Lists tables for the user.</summary>
@@ -1047,7 +1047,7 @@ namespace Google.Apis.Area120Tables.v1alpha1
         /// <param name="name">Required. The name of the workspace to retrieve. Format: workspaces/{workspace}</param>
         public virtual GetRequest Get(string name)
         {
-            return new GetRequest(service, name);
+            return new GetRequest(this.service, name);
         }
 
         /// <summary>Gets a workspace. Returns NOT_FOUND if the workspace does not exist.</summary>
@@ -1091,7 +1091,7 @@ namespace Google.Apis.Area120Tables.v1alpha1
         /// <summary>Lists workspaces for the user.</summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>Lists workspaces for the user.</summary>
@@ -1451,8 +1451,8 @@ namespace Google.Apis.Area120Tables.v1alpha1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -1495,8 +1495,8 @@ namespace Google.Apis.Area120Tables.v1alpha1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -1565,8 +1565,8 @@ namespace Google.Apis.Area120Tables.v1alpha1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The human readable title of the table.</summary>
@@ -1618,8 +1618,8 @@ namespace Google.Apis.Area120Tables.v1alpha1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -1681,8 +1681,8 @@ namespace Google.Apis.Area120Tables.v1alpha1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The human readable title of the workspace.</summary>
@@ -1732,8 +1732,8 @@ namespace Google.Apis.Area120Tables.v1alpha1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>

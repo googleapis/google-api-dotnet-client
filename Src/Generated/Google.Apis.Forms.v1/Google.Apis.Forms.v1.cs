@@ -326,7 +326,7 @@ namespace Google.Apis.Forms.v1
             /// <param name="responseId">Required. The response ID within the form.</param>
             public virtual GetRequest Get(string formId, string responseId)
             {
-                return new GetRequest(service, formId, responseId);
+                return new GetRequest(this.service, formId, responseId);
             }
 
             /// <summary>Get one response from the form.</summary>
@@ -384,7 +384,7 @@ namespace Google.Apis.Forms.v1
             /// <param name="formId">Required. ID of the Form whose responses to list.</param>
             public virtual ListRequest List(string formId)
             {
-                return new ListRequest(service, formId);
+                return new ListRequest(this.service, formId);
             }
 
             /// <summary>List a form's responses.</summary>
@@ -500,7 +500,7 @@ namespace Google.Apis.Forms.v1
             /// <param name="formId">Required. ID of the Form to watch.</param>
             public virtual CreateRequest Create(Google.Apis.Forms.v1.Data.CreateWatchRequest body, string formId)
             {
-                return new CreateRequest(service, body, formId);
+                return new CreateRequest(this.service, body, formId);
             }
 
             /// <summary>
@@ -557,7 +557,7 @@ namespace Google.Apis.Forms.v1
             /// <param name="watchId">Required. The ID of the Watch to delete.</param>
             public virtual DeleteRequest Delete(string formId, string watchId)
             {
-                return new DeleteRequest(service, formId, watchId);
+                return new DeleteRequest(this.service, formId, watchId);
             }
 
             /// <summary>Delete a watch.</summary>
@@ -618,7 +618,7 @@ namespace Google.Apis.Forms.v1
             /// <param name="formId">Required. ID of the Form whose watches to list.</param>
             public virtual ListRequest List(string formId)
             {
-                return new ListRequest(service, formId);
+                return new ListRequest(this.service, formId);
             }
 
             /// <summary>
@@ -673,7 +673,7 @@ namespace Google.Apis.Forms.v1
             /// <param name="watchId">Required. The ID of the Watch to renew.</param>
             public virtual RenewRequest Renew(Google.Apis.Forms.v1.Data.RenewWatchRequest body, string formId, string watchId)
             {
-                return new RenewRequest(service, body, formId, watchId);
+                return new RenewRequest(this.service, body, formId, watchId);
             }
 
             /// <summary>
@@ -745,7 +745,7 @@ namespace Google.Apis.Forms.v1
         /// <param name="formId">Required. The form ID.</param>
         public virtual BatchUpdateRequest BatchUpdate(Google.Apis.Forms.v1.Data.BatchUpdateFormRequest body, string formId)
         {
-            return new BatchUpdateRequest(service, body, formId);
+            return new BatchUpdateRequest(this.service, body, formId);
         }
 
         /// <summary>Change the form with a batch of updates.</summary>
@@ -803,7 +803,7 @@ namespace Google.Apis.Forms.v1
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.Forms.v1.Data.Form body)
         {
-            return new CreateRequest(service, body);
+            return new CreateRequest(this.service, body);
         }
 
         /// <summary>
@@ -848,7 +848,7 @@ namespace Google.Apis.Forms.v1
         /// <param name="formId">Required. The form ID.</param>
         public virtual GetRequest Get(string formId)
         {
-            return new GetRequest(service, formId);
+            return new GetRequest(this.service, formId);
         }
 
         /// <summary>Get a form.</summary>
@@ -1301,8 +1301,8 @@ namespace Google.Apis.Forms.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. The form ID.</summary>
@@ -1347,8 +1347,8 @@ namespace Google.Apis.Forms.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LastSubmittedTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastSubmittedTimeRaw);
-            set => LastSubmittedTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastSubmittedTimeRaw);
+            set => LastSubmittedTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. The email address (if collected) for the respondent.</summary>
@@ -2117,8 +2117,8 @@ namespace Google.Apis.Forms.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -2168,8 +2168,8 @@ namespace Google.Apis.Forms.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpireTimeRaw);
-            set => ExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. The ID of this watch. See notes on CreateWatchRequest.watch_id.</summary>

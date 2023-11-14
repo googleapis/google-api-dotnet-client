@@ -458,7 +458,7 @@ namespace Google.Apis.Classroom.v1
             /// </param>
             public virtual CreateRequest Create(Google.Apis.Classroom.v1.Data.CourseAlias body, string courseId)
             {
-                return new CreateRequest(service, body, courseId);
+                return new CreateRequest(this.service, body, courseId);
             }
 
             /// <summary>
@@ -529,7 +529,7 @@ namespace Google.Apis.Classroom.v1
             /// <param name="alias">Alias to delete. This may not be the Classroom-assigned identifier.</param>
             public virtual DeleteRequest Delete(string courseId, string alias)
             {
-                return new DeleteRequest(service, courseId, alias);
+                return new DeleteRequest(this.service, courseId, alias);
             }
 
             /// <summary>
@@ -603,7 +603,7 @@ namespace Google.Apis.Classroom.v1
             /// </param>
             public virtual ListRequest List(string courseId)
             {
-                return new ListRequest(service, courseId);
+                return new ListRequest(this.service, courseId);
             }
 
             /// <summary>
@@ -713,7 +713,7 @@ namespace Google.Apis.Classroom.v1
             /// </param>
             public virtual CreateRequest Create(Google.Apis.Classroom.v1.Data.Announcement body, string courseId)
             {
-                return new CreateRequest(service, body, courseId);
+                return new CreateRequest(this.service, body, courseId);
             }
 
             /// <summary>
@@ -786,7 +786,7 @@ namespace Google.Apis.Classroom.v1
             /// </param>
             public virtual DeleteRequest Delete(string courseId, string id)
             {
-                return new DeleteRequest(service, courseId, id);
+                return new DeleteRequest(this.service, courseId, id);
             }
 
             /// <summary>
@@ -864,7 +864,7 @@ namespace Google.Apis.Classroom.v1
             /// <param name="id">Identifier of the announcement.</param>
             public virtual GetRequest Get(string courseId, string id)
             {
-                return new GetRequest(service, courseId, id);
+                return new GetRequest(this.service, courseId, id);
             }
 
             /// <summary>
@@ -938,7 +938,7 @@ namespace Google.Apis.Classroom.v1
             /// </param>
             public virtual ListRequest List(string courseId)
             {
-                return new ListRequest(service, courseId);
+                return new ListRequest(this.service, courseId);
             }
 
             /// <summary>
@@ -1109,7 +1109,7 @@ namespace Google.Apis.Classroom.v1
             /// <param name="id">Identifier of the announcement.</param>
             public virtual ModifyAssigneesRequest ModifyAssignees(Google.Apis.Classroom.v1.Data.ModifyAnnouncementAssigneesRequest body, string courseId, string id)
             {
-                return new ModifyAssigneesRequest(service, body, courseId, id);
+                return new ModifyAssigneesRequest(this.service, body, courseId, id);
             }
 
             /// <summary>
@@ -1193,7 +1193,7 @@ namespace Google.Apis.Classroom.v1
             /// <param name="id">Identifier of the announcement.</param>
             public virtual PatchRequest Patch(Google.Apis.Classroom.v1.Data.Announcement body, string courseId, string id)
             {
-                return new PatchRequest(service, body, courseId, id);
+                return new PatchRequest(this.service, body, courseId, id);
             }
 
             /// <summary>
@@ -1332,7 +1332,7 @@ namespace Google.Apis.Classroom.v1
                 /// <param name="id">Identifier of the student submission.</param>
                 public virtual GetRequest Get(string courseId, string courseWorkId, string id)
                 {
-                    return new GetRequest(service, courseId, courseWorkId, id);
+                    return new GetRequest(this.service, courseId, courseWorkId, id);
                 }
 
                 /// <summary>
@@ -1426,7 +1426,7 @@ namespace Google.Apis.Classroom.v1
                 /// </param>
                 public virtual ListRequest List(string courseId, string courseWorkId)
                 {
-                    return new ListRequest(service, courseId, courseWorkId);
+                    return new ListRequest(this.service, courseId, courseWorkId);
                 }
 
                 /// <summary>
@@ -1659,7 +1659,7 @@ namespace Google.Apis.Classroom.v1
                 /// <param name="id">Identifier of the student submission.</param>
                 public virtual ModifyAttachmentsRequest ModifyAttachments(Google.Apis.Classroom.v1.Data.ModifyAttachmentsRequest body, string courseId, string courseWorkId, string id)
                 {
-                    return new ModifyAttachmentsRequest(service, body, courseId, courseWorkId, id);
+                    return new ModifyAttachmentsRequest(this.service, body, courseId, courseWorkId, id);
                 }
 
                 /// <summary>
@@ -1764,7 +1764,7 @@ namespace Google.Apis.Classroom.v1
                 /// <param name="id">Identifier of the student submission.</param>
                 public virtual PatchRequest Patch(Google.Apis.Classroom.v1.Data.StudentSubmission body, string courseId, string courseWorkId, string id)
                 {
-                    return new PatchRequest(service, body, courseId, courseWorkId, id);
+                    return new PatchRequest(this.service, body, courseId, courseWorkId, id);
                 }
 
                 /// <summary>
@@ -1887,7 +1887,7 @@ namespace Google.Apis.Classroom.v1
                 /// <param name="id">Identifier of the student submission.</param>
                 public virtual ReclaimRequest Reclaim(Google.Apis.Classroom.v1.Data.ReclaimStudentSubmissionRequest body, string courseId, string courseWorkId, string id)
                 {
-                    return new ReclaimRequest(service, body, courseId, courseWorkId, id);
+                    return new ReclaimRequest(this.service, body, courseId, courseWorkId, id);
                 }
 
                 /// <summary>
@@ -1996,7 +1996,7 @@ namespace Google.Apis.Classroom.v1
                 /// <param name="id">Identifier of the student submission.</param>
                 public virtual ClassroomReturnRequest ClassroomReturn(Google.Apis.Classroom.v1.Data.ReturnStudentSubmissionRequest body, string courseId, string courseWorkId, string id)
                 {
-                    return new ClassroomReturnRequest(service, body, courseId, courseWorkId, id);
+                    return new ClassroomReturnRequest(this.service, body, courseId, courseWorkId, id);
                 }
 
                 /// <summary>
@@ -2104,7 +2104,7 @@ namespace Google.Apis.Classroom.v1
                 /// <param name="id">Identifier of the student submission.</param>
                 public virtual TurnInRequest TurnIn(Google.Apis.Classroom.v1.Data.TurnInStudentSubmissionRequest body, string courseId, string courseWorkId, string id)
                 {
-                    return new TurnInRequest(service, body, courseId, courseWorkId, id);
+                    return new TurnInRequest(this.service, body, courseId, courseWorkId, id);
                 }
 
                 /// <summary>
@@ -2209,7 +2209,7 @@ namespace Google.Apis.Classroom.v1
             /// </param>
             public virtual CreateRequest Create(Google.Apis.Classroom.v1.Data.CourseWork body, string courseId)
             {
-                return new CreateRequest(service, body, courseId);
+                return new CreateRequest(this.service, body, courseId);
             }
 
             /// <summary>
@@ -2286,7 +2286,7 @@ namespace Google.Apis.Classroom.v1
             /// </param>
             public virtual DeleteRequest Delete(string courseId, string id)
             {
-                return new DeleteRequest(service, courseId, id);
+                return new DeleteRequest(this.service, courseId, id);
             }
 
             /// <summary>
@@ -2364,7 +2364,7 @@ namespace Google.Apis.Classroom.v1
             /// <param name="id">Identifier of the course work.</param>
             public virtual GetRequest Get(string courseId, string id)
             {
-                return new GetRequest(service, courseId, id);
+                return new GetRequest(this.service, courseId, id);
             }
 
             /// <summary>
@@ -2438,7 +2438,7 @@ namespace Google.Apis.Classroom.v1
             /// </param>
             public virtual ListRequest List(string courseId)
             {
-                return new ListRequest(service, courseId);
+                return new ListRequest(this.service, courseId);
             }
 
             /// <summary>
@@ -2609,7 +2609,7 @@ namespace Google.Apis.Classroom.v1
             /// <param name="id">Identifier of the coursework.</param>
             public virtual ModifyAssigneesRequest ModifyAssignees(Google.Apis.Classroom.v1.Data.ModifyCourseWorkAssigneesRequest body, string courseId, string id)
             {
-                return new ModifyAssigneesRequest(service, body, courseId, id);
+                return new ModifyAssigneesRequest(this.service, body, courseId, id);
             }
 
             /// <summary>
@@ -2697,7 +2697,7 @@ namespace Google.Apis.Classroom.v1
             /// <param name="id">Identifier of the course work.</param>
             public virtual PatchRequest Patch(Google.Apis.Classroom.v1.Data.CourseWork body, string courseId, string id)
             {
-                return new PatchRequest(service, body, courseId, id);
+                return new PatchRequest(this.service, body, courseId, id);
             }
 
             /// <summary>
@@ -2822,7 +2822,7 @@ namespace Google.Apis.Classroom.v1
             /// </param>
             public virtual CreateRequest Create(Google.Apis.Classroom.v1.Data.CourseWorkMaterial body, string courseId)
             {
-                return new CreateRequest(service, body, courseId);
+                return new CreateRequest(this.service, body, courseId);
             }
 
             /// <summary>
@@ -2895,7 +2895,7 @@ namespace Google.Apis.Classroom.v1
             /// </param>
             public virtual DeleteRequest Delete(string courseId, string id)
             {
-                return new DeleteRequest(service, courseId, id);
+                return new DeleteRequest(this.service, courseId, id);
             }
 
             /// <summary>
@@ -2974,7 +2974,7 @@ namespace Google.Apis.Classroom.v1
             /// <param name="id">Identifier of the course work material.</param>
             public virtual GetRequest Get(string courseId, string id)
             {
-                return new GetRequest(service, courseId, id);
+                return new GetRequest(this.service, courseId, id);
             }
 
             /// <summary>
@@ -3048,7 +3048,7 @@ namespace Google.Apis.Classroom.v1
             /// </param>
             public virtual ListRequest List(string courseId)
             {
-                return new ListRequest(service, courseId);
+                return new ListRequest(this.service, courseId);
             }
 
             /// <summary>
@@ -3251,7 +3251,7 @@ namespace Google.Apis.Classroom.v1
             /// <param name="id">Identifier of the course work material.</param>
             public virtual PatchRequest Patch(Google.Apis.Classroom.v1.Data.CourseWorkMaterial body, string courseId, string id)
             {
-                return new PatchRequest(service, body, courseId, id);
+                return new PatchRequest(this.service, body, courseId, id);
             }
 
             /// <summary>
@@ -3375,7 +3375,7 @@ namespace Google.Apis.Classroom.v1
             /// </param>
             public virtual CreateRequest Create(Google.Apis.Classroom.v1.Data.Student body, string courseId)
             {
-                return new CreateRequest(service, body, courseId);
+                return new CreateRequest(this.service, body, courseId);
             }
 
             /// <summary>
@@ -3467,7 +3467,7 @@ namespace Google.Apis.Classroom.v1
             /// </param>
             public virtual DeleteRequest Delete(string courseId, string userId)
             {
-                return new DeleteRequest(service, courseId, userId);
+                return new DeleteRequest(this.service, courseId, userId);
             }
 
             /// <summary>
@@ -3547,7 +3547,7 @@ namespace Google.Apis.Classroom.v1
             /// </param>
             public virtual GetRequest Get(string courseId, string userId)
             {
-                return new GetRequest(service, courseId, userId);
+                return new GetRequest(this.service, courseId, userId);
             }
 
             /// <summary>
@@ -3622,7 +3622,7 @@ namespace Google.Apis.Classroom.v1
             /// </param>
             public virtual ListRequest List(string courseId)
             {
-                return new ListRequest(service, courseId);
+                return new ListRequest(this.service, courseId);
             }
 
             /// <summary>
@@ -3736,7 +3736,7 @@ namespace Google.Apis.Classroom.v1
             /// </param>
             public virtual CreateRequest Create(Google.Apis.Classroom.v1.Data.Teacher body, string courseId)
             {
-                return new CreateRequest(service, body, courseId);
+                return new CreateRequest(this.service, body, courseId);
             }
 
             /// <summary>
@@ -3815,7 +3815,7 @@ namespace Google.Apis.Classroom.v1
             /// </param>
             public virtual DeleteRequest Delete(string courseId, string userId)
             {
-                return new DeleteRequest(service, courseId, userId);
+                return new DeleteRequest(this.service, courseId, userId);
             }
 
             /// <summary>
@@ -3898,7 +3898,7 @@ namespace Google.Apis.Classroom.v1
             /// </param>
             public virtual GetRequest Get(string courseId, string userId)
             {
-                return new GetRequest(service, courseId, userId);
+                return new GetRequest(this.service, courseId, userId);
             }
 
             /// <summary>
@@ -3973,7 +3973,7 @@ namespace Google.Apis.Classroom.v1
             /// </param>
             public virtual ListRequest List(string courseId)
             {
-                return new ListRequest(service, courseId);
+                return new ListRequest(this.service, courseId);
             }
 
             /// <summary>
@@ -4082,7 +4082,7 @@ namespace Google.Apis.Classroom.v1
             /// </param>
             public virtual CreateRequest Create(Google.Apis.Classroom.v1.Data.Topic body, string courseId)
             {
-                return new CreateRequest(service, body, courseId);
+                return new CreateRequest(this.service, body, courseId);
             }
 
             /// <summary>
@@ -4150,7 +4150,7 @@ namespace Google.Apis.Classroom.v1
             /// <param name="id">Identifier of the topic to delete.</param>
             public virtual DeleteRequest Delete(string courseId, string id)
             {
-                return new DeleteRequest(service, courseId, id);
+                return new DeleteRequest(this.service, courseId, id);
             }
 
             /// <summary>
@@ -4222,7 +4222,7 @@ namespace Google.Apis.Classroom.v1
             /// <param name="id">Identifier of the topic.</param>
             public virtual GetRequest Get(string courseId, string id)
             {
-                return new GetRequest(service, courseId, id);
+                return new GetRequest(this.service, courseId, id);
             }
 
             /// <summary>
@@ -4292,7 +4292,7 @@ namespace Google.Apis.Classroom.v1
             /// </param>
             public virtual ListRequest List(string courseId)
             {
-                return new ListRequest(service, courseId);
+                return new ListRequest(this.service, courseId);
             }
 
             /// <summary>
@@ -4385,7 +4385,7 @@ namespace Google.Apis.Classroom.v1
             /// <param name="id">Identifier of the topic.</param>
             public virtual PatchRequest Patch(Google.Apis.Classroom.v1.Data.Topic body, string courseId, string id)
             {
-                return new PatchRequest(service, body, courseId, id);
+                return new PatchRequest(this.service, body, courseId, id);
             }
 
             /// <summary>
@@ -4486,7 +4486,7 @@ namespace Google.Apis.Classroom.v1
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.Classroom.v1.Data.Course body)
         {
-            return new CreateRequest(service, body);
+            return new CreateRequest(this.service, body);
         }
 
         /// <summary>
@@ -4541,7 +4541,7 @@ namespace Google.Apis.Classroom.v1
         /// </param>
         public virtual DeleteRequest Delete(string id)
         {
-            return new DeleteRequest(service, id);
+            return new DeleteRequest(this.service, id);
         }
 
         /// <summary>
@@ -4600,7 +4600,7 @@ namespace Google.Apis.Classroom.v1
         /// </param>
         public virtual GetRequest Get(string id)
         {
-            return new GetRequest(service, id);
+            return new GetRequest(this.service, id);
         }
 
         /// <summary>
@@ -4656,7 +4656,7 @@ namespace Google.Apis.Classroom.v1
         /// </summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>
@@ -4841,7 +4841,7 @@ namespace Google.Apis.Classroom.v1
         /// </param>
         public virtual PatchRequest Patch(Google.Apis.Classroom.v1.Data.Course body, string id)
         {
-            return new PatchRequest(service, body, id);
+            return new PatchRequest(this.service, body, id);
         }
 
         /// <summary>
@@ -4929,7 +4929,7 @@ namespace Google.Apis.Classroom.v1
         /// </param>
         public virtual UpdateRequest Update(Google.Apis.Classroom.v1.Data.Course body, string id)
         {
-            return new UpdateRequest(service, body, id);
+            return new UpdateRequest(this.service, body, id);
         }
 
         /// <summary>
@@ -5010,7 +5010,7 @@ namespace Google.Apis.Classroom.v1
         /// <param name="id">Identifier of the invitation to accept.</param>
         public virtual AcceptRequest Accept(string id)
         {
-            return new AcceptRequest(service, id);
+            return new AcceptRequest(this.service, id);
         }
 
         /// <summary>
@@ -5070,7 +5070,7 @@ namespace Google.Apis.Classroom.v1
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.Classroom.v1.Data.Invitation body)
         {
-            return new CreateRequest(service, body);
+            return new CreateRequest(this.service, body);
         }
 
         /// <summary>
@@ -5121,7 +5121,7 @@ namespace Google.Apis.Classroom.v1
         /// <param name="id">Identifier of the invitation to delete.</param>
         public virtual DeleteRequest Delete(string id)
         {
-            return new DeleteRequest(service, id);
+            return new DeleteRequest(this.service, id);
         }
 
         /// <summary>
@@ -5174,7 +5174,7 @@ namespace Google.Apis.Classroom.v1
         /// <param name="id">Identifier of the invitation to return.</param>
         public virtual GetRequest Get(string id)
         {
-            return new GetRequest(service, id);
+            return new GetRequest(this.service, id);
         }
 
         /// <summary>
@@ -5226,7 +5226,7 @@ namespace Google.Apis.Classroom.v1
         /// </summary>
         public virtual ListRequest List()
         {
-            return new ListRequest(service);
+            return new ListRequest(this.service);
         }
 
         /// <summary>
@@ -5351,7 +5351,7 @@ namespace Google.Apis.Classroom.v1
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.Classroom.v1.Data.Registration body)
         {
-            return new CreateRequest(service, body);
+            return new CreateRequest(this.service, body);
         }
 
         /// <summary>
@@ -5408,7 +5408,7 @@ namespace Google.Apis.Classroom.v1
         /// <param name="registrationId">The `registration_id` of the `Registration` to be deleted.</param>
         public virtual DeleteRequest Delete(string registrationId)
         {
-            return new DeleteRequest(service, registrationId);
+            return new DeleteRequest(this.service, registrationId);
         }
 
         /// <summary>
@@ -5507,7 +5507,7 @@ namespace Google.Apis.Classroom.v1
             /// <param name="studentId">ID of the student (in standard format)</param>
             public virtual CreateRequest Create(Google.Apis.Classroom.v1.Data.GuardianInvitation body, string studentId)
             {
-                return new CreateRequest(service, body, studentId);
+                return new CreateRequest(this.service, body, studentId);
             }
 
             /// <summary>
@@ -5585,7 +5585,7 @@ namespace Google.Apis.Classroom.v1
             /// <param name="invitationId">The `id` field of the `GuardianInvitation` being requested.</param>
             public virtual GetRequest Get(string studentId, string invitationId)
             {
-                return new GetRequest(service, studentId, invitationId);
+                return new GetRequest(this.service, studentId, invitationId);
             }
 
             /// <summary>
@@ -5666,7 +5666,7 @@ namespace Google.Apis.Classroom.v1
             /// </param>
             public virtual ListRequest List(string studentId)
             {
-                return new ListRequest(service, studentId);
+                return new ListRequest(this.service, studentId);
             }
 
             /// <summary>
@@ -5837,7 +5837,7 @@ namespace Google.Apis.Classroom.v1
             /// <param name="invitationId">The `id` field of the `GuardianInvitation` to be modified.</param>
             public virtual PatchRequest Patch(Google.Apis.Classroom.v1.Data.GuardianInvitation body, string studentId, string invitationId)
             {
-                return new PatchRequest(service, body, studentId, invitationId);
+                return new PatchRequest(this.service, body, studentId, invitationId);
             }
 
             /// <summary>
@@ -5961,7 +5961,7 @@ namespace Google.Apis.Classroom.v1
             /// <param name="guardianId">The `id` field from a `Guardian`.</param>
             public virtual DeleteRequest Delete(string studentId, string guardianId)
             {
-                return new DeleteRequest(service, studentId, guardianId);
+                return new DeleteRequest(this.service, studentId, guardianId);
             }
 
             /// <summary>
@@ -6045,7 +6045,7 @@ namespace Google.Apis.Classroom.v1
             /// <param name="guardianId">The `id` field from a `Guardian`.</param>
             public virtual GetRequest Get(string studentId, string guardianId)
             {
-                return new GetRequest(service, studentId, guardianId);
+                return new GetRequest(this.service, studentId, guardianId);
             }
 
             /// <summary>
@@ -6132,7 +6132,7 @@ namespace Google.Apis.Classroom.v1
             /// </param>
             public virtual ListRequest List(string studentId)
             {
-                return new ListRequest(service, studentId);
+                return new ListRequest(this.service, studentId);
             }
 
             /// <summary>
@@ -6248,7 +6248,7 @@ namespace Google.Apis.Classroom.v1
         /// </param>
         public virtual GetRequest Get(string userId)
         {
-            return new GetRequest(service, userId);
+            return new GetRequest(this.service, userId);
         }
 
         /// <summary>
@@ -6351,8 +6351,8 @@ namespace Google.Apis.Classroom.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreationTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreationTimeRaw);
-            set => CreationTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreationTimeRaw);
+            set => CreationTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Identifier for the user that created the announcement. Read-only.</summary>
@@ -6408,8 +6408,8 @@ namespace Google.Apis.Classroom.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ScheduledTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ScheduledTimeRaw);
-            set => ScheduledTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ScheduledTimeRaw);
+            set => ScheduledTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Status of this announcement. If unspecified, the default state is `DRAFT`.</summary>
@@ -6456,8 +6456,8 @@ namespace Google.Apis.Classroom.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -6604,8 +6604,8 @@ namespace Google.Apis.Classroom.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreationTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreationTimeRaw);
-            set => CreationTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreationTimeRaw);
+            set => CreationTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -6731,8 +6731,8 @@ namespace Google.Apis.Classroom.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -6877,8 +6877,8 @@ namespace Google.Apis.Classroom.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreationTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreationTimeRaw);
-            set => CreationTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreationTimeRaw);
+            set => CreationTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Identifier for the user that created the coursework. Read-only.</summary>
@@ -6977,8 +6977,8 @@ namespace Google.Apis.Classroom.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ScheduledTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ScheduledTimeRaw);
-            set => ScheduledTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ScheduledTimeRaw);
+            set => ScheduledTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Status of this course work. If unspecified, the default state is `DRAFT`.</summary>
@@ -7038,8 +7038,8 @@ namespace Google.Apis.Classroom.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -7116,8 +7116,8 @@ namespace Google.Apis.Classroom.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreationTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreationTimeRaw);
-            set => CreationTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreationTimeRaw);
+            set => CreationTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Identifier for the user that created the course work material. Read-only.</summary>
@@ -7180,8 +7180,8 @@ namespace Google.Apis.Classroom.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ScheduledTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ScheduledTimeRaw);
-            set => ScheduledTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ScheduledTimeRaw);
+            set => ScheduledTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Status of this course work material. If unspecified, the default state is `DRAFT`.</summary>
@@ -7235,8 +7235,8 @@ namespace Google.Apis.Classroom.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -7469,8 +7469,8 @@ namespace Google.Apis.Classroom.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? GradeTimestampDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(GradeTimestampRaw);
-            set => GradeTimestampRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(GradeTimestampRaw);
+            set => GradeTimestampRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The denominator of the grade at this time in the submission grade history.</summary>
@@ -7572,8 +7572,8 @@ namespace Google.Apis.Classroom.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreationTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreationTimeRaw);
-            set => CreationTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreationTimeRaw);
+            set => CreationTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Unique identifier for this invitation. Read-only.</summary>
@@ -8058,8 +8058,8 @@ namespace Google.Apis.Classroom.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ExpiryTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpiryTimeRaw);
-            set => ExpiryTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpiryTimeRaw);
+            set => ExpiryTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -8155,8 +8155,8 @@ namespace Google.Apis.Classroom.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StateTimestampDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StateTimestampRaw);
-            set => StateTimestampRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StateTimestampRaw);
+            set => StateTimestampRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -8272,8 +8272,8 @@ namespace Google.Apis.Classroom.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreationTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreationTimeRaw);
-            set => CreationTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreationTimeRaw);
+            set => CreationTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -8346,8 +8346,8 @@ namespace Google.Apis.Classroom.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Identifier for the student that owns this submission. Read-only.</summary>
@@ -8480,8 +8480,8 @@ namespace Google.Apis.Classroom.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>

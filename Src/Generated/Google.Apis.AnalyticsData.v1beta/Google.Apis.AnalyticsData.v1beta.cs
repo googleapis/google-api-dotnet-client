@@ -285,7 +285,7 @@ namespace Google.Apis.AnalyticsData.v1beta
         /// </param>
         public virtual BatchRunPivotReportsRequest BatchRunPivotReports(Google.Apis.AnalyticsData.v1beta.Data.BatchRunPivotReportsRequest body, string property)
         {
-            return new BatchRunPivotReportsRequest(service, body, property);
+            return new BatchRunPivotReportsRequest(this.service, body, property);
         }
 
         /// <summary>Returns multiple pivot reports in a batch. All reports must be for the same GA4 Property.</summary>
@@ -350,7 +350,7 @@ namespace Google.Apis.AnalyticsData.v1beta
         /// </param>
         public virtual BatchRunReportsRequest BatchRunReports(Google.Apis.AnalyticsData.v1beta.Data.BatchRunReportsRequest body, string property)
         {
-            return new BatchRunReportsRequest(service, body, property);
+            return new BatchRunReportsRequest(this.service, body, property);
         }
 
         /// <summary>Returns multiple reports in a batch. All reports must be for the same GA4 Property.</summary>
@@ -420,7 +420,7 @@ namespace Google.Apis.AnalyticsData.v1beta
         /// </param>
         public virtual CheckCompatibilityRequest CheckCompatibility(Google.Apis.AnalyticsData.v1beta.Data.CheckCompatibilityRequest body, string property)
         {
-            return new CheckCompatibilityRequest(service, body, property);
+            return new CheckCompatibilityRequest(this.service, body, property);
         }
 
         /// <summary>
@@ -497,7 +497,7 @@ namespace Google.Apis.AnalyticsData.v1beta
         /// </param>
         public virtual GetMetadataRequest GetMetadata(string name)
         {
-            return new GetMetadataRequest(service, name);
+            return new GetMetadataRequest(this.service, name);
         }
 
         /// <summary>
@@ -567,7 +567,7 @@ namespace Google.Apis.AnalyticsData.v1beta
         /// </param>
         public virtual RunPivotReportRequest RunPivotReport(Google.Apis.AnalyticsData.v1beta.Data.RunPivotReportRequest body, string property)
         {
-            return new RunPivotReportRequest(service, body, property);
+            return new RunPivotReportRequest(this.service, body, property);
         }
 
         /// <summary>
@@ -642,7 +642,7 @@ namespace Google.Apis.AnalyticsData.v1beta
         /// </param>
         public virtual RunRealtimeReportRequest RunRealtimeReport(Google.Apis.AnalyticsData.v1beta.Data.RunRealtimeReportRequest body, string property)
         {
-            return new RunRealtimeReportRequest(service, body, property);
+            return new RunRealtimeReportRequest(this.service, body, property);
         }
 
         /// <summary>
@@ -721,7 +721,7 @@ namespace Google.Apis.AnalyticsData.v1beta
         /// </param>
         public virtual RunReportRequest RunReport(Google.Apis.AnalyticsData.v1beta.Data.RunReportRequest body, string property)
         {
-            return new RunReportRequest(service, body, property);
+            return new RunReportRequest(this.service, body, property);
         }
 
         /// <summary>

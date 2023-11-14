@@ -301,7 +301,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1
             /// </param>
             public virtual GroupRequest Group(Google.Apis.SecurityCommandCenter.v1beta1.Data.GroupAssetsRequest body, string parent)
             {
-                return new GroupRequest(service, body, parent);
+                return new GroupRequest(this.service, body, parent);
             }
 
             /// <summary>Filters an organization's assets and groups them by their specified properties.</summary>
@@ -358,7 +358,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists an organization's assets.</summary>
@@ -442,13 +442,36 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
+                private object _readTime;
+
                 /// <summary>
-                /// Time used as a reference point when filtering assets. The filter is limited to assets existing at
-                /// the supplied time and their values are those at that specific time. Absence of this field will
-                /// default to the API's version of NOW.
+                /// String representation of <see cref="ReadTimeDateTimeOffset"/>, formatted for inclusion in the HTTP
+                /// request.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("readTime", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual object ReadTime { get; set; }
+                public virtual string ReadTimeRaw { get; private set; }
+
+                /// <summary><seealso cref="object"/> representation of <see cref="ReadTimeRaw"/>.</summary>
+                [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ReadTimeDateTimeOffset instead.")]
+                public virtual object ReadTime
+                {
+                    get => _readTime;
+                    set
+                    {
+                        ReadTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                        _readTime = value;
+                    }
+                }
+
+                public virtual System.DateTimeOffset? ReadTimeDateTimeOffset
+                {
+                    get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ReadTimeRaw);
+                    set
+                    {
+                        ReadTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                        _readTime = value;
+                    }
+                }
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
@@ -542,7 +565,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1
             /// </param>
             public virtual RunDiscoveryRequest RunDiscovery(Google.Apis.SecurityCommandCenter.v1beta1.Data.RunAssetDiscoveryRequest body, string parent)
             {
-                return new RunDiscoveryRequest(service, body, parent);
+                return new RunDiscoveryRequest(this.service, body, parent);
             }
 
             /// <summary>
@@ -607,7 +630,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1
             /// </param>
             public virtual UpdateSecurityMarksRequest UpdateSecurityMarks(Google.Apis.SecurityCommandCenter.v1beta1.Data.GoogleCloudSecuritycenterV1beta1SecurityMarks body, string name)
             {
-                return new UpdateSecurityMarksRequest(service, body, name);
+                return new UpdateSecurityMarksRequest(this.service, body, name);
             }
 
             /// <summary>Updates security marks.</summary>
@@ -630,9 +653,36 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>The time at which the updated SecurityMarks take effect.</summary>
+                private object _startTime;
+
+                /// <summary>
+                /// String representation of <see cref="StartTimeDateTimeOffset"/>, formatted for inclusion in the HTTP
+                /// request.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual object StartTime { get; set; }
+                public virtual string StartTimeRaw { get; private set; }
+
+                /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+                [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+                public virtual object StartTime
+                {
+                    get => _startTime;
+                    set
+                    {
+                        StartTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                        _startTime = value;
+                    }
+                }
+
+                public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+                {
+                    get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+                    set
+                    {
+                        StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                        _startTime = value;
+                    }
+                }
 
                 /// <summary>The FieldMask to use when updating the security marks resource.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
@@ -714,7 +764,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1
             /// <param name="name">The name of the operation resource to be cancelled.</param>
             public virtual CancelRequest Cancel(Google.Apis.SecurityCommandCenter.v1beta1.Data.CancelOperationRequest body, string name)
             {
-                return new CancelRequest(service, body, name);
+                return new CancelRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -777,7 +827,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1
             /// <param name="name">The name of the operation resource to be deleted.</param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>
@@ -829,7 +879,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1
             /// <param name="name">The name of the operation resource.</param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>
@@ -880,7 +930,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1
             /// <param name="name">The name of the operation's parent resource.</param>
             public virtual ListRequest List(string name)
             {
-                return new ListRequest(service, name);
+                return new ListRequest(this.service, name);
             }
 
             /// <summary>
@@ -1006,7 +1056,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.SecurityCommandCenter.v1beta1.Data.GoogleCloudSecuritycenterV1beta1Finding body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -1087,7 +1137,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1
                 /// </param>
                 public virtual GroupRequest Group(Google.Apis.SecurityCommandCenter.v1beta1.Data.GroupFindingsRequest body, string parent)
                 {
-                    return new GroupRequest(service, body, parent);
+                    return new GroupRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -1154,7 +1204,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>
@@ -1225,13 +1275,36 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
+                    private object _readTime;
+
                     /// <summary>
-                    /// Time used as a reference point when filtering findings. The filter is limited to findings
-                    /// existing at the supplied time and their values are those at that specific time. Absence of this
-                    /// field will default to the API's version of NOW.
+                    /// String representation of <see cref="ReadTimeDateTimeOffset"/>, formatted for inclusion in the
+                    /// HTTP request.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("readTime", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual object ReadTime { get; set; }
+                    public virtual string ReadTimeRaw { get; private set; }
+
+                    /// <summary><seealso cref="object"/> representation of <see cref="ReadTimeRaw"/>.</summary>
+                    [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ReadTimeDateTimeOffset instead.")]
+                    public virtual object ReadTime
+                    {
+                        get => _readTime;
+                        set
+                        {
+                            ReadTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                            _readTime = value;
+                        }
+                    }
+
+                    public virtual System.DateTimeOffset? ReadTimeDateTimeOffset
+                    {
+                        get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ReadTimeRaw);
+                        set
+                        {
+                            ReadTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                            _readTime = value;
+                        }
+                    }
 
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
@@ -1316,7 +1389,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.SecurityCommandCenter.v1beta1.Data.GoogleCloudSecuritycenterV1beta1Finding body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -1394,7 +1467,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1
                 /// </param>
                 public virtual SetStateRequest SetState(Google.Apis.SecurityCommandCenter.v1beta1.Data.SetFindingStateRequest body, string name)
                 {
-                    return new SetStateRequest(service, body, name);
+                    return new SetStateRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates the state of a finding.</summary>
@@ -1456,7 +1529,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1
                 /// </param>
                 public virtual UpdateSecurityMarksRequest UpdateSecurityMarks(Google.Apis.SecurityCommandCenter.v1beta1.Data.GoogleCloudSecuritycenterV1beta1SecurityMarks body, string name)
                 {
-                    return new UpdateSecurityMarksRequest(service, body, name);
+                    return new UpdateSecurityMarksRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates security marks.</summary>
@@ -1479,9 +1552,36 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>The time at which the updated SecurityMarks take effect.</summary>
+                    private object _startTime;
+
+                    /// <summary>
+                    /// String representation of <see cref="StartTimeDateTimeOffset"/>, formatted for inclusion in the
+                    /// HTTP request.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual object StartTime { get; set; }
+                    public virtual string StartTimeRaw { get; private set; }
+
+                    /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+                    [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+                    public virtual object StartTime
+                    {
+                        get => _startTime;
+                        set
+                        {
+                            StartTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                            _startTime = value;
+                        }
+                    }
+
+                    public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+                    {
+                        get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+                        set
+                        {
+                            StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                            _startTime = value;
+                        }
+                    }
 
                     /// <summary>The FieldMask to use when updating the security marks resource.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
@@ -1542,7 +1642,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1
             /// </param>
             public virtual CreateRequest Create(Google.Apis.SecurityCommandCenter.v1beta1.Data.Source body, string parent)
             {
-                return new CreateRequest(service, body, parent);
+                return new CreateRequest(this.service, body, parent);
             }
 
             /// <summary>Creates a source.</summary>
@@ -1600,7 +1700,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets a source.</summary>
@@ -1652,7 +1752,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1
             /// </param>
             public virtual GetIamPolicyRequest GetIamPolicy(Google.Apis.SecurityCommandCenter.v1beta1.Data.GetIamPolicyRequest body, string resource)
             {
-                return new GetIamPolicyRequest(service, body, resource);
+                return new GetIamPolicyRequest(this.service, body, resource);
             }
 
             /// <summary>Gets the access control policy on the specified Source.</summary>
@@ -1711,7 +1811,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1
             /// </param>
             public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, parent);
+                return new ListRequest(this.service, parent);
             }
 
             /// <summary>Lists all sources belonging to an organization.</summary>
@@ -1794,7 +1894,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.SecurityCommandCenter.v1beta1.Data.Source body, string name)
             {
-                return new PatchRequest(service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>Updates a source.</summary>
@@ -1866,7 +1966,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1
             /// </param>
             public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.SecurityCommandCenter.v1beta1.Data.SetIamPolicyRequest body, string resource)
             {
-                return new SetIamPolicyRequest(service, body, resource);
+                return new SetIamPolicyRequest(this.service, body, resource);
             }
 
             /// <summary>Sets the access control policy on the specified Source.</summary>
@@ -1926,7 +2026,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1
             /// </param>
             public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.SecurityCommandCenter.v1beta1.Data.TestIamPermissionsRequest body, string resource)
             {
-                return new TestIamPermissionsRequest(service, body, resource);
+                return new TestIamPermissionsRequest(this.service, body, resource);
             }
 
             /// <summary>Returns the permissions that a caller has on the specified source.</summary>
@@ -1986,7 +2086,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1
         /// </param>
         public virtual GetOrganizationSettingsRequest GetOrganizationSettings(string name)
         {
-            return new GetOrganizationSettingsRequest(service, name);
+            return new GetOrganizationSettingsRequest(this.service, name);
         }
 
         /// <summary>Gets the settings for an organization.</summary>
@@ -2039,7 +2139,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1
         /// </param>
         public virtual UpdateOrganizationSettingsRequest UpdateOrganizationSettings(Google.Apis.SecurityCommandCenter.v1beta1.Data.OrganizationSettings body, string name)
         {
-            return new UpdateOrganizationSettingsRequest(service, body, name);
+            return new UpdateOrganizationSettingsRequest(this.service, body, name);
         }
 
         /// <summary>Updates an organization's settings.</summary>
@@ -2271,8 +2371,8 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -2339,8 +2439,8 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -2419,8 +2519,8 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LatestCalculationTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LatestCalculationTimeRaw);
-            set => LatestCalculationTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LatestCalculationTimeRaw);
+            set => LatestCalculationTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -2659,8 +2759,8 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? TimestampDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(TimestampRaw);
-            set => TimestampRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(TimestampRaw);
+            set => TimestampRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -2771,8 +2871,8 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -3221,8 +3321,8 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Database associated with the finding.</summary>
@@ -3272,8 +3372,8 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EventTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EventTimeRaw);
-            set => EventTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EventTimeRaw);
+            set => EventTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Represents exfiltrations associated with the finding.</summary>
@@ -3395,8 +3495,8 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? MuteUpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(MuteUpdateTimeRaw);
-            set => MuteUpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(MuteUpdateTimeRaw);
+            set => MuteUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -3580,8 +3680,8 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -3669,8 +3769,8 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -3855,8 +3955,8 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ExternalSystemUpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExternalSystemUpdateTimeRaw);
-            set => ExternalSystemUpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExternalSystemUpdateTimeRaw);
+            set => ExternalSystemUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -3925,8 +4025,8 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>A description of the mute config.</summary>
@@ -4004,8 +4104,8 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -4144,8 +4244,8 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Description of the resource value config.</summary>
@@ -4224,8 +4324,8 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -4326,8 +4426,8 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -4381,8 +4481,8 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _eventTimeRaw;
@@ -4423,8 +4523,8 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EventTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EventTimeRaw);
-            set => EventTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EventTimeRaw);
+            set => EventTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -4584,8 +4684,8 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _eventTimeRaw;
@@ -4626,8 +4726,8 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EventTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EventTimeRaw);
-            set => EventTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EventTimeRaw);
+            set => EventTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -4912,8 +5012,8 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ReadTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ReadTimeRaw);
-            set => ReadTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ReadTimeRaw);
+            set => ReadTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -4967,8 +5067,8 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ReadTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ReadTimeRaw);
-            set => ReadTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ReadTimeRaw);
+            set => ReadTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -5049,8 +5149,8 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ReadTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ReadTimeRaw);
-            set => ReadTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ReadTimeRaw);
+            set => ReadTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -5104,8 +5204,8 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ReadTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ReadTimeRaw);
-            set => ReadTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ReadTimeRaw);
+            set => ReadTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -5355,8 +5455,8 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ReadTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ReadTimeRaw);
-            set => ReadTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ReadTimeRaw);
+            set => ReadTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The total number of assets matching the query.</summary>
@@ -5426,8 +5526,8 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ReadTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ReadTimeRaw);
-            set => ReadTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ReadTimeRaw);
+            set => ReadTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The total number of findings matching the query.</summary>
@@ -6082,8 +6182,8 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? StartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Required. The desired State of the finding.</summary>

@@ -274,7 +274,7 @@ namespace Google.Apis.Indexing.v3
         /// </summary>
         public virtual GetMetadataRequest GetMetadata()
         {
-            return new GetMetadataRequest(service);
+            return new GetMetadataRequest(this.service);
         }
 
         /// <summary>
@@ -321,7 +321,7 @@ namespace Google.Apis.Indexing.v3
         /// <param name="body">The body of the request.</param>
         public virtual PublishRequest Publish(Google.Apis.Indexing.v3.Data.UrlNotification body)
         {
-            return new PublishRequest(service, body);
+            return new PublishRequest(this.service, body);
         }
 
         /// <summary>Notifies that a URL has been updated or deleted.</summary>
@@ -412,8 +412,8 @@ namespace Google.Apis.Indexing.v3.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? NotifyTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(NotifyTimeRaw);
-            set => NotifyTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(NotifyTimeRaw);
+            set => NotifyTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The URL life cycle event that Google is being notified about.</summary>

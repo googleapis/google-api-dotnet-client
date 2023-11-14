@@ -323,7 +323,7 @@ namespace Google.Apis.GKEHub.v1alpha
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>
@@ -467,7 +467,7 @@ namespace Google.Apis.GKEHub.v1alpha
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.GKEHub.v1alpha.Data.Feature body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Adds a new Feature.</summary>
@@ -557,7 +557,7 @@ namespace Google.Apis.GKEHub.v1alpha
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Removes a Feature.</summary>
@@ -643,7 +643,7 @@ namespace Google.Apis.GKEHub.v1alpha
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets details of a single Feature.</summary>
@@ -697,7 +697,7 @@ namespace Google.Apis.GKEHub.v1alpha
                 /// </param>
                 public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                 {
-                    return new GetIamPolicyRequest(service, resource);
+                    return new GetIamPolicyRequest(this.service, resource);
                 }
 
                 /// <summary>
@@ -773,7 +773,7 @@ namespace Google.Apis.GKEHub.v1alpha
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists Features in a given project and location.</summary>
@@ -887,7 +887,7 @@ namespace Google.Apis.GKEHub.v1alpha
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.GKEHub.v1alpha.Data.Feature body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates an existing Feature.</summary>
@@ -982,7 +982,7 @@ namespace Google.Apis.GKEHub.v1alpha
                 /// </param>
                 public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.GKEHub.v1alpha.Data.SetIamPolicyRequest body, string resource)
                 {
-                    return new SetIamPolicyRequest(service, body, resource);
+                    return new SetIamPolicyRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -1051,7 +1051,7 @@ namespace Google.Apis.GKEHub.v1alpha
                 /// </param>
                 public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.GKEHub.v1alpha.Data.TestIamPermissionsRequest body, string resource)
                 {
-                    return new TestIamPermissionsRequest(service, body, resource);
+                    return new TestIamPermissionsRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -1134,7 +1134,7 @@ namespace Google.Apis.GKEHub.v1alpha
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.GKEHub.v1alpha.Data.Fleet body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a fleet.</summary>
@@ -1191,7 +1191,7 @@ namespace Google.Apis.GKEHub.v1alpha
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Removes a Fleet. There must be no memberships remaining in the Fleet.</summary>
@@ -1240,7 +1240,7 @@ namespace Google.Apis.GKEHub.v1alpha
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Returns the details of a fleet.</summary>
@@ -1292,7 +1292,7 @@ namespace Google.Apis.GKEHub.v1alpha
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>
@@ -1379,7 +1379,7 @@ namespace Google.Apis.GKEHub.v1alpha
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.GKEHub.v1alpha.Data.Fleet body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates a fleet.</summary>
@@ -1488,7 +1488,7 @@ namespace Google.Apis.GKEHub.v1alpha
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.GKEHub.v1alpha.Data.MembershipBinding body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>Creates a MembershipBinding.</summary>
@@ -1558,7 +1558,7 @@ namespace Google.Apis.GKEHub.v1alpha
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>Deletes a MembershipBinding.</summary>
@@ -1609,7 +1609,7 @@ namespace Google.Apis.GKEHub.v1alpha
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Returns the details of a MembershipBinding.</summary>
@@ -1660,7 +1660,7 @@ namespace Google.Apis.GKEHub.v1alpha
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists MembershipBindings.</summary>
@@ -1757,7 +1757,7 @@ namespace Google.Apis.GKEHub.v1alpha
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.GKEHub.v1alpha.Data.MembershipBinding body, string name)
                     {
-                        return new PatchRequest(service, body, name);
+                        return new PatchRequest(this.service, body, name);
                     }
 
                     /// <summary>Updates a MembershipBinding.</summary>
@@ -1846,7 +1846,7 @@ namespace Google.Apis.GKEHub.v1alpha
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.GKEHub.v1alpha.Data.RBACRoleBinding body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>Creates a Membership RBACRoleBinding.</summary>
@@ -1922,7 +1922,7 @@ namespace Google.Apis.GKEHub.v1alpha
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>Deletes a Membership RBACRoleBinding.</summary>
@@ -1977,7 +1977,7 @@ namespace Google.Apis.GKEHub.v1alpha
                     /// </param>
                     public virtual GenerateMembershipRBACRoleBindingYAMLRequest GenerateMembershipRBACRoleBindingYAML(Google.Apis.GKEHub.v1alpha.Data.RBACRoleBinding body, string parent)
                     {
-                        return new GenerateMembershipRBACRoleBindingYAMLRequest(service, body, parent);
+                        return new GenerateMembershipRBACRoleBindingYAMLRequest(this.service, body, parent);
                     }
 
                     /// <summary>
@@ -2056,7 +2056,7 @@ namespace Google.Apis.GKEHub.v1alpha
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Returns the details of a Membership RBACRoleBinding.</summary>
@@ -2107,7 +2107,7 @@ namespace Google.Apis.GKEHub.v1alpha
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists all Membership RBACRoleBindings.</summary>
@@ -2191,7 +2191,7 @@ namespace Google.Apis.GKEHub.v1alpha
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.GKEHub.v1alpha.Data.RBACRoleBinding body, string name)
                     {
-                        return new PatchRequest(service, body, name);
+                        return new PatchRequest(this.service, body, name);
                     }
 
                     /// <summary>Updates a Membership RBACRoleBinding.</summary>
@@ -2269,7 +2269,7 @@ namespace Google.Apis.GKEHub.v1alpha
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.GKEHub.v1alpha.Data.Membership body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -2373,7 +2373,7 @@ namespace Google.Apis.GKEHub.v1alpha
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -2466,7 +2466,7 @@ namespace Google.Apis.GKEHub.v1alpha
                 /// </param>
                 public virtual GenerateConnectManifestRequest GenerateConnectManifest(string name)
                 {
-                    return new GenerateConnectManifestRequest(service, name);
+                    return new GenerateConnectManifestRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -2607,7 +2607,7 @@ namespace Google.Apis.GKEHub.v1alpha
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets the details of a Membership.</summary>
@@ -2661,7 +2661,7 @@ namespace Google.Apis.GKEHub.v1alpha
                 /// </param>
                 public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                 {
-                    return new GetIamPolicyRequest(service, resource);
+                    return new GetIamPolicyRequest(this.service, resource);
                 }
 
                 /// <summary>
@@ -2737,7 +2737,7 @@ namespace Google.Apis.GKEHub.v1alpha
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists Memberships in a given project and location.</summary>
@@ -2855,7 +2855,7 @@ namespace Google.Apis.GKEHub.v1alpha
                 /// </param>
                 public virtual ListAdminRequest ListAdmin(string parent)
                 {
-                    return new ListAdminRequest(service, parent);
+                    return new ListAdminRequest(this.service, parent);
                 }
 
                 /// <summary>
@@ -2968,7 +2968,7 @@ namespace Google.Apis.GKEHub.v1alpha
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.GKEHub.v1alpha.Data.Membership body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates an existing Membership.</summary>
@@ -3063,7 +3063,7 @@ namespace Google.Apis.GKEHub.v1alpha
                 /// </param>
                 public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.GKEHub.v1alpha.Data.SetIamPolicyRequest body, string resource)
                 {
-                    return new SetIamPolicyRequest(service, body, resource);
+                    return new SetIamPolicyRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -3132,7 +3132,7 @@ namespace Google.Apis.GKEHub.v1alpha
                 /// </param>
                 public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.GKEHub.v1alpha.Data.TestIamPermissionsRequest body, string resource)
                 {
-                    return new TestIamPermissionsRequest(service, body, resource);
+                    return new TestIamPermissionsRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -3201,7 +3201,7 @@ namespace Google.Apis.GKEHub.v1alpha
                 /// </param>
                 public virtual ValidateCreateRequest ValidateCreate(Google.Apis.GKEHub.v1alpha.Data.ValidateCreateMembershipRequest body, string parent)
                 {
-                    return new ValidateCreateRequest(service, body, parent);
+                    return new ValidateCreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -3300,7 +3300,7 @@ namespace Google.Apis.GKEHub.v1alpha
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.GKEHub.v1alpha.Data.RBACRoleBinding body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>Creates a RBACRoleBinding.</summary>
@@ -3376,7 +3376,7 @@ namespace Google.Apis.GKEHub.v1alpha
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>Deletes a RBACRoleBinding.</summary>
@@ -3427,7 +3427,7 @@ namespace Google.Apis.GKEHub.v1alpha
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Returns the details of a RBACRoleBinding.</summary>
@@ -3478,7 +3478,7 @@ namespace Google.Apis.GKEHub.v1alpha
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists RBACRoleBinding.</summary>
@@ -3562,7 +3562,7 @@ namespace Google.Apis.GKEHub.v1alpha
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.GKEHub.v1alpha.Data.RBACRoleBinding body, string name)
                     {
-                        return new PatchRequest(service, body, name);
+                        return new PatchRequest(this.service, body, name);
                     }
 
                     /// <summary>Updates a RBACRoleBinding.</summary>
@@ -3636,7 +3636,7 @@ namespace Google.Apis.GKEHub.v1alpha
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.GKEHub.v1alpha.Data.Namespace body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a fleet namespace.</summary>
@@ -3710,7 +3710,7 @@ namespace Google.Apis.GKEHub.v1alpha
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes a fleet namespace.</summary>
@@ -3759,7 +3759,7 @@ namespace Google.Apis.GKEHub.v1alpha
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Returns the details of a fleet namespace.</summary>
@@ -3809,7 +3809,7 @@ namespace Google.Apis.GKEHub.v1alpha
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists fleet namespaces.</summary>
@@ -3890,7 +3890,7 @@ namespace Google.Apis.GKEHub.v1alpha
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.GKEHub.v1alpha.Data.Namespace body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates a fleet namespace.</summary>
@@ -3983,7 +3983,7 @@ namespace Google.Apis.GKEHub.v1alpha
                 /// <param name="name">The name of the operation resource to be cancelled.</param>
                 public virtual CancelRequest Cancel(Google.Apis.GKEHub.v1alpha.Data.CancelOperationRequest body, string name)
                 {
-                    return new CancelRequest(service, body, name);
+                    return new CancelRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -4046,7 +4046,7 @@ namespace Google.Apis.GKEHub.v1alpha
                 /// <param name="name">The name of the operation resource to be deleted.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -4098,7 +4098,7 @@ namespace Google.Apis.GKEHub.v1alpha
                 /// <param name="name">The name of the operation resource.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -4149,7 +4149,7 @@ namespace Google.Apis.GKEHub.v1alpha
                 /// <param name="name">The name of the operation's parent resource.</param>
                 public virtual ListRequest List(string name)
                 {
-                    return new ListRequest(service, name);
+                    return new ListRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -4274,7 +4274,7 @@ namespace Google.Apis.GKEHub.v1alpha
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.GKEHub.v1alpha.Data.Namespace body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>Creates a fleet namespace.</summary>
@@ -4350,7 +4350,7 @@ namespace Google.Apis.GKEHub.v1alpha
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>Deletes a fleet namespace.</summary>
@@ -4401,7 +4401,7 @@ namespace Google.Apis.GKEHub.v1alpha
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Returns the details of a fleet namespace.</summary>
@@ -4452,7 +4452,7 @@ namespace Google.Apis.GKEHub.v1alpha
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists fleet namespaces.</summary>
@@ -4534,7 +4534,7 @@ namespace Google.Apis.GKEHub.v1alpha
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.GKEHub.v1alpha.Data.Namespace body, string name)
                     {
-                        return new PatchRequest(service, body, name);
+                        return new PatchRequest(this.service, body, name);
                     }
 
                     /// <summary>Updates a fleet namespace.</summary>
@@ -4623,7 +4623,7 @@ namespace Google.Apis.GKEHub.v1alpha
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.GKEHub.v1alpha.Data.RBACRoleBinding body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>Creates a Scope RBACRoleBinding.</summary>
@@ -4699,7 +4699,7 @@ namespace Google.Apis.GKEHub.v1alpha
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>Deletes a Scope RBACRoleBinding.</summary>
@@ -4750,7 +4750,7 @@ namespace Google.Apis.GKEHub.v1alpha
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Returns the details of a Scope RBACRoleBinding.</summary>
@@ -4801,7 +4801,7 @@ namespace Google.Apis.GKEHub.v1alpha
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists all Scope RBACRoleBindings.</summary>
@@ -4885,7 +4885,7 @@ namespace Google.Apis.GKEHub.v1alpha
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.GKEHub.v1alpha.Data.RBACRoleBinding body, string name)
                     {
-                        return new PatchRequest(service, body, name);
+                        return new PatchRequest(this.service, body, name);
                     }
 
                     /// <summary>Updates a Scope RBACRoleBinding.</summary>
@@ -4959,7 +4959,7 @@ namespace Google.Apis.GKEHub.v1alpha
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.GKEHub.v1alpha.Data.Scope body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a Scope.</summary>
@@ -5028,7 +5028,7 @@ namespace Google.Apis.GKEHub.v1alpha
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes a Scope.</summary>
@@ -5077,7 +5077,7 @@ namespace Google.Apis.GKEHub.v1alpha
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Returns the details of a Scope.</summary>
@@ -5131,7 +5131,7 @@ namespace Google.Apis.GKEHub.v1alpha
                 /// </param>
                 public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                 {
-                    return new GetIamPolicyRequest(service, resource);
+                    return new GetIamPolicyRequest(this.service, resource);
                 }
 
                 /// <summary>
@@ -5207,7 +5207,7 @@ namespace Google.Apis.GKEHub.v1alpha
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists Scopes.</summary>
@@ -5288,7 +5288,7 @@ namespace Google.Apis.GKEHub.v1alpha
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.GKEHub.v1alpha.Data.Scope body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates a scopes.</summary>
@@ -5362,7 +5362,7 @@ namespace Google.Apis.GKEHub.v1alpha
                 /// </param>
                 public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.GKEHub.v1alpha.Data.SetIamPolicyRequest body, string resource)
                 {
-                    return new SetIamPolicyRequest(service, body, resource);
+                    return new SetIamPolicyRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -5431,7 +5431,7 @@ namespace Google.Apis.GKEHub.v1alpha
                 /// </param>
                 public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.GKEHub.v1alpha.Data.TestIamPermissionsRequest body, string resource)
                 {
-                    return new TestIamPermissionsRequest(service, body, resource);
+                    return new TestIamPermissionsRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -5493,7 +5493,7 @@ namespace Google.Apis.GKEHub.v1alpha
             /// <param name="name">Resource name for the location.</param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets information about a location.</summary>
@@ -5538,7 +5538,7 @@ namespace Google.Apis.GKEHub.v1alpha
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
             {
-                return new ListRequest(service, name);
+                return new ListRequest(this.service, name);
             }
 
             /// <summary>Lists information about the supported locations for this service.</summary>
@@ -5997,8 +5997,8 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -6098,8 +6098,8 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? IgnoredTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(IgnoredTimeRaw);
-            set => IgnoredTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(IgnoredTimeRaw);
+            set => IgnoredTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Reason why the membership is ignored.</summary>
@@ -6266,8 +6266,8 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -6976,8 +6976,8 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -7020,8 +7020,8 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CopyTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CopyTimeRaw);
-            set => CopyTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CopyTimeRaw);
+            set => CopyTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Stage of the migration.</summary>
@@ -7157,8 +7157,8 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LastSyncTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastSyncTimeRaw);
-            set => LastSyncTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastSyncTimeRaw);
+            set => LastSyncTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Token indicating the state of the repo.</summary>
@@ -7306,8 +7306,8 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _deleteTimeRaw;
@@ -7343,8 +7343,8 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? DeleteTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DeleteTimeRaw);
-            set => DeleteTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DeleteTimeRaw);
+            set => DeleteTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Optional. Feature configuration applicable to all memberships of the fleet.</summary>
@@ -7453,8 +7453,8 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -7539,8 +7539,8 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -7583,8 +7583,8 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Optional. The default cluster configurations to apply across the fleet.</summary>
@@ -7624,8 +7624,8 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? DeleteTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DeleteTimeRaw);
-            set => DeleteTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DeleteTimeRaw);
+            set => DeleteTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -7692,8 +7692,8 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -8157,8 +8157,8 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. vCPU count as reported by Kubernetes nodes resources.</summary>
@@ -8522,8 +8522,8 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _deleteTimeRaw;
@@ -8559,8 +8559,8 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? DeleteTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DeleteTimeRaw);
-            set => DeleteTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DeleteTimeRaw);
+            set => DeleteTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -8625,8 +8625,8 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LastConnectionTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastConnectionTimeRaw);
-            set => LastConnectionTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastConnectionTimeRaw);
+            set => LastConnectionTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Optional. The monitoring config information for this membership.</summary>
@@ -8688,8 +8688,8 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -8735,8 +8735,8 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _deleteTimeRaw;
@@ -8772,8 +8772,8 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? DeleteTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DeleteTimeRaw);
-            set => DeleteTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DeleteTimeRaw);
+            set => DeleteTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Optional. Labels for this MembershipBinding.</summary>
@@ -8836,8 +8836,8 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -9067,8 +9067,8 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? LastMeasurementTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastMeasurementTimeRaw);
-            set => LastMeasurementTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastMeasurementTimeRaw);
+            set => LastMeasurementTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -9201,8 +9201,8 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _deleteTimeRaw;
@@ -9238,8 +9238,8 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? DeleteTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DeleteTimeRaw);
-            set => DeleteTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DeleteTimeRaw);
+            set => DeleteTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Optional. Labels for this Namespace.</summary>
@@ -9309,8 +9309,8 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -9481,8 +9481,8 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _endTimeRaw;
@@ -9518,8 +9518,8 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. Human-readable status of the operation, if any.</summary>
@@ -9942,8 +9942,8 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _deleteTimeRaw;
@@ -9979,8 +9979,8 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? DeleteTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DeleteTimeRaw);
-            set => DeleteTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DeleteTimeRaw);
+            set => DeleteTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>group is the group, as seen by the kubernetes cluster.</summary>
@@ -10048,8 +10048,8 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -10166,8 +10166,8 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _deleteTimeRaw;
@@ -10203,8 +10203,8 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? DeleteTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DeleteTimeRaw);
-            set => DeleteTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DeleteTimeRaw);
+            set => DeleteTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Optional. Labels for this Scope.</summary>
@@ -10268,8 +10268,8 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>

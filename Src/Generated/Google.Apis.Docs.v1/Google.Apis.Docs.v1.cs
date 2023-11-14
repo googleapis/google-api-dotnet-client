@@ -311,7 +311,7 @@ namespace Google.Apis.Docs.v1
         /// <param name="documentId">The ID of the document to update.</param>
         public virtual BatchUpdateRequest BatchUpdate(Google.Apis.Docs.v1.Data.BatchUpdateDocumentRequest body, string documentId)
         {
-            return new BatchUpdateRequest(service, body, documentId);
+            return new BatchUpdateRequest(this.service, body, documentId);
         }
 
         /// <summary>
@@ -376,7 +376,7 @@ namespace Google.Apis.Docs.v1
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.Docs.v1.Data.Document body)
         {
-            return new CreateRequest(service, body);
+            return new CreateRequest(this.service, body);
         }
 
         /// <summary>
@@ -418,7 +418,7 @@ namespace Google.Apis.Docs.v1
         /// <param name="documentId">The ID of the document to retrieve.</param>
         public virtual GetRequest Get(string documentId)
         {
-            return new GetRequest(service, documentId);
+            return new GetRequest(this.service, documentId);
         }
 
         /// <summary>Gets the latest version of the specified document.</summary>

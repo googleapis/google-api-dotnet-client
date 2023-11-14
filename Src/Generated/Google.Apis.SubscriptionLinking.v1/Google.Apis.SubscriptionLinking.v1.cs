@@ -283,7 +283,7 @@ namespace Google.Apis.SubscriptionLinking.v1
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
-                return new DeleteRequest(service, name);
+                return new DeleteRequest(this.service, name);
             }
 
             /// <summary>
@@ -349,7 +349,7 @@ namespace Google.Apis.SubscriptionLinking.v1
             /// </param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets a reader of a publication. Returns NOT_FOUND if the reader does not exist.</summary>
@@ -402,7 +402,7 @@ namespace Google.Apis.SubscriptionLinking.v1
             /// </param>
             public virtual GetEntitlementsRequest GetEntitlements(string name)
             {
-                return new GetEntitlementsRequest(service, name);
+                return new GetEntitlementsRequest(this.service, name);
             }
 
             /// <summary>
@@ -458,7 +458,7 @@ namespace Google.Apis.SubscriptionLinking.v1
             /// <param name="name">Output only. The resource name of the singleton.</param>
             public virtual UpdateEntitlementsRequest UpdateEntitlements(Google.Apis.SubscriptionLinking.v1.Data.ReaderEntitlements body, string name)
             {
-                return new UpdateEntitlementsRequest(service, body, name);
+                return new UpdateEntitlementsRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -581,8 +581,8 @@ namespace Google.Apis.SubscriptionLinking.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpireTimeRaw);
-            set => ExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -639,8 +639,8 @@ namespace Google.Apis.SubscriptionLinking.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>

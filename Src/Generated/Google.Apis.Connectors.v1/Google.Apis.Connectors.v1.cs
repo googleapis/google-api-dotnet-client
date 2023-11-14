@@ -343,7 +343,7 @@ namespace Google.Apis.Connectors.v1
                     /// </param>
                     public virtual RefreshRequest Refresh(Google.Apis.Connectors.v1.Data.RefreshConnectionSchemaMetadataRequest body, string name)
                     {
-                        return new RefreshRequest(service, body, name);
+                        return new RefreshRequest(this.service, body, name);
                     }
 
                     /// <summary>Refresh runtime schema of a connection.</summary>
@@ -420,7 +420,7 @@ namespace Google.Apis.Connectors.v1
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.Connectors.v1.Data.EventSubscription body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>Creates a new EventSubscription in a given project,location and connection.</summary>
@@ -492,7 +492,7 @@ namespace Google.Apis.Connectors.v1
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>Deletes a single EventSubscription.</summary>
@@ -542,7 +542,7 @@ namespace Google.Apis.Connectors.v1
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Gets details of a single EventSubscription.</summary>
@@ -593,7 +593,7 @@ namespace Google.Apis.Connectors.v1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>List EventSubscriptions in a given project,location and connection.</summary>
@@ -693,7 +693,7 @@ namespace Google.Apis.Connectors.v1
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.Connectors.v1.Data.EventSubscription body, string name)
                     {
-                        return new PatchRequest(service, body, name);
+                        return new PatchRequest(this.service, body, name);
                     }
 
                     /// <summary>Updates the parameters of a single EventSubscription.</summary>
@@ -767,7 +767,7 @@ namespace Google.Apis.Connectors.v1
                     /// </param>
                     public virtual RetryRequest Retry(Google.Apis.Connectors.v1.Data.RetryEventSubscriptionRequest body, string name)
                     {
-                        return new RetryRequest(service, body, name);
+                        return new RetryRequest(this.service, body, name);
                     }
 
                     /// <summary>RetryEventSubscription retries the registration of Subscription.</summary>
@@ -843,7 +843,7 @@ namespace Google.Apis.Connectors.v1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>List schema of a runtime actions filtered by action name.</summary>
@@ -952,7 +952,7 @@ namespace Google.Apis.Connectors.v1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>List schema of a runtime entities filtered by entity name.</summary>
@@ -1044,7 +1044,7 @@ namespace Google.Apis.Connectors.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Connectors.v1.Data.Connection body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a new Connection in a given project and location.</summary>
@@ -1115,7 +1115,7 @@ namespace Google.Apis.Connectors.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes a single Connection.</summary>
@@ -1162,7 +1162,7 @@ namespace Google.Apis.Connectors.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets details of a single Connection.</summary>
@@ -1244,7 +1244,7 @@ namespace Google.Apis.Connectors.v1
                 /// </param>
                 public virtual GetConnectionSchemaMetadataRequest GetConnectionSchemaMetadata(string name)
                 {
-                    return new GetConnectionSchemaMetadataRequest(service, name);
+                    return new GetConnectionSchemaMetadataRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -1301,7 +1301,7 @@ namespace Google.Apis.Connectors.v1
                 /// </param>
                 public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                 {
-                    return new GetIamPolicyRequest(service, resource);
+                    return new GetIamPolicyRequest(this.service, resource);
                 }
 
                 /// <summary>
@@ -1376,7 +1376,7 @@ namespace Google.Apis.Connectors.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists Connections in a given project and location.</summary>
@@ -1507,7 +1507,7 @@ namespace Google.Apis.Connectors.v1
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.Connectors.v1.Data.Connection body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates the parameters of a single Connection.</summary>
@@ -1583,7 +1583,7 @@ namespace Google.Apis.Connectors.v1
                 /// </param>
                 public virtual RepairEventingRequest RepairEventing(Google.Apis.Connectors.v1.Data.RepairEventingRequest body, string name)
                 {
-                    return new RepairEventingRequest(service, body, name);
+                    return new RepairEventingRequest(this.service, body, name);
                 }
 
                 /// <summary>RepaiEventing tries to repair eventing related event subscriptions.</summary>
@@ -1643,7 +1643,7 @@ namespace Google.Apis.Connectors.v1
                 /// </param>
                 public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Connectors.v1.Data.SetIamPolicyRequest body, string resource)
                 {
-                    return new SetIamPolicyRequest(service, body, resource);
+                    return new SetIamPolicyRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -1712,7 +1712,7 @@ namespace Google.Apis.Connectors.v1
                 /// </param>
                 public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Connectors.v1.Data.TestIamPermissionsRequest body, string resource)
                 {
-                    return new TestIamPermissionsRequest(service, body, resource);
+                    return new TestIamPermissionsRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -1794,7 +1794,7 @@ namespace Google.Apis.Connectors.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Connectors.v1.Data.EndpointAttachment body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a new EndpointAttachment in a given project and location.</summary>
@@ -1865,7 +1865,7 @@ namespace Google.Apis.Connectors.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes a single EndpointAttachment.</summary>
@@ -1914,7 +1914,7 @@ namespace Google.Apis.Connectors.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets details of a single EndpointAttachment.</summary>
@@ -1963,7 +1963,7 @@ namespace Google.Apis.Connectors.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>List EndpointAttachments in a given project</summary>
@@ -2062,7 +2062,7 @@ namespace Google.Apis.Connectors.v1
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.Connectors.v1.Data.EndpointAttachment body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates the parameters of a single EndpointAttachment.</summary>
@@ -2172,7 +2172,7 @@ namespace Google.Apis.Connectors.v1
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.Connectors.v1.Data.ManagedZone body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>Creates a new ManagedZone in a given project and location.</summary>
@@ -2243,7 +2243,7 @@ namespace Google.Apis.Connectors.v1
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>Deletes a single ManagedZone.</summary>
@@ -2292,7 +2292,7 @@ namespace Google.Apis.Connectors.v1
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Gets details of a single ManagedZone.</summary>
@@ -2341,7 +2341,7 @@ namespace Google.Apis.Connectors.v1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>List ManagedZones in a given project</summary>
@@ -2440,7 +2440,7 @@ namespace Google.Apis.Connectors.v1
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.Connectors.v1.Data.ManagedZone body, string name)
                     {
-                        return new PatchRequest(service, body, name);
+                        return new PatchRequest(this.service, body, name);
                     }
 
                     /// <summary>Updates the parameters of a single ManagedZone.</summary>
@@ -2515,7 +2515,7 @@ namespace Google.Apis.Connectors.v1
                 /// <param name="name">Required. The resource name of the Settings.</param>
                 public virtual GetSettingsRequest GetSettings(string name)
                 {
-                    return new GetSettingsRequest(service, name);
+                    return new GetSettingsRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -2565,7 +2565,7 @@ namespace Google.Apis.Connectors.v1
                 /// </param>
                 public virtual UpdateSettingsRequest UpdateSettings(Google.Apis.Connectors.v1.Data.Settings body, string name)
                 {
-                    return new UpdateSettingsRequest(service, body, name);
+                    return new UpdateSettingsRequest(this.service, body, name);
                 }
 
                 /// <summary>Update the global settings of a project.</summary>
@@ -2658,7 +2658,7 @@ namespace Google.Apis.Connectors.v1
                 /// <param name="name">The name of the operation resource to be cancelled.</param>
                 public virtual CancelRequest Cancel(Google.Apis.Connectors.v1.Data.CancelOperationRequest body, string name)
                 {
-                    return new CancelRequest(service, body, name);
+                    return new CancelRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -2721,7 +2721,7 @@ namespace Google.Apis.Connectors.v1
                 /// <param name="name">The name of the operation resource to be deleted.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -2773,7 +2773,7 @@ namespace Google.Apis.Connectors.v1
                 /// <param name="name">The name of the operation resource.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -2824,7 +2824,7 @@ namespace Google.Apis.Connectors.v1
                 /// <param name="name">The name of the operation's parent resource.</param>
                 public virtual ListRequest List(string name)
                 {
-                    return new ListRequest(service, name);
+                    return new ListRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -2984,7 +2984,7 @@ namespace Google.Apis.Connectors.v1
                             /// </param>
                             public virtual GetRequest Get(string name)
                             {
-                                return new GetRequest(service, name);
+                                return new GetRequest(this.service, name);
                             }
 
                             /// <summary>Gets details of a single event type.</summary>
@@ -3037,7 +3037,7 @@ namespace Google.Apis.Connectors.v1
                             /// </param>
                             public virtual ListRequest List(string parent)
                             {
-                                return new ListRequest(service, parent);
+                                return new ListRequest(this.service, parent);
                             }
 
                             /// <summary>Lists Event Types in a given Connector Version.</summary>
@@ -3115,7 +3115,7 @@ namespace Google.Apis.Connectors.v1
                         /// </param>
                         public virtual GetRequest Get(string name)
                         {
-                            return new GetRequest(service, name);
+                            return new GetRequest(this.service, name);
                         }
 
                         /// <summary>Gets details of a single connector version.</summary>
@@ -3202,7 +3202,7 @@ namespace Google.Apis.Connectors.v1
                         /// </param>
                         public virtual ListRequest List(string parent)
                         {
-                            return new ListRequest(service, parent);
+                            return new ListRequest(this.service, parent);
                         }
 
                         /// <summary>Lists Connector Versions in a given project and location.</summary>
@@ -3313,7 +3313,7 @@ namespace Google.Apis.Connectors.v1
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
-                        return new GetRequest(service, name);
+                        return new GetRequest(this.service, name);
                     }
 
                     /// <summary>Gets details of a single Connector.</summary>
@@ -3364,7 +3364,7 @@ namespace Google.Apis.Connectors.v1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>Lists Connectors in a given project and location.</summary>
@@ -3453,7 +3453,7 @@ namespace Google.Apis.Connectors.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets details of a provider.</summary>
@@ -3508,7 +3508,7 @@ namespace Google.Apis.Connectors.v1
                 /// </param>
                 public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                 {
-                    return new GetIamPolicyRequest(service, resource);
+                    return new GetIamPolicyRequest(this.service, resource);
                 }
 
                 /// <summary>
@@ -3584,7 +3584,7 @@ namespace Google.Apis.Connectors.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists Providers in a given project and location.</summary>
@@ -3664,7 +3664,7 @@ namespace Google.Apis.Connectors.v1
                 /// </param>
                 public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Connectors.v1.Data.SetIamPolicyRequest body, string resource)
                 {
-                    return new SetIamPolicyRequest(service, body, resource);
+                    return new SetIamPolicyRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -3733,7 +3733,7 @@ namespace Google.Apis.Connectors.v1
                 /// </param>
                 public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Connectors.v1.Data.TestIamPermissionsRequest body, string resource)
                 {
-                    return new TestIamPermissionsRequest(service, body, resource);
+                    return new TestIamPermissionsRequest(this.service, body, resource);
                 }
 
                 /// <summary>
@@ -3795,7 +3795,7 @@ namespace Google.Apis.Connectors.v1
             /// <param name="name">Resource name for the location.</param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets information about a location.</summary>
@@ -3842,7 +3842,7 @@ namespace Google.Apis.Connectors.v1
             /// <param name="name">Required. The resource name of the Regional Settings.</param>
             public virtual GetRegionalSettingsRequest GetRegionalSettings(string name)
             {
-                return new GetRegionalSettingsRequest(service, name);
+                return new GetRegionalSettingsRequest(this.service, name);
             }
 
             /// <summary>
@@ -3891,7 +3891,7 @@ namespace Google.Apis.Connectors.v1
             /// <param name="name">Required. Resource name of the form: `projects/*/locations/*/runtimeConfig`</param>
             public virtual GetRuntimeConfigRequest GetRuntimeConfig(string name)
             {
-                return new GetRuntimeConfigRequest(service, name);
+                return new GetRuntimeConfigRequest(this.service, name);
             }
 
             /// <summary>
@@ -3938,7 +3938,7 @@ namespace Google.Apis.Connectors.v1
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
             {
-                return new ListRequest(service, name);
+                return new ListRequest(this.service, name);
             }
 
             /// <summary>Lists information about the supported locations for this service.</summary>
@@ -4031,7 +4031,7 @@ namespace Google.Apis.Connectors.v1
             /// </param>
             public virtual UpdateRegionalSettingsRequest UpdateRegionalSettings(Google.Apis.Connectors.v1.Data.RegionalSettings body, string name)
             {
-                return new UpdateRegionalSettingsRequest(service, body, name);
+                return new UpdateRegionalSettingsRequest(this.service, body, name);
             }
 
             /// <summary>Update the settings of a region.</summary>
@@ -4467,8 +4467,8 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Optional. Description of the resource.</summary>
@@ -4597,8 +4597,8 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -4659,8 +4659,8 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? RefreshTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(RefreshTimeRaw);
-            set => RefreshTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(RefreshTimeRaw);
+            set => RefreshTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. The current state of runtime schema.</summary>
@@ -4700,8 +4700,8 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -4763,8 +4763,8 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. Description of the resource.</summary>
@@ -4839,8 +4839,8 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. Cloud storage location of icons etc consumed by UI.</summary>
@@ -4941,8 +4941,8 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. List of destination configs needed to create a connection.</summary>
@@ -5035,8 +5035,8 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -5288,8 +5288,8 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Optional. Description of the resource.</summary>
@@ -5351,8 +5351,8 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -5410,8 +5410,8 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Optional. The destination to hit when we receive an event</summary>
@@ -5478,8 +5478,8 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -5556,8 +5556,8 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -5626,8 +5626,8 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -6400,8 +6400,8 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Optional. Description of the resource.</summary>
@@ -6467,8 +6467,8 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -6670,8 +6670,8 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _endTimeRaw;
@@ -6707,8 +6707,8 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -6848,8 +6848,8 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. Description of the resource.</summary>
@@ -6920,8 +6920,8 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Output only. Cloud storage location of icons etc consumed by UI.</summary>

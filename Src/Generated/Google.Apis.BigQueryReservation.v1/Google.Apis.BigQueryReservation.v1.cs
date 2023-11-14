@@ -328,7 +328,7 @@ namespace Google.Apis.BigQueryReservation.v1
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.BigQueryReservation.v1.Data.CapacityCommitment body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a new capacity commitment resource.</summary>
@@ -419,7 +419,7 @@ namespace Google.Apis.BigQueryReservation.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -488,7 +488,7 @@ namespace Google.Apis.BigQueryReservation.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Returns information about the capacity commitment.</summary>
@@ -538,7 +538,7 @@ namespace Google.Apis.BigQueryReservation.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists all the capacity commitments for the admin project.</summary>
@@ -617,7 +617,7 @@ namespace Google.Apis.BigQueryReservation.v1
                 /// </param>
                 public virtual MergeRequest Merge(Google.Apis.BigQueryReservation.v1.Data.MergeCapacityCommitmentsRequest body, string parent)
                 {
-                    return new MergeRequest(service, body, parent);
+                    return new MergeRequest(this.service, body, parent);
                 }
 
                 /// <summary>
@@ -687,7 +687,7 @@ namespace Google.Apis.BigQueryReservation.v1
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.BigQueryReservation.v1.Data.CapacityCommitment body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -768,7 +768,7 @@ namespace Google.Apis.BigQueryReservation.v1
                 /// </param>
                 public virtual SplitRequest Split(Google.Apis.BigQueryReservation.v1.Data.SplitCapacityCommitmentRequest body, string name)
                 {
-                    return new SplitRequest(service, body, name);
+                    return new SplitRequest(this.service, body, name);
                 }
 
                 /// <summary>
@@ -885,7 +885,7 @@ namespace Google.Apis.BigQueryReservation.v1
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.BigQueryReservation.v1.Data.Assignment body, string parent)
                     {
-                        return new CreateRequest(service, body, parent);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
                     /// <summary>
@@ -984,7 +984,7 @@ namespace Google.Apis.BigQueryReservation.v1
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
-                        return new DeleteRequest(service, name);
+                        return new DeleteRequest(this.service, name);
                     }
 
                     /// <summary>
@@ -1052,7 +1052,7 @@ namespace Google.Apis.BigQueryReservation.v1
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
-                        return new ListRequest(service, parent);
+                        return new ListRequest(this.service, parent);
                     }
 
                     /// <summary>
@@ -1142,7 +1142,7 @@ namespace Google.Apis.BigQueryReservation.v1
                     /// </param>
                     public virtual MoveRequest Move(Google.Apis.BigQueryReservation.v1.Data.MoveAssignmentRequest body, string name)
                     {
-                        return new MoveRequest(service, body, name);
+                        return new MoveRequest(this.service, body, name);
                     }
 
                     /// <summary>
@@ -1207,7 +1207,7 @@ namespace Google.Apis.BigQueryReservation.v1
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.BigQueryReservation.v1.Data.Assignment body, string name)
                     {
-                        return new PatchRequest(service, body, name);
+                        return new PatchRequest(this.service, body, name);
                     }
 
                     /// <summary>Updates an existing assignment. Only the `priority` field can be updated.</summary>
@@ -1278,7 +1278,7 @@ namespace Google.Apis.BigQueryReservation.v1
                 /// <param name="parent">Required. Project, location. E.g., `projects/myproject/locations/US`</param>
                 public virtual CreateRequest Create(Google.Apis.BigQueryReservation.v1.Data.Reservation body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a new reservation resource.</summary>
@@ -1351,7 +1351,7 @@ namespace Google.Apis.BigQueryReservation.v1
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -1405,7 +1405,7 @@ namespace Google.Apis.BigQueryReservation.v1
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Returns information about the reservation.</summary>
@@ -1456,7 +1456,7 @@ namespace Google.Apis.BigQueryReservation.v1
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists all the reservations for the project in the specified location.</summary>
@@ -1533,7 +1533,7 @@ namespace Google.Apis.BigQueryReservation.v1
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.BigQueryReservation.v1.Data.Reservation body, string name)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>Updates an existing reservation resource.</summary>
@@ -1605,7 +1605,7 @@ namespace Google.Apis.BigQueryReservation.v1
             /// </param>
             public virtual GetBiReservationRequest GetBiReservation(string name)
             {
-                return new GetBiReservationRequest(service, name);
+                return new GetBiReservationRequest(this.service, name);
             }
 
             /// <summary>Retrieves a BI reservation.</summary>
@@ -1666,7 +1666,7 @@ namespace Google.Apis.BigQueryReservation.v1
             /// </param>
             public virtual SearchAllAssignmentsRequest SearchAllAssignments(string parent)
             {
-                return new SearchAllAssignmentsRequest(service, parent);
+                return new SearchAllAssignmentsRequest(this.service, parent);
             }
 
             /// <summary>
@@ -1776,7 +1776,7 @@ namespace Google.Apis.BigQueryReservation.v1
             /// </param>
             public virtual SearchAssignmentsRequest SearchAssignments(string parent)
             {
-                return new SearchAssignmentsRequest(service, parent);
+                return new SearchAssignmentsRequest(this.service, parent);
             }
 
             /// <summary>
@@ -1881,7 +1881,7 @@ namespace Google.Apis.BigQueryReservation.v1
             /// </param>
             public virtual UpdateBiReservationRequest UpdateBiReservation(Google.Apis.BigQueryReservation.v1.Data.BiReservation body, string name)
             {
-                return new UpdateBiReservationRequest(service, body, name);
+                return new UpdateBiReservationRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -2053,8 +2053,8 @@ namespace Google.Apis.BigQueryReservation.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -2107,8 +2107,8 @@ namespace Google.Apis.BigQueryReservation.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CommitmentEndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CommitmentEndTimeRaw);
-            set => CommitmentEndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CommitmentEndTimeRaw);
+            set => CommitmentEndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _commitmentStartTimeRaw;
@@ -2149,8 +2149,8 @@ namespace Google.Apis.BigQueryReservation.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CommitmentStartTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CommitmentStartTimeRaw);
-            set => CommitmentStartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CommitmentStartTimeRaw);
+            set => CommitmentStartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Edition of the capacity commitment.</summary>
@@ -2359,8 +2359,8 @@ namespace Google.Apis.BigQueryReservation.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreationTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreationTimeRaw);
-            set => CreationTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreationTimeRaw);
+            set => CreationTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Edition of the reservation.</summary>
@@ -2441,8 +2441,8 @@ namespace Google.Apis.BigQueryReservation.v1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>

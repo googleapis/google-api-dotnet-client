@@ -317,7 +317,7 @@ namespace Google.Apis.TPU.v1alpha1
                 /// <param name="name">Required. The resource name.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets AcceleratorType.</summary>
@@ -362,7 +362,7 @@ namespace Google.Apis.TPU.v1alpha1
                 /// <param name="parent">Required. The parent resource name.</param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists accelerator types supported by this API.</summary>
@@ -474,7 +474,7 @@ namespace Google.Apis.TPU.v1alpha1
                 /// <param name="parent">Required. The parent resource name.</param>
                 public virtual CreateRequest Create(Google.Apis.TPU.v1alpha1.Data.Node body, string parent)
                 {
-                    return new CreateRequest(service, body, parent);
+                    return new CreateRequest(this.service, body, parent);
                 }
 
                 /// <summary>Creates a node.</summary>
@@ -550,7 +550,7 @@ namespace Google.Apis.TPU.v1alpha1
                 /// <param name="name">Required. The resource name.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>Deletes a node.</summary>
@@ -607,7 +607,7 @@ namespace Google.Apis.TPU.v1alpha1
                 /// <param name="name">Required. The resource name.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets the details of a node.</summary>
@@ -652,7 +652,7 @@ namespace Google.Apis.TPU.v1alpha1
                 /// <param name="parent">Required. The parent resource name.</param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists nodes.</summary>
@@ -722,7 +722,7 @@ namespace Google.Apis.TPU.v1alpha1
                 /// <param name="name">The resource name.</param>
                 public virtual ReimageRequest Reimage(Google.Apis.TPU.v1alpha1.Data.ReimageNodeRequest body, string name)
                 {
-                    return new ReimageRequest(service, body, name);
+                    return new ReimageRequest(this.service, body, name);
                 }
 
                 /// <summary>Reimages a node's OS.</summary>
@@ -775,7 +775,7 @@ namespace Google.Apis.TPU.v1alpha1
                 /// <param name="name">The resource name.</param>
                 public virtual StartRequest Start(Google.Apis.TPU.v1alpha1.Data.StartNodeRequest body, string name)
                 {
-                    return new StartRequest(service, body, name);
+                    return new StartRequest(this.service, body, name);
                 }
 
                 /// <summary>Starts a node.</summary>
@@ -828,7 +828,7 @@ namespace Google.Apis.TPU.v1alpha1
                 /// <param name="name">The resource name.</param>
                 public virtual StopRequest Stop(Google.Apis.TPU.v1alpha1.Data.StopNodeRequest body, string name)
                 {
-                    return new StopRequest(service, body, name);
+                    return new StopRequest(this.service, body, name);
                 }
 
                 /// <summary>Stops a node. This operation is only available with single TPU nodes.</summary>
@@ -905,7 +905,7 @@ namespace Google.Apis.TPU.v1alpha1
                 /// <param name="name">The name of the operation resource to be cancelled.</param>
                 public virtual CancelRequest Cancel(string name)
                 {
-                    return new CancelRequest(service, name);
+                    return new CancelRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -961,7 +961,7 @@ namespace Google.Apis.TPU.v1alpha1
                 /// <param name="name">The name of the operation resource to be deleted.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
-                    return new DeleteRequest(service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -1013,7 +1013,7 @@ namespace Google.Apis.TPU.v1alpha1
                 /// <param name="name">The name of the operation resource.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -1064,7 +1064,7 @@ namespace Google.Apis.TPU.v1alpha1
                 /// <param name="name">The name of the operation's parent resource.</param>
                 public virtual ListRequest List(string name)
                 {
-                    return new ListRequest(service, name);
+                    return new ListRequest(this.service, name);
                 }
 
                 /// <summary>
@@ -1166,7 +1166,7 @@ namespace Google.Apis.TPU.v1alpha1
                 /// <param name="name">Required. The resource name.</param>
                 public virtual GetRequest Get(string name)
                 {
-                    return new GetRequest(service, name);
+                    return new GetRequest(this.service, name);
                 }
 
                 /// <summary>Gets TensorFlow Version.</summary>
@@ -1211,7 +1211,7 @@ namespace Google.Apis.TPU.v1alpha1
                 /// <param name="parent">Required. The parent resource name.</param>
                 public virtual ListRequest List(string parent)
                 {
-                    return new ListRequest(service, parent);
+                    return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>Lists TensorFlow versions supported by this API.</summary>
@@ -1305,7 +1305,7 @@ namespace Google.Apis.TPU.v1alpha1
             /// <param name="name">Resource name for the location.</param>
             public virtual GetRequest Get(string name)
             {
-                return new GetRequest(service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>Gets information about a location.</summary>
@@ -1350,7 +1350,7 @@ namespace Google.Apis.TPU.v1alpha1
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
             {
-                return new ListRequest(service, name);
+                return new ListRequest(this.service, name);
             }
 
             /// <summary>Lists information about the supported locations for this service.</summary>
@@ -1653,8 +1653,8 @@ namespace Google.Apis.TPU.v1alpha1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The user-supplied description of the TPU. Maximum of 512 characters.</summary>
@@ -1831,8 +1831,8 @@ namespace Google.Apis.TPU.v1alpha1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         private string _endTimeRaw;
@@ -1868,8 +1868,8 @@ namespace Google.Apis.TPU.v1alpha1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? EndTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Human-readable status of the operation, if any.</summary>
@@ -1993,8 +1993,8 @@ namespace Google.Apis.TPU.v1alpha1.Data
         [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>Detailed information of the current Symptom.</summary>
