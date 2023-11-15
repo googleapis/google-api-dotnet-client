@@ -145,7 +145,8 @@ namespace Google.Apis.Json
             {
                 NullValueHandling = NullValueHandling.Ignore,
                 MetadataPropertyHandling = MetadataPropertyHandling.Ignore,
-                ContractResolver = new NewtonsoftJsonContractResolver()
+                ContractResolver = new NewtonsoftJsonContractResolver(),
+                DefaultValueHandling = DefaultValueHandling.Include,
             };
 
         /// <inheritdoc/>
