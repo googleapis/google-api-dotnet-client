@@ -64,6 +64,37 @@ namespace Google.Apis.Tests.Json
             Assert.IsType<string>(value);
         }
 
+        /// <summary>
+        /// Regression test for https://github.com/googleapis/google-api-dotnet-client/issues/2609.
+        /// <see cref="TypeWithOverridableField"/> mimics Google.Apis.Auth.OAuth2.Responses.
+        /// </summary>
+        [Fact]
+        public void DefaultInstance_DefaultValueHandling_IsNotCustom()
+        {
+            JsonConvert.DefaultSettings = () => new JsonSerializerSettings
+            {
+                // If this settings have effect on the default serializer instance, then
+                // TypeWithOverridableField.FieldOverride will be set to null which means
+                // that Field will also be set to null regardles of it's value on the JSON text.
+                DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate
+            };
+
+            var text = @"{""field"":""field_value""}";
+            var value = NewtonsoftJsonSerializer.Instance.Deserialize<TypeWithOverridableField>(text);
+            Assert.Equal("field_value", value.Field);
+        }
+
+        public class TypeWithOverridableField
+        {
+            [JsonProperty("field")]
+            public string Field { get; set; }
+
+            [JsonProperty("field_override")]
+#pragma warning disable IDE0051 // Remove unused private members. See the test comment.
+            private string FieldOverride { set => Field = value; }
+#pragma warning restore IDE0051 // Remove unused private members
+        }
+
         [Fact]
         public void DefaultInstanceSerializesTwoETags()
         {
