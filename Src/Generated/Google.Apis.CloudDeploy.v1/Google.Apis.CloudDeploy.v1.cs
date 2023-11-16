@@ -340,7 +340,7 @@ namespace Google.Apis.CloudDeploy.v1
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
                     /// Required. Name of the `AutomationRun`. Format is
-                    /// projects/{project}/locations/{location}/deliveryPipelines/{delivery_pipeline}/automationRuns/{automation_run}.
+                    /// `projects/{project}/locations/{location}/deliveryPipelines/{delivery_pipeline}/automationRuns/{automation_run}`.
                     /// </param>
                     public virtual CancelRequest Cancel(Google.Apis.CloudDeploy.v1.Data.CancelAutomationRunRequest body, string name)
                     {
@@ -364,7 +364,7 @@ namespace Google.Apis.CloudDeploy.v1
 
                         /// <summary>
                         /// Required. Name of the `AutomationRun`. Format is
-                        /// projects/{project}/locations/{location}/deliveryPipelines/{delivery_pipeline}/automationRuns/{automation_run}.
+                        /// `projects/{project}/locations/{location}/deliveryPipelines/{delivery_pipeline}/automationRuns/{automation_run}`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -402,7 +402,7 @@ namespace Google.Apis.CloudDeploy.v1
                     /// <summary>Gets details of a single AutomationRun.</summary>
                     /// <param name="name">
                     /// Required. Name of the `AutomationRun`. Format must be
-                    /// projects/{project}/locations/{location}/deliveryPipelines/{delivery_pipeline}/automationRuns/{automation_run}.
+                    /// `projects/{project}/locations/{location}/deliveryPipelines/{delivery_pipeline}/automationRuns/{automation_run}`.
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
@@ -421,7 +421,7 @@ namespace Google.Apis.CloudDeploy.v1
 
                         /// <summary>
                         /// Required. Name of the `AutomationRun`. Format must be
-                        /// projects/{project}/locations/{location}/deliveryPipelines/{delivery_pipeline}/automationRuns/{automation_run}.
+                        /// `projects/{project}/locations/{location}/deliveryPipelines/{delivery_pipeline}/automationRuns/{automation_run}`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -453,7 +453,7 @@ namespace Google.Apis.CloudDeploy.v1
                     /// <summary>Lists AutomationRuns in a given project and location.</summary>
                     /// <param name="parent">
                     /// Required. The parent, which owns this collection of automationRuns. Format must be
-                    /// projects/{project}/locations/{location}/deliveryPipelines/{delivery_pipeline}.
+                    /// `projects/{project}/locations/{location}/deliveryPipelines/{delivery_pipeline}`.
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
@@ -472,7 +472,7 @@ namespace Google.Apis.CloudDeploy.v1
 
                         /// <summary>
                         /// Required. The parent, which owns this collection of automationRuns. Format must be
-                        /// projects/{project}/locations/{location}/deliveryPipelines/{delivery_pipeline}.
+                        /// `projects/{project}/locations/{location}/deliveryPipelines/{delivery_pipeline}`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -581,7 +581,7 @@ namespace Google.Apis.CloudDeploy.v1
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
                     /// Required. The parent collection in which the `Automation` should be created. Format should be
-                    /// projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}.
+                    /// `projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}`.
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.CloudDeploy.v1.Data.Automation body, string parent)
                     {
@@ -601,7 +601,7 @@ namespace Google.Apis.CloudDeploy.v1
 
                         /// <summary>
                         /// Required. The parent collection in which the `Automation` should be created. Format should
-                        /// be projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}.
+                        /// be `projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -688,7 +688,7 @@ namespace Google.Apis.CloudDeploy.v1
                     /// <summary>Deletes a single Automation resource.</summary>
                     /// <param name="name">
                     /// Required. The name of the `Automation` to delete. Format should be
-                    /// projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}/automations/{automation_name}.
+                    /// `projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}/automations/{automation_name}`.
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
@@ -707,7 +707,7 @@ namespace Google.Apis.CloudDeploy.v1
 
                         /// <summary>
                         /// Required. The name of the `Automation` to delete. Format should be
-                        /// projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}/automations/{automation_name}.
+                        /// `projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}/automations/{automation_name}`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -807,7 +807,7 @@ namespace Google.Apis.CloudDeploy.v1
                     /// <summary>Gets details of a single Automation.</summary>
                     /// <param name="name">
                     /// Required. Name of the `Automation`. Format must be
-                    /// projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}/automations/{automation_name}.
+                    /// `projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}/automations/{automation_name}`.
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
@@ -826,7 +826,7 @@ namespace Google.Apis.CloudDeploy.v1
 
                         /// <summary>
                         /// Required. Name of the `Automation`. Format must be
-                        /// projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}/automations/{automation_name}.
+                        /// `projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}/automations/{automation_name}`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -858,7 +858,7 @@ namespace Google.Apis.CloudDeploy.v1
                     /// <summary>Lists Automations in a given project and location.</summary>
                     /// <param name="parent">
                     /// Required. The parent, which owns this collection of automations. Format must be
-                    /// projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}.
+                    /// `projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}`.
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
@@ -877,7 +877,7 @@ namespace Google.Apis.CloudDeploy.v1
 
                         /// <summary>
                         /// Required. The parent, which owns this collection of automations. Format must be
-                        /// projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}.
+                        /// `projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -966,7 +966,7 @@ namespace Google.Apis.CloudDeploy.v1
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
                     /// Output only. Name of the `Automation`. Format is
-                    /// projects/{project}/locations/{location}/deliveryPipelines/{delivery_pipeline}/automations/{automation}.
+                    /// `projects/{project}/locations/{location}/deliveryPipelines/{delivery_pipeline}/automations/{automation}`.
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.CloudDeploy.v1.Data.Automation body, string name)
                     {
@@ -986,7 +986,7 @@ namespace Google.Apis.CloudDeploy.v1
 
                         /// <summary>
                         /// Output only. Name of the `Automation`. Format is
-                        /// projects/{project}/locations/{location}/deliveryPipelines/{delivery_pipeline}/automations/{automation}.
+                        /// `projects/{project}/locations/{location}/deliveryPipelines/{delivery_pipeline}/automations/{automation}`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -1147,7 +1147,7 @@ namespace Google.Apis.CloudDeploy.v1
                             /// <summary>Gets details of a single JobRun.</summary>
                             /// <param name="name">
                             /// Required. Name of the `JobRun`. Format must be
-                            /// projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}/releases/{release_name}/rollouts/{rollout_name}/jobRuns/{job_run_name}.
+                            /// `projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}/releases/{release_name}/rollouts/{rollout_name}/jobRuns/{job_run_name}`.
                             /// </param>
                             public virtual GetRequest Get(string name)
                             {
@@ -1166,7 +1166,7 @@ namespace Google.Apis.CloudDeploy.v1
 
                                 /// <summary>
                                 /// Required. Name of the `JobRun`. Format must be
-                                /// projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}/releases/{release_name}/rollouts/{rollout_name}/jobRuns/{job_run_name}.
+                                /// `projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}/releases/{release_name}/rollouts/{rollout_name}/jobRuns/{job_run_name}`.
                                 /// </summary>
                                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                                 public virtual string Name { get; private set; }
@@ -1310,8 +1310,7 @@ namespace Google.Apis.CloudDeploy.v1
                             /// <param name="body">The body of the request.</param>
                             /// <param name="name">
                             /// Required. Name of the `JobRun`. Format must be
-                            /// projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/
-                            /// releases/{release}/rollouts/{rollout}/jobRuns/{jobRun}.
+                            /// `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/{release}/rollouts/{rollout}/jobRuns/{jobRun}`.
                             /// </param>
                             public virtual TerminateRequest Terminate(Google.Apis.CloudDeploy.v1.Data.TerminateJobRunRequest body, string name)
                             {
@@ -1331,8 +1330,7 @@ namespace Google.Apis.CloudDeploy.v1
 
                                 /// <summary>
                                 /// Required. Name of the `JobRun`. Format must be
-                                /// projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/
-                                /// releases/{release}/rollouts/{rollout}/jobRuns/{jobRun}.
+                                /// `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/{release}/rollouts/{rollout}/jobRuns/{jobRun}`.
                                 /// </summary>
                                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                                 public virtual string Name { get; private set; }
@@ -1372,8 +1370,7 @@ namespace Google.Apis.CloudDeploy.v1
                         /// <param name="body">The body of the request.</param>
                         /// <param name="name">
                         /// Required. Name of the Rollout. Format is
-                        /// projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/
-                        /// releases/{release}/rollouts/{rollout}.
+                        /// `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/{release}/rollouts/{rollout}`.
                         /// </param>
                         public virtual AdvanceRequest Advance(Google.Apis.CloudDeploy.v1.Data.AdvanceRolloutRequest body, string name)
                         {
@@ -1393,8 +1390,7 @@ namespace Google.Apis.CloudDeploy.v1
 
                             /// <summary>
                             /// Required. Name of the Rollout. Format is
-                            /// projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/
-                            /// releases/{release}/rollouts/{rollout}.
+                            /// `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/{release}/rollouts/{rollout}`.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
@@ -1433,8 +1429,7 @@ namespace Google.Apis.CloudDeploy.v1
                         /// <param name="body">The body of the request.</param>
                         /// <param name="name">
                         /// Required. Name of the Rollout. Format is
-                        /// projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/
-                        /// releases/{release}/rollouts/{rollout}.
+                        /// `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/{release}/rollouts/{rollout}`.
                         /// </param>
                         public virtual ApproveRequest Approve(Google.Apis.CloudDeploy.v1.Data.ApproveRolloutRequest body, string name)
                         {
@@ -1454,8 +1449,7 @@ namespace Google.Apis.CloudDeploy.v1
 
                             /// <summary>
                             /// Required. Name of the Rollout. Format is
-                            /// projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/
-                            /// releases/{release}/rollouts/{rollout}.
+                            /// `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/{release}/rollouts/{rollout}`.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
@@ -1494,8 +1488,7 @@ namespace Google.Apis.CloudDeploy.v1
                         /// <param name="body">The body of the request.</param>
                         /// <param name="name">
                         /// Required. Name of the Rollout. Format is
-                        /// projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/
-                        /// releases/{release}/rollouts/{rollout}.
+                        /// `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/{release}/rollouts/{rollout}`.
                         /// </param>
                         public virtual CancelRequest Cancel(Google.Apis.CloudDeploy.v1.Data.CancelRolloutRequest body, string name)
                         {
@@ -1515,8 +1508,7 @@ namespace Google.Apis.CloudDeploy.v1
 
                             /// <summary>
                             /// Required. Name of the Rollout. Format is
-                            /// projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/
-                            /// releases/{release}/rollouts/{rollout}.
+                            /// `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/{release}/rollouts/{rollout}`.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
@@ -1555,7 +1547,7 @@ namespace Google.Apis.CloudDeploy.v1
                         /// <param name="body">The body of the request.</param>
                         /// <param name="parent">
                         /// Required. The parent collection in which the `Rollout` should be created. Format should be
-                        /// projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}/releases/{release_name}.
+                        /// `projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}/releases/{release_name}`.
                         /// </param>
                         public virtual CreateRequest Create(Google.Apis.CloudDeploy.v1.Data.Rollout body, string parent)
                         {
@@ -1576,7 +1568,7 @@ namespace Google.Apis.CloudDeploy.v1
                             /// <summary>
                             /// Required. The parent collection in which the `Rollout` should be created. Format should
                             /// be
-                            /// projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}/releases/{release_name}.
+                            /// `projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}/releases/{release_name}`.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
@@ -1678,7 +1670,7 @@ namespace Google.Apis.CloudDeploy.v1
                         /// <summary>Gets details of a single Rollout.</summary>
                         /// <param name="name">
                         /// Required. Name of the `Rollout`. Format must be
-                        /// projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}/releases/{release_name}/rollouts/{rollout_name}.
+                        /// `projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}/releases/{release_name}/rollouts/{rollout_name}`.
                         /// </param>
                         public virtual GetRequest Get(string name)
                         {
@@ -1697,7 +1689,7 @@ namespace Google.Apis.CloudDeploy.v1
 
                             /// <summary>
                             /// Required. Name of the `Rollout`. Format must be
-                            /// projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}/releases/{release_name}/rollouts/{rollout_name}.
+                            /// `projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}/releases/{release_name}/rollouts/{rollout_name}`.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
@@ -1730,8 +1722,7 @@ namespace Google.Apis.CloudDeploy.v1
                         /// <param name="body">The body of the request.</param>
                         /// <param name="rollout">
                         /// Required. Name of the Rollout. Format is
-                        /// projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/
-                        /// releases/{release}/rollouts/{rollout}.
+                        /// `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/{release}/rollouts/{rollout}`.
                         /// </param>
                         public virtual IgnoreJobRequest IgnoreJob(Google.Apis.CloudDeploy.v1.Data.IgnoreJobRequest body, string rollout)
                         {
@@ -1751,8 +1742,7 @@ namespace Google.Apis.CloudDeploy.v1
 
                             /// <summary>
                             /// Required. Name of the Rollout. Format is
-                            /// projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/
-                            /// releases/{release}/rollouts/{rollout}.
+                            /// `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/{release}/rollouts/{rollout}`.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("rollout", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Rollout { get; private set; }
@@ -1901,8 +1891,7 @@ namespace Google.Apis.CloudDeploy.v1
                         /// <param name="body">The body of the request.</param>
                         /// <param name="rollout">
                         /// Required. Name of the Rollout. Format is
-                        /// projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/
-                        /// releases/{release}/rollouts/{rollout}.
+                        /// `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/{release}/rollouts/{rollout}`.
                         /// </param>
                         public virtual RetryJobRequest RetryJob(Google.Apis.CloudDeploy.v1.Data.RetryJobRequest body, string rollout)
                         {
@@ -1922,8 +1911,7 @@ namespace Google.Apis.CloudDeploy.v1
 
                             /// <summary>
                             /// Required. Name of the Rollout. Format is
-                            /// projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/
-                            /// releases/{release}/rollouts/{rollout}.
+                            /// `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/{release}/rollouts/{rollout}`.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("rollout", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Rollout { get; private set; }
@@ -1963,8 +1951,7 @@ namespace Google.Apis.CloudDeploy.v1
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
                     /// Required. Name of the Release. Format is
-                    /// projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/
-                    /// releases/{release}.
+                    /// `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/{release}`.
                     /// </param>
                     public virtual AbandonRequest Abandon(Google.Apis.CloudDeploy.v1.Data.AbandonReleaseRequest body, string name)
                     {
@@ -1984,8 +1971,7 @@ namespace Google.Apis.CloudDeploy.v1
 
                         /// <summary>
                         /// Required. Name of the Release. Format is
-                        /// projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/
-                        /// releases/{release}.
+                        /// `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/{release}`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -2024,7 +2010,7 @@ namespace Google.Apis.CloudDeploy.v1
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
                     /// Required. The parent collection in which the `Release` should be created. Format should be
-                    /// projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}.
+                    /// `projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}`.
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.CloudDeploy.v1.Data.Release body, string parent)
                     {
@@ -2044,7 +2030,7 @@ namespace Google.Apis.CloudDeploy.v1
 
                         /// <summary>
                         /// Required. The parent collection in which the `Release` should be created. Format should be
-                        /// projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}.
+                        /// `projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -2131,7 +2117,7 @@ namespace Google.Apis.CloudDeploy.v1
                     /// <summary>Gets details of a single Release.</summary>
                     /// <param name="name">
                     /// Required. Name of the `Release`. Format must be
-                    /// projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}/releases/{release_name}.
+                    /// `projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}/releases/{release_name}`.
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
@@ -2150,7 +2136,7 @@ namespace Google.Apis.CloudDeploy.v1
 
                         /// <summary>
                         /// Required. Name of the `Release`. Format must be
-                        /// projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}/releases/{release_name}.
+                        /// `projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}/releases/{release_name}`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -2293,7 +2279,7 @@ namespace Google.Apis.CloudDeploy.v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. The parent collection in which the `DeliveryPipeline` should be created. Format should be
-                /// projects/{project_id}/locations/{location_name}.
+                /// `projects/{project_id}/locations/{location_name}`.
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.CloudDeploy.v1.Data.DeliveryPipeline body, string parent)
                 {
@@ -2313,7 +2299,7 @@ namespace Google.Apis.CloudDeploy.v1
 
                     /// <summary>
                     /// Required. The parent collection in which the `DeliveryPipeline` should be created. Format should
-                    /// be projects/{project_id}/locations/{location_name}.
+                    /// be `projects/{project_id}/locations/{location_name}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -2399,7 +2385,7 @@ namespace Google.Apis.CloudDeploy.v1
                 /// <summary>Deletes a single DeliveryPipeline.</summary>
                 /// <param name="name">
                 /// Required. The name of the `DeliveryPipeline` to delete. Format should be
-                /// projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}.
+                /// `projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}`.
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
@@ -2418,7 +2404,7 @@ namespace Google.Apis.CloudDeploy.v1
 
                     /// <summary>
                     /// Required. The name of the `DeliveryPipeline` to delete. Format should be
-                    /// projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}.
+                    /// `projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -2531,7 +2517,7 @@ namespace Google.Apis.CloudDeploy.v1
                 /// <summary>Gets details of a single DeliveryPipeline.</summary>
                 /// <param name="name">
                 /// Required. Name of the `DeliveryPipeline`. Format must be
-                /// projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}.
+                /// `projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}`.
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
@@ -2550,7 +2536,7 @@ namespace Google.Apis.CloudDeploy.v1
 
                     /// <summary>
                     /// Required. Name of the `DeliveryPipeline`. Format must be
-                    /// projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}.
+                    /// `projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -2662,7 +2648,7 @@ namespace Google.Apis.CloudDeploy.v1
                 /// <summary>Lists DeliveryPipelines in a given project and location.</summary>
                 /// <param name="parent">
                 /// Required. The parent, which owns this collection of pipelines. Format must be
-                /// projects/{project_id}/locations/{location_name}.
+                /// `projects/{project_id}/locations/{location_name}`.
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -2681,7 +2667,7 @@ namespace Google.Apis.CloudDeploy.v1
 
                     /// <summary>
                     /// Required. The parent, which owns this collection of pipelines. Format must be
-                    /// projects/{project_id}/locations/{location_name}.
+                    /// `projects/{project_id}/locations/{location_name}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -2771,8 +2757,8 @@ namespace Google.Apis.CloudDeploy.v1
                 /// <summary>Updates the parameters of a single DeliveryPipeline.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Optional. Name of the `DeliveryPipeline`. Format is projects/{project}/
-                /// locations/{location}/deliveryPipelines/a-z{0,62}.
+                /// Optional. Name of the `DeliveryPipeline`. Format is
+                /// `projects/{project}/locations/{location}/deliveryPipelines/a-z{0,62}`.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.CloudDeploy.v1.Data.DeliveryPipeline body, string name)
                 {
@@ -2791,8 +2777,8 @@ namespace Google.Apis.CloudDeploy.v1
                     }
 
                     /// <summary>
-                    /// Optional. Name of the `DeliveryPipeline`. Format is projects/{project}/
-                    /// locations/{location}/deliveryPipelines/a-z{0,62}.
+                    /// Optional. Name of the `DeliveryPipeline`. Format is
+                    /// `projects/{project}/locations/{location}/deliveryPipelines/a-z{0,62}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -2899,7 +2885,7 @@ namespace Google.Apis.CloudDeploy.v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
                 /// Required. The `DeliveryPipeline` for which the rollback `Rollout` should be created. Format should
-                /// be projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}.
+                /// be `projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}`.
                 /// </param>
                 public virtual RollbackTargetRequest RollbackTarget(Google.Apis.CloudDeploy.v1.Data.RollbackTargetRequest body, string name)
                 {
@@ -2919,7 +2905,7 @@ namespace Google.Apis.CloudDeploy.v1
 
                     /// <summary>
                     /// Required. The `DeliveryPipeline` for which the rollback `Rollout` should be created. Format
-                    /// should be projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}.
+                    /// should be `projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -3390,7 +3376,7 @@ namespace Google.Apis.CloudDeploy.v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. The parent collection in which the `Target` should be created. Format should be
-                /// projects/{project_id}/locations/{location_name}.
+                /// `projects/{project_id}/locations/{location_name}`.
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.CloudDeploy.v1.Data.Target body, string parent)
                 {
@@ -3410,7 +3396,7 @@ namespace Google.Apis.CloudDeploy.v1
 
                     /// <summary>
                     /// Required. The parent collection in which the `Target` should be created. Format should be
-                    /// projects/{project_id}/locations/{location_name}.
+                    /// `projects/{project_id}/locations/{location_name}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -3496,7 +3482,7 @@ namespace Google.Apis.CloudDeploy.v1
                 /// <summary>Deletes a single Target.</summary>
                 /// <param name="name">
                 /// Required. The name of the `Target` to delete. Format should be
-                /// projects/{project_id}/locations/{location_name}/targets/{target_name}.
+                /// `projects/{project_id}/locations/{location_name}/targets/{target_name}`.
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
@@ -3515,7 +3501,7 @@ namespace Google.Apis.CloudDeploy.v1
 
                     /// <summary>
                     /// Required. The name of the `Target` to delete. Format should be
-                    /// projects/{project_id}/locations/{location_name}/targets/{target_name}.
+                    /// `projects/{project_id}/locations/{location_name}/targets/{target_name}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -3613,7 +3599,7 @@ namespace Google.Apis.CloudDeploy.v1
                 /// <summary>Gets details of a single Target.</summary>
                 /// <param name="name">
                 /// Required. Name of the `Target`. Format must be
-                /// projects/{project_id}/locations/{location_name}/targets/{target_name}.
+                /// `projects/{project_id}/locations/{location_name}/targets/{target_name}`.
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
@@ -3632,7 +3618,7 @@ namespace Google.Apis.CloudDeploy.v1
 
                     /// <summary>
                     /// Required. Name of the `Target`. Format must be
-                    /// projects/{project_id}/locations/{location_name}/targets/{target_name}.
+                    /// `projects/{project_id}/locations/{location_name}/targets/{target_name}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -3744,7 +3730,7 @@ namespace Google.Apis.CloudDeploy.v1
                 /// <summary>Lists Targets in a given project and location.</summary>
                 /// <param name="parent">
                 /// Required. The parent, which owns this collection of targets. Format must be
-                /// projects/{project_id}/locations/{location_name}.
+                /// `projects/{project_id}/locations/{location_name}`.
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -3763,7 +3749,7 @@ namespace Google.Apis.CloudDeploy.v1
 
                     /// <summary>
                     /// Required. The parent, which owns this collection of targets. Format must be
-                    /// projects/{project_id}/locations/{location_name}.
+                    /// `projects/{project_id}/locations/{location_name}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -3855,7 +3841,8 @@ namespace Google.Apis.CloudDeploy.v1
                 /// <summary>Updates the parameters of a single Target.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Optional. Name of the `Target`. Format is projects/{project}/locations/{location}/targets/a-z{0,62}.
+                /// Optional. Name of the `Target`. Format is
+                /// `projects/{project}/locations/{location}/targets/a-z{0,62}`.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.CloudDeploy.v1.Data.Target body, string name)
                 {
@@ -3875,7 +3862,7 @@ namespace Google.Apis.CloudDeploy.v1
 
                     /// <summary>
                     /// Optional. Name of the `Target`. Format is
-                    /// projects/{project}/locations/{location}/targets/a-z{0,62}.
+                    /// `projects/{project}/locations/{location}/targets/a-z{0,62}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -4325,8 +4312,8 @@ namespace Google.Apis.CloudDeploy.v1.Data
     public class AdvanceChildRolloutJobRun : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Output only. Name of the `ChildRollout`. Format is projects/{project}/
-        /// locations/{location}/deliveryPipelines/{deliveryPipeline}/ releases/{release}/rollouts/a-z{0,62}.
+        /// Output only. Name of the `ChildRollout`. Format is
+        /// `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/{release}/rollouts/a-z{0,62}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rollout")]
         public virtual string Rollout { get; set; }
@@ -4391,7 +4378,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
 
         /// <summary>
         /// Required. ID of the rule. This id must be unique in the `Automation` resource to which this rule belongs.
-        /// The format is a-z{0,62}.
+        /// The format is `a-z{0,62}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
@@ -4507,11 +4494,11 @@ namespace Google.Apis.CloudDeploy.v1.Data
         /// <summary>
         /// Optional. User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy.
         /// Annotations must meet the following constraints: * Annotations are key/value pairs. * Valid annotation keys
-        /// have two segments: an optional prefix and name, separated by a slash (/). * The name segment is required and
-        /// must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes
-        /// (-), underscores (_), dots (.), and alphanumerics between. * The prefix is optional. If specified, the
-        /// prefix must be a DNS subdomain: a series of DNS labels separated by dots(.), not longer than 253 characters
-        /// in total, followed by a slash (/). See
+        /// have two segments: an optional prefix and name, separated by a slash (`/`). * The name segment is required
+        /// and must be 63 characters or less, beginning and ending with an alphanumeric character (`[a-z0-9A-Z]`) with
+        /// dashes (`-`), underscores (`_`), dots (`.`), and alphanumerics between. * The prefix is optional. If
+        /// specified, the prefix must be a DNS subdomain: a series of DNS labels separated by dots(`.`), not longer
+        /// than 253 characters in total, followed by a slash (`/`). See
         /// https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/#syntax-and-character-set for
         /// more details.
         /// </summary>
@@ -4579,7 +4566,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
 
         /// <summary>
         /// Output only. Name of the `Automation`. Format is
-        /// projects/{project}/locations/{location}/deliveryPipelines/{delivery_pipeline}/automations/{automation}.
+        /// `projects/{project}/locations/{location}/deliveryPipelines/{delivery_pipeline}/automations/{automation}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -4747,7 +4734,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
     }
 
     /// <summary>
-    /// An `AutomationRun` resource in the Cloud Deploy API. An `AutomationResource` represents an automation execution
+    /// An `AutomationRun` resource in the Cloud Deploy API. An `AutomationRun` represents an automation execution
     /// instance of an automation rule.
     /// </summary>
     public class AutomationRun : Google.Apis.Requests.IDirectResponseSchema
@@ -4851,7 +4838,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
 
         /// <summary>
         /// Output only. Name of the `AutomationRun`. Format is
-        /// projects/{project}/locations/{location}/deliveryPipelines/{delivery_pipeline}/automationRuns/{automation_run}.
+        /// `projects/{project}/locations/{location}/deliveryPipelines/{delivery_pipeline}/automationRuns/{automation_run}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -5221,7 +5208,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
     {
         /// <summary>
         /// Output only. The name of the Cloud Run job that is associated with a `Rollout`. Format is
-        /// projects/{project}/locations/{location}/jobs/{job_name}.
+        /// `projects/{project}/locations/{location}/jobs/{job_name}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("job")]
         public virtual string Job { get; set; }
@@ -5232,7 +5219,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
 
         /// <summary>
         /// Output only. The name of the Cloud Run Service that is associated with a `Rollout`. Format is
-        /// projects/{project}/locations/{location}/services/{service}.
+        /// `projects/{project}/locations/{location}/services/{service}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("service")]
         public virtual string Service { get; set; }
@@ -5250,7 +5237,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
     {
         /// <summary>
         /// Output only. The name of the Cloud Run Service in the rendered manifest. Format is
-        /// projects/{project}/locations/{location}/services/{service}.
+        /// `projects/{project}/locations/{location}/services/{service}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("service")]
         public virtual string Service { get; set; }
@@ -5291,8 +5278,8 @@ namespace Google.Apis.CloudDeploy.v1.Data
     public class CreateChildRolloutJobRun : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Output only. Name of the `ChildRollout`. Format is projects/{project}/
-        /// locations/{location}/deliveryPipelines/{deliveryPipeline}/ releases/{release}/rollouts/a-z{0,62}.
+        /// Output only. Name of the `ChildRollout`. Format is
+        /// `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/{release}/rollouts/a-z{0,62}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rollout")]
         public virtual string Rollout { get; set; }
@@ -5442,8 +5429,8 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Optional. Name of the `DeliveryPipeline`. Format is projects/{project}/
-        /// locations/{location}/deliveryPipelines/a-z{0,62}.
+        /// Optional. Name of the `DeliveryPipeline`. Format is
+        /// `projects/{project}/locations/{location}/deliveryPipelines/a-z{0,62}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -5557,7 +5544,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
 
         /// <summary>
         /// Output only. The resource name of the Cloud Build `Build` object that is used to deploy. Format is
-        /// projects/{project}/locations/{location}/builds/{build}.
+        /// `projects/{project}/locations/{location}/builds/{build}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("build")]
         public virtual string Build { get; set; }
@@ -5770,7 +5757,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
     {
         /// <summary>
         /// Information specifying a GKE Cluster. Format is
-        /// `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}.
+        /// `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cluster")]
         public virtual string Cluster { get; set; }
@@ -5964,8 +5951,8 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual string JobId { get; set; }
 
         /// <summary>
-        /// Optional. Name of the `JobRun`. Format is projects/{project}/locations/{location}/
-        /// deliveryPipelines/{deliveryPipeline}/releases/{releases}/rollouts/ {rollouts}/jobRuns/{uuid}.
+        /// Optional. Name of the `JobRun`. Format is
+        /// `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/{releases}/rollouts/{rollouts}/jobRuns/{uuid}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -6748,7 +6735,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
     {
         /// <summary>
         /// Output only. The resource name of the Cloud Build `Build` object that is used to execute the custom actions
-        /// associated with the postdeploy Job. Format is projects/{project}/locations/{location}/builds/{build}.
+        /// associated with the postdeploy Job. Format is `projects/{project}/locations/{location}/builds/{build}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("build")]
         public virtual string Build { get; set; }
@@ -6797,7 +6784,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
     {
         /// <summary>
         /// Output only. The resource name of the Cloud Build `Build` object that is used to execute the custom actions
-        /// associated with the predeploy Job. Format is projects/{project}/locations/{location}/builds/{build}.
+        /// associated with the predeploy Job. Format is `projects/{project}/locations/{location}/builds/{build}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("build")]
         public virtual string Build { get; set; }
@@ -6898,7 +6885,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
 
         /// <summary>
         /// Required. ID of the rule. This id must be unique in the `Automation` resource to which this rule belongs.
-        /// The format is a-z{0,62}.
+        /// The format is `a-z{0,62}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
@@ -7003,8 +6990,8 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Optional. Name of the `Release`. Format is projects/{project}/
-        /// locations/{location}/deliveryPipelines/{deliveryPipeline}/ releases/a-z{0,62}.
+        /// Optional. Name of the `Release`. Format is
+        /// `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/a-z{0,62}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -7279,7 +7266,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
 
         /// <summary>
         /// Required. ID of the rule. This id must be unique in the `Automation` resource to which this rule belongs.
-        /// The format is a-z{0,62}.
+        /// The format is `a-z{0,62}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
@@ -7568,8 +7555,8 @@ namespace Google.Apis.CloudDeploy.v1.Data
         }
 
         /// <summary>
-        /// Output only. Name of the `ControllerRollout`. Format is projects/{project}/
-        /// locations/{location}/deliveryPipelines/{deliveryPipeline}/ releases/{release}/rollouts/a-z{0,62}.
+        /// Output only. Name of the `ControllerRollout`. Format is
+        /// `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/{release}/rollouts/a-z{0,62}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("controllerRollout")]
         public virtual string ControllerRollout { get; set; }
@@ -7768,8 +7755,8 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual Metadata Metadata { get; set; }
 
         /// <summary>
-        /// Optional. Name of the `Rollout`. Format is projects/{project}/
-        /// locations/{location}/deliveryPipelines/{deliveryPipeline}/ releases/{release}/rollouts/a-z{0,62}.
+        /// Optional. Name of the `Rollout`. Format is
+        /// `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/{release}/rollouts/a-z{0,62}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -8332,7 +8319,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual MultiTarget MultiTarget { get; set; }
 
         /// <summary>
-        /// Optional. Name of the `Target`. Format is projects/{project}/locations/{location}/targets/a-z{0,62}.
+        /// Optional. Name of the `Target`. Format is `projects/{project}/locations/{location}/targets/a-z{0,62}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -8501,7 +8488,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
     {
         /// <summary>
         /// The list of Target names that do not exist. For example,
-        /// projects/{project_id}/locations/{location_name}/targets/{target_name}.
+        /// `projects/{project_id}/locations/{location_name}/targets/{target_name}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("missingTargets")]
         public virtual System.Collections.Generic.IList<string> MissingTargets { get; set; }
@@ -8630,7 +8617,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
 
         /// <summary>
         /// Output only. The resource name of the Cloud Build `Build` object that is used to verify. Format is
-        /// projects/{project}/locations/{location}/builds/{build}.
+        /// `projects/{project}/locations/{location}/builds/{build}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("build")]
         public virtual string Build { get; set; }

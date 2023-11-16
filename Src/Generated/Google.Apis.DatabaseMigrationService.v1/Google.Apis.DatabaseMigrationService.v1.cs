@@ -4898,6 +4898,13 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
     public class AlloyDbSettings : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. The database engine major version. This is an optional field. If a database version is not
+        /// supplied at cluster creation time, then a default database version will be used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databaseVersion")]
+        public virtual string DatabaseVersion { get; set; }
+
+        /// <summary>
         /// Optional. The encryption config can be specified to encrypt the data disks and other persistent data
         /// resources of a cluster with a customer-managed encryption key (CMEK). When this field is not specified, the
         /// cluster will then use default encryption scheme to protect the user data.

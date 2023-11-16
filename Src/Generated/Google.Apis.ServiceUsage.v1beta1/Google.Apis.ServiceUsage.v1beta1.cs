@@ -4038,6 +4038,147 @@ namespace Google.Apis.ServiceUsage.v1beta1.Data
     }
 
     /// <summary>
+    /// Consumer Policy is a set of rules that define what services or service groups can be used for a cloud resource
+    /// hierarchy.
+    /// </summary>
+    public class GoogleApiServiceusageV2alphaConsumerPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Annotations is an unstructured key-value map stored with a policy that may be set by external
+        /// tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when
+        /// modifying objects. [AIP-128](https://google.aip.dev/128#annotations)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>
+        /// Output only. The time the policy was created. For singleton policies, this is the first touch of the policy.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Enable rules define usable services, groups, and categories. There can currently be at most one
+        /// `EnableRule`. This restriction will be lifted in later releases.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableRules")]
+        public virtual System.Collections.Generic.IList<GoogleApiServiceusageV2alphaEnableRule> EnableRules { get; set; }
+
+        /// <summary>
+        /// Output only. An opaque tag indicating the current version of the policy, used for concurrency control.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>
+        /// Output only. The resource name of the policy. Only the `default` policy is supported:
+        /// `projects/12345/consumerPolicies/default`, `folders/12345/consumerPolicies/default`,
+        /// `organizations/12345/consumerPolicies/default`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The time the policy was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+    }
+
+    /// <summary>The consumer policy rule that defines enabled services, groups, and categories.</summary>
+    public class GoogleApiServiceusageV2alphaEnableRule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The names of the categories that are enabled. Example: `categories/googleServices`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("categories")]
+        public virtual System.Collections.Generic.IList<string> Categories { get; set; }
+
+        /// <summary>
+        /// The names of the service groups that are enabled. Example:
+        /// `services/container.googleapis.com/groups/dependencies`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groups")]
+        public virtual System.Collections.Generic.IList<string> Groups { get; set; }
+
+        /// <summary>The names of the services that are enabled. Example: `services/storage.googleapis.com`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("services")]
+        public virtual System.Collections.Generic.IList<string> Services { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for the `UpdateConsumerPolicy` method.</summary>
+    public class GoogleApiServiceusageV2alphaUpdateConsumerPolicyMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Defines the HTTP configuration for an API service. It contains a list of HttpRule, each specifying the mapping
     /// of an RPC method to one or more HTTP REST API methods.
     /// </summary>

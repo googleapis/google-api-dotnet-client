@@ -7627,7 +7627,7 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual System.Collections.Generic.IList<GoogleCloudRunV1Condition> Conditions { get; set; }
 
         /// <summary>
-        /// Output only. The desired number of instances running this revision. For Cloud Run, this only includes
+        /// Output only. The configured number of instances running this revision. For Cloud Run, this only includes
         /// instances provisioned using the minScale annotation. It does not include instances created by autoscaling.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredReplicas")]
@@ -8539,7 +8539,7 @@ namespace Google.Apis.CloudRun.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Only true is accepted for Secret Volumes. Defaults to true for Secrets Volumes.</summary>
+        /// <summary>Sets the mount to be read-only or read-write. Not used by Cloud Run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("readOnly")]
         public virtual System.Nullable<bool> ReadOnly__ { get; set; }
 

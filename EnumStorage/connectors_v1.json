@@ -8,6 +8,14 @@
     "1",
     "2"
   ],
+  "Google.Apis.Connectors.v1.ProjectsResource+LocationsResource+ConnectionsResource+ConnectionSchemaMetadataResource+ListActionsRequest.ViewEnum": [
+    "VIEW_UNSPECIFIED",
+    "BASIC"
+  ],
+  "Google.Apis.Connectors.v1.ProjectsResource+LocationsResource+ConnectionsResource+ConnectionSchemaMetadataResource+ListEntityTypesRequest.ViewEnum": [
+    "VIEW_UNSPECIFIED",
+    "BASIC"
+  ],
   "Google.Apis.Connectors.v1.ProjectsResource+LocationsResource+ConnectionsResource+GetRequest.ViewEnum": [
     "CONNECTION_VIEW_UNSPECIFIED",
     "BASIC",

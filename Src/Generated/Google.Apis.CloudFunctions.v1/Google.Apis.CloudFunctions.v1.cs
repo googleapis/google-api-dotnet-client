@@ -1588,15 +1588,7 @@ namespace Google.Apis.CloudFunctions.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>
-        /// The VPC Network that this cloud function can connect to. It can be either the fully-qualified URI, or the
-        /// short name of the network resource. If the short network name is used, the network must belong to the same
-        /// project. Otherwise, it must belong to a project within the same organization. The format of this field is
-        /// either `projects/{project}/global/networks/{network}` or `{network}`, where `{project}` is a project id
-        /// where the network is defined, and `{network}` is the short name of the network. This field is mutually
-        /// exclusive with `vpc_connector` and will be replaced by it. See [the VPC
-        /// documentation](https://cloud.google.com/compute/docs/vpc) for more information on connecting Cloud projects.
-        /// </summary>
+        /// <summary>Deprecated: use vpc_connector</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; }
 

@@ -2376,11 +2376,17 @@ namespace Google.Apis.OnDemandScanning.v1beta1.Data
 
     public class Maintainer : Google.Apis.Requests.IDirectResponseSchema
     {
+        [Newtonsoft.Json.JsonPropertyAttribute("email")]
+        public virtual string Email { get; set; }
+
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("url")]
+        public virtual string Url { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

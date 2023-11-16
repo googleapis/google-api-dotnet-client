@@ -13556,7 +13556,8 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         }
 
         /// <summary>
-        /// The list of the user's email addresses. The maximum allowed data size for this field is 10KB.
+        /// The list of the user's email addresses. The maximum allowed data size for this field is 10KB. This excludes
+        /// `publicKeyEncryptionCertificates`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("emails")]
         public virtual System.Collections.Generic.IList<UserEmail> Emails { get; set; }
@@ -13913,6 +13914,10 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("primary")]
         public virtual System.Nullable<bool> Primary { get; set; }
 
+        /// <summary>Public Key Encryption Certificates. Current limit: 1 per email address, and 5 per user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("public_key_encryption_certificates")]
+        public virtual PublicKeyEncryptionCertificatesData PublicKeyEncryptionCertificates { get; set; }
+
         /// <summary>
         /// Each entry can have a type which indicates standard types of that entry. For example email could be of home,
         /// work etc. In addition to the standard type, an entry can have a custom type and can take any value Such
@@ -13923,6 +13928,27 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
+
+        /// <summary>Public Key Encryption Certificates. Current limit: 1 per email address, and 5 per user.</summary>
+        public class PublicKeyEncryptionCertificatesData
+        {
+            /// <summary>
+            /// X.509 encryption certificate in `PEM` format. Must only be an end-entity (leaf) certificate.
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("certificate")]
+            public virtual string Certificate { get; set; }
+
+            /// <summary>Whether this is the default certificate for the given email address.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("is_default")]
+            public virtual System.Nullable<bool> IsDefault { get; set; }
+
+            /// <summary>
+            /// Denotes the certificate's state in its lifecycle. Possible values are `not_yet_validated`, `valid`,
+            /// `invalid`, `expired`, and `revoked`.
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("state")]
+            public virtual string State { get; set; }
+        }
     }
 
     /// <summary>JSON template for an externalId entry.</summary>

@@ -6945,10 +6945,11 @@ namespace Google.Apis.Dataflow.v1b3.Data
         public virtual string ReplacedByJobId { get; set; }
 
         /// <summary>
-        /// The job's requested state. `UpdateJob` may be used to switch between the `JOB_STATE_STOPPED` and
-        /// `JOB_STATE_RUNNING` states, by setting requested_state. `UpdateJob` may also be used to directly set a job's
-        /// requested state to `JOB_STATE_CANCELLED` or `JOB_STATE_DONE`, irrevocably terminating the job if it has not
-        /// already reached a terminal state.
+        /// The job's requested state. Applies to `UpdateJob` requests. Set `requested_state` with `UpdateJob` requests
+        /// to switch between the states `JOB_STATE_STOPPED` and `JOB_STATE_RUNNING`. You can also use `UpdateJob`
+        /// requests to change a job's state from `JOB_STATE_RUNNING` to `JOB_STATE_CANCELLED`, `JOB_STATE_DONE`, or
+        /// `JOB_STATE_DRAINED`. These states irrevocably terminate the job if it hasn't already reached a terminal
+        /// state. This field has no effect on `CreateJob` requests.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedState")]
         public virtual string RequestedState { get; set; }
