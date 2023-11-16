@@ -9388,6 +9388,10 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("podIpv4CidrSize")]
         public virtual System.Nullable<int> PodIpv4CidrSize { get; set; }
 
+        /// <summary>Specifies the configuration of queued provisioning.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queuedProvisioning")]
+        public virtual QueuedProvisioning QueuedProvisioning { get; set; }
+
         /// <summary>[Output only] Server-defined URL for the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; }
@@ -9828,6 +9832,20 @@ namespace Google.Apis.Container.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("topic")]
         public virtual string Topic { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>QueuedProvisioning defines the queued provisioning used by the node pool.</summary>
+    public class QueuedProvisioning : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Denotes that this nodepool is QRM specific, meaning nodes can be only obtained through queuing via the
+        /// Cluster Autoscaler ProvisioningRequest API.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

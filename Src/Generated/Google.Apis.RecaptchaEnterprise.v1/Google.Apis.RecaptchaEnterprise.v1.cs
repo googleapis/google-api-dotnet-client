@@ -683,7 +683,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1
             /// <summary>Updates the specified firewall policy.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
-            /// The resource name for the FirewallPolicy in the format
+            /// Identifier. The resource name for the FirewallPolicy in the format
             /// `projects/{project}/firewallpolicies/{firewallpolicy}`.
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.RecaptchaEnterprise.v1.Data.GoogleCloudRecaptchaenterpriseV1FirewallPolicy body, string name)
@@ -703,7 +703,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1
                 }
 
                 /// <summary>
-                /// The resource name for the FirewallPolicy in the format
+                /// Identifier. The resource name for the FirewallPolicy in the format
                 /// `projects/{project}/firewallpolicies/{firewallpolicy}`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -1123,7 +1123,9 @@ namespace Google.Apis.RecaptchaEnterprise.v1
 
             /// <summary>Updates the specified key.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">The resource name for the Key in the format `projects/{project}/keys/{key}`.</param>
+            /// <param name="name">
+            /// Identifier. The resource name for the Key in the format `projects/{project}/keys/{key}`.
+            /// </param>
             public virtual PatchRequest Patch(Google.Apis.RecaptchaEnterprise.v1.Data.GoogleCloudRecaptchaenterpriseV1Key body, string name)
             {
                 return new PatchRequest(this.service, body, name);
@@ -1140,7 +1142,9 @@ namespace Google.Apis.RecaptchaEnterprise.v1
                     InitParameters();
                 }
 
-                /// <summary>The resource name for the Key in the format `projects/{project}/keys/{key}`.</summary>
+                /// <summary>
+                /// Identifier. The resource name for the Key in the format `projects/{project}/keys/{key}`.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -1702,7 +1706,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         public virtual GoogleCloudRecaptchaenterpriseV1FraudSignals FraudSignals { get; set; }
 
         /// <summary>
-        /// Output only. The resource name for the Assessment in the format
+        /// Output only. Identifier. The resource name for the Assessment in the format
         /// `projects/{project}/assessments/{assessment}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -2031,7 +2035,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         public virtual string Description { get; set; }
 
         /// <summary>
-        /// The resource name for the FirewallPolicy in the format
+        /// Identifier. The resource name for the FirewallPolicy in the format
         /// `projects/{project}/firewallpolicies/{firewallpolicy}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -2279,7 +2283,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
-        /// <summary>The resource name for the Key in the format `projects/{project}/keys/{key}`.</summary>
+        /// <summary>Identifier. The resource name for the Key in the format `projects/{project}/keys/{key}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -2380,7 +2384,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         public virtual System.Collections.Generic.IList<GoogleCloudRecaptchaenterpriseV1ChallengeMetrics> ChallengeMetrics { get; set; }
 
         /// <summary>
-        /// Output only. The name of the metrics, in the format `projects/{project}/keys/{key}/metrics`.
+        /// Output only. Identifier. The name of the metrics, in the format `projects/{project}/keys/{key}/metrics`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -2490,7 +2494,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
     public class GoogleCloudRecaptchaenterpriseV1RelatedAccountGroup : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. The resource name for the related account group in the format
+        /// Required. Identifier. The resource name for the related account group in the format
         /// `projects/{project}/relatedaccountgroups/{related_account_group}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -2511,7 +2515,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         public virtual string HashedAccountId { get; set; }
 
         /// <summary>
-        /// Required. The resource name for this membership in the format
+        /// Required. Identifier. The resource name for this membership in the format
         /// `projects/{project}/relatedaccountgroups/{relatedaccountgroup}/memberships/{membership}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]

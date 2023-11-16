@@ -2167,9 +2167,9 @@ namespace Google.Apis.Speech.v1p1beta1.Data
         public virtual System.Collections.Generic.IList<SpeechContext> SpeechContexts { get; set; }
 
         /// <summary>
-        /// Use transcription normalization to automatically replace parts of the transcript with phrases of your
-        /// choosing. For StreamingRecognize, this normalization only applies to stable partial transcripts (stability
-        /// &amp;gt; 0.8) and final transcripts.
+        /// Optional. Use transcription normalization to automatically replace parts of the transcript with phrases of
+        /// your choosing. For StreamingRecognize, this normalization only applies to stable partial transcripts
+        /// (stability &amp;gt; 0.8) and final transcripts.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transcriptNormalization")]
         public virtual TranscriptNormalization TranscriptNormalization { get; set; }

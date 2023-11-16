@@ -335,6 +335,354 @@ namespace Google.Apis.Connectors.v1
                         this.service = service;
                     }
 
+                    /// <summary>Get action.</summary>
+                    /// <param name="name">
+                    /// Required. Resource name format:
+                    /// projects/{project}/locations/{location}/connections/{connection}/connectionSchemaMetadata
+                    /// </param>
+                    public virtual GetActionRequest GetAction(string name)
+                    {
+                        return new GetActionRequest(this.service, name);
+                    }
+
+                    /// <summary>Get action.</summary>
+                    public class GetActionRequest : ConnectorsBaseServiceRequest<Google.Apis.Connectors.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new GetAction request.</summary>
+                        public GetActionRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Resource name format:
+                        /// projects/{project}/locations/{location}/connections/{connection}/connectionSchemaMetadata
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Required. Id of the action.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("actionId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string ActionId { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "getAction";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:getAction";
+
+                        /// <summary>Initializes GetAction parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/connections/[^/]+/connectionSchemaMetadata$",
+                            });
+                            RequestParameters.Add("actionId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "actionId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Get entity type.</summary>
+                    /// <param name="name">
+                    /// Required. Resource name format:
+                    /// projects/{project}/locations/{location}/connections/{connection}/connectionSchemaMetadata
+                    /// </param>
+                    public virtual GetEntityTypeRequest GetEntityType(string name)
+                    {
+                        return new GetEntityTypeRequest(this.service, name);
+                    }
+
+                    /// <summary>Get entity type.</summary>
+                    public class GetEntityTypeRequest : ConnectorsBaseServiceRequest<Google.Apis.Connectors.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new GetEntityType request.</summary>
+                        public GetEntityTypeRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Resource name format:
+                        /// projects/{project}/locations/{location}/connections/{connection}/connectionSchemaMetadata
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Required. Id of the entity type.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("entityId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string EntityId { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "getEntityType";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:getEntityType";
+
+                        /// <summary>Initializes GetEntityType parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/connections/[^/]+/connectionSchemaMetadata$",
+                            });
+                            RequestParameters.Add("entityId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "entityId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>List actions.</summary>
+                    /// <param name="name">
+                    /// Required. Resource name format.
+                    /// projects/{project}/locations/{location}/connections/{connection}/connectionSchemaMetadata
+                    /// </param>
+                    public virtual ListActionsRequest ListActions(string name)
+                    {
+                        return new ListActionsRequest(this.service, name);
+                    }
+
+                    /// <summary>List actions.</summary>
+                    public class ListActionsRequest : ConnectorsBaseServiceRequest<Google.Apis.Connectors.v1.Data.ListActionsResponse>
+                    {
+                        /// <summary>Constructs a new ListActions request.</summary>
+                        public ListActionsRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Resource name format.
+                        /// projects/{project}/locations/{location}/connections/{connection}/connectionSchemaMetadata
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Required. Filter Wildcards are not supported in the filter currently.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+                        /// <summary>Page size. If unspecified, at most 50 actions will be returned.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>Page token.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Specifies which fields are returned in response. Defaults to BASIC view.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                        /// <summary>Specifies which fields are returned in response. Defaults to BASIC view.</summary>
+                        public enum ViewEnum
+                        {
+                            /// <summary></summary>
+                            [Google.Apis.Util.StringValueAttribute("VIEW_UNSPECIFIED")]
+                            VIEWUNSPECIFIED = 0,
+
+                            /// <summary></summary>
+                            [Google.Apis.Util.StringValueAttribute("BASIC")]
+                            BASIC = 1,
+                        }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "listActions";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:listActions";
+
+                        /// <summary>Initializes ListActions parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/connections/[^/]+/connectionSchemaMetadata$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "view",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>List entity types.</summary>
+                    /// <param name="name">
+                    /// Required. Resource name format:
+                    /// projects/{project}/locations/{location}/connections/{connection}/connectionSchemaMetadata
+                    /// </param>
+                    public virtual ListEntityTypesRequest ListEntityTypes(string name)
+                    {
+                        return new ListEntityTypesRequest(this.service, name);
+                    }
+
+                    /// <summary>List entity types.</summary>
+                    public class ListEntityTypesRequest : ConnectorsBaseServiceRequest<Google.Apis.Connectors.v1.Data.ListEntityTypesResponse>
+                    {
+                        /// <summary>Constructs a new ListEntityTypes request.</summary>
+                        public ListEntityTypesRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Resource name format:
+                        /// projects/{project}/locations/{location}/connections/{connection}/connectionSchemaMetadata
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Required. Filter Wildcards are not supported in the filter currently.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+                        /// <summary>Page size. If unspecified, at most 50 entity types will be returned.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>Page token.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Specifies which fields are returned in response. Defaults to BASIC view.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                        /// <summary>Specifies which fields are returned in response. Defaults to BASIC view.</summary>
+                        public enum ViewEnum
+                        {
+                            /// <summary></summary>
+                            [Google.Apis.Util.StringValueAttribute("VIEW_UNSPECIFIED")]
+                            VIEWUNSPECIFIED = 0,
+
+                            /// <summary></summary>
+                            [Google.Apis.Util.StringValueAttribute("BASIC")]
+                            BASIC = 1,
+                        }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "listEntityTypes";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:listEntityTypes";
+
+                        /// <summary>Initializes ListEntityTypes parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/connections/[^/]+/connectionSchemaMetadata$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "view",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
                     /// <summary>Refresh runtime schema of a connection.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
@@ -2145,7 +2493,709 @@ namespace Google.Apis.Connectors.v1
                 public GlobalResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
+                    CustomConnectors = new CustomConnectorsResource(service);
                     ManagedZones = new ManagedZonesResource(service);
+                }
+
+                /// <summary>Gets the CustomConnectors resource.</summary>
+                public virtual CustomConnectorsResource CustomConnectors { get; }
+
+                /// <summary>The "customConnectors" collection of methods.</summary>
+                public class CustomConnectorsResource
+                {
+                    private const string Resource = "customConnectors";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public CustomConnectorsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                        CustomConnectorVersions = new CustomConnectorVersionsResource(service);
+                    }
+
+                    /// <summary>Gets the CustomConnectorVersions resource.</summary>
+                    public virtual CustomConnectorVersionsResource CustomConnectorVersions { get; }
+
+                    /// <summary>The "customConnectorVersions" collection of methods.</summary>
+                    public class CustomConnectorVersionsResource
+                    {
+                        private const string Resource = "customConnectorVersions";
+
+                        /// <summary>The service which this resource belongs to.</summary>
+                        private readonly Google.Apis.Services.IClientService service;
+
+                        /// <summary>Constructs a new resource.</summary>
+                        public CustomConnectorVersionsResource(Google.Apis.Services.IClientService service)
+                        {
+                            this.service = service;
+                        }
+
+                        /// <summary>Creates a new CustomConnectorVersion in a given project and location.</summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="parent">
+                        /// Required. Parent resource of the CreateCustomConnector, of the form:
+                        /// `projects/{project}/locations/{location}/customConnectors/{custom_connector}`
+                        /// </param>
+                        public virtual CreateRequest Create(Google.Apis.Connectors.v1.Data.CustomConnectorVersion body, string parent)
+                        {
+                            return new CreateRequest(this.service, body, parent);
+                        }
+
+                        /// <summary>Creates a new CustomConnectorVersion in a given project and location.</summary>
+                        public class CreateRequest : ConnectorsBaseServiceRequest<Google.Apis.Connectors.v1.Data.Operation>
+                        {
+                            /// <summary>Constructs a new Create request.</summary>
+                            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Connectors.v1.Data.CustomConnectorVersion body, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. Parent resource of the CreateCustomConnector, of the form:
+                            /// `projects/{project}/locations/{location}/customConnectors/{custom_connector}`
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>
+                            /// Required. Identifier to assign to the CreateCustomConnectorVersion. Must be unique
+                            /// within scope of the parent resource.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("customConnectorVersionId", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string CustomConnectorVersionId { get; set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.Connectors.v1.Data.CustomConnectorVersion Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "create";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+parent}/customConnectorVersions";
+
+                            /// <summary>Initializes Create parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/global/customConnectors/[^/]+$",
+                                });
+                                RequestParameters.Add("customConnectorVersionId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "customConnectorVersionId",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+
+                        /// <summary>Deletes a single CustomConnectorVersion.</summary>
+                        /// <param name="name">
+                        /// Required. Resource name of the form:
+                        /// `projects/{project}/locations/{location}/customConnectors/{custom_connector}/customConnectorVersions/{custom_connector_version}`
+                        /// </param>
+                        public virtual DeleteRequest Delete(string name)
+                        {
+                            return new DeleteRequest(this.service, name);
+                        }
+
+                        /// <summary>Deletes a single CustomConnectorVersion.</summary>
+                        public class DeleteRequest : ConnectorsBaseServiceRequest<Google.Apis.Connectors.v1.Data.Operation>
+                        {
+                            /// <summary>Constructs a new Delete request.</summary>
+                            public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. Resource name of the form:
+                            /// `projects/{project}/locations/{location}/customConnectors/{custom_connector}/customConnectorVersions/{custom_connector_version}`
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "delete";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "DELETE";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+name}";
+
+                            /// <summary>Initializes Delete parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/global/customConnectors/[^/]+/customConnectorVersions/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>Gets details of a single CustomConnectorVersion.</summary>
+                        /// <param name="name">
+                        /// Required. Resource name of the form:
+                        /// `projects/*/locations/{location}/customConnectors/*/customConnectorVersions/*`
+                        /// </param>
+                        public virtual GetRequest Get(string name)
+                        {
+                            return new GetRequest(this.service, name);
+                        }
+
+                        /// <summary>Gets details of a single CustomConnectorVersion.</summary>
+                        public class GetRequest : ConnectorsBaseServiceRequest<Google.Apis.Connectors.v1.Data.CustomConnectorVersion>
+                        {
+                            /// <summary>Constructs a new Get request.</summary>
+                            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. Resource name of the form:
+                            /// `projects/*/locations/{location}/customConnectors/*/customConnectorVersions/*`
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "get";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+name}";
+
+                            /// <summary>Initializes Get parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/global/customConnectors/[^/]+/customConnectorVersions/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>List CustomConnectorVersions in a given project</summary>
+                        /// <param name="parent">
+                        /// Required. Parent resource of the connectors, of the form:
+                        /// `projects/*/locations/{location}/customConnectors/*/customConnectorVersions/*`
+                        /// </param>
+                        public virtual ListRequest List(string parent)
+                        {
+                            return new ListRequest(this.service, parent);
+                        }
+
+                        /// <summary>List CustomConnectorVersions in a given project</summary>
+                        public class ListRequest : ConnectorsBaseServiceRequest<Google.Apis.Connectors.v1.Data.ListCustomConnectorVersionsResponse>
+                        {
+                            /// <summary>Constructs a new List request.</summary>
+                            public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. Parent resource of the connectors, of the form:
+                            /// `projects/*/locations/{location}/customConnectors/*/customConnectorVersions/*`
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>Page size.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<int> PageSize { get; set; }
+
+                            /// <summary>Page token.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string PageToken { get; set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "list";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+parent}/customConnectorVersions";
+
+                            /// <summary>Initializes List parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/global/customConnectors/[^/]+$",
+                                });
+                                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+
+                        /// <summary>Updates the parameters of a CustomConnectorVersion.</summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="name">
+                        /// Output only. Identifier. Resource name of the Version. Format:
+                        /// projects/{project}/locations/{location}/customConnectors/{custom_connector}/customConnectorVersions/{custom_connector_version}
+                        /// </param>
+                        public virtual PatchRequest Patch(Google.Apis.Connectors.v1.Data.CustomConnectorVersion body, string name)
+                        {
+                            return new PatchRequest(this.service, body, name);
+                        }
+
+                        /// <summary>Updates the parameters of a CustomConnectorVersion.</summary>
+                        public class PatchRequest : ConnectorsBaseServiceRequest<Google.Apis.Connectors.v1.Data.Operation>
+                        {
+                            /// <summary>Constructs a new Patch request.</summary>
+                            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Connectors.v1.Data.CustomConnectorVersion body, string name) : base(service)
+                            {
+                                Name = name;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Output only. Identifier. Resource name of the Version. Format:
+                            /// projects/{project}/locations/{location}/customConnectors/{custom_connector}/customConnectorVersions/{custom_connector_version}
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>
+                            /// Required. Field mask is used to specify the fields to be overwritten in the Connector
+                            /// resource by the update. The fields specified in the update_mask are relative to the
+                            /// resource, not the full request. A field will be overwritten if it is in the mask. Set
+                            /// the mask as "*" for full replacement, which means all fields will be overwritten.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual object UpdateMask { get; set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.Connectors.v1.Data.CustomConnectorVersion Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "patch";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "PATCH";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+name}";
+
+                            /// <summary>Initializes Patch parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/global/customConnectors/[^/]+/customConnectorVersions/[^/]+$",
+                                });
+                                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "updateMask",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+                    }
+
+                    /// <summary>Creates a new CustomConnector in a given project and location.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. Parent resource of the CreateCustomConnector, of the form:
+                    /// `projects/{project}/locations/*`
+                    /// </param>
+                    public virtual CreateRequest Create(Google.Apis.Connectors.v1.Data.CustomConnector body, string parent)
+                    {
+                        return new CreateRequest(this.service, body, parent);
+                    }
+
+                    /// <summary>Creates a new CustomConnector in a given project and location.</summary>
+                    public class CreateRequest : ConnectorsBaseServiceRequest<Google.Apis.Connectors.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Connectors.v1.Data.CustomConnector body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Parent resource of the CreateCustomConnector, of the form:
+                        /// `projects/{project}/locations/*`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Required. Identifier to assign to the CreateCustomConnector. Must be unique within scope of
+                        /// the parent resource.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("customConnectorId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string CustomConnectorId { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Connectors.v1.Data.CustomConnector Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "create";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/customConnectors";
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/global$",
+                            });
+                            RequestParameters.Add("customConnectorId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "customConnectorId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Deletes a single CustomConnector.</summary>
+                    /// <param name="name">
+                    /// Required. Resource name of the form:
+                    /// `projects/{project}/locations/{location}/customConnectors/{connector}`
+                    /// </param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(this.service, name);
+                    }
+
+                    /// <summary>Deletes a single CustomConnector.</summary>
+                    public class DeleteRequest : ConnectorsBaseServiceRequest<Google.Apis.Connectors.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Resource name of the form:
+                        /// `projects/{project}/locations/{location}/customConnectors/{connector}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/global/customConnectors/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Gets details of a single CustomConnector.</summary>
+                    /// <param name="name">
+                    /// Required. Resource name of the form: `projects/*/locations/*/customConnectors/*`
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(this.service, name);
+                    }
+
+                    /// <summary>Gets details of a single CustomConnector.</summary>
+                    public class GetRequest : ConnectorsBaseServiceRequest<Google.Apis.Connectors.v1.Data.CustomConnector>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Resource name of the form: `projects/*/locations/*/customConnectors/*`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/global/customConnectors/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>List CustomConnectorVersions in a given project</summary>
+                    /// <param name="parent">
+                    /// Required. Parent resource of the custom connectors, of the form: `projects/*/locations/*` Only
+                    /// global location is supported for CustomConnector resource.
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(this.service, parent);
+                    }
+
+                    /// <summary>List CustomConnectorVersions in a given project</summary>
+                    public class ListRequest : ConnectorsBaseServiceRequest<Google.Apis.Connectors.v1.Data.ListCustomConnectorsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Parent resource of the custom connectors, of the form: `projects/*/locations/*`
+                        /// Only global location is supported for CustomConnector resource.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Filter string.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+                        /// <summary>Page size.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>Page token.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/customConnectors";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/global$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Updates the parameters of a CustomConnector.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Identifier. Resource name of the CustomConnector. Format:
+                    /// projects/{project}/locations/{location}/customConnectors/{connector}
+                    /// </param>
+                    public virtual PatchRequest Patch(Google.Apis.Connectors.v1.Data.CustomConnector body, string name)
+                    {
+                        return new PatchRequest(this.service, body, name);
+                    }
+
+                    /// <summary>Updates the parameters of a CustomConnector.</summary>
+                    public class PatchRequest : ConnectorsBaseServiceRequest<Google.Apis.Connectors.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Patch request.</summary>
+                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Connectors.v1.Data.CustomConnector body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Identifier. Resource name of the CustomConnector. Format:
+                        /// projects/{project}/locations/{location}/customConnectors/{connector}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// Required. Field mask is used to specify the fields to be overwritten in the Connector
+                        /// resource by the update. The fields specified in the update_mask are relative to the
+                        /// resource, not the full request. A field will be overwritten if it is in the mask. Set the
+                        /// mask as "*" for full replacement, which means all fields will be overwritten.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object UpdateMask { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Connectors.v1.Data.CustomConnector Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "patch";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "PATCH";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Patch parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/global/customConnectors/[^/]+$",
+                            });
+                            RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "updateMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
                 }
 
                 /// <summary>Gets the ManagedZones resource.</summary>
@@ -5092,6 +6142,239 @@ namespace Google.Apis.Connectors.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>CustomConnector represents the custom connector defined by the customer as part of byoc.</summary>
+    public class CustomConnector : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Created time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Required. Type of the custom connector.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customConnectorType")]
+        public virtual string CustomConnectorType { get; set; }
+
+        /// <summary>Optional. Description of the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Optional. Display name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for
+        /// more details. https://cloud.google.com/compute/docs/labeling-resources
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>Output only. Launch stage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("launchStage")]
+        public virtual string LaunchStage { get; set; }
+
+        /// <summary>Optional. Logo of the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logo")]
+        public virtual string Logo { get; set; }
+
+        /// <summary>
+        /// Identifier. Resource name of the CustomConnector. Format:
+        /// projects/{project}/locations/{location}/customConnectors/{connector}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. Updated time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>CustomConnectorVersion indicates a specific version of a connector.</summary>
+    public class CustomConnectorVersion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Configuration for establishing the authentication to the connector destination.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authConfig")]
+        public virtual AuthConfig AuthConfig { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Created time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Required. Configuration of the customConnector's destination.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationConfig")]
+        public virtual DestinationConfig DestinationConfig { get; set; }
+
+        /// <summary>
+        /// Optional. Whether to enable backend destination config. This is the backend server that the connector
+        /// connects to.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableBackendDestinationConfig")]
+        public virtual System.Nullable<bool> EnableBackendDestinationConfig { get; set; }
+
+        /// <summary>
+        /// Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for
+        /// more details. https://cloud.google.com/compute/docs/labeling-resources
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Output only. Identifier. Resource name of the Version. Format:
+        /// projects/{project}/locations/{location}/customConnectors/{custom_connector}/customConnectorVersions/{custom_connector_version}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Optional. Location of the custom connector spec.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("specLocation")]
+        public virtual string SpecLocation { get; set; }
+
+        /// <summary>Required. Type of the customConnector.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. Updated time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class Destination : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>For publicly routable host.</summary>
@@ -6094,6 +7377,21 @@ namespace Google.Apis.Connectors.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for ListActions API</summary>
+    public class ListActionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>list of actions</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("actions")]
+        public virtual System.Collections.Generic.IList<RuntimeActionSchema> Actions { get; set; }
+
+        /// <summary>token for next page</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for ConnectorsService.ListConnections</summary>
     public class ListConnectionsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6151,6 +7449,44 @@ namespace Google.Apis.Connectors.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for Connectors.ListCustomConnectorVersions.</summary>
+    public class ListCustomConnectorVersionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of connector versions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customConnectorVersions")]
+        public virtual System.Collections.Generic.IList<CustomConnectorVersion> CustomConnectorVersions { get; set; }
+
+        /// <summary>Next page token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for Connectors.ListCustomConnectors.</summary>
+    public class ListCustomConnectorsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of customConnectors.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customConnectors")]
+        public virtual System.Collections.Generic.IList<CustomConnector> CustomConnectors { get; set; }
+
+        /// <summary>Next page token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for ConnectorsService.ListEndpointAttachments</summary>
     public class ListEndpointAttachmentsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6165,6 +7501,21 @@ namespace Google.Apis.Connectors.v1.Data
         /// <summary>Locations that could not be reached.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for ListEntityTypes API</summary>
+    public class ListEntityTypesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>list of entity types</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityTypes")]
+        public virtual System.Collections.Generic.IList<RuntimeEntitySchema> EntityTypes { get; set; }
+
+        /// <summary>token for next page</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

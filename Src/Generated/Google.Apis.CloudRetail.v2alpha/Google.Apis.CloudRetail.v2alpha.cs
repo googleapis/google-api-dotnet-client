@@ -11122,9 +11122,10 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         /// <summary>
         /// The default filter that is applied when a user performs a search without checking any filters on the search
         /// page. The filter applied to every search request when quality improvement such as query expansion is needed.
-        /// For example, if a query does not have enough results, an expanded query with SearchRequest.canonical_filter
-        /// is returned as a supplement of the original query. This field is strongly recommended to achieve high search
-        /// quality. For more information about filter syntax, see SearchRequest.filter.
+        /// In the case a query does not have a sufficient amount of results this filter will be used to determine
+        /// whether or not to enable the query expansion flow. The original filter will still be used for the query
+        /// expanded search. This field is strongly recommended to achieve high search quality. For more information
+        /// about filter syntax, see SearchRequest.filter.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("canonicalFilter")]
         public virtual string CanonicalFilter { get; set; }

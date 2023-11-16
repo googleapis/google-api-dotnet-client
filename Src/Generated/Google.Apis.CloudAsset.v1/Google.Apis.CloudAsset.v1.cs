@@ -562,8 +562,8 @@ namespace Google.Apis.CloudAsset.v1
             /// <summary>
             /// Required. The names refer to the [full_resource_names]
             /// (https://cloud.google.com/asset-inventory/docs/resource-name-format) of [searchable asset
-            /// types](https://cloud.google.com/asset-inventory/docs/supported-asset-types#searchable_asset_types). A
-            /// maximum of 20 resources' effective policies can be retrieved in a batch.
+            /// types](https://cloud.google.com/asset-inventory/docs/supported-asset-types). A maximum of 20 resources'
+            /// effective policies can be retrieved in a batch.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("names", Google.Apis.Util.RequestParameterType.Query)]
             public virtual Google.Apis.Util.Repeatable<string> Names { get; set; }
@@ -1985,8 +1985,7 @@ namespace Google.Apis.CloudAsset.v1
         /// appengine.enforceServiceAccountActAsCheck * gcp.resourceLocations * compute.trustedImageProjects *
         /// compute.skipDefaultNetworkCreation * compute.requireOsLogin * compute.disableNestedVirtualization This RPC
         /// only returns either resources of types supported by [searchable asset
-        /// types](https://cloud.google.com/asset-inventory/docs/supported-asset-types#searchable_asset_types), or IAM
-        /// policies.
+        /// types](https://cloud.google.com/asset-inventory/docs/supported-asset-types), or IAM policies.
         /// </summary>
         /// <param name="scope">
         /// Required. The organization to scope the request. Only organization policies within the scope will be
@@ -2005,8 +2004,7 @@ namespace Google.Apis.CloudAsset.v1
         /// appengine.enforceServiceAccountActAsCheck * gcp.resourceLocations * compute.trustedImageProjects *
         /// compute.skipDefaultNetworkCreation * compute.requireOsLogin * compute.disableNestedVirtualization This RPC
         /// only returns either resources of types supported by [searchable asset
-        /// types](https://cloud.google.com/asset-inventory/docs/supported-asset-types#searchable_asset_types), or IAM
-        /// policies.
+        /// types](https://cloud.google.com/asset-inventory/docs/supported-asset-types), or IAM policies.
         /// </summary>
         public class AnalyzeOrgPolicyGovernedAssetsRequest : CloudAssetBaseServiceRequest<Google.Apis.CloudAsset.v1.Data.AnalyzeOrgPolicyGovernedAssetsResponse>
         {
@@ -2661,13 +2659,12 @@ namespace Google.Apis.CloudAsset.v1
             /// <summary>
             /// Optional. A list of asset types that the IAM policies are attached to. If empty, it will search the IAM
             /// policies that are attached to all the [searchable asset
-            /// types](https://cloud.google.com/asset-inventory/docs/supported-asset-types#searchable_asset_types).
-            /// Regular expressions are also supported. For example: * "compute.googleapis.com.*" snapshots IAM policies
-            /// attached to asset type starts with "compute.googleapis.com". * ".*Instance" snapshots IAM policies
-            /// attached to asset type ends with "Instance". * ".*Instance.*" snapshots IAM policies attached to asset
-            /// type contains "Instance". See [RE2](https://github.com/google/re2/wiki/Syntax) for all supported regular
-            /// expression syntax. If the regular expression does not match any supported asset type, an
-            /// INVALID_ARGUMENT error will be returned.
+            /// types](https://cloud.google.com/asset-inventory/docs/supported-asset-types). Regular expressions are
+            /// also supported. For example: * "compute.googleapis.com.*" snapshots IAM policies attached to asset type
+            /// starts with "compute.googleapis.com". * ".*Instance" snapshots IAM policies attached to asset type ends
+            /// with "Instance". * ".*Instance.*" snapshots IAM policies attached to asset type contains "Instance". See
+            /// [RE2](https://github.com/google/re2/wiki/Syntax) for all supported regular expression syntax. If the
+            /// regular expression does not match any supported asset type, an INVALID_ARGUMENT error will be returned.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("assetTypes", Google.Apis.Util.RequestParameterType.Query)]
             public virtual Google.Apis.Util.Repeatable<string> AssetTypes { get; set; }
@@ -2837,12 +2834,11 @@ namespace Google.Apis.CloudAsset.v1
 
             /// <summary>
             /// Optional. A list of asset types that this request searches for. If empty, it will search all the
-            /// [searchable asset
-            /// types](https://cloud.google.com/asset-inventory/docs/supported-asset-types#searchable_asset_types).
-            /// Regular expressions are also supported. For example: * "compute.googleapis.com.*" snapshots resources
-            /// whose asset type starts with "compute.googleapis.com". * ".*Instance" snapshots resources whose asset
-            /// type ends with "Instance". * ".*Instance.*" snapshots resources whose asset type contains "Instance".
-            /// See [RE2](https://github.com/google/re2/wiki/Syntax) for all supported regular expression syntax. If the
+            /// [searchable asset types](https://cloud.google.com/asset-inventory/docs/supported-asset-types). Regular
+            /// expressions are also supported. For example: * "compute.googleapis.com.*" snapshots resources whose
+            /// asset type starts with "compute.googleapis.com". * ".*Instance" snapshots resources whose asset type
+            /// ends with "Instance". * ".*Instance.*" snapshots resources whose asset type contains "Instance". See
+            /// [RE2](https://github.com/google/re2/wiki/Syntax) for all supported regular expression syntax. If the
             /// regular expression does not match any supported asset type, an INVALID_ARGUMENT error will be returned.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("assetTypes", Google.Apis.Util.RequestParameterType.Query)]
@@ -3434,7 +3430,7 @@ namespace Google.Apis.CloudAsset.v1.Data
         /// <summary>
         /// The type of this attached resource. Example: `osconfig.googleapis.com/Inventory` You can find the supported
         /// attached asset types of each resource in this table:
-        /// `https://cloud.google.com/asset-inventory/docs/supported-asset-types#searchable_asset_types`
+        /// `https://cloud.google.com/asset-inventory/docs/supported-asset-types`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assetType")]
         public virtual string AssetType { get; set; }
@@ -7073,12 +7069,12 @@ namespace Google.Apis.CloudAsset.v1.Data
         /// another. Examples: `projectId` for Project, `dnsName` for DNS ManagedZone. This field contains a subset of
         /// the resource metadata fields that are returned by the List or Get APIs provided by the corresponding Google
         /// Cloud service (e.g., Compute Engine). see [API references and supported searchable
-        /// attributes](https://cloud.google.com/asset-inventory/docs/supported-asset-types#searchable_asset_types) to
-        /// see which fields are included. You can search values of these fields through free text search. However, you
-        /// should not consume the field programically as the field names and values may change as the Google Cloud
-        /// service updates to a new incompatible API version. To search against the `additional_attributes`: * Use a
-        /// free text query to match the attributes values. Example: to search `additional_attributes = { dnsName:
-        /// "foobar" }`, you can issue a query `foobar`.
+        /// attributes](https://cloud.google.com/asset-inventory/docs/supported-asset-types) to see which fields are
+        /// included. You can search values of these fields through free text search. However, you should not consume
+        /// the field programically as the field names and values may change as the Google Cloud service updates to a
+        /// new incompatible API version. To search against the `additional_attributes`: * Use a free text query to
+        /// match the attributes values. Example: to search `additional_attributes = { dnsName: "foobar" }`, you can
+        /// issue a query `foobar`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("additionalAttributes")]
         public virtual System.Collections.Generic.IDictionary<string, object> AdditionalAttributes { get; set; }
@@ -7907,7 +7903,7 @@ namespace Google.Apis.CloudAsset.v1.Data
         /// representation of the instance as defined by Compute Engine:
         /// `https://cloud.google.com/compute/docs/reference/rest/v1/instances`. You can find the resource definition
         /// for each supported resource type in this table:
-        /// `https://cloud.google.com/asset-inventory/docs/supported-asset-types#searchable_asset_types`
+        /// `https://cloud.google.com/asset-inventory/docs/supported-asset-types`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resource")]
         public virtual System.Collections.Generic.IDictionary<string, object> Resource { get; set; }

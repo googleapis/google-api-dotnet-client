@@ -11313,6 +11313,18 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     /// <summary>User's address for the external transaction.</summary>
     public class ExternalTransactionAddress : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Top-level administrative subdivision of the country/region. Only required for transactions in
+        /// India. Valid values are "ANDAMAN AND NICOBAR ISLANDS", "ANDHRA PRADESH", "ARUNACHAL PRADESH", "ASSAM",
+        /// "BIHAR", "CHANDIGARH", "CHHATTISGARH", "DADRA AND NAGAR HAVELI", "DADRA AND NAGAR HAVELI AND DAMAN AND DIU",
+        /// "DAMAN AND DIU", "DELHI", "GOA", "GUJARAT", "HARYANA", "HIMACHAL PRADESH", "JAMMU AND KASHMIR", "JHARKHAND",
+        /// "KARNATAKA", "KERALA", "LADAKH", "LAKSHADWEEP", "MADHYA PRADESH", "MAHARASHTRA", "MANIPUR", "MEGHALAYA",
+        /// "MIZORAM", "NAGALAND", "ODISHA", "PUDUCHERRY", "PUNJAB", "RAJASTHAN", "SIKKIM", "TAMIL NADU", "TELANGANA",
+        /// "TRIPURA", "UTTAR PRADESH", "UTTARAKHAND", and "WEST BENGAL".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("administrativeArea")]
+        public virtual string AdministrativeArea { get; set; }
+
         /// <summary>Required. Two letter region code based on ISO-3166-1 Alpha-2 (UN region codes).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
         public virtual string RegionCode { get; set; }
@@ -12550,6 +12562,13 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("initialExternalTransactionId")]
         public virtual string InitialExternalTransactionId { get; set; }
+
+        /// <summary>
+        /// Input only. Provided during the call to Create. Must only be used when migrating a subscription from manual
+        /// monthly reporting to automated reporting.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("migratedTransactionProgram")]
+        public virtual string MigratedTransactionProgram { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

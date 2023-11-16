@@ -8118,6 +8118,13 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual System.Collections.Generic.IList<string> Jobs { get; set; }
 
         /// <summary>
+        /// Optional. (Optional) The access type to the diagnostic tarball. If not specified, falls back to default
+        /// access of the bucket
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tarballAccess")]
+        public virtual string TarballAccess { get; set; }
+
+        /// <summary>
         /// Optional. (Optional) The output Cloud Storage directory for the diagnostic tarball. If not specified, a
         /// task-specific directory in the cluster's staging bucket will be used.
         /// </summary>

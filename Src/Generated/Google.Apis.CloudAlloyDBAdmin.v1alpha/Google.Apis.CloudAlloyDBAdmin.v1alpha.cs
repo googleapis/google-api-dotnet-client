@@ -4137,6 +4137,10 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("primaryConfig")]
         public virtual PrimaryConfig PrimaryConfig { get; set; }
 
+        /// <summary>Optional. The configuration for Private Service Connect (PSC) for the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pscConfig")]
+        public virtual PscConfig PscConfig { get; set; }
+
         /// <summary>
         /// Output only. Reconciling (https://google.aip.dev/128#reconciliation). Set to true if the current state of
         /// Cluster does not match the user's intended state, and the service is actively updating the resource to
@@ -5080,7 +5084,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
         public virtual string AllocatedIpRange { get; set; }
 
         /// <summary>
-        /// Required. The resource link for the VPC network in which cluster resources are created and from which they
+        /// Optional. The resource link for the VPC network in which cluster resources are created and from which they
         /// are accessible via Private IP. The network must belong to the same project as the cluster. It is specified
         /// in the form: "projects/{project_number}/global/networks/{network_id}". This is required to create a cluster.
         /// </summary>
@@ -5311,6 +5315,19 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
         public virtual System.Nullable<bool> ValidateOnly { get; set; }
+    }
+
+    /// <summary>PscConfig contains PSC related configuration at a cluster level. NEXT ID: 2</summary>
+    public class PscConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Create an instance that allows connections from Private Service Connect endpoints to the instance.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pscEnabled")]
+        public virtual System.Nullable<bool> PscEnabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 
     /// <summary>

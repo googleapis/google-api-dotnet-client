@@ -5312,7 +5312,7 @@ namespace Google.Apis.BackupforGKE.v1.Data
 
     /// <summary>
     /// Represents both a request to Restore some portion of a Backup into a target GKE cluster and a record of the
-    /// restore operation itself. Next id: 19
+    /// restore operation itself. Next id: 20
     /// </summary>
     public class Restore : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5507,7 +5507,7 @@ namespace Google.Apis.BackupforGKE.v1.Data
         public virtual System.Nullable<int> VolumesRestoredCount { get; set; }
     }
 
-    /// <summary>Configuration of a restore. Next id: 12</summary>
+    /// <summary>Configuration of a restore. Next id: 13</summary>
     public class RestoreConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>

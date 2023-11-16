@@ -11123,9 +11123,7 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("staticIpConfig")]
         public virtual VmwareStaticIpConfig StaticIpConfig { get; set; }
 
-        /// <summary>
-        /// Output only. vcenter_network specifies vCenter network name. Inherited from the admin cluster.
-        /// </summary>
+        /// <summary>vcenter_network specifies vCenter network name. Inherited from the admin cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vcenterNetwork")]
         public virtual string VcenterNetwork { get; set; }
 

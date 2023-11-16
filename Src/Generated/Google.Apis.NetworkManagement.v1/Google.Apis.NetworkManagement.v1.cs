@@ -2416,7 +2416,10 @@ namespace Google.Apis.NetworkManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("backends")]
         public virtual System.Collections.Generic.IList<LoadBalancerBackend> Backends { get; set; }
 
-        /// <summary>URI of the health check for the load balancer.</summary>
+        /// <summary>
+        /// URI of the health check for the load balancer. Deprecated and no longer populated as different load balancer
+        /// backends might have different health checks.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("healthCheckUri")]
         public virtual string HealthCheckUri { get; set; }
 

@@ -3135,6 +3135,97 @@ namespace Google.Apis.Dataform.v1beta1
                         }
                     }
 
+                    /// <summary>Finds the contents of a given Workspace directory by filter.</summary>
+                    /// <param name="workspace">Required. The workspace's name.</param>
+                    public virtual SearchFilesRequest SearchFiles(string workspace)
+                    {
+                        return new SearchFilesRequest(this.service, workspace);
+                    }
+
+                    /// <summary>Finds the contents of a given Workspace directory by filter.</summary>
+                    public class SearchFilesRequest : DataformBaseServiceRequest<Google.Apis.Dataform.v1beta1.Data.SearchFilesResponse>
+                    {
+                        /// <summary>Constructs a new SearchFiles request.</summary>
+                        public SearchFilesRequest(Google.Apis.Services.IClientService service, string workspace) : base(service)
+                        {
+                            Workspace = workspace;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The workspace's name.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("workspace", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Workspace { get; private set; }
+
+                        /// <summary>
+                        /// Optional. Optional filter for the returned list in go/filtering format. Filtering is only
+                        /// currently supported on the `path` field.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+                        /// <summary>
+                        /// Optional. Maximum number of search results to return. The server may return fewer items than
+                        /// requested. If unspecified, the server will pick an appropriate default.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// Optional. Page token received from a previous `SearchFilesRequest` call. Provide this to
+                        /// retrieve the subsequent page. When paginating, all other parameters provided to
+                        /// `SearchFilesRequest` must match the call that provided the page token.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "searchFiles";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+workspace}:searchFiles";
+
+                        /// <summary>Initializes SearchFiles parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("workspace", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "workspace",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/repositories/[^/]+/workspaces/[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
                     /// <summary>
                     /// Sets the access control policy on the specified resource. Replaces any existing policy. Can
                     /// return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
@@ -4930,6 +5021,17 @@ namespace Google.Apis.Dataform.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Client-facing representation of a directory entry in search results.</summary>
+    public class DirectorySearchResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>File system path relative to the workspace root.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("path")]
+        public virtual string Path { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
@@ -5064,6 +5166,17 @@ namespace Google.Apis.Dataform.v1beta1.Data
         /// <summary>Represents the write operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("writeFile")]
         public virtual WriteFile WriteFile { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Client-facing representation of a file entry in search results.</summary>
+    public class FileSearchResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>File system path relative to the workspace root.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("path")]
+        public virtual string Path { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6223,6 +6336,39 @@ namespace Google.Apis.Dataform.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Client-facing representation of a file search response.</summary>
+    public class SearchFilesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted,
+        /// there are no subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>List of matched results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("searchResults")]
+        public virtual System.Collections.Generic.IList<SearchResult> SearchResults { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Client-facing representation of a search result entry.</summary>
+    public class SearchResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Details when search result is a directory.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("directory")]
+        public virtual DirectorySearchResult Directory { get; set; }
+
+        /// <summary>Details when search result is a file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("file")]
+        public virtual FileSearchResult File { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for `SetIamPolicy` method.</summary>
     public class SetIamPolicyRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6413,6 +6559,13 @@ namespace Google.Apis.Dataform.v1beta1.Data
         /// <summary>Output only. The workflow invocation's name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. The resolved compilation result that was used to create this invocation. Will be in the format
+        /// `projects/*/locations/*/repositories/*/compilationResults/*`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resolvedCompilationResult")]
+        public virtual string ResolvedCompilationResult { get; set; }
 
         /// <summary>Output only. This workflow invocation's current state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
