@@ -19,8 +19,8 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using System;
 using System.IO;
-using System.Reflection;
 using System.Linq;
+using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -110,7 +110,6 @@ namespace Google.Apis.Json
     /// <summary>Class for serialization and deserialization of JSON documents using the Newtonsoft Library.</summary>
     public class NewtonsoftJsonSerializer : IJsonSerializer
     {
-        private readonly JsonSerializerSettings settings;
         private readonly JsonSerializer serializer;
 
         /// <summary>The default instance of the Newtonsoft JSON Serializer, with default settings.</summary>
@@ -127,12 +126,8 @@ namespace Google.Apis.Json
         /// Constructs a new instance with the given settings.
         /// </summary>
         /// <param name="settings">The settings to apply when serializing and deserializing. Must not be null.</param>
-        public NewtonsoftJsonSerializer(JsonSerializerSettings settings)
-        {
-            Utilities.ThrowIfNull(settings, nameof(settings));
-            this.settings = settings;
-            serializer = JsonSerializer.Create(settings);
-        }
+        public NewtonsoftJsonSerializer(JsonSerializerSettings settings) =>
+            serializer = JsonSerializer.Create(Utilities.ThrowIfNull(settings, nameof(settings)));
 
         /// <summary>
         /// Creates a new instance of <see cref="JsonSerializerSettings"/> with the same behavior
@@ -146,7 +141,6 @@ namespace Google.Apis.Json
                 NullValueHandling = NullValueHandling.Ignore,
                 MetadataPropertyHandling = MetadataPropertyHandling.Ignore,
                 ContractResolver = new NewtonsoftJsonContractResolver(),
-                DefaultValueHandling = DefaultValueHandling.Include,
             };
 
         /// <inheritdoc/>
@@ -184,9 +178,9 @@ namespace Google.Apis.Json
         {
             if (string.IsNullOrEmpty(input))
             {
-                return default(T);
+                return default;
             }
-            return JsonConvert.DeserializeObject<T>(input, settings);
+            return (T)Deserialize(input, typeof(T));
         }
 
         /// <inheritdoc/>
@@ -196,7 +190,11 @@ namespace Google.Apis.Json
             {
                 return null;
             }
-            return JsonConvert.DeserializeObject(input, type, settings);
+
+            using (JsonTextReader reader = new JsonTextReader(new StringReader(input)))
+            {
+                return serializer.Deserialize(reader, type);
+            }
         }
 
         /// <inheritdoc/>
