@@ -382,17 +382,15 @@ namespace Google.Apis.Tests.Apis.Upload
         /// Resuming on program restart with a non-seekable stream is not supported.
         /// </summary>
         [Fact]
-        public void TestUploadWithUploaderRestart_UnknownSize()
+        public async Task TestUploadWithUploaderRestart_UnknownSize()
         {
             // Unknown stream size not supported, exception always thrown
-            using (var server = new MultiChunkServer(_server))
-            using (var service = new MockClientService(server.HttpPrefix))
-            {
-                var content = new UnknownSizeMemoryStream(UploadTestBytes);
-                var uploader = new TestResumableUpload(service, "whatever", "PUT", content, "", 100);
-                var url = new Uri("http://what.ever/");
-                Assert.ThrowsAsync<NotImplementedException>(() => uploader.ResumeAsync(url));
-            }
+            using var server = new MultiChunkServer(_server);
+            using var service = new MockClientService(server.HttpPrefix);
+            var content = new UnknownSizeMemoryStream(UploadTestBytes);
+            var uploader = new TestResumableUpload(service, "whatever", "PUT", content, "", 100);
+            var url = new Uri("http://what.ever/");
+            await Assert.ThrowsAsync<NotImplementedException>(() => uploader.ResumeAsync(url));
         }
 
         /// <summary>
