@@ -177,17 +177,20 @@ namespace Google.Apis.Requests
             var requests = from r in allRequests
                            select r.ClientRequest;
             HttpContent outerContent = await CreateOuterRequestContent(requests).ConfigureAwait(false);
-            var result = await httpClient.PostAsync(new Uri(batchUrl), outerContent, cancellationToken)
-                .ConfigureAwait(false);
 
-            // Will throw as meaningful an exception as possible if there was an error.
-            await EnsureSuccessAsync(result).ConfigureAwait(false);
+            string fullContent;
+            string boundary;
+            using (var result = await httpClient.PostAsync(new Uri(batchUrl), outerContent, cancellationToken).ConfigureAwait(false))
+            {
+                // Will throw as meaningful an exception as possible if there was an error.
+                await EnsureSuccessAsync(result).ConfigureAwait(false);
 
-            // Get the boundary separator.
-            const string boundaryKey = "boundary=";
-            var fullContent = await result.Content.ReadAsStringAsync().ConfigureAwait(false);
-            var contentType = result.Content.Headers.GetValues("Content-Type").First();
-            var boundary = contentType.Substring(contentType.IndexOf(boundaryKey, StringComparison.Ordinal) + boundaryKey.Length);
+                // Get the boundary separator.
+                const string boundaryKey = "boundary=";
+                var contentType = result.Content.Headers.GetValues("Content-Type").First();
+                boundary = contentType.Substring(contentType.IndexOf(boundaryKey, StringComparison.Ordinal) + boundaryKey.Length);
+                fullContent = await result.Content.ReadAsStringAsync().ConfigureAwait(false);
+            }
 
             int requestIndex = 0;
             // While there is still content to read, parse the current HTTP response.
