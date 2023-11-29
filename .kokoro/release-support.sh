@@ -24,8 +24,7 @@ git config core.fileMode false
 shopt -s nullglob
 for pkg in ./NuPkgs/Support/*.nupkg; do
   if [[ $pkg != *.symbols.* ]]; then
-    # Push is expected to fail often; when a package hasn't been updated.
-    nuget push $pkg $nuget_token -Source nuget.org || true
+    nuget push $pkg $nuget_token -Source nuget.org
   fi
 done
 
