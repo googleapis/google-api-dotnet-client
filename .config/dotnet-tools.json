@@ -13,6 +13,12 @@
       "commands": [
         "docuploader"
       ]
+    },
+    "Google.Cloud.Tools.SbomGenerator": {
+      "version": "0.3.0",
+      "commands": [
+        "generate-sbom"
+      ]
     }
   }
 }

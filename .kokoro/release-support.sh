@@ -5,6 +5,8 @@ set -ex
 # Make sure secrets are loaded in a well known location before running the release
 source ./populatesecrets.sh
 populate_all_secrets
+# Restore tools, in particular the SBOM generator
+dotnet tool restore
 
 declare -r nuget_token="$(cat "$SECRETS_LOCATION"/google-apis-nuget-api-key)"
 
@@ -24,6 +26,7 @@ git config core.fileMode false
 shopt -s nullglob
 for pkg in ./NuPkgs/Support/*.nupkg; do
   if [[ $pkg != *.symbols.* ]]; then
+    dotnet generate-sbom $pkg
     nuget push $pkg $nuget_token -Source nuget.org
   fi
 done
