@@ -72,14 +72,19 @@ fi
 shopt -s nullglob
 for pkg in ./NuPkgs/Support/*.nupkg; do
   if [[ $pkg != *.symbols.* ]]; then
-    # Push is expected to fail often; when a package hasn't been updated.
+    # During autorelease, pushing support packages is expected to fail often,
+    # as support packages are updated with a lot less frequency than generated
+    # packages, and when they are we usually release them manually anyway.
     nuget push $pkg $nuget_token -Source nuget.org || true
     sleep 10
   fi
 done
 for pkg in ./NuPkgs/Generated/*.nupkg; do
   if [[ $pkg != *.symbols.* ]]; then
-    # Push is expected to fail often; when a package hasn't been updated.
+    # We take care to only generate packages that have changed, except when FORCE_ALL == true.
+    # Still we have encountered a couple of instances where line endings differences and similar
+    # have been detected as changes which results in an attempt to push an already published
+    # package. So to be safe, let's always return true here.
     nuget push $pkg $nuget_token -Source nuget.org || true
     sleep 10
   fi
