@@ -55,6 +55,20 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";
 
+        /// <summary>Available OAuth 2.0 scopes for use with the Payments Reseller Subscription API.</summary>
+        public class Scope
+        {
+            /// <summary>Associate you with your personal info on Google</summary>
+            public static string Openid = "openid";
+        }
+
+        /// <summary>Available OAuth 2.0 scope constants for use with the Payments Reseller Subscription API.</summary>
+        public static class ScopeConstants
+        {
+            /// <summary>Associate you with your personal info on Google</summary>
+            public const string Openid = "openid";
+        }
+
         /// <summary>Gets the Partners resource.</summary>
         public virtual PartnersResource Partners { get; }
     }
@@ -399,7 +413,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
 
             /// <summary>
             /// To find eligible promotions for the current user. The API requires user authorization via OAuth. The
-            /// user is inferred from the authenticated OAuth credential.
+            /// bare minimum oauth scope `openid` is sufficient, which will skip the consent screen.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
@@ -412,7 +426,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
 
             /// <summary>
             /// To find eligible promotions for the current user. The API requires user authorization via OAuth. The
-            /// user is inferred from the authenticated OAuth credential.
+            /// bare minimum oauth scope `openid` is sufficient, which will skip the consent screen.
             /// </summary>
             public class FindEligibleRequest : PaymentsResellerSubscriptionBaseServiceRequest<Google.Apis.PaymentsResellerSubscription.v1.Data.GoogleCloudPaymentsResellerSubscriptionV1FindEligiblePromotionsResponse>
             {
@@ -1197,8 +1211,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         /// <summary>
         /// Required. Restricted to 36 ASCII characters. A random UUID is recommended. The idempotency key for the
         /// request. The ID generation logic is controlled by the partner. request_id should be the same as on retries
-        /// of the same request. A different request_id must be used for a extension of a different cycle. A random UUID
-        /// is recommended.
+        /// of the same request. A different request_id must be used for a extension of a different cycle.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
         public virtual string RequestId { get; set; }

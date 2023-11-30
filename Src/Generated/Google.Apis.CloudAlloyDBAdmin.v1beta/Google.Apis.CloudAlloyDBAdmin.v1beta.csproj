@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.CloudAlloyDBAdmin.v1beta Client Library</Title>
-    <Version>1.64.0.3219</Version>
+    <Version>1.64.0.3234</Version>
     <Authors>Google LLC</Authors>
     <Copyright>Copyright 2023 Google LLC</Copyright>
     <PackageTags>Google</PackageTags>

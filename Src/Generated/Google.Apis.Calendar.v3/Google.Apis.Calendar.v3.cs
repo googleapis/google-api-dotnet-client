@@ -2753,8 +2753,14 @@ namespace Google.Apis.Calendar.v3
             public virtual Google.Apis.Util.Repeatable<string> PrivateExtendedProperty { get; set; }
 
             /// <summary>
-            /// Free text search terms to find events that match these terms in the following fields: summary,
-            /// description, location, attendee's displayName, attendee's email. Optional.
+            /// Free text search terms to find events that match these terms in the following fields:  - summary  -
+            /// description  - location  - attendee's displayName  - attendee's email  -
+            /// workingLocationProperties.officeLocation.buildingId  - workingLocationProperties.officeLocation.deskId
+            /// - workingLocationProperties.officeLocation.label  - workingLocationProperties.customLocation.label
+            /// These search terms also match predefined keywords against all display title translations of working
+            /// location, out-of-office, and focus-time events. For example, searching for "Office" or "Bureau" returns
+            /// working location events of type officeLocation, whereas searching for "Out of office" or "Abwesend"
+            /// returns out-of-office events. Optional.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("q", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Q { get; set; }
@@ -3061,7 +3067,10 @@ namespace Google.Apis.Calendar.v3
             }
         }
 
-        /// <summary>Moves an event to another calendar, i.e. changes an event's organizer.</summary>
+        /// <summary>
+        /// Moves an event to another calendar, i.e. changes an event's organizer. Note that only default events can be
+        /// moved; outOfOffice, focusTime and workingLocation events cannot be moved.
+        /// </summary>
         /// <param name="calendarId">Calendar identifier of the source calendar where the event currently is on.</param>
         /// <param name="eventId">Event identifier.</param>
         /// <param name="destination">
@@ -3072,7 +3081,10 @@ namespace Google.Apis.Calendar.v3
             return new MoveRequest(this.service, calendarId, eventId, destination);
         }
 
-        /// <summary>Moves an event to another calendar, i.e. changes an event's organizer.</summary>
+        /// <summary>
+        /// Moves an event to another calendar, i.e. changes an event's organizer. Note that only default events can be
+        /// moved; outOfOffice, focusTime and workingLocation events cannot be moved.
+        /// </summary>
         public class MoveRequest : CalendarBaseServiceRequest<Google.Apis.Calendar.v3.Data.Event>
         {
             /// <summary>Constructs a new Move request.</summary>
@@ -3773,8 +3785,14 @@ namespace Google.Apis.Calendar.v3
             public virtual Google.Apis.Util.Repeatable<string> PrivateExtendedProperty { get; set; }
 
             /// <summary>
-            /// Free text search terms to find events that match these terms in the following fields: summary,
-            /// description, location, attendee's displayName, attendee's email. Optional.
+            /// Free text search terms to find events that match these terms in the following fields:  - summary  -
+            /// description  - location  - attendee's displayName  - attendee's email  -
+            /// workingLocationProperties.officeLocation.buildingId  - workingLocationProperties.officeLocation.deskId
+            /// - workingLocationProperties.officeLocation.label  - workingLocationProperties.customLocation.label
+            /// These search terms also match predefined keywords against all display title translations of working
+            /// location, out-of-office, and focus-time events. For example, searching for "Office" or "Bureau" returns
+            /// working location events of type officeLocation, whereas searching for "Out of office" or "Abwesend"
+            /// returns out-of-office events. Optional.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("q", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Q { get; set; }
@@ -5149,6 +5167,10 @@ namespace Google.Apis.Calendar.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("extendedProperties")]
         public virtual ExtendedPropertiesData ExtendedProperties { get; set; }
 
+        /// <summary>Focus Time event data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("focusTimeProperties")]
+        public virtual EventFocusTimeProperties FocusTimeProperties { get; set; }
+
         /// <summary>
         /// A gadget that extends this event. Gadgets are deprecated; this structure is instead only used for returning
         /// birthday calendar metadata.
@@ -5239,6 +5261,10 @@ namespace Google.Apis.Calendar.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("originalStartTime")]
         public virtual EventDateTime OriginalStartTime { get; set; }
+
+        /// <summary>Out of office event data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outOfOfficeProperties")]
+        public virtual EventOutOfOfficeProperties OutOfOfficeProperties { get; set; }
 
         /// <summary>
         /// If set to True, Event propagation is disabled. Note that it is not the same thing as Private event
@@ -5631,6 +5657,56 @@ namespace Google.Apis.Calendar.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
         public virtual string TimeZone { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class EventFocusTimeProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Whether to decline meeting invitations which overlap Focus Time events. Valid values are declineNone,
+        /// meaning that no meeting invitations are declined; declineAllConflictingInvitations, meaning that all
+        /// conflicting meeting invitations that conflict with the event are declined; and
+        /// declineOnlyNewConflictingInvitations, meaning that only new conflicting meeting invitations which arrive
+        /// while the Focus Time event is present are to be declined.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoDeclineMode")]
+        public virtual string AutoDeclineMode { get; set; }
+
+        /// <summary>
+        /// The status to mark the user in Chat and related products. This can be available or doNotDisturb.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chatStatus")]
+        public virtual string ChatStatus { get; set; }
+
+        /// <summary>
+        /// Response message to set if an existing event or new invitation is automatically declined by Calendar.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("declineMessage")]
+        public virtual string DeclineMessage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class EventOutOfOfficeProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Whether to decline meeting invitations which overlap Out of office events. Valid values are declineNone,
+        /// meaning that no meeting invitations are declined; declineAllConflictingInvitations, meaning that all
+        /// conflicting meeting invitations that conflict with the event are declined; and
+        /// declineOnlyNewConflictingInvitations, meaning that only new conflicting meeting invitations which arrive
+        /// while the Out of office event is present are to be declined.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoDeclineMode")]
+        public virtual string AutoDeclineMode { get; set; }
+
+        /// <summary>
+        /// Response message to set if an existing event or new invitation is automatically declined by Calendar.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("declineMessage")]
+        public virtual string DeclineMessage { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

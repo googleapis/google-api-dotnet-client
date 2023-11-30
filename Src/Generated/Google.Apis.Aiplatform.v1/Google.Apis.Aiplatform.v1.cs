@@ -5858,6 +5858,330 @@ namespace Google.Apis.Aiplatform.v1
                         }
                     }
                 }
+
+                /// <summary>Create a DeploymentResourcePool.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The parent location resource where this DeploymentResourcePool will be created. Format:
+                /// `projects/{project}/locations/{location}`
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1CreateDeploymentResourcePoolRequest body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Create a DeploymentResourcePool.</summary>
+                public class CreateRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1CreateDeploymentResourcePoolRequest body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent location resource where this DeploymentResourcePool will be created.
+                    /// Format: `projects/{project}/locations/{location}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1CreateDeploymentResourcePoolRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/deploymentResourcePools";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Delete a DeploymentResourcePool.</summary>
+                /// <param name="name">
+                /// Required. The name of the DeploymentResourcePool to delete. Format:
+                /// `projects/{project}/locations/{location}/deploymentResourcePools/{deployment_resource_pool}`
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Delete a DeploymentResourcePool.</summary>
+                public class DeleteRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the DeploymentResourcePool to delete. Format:
+                    /// `projects/{project}/locations/{location}/deploymentResourcePools/{deployment_resource_pool}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/deploymentResourcePools/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Get a DeploymentResourcePool.</summary>
+                /// <param name="name">
+                /// Required. The name of the DeploymentResourcePool to retrieve. Format:
+                /// `projects/{project}/locations/{location}/deploymentResourcePools/{deployment_resource_pool}`
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Get a DeploymentResourcePool.</summary>
+                public class GetRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1DeploymentResourcePool>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the DeploymentResourcePool to retrieve. Format:
+                    /// `projects/{project}/locations/{location}/deploymentResourcePools/{deployment_resource_pool}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/deploymentResourcePools/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>List DeploymentResourcePools in a location.</summary>
+                /// <param name="parent">
+                /// Required. The parent Location which owns this collection of DeploymentResourcePools. Format:
+                /// `projects/{project}/locations/{location}`
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>List DeploymentResourcePools in a location.</summary>
+                public class ListRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1ListDeploymentResourcePoolsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent Location which owns this collection of DeploymentResourcePools. Format:
+                    /// `projects/{project}/locations/{location}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// The maximum number of DeploymentResourcePools to return. The service may return fewer than this
+                    /// value.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// A page token, received from a previous `ListDeploymentResourcePools` call. Provide this to
+                    /// retrieve the subsequent page. When paginating, all other parameters provided to
+                    /// `ListDeploymentResourcePools` must match the call that provided the page token.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/deploymentResourcePools";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>List DeployedModels that have been deployed on this DeploymentResourcePool.</summary>
+                /// <param name="deploymentResourcePool">
+                /// Required. The name of the target DeploymentResourcePool to query. Format:
+                /// `projects/{project}/locations/{location}/deploymentResourcePools/{deployment_resource_pool}`
+                /// </param>
+                public virtual QueryDeployedModelsRequest QueryDeployedModels(string deploymentResourcePool)
+                {
+                    return new QueryDeployedModelsRequest(this.service, deploymentResourcePool);
+                }
+
+                /// <summary>List DeployedModels that have been deployed on this DeploymentResourcePool.</summary>
+                public class QueryDeployedModelsRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1QueryDeployedModelsResponse>
+                {
+                    /// <summary>Constructs a new QueryDeployedModels request.</summary>
+                    public QueryDeployedModelsRequest(Google.Apis.Services.IClientService service, string deploymentResourcePool) : base(service)
+                    {
+                        DeploymentResourcePool = deploymentResourcePool;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the target DeploymentResourcePool to query. Format:
+                    /// `projects/{project}/locations/{location}/deploymentResourcePools/{deployment_resource_pool}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("deploymentResourcePool", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string DeploymentResourcePool { get; private set; }
+
+                    /// <summary>
+                    /// The maximum number of DeployedModels to return. The service may return fewer than this value.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// A page token, received from a previous `QueryDeployedModels` call. Provide this to retrieve the
+                    /// subsequent page. When paginating, all other parameters provided to `QueryDeployedModels` must
+                    /// match the call that provided the page token.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "queryDeployedModels";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+deploymentResourcePool}:queryDeployedModels";
+
+                    /// <summary>Initializes QueryDeployedModels parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("deploymentResourcePool", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "deploymentResourcePool",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/deploymentResourcePools/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
             }
 
             /// <summary>Gets the Endpoints resource.</summary>
@@ -35059,6 +35383,36 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Runtime operation information for CreateDeploymentResourcePool method.</summary>
+    public class GoogleCloudAiplatformV1CreateDeploymentResourcePoolOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The operation generic information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("genericMetadata")]
+        public virtual GoogleCloudAiplatformV1GenericOperationMetadata GenericMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for CreateDeploymentResourcePool method.</summary>
+    public class GoogleCloudAiplatformV1CreateDeploymentResourcePoolRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The DeploymentResourcePool to create.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deploymentResourcePool")]
+        public virtual GoogleCloudAiplatformV1DeploymentResourcePool DeploymentResourcePool { get; set; }
+
+        /// <summary>
+        /// Required. The ID to use for the DeploymentResourcePool, which will become the final component of the
+        /// DeploymentResourcePool's resource name. The maximum length is 63 characters, and valid characters are
+        /// `/^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deploymentResourcePoolId")]
+        public virtual string DeploymentResourcePoolId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Runtime operation information for EndpointService.CreateEndpoint.</summary>
     public class GoogleCloudAiplatformV1CreateEndpointOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -36886,6 +37240,64 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// <summary>Immutable. A resource name of an Endpoint.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endpoint")]
         public virtual string Endpoint { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A description of resources that can be shared by multiple DeployedModels, whose underlying specification
+    /// consists of a DedicatedResources.
+    /// </summary>
+    public class GoogleCloudAiplatformV1DeploymentResourcePool : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Timestamp when this DeploymentResourcePool was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Required. The underlying DedicatedResources that the DeploymentResourcePool uses.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dedicatedResources")]
+        public virtual GoogleCloudAiplatformV1DedicatedResources DedicatedResources { get; set; }
+
+        /// <summary>
+        /// Immutable. The resource name of the DeploymentResourcePool. Format:
+        /// `projects/{project}/locations/{location}/deploymentResourcePools/{deployment_resource_pool}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -39536,6 +39948,17 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Lookup key for a feature view.</summary>
+    public class GoogleCloudAiplatformV1FeatureViewDataKey : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>String key to use for lookup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A Feature Registry source for features that need to be synced to Online Store.</summary>
     public class GoogleCloudAiplatformV1FeatureViewFeatureRegistrySource : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -39937,15 +40360,13 @@ namespace Google.Apis.Aiplatform.v1.Data
     /// </summary>
     public class GoogleCloudAiplatformV1FetchFeatureValuesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Specify response data format. If not set, KeyValue format will be used.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("format")]
-        public virtual string Format { get; set; }
+        /// <summary>Optional. Response data format. If not set, FeatureViewDataFormat.KEY_VALUE will be used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataFormat")]
+        public virtual string DataFormat { get; set; }
 
-        /// <summary>
-        /// Simple ID. The whole string will be used as is to identify Entity to fetch feature values for.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; }
+        /// <summary>Optional. The request key to fetch feature values for.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataKey")]
+        public virtual GoogleCloudAiplatformV1FeatureViewDataKey DataKey { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -41589,6 +42010,24 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1Dataset> Datasets { get; set; }
 
         /// <summary>The standard List next-page token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for ListDeploymentResourcePools method.</summary>
+    public class GoogleCloudAiplatformV1ListDeploymentResourcePoolsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The DeploymentResourcePools from the specified location.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deploymentResourcePools")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1DeploymentResourcePool> DeploymentResourcePools { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
@@ -43305,6 +43744,10 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("command")]
         public virtual System.Collections.Generic.IList<string> Command { get; set; }
 
+        /// <summary>Immutable. Deployment timeout. TODO (b/306244185): Revise documentation before exposing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deploymentTimeout")]
+        public virtual object DeploymentTimeout { get; set; }
+
         /// <summary>
         /// Immutable. List of environment variables to set in the container. After the container starts running, code
         /// running in the container can read these environment variables. Additionally, the command and args fields can
@@ -43321,6 +43764,13 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("env")]
         public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1EnvVar> Env { get; set; }
+
+        /// <summary>
+        /// Immutable. Specification for Kubernetes readiness probe. TODO (b/306244185): Revise documentation before
+        /// exposing.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("healthProbe")]
+        public virtual GoogleCloudAiplatformV1Probe HealthProbe { get; set; }
 
         /// <summary>
         /// Immutable. HTTP path on the container to send health checks to. Vertex AI intermittently sends GET requests
@@ -43390,6 +43840,20 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("predictRoute")]
         public virtual string PredictRoute { get; set; }
+
+        /// <summary>
+        /// Immutable. The amount of the VM memory to reserve as the shared memory for the model in megabytes. TODO
+        /// (b/306244185): Revise documentation before exposing.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sharedMemorySizeMb")]
+        public virtual System.Nullable<long> SharedMemorySizeMb { get; set; }
+
+        /// <summary>
+        /// Immutable. Specification for Kubernetes startup probe. TODO (b/306244185): Revise documentation before
+        /// exposing.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startupProbe")]
+        public virtual GoogleCloudAiplatformV1Probe StartupProbe { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -46417,6 +46881,50 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Probe describes a health check to be performed against a container to determine whether it is alive or ready to
+    /// receive traffic.
+    /// </summary>
+    public class GoogleCloudAiplatformV1Probe : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Exec specifies the action to take.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exec")]
+        public virtual GoogleCloudAiplatformV1ProbeExecAction Exec { get; set; }
+
+        /// <summary>
+        /// How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Must be less than
+        /// timeout_seconds. Maps to Kubernetes probe argument 'periodSeconds'.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("periodSeconds")]
+        public virtual System.Nullable<int> PeriodSeconds { get; set; }
+
+        /// <summary>
+        /// Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Must be greater
+        /// or equal to period_seconds. Maps to Kubernetes probe argument 'timeoutSeconds'.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeoutSeconds")]
+        public virtual System.Nullable<int> TimeoutSeconds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>ExecAction specifies a command to execute.</summary>
+    public class GoogleCloudAiplatformV1ProbeExecAction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Command is the command line to execute inside the container, the working directory for the command is root
+        /// ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so
+        /// traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to
+        /// that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("command")]
+        public virtual System.Collections.Generic.IList<string> Command { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A Model Garden Publisher Model.</summary>
     public class GoogleCloudAiplatformV1PublisherModel : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -46820,6 +47328,36 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// <summary>Required. The Python module name to run after installing the packages.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pythonModule")]
         public virtual string PythonModule { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for QueryDeployedModels method.</summary>
+    public class GoogleCloudAiplatformV1QueryDeployedModelsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>References to the DeployedModels that share the specified deploymentResourcePool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deployedModelRefs")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1DeployedModelRef> DeployedModelRefs { get; set; }
+
+        /// <summary>DEPRECATED Use deployed_model_refs instead.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deployedModels")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1DeployedModel> DeployedModels { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The total number of DeployedModels on this DeploymentResourcePool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalDeployedModelCount")]
+        public virtual System.Nullable<int> TotalDeployedModelCount { get; set; }
+
+        /// <summary>The total number of Endpoints that have DeployedModels on this DeploymentResourcePool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalEndpointCount")]
+        public virtual System.Nullable<int> TotalEndpointCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -48894,6 +49432,10 @@ namespace Google.Apis.Aiplatform.v1.Data
     /// <summary>The configuration for grounding checking.</summary>
     public class GoogleCloudAiplatformV1SchemaPredictParamsGroundingConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>If set, skip finding claim attributions (i.e not generate grounding citation).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disableAttribution")]
+        public virtual System.Nullable<bool> DisableAttribution { get; set; }
+
         /// <summary>The sources for the grounding checking.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sources")]
         public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1SchemaPredictParamsGroundingConfigSourceEntry> Sources { get; set; }
@@ -48905,13 +49447,19 @@ namespace Google.Apis.Aiplatform.v1.Data
     /// <summary>Single source entry for the grounding checking.</summary>
     public class GoogleCloudAiplatformV1SchemaPredictParamsGroundingConfigSourceEntry : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The uri of the Enterprise Search data source.</summary>
+        /// <summary>
+        /// The uri of the Vertex AI Search data source. Deprecated. Use vertex_ai_search_datastore instead.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enterpriseDatastore")]
         public virtual string EnterpriseDatastore { get; set; }
 
         /// <summary>The type of the grounding checking source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>The uri of the Vertex AI Search data source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vertexAiSearchDatastore")]
+        public virtual string VertexAiSearchDatastore { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -54357,6 +54905,17 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Runtime operation information for UpdateDeploymentResourcePool method.</summary>
+    public class GoogleCloudAiplatformV1UpdateDeploymentResourcePoolOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The operation generic information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("genericMetadata")]
+        public virtual GoogleCloudAiplatformV1GenericOperationMetadata GenericMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Runtime operation information for ModelService.UpdateExplanationDataset.</summary>
     public class GoogleCloudAiplatformV1UpdateExplanationDatasetOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -54531,10 +55090,10 @@ namespace Google.Apis.Aiplatform.v1.Data
 
         /// <summary>
         /// Optional. The user-provided custom service account to use to do the model upload. If empty, [Vertex AI
-        /// Service Agent](https://cloud.google.com/vertex-ai/docs/general/access-control#service-agents) will be used.
-        /// Users uploading the Model must have the `iam.serviceAccounts.actAs` permission on this service account.
-        /// Also, this account must belong to the project specified in the `parent` field and have all necessary read
-        /// permissions.
+        /// Service Agent](https://cloud.google.com/vertex-ai/docs/general/access-control#service-agents) will be used
+        /// to access resources needed to upload the model. This account must belong to the target project where the
+        /// model is uploaded to, i.e., the project specified in the `parent` field of this request and have necessary
+        /// read permissions (to Google Cloud Storage, Artifact Registry, etc.).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
         public virtual string ServiceAccount { get; set; }

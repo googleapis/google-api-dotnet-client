@@ -753,10 +753,6 @@ namespace Google.Apis.Document.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("documentId")]
         public virtual GoogleCloudDocumentaiUiv1beta3DocumentId DocumentId { get; set; }
 
-        /// <summary>The gcs_uri of the auto-labeling document, which uniquely identifies a dataset document.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("gcsUri")]
-        public virtual string GcsUri { get; set; }
-
         /// <summary>The status of the document auto-labeling.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual GoogleRpcStatus Status { get; set; }

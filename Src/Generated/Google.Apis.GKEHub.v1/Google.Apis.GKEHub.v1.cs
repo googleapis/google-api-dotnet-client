@@ -3561,8 +3561,7 @@ namespace Google.Apis.GKEHub.v1
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
                     /// The resource name for the rbacrolebinding
-                    /// `projects/{project}/locations/{location}/namespaces/{namespace}/rbacrolebindings/{rbacrolebinding}`
-                    /// or
+                    /// `projects/{project}/locations/{location}/scopes/{scope}/rbacrolebindings/{rbacrolebinding}` or
                     /// `projects/{project}/locations/{location}/memberships/{membership}/rbacrolebindings/{rbacrolebinding}`
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.GKEHub.v1.Data.RBACRoleBinding body, string name)
@@ -3583,7 +3582,7 @@ namespace Google.Apis.GKEHub.v1
 
                         /// <summary>
                         /// The resource name for the rbacrolebinding
-                        /// `projects/{project}/locations/{location}/namespaces/{namespace}/rbacrolebindings/{rbacrolebinding}`
+                        /// `projects/{project}/locations/{location}/scopes/{scope}/rbacrolebindings/{rbacrolebinding}`
                         /// or
                         /// `projects/{project}/locations/{location}/memberships/{membership}/rbacrolebindings/{rbacrolebinding}`
                         /// </summary>
@@ -4436,6 +4435,23 @@ namespace Google.Apis.GKEHub.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// BinaryAuthorizationConfig defines the fleet level configuration of binary authorization feature.
+    /// </summary>
+    public class BinaryAuthorizationConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Mode of operation for binauthz policy evaluation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("evaluationMode")]
+        public virtual string EvaluationMode { get; set; }
+
+        /// <summary>Optional. Binauthz policies that apply to this cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyBindings")]
+        public virtual System.Collections.Generic.IList<PolicyBinding> PolicyBindings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Associates `members`, or principals, with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4495,12 +4511,361 @@ namespace Google.Apis.GKEHub.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>**ClusterUpgrade**: The configuration for the fleet-level ClusterUpgrade feature.</summary>
+    public class ClusterUpgradeFleetSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Allow users to override some properties of each GKE upgrade.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gkeUpgradeOverrides")]
+        public virtual System.Collections.Generic.IList<ClusterUpgradeGKEUpgradeOverride> GkeUpgradeOverrides { get; set; }
+
+        /// <summary>Required. Post conditions to evaluate to mark an upgrade COMPLETE. Required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("postConditions")]
+        public virtual ClusterUpgradePostConditions PostConditions { get; set; }
+
+        /// <summary>
+        /// This fleet consumes upgrades that have COMPLETE status code in the upstream fleets. See UpgradeStatus.Code
+        /// for code definitions. The fleet name should be either fleet project number or id. This is defined as
+        /// repeated for future proof reasons. Initial implementation will enforce at most one upstream fleet.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("upstreamFleets")]
+        public virtual System.Collections.Generic.IList<string> UpstreamFleets { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>**ClusterUpgrade**: The state for the fleet-level ClusterUpgrade feature.</summary>
+    public class ClusterUpgradeFleetState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// This fleets whose upstream_fleets contain the current fleet. The fleet name should be either fleet project
+        /// number or id.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("downstreamFleets")]
+        public virtual System.Collections.Generic.IList<string> DownstreamFleets { get; set; }
+
+        /// <summary>Feature state for GKE clusters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gkeState")]
+        public virtual ClusterUpgradeGKEUpgradeFeatureState GkeState { get; set; }
+
+        /// <summary>
+        /// A list of memberships ignored by the feature. For example, manually upgraded clusters can be ignored if they
+        /// are newer than the default versions of its release channel. The membership resource is in the format:
+        /// `projects/{p}/locations/{l}/membership/{m}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ignored")]
+        public virtual System.Collections.Generic.IDictionary<string, ClusterUpgradeIgnoredMembership> Ignored { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>GKEUpgrade represents a GKE provided upgrade, e.g., control plane upgrade.</summary>
+    public class ClusterUpgradeGKEUpgrade : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Name of the upgrade, e.g., "k8s_control_plane". It should be a valid upgrade name. It must not exceet 99
+        /// characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Version of the upgrade, e.g., "1.22.1-gke.100". It should be a valid version. It must not exceet 99
+        /// characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// GKEUpgradeFeatureCondition describes the condition of the feature for GKE clusters at a certain point of time.
+    /// </summary>
+    public class ClusterUpgradeGKEUpgradeFeatureCondition : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Reason why the feature is in this status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reason")]
+        public virtual string Reason { get; set; }
+
+        /// <summary>Status of the condition, one of True, False, Unknown.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; }
+
+        /// <summary>Type of the condition, for example, "ready".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Last timestamp the condition was updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>GKEUpgradeFeatureState contains feature states for GKE clusters in the scope.</summary>
+    public class ClusterUpgradeGKEUpgradeFeatureState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Current conditions of the feature.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conditions")]
+        public virtual System.Collections.Generic.IList<ClusterUpgradeGKEUpgradeFeatureCondition> Conditions { get; set; }
+
+        /// <summary>Upgrade state. It will eventually replace `state`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("upgradeState")]
+        public virtual System.Collections.Generic.IList<ClusterUpgradeGKEUpgradeState> UpgradeState { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Properties of a GKE upgrade that can be overridden by the user. For example, a user can skip soaking by
+    /// overriding the soaking to 0.
+    /// </summary>
+    public class ClusterUpgradeGKEUpgradeOverride : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Post conditions to override for the specified upgrade (name + version). Required.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("postConditions")]
+        public virtual ClusterUpgradePostConditions PostConditions { get; set; }
+
+        /// <summary>Required. Which upgrade to override. Required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("upgrade")]
+        public virtual ClusterUpgradeGKEUpgrade Upgrade { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>GKEUpgradeState is a GKEUpgrade and its state at the scope and fleet level.</summary>
+    public class ClusterUpgradeGKEUpgradeState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Number of GKE clusters in each status code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stats")]
+        public virtual System.Collections.Generic.IDictionary<string, System.Nullable<long>> Stats { get; set; }
+
+        /// <summary>Status of the upgrade.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual ClusterUpgradeUpgradeStatus Status { get; set; }
+
+        /// <summary>Which upgrade to track the state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("upgrade")]
+        public virtual ClusterUpgradeGKEUpgrade Upgrade { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// IgnoredMembership represents a membership ignored by the feature. A membership can be ignored because it was
+    /// manually upgraded to a newer version than RC default.
+    /// </summary>
+    public class ClusterUpgradeIgnoredMembership : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _ignoredTimeRaw;
+
+        private object _ignoredTime;
+
+        /// <summary>Time when the membership was first set to ignored.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ignoredTime")]
+        public virtual string IgnoredTimeRaw
+        {
+            get => _ignoredTimeRaw;
+            set
+            {
+                _ignoredTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _ignoredTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="IgnoredTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use IgnoredTimeDateTimeOffset instead.")]
+        public virtual object IgnoredTime
+        {
+            get => _ignoredTime;
+            set
+            {
+                _ignoredTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _ignoredTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="IgnoredTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? IgnoredTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(IgnoredTimeRaw);
+            set => IgnoredTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Reason why the membership is ignored.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reason")]
+        public virtual string Reason { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>ScopeGKEUpgradeState is a GKEUpgrade and its state per-membership.</summary>
+    public class ClusterUpgradeMembershipGKEUpgradeState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Status of the upgrade.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual ClusterUpgradeUpgradeStatus Status { get; set; }
+
+        /// <summary>Which upgrade to track the state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("upgrade")]
+        public virtual ClusterUpgradeGKEUpgrade Upgrade { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Per-membership state for this feature.</summary>
+    public class ClusterUpgradeMembershipState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Project number or id of the fleet. It is set only for Memberships that are part of fleet-based Rollout
+        /// Sequencing.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fleet")]
+        public virtual string Fleet { get; set; }
+
+        /// <summary>
+        /// Whether this membership is ignored by the feature. For example, manually upgraded clusters can be ignored if
+        /// they are newer than the default versions of its release channel.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ignored")]
+        public virtual ClusterUpgradeIgnoredMembership Ignored { get; set; }
+
+        /// <summary>
+        /// Fully qualified scope names that this clusters is bound to which also have rollout sequencing enabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scopes")]
+        public virtual System.Collections.Generic.IList<string> Scopes { get; set; }
+
+        /// <summary>Actual upgrade state against desired.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("upgrades")]
+        public virtual System.Collections.Generic.IList<ClusterUpgradeMembershipGKEUpgradeState> Upgrades { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Post conditional checks after an upgrade has been applied on all eligible clusters.</summary>
+    public class ClusterUpgradePostConditions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Amount of time to "soak" after a rollout has been finished before marking it COMPLETE. Cannot
+        /// exceed 30 days. Required.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("soaking")]
+        public virtual object Soaking { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>UpgradeStatus provides status information for each upgrade.</summary>
+    public class ClusterUpgradeUpgradeStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Status code of the upgrade.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual string Code { get; set; }
+
+        /// <summary>Reason for this status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reason")]
+        public virtual string Reason { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Last timestamp the status was updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>CommonFeatureSpec contains Hub-wide configuration information</summary>
     public class CommonFeatureSpec : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Appdevexperience specific spec.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appdevexperience")]
         public virtual AppDevExperienceFeatureSpec Appdevexperience { get; set; }
+
+        /// <summary>ClusterUpgrade (fleet-based) feature spec.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterupgrade")]
+        public virtual ClusterUpgradeFleetSpec Clusterupgrade { get; set; }
 
         /// <summary>FleetObservability feature spec.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fleetobservability")]
@@ -4520,6 +4885,10 @@ namespace Google.Apis.GKEHub.v1.Data
         /// <summary>Appdevexperience specific state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appdevexperience")]
         public virtual AppDevExperienceFeatureState Appdevexperience { get; set; }
+
+        /// <summary>ClusterUpgrade fleet-level state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterupgrade")]
+        public virtual ClusterUpgradeFleetState Clusterupgrade { get; set; }
 
         /// <summary>FleetObservability feature state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fleetobservability")]
@@ -4605,13 +4974,6 @@ namespace Google.Apis.GKEHub.v1.Data
         /// <summary>Specifies whether the Config Sync Repo is in "hierarchical" or "unstructured" mode.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceFormat")]
         public virtual string SourceFormat { get; set; }
-
-        /// <summary>
-        /// Set to true to stop syncing configs for a single cluster when automatic Feature management is enabled.
-        /// Default to false. The field will be ignored when automatic Feature management is disabled.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("stopSyncing")]
-        public virtual System.Nullable<bool> StopSyncing { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4928,10 +5290,6 @@ namespace Google.Apis.GKEHub.v1.Data
         /// <summary>Hierarchy Controller configuration for the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hierarchyController")]
         public virtual ConfigManagementHierarchyControllerConfig HierarchyController { get; set; }
-
-        /// <summary>Enables automatic Feature management.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("management")]
-        public virtual string Management { get; set; }
 
         /// <summary>Policy Controller configuration for the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policyController")]
@@ -5335,6 +5693,10 @@ namespace Google.Apis.GKEHub.v1.Data
     /// </summary>
     public class DefaultClusterConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Enable/Disable binary authorization features for the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("binaryAuthorizationConfig")]
+        public virtual BinaryAuthorizationConfig BinaryAuthorizationConfig { get; set; }
+
         /// <summary>Enable/Disable Security Posture features for the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("securityPostureConfig")]
         public virtual SecurityPostureConfig SecurityPostureConfig { get; set; }
@@ -6989,6 +7351,10 @@ namespace Google.Apis.GKEHub.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("appdevexperience")]
         public virtual AppDevExperienceFeatureState Appdevexperience { get; set; }
 
+        /// <summary>ClusterUpgrade state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterupgrade")]
+        public virtual ClusterUpgradeMembershipState Clusterupgrade { get; set; }
+
         /// <summary>Config Management-specific state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configmanagement")]
         public virtual ConfigManagementMembershipState Configmanagement { get; set; }
@@ -7535,6 +7901,20 @@ namespace Google.Apis.GKEHub.v1.Data
         public virtual System.Nullable<int> Version { get; set; }
     }
 
+    /// <summary>Binauthz policy that applies to this cluster.</summary>
+    public class PolicyBinding : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The relative resource name of the binauthz platform policy to audit. GKE platform policies have the
+        /// following format: `projects/{project_number}/platforms/gke/policies/{policy_id}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>BundleInstallSpec is the specification configuration for a single managed bundle.</summary>
     public class PolicyControllerBundleInstallSpec : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7902,7 +8282,7 @@ namespace Google.Apis.GKEHub.v1.Data
 
         /// <summary>
         /// The resource name for the rbacrolebinding
-        /// `projects/{project}/locations/{location}/namespaces/{namespace}/rbacrolebindings/{rbacrolebinding}` or
+        /// `projects/{project}/locations/{location}/scopes/{scope}/rbacrolebindings/{rbacrolebinding}` or
         /// `projects/{project}/locations/{location}/memberships/{membership}/rbacrolebindings/{rbacrolebinding}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]

@@ -5053,7 +5053,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         public virtual string AllocatedIpRange { get; set; }
 
         /// <summary>
-        /// Required. The resource link for the VPC network in which cluster resources are created and from which they
+        /// Optional. The resource link for the VPC network in which cluster resources are created and from which they
         /// are accessible via Private IP. The network must belong to the same project as the cluster. It is specified
         /// in the form: "projects/{project_number}/global/networks/{network_id}". This is required to create a cluster.
         /// </summary>

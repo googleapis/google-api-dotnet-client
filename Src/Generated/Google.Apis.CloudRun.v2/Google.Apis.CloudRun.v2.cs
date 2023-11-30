@@ -4883,12 +4883,12 @@ namespace Google.Apis.CloudRun.v2.Data
         public virtual string Uri { get; set; }
     }
 
-    /// <summary>Scaling settings that apply to the service as a whole rather than the individual revision.</summary>
+    /// <summary>Scaling settings applied at the service level rather than at the revision level.</summary>
     public class GoogleCloudRunV2ServiceScaling : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// total min instances for the service. This number of instances will be divide among all revisions with
-        /// specified traffic based on the percent of traffic they are receiving. (ALPHA)
+        /// total min instances for the service. This number of instances is divided among all revisions with specified
+        /// traffic based on the percent of traffic they are receiving. (ALPHA)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minInstanceCount")]
         public virtual System.Nullable<int> MinInstanceCount { get; set; }

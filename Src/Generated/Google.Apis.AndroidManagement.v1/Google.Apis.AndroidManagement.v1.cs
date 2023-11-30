@@ -2888,8 +2888,8 @@ namespace Google.Apis.AndroidManagement.v1.Data
 
     /// <summary>
     /// Policy for an individual app. Note: Application availability on a given device cannot be changed using this
-    /// policy if installAppsDisabled is enabled. The maximum number of applications that you can specify per enterprise
-    /// policy is 3,000.
+    /// policy if installAppsDisabled is enabled. The maximum number of applications that you can specify per policy is
+    /// 3,000.
     /// </summary>
     public class ApplicationPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5745,7 +5745,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("appAutoUpdatePolicy")]
         public virtual string AppAutoUpdatePolicy { get; set; }
 
-        /// <summary>Policy applied to apps.</summary>
+        /// <summary>Policy applied to apps. This can have at most 3,000 elements.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("applications")]
         public virtual System.Collections.Generic.IList<ApplicationPolicy> Applications { get; set; }
 

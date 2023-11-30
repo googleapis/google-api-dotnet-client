@@ -4240,7 +4240,7 @@ namespace Google.Apis.CloudBuild.v2.Data
         /// inherit settings on the base container.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stepTemplate")]
-        public virtual System.Collections.Generic.IList<StepTemplate> StepTemplate { get; set; }
+        public virtual StepTemplate StepTemplate { get; set; }
 
         /// <summary>Steps of the task.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("steps")]
