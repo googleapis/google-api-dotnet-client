@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.Cloudbilling.v1beta Client Library</Title>
-    <Version>1.64.0.3158</Version>
+    <Version>1.64.0.3249</Version>
     <Authors>Google LLC</Authors>
     <Copyright>Copyright 2023 Google LLC</Copyright>
     <PackageTags>Google</PackageTags>

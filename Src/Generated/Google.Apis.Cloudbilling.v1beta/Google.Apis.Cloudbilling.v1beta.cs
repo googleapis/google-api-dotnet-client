@@ -787,9 +787,9 @@ namespace Google.Apis.Cloudbilling.v1beta
                     this.service = service;
                 }
 
-                /// <summary>Gets the latest price for the given billing account SKU.</summary>
+                /// <summary>Gets the latest price for SKUs available to your Cloud Billing account.</summary>
                 /// <param name="name">
-                /// Required. Name of the latest billing account price to retrieve. Format:
+                /// Required. Name of the billing account price to retrieve. Format:
                 /// billingAccounts/{billing_account}/skus/{sku}/price
                 /// </param>
                 public virtual GetRequest Get(string name)
@@ -797,7 +797,7 @@ namespace Google.Apis.Cloudbilling.v1beta
                     return new GetRequest(this.service, name);
                 }
 
-                /// <summary>Gets the latest price for the given billing account SKU.</summary>
+                /// <summary>Gets the latest price for SKUs available to your Cloud Billing account.</summary>
                 public class GetRequest : CloudbillingBaseServiceRequest<Google.Apis.Cloudbilling.v1beta.Data.GoogleCloudBillingBillingaccountpricesV1betaBillingAccountPrice>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -808,15 +808,15 @@ namespace Google.Apis.Cloudbilling.v1beta
                     }
 
                     /// <summary>
-                    /// Required. Name of the latest billing account price to retrieve. Format:
+                    /// Required. Name of the billing account price to retrieve. Format:
                     /// billingAccounts/{billing_account}/skus/{sku}/price
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// Optional. ISO-4217 currency code for the price. If not specified, currency of billing account
-                    /// will be used.
+                    /// Optional. ISO-4217 currency code for the price. If not specified, the currency of the billing
+                    /// account is used.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("currencyCode", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string CurrencyCode { get; set; }
@@ -2018,7 +2018,7 @@ namespace Google.Apis.Cloudbilling.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Encapsulates the latest price for the given billing account SKU.</summary>
+    /// <summary>Encapsulates the latest price for a billing account SKU.</summary>
     public class GoogleCloudBillingBillingaccountpricesV1betaBillingAccountPrice : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>ISO-4217 currency code for the price.</summary>
@@ -2040,7 +2040,7 @@ namespace Google.Apis.Cloudbilling.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("rate")]
         public virtual GoogleCloudBillingBillingaccountpricesV1betaRate Rate { get; set; }
 
-        /// <summary>Type of the price. It can have values: ["unspecified", "rate"].</summary>
+        /// <summary>Type of the price. The possible values are: ["unspecified", "rate"].</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valueType")]
         public virtual string ValueType { get; set; }
 
@@ -2698,7 +2698,7 @@ namespace Google.Apis.Cloudbilling.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Encapsulates the latest price for the given SKU.</summary>
+    /// <summary>Encapsulates the latest price for a SKU.</summary>
     public class GoogleCloudBillingPricesV1betaPrice : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>ISO-4217 currency code for the price.</summary>

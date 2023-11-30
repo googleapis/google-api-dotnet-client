@@ -732,6 +732,8 @@ namespace Google.Apis.Logging.v2
                 this.service = service;
                 Buckets = new BucketsResource(service);
                 Operations = new OperationsResource(service);
+                RecentQueries = new RecentQueriesResource(service);
+                SavedQueries = new SavedQueriesResource(service);
             }
 
             /// <summary>Gets the Buckets resource.</summary>
@@ -2411,6 +2413,375 @@ namespace Google.Apis.Logging.v2
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the RecentQueries resource.</summary>
+            public virtual RecentQueriesResource RecentQueries { get; }
+
+            /// <summary>The "recentQueries" collection of methods.</summary>
+            public class RecentQueriesResource
+            {
+                private const string Resource = "recentQueries";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public RecentQueriesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Lists the RecentQueries that were created by the user making the request.</summary>
+                /// <param name="parent">
+                /// Required. The resource to which the listed queries belong.
+                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]"
+                /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]"
+                /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]"
+                /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]" For
+                /// example:projects/my-project/locations/us-central1Note: The location portion of the resource must be
+                /// specified, but supplying the character - in place of LOCATION_ID will return all recent queries.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists the RecentQueries that were created by the user making the request.</summary>
+                public class ListRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.ListRecentQueriesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource to which the listed queries belong.
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]"
+                    /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]"
+                    /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]"
+                    /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]" For
+                    /// example:projects/my-project/locations/us-central1Note: The location portion of the resource must
+                    /// be specified, but supplying the character - in place of LOCATION_ID will return all recent
+                    /// queries.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The maximum number of results to return from this request. Non-positive values are
+                    /// ignored. The presence of nextPageToken in the response indicates that more results might be
+                    /// available.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. If present, then retrieve the next batch of results from the preceding call to this
+                    /// method. pageToken must be the value of nextPageToken from the previous response. The values of
+                    /// other method parameters should be identical to those in the previous call.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+parent}/recentQueries";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^billingAccounts/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the SavedQueries resource.</summary>
+            public virtual SavedQueriesResource SavedQueries { get; }
+
+            /// <summary>The "savedQueries" collection of methods.</summary>
+            public class SavedQueriesResource
+            {
+                private const string Resource = "savedQueries";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public SavedQueriesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Creates a new SavedQuery for the user making the request.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The parent resource in which to create the saved query:
+                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]"
+                /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]"
+                /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]"
+                /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]" For example: "projects/my-project/locations/global"
+                /// "organizations/123456789/locations/us-central1"
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.Logging.v2.Data.SavedQuery body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Creates a new SavedQuery for the user making the request.</summary>
+                public class CreateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.SavedQuery>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.SavedQuery body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent resource in which to create the saved query:
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]"
+                    /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]"
+                    /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]"
+                    /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]" For example:
+                    /// "projects/my-project/locations/global" "organizations/123456789/locations/us-central1"
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The ID to use for the saved query, which will become the final component of the saved
+                    /// query's resource name.If the saved_query_id is not provided, the system will generate an
+                    /// alphanumeric ID.The saved_query_id is limited to 100 characters and can include only the
+                    /// following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and
+                    /// periods. First character has to be alphanumeric.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("savedQueryId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string SavedQueryId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Logging.v2.Data.SavedQuery Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+parent}/savedQueries";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^billingAccounts/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("savedQueryId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "savedQueryId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes an existing SavedQuery that was created by the user making the request.</summary>
+                /// <param name="name">
+                /// Required. The full resource name of the saved query to delete.
+                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]"
+                /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]"
+                /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]"
+                /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" For example:
+                /// "projects/my-project/locations/global/savedQueries/my-saved-query"
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Deletes an existing SavedQuery that was created by the user making the request.</summary>
+                public class DeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Empty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The full resource name of the saved query to delete.
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]"
+                    /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]"
+                    /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]"
+                    /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" For example:
+                    /// "projects/my-project/locations/global/savedQueries/my-saved-query"
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^billingAccounts/[^/]+/locations/[^/]+/savedQueries/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists the SavedQueries that were created by the user making the request.</summary>
+                /// <param name="parent">
+                /// Required. The resource to which the listed queries belong.
+                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]"
+                /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]"
+                /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]"
+                /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]" For example:
+                /// "projects/my-project/locations/us-central1" Note: The locations portion of the resource must be
+                /// specified. To get a list of all saved queries, a wildcard character - can be used for LOCATION_ID,
+                /// for example: "projects/my-project/locations/-"
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists the SavedQueries that were created by the user making the request.</summary>
+                public class ListRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.ListSavedQueriesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource to which the listed queries belong.
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]"
+                    /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]"
+                    /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]"
+                    /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]" For example:
+                    /// "projects/my-project/locations/us-central1" Note: The locations portion of the resource must be
+                    /// specified. To get a list of all saved queries, a wildcard character - can be used for
+                    /// LOCATION_ID, for example: "projects/my-project/locations/-"
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The maximum number of results to return from this request.Non-positive values are
+                    /// ignored. The presence of nextPageToken in the response indicates that more results might be
+                    /// available.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. If present, then retrieve the next batch of results from the preceding call to this
+                    /// method. pageToken must be the value of nextPageToken from the previous response. The values of
+                    /// other method parameters should be identical to those in the previous call.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+parent}/savedQueries";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^billingAccounts/[^/]+/locations/[^/]+$",
                         });
                         RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                         {
@@ -4443,6 +4814,8 @@ namespace Google.Apis.Logging.v2
                 this.service = service;
                 Buckets = new BucketsResource(service);
                 Operations = new OperationsResource(service);
+                RecentQueries = new RecentQueriesResource(service);
+                SavedQueries = new SavedQueriesResource(service);
             }
 
             /// <summary>Gets the Buckets resource.</summary>
@@ -6122,6 +6495,375 @@ namespace Google.Apis.Logging.v2
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the RecentQueries resource.</summary>
+            public virtual RecentQueriesResource RecentQueries { get; }
+
+            /// <summary>The "recentQueries" collection of methods.</summary>
+            public class RecentQueriesResource
+            {
+                private const string Resource = "recentQueries";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public RecentQueriesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Lists the RecentQueries that were created by the user making the request.</summary>
+                /// <param name="parent">
+                /// Required. The resource to which the listed queries belong.
+                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]"
+                /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]"
+                /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]"
+                /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]" For
+                /// example:projects/my-project/locations/us-central1Note: The location portion of the resource must be
+                /// specified, but supplying the character - in place of LOCATION_ID will return all recent queries.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists the RecentQueries that were created by the user making the request.</summary>
+                public class ListRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.ListRecentQueriesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource to which the listed queries belong.
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]"
+                    /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]"
+                    /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]"
+                    /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]" For
+                    /// example:projects/my-project/locations/us-central1Note: The location portion of the resource must
+                    /// be specified, but supplying the character - in place of LOCATION_ID will return all recent
+                    /// queries.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The maximum number of results to return from this request. Non-positive values are
+                    /// ignored. The presence of nextPageToken in the response indicates that more results might be
+                    /// available.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. If present, then retrieve the next batch of results from the preceding call to this
+                    /// method. pageToken must be the value of nextPageToken from the previous response. The values of
+                    /// other method parameters should be identical to those in the previous call.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+parent}/recentQueries";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^folders/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the SavedQueries resource.</summary>
+            public virtual SavedQueriesResource SavedQueries { get; }
+
+            /// <summary>The "savedQueries" collection of methods.</summary>
+            public class SavedQueriesResource
+            {
+                private const string Resource = "savedQueries";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public SavedQueriesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Creates a new SavedQuery for the user making the request.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The parent resource in which to create the saved query:
+                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]"
+                /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]"
+                /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]"
+                /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]" For example: "projects/my-project/locations/global"
+                /// "organizations/123456789/locations/us-central1"
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.Logging.v2.Data.SavedQuery body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Creates a new SavedQuery for the user making the request.</summary>
+                public class CreateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.SavedQuery>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.SavedQuery body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent resource in which to create the saved query:
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]"
+                    /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]"
+                    /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]"
+                    /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]" For example:
+                    /// "projects/my-project/locations/global" "organizations/123456789/locations/us-central1"
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The ID to use for the saved query, which will become the final component of the saved
+                    /// query's resource name.If the saved_query_id is not provided, the system will generate an
+                    /// alphanumeric ID.The saved_query_id is limited to 100 characters and can include only the
+                    /// following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and
+                    /// periods. First character has to be alphanumeric.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("savedQueryId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string SavedQueryId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Logging.v2.Data.SavedQuery Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+parent}/savedQueries";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^folders/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("savedQueryId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "savedQueryId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes an existing SavedQuery that was created by the user making the request.</summary>
+                /// <param name="name">
+                /// Required. The full resource name of the saved query to delete.
+                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]"
+                /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]"
+                /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]"
+                /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" For example:
+                /// "projects/my-project/locations/global/savedQueries/my-saved-query"
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Deletes an existing SavedQuery that was created by the user making the request.</summary>
+                public class DeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Empty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The full resource name of the saved query to delete.
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]"
+                    /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]"
+                    /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]"
+                    /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" For example:
+                    /// "projects/my-project/locations/global/savedQueries/my-saved-query"
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^folders/[^/]+/locations/[^/]+/savedQueries/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists the SavedQueries that were created by the user making the request.</summary>
+                /// <param name="parent">
+                /// Required. The resource to which the listed queries belong.
+                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]"
+                /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]"
+                /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]"
+                /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]" For example:
+                /// "projects/my-project/locations/us-central1" Note: The locations portion of the resource must be
+                /// specified. To get a list of all saved queries, a wildcard character - can be used for LOCATION_ID,
+                /// for example: "projects/my-project/locations/-"
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists the SavedQueries that were created by the user making the request.</summary>
+                public class ListRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.ListSavedQueriesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource to which the listed queries belong.
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]"
+                    /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]"
+                    /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]"
+                    /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]" For example:
+                    /// "projects/my-project/locations/us-central1" Note: The locations portion of the resource must be
+                    /// specified. To get a list of all saved queries, a wildcard character - can be used for
+                    /// LOCATION_ID, for example: "projects/my-project/locations/-"
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The maximum number of results to return from this request.Non-positive values are
+                    /// ignored. The presence of nextPageToken in the response indicates that more results might be
+                    /// available.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. If present, then retrieve the next batch of results from the preceding call to this
+                    /// method. pageToken must be the value of nextPageToken from the previous response. The values of
+                    /// other method parameters should be identical to those in the previous call.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+parent}/savedQueries";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^folders/[^/]+/locations/[^/]+$",
                         });
                         RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                         {
@@ -9664,6 +10406,8 @@ namespace Google.Apis.Logging.v2
                 this.service = service;
                 Buckets = new BucketsResource(service);
                 Operations = new OperationsResource(service);
+                RecentQueries = new RecentQueriesResource(service);
+                SavedQueries = new SavedQueriesResource(service);
             }
 
             /// <summary>Gets the Buckets resource.</summary>
@@ -11364,6 +12108,375 @@ namespace Google.Apis.Logging.v2
                 }
             }
 
+            /// <summary>Gets the RecentQueries resource.</summary>
+            public virtual RecentQueriesResource RecentQueries { get; }
+
+            /// <summary>The "recentQueries" collection of methods.</summary>
+            public class RecentQueriesResource
+            {
+                private const string Resource = "recentQueries";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public RecentQueriesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Lists the RecentQueries that were created by the user making the request.</summary>
+                /// <param name="parent">
+                /// Required. The resource to which the listed queries belong.
+                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]"
+                /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]"
+                /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]"
+                /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]" For
+                /// example:projects/my-project/locations/us-central1Note: The location portion of the resource must be
+                /// specified, but supplying the character - in place of LOCATION_ID will return all recent queries.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists the RecentQueries that were created by the user making the request.</summary>
+                public class ListRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.ListRecentQueriesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource to which the listed queries belong.
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]"
+                    /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]"
+                    /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]"
+                    /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]" For
+                    /// example:projects/my-project/locations/us-central1Note: The location portion of the resource must
+                    /// be specified, but supplying the character - in place of LOCATION_ID will return all recent
+                    /// queries.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The maximum number of results to return from this request. Non-positive values are
+                    /// ignored. The presence of nextPageToken in the response indicates that more results might be
+                    /// available.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. If present, then retrieve the next batch of results from the preceding call to this
+                    /// method. pageToken must be the value of nextPageToken from the previous response. The values of
+                    /// other method parameters should be identical to those in the previous call.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+parent}/recentQueries";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the SavedQueries resource.</summary>
+            public virtual SavedQueriesResource SavedQueries { get; }
+
+            /// <summary>The "savedQueries" collection of methods.</summary>
+            public class SavedQueriesResource
+            {
+                private const string Resource = "savedQueries";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public SavedQueriesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Creates a new SavedQuery for the user making the request.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The parent resource in which to create the saved query:
+                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]"
+                /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]"
+                /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]"
+                /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]" For example: "projects/my-project/locations/global"
+                /// "organizations/123456789/locations/us-central1"
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.Logging.v2.Data.SavedQuery body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Creates a new SavedQuery for the user making the request.</summary>
+                public class CreateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.SavedQuery>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.SavedQuery body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent resource in which to create the saved query:
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]"
+                    /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]"
+                    /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]"
+                    /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]" For example:
+                    /// "projects/my-project/locations/global" "organizations/123456789/locations/us-central1"
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The ID to use for the saved query, which will become the final component of the saved
+                    /// query's resource name.If the saved_query_id is not provided, the system will generate an
+                    /// alphanumeric ID.The saved_query_id is limited to 100 characters and can include only the
+                    /// following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and
+                    /// periods. First character has to be alphanumeric.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("savedQueryId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string SavedQueryId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Logging.v2.Data.SavedQuery Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+parent}/savedQueries";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("savedQueryId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "savedQueryId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes an existing SavedQuery that was created by the user making the request.</summary>
+                /// <param name="name">
+                /// Required. The full resource name of the saved query to delete.
+                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]"
+                /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]"
+                /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]"
+                /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" For example:
+                /// "projects/my-project/locations/global/savedQueries/my-saved-query"
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Deletes an existing SavedQuery that was created by the user making the request.</summary>
+                public class DeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Empty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The full resource name of the saved query to delete.
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]"
+                    /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]"
+                    /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]"
+                    /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" For example:
+                    /// "projects/my-project/locations/global/savedQueries/my-saved-query"
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/locations/[^/]+/savedQueries/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists the SavedQueries that were created by the user making the request.</summary>
+                /// <param name="parent">
+                /// Required. The resource to which the listed queries belong.
+                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]"
+                /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]"
+                /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]"
+                /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]" For example:
+                /// "projects/my-project/locations/us-central1" Note: The locations portion of the resource must be
+                /// specified. To get a list of all saved queries, a wildcard character - can be used for LOCATION_ID,
+                /// for example: "projects/my-project/locations/-"
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists the SavedQueries that were created by the user making the request.</summary>
+                public class ListRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.ListSavedQueriesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource to which the listed queries belong.
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]"
+                    /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]"
+                    /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]"
+                    /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]" For example:
+                    /// "projects/my-project/locations/us-central1" Note: The locations portion of the resource must be
+                    /// specified. To get a list of all saved queries, a wildcard character - can be used for
+                    /// LOCATION_ID, for example: "projects/my-project/locations/-"
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The maximum number of results to return from this request.Non-positive values are
+                    /// ignored. The presence of nextPageToken in the response indicates that more results might be
+                    /// available.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. If present, then retrieve the next batch of results from the preceding call to this
+                    /// method. pageToken must be the value of nextPageToken from the previous response. The values of
+                    /// other method parameters should be identical to those in the previous call.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+parent}/savedQueries";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
             /// <summary>Gets information about a location.</summary>
             /// <param name="name">Resource name for the location.</param>
             public virtual GetRequest Get(string name)
@@ -13009,6 +14122,8 @@ namespace Google.Apis.Logging.v2
                 this.service = service;
                 Buckets = new BucketsResource(service);
                 Operations = new OperationsResource(service);
+                RecentQueries = new RecentQueriesResource(service);
+                SavedQueries = new SavedQueriesResource(service);
             }
 
             /// <summary>Gets the Buckets resource.</summary>
@@ -14688,6 +15803,375 @@ namespace Google.Apis.Logging.v2
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the RecentQueries resource.</summary>
+            public virtual RecentQueriesResource RecentQueries { get; }
+
+            /// <summary>The "recentQueries" collection of methods.</summary>
+            public class RecentQueriesResource
+            {
+                private const string Resource = "recentQueries";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public RecentQueriesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Lists the RecentQueries that were created by the user making the request.</summary>
+                /// <param name="parent">
+                /// Required. The resource to which the listed queries belong.
+                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]"
+                /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]"
+                /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]"
+                /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]" For
+                /// example:projects/my-project/locations/us-central1Note: The location portion of the resource must be
+                /// specified, but supplying the character - in place of LOCATION_ID will return all recent queries.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists the RecentQueries that were created by the user making the request.</summary>
+                public class ListRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.ListRecentQueriesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource to which the listed queries belong.
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]"
+                    /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]"
+                    /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]"
+                    /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]" For
+                    /// example:projects/my-project/locations/us-central1Note: The location portion of the resource must
+                    /// be specified, but supplying the character - in place of LOCATION_ID will return all recent
+                    /// queries.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The maximum number of results to return from this request. Non-positive values are
+                    /// ignored. The presence of nextPageToken in the response indicates that more results might be
+                    /// available.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. If present, then retrieve the next batch of results from the preceding call to this
+                    /// method. pageToken must be the value of nextPageToken from the previous response. The values of
+                    /// other method parameters should be identical to those in the previous call.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+parent}/recentQueries";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the SavedQueries resource.</summary>
+            public virtual SavedQueriesResource SavedQueries { get; }
+
+            /// <summary>The "savedQueries" collection of methods.</summary>
+            public class SavedQueriesResource
+            {
+                private const string Resource = "savedQueries";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public SavedQueriesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Creates a new SavedQuery for the user making the request.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The parent resource in which to create the saved query:
+                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]"
+                /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]"
+                /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]"
+                /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]" For example: "projects/my-project/locations/global"
+                /// "organizations/123456789/locations/us-central1"
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.Logging.v2.Data.SavedQuery body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Creates a new SavedQuery for the user making the request.</summary>
+                public class CreateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.SavedQuery>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.SavedQuery body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent resource in which to create the saved query:
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]"
+                    /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]"
+                    /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]"
+                    /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]" For example:
+                    /// "projects/my-project/locations/global" "organizations/123456789/locations/us-central1"
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The ID to use for the saved query, which will become the final component of the saved
+                    /// query's resource name.If the saved_query_id is not provided, the system will generate an
+                    /// alphanumeric ID.The saved_query_id is limited to 100 characters and can include only the
+                    /// following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and
+                    /// periods. First character has to be alphanumeric.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("savedQueryId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string SavedQueryId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Logging.v2.Data.SavedQuery Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+parent}/savedQueries";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("savedQueryId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "savedQueryId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes an existing SavedQuery that was created by the user making the request.</summary>
+                /// <param name="name">
+                /// Required. The full resource name of the saved query to delete.
+                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]"
+                /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]"
+                /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]"
+                /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" For example:
+                /// "projects/my-project/locations/global/savedQueries/my-saved-query"
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Deletes an existing SavedQuery that was created by the user making the request.</summary>
+                public class DeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Empty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The full resource name of the saved query to delete.
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]"
+                    /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]"
+                    /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]"
+                    /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" For example:
+                    /// "projects/my-project/locations/global/savedQueries/my-saved-query"
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/savedQueries/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists the SavedQueries that were created by the user making the request.</summary>
+                /// <param name="parent">
+                /// Required. The resource to which the listed queries belong.
+                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]"
+                /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]"
+                /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]"
+                /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]" For example:
+                /// "projects/my-project/locations/us-central1" Note: The locations portion of the resource must be
+                /// specified. To get a list of all saved queries, a wildcard character - can be used for LOCATION_ID,
+                /// for example: "projects/my-project/locations/-"
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists the SavedQueries that were created by the user making the request.</summary>
+                public class ListRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.ListSavedQueriesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource to which the listed queries belong.
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]"
+                    /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]"
+                    /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]"
+                    /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]" For example:
+                    /// "projects/my-project/locations/us-central1" Note: The locations portion of the resource must be
+                    /// specified. To get a list of all saved queries, a wildcard character - can be used for
+                    /// LOCATION_ID, for example: "projects/my-project/locations/-"
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The maximum number of results to return from this request.Non-positive values are
+                    /// ignored. The presence of nextPageToken in the response indicates that more results might be
+                    /// available.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. If present, then retrieve the next batch of results from the preceding call to this
+                    /// method. pageToken must be the value of nextPageToken from the previous response. The values of
+                    /// other method parameters should be identical to those in the previous call.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+parent}/savedQueries";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
                         });
                         RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                         {
@@ -17288,6 +18772,40 @@ namespace Google.Apis.Logging.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Describes the custom _Default sink configuration that is used to override the built-in _Default sink
+    /// configuration in newly created resource containers, such as projects or folders.
+    /// </summary>
+    public class DefaultSinkConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Specifies the set of exclusions to be added to the _Default sink in newly created resource
+        /// containers.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exclusions")]
+        public virtual System.Collections.Generic.IList<LogExclusion> Exclusions { get; set; }
+
+        /// <summary>
+        /// Optional. An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-queries). The only
+        /// exported log entries are those that are in the resource owning the sink and that match the filter.For
+        /// example:logName="projects/[PROJECT_ID]/logs/[LOG_ID]" AND severity&amp;gt;=ERRORCannot be empty or unset if
+        /// mode == OVERWRITE. In order to match all logs, use the following line as the value of filter and do not use
+        /// exclusions:logName:*
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; }
+
+        /// <summary>
+        /// Required. Determines the behavior to apply to the built-in _Default sink inclusion filter.Exclusions are
+        /// always appended, as built-in _Default sinks have no exclusions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mode")]
+        public virtual string Mode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The parameters to DeleteLink.</summary>
     public class DeleteLinkRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -17944,6 +19462,66 @@ namespace Google.Apis.Logging.v2.Data
         /// <summary>A list of operations that matches the specified filter in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operations")]
         public virtual System.Collections.Generic.IList<Operation> Operations { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response from ListRecentQueries.</summary>
+    public class ListRecentQueriesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If there might be more results than appear in this response, then nextPageToken is included. To get the next
+        /// set of results, call the same method again using the value of nextPageToken as pageToken.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>A list of recent queries.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recentQueries")]
+        public virtual System.Collections.Generic.IList<RecentQuery> RecentQueries { get; set; }
+
+        /// <summary>
+        /// The unreachable resources. Each resource can be either 1) a saved query if a specific query is unreachable
+        /// or 2) a location if a specific location is unreachable.
+        /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/recentQueries/[QUERY_ID]"
+        /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]" For
+        /// example:"projects/my-project/locations/global/recentQueries/12345678"
+        /// "projects/my-project/locations/global"If there are unreachable resources, the response will first return
+        /// pages that contain recent queries, and then return pages that contain the unreachable resources.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response from ListSavedQueries.</summary>
+    public class ListSavedQueriesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If there might be more results than appear in this response, then nextPageToken is included. To get the next
+        /// set of results, call the same method again using the value of nextPageToken as pageToken.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>A list of saved queries.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("savedQueries")]
+        public virtual System.Collections.Generic.IList<SavedQuery> SavedQueries { get; set; }
+
+        /// <summary>
+        /// The unreachable resources. It can be either 1) a saved query if a specific query is unreachable or 2) a
+        /// location if a specific location is unreachabe.
+        /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]"
+        /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]" For example:
+        /// "projects/my-project/locations/global/savedQueries/12345678" "projects/my-project/locations/global" If there
+        /// are unreachable resources, the response will first return pages that contain saved queries, and then return
+        /// pages that contain the unreachable resources.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -19146,6 +20724,37 @@ namespace Google.Apis.Logging.v2.Data
     }
 
     /// <summary>
+    /// Describes a Cloud Logging query that can be run in Logs Explorer UI or via the logging API.In addition to the
+    /// query itself, additional information may be stored to capture the display configuration and other UI state used
+    /// in association with analysis of query results.
+    /// </summary>
+    public class LoggingQuery : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// An advanced query using the Logging Query Language
+        /// (https://cloud.google.com/logging/docs/view/logging-query-language). The maximum length of the filter is
+        /// 20000 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; }
+
+        /// <summary>Characters will be counted from the end of the string.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("summaryFieldEnd")]
+        public virtual System.Nullable<int> SummaryFieldEnd { get; set; }
+
+        /// <summary>Characters will be counted from the start of the string.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("summaryFieldStart")]
+        public virtual System.Nullable<int> SummaryFieldStart { get; set; }
+
+        /// <summary>The set of summary fields to display for this saved query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("summaryFields")]
+        public virtual System.Collections.Generic.IList<SummaryField> SummaryFields { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Defines a metric type and its schema. Once a metric descriptor is created, deleting or altering it stops data
     /// collection and makes the metric type's existing data unusable.
     /// </summary>
@@ -19434,6 +21043,86 @@ namespace Google.Apis.Logging.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Describes an analytics query that can be run in the Log Analytics page of Google Cloud console.Preview: This is
+    /// a preview feature and may be subject to change before final release.
+    /// </summary>
+    public class OpsAnalyticsQuery : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. A logs analytics SQL query, which generally follows BigQuery format.This is the SQL query that
+        /// appears in the Log Analytics UI's query editor.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sqlQueryText")]
+        public virtual string SqlQueryText { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Describes a recent query executed on the Logs Explorer or Log Analytics page within the last ~ 30 days.
+    /// </summary>
+    public class RecentQuery : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _lastRunTimeRaw;
+
+        private object _lastRunTime;
+
+        /// <summary>The timestamp when this query was last run.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastRunTime")]
+        public virtual string LastRunTimeRaw
+        {
+            get => _lastRunTimeRaw;
+            set
+            {
+                _lastRunTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastRunTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastRunTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastRunTimeDateTimeOffset instead.")]
+        public virtual object LastRunTime
+        {
+            get => _lastRunTime;
+            set
+            {
+                _lastRunTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastRunTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="LastRunTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastRunTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastRunTimeRaw);
+            set => LastRunTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Logging query that can be executed in Logs Explorer or via Logging API.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("loggingQuery")]
+        public virtual LoggingQuery LoggingQuery { get; set; }
+
+        /// <summary>
+        /// Output only. Resource name of the recent query.In the format:
+        /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/recentQueries/[QUERY_ID]" For a list of supported locations,
+        /// see Supported Regions (https://cloud.google.com/logging/docs/region-support)The QUERY_ID is a system
+        /// generated alphanumeric ID.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Analytics query that can be executed in Log Analytics.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("opsAnalyticsQuery")]
+        public virtual OpsAnalyticsQuery OpsAnalyticsQuery { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Complete log information about a single HTTP request to an App Engine application.</summary>
     public class RequestLog : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -19664,11 +21353,122 @@ namespace Google.Apis.Logging.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Describes a query that has been saved by a user.</summary>
+    public class SavedQuery : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The timestamp when the saved query was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>A human readable description of the saved query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>The user specified title for the SavedQuery.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Logging query that can be executed in Logs Explorer or via Logging API.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("loggingQuery")]
+        public virtual LoggingQuery LoggingQuery { get; set; }
+
+        /// <summary>
+        /// Output only. Resource name of the saved query.In the format:
+        /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" For a list of supported locations,
+        /// see Supported Regions (https://cloud.google.com/logging/docs/region-support#bucket-regions)After the saved
+        /// query is created, the location cannot be changed.If the user doesn't provide a QUERY_ID, the system will
+        /// generate an alphanumeric ID.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Analytics query that can be executed in Log Analytics.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("opsAnalyticsQuery")]
+        public virtual OpsAnalyticsQuery OpsAnalyticsQuery { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The timestamp when the saved query was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Describes the settings associated with a project, folder, organization, billing account, or flexible resource.
     /// </summary>
     public class Settings : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Overrides the built-in configuration for _Default sink.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultSinkConfig")]
+        public virtual DefaultSinkConfig DefaultSinkConfig { get; set; }
+
         /// <summary>
         /// Optional. If set to true, the _Default sink in newly created projects and folders will created in a disabled
         /// state. This can be used to automatically disable log storage if there is already an aggregated sink
@@ -19703,8 +21503,9 @@ namespace Google.Apis.Logging.v2.Data
         public virtual string KmsServiceAccountId { get; set; }
 
         /// <summary>
-        /// Output only. The service account for the given container. Sinks use this service account as their
-        /// writer_identity if no custom service account is provided.
+        /// Output only. The service account for the given resource container, such as project or folder. Log sinks use
+        /// this service account as their writer_identity if no custom service account is provided in the request when
+        /// calling the create sink method.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("loggingServiceAccountId")]
         public virtual string LoggingServiceAccountId { get; set; }
@@ -19800,6 +21601,23 @@ namespace Google.Apis.Logging.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A field from the LogEntry that is added to the summary line
+    /// (https://cloud.google.com/logging/docs/view/logs-explorer-interface#add-summary-fields) for a query in the Logs
+    /// Explorer.
+    /// </summary>
+    public class SummaryField : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The field from the LogEntry to include in the summary line, for example resource.type or jsonPayload.name.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("field")]
+        public virtual string Field { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

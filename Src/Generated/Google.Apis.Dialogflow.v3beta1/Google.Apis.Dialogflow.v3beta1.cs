@@ -6124,6 +6124,63 @@ namespace Google.Apis.Dialogflow.v3beta1
                             });
                         }
                     }
+
+                    /// <summary>
+                    /// Updates the feedback received from the user for a single turn of the bot response.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="session">Required. The name of the session the feedback was sent to.</param>
+                    public virtual SubmitAnswerFeedbackRequest SubmitAnswerFeedback(Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1SubmitAnswerFeedbackRequest body, string session)
+                    {
+                        return new SubmitAnswerFeedbackRequest(this.service, body, session);
+                    }
+
+                    /// <summary>
+                    /// Updates the feedback received from the user for a single turn of the bot response.
+                    /// </summary>
+                    public class SubmitAnswerFeedbackRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1AnswerFeedback>
+                    {
+                        /// <summary>Constructs a new SubmitAnswerFeedback request.</summary>
+                        public SubmitAnswerFeedbackRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1SubmitAnswerFeedbackRequest body, string session) : base(service)
+                        {
+                            Session = session;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The name of the session the feedback was sent to.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("session", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Session { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1SubmitAnswerFeedbackRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "submitAnswerFeedback";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v3beta1/{+session}:submitAnswerFeedback";
+
+                        /// <summary>Initializes SubmitAnswerFeedback parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("session", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "session",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/agents/[^/]+/sessions/[^/]+$",
+                            });
+                        }
+                    }
                 }
 
                 /// <summary>Gets the TestCases resource.</summary>
@@ -9524,6 +9581,35 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Configuration of the barge-in behavior. Barge-in instructs the API to return a detected utterance at a proper
+    /// time while the client is playing back the response audio from a previous request. When the client sees the
+    /// utterance, it should stop the playback and immediately get ready for receiving the responses for the current
+    /// request. The barge-in handling requires the client to start streaming audio input as soon as it starts playing
+    /// back the audio from the previous response. The playback is modeled into two phases: * No barge-in phase: which
+    /// goes first and during which speech detection should not be carried out. * Barge-in phase: which follows the no
+    /// barge-in phase and during which the API starts speech detection and may inform the client that an utterance has
+    /// been detected. Note that no-speech event is not expected in this phase. The client provides this configuration
+    /// in terms of the durations of those two phases. The durations are measured in terms of the audio length fromt the
+    /// the start of the input audio. The flow goes like below: --&amp;gt; Time without speech detection | utterance
+    /// only | utterance or no-speech event | | +-------------+ | +------------+ | +---------------+ ----------+ no
+    /// barge-in +-|-+ barge-in +-|-+ normal period +----------- +-------------+ | +------------+ | +---------------+
+    /// No-speech event is a response with END_OF_UTTERANCE without any transcript following up.
+    /// </summary>
+    public class GoogleCloudDialogflowCxV3BargeInConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Duration that is not eligible for barge-in at the beginning of the input audio.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("noBargeInDuration")]
+        public virtual object NoBargeInDuration { get; set; }
+
+        /// <summary>Total duration for the playback at the beginning of the input audio.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalDuration")]
+        public virtual object TotalDuration { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata returned for the TestCases.BatchRunTestCases long running operation.</summary>
     public class GoogleCloudDialogflowCxV3BatchRunTestCasesMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10469,6 +10555,10 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>Required. Audio encoding of the audio content to process.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audioEncoding")]
         public virtual string AudioEncoding { get; set; }
+
+        /// <summary>Configuration of barge-in behavior during the streaming of input audio.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bargeInConfig")]
+        public virtual GoogleCloudDialogflowCxV3BargeInConfig BargeInConfig { get; set; }
 
         /// <summary>
         /// Optional. If `true`, Dialogflow returns SpeechWordInfo in StreamingRecognitionResult with information about
@@ -12079,6 +12169,10 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("advancedSettings")]
         public virtual GoogleCloudDialogflowCxV3beta1AdvancedSettings AdvancedSettings { get; set; }
 
+        /// <summary>Optional. Answer feedback collection settings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("answerFeedbackSettings")]
+        public virtual GoogleCloudDialogflowCxV3beta1AgentAnswerFeedbackSettings AnswerFeedbackSettings { get; set; }
+
         /// <summary>
         /// The URI of the agent's avatar. Avatars are used throughout the Dialogflow console and in the self-hosted
         /// [Web Demo](https://cloud.google.com/dialogflow/docs/integrations/web-demo) integration.
@@ -12176,6 +12270,20 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Settings for answer feedback collection.</summary>
+    public class GoogleCloudDialogflowCxV3beta1AgentAnswerFeedbackSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. If enabled, end users will be able to provide answer feedback to Dialogflow responses. Feature
+        /// works only if interaction logging is enabled in the Dialogflow agent.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableAnswerFeedback")]
+        public virtual System.Nullable<bool> EnableAnswerFeedback { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Settings for Gen App Builder.</summary>
     public class GoogleCloudDialogflowCxV3beta1AgentGenAppBuilderSettings : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -12246,6 +12354,51 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Stores information about feedback provided by users about a response.</summary>
+    public class GoogleCloudDialogflowCxV3beta1AnswerFeedback : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Custom rating from the user about the provided answer, with maximum length of 1024 characters. For
+        /// example, client could use a customized JSON object to indicate the rating.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customRating")]
+        public virtual string CustomRating { get; set; }
+
+        /// <summary>Optional. Rating from user for the specific Dialogflow response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rating")]
+        public virtual string Rating { get; set; }
+
+        /// <summary>
+        /// Optional. In case of thumbs down rating provided, users can optionally provide context about the rating.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ratingReason")]
+        public virtual GoogleCloudDialogflowCxV3beta1AnswerFeedbackRatingReason RatingReason { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Stores extra information about why users provided thumbs down rating.</summary>
+    public class GoogleCloudDialogflowCxV3beta1AnswerFeedbackRatingReason : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Additional feedback about the rating. This field can be populated without choosing a predefined
+        /// `reason`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("feedback")]
+        public virtual string Feedback { get; set; }
+
+        /// <summary>
+        /// Optional. Custom reason labels for thumbs down rating provided by the user. The maximum number of labels
+        /// allowed is 10 and the maximum length of a single label is 128 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reasonLabels")]
+        public virtual System.Collections.Generic.IList<string> ReasonLabels { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represents the natural speech audio to be processed.</summary>
     public class GoogleCloudDialogflowCxV3beta1AudioInput : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -12261,6 +12414,35 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>Required. Instructs the speech recognizer how to process the speech audio.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("config")]
         public virtual GoogleCloudDialogflowCxV3beta1InputAudioConfig Config { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Configuration of the barge-in behavior. Barge-in instructs the API to return a detected utterance at a proper
+    /// time while the client is playing back the response audio from a previous request. When the client sees the
+    /// utterance, it should stop the playback and immediately get ready for receiving the responses for the current
+    /// request. The barge-in handling requires the client to start streaming audio input as soon as it starts playing
+    /// back the audio from the previous response. The playback is modeled into two phases: * No barge-in phase: which
+    /// goes first and during which speech detection should not be carried out. * Barge-in phase: which follows the no
+    /// barge-in phase and during which the API starts speech detection and may inform the client that an utterance has
+    /// been detected. Note that no-speech event is not expected in this phase. The client provides this configuration
+    /// in terms of the durations of those two phases. The durations are measured in terms of the audio length fromt the
+    /// the start of the input audio. The flow goes like below: --&amp;gt; Time without speech detection | utterance
+    /// only | utterance or no-speech event | | +-------------+ | +------------+ | +---------------+ ----------+ no
+    /// barge-in +-|-+ barge-in +-|-+ normal period +----------- +-------------+ | +------------+ | +---------------+
+    /// No-speech event is a response with END_OF_UTTERANCE without any transcript following up.
+    /// </summary>
+    public class GoogleCloudDialogflowCxV3beta1BargeInConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Duration that is not eligible for barge-in at the beginning of the input audio.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("noBargeInDuration")]
+        public virtual object NoBargeInDuration { get; set; }
+
+        /// <summary>Total duration for the playback at the beginning of the input audio.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalDuration")]
+        public virtual object TotalDuration { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12311,6 +12493,72 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>The test case results. The detailed conversation turns are empty in this response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("results")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1TestCaseResult> Results { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Boost specification to boost certain documents. A copy of google.cloud.discoveryengine.v1main.BoostSpec, field
+    /// documentation is available at
+    /// https://cloud.google.com/generative-ai-app-builder/docs/reference/rest/v1alpha/BoostSpec
+    /// </summary>
+    public class GoogleCloudDialogflowCxV3beta1BoostSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Condition boost specifications. If a document matches multiple conditions in the specifictions,
+        /// boost scores from these specifications are all applied and combined in a non-linear way. Maximum number of
+        /// specifications is 20.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conditionBoostSpecs")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1BoostSpecConditionBoostSpec> ConditionBoostSpecs { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Boost applies to documents which match a condition.</summary>
+    public class GoogleCloudDialogflowCxV3beta1BoostSpecConditionBoostSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Strength of the condition boost, which should be in [-1, 1]. Negative boost means demotion.
+        /// Default is 0.0. Setting to 1.0 gives the document a big promotion. However, it does not necessarily mean
+        /// that the boosted document will be the top result at all times, nor that other documents will be excluded.
+        /// Results could still be shown even when none of them matches the condition. And results that are
+        /// significantly more relevant to the search query can still trump your heavily favored but irrelevant
+        /// documents. Setting to -1.0 gives the document a big demotion. However, results that are deeply relevant
+        /// might still be shown. The document will have an upstream battle to get a fairly high ranking, but it is not
+        /// blocked out completely. Setting to 0.0 means no boost applied. The boosting condition is ignored.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boost")]
+        public virtual System.Nullable<float> Boost { get; set; }
+
+        /// <summary>
+        /// Optional. An expression which specifies a boost condition. The syntax and supported fields are the same as a
+        /// filter expression. Examples: * To boost documents with document ID "doc_1" or "doc_2", and color "Red" or
+        /// "Blue": * (id: ANY("doc_1", "doc_2")) AND (color: ANY("Red","Blue"))
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("condition")]
+        public virtual string Condition { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Boost specifications for data stores.</summary>
+    public class GoogleCloudDialogflowCxV3beta1BoostSpecs : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Data Stores where the boosting configuration is applied. The full names of the referenced data
+        /// stores. Formats: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}`
+        /// `projects/{project}/locations/{location}/dataStores/{data_store}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataStores")]
+        public virtual System.Collections.Generic.IList<string> DataStores { get; set; }
+
+        /// <summary>Optional. A list of boosting specifications.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spec")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1BoostSpec> Spec { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13821,6 +14069,28 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Filter specifications for data stores.</summary>
+    public class GoogleCloudDialogflowCxV3beta1FilterSpecs : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Data Stores where the boosting configuration is applied. The full names of the referenced data
+        /// stores. Formats: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}`
+        /// `projects/{project}/locations/{location}/dataStores/{data_store}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataStores")]
+        public virtual System.Collections.Generic.IList<string> DataStores { get; set; }
+
+        /// <summary>
+        /// Optional. The filter expression to be applied. Expression syntax is documented at
+        /// https://cloud.google.com/generative-ai-app-builder/docs/filter-search-metadata#filter-expression-syntax
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Flows represents the conversation flows when you build your chatbot agent. A flow consists of many pages
     /// connected by the transition routes. Conversations always start with the built-in Start Flow (with an all-0 ID).
@@ -14596,6 +14866,10 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>Required. Audio encoding of the audio content to process.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audioEncoding")]
         public virtual string AudioEncoding { get; set; }
+
+        /// <summary>Configuration of barge-in behavior during the streaming of input audio.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bargeInConfig")]
+        public virtual GoogleCloudDialogflowCxV3beta1BargeInConfig BargeInConfig { get; set; }
 
         /// <summary>
         /// Optional. If `true`, Dialogflow returns SpeechWordInfo in StreamingRecognitionResult with information about
@@ -15700,6 +15974,10 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("payload")]
         public virtual System.Collections.Generic.IDictionary<string, object> Payload { get; set; }
 
+        /// <summary>Optional. Search configuration for UCS search queries.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("searchConfig")]
+        public virtual GoogleCloudDialogflowCxV3beta1SearchConfig SearchConfig { get; set; }
+
         /// <summary>
         /// Additional session entity types to replace or extend developer entity types with. The entity synonyms apply
         /// to all languages and persist for the session of this query.
@@ -15748,6 +16026,13 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advancedSettings")]
         public virtual GoogleCloudDialogflowCxV3beta1AdvancedSettings AdvancedSettings { get; set; }
+
+        /// <summary>
+        /// Indicates whether the Thumbs up/Thumbs down rating controls are need to be shown for the response in the
+        /// Dialogflow Messenger widget.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowAnswerFeedback")]
+        public virtual System.Nullable<bool> AllowAnswerFeedback { get; set; }
 
         /// <summary>
         /// The current Page. Some, not all fields are filled in this message, including but not limited to `name` and
@@ -16385,6 +16670,21 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Search configuration for UCS search queries.</summary>
+    public class GoogleCloudDialogflowCxV3beta1SearchConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Boosting configuration for the datastores.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boostSpecs")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1BoostSpecs> BoostSpecs { get; set; }
+
+        /// <summary>Optional. Filter configuration for the datastores.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filterSpecs")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1FilterSpecs> FilterSpecs { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Represents the settings related to security issues, such as data redaction and data retention. It may take hours
     /// for updates on the settings to propagate to all the related components and take effect.
@@ -16618,6 +16918,30 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     /// <summary>The request message for Experiments.StopExperiment.</summary>
     public class GoogleCloudDialogflowCxV3beta1StopExperimentRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request to set the feedback for a bot answer.</summary>
+    public class GoogleCloudDialogflowCxV3beta1SubmitAnswerFeedbackRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Feedback provided for a bot answer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("answerFeedback")]
+        public virtual GoogleCloudDialogflowCxV3beta1AnswerFeedback AnswerFeedback { get; set; }
+
+        /// <summary>
+        /// Required. ID of the response to update its feedback. This is the same as DetectIntentResponse.response_id.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("responseId")]
+        public virtual string ResponseId { get; set; }
+
+        /// <summary>
+        /// Optional. The mask to control which fields to update. If the mask is not present, all fields will be
+        /// updated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
+        public virtual object UpdateMask { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -18338,32 +18662,6 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     }
 
     /// <summary>
-    /// A customer-managed encryption key specification that can be applied to all created resources (e.g.
-    /// Conversation).
-    /// </summary>
-    public class GoogleCloudDialogflowV2EncryptionSpec : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Required. The name of customer-managed encryption key that is used to secure a resource and its
-        /// sub-resources. If empty, the resource is secured by the default Google encryption key. Only the key in the
-        /// same location as this resource is allowed to be used for encryption. Format:
-        /// `projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{key}`
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("kmsKey")]
-        public virtual string KmsKey { get; set; }
-
-        /// <summary>
-        /// Immutable. The resource name of the encryption key specification resource. Format:
-        /// projects/{project}/locations/{location}/encryptionSpec
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
     /// Each intent parameter has a type, called the entity type, which dictates exactly how data from an end-user
     /// expression is extracted. Dialogflow provides predefined system entities that can match many common types of
     /// data. For example, there are system entities for matching dates, times, colors, email addresses, and so on. You
@@ -18653,32 +18951,6 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>Includes details about skipped documents or any other warnings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
         public virtual System.Collections.Generic.IList<GoogleRpcStatus> Warnings { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Metadata for initializing a location-level encryption specification.</summary>
-    public class GoogleCloudDialogflowV2InitializeEncryptionSpecMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Output only. The original request for initialization.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("request")]
-        public virtual GoogleCloudDialogflowV2InitializeEncryptionSpecRequest Request { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>The request to initialize a location-level encryption specification.</summary>
-    public class GoogleCloudDialogflowV2InitializeEncryptionSpecRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Required. The encryption spec used for CMEK encryption. It is required that the kms key is in the same
-        /// region as the endpoint. The same key will be used for all provisioned resources, if encryption is available.
-        /// If the kms_key_name is left empty, no encryption will be enforced.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("encryptionSpec")]
-        public virtual GoogleCloudDialogflowV2EncryptionSpec EncryptionSpec { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -20518,32 +20790,6 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     }
 
     /// <summary>
-    /// A customer-managed encryption key specification that can be applied to all created resources (e.g.
-    /// Conversation).
-    /// </summary>
-    public class GoogleCloudDialogflowV2beta1EncryptionSpec : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Required. The name of customer-managed encryption key that is used to secure a resource and its
-        /// sub-resources. If empty, the resource is secured by the default Google encryption key. Only the key in the
-        /// same location as this resource is allowed to be used for encryption. Format:
-        /// `projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{key}`
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("kmsKey")]
-        public virtual string KmsKey { get; set; }
-
-        /// <summary>
-        /// Immutable. The resource name of the encryption key specification resource. Format:
-        /// projects/{project}/locations/{location}/encryptionSpec
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
     /// Each intent parameter has a type, called the entity type, which dictates exactly how data from an end-user
     /// expression is extracted. Dialogflow provides predefined system entities that can match many common types of
     /// data. For example, there are system entities for matching dates, times, colors, email addresses, and so on. You
@@ -20762,32 +21008,6 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>Includes details about skipped documents or any other warnings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
         public virtual System.Collections.Generic.IList<GoogleRpcStatus> Warnings { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Metadata for initializing a location-level encryption specification.</summary>
-    public class GoogleCloudDialogflowV2beta1InitializeEncryptionSpecMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Output only. The original request for initialization.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("request")]
-        public virtual GoogleCloudDialogflowV2beta1InitializeEncryptionSpecRequest Request { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>The request to initialize a location-level encryption specification.</summary>
-    public class GoogleCloudDialogflowV2beta1InitializeEncryptionSpecRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Required. The encryption spec used for CMEK encryption. It is required that the kms key is in the same
-        /// region as the endpoint. The same key will be used for all provisioned resources, if encryption is available.
-        /// If the kms_key_name is left empty, no encryption will be enforced.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("encryptionSpec")]
-        public virtual GoogleCloudDialogflowV2beta1EncryptionSpec EncryptionSpec { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

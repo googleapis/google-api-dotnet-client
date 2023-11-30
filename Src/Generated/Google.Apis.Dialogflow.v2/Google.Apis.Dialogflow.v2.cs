@@ -19542,6 +19542,35 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Configuration of the barge-in behavior. Barge-in instructs the API to return a detected utterance at a proper
+    /// time while the client is playing back the response audio from a previous request. When the client sees the
+    /// utterance, it should stop the playback and immediately get ready for receiving the responses for the current
+    /// request. The barge-in handling requires the client to start streaming audio input as soon as it starts playing
+    /// back the audio from the previous response. The playback is modeled into two phases: * No barge-in phase: which
+    /// goes first and during which speech detection should not be carried out. * Barge-in phase: which follows the no
+    /// barge-in phase and during which the API starts speech detection and may inform the client that an utterance has
+    /// been detected. Note that no-speech event is not expected in this phase. The client provides this configuration
+    /// in terms of the durations of those two phases. The durations are measured in terms of the audio length fromt the
+    /// the start of the input audio. The flow goes like below: --&amp;gt; Time without speech detection | utterance
+    /// only | utterance or no-speech event | | +-------------+ | +------------+ | +---------------+ ----------+ no
+    /// barge-in +-|-+ barge-in +-|-+ normal period +----------- +-------------+ | +------------+ | +---------------+
+    /// No-speech event is a response with END_OF_UTTERANCE without any transcript following up.
+    /// </summary>
+    public class GoogleCloudDialogflowCxV3BargeInConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Duration that is not eligible for barge-in at the beginning of the input audio.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("noBargeInDuration")]
+        public virtual object NoBargeInDuration { get; set; }
+
+        /// <summary>Total duration for the playback at the beginning of the input audio.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalDuration")]
+        public virtual object TotalDuration { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata returned for the TestCases.BatchRunTestCases long running operation.</summary>
     public class GoogleCloudDialogflowCxV3BatchRunTestCasesMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -20487,6 +20516,10 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// <summary>Required. Audio encoding of the audio content to process.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audioEncoding")]
         public virtual string AudioEncoding { get; set; }
+
+        /// <summary>Configuration of barge-in behavior during the streaming of input audio.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bargeInConfig")]
+        public virtual GoogleCloudDialogflowCxV3BargeInConfig BargeInConfig { get; set; }
 
         /// <summary>
         /// Optional. If `true`, Dialogflow returns SpeechWordInfo in StreamingRecognitionResult with information about
@@ -22102,6 +22135,35 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Configuration of the barge-in behavior. Barge-in instructs the API to return a detected utterance at a proper
+    /// time while the client is playing back the response audio from a previous request. When the client sees the
+    /// utterance, it should stop the playback and immediately get ready for receiving the responses for the current
+    /// request. The barge-in handling requires the client to start streaming audio input as soon as it starts playing
+    /// back the audio from the previous response. The playback is modeled into two phases: * No barge-in phase: which
+    /// goes first and during which speech detection should not be carried out. * Barge-in phase: which follows the no
+    /// barge-in phase and during which the API starts speech detection and may inform the client that an utterance has
+    /// been detected. Note that no-speech event is not expected in this phase. The client provides this configuration
+    /// in terms of the durations of those two phases. The durations are measured in terms of the audio length fromt the
+    /// the start of the input audio. The flow goes like below: --&amp;gt; Time without speech detection | utterance
+    /// only | utterance or no-speech event | | +-------------+ | +------------+ | +---------------+ ----------+ no
+    /// barge-in +-|-+ barge-in +-|-+ normal period +----------- +-------------+ | +------------+ | +---------------+
+    /// No-speech event is a response with END_OF_UTTERANCE without any transcript following up.
+    /// </summary>
+    public class GoogleCloudDialogflowCxV3beta1BargeInConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Duration that is not eligible for barge-in at the beginning of the input audio.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("noBargeInDuration")]
+        public virtual object NoBargeInDuration { get; set; }
+
+        /// <summary>Total duration for the playback at the beginning of the input audio.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalDuration")]
+        public virtual object TotalDuration { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata returned for the TestCases.BatchRunTestCases long running operation.</summary>
     public class GoogleCloudDialogflowCxV3beta1BatchRunTestCasesMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -23047,6 +23109,10 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// <summary>Required. Audio encoding of the audio content to process.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audioEncoding")]
         public virtual string AudioEncoding { get; set; }
+
+        /// <summary>Configuration of barge-in behavior during the streaming of input audio.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bargeInConfig")]
+        public virtual GoogleCloudDialogflowCxV3beta1BargeInConfig BargeInConfig { get; set; }
 
         /// <summary>
         /// Optional. If `true`, Dialogflow returns SpeechWordInfo in StreamingRecognitionResult with information about
@@ -26569,32 +26635,6 @@ namespace Google.Apis.Dialogflow.v2.Data
     }
 
     /// <summary>
-    /// A customer-managed encryption key specification that can be applied to all created resources (e.g.
-    /// Conversation).
-    /// </summary>
-    public class GoogleCloudDialogflowV2EncryptionSpec : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Required. The name of customer-managed encryption key that is used to secure a resource and its
-        /// sub-resources. If empty, the resource is secured by the default Google encryption key. Only the key in the
-        /// same location as this resource is allowed to be used for encryption. Format:
-        /// `projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{key}`
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("kmsKey")]
-        public virtual string KmsKey { get; set; }
-
-        /// <summary>
-        /// Immutable. The resource name of the encryption key specification resource. Format:
-        /// projects/{project}/locations/{location}/encryptionSpec
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
     /// Each intent parameter has a type, called the entity type, which dictates exactly how data from an end-user
     /// expression is extracted. Dialogflow provides predefined system entities that can match many common types of
     /// data. For example, there are system entities for matching dates, times, colors, email addresses, and so on. You
@@ -27456,6 +27496,12 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("maxResults")]
         public virtual System.Nullable<int> MaxResults { get; set; }
 
+        /// <summary>
+        /// Optional. The customized sections chosen to return when requesting a summary of a conversation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sections")]
+        public virtual GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigSections Sections { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -27539,6 +27585,25 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("knowledgeBases")]
         public virtual System.Collections.Generic.IList<string> KnowledgeBases { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Custom sections to return when requesting a summary of a conversation. This is only supported when
+    /// `baseline_model_version` == '2.0'. Supported features: CONVERSATION_SUMMARIZATION,
+    /// CONVERSATION_SUMMARIZATION_VOICE.
+    /// </summary>
+    public class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigSections : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The selected sections chosen to return when requesting a summary of a conversation. A duplicate selected
+        /// section will be treated as a single selected section. If section types are not provided, the default will be
+        /// {SITUATION, ACTION, RESULT}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sectionTypes")]
+        public virtual System.Collections.Generic.IList<string> SectionTypes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -27804,32 +27869,6 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// <summary>Includes details about skipped documents or any other warnings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
         public virtual System.Collections.Generic.IList<GoogleRpcStatus> Warnings { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Metadata for initializing a location-level encryption specification.</summary>
-    public class GoogleCloudDialogflowV2InitializeEncryptionSpecMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Output only. The original request for initialization.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("request")]
-        public virtual GoogleCloudDialogflowV2InitializeEncryptionSpecRequest Request { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>The request to initialize a location-level encryption specification.</summary>
-    public class GoogleCloudDialogflowV2InitializeEncryptionSpecRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Required. The encryption spec used for CMEK encryption. It is required that the kms key is in the same
-        /// region as the endpoint. The same key will be used for all provisioned resources, if encryption is available.
-        /// If the kms_key_name is left empty, no encryption will be enforced.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("encryptionSpec")]
-        public virtual GoogleCloudDialogflowV2EncryptionSpec EncryptionSpec { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -31116,32 +31155,6 @@ namespace Google.Apis.Dialogflow.v2.Data
     }
 
     /// <summary>
-    /// A customer-managed encryption key specification that can be applied to all created resources (e.g.
-    /// Conversation).
-    /// </summary>
-    public class GoogleCloudDialogflowV2beta1EncryptionSpec : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Required. The name of customer-managed encryption key that is used to secure a resource and its
-        /// sub-resources. If empty, the resource is secured by the default Google encryption key. Only the key in the
-        /// same location as this resource is allowed to be used for encryption. Format:
-        /// `projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{key}`
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("kmsKey")]
-        public virtual string KmsKey { get; set; }
-
-        /// <summary>
-        /// Immutable. The resource name of the encryption key specification resource. Format:
-        /// projects/{project}/locations/{location}/encryptionSpec
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
     /// Each intent parameter has a type, called the entity type, which dictates exactly how data from an end-user
     /// expression is extracted. Dialogflow provides predefined system entities that can match many common types of
     /// data. For example, there are system entities for matching dates, times, colors, email addresses, and so on. You
@@ -31360,32 +31373,6 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// <summary>Includes details about skipped documents or any other warnings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
         public virtual System.Collections.Generic.IList<GoogleRpcStatus> Warnings { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Metadata for initializing a location-level encryption specification.</summary>
-    public class GoogleCloudDialogflowV2beta1InitializeEncryptionSpecMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Output only. The original request for initialization.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("request")]
-        public virtual GoogleCloudDialogflowV2beta1InitializeEncryptionSpecRequest Request { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>The request to initialize a location-level encryption specification.</summary>
-    public class GoogleCloudDialogflowV2beta1InitializeEncryptionSpecRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Required. The encryption spec used for CMEK encryption. It is required that the kms key is in the same
-        /// region as the endpoint. The same key will be used for all provisioned resources, if encryption is available.
-        /// If the kms_key_name is left empty, no encryption will be enforced.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("encryptionSpec")]
-        public virtual GoogleCloudDialogflowV2beta1EncryptionSpec EncryptionSpec { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

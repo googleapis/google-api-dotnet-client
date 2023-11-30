@@ -9847,7 +9847,9 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>
         /// Max percentage of rows to scan. The rest are omitted. The number of rows scanned is rounded down. Must be
         /// between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of rows_limit and
-        /// rows_limit_percent can be specified. Cannot be used in conjunction with TimespanConfig.
+        /// rows_limit_percent can be specified. Cannot be used in conjunction with TimespanConfig. Caution: A [known
+        /// issue](https://cloud.google.com/dlp/docs/known-issues#bq-sampling) is causing the `rowsLimitPercent` field
+        /// to behave unexpectedly. We recommend using `rowsLimit` instead.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rowsLimitPercent")]
         public virtual System.Nullable<int> RowsLimitPercent { get; set; }

@@ -764,9 +764,9 @@ namespace Google.Apis.HangoutsChat.v1
             /// set the `membership.member.name` in the `CreateMembershipRequest`: - To add the calling app to a space
             /// or a direct message between two human users, use `users/app`. Unable to add other apps to the space. -
             /// To add a human user, use `users/{user}`, where `{user}` can be the email address for the user. For users
-            /// in the same Workspace organization `{user}` can also be the `{person_id}` for the person from the People
-            /// API, or the `id` for the user in the Directory API. For example, if the People API Person `resourceName`
-            /// for `user@example.com` is `people/123456789`, you can add the user to the space by setting the
+            /// in the same Workspace organization `{user}` can also be the `id` for the person from the People API, or
+            /// the `id` for the user in the Directory API. For example, if the People API Person profile ID for
+            /// `user@example.com` is `123456789`, you can add the user to the space by setting the
             /// `membership.member.name` to `users/user@example.com` or `users/123456789`.
             /// </summary>
             /// <param name="body">The body of the request.</param>
@@ -789,9 +789,9 @@ namespace Google.Apis.HangoutsChat.v1
             /// set the `membership.member.name` in the `CreateMembershipRequest`: - To add the calling app to a space
             /// or a direct message between two human users, use `users/app`. Unable to add other apps to the space. -
             /// To add a human user, use `users/{user}`, where `{user}` can be the email address for the user. For users
-            /// in the same Workspace organization `{user}` can also be the `{person_id}` for the person from the People
-            /// API, or the `id` for the user in the Directory API. For example, if the People API Person `resourceName`
-            /// for `user@example.com` is `people/123456789`, you can add the user to the space by setting the
+            /// in the same Workspace organization `{user}` can also be the `id` for the person from the People API, or
+            /// the `id` for the user in the Directory API. For example, if the People API Person profile ID for
+            /// `user@example.com` is `123456789`, you can add the user to the space by setting the
             /// `membership.member.name` to `users/user@example.com` or `users/123456789`.
             /// </summary>
             public class CreateRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.Membership>
@@ -912,7 +912,7 @@ namespace Google.Apis.HangoutsChat.v1
             /// <summary>
             /// Returns details about a membership. For an example, see [Get a
             /// membership](https://developers.google.com/chat/api/guides/v1/members/get). Requires
-            /// [authentication](https://developers.google.com/chat/api/guides/auth). Fully supports [service account
+            /// [authentication](https://developers.google.com/chat/api/guides/auth). Supports [app
             /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts) and [user
             /// authentication](https://developers.google.com/chat/api/guides/auth/users).
             /// </summary>
@@ -932,7 +932,7 @@ namespace Google.Apis.HangoutsChat.v1
             /// <summary>
             /// Returns details about a membership. For an example, see [Get a
             /// membership](https://developers.google.com/chat/api/guides/v1/members/get). Requires
-            /// [authentication](https://developers.google.com/chat/api/guides/auth). Fully supports [service account
+            /// [authentication](https://developers.google.com/chat/api/guides/auth). Supports [app
             /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts) and [user
             /// authentication](https://developers.google.com/chat/api/guides/auth/users).
             /// </summary>
@@ -988,7 +988,7 @@ namespace Google.Apis.HangoutsChat.v1
             /// own. Listing memberships with [User
             /// authentication](https://developers.google.com/chat/api/guides/auth/users) lists memberships in spaces
             /// that the authenticated user has access to. Requires
-            /// [authentication](https://developers.google.com/chat/api/guides/auth). Fully supports [service account
+            /// [authentication](https://developers.google.com/chat/api/guides/auth). Supports [app
             /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts) and [user
             /// authentication](https://developers.google.com/chat/api/guides/auth/users).
             /// </summary>
@@ -1008,7 +1008,7 @@ namespace Google.Apis.HangoutsChat.v1
             /// own. Listing memberships with [User
             /// authentication](https://developers.google.com/chat/api/guides/auth/users) lists memberships in spaces
             /// that the authenticated user has access to. Requires
-            /// [authentication](https://developers.google.com/chat/api/guides/auth). Fully supports [service account
+            /// [authentication](https://developers.google.com/chat/api/guides/auth). Supports [app
             /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts) and [user
             /// authentication](https://developers.google.com/chat/api/guides/auth/users).
             /// </summary>
@@ -1176,8 +1176,7 @@ namespace Google.Apis.HangoutsChat.v1
                 /// API](https://developers.google.com/chat/api/reference/rest/v1/media/download). For an example, see
                 /// [Get a message
                 /// attachment](https://developers.google.com/chat/api/guides/v1/media-and-attachments/get). Requires
-                /// [service account
-                /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
+                /// [app authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
                 /// </summary>
                 /// <param name="name">
                 /// Required. Resource name of the attachment, in the form `spaces/*/messages/*/attachments/*`.
@@ -1192,8 +1191,7 @@ namespace Google.Apis.HangoutsChat.v1
                 /// API](https://developers.google.com/chat/api/reference/rest/v1/media/download). For an example, see
                 /// [Get a message
                 /// attachment](https://developers.google.com/chat/api/guides/v1/media-and-attachments/get). Requires
-                /// [service account
-                /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
+                /// [app authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
                 /// </summary>
                 public class GetRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.Attachment>
                 {
@@ -1590,8 +1588,9 @@ namespace Google.Apis.HangoutsChat.v1
                     REPLYMESSAGEFALLBACKTONEWTHREAD = 1,
 
                     /// <summary>
-                    /// Creates the message as a reply to the thread specified by thread ID or `thread_key`. If it
-                    /// fails, a `NOT_FOUND` error is returned instead.
+                    /// Creates the message as a reply to the thread specified by thread ID or `thread_key`. If a new
+                    /// `thread_key` is used, a new thread is created. If the message creation fails, a `NOT_FOUND`
+                    /// error is returned instead.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("REPLY_MESSAGE_OR_FAIL")]
                     REPLYMESSAGEORFAIL = 2,
@@ -1678,10 +1677,10 @@ namespace Google.Apis.HangoutsChat.v1
             /// <summary>
             /// Deletes a message. For an example, see [Delete a
             /// message](https://developers.google.com/chat/api/guides/v1/messages/delete). Requires
-            /// [authentication](https://developers.google.com/chat/api/guides/auth). Fully supports [service account
+            /// [authentication](https://developers.google.com/chat/api/guides/auth). Supports [app
             /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts) and [user
-            /// authentication](https://developers.google.com/chat/api/guides/auth/users). Requests authenticated with
-            /// service accounts can only delete messages created by the calling Chat app.
+            /// authentication](https://developers.google.com/chat/api/guides/auth/users). When using app
+            /// authentication, requests can only delete messages created by the calling Chat app.
             /// </summary>
             /// <param name="name">
             /// Required. Resource name of the message that you want to delete, in the form `spaces/*/messages/*`
@@ -1695,10 +1694,10 @@ namespace Google.Apis.HangoutsChat.v1
             /// <summary>
             /// Deletes a message. For an example, see [Delete a
             /// message](https://developers.google.com/chat/api/guides/v1/messages/delete). Requires
-            /// [authentication](https://developers.google.com/chat/api/guides/auth). Fully supports [service account
+            /// [authentication](https://developers.google.com/chat/api/guides/auth). Supports [app
             /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts) and [user
-            /// authentication](https://developers.google.com/chat/api/guides/auth/users). Requests authenticated with
-            /// service accounts can only delete messages created by the calling Chat app.
+            /// authentication](https://developers.google.com/chat/api/guides/auth/users). When using app
+            /// authentication, requests can only delete messages created by the calling Chat app.
             /// </summary>
             public class DeleteRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.Empty>
             {
@@ -1720,7 +1719,7 @@ namespace Google.Apis.HangoutsChat.v1
                 /// When `true`, deleting a message also deletes its threaded replies. When `false`, if a message has
                 /// threaded replies, deletion fails. Only applies when [authenticating as a
                 /// user](https://developers.google.com/chat/api/guides/auth/users). Has no effect when [authenticating
-                /// with a service account] (https://developers.google.com/chat/api/guides/auth/service-accounts).
+                /// as a Chat app] (https://developers.google.com/chat/api/guides/auth/service-accounts).
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("force", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> Force { get; set; }
@@ -1760,7 +1759,7 @@ namespace Google.Apis.HangoutsChat.v1
             /// <summary>
             /// Returns details about a message. For an example, see [Read a
             /// message](https://developers.google.com/chat/api/guides/v1/messages/get). Requires
-            /// [authentication](https://developers.google.com/chat/api/guides/auth). Fully supports [service account
+            /// [authentication](https://developers.google.com/chat/api/guides/auth). Supports [app
             /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts) and [user
             /// authentication](https://developers.google.com/chat/api/guides/auth/users). Note: Might return a message
             /// from a blocked member or space.
@@ -1780,7 +1779,7 @@ namespace Google.Apis.HangoutsChat.v1
             /// <summary>
             /// Returns details about a message. For an example, see [Read a
             /// message](https://developers.google.com/chat/api/guides/v1/messages/get). Requires
-            /// [authentication](https://developers.google.com/chat/api/guides/auth). Fully supports [service account
+            /// [authentication](https://developers.google.com/chat/api/guides/auth). Supports [app
             /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts) and [user
             /// authentication](https://developers.google.com/chat/api/guides/auth/users). Note: Might return a message
             /// from a blocked member or space.
@@ -1985,10 +1984,10 @@ namespace Google.Apis.HangoutsChat.v1
             /// uses a `patch` request while the `update` method uses a `put` request. We recommend using the `patch`
             /// method. For an example, see [Update a
             /// message](https://developers.google.com/chat/api/guides/v1/messages/update). Requires
-            /// [authentication](https://developers.google.com/chat/api/guides/auth). Fully supports [service account
+            /// [authentication](https://developers.google.com/chat/api/guides/auth). Supports [app
             /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts) and [user
-            /// authentication](https://developers.google.com/chat/api/guides/auth/users). Requests authenticated with
-            /// service accounts can only update messages created by the calling Chat app.
+            /// authentication](https://developers.google.com/chat/api/guides/auth/users). When using app
+            /// authentication, requests can only update messages created by the calling Chat app.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
@@ -2005,10 +2004,10 @@ namespace Google.Apis.HangoutsChat.v1
             /// uses a `patch` request while the `update` method uses a `put` request. We recommend using the `patch`
             /// method. For an example, see [Update a
             /// message](https://developers.google.com/chat/api/guides/v1/messages/update). Requires
-            /// [authentication](https://developers.google.com/chat/api/guides/auth). Fully supports [service account
+            /// [authentication](https://developers.google.com/chat/api/guides/auth). Supports [app
             /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts) and [user
-            /// authentication](https://developers.google.com/chat/api/guides/auth/users). Requests authenticated with
-            /// service accounts can only update messages created by the calling Chat app.
+            /// authentication](https://developers.google.com/chat/api/guides/auth/users). When using app
+            /// authentication, requests can only update messages created by the calling Chat app.
             /// </summary>
             public class PatchRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.Message>
             {
@@ -2038,8 +2037,8 @@ namespace Google.Apis.HangoutsChat.v1
 
                 /// <summary>
                 /// Required. The field paths to update. Separate multiple values with commas. Currently supported field
-                /// paths: - `text` - `attachment` - `cards` (Requires [service account
-                /// authentication](/chat/api/guides/auth/service-accounts).) - `cards_v2` (Requires [service account
+                /// paths: - `text` - `attachment` - `cards` (Requires [app
+                /// authentication](/chat/api/guides/auth/service-accounts).) - `cards_v2` (Requires [app
                 /// authentication](/chat/api/guides/auth/service-accounts).)
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
@@ -2096,10 +2095,10 @@ namespace Google.Apis.HangoutsChat.v1
             /// uses a `patch` request while the `update` method uses a `put` request. We recommend using the `patch`
             /// method. For an example, see [Update a
             /// message](https://developers.google.com/chat/api/guides/v1/messages/update). Requires
-            /// [authentication](https://developers.google.com/chat/api/guides/auth). Fully supports [service account
+            /// [authentication](https://developers.google.com/chat/api/guides/auth). Supports [app
             /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts) and [user
-            /// authentication](https://developers.google.com/chat/api/guides/auth/users). Requests authenticated with
-            /// service accounts can only update messages created by the calling Chat app.
+            /// authentication](https://developers.google.com/chat/api/guides/auth/users). When using app
+            /// authentication, requests can only update messages created by the calling Chat app.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
@@ -2116,10 +2115,10 @@ namespace Google.Apis.HangoutsChat.v1
             /// uses a `patch` request while the `update` method uses a `put` request. We recommend using the `patch`
             /// method. For an example, see [Update a
             /// message](https://developers.google.com/chat/api/guides/v1/messages/update). Requires
-            /// [authentication](https://developers.google.com/chat/api/guides/auth). Fully supports [service account
+            /// [authentication](https://developers.google.com/chat/api/guides/auth). Supports [app
             /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts) and [user
-            /// authentication](https://developers.google.com/chat/api/guides/auth/users). Requests authenticated with
-            /// service accounts can only update messages created by the calling Chat app.
+            /// authentication](https://developers.google.com/chat/api/guides/auth/users). When using app
+            /// authentication, requests can only update messages created by the calling Chat app.
             /// </summary>
             public class UpdateRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.Message>
             {
@@ -2149,8 +2148,8 @@ namespace Google.Apis.HangoutsChat.v1
 
                 /// <summary>
                 /// Required. The field paths to update. Separate multiple values with commas. Currently supported field
-                /// paths: - `text` - `attachment` - `cards` (Requires [service account
-                /// authentication](/chat/api/guides/auth/service-accounts).) - `cards_v2` (Requires [service account
+                /// paths: - `text` - `attachment` - `cards` (Requires [app
+                /// authentication](/chat/api/guides/auth/service-accounts).) - `cards_v2` (Requires [app
                 /// authentication](/chat/api/guides/auth/service-accounts).)
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
@@ -2332,10 +2331,10 @@ namespace Google.Apis.HangoutsChat.v1
         /// `404 NOT_FOUND` error. For an example, see [Find a direct
         /// message](/chat/api/guides/v1/spaces/find-direct-message). With [user
         /// authentication](https://developers.google.com/chat/api/guides/auth/users), returns the direct message space
-        /// between the specified user and the authenticated user. With [service account
+        /// between the specified user and the authenticated user. With [app
         /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts), returns the direct
         /// message space between the specified user and the calling Chat app. Requires [user
-        /// authentication](https://developers.google.com/chat/api/guides/auth/users) or [service account
+        /// authentication](https://developers.google.com/chat/api/guides/auth/users) or [app
         /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
         /// </summary>
         public virtual FindDirectMessageRequest FindDirectMessage()
@@ -2348,10 +2347,10 @@ namespace Google.Apis.HangoutsChat.v1
         /// `404 NOT_FOUND` error. For an example, see [Find a direct
         /// message](/chat/api/guides/v1/spaces/find-direct-message). With [user
         /// authentication](https://developers.google.com/chat/api/guides/auth/users), returns the direct message space
-        /// between the specified user and the authenticated user. With [service account
+        /// between the specified user and the authenticated user. With [app
         /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts), returns the direct
         /// message space between the specified user and the calling Chat app. Requires [user
-        /// authentication](https://developers.google.com/chat/api/guides/auth/users) or [service account
+        /// authentication](https://developers.google.com/chat/api/guides/auth/users) or [app
         /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
         /// </summary>
         public class FindDirectMessageRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.Space>
@@ -2364,11 +2363,11 @@ namespace Google.Apis.HangoutsChat.v1
 
             /// <summary>
             /// Required. Resource name of the user to find direct message with. Format: `users/{user}`, where `{user}`
-            /// is either the `{person_id}` for the [person](https://developers.google.com/people/api/rest/v1/people)
-            /// from the People API, or the `id` for the
+            /// is either the `id` for the [person](https://developers.google.com/people/api/rest/v1/people) from the
+            /// People API, or the `id` for the
             /// [user](https://developers.google.com/admin-sdk/directory/reference/rest/v1/users) in the Directory API.
-            /// For example, if the People API `Person.resourceName` is `people/123456789`, you can find a direct
-            /// message with that person by using `users/123456789` as the `name`. When [authenticated as a
+            /// For example, if the People API profile ID is `123456789`, you can find a direct message with that person
+            /// by using `users/123456789` as the `name`. When [authenticated as a
             /// user](https://developers.google.com/chat/api/guides/auth/users), you can use the email as an alias for
             /// `{user}`. For example, `users/example@gmail.com` where `example@gmail.com` is the email of the Google
             /// Chat user.
@@ -2403,7 +2402,7 @@ namespace Google.Apis.HangoutsChat.v1
         /// <summary>
         /// Returns details about a space. For an example, see [Get a
         /// space](https://developers.google.com/chat/api/guides/v1/spaces/get). Requires
-        /// [authentication](https://developers.google.com/chat/api/guides/auth). Fully supports [service account
+        /// [authentication](https://developers.google.com/chat/api/guides/auth). Supports [app
         /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts) and [user
         /// authentication](https://developers.google.com/chat/api/guides/auth/users).
         /// </summary>
@@ -2418,7 +2417,7 @@ namespace Google.Apis.HangoutsChat.v1
         /// <summary>
         /// Returns details about a space. For an example, see [Get a
         /// space](https://developers.google.com/chat/api/guides/v1/spaces/get). Requires
-        /// [authentication](https://developers.google.com/chat/api/guides/auth). Fully supports [service account
+        /// [authentication](https://developers.google.com/chat/api/guides/auth). Supports [app
         /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts) and [user
         /// authentication](https://developers.google.com/chat/api/guides/auth/users).
         /// </summary>
@@ -2464,7 +2463,7 @@ namespace Google.Apis.HangoutsChat.v1
         /// <summary>
         /// Lists spaces the caller is a member of. Group chats and DMs aren't listed until the first message is sent.
         /// For an example, see [List spaces](https://developers.google.com/chat/api/guides/v1/spaces/list). Requires
-        /// [authentication](https://developers.google.com/chat/api/guides/auth). Fully supports [service account
+        /// [authentication](https://developers.google.com/chat/api/guides/auth). Supports [app
         /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts) and [user
         /// authentication](https://developers.google.com/chat/api/guides/auth/users). Lists spaces visible to the
         /// caller or authenticated user. Group chats and DMs aren't listed until the first message is sent.
@@ -2477,7 +2476,7 @@ namespace Google.Apis.HangoutsChat.v1
         /// <summary>
         /// Lists spaces the caller is a member of. Group chats and DMs aren't listed until the first message is sent.
         /// For an example, see [List spaces](https://developers.google.com/chat/api/guides/v1/spaces/list). Requires
-        /// [authentication](https://developers.google.com/chat/api/guides/auth). Fully supports [service account
+        /// [authentication](https://developers.google.com/chat/api/guides/auth). Supports [app
         /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts) and [user
         /// authentication](https://developers.google.com/chat/api/guides/auth/users). Lists spaces visible to the
         /// caller or authenticated user. Group chats and DMs aren't listed until the first message is sent.
@@ -2502,10 +2501,10 @@ namespace Google.Apis.HangoutsChat.v1
             /// "GROUP_CHAT" OR spaceType = "DIRECT_MESSAGE"
             /// ```
             /// Invalid queries are rejected by the server with an
-            /// `INVALID_ARGUMENT` error. With [service account
+            /// `INVALID_ARGUMENT` error. With [app
             /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts), this field is
-            /// ignored and the query always returns all spaces. But the Chat API still validates the query syntax with
-            /// service accounts, so invalid queries are still rejected.
+            /// ignored and the query always returns all spaces. But the Chat API still validates the query syntax, so
+            /// invalid queries are still rejected.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
@@ -2665,21 +2664,20 @@ namespace Google.Apis.HangoutsChat.v1
         /// space](https://developers.google.com/chat/api/guides/v1/spaces/set-up). To specify the human members to add,
         /// add memberships with the appropriate `member.name` in the `SetUpSpaceRequest`. To add a human user, use
         /// `users/{user}`, where `{user}` can be the email address for the user. For users in the same Workspace
-        /// organization `{user}` can also be the `{person_id}` for the person from the People API, or the `id` for the
-        /// user in the Directory API. For example, if the People API Person `resourceName` for `user@example.com` is
-        /// `people/123456789`, you can add the user to the space by setting the `membership.member.name` to
-        /// `users/user@example.com` or `users/123456789`. For a space or group chat, if the caller blocks or is blocked
-        /// by some members, then those members aren't added to the created space. To create a direct message (DM)
-        /// between the calling user and another human user, specify exactly one membership to represent the human user.
-        /// If one user blocks the other, the request fails and the DM isn't created. To create a DM between the calling
-        /// user and the calling app, set `Space.singleUserBotDm` to `true` and don't specify any memberships. You can
-        /// only use this method to set up a DM with the calling app. To add the calling app as a member of a space or
-        /// an existing DM between two human users, see [create a
-        /// membership](https://developers.google.com/chat/api/guides/v1/members/create). If a DM already exists between
-        /// two users, even when one user blocks the other at the time a request is made, then the existing DM is
-        /// returned. Spaces with threaded replies aren't supported. If you receive the error message `ALREADY_EXISTS`
-        /// when setting up a space, try a different `displayName`. An existing space within the Google Workspace
-        /// organization might already use this display name. Requires [user
+        /// organization `{user}` can also be the `id` for the person from the People API, or the `id` for the user in
+        /// the Directory API. For example, if the People API Person profile ID for `user@example.com` is `123456789`,
+        /// you can add the user to the space by setting the `membership.member.name` to `users/user@example.com` or
+        /// `users/123456789`. For a space or group chat, if the caller blocks or is blocked by some members, then those
+        /// members aren't added to the created space. To create a direct message (DM) between the calling user and
+        /// another human user, specify exactly one membership to represent the human user. If one user blocks the
+        /// other, the request fails and the DM isn't created. To create a DM between the calling user and the calling
+        /// app, set `Space.singleUserBotDm` to `true` and don't specify any memberships. You can only use this method
+        /// to set up a DM with the calling app. To add the calling app as a member of a space or an existing DM between
+        /// two human users, see [create a membership](https://developers.google.com/chat/api/guides/v1/members/create).
+        /// If a DM already exists between two users, even when one user blocks the other at the time a request is made,
+        /// then the existing DM is returned. Spaces with threaded replies aren't supported. If you receive the error
+        /// message `ALREADY_EXISTS` when setting up a space, try a different `displayName`. An existing space within
+        /// the Google Workspace organization might already use this display name. Requires [user
         /// authentication](https://developers.google.com/chat/api/guides/auth/users).
         /// </summary>
         /// <param name="body">The body of the request.</param>
@@ -2694,21 +2692,20 @@ namespace Google.Apis.HangoutsChat.v1
         /// space](https://developers.google.com/chat/api/guides/v1/spaces/set-up). To specify the human members to add,
         /// add memberships with the appropriate `member.name` in the `SetUpSpaceRequest`. To add a human user, use
         /// `users/{user}`, where `{user}` can be the email address for the user. For users in the same Workspace
-        /// organization `{user}` can also be the `{person_id}` for the person from the People API, or the `id` for the
-        /// user in the Directory API. For example, if the People API Person `resourceName` for `user@example.com` is
-        /// `people/123456789`, you can add the user to the space by setting the `membership.member.name` to
-        /// `users/user@example.com` or `users/123456789`. For a space or group chat, if the caller blocks or is blocked
-        /// by some members, then those members aren't added to the created space. To create a direct message (DM)
-        /// between the calling user and another human user, specify exactly one membership to represent the human user.
-        /// If one user blocks the other, the request fails and the DM isn't created. To create a DM between the calling
-        /// user and the calling app, set `Space.singleUserBotDm` to `true` and don't specify any memberships. You can
-        /// only use this method to set up a DM with the calling app. To add the calling app as a member of a space or
-        /// an existing DM between two human users, see [create a
-        /// membership](https://developers.google.com/chat/api/guides/v1/members/create). If a DM already exists between
-        /// two users, even when one user blocks the other at the time a request is made, then the existing DM is
-        /// returned. Spaces with threaded replies aren't supported. If you receive the error message `ALREADY_EXISTS`
-        /// when setting up a space, try a different `displayName`. An existing space within the Google Workspace
-        /// organization might already use this display name. Requires [user
+        /// organization `{user}` can also be the `id` for the person from the People API, or the `id` for the user in
+        /// the Directory API. For example, if the People API Person profile ID for `user@example.com` is `123456789`,
+        /// you can add the user to the space by setting the `membership.member.name` to `users/user@example.com` or
+        /// `users/123456789`. For a space or group chat, if the caller blocks or is blocked by some members, then those
+        /// members aren't added to the created space. To create a direct message (DM) between the calling user and
+        /// another human user, specify exactly one membership to represent the human user. If one user blocks the
+        /// other, the request fails and the DM isn't created. To create a DM between the calling user and the calling
+        /// app, set `Space.singleUserBotDm` to `true` and don't specify any memberships. You can only use this method
+        /// to set up a DM with the calling app. To add the calling app as a member of a space or an existing DM between
+        /// two human users, see [create a membership](https://developers.google.com/chat/api/guides/v1/members/create).
+        /// If a DM already exists between two users, even when one user blocks the other at the time a request is made,
+        /// then the existing DM is returned. Spaces with threaded replies aren't supported. If you receive the error
+        /// message `ALREADY_EXISTS` when setting up a space, try a different `displayName`. An existing space within
+        /// the Google Workspace organization might already use this display name. Requires [user
         /// authentication](https://developers.google.com/chat/api/guides/auth/users).
         /// </summary>
         public class SetupRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.Space>
@@ -2768,7 +2765,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
     public class ActionResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Input only. A response to an event related to a
+        /// Input only. A response to an interaction event related to a
         /// [dialog](https://developers.google.com/chat/how-tos/dialogs). Must be accompanied by `ResponseType.Dialog`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dialogAction")]
@@ -2777,6 +2774,10 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// <summary>Input only. The type of Chat app response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>Input only. The response of the updated widget.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updatedWidget")]
+        public virtual UpdatedWidget UpdatedWidget { get; set; }
 
         /// <summary>
         /// Input only. URL for users to authenticate or configure. (Only for `REQUEST_CONFIG` response types.)
@@ -5505,6 +5506,17 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>List of widget autocomplete results.</summary>
+    public class SelectionItems : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>An array of the SelectionItem objects.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual System.Collections.Generic.IList<GoogleAppsCardV1SelectionItem> Items { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class SetUpSpaceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -5835,6 +5847,23 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The response of the updated widget. Used to provide autocomplete options for a widget.</summary>
+    public class UpdatedWidget : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of widget autocomplete results</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suggestions")]
+        public virtual SelectionItems Suggestions { get; set; }
+
+        /// <summary>
+        /// The ID of the updated widget. The ID must match the one for the widget that triggered the update request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("widget")]
+        public virtual string Widget { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class UploadAttachmentRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. The filename of the attachment, including the file extension.</summary>
@@ -5876,13 +5905,12 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
         /// <summary>
         /// Resource name for a Google Chat user. Format: `users/{user}`. `users/app` can be used as an alias for the
-        /// calling app bot user. For human users, `{user}` is the same user identifier as: - the `{person_id`} for the
-        /// [Person](https://developers.google.com/people/api/rest/v1/people) in the People API, where the Person
-        /// `resource_name` is `people/{person_id}`. For example, `users/123456789` in Chat API represents the same
-        /// person as `people/123456789` in People API. - the `id` for a
-        /// [user](https://developers.google.com/admin-sdk/directory/reference/rest/v1/users) in the Admin SDK Directory
-        /// API. - the user's email address can be used as an alias for `{user}` in API requests. For example, if the
-        /// People API Person `resourceName` for `user@example.com` is `people/123456789`, you can use
+        /// calling app bot user. For human users, `{user}` is the same user identifier as: - the `id` for the
+        /// [Person](https://developers.google.com/people/api/rest/v1/people) in the People API. For example,
+        /// `users/123456789` in Chat API represents the same person as the `123456789` Person profile ID in People API.
+        /// - the `id` for a [user](https://developers.google.com/admin-sdk/directory/reference/rest/v1/users) in the
+        /// Admin SDK Directory API. - the user's email address can be used as an alias for `{user}` in API requests.
+        /// For example, if the People API Person profile ID for `user@example.com` is `123456789`, you can use
         /// `users/user@example.com` as an alias to reference `users/123456789`. Only the canonical resource name (for
         /// example `users/123456789`) will be returned from the API.
         /// </summary>

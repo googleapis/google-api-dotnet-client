@@ -1687,10 +1687,10 @@ namespace Google.Apis.MapsPlaces.v1.Data
         public virtual System.Nullable<int> MaxResultCount { get; set; }
 
         /// <summary>
-        /// Filter out results whose average user rating is strictly less than this limit. A valid value must be an
-        /// float between 0 and 5 (inclusively) at a 0.5 cadence i.e. [0, 0.5, 1.0, ... , 5.0] inclusively. This is to
-        /// keep parity with LocalRefinement_UserRating. The input rating will round up to the nearest 0.5(ceiling). For
-        /// instance, a rating of 0.6 will eliminate all results with a less than 1.0 rating.
+        /// Filter out results whose average user rating is strictly less than this limit. A valid value must be a float
+        /// between 0 and 5 (inclusively) at a 0.5 cadence i.e. [0, 0.5, 1.0, ... , 5.0] inclusively. The input rating
+        /// will round up to the nearest 0.5(ceiling). For instance, a rating of 0.6 will eliminate all results with a
+        /// less than 1.0 rating.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minRating")]
         public virtual System.Nullable<double> MinRating { get; set; }

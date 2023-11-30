@@ -43506,7 +43506,7 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Optimized storage type to replace lightning</summary>
+    /// <summary>Optimized storage type</summary>
     public class GoogleCloudAiplatformV1beta1FeatureOnlineStoreOptimized : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -43941,6 +43941,17 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Lookup key for a feature view.</summary>
+    public class GoogleCloudAiplatformV1beta1FeatureViewDataKey : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>String key to use for lookup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -44420,7 +44431,18 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
     /// </summary>
     public class GoogleCloudAiplatformV1beta1FetchFeatureValuesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Specify response data format. If not set, KeyValue format will be used.</summary>
+        /// <summary>Optional. Response data format. If not set, FeatureViewDataFormat.KEY_VALUE will be used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataFormat")]
+        public virtual string DataFormat { get; set; }
+
+        /// <summary>Optional. The request key to fetch feature values for.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataKey")]
+        public virtual GoogleCloudAiplatformV1beta1FeatureViewDataKey DataKey { get; set; }
+
+        /// <summary>
+        /// Specify response data format. If not set, KeyValue format will be used. Deprecated. Use
+        /// FetchFeatureValuesRequest.data_format.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("format")]
         public virtual string Format { get; set; }
 
@@ -47890,6 +47912,10 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("command")]
         public virtual System.Collections.Generic.IList<string> Command { get; set; }
 
+        /// <summary>Immutable. Deployment timeout. TODO (b/306244185): Revise documentation before exposing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deploymentTimeout")]
+        public virtual object DeploymentTimeout { get; set; }
+
         /// <summary>
         /// Immutable. List of environment variables to set in the container. After the container starts running, code
         /// running in the container can read these environment variables. Additionally, the command and args fields can
@@ -47906,6 +47932,13 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("env")]
         public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1beta1EnvVar> Env { get; set; }
+
+        /// <summary>
+        /// Immutable. Specification for Kubernetes readiness probe. TODO (b/306244185): Revise documentation before
+        /// exposing.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("healthProbe")]
+        public virtual GoogleCloudAiplatformV1beta1Probe HealthProbe { get; set; }
 
         /// <summary>
         /// Immutable. HTTP path on the container to send health checks to. Vertex AI intermittently sends GET requests
@@ -47975,6 +48008,20 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("predictRoute")]
         public virtual string PredictRoute { get; set; }
+
+        /// <summary>
+        /// Immutable. The amount of the VM memory to reserve as the shared memory for the model in megabytes. TODO
+        /// (b/306244185): Revise documentation before exposing.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sharedMemorySizeMb")]
+        public virtual System.Nullable<long> SharedMemorySizeMb { get; set; }
+
+        /// <summary>
+        /// Immutable. Specification for Kubernetes startup probe. TODO (b/306244185): Revise documentation before
+        /// exposing.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startupProbe")]
+        public virtual GoogleCloudAiplatformV1beta1Probe StartupProbe { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -51366,6 +51413,50 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Probe describes a health check to be performed against a container to determine whether it is alive or ready to
+    /// receive traffic.
+    /// </summary>
+    public class GoogleCloudAiplatformV1beta1Probe : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Exec specifies the action to take.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exec")]
+        public virtual GoogleCloudAiplatformV1beta1ProbeExecAction Exec { get; set; }
+
+        /// <summary>
+        /// How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Must be less than
+        /// timeout_seconds. Maps to Kubernetes probe argument 'periodSeconds'.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("periodSeconds")]
+        public virtual System.Nullable<int> PeriodSeconds { get; set; }
+
+        /// <summary>
+        /// Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Must be greater
+        /// or equal to period_seconds. Maps to Kubernetes probe argument 'timeoutSeconds'.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeoutSeconds")]
+        public virtual System.Nullable<int> TimeoutSeconds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>ExecAction specifies a command to execute.</summary>
+    public class GoogleCloudAiplatformV1beta1ProbeExecAction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Command is the command line to execute inside the container, the working directory for the command is root
+        /// ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so
+        /// traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to
+        /// that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("command")]
+        public virtual System.Collections.Generic.IList<string> Command { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A Model Garden Publisher Model.</summary>
     public class GoogleCloudAiplatformV1beta1PublisherModel : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -52082,6 +52173,17 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         /// <summary>Number of times the user has read data within the Tensorboard.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("viewCount")]
         public virtual System.Nullable<long> ViewCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details of operations that perform reboot PersistentResource.</summary>
+    public class GoogleCloudAiplatformV1beta1RebootPersistentResourceOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Operation metadata for PersistentResource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("genericMetadata")]
+        public virtual GoogleCloudAiplatformV1beta1GenericOperationMetadata GenericMetadata { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -59828,10 +59930,10 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
 
         /// <summary>
         /// Optional. The user-provided custom service account to use to do the model upload. If empty, [Vertex AI
-        /// Service Agent](https://cloud.google.com/vertex-ai/docs/general/access-control#service-agents) will be used.
-        /// Users uploading the Model must have the `iam.serviceAccounts.actAs` permission on this service account.
-        /// Also, this account must belong to the project specified in the `parent` field and have all necessary read
-        /// permissions.
+        /// Service Agent](https://cloud.google.com/vertex-ai/docs/general/access-control#service-agents) will be used
+        /// to access resources needed to upload the model. This account must belong to the target project where the
+        /// model is uploaded to, i.e., the project specified in the `parent` field of this request and have necessary
+        /// read permissions (to Google Cloud Storage, Artifact Registry, etc.).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
         public virtual string ServiceAccount { get; set; }

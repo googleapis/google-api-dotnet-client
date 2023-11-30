@@ -2039,7 +2039,10 @@ namespace Google.Apis.MyBusinessBusinessInformation.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
-        /// <summary>The approximate number of Locations in the list irrespective of pagination.</summary>
+        /// <summary>
+        /// The approximate number of Locations in the list irrespective of pagination. This field will only be returned
+        /// if `filter` is used as a query parameter.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalSize")]
         public virtual System.Nullable<int> TotalSize { get; set; }
 

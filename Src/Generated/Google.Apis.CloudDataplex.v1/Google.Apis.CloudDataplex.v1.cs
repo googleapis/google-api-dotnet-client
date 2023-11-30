@@ -11870,6 +11870,24 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>DataQualityColumnResult provides a more detailed, per-column view of the results.</summary>
+    public class GoogleCloudDataplexV1DataQualityColumnResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The column specified in the DataQualityRule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("column")]
+        public virtual string Column { get; set; }
+
+        /// <summary>
+        /// Output only. The column-level data quality score for this data scan job if and only if the 'column' field is
+        /// set.The score ranges between between 0, 100 (up to two decimal points).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("score")]
+        public virtual System.Nullable<float> Score { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A dimension captures data quality intent about a defined subset of the rules specified.</summary>
     public class GoogleCloudDataplexV1DataQualityDimension : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11895,6 +11913,13 @@ namespace Google.Apis.CloudDataplex.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("passed")]
         public virtual System.Nullable<bool> Passed { get; set; }
 
+        /// <summary>
+        /// Output only. The dimension-level data quality score for this data scan job if and only if the 'dimension'
+        /// field is set.The score ranges between 0, 100 (up to two decimal points).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("score")]
+        public virtual System.Nullable<float> Score { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -11902,6 +11927,13 @@ namespace Google.Apis.CloudDataplex.v1.Data
     /// <summary>The output of a DataQualityScan.</summary>
     public class GoogleCloudDataplexV1DataQualityResult : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Output only. A list of results at the column level.A column will have a corresponding
+        /// DataQualityColumnResult if and only if there is at least one rule with the 'column' field set to it.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("columns")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDataplexV1DataQualityColumnResult> Columns { get; set; }
+
         /// <summary>
         /// A list of results at the dimension level.A dimension will have a corresponding DataQualityDimensionResult if
         /// and only if there is at least one rule with the 'dimension' field set to it.
@@ -11928,6 +11960,12 @@ namespace Google.Apis.CloudDataplex.v1.Data
         /// <summary>The data scanned for this result.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scannedData")]
         public virtual GoogleCloudDataplexV1ScannedData ScannedData { get; set; }
+
+        /// <summary>
+        /// Output only. The overall data quality score.The score ranges between 0, 100 (up to two decimal points).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("score")]
+        public virtual System.Nullable<float> Score { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

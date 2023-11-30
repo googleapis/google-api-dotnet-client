@@ -823,7 +823,7 @@ namespace Google.Apis.Assuredworkloads.v1
                     /// <summary>
                     /// Optional. List of asset types to be analyzed, including and under the source resource. If empty,
                     /// all assets are analyzed. The complete list of asset types is available
-                    /// [here](https://cloud.google.com/asset-inventory/docs/supported-asset-types#searchable_asset_types).
+                    /// [here](https://cloud.google.com/asset-inventory/docs/supported-asset-types).
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("assetTypes", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual Google.Apis.Util.Repeatable<string> AssetTypes { get; set; }
@@ -1485,7 +1485,7 @@ namespace Google.Apis.Assuredworkloads.v1.Data
 
         /// <summary>
         /// Type of the asset being analyzed. Possible values will be among the ones listed
-        /// [here](https://cloud.google.com/asset-inventory/docs/supported-asset-types#searchable_asset_types).
+        /// [here](https://cloud.google.com/asset-inventory/docs/supported-asset-types).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assetType")]
         public virtual string AssetType { get; set; }
@@ -1669,7 +1669,7 @@ namespace Google.Apis.Assuredworkloads.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Workload monitoring Violation. Next Id: 28</summary>
+    /// <summary>Workload monitoring Violation.</summary>
     public class GoogleCloudAssuredworkloadsV1Violation : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A boolean that indicates if the violation is acknowledged</summary>
@@ -1929,7 +1929,7 @@ namespace Google.Apis.Assuredworkloads.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Violation exception detail. Next Id: 6</summary>
+    /// <summary>Violation exception detail.</summary>
     public class GoogleCloudAssuredworkloadsV1ViolationExceptionContext : Google.Apis.Requests.IDirectResponseSchema
     {
         private string _acknowledgementTimeRaw;

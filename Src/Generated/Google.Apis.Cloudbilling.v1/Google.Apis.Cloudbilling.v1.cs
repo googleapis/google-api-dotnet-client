@@ -2011,6 +2011,15 @@ namespace Google.Apis.Cloudbilling.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("open")]
         public virtual System.Nullable<bool> Open { get; set; }
 
+        /// <summary>
+        /// Output only. The billing account's parent resource identifier. Use the `MoveBillingAccount` method to update
+        /// the account's parent resource if it is a organization. Format: - organizations/{organization_id}, for
+        /// example: organizations/12345678 - billingAccounts/{billing_account_id}, for example:
+        /// `billingAccounts/012345-567890-ABCDEF`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
+        public virtual string Parent { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
