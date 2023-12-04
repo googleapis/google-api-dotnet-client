@@ -5,7 +5,8 @@ set -ex
 # Make sure secrets are loaded in a well known location before running the release
 source ./populatesecrets.sh
 populate_all_secrets
-# Restore tools, in particular the SBOM generator
+# Restore tools, in particular the SBOM generator.
+mkdir -p ../NuPkgs/Support
 dotnet tool restore
 
 declare -r github_user="$(cat "$SECRETS_LOCATION"/google-api-dotnet-client-github-user-name)"
