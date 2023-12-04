@@ -6,6 +6,7 @@ set -ex
 source ./populatesecrets.sh
 populate_all_secrets
 # Restore tools, in particular the SBOM generator
+mkdir -p ../NuPkgs/Support
 dotnet tool restore
 
 declare -r nuget_token="$(cat "$SECRETS_LOCATION"/google-apis-nuget-api-key)"
