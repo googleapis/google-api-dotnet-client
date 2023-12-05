@@ -2722,6 +2722,15 @@ namespace Google.Apis.ServiceConsumerManagement.v1beta1.Data
     public class MethodSettings : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// List of top-level fields of the request message, that should be automatically populated by the client
+        /// libraries based on their (google.api.field_info).format. Currently supported format: UUID4. Example of a
+        /// YAML configuration: publishing: method_settings: - selector: google.example.v1.ExampleService.CreateExample
+        /// auto_populated_fields: - request_id
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoPopulatedFields")]
+        public virtual System.Collections.Generic.IList<string> AutoPopulatedFields { get; set; }
+
+        /// <summary>
         /// Describes settings to use for long-running operations when generating API methods for RPCs. Complements RPCs
         /// that use the annotations in google/longrunning/operations.proto. Example of a YAML configuration::
         /// publishing: method_settings: - selector: google.cloud.speech.v2.Speech.BatchRecognize long_running:

@@ -272,6 +272,367 @@ namespace Google.Apis.AnalyticsData.v1beta
         public PropertiesResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
+            AudienceExports = new AudienceExportsResource(service);
+        }
+
+        /// <summary>Gets the AudienceExports resource.</summary>
+        public virtual AudienceExportsResource AudienceExports { get; }
+
+        /// <summary>The "audienceExports" collection of methods.</summary>
+        public class AudienceExportsResource
+        {
+            private const string Resource = "audienceExports";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public AudienceExportsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>
+            /// Creates an audience export for later retrieval. This method quickly returns the audience export's
+            /// resource name and initiates a long running asynchronous request to form an audience export. To export
+            /// the users in an audience export, first create the audience export through this method and then send the
+            /// audience resource name to the `QueryAudienceExport` method. See [Creating an Audience
+            /// Export](https://developers.google.com/analytics/devguides/reporting/data/v1/audience-list-basics) for an
+            /// introduction to Audience Exports with examples. An audience export is a snapshot of the users currently
+            /// in the audience at the time of audience export creation. Creating audience exports for one audience on
+            /// different days will return different results as users enter and exit the audience. Audiences in Google
+            /// Analytics 4 allow you to segment your users in the ways that are important to your business. To learn
+            /// more, see https://support.google.com/analytics/answer/9267572. Audience exports contain the users in
+            /// each audience. Audience Export APIs have some methods at alpha and other methods at beta stability. The
+            /// intention is to advance methods to beta stability after some feedback and adoption. To give your
+            /// feedback on this API, complete the [Google Analytics Audience Export API
+            /// Feedback](https://forms.gle/EeA5u5LW6PEggtCEA) form.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">
+            /// Required. The parent resource where this audience export will be created. Format:
+            /// `properties/{property}`
+            /// </param>
+            public virtual CreateRequest Create(Google.Apis.AnalyticsData.v1beta.Data.AudienceExport body, string parent)
+            {
+                return new CreateRequest(this.service, body, parent);
+            }
+
+            /// <summary>
+            /// Creates an audience export for later retrieval. This method quickly returns the audience export's
+            /// resource name and initiates a long running asynchronous request to form an audience export. To export
+            /// the users in an audience export, first create the audience export through this method and then send the
+            /// audience resource name to the `QueryAudienceExport` method. See [Creating an Audience
+            /// Export](https://developers.google.com/analytics/devguides/reporting/data/v1/audience-list-basics) for an
+            /// introduction to Audience Exports with examples. An audience export is a snapshot of the users currently
+            /// in the audience at the time of audience export creation. Creating audience exports for one audience on
+            /// different days will return different results as users enter and exit the audience. Audiences in Google
+            /// Analytics 4 allow you to segment your users in the ways that are important to your business. To learn
+            /// more, see https://support.google.com/analytics/answer/9267572. Audience exports contain the users in
+            /// each audience. Audience Export APIs have some methods at alpha and other methods at beta stability. The
+            /// intention is to advance methods to beta stability after some feedback and adoption. To give your
+            /// feedback on this API, complete the [Google Analytics Audience Export API
+            /// Feedback](https://forms.gle/EeA5u5LW6PEggtCEA) form.
+            /// </summary>
+            public class CreateRequest : AnalyticsDataBaseServiceRequest<Google.Apis.AnalyticsData.v1beta.Data.Operation>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.AnalyticsData.v1beta.Data.AudienceExport body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The parent resource where this audience export will be created. Format:
+                /// `properties/{property}`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.AnalyticsData.v1beta.Data.AudienceExport Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "create";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta/{+parent}/audienceExports";
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^properties/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Gets configuration metadata about a specific audience export. This method can be used to understand an
+            /// audience export after it has been created. See [Creating an Audience
+            /// Export](https://developers.google.com/analytics/devguides/reporting/data/v1/audience-list-basics) for an
+            /// introduction to Audience Exports with examples. Audience Export APIs have some methods at alpha and
+            /// other methods at beta stability. The intention is to advance methods to beta stability after some
+            /// feedback and adoption. To give your feedback on this API, complete the [Google Analytics Audience Export
+            /// API Feedback](https://forms.gle/EeA5u5LW6PEggtCEA) form.
+            /// </summary>
+            /// <param name="name">
+            /// Required. The audience export resource name. Format:
+            /// `properties/{property}/audienceExports/{audience_export}`
+            /// </param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(this.service, name);
+            }
+
+            /// <summary>
+            /// Gets configuration metadata about a specific audience export. This method can be used to understand an
+            /// audience export after it has been created. See [Creating an Audience
+            /// Export](https://developers.google.com/analytics/devguides/reporting/data/v1/audience-list-basics) for an
+            /// introduction to Audience Exports with examples. Audience Export APIs have some methods at alpha and
+            /// other methods at beta stability. The intention is to advance methods to beta stability after some
+            /// feedback and adoption. To give your feedback on this API, complete the [Google Analytics Audience Export
+            /// API Feedback](https://forms.gle/EeA5u5LW6PEggtCEA) form.
+            /// </summary>
+            public class GetRequest : AnalyticsDataBaseServiceRequest<Google.Apis.AnalyticsData.v1beta.Data.AudienceExport>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The audience export resource name. Format:
+                /// `properties/{property}/audienceExports/{audience_export}`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^properties/[^/]+/audienceExports/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Lists all audience exports for a property. This method can be used for you to find and reuse existing
+            /// audience exports rather than creating unnecessary new audience exports. The same audience can have
+            /// multiple audience exports that represent the export of users that were in an audience on different days.
+            /// See [Creating an Audience
+            /// Export](https://developers.google.com/analytics/devguides/reporting/data/v1/audience-list-basics) for an
+            /// introduction to Audience Exports with examples. Audience Export APIs have some methods at alpha and
+            /// other methods at beta stability. The intention is to advance methods to beta stability after some
+            /// feedback and adoption. To give your feedback on this API, complete the [Google Analytics Audience Export
+            /// API Feedback](https://forms.gle/EeA5u5LW6PEggtCEA) form.
+            /// </summary>
+            /// <param name="parent">
+            /// Required. All audience exports for this property will be listed in the response. Format:
+            /// `properties/{property}`
+            /// </param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(this.service, parent);
+            }
+
+            /// <summary>
+            /// Lists all audience exports for a property. This method can be used for you to find and reuse existing
+            /// audience exports rather than creating unnecessary new audience exports. The same audience can have
+            /// multiple audience exports that represent the export of users that were in an audience on different days.
+            /// See [Creating an Audience
+            /// Export](https://developers.google.com/analytics/devguides/reporting/data/v1/audience-list-basics) for an
+            /// introduction to Audience Exports with examples. Audience Export APIs have some methods at alpha and
+            /// other methods at beta stability. The intention is to advance methods to beta stability after some
+            /// feedback and adoption. To give your feedback on this API, complete the [Google Analytics Audience Export
+            /// API Feedback](https://forms.gle/EeA5u5LW6PEggtCEA) form.
+            /// </summary>
+            public class ListRequest : AnalyticsDataBaseServiceRequest<Google.Apis.AnalyticsData.v1beta.Data.ListAudienceExportsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. All audience exports for this property will be listed in the response. Format:
+                /// `properties/{property}`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// Optional. The maximum number of audience exports to return. The service may return fewer than this
+                /// value. If unspecified, at most 200 audience exports will be returned. The maximum value is 1000
+                /// (higher values will be coerced to the maximum).
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// Optional. A page token, received from a previous `ListAudienceExports` call. Provide this to
+                /// retrieve the subsequent page. When paginating, all other parameters provided to
+                /// `ListAudienceExports` must match the call that provided the page token.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta/{+parent}/audienceExports";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^properties/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Retrieves an audience export of users. After creating an audience, the users are not immediately
+            /// available for exporting. First, a request to `CreateAudienceExport` is necessary to create an audience
+            /// export of users, and then second, this method is used to retrieve the users in the audience export. See
+            /// [Creating an Audience
+            /// Export](https://developers.google.com/analytics/devguides/reporting/data/v1/audience-list-basics) for an
+            /// introduction to Audience Exports with examples. Audiences in Google Analytics 4 allow you to segment
+            /// your users in the ways that are important to your business. To learn more, see
+            /// https://support.google.com/analytics/answer/9267572. Audience Export APIs have some methods at alpha and
+            /// other methods at beta stability. The intention is to advance methods to beta stability after some
+            /// feedback and adoption. To give your feedback on this API, complete the [Google Analytics Audience Export
+            /// API Feedback](https://forms.gle/EeA5u5LW6PEggtCEA) form.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Required. The name of the audience export to retrieve users from. Format:
+            /// `properties/{property}/audienceExports/{audience_export}`
+            /// </param>
+            public virtual QueryRequest Query(Google.Apis.AnalyticsData.v1beta.Data.QueryAudienceExportRequest body, string name)
+            {
+                return new QueryRequest(this.service, body, name);
+            }
+
+            /// <summary>
+            /// Retrieves an audience export of users. After creating an audience, the users are not immediately
+            /// available for exporting. First, a request to `CreateAudienceExport` is necessary to create an audience
+            /// export of users, and then second, this method is used to retrieve the users in the audience export. See
+            /// [Creating an Audience
+            /// Export](https://developers.google.com/analytics/devguides/reporting/data/v1/audience-list-basics) for an
+            /// introduction to Audience Exports with examples. Audiences in Google Analytics 4 allow you to segment
+            /// your users in the ways that are important to your business. To learn more, see
+            /// https://support.google.com/analytics/answer/9267572. Audience Export APIs have some methods at alpha and
+            /// other methods at beta stability. The intention is to advance methods to beta stability after some
+            /// feedback and adoption. To give your feedback on this API, complete the [Google Analytics Audience Export
+            /// API Feedback](https://forms.gle/EeA5u5LW6PEggtCEA) form.
+            /// </summary>
+            public class QueryRequest : AnalyticsDataBaseServiceRequest<Google.Apis.AnalyticsData.v1beta.Data.QueryAudienceExportResponse>
+            {
+                /// <summary>Constructs a new Query request.</summary>
+                public QueryRequest(Google.Apis.Services.IClientService service, Google.Apis.AnalyticsData.v1beta.Data.QueryAudienceExportRequest body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the audience export to retrieve users from. Format:
+                /// `properties/{property}/audienceExports/{audience_export}`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.AnalyticsData.v1beta.Data.QueryAudienceExportRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "query";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta/{+name}:query";
+
+                /// <summary>Initializes Query parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^properties/[^/]+/audienceExports/[^/]+$",
+                    });
+                }
+            }
         }
 
         /// <summary>Returns multiple pivot reports in a batch. All reports must be for the same GA4 Property.</summary>
@@ -796,6 +1157,107 @@ namespace Google.Apis.AnalyticsData.v1beta.Data
         /// <summary>The reason for this metric's restriction.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("restrictedMetricTypes")]
         public virtual System.Collections.Generic.IList<string> RestrictedMetricTypes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// An audience export is a list of users in an audience at the time of the list's creation. One audience may have
+    /// multiple audience exports created for different days.
+    /// </summary>
+    public class AudienceExport : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The audience resource name. This resource name identifies the audience being listed and is shared
+        /// between the Analytics Data &amp;amp; Admin APIs. Format: `properties/{property}/audiences/{audience}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audience")]
+        public virtual string Audience { get; set; }
+
+        /// <summary>Output only. The descriptive display name for this audience. For example, "Purchasers".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audienceDisplayName")]
+        public virtual string AudienceDisplayName { get; set; }
+
+        private string _beginCreatingTimeRaw;
+
+        private object _beginCreatingTime;
+
+        /// <summary>
+        /// Output only. The time when CreateAudienceExport was called and the AudienceExport began the `CREATING`
+        /// state.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("beginCreatingTime")]
+        public virtual string BeginCreatingTimeRaw
+        {
+            get => _beginCreatingTimeRaw;
+            set
+            {
+                _beginCreatingTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _beginCreatingTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="BeginCreatingTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use BeginCreatingTimeDateTimeOffset instead.")]
+        public virtual object BeginCreatingTime
+        {
+            get => _beginCreatingTime;
+            set
+            {
+                _beginCreatingTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _beginCreatingTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="BeginCreatingTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? BeginCreatingTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(BeginCreatingTimeRaw);
+            set => BeginCreatingTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Output only. The total quota tokens charged during creation of the AudienceExport. Because this token count
+        /// is based on activity from the `CREATING` state, this tokens charged will be fixed once an AudienceExport
+        /// enters the `ACTIVE` or `FAILED` states.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creationQuotaTokensCharged")]
+        public virtual System.Nullable<int> CreationQuotaTokensCharged { get; set; }
+
+        /// <summary>Required. The dimensions requested and displayed in the query response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dimensions")]
+        public virtual System.Collections.Generic.IList<V1betaAudienceDimension> Dimensions { get; set; }
+
+        /// <summary>
+        /// Output only. Error message is populated when an audience export fails during creation. A common reason for
+        /// such a failure is quota exhaustion.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorMessage")]
+        public virtual string ErrorMessage { get; set; }
+
+        /// <summary>
+        /// Output only. Identifier. The audience export resource name assigned during creation. This resource name
+        /// identifies this `AudienceExport`. Format: `properties/{property}/audienceExports/{audience_export}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The percentage completed for this audience export ranging between 0 to 100.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("percentageCompleted")]
+        public virtual System.Nullable<double> PercentageCompleted { get; set; }
+
+        /// <summary>Output only. The total number of rows in the AudienceExport result.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rowCount")]
+        public virtual System.Nullable<int> RowCount { get; set; }
+
+        /// <summary>Output only. The current state for this AudienceExport.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1388,6 +1850,24 @@ namespace Google.Apis.AnalyticsData.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A list of all audience exports for a property.</summary>
+    public class ListAudienceExportsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Each audience export for a property.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audienceExports")]
+        public virtual System.Collections.Generic.IList<AudienceExport> AudienceExports { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The dimensions, metrics and comparisons currently accepted in reporting methods.</summary>
     public class Metadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1640,6 +2120,49 @@ namespace Google.Apis.AnalyticsData.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>This resource represents a long-running operation that is the result of a network API call.</summary>
+    public class Operation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed,
+        /// and either `error` or `response` is available.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("done")]
+        public virtual System.Nullable<bool> Done { get; set; }
+
+        /// <summary>The error result of the operation in case of failure or cancellation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual Status Error { get; set; }
+
+        /// <summary>
+        /// Service-specific metadata associated with the operation. It typically contains progress information and
+        /// common metadata such as create time. Some services might not provide such metadata. Any method that returns
+        /// a long-running operation should document the metadata type, if any.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
+
+        /// <summary>
+        /// The server-assigned name, which is only unique within the same service that originally returns it. If you
+        /// use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// The normal, successful response of the operation. If the original method returns no data on success, such as
+        /// `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
+        /// `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have
+        /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
+        /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("response")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Response { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Order bys define how rows will be sorted in the response. For example, ordering rows by descending event count
     /// is one ordering, and ordering rows by the event name string is a different ordering.
@@ -1831,6 +2354,64 @@ namespace Google.Apis.AnalyticsData.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tokensPerProjectPerHour")]
         public virtual QuotaStatus TokensPerProjectPerHour { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A request to list users in an audience export.</summary>
+    public class QueryAudienceExportRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The number of rows to return. If unspecified, 10,000 rows are returned. The API returns a maximum
+        /// of 250,000 rows per request, no matter how many you ask for. `limit` must be positive. The API can also
+        /// return fewer rows than the requested `limit`, if there aren't as many dimension values as the `limit`. To
+        /// learn more about this pagination parameter, see
+        /// [Pagination](https://developers.google.com/analytics/devguides/reporting/data/v1/basics#pagination).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("limit")]
+        public virtual System.Nullable<long> Limit { get; set; }
+
+        /// <summary>
+        /// Optional. The row count of the start row. The first row is counted as row 0. When paging, the first request
+        /// does not specify offset; or equivalently, sets offset to 0; the first request returns the first `limit` of
+        /// rows. The second request sets offset to the `limit` of the first request; the second request returns the
+        /// second `limit` of rows. To learn more about this pagination parameter, see
+        /// [Pagination](https://developers.google.com/analytics/devguides/reporting/data/v1/basics#pagination).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("offset")]
+        public virtual System.Nullable<long> Offset { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A list of users in an audience export.</summary>
+    public class QueryAudienceExportResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Configuration data about AudienceExport being queried. Returned to help interpret the audience rows in this
+        /// response. For example, the dimensions in this AudienceExport correspond to the columns in the AudienceRows.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audienceExport")]
+        public virtual AudienceExport AudienceExport { get; set; }
+
+        /// <summary>
+        /// Rows for each user in an audience export. The number of rows in this response will be less than or equal to
+        /// request's page size.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audienceRows")]
+        public virtual System.Collections.Generic.IList<V1betaAudienceRow> AudienceRows { get; set; }
+
+        /// <summary>
+        /// The total number of rows in the AudienceExport result. `rowCount` is independent of the number of rows
+        /// returned in the response, the `limit` request parameter, and the `offset` request parameter. For example if
+        /// a query returns 175 rows and includes `limit` of 50 in the API request, the response will contain `rowCount`
+        /// of 175 but only 50 rows. To learn more about this pagination parameter, see
+        /// [Pagination](https://developers.google.com/analytics/devguides/reporting/data/v1/basics#pagination).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rowCount")]
+        public virtual System.Nullable<int> RowCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2439,6 +3020,35 @@ namespace Google.Apis.AnalyticsData.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// The `Status` type defines a logical error model that is suitable for different programming environments,
+    /// including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains
+    /// three pieces of data: error code, error message, and error details. You can find out more about this error model
+    /// and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+    /// </summary>
+    public class Status : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual System.Nullable<int> Code { get; set; }
+
+        /// <summary>
+        /// A list of messages that carry the error details. There is a common set of message types for APIs to use.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("details")]
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Details { get; set; }
+
+        /// <summary>
+        /// A developer-facing error message, which should be in English. Any user-facing error message should be
+        /// localized and sent in the google.rpc.Status.details field, or localized by the client.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The filter for string</summary>
     public class StringFilter : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2453,6 +3063,49 @@ namespace Google.Apis.AnalyticsData.v1beta.Data
         /// <summary>The string value used for the matching.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// An audience dimension is a user attribute. Specific user attributed are requested and then later returned in the
+    /// `QueryAudienceExportResponse`.
+    /// </summary>
+    public class V1betaAudienceDimension : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The API name of the dimension. See the [API
+        /// Dimensions](https://developers.google.com/analytics/devguides/reporting/data/v1/audience-list-api-schema#dimensions)
+        /// for the list of dimension names.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dimensionName")]
+        public virtual string DimensionName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The value of a dimension.</summary>
+    public class V1betaAudienceDimensionValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Value as a string if the dimension type is a string.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Dimension value attributes for the audience user row.</summary>
+    public class V1betaAudienceRow : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Each dimension value attribute for an audience user. One dimension value will be added for each dimension
+        /// column requested.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dimensionValues")]
+        public virtual System.Collections.Generic.IList<V1betaAudienceDimensionValue> DimensionValues { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

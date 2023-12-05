@@ -1847,6 +1847,59 @@ namespace Google.Apis.Connectors.v1
                     }
                 }
 
+                /// <summary>ListenEvent listens to the event.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="resourcePath">Required. Resource path for request.</param>
+                public virtual ListenEventRequest ListenEvent(Google.Apis.Connectors.v1.Data.ListenEventRequest body, string resourcePath)
+                {
+                    return new ListenEventRequest(this.service, body, resourcePath);
+                }
+
+                /// <summary>ListenEvent listens to the event.</summary>
+                public class ListenEventRequest : ConnectorsBaseServiceRequest<Google.Apis.Connectors.v1.Data.ListenEventResponse>
+                {
+                    /// <summary>Constructs a new ListenEvent request.</summary>
+                    public ListenEventRequest(Google.Apis.Services.IClientService service, Google.Apis.Connectors.v1.Data.ListenEventRequest body, string resourcePath) : base(service)
+                    {
+                        ResourcePath = resourcePath;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Resource path for request.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resourcePath", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string ResourcePath { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Connectors.v1.Data.ListenEventRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "listenEvent";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+resourcePath}:listenEvent";
+
+                    /// <summary>Initializes ListenEvent parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("resourcePath", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resourcePath",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/connections/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Updates the parameters of a single Connection.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
@@ -5669,6 +5722,10 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("entities")]
         public virtual System.Collections.Generic.IList<string> Entities { get; set; }
 
+        /// <summary>Error message for users.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorMessage")]
+        public virtual string ErrorMessage { get; set; }
+
         /// <summary>
         /// Output only. Resource name. Format:
         /// projects/{project}/locations/{location}/connections/{connection}/connectionSchemaMetadata
@@ -6201,10 +6258,6 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
-        /// <summary>Output only. Launch stage.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("launchStage")]
-        public virtual string LaunchStage { get; set; }
-
         /// <summary>Optional. Logo of the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logo")]
         public virtual string Logo { get; set; }
@@ -6326,13 +6379,13 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Required. Service account needed for runtime plane to access Custom Connector secrets.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
+        public virtual string ServiceAccount { get; set; }
+
         /// <summary>Optional. Location of the custom connector spec.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("specLocation")]
         public virtual string SpecLocation { get; set; }
-
-        /// <summary>Required. Type of the customConnector.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; }
 
         private string _updateTimeRaw;
 
@@ -6928,10 +6981,6 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("authConfig")]
         public virtual AuthConfig AuthConfig { get; set; }
 
-        /// <summary>Encryption key (can be either Google managed or CMEK).</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("encryptionKey")]
-        public virtual ConfigVariable EncryptionKey { get; set; }
-
         /// <summary>Enrichment Enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enrichmentEnabled")]
         public virtual System.Nullable<bool> EnrichmentEnabled { get; set; }
@@ -6941,6 +6990,10 @@ namespace Google.Apis.Connectors.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventsListenerIngressEndpoint")]
         public virtual string EventsListenerIngressEndpoint { get; set; }
+
+        /// <summary>Optional. Auth details for the event listener.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("listenerAuthConfig")]
+        public virtual AuthConfig ListenerAuthConfig { get; set; }
 
         /// <summary>Optional. Private Connectivity Enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privateConnectivityEnabled")]
@@ -6988,6 +7041,10 @@ namespace Google.Apis.Connectors.v1.Data
         /// <summary>Is Eventing Supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isEventingSupported")]
         public virtual System.Nullable<bool> IsEventingSupported { get; set; }
+
+        /// <summary>ListenerAuthConfigTemplates represents the auth values for the event listener.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("listenerAuthConfigTemplates")]
+        public virtual System.Collections.Generic.IList<AuthConfigTemplate> ListenerAuthConfigTemplates { get; set; }
 
         /// <summary>Registration host destination config template.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("registrationDestinationConfig")]
@@ -7645,6 +7702,24 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("runtimeEntitySchemas")]
         public virtual System.Collections.Generic.IList<RuntimeEntitySchema> RuntimeEntitySchemas { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Expected request for ListenEvent API.</summary>
+    public class ListenEventRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Request payload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("payload")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Payload { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Expected response for ListenEvent API.</summary>
+    public class ListenEventResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

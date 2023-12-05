@@ -484,7 +484,7 @@ namespace Google.Apis.Storage.v1
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "b/{bucket}/anywhereCache";
+            public override string RestPath => "b/{bucket}/anywhereCaches";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()

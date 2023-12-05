@@ -1930,6 +1930,67 @@ namespace Google.Apis.AnalyticsHub.v1
                     }
                 }
 
+                /// <summary>Gets the IAM policy.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="resource">
+                /// REQUIRED: The resource for which the policy is being requested. See [Resource
+                /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                /// field.
+                /// </param>
+                public virtual GetIamPolicyRequest GetIamPolicy(Google.Apis.AnalyticsHub.v1.Data.GetIamPolicyRequest body, string resource)
+                {
+                    return new GetIamPolicyRequest(this.service, body, resource);
+                }
+
+                /// <summary>Gets the IAM policy.</summary>
+                public class GetIamPolicyRequest : AnalyticsHubBaseServiceRequest<Google.Apis.AnalyticsHub.v1.Data.Policy>
+                {
+                    /// <summary>Constructs a new GetIamPolicy request.</summary>
+                    public GetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.AnalyticsHub.v1.Data.GetIamPolicyRequest body, string resource) : base(service)
+                    {
+                        Resource = resource;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// REQUIRED: The resource for which the policy is being requested. See [Resource
+                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                    /// field.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.AnalyticsHub.v1.Data.GetIamPolicyRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "getIamPolicy";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+resource}:getIamPolicy";
+
+                    /// <summary>Initializes GetIamPolicy parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/subscriptions/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Lists all subscriptions in a given project and location.</summary>
                 /// <param name="parent">
                 /// Required. The parent resource path of the subscription. e.g. projects/myproject/locations/US
@@ -2131,6 +2192,67 @@ namespace Google.Apis.AnalyticsHub.v1
                         RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                         {
                             Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/subscriptions/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Sets the IAM policy.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="resource">
+                /// REQUIRED: The resource for which the policy is being specified. See [Resource
+                /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                /// field.
+                /// </param>
+                public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.AnalyticsHub.v1.Data.SetIamPolicyRequest body, string resource)
+                {
+                    return new SetIamPolicyRequest(this.service, body, resource);
+                }
+
+                /// <summary>Sets the IAM policy.</summary>
+                public class SetIamPolicyRequest : AnalyticsHubBaseServiceRequest<Google.Apis.AnalyticsHub.v1.Data.Policy>
+                {
+                    /// <summary>Constructs a new SetIamPolicy request.</summary>
+                    public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.AnalyticsHub.v1.Data.SetIamPolicyRequest body, string resource) : base(service)
+                    {
+                        Resource = resource;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// REQUIRED: The resource for which the policy is being specified. See [Resource
+                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                    /// field.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.AnalyticsHub.v1.Data.SetIamPolicyRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "setIamPolicy";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+resource}:setIamPolicy";
+
+                    /// <summary>Initializes SetIamPolicy parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,

@@ -2451,6 +2451,10 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         public virtual string Name { get; set; }
 
         /// <summary>Output only. Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
+        public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
+
+        /// <summary>Output only. Reserved for future use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
         public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
 
@@ -2600,8 +2604,9 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         public virtual System.Nullable<long> CapacityGb { get; set; }
 
         /// <summary>
-        /// The name of the file share (must be 32 characters or less for Enterprise and High Scale SSD tiers and 16
-        /// characters or less for all other tiers).
+        /// Required. The name of the file share. Must use 1-16 characters for the basic service tier and 1-63
+        /// characters for all other service tiers. Must use lowercase letters, numbers, or underscores [a-z0-9_]. Must
+        /// start with a letter. Immutable.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -3240,6 +3245,10 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("protocol")]
         public virtual string Protocol { get; set; }
+
+        /// <summary>Output only. Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
+        public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
 
         /// <summary>Output only. Reserved for future use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
