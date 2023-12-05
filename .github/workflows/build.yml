@@ -13,13 +13,13 @@ jobs:
 
     # We build with .NET 6 SDK
     - name: Setup .NET 6
-      uses: actions/setup-dotnet@v3
+      uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 6.0.x
 
     # We use the .NET Core 3.1 SDK runtime for additional testing
     - name: Setup .NET Core 3.1
-      uses: actions/setup-dotnet@v3
+      uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 3.1.x
 
