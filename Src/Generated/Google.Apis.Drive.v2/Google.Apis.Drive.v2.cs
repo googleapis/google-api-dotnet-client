@@ -9453,6 +9453,13 @@ namespace Google.Apis.Drive.v2.Data
         }
 
         /// <summary>
+        /// Output only. Whether the content restriction was applied by the system, for example due to an esignature.
+        /// Users cannot modify or remove system restricted content restrictions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("systemRestricted")]
+        public virtual System.Nullable<bool> SystemRestricted { get; set; }
+
+        /// <summary>
         /// Output only. The type of the content restriction. Currently the only possible value is
         /// `globalContentRestriction`.
         /// </summary>

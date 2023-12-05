@@ -1646,6 +1646,32 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration for resources used by Airflow DAG processors.</summary>
+    public class DagProcessorResource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The number of DAG processors. If not provided or set to 0, a single DAG processor instance will be
+        /// created.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("count")]
+        public virtual System.Nullable<int> Count { get; set; }
+
+        /// <summary>Optional. CPU request and limit for a single Airflow DAG processor replica.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cpu")]
+        public virtual System.Nullable<float> Cpu { get; set; }
+
+        /// <summary>Optional. Memory (GB) request and limit for a single Airflow DAG processor replica.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("memoryGb")]
+        public virtual System.Nullable<float> MemoryGb { get; set; }
+
+        /// <summary>Optional. Storage (GB) request and limit for a single Airflow DAG processor replica.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storageGb")]
+        public virtual System.Nullable<float> StorageGb { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The configuration of Cloud SQL instance that is used by the Apache Airflow software.</summary>
     public class DatabaseConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2403,6 +2429,27 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
     public class NodeConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. The IP range in CIDR notation to use internally by Cloud Composer. IP addresses are not reserved -
+        /// and the same range can be used by multiple Cloud Composer environments. In case of overlap, IPs from this
+        /// range will not be accessible in the user's VPC network. Cannot be updated. If not specified, the default
+        /// value of '100.64.128.0/20' is used. This field is supported for Cloud Composer environments in versions
+        /// composer-3.*.*-airflow-*.*.* and newer.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("composerInternalIpv4CidrBlock")]
+        public virtual string ComposerInternalIpv4CidrBlock { get; set; }
+
+        /// <summary>
+        /// Optional. Network Attachment that Cloud Composer environment is connected to, which provides connectivity
+        /// with a user's VPC network. Takes precedence over network and subnetwork settings. If not provided, but
+        /// network and subnetwork are defined during environment, it will be provisioned. If not provided and network
+        /// and subnetwork are also empty, then connectivity to user's VPC network is disabled. Network attachment must
+        /// be provided in format projects/{project}/regions/{region}/networkAttachments/{networkAttachment}. This field
+        /// is supported for Cloud Composer environments in versions composer-3.*.*-airflow-*.*.* and newer.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("composerNetworkAttachment")]
+        public virtual string ComposerNetworkAttachment { get; set; }
+
+        /// <summary>
         /// Optional. The disk size in GB used for node VMs. Minimum size is 30GB. If unspecified, defaults to 100GB.
         /// Cannot be updated. This field is supported for Cloud Composer environments in versions
         /// composer-1.*.*-airflow-*.*.*.
@@ -2764,6 +2811,16 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         public virtual string CloudSqlIpv4CidrBlock { get; set; }
 
         /// <summary>
+        /// Optional. If `true`, builds performed during operations that install Python packages have only private
+        /// connectivity to Google services (including Artifact Registry) and VPC network (if either
+        /// `NodeConfig.network` and `NodeConfig.subnetwork` fields or `NodeConfig.composer_network_attachment` field
+        /// are specified). If `false`, the builds also have access to the internet. This field is supported for Cloud
+        /// Composer environments in versions composer-3.*.*-airflow-*.*.* and newer.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enablePrivateBuildsOnly")]
+        public virtual System.Nullable<bool> EnablePrivateBuildsOnly { get; set; }
+
+        /// <summary>
         /// Optional. If `true`, a Private IP Cloud Composer environment is created. If this field is set to true,
         /// `IPAllocationPolicy.use_ip_aliases` must be set to true for Cloud Composer environments in versions
         /// composer-1.*.*-airflow-*.*.*.
@@ -2977,6 +3034,14 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("schedulerCount")]
         public virtual System.Nullable<int> SchedulerCount { get; set; }
 
+        /// <summary>
+        /// Optional. Whether or not the web server uses custom plugins. If unspecified, the field defaults to
+        /// `PLUGINS_ENABLED`. This field is supported for Cloud Composer environments in versions
+        /// composer-3.*.*-airflow-*.*.* and newer.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("webServerPluginsMode")]
+        public virtual string WebServerPluginsMode { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -3165,6 +3230,13 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
     /// </summary>
     public class WorkloadsConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Resources used by Airflow DAG processors. This field is supported for Cloud Composer environments
+        /// in versions composer-3.*.*-airflow-*.*.* and newer.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dagProcessor")]
+        public virtual DagProcessorResource DagProcessor { get; set; }
+
         /// <summary>Optional. Resources used by Airflow schedulers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduler")]
         public virtual SchedulerResource Scheduler { get; set; }

@@ -6825,8 +6825,8 @@ namespace Google.Apis.Dataflow.v1b3.Data
         /// <summary>
         /// The current state of the job. Jobs are created in the `JOB_STATE_STOPPED` state unless otherwise specified.
         /// A job in the `JOB_STATE_RUNNING` state may asynchronously enter a terminal state. After a job has reached a
-        /// terminal state, no further state updates may be made. This field may be mutated by the Cloud Dataflow
-        /// service; callers cannot mutate it.
+        /// terminal state, no further state updates may be made. This field might be mutated by the Dataflow service;
+        /// callers cannot mutate it.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currentState")]
         public virtual string CurrentState { get; set; }
@@ -6879,7 +6879,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
         public virtual JobExecutionInfo ExecutionInfo { get; set; }
 
         /// <summary>
-        /// The unique ID of this job. This field is set by the Cloud Dataflow service when the Job is created, and is
+        /// The unique ID of this job. This field is set by the Dataflow service when the job is created, and is
         /// immutable for the life of the job.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
@@ -6909,10 +6909,10 @@ namespace Google.Apis.Dataflow.v1b3.Data
         public virtual string Location { get; set; }
 
         /// <summary>
-        /// The user-specified Cloud Dataflow job name. Only one Job with a given name can exist in a project within one
-        /// region at any given time. Jobs in different regions can have the same name. If a caller attempts to create a
-        /// Job with the same name as an already-existing Job, the attempt returns the existing Job. The name must match
-        /// the regular expression `[a-z]([-a-z0-9]{0,1022}[a-z0-9])?`
+        /// The user-specified Dataflow job name. Only one active job with a given name can exist in a project within
+        /// one region at any given time. Jobs in different regions can have the same name. If a caller attempts to
+        /// create a job with the same name as an active job that already exists, the attempt returns the existing job.
+        /// The name must match the regular expression `[a-z]([-a-z0-9]{0,1022}[a-z0-9])?`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -6925,7 +6925,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pipelineDescription")]
         public virtual PipelineDescription PipelineDescription { get; set; }
 
-        /// <summary>The ID of the Cloud Platform project that the job belongs to.</summary>
+        /// <summary>The ID of the Google Cloud project that the job belongs to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
 
@@ -7047,7 +7047,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("transformNameMapping")]
         public virtual System.Collections.Generic.IDictionary<string, string> TransformNameMapping { get; set; }
 
-        /// <summary>The type of Cloud Dataflow job.</summary>
+        /// <summary>The type of Dataflow job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
@@ -8664,6 +8664,13 @@ namespace Google.Apis.Dataflow.v1b3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minNumWorkers")]
         public virtual System.Nullable<int> MinNumWorkers { get; set; }
+
+        /// <summary>
+        /// Target worker utilization, compared against the aggregate utilization of the worker pool by autoscaler, to
+        /// determine upscaling and downscaling when absent other constraints such as backlog.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workerUtilizationHint")]
+        public virtual System.Nullable<double> WorkerUtilizationHint { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

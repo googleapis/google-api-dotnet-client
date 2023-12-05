@@ -24213,7 +24213,7 @@ namespace Google.Apis.DisplayVideo.v2.Data
     /// <summary>Wrapper message for a list of contact information defining Customer Match audience members.</summary>
     public class ContactInfoList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Input only. User consent status.</summary>
+        /// <summary>Input only. The consent setting for the users in contact_infos.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("consent")]
         public virtual Consent Consent { get; set; }
 
@@ -28476,7 +28476,7 @@ namespace Google.Apis.DisplayVideo.v2.Data
     /// <summary>Wrapper message for a list of mobile device IDs defining Customer Match audience members.</summary>
     public class MobileDeviceIdList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Input only. User consent status.</summary>
+        /// <summary>Input only. The consent setting for the users in mobile_device_ids.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("consent")]
         public virtual Consent Consent { get; set; }
 

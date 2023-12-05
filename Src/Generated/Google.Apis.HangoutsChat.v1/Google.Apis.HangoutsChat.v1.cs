@@ -1070,6 +1070,14 @@ namespace Google.Apis.HangoutsChat.v1
                 public virtual string PageToken { get; set; }
 
                 /// <summary>
+                /// Optional. When `true`, also returns memberships associated with a Google Group, in addition to other
+                /// types of memberships. If a filter is set, Google Group memberships that don't match the filter
+                /// criteria aren't returned.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("showGroups", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> ShowGroups { get; set; }
+
+                /// <summary>
                 /// Optional. When `true`, also returns memberships associated with invited members, in addition to
                 /// other types of memberships. If a filter is set, invited memberships that don't match the filter
                 /// criteria aren't returned. Currently requires [user
@@ -1118,6 +1126,14 @@ namespace Google.Apis.HangoutsChat.v1
                     RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("showGroups", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "showGroups",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -4785,6 +4801,21 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A Google Group in Google Chat.</summary>
+    public class Group : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Resource name for a Google Group. Represents a
+        /// [group](https://cloud.google.com/identity/docs/reference/rest/v1/groups) in Cloud Identity Groups API.
+        /// Format: groups/{group}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Chat apps only. For a `SelectionInput` widget that uses a multiselect menu, a data source from a Google
     /// Workspace application. The data source populates selection items for the multiselect menu.
@@ -5037,8 +5068,9 @@ namespace Google.Apis.HangoutsChat.v1.Data
         private object _createTime;
 
         /// <summary>
-        /// Output only. The creation time of the membership, such as when a member joined or was invited to join a
-        /// space.
+        /// Optional. Immutable. The creation time of the membership, such as when a member joined or was invited to
+        /// join a space. [Developer Preview](https://developers.google.com/workspace/preview): This field is output
+        /// only, except when used to import historical memberships in import mode spaces.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual string CreateTimeRaw
@@ -5071,6 +5103,13 @@ namespace Google.Apis.HangoutsChat.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>
+        /// The Google Group the membership corresponds to. Only supports read operations. Other operations, like
+        /// creating or updating a membership, aren't currently supported.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groupMember")]
+        public virtual Group GroupMember { get; set; }
 
         /// <summary>
         /// The Google Chat user or app the membership corresponds to. If your Chat app [authenticates as a
