@@ -177,23 +177,5 @@ namespace Google.Apis.Auth.OAuth2
                 }
             }
         }
-
-        // Helper method used in the continuation when trying to create a cancellable task.
-        private static T ResultWithUnwrappedExceptions<T>(Task<T> task)
-        {
-            try
-            {
-                task.Wait();
-            }
-            catch (AggregateException e)
-            {
-                // Unwrap the first exception, a bit like await would.
-                // It's very unlikely that we'd ever see an AggregateException without an inner exceptions,
-                // but let's handle it relatively gracefully.
-                // Using ExceptionDispatchInfo to keep the original exception stack trace.
-                ExceptionDispatchInfo.Capture(e.InnerExceptions.FirstOrDefault() ?? e).Throw();
-            }
-            return task.Result;
-        }
     }
 }
