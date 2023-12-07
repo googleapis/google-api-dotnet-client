@@ -12,5 +12,10 @@
     "NOTIFICATION_VIEW_UNSPECIFIED",
     "BASIC",
     "FULL"
+  ],
+  "Google.Apis.Advisorynotifications.v1.ProjectsResource+LocationsResource+NotificationsResource+ListRequest.ViewEnum": [
+    "NOTIFICATION_VIEW_UNSPECIFIED",
+    "BASIC",
+    "FULL"
   ]
 }

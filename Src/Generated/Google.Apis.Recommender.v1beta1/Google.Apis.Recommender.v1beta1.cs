@@ -4474,6 +4474,10 @@ namespace Google.Apis.Recommender.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("duration")]
         public virtual object Duration { get; set; }
 
+        /// <summary>How the cost is calculated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pricingType")]
+        public virtual string PricingType { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -4633,7 +4637,7 @@ namespace Google.Apis.Recommender.v1beta1.Data
     public class GoogleCloudRecommenderV1beta1InsightType : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The insight_type’s name in format insightTypes/{insight_type} eg: insightTypes/google.iam.policy.Insight
+        /// The insight_type's name in format insightTypes/{insight_type} eg: insightTypes/google.iam.policy.Insight
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }

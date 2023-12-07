@@ -36,6 +36,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
         {
             Accounts = new AccountsResource(this);
             Bidders = new BiddersResource(this);
+            Buyers = new BuyersResource(this);
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -75,6 +76,9 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
 
         /// <summary>Gets the Bidders resource.</summary>
         public virtual BiddersResource Bidders { get; }
+
+        /// <summary>Gets the Buyers resource.</summary>
+        public virtual BuyersResource Buyers { get; }
     }
 
     /// <summary>A base abstract class for AdExchangeBuyerII requests.</summary>
@@ -6294,6 +6298,1472 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^bidders/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+        }
+    }
+
+    /// <summary>The "buyers" collection of methods.</summary>
+    public class BuyersResource
+    {
+        private const string Resource = "buyers";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public BuyersResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+            FilterSets = new FilterSetsResource(service);
+        }
+
+        /// <summary>Gets the FilterSets resource.</summary>
+        public virtual FilterSetsResource FilterSets { get; }
+
+        /// <summary>The "filterSets" collection of methods.</summary>
+        public class FilterSetsResource
+        {
+            private const string Resource = "filterSets";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public FilterSetsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+                BidMetrics = new BidMetricsResource(service);
+                BidResponseErrors = new BidResponseErrorsResource(service);
+                BidResponsesWithoutBids = new BidResponsesWithoutBidsResource(service);
+                FilteredBidRequests = new FilteredBidRequestsResource(service);
+                FilteredBids = new FilteredBidsResource(service);
+                ImpressionMetrics = new ImpressionMetricsResource(service);
+                LosingBids = new LosingBidsResource(service);
+                NonBillableWinningBids = new NonBillableWinningBidsResource(service);
+            }
+
+            /// <summary>Gets the BidMetrics resource.</summary>
+            public virtual BidMetricsResource BidMetrics { get; }
+
+            /// <summary>The "bidMetrics" collection of methods.</summary>
+            public class BidMetricsResource
+            {
+                private const string Resource = "bidMetrics";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public BidMetricsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Lists all metrics that are measured in terms of number of bids.</summary>
+                /// <param name="filterSetName">
+                /// Name of the filter set that should be applied to the requested metrics. For example: - For a
+                /// bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter
+                /// set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For
+                /// an account-level filter set for the child seat buyer account 456 whose bidder is 123:
+                /// `bidders/123/accounts/456/filterSets/abc`
+                /// </param>
+                public virtual ListRequest List(string filterSetName)
+                {
+                    return new ListRequest(this.service, filterSetName);
+                }
+
+                /// <summary>Lists all metrics that are measured in terms of number of bids.</summary>
+                public class ListRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.ListBidMetricsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string filterSetName) : base(service)
+                    {
+                        FilterSetName = filterSetName;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Name of the filter set that should be applied to the requested metrics. For example: - For a
+                    /// bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level
+                    /// filter set for the buyer account representing bidder 123:
+                    /// `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat
+                    /// buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filterSetName", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string FilterSetName { get; private set; }
+
+                    /// <summary>
+                    /// Requested page size. The server may return fewer results than requested. If unspecified, the
+                    /// server will pick an appropriate default.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// A token identifying a page of results the server should return. Typically, this is the value of
+                    /// ListBidMetricsResponse.nextPageToken returned from the previous call to the bidMetrics.list
+                    /// method.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2beta1/{+filterSetName}/bidMetrics";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("filterSetName", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filterSetName",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^buyers/[^/]+/filterSets/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the BidResponseErrors resource.</summary>
+            public virtual BidResponseErrorsResource BidResponseErrors { get; }
+
+            /// <summary>The "bidResponseErrors" collection of methods.</summary>
+            public class BidResponseErrorsResource
+            {
+                private const string Resource = "bidResponseErrors";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public BidResponseErrorsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>
+                /// List all errors that occurred in bid responses, with the number of bid responses affected for each
+                /// reason.
+                /// </summary>
+                /// <param name="filterSetName">
+                /// Name of the filter set that should be applied to the requested metrics. For example: - For a
+                /// bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter
+                /// set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For
+                /// an account-level filter set for the child seat buyer account 456 whose bidder is 123:
+                /// `bidders/123/accounts/456/filterSets/abc`
+                /// </param>
+                public virtual ListRequest List(string filterSetName)
+                {
+                    return new ListRequest(this.service, filterSetName);
+                }
+
+                /// <summary>
+                /// List all errors that occurred in bid responses, with the number of bid responses affected for each
+                /// reason.
+                /// </summary>
+                public class ListRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.ListBidResponseErrorsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string filterSetName) : base(service)
+                    {
+                        FilterSetName = filterSetName;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Name of the filter set that should be applied to the requested metrics. For example: - For a
+                    /// bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level
+                    /// filter set for the buyer account representing bidder 123:
+                    /// `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat
+                    /// buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filterSetName", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string FilterSetName { get; private set; }
+
+                    /// <summary>
+                    /// Requested page size. The server may return fewer results than requested. If unspecified, the
+                    /// server will pick an appropriate default.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// A token identifying a page of results the server should return. Typically, this is the value of
+                    /// ListBidResponseErrorsResponse.nextPageToken returned from the previous call to the
+                    /// bidResponseErrors.list method.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2beta1/{+filterSetName}/bidResponseErrors";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("filterSetName", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filterSetName",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^buyers/[^/]+/filterSets/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the BidResponsesWithoutBids resource.</summary>
+            public virtual BidResponsesWithoutBidsResource BidResponsesWithoutBids { get; }
+
+            /// <summary>The "bidResponsesWithoutBids" collection of methods.</summary>
+            public class BidResponsesWithoutBidsResource
+            {
+                private const string Resource = "bidResponsesWithoutBids";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public BidResponsesWithoutBidsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>
+                /// List all reasons for which bid responses were considered to have no applicable bids, with the number
+                /// of bid responses affected for each reason.
+                /// </summary>
+                /// <param name="filterSetName">
+                /// Name of the filter set that should be applied to the requested metrics. For example: - For a
+                /// bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter
+                /// set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For
+                /// an account-level filter set for the child seat buyer account 456 whose bidder is 123:
+                /// `bidders/123/accounts/456/filterSets/abc`
+                /// </param>
+                public virtual ListRequest List(string filterSetName)
+                {
+                    return new ListRequest(this.service, filterSetName);
+                }
+
+                /// <summary>
+                /// List all reasons for which bid responses were considered to have no applicable bids, with the number
+                /// of bid responses affected for each reason.
+                /// </summary>
+                public class ListRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.ListBidResponsesWithoutBidsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string filterSetName) : base(service)
+                    {
+                        FilterSetName = filterSetName;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Name of the filter set that should be applied to the requested metrics. For example: - For a
+                    /// bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level
+                    /// filter set for the buyer account representing bidder 123:
+                    /// `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat
+                    /// buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filterSetName", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string FilterSetName { get; private set; }
+
+                    /// <summary>
+                    /// Requested page size. The server may return fewer results than requested. If unspecified, the
+                    /// server will pick an appropriate default.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// A token identifying a page of results the server should return. Typically, this is the value of
+                    /// ListBidResponsesWithoutBidsResponse.nextPageToken returned from the previous call to the
+                    /// bidResponsesWithoutBids.list method.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2beta1/{+filterSetName}/bidResponsesWithoutBids";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("filterSetName", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filterSetName",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^buyers/[^/]+/filterSets/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the FilteredBidRequests resource.</summary>
+            public virtual FilteredBidRequestsResource FilteredBidRequests { get; }
+
+            /// <summary>The "filteredBidRequests" collection of methods.</summary>
+            public class FilteredBidRequestsResource
+            {
+                private const string Resource = "filteredBidRequests";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public FilteredBidRequestsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>
+                /// List all reasons that caused a bid request not to be sent for an impression, with the number of bid
+                /// requests not sent for each reason.
+                /// </summary>
+                /// <param name="filterSetName">
+                /// Name of the filter set that should be applied to the requested metrics. For example: - For a
+                /// bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter
+                /// set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For
+                /// an account-level filter set for the child seat buyer account 456 whose bidder is 123:
+                /// `bidders/123/accounts/456/filterSets/abc`
+                /// </param>
+                public virtual ListRequest List(string filterSetName)
+                {
+                    return new ListRequest(this.service, filterSetName);
+                }
+
+                /// <summary>
+                /// List all reasons that caused a bid request not to be sent for an impression, with the number of bid
+                /// requests not sent for each reason.
+                /// </summary>
+                public class ListRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.ListFilteredBidRequestsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string filterSetName) : base(service)
+                    {
+                        FilterSetName = filterSetName;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Name of the filter set that should be applied to the requested metrics. For example: - For a
+                    /// bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level
+                    /// filter set for the buyer account representing bidder 123:
+                    /// `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat
+                    /// buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filterSetName", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string FilterSetName { get; private set; }
+
+                    /// <summary>
+                    /// Requested page size. The server may return fewer results than requested. If unspecified, the
+                    /// server will pick an appropriate default.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// A token identifying a page of results the server should return. Typically, this is the value of
+                    /// ListFilteredBidRequestsResponse.nextPageToken returned from the previous call to the
+                    /// filteredBidRequests.list method.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2beta1/{+filterSetName}/filteredBidRequests";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("filterSetName", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filterSetName",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^buyers/[^/]+/filterSets/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the FilteredBids resource.</summary>
+            public virtual FilteredBidsResource FilteredBids { get; }
+
+            /// <summary>The "filteredBids" collection of methods.</summary>
+            public class FilteredBidsResource
+            {
+                private const string Resource = "filteredBids";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public FilteredBidsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    Creatives = new CreativesResource(service);
+                    Details = new DetailsResource(service);
+                }
+
+                /// <summary>Gets the Creatives resource.</summary>
+                public virtual CreativesResource Creatives { get; }
+
+                /// <summary>The "creatives" collection of methods.</summary>
+                public class CreativesResource
+                {
+                    private const string Resource = "creatives";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public CreativesResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>
+                    /// List all creatives associated with a specific reason for which bids were filtered, with the
+                    /// number of bids filtered for each creative.
+                    /// </summary>
+                    /// <param name="filterSetName">
+                    /// Name of the filter set that should be applied to the requested metrics. For example: - For a
+                    /// bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level
+                    /// filter set for the buyer account representing bidder 123:
+                    /// `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat
+                    /// buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
+                    /// </param>
+                    /// <param name="creativeStatusId">
+                    /// The ID of the creative status for which to retrieve a breakdown by creative. See
+                    /// [creative-status-codes](https://developers.google.com/authorized-buyers/rtb/downloads/creative-status-codes).
+                    /// </param>
+                    public virtual ListRequest List(string filterSetName, int creativeStatusId)
+                    {
+                        return new ListRequest(this.service, filterSetName, creativeStatusId);
+                    }
+
+                    /// <summary>
+                    /// List all creatives associated with a specific reason for which bids were filtered, with the
+                    /// number of bids filtered for each creative.
+                    /// </summary>
+                    public class ListRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.ListCreativeStatusBreakdownByCreativeResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string filterSetName, int creativeStatusId) : base(service)
+                        {
+                            FilterSetName = filterSetName;
+                            CreativeStatusId = creativeStatusId;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Name of the filter set that should be applied to the requested metrics. For example: - For a
+                        /// bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level
+                        /// filter set for the buyer account representing bidder 123:
+                        /// `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child
+                        /// seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filterSetName", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string FilterSetName { get; private set; }
+
+                        /// <summary>
+                        /// The ID of the creative status for which to retrieve a breakdown by creative. See
+                        /// [creative-status-codes](https://developers.google.com/authorized-buyers/rtb/downloads/creative-status-codes).
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("creativeStatusId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual int CreativeStatusId { get; private set; }
+
+                        /// <summary>
+                        /// Requested page size. The server may return fewer results than requested. If unspecified, the
+                        /// server will pick an appropriate default.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// A token identifying a page of results the server should return. Typically, this is the value
+                        /// of ListCreativeStatusBreakdownByCreativeResponse.nextPageToken returned from the previous
+                        /// call to the filteredBids.creatives.list method.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2beta1/{+filterSetName}/filteredBids/{creativeStatusId}/creatives";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("filterSetName", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filterSetName",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^buyers/[^/]+/filterSets/[^/]+$",
+                            });
+                            RequestParameters.Add("creativeStatusId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "creativeStatusId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>Gets the Details resource.</summary>
+                public virtual DetailsResource Details { get; }
+
+                /// <summary>The "details" collection of methods.</summary>
+                public class DetailsResource
+                {
+                    private const string Resource = "details";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public DetailsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>
+                    /// List all details associated with a specific reason for which bids were filtered, with the number
+                    /// of bids filtered for each detail.
+                    /// </summary>
+                    /// <param name="filterSetName">
+                    /// Name of the filter set that should be applied to the requested metrics. For example: - For a
+                    /// bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level
+                    /// filter set for the buyer account representing bidder 123:
+                    /// `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat
+                    /// buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
+                    /// </param>
+                    /// <param name="creativeStatusId">
+                    /// The ID of the creative status for which to retrieve a breakdown by detail. See
+                    /// [creative-status-codes](https://developers.google.com/authorized-buyers/rtb/downloads/creative-status-codes).
+                    /// Details are only available for statuses 10, 14, 15, 17, 18, 19, 86, and 87.
+                    /// </param>
+                    public virtual ListRequest List(string filterSetName, int creativeStatusId)
+                    {
+                        return new ListRequest(this.service, filterSetName, creativeStatusId);
+                    }
+
+                    /// <summary>
+                    /// List all details associated with a specific reason for which bids were filtered, with the number
+                    /// of bids filtered for each detail.
+                    /// </summary>
+                    public class ListRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.ListCreativeStatusBreakdownByDetailResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string filterSetName, int creativeStatusId) : base(service)
+                        {
+                            FilterSetName = filterSetName;
+                            CreativeStatusId = creativeStatusId;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Name of the filter set that should be applied to the requested metrics. For example: - For a
+                        /// bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level
+                        /// filter set for the buyer account representing bidder 123:
+                        /// `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child
+                        /// seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filterSetName", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string FilterSetName { get; private set; }
+
+                        /// <summary>
+                        /// The ID of the creative status for which to retrieve a breakdown by detail. See
+                        /// [creative-status-codes](https://developers.google.com/authorized-buyers/rtb/downloads/creative-status-codes).
+                        /// Details are only available for statuses 10, 14, 15, 17, 18, 19, 86, and 87.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("creativeStatusId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual int CreativeStatusId { get; private set; }
+
+                        /// <summary>
+                        /// Requested page size. The server may return fewer results than requested. If unspecified, the
+                        /// server will pick an appropriate default.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// A token identifying a page of results the server should return. Typically, this is the value
+                        /// of ListCreativeStatusBreakdownByDetailResponse.nextPageToken returned from the previous call
+                        /// to the filteredBids.details.list method.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2beta1/{+filterSetName}/filteredBids/{creativeStatusId}/details";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("filterSetName", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filterSetName",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^buyers/[^/]+/filterSets/[^/]+$",
+                            });
+                            RequestParameters.Add("creativeStatusId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "creativeStatusId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>
+                /// List all reasons for which bids were filtered, with the number of bids filtered for each reason.
+                /// </summary>
+                /// <param name="filterSetName">
+                /// Name of the filter set that should be applied to the requested metrics. For example: - For a
+                /// bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter
+                /// set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For
+                /// an account-level filter set for the child seat buyer account 456 whose bidder is 123:
+                /// `bidders/123/accounts/456/filterSets/abc`
+                /// </param>
+                public virtual ListRequest List(string filterSetName)
+                {
+                    return new ListRequest(this.service, filterSetName);
+                }
+
+                /// <summary>
+                /// List all reasons for which bids were filtered, with the number of bids filtered for each reason.
+                /// </summary>
+                public class ListRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.ListFilteredBidsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string filterSetName) : base(service)
+                    {
+                        FilterSetName = filterSetName;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Name of the filter set that should be applied to the requested metrics. For example: - For a
+                    /// bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level
+                    /// filter set for the buyer account representing bidder 123:
+                    /// `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat
+                    /// buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filterSetName", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string FilterSetName { get; private set; }
+
+                    /// <summary>
+                    /// Requested page size. The server may return fewer results than requested. If unspecified, the
+                    /// server will pick an appropriate default.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// A token identifying a page of results the server should return. Typically, this is the value of
+                    /// ListFilteredBidsResponse.nextPageToken returned from the previous call to the filteredBids.list
+                    /// method.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2beta1/{+filterSetName}/filteredBids";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("filterSetName", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filterSetName",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^buyers/[^/]+/filterSets/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the ImpressionMetrics resource.</summary>
+            public virtual ImpressionMetricsResource ImpressionMetrics { get; }
+
+            /// <summary>The "impressionMetrics" collection of methods.</summary>
+            public class ImpressionMetricsResource
+            {
+                private const string Resource = "impressionMetrics";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public ImpressionMetricsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Lists all metrics that are measured in terms of number of impressions.</summary>
+                /// <param name="filterSetName">
+                /// Name of the filter set that should be applied to the requested metrics. For example: - For a
+                /// bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter
+                /// set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For
+                /// an account-level filter set for the child seat buyer account 456 whose bidder is 123:
+                /// `bidders/123/accounts/456/filterSets/abc`
+                /// </param>
+                public virtual ListRequest List(string filterSetName)
+                {
+                    return new ListRequest(this.service, filterSetName);
+                }
+
+                /// <summary>Lists all metrics that are measured in terms of number of impressions.</summary>
+                public class ListRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.ListImpressionMetricsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string filterSetName) : base(service)
+                    {
+                        FilterSetName = filterSetName;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Name of the filter set that should be applied to the requested metrics. For example: - For a
+                    /// bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level
+                    /// filter set for the buyer account representing bidder 123:
+                    /// `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat
+                    /// buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filterSetName", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string FilterSetName { get; private set; }
+
+                    /// <summary>
+                    /// Requested page size. The server may return fewer results than requested. If unspecified, the
+                    /// server will pick an appropriate default.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// A token identifying a page of results the server should return. Typically, this is the value of
+                    /// ListImpressionMetricsResponse.nextPageToken returned from the previous call to the
+                    /// impressionMetrics.list method.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2beta1/{+filterSetName}/impressionMetrics";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("filterSetName", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filterSetName",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^buyers/[^/]+/filterSets/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the LosingBids resource.</summary>
+            public virtual LosingBidsResource LosingBids { get; }
+
+            /// <summary>The "losingBids" collection of methods.</summary>
+            public class LosingBidsResource
+            {
+                private const string Resource = "losingBids";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public LosingBidsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>
+                /// List all reasons for which bids lost in the auction, with the number of bids that lost for each
+                /// reason.
+                /// </summary>
+                /// <param name="filterSetName">
+                /// Name of the filter set that should be applied to the requested metrics. For example: - For a
+                /// bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter
+                /// set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For
+                /// an account-level filter set for the child seat buyer account 456 whose bidder is 123:
+                /// `bidders/123/accounts/456/filterSets/abc`
+                /// </param>
+                public virtual ListRequest List(string filterSetName)
+                {
+                    return new ListRequest(this.service, filterSetName);
+                }
+
+                /// <summary>
+                /// List all reasons for which bids lost in the auction, with the number of bids that lost for each
+                /// reason.
+                /// </summary>
+                public class ListRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.ListLosingBidsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string filterSetName) : base(service)
+                    {
+                        FilterSetName = filterSetName;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Name of the filter set that should be applied to the requested metrics. For example: - For a
+                    /// bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level
+                    /// filter set for the buyer account representing bidder 123:
+                    /// `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat
+                    /// buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filterSetName", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string FilterSetName { get; private set; }
+
+                    /// <summary>
+                    /// Requested page size. The server may return fewer results than requested. If unspecified, the
+                    /// server will pick an appropriate default.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// A token identifying a page of results the server should return. Typically, this is the value of
+                    /// ListLosingBidsResponse.nextPageToken returned from the previous call to the losingBids.list
+                    /// method.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2beta1/{+filterSetName}/losingBids";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("filterSetName", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filterSetName",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^buyers/[^/]+/filterSets/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the NonBillableWinningBids resource.</summary>
+            public virtual NonBillableWinningBidsResource NonBillableWinningBids { get; }
+
+            /// <summary>The "nonBillableWinningBids" collection of methods.</summary>
+            public class NonBillableWinningBidsResource
+            {
+                private const string Resource = "nonBillableWinningBids";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public NonBillableWinningBidsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>
+                /// List all reasons for which winning bids were not billable, with the number of bids not billed for
+                /// each reason.
+                /// </summary>
+                /// <param name="filterSetName">
+                /// Name of the filter set that should be applied to the requested metrics. For example: - For a
+                /// bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter
+                /// set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For
+                /// an account-level filter set for the child seat buyer account 456 whose bidder is 123:
+                /// `bidders/123/accounts/456/filterSets/abc`
+                /// </param>
+                public virtual ListRequest List(string filterSetName)
+                {
+                    return new ListRequest(this.service, filterSetName);
+                }
+
+                /// <summary>
+                /// List all reasons for which winning bids were not billable, with the number of bids not billed for
+                /// each reason.
+                /// </summary>
+                public class ListRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.ListNonBillableWinningBidsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string filterSetName) : base(service)
+                    {
+                        FilterSetName = filterSetName;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Name of the filter set that should be applied to the requested metrics. For example: - For a
+                    /// bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level
+                    /// filter set for the buyer account representing bidder 123:
+                    /// `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat
+                    /// buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filterSetName", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string FilterSetName { get; private set; }
+
+                    /// <summary>
+                    /// Requested page size. The server may return fewer results than requested. If unspecified, the
+                    /// server will pick an appropriate default.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// A token identifying a page of results the server should return. Typically, this is the value of
+                    /// ListNonBillableWinningBidsResponse.nextPageToken returned from the previous call to the
+                    /// nonBillableWinningBids.list method.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2beta1/{+filterSetName}/nonBillableWinningBids";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("filterSetName", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filterSetName",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^buyers/[^/]+/filterSets/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Creates the specified filter set for the account with the given account ID.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="ownerName">
+            /// Name of the owner (bidder or account) of the filter set to be created. For example: - For a bidder-level
+            /// filter set for bidder 123: `bidders/123` - For an account-level filter set for the buyer account
+            /// representing bidder 123: `bidders/123/accounts/123` - For an account-level filter set for the child seat
+            /// buyer account 456 whose bidder is 123: `bidders/123/accounts/456`
+            /// </param>
+            public virtual CreateRequest Create(Google.Apis.AdExchangeBuyerII.v2beta1.Data.FilterSet body, string ownerName)
+            {
+                return new CreateRequest(this.service, body, ownerName);
+            }
+
+            /// <summary>Creates the specified filter set for the account with the given account ID.</summary>
+            public class CreateRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.FilterSet>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.AdExchangeBuyerII.v2beta1.Data.FilterSet body, string ownerName) : base(service)
+                {
+                    OwnerName = ownerName;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Name of the owner (bidder or account) of the filter set to be created. For example: - For a
+                /// bidder-level filter set for bidder 123: `bidders/123` - For an account-level filter set for the
+                /// buyer account representing bidder 123: `bidders/123/accounts/123` - For an account-level filter set
+                /// for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("ownerName", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string OwnerName { get; private set; }
+
+                /// <summary>
+                /// Whether the filter set is transient, or should be persisted indefinitely. By default, filter sets
+                /// are not transient. If transient, it will be available for at least 1 hour after creation.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("isTransient", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> IsTransient { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.AdExchangeBuyerII.v2beta1.Data.FilterSet Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "create";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v2beta1/{+ownerName}/filterSets";
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("ownerName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "ownerName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^buyers/[^/]+$",
+                    });
+                    RequestParameters.Add("isTransient", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "isTransient",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Deletes the requested filter set from the account with the given account ID.</summary>
+            /// <param name="name">
+            /// Full name of the resource to delete. For example: - For a bidder-level filter set for bidder 123:
+            /// `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder
+            /// 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat
+            /// buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
+            /// </param>
+            public virtual DeleteRequest Delete(string name)
+            {
+                return new DeleteRequest(this.service, name);
+            }
+
+            /// <summary>Deletes the requested filter set from the account with the given account ID.</summary>
+            public class DeleteRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.Empty>
+            {
+                /// <summary>Constructs a new Delete request.</summary>
+                public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Full name of the resource to delete. For example: - For a bidder-level filter set for bidder 123:
+                /// `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing
+                /// bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the
+                /// child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "delete";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "DELETE";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v2beta1/{+name}";
+
+                /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^buyers/[^/]+/filterSets/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Retrieves the requested filter set for the account with the given account ID.</summary>
+            /// <param name="name">
+            /// Full name of the resource being requested. For example: - For a bidder-level filter set for bidder 123:
+            /// `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder
+            /// 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat
+            /// buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
+            /// </param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(this.service, name);
+            }
+
+            /// <summary>Retrieves the requested filter set for the account with the given account ID.</summary>
+            public class GetRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.FilterSet>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Full name of the resource being requested. For example: - For a bidder-level filter set for bidder
+                /// 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account
+                /// representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set
+                /// for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v2beta1/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^buyers/[^/]+/filterSets/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Lists all filter sets for the account with the given account ID.</summary>
+            /// <param name="ownerName">
+            /// Name of the owner (bidder or account) of the filter sets to be listed. For example: - For a bidder-level
+            /// filter set for bidder 123: `bidders/123` - For an account-level filter set for the buyer account
+            /// representing bidder 123: `bidders/123/accounts/123` - For an account-level filter set for the child seat
+            /// buyer account 456 whose bidder is 123: `bidders/123/accounts/456`
+            /// </param>
+            public virtual ListRequest List(string ownerName)
+            {
+                return new ListRequest(this.service, ownerName);
+            }
+
+            /// <summary>Lists all filter sets for the account with the given account ID.</summary>
+            public class ListRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.ListFilterSetsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string ownerName) : base(service)
+                {
+                    OwnerName = ownerName;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Name of the owner (bidder or account) of the filter sets to be listed. For example: - For a
+                /// bidder-level filter set for bidder 123: `bidders/123` - For an account-level filter set for the
+                /// buyer account representing bidder 123: `bidders/123/accounts/123` - For an account-level filter set
+                /// for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("ownerName", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string OwnerName { get; private set; }
+
+                /// <summary>
+                /// Requested page size. The server may return fewer results than requested. If unspecified, the server
+                /// will pick an appropriate default.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// A token identifying a page of results the server should return. Typically, this is the value of
+                /// ListFilterSetsResponse.nextPageToken returned from the previous call to the accounts.filterSets.list
+                /// method.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v2beta1/{+ownerName}/filterSets";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("ownerName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "ownerName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^buyers/[^/]+$",
                     });
                     RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                     {

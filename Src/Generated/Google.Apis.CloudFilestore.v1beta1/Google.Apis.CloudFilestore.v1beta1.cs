@@ -1897,7 +1897,7 @@ namespace Google.Apis.CloudFilestore.v1beta1
                 /// <summary>Revert an existing instance's file system to a specified snapshot.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Required. projects/{project_id}/locations/{location_id}/instances/{instance_id}. The resource name
+                /// Required. `projects/{project_id}/locations/{location_id}/instances/{instance_id}`. The resource name
                 /// of the instance, in the format
                 /// </param>
                 public virtual RevertRequest Revert(Google.Apis.CloudFilestore.v1beta1.Data.RevertInstanceRequest body, string name)
@@ -1917,7 +1917,7 @@ namespace Google.Apis.CloudFilestore.v1beta1
                     }
 
                     /// <summary>
-                    /// Required. projects/{project_id}/locations/{location_id}/instances/{instance_id}. The resource
+                    /// Required. `projects/{project_id}/locations/{location_id}/instances/{instance_id}`. The resource
                     /// name of the instance, in the format
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -2605,8 +2605,8 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
 
         /// <summary>
         /// Required. The name of the file share. Must use 1-16 characters for the basic service tier and 1-63
-        /// characters for all other service tiers. Must use lowercase letters, numbers, or underscores [a-z0-9_]. Must
-        /// start with a letter. Immutable.
+        /// characters for all other service tiers. Must use lowercase letters, numbers, or underscores `[a-z0-9_]`.
+        /// Must start with a letter. Immutable.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -3857,7 +3857,7 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         /// <summary>
         /// Required. The snapshot resource ID, in the format 'my-snapshot', where the specified ID is the {snapshot_id}
         /// of the fully qualified name like
-        /// projects/{project_id}/locations/{location_id}/instances/{instance_id}/snapshots/{snapshot_id}
+        /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}/snapshots/{snapshot_id}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetSnapshotId")]
         public virtual string TargetSnapshotId { get; set; }

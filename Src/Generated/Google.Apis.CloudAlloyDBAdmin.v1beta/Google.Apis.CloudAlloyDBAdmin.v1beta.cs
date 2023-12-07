@@ -3824,6 +3824,10 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("reconciling")]
         public virtual System.Nullable<bool> Reconciling { get; set; }
 
+        /// <summary>Output only. Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
+
         /// <summary>Output only. The size of the backup in bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sizeBytes")]
         public virtual System.Nullable<long> SizeBytes { get; set; }
@@ -4126,6 +4130,10 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reconciling")]
         public virtual System.Nullable<bool> Reconciling { get; set; }
+
+        /// <summary>Output only. Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
 
         /// <summary>Cross Region replication config specific to SECONDARY cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secondaryConfig")]
@@ -4822,6 +4830,10 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reconciling")]
         public virtual System.Nullable<bool> Reconciling { get; set; }
+
+        /// <summary>Output only. Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
 
         /// <summary>Output only. The current serving state of the instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
@@ -5791,7 +5803,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         /// <summary>
         /// Closest parent container of this resource. In GCP, 'container' refers to a Cloud Resource Manager project.
         /// It must be resource name of a Cloud Resource Manager project with the format of "provider//", such as
-        /// "gcp/projects/123". For GCP provided resources, number should be project number.
+        /// "projects/123". For GCP provided resources, number should be project number.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceContainer")]
         public virtual string ResourceContainer { get; set; }
@@ -5952,8 +5964,8 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
 
         /// <summary>
         /// Closest parent Cloud Resource Manager container of this resource. It must be resource name of a Cloud
-        /// Resource Manager project with the format of "provider//", such as "gcp/projects/123". For GCP provided
-        /// resources, number should be project number.
+        /// Resource Manager project with the format of "/", such as "projects/123". For GCP provided resources, number
+        /// should be project number.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceContainer")]
         public virtual string ResourceContainer { get; set; }

@@ -5292,57 +5292,6 @@ namespace Google.Apis.Firestore.v1.Data
         public virtual object VersionRetentionPeriod { get; set; }
     }
 
-    /// <summary>A consistent snapshot of a database at a specific point in time.</summary>
-    public class GoogleFirestoreAdminV1DatabaseSnapshot : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required. A name of the form `projects/{project_id}/databases/{database_id}`</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("database")]
-        public virtual string Database { get; set; }
-
-        private string _snapshotTimeRaw;
-
-        private object _snapshotTime;
-
-        /// <summary>
-        /// Required. The timestamp at which the database snapshot is taken. The requested timestamp must be a whole
-        /// minute within the PITR window.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("snapshotTime")]
-        public virtual string SnapshotTimeRaw
-        {
-            get => _snapshotTimeRaw;
-            set
-            {
-                _snapshotTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _snapshotTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="SnapshotTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use SnapshotTimeDateTimeOffset instead.")]
-        public virtual object SnapshotTime
-        {
-            get => _snapshotTime;
-            set
-            {
-                _snapshotTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _snapshotTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="SnapshotTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? SnapshotTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(SnapshotTimeRaw);
-            set => SnapshotTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
-        }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Metadata related to the delete database operation.</summary>
     public class GoogleFirestoreAdminV1DeleteDatabaseMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6325,13 +6274,6 @@ namespace Google.Apis.Firestore.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("databaseId")]
         public virtual string DatabaseId { get; set; }
-
-        /// <summary>
-        /// Database snapshot to restore from. The source database must exist and have enabled PITR. The restored
-        /// database will be created in the same location as the source database.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("databaseSnapshot")]
-        public virtual GoogleFirestoreAdminV1DatabaseSnapshot DatabaseSnapshot { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -6251,6 +6251,28 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Response of the ExportAnalyticsMetricsRequest. If the long running operation was successful, then this message
+    /// is returned by the google.longrunning.Operations.response field if the operation was successful.
+    /// </summary>
+    public class GoogleCloudRetailV2alphaExportAnalyticsMetricsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A sample of errors encountered while processing the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorSamples")]
+        public virtual System.Collections.Generic.IList<GoogleRpcStatus> ErrorSamples { get; set; }
+
+        /// <summary>This field is never set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorsConfig")]
+        public virtual GoogleCloudRetailV2alphaExportErrorsConfig ErrorsConfig { get; set; }
+
+        /// <summary>Output result indicating where the data were exported to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputResult")]
+        public virtual GoogleCloudRetailV2alphaOutputResult OutputResult { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Configuration of destination for Export related errors.</summary>
     public class GoogleCloudRetailV2alphaExportErrorsConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10092,10 +10114,10 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         /// Clothing" -&amp;gt; "Shoes"], it could be represented as: "categories": [ "Shoes &amp;amp; Accessories
         /// &amp;gt; Shoes", "Sports &amp;amp; Fitness &amp;gt; Athletic Clothing &amp;gt; Shoes" ] Must be set for
         /// Type.PRIMARY Product otherwise an INVALID_ARGUMENT error is returned. At most 250 values are allowed per
-        /// Product. Empty values are not allowed. Each value must be a UTF-8 encoded string with a length limit of
-        /// 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google
-        /// Merchant Center property google_product_category. Schema.org property [Product.category]
-        /// (https://schema.org/category). [mc_google_product_category]:
+        /// Product unless overridden via pantheon UI. Empty values are not allowed. Each value must be a UTF-8 encoded
+        /// string with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned.
+        /// Corresponding properties: Google Merchant Center property google_product_category. Schema.org property
+        /// [Product.category] (https://schema.org/category). [mc_google_product_category]:
         /// https://support.google.com/merchants/answer/6324436
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("categories")]
@@ -10142,13 +10164,13 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         private object _expireTime;
 
         /// <summary>
-        /// The timestamp when this product becomes unavailable for SearchService.Search. Note that this is only
-        /// applicable to Type.PRIMARY and Type.COLLECTION, and ignored for Type.VARIANT. In general, we suggest the
-        /// users to delete the stale products explicitly, instead of using this field to determine staleness. If it is
-        /// set, the Product is not available for SearchService.Search after expire_time. However, the product can still
-        /// be retrieved by ProductService.GetProduct and ProductService.ListProducts. expire_time must be later than
-        /// available_time and publish_time, otherwise an INVALID_ARGUMENT error is thrown. Corresponding properties:
-        /// Google Merchant Center property [expiration_date](https://support.google.com/merchants/answer/6324499).
+        /// Note that this field is applied in the following ways: * If the Product is already expired when it is
+        /// uploaded, this product is not indexed for search. * If the Product is not expired when it is uploaded, only
+        /// the Type.PRIMARY's and Type.COLLECTION's expireTime is respected, and Type.VARIANT's expireTime is not used.
+        /// In general, we suggest the users to delete the stale products explicitly, instead of using this field to
+        /// determine staleness. expire_time must be later than available_time and publish_time, otherwise an
+        /// INVALID_ARGUMENT error is thrown. Corresponding properties: Google Merchant Center property
+        /// [expiration_date](https://support.google.com/merchants/answer/6324499).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
         public virtual string ExpireTimeRaw

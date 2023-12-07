@@ -290,9 +290,542 @@ namespace Google.Apis.CloudDeploy.v1
             public LocationsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
+                CustomTargetTypes = new CustomTargetTypesResource(service);
                 DeliveryPipelines = new DeliveryPipelinesResource(service);
                 Operations = new OperationsResource(service);
                 Targets = new TargetsResource(service);
+            }
+
+            /// <summary>Gets the CustomTargetTypes resource.</summary>
+            public virtual CustomTargetTypesResource CustomTargetTypes { get; }
+
+            /// <summary>The "customTargetTypes" collection of methods.</summary>
+            public class CustomTargetTypesResource
+            {
+                private const string Resource = "customTargetTypes";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public CustomTargetTypesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Creates a new CustomTargetType in a given project and location.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The parent collection in which the `CustomTargetType` should be created in. Format should
+                /// be `projects/{project_id}/locations/{location_name}`.
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.CloudDeploy.v1.Data.CustomTargetType body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Creates a new CustomTargetType in a given project and location.</summary>
+                public class CreateRequest : CloudDeployBaseServiceRequest<Google.Apis.CloudDeploy.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudDeploy.v1.Data.CustomTargetType body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent collection in which the `CustomTargetType` should be created in. Format
+                    /// should be `projects/{project_id}/locations/{location_name}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Required. ID of the `CustomTargetType`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("customTargetTypeId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string CustomTargetTypeId { get; set; }
+
+                    /// <summary>
+                    /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must
+                    /// retry your request, the server will know to ignore the request if it has already been completed.
+                    /// The server will guarantee that for at least 60 minutes since the first request. For example,
+                    /// consider a situation where you make an initial request and the request times out. If you make
+                    /// the request again with the same request ID, the server can check if original operation with the
+                    /// same request ID was received, and if so, will ignore the second request. This prevents clients
+                    /// from accidentally creating duplicate commitments. The request ID must be a valid UUID with the
+                    /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>
+                    /// Optional. If set to true, the request is validated and the user is provided with an expected
+                    /// result, but no actual change is made.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudDeploy.v1.Data.CustomTargetType Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/customTargetTypes";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("customTargetTypeId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "customTargetTypeId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "validateOnly",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes a single CustomTargetType.</summary>
+                /// <param name="name">
+                /// Required. The name of the `CustomTargetType` to delete. Format must be
+                /// `projects/{project_id}/locations/{location_name}/customTargetTypes/{custom_target_type}`.
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Deletes a single CustomTargetType.</summary>
+                public class DeleteRequest : CloudDeployBaseServiceRequest<Google.Apis.CloudDeploy.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the `CustomTargetType` to delete. Format must be
+                    /// `projects/{project_id}/locations/{location_name}/customTargetTypes/{custom_target_type}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. If set to true, then deleting an already deleted or non-existing `CustomTargetType`
+                    /// will succeed.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("allowMissing", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> AllowMissing { get; set; }
+
+                    /// <summary>
+                    /// Optional. This checksum is computed by the server based on the value of other fields, and may be
+                    /// sent on update and delete requests to ensure the client has an up-to-date value before
+                    /// proceeding.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Etag { get; set; }
+
+                    /// <summary>
+                    /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must
+                    /// retry your request, the server will know to ignore the request if it has already been completed.
+                    /// The server will guarantee that for at least 60 minutes after the first request. For example,
+                    /// consider a situation where you make an initial request and the request times out. If you make
+                    /// the request again with the same request ID, the server can check if original operation with the
+                    /// same request ID was received, and if so, will ignore the second request. This prevents clients
+                    /// from accidentally creating duplicate commitments. The request ID must be a valid UUID with the
+                    /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>
+                    /// Optional. If set to true, the request is validated but no actual change is made.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/customTargetTypes/[^/]+$",
+                        });
+                        RequestParameters.Add("allowMissing", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "allowMissing",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("etag", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "etag",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "validateOnly",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Gets details of a single CustomTargetType.</summary>
+                /// <param name="name">
+                /// Required. Name of the `CustomTargetType`. Format must be
+                /// `projects/{project_id}/locations/{location_name}/customTargetTypes/{custom_target_type}`.
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets details of a single CustomTargetType.</summary>
+                public class GetRequest : CloudDeployBaseServiceRequest<Google.Apis.CloudDeploy.v1.Data.CustomTargetType>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Name of the `CustomTargetType`. Format must be
+                    /// `projects/{project_id}/locations/{location_name}/customTargetTypes/{custom_target_type}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/customTargetTypes/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists CustomTargetTypes in a given project and location.</summary>
+                /// <param name="parent">
+                /// Required. The parent that owns this collection of custom target types. Format must be
+                /// `projects/{project_id}/locations/{location_name}`.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists CustomTargetTypes in a given project and location.</summary>
+                public class ListRequest : CloudDeployBaseServiceRequest<Google.Apis.CloudDeploy.v1.Data.ListCustomTargetTypesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent that owns this collection of custom target types. Format must be
+                    /// `projects/{project_id}/locations/{location_name}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Filter custom target types to be returned. See https://google.aip.dev/160 for more
+                    /// details.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// Optional. Field to sort by. See https://google.aip.dev/132#ordering for more details.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>
+                    /// Optional. The maximum number of `CustomTargetType` objects to return. The service may return
+                    /// fewer than this value. If unspecified, at most 50 `CustomTargetType` objects will be returned.
+                    /// The maximum value is 1000; values above 1000 will be set to 1000.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. A page token, received from a previous `ListCustomTargetTypes` call. Provide this to
+                    /// retrieve the subsequent page. When paginating, all other provided parameters match the call that
+                    /// provided the page token.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/customTargetTypes";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates a single CustomTargetType.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Optional. Name of the `CustomTargetType`. Format is
+                /// `projects/{project}/locations/{location}/customTargetTypes/a-z{0,62}`.
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.CloudDeploy.v1.Data.CustomTargetType body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Updates a single CustomTargetType.</summary>
+                public class PatchRequest : CloudDeployBaseServiceRequest<Google.Apis.CloudDeploy.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudDeploy.v1.Data.CustomTargetType body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Optional. Name of the `CustomTargetType`. Format is
+                    /// `projects/{project}/locations/{location}/customTargetTypes/a-z{0,62}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. If set to true, updating a `CustomTargetType` that does not exist will result in the
+                    /// creation of a new `CustomTargetType`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("allowMissing", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> AllowMissing { get; set; }
+
+                    /// <summary>
+                    /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must
+                    /// retry your request, the server will know to ignore the request if it has already been completed.
+                    /// The server will guarantee that for at least 60 minutes since the first request. For example,
+                    /// consider a situation where you make an initial request and the request times out. If you make
+                    /// the request again with the same request ID, the server can check if original operation with the
+                    /// same request ID was received, and if so, will ignore the second request. This prevents clients
+                    /// from accidentally creating duplicate commitments. The request ID must be a valid UUID with the
+                    /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>
+                    /// Required. Field mask is used to specify the fields to be overwritten in the `CustomTargetType`
+                    /// resource by the update. The fields specified in the update_mask are relative to the resource,
+                    /// not the full request. A field will be overwritten if it is in the mask. If the user does not
+                    /// provide a mask then all fields will be overwritten.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>
+                    /// Optional. If set to true, the request is validated and the user is provided with an expected
+                    /// result, but no actual change is made.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudDeploy.v1.Data.CustomTargetType Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/customTargetTypes/[^/]+$",
+                        });
+                        RequestParameters.Add("allowMissing", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "allowMissing",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "validateOnly",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
             }
 
             /// <summary>Gets the DeliveryPipelines resource.</summary>
@@ -452,8 +985,8 @@ namespace Google.Apis.CloudDeploy.v1
 
                     /// <summary>Lists AutomationRuns in a given project and location.</summary>
                     /// <param name="parent">
-                    /// Required. The parent, which owns this collection of automationRuns. Format must be
-                    /// `projects/{project}/locations/{location}/deliveryPipelines/{delivery_pipeline}`.
+                    /// Required. The parent `Delivery Pipeline`, which owns this collection of automationRuns. Format
+                    /// must be `projects/{project}/locations/{location}/deliveryPipelines/{delivery_pipeline}`.
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
@@ -471,7 +1004,8 @@ namespace Google.Apis.CloudDeploy.v1
                         }
 
                         /// <summary>
-                        /// Required. The parent, which owns this collection of automationRuns. Format must be
+                        /// Required. The parent `Delivery Pipeline`, which owns this collection of automationRuns.
+                        /// Format must be
                         /// `projects/{project}/locations/{location}/deliveryPipelines/{delivery_pipeline}`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -857,8 +1391,8 @@ namespace Google.Apis.CloudDeploy.v1
 
                     /// <summary>Lists Automations in a given project and location.</summary>
                     /// <param name="parent">
-                    /// Required. The parent, which owns this collection of automations. Format must be
-                    /// `projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}`.
+                    /// Required. The parent `Delivery Pipeline`, which owns this collection of automations. Format must
+                    /// be `projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}`.
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
@@ -876,8 +1410,8 @@ namespace Google.Apis.CloudDeploy.v1
                         }
 
                         /// <summary>
-                        /// Required. The parent, which owns this collection of automations. Format must be
-                        /// `projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}`.
+                        /// Required. The parent `Delivery Pipeline`, which owns this collection of automations. Format
+                        /// must be `projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -4329,7 +4863,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
     /// <summary>Contains the information of an automated advance-rollout operation.</summary>
     public class AdvanceRolloutOperation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. The phase to which the rollout will be advanced to.</summary>
+        /// <summary>Output only. The phase the rollout will be advanced to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationPhase")]
         public virtual string DestinationPhase { get; set; }
 
@@ -4485,7 +5019,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
 
     /// <summary>
     /// An `Automation` resource in the Cloud Deploy API. An `Automation` enables the automation of manually driven
-    /// actions for a Delivery Pipeline, which includes Release promotion amongst Targets, Rollout repair and Rollout
+    /// actions for a Delivery Pipeline, which includes Release promotion among Targets, Rollout repair and Rollout
     /// deployment strategy advancement. The intention of Automation is to reduce manual intervention in the continuous
     /// delivery process.
     /// </summary>
@@ -4734,8 +5268,8 @@ namespace Google.Apis.CloudDeploy.v1.Data
     }
 
     /// <summary>
-    /// An `AutomationRun` resource in the Cloud Deploy API. An `AutomationRun` represents an automation execution
-    /// instance of an automation rule.
+    /// An `AutomationRun` resource in the Cloud Deploy API. An `AutomationRun` represents an execution instance of an
+    /// automation rule.
     /// </summary>
     public class AutomationRun : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4801,8 +5335,8 @@ namespace Google.Apis.CloudDeploy.v1.Data
         private object _expireTime;
 
         /// <summary>
-        /// Output only. Time the `AutomationRun` will expire. An `AutomationRun` will expire after 14 days from its
-        /// creation date.
+        /// Output only. Time the `AutomationRun` expires. An `AutomationRun` expires after 14 days from its creation
+        /// date.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
         public virtual string ExpireTimeRaw
@@ -4867,7 +5401,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual string State { get; set; }
 
         /// <summary>
-        /// Output only. Explains the current state of the `AutomationRun`. Present only an explanation is needed.
+        /// Output only. Explains the current state of the `AutomationRun`. Present only when an explanation is needed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stateDescription")]
         public virtual string StateDescription { get; set; }
@@ -5186,6 +5720,25 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("automaticTrafficControl")]
         public virtual System.Nullable<bool> AutomaticTrafficControl { get; set; }
 
+        /// <summary>
+        /// Optional. A list of tags that are added to the canary revision while the canary deployment is in progress.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("canaryRevisionTags")]
+        public virtual System.Collections.Generic.IList<string> CanaryRevisionTags { get; set; }
+
+        /// <summary>
+        /// Optional. A list of tags that are added to the prior revision while the canary deployment is in progress.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("priorRevisionTags")]
+        public virtual System.Collections.Generic.IList<string> PriorRevisionTags { get; set; }
+
+        /// <summary>
+        /// Optional. A list of tags that are added to the final stable revision after the canary deployment is
+        /// completed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stableRevisionTags")]
+        public virtual System.Collections.Generic.IList<string> StableRevisionTags { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -5301,6 +5854,198 @@ namespace Google.Apis.CloudDeploy.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
+    }
+
+    /// <summary>CustomMetadata contains information from a user defined operation.</summary>
+    public class CustomMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Key-value pairs provided by the user defined operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("values")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Values { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information specifying a Custom Target.</summary>
+    public class CustomTarget : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The name of the CustomTargetType. Format must be
+        /// `projects/{project}/locations/{location}/customTargetTypes/{custom_target_type}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customTargetType")]
+        public virtual string CustomTargetType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>CustomTargetDeployMetadata contains information from a Custom Target deploy operation.</summary>
+    public class CustomTargetDeployMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Skip message provided in the results of a custom deploy operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("skipMessage")]
+        public virtual string SkipMessage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// CustomTargetSkaffoldActions represents the `CustomTargetType` configuration using Skaffold custom actions.
+    /// </summary>
+    public class CustomTargetSkaffoldActions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The Skaffold custom action responsible for deploy operations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deployAction")]
+        public virtual string DeployAction { get; set; }
+
+        /// <summary>
+        /// Optional. List of Skaffold modules Cloud Deploy will include in the Skaffold Config as required before
+        /// performing diagnose.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includeSkaffoldModules")]
+        public virtual System.Collections.Generic.IList<SkaffoldModules> IncludeSkaffoldModules { get; set; }
+
+        /// <summary>
+        /// Optional. The Skaffold custom action responsible for render operations. If not provided then Cloud Deploy
+        /// will perform the render operations via `skaffold render`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("renderAction")]
+        public virtual string RenderAction { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A `CustomTargetType` resource in the Cloud Deploy API. A `CustomTargetType` defines a type of custom target that
+    /// can be referenced in a `Target` in order to facilitate deploying to a runtime that does not have a 1P
+    /// integration with Cloud Deploy.
+    /// </summary>
+    public class CustomTargetType : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy.
+        /// See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Time at which the `CustomTargetType` was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Configures render and deploy for the `CustomTargetType` using Skaffold custom actions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customActions")]
+        public virtual CustomTargetSkaffoldActions CustomActions { get; set; }
+
+        /// <summary>Output only. Resource id of the `CustomTargetType`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customTargetTypeId")]
+        public virtual string CustomTargetTypeId { get; set; }
+
+        /// <summary>Optional. Description of the `CustomTargetType`. Max length is 255 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Optional. This checksum is computed by the server based on the value of other fields, and may be sent on
+        /// update and delete requests to ensure the client has an up-to-date value before proceeding.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>
+        /// Optional. Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must
+        /// meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters,
+        /// underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed.
+        /// * Keys must start with a lowercase letter or international character. * Each resource is limited to a
+        /// maximum of 64 labels. Both keys and values are additionally constrained to be &amp;lt;= 128 bytes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Optional. Name of the `CustomTargetType`. Format is
+        /// `projects/{project}/locations/{location}/customTargetTypes/a-z{0,62}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. Unique identifier of the `CustomTargetType`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uid")]
+        public virtual string Uid { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. Most recent time at which the `CustomTargetType` was updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
     }
 
     /// <summary>
@@ -5574,6 +6319,14 @@ namespace Google.Apis.CloudDeploy.v1.Data
         /// <summary>Output only. The name of the Cloud Run Service that is associated with a `DeployJobRun`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudRun")]
         public virtual CloudRunMetadata CloudRun { get; set; }
+
+        /// <summary>Output only. Custom metadata provided by user defined deploy operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("custom")]
+        public virtual CustomMetadata Custom { get; set; }
+
+        /// <summary>Output only. Custom Target metadata associated with a `DeployJobRun`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customTarget")]
+        public virtual CustomTargetDeployMetadata CustomTarget { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6097,9 +6850,31 @@ namespace Google.Apis.CloudDeploy.v1.Data
     /// <summary>The response object from `ListAutomations`.</summary>
     public class ListAutomationsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The `Automations` objects.</summary>
+        /// <summary>The `Automation` objects.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("automations")]
         public virtual System.Collections.Generic.IList<Automation> Automations { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response object from `ListCustomTargetTypes.`</summary>
+    public class ListCustomTargetTypesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The `CustomTargetType` objects.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customTargetTypes")]
+        public virtual System.Collections.Generic.IList<CustomTargetType> CustomTargetTypes { get; set; }
 
         /// <summary>
         /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
@@ -6301,6 +7076,10 @@ namespace Google.Apis.CloudDeploy.v1.Data
         /// <summary>Output only. The name of the Cloud Run Service that is associated with a `Rollout`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudRun")]
         public virtual CloudRunMetadata CloudRun { get; set; }
+
+        /// <summary>Output only. Custom metadata provided by user defined `Rollout` operations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("custom")]
+        public virtual CustomMetadata Custom { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6960,6 +7739,12 @@ namespace Google.Apis.CloudDeploy.v1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>
+        /// Output only. Snapshot of the custom target types referenced by the targets taken at release creation time.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customTargetTypeSnapshots")]
+        public virtual System.Collections.Generic.IList<CustomTargetType> CustomTargetTypeSnapshots { get; set; }
+
         /// <summary>Output only. Snapshot of the parent pipeline taken at release creation time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deliveryPipelineSnapshot")]
         public virtual DeliveryPipeline DeliveryPipelineSnapshot { get; set; }
@@ -7118,7 +7903,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("releaseReadyCondition")]
         public virtual ReleaseReadyCondition ReleaseReadyCondition { get; set; }
 
-        /// <summary>Details around the support state of the release's skaffold version.</summary>
+        /// <summary>Details around the support state of the release's Skaffold version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skaffoldSupportedCondition")]
         public virtual SkaffoldSupportedCondition SkaffoldSupportedCondition { get; set; }
 
@@ -7198,6 +7983,10 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cloudRun")]
         public virtual CloudRunRenderMetadata CloudRun { get; set; }
 
+        /// <summary>Output only. Custom metadata provided by user defined render operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("custom")]
+        public virtual CustomMetadata Custom { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -7241,6 +8030,14 @@ namespace Google.Apis.CloudDeploy.v1.Data
         /// <summary>Output only. The index of the current repair action in the repair sequence.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currentRepairModeIndex")]
         public virtual System.Nullable<long> CurrentRepairModeIndex { get; set; }
+
+        /// <summary>Output only. The job ID for the Job to repair.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jobId")]
+        public virtual string JobId { get; set; }
+
+        /// <summary>Output only. The phase ID of the phase that includes the job being repaired.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phaseId")]
+        public virtual string PhaseId { get; set; }
 
         /// <summary>
         /// Output only. Records of the repair attempts. Each repair phase may have multiple retry attempts or single
@@ -7303,7 +8100,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
     public class Retry : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. Total number of retries. Retry will skipped if set to 0; The minimum value is 1, and the maximum
+        /// Required. Total number of retries. Retry is skipped if set to 0; The minimum value is 1, and the maximum
         /// value is 10.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attempts")]
@@ -7936,8 +8733,65 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Cloud Storage bucket containing Skaffold Config modules.</summary>
+    public class SkaffoldGCSSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Relative path from the source to the Skaffold file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("path")]
+        public virtual string Path { get; set; }
+
+        /// <summary>
+        /// Required. Cloud Storage source paths to copy recursively. For example, providing
+        /// "gs://my-bucket/dir/configs/*" will result in Skaffold copying all files within the "dir/configs" directory
+        /// in the bucket "my-bucket".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("source")]
+        public virtual string Source { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Git repository containing Skaffold Config modules.</summary>
+    public class SkaffoldGitSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Relative path from the repository root to the Skaffold file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("path")]
+        public virtual string Path { get; set; }
+
+        /// <summary>Optional. Git ref the package should be cloned from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ref")]
+        public virtual string Ref__ { get; set; }
+
+        /// <summary>Required. Git repository the package should be cloned from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("repo")]
+        public virtual string Repo { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Skaffold Config modules and their remote source.</summary>
+    public class SkaffoldModules : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The Skaffold Config modules to use from the specified source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("configs")]
+        public virtual System.Collections.Generic.IList<string> Configs { get; set; }
+
+        /// <summary>Remote git repository containing the Skaffold Config modules.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("git")]
+        public virtual SkaffoldGitSource Git { get; set; }
+
+        /// <summary>Cloud Storage bucket containing the Skaffold Config modules.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleCloudStorage")]
+        public virtual SkaffoldGCSSource GoogleCloudStorage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
-    /// SkaffoldSupportedCondition contains information about when support for the release's version of skaffold ends.
+    /// SkaffoldSupportedCondition contains information about when support for the release's version of Skaffold ends.
     /// </summary>
     public class SkaffoldSupportedCondition : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7945,7 +8799,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
 
         private object _maintenanceModeTime;
 
-        /// <summary>The time at which this release's version of skaffold will enter maintenance mode.</summary>
+        /// <summary>The time at which this release's version of Skaffold will enter maintenance mode.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maintenanceModeTime")]
         public virtual string MaintenanceModeTimeRaw
         {
@@ -7980,11 +8834,11 @@ namespace Google.Apis.CloudDeploy.v1.Data
             set => MaintenanceModeTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>The skaffold support state for this release's version of skaffold.</summary>
+        /// <summary>The Skaffold support state for this release's version of Skaffold.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skaffoldSupportState")]
         public virtual string SkaffoldSupportState { get; set; }
 
-        /// <summary>True if the version of skaffold used by this release is supported.</summary>
+        /// <summary>True if the version of Skaffold used by this release is supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual System.Nullable<bool> Status { get; set; }
 
@@ -7992,7 +8846,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
 
         private object _supportExpirationTime;
 
-        /// <summary>The time at which this release's version of skaffold will no longer be supported.</summary>
+        /// <summary>The time at which this release's version of Skaffold will no longer be supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("supportExpirationTime")]
         public virtual string SupportExpirationTimeRaw
         {
@@ -8038,7 +8892,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
 
         private object _maintenanceModeTime;
 
-        /// <summary>The time at which this version of skaffold will enter maintenance mode.</summary>
+        /// <summary>The time at which this version of Skaffold will enter maintenance mode.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maintenanceModeTime")]
         public virtual string MaintenanceModeTimeRaw
         {
@@ -8081,7 +8935,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
 
         private object _supportExpirationTime;
 
-        /// <summary>The time at which this version of skaffold will no longer be supported.</summary>
+        /// <summary>The time at which this version of Skaffold will no longer be supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("supportExpirationTime")]
         public virtual string SupportExpirationTimeRaw
         {
@@ -8275,6 +9129,10 @@ namespace Google.Apis.CloudDeploy.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>Optional. Information specifying a Custom Target.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customTarget")]
+        public virtual CustomTarget CustomTarget { get; set; }
 
         /// <summary>Optional. The deploy parameters to use for this target.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deployParameters")]
@@ -8481,7 +9339,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
     }
 
     /// <summary>
-    /// TargetsPresentCondition contains information on any Targets defined in the Delivery Pipeline that do not
+    /// `TargetsPresentCondition` contains information on any Targets referenced in the Delivery Pipeline that do not
     /// actually exist.
     /// </summary>
     public class TargetsPresentCondition : Google.Apis.Requests.IDirectResponseSchema

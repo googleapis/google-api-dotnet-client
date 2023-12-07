@@ -2508,8 +2508,16 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
     public class GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembership : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The unique stable hashed user identifier of the member. The identifier corresponds to a `hashed_account_id`
-        /// provided in a previous `CreateAssessment` or `AnnotateAssessment` call.
+        /// The unique stable account identifier of the member. The identifier corresponds to an `account_id` provided
+        /// in a previous `CreateAssessment` or `AnnotateAssessment` call.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
+        public virtual string AccountId { get; set; }
+
+        /// <summary>
+        /// Deprecated: use `account_id` instead. The unique stable hashed account identifier of the member. The
+        /// identifier corresponds to a `hashed_account_id` provided in a previous `CreateAssessment` or
+        /// `AnnotateAssessment` call.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hashedAccountId")]
         public virtual string HashedAccountId { get; set; }
@@ -2603,8 +2611,18 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
     public class GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. The unique stable hashed user identifier used to search connections. The identifier should
-        /// correspond to a `hashed_account_id` provided in a previous `CreateAssessment` or `AnnotateAssessment` call.
+        /// Optional. The unique stable account identifier used to search connections. The identifier should correspond
+        /// to an `account_id` provided in a previous `CreateAssessment` or `AnnotateAssessment` call. Either
+        /// hashed_account_id or account_id must be set, but not both.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
+        public virtual string AccountId { get; set; }
+
+        /// <summary>
+        /// Optional. Deprecated: use `account_id` instead. The unique stable hashed account identifier used to search
+        /// connections. The identifier should correspond to a `hashed_account_id` provided in a previous
+        /// `CreateAssessment` or `AnnotateAssessment` call. Either hashed_account_id or account_id must be set, but not
+        /// both.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hashedAccountId")]
         public virtual string HashedAccountId { get; set; }

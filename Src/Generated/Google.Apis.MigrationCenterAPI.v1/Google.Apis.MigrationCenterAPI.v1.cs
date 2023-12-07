@@ -7687,7 +7687,7 @@ namespace Google.Apis.MigrationCenterAPI.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("operatingSystem")]
         public virtual ReportSummaryChartData OperatingSystem { get; set; }
 
-        /// <summary>Histogram showing a distribution of memory sizes.</summary>
+        /// <summary>Histogram showing a distribution of storage sizes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storageBytesHistogram")]
         public virtual ReportSummaryHistogramChartData StorageBytesHistogram { get; set; }
 

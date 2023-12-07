@@ -1661,6 +1661,14 @@ namespace Google.Apis.CloudFunctions.v2.Data
         public virtual string RetryPolicy { get; set; }
 
         /// <summary>
+        /// Optional. The hostname of the service that 1st Gen function should be observed. If no string is provided,
+        /// the default service implementing the API will be used. For example, `storage.googleapis.com` is the default
+        /// for all event types in the `google.storage` namespace. The field is only applicable to 1st Gen functions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("service")]
+        public virtual string Service { get; set; }
+
+        /// <summary>
         /// Optional. The email of the trigger's service account. The service account must have permission to invoke
         /// Cloud Run services, the permission is `run.routes.invoke`. If empty, defaults to the Compute Engine default
         /// service account: `{project_number}-compute@developer.gserviceaccount.com`.
@@ -2929,8 +2937,8 @@ namespace Google.Apis.CloudFunctions.v2.Data
         public virtual System.Nullable<bool> AllTrafficOnLatestRevision { get; set; }
 
         /// <summary>
-        /// [Preview] The number of CPUs used in a single container instance. Default value is calculated from available
-        /// memory. Supports the same values as Cloud Run, see
+        /// The number of CPUs used in a single container instance. Default value is calculated from available memory.
+        /// Supports the same values as Cloud Run, see
         /// https://cloud.google.com/run/docs/reference/rest/v1/Container#resourcerequirements Example: "1" indicates 1
         /// vCPU
         /// </summary>
@@ -2965,7 +2973,7 @@ namespace Google.Apis.CloudFunctions.v2.Data
         public virtual System.Nullable<int> MaxInstanceCount { get; set; }
 
         /// <summary>
-        /// [Preview] Sets the maximum number of concurrent requests that each instance can receive. Defaults to 1.
+        /// Sets the maximum number of concurrent requests that each instance can receive. Defaults to 1.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxInstanceRequestConcurrency")]
         public virtual System.Nullable<int> MaxInstanceRequestConcurrency { get; set; }
