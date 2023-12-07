@@ -41,7 +41,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
         [Fact]
         public async Task ValidLocallySignedAccessToken_FromPrivateKey()
         {
-            string fakeServiceAccountCredentialFileContents = GetContents("service_account_credential.json");
+            string fakeServiceAccountCredentialFileContents = GetContents(DefaultCredentialProviderTests.ServiceAccountCredentialMinimalFileName);
 
             var credentialParameters = NewtonsoftJsonSerializer.Instance.Deserialize<JsonCredentialParameters>(fakeServiceAccountCredentialFileContents);
             var initializer = new ServiceAccountCredential.Initializer(credentialParameters.ClientEmail)
@@ -66,7 +66,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
         [Fact]
         public async Task ValidLocallySignedAccessToken_FromPrivateKey_AlsoOnRetry()
         {
-            string fakeServiceAccountCredentialFileContents = GetContents("service_account_credential.json");
+            string fakeServiceAccountCredentialFileContents = GetContents(DefaultCredentialProviderTests.ServiceAccountCredentialMinimalFileName);
 
             var credentialParameters = NewtonsoftJsonSerializer.Instance.Deserialize<JsonCredentialParameters>(fakeServiceAccountCredentialFileContents);
             var messageHandler = new FetchesTokenMessageHandler();
@@ -111,7 +111,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
         [Fact]
         public void Pkcs8Decoding_FromPrivateKey()
         {
-            string fakeServiceAccountCredentialFileContents = GetContents("service_account_credential.json");
+            string fakeServiceAccountCredentialFileContents = GetContents(DefaultCredentialProviderTests.ServiceAccountCredentialMinimalFileName);
 
             var credentialParameters = NewtonsoftJsonSerializer.Instance.Deserialize<JsonCredentialParameters>(fakeServiceAccountCredentialFileContents);
             var initializer = new ServiceAccountCredential.Initializer(credentialParameters.ClientEmail)

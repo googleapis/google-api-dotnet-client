@@ -61,7 +61,8 @@ namespace Google.Apis.Auth.Tests.OAuth2
 
         private const string InvalidCredentialFileName = "invalid_credential.json";
         private const string UserCredentialFileName = "user_credential.json";
-        private const string ServiceAccountCredentialFileName = "service_account_credential.json";
+        internal const string ServiceAccountCredentialMinimalFileName = "service_account_credential_minimal.json";
+        private const string ServiceAccountCredentialFullFileName = "service_account_credential_full.json";
         private const string BrokenServiceAccountCredentialFileName = "broken_service_account_credential.json";
         private const string NoCredentialSourceExternalAccountCredentialFileName = "no_credential_source_external_account_credential.json";
         private const string UrlSourcedExternalAccountCredentialFileName = "url_sourced_external_account_credential.json";
@@ -129,7 +130,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
         [Fact]
         public async Task GetDefaultCredential_ServiceAccountCredential_FromEnvironmentVariable()
         {
-            credentialProvider.SetEnvironmentVariable(CredentialEnvironmentVariable, ServiceAccountCredentialFileName);
+            credentialProvider.SetEnvironmentVariable(CredentialEnvironmentVariable, ServiceAccountCredentialMinimalFileName);
 
             var credential = await credentialProvider.GetDefaultCredentialAsync();
 
@@ -141,7 +142,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
         [Fact]
         public async Task GetDefaultCredential_ServiceAccountCredential_CreateScoped()
         {
-            credentialProvider.SetEnvironmentVariable(CredentialEnvironmentVariable, ServiceAccountCredentialFileName);
+            credentialProvider.SetEnvironmentVariable(CredentialEnvironmentVariable, ServiceAccountCredentialMinimalFileName);
 
             var credential = await credentialProvider.GetDefaultCredentialAsync();
 
@@ -153,6 +154,38 @@ namespace Google.Apis.Auth.Tests.OAuth2
 
             scopedCredential = credential.CreateScoped("scope1", "scope2");  // Test the params overload
             Assert.Equal(new[] { "scope1", "scope2" }, ((ServiceAccountCredential)scopedCredential.UnderlyingCredential).Scopes);
+        }
+
+        [Fact]
+        public async Task GetDefaultCredential_ServiceAccountCredential_Minimal()
+        {
+            credentialProvider.SetEnvironmentVariable(CredentialEnvironmentVariable, ServiceAccountCredentialMinimalFileName);
+
+            var credential = await credentialProvider.GetDefaultCredentialAsync();
+
+            var sa = Assert.IsType<ServiceAccountCredential>(credential.UnderlyingCredential);
+            Assert.NotNull(sa.Key);
+            Assert.Equal("PRIVATE_KEY_ID", sa.KeyId);
+            Assert.Equal("CLIENT_EMAIL", sa.Id);
+            Assert.Equal(GoogleAuthConsts.OidcTokenUrl, sa.TokenServerUrl);
+            Assert.Null(sa.ProjectId);
+            Assert.Null(sa.QuotaProject);
+        }
+
+        [Fact]
+        public async Task GetDefaultCredential_ServiceAccountCredential_Full()
+        {
+            credentialProvider.SetEnvironmentVariable(CredentialEnvironmentVariable, ServiceAccountCredentialFullFileName);
+
+            var credential = await credentialProvider.GetDefaultCredentialAsync();
+
+            var sa = Assert.IsType<ServiceAccountCredential>(credential.UnderlyingCredential);
+            Assert.NotNull(sa.Key);
+            Assert.Equal("PRIVATE_KEY_ID", sa.KeyId);
+            Assert.Equal("CLIENT_EMAIL", sa.Id);
+            Assert.Equal("TOKEN_URI", sa.TokenServerUrl);
+            Assert.Equal("PROJECT_ID", sa.ProjectId);
+            Assert.Equal("QUOTA_PROJECT_ID", sa.QuotaProject);
         }
 
         #endregion
