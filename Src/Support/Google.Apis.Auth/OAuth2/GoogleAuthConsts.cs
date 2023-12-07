@@ -73,20 +73,22 @@ namespace Google.Apis.Auth.OAuth2
         /// <summary>Installed application localhost redirect URI.</summary>
         public const string LocalhostRedirectUri = "http://localhost";
 
+        internal const string IamServiceHostPrefix = "https://iamcredentials.";
+
         /// <summary>IAM access token endpoint for service account.</summary>
-        internal const string IamServiceAccountEndpointCommonPrefix = "https://iamcredentials.googleapis.com/v1/projects/-/serviceAccounts/";
+        internal const string IamServiceAccountEndpointCommonPrefixFormat = $"{IamServiceHostPrefix}{{0}}/v1/projects/-/serviceAccounts/";
 
         /// <summary>IAM access token verb.</summary>
         internal const string IamAccessTokenVerb = "generateAccessToken";
 
         /// <summary>IAM access token endpoint format string. To use it insert the service account email.</summary>
-        internal static readonly string IamAccessTokenEndpointFormatString = $"{IamServiceAccountEndpointCommonPrefix}{{0}}:{IamAccessTokenVerb}";
+        internal const string IamAccessTokenEndpointFormatString = $"{IamServiceAccountEndpointCommonPrefixFormat}{{1}}:{IamAccessTokenVerb}";
 
         /// <summary>IAM signBlob endpoint format string. To use it insert the service account email.</summary>
-        internal static readonly string IamSignEndpointFormatString = $"{IamServiceAccountEndpointCommonPrefix}{{0}}:signBlob";
+        internal const string IamSignEndpointFormatString = $"{IamServiceAccountEndpointCommonPrefixFormat}{{1}}:signBlob";
 
         /// <summary>IAM ID token endpoint format string. To use it insert the service account email.</summary>
-        internal static readonly string IamIdTokenEndpointFormatString = $"{IamServiceAccountEndpointCommonPrefix}{{0}}:generateIdToken";
+        internal const string IamIdTokenEndpointFormatString = $"{IamServiceAccountEndpointCommonPrefixFormat}{{1}}:generateIdToken";
 
         /// <summary>Scope needed for source credential in impersonated credential.</summary>
         internal const string IamScope = "https://www.googleapis.com/auth/iam";
@@ -96,6 +98,11 @@ namespace Google.Apis.Auth.OAuth2
         /// If set, this value will be applied to Application Default Credentials.
         /// </summary>
         public const string QuotaProjectEnvironmentVariable = "GOOGLE_CLOUD_QUOTA_PROJECT";
+
+        /// <summary>
+        /// The default universe domain.
+        /// </summary>
+        internal const string DefaultUniverseDomain = "googleapis.com";
 
         /// <summary>
         /// The non empty value set on <see cref="QuotaProjectEnvironmentVariable"/>, if any;
