@@ -21,7 +21,6 @@ using Google.Apis.Util;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -258,7 +257,7 @@ namespace Google.Apis.Auth.OAuth2
         {
             var request = new IamSignBlobRequest { Payload = blob };
             var serviceAccountEmail = await GetDefaultServiceAccountEmailAsync(cancellationToken).ConfigureAwait(false);
-            var signBlobUrl = string.Format(GoogleAuthConsts.IamSignEndpointFormatString, serviceAccountEmail);
+            var signBlobUrl = string.Format(GoogleAuthConsts.IamSignEndpointFormatString, GoogleAuthConsts.DefaultUniverseDomain, serviceAccountEmail);
 
             var response = await request.PostJsonAsync<IamSignBlobResponse>(_authenticatedHttpClient.Value, signBlobUrl, cancellationToken)
                 .ConfigureAwait(false);

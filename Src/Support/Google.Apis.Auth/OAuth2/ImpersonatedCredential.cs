@@ -112,7 +112,7 @@ namespace Google.Apis.Auth.OAuth2
             }
 
             private static string GetDefaultTokenUrl(string targetPrincipal) =>
-                string.Format(GoogleAuthConsts.IamAccessTokenEndpointFormatString, targetPrincipal);
+                string.Format(GoogleAuthConsts.IamAccessTokenEndpointFormatString, GoogleAuthConsts.DefaultUniverseDomain, targetPrincipal);
         }
 
         /// <summary>
@@ -256,7 +256,7 @@ namespace Google.Apis.Auth.OAuth2
                 Audience = oidcTokenOptions.TargetAudience,
                 IncludeEmail = true
             };
-            var oidcTokenUrl = string.Format(GoogleAuthConsts.IamIdTokenEndpointFormatString, TargetPrincipal);
+            var oidcTokenUrl = string.Format(GoogleAuthConsts.IamIdTokenEndpointFormatString, GoogleAuthConsts.DefaultUniverseDomain, TargetPrincipal);
 
             caller.Token = await request.PostJsonAsync(HttpClient, oidcTokenUrl, Clock, Logger, cancellationToken)
                 .ConfigureAwait(false);
@@ -280,7 +280,7 @@ namespace Google.Apis.Auth.OAuth2
                 DelegateAccounts = DelegateAccounts,
                 Payload = blob
             };
-            var signBlobUrl = string.Format(GoogleAuthConsts.IamSignEndpointFormatString, TargetPrincipal);
+            var signBlobUrl = string.Format(GoogleAuthConsts.IamSignEndpointFormatString, GoogleAuthConsts.DefaultUniverseDomain, TargetPrincipal);
 
             var response = await request.PostJsonAsync<IamSignBlobResponse>(HttpClient, signBlobUrl, cancellationToken)
                 .ConfigureAwait(false);

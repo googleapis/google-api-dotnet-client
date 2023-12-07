@@ -210,7 +210,7 @@ namespace Google.Apis.Auth.OAuth2.Responses
                     // as TokenErrorResponse. Since the content has nothing but a single error field, We
                     // just use the content itself as the error. For example:
                     // "{"error": {"code": 404, "message": "...", "errors": [{"message": "...", ...}], "status": "NOT_FOUND"}}" 
-                    var error = response.RequestMessage?.RequestUri?.AbsoluteUri.StartsWith(GoogleAuthConsts.IamServiceAccountEndpointCommonPrefix, StringComparison.Ordinal) == true ?
+                    var error = response.RequestMessage?.RequestUri?.AbsoluteUri.StartsWith(GoogleAuthConsts.IamServiceHostPrefix, StringComparison.Ordinal) == true ?
                         new TokenErrorResponse { Error = content } :
                         NewtonsoftJsonSerializer.Instance.Deserialize<TokenErrorResponse>(content);
                     throw new TokenResponseException(error, response.StatusCode);
