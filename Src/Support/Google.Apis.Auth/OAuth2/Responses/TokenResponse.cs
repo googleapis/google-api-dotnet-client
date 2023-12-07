@@ -17,6 +17,7 @@ limitations under the License.
 using Google.Apis.Json;
 using Google.Apis.Logging;
 using Google.Apis.Util;
+using Newtonsoft.Json;
 using System;
 using System.Globalization;
 using System.Net.Http;
@@ -39,17 +40,17 @@ namespace Google.Apis.Auth.OAuth2.Responses
         internal const int TokenHardExpiryTimeWindowSeconds = 60 * 5;
 
         /// <summary>Gets or sets the access token issued by the authorization server.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("access_token")]
+        [JsonProperty("access_token")]
         public string AccessToken { get; set; }
 
         /// <summary>
         /// Gets or sets the token type as specified in http://tools.ietf.org/html/rfc6749#section-7.1.
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("token_type")]
+        [JsonProperty("token_type")]
         public string TokenType { get; set; }
 
         /// <summary>Gets or sets the lifetime in seconds of the access token.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("expires_in")]
+        [JsonProperty("expires_in")]
         public long? ExpiresInSeconds { get; set; }
 
         /// <summary>
@@ -57,19 +58,19 @@ namespace Google.Apis.Auth.OAuth2.Responses
         /// For example, the value "3600" denotes that the access token will expire in one hour from the time the 
         /// response was generated.
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("refresh_token")]
+        [JsonProperty("refresh_token")]
         public string RefreshToken { get; set; }
 
         /// <summary>
         /// Gets or sets the scope of the access token as specified in http://tools.ietf.org/html/rfc6749#section-3.3.
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("scope")]
+        [JsonProperty("scope")]
         public string Scope { get; set; }
 
         /// <summary>
         /// Gets or sets the id_token, which is a JSON Web Token (JWT) as specified in http://tools.ietf.org/html/draft-ietf-oauth-json-web-token
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("id_token")]
+        [JsonProperty("id_token")]
         public string IdToken { get; set; }
 
         /// <summary>
@@ -78,7 +79,7 @@ namespace Google.Apis.Auth.OAuth2.Responses
         /// time zone transitions (e.g. daylight saving transitions).
         /// </summary>
         [Obsolete("Use IssuedUtc instead")]
-        [Newtonsoft.Json.JsonPropertyAttribute(Order = 1)] // Serialize this before IssuedUtc, so that IssuedUtc takes priority when deserializing
+        [JsonProperty(Order = 1)] // Serialize this before IssuedUtc, so that IssuedUtc takes priority when deserializing
         public DateTime Issued
         {
             get { return IssuedUtc.ToLocalTime(); }
@@ -91,22 +92,22 @@ namespace Google.Apis.Auth.OAuth2.Responses
         /// <remarks>
         /// This should be set by the CLIENT after the token was received from the server.
         /// </remarks>
-        [Newtonsoft.Json.JsonPropertyAttribute(Order = 2)]
+        [JsonProperty(Order = 2)]
         public DateTime IssuedUtc { get; set; }
 
         /// <summary>Access token for impersonated credentials.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("accessToken")]
+        [JsonProperty("accessToken")]
         private string ImpersonatedAccessToken { set => AccessToken = value; }
 
         /// <summary>ID token for impersonated credentials.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("token")]
+        [JsonProperty("token")]
         private string ImpersonatedIdToken { set => IdToken = value; }
 
         /// <summary>
         /// Access token expiration time for impersonated credentials. It has the RFC3339
         /// format: "yyyy-MM-dd'T'HH:mm:sssssssss'Z'". For example: 2020-05-13T16:00:00.045123456Z.
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
+        [JsonProperty("expireTime")]
         private string ImpersonatedAccessTokenExpireTime { get; set; }
 
         // Note: ideally this would be called ShouldRefresh or similar.
@@ -211,7 +212,7 @@ namespace Google.Apis.Auth.OAuth2.Responses
                 }
                 return newToken;
             }
-            catch (Newtonsoft.Json.JsonException ex)
+            catch (JsonException ex)
             {
                 logger.Error(ex, $"Exception was caught when deserializing {typeName}. Content is: {content}");
                 throw new TokenResponseException(new TokenErrorResponse
