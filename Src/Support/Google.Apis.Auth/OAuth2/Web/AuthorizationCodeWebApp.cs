@@ -135,7 +135,7 @@ namespace Google.Apis.Auth.OAuth2.Web
             // If the flow includes a parameter that requires a new token, if the stored token is null or it doesn't
             // have a refresh token and the access token is expired we need to retrieve a new authorization code.
             return Flow.ShouldForceTokenRetrieval() || token == null || (token.RefreshToken == null
-                && token.IsExpired(flow.Clock));
+                && token.ShouldBeRefreshed(flow.Clock));
         }
     }
 }

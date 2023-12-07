@@ -71,42 +71,42 @@ namespace Google.Apis.Auth.Tests.OAuth2.Responses
         {
             get
             {
-                // IsExpired will be true 6 minutes before actual expiry.
-                // IsEffectivelyExpired will be true 5 minutes before actual expiry.
+                // ShouldBeRefreshed will be true 6 minutes before actual expiry.
+                // MayBeUsed will be false 5 minutes before actual expiry.
 
                 DateTime issued = DateTime.UtcNow;
                 // Now is ten minutes after issuance.
                 DateTime now = DateTime.UtcNow.AddSeconds(60 * 10);
                 // If it expires 20 minutes after issuance,
-                // it's not expired now.
-                long isNotExpiredSeconds = 60 * 20;
+                // it's fresh now.
+                long isFreshSeconds = 60 * 20;
                 // If it expires 16 minutes after issuance,
-                // it's soft expired now, but not hard expired.
-                long isSoftExpiredSeconds = 60 * 16;
+                // it should be refreshed but it is still valid.
+                long shouldRefreshSeconds = 60 * 16;
                 // If it expires 15 minutes after issuance,
-                // it's expired now.
-                long isHardExpiredSeconds = 60 * 15;
+                // it's not valid and may not be used.
+                long mayNotBeUsedSeconds = 60 * 15;
 
                 // As newly constructed.
-                yield return new object[] { now, DateTime.MinValue.ToUniversalTime(), null, null, null, true, true };
+                yield return new object[] { now, DateTime.MinValue.ToUniversalTime(), null, null, null, true, false };
                 // Expiry not set.
-                yield return new object[] { now, issued, null, "access", "id", true, true };
+                yield return new object[] { now, issued, null, "access", "id", true, false };
                 // Neither AccessToken nor IdToken set.
-                yield return new object[] { now, issued, isNotExpiredSeconds, null, null, true, true };
+                yield return new object[] { now, issued, isFreshSeconds, null, null, true, false };
                 // AccessToken set.
-                yield return new object[] { now, issued, isNotExpiredSeconds, "access", null, false, false };
+                yield return new object[] { now, issued, isFreshSeconds, "access", null, false, true };
                 // IdToken set.
-                yield return new object[] { now, issued, isNotExpiredSeconds, null, "id", false, false };
+                yield return new object[] { now, issued, isFreshSeconds, null, "id", false, true };
                 // Both AccessToken and IdToken set.
-                yield return new object[] { now, issued, isNotExpiredSeconds, "access", "id", false, false };
-                // Soft expired.
-                yield return new object[] { now, issued, isSoftExpiredSeconds, "access", "id", true, false };
-                // Soft expired boundary.
-                yield return new object[] { now, issued, isSoftExpiredSeconds + 1, "access", "id", false, false };
-                // Hard expired.
-                yield return new object[] { now, issued, isHardExpiredSeconds, "access", "id", true, true };
-                // Hard expired boundary.
-                yield return new object[] { now, issued, isHardExpiredSeconds + 1, "access", "id", true, false };
+                yield return new object[] { now, issued, isFreshSeconds, "access", "id", false, true };
+                // Should refresh
+                yield return new object[] { now, issued, shouldRefreshSeconds, "access", "id", true, true };
+                // Should refresh boundary.
+                yield return new object[] { now, issued, shouldRefreshSeconds + 1, "access", "id", false, true };
+                // May not be used.
+                yield return new object[] { now, issued, mayNotBeUsedSeconds, "access", "id", true, false };
+                // May not be used boundary.
+                yield return new object[] { now, issued, mayNotBeUsedSeconds + 1, "access", "id", true, true };
             }
         }
 
@@ -115,7 +115,7 @@ namespace Google.Apis.Auth.Tests.OAuth2.Responses
         public void Expiry(
             DateTime now, DateTime issuedAt, long? expiresInSeconds,
             string accessToken, string idToken,
-            bool expectedExpired, bool expectedEffectiveExpires)
+            bool expectedShouldBeRefreshed, bool expectedMayBeUsed)
         {
             var clock = new MockClock(now);
             var token = new TokenResponse
@@ -125,8 +125,8 @@ namespace Google.Apis.Auth.Tests.OAuth2.Responses
                 AccessToken = accessToken,
                 IdToken = idToken
             };
-            Assert.Equal(expectedExpired, token.IsExpired(clock));
-            Assert.Equal(expectedEffectiveExpires, token.IsEffectivelyExpired(clock));
+            Assert.Equal(expectedShouldBeRefreshed, token.ShouldBeRefreshed(clock));
+            Assert.Equal(expectedMayBeUsed, token.MayBeUsed(clock));
         }
 
         [Fact]

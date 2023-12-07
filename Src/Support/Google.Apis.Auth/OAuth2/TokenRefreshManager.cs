@@ -80,8 +80,8 @@ namespace Google.Apis.Auth.OAuth2
             Task<TokenResponse> refreshTask;
             lock (_lock)
             {
-                // If current token is not soft-expired, then return it.
-                if (_token != null && !_token.IsExpired(_clock))
+                // If current token doesn't need refreshing, then return it.
+                if (_token != null && !_token.ShouldBeRefreshed(_clock))
                 {
                     return _token.AccessToken;
                 }
@@ -100,8 +100,9 @@ namespace Google.Apis.Auth.OAuth2
                     // avoiding exception observavility issues.
                     _refreshTask.ContinueWith(LogException, TaskContinuationOptions.OnlyOnFaulted);
                 }
-                // If current token is not hard-expired, then return it.
-                if (_token != null && !_token.IsEffectivelyExpired(_clock))
+                // If current token is still valid, then return it.
+                // The refresh above was pre-emptive.
+                if (_token != null && _token.MayBeUsed(_clock))
                 {
                     return _token.AccessToken;
                 }
@@ -121,14 +122,15 @@ namespace Google.Apis.Auth.OAuth2
             }
 
             refreshTask = refreshTask.WithCancellationToken(cancellationToken);
-            // Note that strictly speaking, the token returned here may already be soft, hard or really expired.
+            // Note that strictly speaking, the token returned here may already need redreshing,
+            // be invalid or be really expired.
             // This may happen for tokens that are short lived enough, or in systems with significant load
             // where maybe the token itself was obtained quickly but the task could not acquire a thread fast enough
             // in which to resume.
             // We don't retry as the conditions under which this may happen are not inmediately recoverable and possibly rare,
             // and the token will be refreshed again on a subsequent token request.
-            // Also, note that the token is unusable only if it's really expired, if it's soft/hard expire it still may be valid
-            // if used fast enough.
+            // Also, note that the token is unusable only if it's really expired, if it needs refreshing or has become invalid
+            // it still may be used if fast enough.
             return (await refreshTask.ConfigureAwait(false)).AccessToken;
         }
 
