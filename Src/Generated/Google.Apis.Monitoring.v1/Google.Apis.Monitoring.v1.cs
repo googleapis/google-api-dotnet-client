@@ -931,9 +931,9 @@ namespace Google.Apis.Monitoring.v1
                 public virtual System.Nullable<int> PageSize { get; set; }
 
                 /// <summary>
-                /// If this field is not empty then it must contain the nextPageToken value returned by a previous call
-                /// to this method. Using this field causes the method to return additional results from the previous
-                /// method call.
+                /// Optional. If this field is not empty then it must contain the nextPageToken value returned by a
+                /// previous call to this method. Using this field causes the method to return additional results from
+                /// the previous method call.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -984,7 +984,7 @@ namespace Google.Apis.Monitoring.v1
             /// Identity and Access Management (https://cloud.google.com/iam).
             /// </summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">Immutable. The resource name of the dashboard.</param>
+            /// <param name="name">Identifier. The resource name of the dashboard.</param>
             public virtual PatchRequest Patch(Google.Apis.Monitoring.v1.Data.Dashboard body, string name)
             {
                 return new PatchRequest(this.service, body, name);
@@ -1005,7 +1005,7 @@ namespace Google.Apis.Monitoring.v1
                     InitParameters();
                 }
 
-                /// <summary>Immutable. The resource name of the dashboard.</summary>
+                /// <summary>Identifier. The resource name of the dashboard.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -2059,7 +2059,7 @@ namespace Google.Apis.Monitoring.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("mosaicLayout")]
         public virtual MosaicLayout MosaicLayout { get; set; }
 
-        /// <summary>Immutable. The resource name of the dashboard.</summary>
+        /// <summary>Identifier. The resource name of the dashboard.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 

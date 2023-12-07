@@ -35,6 +35,7 @@ namespace Google.Apis.Advisorynotifications.v1
         public AdvisorynotificationsService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Organizations = new OrganizationsResource(this);
+            Projects = new ProjectsResource(this);
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -77,6 +78,9 @@ namespace Google.Apis.Advisorynotifications.v1
 
         /// <summary>Gets the Organizations resource.</summary>
         public virtual OrganizationsResource Organizations { get; }
+
+        /// <summary>Gets the Projects resource.</summary>
+        public virtual ProjectsResource Projects { get; }
     }
 
     /// <summary>A base abstract class for Advisorynotifications requests.</summary>
@@ -313,7 +317,8 @@ namespace Google.Apis.Advisorynotifications.v1
                 /// <summary>Gets a notification.</summary>
                 /// <param name="name">
                 /// Required. A name of the notification to retrieve. Format:
-                /// organizations/{organization}/locations/{location}/notifications/{notification}.
+                /// organizations/{organization}/locations/{location}/notifications/{notification} or
+                /// projects/{projects}/locations/{location}/notifications/{notification}.
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
@@ -332,7 +337,8 @@ namespace Google.Apis.Advisorynotifications.v1
 
                     /// <summary>
                     /// Required. A name of the notification to retrieve. Format:
-                    /// organizations/{organization}/locations/{location}/notifications/{notification}.
+                    /// organizations/{organization}/locations/{location}/notifications/{notification} or
+                    /// projects/{projects}/locations/{location}/notifications/{notification}.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -381,7 +387,7 @@ namespace Google.Apis.Advisorynotifications.v1
                 /// <summary>Lists notifications under a given parent.</summary>
                 /// <param name="parent">
                 /// Required. The parent, which owns this collection of notifications. Must be of the form
-                /// "organizations/{organization}/locations/{location}"
+                /// "organizations/{organization}/locations/{location}" or "projects/{project}/locations/{location}"
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -400,7 +406,7 @@ namespace Google.Apis.Advisorynotifications.v1
 
                     /// <summary>
                     /// Required. The parent, which owns this collection of notifications. Must be of the form
-                    /// "organizations/{organization}/locations/{location}"
+                    /// "organizations/{organization}/locations/{location}" or "projects/{project}/locations/{location}"
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -568,7 +574,7 @@ namespace Google.Apis.Advisorynotifications.v1
             /// <summary>Update notification settings.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
-            /// Output only. The resource name of the settings to retrieve. Format:
+            /// Identifier. The resource name of the settings to retrieve. Format:
             /// organizations/{organization}/locations/{location}/settings.
             /// </param>
             public virtual UpdateSettingsRequest UpdateSettings(Google.Apis.Advisorynotifications.v1.Data.GoogleCloudAdvisorynotificationsV1Settings body, string name)
@@ -588,7 +594,7 @@ namespace Google.Apis.Advisorynotifications.v1
                 }
 
                 /// <summary>
-                /// Output only. The resource name of the settings to retrieve. Format:
+                /// Identifier. The resource name of the settings to retrieve. Format:
                 /// organizations/{organization}/locations/{location}/settings.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -621,6 +627,264 @@ namespace Google.Apis.Advisorynotifications.v1
                         DefaultValue = null,
                         Pattern = @"^organizations/[^/]+/locations/[^/]+/settings$",
                     });
+                }
+            }
+        }
+    }
+
+    /// <summary>The "projects" collection of methods.</summary>
+    public class ProjectsResource
+    {
+        private const string Resource = "projects";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public ProjectsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+            Locations = new LocationsResource(service);
+        }
+
+        /// <summary>Gets the Locations resource.</summary>
+        public virtual LocationsResource Locations { get; }
+
+        /// <summary>The "locations" collection of methods.</summary>
+        public class LocationsResource
+        {
+            private const string Resource = "locations";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public LocationsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+                Notifications = new NotificationsResource(service);
+            }
+
+            /// <summary>Gets the Notifications resource.</summary>
+            public virtual NotificationsResource Notifications { get; }
+
+            /// <summary>The "notifications" collection of methods.</summary>
+            public class NotificationsResource
+            {
+                private const string Resource = "notifications";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public NotificationsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Gets a notification.</summary>
+                /// <param name="name">
+                /// Required. A name of the notification to retrieve. Format:
+                /// organizations/{organization}/locations/{location}/notifications/{notification} or
+                /// projects/{projects}/locations/{location}/notifications/{notification}.
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets a notification.</summary>
+                public class GetRequest : AdvisorynotificationsBaseServiceRequest<Google.Apis.Advisorynotifications.v1.Data.GoogleCloudAdvisorynotificationsV1Notification>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. A name of the notification to retrieve. Format:
+                    /// organizations/{organization}/locations/{location}/notifications/{notification} or
+                    /// projects/{projects}/locations/{location}/notifications/{notification}.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// ISO code for requested localization language. If unset, will be interpereted as "en". If the
+                    /// requested language is valid, but not supported for this notification, English will be returned
+                    /// with an "Not applicable" LocalizationState. If the ISO code is invalid (i.e. not a real
+                    /// language), this RPC will throw an error.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string LanguageCode { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/notifications/[^/]+$",
+                        });
+                        RequestParameters.Add("languageCode", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "languageCode",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Lists notifications under a given parent.</summary>
+                /// <param name="parent">
+                /// Required. The parent, which owns this collection of notifications. Must be of the form
+                /// "organizations/{organization}/locations/{location}" or "projects/{project}/locations/{location}"
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists notifications under a given parent.</summary>
+                public class ListRequest : AdvisorynotificationsBaseServiceRequest<Google.Apis.Advisorynotifications.v1.Data.GoogleCloudAdvisorynotificationsV1ListNotificationsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent, which owns this collection of notifications. Must be of the form
+                    /// "organizations/{organization}/locations/{location}" or "projects/{project}/locations/{location}"
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// ISO code for requested localization language. If unset, will be interpereted as "en". If the
+                    /// requested language is valid, but not supported for this notification, English will be returned
+                    /// with an "Not applicable" LocalizationState. If the ISO code is invalid (i.e. not a real
+                    /// language), this RPC will throw an error.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string LanguageCode { get; set; }
+
+                    /// <summary>
+                    /// The maximum number of notifications to return. The service may return fewer than this value. If
+                    /// unspecified or equal to 0, at most 50 notifications will be returned. The maximum value is 50;
+                    /// values above 50 will be coerced to 50.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// A page token returned from a previous request. When paginating, all other parameters provided in
+                    /// the request must match the call that returned the page token.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>
+                    /// Specifies which parts of the notification resource should be returned in the response.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                    /// <summary>
+                    /// Specifies which parts of the notification resource should be returned in the response.
+                    /// </summary>
+                    public enum ViewEnum
+                    {
+                        /// <summary>Not specified, equivalent to BASIC.</summary>
+                        [Google.Apis.Util.StringValueAttribute("NOTIFICATION_VIEW_UNSPECIFIED")]
+                        NOTIFICATIONVIEWUNSPECIFIED = 0,
+
+                        /// <summary>
+                        /// Server responses only include title, creation time and Notification ID. Note: for internal
+                        /// use responses also include the last update time, the latest message text and whether
+                        /// notification has attachments.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("BASIC")]
+                        BASIC = 1,
+
+                        /// <summary>Include everything.</summary>
+                        [Google.Apis.Util.StringValueAttribute("FULL")]
+                        FULL = 2,
+                    }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/notifications";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("languageCode", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "languageCode",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "view",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
                 }
             }
         }
@@ -845,7 +1109,8 @@ namespace Google.Apis.Advisorynotifications.v1.Data
 
         /// <summary>
         /// The resource name of the notification. Format:
-        /// organizations/{organization}/locations/{location}/notifications/{notification}.
+        /// organizations/{organization}/locations/{location}/notifications/{notification} or
+        /// projects/{project}/locations/{location}/notifications/{notification}.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -885,7 +1150,7 @@ namespace Google.Apis.Advisorynotifications.v1.Data
         public virtual string ETag { get; set; }
 
         /// <summary>
-        /// Output only. The resource name of the settings to retrieve. Format:
+        /// Identifier. The resource name of the settings to retrieve. Format:
         /// organizations/{organization}/locations/{location}/settings.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]

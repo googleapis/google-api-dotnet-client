@@ -5232,24 +5232,11 @@ namespace Google.Apis.GKEHub.v1beta.Data
     public class ClusterUpgradeMembershipState : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Project number or id of the fleet. It is set only for Memberships that are part of fleet-based Rollout
-        /// Sequencing.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("fleet")]
-        public virtual string Fleet { get; set; }
-
-        /// <summary>
         /// Whether this membership is ignored by the feature. For example, manually upgraded clusters can be ignored if
         /// they are newer than the default versions of its release channel.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ignored")]
         public virtual ClusterUpgradeIgnoredMembership Ignored { get; set; }
-
-        /// <summary>
-        /// Fully qualified scope names that this clusters is bound to which also have rollout sequencing enabled.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("scopes")]
-        public virtual System.Collections.Generic.IList<string> Scopes { get; set; }
 
         /// <summary>Actual upgrade state against desired.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("upgrades")]
@@ -5464,8 +5451,7 @@ namespace Google.Apis.GKEHub.v1beta.Data
         /// The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud
         /// Monitoring and Cloud Monarch when Workload Identity is enabled. The GSA should have the Monitoring Metric
         /// Writer (roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace
-        /// `config-management-monitoring` should be bound to the GSA. This field is required when automatic Feature
-        /// management is enabled.
+        /// `config-management-monitoring` should be bound to the GSA.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metricsGcpServiceAccountEmail")]
         public virtual string MetricsGcpServiceAccountEmail { get; set; }

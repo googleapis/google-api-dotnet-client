@@ -319,9 +319,9 @@ namespace Google.Apis.MapsPlaces.v1
             /// <summary>Get a photo media with a photo reference string.</summary>
             /// <param name="name">
             /// Required. The resource name of a photo media in the format:
-            /// `"places/place_id/photos/photo_reference/media"`. The resource name of a photo as returned in a Place
-            /// object's `photos.name` field comes with the format `"places/place_id/photos/photo_reference"`. You need
-            /// to append `"/media"` at the end of the photo resource to get the photo media resource name.
+            /// `places/{place_id}/photos/{photo_reference}/media`. The resource name of a photo as returned in a Place
+            /// object's `photos.name` field comes with the format `places/{place_id}/photos/{photo_reference}`. You
+            /// need to append `/media` at the end of the photo resource to get the photo media resource name.
             /// </param>
             public virtual GetMediaRequest GetMedia(string name)
             {
@@ -340,9 +340,10 @@ namespace Google.Apis.MapsPlaces.v1
 
                 /// <summary>
                 /// Required. The resource name of a photo media in the format:
-                /// `"places/place_id/photos/photo_reference/media"`. The resource name of a photo as returned in a
-                /// Place object's `photos.name` field comes with the format `"places/place_id/photos/photo_reference"`.
-                /// You need to append `"/media"` at the end of the photo resource to get the photo media resource name.
+                /// `places/{place_id}/photos/{photo_reference}/media`. The resource name of a photo as returned in a
+                /// Place object's `photos.name` field comes with the format
+                /// `places/{place_id}/photos/{photo_reference}`. You need to append `/media` at the end of the photo
+                /// resource to get the photo media resource name.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -431,7 +432,7 @@ namespace Google.Apis.MapsPlaces.v1
         /// <summary>Get place details with a place id (in a name) string.</summary>
         /// <param name="name">
         /// Required. A place ID returned in a Place (with "places/" prefix), or equivalently the name in the same
-        /// Place. Format: places/*place_id*.
+        /// Place. Format: `places/{place_id}`.
         /// </param>
         public virtual GetRequest Get(string name)
         {
@@ -450,7 +451,7 @@ namespace Google.Apis.MapsPlaces.v1
 
             /// <summary>
             /// Required. A place ID returned in a Place (with "places/" prefix), or equivalently the name in the same
-            /// Place. Format: places/*place_id*.
+            /// Place. Format: `places/{place_id}`.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
@@ -834,7 +835,7 @@ namespace Google.Apis.MapsPlaces.v1.Data
 
         /// <summary>
         /// Identifier. A reference representing this place photo which may be used to look up this place photo again
-        /// (a.k.a. the API "resource" name: places/{place_id}/photos/{photo}).
+        /// (also called the API "resource" name: `places/{place_id}/photos/{photo}`).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -851,7 +852,7 @@ namespace Google.Apis.MapsPlaces.v1.Data
     public class GoogleMapsPlacesV1PhotoMedia : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The resource name of a photo media in the format: `places/place_id/photos/photo_reference/media`.
+        /// The resource name of a photo media in the format: `places/{place_id}/photos/{photo_reference}/media`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -1461,7 +1462,7 @@ namespace Google.Apis.MapsPlaces.v1.Data
 
         /// <summary>
         /// A reference representing this place review which may be used to look up this place review again (also called
-        /// the API "resource" name: places/place_id/reviews/review).
+        /// the API "resource" name: `places/{place_id}/reviews/{review}`).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -1531,26 +1532,29 @@ namespace Google.Apis.MapsPlaces.v1.Data
     {
         /// <summary>
         /// Excluded primary Place type (e.g. "restaurant" or "gas_station") from
-        /// https://developers.google.com/maps/documentation/places/web-service/place-types. If there are any
-        /// conflicting primary types, i.e. a type appears in both included_primary_types and excluded_primary_types, an
-        /// INVALID_ARGUMENT error is returned. If a Place type is specified with multiple type restrictions, only
-        /// places that satisfy all of the restrictions are returned. For example, if we have {included_types =
-        /// ["restaurant"], excluded_primary_types = ["restaurant"]}, the returned places provide "restaurant" related
-        /// services but do not operate primarily as "restaurants".
+        /// https://developers.google.com/maps/documentation/places/web-service/place-types. Up to 50 types from [Table
+        /// A](https://developers.google.com/maps/documentation/places/web-service/place-types#table-a) may be
+        /// specified. If there are any conflicting primary types, i.e. a type appears in both included_primary_types
+        /// and excluded_primary_types, an INVALID_ARGUMENT error is returned. If a Place type is specified with
+        /// multiple type restrictions, only places that satisfy all of the restrictions are returned. For example, if
+        /// we have {included_types = ["restaurant"], excluded_primary_types = ["restaurant"]}, the returned places
+        /// provide "restaurant" related services but do not operate primarily as "restaurants".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludedPrimaryTypes")]
         public virtual System.Collections.Generic.IList<string> ExcludedPrimaryTypes { get; set; }
 
         /// <summary>
         /// Excluded Place type (eg, "restaurant" or "gas_station") from
-        /// https://developers.google.com/maps/documentation/places/web-service/place-types. If the client provides both
-        /// included_types (e.g. restaurant) and excluded_types (e.g. cafe), then the response should include places
-        /// that are restaurant but not cafe. The response includes places that match at least one of the included_types
-        /// and none of the excluded_types. If there are any conflicting types, i.e. a type appears in both
-        /// included_types and excluded_types, an INVALID_ARGUMENT error is returned. If a Place type is specified with
-        /// multiple type restrictions, only places that satisfy all of the restrictions are returned. For example, if
-        /// we have {included_types = ["restaurant"], excluded_primary_types = ["restaurant"]}, the returned places
-        /// provide "restaurant" related services but do not operate primarily as "restaurants".
+        /// https://developers.google.com/maps/documentation/places/web-service/place-types. Up to 50 types from [Table
+        /// A](https://developers.google.com/maps/documentation/places/web-service/place-types#table-a) may be
+        /// specified. If the client provides both included_types (e.g. restaurant) and excluded_types (e.g. cafe), then
+        /// the response should include places that are restaurant but not cafe. The response includes places that match
+        /// at least one of the included_types and none of the excluded_types. If there are any conflicting types, i.e.
+        /// a type appears in both included_types and excluded_types, an INVALID_ARGUMENT error is returned. If a Place
+        /// type is specified with multiple type restrictions, only places that satisfy all of the restrictions are
+        /// returned. For example, if we have {included_types = ["restaurant"], excluded_primary_types =
+        /// ["restaurant"]}, the returned places provide "restaurant" related services but do not operate primarily as
+        /// "restaurants".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludedTypes")]
         public virtual System.Collections.Generic.IList<string> ExcludedTypes { get; set; }
@@ -1558,24 +1562,26 @@ namespace Google.Apis.MapsPlaces.v1.Data
         /// <summary>
         /// Included primary Place type (e.g. "restaurant" or "gas_station") from
         /// https://developers.google.com/maps/documentation/places/web-service/place-types. A place can only have a
-        /// single primary type from the supported types table associated with it. If there are any conflicting primary
-        /// types, i.e. a type appears in both included_primary_types and excluded_primary_types, an INVALID_ARGUMENT
-        /// error is returned. If a Place type is specified with multiple type restrictions, only places that satisfy
-        /// all of the restrictions are returned. For example, if we have {included_types = ["restaurant"],
-        /// excluded_primary_types = ["restaurant"]}, the returned places provide "restaurant" related services but do
-        /// not operate primarily as "restaurants".
+        /// single primary type from the supported types table associated with it. Up to 50 types from [Table
+        /// A](https://developers.google.com/maps/documentation/places/web-service/place-types#table-a) may be
+        /// specified. If there are any conflicting primary types, i.e. a type appears in both included_primary_types
+        /// and excluded_primary_types, an INVALID_ARGUMENT error is returned. If a Place type is specified with
+        /// multiple type restrictions, only places that satisfy all of the restrictions are returned. For example, if
+        /// we have {included_types = ["restaurant"], excluded_primary_types = ["restaurant"]}, the returned places
+        /// provide "restaurant" related services but do not operate primarily as "restaurants".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includedPrimaryTypes")]
         public virtual System.Collections.Generic.IList<string> IncludedPrimaryTypes { get; set; }
 
         /// <summary>
         /// Included Place type (eg, "restaurant" or "gas_station") from
-        /// https://developers.google.com/maps/documentation/places/web-service/place-types. If there are any
-        /// conflicting types, i.e. a type appears in both included_types and excluded_types, an INVALID_ARGUMENT error
-        /// is returned. If a Place type is specified with multiple type restrictions, only places that satisfy all of
-        /// the restrictions are returned. For example, if we have {included_types = ["restaurant"],
-        /// excluded_primary_types = ["restaurant"]}, the returned places provide "restaurant" related services but do
-        /// not operate primarily as "restaurants".
+        /// https://developers.google.com/maps/documentation/places/web-service/place-types. Up to 50 types from [Table
+        /// A](https://developers.google.com/maps/documentation/places/web-service/place-types#table-a) may be
+        /// specified. If there are any conflicting types, i.e. a type appears in both included_types and
+        /// excluded_types, an INVALID_ARGUMENT error is returned. If a Place type is specified with multiple type
+        /// restrictions, only places that satisfy all of the restrictions are returned. For example, if we have
+        /// {included_types = ["restaurant"], excluded_primary_types = ["restaurant"]}, the returned places provide
+        /// "restaurant" related services but do not operate primarily as "restaurants".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includedTypes")]
         public virtual System.Collections.Generic.IList<string> IncludedTypes { get; set; }

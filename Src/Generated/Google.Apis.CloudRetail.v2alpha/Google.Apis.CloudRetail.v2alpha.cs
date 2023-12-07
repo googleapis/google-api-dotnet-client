@@ -4614,6 +4614,71 @@ namespace Google.Apis.CloudRetail.v2alpha
                     }
                 }
 
+                /// <summary>
+                /// Exports analytics metrics. `Operation.response` is of type `ExportAnalyticsMetricsResponse`.
+                /// `Operation.metadata` is of type `ExportMetadata`.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="catalog">
+                /// Required. Full resource name of the parent catalog. Expected format:
+                /// `projects/*/locations/*/catalogs/*`
+                /// </param>
+                public virtual ExportAnalyticsMetricsRequest ExportAnalyticsMetrics(Google.Apis.CloudRetail.v2alpha.Data.GoogleCloudRetailV2alphaExportAnalyticsMetricsRequest body, string catalog)
+                {
+                    return new ExportAnalyticsMetricsRequest(this.service, body, catalog);
+                }
+
+                /// <summary>
+                /// Exports analytics metrics. `Operation.response` is of type `ExportAnalyticsMetricsResponse`.
+                /// `Operation.metadata` is of type `ExportMetadata`.
+                /// </summary>
+                public class ExportAnalyticsMetricsRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2alpha.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new ExportAnalyticsMetrics request.</summary>
+                    public ExportAnalyticsMetricsRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRetail.v2alpha.Data.GoogleCloudRetailV2alphaExportAnalyticsMetricsRequest body, string catalog) : base(service)
+                    {
+                        Catalog = catalog;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Full resource name of the parent catalog. Expected format:
+                    /// `projects/*/locations/*/catalogs/*`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("catalog", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Catalog { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudRetail.v2alpha.Data.GoogleCloudRetailV2alphaExportAnalyticsMetricsRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "exportAnalyticsMetrics";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2alpha/{+catalog}:exportAnalyticsMetrics";
+
+                    /// <summary>Initializes ExportAnalyticsMetrics parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("catalog", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "catalog",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Gets an AttributesConfig.</summary>
                 /// <param name="name">
                 /// Required. Full AttributesConfig resource name. Format:
@@ -8080,6 +8145,51 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for the `ExportAnalyticsMetrics` method.</summary>
+    public class GoogleCloudRetailV2alphaExportAnalyticsMetricsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A filtering expression to specify restrictions on returned metrics. The expression is a sequence of terms.
+        /// Each term applies a restriction to the returned metrics. Use this expression to restrict results to a
+        /// specific time range. Currently we expect only one types of fields: * `timestamp`: This can be specified
+        /// twice, once with a less than operator and once with a greater than operator. The `timestamp` restriction
+        /// should result in one, contiguous, valid, `timestamp` range. Some examples of valid filters expressions: *
+        /// Example 1: `timestamp &amp;gt; "2012-04-23T18:25:43.511Z" timestamp &amp;lt; "2012-04-23T18:30:43.511Z"` *
+        /// Example 2: `timestamp &amp;gt; "2012-04-23T18:25:43.511Z"`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; }
+
+        /// <summary>Required. The output location of the data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputConfig")]
+        public virtual GoogleCloudRetailV2alphaOutputConfig OutputConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Response of the ExportAnalyticsMetricsRequest. If the long running operation was successful, then this message
+    /// is returned by the google.longrunning.Operations.response field if the operation was successful.
+    /// </summary>
+    public class GoogleCloudRetailV2alphaExportAnalyticsMetricsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A sample of errors encountered while processing the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorSamples")]
+        public virtual System.Collections.Generic.IList<GoogleRpcStatus> ErrorSamples { get; set; }
+
+        /// <summary>This field is never set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorsConfig")]
+        public virtual GoogleCloudRetailV2alphaExportErrorsConfig ErrorsConfig { get; set; }
+
+        /// <summary>Output result indicating where the data were exported to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputResult")]
+        public virtual GoogleCloudRetailV2alphaOutputResult OutputResult { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Configuration of destination for Export related errors.</summary>
     public class GoogleCloudRetailV2alphaExportErrorsConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9406,6 +9516,48 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The output configuration setting.</summary>
+    public class GoogleCloudRetailV2alphaOutputConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The BigQuery location where the output is to be written to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bigqueryDestination")]
+        public virtual GoogleCloudRetailV2alphaOutputConfigBigQueryDestination BigqueryDestination { get; set; }
+
+        /// <summary>The Google Cloud Storage location where the output is to be written to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsDestination")]
+        public virtual GoogleCloudRetailV2alphaOutputConfigGcsDestination GcsDestination { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The BigQuery output destination configuration.</summary>
+    public class GoogleCloudRetailV2alphaOutputConfigBigQueryDestination : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The ID of a BigQuery Dataset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("datasetId")]
+        public virtual string DatasetId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The Google Cloud Storage output destination configuration.</summary>
+    public class GoogleCloudRetailV2alphaOutputConfigGcsDestination : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The output uri prefix for saving output data to json files. Some mapping examples are as follows:
+        /// output_uri_prefix sample output(assuming the object is foo.json) ========================
+        /// ============================================= gs://bucket/ gs://bucket/foo.json gs://bucket/folder/
+        /// gs://bucket/folder/foo.json gs://bucket/folder/item_ gs://bucket/folder/item_foo.json
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputUriPrefix")]
+        public virtual string OutputUriPrefix { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Output result that stores the information about where the exported data is stored.</summary>
     public class GoogleCloudRetailV2alphaOutputResult : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9823,10 +9975,10 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         /// Clothing" -&amp;gt; "Shoes"], it could be represented as: "categories": [ "Shoes &amp;amp; Accessories
         /// &amp;gt; Shoes", "Sports &amp;amp; Fitness &amp;gt; Athletic Clothing &amp;gt; Shoes" ] Must be set for
         /// Type.PRIMARY Product otherwise an INVALID_ARGUMENT error is returned. At most 250 values are allowed per
-        /// Product. Empty values are not allowed. Each value must be a UTF-8 encoded string with a length limit of
-        /// 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google
-        /// Merchant Center property google_product_category. Schema.org property [Product.category]
-        /// (https://schema.org/category). [mc_google_product_category]:
+        /// Product unless overridden via pantheon UI. Empty values are not allowed. Each value must be a UTF-8 encoded
+        /// string with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned.
+        /// Corresponding properties: Google Merchant Center property google_product_category. Schema.org property
+        /// [Product.category] (https://schema.org/category). [mc_google_product_category]:
         /// https://support.google.com/merchants/answer/6324436
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("categories")]
@@ -9873,13 +10025,13 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         private object _expireTime;
 
         /// <summary>
-        /// The timestamp when this product becomes unavailable for SearchService.Search. Note that this is only
-        /// applicable to Type.PRIMARY and Type.COLLECTION, and ignored for Type.VARIANT. In general, we suggest the
-        /// users to delete the stale products explicitly, instead of using this field to determine staleness. If it is
-        /// set, the Product is not available for SearchService.Search after expire_time. However, the product can still
-        /// be retrieved by ProductService.GetProduct and ProductService.ListProducts. expire_time must be later than
-        /// available_time and publish_time, otherwise an INVALID_ARGUMENT error is thrown. Corresponding properties:
-        /// Google Merchant Center property [expiration_date](https://support.google.com/merchants/answer/6324499).
+        /// Note that this field is applied in the following ways: * If the Product is already expired when it is
+        /// uploaded, this product is not indexed for search. * If the Product is not expired when it is uploaded, only
+        /// the Type.PRIMARY's and Type.COLLECTION's expireTime is respected, and Type.VARIANT's expireTime is not used.
+        /// In general, we suggest the users to delete the stale products explicitly, instead of using this field to
+        /// determine staleness. expire_time must be later than available_time and publish_time, otherwise an
+        /// INVALID_ARGUMENT error is thrown. Corresponding properties: Google Merchant Center property
+        /// [expiration_date](https://support.google.com/merchants/answer/6324499).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
         public virtual string ExpireTimeRaw

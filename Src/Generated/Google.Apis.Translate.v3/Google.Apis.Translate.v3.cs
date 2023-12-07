@@ -296,10 +296,761 @@ namespace Google.Apis.Translate.v3
             public LocationsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
+                AdaptiveMtDatasets = new AdaptiveMtDatasetsResource(service);
                 Datasets = new DatasetsResource(service);
                 Glossaries = new GlossariesResource(service);
                 Models = new ModelsResource(service);
                 Operations = new OperationsResource(service);
+            }
+
+            /// <summary>Gets the AdaptiveMtDatasets resource.</summary>
+            public virtual AdaptiveMtDatasetsResource AdaptiveMtDatasets { get; }
+
+            /// <summary>The "adaptiveMtDatasets" collection of methods.</summary>
+            public class AdaptiveMtDatasetsResource
+            {
+                private const string Resource = "adaptiveMtDatasets";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public AdaptiveMtDatasetsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    AdaptiveMtFiles = new AdaptiveMtFilesResource(service);
+                    AdaptiveMtSentences = new AdaptiveMtSentencesResource(service);
+                }
+
+                /// <summary>Gets the AdaptiveMtFiles resource.</summary>
+                public virtual AdaptiveMtFilesResource AdaptiveMtFiles { get; }
+
+                /// <summary>The "adaptiveMtFiles" collection of methods.</summary>
+                public class AdaptiveMtFilesResource
+                {
+                    private const string Resource = "adaptiveMtFiles";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public AdaptiveMtFilesResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                        AdaptiveMtSentences = new AdaptiveMtSentencesResource(service);
+                    }
+
+                    /// <summary>Gets the AdaptiveMtSentences resource.</summary>
+                    public virtual AdaptiveMtSentencesResource AdaptiveMtSentences { get; }
+
+                    /// <summary>The "adaptiveMtSentences" collection of methods.</summary>
+                    public class AdaptiveMtSentencesResource
+                    {
+                        private const string Resource = "adaptiveMtSentences";
+
+                        /// <summary>The service which this resource belongs to.</summary>
+                        private readonly Google.Apis.Services.IClientService service;
+
+                        /// <summary>Constructs a new resource.</summary>
+                        public AdaptiveMtSentencesResource(Google.Apis.Services.IClientService service)
+                        {
+                            this.service = service;
+                        }
+
+                        /// <summary>Lists all AdaptiveMtSentences under a given file/dataset.</summary>
+                        /// <param name="parent">
+                        /// Required. The resource name of the project from which to list the Adaptive MT files. The
+                        /// following format lists all sentences under a file.
+                        /// `projects/{project}/locations/{location}/adaptiveMtDatasets/{dataset}/adaptiveMtFiles/{file}`
+                        /// The following format lists all sentences within a dataset.
+                        /// `projects/{project}/locations/{location}/adaptiveMtDatasets/{dataset}`
+                        /// </param>
+                        public virtual ListRequest List(string parent)
+                        {
+                            return new ListRequest(this.service, parent);
+                        }
+
+                        /// <summary>Lists all AdaptiveMtSentences under a given file/dataset.</summary>
+                        public class ListRequest : TranslateBaseServiceRequest<Google.Apis.Translate.v3.Data.ListAdaptiveMtSentencesResponse>
+                        {
+                            /// <summary>Constructs a new List request.</summary>
+                            public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The resource name of the project from which to list the Adaptive MT files. The
+                            /// following format lists all sentences under a file.
+                            /// `projects/{project}/locations/{location}/adaptiveMtDatasets/{dataset}/adaptiveMtFiles/{file}`
+                            /// The following format lists all sentences within a dataset.
+                            /// `projects/{project}/locations/{location}/adaptiveMtDatasets/{dataset}`
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<int> PageSize { get; set; }
+
+                            /// <summary>
+                            /// A token identifying a page of results the server should return. Typically, this is the
+                            /// value of ListAdaptiveMtSentencesRequest.next_page_token returned from the previous call
+                            /// to `ListTranslationMemories` method. The first page is returned if `page_token` is empty
+                            /// or missing.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string PageToken { get; set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "list";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v3/{+parent}/adaptiveMtSentences";
+
+                            /// <summary>Initializes List parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/adaptiveMtDatasets/[^/]+/adaptiveMtFiles/[^/]+$",
+                                });
+                                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+                    }
+
+                    /// <summary>Deletes an AdaptiveMtFile along with its sentences.</summary>
+                    /// <param name="name">
+                    /// Required. The resource name of the file to delete, in form of
+                    /// `projects/{project-number-or-id}/locations/{location_id}/adaptiveMtDatasets/{dataset}/files/{file}`
+                    /// </param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(this.service, name);
+                    }
+
+                    /// <summary>Deletes an AdaptiveMtFile along with its sentences.</summary>
+                    public class DeleteRequest : TranslateBaseServiceRequest<Google.Apis.Translate.v3.Data.Empty>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the file to delete, in form of
+                        /// `projects/{project-number-or-id}/locations/{location_id}/adaptiveMtDatasets/{dataset}/files/{file}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v3/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/adaptiveMtDatasets/[^/]+/adaptiveMtFiles/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Gets and AdaptiveMtFile</summary>
+                    /// <param name="name">
+                    /// Required. The resource name of the file, in form of
+                    /// `projects/{project-number-or-id}/locations/{location_id}/adaptiveMtDatasets/{dataset}/files/{file}`
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(this.service, name);
+                    }
+
+                    /// <summary>Gets and AdaptiveMtFile</summary>
+                    public class GetRequest : TranslateBaseServiceRequest<Google.Apis.Translate.v3.Data.AdaptiveMtFile>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the file, in form of
+                        /// `projects/{project-number-or-id}/locations/{location_id}/adaptiveMtDatasets/{dataset}/files/{file}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v3/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/adaptiveMtDatasets/[^/]+/adaptiveMtFiles/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Lists all AdaptiveMtFiles associated to an AdaptiveMtDataset.</summary>
+                    /// <param name="parent">
+                    /// Required. The resource name of the project from which to list the Adaptive MT files.
+                    /// `projects/{project}/locations/{location}/adaptiveMtDatasets/{dataset}`
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(this.service, parent);
+                    }
+
+                    /// <summary>Lists all AdaptiveMtFiles associated to an AdaptiveMtDataset.</summary>
+                    public class ListRequest : TranslateBaseServiceRequest<Google.Apis.Translate.v3.Data.ListAdaptiveMtFilesResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the project from which to list the Adaptive MT files.
+                        /// `projects/{project}/locations/{location}/adaptiveMtDatasets/{dataset}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Optional. </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// Optional. A token identifying a page of results the server should return. Typically, this is
+                        /// the value of ListAdaptiveMtFilesResponse.next_page_token returned from the previous call to
+                        /// `ListAdaptiveMtFiles` method. The first page is returned if `page_token`is empty or missing.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v3/{+parent}/adaptiveMtFiles";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/adaptiveMtDatasets/[^/]+$",
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>Gets the AdaptiveMtSentences resource.</summary>
+                public virtual AdaptiveMtSentencesResource AdaptiveMtSentences { get; }
+
+                /// <summary>The "adaptiveMtSentences" collection of methods.</summary>
+                public class AdaptiveMtSentencesResource
+                {
+                    private const string Resource = "adaptiveMtSentences";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public AdaptiveMtSentencesResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Lists all AdaptiveMtSentences under a given file/dataset.</summary>
+                    /// <param name="parent">
+                    /// Required. The resource name of the project from which to list the Adaptive MT files. The
+                    /// following format lists all sentences under a file.
+                    /// `projects/{project}/locations/{location}/adaptiveMtDatasets/{dataset}/adaptiveMtFiles/{file}`
+                    /// The following format lists all sentences within a dataset.
+                    /// `projects/{project}/locations/{location}/adaptiveMtDatasets/{dataset}`
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(this.service, parent);
+                    }
+
+                    /// <summary>Lists all AdaptiveMtSentences under a given file/dataset.</summary>
+                    public class ListRequest : TranslateBaseServiceRequest<Google.Apis.Translate.v3.Data.ListAdaptiveMtSentencesResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the project from which to list the Adaptive MT files. The
+                        /// following format lists all sentences under a file.
+                        /// `projects/{project}/locations/{location}/adaptiveMtDatasets/{dataset}/adaptiveMtFiles/{file}`
+                        /// The following format lists all sentences within a dataset.
+                        /// `projects/{project}/locations/{location}/adaptiveMtDatasets/{dataset}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// A token identifying a page of results the server should return. Typically, this is the value
+                        /// of ListAdaptiveMtSentencesRequest.next_page_token returned from the previous call to
+                        /// `ListTranslationMemories` method. The first page is returned if `page_token` is empty or
+                        /// missing.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v3/{+parent}/adaptiveMtSentences";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/adaptiveMtDatasets/[^/]+$",
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>Creates an Adaptive MT dataset.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. Name of the parent project. In form of
+                /// `projects/{project-number-or-id}/locations/{location-id}`
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.Translate.v3.Data.AdaptiveMtDataset body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Creates an Adaptive MT dataset.</summary>
+                public class CreateRequest : TranslateBaseServiceRequest<Google.Apis.Translate.v3.Data.AdaptiveMtDataset>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Translate.v3.Data.AdaptiveMtDataset body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Name of the parent project. In form of
+                    /// `projects/{project-number-or-id}/locations/{location-id}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Translate.v3.Data.AdaptiveMtDataset Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v3/{+parent}/adaptiveMtDatasets";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Deletes an Adaptive MT dataset, including all its entries and associated metadata.
+                /// </summary>
+                /// <param name="name">
+                /// Required. Name of the dataset. In the form of
+                /// `projects/{project-number-or-id}/locations/{location-id}/adaptiveMtDatasets/{adaptive-mt-dataset-id}`
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>
+                /// Deletes an Adaptive MT dataset, including all its entries and associated metadata.
+                /// </summary>
+                public class DeleteRequest : TranslateBaseServiceRequest<Google.Apis.Translate.v3.Data.Empty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Name of the dataset. In the form of
+                    /// `projects/{project-number-or-id}/locations/{location-id}/adaptiveMtDatasets/{adaptive-mt-dataset-id}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v3/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/adaptiveMtDatasets/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Gets the Adaptive MT dataset.</summary>
+                /// <param name="name">
+                /// Required. Name of the dataset. In the form of
+                /// `projects/{project-number-or-id}/locations/{location-id}/adaptiveMtDatasets/{adaptive-mt-dataset-id}`
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets the Adaptive MT dataset.</summary>
+                public class GetRequest : TranslateBaseServiceRequest<Google.Apis.Translate.v3.Data.AdaptiveMtDataset>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Name of the dataset. In the form of
+                    /// `projects/{project-number-or-id}/locations/{location-id}/adaptiveMtDatasets/{adaptive-mt-dataset-id}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v3/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/adaptiveMtDatasets/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Imports an AdaptiveMtFile and adds all of its sentences into the AdaptiveMtDataset.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The resource name of the file, in form of
+                /// `projects/{project-number-or-id}/locations/{location_id}/adaptiveMtDatasets/{dataset}`
+                /// </param>
+                public virtual ImportAdaptiveMtFileRequest ImportAdaptiveMtFile(Google.Apis.Translate.v3.Data.ImportAdaptiveMtFileRequest body, string parent)
+                {
+                    return new ImportAdaptiveMtFileRequest(this.service, body, parent);
+                }
+
+                /// <summary>
+                /// Imports an AdaptiveMtFile and adds all of its sentences into the AdaptiveMtDataset.
+                /// </summary>
+                public class ImportAdaptiveMtFileRequest : TranslateBaseServiceRequest<Google.Apis.Translate.v3.Data.ImportAdaptiveMtFileResponse>
+                {
+                    /// <summary>Constructs a new ImportAdaptiveMtFile request.</summary>
+                    public ImportAdaptiveMtFileRequest(Google.Apis.Services.IClientService service, Google.Apis.Translate.v3.Data.ImportAdaptiveMtFileRequest body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the file, in form of
+                    /// `projects/{project-number-or-id}/locations/{location_id}/adaptiveMtDatasets/{dataset}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Translate.v3.Data.ImportAdaptiveMtFileRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "importAdaptiveMtFile";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v3/{+parent}:importAdaptiveMtFile";
+
+                    /// <summary>Initializes ImportAdaptiveMtFile parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/adaptiveMtDatasets/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists all Adaptive MT datasets for which the caller has read permission.</summary>
+                /// <param name="parent">
+                /// Required. The resource name of the project from which to list the Adaptive MT datasets.
+                /// `projects/{project-number-or-id}/locations/{location-id}`
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists all Adaptive MT datasets for which the caller has read permission.</summary>
+                public class ListRequest : TranslateBaseServiceRequest<Google.Apis.Translate.v3.Data.ListAdaptiveMtDatasetsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the project from which to list the Adaptive MT datasets.
+                    /// `projects/{project-number-or-id}/locations/{location-id}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. An expression for filtering the results of the request. Filter is not supported yet.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// Optional. Requested page size. The server may return fewer results than requested. If
+                    /// unspecified, the server picks an appropriate default.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. A token identifying a page of results the server should return. Typically, this is the
+                    /// value of ListAdaptiveMtDatasetsResponse.next_page_token returned from the previous call to
+                    /// `ListAdaptiveMtDatasets` method. The first page is returned if `page_token`is empty or missing.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v3/{+parent}/adaptiveMtDatasets";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
             }
 
             /// <summary>Gets the Datasets resource.</summary>
@@ -2037,6 +2788,65 @@ namespace Google.Apis.Translate.v3
                 }
             }
 
+            /// <summary>Translate text using Adaptive MT.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">
+            /// Required. Location to make a regional call. Format:
+            /// `projects/{project-number-or-id}/locations/{location-id}`.
+            /// </param>
+            public virtual AdaptiveMtTranslateRequest AdaptiveMtTranslate(Google.Apis.Translate.v3.Data.AdaptiveMtTranslateRequest body, string parent)
+            {
+                return new AdaptiveMtTranslateRequest(this.service, body, parent);
+            }
+
+            /// <summary>Translate text using Adaptive MT.</summary>
+            public class AdaptiveMtTranslateRequest : TranslateBaseServiceRequest<Google.Apis.Translate.v3.Data.AdaptiveMtTranslateResponse>
+            {
+                /// <summary>Constructs a new AdaptiveMtTranslate request.</summary>
+                public AdaptiveMtTranslateRequest(Google.Apis.Services.IClientService service, Google.Apis.Translate.v3.Data.AdaptiveMtTranslateRequest body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Location to make a regional call. Format:
+                /// `projects/{project-number-or-id}/locations/{location-id}`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Translate.v3.Data.AdaptiveMtTranslateRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "adaptiveMtTranslate";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v3/{+parent}:adaptiveMtTranslate";
+
+                /// <summary>Initializes AdaptiveMtTranslate parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                    });
+                }
+            }
+
             /// <summary>
             /// Translates a large volume of document in asynchronous batch mode. This function provides real-time
             /// output as the inputs are being processed. If caller cancels a request, the partial results (for an input
@@ -2960,6 +3770,351 @@ namespace Google.Apis.Translate.v3
 }
 namespace Google.Apis.Translate.v3.Data
 {
+    /// <summary>An Adaptive MT Dataset.</summary>
+    public class AdaptiveMtDataset : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Timestamp when this dataset was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// The name of the dataset to show in the interface. The name can be up to 32 characters long and can consist
+        /// only of ASCII Latin letters A-Z and a-z, underscores (_), and ASCII digits 0-9.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>The number of examples in the dataset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exampleCount")]
+        public virtual System.Nullable<int> ExampleCount { get; set; }
+
+        /// <summary>
+        /// Required. The resource name of the dataset, in form of
+        /// `projects/{project-number-or-id}/locations/{location_id}/adaptiveMtDatasets/{dataset_id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The BCP-47 language code of the source language.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceLanguageCode")]
+        public virtual string SourceLanguageCode { get; set; }
+
+        /// <summary>The BCP-47 language code of the target language.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetLanguageCode")]
+        public virtual string TargetLanguageCode { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. Timestamp when this dataset was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An AdaptiveMtFile.</summary>
+    public class AdaptiveMtFile : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Timestamp when this file was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The file's display name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>The number of entries that the file contains.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entryCount")]
+        public virtual System.Nullable<int> EntryCount { get; set; }
+
+        /// <summary>
+        /// Required. The resource name of the file, in form of
+        /// `projects/{project-number-or-id}/locations/{location_id}/adaptiveMtDatasets/{dataset}/files/{file}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. Timestamp when this file was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An AdaptiveMt sentence entry.</summary>
+    public class AdaptiveMtSentence : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Timestamp when this sentence was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Required. The resource name of the file, in form of
+        /// `projects/{project-number-or-id}/locations/{location_id}/adaptiveMtDatasets/{dataset}/files/{file}/sentences/{sentence}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Required. The source sentence.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceSentence")]
+        public virtual string SourceSentence { get; set; }
+
+        /// <summary>Required. The target sentence.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetSentence")]
+        public virtual string TargetSentence { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. Timestamp when this sentence was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request for sending an AdaptiveMt translation query.</summary>
+    public class AdaptiveMtTranslateRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The content of the input in string format. For now only one sentence per request is supported.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("content")]
+        public virtual System.Collections.Generic.IList<string> Content { get; set; }
+
+        /// <summary>
+        /// Required. The resource name for the dataset to use for adaptive MT.
+        /// `projects/{project}/locations/{location-id}/adaptiveMtDatasets/{dataset}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataset")]
+        public virtual string Dataset { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An AdaptiveMtTranslate response.</summary>
+    public class AdaptiveMtTranslateResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The translation's language code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; }
+
+        /// <summary>Output only. The translation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("translations")]
+        public virtual System.Collections.Generic.IList<AdaptiveMtTranslation> Translations { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An AdaptiveMt translation.</summary>
+    public class AdaptiveMtTranslation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The translated text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("translatedText")]
+        public virtual string TranslatedText { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Input configuration for BatchTranslateDocument request.</summary>
     public class BatchDocumentInputConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3507,6 +4662,25 @@ namespace Google.Apis.Translate.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>An inlined file.</summary>
+    public class FileInputSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The file's byte contents.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("content")]
+        public virtual string Content { get; set; }
+
+        /// <summary>Required. The file's display name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Required. The file's mime type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
+        public virtual string MimeType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The Google Cloud Storage location for the output content.</summary>
     public class GcsDestination : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3760,6 +4934,32 @@ namespace Google.Apis.Translate.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The request for importing an AdaptiveMt file along with its sentences.</summary>
+    public class ImportAdaptiveMtFileRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Inline file source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileInputSource")]
+        public virtual FileInputSource FileInputSource { get; set; }
+
+        /// <summary>Google Cloud Storage file source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsInputSource")]
+        public virtual GcsInputSource GcsInputSource { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response for importing an AdaptiveMtFile</summary>
+    public class ImportAdaptiveMtFileResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The Adaptive MT file that was imported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adaptiveMtFile")]
+        public virtual AdaptiveMtFile AdaptiveMtFile { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for ImportData.</summary>
     public class ImportDataRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3847,6 +5047,59 @@ namespace Google.Apis.Translate.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageCodes")]
         public virtual System.Collections.Generic.IList<string> LanguageCodes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A list of AdaptiveMtDatasets.</summary>
+    public class ListAdaptiveMtDatasetsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. A list of Adaptive MT datasets.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adaptiveMtDatasets")]
+        public virtual System.Collections.Generic.IList<AdaptiveMtDataset> AdaptiveMtDatasets { get; set; }
+
+        /// <summary>
+        /// Optional. A token to retrieve a page of results. Pass this value in the
+        /// [ListAdaptiveMtDatasetsRequest.page_token] field in the subsequent call to `ListAdaptiveMtDatasets` method
+        /// to retrieve the next page of results.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response for listing all AdaptiveMt files under a given dataset.</summary>
+    public class ListAdaptiveMtFilesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The Adaptive MT files.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adaptiveMtFiles")]
+        public virtual System.Collections.Generic.IList<AdaptiveMtFile> AdaptiveMtFiles { get; set; }
+
+        /// <summary>
+        /// Optional. A token to retrieve a page of results. Pass this value in the
+        /// ListAdaptiveMtFilesRequest.page_token field in the subsequent call to `ListAdaptiveMtFiles` method to
+        /// retrieve the next page of results.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>List AdaptiveMt sentences response.</summary>
+    public class ListAdaptiveMtSentencesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The list of AdaptiveMtSentences.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adaptiveMtSentences")]
+        public virtual System.Collections.Generic.IList<AdaptiveMtSentence> AdaptiveMtSentences { get; set; }
+
+        /// <summary>Optional. </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

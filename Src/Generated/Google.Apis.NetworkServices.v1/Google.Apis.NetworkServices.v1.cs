@@ -5341,7 +5341,7 @@ namespace Google.Apis.NetworkServices.v1.Data
     /// <summary>
     /// Gateway represents the configuration for a proxy, typically a load balancer. It captures the ip:port over which
     /// the services are exposed by the proxy, along with any policy configurations. Routes have reference to to
-    /// Gateways to dictate how requests should be routed by this Gateway.
+    /// Gateways to dictate how requests should be routed by this Gateway. Next id: 29
     /// </summary>
     public class Gateway : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5409,6 +5409,12 @@ namespace Google.Apis.NetworkServices.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gatewaySecurityPolicy")]
         public virtual string GatewaySecurityPolicy { get; set; }
+
+        /// <summary>
+        /// Optional. The IP Version that will be used by this gateway. Valid options are IPV4 or IPV6. Default is IPV4.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipVersion")]
+        public virtual string IpVersion { get; set; }
 
         /// <summary>Optional. Set of label tags associated with the Gateway resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]

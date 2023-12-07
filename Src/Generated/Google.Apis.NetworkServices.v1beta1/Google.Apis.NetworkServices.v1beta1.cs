@@ -6086,8 +6086,11 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Required. The reference to the service that runs the extension. Must be a reference to a [backend
-        /// service](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices).
+        /// Required. The reference to the service that runs the extension. Currently only Callout extensions are
+        /// supported here. To configure a Callout extension, `service` must be a fully-qualified reference to a
+        /// [backend service](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices) in the format:
+        /// `https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/backendServices/{backendService}`
+        /// or `https://www.googleapis.com/compute/v1/projects/{project}/global/backendServices/{backendService}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("service")]
         public virtual string Service { get; set; }
@@ -6116,7 +6119,8 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
     {
         /// <summary>
         /// Required. A Common Expression Language (CEL) expression that is used to match requests for which the
-        /// extension chain is executed.
+        /// extension chain is executed. For more information, see [CEL matcher language
+        /// reference](https://cloud.google.com/service-extensions/docs/cel-matcher-language-reference).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("celExpression")]
         public virtual string CelExpression { get; set; }
@@ -6128,7 +6132,7 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
     /// <summary>
     /// Gateway represents the configuration for a proxy, typically a load balancer. It captures the ip:port over which
     /// the services are exposed by the proxy, along with any policy configurations. Routes have reference to to
-    /// Gateways to dictate how requests should be routed by this Gateway.
+    /// Gateways to dictate how requests should be routed by this Gateway. Next id: 29
     /// </summary>
     public class Gateway : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6196,6 +6200,12 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gatewaySecurityPolicy")]
         public virtual string GatewaySecurityPolicy { get; set; }
+
+        /// <summary>
+        /// Optional. The IP Version that will be used by this gateway. Valid options are IPV4 or IPV6. Default is IPV4.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipVersion")]
+        public virtual string IpVersion { get; set; }
 
         /// <summary>Optional. Set of label tags associated with the Gateway resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]

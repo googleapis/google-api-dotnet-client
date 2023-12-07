@@ -4315,6 +4315,10 @@ namespace Google.Apis.Recommender.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cost")]
         public virtual GoogleTypeMoney Cost { get; set; }
 
+        /// <summary>The approximate cost savings in the billing account's local currency.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("costInLocalCurrency")]
+        public virtual GoogleTypeMoney CostInLocalCurrency { get; set; }
+
         /// <summary>Duration for which this cost applies.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("duration")]
         public virtual object Duration { get; set; }
@@ -4334,7 +4338,7 @@ namespace Google.Apis.Recommender.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("costProjection")]
         public virtual GoogleCloudRecommenderV1CostProjection CostProjection { get; set; }
 
-        /// <summary>Use with CategoryType.RELAIBILITY</summary>
+        /// <summary>Use with CategoryType.RELIABILITY</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reliabilityProjection")]
         public virtual GoogleCloudRecommenderV1ReliabilityProjection ReliabilityProjection { get; set; }
 

@@ -1304,8 +1304,9 @@ namespace Google.Apis.BlockchainNodeEngine.v1.Data
         public virtual System.Nullable<bool> ApiEnableDebug { get; set; }
 
         /// <summary>
-        /// An Ethereum address which the beacon client will send fee rewards to if no recipient is configured in the
-        /// validator client. See https://lighthouse-book.sigmaprime.io/suggested-fee-recipient.html or
+        /// Deprecated: Use the same field in the ValidatorConfig message as replacement. An Ethereum address which the
+        /// beacon client will send fee rewards to if no recipient is configured in the validator client. See
+        /// https://lighthouse-book.sigmaprime.io/suggested-fee-recipient.html or
         /// https://docs.prylabs.network/docs/execution-node/fee-recipient for examples of how this is used. Note that
         /// while this is often described as "suggested", as we run the execution node we can trust the execution node,
         /// and therefore this is considered enforced.
@@ -1332,6 +1333,13 @@ namespace Google.Apis.BlockchainNodeEngine.v1.Data
         /// <summary>Immutable. The type of Ethereum node.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodeType")]
         public virtual string NodeType { get; set; }
+
+        /// <summary>
+        /// Configuration for validator-related parameters on the beacon client, and for any GCP-managed validator
+        /// client.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("validatorConfig")]
+        public virtual ValidatorConfig ValidatorConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1639,6 +1647,22 @@ namespace Google.Apis.BlockchainNodeEngine.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Configuration for validator-related parameters on the beacon client, and for any GCP-managed validator client.
+    /// </summary>
+    public class ValidatorConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// URLs for MEV-relay services to use for block building. When set, a GCP-managed MEV-boost service is
+        /// configured on the beacon client.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mevRelayUrls")]
+        public virtual System.Collections.Generic.IList<string> MevRelayUrls { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

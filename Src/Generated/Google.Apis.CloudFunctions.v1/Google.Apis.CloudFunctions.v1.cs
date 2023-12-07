@@ -1376,6 +1376,15 @@ namespace Google.Apis.CloudFunctions.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Security patches are applied automatically to the runtime without requiring the function to be redeployed.
+    /// </summary>
+    public class AutomaticUpdatePolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Associates `members`, or principals, with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1467,6 +1476,10 @@ namespace Google.Apis.CloudFunctions.v1.Data
     /// </summary>
     public class CloudFunction : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>See the comment next to this message for more details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("automaticUpdatePolicy")]
+        public virtual AutomaticUpdatePolicy AutomaticUpdatePolicy { get; set; }
+
         /// <summary>The amount of memory in MB available for a function. Defaults to 256MB.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("availableMemoryMb")]
         public virtual System.Nullable<int> AvailableMemoryMb { get; set; }
@@ -1591,6 +1604,10 @@ namespace Google.Apis.CloudFunctions.v1.Data
         /// <summary>Deprecated: use vpc_connector</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; }
+
+        /// <summary>See the comment next to this message for more details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("onDeployUpdatePolicy")]
+        public virtual OnDeployUpdatePolicy OnDeployUpdatePolicy { get; set; }
 
         /// <summary>
         /// The runtime in which to run the function. Required when deploying a new function, optional when updating an
@@ -2513,6 +2530,19 @@ namespace Google.Apis.CloudFunctions.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Security patches are only applied when a function is redeployed.</summary>
+    public class OnDeployUpdatePolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. contains the runtime version which was used during latest function deployment.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runtimeVersion")]
+        public virtual string RuntimeVersion { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
