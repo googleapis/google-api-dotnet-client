@@ -71,8 +71,8 @@ namespace Google.Apis.Auth.Tests.OAuth2.Responses
         {
             get
             {
-                // ShouldBeRefreshed will be true 6 minutes before actual expiry.
-                // MayBeUsed will be false 5 minutes before actual expiry.
+                // ShouldBeRefreshed will be true 3 minutes and 45 seconds before actual expiry.
+                // MayBeUsed will be false 1 minute before actual expiry.
 
                 DateTime issued = DateTime.UtcNow;
                 // Now is ten minutes after issuance.
@@ -80,12 +80,12 @@ namespace Google.Apis.Auth.Tests.OAuth2.Responses
                 // If it expires 20 minutes after issuance,
                 // it's fresh now.
                 long isFreshSeconds = 60 * 20;
-                // If it expires 16 minutes after issuance,
+                // If it expires 13 minutes and 45 seconds after issuance,
                 // it should be refreshed but it is still valid.
-                long shouldRefreshSeconds = 60 * 16;
-                // If it expires 15 minutes after issuance,
+                long shouldRefreshSeconds = 60 * 13 + 45;
+                // If it expires 11 minutes after issuance,
                 // it's not valid and may not be used.
-                long mayNotBeUsedSeconds = 60 * 15;
+                long mayNotBeUsedSeconds = 60 * 11;
 
                 // As newly constructed.
                 yield return new object[] { now, DateTime.MinValue.ToUniversalTime(), null, null, null, true, false };

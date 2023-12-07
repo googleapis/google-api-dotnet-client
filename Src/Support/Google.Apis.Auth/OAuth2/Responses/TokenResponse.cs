@@ -34,10 +34,10 @@ namespace Google.Apis.Auth.OAuth2.Responses
         private static readonly DateTime UnixEpoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
 
         // Internal for testing.
-        // Refresh token 6 minutes before it expires.
-        internal const int TokenRefreshWindowSeconds = 60 * 6;
-        // Don't use a token within 5 minutes of it actually expiring.
-        internal const int TokenInvalidWindowSeconds = 60 * 5;
+        // Refresh token 3 minutes and 45 seconds before it expires.
+        internal const int TokenRefreshWindowSeconds = 60 * 3 + 45;
+        // Don't use a token within 1 minute of it actually expiring.
+        internal const int TokenInvalidWindowSeconds = 60;
 
         /// <summary>Gets or sets the access token issued by the authorization server.</summary>
         [JsonProperty("access_token")]
