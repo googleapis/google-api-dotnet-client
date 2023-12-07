@@ -35,9 +35,9 @@ namespace Google.Apis.Auth.OAuth2.Responses
 
         // Internal for testing.
         // Refresh token 6 minutes before it expires.
-        internal const int TokenRefreshTimeWindowSeconds = 60 * 6;
+        internal const int TokenRefreshWindowSeconds = 60 * 6;
         // Don't use a token within 5 minutes of it actually expiring.
-        internal const int TokenHardExpiryTimeWindowSeconds = 60 * 5;
+        internal const int TokenInvalidWindowSeconds = 60 * 5;
 
         /// <summary>Gets or sets the access token issued by the authorization server.</summary>
         [JsonProperty("access_token")]
@@ -110,28 +110,80 @@ namespace Google.Apis.Auth.OAuth2.Responses
         [JsonProperty("expireTime")]
         private string ImpersonatedAccessTokenExpireTime { get; set; }
 
-        // Note: ideally this would be called ShouldRefresh or similar.
+        /// <summary>
+        /// Returns true if the token represented by this token response should be refreshed.
+        /// Note that this may be true for valid tokens, in which case a pre-emptive refresh is adviced
+        /// even if the current token may be used while it continues to be valid.
+        /// </summary>
+        /// <remarks>
+        /// See <see cref="MayBeUsed(IClock)"/> for information on when a token is considered valid.
+        /// A valid token is considered stale if it's close to expiring, but not so much as to be unusable.
+        /// </remarks>
+        [JsonIgnore]
+        public bool IsStale => ShouldBeRefreshed(SystemClock.Default);
+
+        /// <summary>
+        /// The start of the refresh window for this token, if known. Otherwise, null.
+        /// </summary>
+        /// <remarks>
+        /// At the start of token refresh window, the token is still usable, but efforts should
+        /// be made to obtain a fresher one.
+        /// </remarks>
+        [JsonIgnore]
+        internal DateTime? RefreshWindowStartUtc => ExpiresInSeconds.HasValue
+            ? IssuedUtc.AddSeconds(ExpiresInSeconds.Value - TokenRefreshWindowSeconds)
+            : null;
+
+        /// <summary>
+        /// The start of the expiry window for this token, if known. Otherwise, null.
+        /// </summary>
+        /// <remarks>
+        /// A token that's within its expiry window, may still be usable, but doing so
+        /// may run into clock skew related issues.
+        /// </remarks>
+        [JsonIgnore]
+        internal DateTime? ExpiryWindowStartUtc => ExpiresInSeconds.HasValue
+            ? IssuedUtc.AddSeconds(ExpiresInSeconds.Value - TokenInvalidWindowSeconds)
+            : null;
+
         /// <summary>
         /// Returns true if the token is expired or it's going to expire soon.
         /// </summary>
-        /// <remarks>If a token response doens't have at least one of <see cref="TokenResponse.AccessToken"/>
-        /// or <see cref="TokenResponse.IdToken"/> set then it's considered expired.
-        /// If <see cref="TokenResponse.ExpiresInSeconds"/> is null, the token is also considered expired. </remarks>
-        public bool IsExpired(IClock clock) =>
-            (AccessToken == null && IdToken == null) ||
-            !ExpiresInSeconds.HasValue ||
-            IssuedUtc.AddSeconds(ExpiresInSeconds.Value - TokenRefreshTimeWindowSeconds) <= clock.UtcNow;
+        /// <remarks>If a token response doens't have at least one of <see cref="AccessToken"/>
+        /// or <see cref="IdToken"/> set then it's considered expired.
+        /// If <see cref="ExpiresInSeconds"/> is null, the token is also considered expired. </remarks>
+        [Obsolete("Please use the TokenResponse.IsStale property instead.")]
+        public bool IsExpired(IClock clock) => ShouldBeRefreshed(clock);
 
         /// <summary>
-        /// Returns true if the token is expired or it's so close to expiring that it shouldn't be used.
+        /// Returns true if the token represented by this token response should be refreshed.
+        /// Note that this may be true for valid tokens, in which case a pre-emptive refresh is adviced
+        /// even if the current token may be used while it continues to be valid.
         /// </summary>
-        /// <remarks>If a token response doesn't have at least one of <see cref="TokenResponse.AccessToken"/>
-        /// or <see cref="TokenResponse.IdToken"/> set then it's considered expired.
-        /// If <see cref="TokenResponse.ExpiresInSeconds"/> is null, the token is also considered expired. </remarks>
-        internal bool IsEffectivelyExpired(IClock clock) =>
-            (AccessToken == null && IdToken == null) ||
-            !ExpiresInSeconds.HasValue ||
-            IssuedUtc.AddSeconds(ExpiresInSeconds.Value - TokenHardExpiryTimeWindowSeconds) <= clock.UtcNow;
+        /// <remarks>
+        /// See <see cref="MayBeUsed(IClock)"/> for information on when a token is considered valid.
+        /// A valid token is considered stale if it's close to expiring, but not so much as to be unusable.
+        /// </remarks>
+        internal bool ShouldBeRefreshed(IClock clock) =>
+            !MayBeUsed(clock) || clock.UtcNow >= RefreshWindowStartUtc;
+
+        /// <summary>
+        /// Returns true if the token represented by this token response is valid, that is, it may be used
+        /// for authentication and authorizations purposes.
+        /// </summary>
+        /// <remarks>
+        /// A token is considered valid if all of the following are true:
+        /// <list type="bullet">
+        /// <item>At least one of <see cref="AccessToken"/> and <see cref="IdToken"/> is not null.</item>
+        /// <item><see cref="ExpiresInSeconds"/> is not null.</item>
+        /// <item>The token has not expired and will not expire in the very near future. That is if
+        /// <see cref="IssuedUtc"/> plus <see cref="ExpiresInSeconds"/> is in the not so near future.</item>
+        /// </list>
+        /// </remarks>
+        internal bool MayBeUsed(IClock clock) =>
+            (AccessToken is not null || IdToken is not null) &&
+            ExpiresInSeconds.HasValue &&
+            clock.UtcNow < ExpiryWindowStartUtc;
 
         /// <summary>
         /// Asynchronously parses a <see cref="TokenResponse"/> instance from the specified <see cref="HttpResponseMessage"/>.
