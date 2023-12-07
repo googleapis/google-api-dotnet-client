@@ -107,6 +107,16 @@ namespace Google.Apis.Auth.OAuth2
         public string PrivateKeyId { get; set; }
 
         /// <summary>
+        /// The token endpoint for a service account credential.
+        /// </summary>
+        /// <remarks>
+        /// Note that this is different from <see cref="TokenUrl"/> which is the
+        /// STS token exchange endpoint associated with an external account credential.
+        /// </remarks>
+        [JsonProperty("token_uri")]
+        public string TokenUri { get; set; }
+
+        /// <summary>
         /// Refresh Token associated with UserCredential created by
         /// <a href="https://cloud.google.com/sdk/gcloud/reference/auth/login">GCloud Auth Login</a>.
         /// </summary>
@@ -151,6 +161,10 @@ namespace Google.Apis.Auth.OAuth2
         /// <summary>
         /// The STS token exchange endpoint associated with an external account credential.
         /// </summary>
+        /// <remarks>
+        /// Note that this is different from <see cref="TokenUri"/> which is the
+        /// the token endpoint for a service account credential.
+        /// </remarks>
         [JsonProperty("token_url")]
         public string TokenUrl { get; set; }
 
