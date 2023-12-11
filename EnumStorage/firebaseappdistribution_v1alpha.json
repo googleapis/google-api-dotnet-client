@@ -1,0 +1,16 @@
+{
+  "Google.Apis.FirebaseAppDistribution.v1alpha.AppsResource+GetRequest.AppViewEnum": [
+    "APP_VIEW_UNSPECIFIED",
+    "BASIC",
+    "FULL"
+  ],
+  "Google.Apis.FirebaseAppDistribution.v1alpha.FirebaseAppDistributionBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.FirebaseAppDistribution.v1alpha.FirebaseAppDistributionBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

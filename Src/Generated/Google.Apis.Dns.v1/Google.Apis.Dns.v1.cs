@@ -5220,6 +5220,13 @@ namespace Google.Apis.Dns.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("geo")]
         public virtual RRSetRoutingPolicyGeoPolicy Geo { get; set; }
 
+        /// <summary>
+        /// The selfLink attribute of the HealthCheck resource to use for this RRSetRoutingPolicy.
+        /// https://cloud.google.com/compute/docs/reference/rest/v1/healthChecks
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("healthCheck")]
+        public virtual string HealthCheck { get; set; }
+
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -5296,10 +5303,19 @@ namespace Google.Apis.Dns.v1.Data
 
     /// <summary>
     /// HealthCheckTargets describes endpoints to health-check when responding to Routing Policy queries. Only the
-    /// healthy endpoints will be included in the response.
+    /// healthy endpoints will be included in the response. Only one of internal_load_balancer and external_endpoints
+    /// should be set.
     /// </summary>
     public class RRSetRoutingPolicyHealthCheckTargets : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// The Internet IP addresses to be health checked. The format matches the format of ResourceRecordSet.rrdata as
+        /// defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalEndpoints")]
+        public virtual System.Collections.Generic.IList<string> ExternalEndpoints { get; set; }
+
+        /// <summary>Configuration for internal load balancers to be health checked.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("internalLoadBalancers")]
         public virtual System.Collections.Generic.IList<RRSetRoutingPolicyLoadBalancerTarget> InternalLoadBalancers { get; set; }
 

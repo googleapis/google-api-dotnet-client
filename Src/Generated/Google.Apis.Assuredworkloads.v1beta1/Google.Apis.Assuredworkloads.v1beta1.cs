@@ -1409,7 +1409,7 @@ namespace Google.Apis.Assuredworkloads.v1beta1
 }
 namespace Google.Apis.Assuredworkloads.v1beta1.Data
 {
-    /// <summary>Request for acknowledging the violation Next Id: 5</summary>
+    /// <summary>Request for acknowledging the violation</summary>
     public class GoogleCloudAssuredworkloadsV1beta1AcknowledgeViolationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. Acknowledge type of specified violation.</summary>

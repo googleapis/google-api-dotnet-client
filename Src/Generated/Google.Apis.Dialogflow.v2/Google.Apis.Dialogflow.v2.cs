@@ -19551,11 +19551,9 @@ namespace Google.Apis.Dialogflow.v2.Data
     /// goes first and during which speech detection should not be carried out. * Barge-in phase: which follows the no
     /// barge-in phase and during which the API starts speech detection and may inform the client that an utterance has
     /// been detected. Note that no-speech event is not expected in this phase. The client provides this configuration
-    /// in terms of the durations of those two phases. The durations are measured in terms of the audio length fromt the
-    /// the start of the input audio. The flow goes like below: --&amp;gt; Time without speech detection | utterance
-    /// only | utterance or no-speech event | | +-------------+ | +------------+ | +---------------+ ----------+ no
-    /// barge-in +-|-+ barge-in +-|-+ normal period +----------- +-------------+ | +------------+ | +---------------+
-    /// No-speech event is a response with END_OF_UTTERANCE without any transcript following up.
+    /// in terms of the durations of those two phases. The durations are measured in terms of the audio length from the
+    /// the start of the input audio. No-speech event is a response with END_OF_UTTERANCE without any transcript
+    /// following up.
     /// </summary>
     public class GoogleCloudDialogflowCxV3BargeInConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -20530,15 +20528,8 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual System.Nullable<bool> EnableWordInfo { get; set; }
 
         /// <summary>
-        /// Optional. Which Speech model to select for the given request. Select the model best suited to your domain to
-        /// get best results. If a model is not explicitly specified, then we auto-select a model based on the
-        /// parameters in the InputAudioConfig. If enhanced speech model is enabled for the agent and an enhanced
-        /// version of the specified model for the language does not exist, then the speech is recognized using the
-        /// standard version of the specified model. Refer to [Cloud Speech API
-        /// documentation](https://cloud.google.com/speech-to-text/docs/basics#select-model) for more details. If you
-        /// specify a model, the following models typically have the best performance: - phone_call (best for Agent
-        /// Assist and telephony) - latest_short (best for Dialogflow non-telephony) - command_and_search (best for very
-        /// short utterances and commands)
+        /// Optional. Which Speech model to select for the given request. For more information, see [Speech
+        /// models](https://cloud.google.com/dialogflow/cx/docs/concept/speech-models).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("model")]
         public virtual string Model { get; set; }
@@ -22144,11 +22135,9 @@ namespace Google.Apis.Dialogflow.v2.Data
     /// goes first and during which speech detection should not be carried out. * Barge-in phase: which follows the no
     /// barge-in phase and during which the API starts speech detection and may inform the client that an utterance has
     /// been detected. Note that no-speech event is not expected in this phase. The client provides this configuration
-    /// in terms of the durations of those two phases. The durations are measured in terms of the audio length fromt the
-    /// the start of the input audio. The flow goes like below: --&amp;gt; Time without speech detection | utterance
-    /// only | utterance or no-speech event | | +-------------+ | +------------+ | +---------------+ ----------+ no
-    /// barge-in +-|-+ barge-in +-|-+ normal period +----------- +-------------+ | +------------+ | +---------------+
-    /// No-speech event is a response with END_OF_UTTERANCE without any transcript following up.
+    /// in terms of the durations of those two phases. The durations are measured in terms of the audio length from the
+    /// the start of the input audio. No-speech event is a response with END_OF_UTTERANCE without any transcript
+    /// following up.
     /// </summary>
     public class GoogleCloudDialogflowCxV3beta1BargeInConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -23123,15 +23112,8 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual System.Nullable<bool> EnableWordInfo { get; set; }
 
         /// <summary>
-        /// Optional. Which Speech model to select for the given request. Select the model best suited to your domain to
-        /// get best results. If a model is not explicitly specified, then we auto-select a model based on the
-        /// parameters in the InputAudioConfig. If enhanced speech model is enabled for the agent and an enhanced
-        /// version of the specified model for the language does not exist, then the speech is recognized using the
-        /// standard version of the specified model. Refer to [Cloud Speech API
-        /// documentation](https://cloud.google.com/speech-to-text/docs/basics#select-model) for more details. If you
-        /// specify a model, the following models typically have the best performance: - phone_call (best for Agent
-        /// Assist and telephony) - latest_short (best for Dialogflow non-telephony) - command_and_search (best for very
-        /// short utterances and commands)
+        /// Optional. Which Speech model to select for the given request. For more information, see [Speech
+        /// models](https://cloud.google.com/dialogflow/cx/docs/concept/speech-models).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("model")]
         public virtual string Model { get; set; }
@@ -27909,15 +27891,8 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual string LanguageCode { get; set; }
 
         /// <summary>
-        /// Which Speech model to select for the given request. Select the model best suited to your domain to get best
-        /// results. If a model is not explicitly specified, then we auto-select a model based on the parameters in the
-        /// InputAudioConfig. If enhanced speech model is enabled for the agent and an enhanced version of the specified
-        /// model for the language does not exist, then the speech is recognized using the standard version of the
-        /// specified model. Refer to [Cloud Speech API
-        /// documentation](https://cloud.google.com/speech-to-text/docs/basics#select-model) for more details. If you
-        /// specify a model, the following models typically have the best performance: - phone_call (best for Agent
-        /// Assist and telephony) - latest_short (best for Dialogflow non-telephony) - command_and_search (best for very
-        /// short utterances and commands)
+        /// Optional. Which Speech model to select for the given request. For more information, see [Speech
+        /// models](https://cloud.google.com/dialogflow/es/docs/speech-models).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("model")]
         public virtual string Model { get; set; }
@@ -30190,8 +30165,15 @@ namespace Google.Apis.Dialogflow.v2.Data
     {
         /// <summary>
         /// Which Speech model to select. Select the model best suited to your domain to get best results. If a model is
-        /// not explicitly specified, then a default model is used. Refer to [Cloud Speech API
-        /// documentation](https://cloud.google.com/speech-to-text/docs/basics#select-model) for more details.
+        /// not explicitly specified, then Dialogflow auto-selects a model based on other parameters in the
+        /// SpeechToTextConfig and Agent settings. If enhanced speech model is enabled for the agent and an enhanced
+        /// version of the specified model for the language does not exist, then the speech is recognized using the
+        /// standard version of the specified model. Refer to [Cloud Speech API
+        /// documentation](https://cloud.google.com/speech-to-text/docs/basics#select-model) for more details. If you
+        /// specify a model, the following models typically have the best performance: - phone_call (best for Agent
+        /// Assist and telephony) - latest_short (best for Dialogflow non-telephony) - command_and_search Leave this
+        /// field unspecified to use [Agent Speech
+        /// settings](https://cloud.google.com/dialogflow/cx/docs/concept/agent#settings-speech) for model selection.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("model")]
         public virtual string Model { get; set; }

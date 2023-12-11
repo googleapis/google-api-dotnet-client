@@ -3569,7 +3569,7 @@ namespace Google.Apis.DataCatalog.v1beta1
                     /// <summary>Updates a policy tag.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
-                    /// Output only. Resource name of this policy tag, whose format is:
+                    /// Identifier. Resource name of this policy tag, whose format is:
                     /// "projects/{project_number}/locations/{location_id}/taxonomies/{taxonomy_id}/policyTags/{id}".
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.DataCatalog.v1beta1.Data.GoogleCloudDatacatalogV1beta1PolicyTag body, string name)
@@ -3589,7 +3589,7 @@ namespace Google.Apis.DataCatalog.v1beta1
                         }
 
                         /// <summary>
-                        /// Output only. Resource name of this policy tag, whose format is:
+                        /// Identifier. Resource name of this policy tag, whose format is:
                         /// "projects/{project_number}/locations/{location_id}/taxonomies/{taxonomy_id}/policyTags/{id}".
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -4227,7 +4227,7 @@ namespace Google.Apis.DataCatalog.v1beta1
                 /// <summary>Updates a taxonomy.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Output only. Resource name of this taxonomy, whose format is:
+                /// Identifier. Resource name of this taxonomy, whose format is:
                 /// "projects/{project_number}/locations/{location_id}/taxonomies/{id}".
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.DataCatalog.v1beta1.Data.GoogleCloudDatacatalogV1beta1Taxonomy body, string name)
@@ -4247,7 +4247,7 @@ namespace Google.Apis.DataCatalog.v1beta1
                     }
 
                     /// <summary>
-                    /// Output only. Resource name of this taxonomy, whose format is:
+                    /// Identifier. Resource name of this taxonomy, whose format is:
                     /// "projects/{project_number}/locations/{location_id}/taxonomies/{id}".
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -6631,7 +6631,7 @@ namespace Google.Apis.DataCatalog.v1beta1.Data
         public virtual string DisplayName { get; set; }
 
         /// <summary>
-        /// Output only. Resource name of this policy tag, whose format is:
+        /// Identifier. Resource name of this policy tag, whose format is:
         /// "projects/{project_number}/locations/{location_id}/taxonomies/{taxonomy_id}/policyTags/{id}".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -7316,7 +7316,7 @@ namespace Google.Apis.DataCatalog.v1beta1.Data
         public virtual string DisplayName { get; set; }
 
         /// <summary>
-        /// Output only. Resource name of this taxonomy, whose format is:
+        /// Identifier. Resource name of this taxonomy, whose format is:
         /// "projects/{project_number}/locations/{location_id}/taxonomies/{id}".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]

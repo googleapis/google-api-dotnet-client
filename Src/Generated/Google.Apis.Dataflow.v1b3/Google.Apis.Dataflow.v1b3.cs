@@ -9802,6 +9802,37 @@ namespace Google.Apis.Dataflow.v1b3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Contains per-user worker telemetry used in streaming autoscaling.</summary>
+    public class StreamingScalingReport : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Current acive bundle count.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("activeBundleCount")]
+        public virtual System.Nullable<int> ActiveBundleCount { get; set; }
+
+        /// <summary>Current acive thread count.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("activeThreadCount")]
+        public virtual System.Nullable<int> ActiveThreadCount { get; set; }
+
+        /// <summary>Maximum bundle count limit.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maximumBundleCount")]
+        public virtual System.Nullable<int> MaximumBundleCount { get; set; }
+
+        /// <summary>Maximum bytes count limit.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maximumBytesCount")]
+        public virtual System.Nullable<int> MaximumBytesCount { get; set; }
+
+        /// <summary>Maximum thread count limit.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maximumThreadCount")]
+        public virtual System.Nullable<int> MaximumThreadCount { get; set; }
+
+        /// <summary>Current outstanding bytes count.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outstandingBytesCount")]
+        public virtual System.Nullable<int> OutstandingBytesCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A task which initializes part of a streaming Dataflow job.</summary>
     public class StreamingSetupTask : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10753,6 +10784,10 @@ namespace Google.Apis.Dataflow.v1b3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>Contains per-user worker telemetry used in streaming autoscaling.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("streamingScalingReport")]
+        public virtual StreamingScalingReport StreamingScalingReport { get; set; }
 
         private string _timeRaw;
 

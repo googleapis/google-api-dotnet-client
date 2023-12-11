@@ -6395,6 +6395,10 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enableMetrics")]
         public virtual System.Nullable<bool> EnableMetrics { get; set; }
 
+        /// <summary>Enable Relay component</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableRelay")]
+        public virtual System.Nullable<bool> EnableRelay { get; set; }
+
         /// <summary>Method used to make Relay available</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relayMode")]
         public virtual string RelayMode { get; set; }

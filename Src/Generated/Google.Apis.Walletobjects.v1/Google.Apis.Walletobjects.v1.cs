@@ -9632,7 +9632,7 @@ namespace Google.Apis.Walletobjects.v1.Data
     {
         /// <summary>
         /// A string representing a JWT of the format described at
-        /// https://developers.google.com/pay/passes/reference/s2w-reference#google-pay-api-for-passes-jwt
+        /// https://developers.google.com/wallet/reference/rest/v1/Jwt
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jwt")]
         public virtual string Jwt { get; set; }

@@ -4034,7 +4034,7 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The conversation source, which is a combination of transcript, audio, and metadata.</summary>
+    /// <summary>The conversation source, which is a combination of transcript and audio.</summary>
     public class GoogleCloudContactcenterinsightsV1ConversationDataSource : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The source when the conversation comes from Dialogflow.</summary>
@@ -6508,14 +6508,12 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         public virtual string Parent { get; set; }
 
         /// <summary>
-        /// Optional. DLP settings for transcript redaction. Optional, will default to the config specified in Settings.
+        /// Optional. DLP settings for transcript redaction. Will default to the config specified in Settings.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("redactionConfig")]
         public virtual GoogleCloudContactcenterinsightsV1RedactionConfig RedactionConfig { get; set; }
 
-        /// <summary>
-        /// Optional. Default Speech-to-Text configuration. Optional, will default to the config specified in Settings.
-        /// </summary>
+        /// <summary>Optional. Speech-to-Text configuration. Will default to the config specified in Settings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("speechConfig")]
         public virtual GoogleCloudContactcenterinsightsV1SpeechConfig SpeechConfig { get; set; }
 
@@ -7544,7 +7542,7 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The conversation source, which is a combination of transcript, audio, and metadata.</summary>
+    /// <summary>The conversation source, which is a combination of transcript and audio.</summary>
     public class GoogleCloudContactcenterinsightsV1alpha1ConversationDataSource : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The source when the conversation comes from Dialogflow.</summary>
@@ -9439,14 +9437,12 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         public virtual string Parent { get; set; }
 
         /// <summary>
-        /// Optional. DLP settings for transcript redaction. Optional, will default to the config specified in Settings.
+        /// Optional. DLP settings for transcript redaction. Will default to the config specified in Settings.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("redactionConfig")]
         public virtual GoogleCloudContactcenterinsightsV1alpha1RedactionConfig RedactionConfig { get; set; }
 
-        /// <summary>
-        /// Optional. Default Speech-to-Text configuration. Optional, will default to the config specified in Settings.
-        /// </summary>
+        /// <summary>Optional. Speech-to-Text configuration. Will default to the config specified in Settings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("speechConfig")]
         public virtual GoogleCloudContactcenterinsightsV1alpha1SpeechConfig SpeechConfig { get; set; }
 

@@ -14713,9 +14713,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         public virtual AccessDeterminationLogConfig AccessDeterminationLogConfig { get; set; }
 
         /// <summary>
-        /// Optional. If set to true, when accessing FHIR resources, the consent headers provided using
-        /// [SMART-on-FHIR](https://cloud.google.com/healthcare/private/docs/how-tos/smart-on-fhir) will be verified
-        /// against consents given by patients. See the ConsentEnforcementVersion for the supported consent headers.
+        /// Optional. If set to true, when accessing FHIR resources, the consent headers will be verified against
+        /// consents given by patients. See the ConsentEnforcementVersion for the supported consent headers.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accessEnforced")]
         public virtual System.Nullable<bool> AccessEnforced { get; set; }

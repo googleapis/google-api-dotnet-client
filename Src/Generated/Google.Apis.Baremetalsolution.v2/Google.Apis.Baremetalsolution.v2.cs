@@ -606,6 +606,51 @@ namespace Google.Apis.Baremetalsolution.v2
                     }
                 }
 
+                /// <summary>Load auth info for a server.</summary>
+                /// <param name="name">Required. Name of the server.</param>
+                public virtual LoadAuthInfoRequest LoadAuthInfo(string name)
+                {
+                    return new LoadAuthInfoRequest(this.service, name);
+                }
+
+                /// <summary>Load auth info for a server.</summary>
+                public class LoadAuthInfoRequest : BaremetalsolutionBaseServiceRequest<Google.Apis.Baremetalsolution.v2.Data.LoadInstanceAuthInfoResponse>
+                {
+                    /// <summary>Constructs a new LoadAuthInfo request.</summary>
+                    public LoadAuthInfoRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Name of the server.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "loadAuthInfo";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}:loadAuthInfo";
+
+                    /// <summary>Initializes LoadAuthInfo parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Update details of a single server.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
@@ -3672,6 +3717,14 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("interactiveSerialConsoleEnabled")]
         public virtual System.Nullable<bool> InteractiveSerialConsoleEnabled { get; set; }
 
+        /// <summary>
+        /// Optional. Name of the KMS crypto key version used to encrypt the initial passwords. The key has to have
+        /// ASYMMETRIC_DECRYPT purpose. Format is
+        /// `projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}/cryptoKeyVersions/{version}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyVersion")]
+        public virtual string KmsKeyVersion { get; set; }
+
         /// <summary>Labels as key value pairs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
@@ -3730,6 +3783,10 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pod")]
         public virtual string Pod { get; set; }
+
+        /// <summary>Optional. List of SSH Keys used during instance provisioning.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sshKeys")]
+        public virtual System.Collections.Generic.IList<string> SshKeys { get; set; }
 
         /// <summary>Output only. The state of the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
@@ -3814,6 +3871,13 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceType")]
         public virtual string InstanceType { get; set; }
+
+        /// <summary>
+        /// Name of the KMS crypto key version used to encrypt the initial passwords. The key has to have
+        /// ASYMMETRIC_DECRYPT purpose.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyVersion")]
+        public virtual string KmsKeyVersion { get; set; }
 
         /// <summary>
         /// List of logical interfaces for the instance. The number of logical interfaces will be the same as number of
@@ -4092,6 +4156,21 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response for LoadInstanceAuthInfo.</summary>
+    public class LoadInstanceAuthInfoResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of ssh keys.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sshKeys")]
+        public virtual System.Collections.Generic.IList<SSHKey> SshKeys { get; set; }
+
+        /// <summary>Map of username to the user account info.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userAccounts")]
+        public virtual System.Collections.Generic.IDictionary<string, UserAccount> UserAccounts { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A resource that represents a Google Cloud location.</summary>
     public class Location : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4222,7 +4301,7 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("shareable")]
         public virtual System.Nullable<bool> Shareable { get; set; }
 
-        /// <summary>The size of this LUN, in gigabytes.</summary>
+        /// <summary>The size of this LUN, in GiB.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sizeGb")]
         public virtual System.Nullable<long> SizeGb { get; set; }
 
@@ -5047,6 +5126,21 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         /// <summary>The submitted provisioning config.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("provisioningConfig")]
         public virtual ProvisioningConfig ProvisioningConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>User account provisioned for the customer.</summary>
+    public class UserAccount : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Encrypted initial password value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptedPassword")]
+        public virtual string EncryptedPassword { get; set; }
+
+        /// <summary>KMS CryptoKey Version used to encrypt the password.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyVersion")]
+        public virtual string KmsKeyVersion { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

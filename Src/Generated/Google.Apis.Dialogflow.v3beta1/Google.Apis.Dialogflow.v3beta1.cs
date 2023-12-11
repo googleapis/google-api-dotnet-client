@@ -321,6 +321,7 @@ namespace Google.Apis.Dialogflow.v3beta1
                     EntityTypes = new EntityTypesResource(service);
                     Environments = new EnvironmentsResource(service);
                     Flows = new FlowsResource(service);
+                    Generators = new GeneratorsResource(service);
                     Intents = new IntentsResource(service);
                     Sessions = new SessionsResource(service);
                     TestCases = new TestCasesResource(service);
@@ -4949,6 +4950,401 @@ namespace Google.Apis.Dialogflow.v3beta1
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/agents/[^/]+/flows/[^/]+$",
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>Gets the Generators resource.</summary>
+                public virtual GeneratorsResource Generators { get; }
+
+                /// <summary>The "generators" collection of methods.</summary>
+                public class GeneratorsResource
+                {
+                    private const string Resource = "generators";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public GeneratorsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Creates a generator in the specified agent.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. The agent to create a generator for. Format: `projects//locations//agents/`.
+                    /// </param>
+                    public virtual CreateRequest Create(Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1Generator body, string parent)
+                    {
+                        return new CreateRequest(this.service, body, parent);
+                    }
+
+                    /// <summary>Creates a generator in the specified agent.</summary>
+                    public class CreateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1Generator>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1Generator body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The agent to create a generator for. Format: `projects//locations//agents/`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// The language to create generators for the following fields: * `Generator.prompt_text.text`
+                        /// If not specified, the agent's default language is used.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string LanguageCode { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1Generator Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "create";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v3beta1/{+parent}/generators";
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/agents/[^/]+$",
+                            });
+                            RequestParameters.Add("languageCode", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "languageCode",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Deletes the specified generators.</summary>
+                    /// <param name="name">
+                    /// Required. The name of the generator to delete. Format:
+                    /// `projects//locations//agents//generators/`.
+                    /// </param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(this.service, name);
+                    }
+
+                    /// <summary>Deletes the specified generators.</summary>
+                    public class DeleteRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3beta1.Data.GoogleProtobufEmpty>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the generator to delete. Format:
+                        /// `projects//locations//agents//generators/`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// This field has no effect for generators not being used. For generators that are used by
+                        /// pages/flows/transition route groups: * If `force` is set to false, an error will be returned
+                        /// with message indicating the referenced resources. * If `force` is set to true, Dialogflow
+                        /// will remove the generator, as well as any references to the generator (i.e. Generator) in
+                        /// fulfillments.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("force", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> Force { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v3beta1/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/agents/[^/]+/generators/[^/]+$",
+                            });
+                            RequestParameters.Add("force", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "force",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Retrieves the specified generator.</summary>
+                    /// <param name="name">
+                    /// Required. The name of the generator. Format: `projects//locations//agents//generators/`.
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(this.service, name);
+                    }
+
+                    /// <summary>Retrieves the specified generator.</summary>
+                    public class GetRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1Generator>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the generator. Format: `projects//locations//agents//generators/`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>The language to list generators for.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string LanguageCode { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v3beta1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/agents/[^/]+/generators/[^/]+$",
+                            });
+                            RequestParameters.Add("languageCode", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "languageCode",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Returns the list of all generators in the specified agent.</summary>
+                    /// <param name="parent">
+                    /// Required. The agent to list all generators for. Format: `projects//locations//agents/`.
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(this.service, parent);
+                    }
+
+                    /// <summary>Returns the list of all generators in the specified agent.</summary>
+                    public class ListRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1ListGeneratorsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The agent to list all generators for. Format: `projects//locations//agents/`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>The language to list generators for.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string LanguageCode { get; set; }
+
+                        /// <summary>
+                        /// The maximum number of items to return in a single page. By default 100 and at most 1000.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>The next_page_token value returned from a previous list request.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v3beta1/{+parent}/generators";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/agents/[^/]+$",
+                            });
+                            RequestParameters.Add("languageCode", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "languageCode",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Update the specified generator.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// The unique identifier of the generator. Must be set for the Generators.UpdateGenerator method.
+                    /// Generators.CreateGenerate populates the name automatically. Format:
+                    /// `projects//locations//agents//generators/`.
+                    /// </param>
+                    public virtual PatchRequest Patch(Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1Generator body, string name)
+                    {
+                        return new PatchRequest(this.service, body, name);
+                    }
+
+                    /// <summary>Update the specified generator.</summary>
+                    public class PatchRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1Generator>
+                    {
+                        /// <summary>Constructs a new Patch request.</summary>
+                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1Generator body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// The unique identifier of the generator. Must be set for the Generators.UpdateGenerator
+                        /// method. Generators.CreateGenerate populates the name automatically. Format:
+                        /// `projects//locations//agents//generators/`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>The language to list generators for.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string LanguageCode { get; set; }
+
+                        /// <summary>
+                        /// The mask to control which fields get updated. If the mask is not present, all fields will be
+                        /// updated.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object UpdateMask { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1Generator Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "patch";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "PATCH";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v3beta1/{+name}";
+
+                        /// <summary>Initializes Patch parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/agents/[^/]+/generators/[^/]+$",
+                            });
+                            RequestParameters.Add("languageCode", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "languageCode",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "updateMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
                             });
                         }
                     }
@@ -9590,11 +9986,9 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     /// goes first and during which speech detection should not be carried out. * Barge-in phase: which follows the no
     /// barge-in phase and during which the API starts speech detection and may inform the client that an utterance has
     /// been detected. Note that no-speech event is not expected in this phase. The client provides this configuration
-    /// in terms of the durations of those two phases. The durations are measured in terms of the audio length fromt the
-    /// the start of the input audio. The flow goes like below: --&amp;gt; Time without speech detection | utterance
-    /// only | utterance or no-speech event | | +-------------+ | +------------+ | +---------------+ ----------+ no
-    /// barge-in +-|-+ barge-in +-|-+ normal period +----------- +-------------+ | +------------+ | +---------------+
-    /// No-speech event is a response with END_OF_UTTERANCE without any transcript following up.
+    /// in terms of the durations of those two phases. The durations are measured in terms of the audio length from the
+    /// the start of the input audio. No-speech event is a response with END_OF_UTTERANCE without any transcript
+    /// following up.
     /// </summary>
     public class GoogleCloudDialogflowCxV3BargeInConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10569,15 +10963,8 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         public virtual System.Nullable<bool> EnableWordInfo { get; set; }
 
         /// <summary>
-        /// Optional. Which Speech model to select for the given request. Select the model best suited to your domain to
-        /// get best results. If a model is not explicitly specified, then we auto-select a model based on the
-        /// parameters in the InputAudioConfig. If enhanced speech model is enabled for the agent and an enhanced
-        /// version of the specified model for the language does not exist, then the speech is recognized using the
-        /// standard version of the specified model. Refer to [Cloud Speech API
-        /// documentation](https://cloud.google.com/speech-to-text/docs/basics#select-model) for more details. If you
-        /// specify a model, the following models typically have the best performance: - phone_call (best for Agent
-        /// Assist and telephony) - latest_short (best for Dialogflow non-telephony) - command_and_search (best for very
-        /// short utterances and commands)
+        /// Optional. Which Speech model to select for the given request. For more information, see [Speech
+        /// models](https://cloud.google.com/dialogflow/cx/docs/concept/speech-models).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("model")]
         public virtual string Model { get; set; }
@@ -12428,11 +12815,9 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     /// goes first and during which speech detection should not be carried out. * Barge-in phase: which follows the no
     /// barge-in phase and during which the API starts speech detection and may inform the client that an utterance has
     /// been detected. Note that no-speech event is not expected in this phase. The client provides this configuration
-    /// in terms of the durations of those two phases. The durations are measured in terms of the audio length fromt the
-    /// the start of the input audio. The flow goes like below: --&amp;gt; Time without speech detection | utterance
-    /// only | utterance or no-speech event | | +-------------+ | +------------+ | +---------------+ ----------+ no
-    /// barge-in +-|-+ barge-in +-|-+ normal period +----------- +-------------+ | +------------+ | +---------------+
-    /// No-speech event is a response with END_OF_UTTERANCE without any transcript following up.
+    /// in terms of the durations of those two phases. The durations are measured in terms of the audio length from the
+    /// the start of the input audio. No-speech event is a response with END_OF_UTTERANCE without any transcript
+    /// following up.
     /// </summary>
     public class GoogleCloudDialogflowCxV3beta1BargeInConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -14648,6 +15033,56 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Generators contain prompt to be sent to the LLM model to generate text. The prompt can contain parameters which
+    /// will be resolved before calling the model. It can optionally contain banned phrases to ensure the model
+    /// responses are safe.
+    /// </summary>
+    public class GoogleCloudDialogflowCxV3beta1Generator : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The human-readable name of the generator, unique within the agent. The prompt contains pre-defined
+        /// parameters such as $conversation, $last-user-utterance, etc. populated by Dialogflow. It can also contain
+        /// custom placeholders which will be resolved during fulfillment.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// The unique identifier of the generator. Must be set for the Generators.UpdateGenerator method.
+        /// Generators.CreateGenerate populates the name automatically. Format:
+        /// `projects//locations//agents//generators/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Optional. List of custom placeholders in the prompt text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("placeholders")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1GeneratorPlaceholder> Placeholders { get; set; }
+
+        /// <summary>Required. Prompt for the LLM model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("promptText")]
+        public virtual GoogleCloudDialogflowCxV3beta1Phrase PromptText { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a custom placeholder in the prompt text.</summary>
+    public class GoogleCloudDialogflowCxV3beta1GeneratorPlaceholder : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Unique ID used to map custom placeholder to parameters in fulfillment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>Custom placeholder value in the prompt text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata in google::longrunning::Operation for Knowledge operations.</summary>
     public class GoogleCloudDialogflowCxV3beta1GenericKnowledgeOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -14880,15 +15315,8 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         public virtual System.Nullable<bool> EnableWordInfo { get; set; }
 
         /// <summary>
-        /// Optional. Which Speech model to select for the given request. Select the model best suited to your domain to
-        /// get best results. If a model is not explicitly specified, then we auto-select a model based on the
-        /// parameters in the InputAudioConfig. If enhanced speech model is enabled for the agent and an enhanced
-        /// version of the specified model for the language does not exist, then the speech is recognized using the
-        /// standard version of the specified model. Refer to [Cloud Speech API
-        /// documentation](https://cloud.google.com/speech-to-text/docs/basics#select-model) for more details. If you
-        /// specify a model, the following models typically have the best performance: - phone_call (best for Agent
-        /// Assist and telephony) - latest_short (best for Dialogflow non-telephony) - command_and_search (best for very
-        /// short utterances and commands)
+        /// Optional. Which Speech model to select for the given request. For more information, see [Speech
+        /// models](https://cloud.google.com/dialogflow/cx/docs/concept/speech-models).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("model")]
         public virtual string Model { get; set; }
@@ -15303,6 +15731,26 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("flows")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1Flow> Flows { get; set; }
+
+        /// <summary>
+        /// Token to retrieve the next page of results, or empty if there are no more results in the list.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response message for Generators.ListGenerators.</summary>
+    public class GoogleCloudDialogflowCxV3beta1ListGeneratorsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The list of generators. There will be a maximum number of items returned based on the page_size field in the
+        /// request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generators")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1Generator> Generators { get; set; }
 
         /// <summary>
         /// Token to retrieve the next page of results, or empty if there are no more results in the list.
@@ -15846,6 +16294,17 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual object Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Text input which can be used for prompt or banned phrases.</summary>
+    public class GoogleCloudDialogflowCxV3beta1Phrase : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Text input which can be used for prompt or banned phrases.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

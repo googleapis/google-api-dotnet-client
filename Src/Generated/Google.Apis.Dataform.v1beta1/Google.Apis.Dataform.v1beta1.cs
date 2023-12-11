@@ -3157,8 +3157,8 @@ namespace Google.Apis.Dataform.v1beta1
                         public virtual string Workspace { get; private set; }
 
                         /// <summary>
-                        /// Optional. Optional filter for the returned list in go/filtering format. Filtering is only
-                        /// currently supported on the `path` field.
+                        /// Optional. Optional filter for the returned list in filtering format. Filtering is only
+                        /// currently supported on the `path` field. See https://google.aip.dev/160 for details.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }

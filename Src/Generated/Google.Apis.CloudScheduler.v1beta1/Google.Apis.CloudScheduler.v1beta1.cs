@@ -1050,12 +1050,12 @@ namespace Google.Apis.CloudScheduler.v1beta1.Data
         /// will append `"AppEngine-Google; (+http://code.google.com/appengine)"` to the modified `User-Agent`. *
         /// `X-CloudScheduler`: This header will be set to true. * `X-CloudScheduler-JobName`: This header will contain
         /// the job name. * `X-CloudScheduler-ScheduleTime`: For Cloud Scheduler jobs specified in the unix-cron format,
-        /// this header will contain the job schedule time in RFC3339 UTC "Zulu" format. If the job has a body and the
-        /// following headers are not set by the user, Cloud Scheduler sets default values: * `Content-Type`: This will
-        /// be set to `"application/octet-stream"`. You can override this default by explicitly setting `Content-Type`
-        /// to a particular media type when creating the job. For example, you can set `Content-Type` to
-        /// `"application/json"`. The headers below are output only. They cannot be set or overridden: *
-        /// `Content-Length`: This is computed by Cloud Scheduler. * `X-Google-*`: For Google internal use only. *
+        /// this header will contain the job schedule as an offset of UTC parsed according to RFC3339. If the job has a
+        /// body and the following headers are not set by the user, Cloud Scheduler sets default values: *
+        /// `Content-Type`: This will be set to `"application/octet-stream"`. You can override this default by
+        /// explicitly setting `Content-Type` to a particular media type when creating the job. For example, you can set
+        /// `Content-Type` to `"application/json"`. The headers below are output only. They cannot be set or overridden:
+        /// * `Content-Length`: This is computed by Cloud Scheduler. * `X-Google-*`: For Google internal use only. *
         /// `X-AppEngine-*`: For Google internal use only. In addition, some App Engine headers, which contain
         /// job-specific information, are also be sent to the job handler.
         /// </summary>
@@ -1174,11 +1174,11 @@ namespace Google.Apis.CloudScheduler.v1beta1.Data
         /// `"Google-Cloud-Scheduler"`. * `X-Google-*`: Google internal use only. * `X-AppEngine-*`: Google internal use
         /// only. * `X-CloudScheduler`: This header will be set to true. * `X-CloudScheduler-JobName`: This header will
         /// contain the job name. * `X-CloudScheduler-ScheduleTime`: For Cloud Scheduler jobs specified in the unix-cron
-        /// format, this header will contain the job schedule time in RFC3339 UTC "Zulu" format. If the job has a body
-        /// and the following headers are not set by the user, Cloud Scheduler sets default values: * `Content-Type`:
-        /// This will be set to `"application/octet-stream"`. You can override this default by explicitly setting
-        /// `Content-Type` to a particular media type when creating the job. For example, you can set `Content-Type` to
-        /// `"application/json"`. The total size of headers must be less than 80KB.
+        /// format, this header will contain the job schedule as an offset of UTC parsed according to RFC3339. If the
+        /// job has a body and the following headers are not set by the user, Cloud Scheduler sets default values: *
+        /// `Content-Type`: This will be set to `"application/octet-stream"`. You can override this default by
+        /// explicitly setting `Content-Type` to a particular media type when creating the job. For example, you can set
+        /// `Content-Type` to `"application/json"`. The total size of headers must be less than 80KB.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("headers")]
         public virtual System.Collections.Generic.IDictionary<string, string> Headers { get; set; }

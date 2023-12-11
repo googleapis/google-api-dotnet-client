@@ -2475,6 +2475,12 @@ namespace Google.Apis.AIPlatformNotebooks.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
+        /// <summary>
+        /// Output only. The workforce pools proxy endpoint that is used to access the Jupyter notebook.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("thirdPartyProxyUrl")]
+        public virtual string ThirdPartyProxyUrl { get; set; }
+
         private string _updateTimeRaw;
 
         private object _updateTime;

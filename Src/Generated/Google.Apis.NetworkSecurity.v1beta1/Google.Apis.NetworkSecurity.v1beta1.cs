@@ -1284,7 +1284,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1
 
                 /// <summary>Update a single Endpoint.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">Output only. name of resource</param>
+                /// <param name="name">Immutable. Identifier. name of resource</param>
                 public virtual PatchRequest Patch(Google.Apis.NetworkSecurity.v1beta1.Data.FirewallEndpoint body, string name)
                 {
                     return new PatchRequest(this.service, body, name);
@@ -1301,7 +1301,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                         InitParameters();
                     }
 
-                    /// <summary>Output only. name of resource</summary>
+                    /// <summary>Immutable. Identifier. name of resource</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -4756,7 +4756,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1
 
                 /// <summary>Update a single FirewallEndpointAssociation.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">Output only. name of resource</param>
+                /// <param name="name">Immutable. Identifier. name of resource</param>
                 public virtual PatchRequest Patch(Google.Apis.NetworkSecurity.v1beta1.Data.FirewallEndpointAssociation body, string name)
                 {
                     return new PatchRequest(this.service, body, name);
@@ -4773,7 +4773,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                         InitParameters();
                     }
 
-                    /// <summary>Output only. name of resource</summary>
+                    /// <summary>Immutable. Identifier. name of resource</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -7770,6 +7770,13 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("associatedNetworks")]
         public virtual System.Collections.Generic.IList<string> AssociatedNetworks { get; set; }
 
+        /// <summary>
+        /// Output only. List of FirewallEndpointAssociations that are associated to this endpoint. An association will
+        /// only appear in this list after traffic routing is fully configured.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("associations")]
+        public virtual System.Collections.Generic.IList<FirewallEndpointAssociationReference> Associations { get; set; }
+
         /// <summary>Optional. Project to bill on endpoint uptime usage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("billingProjectId")]
         public virtual string BillingProjectId { get; set; }
@@ -7819,7 +7826,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
-        /// <summary>Output only. name of resource</summary>
+        /// <summary>Immutable. Identifier. name of resource</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -7922,7 +7929,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
-        /// <summary>Output only. name of resource</summary>
+        /// <summary>Immutable. Identifier. name of resource</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -7980,6 +7987,28 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// This is a subset of the FirewallEndpointAssociation message, containing fields to be used by the consumer.
+    /// </summary>
+    public class FirewallEndpointAssociationReference : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The resource name of the FirewallEndpointAssociation. Format:
+        /// projects/{project}/locations/{location}/firewallEndpointAssociations/{id}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. The VPC network associated. Format: projects/{project}/global/networks/{name}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("network")]
+        public virtual string Network { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

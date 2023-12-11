@@ -4011,13 +4011,16 @@ namespace Google.Apis.CloudRun.v2.Data
     /// <summary>ResourceRequirements describes the compute resource requirements.</summary>
     public class GoogleCloudRunV2ResourceRequirements : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Determines whether CPU should be throttled or not outside of requests.</summary>
+        /// <summary>
+        /// Determines whether CPU is only allocated during requests (true by default). However, if ResourceRequirements
+        /// is set, the caller must explicitly set this field to true to preserve the default behavior.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cpuIdle")]
         public virtual System.Nullable<bool> CpuIdle { get; set; }
 
         /// <summary>
-        /// Only ´memory´ and 'cpu' are supported. Notes: * The only supported values for CPU are '1', '2', '4', and
-        /// '8'. Setting 4 CPU requires at least 2Gi of memory. For more information, go to
+        /// Only `memory` and `cpu` keys in the map are supported. Notes: * The only supported values for CPU are '1',
+        /// '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. For more information, go to
         /// https://cloud.google.com/run/docs/configuring/cpu. * For supported 'memory' values and syntax, go to
         /// https://cloud.google.com/run/docs/configuring/memory-limits
         /// </summary>

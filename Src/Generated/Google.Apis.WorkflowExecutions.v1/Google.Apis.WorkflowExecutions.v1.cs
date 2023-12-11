@@ -702,7 +702,10 @@ namespace Google.Apis.WorkflowExecutions.v1
                         }
                     }
 
-                    /// <summary>Creates a new execution using the latest revision of the given workflow.</summary>
+                    /// <summary>
+                    /// Creates a new execution using the latest revision of the given workflow. For more information,
+                    /// see Execute a workflow.
+                    /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
                     /// Required. Name of the workflow for which an execution should be created. Format:
@@ -714,7 +717,10 @@ namespace Google.Apis.WorkflowExecutions.v1
                         return new CreateRequest(this.service, body, parent);
                     }
 
-                    /// <summary>Creates a new execution using the latest revision of the given workflow.</summary>
+                    /// <summary>
+                    /// Creates a new execution using the latest revision of the given workflow. For more information,
+                    /// see Execute a workflow.
+                    /// </summary>
                     public class CreateRequest : WorkflowExecutionsBaseServiceRequest<Google.Apis.WorkflowExecutions.v1.Data.Execution>
                     {
                         /// <summary>Constructs a new Create request.</summary>

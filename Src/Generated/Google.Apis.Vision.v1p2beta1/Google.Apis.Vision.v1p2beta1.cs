@@ -4646,7 +4646,7 @@ namespace Google.Apis.Vision.v1p2beta1.Data
     /// <summary>Parameters for web detection request.</summary>
     public class GoogleCloudVisionV1p2beta1WebDetectionParams : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Whether to include results derived from the geo information in the image.</summary>
+        /// <summary>This field has no effect on results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includeGeoResults")]
         public virtual System.Nullable<bool> IncludeGeoResults { get; set; }
 
