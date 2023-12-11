@@ -1,0 +1,11 @@
+{
+  "Google.Apis.AppHub.v1.AppHubBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.AppHub.v1.AppHubBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

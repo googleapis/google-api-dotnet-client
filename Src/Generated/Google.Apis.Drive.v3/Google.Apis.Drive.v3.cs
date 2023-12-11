@@ -6247,7 +6247,11 @@ namespace Google.Apis.Drive.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("orgUnitId")]
         public virtual string OrgUnitId { get; set; }
 
-        /// <summary>A set of restrictions that apply to this shared drive or items inside this shared drive.</summary>
+        /// <summary>
+        /// A set of restrictions that apply to this shared drive or items inside this shared drive. Note that
+        /// restrictions can't be set when creating a shared drive. To add a restriction, first create a shared drive
+        /// and then use `drives.update` to add restrictions.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("restrictions")]
         public virtual RestrictionsData Restrictions { get; set; }
 
@@ -6417,7 +6421,11 @@ namespace Google.Apis.Drive.v3.Data
             public virtual System.Nullable<bool> CanTrashChildren { get; set; }
         }
 
-        /// <summary>A set of restrictions that apply to this shared drive or items inside this shared drive.</summary>
+        /// <summary>
+        /// A set of restrictions that apply to this shared drive or items inside this shared drive. Note that
+        /// restrictions can't be set when creating a shared drive. To add a restriction, first create a shared drive
+        /// and then use `drives.update` to add restrictions.
+        /// </summary>
         public class RestrictionsData
         {
             /// <summary>

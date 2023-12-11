@@ -1498,6 +1498,13 @@ namespace Google.Apis.FirebaseRules.v1.Data
     /// </summary>
     public class Ruleset : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Immutable. Intended resource to which this Ruleset should be released. May be left blank to signify the
+        /// resource associated with the default release. Expected format: firestore.googleapis.com/projects//databases/
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attachmentPoint")]
+        public virtual string AttachmentPoint { get; set; }
+
         private string _createTimeRaw;
 
         private object _createTime;

@@ -2738,6 +2738,13 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
+        /// <summary>
+        /// Version control system information from BUNDLE-METADATA/version-control-info.textproto or
+        /// META-INF/version-control-info.textproto of the app bundle or APK, respectively.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vcsInformation")]
+        public virtual string VcsInformation { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

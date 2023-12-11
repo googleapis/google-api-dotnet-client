@@ -1056,6 +1056,57 @@ namespace Google.Apis.Assuredworkloads.v1
                     }
                 }
 
+                /// <summary>Enable resource violation monitoring for a workload.</summary>
+                /// <param name="name">
+                /// Required. The `name` field is used to identify the workload. Format:
+                /// organizations/{org_id}/locations/{location_id}/workloads/{workload_id}
+                /// </param>
+                public virtual EnableResourceMonitoringRequest EnableResourceMonitoring(string name)
+                {
+                    return new EnableResourceMonitoringRequest(this.service, name);
+                }
+
+                /// <summary>Enable resource violation monitoring for a workload.</summary>
+                public class EnableResourceMonitoringRequest : AssuredworkloadsBaseServiceRequest<Google.Apis.Assuredworkloads.v1.Data.GoogleCloudAssuredworkloadsV1EnableResourceMonitoringResponse>
+                {
+                    /// <summary>Constructs a new EnableResourceMonitoring request.</summary>
+                    public EnableResourceMonitoringRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The `name` field is used to identify the workload. Format:
+                    /// organizations/{org_id}/locations/{location_id}/workloads/{workload_id}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "enableResourceMonitoring";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:enableResourceMonitoring";
+
+                    /// <summary>Initializes EnableResourceMonitoring parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/locations/[^/]+/workloads/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Gets Assured Workload associated with a CRM Node</summary>
                 /// <param name="name">
                 /// Required. The resource name of the Workload to fetch. This is the workloads's relative path in the
@@ -1423,7 +1474,7 @@ namespace Google.Apis.Assuredworkloads.v1
 }
 namespace Google.Apis.Assuredworkloads.v1.Data
 {
-    /// <summary>Request for acknowledging the violation Next Id: 5</summary>
+    /// <summary>Request for acknowledging the violation</summary>
     public class GoogleCloudAssuredworkloadsV1AcknowledgeViolationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. Acknowledge type of specified violation.</summary>
@@ -1548,6 +1599,13 @@ namespace Google.Apis.Assuredworkloads.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
         public virtual string Parent { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for EnableResourceMonitoring endpoint.</summary>
+    public class GoogleCloudAssuredworkloadsV1EnableResourceMonitoringResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

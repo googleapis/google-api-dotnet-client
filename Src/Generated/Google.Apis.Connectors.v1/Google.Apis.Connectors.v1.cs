@@ -5468,6 +5468,10 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
         public virtual string Key { get; set; }
 
+        /// <summary>Optional. Location Tyep denotes where this value should be sent in BYOC connections.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locationType")]
+        public virtual string LocationType { get; set; }
+
         /// <summary>Flag represents that this `ConfigVariable` must be provided for a connection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("required")]
         public virtual System.Nullable<bool> Required { get; set; }
@@ -6109,6 +6113,10 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("supportedRuntimeFeatures")]
         public virtual SupportedRuntimeFeatures SupportedRuntimeFeatures { get; set; }
 
+        /// <summary>Output only. Unsupported connection types.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unsupportedConnectionTypes")]
+        public virtual System.Collections.Generic.IList<string> UnsupportedConnectionTypes { get; set; }
+
         private string _updateTimeRaw;
 
         private object _updateTime;
@@ -6313,9 +6321,19 @@ namespace Google.Apis.Connectors.v1.Data
     /// <summary>CustomConnectorVersion indicates a specific version of a connector.</summary>
     public class CustomConnectorVersion : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Configuration for establishing the authentication to the connector destination.</summary>
+        /// <summary>
+        /// Optional. Authentication config for accessing connector facade/ proxy. This is used only when
+        /// enable_backend_destination_config is true.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authConfig")]
         public virtual AuthConfig AuthConfig { get; set; }
+
+        /// <summary>
+        /// Optional. Backend variables config templates. This translates to additional variable templates in
+        /// connection.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backendVariableTemplates")]
+        public virtual System.Collections.Generic.IList<ConfigVariableTemplate> BackendVariableTemplates { get; set; }
 
         private string _createTimeRaw;
 
@@ -6354,13 +6372,16 @@ namespace Google.Apis.Connectors.v1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Required. Configuration of the customConnector's destination.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("destinationConfig")]
-        public virtual DestinationConfig DestinationConfig { get; set; }
+        /// <summary>
+        /// Optional. Destination config(s) for accessing connector facade/ proxy. This is used only when
+        /// enable_backend_destination_config is true.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationConfigs")]
+        public virtual System.Collections.Generic.IList<DestinationConfig> DestinationConfigs { get; set; }
 
         /// <summary>
-        /// Optional. Whether to enable backend destination config. This is the backend server that the connector
-        /// connects to.
+        /// Optional. When enabled, the connector will be a facade/ proxy, and connects to the destination provided
+        /// during connection creation.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableBackendDestinationConfig")]
         public virtual System.Nullable<bool> EnableBackendDestinationConfig { get; set; }
@@ -6379,7 +6400,7 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Required. Service account needed for runtime plane to access Custom Connector secrets.</summary>
+        /// <summary>Required. Service account used by runtime plane to access auth config secrets.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
         public virtual string ServiceAccount { get; set; }
 

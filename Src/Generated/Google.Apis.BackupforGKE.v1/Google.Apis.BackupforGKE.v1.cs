@@ -5507,7 +5507,7 @@ namespace Google.Apis.BackupforGKE.v1.Data
         public virtual System.Nullable<int> VolumesRestoredCount { get; set; }
     }
 
-    /// <summary>Configuration of a restore. Next id: 13</summary>
+    /// <summary>Configuration of a restore. Next id: 14</summary>
     public class RestoreConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>

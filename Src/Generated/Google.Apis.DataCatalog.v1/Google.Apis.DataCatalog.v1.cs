@@ -4187,8 +4187,8 @@ namespace Google.Apis.DataCatalog.v1
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
-                    /// Output only. Resource name of this policy tag in the URL format. The policy tag manager
-                    /// generates unique taxonomy IDs and policy tag IDs.
+                    /// Identifier. Resource name of this policy tag in the URL format. The policy tag manager generates
+                    /// unique taxonomy IDs and policy tag IDs.
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.DataCatalog.v1.Data.GoogleCloudDatacatalogV1PolicyTag body, string name)
                     {
@@ -4209,7 +4209,7 @@ namespace Google.Apis.DataCatalog.v1
                         }
 
                         /// <summary>
-                        /// Output only. Resource name of this policy tag in the URL format. The policy tag manager
+                        /// Identifier. Resource name of this policy tag in the URL format. The policy tag manager
                         /// generates unique taxonomy IDs and policy tag IDs.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -4857,7 +4857,7 @@ namespace Google.Apis.DataCatalog.v1
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Output only. Resource name of this taxonomy in URL format. Note: Policy tag manager generates unique
+                /// Identifier. Resource name of this taxonomy in URL format. Note: Policy tag manager generates unique
                 /// taxonomy IDs.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.DataCatalog.v1.Data.GoogleCloudDatacatalogV1Taxonomy body, string name)
@@ -4879,7 +4879,7 @@ namespace Google.Apis.DataCatalog.v1
                     }
 
                     /// <summary>
-                    /// Output only. Resource name of this taxonomy in URL format. Note: Policy tag manager generates
+                    /// Identifier. Resource name of this taxonomy in URL format. Note: Policy tag manager generates
                     /// unique taxonomy IDs.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -6505,7 +6505,7 @@ namespace Google.Apis.DataCatalog.v1.Data
         public virtual string DisplayName { get; set; }
 
         /// <summary>
-        /// Output only. Resource name of this policy tag in the URL format. The policy tag manager generates unique
+        /// Identifier. Resource name of this policy tag in the URL format. The policy tag manager generates unique
         /// taxonomy IDs and policy tag IDs.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -7506,8 +7506,8 @@ namespace Google.Apis.DataCatalog.v1.Data
         public virtual string DisplayName { get; set; }
 
         /// <summary>
-        /// Output only. Resource name of this taxonomy in URL format. Note: Policy tag manager generates unique
-        /// taxonomy IDs.
+        /// Identifier. Resource name of this taxonomy in URL format. Note: Policy tag manager generates unique taxonomy
+        /// IDs.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }

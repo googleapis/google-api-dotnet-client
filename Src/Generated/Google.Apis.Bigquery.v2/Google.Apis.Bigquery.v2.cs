@@ -8513,6 +8513,16 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("remoteServiceType")]
         public virtual string RemoteServiceType { get; set; }
 
+        /// <summary>
+        /// Output only. The name of the speech recognizer to use for speech recognition. The expected format is
+        /// `projects/{project}/locations/{location}/recognizers/{recognizer}`. Customers can specify this field at
+        /// model creation. If not specified, a default recognizer `projects/{model
+        /// project}/locations/global/recognizers/_` will be used. See more details at
+        /// [recognizers](https://cloud.google.com/speech-to-text/v2/docs/reference/rest/v2/projects.locations.recognizers)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("speechRecognizer")]
+        public virtual string SpeechRecognizer { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -10476,6 +10486,24 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>[Pick one] A code resource to load from a Google Cloud Storage URI (gs://bucket/path).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceUri")]
         public virtual string ResourceUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Statistics for a vector search query. Populated as part of JobStatistics2.</summary>
+    public class VectorSearchStatistics : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// When `indexUsageMode` is `UNUSED` or `PARTIALLY_USED`, this field explains why indexes were not used in all
+        /// or part of the vector search query. If `indexUsageMode` is `FULLY_USED`, this field is not populated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("indexUnusedReasons")]
+        public virtual System.Collections.Generic.IList<IndexUnusedReason> IndexUnusedReasons { get; set; }
+
+        /// <summary>Specifies the index usage mode for the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("indexUsageMode")]
+        public virtual string IndexUsageMode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

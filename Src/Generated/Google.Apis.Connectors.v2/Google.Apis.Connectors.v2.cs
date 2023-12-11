@@ -1274,6 +1274,168 @@ namespace Google.Apis.Connectors.v2
                 }
 
                 /// <summary>
+                /// Reports readiness status of the connector. Similar logic to GetStatus but modified for kubernetes
+                /// health check to understand.
+                /// </summary>
+                /// <param name="name"><c>null</c></param>
+                public virtual CheckReadinessRequest CheckReadiness(string name)
+                {
+                    return new CheckReadinessRequest(this.service, name);
+                }
+
+                /// <summary>
+                /// Reports readiness status of the connector. Similar logic to GetStatus but modified for kubernetes
+                /// health check to understand.
+                /// </summary>
+                public class CheckReadinessRequest : ConnectorsBaseServiceRequest<Google.Apis.Connectors.v2.Data.CheckReadinessResponse>
+                {
+                    /// <summary>Constructs a new CheckReadiness request.</summary>
+                    public CheckReadinessRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "checkReadiness";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}:checkReadiness";
+
+                    /// <summary>Initializes CheckReadiness parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/connections/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Reports the status of the connection. Note that when the connection is in a state that is not
+                /// ACTIVE, the implementation of this RPC method must return a Status with the corresponding State
+                /// instead of returning a gRPC status code that is not "OK", which indicates that ConnectionStatus
+                /// itself, not the connection, failed.
+                /// </summary>
+                /// <param name="name"><c>null</c></param>
+                public virtual CheckStatusRequest CheckStatus(string name)
+                {
+                    return new CheckStatusRequest(this.service, name);
+                }
+
+                /// <summary>
+                /// Reports the status of the connection. Note that when the connection is in a state that is not
+                /// ACTIVE, the implementation of this RPC method must return a Status with the corresponding State
+                /// instead of returning a gRPC status code that is not "OK", which indicates that ConnectionStatus
+                /// itself, not the connection, failed.
+                /// </summary>
+                public class CheckStatusRequest : ConnectorsBaseServiceRequest<Google.Apis.Connectors.v2.Data.CheckStatusResponse>
+                {
+                    /// <summary>Constructs a new CheckStatus request.</summary>
+                    public CheckStatusRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "checkStatus";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}:checkStatus";
+
+                    /// <summary>Initializes CheckStatus parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/connections/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// ExchangeAuthCode exchanges the OAuth authorization code (and other necessary data) for an access
+                /// token (and associated credentials).
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name"><c>null</c></param>
+                public virtual ExchangeAuthCodeRequest ExchangeAuthCode(Google.Apis.Connectors.v2.Data.ExchangeAuthCodeRequest body, string name)
+                {
+                    return new ExchangeAuthCodeRequest(this.service, body, name);
+                }
+
+                /// <summary>
+                /// ExchangeAuthCode exchanges the OAuth authorization code (and other necessary data) for an access
+                /// token (and associated credentials).
+                /// </summary>
+                public class ExchangeAuthCodeRequest : ConnectorsBaseServiceRequest<Google.Apis.Connectors.v2.Data.ExchangeAuthCodeResponse>
+                {
+                    /// <summary>Constructs a new ExchangeAuthCode request.</summary>
+                    public ExchangeAuthCodeRequest(Google.Apis.Services.IClientService service, Google.Apis.Connectors.v2.Data.ExchangeAuthCodeRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Connectors.v2.Data.ExchangeAuthCodeRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "exchangeAuthCode";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}:exchangeAuthCode";
+
+                    /// <summary>Initializes ExchangeAuthCode parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/connections/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
                 /// Executes a SQL statement specified in the body of the request. An example of this SQL statement in
                 /// the case of Salesforce connector would be 'select * from Account a, Order o where a.Id =
                 /// o.AccountId'.
@@ -1339,12 +1501,91 @@ namespace Google.Apis.Connectors.v2
                         });
                     }
                 }
+
+                /// <summary>
+                /// RefreshAccessToken exchanges the OAuth refresh token (and other necessary data) for a new access
+                /// token (and new associated credentials).
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name"><c>null</c></param>
+                public virtual RefreshAccessTokenRequest RefreshAccessToken(Google.Apis.Connectors.v2.Data.RefreshAccessTokenRequest body, string name)
+                {
+                    return new RefreshAccessTokenRequest(this.service, body, name);
+                }
+
+                /// <summary>
+                /// RefreshAccessToken exchanges the OAuth refresh token (and other necessary data) for a new access
+                /// token (and new associated credentials).
+                /// </summary>
+                public class RefreshAccessTokenRequest : ConnectorsBaseServiceRequest<Google.Apis.Connectors.v2.Data.RefreshAccessTokenResponse>
+                {
+                    /// <summary>Constructs a new RefreshAccessToken request.</summary>
+                    public RefreshAccessTokenRequest(Google.Apis.Services.IClientService service, Google.Apis.Connectors.v2.Data.RefreshAccessTokenRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Connectors.v2.Data.RefreshAccessTokenRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "refreshAccessToken";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}:refreshAccessToken";
+
+                    /// <summary>Initializes RefreshAccessToken parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/connections/[^/]+$",
+                        });
+                    }
+                }
             }
         }
     }
 }
 namespace Google.Apis.Connectors.v2.Data
 {
+    /// <summary>
+    /// AccessCredentials includes the OAuth access token, and the other fields returned along with it.
+    /// </summary>
+    public class AccessCredentials : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>OAuth access token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accessToken")]
+        public virtual string AccessToken { get; set; }
+
+        /// <summary>Duration till the access token expires.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expiresIn")]
+        public virtual object ExpiresIn { get; set; }
+
+        /// <summary>OAuth refresh token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("refreshToken")]
+        public virtual string RefreshToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Action message contains metadata information about a single action present in the external system.
     /// </summary>
@@ -1377,6 +1618,34 @@ namespace Google.Apis.Connectors.v2.Data
         /// <summary>List containing the metadata of result fields.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resultMetadata")]
         public virtual System.Collections.Generic.IList<ResultMetadata> ResultMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response containing status of the connector for readiness prober.</summary>
+    public class CheckReadinessResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The status of the connector.</summary>
+    public class CheckStatusResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// When the connector is not in ACTIVE state, the description must be populated to specify the reason why it's
+        /// not in ACTIVE state.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>State of the connector.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1430,6 +1699,23 @@ namespace Google.Apis.Connectors.v2.Data
         /// <summary>The name of the entity type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>ExchangeAuthCodeRequest currently includes no fields.</summary>
+    public class ExchangeAuthCodeRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>ExchangeAuthCodeResponse includes the returned access token and its associated credentials.</summary>
+    public class ExchangeAuthCodeResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("accessCredentials")]
+        public virtual AccessCredentials AccessCredentials { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1758,6 +2044,23 @@ namespace Google.Apis.Connectors.v2.Data
         /// <summary>Name of reference entity type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>RefreshAccessTokenRequest currently includes no fields.</summary>
+    public class RefreshAccessTokenRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>RefreshAccessTokenResponse includes the returned access token and its associated credentials.</summary>
+    public class RefreshAccessTokenResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("accessCredentials")]
+        public virtual AccessCredentials AccessCredentials { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

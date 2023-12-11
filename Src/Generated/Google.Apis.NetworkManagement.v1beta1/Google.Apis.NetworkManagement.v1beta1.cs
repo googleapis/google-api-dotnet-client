@@ -1889,9 +1889,21 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cause")]
         public virtual string Cause { get; set; }
 
+        /// <summary>Destination IP address of the dropped packet (if relevant).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationIp")]
+        public virtual string DestinationIp { get; set; }
+
+        /// <summary>Region of the dropped packet (if relevant).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("region")]
+        public virtual string Region { get; set; }
+
         /// <summary>URI of the resource that caused the drop.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceUri")]
         public virtual string ResourceUri { get; set; }
+
+        /// <summary>Source IP address of the dropped packet (if relevant).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceIp")]
+        public virtual string SourceIp { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1970,11 +1982,7 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("instance")]
         public virtual string Instance { get; set; }
 
-        /// <summary>
-        /// The IP address of the endpoint, which can be an external or internal IP. An IPv6 address is only allowed
-        /// when the test's destination is a [global load balancer
-        /// VIP](https://cloud.google.com/load-balancing/docs/load-balancing-overview).
-        /// </summary>
+        /// <summary>The IP address of the endpoint, which can be an external or internal IP.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipAddress")]
         public virtual string IpAddress { get; set; }
 
@@ -2405,6 +2413,51 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>For display only. Metadata associated with the load balancer backend.</summary>
+    public class LoadBalancerBackendInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Display name of the backend. For example, it might be an instance name for the instance group backends, or
+        /// an IP address and port for zonal network endpoint group backends.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backendDisplayName")]
+        public virtual string BackendDisplayName { get; set; }
+
+        /// <summary>URI of the backend service this backend belongs to (if applicable).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backendServiceUri")]
+        public virtual string BackendServiceUri { get; set; }
+
+        /// <summary>
+        /// Output only. Health check configuration state for the backend. This is a result of the static firewall
+        /// analysis (verifying that health check traffic from required IP ranges to the backend is allowed or not). The
+        /// backend might still be unhealthy even if these firewalls are configured. Please refer to the documentation
+        /// for more information: https://cloud.google.com/load-balancing/docs/firewall-rules
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("healthCheckConfigState")]
+        public virtual string HealthCheckConfigState { get; set; }
+
+        /// <summary>URI of the health check attached to this backend (if applicable).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("healthCheckUri")]
+        public virtual string HealthCheckUri { get; set; }
+
+        /// <summary>URI of the instance group this backend belongs to (if applicable).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceGroupUri")]
+        public virtual string InstanceGroupUri { get; set; }
+
+        /// <summary>
+        /// URI of the backend instance (if applicable). Populated for instance group backends, and zonal NEG backends.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceUri")]
+        public virtual string InstanceUri { get; set; }
+
+        /// <summary>URI of the network endpoint group this backend belongs to (if applicable).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkEndpointGroupUri")]
+        public virtual string NetworkEndpointGroupUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>For display only. Metadata associated with a load balancer.</summary>
     public class LoadBalancerInfo : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2462,6 +2515,65 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>For display only. Metadata associated with NAT.</summary>
+    public class NatInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of Cloud NAT Gateway. Only valid when type is CLOUD_NAT.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("natGatewayName")]
+        public virtual string NatGatewayName { get; set; }
+
+        /// <summary>URI of the network where NAT translation takes place.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkUri")]
+        public virtual string NetworkUri { get; set; }
+
+        /// <summary>Destination IP address after NAT translation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("newDestinationIp")]
+        public virtual string NewDestinationIp { get; set; }
+
+        /// <summary>Destination port after NAT translation. Only valid when protocol is TCP or UDP.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("newDestinationPort")]
+        public virtual System.Nullable<int> NewDestinationPort { get; set; }
+
+        /// <summary>Source IP address after NAT translation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("newSourceIp")]
+        public virtual string NewSourceIp { get; set; }
+
+        /// <summary>Source port after NAT translation. Only valid when protocol is TCP or UDP.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("newSourcePort")]
+        public virtual System.Nullable<int> NewSourcePort { get; set; }
+
+        /// <summary>Destination IP address before NAT translation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oldDestinationIp")]
+        public virtual string OldDestinationIp { get; set; }
+
+        /// <summary>Destination port before NAT translation. Only valid when protocol is TCP or UDP.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oldDestinationPort")]
+        public virtual System.Nullable<int> OldDestinationPort { get; set; }
+
+        /// <summary>Source IP address before NAT translation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oldSourceIp")]
+        public virtual string OldSourceIp { get; set; }
+
+        /// <summary>Source port before NAT translation. Only valid when protocol is TCP or UDP.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oldSourcePort")]
+        public virtual System.Nullable<int> OldSourcePort { get; set; }
+
+        /// <summary>IP protocol in string format, for example: "TCP", "UDP", "ICMP".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("protocol")]
+        public virtual string Protocol { get; set; }
+
+        /// <summary>Uri of the Cloud Router. Only valid when type is CLOUD_NAT.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("routerUri")]
+        public virtual string RouterUri { get; set; }
+
+        /// <summary>Type of NAT.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2794,6 +2906,57 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>For display only. Metadata associated with ProxyConnection.</summary>
+    public class ProxyConnectionInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>URI of the network where connection is proxied.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkUri")]
+        public virtual string NetworkUri { get; set; }
+
+        /// <summary>Destination IP address of a new connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("newDestinationIp")]
+        public virtual string NewDestinationIp { get; set; }
+
+        /// <summary>Destination port of a new connection. Only valid when protocol is TCP or UDP.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("newDestinationPort")]
+        public virtual System.Nullable<int> NewDestinationPort { get; set; }
+
+        /// <summary>Source IP address of a new connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("newSourceIp")]
+        public virtual string NewSourceIp { get; set; }
+
+        /// <summary>Source port of a new connection. Only valid when protocol is TCP or UDP.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("newSourcePort")]
+        public virtual System.Nullable<int> NewSourcePort { get; set; }
+
+        /// <summary>Destination IP address of an original connection</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oldDestinationIp")]
+        public virtual string OldDestinationIp { get; set; }
+
+        /// <summary>Destination port of an original connection. Only valid when protocol is TCP or UDP.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oldDestinationPort")]
+        public virtual System.Nullable<int> OldDestinationPort { get; set; }
+
+        /// <summary>Source IP address of an original connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oldSourceIp")]
+        public virtual string OldSourceIp { get; set; }
+
+        /// <summary>Source port of an original connection. Only valid when protocol is TCP or UDP.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oldSourcePort")]
+        public virtual System.Nullable<int> OldSourcePort { get; set; }
+
+        /// <summary>IP protocol in string format, for example: "TCP", "UDP", "ICMP".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("protocol")]
+        public virtual string Protocol { get; set; }
+
+        /// <summary>Uri of proxy subnet.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subnetUri")]
+        public virtual string SubnetUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Results of the configuration analysis from the last run of the test.</summary>
     public class ReachabilityDetails : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3063,6 +3226,14 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("loadBalancer")]
         public virtual LoadBalancerInfo LoadBalancer { get; set; }
 
+        /// <summary>Display information of a specific load balancer backend.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("loadBalancerBackendInfo")]
+        public virtual LoadBalancerBackendInfo LoadBalancerBackendInfo { get; set; }
+
+        /// <summary>Display information of a NAT.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nat")]
+        public virtual NatInfo Nat { get; set; }
+
         /// <summary>Display information of a Google Cloud network.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual NetworkInfo Network { get; set; }
@@ -3070,6 +3241,10 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         /// <summary>Project ID that contains the configuration this step is validating.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
+
+        /// <summary>Display information of a ProxyConnection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("proxyConnection")]
+        public virtual ProxyConnectionInfo ProxyConnection { get; set; }
 
         /// <summary>Display information of a Compute Engine route.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("route")]

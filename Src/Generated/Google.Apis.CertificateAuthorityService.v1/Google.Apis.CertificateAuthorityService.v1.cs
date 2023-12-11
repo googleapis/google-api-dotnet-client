@@ -5048,7 +5048,8 @@ namespace Google.Apis.CertificateAuthorityService.v1.Data
     public class FetchCaCertsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The PEM encoded CA certificate chains of all ACTIVE CertificateAuthority resources in this CaPool.
+        /// The PEM encoded CA certificate chains of all Certificate Authorities in this CaPool in the ENABLED,
+        /// DISABLED, or STAGED states.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("caCerts")]
         public virtual System.Collections.Generic.IList<CertChain> CaCerts { get; set; }

@@ -500,6 +500,13 @@ namespace Google.Apis.OrgPolicyAPI.v2
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>
+                /// Optional. The current etag of policy. If an etag is provided and does not match the current etag of
+                /// the policy, deletion will be blocked and an ABORTED error will be returned.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Etag { get; set; }
+
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
 
@@ -520,6 +527,14 @@ namespace Google.Apis.OrgPolicyAPI.v2
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^folders/[^/]+/policies/[^/]+$",
+                    });
+                    RequestParameters.Add("etag", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "etag",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                 }
             }
@@ -1396,6 +1411,13 @@ namespace Google.Apis.OrgPolicyAPI.v2
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>
+                /// Optional. The current etag of policy. If an etag is provided and does not match the current etag of
+                /// the policy, deletion will be blocked and an ABORTED error will be returned.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Etag { get; set; }
+
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
 
@@ -1416,6 +1438,14 @@ namespace Google.Apis.OrgPolicyAPI.v2
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^organizations/[^/]+/policies/[^/]+$",
+                    });
+                    RequestParameters.Add("etag", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "etag",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                 }
             }
@@ -1942,6 +1972,13 @@ namespace Google.Apis.OrgPolicyAPI.v2
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>
+                /// Optional. The current etag of policy. If an etag is provided and does not match the current etag of
+                /// the policy, deletion will be blocked and an ABORTED error will be returned.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Etag { get; set; }
+
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
 
@@ -1962,6 +1999,14 @@ namespace Google.Apis.OrgPolicyAPI.v2
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^projects/[^/]+/policies/[^/]+$",
+                    });
+                    RequestParameters.Add("etag", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "etag",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                 }
             }
@@ -2538,6 +2583,14 @@ namespace Google.Apis.OrgPolicyAPI.v2.Data
         public virtual GoogleCloudOrgpolicyV2PolicySpec DryRunSpec { get; set; }
 
         /// <summary>
+        /// Optional. An opaque tag indicating the current state of the policy, used for concurrency control. This
+        /// 'etag' is computed by the server based on the value of other fields, and may be sent on update and delete
+        /// requests to ensure the client has an up-to-date value before proceeding.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>
         /// Immutable. The resource name of the policy. Must be one of the following forms, where `constraint_name` is
         /// the name of the constraint which this policy configures: *
         /// `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` *
@@ -2552,9 +2605,6 @@ namespace Google.Apis.OrgPolicyAPI.v2.Data
         /// <summary>Basic information about the Organization Policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spec")]
         public virtual GoogleCloudOrgpolicyV2PolicySpec Spec { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
     }
 
     /// <summary>
