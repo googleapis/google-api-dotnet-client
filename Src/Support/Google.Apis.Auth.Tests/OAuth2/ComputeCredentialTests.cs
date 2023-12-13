@@ -57,7 +57,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
         [Fact]
         public async Task FetchesDefaultServiceAccountEmail()
         {
-            string dummyServiceAccountEmail = "dummy-service-account@dummy-instance.com";
+            string fakeServiceAccountEmail = "fake-service-account@fake-instance.com";
 
             var messageHandler = new DelegatedMessageHandler(FetchServiceAccountId);
             var initializer = new ComputeCredential.Initializer("http://will.be.ignored", "http://will.be.ignored")
@@ -68,7 +68,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
 
             var serviceAccountEmailTask = credential.GetDefaultServiceAccountEmailAsync();
 
-            Assert.Equal(dummyServiceAccountEmail, await serviceAccountEmailTask);
+            Assert.Equal(fakeServiceAccountEmail, await serviceAccountEmailTask);
 
             Task<HttpResponseMessage> FetchServiceAccountId(HttpRequestMessage request)
             {
@@ -77,7 +77,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
                 Assert.Contains(request.Headers, h => h.Key == ComputeCredential.MetadataFlavor && h.Value.Contains(ComputeCredential.GoogleMetadataHeader));
                 return Task.FromResult(new HttpResponseMessage(HttpStatusCode.OK)
                 {
-                    Content = new StringContent(dummyServiceAccountEmail)
+                    Content = new StringContent(fakeServiceAccountEmail)
                 });
             }
         }
@@ -275,8 +275,8 @@ namespace Google.Apis.Auth.Tests.OAuth2
         {
             var clock = new MockClock(new DateTime(2020, 5, 21, 9, 20, 0, 0, DateTimeKind.Utc));
             var response = NewtonsoftJsonSerializer.Instance.Serialize(new { keyId = "1", signedBlob = "Zm9v" });
-            var dummyAccessToken = "dummy_access_token";
-            var dummyServiceAccountEmail = "dummy-service-account@dummy-instance.com";
+            var fakeAccessToken = "fake_access_token";
+            var fakeServiceAccountEmail = "fake-service-account@fake-instance.com";
 
             var messageHandler = new DelegatedMessageHandler(FetchServiceAccountId, FetchOAuthToken, SignBlob);
             var initializer = new ComputeCredential.Initializer("http://will.be.ignored", "http://will.be.ignored")
@@ -295,7 +295,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
                 Assert.Null(request.Headers.Authorization);
                 return Task.FromResult(new HttpResponseMessage(HttpStatusCode.OK)
                 {
-                    Content = new StringContent(dummyServiceAccountEmail)
+                    Content = new StringContent(fakeServiceAccountEmail)
                 });
             }
 
@@ -308,7 +308,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
                 {
                     Content = new StringContent(NewtonsoftJsonSerializer.Instance.Serialize(new TokenResponse
                     {
-                        AccessToken = dummyAccessToken,
+                        AccessToken = fakeAccessToken,
                         ExpiresInSeconds = 24 * 60 * 60, //One day in seconds
                         IssuedUtc = clock.UtcNow
                     }))
@@ -317,8 +317,8 @@ namespace Google.Apis.Auth.Tests.OAuth2
 
             Task<HttpResponseMessage> SignBlob(HttpRequestMessage request)
             {
-                Assert.Equal(string.Format(GoogleAuthConsts.IamSignEndpointFormatString, dummyServiceAccountEmail), request.RequestUri.ToString());
-                Assert.Equal(dummyAccessToken, request.Headers.Authorization.Parameter);
+                Assert.Equal(string.Format(GoogleAuthConsts.IamSignEndpointFormatString, fakeServiceAccountEmail), request.RequestUri.ToString());
+                Assert.Equal(fakeAccessToken, request.Headers.Authorization.Parameter);
                 return Task.FromResult(new HttpResponseMessage(HttpStatusCode.OK)
                 {
                     Content = new StringContent(response)

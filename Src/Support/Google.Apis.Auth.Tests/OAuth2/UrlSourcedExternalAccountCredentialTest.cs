@@ -30,7 +30,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
 {
     public class UrlSourcedExternalAccountCredentialsTests : ExternalAccountCredentialTestsBase
     {
-        private const string SubjectTokenUrl = "https://dummy.subject.token.url/";
+        private const string SubjectTokenUrl = "https://fake.subject.token.url/";
         private static readonly KeyValuePair<string, string> SubjectTokenServiceHeader = new KeyValuePair<string, string>("key1", "value1");
 
         private static Task<HttpResponseMessage> ValidateSubjectTokenRequest(HttpRequestMessage subjectTokenRequest)

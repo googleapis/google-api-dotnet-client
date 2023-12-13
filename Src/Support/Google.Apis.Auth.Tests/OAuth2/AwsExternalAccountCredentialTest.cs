@@ -28,27 +28,27 @@ namespace Google.Apis.Auth.Tests.OAuth2
 {
     public class AwsExternalAccountCredentialsTests : ExternalAccountCredentialTestsBase
     {
-        private const string Imdsv2Url = "http://169.254.169.254/dummy-imds/";
+        private const string Imdsv2Url = "http://169.254.169.254/fake-imds/";
         private const string ImdsV2TokenTtlHeaderName = "X-aws-ec2-metadata-token-ttl-seconds";
         private const string ImdsV2TokenTtlSeconds = "3600";
 
-        private const string ImdsV2Token = "dummy_imdsv2_token";
+        private const string ImdsV2Token = "fake_imdsv2_token";
         private const string ImdsV2TokenHeaderName = "X-aws-ec2-metadata-token";
 
-        private const string RegionUrl = "http://169.254.169.254/dummy-region/";
+        private const string RegionUrl = "http://169.254.169.254/fake-region/";
         private const string MetadateRegion = "us-central-a1";
         private const string Region = "us-central-a";
 
-        private const string SecurityCredentialsUrl = "http://169.254.169.254/dummy-security-credentials/";
-        private const string SecurityCredentialsRole = "dummy_role";
+        private const string SecurityCredentialsUrl = "http://169.254.169.254/fake-security-credentials/";
+        private const string SecurityCredentialsRole = "fake_role";
 
-        private const string SecurityCredentialsAccessKeyId = "dummy_credentials_key_id";
-        private const string SecurityCredentialsSecretAccessKey = "dummy_credentials_secret";
-        private const string SecurityCredentialsToken = "dummy_credentials_token";
+        private const string SecurityCredentialsAccessKeyId = "fake_credentials_key_id";
+        private const string SecurityCredentialsSecretAccessKey = "fake_credentials_secret";
+        private const string SecurityCredentialsToken = "fake_credentials_token";
 
-        private const string VerificationUrl = "http://iam.{region}.dummyaws.com/?Action=GetCallerIdentity&Version=2011-06-15";
-        private const string RegionalizedVerificationUrl = "http://iam.us-central-a.dummyaws.com/?Action=GetCallerIdentity&Version=2011-06-15";
-        private const string RegionalizedVerificationHost = "iam.us-central-a.dummyaws.com";
+        private const string VerificationUrl = "http://iam.{region}.fakeaws.com/?Action=GetCallerIdentity&Version=2011-06-15";
+        private const string RegionalizedVerificationUrl = "http://iam.us-central-a.fakeaws.com/?Action=GetCallerIdentity&Version=2011-06-15";
+        private const string RegionalizedVerificationHost = "iam.us-central-a.fakeaws.com";
         private const string ServiceName = "iam";
 
         private static readonly DateTime MockUtcNow = new DateTime(2022, 9, 29, 5, 47, 56, DateTimeKind.Utc);

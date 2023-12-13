@@ -41,7 +41,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
         protected override Stream GetStream(string filePath)
         {
             var resourceName = pathToFileName.TryGetValue(filePath, out var mappedFileName) ? mappedFileName : filePath;
-            resourceName = $"Google.Apis.Auth.Tests.OAuth2.DummyCredentialFiles.{resourceName}";
+            resourceName = $"Google.Apis.Auth.Tests.OAuth2.FakeCredentialFiles.{resourceName}";
 
             return CurrentAssembly.GetManifestResourceStream(resourceName) ?? throw new FileNotFoundException();
         }
