@@ -188,7 +188,7 @@ namespace Google.Apis.Auth.OAuth2
         public static GoogleCredential FromAccessToken(string accessToken, IAccessMethod accessMethod = null)
         {
             accessMethod ??= new BearerToken.AuthorizationHeaderAccessMethod();
-            return new GoogleCredential(new AccessTokenCredential(accessToken, accessMethod));
+            return new GoogleCredential(new AccessTokenCredential(accessToken, accessMethod, null, null));
         }
 
         /// <summary>
