@@ -139,10 +139,10 @@ namespace Google.Apis.Auth.OAuth2
         bool IGoogleCredential.SupportsExplicitScopes => SupportsExplicitScopes;
 
         /// <inheritdoc/>
-        Task<string> IGoogleCredential.GetUniverseDomainAsync(CancellationToken _) => throw new NotImplementedException();
+        Task<string> IGoogleCredential.GetUniverseDomainAsync(CancellationToken _) => Task.FromResult(UniverseDomain);
 
         /// <inheritdoc/>
-        string IGoogleCredential.GetUniverseDomain() => throw new NotImplementedException();
+        string IGoogleCredential.GetUniverseDomain() => UniverseDomain;
 
         /// <inheritdoc/>
         IGoogleCredential IGoogleCredential.WithQuotaProject(string quotaProject) =>
@@ -161,6 +161,7 @@ namespace Google.Apis.Auth.OAuth2
             new UrlSourcedExternalAccountCredential(new Initializer(this) { HttpClientFactory = httpClientFactory });
 
         /// <inheritdoc/>
-        IGoogleCredential IGoogleCredential.WithUniverseDomain(string universeDomain) => throw new NotImplementedException();
+        IGoogleCredential IGoogleCredential.WithUniverseDomain(string universeDomain) =>
+            new UrlSourcedExternalAccountCredential(new Initializer(this) { UniverseDomain = universeDomain });
     }
 }

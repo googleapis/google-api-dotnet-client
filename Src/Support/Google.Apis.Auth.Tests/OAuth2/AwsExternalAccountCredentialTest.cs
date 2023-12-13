@@ -53,6 +53,47 @@ namespace Google.Apis.Auth.Tests.OAuth2
 
         private static readonly DateTime MockUtcNow = new DateTime(2022, 9, 29, 5, 47, 56, DateTimeKind.Utc);
 
+        [Fact]
+        public async Task UniverseDomain_Default()
+        {
+            var credential = new AwsExternalAccountCredential(new AwsExternalAccountCredential.Initializer(
+                TokenUrl, Audience, SubjectTokenType, VerificationUrl)) as IGoogleCredential;
+
+            Assert.Equal(GoogleAuthConsts.DefaultUniverseDomain, credential.GetUniverseDomain());
+            Assert.Equal(GoogleAuthConsts.DefaultUniverseDomain, await credential.GetUniverseDomainAsync(default));
+        }
+
+        [Fact]
+        public async Task UniverseDomain_Custom()
+        {
+            var credential = new AwsExternalAccountCredential(new AwsExternalAccountCredential.Initializer(
+                TokenUrl, Audience, SubjectTokenType, VerificationUrl)
+            {
+                UniverseDomain = UniverseDomain
+            }) as IGoogleCredential;
+
+            Assert.Equal(UniverseDomain, credential.GetUniverseDomain());
+            Assert.Equal(UniverseDomain, await credential.GetUniverseDomainAsync(default));
+        }
+
+        [Fact]
+        public async Task WithUniverseDomain()
+        {
+            var credential = new AwsExternalAccountCredential(new AwsExternalAccountCredential.Initializer(
+                TokenUrl, Audience, SubjectTokenType, VerificationUrl)) as IGoogleCredential;
+
+            var newCredential = credential.WithUniverseDomain(UniverseDomain);
+
+            Assert.NotSame(credential, newCredential);
+            Assert.IsType<AwsExternalAccountCredential>(newCredential);
+
+            Assert.Equal(GoogleAuthConsts.DefaultUniverseDomain, credential.GetUniverseDomain());
+            Assert.Equal(GoogleAuthConsts.DefaultUniverseDomain, await credential.GetUniverseDomainAsync(default));
+
+            Assert.Equal(UniverseDomain, newCredential.GetUniverseDomain());
+            Assert.Equal(UniverseDomain, await newCredential.GetUniverseDomainAsync(default));
+        }
+
         [Theory]
         [InlineData("https://dummy-host/", RegionUrl, SecurityCredentialsUrl, "IMDS")]
         [InlineData("https://dummy-host/", null, null, "IMDS")]

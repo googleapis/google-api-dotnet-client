@@ -34,6 +34,47 @@ namespace Google.Apis.Auth.Tests.OAuth2
         }
 
         [Fact]
+        public async Task UniverseDomain_Default()
+        {
+            var credential = new FileSourcedExternalAccountCredential(new FileSourcedExternalAccountCredential.Initializer(
+                TokenUrl, Audience, SubjectTokenType, "subjectTokenPath")) as IGoogleCredential;
+
+            Assert.Equal(GoogleAuthConsts.DefaultUniverseDomain, credential.GetUniverseDomain());
+            Assert.Equal(GoogleAuthConsts.DefaultUniverseDomain, await credential.GetUniverseDomainAsync(default));
+        }
+
+        [Fact]
+        public async Task UniverseDomain_Custom()
+        {
+            var credential = new FileSourcedExternalAccountCredential(new FileSourcedExternalAccountCredential.Initializer(
+                TokenUrl, Audience, SubjectTokenType, "subjectTokenPath")
+            {
+                UniverseDomain = UniverseDomain
+            }) as IGoogleCredential;
+
+            Assert.Equal(UniverseDomain, credential.GetUniverseDomain());
+            Assert.Equal(UniverseDomain, await credential.GetUniverseDomainAsync(default));
+        }
+
+        [Fact]
+        public async Task WithUniverseDomain()
+        {
+            var credential = new FileSourcedExternalAccountCredential(new FileSourcedExternalAccountCredential.Initializer(
+                TokenUrl, Audience, SubjectTokenType, "subjectTokenPath")) as IGoogleCredential;
+
+            var newCredential = credential.WithUniverseDomain(UniverseDomain);
+
+            Assert.NotSame(credential, newCredential);
+            Assert.IsType<FileSourcedExternalAccountCredential>(newCredential);
+
+            Assert.Equal(GoogleAuthConsts.DefaultUniverseDomain, credential.GetUniverseDomain());
+            Assert.Equal(GoogleAuthConsts.DefaultUniverseDomain, await credential.GetUniverseDomainAsync(default));
+
+            Assert.Equal(UniverseDomain, newCredential.GetUniverseDomain());
+            Assert.Equal(UniverseDomain, await newCredential.GetUniverseDomainAsync(default));
+        }
+
+        [Fact]
         public async Task FetchesAccessToken()
         {
             var subjectTokenPath = WriteSubjectTokenToTempFile(SubjectTokenText);

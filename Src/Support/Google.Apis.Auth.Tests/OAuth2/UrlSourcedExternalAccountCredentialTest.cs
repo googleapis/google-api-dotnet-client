@@ -19,7 +19,6 @@ using Google.Apis.Tests.Mocks;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -54,6 +53,47 @@ namespace Google.Apis.Auth.Tests.OAuth2
 
         private static Task<HttpResponseMessage> SubjectTokenRequestFailure(HttpRequestMessage subjectTokenRequest) =>
             Task.FromResult(new HttpResponseMessage(HttpStatusCode.ServiceUnavailable));
+
+        [Fact]
+        public async Task UniverseDomain_Default()
+        {
+            var credential = new UrlSourcedExternalAccountCredential(new UrlSourcedExternalAccountCredential.Initializer(
+                TokenUrl, Audience, SubjectTokenType, SubjectTokenUrl)) as IGoogleCredential;
+
+            Assert.Equal(GoogleAuthConsts.DefaultUniverseDomain, credential.GetUniverseDomain());
+            Assert.Equal(GoogleAuthConsts.DefaultUniverseDomain, await credential.GetUniverseDomainAsync(default));
+        }
+
+        [Fact]
+        public async Task UniverseDomain_Custom()
+        {
+            var credential = new UrlSourcedExternalAccountCredential(new UrlSourcedExternalAccountCredential.Initializer(
+                TokenUrl, Audience, SubjectTokenType, SubjectTokenUrl)
+            {
+                UniverseDomain = UniverseDomain
+            }) as IGoogleCredential;
+
+            Assert.Equal(UniverseDomain, credential.GetUniverseDomain());
+            Assert.Equal(UniverseDomain, await credential.GetUniverseDomainAsync(default));
+        }
+
+        [Fact]
+        public async Task WithUniverseDomain()
+        {
+            var credential = new UrlSourcedExternalAccountCredential(new UrlSourcedExternalAccountCredential.Initializer(
+                TokenUrl, Audience, SubjectTokenType, SubjectTokenUrl)) as IGoogleCredential;
+
+            var newCredential = credential.WithUniverseDomain(UniverseDomain);
+
+            Assert.NotSame(credential, newCredential);
+            Assert.IsType<UrlSourcedExternalAccountCredential>(newCredential);
+
+            Assert.Equal(GoogleAuthConsts.DefaultUniverseDomain, credential.GetUniverseDomain());
+            Assert.Equal(GoogleAuthConsts.DefaultUniverseDomain, await credential.GetUniverseDomainAsync(default));
+
+            Assert.Equal(UniverseDomain, newCredential.GetUniverseDomain());
+            Assert.Equal(UniverseDomain, await newCredential.GetUniverseDomainAsync(default));
+        }
 
         [Fact]
         public async Task FetchesAccessToken()
