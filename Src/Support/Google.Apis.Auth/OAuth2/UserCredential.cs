@@ -84,6 +84,12 @@ namespace Google.Apis.Auth.OAuth2
         }
 
         /// <inheritdoc/>
+        Task<string> IGoogleCredential.GetUniverseDomainAsync(CancellationToken _) => throw new NotImplementedException();
+
+        /// <inheritdoc/>
+        string IGoogleCredential.GetUniverseDomain() => throw new NotImplementedException();
+
+        /// <inheritdoc/>
         IGoogleCredential IGoogleCredential.WithQuotaProject(string quotaProject) =>
             new UserCredential(Flow, UserId, Token, quotaProject);
 
@@ -99,6 +105,9 @@ namespace Google.Apis.Auth.OAuth2
             Flow is IHttpAuthorizationFlow httpFlow
             ? new UserCredential(httpFlow.WithHttpClientFactory(httpClientFactory), UserId, Token, QuotaProject)
             : throw new InvalidOperationException($"{Flow.GetType().FullName} does not support an HTTP client factory to be set");
+
+        /// <inheritdoc/>
+        IGoogleCredential IGoogleCredential.WithUniverseDomain(string universeDomain) => throw new NotImplementedException();
 
         #region IHttpExecuteInterceptor
 
