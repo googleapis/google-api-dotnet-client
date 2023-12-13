@@ -50,6 +50,12 @@ namespace Google.Apis.Auth.OAuth2
         }
 
         /// <inheritdoc/>
+        Task<string> IGoogleCredential.GetUniverseDomainAsync(CancellationToken _) => throw new NotImplementedException();
+
+        /// <inheritdoc/>
+        string IGoogleCredential.GetUniverseDomain() => throw new NotImplementedException();
+
+        /// <inheritdoc/>
         IGoogleCredential IGoogleCredential.WithQuotaProject(string quotaProject) =>
             new AccessTokenCredential(_accessToken, _accessMethod, quotaProject);
 
@@ -62,6 +68,10 @@ namespace Google.Apis.Auth.OAuth2
 
         /// <inheritdoc/>
         IGoogleCredential IGoogleCredential.WithHttpClientFactory(IHttpClientFactory httpClientFactory) => this;
+
+        /// <inheritdoc/>
+        IGoogleCredential IGoogleCredential.WithUniverseDomain(string universeDomain) =>
+            throw new NotImplementedException();
 
         public void Initialize(ConfigurableHttpClient httpClient) =>
             httpClient.MessageHandler.Credential = this;

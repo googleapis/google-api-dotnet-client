@@ -188,6 +188,12 @@ namespace Google.Apis.Auth.OAuth2
             return result;
         }
 
+        /// <inheritdoc/>
+        Task<string> IGoogleCredential.GetUniverseDomainAsync(CancellationToken _) => throw new NotImplementedException();
+
+        /// <inheritdoc/>
+        string IGoogleCredential.GetUniverseDomain() => throw new NotImplementedException();
+
         /// <summary>
         /// Constructs a new instance of the <see cref="ServiceAccountCredential"/> but with the
         /// given <see cref="UseJwtAccessWithScopes"/> value.
@@ -217,6 +223,10 @@ namespace Google.Apis.Auth.OAuth2
         /// <inheritdoc/>
         IGoogleCredential IGoogleCredential.WithHttpClientFactory(IHttpClientFactory httpClientFactory) =>
             new ServiceAccountCredential(new Initializer(this) { HttpClientFactory = httpClientFactory });
+
+        /// <inheritdoc/>
+        IGoogleCredential IGoogleCredential.WithUniverseDomain(string universeDomain) => throw new NotImplementedException();
+
 
         /// <summary>
         /// Requests a new token as specified in 
