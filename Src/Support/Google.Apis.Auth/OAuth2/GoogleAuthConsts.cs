@@ -143,5 +143,30 @@ namespace Google.Apis.Auth.OAuth2
             string env = Environment.GetEnvironmentVariable("GCE_METADATA_HOST");
             return string.IsNullOrEmpty(env) ? defaultValue : "http://" + env + suffix;
         }
+
+        /// <summary>
+        /// Throws <see cref="InvalidOperationException"/> with <paramref name="message"/>
+        /// if <paramref name="universeDomain"/> is not the default universe domain.
+        /// </summary>
+        internal static void CheckIsDefaultUniverseDomain(string universeDomain, string message)
+        {
+            if (universeDomain != DefaultUniverseDomain)
+            {
+                throw new InvalidOperationException(message);
+            }
+        }
+
+        /// <summary>
+        /// Throws <see cref="InvalidOperationException"/> with <paramref name="message"/>
+        /// if <paramref name="universeDomain"/> is not the default universe domain and
+        /// <paramref name="condition"/> is true.
+        /// </summary>
+        internal static void CheckIsDefaultUniverseDomain(string universeDomain, bool condition, string message)
+        {
+            if (universeDomain != DefaultUniverseDomain && condition)
+            {
+                throw new InvalidOperationException(message);
+            }
+        }
     }
 }
