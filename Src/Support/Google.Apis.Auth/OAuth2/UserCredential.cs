@@ -84,10 +84,10 @@ namespace Google.Apis.Auth.OAuth2
         }
 
         /// <inheritdoc/>
-        Task<string> IGoogleCredential.GetUniverseDomainAsync(CancellationToken _) => throw new NotImplementedException();
+        Task<string> IGoogleCredential.GetUniverseDomainAsync(CancellationToken _) => Task.FromResult(GoogleAuthConsts.DefaultUniverseDomain);
 
         /// <inheritdoc/>
-        string IGoogleCredential.GetUniverseDomain() => throw new NotImplementedException();
+        string IGoogleCredential.GetUniverseDomain() => GoogleAuthConsts.DefaultUniverseDomain;
 
         /// <inheritdoc/>
         IGoogleCredential IGoogleCredential.WithQuotaProject(string quotaProject) =>
@@ -107,7 +107,12 @@ namespace Google.Apis.Auth.OAuth2
             : throw new InvalidOperationException($"{Flow.GetType().FullName} does not support an HTTP client factory to be set");
 
         /// <inheritdoc/>
-        IGoogleCredential IGoogleCredential.WithUniverseDomain(string universeDomain) => throw new NotImplementedException();
+        IGoogleCredential IGoogleCredential.WithUniverseDomain(string universeDomain) => universeDomain switch
+        {
+            null => this,
+            GoogleAuthConsts.DefaultUniverseDomain => this,
+            _ => throw new InvalidOperationException($"{nameof(UserCredential)} is not supported in universes other than {GoogleAuthConsts.DefaultUniverseDomain}.")
+        };
 
         #region IHttpExecuteInterceptor
 
