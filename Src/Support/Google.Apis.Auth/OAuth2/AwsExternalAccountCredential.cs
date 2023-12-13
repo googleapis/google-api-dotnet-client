@@ -153,10 +153,10 @@ namespace Google.Apis.Auth.OAuth2
         bool IGoogleCredential.SupportsExplicitScopes => SupportsExplicitScopes;
 
         /// <inheritdoc/>
-        Task<string> IGoogleCredential.GetUniverseDomainAsync(CancellationToken _) => throw new NotImplementedException();
+        Task<string> IGoogleCredential.GetUniverseDomainAsync(CancellationToken _) => Task.FromResult(UniverseDomain);
 
         /// <inheritdoc/>
-        string IGoogleCredential.GetUniverseDomain() => throw new NotImplementedException();
+        string IGoogleCredential.GetUniverseDomain() => UniverseDomain;
 
         /// <inheritdoc/>
         IGoogleCredential IGoogleCredential.WithQuotaProject(string quotaProject) =>
@@ -176,7 +176,7 @@ namespace Google.Apis.Auth.OAuth2
 
         /// <inheritdoc/>
         IGoogleCredential IGoogleCredential.WithUniverseDomain(string universeDomain) =>
-            throw new NotImplementedException();
+            new AwsExternalAccountCredential(new Initializer(this) { UniverseDomain = universeDomain });
 
         /// <summary>
         /// Returns the value of the given environment variable. Returns null if the

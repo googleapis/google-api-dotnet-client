@@ -18,9 +18,6 @@ using Google.Apis.Auth.OAuth2.Requests;
 using Google.Apis.Auth.OAuth2.Responses;
 using Google.Apis.Util;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -79,7 +76,7 @@ namespace Google.Apis.Auth.OAuth2
             /// enabled identity and this values is not specified, then an API key needs to be
             /// used alongside this credential to call Google APIs.
             /// </remarks>
-            public string WorkforcePoolUserProject { get; set; }
+            internal string WorkforcePoolUserProject { get; set; }
 
             /// <summary>
             /// The Client ID.
@@ -103,6 +100,12 @@ namespace Google.Apis.Auth.OAuth2
             /// </remarks>
             internal string ClientSecret { get; set; }
 
+            /// <summary>
+            /// The universe domain this credential belongs to.
+            /// May be null, in which case the default universe domain will be used.
+            /// </summary>
+            internal string UniverseDomain { get; set; }
+
             internal Initializer(string tokenUrl, string audience, string subjectTokenType) : base(tokenUrl)
             {
                 Audience = audience;
@@ -117,6 +120,7 @@ namespace Google.Apis.Auth.OAuth2
                 WorkforcePoolUserProject = other.WorkforcePoolUserProject;
                 ClientId = other.ClientId;
                 ClientSecret = other.ClientSecret;
+                UniverseDomain = other.UniverseDomain;
             }
 
             internal Initializer(ExternalAccountCredential other) : base(other)
@@ -127,6 +131,7 @@ namespace Google.Apis.Auth.OAuth2
                 WorkforcePoolUserProject= other.WorkforcePoolUserProject;
                 ClientId = other.ClientId;
                 ClientSecret = other.ClientSecret;
+                UniverseDomain = other.UniverseDomain;
             }
         }
 
@@ -183,6 +188,12 @@ namespace Google.Apis.Auth.OAuth2
         public string ClientSecret { get; }
 
         /// <summary>
+        /// The universe domain this credential belogns to.
+        /// Won't be null.
+        /// </summary>
+        public string UniverseDomain { get; }
+
+        /// <summary>
         /// Returns true if this credential allows explicit scopes to be set
         /// via this library.
         /// Returns false otherwise.
@@ -213,6 +224,7 @@ namespace Google.Apis.Auth.OAuth2
             ClientSecret = initializer.ClientSecret;
             WithoutImpersonationConfiguration = new Lazy<GoogleCredential>(WithoutImpersonationConfigurationImpl, LazyThreadSafetyMode.ExecutionAndPublication);
             ImplicitlyImpersonated = new Lazy<ImpersonatedCredential>(ImplicitlyImpersonatedImpl, LazyThreadSafetyMode.ExecutionAndPublication);
+            UniverseDomain = initializer.UniverseDomain ?? GoogleAuthConsts.DefaultUniverseDomain;
         }
 
         /// <summary>

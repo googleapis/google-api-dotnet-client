@@ -16,7 +16,6 @@ limitations under the License.
 
 using Google.Apis.Http;
 using Google.Apis.Json;
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading;
@@ -123,10 +122,10 @@ namespace Google.Apis.Auth.OAuth2
         bool IGoogleCredential.SupportsExplicitScopes => SupportsExplicitScopes;
 
         /// <inheritdoc/>
-        Task<string> IGoogleCredential.GetUniverseDomainAsync(CancellationToken _) => throw new NotImplementedException();
+        Task<string> IGoogleCredential.GetUniverseDomainAsync(CancellationToken _) => Task.FromResult(UniverseDomain);
 
         /// <inheritdoc/>
-        string IGoogleCredential.GetUniverseDomain() => throw new NotImplementedException();
+        string IGoogleCredential.GetUniverseDomain() => UniverseDomain;
 
         /// <inheritdoc/>
         IGoogleCredential IGoogleCredential.WithQuotaProject(string quotaProject) =>
@@ -146,6 +145,6 @@ namespace Google.Apis.Auth.OAuth2
 
         /// <inheritdoc/>
         IGoogleCredential IGoogleCredential.WithUniverseDomain(string universeDomain) =>
-            throw new NotImplementedException();
+            new FileSourcedExternalAccountCredential(new Initializer(this) { UniverseDomain = universeDomain });
     }
 }

@@ -50,6 +50,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
         protected const string ImpersonatedAccessToken = "fake_impersonated_access_token";
         protected const string QuotaProject = "fake_project_id";
         protected const string QuotaProjectHeaderName = "x-goog-user-project";
+        protected const string UniverseDomain = "fake.universe.domain.com";
 
         protected static Task<HttpResponseMessage> ValidateAccessTokenRequest(HttpRequestMessage accessTokenRequest, string scope, bool isWorkforce = false) =>
             ValidateAccessTokenRequest(accessTokenRequest, scope, contentText => Assert.Contains($"subject_token={SubjectTokenText}", contentText), isWorkforce);
