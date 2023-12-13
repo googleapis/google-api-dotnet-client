@@ -29,26 +29,26 @@ namespace Google.Apis.Auth.Tests.OAuth2
 {
     public abstract class ExternalAccountCredentialTestsBase
     {
-        protected const string SubjectTokenText = "dummy_subject_token";
+        protected const string SubjectTokenText = "fake_subject_token";
         protected const string SubjectTokenJsonField = "subject_token_field";
         protected static readonly string SubjectTokenJson = $@"{{""{SubjectTokenJsonField}"": ""{SubjectTokenText}""}}";
 
         protected const string TokenUrl = "https://sts.googleapis.com/";
         protected const string GrantTypeClaim = "grant_type=urn:ietf:params:oauth:grant-type:token-exchange";
         protected const string RequestedTokenTypeClaim = "requested_token_type=urn:ietf:params:oauth:token-type:access_token";
-        protected const string Audience = "dummy_audience";
-        protected const string SubjectTokenType = "dummy_token_type";
-        protected const string Scope = "dummy_scope";
+        protected const string Audience = "fake_audience";
+        protected const string SubjectTokenType = "fake_token_type";
+        protected const string Scope = "fake_scope";
         protected const string ImpersonationScope = "https://www.googleapis.com/auth/iam";
-        protected const string ClientId = "dummy_client_ID";
-        protected const string ClientSecret = "dummy_client_secret";
-        protected const string WorkforcePoolUserProject = "dummy_workforce_project";
+        protected const string ClientId = "fake_client_ID";
+        protected const string ClientSecret = "fake_client_secret";
+        protected const string WorkforcePoolUserProject = "fake_workforce_project";
         protected const string ImpersonationUrl = "https://iamcredentials.googleapis.com/";
 
-        protected const string AccessToken = "dummy_access_token";
-        protected const string RefreshedAccessToken = "dummy_refreshed_access_token";
-        protected const string ImpersonatedAccessToken = "dummy_impersonated_access_token";
-        protected const string QuotaProject = "dummy_project_id";
+        protected const string AccessToken = "fake_access_token";
+        protected const string RefreshedAccessToken = "fake_refreshed_access_token";
+        protected const string ImpersonatedAccessToken = "fake_impersonated_access_token";
+        protected const string QuotaProject = "fake_project_id";
         protected const string QuotaProjectHeaderName = "x-goog-user-project";
 
         protected static Task<HttpResponseMessage> ValidateAccessTokenRequest(HttpRequestMessage accessTokenRequest, string scope, bool isWorkforce = false) =>

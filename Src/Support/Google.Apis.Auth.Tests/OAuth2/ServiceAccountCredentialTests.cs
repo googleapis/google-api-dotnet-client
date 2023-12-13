@@ -41,9 +41,9 @@ namespace Google.Apis.Auth.Tests.OAuth2
         [Fact]
         public async Task ValidLocallySignedAccessToken_FromPrivateKey()
         {
-            string dummyServiceAccountCredentialFileContents = GetContents("service_account_credential.json");
+            string fakeServiceAccountCredentialFileContents = GetContents("service_account_credential.json");
 
-            var credentialParameters = NewtonsoftJsonSerializer.Instance.Deserialize<JsonCredentialParameters>(dummyServiceAccountCredentialFileContents);
+            var credentialParameters = NewtonsoftJsonSerializer.Instance.Deserialize<JsonCredentialParameters>(fakeServiceAccountCredentialFileContents);
             var initializer = new ServiceAccountCredential.Initializer(credentialParameters.ClientEmail)
             {
                 Clock = new MockClock(new DateTime(2016, 1, 1, 0, 0, 0, DateTimeKind.Utc))
@@ -66,9 +66,9 @@ namespace Google.Apis.Auth.Tests.OAuth2
         [Fact]
         public async Task ValidLocallySignedAccessToken_FromPrivateKey_AlsoOnRetry()
         {
-            string dummyServiceAccountCredentialFileContents = GetContents("service_account_credential.json");
+            string fakeServiceAccountCredentialFileContents = GetContents("service_account_credential.json");
 
-            var credentialParameters = NewtonsoftJsonSerializer.Instance.Deserialize<JsonCredentialParameters>(dummyServiceAccountCredentialFileContents);
+            var credentialParameters = NewtonsoftJsonSerializer.Instance.Deserialize<JsonCredentialParameters>(fakeServiceAccountCredentialFileContents);
             var messageHandler = new FetchesTokenMessageHandler();
             var initializer = new ServiceAccountCredential.Initializer(credentialParameters.ClientEmail)
             {
@@ -111,9 +111,9 @@ namespace Google.Apis.Auth.Tests.OAuth2
         [Fact]
         public void Pkcs8Decoding_FromPrivateKey()
         {
-            string dummyServiceAccountCredentialFileContents = GetContents("service_account_credential.json");
+            string fakeServiceAccountCredentialFileContents = GetContents("service_account_credential.json");
 
-            var credentialParameters = NewtonsoftJsonSerializer.Instance.Deserialize<JsonCredentialParameters>(dummyServiceAccountCredentialFileContents);
+            var credentialParameters = NewtonsoftJsonSerializer.Instance.Deserialize<JsonCredentialParameters>(fakeServiceAccountCredentialFileContents);
             var initializer = new ServiceAccountCredential.Initializer(credentialParameters.ClientEmail)
             {
                 Clock = new MockClock(new DateTime(2016, 1, 1, 0, 0, 0, DateTimeKind.Utc))
@@ -399,13 +399,13 @@ ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
             Assert.Equal(3, handler.Calls);
         }
 
-        private class DummyAccessMethod : IAccessMethod
+        private class FakeAccessMethod : IAccessMethod
         {
             public string GetAccessToken(HttpRequestMessage request) => throw new NotImplementedException();
             public void Intercept(HttpRequestMessage request, string accessToken) => throw new NotImplementedException();
         }
 
-        private class DummyHttpClientFactory : IHttpClientFactory
+        private class FakeHttpClientFactory : IHttpClientFactory
         {
             public ConfigurableHttpClient CreateHttpClient(CreateHttpClientArgs args) => null;
         }
@@ -416,8 +416,8 @@ ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
             var serviceAccountCred = new ServiceAccountCredential(new ServiceAccountCredential.Initializer("MyId", "MyTokenServerUrl")
             {
                 Clock = new MockClock(DateTime.UtcNow),
-                AccessMethod = new DummyAccessMethod(),
-                HttpClientFactory = new DummyHttpClientFactory(),
+                AccessMethod = new FakeAccessMethod(),
+                HttpClientFactory = new FakeHttpClientFactory(),
                 DefaultExponentialBackOffPolicy = ExponentialBackOffPolicy.Exception, // This is not the default
                 ProjectId = "a_project_id",
                 User = "a_user",
@@ -451,8 +451,8 @@ ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
             var serviceAccountCred = new ServiceAccountCredential(new ServiceAccountCredential.Initializer("MyId", "MyTokenServerUrl")
             {
                 Clock = new MockClock(DateTime.UtcNow),
-                AccessMethod = new DummyAccessMethod(),
-                HttpClientFactory = new DummyHttpClientFactory(),
+                AccessMethod = new FakeAccessMethod(),
+                HttpClientFactory = new FakeHttpClientFactory(),
                 DefaultExponentialBackOffPolicy = ExponentialBackOffPolicy.Exception, // This is not the default
                 ProjectId = "a_project_id",
                 User = "user1",
@@ -601,7 +601,7 @@ ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
 
         private static string GetContents(string fileName)
         {
-            var resourceName = $"Google.Apis.Auth.Tests.OAuth2.DummyCredentialFiles.{fileName}";
+            var resourceName = $"Google.Apis.Auth.Tests.OAuth2.FakeCredentialFiles.{fileName}";
 
             using var stream = CurrentAssembly.GetManifestResourceStream(resourceName) ?? throw new FileNotFoundException();
             using var streamReader = new StreamReader(stream);
