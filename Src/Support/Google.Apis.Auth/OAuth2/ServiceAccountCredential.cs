@@ -82,6 +82,12 @@ namespace Google.Apis.Auth.OAuth2
             /// </summary>
             public bool UseJwtAccessWithScopes { get; set; }
 
+            /// <summary>
+            /// The universe domain this credential belongs to.
+            /// Won't be null.
+            /// </summary>
+            public string UniverseDomain { get; set; }
+
             /// <summary>Constructs a new initializer using the given id.</summary>
             public Initializer(string id)
                 : this(id, null) { }
@@ -98,6 +104,7 @@ namespace Google.Apis.Auth.OAuth2
                 Key = other.Key;
                 KeyId = other.KeyId;
                 UseJwtAccessWithScopes = other.UseJwtAccessWithScopes;
+                UniverseDomain = other.UniverseDomain;
             }
 
             /// <summary>Extracts the <see cref="Key"/> from the given PKCS8 private key.</summary>
@@ -152,6 +159,11 @@ namespace Google.Apis.Auth.OAuth2
         /// </summary>
         public bool UseJwtAccessWithScopes { get; }
 
+        /// <summary>
+        /// The universe domain this credential belongs to. Won't be null.
+        /// </summary>
+        public string UniverseDomain { get; }
+
         /// <inheritdoc/>
         bool IGoogleCredential.HasExplicitScopes => HasExplicitScopes;
 
@@ -162,6 +174,11 @@ namespace Google.Apis.Auth.OAuth2
         public ServiceAccountCredential(Initializer initializer) : base(initializer)
         {
             Id = initializer.Id.ThrowIfNullOrEmpty("initializer.Id");
+            UniverseDomain = initializer.UniverseDomain ?? GoogleAuthConsts.DefaultUniverseDomain;
+            GoogleAuthConsts.CheckIsDefaultUniverseDomain(UniverseDomain,
+                initializer.User is not null, $"Domain-wide delegation is not supported in universes other than {GoogleAuthConsts.DefaultUniverseDomain}.");
+            GoogleAuthConsts.CheckIsDefaultUniverseDomain(UniverseDomain,
+                !initializer.UseJwtAccessWithScopes, $"Only self signed JWTs are supported in universes other than {GoogleAuthConsts.DefaultUniverseDomain}.");
             ProjectId = initializer.ProjectId;
             User = initializer.User;
             Key = initializer.Key.ThrowIfNull("initializer.Key");
@@ -189,10 +206,10 @@ namespace Google.Apis.Auth.OAuth2
         }
 
         /// <inheritdoc/>
-        Task<string> IGoogleCredential.GetUniverseDomainAsync(CancellationToken _) => throw new NotImplementedException();
+        Task<string> IGoogleCredential.GetUniverseDomainAsync(CancellationToken _) => Task.FromResult(UniverseDomain);
 
         /// <inheritdoc/>
-        string IGoogleCredential.GetUniverseDomain() => throw new NotImplementedException();
+        string IGoogleCredential.GetUniverseDomain() => UniverseDomain;
 
         /// <summary>
         /// Constructs a new instance of the <see cref="ServiceAccountCredential"/> but with the
@@ -225,7 +242,8 @@ namespace Google.Apis.Auth.OAuth2
             new ServiceAccountCredential(new Initializer(this) { HttpClientFactory = httpClientFactory });
 
         /// <inheritdoc/>
-        IGoogleCredential IGoogleCredential.WithUniverseDomain(string universeDomain) => throw new NotImplementedException();
+        IGoogleCredential IGoogleCredential.WithUniverseDomain(string universeDomain) =>
+            new ServiceAccountCredential(new Initializer(this) { UniverseDomain = universeDomain });
 
 
         /// <summary>
@@ -236,6 +254,8 @@ namespace Google.Apis.Auth.OAuth2
         /// <returns><c>true</c> if a new token was received successfully.</returns>
         public override async Task<bool> RequestAccessTokenAsync(CancellationToken taskCancellationToken)
         {
+            GoogleAuthConsts.CheckIsDefaultUniverseDomain(UniverseDomain, $"Only self signed JWTs are supported in universes other than {GoogleAuthConsts.DefaultUniverseDomain}.");
+
             // Create the request.
             var request = new GoogleAssertionTokenRequest()
             {
@@ -288,6 +308,8 @@ namespace Google.Apis.Auth.OAuth2
         /// <inheritdoc/>
         public Task<OidcToken> GetOidcTokenAsync(OidcTokenOptions options, CancellationToken cancellationToken = default)
         {
+            GoogleAuthConsts.CheckIsDefaultUniverseDomain(UniverseDomain, $"ID tokens are not currently supported in universes other than {GoogleAuthConsts.DefaultUniverseDomain}.");
+
             options.ThrowIfNull(nameof(options));
             // If at some point some properties are added to OidcToken that depend on the token having been fetched
             // then initialize the token here.

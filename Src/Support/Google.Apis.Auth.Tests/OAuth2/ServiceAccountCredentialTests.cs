@@ -34,6 +34,8 @@ namespace Google.Apis.Auth.Tests.OAuth2
 {
     public class ServiceAccountCredentialTests
     {
+        private const string UniverseDomain = "fake.universe.domain.com";
+
         private static readonly Assembly CurrentAssembly = typeof(ServiceAccountCredentialTests).Assembly;
         private static readonly TimeSpan JwtLifetime = TimeSpan.FromMinutes(60);
         private static readonly DateTime UnixEpoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
@@ -408,6 +410,93 @@ ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
         private class FakeHttpClientFactory : IHttpClientFactory
         {
             public ConfigurableHttpClient CreateHttpClient(CreateHttpClientArgs args) => null;
+        }
+
+        [Fact]
+        public async Task UniverseDomain_Default()
+        {
+            var credential = new ServiceAccountCredential(
+                new ServiceAccountCredential.Initializer("MyId", "MyTokenServerUrl")
+                .FromPrivateKey(PrivateKey)) as IGoogleCredential;
+
+            Assert.Equal(GoogleAuthConsts.DefaultUniverseDomain, credential.GetUniverseDomain());
+            Assert.Equal(GoogleAuthConsts.DefaultUniverseDomain, await credential.GetUniverseDomainAsync(default));
+        }
+
+        [Fact]
+        public async Task UniverseDomain_Custom()
+        {
+            var credential = new ServiceAccountCredential(
+                new ServiceAccountCredential.Initializer("MyId", "MyTokenServerUrl")
+                {
+                    UniverseDomain = UniverseDomain,
+                    // So that we can set a custom universe domain as only self-signed JWTs are supported in universe domains other than googleapis.com.
+                    UseJwtAccessWithScopes = true
+                }.FromPrivateKey(PrivateKey)) as IGoogleCredential;
+
+            Assert.Equal(UniverseDomain, credential.GetUniverseDomain());
+            Assert.Equal(UniverseDomain, await credential.GetUniverseDomainAsync(default));
+        }
+
+        [Fact]
+        public void UniverseDomain_Custom_DomainWideDelegation() =>
+            Assert.Throws<InvalidOperationException>(() => new ServiceAccountCredential(
+                new ServiceAccountCredential.Initializer("MyId", "MyTokenServerUrl")
+                {
+                    UniverseDomain = UniverseDomain,
+                    // So that we can set a custom universe domain as only self-signed JWTs are supported in universe domains other than googleapis.com.
+                    UseJwtAccessWithScopes = true,
+                    User = "usert@fake.com"
+                }.FromPrivateKey(PrivateKey)));
+
+        [Fact]
+        public void UniverseDomain_Custom_NoJwtsWithScopes_Implicit() =>
+            Assert.Throws<InvalidOperationException>(() => new ServiceAccountCredential(
+                new ServiceAccountCredential.Initializer("MyId", "MyTokenServerUrl")
+                {
+                    UniverseDomain = UniverseDomain,
+                }.FromPrivateKey(PrivateKey)));
+
+        [Fact]
+        public void UniverseDomain_Custom_NoJwtsWithScopes_Explicit() =>
+            Assert.Throws<InvalidOperationException>(() => new ServiceAccountCredential(
+                new ServiceAccountCredential.Initializer("MyId", "MyTokenServerUrl")
+                {
+                    UniverseDomain = UniverseDomain,
+                    UseJwtAccessWithScopes = false,
+                }.FromPrivateKey(PrivateKey)));
+
+        [Fact]
+        public async Task WithUniverseDomain_UseJwtAccessWithScopes_True()
+        {
+            var credential = new ServiceAccountCredential(
+                new ServiceAccountCredential.Initializer("MyId", "MyTokenServerUrl")
+                {
+                    // So that we can set a custom universe domain as only self-signed JWTs are supported in universe domains other than googleapis.com.
+                    UseJwtAccessWithScopes = true
+                }
+                .FromPrivateKey(PrivateKey)) as IGoogleCredential;
+
+            var newCredential = credential.WithUniverseDomain(UniverseDomain);
+
+            Assert.NotSame(credential, newCredential);
+            Assert.IsType<ServiceAccountCredential>(newCredential);
+
+            Assert.Equal(GoogleAuthConsts.DefaultUniverseDomain, credential.GetUniverseDomain());
+            Assert.Equal(GoogleAuthConsts.DefaultUniverseDomain, await credential.GetUniverseDomainAsync(default));
+
+            Assert.Equal(UniverseDomain, newCredential.GetUniverseDomain());
+            Assert.Equal(UniverseDomain, await newCredential.GetUniverseDomainAsync(default));
+        }
+
+        [Fact]
+        public void WithUniverseDomain_UseJwtAccessWithScopes_Default()
+        {
+            var credential = new ServiceAccountCredential(
+                new ServiceAccountCredential.Initializer("MyId", "MyTokenServerUrl")
+                .FromPrivateKey(PrivateKey)) as IGoogleCredential;
+
+            Assert.Throws<InvalidOperationException>(() => credential.WithUniverseDomain(FakeUniverseDomain));
         }
 
         [Fact]
