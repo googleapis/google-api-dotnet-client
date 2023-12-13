@@ -32,6 +32,7 @@ namespace Google.Apis.Auth.OAuth2
     {
         private readonly string _accessToken;
         private readonly IAccessMethod _accessMethod;
+        private readonly string _universeDomain;
 
         /// <inheritdoc/>
         public string QuotaProject { get; }
@@ -42,22 +43,24 @@ namespace Google.Apis.Auth.OAuth2
         /// <inheritdoc/>
         bool IGoogleCredential.SupportsExplicitScopes => false;
 
-        public AccessTokenCredential(string accessToken, IAccessMethod accessMethod, string quotaProject = null)
+        public AccessTokenCredential(
+            string accessToken, IAccessMethod accessMethod, string quotaProject = null, string universeDomain = null)
         {
             _accessToken = accessToken;
             _accessMethod = accessMethod;
             QuotaProject = quotaProject;
+            _universeDomain = universeDomain ?? GoogleAuthConsts.DefaultUniverseDomain;
         }
 
         /// <inheritdoc/>
-        Task<string> IGoogleCredential.GetUniverseDomainAsync(CancellationToken _) => throw new NotImplementedException();
+        Task<string> IGoogleCredential.GetUniverseDomainAsync(CancellationToken _) => Task.FromResult(_universeDomain);
 
         /// <inheritdoc/>
-        string IGoogleCredential.GetUniverseDomain() => throw new NotImplementedException();
+        string IGoogleCredential.GetUniverseDomain() => _universeDomain;
 
         /// <inheritdoc/>
         IGoogleCredential IGoogleCredential.WithQuotaProject(string quotaProject) =>
-            new AccessTokenCredential(_accessToken, _accessMethod, quotaProject);
+            new AccessTokenCredential(_accessToken, _accessMethod, quotaProject, _universeDomain);
 
         /// <inheritdoc/>
         IGoogleCredential IGoogleCredential.MaybeWithScopes(IEnumerable<string> scopes) => this;
@@ -71,7 +74,7 @@ namespace Google.Apis.Auth.OAuth2
 
         /// <inheritdoc/>
         IGoogleCredential IGoogleCredential.WithUniverseDomain(string universeDomain) =>
-            throw new NotImplementedException();
+            new AccessTokenCredential(_accessToken, _accessMethod, QuotaProject, universeDomain);
 
         public void Initialize(ConfigurableHttpClient httpClient) =>
             httpClient.MessageHandler.Credential = this;
