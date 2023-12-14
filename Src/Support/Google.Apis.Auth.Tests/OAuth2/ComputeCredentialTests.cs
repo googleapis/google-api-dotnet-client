@@ -33,12 +33,40 @@ namespace Google.Apis.Auth.Tests.OAuth2
     /// <summary>Tests for <see cref="Google.Apis.Auth.OAuth2.ComputeCredential"/>.</summary>
     public class ComputeCredentialTests
     {
+        private const string UniverseDomain = "fake.universe.domain.com";
+
         [Fact]
         public void IsRunningOnComputeEngine_ResultIsCached()
         {
             // Two subsequent invocations should return the same task.
             Assert.Same(ComputeCredential.IsRunningOnComputeEngine(),
                 ComputeCredential.IsRunningOnComputeEngine());
+        }
+
+        [Fact]
+        public async Task UniverseDomain_Custom()
+        {
+            var credential = new ComputeCredential(new ComputeCredential.Initializer
+            {
+                UniverseDomain = UniverseDomain
+            }) as IGoogleCredential;
+
+            Assert.Equal(UniverseDomain, await credential.GetUniverseDomainAsync(default));
+            Assert.Equal(UniverseDomain, credential.GetUniverseDomain());
+        }
+
+        [Fact]
+        public async Task WithUniverseDomain()
+        {
+            var credential = new ComputeCredential() as IGoogleCredential;
+
+            var newCredential = credential.WithUniverseDomain(UniverseDomain);
+
+            Assert.NotSame(credential, newCredential);
+            Assert.IsType<ComputeCredential>(newCredential);
+
+            Assert.Equal(UniverseDomain, await newCredential.GetUniverseDomainAsync(default));
+            Assert.Equal(UniverseDomain, newCredential.GetUniverseDomain());
         }
 
         [Fact]
@@ -277,12 +305,14 @@ namespace Google.Apis.Auth.Tests.OAuth2
             var response = NewtonsoftJsonSerializer.Instance.Serialize(new { keyId = "1", signedBlob = "Zm9v" });
             var fakeAccessToken = "fake_access_token";
             var fakeServiceAccountEmail = "fake-service-account@fake-instance.com";
+            var fakeUniverseDomain = "fake.universe.domain.com";
 
             var messageHandler = new DelegatedMessageHandler(FetchServiceAccountId, FetchOAuthToken, SignBlob);
             var initializer = new ComputeCredential.Initializer("http://will.be.ignored", "http://will.be.ignored")
             {
                 HttpClientFactory = new MockHttpClientFactory(messageHandler),
-                Clock = clock
+                Clock = clock,
+                UniverseDomain = fakeUniverseDomain,
             };
 
             var credential = new ComputeCredential(initializer);
@@ -317,7 +347,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
 
             Task<HttpResponseMessage> SignBlob(HttpRequestMessage request)
             {
-                Assert.Equal(string.Format(GoogleAuthConsts.IamSignEndpointFormatString, fakeServiceAccountEmail), request.RequestUri.ToString());
+                Assert.Equal(string.Format(GoogleAuthConsts.IamSignEndpointFormatString, fakeUniverseDomain, fakeServiceAccountEmail), request.RequestUri.ToString());
                 Assert.Equal(fakeAccessToken, request.Headers.Authorization.Parameter);
                 return Task.FromResult(new HttpResponseMessage(HttpStatusCode.OK)
                 {

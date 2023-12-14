@@ -56,6 +56,7 @@ namespace Google.Apis.Auth.OAuth2
         private const string ComputeTokenUrlSuffix = "/computeMetadata/v1/instance/service-accounts/default/token";
         private const string ComputeOidcTokenUrlSuffix = "/computeMetadata/v1/instance/service-accounts/default/identity";
         private const string ComputeDefaultServiceAccountEmailSuffix = "/computeMetadata/v1/instance/service-accounts/default/email";
+        private const string ComputeUniverseDomainUrlSuffix = "/computeMetadata/v1/universe/universe_domain";
 
         /// <summary>The Compute Engine authorization token server URL</summary>
         /// <remarks>IP address instead of name to avoid DNS resolution</remarks>
@@ -131,6 +132,13 @@ namespace Google.Apis.Auth.OAuth2
         /// </summary>
         internal static string EffectiveComputeDefaultServiceAccountEmailUrl =>
             GetEffectiveMetadataUrl(ComputeDefaultServiceAccountEmailSuffix, DefaultMetadataServerUrl + ComputeDefaultServiceAccountEmailSuffix);
+
+        /// <summary>
+        /// The effective Compute Engine universe domain URL.
+        /// This takes account of the GCE_METADATA_HOST environment variable.
+        /// </summary>
+        internal static string EffectiveComputeUniverDomainUrl =>
+            GetEffectiveMetadataUrl(ComputeUniverseDomainUrlSuffix, DefaultMetadataServerUrl + ComputeUniverseDomainUrlSuffix);
 
         /// <summary>
         /// The effective Compute Engine metadata token server URL (with no path).
