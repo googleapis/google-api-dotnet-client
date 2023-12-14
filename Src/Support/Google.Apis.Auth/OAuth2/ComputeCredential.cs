@@ -48,7 +48,9 @@ namespace Google.Apis.Auth.OAuth2
         public const string MetadataServerUrl = GoogleAuthConsts.DefaultMetadataServerUrl;
 
         /// <summary>Caches result from first call to <c>IsRunningOnComputeEngine</c> </summary>
-        private readonly static Lazy<Task<bool>> isRunningOnComputeEngineCached = new Lazy<Task<bool>>(IsRunningOnComputeEngineNoCacheAsync);
+        private readonly static Lazy<Task<bool>> isRunningOnComputeEngineCache = new Lazy<Task<bool>>(IsRunningOnComputeEngineUncachedAsync);
+
+        private readonly static Lazy<Task<string>> computeEngineUniverseDomainCache = new Lazy<Task<string>>(GetComputeEngineUniverseDomainUncachedAsync);
 
         /// <summary>
         /// Originally 1000ms was used without a retry. This proved inadequate; even 2000ms without
@@ -84,6 +86,12 @@ namespace Google.Apis.Auth.OAuth2
         /// </summary>
         public string OidcTokenUrl { get; }
 
+        /// <summary>
+        /// The explicitly set universe domain.
+        /// May be null, in which case the universe domain will be fetched from the metadata server.
+        /// </summary>
+        internal string ExplicitUniverseDomain { get; }
+
         /// <inheritdoc/>
         bool IGoogleCredential.HasExplicitScopes => HasExplicitScopes;
 
@@ -93,7 +101,7 @@ namespace Google.Apis.Auth.OAuth2
         internal string EffectiveTokenServerUrl { get; }
 
         /// <summary>
-        /// An initializer class for the Compute credential. It uses <see cref="GoogleAuthConsts.ComputeTokenUrl"/>
+        /// An initializer class for the Compute credential. It uses <see cref="GoogleAuthConsts.EffectiveComputeTokenUrl"/>
         /// as the token server URL (optionally overriding the host using the GCE_METADATA_HOST environment variable).
         /// </summary>
         new public class Initializer : ServiceCredential.Initializer
@@ -102,6 +110,12 @@ namespace Google.Apis.Auth.OAuth2
             /// Gets the OIDC Token URL.
             /// </summary>
             public string OidcTokenUrl { get; }
+
+            /// <summary>
+            /// The universe domain this credential belongs to.
+            /// May be null, in which case the GCE universe domain will be used.
+            /// </summary>
+            internal string UniverseDomain { get; set; }
 
             /// <summary>Constructs a new initializer using the default compute token URL
             /// and the default OIDC token URL.</summary>
@@ -119,7 +133,11 @@ namespace Google.Apis.Auth.OAuth2
                 : base(tokenUrl) => OidcTokenUrl = oidcTokenUrl;
 
             internal Initializer(ComputeCredential other)
-                : base(other) => OidcTokenUrl = other.OidcTokenUrl;
+                : base(other)
+            {
+                OidcTokenUrl = other.OidcTokenUrl;
+                UniverseDomain = other.ExplicitUniverseDomain;
+            }
         }
 
         /// <summary>Constructs a new Compute credential instance.</summary>
@@ -129,6 +147,8 @@ namespace Google.Apis.Auth.OAuth2
         public ComputeCredential(Initializer initializer) : base(initializer)
         {
             OidcTokenUrl = initializer.OidcTokenUrl;
+            ExplicitUniverseDomain = initializer.UniverseDomain;
+
             if (HasExplicitScopes)
             {
                 var uriBuilder = new UriBuilder(TokenServerUrl);
@@ -154,10 +174,12 @@ namespace Google.Apis.Auth.OAuth2
         }
 
         /// <inheritdoc/>
-        Task<string> IGoogleCredential.GetUniverseDomainAsync(CancellationToken cancellationToken) => throw new NotImplementedException();
+        async Task<string> IGoogleCredential.GetUniverseDomainAsync(CancellationToken cancellationToken) =>
+            ExplicitUniverseDomain ?? await computeEngineUniverseDomainCache.Value.WithCancellationToken(cancellationToken).ConfigureAwait(false);
 
         /// <inheritdoc/>
-        string IGoogleCredential.GetUniverseDomain() => throw new NotImplementedException();
+        string IGoogleCredential.GetUniverseDomain() =>
+            ExplicitUniverseDomain ?? Task.Run(() => computeEngineUniverseDomainCache.Value).Result;
 
         /// <inheritdoc/>
         IGoogleCredential IGoogleCredential.WithQuotaProject(string quotaProject) =>
@@ -176,7 +198,8 @@ namespace Google.Apis.Auth.OAuth2
             new ComputeCredential(new Initializer(this) { HttpClientFactory = httpClientFactory });
 
         /// <inheritdoc/>
-        IGoogleCredential IGoogleCredential.WithUniverseDomain(string universeDomain) => throw new NotImplementedException();
+        IGoogleCredential IGoogleCredential.WithUniverseDomain(string universeDomain) =>
+            new ComputeCredential(new Initializer(this) { UniverseDomain = universeDomain });
 
         /// <summary>
         /// Returns a task whose result, when completed, is the default service account email associated to
@@ -266,7 +289,8 @@ namespace Google.Apis.Auth.OAuth2
         {
             var request = new IamSignBlobRequest { Payload = blob };
             var serviceAccountEmail = await GetDefaultServiceAccountEmailAsync(cancellationToken).ConfigureAwait(false);
-            var signBlobUrl = string.Format(GoogleAuthConsts.IamSignEndpointFormatString, GoogleAuthConsts.DefaultUniverseDomain, serviceAccountEmail);
+            var universeDomain = await (this as IGoogleCredential).GetUniverseDomainAsync(cancellationToken).ConfigureAwait(false);
+            var signBlobUrl = string.Format(GoogleAuthConsts.IamSignEndpointFormatString, universeDomain, serviceAccountEmail);
 
             var response = await request.PostJsonAsync<IamSignBlobResponse>(_authenticatedHttpClient.Value, signBlobUrl, cancellationToken)
                 .ConfigureAwait(false);
@@ -302,10 +326,10 @@ namespace Google.Apis.Auth.OAuth2
         /// </summary>
         public static Task<bool> IsRunningOnComputeEngine()
         {
-            return isRunningOnComputeEngineCached.Value;
+            return isRunningOnComputeEngineCache.Value;
         }
 
-        private static async Task<bool> IsRunningOnComputeEngineNoCacheAsync() =>
+        private static async Task<bool> IsRunningOnComputeEngineUncachedAsync() =>
             await IsMetadataServerAvailableAsync().ConfigureAwait(false)
             || await IsGoogleBiosAsync().ConfigureAwait(false);
 
@@ -461,6 +485,56 @@ namespace Google.Apis.Auth.OAuth2
                 productName = productName?.Trim();
                 return productName == "Google" || productName == "Google Compute Engine";
             }
+        }
+
+        private async static Task<string> GetComputeEngineUniverseDomainUncachedAsync()
+        {
+            Logger.Info("Attempting to fetch the universe domain from the metadata server.");
+
+            // Using the built-in HttpClient, as we want bare bones functionality - we'll control retries.
+            // Use the same one across all attempts, which may contribute to speedier retries.
+            using (var httpClient = new HttpClient())
+            {
+                int attempts = 0;
+                // We use the same timeouts as we do for token fetching.
+                foreach (var timeout in TokenRefreshManager.RefreshTimeouts)
+                {
+                    attempts++;
+                    var cts = new CancellationTokenSource(timeout);
+                    HttpResponseMessage response = null;
+                    try
+                    {
+                        var httpRequest = new HttpRequestMessage(HttpMethod.Get, GoogleAuthConsts.EffectiveComputeUniverDomainUrl);
+                        httpRequest.Headers.Add(MetadataFlavor, GoogleMetadataHeader);
+
+                        response = await httpClient.SendAsync(httpRequest, cts.Token).ConfigureAwait(false);
+                        response.EnsureSuccessStatusCode();
+
+                        return await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    }
+                    catch (Exception) when (response?.StatusCode == HttpStatusCode.NotFound)
+                    {
+                        Logger.Info($"The metadata server replied {HttpStatusCode.NotFound} when attempting to fetch the universe domain. " +
+                            $"Assuming default univer domain.");
+                        return GoogleAuthConsts.DefaultUniverseDomain;
+                    }
+                    catch (OperationCanceledException)
+                    {
+                        // We'll retry, but let's log the timeout.
+                        Logger.Debug(
+                            $"Fetching the universe domain from the metadata server timed out on attempt number {attempts} " +
+                            $"out of a total of {TokenRefreshManager.RefreshTimeouts.Length} attempts.");
+
+                        // If we've exhausted all our retries, throw.
+                        if (attempts == TokenRefreshManager.RefreshTimeouts.Length)
+                        {
+                            throw;
+                        }
+                    }
+                }
+            }
+            // We should have never reached here.
+            throw new InvalidOperationException("There's a bug in code. We should never reach this point.");
         }
     }
 }
