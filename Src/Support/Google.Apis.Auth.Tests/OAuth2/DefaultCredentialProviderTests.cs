@@ -273,7 +273,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
 
             var impersonatedCredential = Assert.IsType<ImpersonatedCredential>(credential.UnderlyingCredential);
             Assert.Equal("service-account-email", impersonatedCredential.TargetPrincipal);
-            Assert.False(impersonatedCredential.HasCustomTokenUrl);
+            Assert.False(await impersonatedCredential.HasCustomTokenUrlCache.Value);
             Assert.Collection(impersonatedCredential.DelegateAccounts,
                 account => Assert.Equal("delegate-email-1", account),
                 account => Assert.Equal("delegate-email-2", account));

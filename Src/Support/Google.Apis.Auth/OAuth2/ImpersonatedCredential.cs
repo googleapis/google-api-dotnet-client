@@ -57,27 +57,14 @@ namespace Google.Apis.Auth.OAuth2
             /// </summary>
             public TimeSpan Lifetime { get; set; } = DefaultLifetime;
 
-            /// <summary>
-            /// Indicates whether the credential has a custom access token URL instead of
-            /// the one built by using <see cref="GoogleAuthConsts.IamAccessTokenEndpointFormatString"/>
-            /// and the target principal.
-            /// </summary>
-            /// <remarks>
-            /// <para>This is useful for bundled or implicit impersonation scenarios in which the access token
-            /// URL may be specified on its own as part of the credential configuration. In those cases,
-            /// some <see cref="ImpersonatedCredential"/> operations are not supported, for instance operations from
-            /// <see cref="IBlobSigner"/> or <see cref="IOidcTokenProvider"/>.</para>
-            /// <para>Note that we keep this property internal as no <see cref="ImpersonatedCredential"/>
-            /// instance will be exposed that has been built with a custom token URL.</para>
-            /// </remarks>
-            internal bool HasCustomTokenUrl { get; }
-
             /// <summary>Constructs a new initializer.</summary>
             /// <param name="targetPrincipal">The principal that will be impersonated. Must not be null, as it will be used
             /// to build the URL to obtaing the impersonated access token from.</param>
             public Initializer(string targetPrincipal)
-                : base(GetDefaultTokenUrl(targetPrincipal.ThrowIfNull(nameof(targetPrincipal)))) =>
-                TargetPrincipal = targetPrincipal;
+                // We cannot build the token URL just yet, we need the universe domain and that comes from the source credential.
+                // In this case, we'll defer creating the token URL to the first access token request.
+                : base(tokenServerUrl: null) =>
+                TargetPrincipal = targetPrincipal.ThrowIfNull(nameof(targetPrincipal));
 
             /// <summary>
             /// Constructus a new initializer.
@@ -88,19 +75,14 @@ namespace Google.Apis.Auth.OAuth2
             /// access token, <paramref name="maybeTargetPrincipal"/> is just informational when the
             /// <see cref="Initializer(string, string)"/> constructor overload is used.</remarks>
             internal Initializer(string customTokenUrl, string maybeTargetPrincipal)
-                : base(customTokenUrl.ThrowIfNullOrEmpty(nameof(customTokenUrl)))
-            {
+                : base(customTokenUrl.ThrowIfNullOrEmpty(nameof(customTokenUrl))) =>
                 TargetPrincipal = maybeTargetPrincipal;
-                HasCustomTokenUrl = maybeTargetPrincipal is null
-                    || GetDefaultTokenUrl(maybeTargetPrincipal) != customTokenUrl;
-            }
 
             internal Initializer(ImpersonatedCredential other) : base(other)
             {
                 TargetPrincipal = other.TargetPrincipal;
                 DelegateAccounts = other.DelegateAccounts;
                 Lifetime = other.Lifetime;
-                HasCustomTokenUrl = other.HasCustomTokenUrl;
             }
 
             internal Initializer(Initializer other) : base (other)
@@ -108,12 +90,22 @@ namespace Google.Apis.Auth.OAuth2
                 TargetPrincipal = other.TargetPrincipal;
                 DelegateAccounts = other.DelegateAccounts?.ToList().AsReadOnly() ?? Enumerable.Empty<string>();
                 Lifetime = other.Lifetime;
-                HasCustomTokenUrl = other.HasCustomTokenUrl;
             }
-
-            private static string GetDefaultTokenUrl(string targetPrincipal) =>
-                string.Format(GoogleAuthConsts.IamAccessTokenEndpointFormatString, GoogleAuthConsts.DefaultUniverseDomain, targetPrincipal);
         }
+
+        /// <summary>
+        /// The id token URL.
+        /// If this credential does not have a custom access token URL, the id token is supported through the IAM API.
+        /// The id token URL is built using the universe domain and the target principal.
+        /// </summary>
+        private readonly Lazy<Task<string>> _oidcTokenUrlCache;
+
+        /// <summary>
+        /// The blob signing URL.
+        /// If this credential does not have a custom access token URL, blob signing is supported through the IAM API.
+        /// The blob signing URL is built using the universe domain and the target principal.
+        /// </summary>
+        private readonly Lazy<Task<string>> _signBlobUrlCache;
 
         /// <summary>
         /// Gets the source credential used to acquire the impersonated credentials.
@@ -137,29 +129,25 @@ namespace Google.Apis.Auth.OAuth2
         /// </summary>
         public TimeSpan Lifetime { get; }
 
+        /// <summary>
+        /// Whether the effective access token URL is custom or not.
+        /// If the impersonated credential has a custom access token URL we don't know how the OIDC URL and blob signing
+        /// URL may look like, so we cannot support those operations.
+        /// </summary>
+        internal Lazy<Task<bool>> HasCustomTokenUrlCache { get; }
+
+        /// <summary>
+        /// The effective token URL to be used by this credential, which may be a custom token URL
+        /// or the IAM API access token endpoint URL which is built using the universe domain and the
+        /// target principal of this credential.
+        /// </summary>
+        internal Lazy<Task<string>> EffectiveTokenUrlCache { get; }
+
         /// <inheritdoc/>
         bool IGoogleCredential.HasExplicitScopes => Scopes?.Any() == true;
 
         /// <inheritdoc/>
         bool IGoogleCredential.SupportsExplicitScopes => true;
-
-        /// <summary>
-        /// Indicates whether the credential has a custom access token URL instead of
-        /// the one built by using <see cref="GoogleAuthConsts.IamAccessTokenEndpointFormatString"/>
-        /// and the target principal.
-        /// </summary>
-        /// <remarks>
-        /// <para>This is useful for bundled or implicit impersonation scenarios in which the access token
-        /// URL may be specified on its own as part of the credential configuration. In those cases,
-        /// some <see cref="ImpersonatedCredential"/> operations are not supported, for instance operations from
-        /// <see cref="IBlobSigner"/> or <see cref="IOidcTokenProvider"/>.</para>
-        /// <para>Note that we keep this property internal as no <see cref="ImpersonatedCredential"/>
-        /// instance will be exposed that has been built with a custom token URL. We only build <see cref="ImpersonatedCredential"/>s
-        /// with custom token URLs when <see cref="ExternalAccountCredential"/>s are configured with bundled or implicit impersonation,
-        /// where <see cref="ExternalAccountCredential.ImplicitlyImpersonated"/> is only internal.
-        /// </para>
-        /// </remarks>
-        internal bool HasCustomTokenUrl { get; }
 
         internal static ImpersonatedCredential Create(GoogleCredential sourceCredential, Initializer initializer)
         {
@@ -200,14 +188,19 @@ namespace Google.Apis.Auth.OAuth2
             // to be our own local copy. We can avoid copying these collections here.
             DelegateAccounts = initializer.DelegateAccounts;
             Lifetime = initializer.Lifetime;
-            HasCustomTokenUrl = initializer.HasCustomTokenUrl;
+
+            EffectiveTokenUrlCache = new Lazy<Task<string>>(GetEffectiveTokenUrlUncachedAsync);
+            HasCustomTokenUrlCache = new Lazy<Task<bool>>(HasCustomTokenUrlUncachedAsync);
+            _oidcTokenUrlCache = new Lazy<Task<string>>(GetIdTokenUrlUncachedAsync);
+            _signBlobUrlCache = new Lazy<Task<string>>(GetSignBlobUrlUncachedAsync);
         }
 
         /// <inheritdoc/>
-        Task<string> IGoogleCredential.GetUniverseDomainAsync(CancellationToken cancellationToken) => throw new NotImplementedException();
+        Task<string> IGoogleCredential.GetUniverseDomainAsync(CancellationToken cancellationToken) =>
+            SourceCredential.GetUniverseDomainAsync(cancellationToken);
 
         /// <inheritdoc/>
-        string IGoogleCredential.GetUniverseDomain() => throw new NotImplementedException();
+        string IGoogleCredential.GetUniverseDomain() => SourceCredential.GetUniverseDomain();
 
         /// <inheritdoc/>
         IGoogleCredential IGoogleCredential.WithQuotaProject(string quotaProject) =>
@@ -226,7 +219,16 @@ namespace Google.Apis.Auth.OAuth2
             new ImpersonatedCredential(new Initializer(this) { HttpClientFactory = httpClientFactory });
 
         /// <inheritdoc/>
-        IGoogleCredential IGoogleCredential.WithUniverseDomain(string universeDomain) => throw new NotImplementedException();
+        IGoogleCredential IGoogleCredential.WithUniverseDomain(string universeDomain)
+        {
+            var newCredential = SourceCredential.CreateWithUniverseDomain(universeDomain);
+            var newInitializer = new Initializer(this);
+
+            // Now we detach the new initializer from this instance's source credential by removing it from HTTP client initializers.
+            newInitializer.HttpClientInitializers.Remove(SourceCredential);
+
+            return Create(newCredential, newInitializer);
+        }
 
         /// <inheritdoc/>
         public override async Task<bool> RequestAccessTokenAsync(CancellationToken taskCancellationToken)
@@ -238,34 +240,38 @@ namespace Google.Apis.Auth.OAuth2
                 Lifetime = $"{(int)Lifetime.TotalSeconds}s"
             };
 
-            Token = await request.PostJsonAsync(HttpClient, TokenServerUrl, Clock, Logger, taskCancellationToken)
+            string effectiveTokenUrl = await EffectiveTokenUrlCache.Value.WithCancellationToken(taskCancellationToken).ConfigureAwait(false);
+
+            Token = await request.PostJsonAsync(HttpClient, effectiveTokenUrl, Clock, Logger, taskCancellationToken)
                 .ConfigureAwait(false);
 
             return true;
         }
 
         /// <inheritdoc/>
-        public Task<OidcToken> GetOidcTokenAsync(OidcTokenOptions options, CancellationToken cancellationToken = default)
+        public async Task<OidcToken> GetOidcTokenAsync(OidcTokenOptions options, CancellationToken cancellationToken = default)
         {
-            ThrowIfCustomTokenUrl();
+            await ThrowIfCustomTokenUrlAsync(cancellationToken).ConfigureAwait(false);
+
             options.ThrowIfNull(nameof(options));
             // If at some point some properties are added to OidcToken that depend on the token having been fetched
             // then initialize the token here.
             TokenRefreshManager tokenRefreshManager = null;
             tokenRefreshManager = new TokenRefreshManager(ct => RefreshOidcTokenAsync(tokenRefreshManager, options, ct), Clock, Logger);
-            return Task.FromResult(new OidcToken(tokenRefreshManager));
+            return new OidcToken(tokenRefreshManager);
         }
 
         private async Task<bool> RefreshOidcTokenAsync(TokenRefreshManager caller, OidcTokenOptions oidcTokenOptions, CancellationToken cancellationToken)
         {
-            ThrowIfCustomTokenUrl();
+            await ThrowIfCustomTokenUrlAsync(cancellationToken).ConfigureAwait(false);
+
             var request = new ImpersonationOIdCTokenRequest
             {
                 DelegateAccounts = DelegateAccounts,
                 Audience = oidcTokenOptions.TargetAudience,
                 IncludeEmail = true
             };
-            var oidcTokenUrl = string.Format(GoogleAuthConsts.IamIdTokenEndpointFormatString, GoogleAuthConsts.DefaultUniverseDomain, TargetPrincipal);
+            var oidcTokenUrl = await _oidcTokenUrlCache.Value.WithCancellationToken(cancellationToken).ConfigureAwait(false);
 
             caller.Token = await request.PostJsonAsync(HttpClient, oidcTokenUrl, Clock, Logger, cancellationToken)
                 .ConfigureAwait(false);
@@ -283,13 +289,14 @@ namespace Google.Apis.Auth.OAuth2
         /// <exception cref="JsonException">When signing response is not a valid JSON.</exception>
         public async Task<string> SignBlobAsync(byte[] blob, CancellationToken cancellationToken = default)
         {
-            ThrowIfCustomTokenUrl();
+            await ThrowIfCustomTokenUrlAsync(cancellationToken).ConfigureAwait(false);
+
             var request = new IamSignBlobRequest
             {
                 DelegateAccounts = DelegateAccounts,
                 Payload = blob
             };
-            var signBlobUrl = string.Format(GoogleAuthConsts.IamSignEndpointFormatString, GoogleAuthConsts.DefaultUniverseDomain, TargetPrincipal);
+            var signBlobUrl = await _signBlobUrlCache.Value.WithCancellationToken(cancellationToken).ConfigureAwait(false);
 
             var response = await request.PostJsonAsync<IamSignBlobResponse>(HttpClient, signBlobUrl, cancellationToken)
                 .ConfigureAwait(false);
@@ -297,17 +304,80 @@ namespace Google.Apis.Auth.OAuth2
             return response.SignedBlob;
         }
 
-        private void ThrowIfCustomTokenUrl()
+        /// <summary>
+        /// Returns the token URL to be used by this credential, which may be a custom token URL
+        /// or the IAM API access token endpoint URL which is built using the universe domain and the
+        /// target principal of this credential.
+        /// A custom access token URL could be present in external credentials configuration.
+        /// </summary>
+        private async Task<string> GetEffectiveTokenUrlUncachedAsync()
         {
-            if (HasCustomTokenUrl)
+            if (TokenServerUrl is not null)
+            {
+                // This is either a custom token URL or a default token URL for a credential other than ComputeCredential,
+                // i.e. we could calculate the endpoint synchronusly on credential creation.
+                return TokenServerUrl;
+            }
+            string universeDomain = await (this as IGoogleCredential).GetUniverseDomainAsync(cancellationToken: default).ConfigureAwait(false);
+            return GetDefaultTokenUrl(universeDomain, TargetPrincipal);
+        }
+
+        /// <summary>
+        /// Determines whether the effective access token URL is custom or not.
+        /// If the impersonated credential has a custom access token URL we don't know how the OIDC URL and blob signing
+        /// URL may look like, so we cannot support those operations.
+        /// </summary>
+        private async Task<bool> HasCustomTokenUrlUncachedAsync()
+        {
+            string effectiveTokenUrl = await EffectiveTokenUrlCache.Value.ConfigureAwait(false);
+            string universeDomain = await (this as IGoogleCredential).GetUniverseDomainAsync(cancellationToken: default).ConfigureAwait(false);
+
+            return effectiveTokenUrl != GetDefaultTokenUrl(universeDomain, TargetPrincipal);
+        }
+
+        /// <summary>
+        /// Gets the id token URL if this credential supports id token emission.
+        /// Throws <see cref="InvalidOperationException"/> otherwise.
+        /// </summary>
+        private async Task<string> GetIdTokenUrlUncachedAsync()
+        {
+            await ThrowIfCustomTokenUrlAsync(cancellationToken: default).ConfigureAwait(false);
+
+            string universeDomain = await (this as IGoogleCredential).GetUniverseDomainAsync(cancellationToken: default).ConfigureAwait(false);
+            return string.Format(GoogleAuthConsts.IamIdTokenEndpointFormatString, universeDomain, TargetPrincipal);
+        }
+
+        /// <summary>
+        /// Get's the blob signing URL if this credential supports blob signing.
+        /// Throws <see cref="InvalidOperationException"/> otherwise.
+        /// </summary>
+        private async Task<string> GetSignBlobUrlUncachedAsync()
+        {
+            await ThrowIfCustomTokenUrlAsync(cancellationToken: default).ConfigureAwait(false);
+
+            string universeDomain = await (this as IGoogleCredential).GetUniverseDomainAsync(cancellationToken: default).ConfigureAwait(false);
+            return string.Format(GoogleAuthConsts.IamSignEndpointFormatString, universeDomain, TargetPrincipal);
+        }
+
+        /// <summary>
+        /// If the impersonated credential has a custom access token URL we don't know how the OIDC URL and blob signing
+        /// URL may look like, so we cannot support those operations.
+        /// A custom access token URL could be present in external credentials configuration.
+        /// </summary>
+        private async Task ThrowIfCustomTokenUrlAsync(CancellationToken cancellationToken)
+        {
+            bool hasCustomTokenUrl = await HasCustomTokenUrlCache.Value.WithCancellationToken(cancellationToken).ConfigureAwait(false);
+
+            if (hasCustomTokenUrl)
             {
                 // If the impersonated credential has a custom access token URL we don't know how the OIDC URL and blob signing
                 // URL may look like, so we cannot support those operations.
-                // For supporting TPC, regional endpoints, etc. we only need to change the definition of custom, which at the moment is:
-                // everything different of GoogleAuthConsts.IamAccessTokenEndpointFormatString.
                 throw new InvalidOperationException("Operation not supported when a custom access token URL has been specified.");
             }
         }
+
+        private static string GetDefaultTokenUrl(string universeDomain, string targetPrincipal) =>
+            string.Format(GoogleAuthConsts.IamAccessTokenEndpointFormatString, universeDomain, targetPrincipal);
 
         /// <summary>
         /// Attempts to extract the target principal ID from the impersonation URL which is possible if the URL looks like
