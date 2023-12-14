@@ -150,7 +150,14 @@ namespace Google.Apis.Auth.OAuth2
             }
         }
 
-        /// <summary>Gets the token server URL.</summary>
+        /// <summary>
+        /// Gets the token server URL.
+        /// </summary>
+        /// <remarks>
+        /// May be null for credential types that resolve token endpoints just before obtaining an access token.
+        /// This is the case for <see cref="ImpersonatedCredential"/> where the <see cref="ImpersonatedCredential.SourceCredential"/>
+        /// is a <see cref="ComputeCredential"/>.
+        /// </remarks>
         public string TokenServerUrl { get; }
 
         /// <summary>Gets the clock used to refresh the token if it expires.</summary>

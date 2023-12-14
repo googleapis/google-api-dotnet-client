@@ -218,7 +218,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
 
             Assert.Equal(customTokenUrl, impersonatedCredential.TokenServerUrl);
             Assert.Equal("principal", impersonatedCredential.TargetPrincipal);
-            Assert.True(impersonatedCredential.HasCustomTokenUrl);
+            Assert.True(await impersonatedCredential.HasCustomTokenUrlCache.Value);
 
             var success = await impersonatedCredential.RequestAccessTokenAsync(default);
             Assert.True(success);
@@ -237,7 +237,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
 
             Assert.Equal(customTokenUrl, impersonatedCredential.TokenServerUrl);
             Assert.Null(impersonatedCredential.TargetPrincipal);
-            Assert.True(impersonatedCredential.HasCustomTokenUrl);
+            Assert.True(await impersonatedCredential.HasCustomTokenUrlCache.Value);
 
             var success = await impersonatedCredential.RequestAccessTokenAsync(default);
             Assert.True(success);
@@ -252,17 +252,124 @@ namespace Google.Apis.Auth.Tests.OAuth2
         public async Task CreateWithCustomTokenUrl_SameAsDefaultUrl()
         {
             string principal = "principal";
-            string customTokenUrl = string.Format(GoogleAuthConsts.IamAccessTokenEndpointFormatString, principal);
+            string customTokenUrl = string.Format(GoogleAuthConsts.IamAccessTokenEndpointFormatString, GoogleAuthConsts.DefaultUniverseDomain, principal);
             var impersonatedCredential = CreateImpersonatedCredentialWithAccessTokenResponse(customTokenUrl: customTokenUrl);
 
             Assert.Equal(customTokenUrl, impersonatedCredential.TokenServerUrl);
             Assert.Equal(principal, impersonatedCredential.TargetPrincipal);
-            Assert.False(impersonatedCredential.HasCustomTokenUrl);
+            Assert.False(await impersonatedCredential.HasCustomTokenUrlCache.Value);
 
             var success = await impersonatedCredential.RequestAccessTokenAsync(default);
             Assert.True(success);
             Assert.Equal(3600, impersonatedCredential.Token.ExpiresInSeconds);
             Assert.Equal("access_token", impersonatedCredential.Token.AccessToken);
+        }
+
+        [Fact]
+        public async Task UniverseDomain_FromSourceCredential_Default()
+        {
+            string principal = "principal";
+
+            var credential = ImpersonatedCredential.Create(
+                CreateSourceCredential(),
+                new ImpersonatedCredential.Initializer(principal));
+            var googleCredential = credential as IGoogleCredential;
+
+            Assert.Equal(GoogleAuthConsts.DefaultUniverseDomain, await googleCredential.GetUniverseDomainAsync(default));
+            Assert.Equal(GoogleAuthConsts.DefaultUniverseDomain, googleCredential.GetUniverseDomain());
+
+            string expectedTokenUrl = string.Format(GoogleAuthConsts.IamAccessTokenEndpointFormatString, GoogleAuthConsts.DefaultUniverseDomain, principal);
+
+            Assert.Null(credential.TokenServerUrl);
+            Assert.False(await credential.HasCustomTokenUrlCache.Value);
+            Assert.Equal(expectedTokenUrl, await credential.EffectiveTokenUrlCache.Value);
+        }
+
+        [Fact]
+        public async Task UniverseDomain_FromSourceCredential_Custom()
+        {
+            string principal = "principal";
+            string universeDomain = "universe.domain.com";
+
+            var sourceCredential = GoogleCredential.FromComputeCredential(new ComputeCredential(new ComputeCredential.Initializer()
+            {
+                UniverseDomain = universeDomain
+            }));
+
+            var credential = ImpersonatedCredential.Create(
+                sourceCredential,
+                new ImpersonatedCredential.Initializer(principal));
+            var googleCredential = credential as IGoogleCredential;
+
+            Assert.Equal(universeDomain, await googleCredential.GetUniverseDomainAsync(default));
+            Assert.Equal(universeDomain, googleCredential.GetUniverseDomain());
+
+            string expectedTokenUrl = string.Format(GoogleAuthConsts.IamAccessTokenEndpointFormatString, universeDomain, principal);
+
+            Assert.Null(credential.TokenServerUrl);
+            Assert.False(await credential.HasCustomTokenUrlCache.Value);
+            Assert.Equal(expectedTokenUrl, await credential.EffectiveTokenUrlCache.Value);
+        }
+
+        [Fact]
+        public async Task WithUniverseDomain()
+        {
+            string principal = "principal";
+            
+            // We start off with a Compute
+            string universeDomain1 = "universe1.domain.com";
+            string universeDomain2 = "universe2.domain.com";
+
+            // The impersonated credentials gets its universe domain from the source credential.
+            // That is to say that impersonated and impersonator are assumed to be from the same universe domain.
+
+            // Our impersonator is a ComputeCredential from universeDomain1.
+            // (We specify the universe explicitly to avoid the HTTP call to the metadata server.)
+            var sourceCredential = GoogleCredential.FromComputeCredential(new ComputeCredential(new ComputeCredential.Initializer()
+            {
+                UniverseDomain = universeDomain1
+            }));
+
+            // We use our impersonator to impersonate principal.
+            var credential = ImpersonatedCredential.Create(
+                sourceCredential,
+                new ImpersonatedCredential.Initializer(principal));
+            var googleCredential = credential as IGoogleCredential;
+            // And now we change the universe domain of the impersonated credential.
+            var newGoogleCredential = googleCredential.WithUniverseDomain(universeDomain2) ;
+
+            // The new impersonated credential is a different instance.
+            var newCredential = Assert.IsType<ImpersonatedCredential>(newGoogleCredential);
+            Assert.NotSame(credential, newCredential);
+
+            // The impersonator credentials are also different intances.
+            Assert.NotSame(credential.SourceCredential, newCredential.SourceCredential);
+            var newSourceCredential = Assert.IsType<GoogleCredential>(newCredential.SourceCredential);
+            Assert.IsType<ComputeCredential>(newSourceCredential.UnderlyingCredential);
+
+            // Both the original impersonator and impersonated are from universeDomain1.
+            // Both the new impersonator and impersonated are from universeDomain2.
+            Assert.Equal(universeDomain1, await credential.SourceCredential.GetUniverseDomainAsync(default));
+            Assert.Equal(universeDomain2, await newCredential.SourceCredential.GetUniverseDomainAsync(default));
+
+            Assert.Equal(universeDomain1, await googleCredential.GetUniverseDomainAsync(default));
+            Assert.Equal(universeDomain1, googleCredential.GetUniverseDomain());
+
+            Assert.Equal(universeDomain2, await newGoogleCredential.GetUniverseDomainAsync(default));
+            Assert.Equal(universeDomain2, newGoogleCredential.GetUniverseDomain());
+
+            // Token endpoints for the original and new credential include each the correct universe domain.
+            string expectedTokenUrl = string.Format(GoogleAuthConsts.IamAccessTokenEndpointFormatString, universeDomain1, principal);
+
+            Assert.Null(credential.TokenServerUrl);
+            Assert.False(await credential.HasCustomTokenUrlCache.Value);
+            Assert.Equal(expectedTokenUrl, await credential.EffectiveTokenUrlCache.Value);
+
+            string newExpectedTokenUrl = string.Format(GoogleAuthConsts.IamAccessTokenEndpointFormatString, universeDomain2, principal);
+
+            Assert.Null(newCredential.TokenServerUrl);
+            Assert.False(await newCredential.HasCustomTokenUrlCache.Value);
+            Assert.Equal(newExpectedTokenUrl, await newCredential.EffectiveTokenUrlCache.Value);
         }
     }
 }
