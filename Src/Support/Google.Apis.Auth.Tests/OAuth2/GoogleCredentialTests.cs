@@ -260,6 +260,16 @@ ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
             Assert.Equal("CLIENT_SECRET", flow.ClientSecrets.ClientSecret);
             Assert.Equal("PROJECT_ID", flow.ProjectId);
             Assert.Equal("QUOTA_PROJECT", userCred.QuotaProject);
+            Assert.Equal(GoogleAuthConsts.DefaultUniverseDomain, (userCred as IGoogleCredential).GetUniverseDomain());
+        }
+
+        [Fact]
+        public void CreateWithUniverseDomain_UserCredential_Fails()
+        {
+            var stream = new MemoryStream(Encoding.UTF8.GetBytes(FakeUserCredentialFileContents));
+            var credential = GoogleCredential.FromStream(stream);
+
+            Assert.Throws<InvalidOperationException>(() => credential.CreateWithUniverseDomain("fake.universe.domain.com"));
         }
 
         [Fact]
@@ -272,6 +282,24 @@ ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
             var serviceCred = (ServiceAccountCredential)credential.UnderlyingCredential;
             Assert.Equal("CLIENT_EMAIL", serviceCred.Id);
             Assert.Equal("PROJECT_ID", serviceCred.ProjectId);
+            Assert.Equal(GoogleAuthConsts.DefaultUniverseDomain, credential.GetUniverseDomain());
+        }
+
+        [Fact]
+        public void CreateWithUniverseDomain_ServiceAccountCredential()
+        {
+            var universeDomain = "fake.universe.domain.com";
+            var stream = new MemoryStream(Encoding.UTF8.GetBytes(FakeServiceAccountCredentialFileContents));
+            var credential = GoogleCredential.FromServiceAccountCredential(
+                ServiceAccountCredential.FromServiceAccountData(stream).WithUseJwtAccessWithScopes(true));
+
+            var newCredential = credential.CreateWithUniverseDomain(universeDomain);
+
+            Assert.NotSame(credential, newCredential);
+            Assert.IsType<ServiceAccountCredential>(newCredential.UnderlyingCredential);
+
+            Assert.Equal(GoogleAuthConsts.DefaultUniverseDomain, credential.GetUniverseDomain());
+            Assert.Equal(universeDomain, newCredential.GetUniverseDomain());
         }
 
         [Fact]
