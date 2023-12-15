@@ -70,6 +70,12 @@ namespace Google.Apis.Auth.OAuth2
         public string QuotaProject { get; set; }
 
         /// <summary>
+        /// Universe domain that this credential may be used in.
+        /// </summary>
+        [JsonProperty("universe_domain")]
+        public string UniverseDomain { get; set; }
+
+        /// <summary>
         /// Client Id associated with UserCredential created by
         /// <a href="https://cloud.google.com/sdk/gcloud/reference/auth/login">GCloud Auth Login</a>
         /// or with an external account credential.

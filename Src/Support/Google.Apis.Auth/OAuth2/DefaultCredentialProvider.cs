@@ -228,6 +228,10 @@ namespace Google.Apis.Auth.OAuth2
             {
                 throw new InvalidOperationException("JSON data does not represent a valid user credential.");
             }
+            if (credentialParameters.UniverseDomain is not null && credentialParameters.UniverseDomain != GoogleAuthConsts.DefaultUniverseDomain)
+            {
+                throw new InvalidOperationException($"{nameof(UserCredential)} is not supported in universe domains other than {GoogleAuthConsts.DefaultUniverseDomain}");
+            }
 
             var token = new TokenResponse
             {
@@ -262,7 +266,9 @@ namespace Google.Apis.Auth.OAuth2
             {
                 ProjectId = credentialParameters.ProjectId,
                 QuotaProject = credentialParameters.QuotaProject,
-                KeyId = credentialParameters.PrivateKeyId
+                KeyId = credentialParameters.PrivateKeyId,
+                UniverseDomain = credentialParameters.UniverseDomain,
+                UseJwtAccessWithScopes = credentialParameters.UniverseDomain is not null && credentialParameters.UniverseDomain != GoogleAuthConsts.DefaultUniverseDomain
             };
             return new ServiceAccountCredential(initializer.FromPrivateKey(credentialParameters.PrivateKey));
         }
@@ -298,7 +304,8 @@ namespace Google.Apis.Auth.OAuth2
                     ClientSecret = parameters.ClientSecret,
                     RegionUrl = parameters.CredentialSourceConfig.RegionUrl,
                     SecurityCredentialsUrl = parameters.CredentialSourceConfig.Url,
-                    ImdsV2SessionTokenUrl = parameters.CredentialSourceConfig.ImdsV2SessionTokenUrl
+                    ImdsV2SessionTokenUrl = parameters.CredentialSourceConfig.ImdsV2SessionTokenUrl,
+                    UniverseDomain = parameters.UniverseDomain,
                 });
             }
             else if (!string.IsNullOrEmpty(parameters.CredentialSourceConfig.File))
@@ -312,6 +319,7 @@ namespace Google.Apis.Auth.OAuth2
                     ClientId = parameters.ClientId,
                     ClientSecret = parameters.ClientSecret,
                     SubjectTokenJsonFieldName = parameters.ExtractSubjectTokenFieldName(),
+                    UniverseDomain = parameters.UniverseDomain,
                 });
             }
             else if (!string.IsNullOrEmpty(parameters.CredentialSourceConfig.Url))
@@ -325,6 +333,7 @@ namespace Google.Apis.Auth.OAuth2
                     ClientId = parameters.ClientId,
                     ClientSecret = parameters.ClientSecret,
                     SubjectTokenJsonFieldName = parameters.ExtractSubjectTokenFieldName(),
+                    UniverseDomain = parameters.UniverseDomain,
                 };
                 if (parameters.CredentialSourceConfig.Headers is object)
                 {
@@ -361,7 +370,12 @@ namespace Google.Apis.Auth.OAuth2
                 QuotaProject = parameters.QuotaProject,
             };
 
-            return ImpersonatedCredential.Create(sourceCredential, initializer);
+            var impersonatedCredential = ImpersonatedCredential.Create(sourceCredential, initializer);
+            if (parameters.UniverseDomain != parameters.SourceCredential.UniverseDomain)
+            {
+                return (impersonatedCredential as IGoogleCredential).WithUniverseDomain(parameters.UniverseDomain) as ImpersonatedCredential;
+            }
+            return impersonatedCredential;
         }
 
         /// <summary> 

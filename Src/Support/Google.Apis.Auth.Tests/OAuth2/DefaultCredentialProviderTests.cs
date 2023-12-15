@@ -61,6 +61,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
 
         private const string InvalidCredentialFileName = "invalid_credential.json";
         private const string UserCredentialFileName = "user_credential.json";
+        private const string UserCredentialCustomUniverseDomainFileName = "user_credential_custom_universe_domain.json";
         internal const string ServiceAccountCredentialMinimalFileName = "service_account_credential_minimal.json";
         private const string ServiceAccountCredentialFullFileName = "service_account_credential_full.json";
         private const string BrokenServiceAccountCredentialFileName = "broken_service_account_credential.json";
@@ -74,7 +75,12 @@ namespace Google.Apis.Auth.Tests.OAuth2
         private const string UrlSourcedWorkforceExternalAccountCredentialFileName = "url_sourced_workforce_external_account_credential.json";
         private const string FileSourcedWorkforceExternalAccountCredentialFileName = "file_sourced_workforce_external_account_credential.json";
         private const string AwsWorkforceExternalAccountCredentialFileName = "aws_workforce_external_account_credential.json";
+        private const string UrlSourcedExternalAccountCredentialUniverseDomainFileName = "url_sourced_external_account_credential_universe_domain.json";
+        private const string FileSourcedExternalAccountCredentialUniverseDomainFileName = "file_sourced_external_account_credential_universe_domain.json";
+        private const string AwsExternalAccountCredentialUniverseDomainFileName = "aws_external_account_credential_universe_domain.json";
         private const string ImpersonatedServiceAccountCredentialFileName = "impersonated_service_account_credential.json";
+        private const string ImpersonatedServiceAccountCredentialUniverseDomainFileName = "impersonated_service_account_credential_universe_domain.json";
+        private const string ImpersonatedServiceAccountCredentialUniverseDomainDifferentFileName = "impersonated_service_account_credential_universe_domain_different.json";
         private const string RecursiveImpersonatedServiceAccountCredentialName = "recursive_impersonated_service_account_credential.json";
 
         public DefaultCredentialProviderTests()
@@ -87,6 +93,14 @@ namespace Google.Apis.Auth.Tests.OAuth2
         #region UserCredential
 
         [Fact]
+        public async Task GetDefaultCredential_UserCredential_CustomUniverseDomain_Fails()
+        {
+            credentialProvider.SetEnvironmentVariable(CredentialEnvironmentVariable, UserCredentialCustomUniverseDomainFileName);
+
+            await Assert.ThrowsAsync<InvalidOperationException>(credentialProvider.GetDefaultCredentialAsync);
+        }
+
+        [Fact]
         public async Task GetDefaultCredential_UserCredential_FromEnvironmentVariable()
         {
             credentialProvider.SetEnvironmentVariable(CredentialEnvironmentVariable, UserCredentialFileName);
@@ -96,6 +110,8 @@ namespace Google.Apis.Auth.Tests.OAuth2
             Assert.IsType<UserCredential>(credential.UnderlyingCredential);
             Assert.False(credential.IsCreateScopedRequired);
             Assert.Same(credential, credential.CreateScoped(new[] { "SomeScope" }));
+            Assert.Equal(GoogleAuthConsts.DefaultUniverseDomain, credential.GetUniverseDomain());
+            Assert.Equal(GoogleAuthConsts.DefaultUniverseDomain, await credential.GetUniverseDomainAsync(default));
         }
 
         [Fact]
@@ -109,6 +125,8 @@ namespace Google.Apis.Auth.Tests.OAuth2
             Assert.IsType<UserCredential>(credential.UnderlyingCredential);
             Assert.False(credential.IsCreateScopedRequired);
             Assert.Same(credential, credential.CreateScoped(new[] { "SomeScope" }));
+            Assert.Equal(GoogleAuthConsts.DefaultUniverseDomain, credential.GetUniverseDomain());
+            Assert.Equal(GoogleAuthConsts.DefaultUniverseDomain, await credential.GetUniverseDomainAsync(default));
         }
 
         [Fact]
@@ -121,6 +139,8 @@ namespace Google.Apis.Auth.Tests.OAuth2
 
             Assert.IsType<UserCredential>(credential.UnderlyingCredential);
             Assert.False(credential.IsCreateScopedRequired);
+            Assert.Equal(GoogleAuthConsts.DefaultUniverseDomain, credential.GetUniverseDomain());
+            Assert.Equal(GoogleAuthConsts.DefaultUniverseDomain, await credential.GetUniverseDomainAsync(default));
         }
 
         #endregion
@@ -170,6 +190,8 @@ namespace Google.Apis.Auth.Tests.OAuth2
             Assert.Equal(GoogleAuthConsts.OidcTokenUrl, sa.TokenServerUrl);
             Assert.Null(sa.ProjectId);
             Assert.Null(sa.QuotaProject);
+            Assert.Equal(GoogleAuthConsts.DefaultUniverseDomain, credential.GetUniverseDomain());
+            Assert.Equal(GoogleAuthConsts.DefaultUniverseDomain, await credential.GetUniverseDomainAsync(default));
         }
 
         [Fact]
@@ -186,6 +208,8 @@ namespace Google.Apis.Auth.Tests.OAuth2
             Assert.Equal("TOKEN_URI", sa.TokenServerUrl);
             Assert.Equal("PROJECT_ID", sa.ProjectId);
             Assert.Equal("QUOTA_PROJECT_ID", sa.QuotaProject);
+            Assert.Equal("fake.universe.domain.com", credential.GetUniverseDomain());
+            Assert.Equal("fake.universe.domain.com", await credential.GetUniverseDomainAsync(default));
         }
 
         #endregion
@@ -197,7 +221,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
         {
             credentialProvider.SetEnvironmentVariable(CredentialEnvironmentVariable, NoCredentialSourceExternalAccountCredentialFileName);
 
-            await Assert.ThrowsAsync<InvalidOperationException>(() => credentialProvider.GetDefaultCredentialAsync());
+            await Assert.ThrowsAsync<InvalidOperationException>(credentialProvider.GetDefaultCredentialAsync);
         }
 
         public static TheoryData<string, Type> ExternalAccountCredentialTestData => new TheoryData<string, Type>
@@ -216,6 +240,9 @@ namespace Google.Apis.Auth.Tests.OAuth2
             var credential = await credentialProvider.GetDefaultCredentialAsync();
 
             Assert.IsType(expectedCredentialType, credential.UnderlyingCredential);
+            Assert.Equal(GoogleAuthConsts.DefaultUniverseDomain, credential.GetUniverseDomain());
+            Assert.Equal(GoogleAuthConsts.DefaultUniverseDomain, await credential.GetUniverseDomainAsync(default));
+
         }
 
         public static TheoryData<string, Type> ExternalImpersonatedAccountCredentialTestData => new TheoryData<string, Type>
@@ -227,7 +254,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
 
         [Theory]
         [MemberData(nameof(ExternalImpersonatedAccountCredentialTestData))]
-        public async Task GetDefaultCredential_UrlSourcedExternalAccountCredential_Impersonated(string credentialFileName, Type expectedCredentialType)
+        public async Task GetDefaultCredential_ExternalAccountCredential_Impersonated(string credentialFileName, Type expectedCredentialType)
         {
             credentialProvider.SetEnvironmentVariable(CredentialEnvironmentVariable, credentialFileName);
 
@@ -237,6 +264,8 @@ namespace Google.Apis.Auth.Tests.OAuth2
 
             var impersonatedExternalCredential = (ExternalAccountCredential)credential.UnderlyingCredential;
             Assert.IsType<ImpersonatedCredential>(impersonatedExternalCredential.ImplicitlyImpersonated.Value);
+            Assert.Equal(GoogleAuthConsts.DefaultUniverseDomain, credential.GetUniverseDomain());
+            Assert.Equal(GoogleAuthConsts.DefaultUniverseDomain, await credential.GetUniverseDomainAsync(default));
         }
 
         public static TheoryData<string, Type> ExternalWorkforceAccountCredentialTestData => new TheoryData<string, Type>
@@ -248,7 +277,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
 
         [Theory]
         [MemberData(nameof(ExternalWorkforceAccountCredentialTestData))]
-        public async Task GetDefaultCredential_UrlSourcedExternalAccountCredential_WorkforceIdentity(string credentialFileName, Type expectedCredentialType)
+        public async Task GetDefaultCredential_ExternalAccountCredential_WorkforceIdentity(string credentialFileName, Type expectedCredentialType)
         {
             credentialProvider.SetEnvironmentVariable(CredentialEnvironmentVariable, credentialFileName);
 
@@ -258,6 +287,30 @@ namespace Google.Apis.Auth.Tests.OAuth2
 
             var workforceCredential = (ExternalAccountCredential)credential.UnderlyingCredential;
             Assert.Equal("user_project", workforceCredential.WorkforcePoolUserProject);
+            Assert.Equal(GoogleAuthConsts.DefaultUniverseDomain, credential.GetUniverseDomain());
+            Assert.Equal(GoogleAuthConsts.DefaultUniverseDomain, await credential.GetUniverseDomainAsync(default));
+        }
+
+        public static TheoryData<string, Type> ExternalAccountCredentialUniverseDomainTestData => new TheoryData<string, Type>
+        {
+            { UrlSourcedExternalAccountCredentialUniverseDomainFileName, typeof(UrlSourcedExternalAccountCredential) },
+            { FileSourcedExternalAccountCredentialUniverseDomainFileName, typeof (FileSourcedExternalAccountCredential) },
+            { AwsExternalAccountCredentialUniverseDomainFileName, typeof(AwsExternalAccountCredential) } ,
+        };
+
+        [Theory]
+        [MemberData(nameof(ExternalAccountCredentialUniverseDomainTestData))]
+        public async Task GetDefaultCredential_ExternalAccountCredential_UniverseDomain(string credentialFileName, Type expectedCredentialType)
+        {
+            credentialProvider.SetEnvironmentVariable(CredentialEnvironmentVariable, credentialFileName);
+
+            var credential = await credentialProvider.GetDefaultCredentialAsync();
+
+            Assert.IsType(expectedCredentialType, credential.UnderlyingCredential);
+
+            var workforceCredential = (ExternalAccountCredential)credential.UnderlyingCredential;
+            Assert.Equal("fake.universe.domain.com", credential.GetUniverseDomain());
+            Assert.Equal("fake.universe.domain.com", await credential.GetUniverseDomainAsync(default));
         }
 
         #endregion
@@ -277,9 +330,51 @@ namespace Google.Apis.Auth.Tests.OAuth2
             Assert.Collection(impersonatedCredential.DelegateAccounts,
                 account => Assert.Equal("delegate-email-1", account),
                 account => Assert.Equal("delegate-email-2", account));
+            Assert.Equal(GoogleAuthConsts.DefaultUniverseDomain, credential.GetUniverseDomain());
+            Assert.Equal(GoogleAuthConsts.DefaultUniverseDomain, await credential.GetUniverseDomainAsync(default));
 
             var userCredential = Assert.IsType<UserCredential>(impersonatedCredential.SourceCredential.UnderlyingCredential);
             Assert.Equal("REFRESH_TOKEN", userCredential.Token.RefreshToken);
+        }
+
+        [Fact]
+        public async Task GetDefaultCredential_ImpersonatedCredential_UniverseDomain()
+        {
+            credentialProvider.SetEnvironmentVariable(CredentialEnvironmentVariable, ImpersonatedServiceAccountCredentialUniverseDomainFileName);
+
+            var credential = await credentialProvider.GetDefaultCredentialAsync();
+
+            var impersonatedCredential = Assert.IsType<ImpersonatedCredential>(credential.UnderlyingCredential);
+            Assert.Equal("service-account-email", impersonatedCredential.TargetPrincipal);
+            Assert.True(await impersonatedCredential.HasCustomTokenUrlCache.Value);
+            Assert.Collection(impersonatedCredential.DelegateAccounts,
+                account => Assert.Equal("delegate-email-1", account),
+                account => Assert.Equal("delegate-email-2", account));
+
+            Assert.Equal("fake.universe.domain.com", credential.GetUniverseDomain());
+            Assert.Equal("fake.universe.domain.com", await credential.GetUniverseDomainAsync(default));
+        }
+
+        [Fact]
+        public async Task GetDefaultCredential_ImpersonatedCredential_UniverseDomain_Different()
+        {
+            credentialProvider.SetEnvironmentVariable(CredentialEnvironmentVariable, ImpersonatedServiceAccountCredentialUniverseDomainDifferentFileName);
+
+            var credential = await credentialProvider.GetDefaultCredentialAsync();
+
+            var impersonatedCredential = Assert.IsType<ImpersonatedCredential>(credential.UnderlyingCredential);
+            Assert.Equal("service-account-email", impersonatedCredential.TargetPrincipal);
+            Assert.True(await impersonatedCredential.HasCustomTokenUrlCache.Value);
+            Assert.Collection(impersonatedCredential.DelegateAccounts,
+                account => Assert.Equal("delegate-email-1", account),
+                account => Assert.Equal("delegate-email-2", account));
+
+            Assert.Equal("target.fake.universe.domain.com", credential.GetUniverseDomain());
+            Assert.Equal("target.fake.universe.domain.com", await credential.GetUniverseDomainAsync(default));
+
+            var sourceGCredential = Assert.IsType<GoogleCredential>(impersonatedCredential.SourceCredential);
+            var sourceSACredential = Assert.IsType<ServiceAccountCredential>(sourceGCredential.UnderlyingCredential);
+            Assert.Equal("target.fake.universe.domain.com", sourceSACredential.UniverseDomain);
         }
 
         [Fact]
