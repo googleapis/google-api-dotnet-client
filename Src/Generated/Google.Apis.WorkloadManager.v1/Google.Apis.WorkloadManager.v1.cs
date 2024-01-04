@@ -1,4 +1,4 @@
-// Copyright 2023 Google LLC
+// Copyright 2024 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -2459,6 +2459,10 @@ namespace Google.Apis.WorkloadManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual SapDiscoveryMetadata Metadata { get; set; }
 
+        /// <summary>Optional. The GCP project number that this SapSystem belongs to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectNumber")]
+        public virtual string ProjectNumber { get; set; }
+
         /// <summary>
         /// Output only. A combination of database SID, database instance URI and tenant DB name to make a unique
         /// identifier per-system.
@@ -2518,6 +2522,13 @@ namespace Google.Apis.WorkloadManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("databaseProperties")]
         public virtual SapDiscoveryComponentDatabaseProperties DatabaseProperties { get; set; }
 
+        /// <summary>
+        /// Optional. A list of host URIs that are part of the HA configuration if present. An empty list indicates the
+        /// component is not configured for HA.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("haHosts")]
+        public virtual System.Collections.Generic.IList<string> HaHosts { get; set; }
+
         /// <summary>Required. Pantheon Project in which the resources reside.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hostProject")]
         public virtual string HostProject { get; set; }
@@ -2532,6 +2543,10 @@ namespace Google.Apis.WorkloadManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sid")]
         public virtual string Sid { get; set; }
 
+        /// <summary>Optional. The detected topology of the component.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("topologyType")]
+        public virtual string TopologyType { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -2539,6 +2554,13 @@ namespace Google.Apis.WorkloadManager.v1.Data
     /// <summary>A set of properties describing an SAP Application layer.</summary>
     public class SapDiscoveryComponentApplicationProperties : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Indicates whether this is a Java or ABAP Netweaver instance. true means it is ABAP, false means it
+        /// is Java.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("abap")]
+        public virtual System.Nullable<bool> Abap { get; set; }
+
         /// <summary>Required. Type of the application. Netweaver, etc.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("applicationType")]
         public virtual string ApplicationType { get; set; }
@@ -2546,6 +2568,10 @@ namespace Google.Apis.WorkloadManager.v1.Data
         /// <summary>Optional. Resource URI of the recognized ASCS host of the application.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ascsUri")]
         public virtual string AscsUri { get; set; }
+
+        /// <summary>Optional. Kernel version for Netweaver running in the system.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kernelVersion")]
+        public virtual string KernelVersion { get; set; }
 
         /// <summary>
         /// Optional. Resource URI of the recognized shared NFS of the application. May be empty if the application
@@ -2564,6 +2590,10 @@ namespace Google.Apis.WorkloadManager.v1.Data
         /// <summary>Required. Type of the database. HANA, DB2, etc.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("databaseType")]
         public virtual string DatabaseType { get; set; }
+
+        /// <summary>Optional. The version of the database software running in the system.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databaseVersion")]
+        public virtual string DatabaseVersion { get; set; }
 
         /// <summary>Required. URI of the recognized primary instance of the database.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("primaryInstanceUri")]
@@ -2606,6 +2636,10 @@ namespace Google.Apis.WorkloadManager.v1.Data
     /// <summary>Message describing a resource.</summary>
     public class SapDiscoveryResource : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. A set of properties only applying to instance type resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceProperties")]
+        public virtual SapDiscoveryResourceInstanceProperties InstanceProperties { get; set; }
+
         /// <summary>Optional. A list of resource URIs related to this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relatedResources")]
         public virtual System.Collections.Generic.IList<string> RelatedResources { get; set; }
@@ -2663,12 +2697,35 @@ namespace Google.Apis.WorkloadManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A set of properties only present for an instance type resource</summary>
+    public class SapDiscoveryResourceInstanceProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. A list of instance URIs that are part of a cluster with this one.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterInstances")]
+        public virtual System.Collections.Generic.IList<string> ClusterInstances { get; set; }
+
+        /// <summary>Optional. A virtual hostname of the instance if it has one.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("virtualHostname")]
+        public virtual string VirtualHostname { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A presentation of SAP workload insight. The schema of SAP workloads validation related data.</summary>
     public class SapValidation : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Required. The project_id of the cloud project that the Insight data comes from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
+        public virtual string ProjectId { get; set; }
+
         /// <summary>Optional. A list of SAP validation metrics data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validationDetails")]
         public virtual System.Collections.Generic.IList<SapValidationValidationDetail> ValidationDetails { get; set; }
+
+        /// <summary>Optional. The zone of the instance that the Insight data comes from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("zone")]
+        public virtual string Zone { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2680,6 +2737,10 @@ namespace Google.Apis.WorkloadManager.v1.Data
         /// <summary>Optional. The pairs of metrics data: field name &amp; field value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual System.Collections.Generic.IDictionary<string, string> Details { get; set; }
+
+        /// <summary>Optional. Was there a SAP system detected for this validation type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isPresent")]
+        public virtual System.Nullable<bool> IsPresent { get; set; }
 
         /// <summary>Optional. The SAP system that the validation data is from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sapValidationType")]

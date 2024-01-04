@@ -1,4 +1,4 @@
-// Copyright 2023 Google LLC
+// Copyright 2024 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -5149,11 +5149,10 @@ namespace Google.Apis.Calendar.v3.Data
 
         /// <summary>
         /// Specific type of the event. This cannot be modified after the event is created. Possible values are:   -
-        /// "default" - A regular event or not further specified.  - "outOfOffice" - An out-of-office event. An
-        /// outOfOfficeProperties parameter must be supplied to make a valid event (even if empty).  - "focusTime" - A
-        /// focus-time event. A focusTimeProperties parameter must be supplied to make a valid event (even if empty).  -
-        /// "workingLocation" - A working location event.  Currently, only "default " and "workingLocation" events can
-        /// be created using the API. Extended support for other event types will be made available in later releases.
+        /// "default" - A regular event or not further specified.  - "outOfOffice" - An out-of-office event.  -
+        /// "focusTime" - A focus-time event.  - "workingLocation" - A working location event.  Currently, only "default
+        /// " and "workingLocation" events can be created using the API. Extended support for other event types will be
+        /// made available in later releases.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventType")]
         public virtual string EventType { get; set; }
@@ -5162,7 +5161,7 @@ namespace Google.Apis.Calendar.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("extendedProperties")]
         public virtual ExtendedPropertiesData ExtendedProperties { get; set; }
 
-        /// <summary>Focus Time event data. Required if eventType is focusTime.</summary>
+        /// <summary>Focus Time event data. Used if eventType is focusTime.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("focusTimeProperties")]
         public virtual EventFocusTimeProperties FocusTimeProperties { get; set; }
 
@@ -5257,7 +5256,7 @@ namespace Google.Apis.Calendar.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("originalStartTime")]
         public virtual EventDateTime OriginalStartTime { get; set; }
 
-        /// <summary>Out of office event data. Required if eventType is outOfOffice.</summary>
+        /// <summary>Out of office event data. Used if eventType is outOfOffice.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outOfOfficeProperties")]
         public virtual EventOutOfOfficeProperties OutOfOfficeProperties { get; set; }
 

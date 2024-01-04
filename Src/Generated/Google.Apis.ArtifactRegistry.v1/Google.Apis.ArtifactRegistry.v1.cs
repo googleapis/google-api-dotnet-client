@@ -1,4 +1,4 @@
-// Copyright 2023 Google LLC
+// Copyright 2024 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -4409,10 +4409,6 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         /// <summary>Match versions by tag status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tagState")]
         public virtual string TagState { get; set; }
-
-        /// <summary>DEPRECATED: Use older_than.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("versionAge")]
-        public virtual object VersionAge { get; set; }
 
         /// <summary>Match versions by version name prefix. Applied on any prefix match.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("versionNamePrefixes")]

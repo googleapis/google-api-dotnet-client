@@ -1,4 +1,4 @@
-// Copyright 2023 Google LLC
+// Copyright 2024 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -3581,6 +3581,17 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha
 }
 namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
 {
+    /// <summary>AuthorizedNetwork contains metadata for an authorized network.</summary>
+    public class AuthorizedNetwork : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>CIDR range for one authorzied network of the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cidrRange")]
+        public virtual string CidrRange { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Message describing the user-specified automated backup policy. All fields in the automated backup policy are
     /// optional. Defaults for each field are provided if they are not set.
@@ -4249,6 +4260,13 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pemCertificateChain")]
         public virtual System.Collections.Generic.IList<string> PemCertificateChain { get; set; }
 
+        /// <summary>
+        /// Output only. The public IP addresses for the Instance. This is available ONLY when enable_public_ip is set.
+        /// This is the connection endpoint for an end-user application.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publicIpAddress")]
+        public virtual string PublicIpAddress { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -4833,11 +4851,19 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Optional. Instance level network configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkConfig")]
+        public virtual InstanceNetworkConfig NetworkConfig { get; set; }
+
         /// <summary>
         /// Output only. List of available read-only VMs in this instance, including the standby for a PRIMARY instance.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodes")]
         public virtual System.Collections.Generic.IList<Node> Nodes { get; set; }
+
+        /// <summary>Optional. The configuration for Private Service Connect (PSC) for the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pscInstanceConfig")]
+        public virtual PscInstanceConfig PscInstanceConfig { get; set; }
 
         /// <summary>Configuration for query insights.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryInsightsConfig")]
@@ -4925,6 +4951,21 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
         /// <summary>Output only. This is set for the read-write VM of the PRIMARY instance only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("writableNode")]
         public virtual Node WritableNode { get; set; }
+    }
+
+    /// <summary>Metadata related to instance level network configuration.</summary>
+    public class InstanceNetworkConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. A list of external network authorized to access this instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authorizedExternalNetworks")]
+        public virtual System.Collections.Generic.IList<AuthorizedNetwork> AuthorizedExternalNetworks { get; set; }
+
+        /// <summary>Optional. Enabling public ip for the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enablePublicIp")]
+        public virtual System.Nullable<bool> EnablePublicIp { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 
     /// <summary>Restrictions on INTEGER type values.</summary>
@@ -5337,6 +5378,82 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pscEnabled")]
         public virtual System.Nullable<bool> PscEnabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>PscInstanceConfig contains PSC related configuration at an instance level. NEXT ID: 7</summary>
+    public class PscInstanceConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. List of consumer networks that are allowed to create PSC endpoints to service-attachments to this
+        /// instance.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowedConsumerNetworks")]
+        public virtual System.Collections.Generic.IList<string> AllowedConsumerNetworks { get; set; }
+
+        /// <summary>
+        /// Optional. List of consumer projects that are allowed to create PSC endpoints to service-attachments to this
+        /// instance.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowedConsumerProjects")]
+        public virtual System.Collections.Generic.IList<string> AllowedConsumerProjects { get; set; }
+
+        /// <summary>
+        /// Optional. List of service attachments that this instance has created endpoints to connect with. Currently,
+        /// only a single outgoing service attachment is supported per instance.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outgoingServiceAttachmentLinks")]
+        public virtual System.Collections.Generic.IList<string> OutgoingServiceAttachmentLinks { get; set; }
+
+        /// <summary>
+        /// Optional. Whether PSC connectivity is enabled for this instance. This is populated by referencing the value
+        /// from the parent cluster.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pscEnabled")]
+        public virtual System.Nullable<bool> PscEnabled { get; set; }
+
+        /// <summary>
+        /// Optional. Configurations for setting up PSC interfaces attached to the instance which are used for outbound
+        /// connectivity. Only primary instances can have PSC interface attached. All the VMs created for the primary
+        /// instance will share the same configurations. Currently we only support 0 or 1 PSC interface.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pscInterfaceConfigs")]
+        public virtual System.Collections.Generic.IList<PscInterfaceConfig> PscInterfaceConfigs { get; set; }
+
+        /// <summary>
+        /// Output only. The service attachment created when Private Service Connect (PSC) is enabled for the instance.
+        /// The name of the resource will be in the format of projects//regions//serviceAttachments/
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAttachmentLink")]
+        public virtual string ServiceAttachmentLink { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Configuration for setting up a PSC interface. This information needs to be provided by the customer. PSC
+    /// interfaces will be created and added to VMs via SLM (adding a network interface will require recreating the VM).
+    /// For HA instances this will be done via LDTM.
+    /// </summary>
+    public class PscInterfaceConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A list of endpoints in the consumer VPC the interface might initiate outbound connections to. This list has
+        /// to be provided when the PSC interface is created.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consumerEndpointIps")]
+        public virtual System.Collections.Generic.IList<string> ConsumerEndpointIps { get; set; }
+
+        /// <summary>
+        /// The NetworkAttachment resource created in the consumer VPC to which the PSC interface will be linked, in the
+        /// form of: "projects/${CONSUMER_PROJECT}/regions/${REGION}/networkAttachments/${NETWORK_ATTACHMENT_NAME}".
+        /// NetworkAttachment has to be provided when the PSC interface is created.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkAttachment")]
+        public virtual string NetworkAttachment { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -1,4 +1,4 @@
-// Copyright 2023 Google LLC
+// Copyright 2024 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -7536,6 +7536,65 @@ namespace Google.Apis.Aiplatform.v1
                         RequestParameters.Add("endpoint", new Google.Apis.Discovery.Parameter
                         {
                             Name = "endpoint",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/endpoints/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Generate content with multimodal inputs with streaming support.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="model">
+                /// Required. The name of the publisher model requested to serve the prediction. Format:
+                /// `projects/{project}/locations/{location}/publishers/*/models/*`
+                /// </param>
+                public virtual StreamGenerateContentRequest StreamGenerateContent(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1GenerateContentRequest body, string model)
+                {
+                    return new StreamGenerateContentRequest(this.service, body, model);
+                }
+
+                /// <summary>Generate content with multimodal inputs with streaming support.</summary>
+                public class StreamGenerateContentRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1GenerateContentResponse>
+                {
+                    /// <summary>Constructs a new StreamGenerateContent request.</summary>
+                    public StreamGenerateContentRequest(Google.Apis.Services.IClientService service, Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1GenerateContentRequest body, string model) : base(service)
+                    {
+                        Model = model;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the publisher model requested to serve the prediction. Format:
+                    /// `projects/{project}/locations/{location}/publishers/*/models/*`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("model", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Model { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1GenerateContentRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "streamGenerateContent";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+model}:streamGenerateContent";
+
+                    /// <summary>Initializes StreamGenerateContent parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("model", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "model",
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
@@ -25615,6 +25674,65 @@ namespace Google.Apis.Aiplatform.v1
                             });
                         }
                     }
+
+                    /// <summary>Generate content with multimodal inputs with streaming support.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="model">
+                    /// Required. The name of the publisher model requested to serve the prediction. Format:
+                    /// `projects/{project}/locations/{location}/publishers/*/models/*`
+                    /// </param>
+                    public virtual StreamGenerateContentRequest StreamGenerateContent(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1GenerateContentRequest body, string model)
+                    {
+                        return new StreamGenerateContentRequest(this.service, body, model);
+                    }
+
+                    /// <summary>Generate content with multimodal inputs with streaming support.</summary>
+                    public class StreamGenerateContentRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1GenerateContentResponse>
+                    {
+                        /// <summary>Constructs a new StreamGenerateContent request.</summary>
+                        public StreamGenerateContentRequest(Google.Apis.Services.IClientService service, Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1GenerateContentRequest body, string model) : base(service)
+                        {
+                            Model = model;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the publisher model requested to serve the prediction. Format:
+                        /// `projects/{project}/locations/{location}/publishers/*/models/*`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("model", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Model { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1GenerateContentRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "streamGenerateContent";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+model}:streamGenerateContent";
+
+                        /// <summary>Initializes StreamGenerateContent parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("model", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "model",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/publishers/[^/]+/models/[^/]+$",
+                            });
+                        }
+                    }
                 }
             }
 
@@ -29959,197 +30077,6 @@ namespace Google.Apis.Aiplatform.v1
                                 }
                             }
 
-                            /// <summary>
-                            /// Batch create TensorboardTimeSeries that belong to a TensorboardExperiment.
-                            /// </summary>
-                            /// <param name="body">The body of the request.</param>
-                            /// <param name="parent">
-                            /// Required. The resource name of the TensorboardExperiment to create the
-                            /// TensorboardTimeSeries in. Format:
-                            /// `projects/{project}/locations/{location}/tensorboards/{tensorboard}/experiments/{experiment}`
-                            /// The TensorboardRuns referenced by the parent fields in the
-                            /// CreateTensorboardTimeSeriesRequest messages must be sub resources of this
-                            /// TensorboardExperiment.
-                            /// </param>
-                            /// <param name="runsId"><c>null</c></param>
-                            public virtual BatchCreateRequest BatchCreate(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1BatchCreateTensorboardTimeSeriesRequest body, string parent, string runsId)
-                            {
-                                return new BatchCreateRequest(this.service, body, parent, runsId);
-                            }
-
-                            /// <summary>
-                            /// Batch create TensorboardTimeSeries that belong to a TensorboardExperiment.
-                            /// </summary>
-                            public class BatchCreateRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1BatchCreateTensorboardTimeSeriesResponse>
-                            {
-                                /// <summary>Constructs a new BatchCreate request.</summary>
-                                public BatchCreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1BatchCreateTensorboardTimeSeriesRequest body, string parent, string runsId) : base(service)
-                                {
-                                    Parent = parent;
-                                    RunsId = runsId;
-                                    Body = body;
-                                    InitParameters();
-                                }
-
-                                /// <summary>
-                                /// Required. The resource name of the TensorboardExperiment to create the
-                                /// TensorboardTimeSeries in. Format:
-                                /// `projects/{project}/locations/{location}/tensorboards/{tensorboard}/experiments/{experiment}`
-                                /// The TensorboardRuns referenced by the parent fields in the
-                                /// CreateTensorboardTimeSeriesRequest messages must be sub resources of this
-                                /// TensorboardExperiment.
-                                /// </summary>
-                                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                                public virtual string Parent { get; private set; }
-
-                                [Google.Apis.Util.RequestParameterAttribute("runsId", Google.Apis.Util.RequestParameterType.Path)]
-                                public virtual string RunsId { get; private set; }
-
-                                /// <summary>Gets or sets the body of this request.</summary>
-                                Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1BatchCreateTensorboardTimeSeriesRequest Body { get; set; }
-
-                                /// <summary>Returns the body of the request.</summary>
-                                protected override object GetBody() => Body;
-
-                                /// <summary>Gets the method name.</summary>
-                                public override string MethodName => "batchCreate";
-
-                                /// <summary>Gets the HTTP method.</summary>
-                                public override string HttpMethod => "POST";
-
-                                /// <summary>Gets the REST path.</summary>
-                                public override string RestPath => "v1/{+parent}/runs/{runsId}/timeSeries:batchCreate";
-
-                                /// <summary>Initializes BatchCreate parameter list.</summary>
-                                protected override void InitParameters()
-                                {
-                                    base.InitParameters();
-                                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "parent",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = @"^projects/[^/]+/locations/[^/]+/tensorboards/[^/]+/experiments/[^/]+$",
-                                    });
-                                    RequestParameters.Add("runsId", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "runsId",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                }
-                            }
-
-                            /// <summary>
-                            /// Reads multiple TensorboardTimeSeries' data. The data point number limit is 1000 for
-                            /// scalars, 100 for tensors and blob references. If the number of data points stored is
-                            /// less than the limit, all data is returned. Otherwise, the number limit of data points is
-                            /// randomly selected from this time series and returned.
-                            /// </summary>
-                            /// <param name="tensorboard">
-                            /// Required. The resource name of the Tensorboard containing TensorboardTimeSeries to read
-                            /// data from. Format: `projects/{project}/locations/{location}/tensorboards/{tensorboard}`.
-                            /// The TensorboardTimeSeries referenced by time_series must be sub resources of this
-                            /// Tensorboard.
-                            /// </param>
-                            /// <param name="experimentsId"><c>null</c></param>
-                            /// <param name="runsId"><c>null</c></param>
-                            public virtual BatchReadRequest BatchRead(string tensorboard, string experimentsId, string runsId)
-                            {
-                                return new BatchReadRequest(this.service, tensorboard, experimentsId, runsId);
-                            }
-
-                            /// <summary>
-                            /// Reads multiple TensorboardTimeSeries' data. The data point number limit is 1000 for
-                            /// scalars, 100 for tensors and blob references. If the number of data points stored is
-                            /// less than the limit, all data is returned. Otherwise, the number limit of data points is
-                            /// randomly selected from this time series and returned.
-                            /// </summary>
-                            public class BatchReadRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1BatchReadTensorboardTimeSeriesDataResponse>
-                            {
-                                /// <summary>Constructs a new BatchRead request.</summary>
-                                public BatchReadRequest(Google.Apis.Services.IClientService service, string tensorboard, string experimentsId, string runsId) : base(service)
-                                {
-                                    Tensorboard = tensorboard;
-                                    ExperimentsId = experimentsId;
-                                    RunsId = runsId;
-                                    InitParameters();
-                                }
-
-                                /// <summary>
-                                /// Required. The resource name of the Tensorboard containing TensorboardTimeSeries to
-                                /// read data from. Format:
-                                /// `projects/{project}/locations/{location}/tensorboards/{tensorboard}`. The
-                                /// TensorboardTimeSeries referenced by time_series must be sub resources of this
-                                /// Tensorboard.
-                                /// </summary>
-                                [Google.Apis.Util.RequestParameterAttribute("tensorboard", Google.Apis.Util.RequestParameterType.Path)]
-                                public virtual string Tensorboard { get; private set; }
-
-                                [Google.Apis.Util.RequestParameterAttribute("experimentsId", Google.Apis.Util.RequestParameterType.Path)]
-                                public virtual string ExperimentsId { get; private set; }
-
-                                [Google.Apis.Util.RequestParameterAttribute("runsId", Google.Apis.Util.RequestParameterType.Path)]
-                                public virtual string RunsId { get; private set; }
-
-                                /// <summary>
-                                /// Required. The resource names of the TensorboardTimeSeries to read data from. Format:
-                                /// `projects/{project}/locations/{location}/tensorboards/{tensorboard}/experiments/{experiment}/runs/{run}/timeSeries/{time_series}`
-                                /// </summary>
-                                [Google.Apis.Util.RequestParameterAttribute("timeSeries", Google.Apis.Util.RequestParameterType.Query)]
-                                public virtual Google.Apis.Util.Repeatable<string> TimeSeries { get; set; }
-
-                                /// <summary>Gets the method name.</summary>
-                                public override string MethodName => "batchRead";
-
-                                /// <summary>Gets the HTTP method.</summary>
-                                public override string HttpMethod => "GET";
-
-                                /// <summary>Gets the REST path.</summary>
-                                public override string RestPath => "v1/{+tensorboard}/experiments/{experimentsId}/runs/{runsId}/timeSeries:batchRead";
-
-                                /// <summary>Initializes BatchRead parameter list.</summary>
-                                protected override void InitParameters()
-                                {
-                                    base.InitParameters();
-                                    RequestParameters.Add("tensorboard", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "tensorboard",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = @"^projects/[^/]+/locations/[^/]+/tensorboards/[^/]+$",
-                                    });
-                                    RequestParameters.Add("experimentsId", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "experimentsId",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                    RequestParameters.Add("runsId", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "runsId",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                    RequestParameters.Add("timeSeries", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "timeSeries",
-                                        IsRequired = false,
-                                        ParameterType = "query",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                }
-                            }
-
                             /// <summary>Creates a TensorboardTimeSeries.</summary>
                             /// <param name="body">The body of the request.</param>
                             /// <param name="parent">
@@ -31253,6 +31180,72 @@ namespace Google.Apis.Aiplatform.v1
                         }
                     }
 
+                    /// <summary>Batch create TensorboardTimeSeries that belong to a TensorboardExperiment.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. The resource name of the TensorboardExperiment to create the TensorboardTimeSeries in.
+                    /// Format:
+                    /// `projects/{project}/locations/{location}/tensorboards/{tensorboard}/experiments/{experiment}`
+                    /// The TensorboardRuns referenced by the parent fields in the CreateTensorboardTimeSeriesRequest
+                    /// messages must be sub resources of this TensorboardExperiment.
+                    /// </param>
+                    public virtual BatchCreateRequest BatchCreate(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1BatchCreateTensorboardTimeSeriesRequest body, string parent)
+                    {
+                        return new BatchCreateRequest(this.service, body, parent);
+                    }
+
+                    /// <summary>Batch create TensorboardTimeSeries that belong to a TensorboardExperiment.</summary>
+                    public class BatchCreateRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1BatchCreateTensorboardTimeSeriesResponse>
+                    {
+                        /// <summary>Constructs a new BatchCreate request.</summary>
+                        public BatchCreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1BatchCreateTensorboardTimeSeriesRequest body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the TensorboardExperiment to create the TensorboardTimeSeries
+                        /// in. Format:
+                        /// `projects/{project}/locations/{location}/tensorboards/{tensorboard}/experiments/{experiment}`
+                        /// The TensorboardRuns referenced by the parent fields in the
+                        /// CreateTensorboardTimeSeriesRequest messages must be sub resources of this
+                        /// TensorboardExperiment.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1BatchCreateTensorboardTimeSeriesRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "batchCreate";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}:batchCreate";
+
+                        /// <summary>Initializes BatchCreate parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/tensorboards/[^/]+/experiments/[^/]+$",
+                            });
+                        }
+                    }
+
                     /// <summary>Creates a TensorboardExperiment.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
@@ -32037,6 +32030,84 @@ namespace Google.Apis.Aiplatform.v1
                                 Pattern = null,
                             });
                         }
+                    }
+                }
+
+                /// <summary>
+                /// Reads multiple TensorboardTimeSeries' data. The data point number limit is 1000 for scalars, 100 for
+                /// tensors and blob references. If the number of data points stored is less than the limit, all data is
+                /// returned. Otherwise, the number limit of data points is randomly selected from this time series and
+                /// returned.
+                /// </summary>
+                /// <param name="tensorboard">
+                /// Required. The resource name of the Tensorboard containing TensorboardTimeSeries to read data from.
+                /// Format: `projects/{project}/locations/{location}/tensorboards/{tensorboard}`. The
+                /// TensorboardTimeSeries referenced by time_series must be sub resources of this Tensorboard.
+                /// </param>
+                public virtual BatchReadRequest BatchRead(string tensorboard)
+                {
+                    return new BatchReadRequest(this.service, tensorboard);
+                }
+
+                /// <summary>
+                /// Reads multiple TensorboardTimeSeries' data. The data point number limit is 1000 for scalars, 100 for
+                /// tensors and blob references. If the number of data points stored is less than the limit, all data is
+                /// returned. Otherwise, the number limit of data points is randomly selected from this time series and
+                /// returned.
+                /// </summary>
+                public class BatchReadRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1BatchReadTensorboardTimeSeriesDataResponse>
+                {
+                    /// <summary>Constructs a new BatchRead request.</summary>
+                    public BatchReadRequest(Google.Apis.Services.IClientService service, string tensorboard) : base(service)
+                    {
+                        Tensorboard = tensorboard;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the Tensorboard containing TensorboardTimeSeries to read data
+                    /// from. Format: `projects/{project}/locations/{location}/tensorboards/{tensorboard}`. The
+                    /// TensorboardTimeSeries referenced by time_series must be sub resources of this Tensorboard.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("tensorboard", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Tensorboard { get; private set; }
+
+                    /// <summary>
+                    /// Required. The resource names of the TensorboardTimeSeries to read data from. Format:
+                    /// `projects/{project}/locations/{location}/tensorboards/{tensorboard}/experiments/{experiment}/runs/{run}/timeSeries/{time_series}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("timeSeries", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual Google.Apis.Util.Repeatable<string> TimeSeries { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "batchRead";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+tensorboard}:batchRead";
+
+                    /// <summary>Initializes BatchRead parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("tensorboard", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "tensorboard",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/tensorboards/[^/]+$",
+                        });
+                        RequestParameters.Add("timeSeries", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "timeSeries",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
                 }
 
@@ -33489,6 +33560,539 @@ namespace Google.Apis.Aiplatform.v1
 }
 namespace Google.Apis.Aiplatform.v1.Data
 {
+    /// <summary>Video embedding response.</summary>
+    public class CloudAiLargeModelsVisionEmbedVideoResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The embedding vector for the video.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("videoEmbeddings")]
+        public virtual System.Collections.Generic.IList<object> VideoEmbeddings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details for filtered input text.</summary>
+    public class CloudAiLargeModelsVisionFilteredText : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Confidence level</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("category")]
+        public virtual string Category { get; set; }
+
+        /// <summary>Filtered category</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
+        public virtual string Confidence { get; set; }
+
+        /// <summary>Input prompt</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("prompt")]
+        public virtual string Prompt { get; set; }
+
+        /// <summary>Score for category</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("score")]
+        public virtual System.Nullable<double> Score { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Generate video response.</summary>
+    public class CloudAiLargeModelsVisionGenerateVideoResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The generates samples.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generatedSamples")]
+        public virtual System.Collections.Generic.IList<CloudAiLargeModelsVisionMedia> GeneratedSamples { get; set; }
+
+        /// <summary>Returns if any videos were filtered due to RAI policies.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("raiMediaFilteredCount")]
+        public virtual System.Nullable<int> RaiMediaFilteredCount { get; set; }
+
+        /// <summary>Returns rai failure reasons if any.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("raiMediaFilteredReasons")]
+        public virtual System.Collections.Generic.IList<string> RaiMediaFilteredReasons { get; set; }
+
+        /// <summary>Returns filtered text rai info.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("raiTextFilteredReason")]
+        public virtual CloudAiLargeModelsVisionFilteredText RaiTextFilteredReason { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Image.</summary>
+    public class CloudAiLargeModelsVisionImage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Image encoding, encoded as "image/png" or "image/jpg".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encoding")]
+        public virtual string Encoding { get; set; }
+
+        /// <summary>Raw bytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("image")]
+        public virtual string Image { get; set; }
+
+        /// <summary>RAI scores for generated image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageRaiScores")]
+        public virtual CloudAiLargeModelsVisionImageRAIScores ImageRaiScores { get; set; }
+
+        /// <summary>RAI info for image</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("raiInfo")]
+        public virtual CloudAiLargeModelsVisionRaiInfo RaiInfo { get; set; }
+
+        /// <summary>Semantic filter info for image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("semanticFilterResponse")]
+        public virtual CloudAiLargeModelsVisionSemanticFilterResponse SemanticFilterResponse { get; set; }
+
+        /// <summary>Path to another storage (typically Google Cloud Storage).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>RAI scores for generated image returned.</summary>
+    public class CloudAiLargeModelsVisionImageRAIScores : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Agile watermark score for image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agileWatermarkDetectionScore")]
+        public virtual System.Nullable<double> AgileWatermarkDetectionScore { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Media.</summary>
+    public class CloudAiLargeModelsVisionMedia : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("image")]
+        public virtual CloudAiLargeModelsVisionImage Image { get; set; }
+
+        /// <summary>Video</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("video")]
+        public virtual CloudAiLargeModelsVisionVideo Video { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Generate media content response</summary>
+    public class CloudAiLargeModelsVisionMediaGenerateContentResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Response to the user's request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("response")]
+        public virtual CloudAiNlLlmProtoServiceGenerateMultiModalResponse Response { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class CloudAiLargeModelsVisionNamedBoundingBox : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("classes")]
+        public virtual System.Collections.Generic.IList<string> Classes { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("entities")]
+        public virtual System.Collections.Generic.IList<string> Entities { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("scores")]
+        public virtual System.Collections.Generic.IList<System.Nullable<float>> Scores { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("x1")]
+        public virtual System.Nullable<float> X1 { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("x2")]
+        public virtual System.Nullable<float> X2 { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("y1")]
+        public virtual System.Nullable<float> Y1 { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("y2")]
+        public virtual System.Nullable<float> Y2 { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class CloudAiLargeModelsVisionRaiInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of rai categories' information to return</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("raiCategories")]
+        public virtual System.Collections.Generic.IList<string> RaiCategories { get; set; }
+
+        /// <summary>List of rai scores mapping to the rai categories. Rounded to 1 decimal place.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scores")]
+        public virtual System.Collections.Generic.IList<System.Nullable<float>> Scores { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Video reasoning response.</summary>
+    public class CloudAiLargeModelsVisionReasonVideoResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Generated text responses. The generated responses for different segments within the same video.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("responses")]
+        public virtual System.Collections.Generic.IList<CloudAiLargeModelsVisionReasonVideoResponseTextResponse> Responses { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains text that is the response of the video captioning.</summary>
+    public class CloudAiLargeModelsVisionReasonVideoResponseTextResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Partition of the caption's video in time. This field is intended for video captioning. To represent the
+        /// start time and end time of the caption's video.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("relativeTemporalPartition")]
+        public virtual CloudAiLargeModelsVisionRelativeTemporalPartition RelativeTemporalPartition { get; set; }
+
+        /// <summary>Text information</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// For ease of use, assume that the start_offset is inclusive and the end_offset is exclusive. In mathematical
+    /// terms, the partition would be written as [start_offset, end_offset).
+    /// </summary>
+    public class CloudAiLargeModelsVisionRelativeTemporalPartition : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>End time offset of the partition.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endOffset")]
+        public virtual object EndOffset { get; set; }
+
+        /// <summary>Start time offset of the partition.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startOffset")]
+        public virtual object StartOffset { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class CloudAiLargeModelsVisionSemanticFilterResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Class labels of the bounding boxes that failed the semantic filtering. Bounding box coordinates.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("namedBoundingBoxes")]
+        public virtual System.Collections.Generic.IList<CloudAiLargeModelsVisionNamedBoundingBox> NamedBoundingBoxes { get; set; }
+
+        /// <summary>
+        /// This response is added when semantic filter config is turned on in EditConfig. It reports if this image is
+        /// passed semantic filter response. If passed_semantic_filter is false, the bounding box information will be
+        /// populated for user to check what caused the semantic filter to fail.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("passedSemanticFilter")]
+        public virtual System.Nullable<bool> PassedSemanticFilter { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Video</summary>
+    public class CloudAiLargeModelsVisionVideo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Path to another storage (typically Google Cloud Storage).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>Raw bytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("video")]
+        public virtual string Video { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class CloudAiNlLlmProtoServiceCandidate : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Source attribution of the generated content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("citationMetadata")]
+        public virtual CloudAiNlLlmProtoServiceCitationMetadata CitationMetadata { get; set; }
+
+        /// <summary>Content of the candidate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("content")]
+        public virtual CloudAiNlLlmProtoServiceContent Content { get; set; }
+
+        /// <summary>
+        /// A string that describes the filtering behavior in more detail. Only filled when reason is set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("finishMessage")]
+        public virtual string FinishMessage { get; set; }
+
+        /// <summary>The reason why the model stopped generating tokens.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("finishReason")]
+        public virtual string FinishReason { get; set; }
+
+        /// <summary>Index of the candidate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("index")]
+        public virtual System.Nullable<int> Index { get; set; }
+
+        /// <summary>Safety ratings of the generated content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("safetyRatings")]
+        public virtual System.Collections.Generic.IList<CloudAiNlLlmProtoServiceSafetyRating> SafetyRatings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Source attributions for content.</summary>
+    public class CloudAiNlLlmProtoServiceCitation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>End index into the content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endIndex")]
+        public virtual System.Nullable<int> EndIndex { get; set; }
+
+        /// <summary>License of the attribution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("license")]
+        public virtual string License { get; set; }
+
+        /// <summary>Publication date of the attribution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publicationDate")]
+        public virtual GoogleTypeDate PublicationDate { get; set; }
+
+        /// <summary>Start index into the content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startIndex")]
+        public virtual System.Nullable<int> StartIndex { get; set; }
+
+        /// <summary>Title of the attribution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>Url reference of the attribution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A collection of source attributions for a piece of content.</summary>
+    public class CloudAiNlLlmProtoServiceCitationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of citations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("citations")]
+        public virtual System.Collections.Generic.IList<CloudAiNlLlmProtoServiceCitation> Citations { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The content of a single message from a participant.</summary>
+    public class CloudAiNlLlmProtoServiceContent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The parts of the message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parts")]
+        public virtual System.Collections.Generic.IList<CloudAiNlLlmProtoServicePart> Parts { get; set; }
+
+        /// <summary>The role of the current conversation participant.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("role")]
+        public virtual string Role { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Function call details.</summary>
+    public class CloudAiNlLlmProtoServiceFunctionCall : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The function parameters and values in JSON format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("args")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Args { get; set; }
+
+        /// <summary>Required. The name of the function to call.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Function response details.</summary>
+    public class CloudAiNlLlmProtoServiceFunctionResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The name of the function to call.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Required. The function response in JSON object format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("response")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Response { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class CloudAiNlLlmProtoServiceGenerateMultiModalResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Possible candidate responses to the conversation up until this point.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("candidates")]
+        public virtual System.Collections.Generic.IList<CloudAiNlLlmProtoServiceCandidate> Candidates { get; set; }
+
+        /// <summary>
+        /// Content filter results for a prompt sent in the request. Note: Sent only in the first stream chunk. Only
+        /// happens when no candidates were generated due to content violations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("promptFeedback")]
+        public virtual CloudAiNlLlmProtoServicePromptFeedback PromptFeedback { get; set; }
+
+        /// <summary>Billable prediction metrics.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reportingMetrics")]
+        public virtual IntelligenceCloudAutomlXpsReportingMetrics ReportingMetrics { get; set; }
+
+        /// <summary>Usage metadata about the response(s).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("usageMetadata")]
+        public virtual CloudAiNlLlmProtoServiceUsageMetadata UsageMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A single part of a message.</summary>
+    public class CloudAiNlLlmProtoServicePart : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>URI-based data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileData")]
+        public virtual CloudAiNlLlmProtoServicePartFileData FileData { get; set; }
+
+        /// <summary>Function call data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("functionCall")]
+        public virtual CloudAiNlLlmProtoServiceFunctionCall FunctionCall { get; set; }
+
+        /// <summary>Function response data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("functionResponse")]
+        public virtual CloudAiNlLlmProtoServiceFunctionResponse FunctionResponse { get; set; }
+
+        /// <summary>Inline bytes data</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inlineData")]
+        public virtual CloudAiNlLlmProtoServicePartBlob InlineData { get; set; }
+
+        /// <summary>Text input.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
+
+        /// <summary>
+        /// Video metadata. The metadata should only be specified while the video data is presented in inline_data or
+        /// file_data.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("videoMetadata")]
+        public virtual CloudAiNlLlmProtoServicePartVideoMetadata VideoMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents arbitrary blob data input.</summary>
+    public class CloudAiNlLlmProtoServicePartBlob : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Inline data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("data")]
+        public virtual string Data { get; set; }
+
+        /// <summary>The mime type corresponding to this input.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
+        public virtual string MimeType { get; set; }
+
+        /// <summary>Original file data where the blob comes from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("originalFileData")]
+        public virtual CloudAiNlLlmProtoServicePartFileData OriginalFileData { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents file data.</summary>
+    public class CloudAiNlLlmProtoServicePartFileData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Inline data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileUri")]
+        public virtual string FileUri { get; set; }
+
+        /// <summary>The mime type corresponding to this input.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
+        public virtual string MimeType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata describes the input video content.</summary>
+    public class CloudAiNlLlmProtoServicePartVideoMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The end offset of the video.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endOffset")]
+        public virtual object EndOffset { get; set; }
+
+        /// <summary>The start offset of the video.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startOffset")]
+        public virtual object StartOffset { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Content filter results for a prompt sent in the request.</summary>
+    public class CloudAiNlLlmProtoServicePromptFeedback : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Blocked reason.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blockReason")]
+        public virtual string BlockReason { get; set; }
+
+        /// <summary>A readable block reason message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blockReasonMessage")]
+        public virtual string BlockReasonMessage { get; set; }
+
+        /// <summary>Safety ratings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("safetyRatings")]
+        public virtual System.Collections.Generic.IList<CloudAiNlLlmProtoServiceSafetyRating> SafetyRatings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Safety rating corresponding to the generated content.</summary>
+    public class CloudAiNlLlmProtoServiceSafetyRating : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Indicates whether the content was filtered out because of this rating.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blocked")]
+        public virtual System.Nullable<bool> Blocked { get; set; }
+
+        /// <summary>Harm category.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("category")]
+        public virtual string Category { get; set; }
+
+        /// <summary>Harm probability levels in the content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("probability")]
+        public virtual string Probability { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Usage metadata about response(s).</summary>
+    public class CloudAiNlLlmProtoServiceUsageMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Number of tokens in the response(s).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("candidatesTokenCount")]
+        public virtual System.Nullable<int> CandidatesTokenCount { get; set; }
+
+        /// <summary>Number of tokens in the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("promptTokenCount")]
+        public virtual System.Nullable<int> PromptTokenCount { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("totalTokenCount")]
+        public virtual System.Nullable<int> TotalTokenCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Message that represents an arbitrary HTTP body. It should only be used for payload formats that can't be
     /// represented as JSON, such as raw binary or an HTML page. This message can be used both in streaming and
@@ -34760,7 +35364,7 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// <summary>
         /// Fields that will be excluded in the prediction instance that is sent to the Model. Excluded will be attached
         /// to the batch prediction output if key_field is not specified. When excluded_fields is populated,
-        /// included_fields must be empty. The input must be JSONL with objects at each line, CSV, BigQuery or TfRecord.
+        /// included_fields must be empty. The input must be JSONL with objects at each line, BigQuery or TfRecord.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludedFields")]
         public virtual System.Collections.Generic.IList<string> ExcludedFields { get; set; }
@@ -34769,7 +35373,7 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// Fields that will be included in the prediction instance that is sent to the Model. If instance_type is
         /// `array`, the order of field names in included_fields also determines the order of the values in the array.
         /// When included_fields is populated, excluded_fields must be empty. The input must be JSONL with objects at
-        /// each line, CSV, BigQuery or TfRecord.
+        /// each line, BigQuery or TfRecord.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includedFields")]
         public virtual System.Collections.Generic.IList<string> IncludedFields { get; set; }
@@ -35062,14 +35666,14 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Content blob.</summary>
+    /// <summary>Raw media bytes. Text should not be sent as raw bytes, use the 'text' field.</summary>
     public class GoogleCloudAiplatformV1Blob : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Data.</summary>
+        /// <summary>Required. Raw bytes for media formats.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("data")]
         public virtual string Data { get; set; }
 
-        /// <summary>Required. Mime type of the data.</summary>
+        /// <summary>Required. The IANA standard MIME type of the source data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
         public virtual string MimeType { get; set; }
 
@@ -35156,6 +35760,46 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A response candidate generated from the model.</summary>
+    public class GoogleCloudAiplatformV1Candidate : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Source attribution of the generated content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("citationMetadata")]
+        public virtual GoogleCloudAiplatformV1CitationMetadata CitationMetadata { get; set; }
+
+        /// <summary>Output only. Content parts of the candidate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("content")]
+        public virtual GoogleCloudAiplatformV1Content Content { get; set; }
+
+        /// <summary>
+        /// Output only. Describes the reason the mode stopped generating tokens in more detail. This is only filled
+        /// when `finish_reason` is set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("finishMessage")]
+        public virtual string FinishMessage { get; set; }
+
+        /// <summary>
+        /// Output only. The reason why the model stopped generating tokens. If empty, the model has not stopped
+        /// generating the tokens.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("finishReason")]
+        public virtual string FinishReason { get; set; }
+
+        /// <summary>Output only. Index of the candidate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("index")]
+        public virtual System.Nullable<int> Index { get; set; }
+
+        /// <summary>
+        /// Output only. List of ratings for the safety of a response candidate. There is at most one rating per
+        /// category.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("safetyRatings")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1SafetyRating> SafetyRatings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// This message will be placed in the metadata field of a google.longrunning.Operation associated with a
     /// CheckTrialEarlyStoppingState request.
@@ -35191,6 +35835,48 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// <summary>True if the Trial should stop.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shouldStop")]
         public virtual System.Nullable<bool> ShouldStop { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Source attributions for content.</summary>
+    public class GoogleCloudAiplatformV1Citation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. End index into the content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endIndex")]
+        public virtual System.Nullable<int> EndIndex { get; set; }
+
+        /// <summary>Output only. License of the attribution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("license")]
+        public virtual string License { get; set; }
+
+        /// <summary>Output only. Publication date of the attribution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publicationDate")]
+        public virtual GoogleTypeDate PublicationDate { get; set; }
+
+        /// <summary>Output only. Start index into the content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startIndex")]
+        public virtual System.Nullable<int> StartIndex { get; set; }
+
+        /// <summary>Output only. Title of the attribution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>Output only. Url reference of the attribution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A collection of source attributions for a piece of content.</summary>
+    public class GoogleCloudAiplatformV1CitationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. List of citations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("citations")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1Citation> Citations { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -35330,16 +36016,22 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A single turn in a conversation with the model.</summary>
+    /// <summary>
+    /// The base structured datatype containing multi-part content of a message. A `Content` includes a `role` field
+    /// designating the producer of the `Content` and a `parts` field containing multi-part data that contains the
+    /// content of the message turn.
+    /// </summary>
     public class GoogleCloudAiplatformV1Content : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Ordered parts that make up a message. Parts may have different MIME types.</summary>
+        /// <summary>
+        /// Required. Ordered `Parts` that constitute a single message. Parts may have different IANA MIME types.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parts")]
         public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1Part> Parts { get; set; }
 
         /// <summary>
-        /// Optional. The role in a conversation associated with this content. Set it only if a content represents a
-        /// turn in a conversations, otherwise no need to set role. Possible values: user, model.
+        /// Optional. The producer of the content. Must be either 'user' or 'model'. Useful to set for multi-turn
+        /// conversations, otherwise can be left blank or unset.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual string Role { get; set; }
@@ -36186,6 +36878,18 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("experimentRun")]
         public virtual string ExperimentRun { get; set; }
+
+        /// <summary>
+        /// Optional. The name of the Model resources for which to generate a mapping to artifact URIs. Applicable only
+        /// to some of the Google-provided custom jobs. Format: `projects/{project}/locations/{location}/models/{model}`
+        /// In order to retrieve a specific version of the model, also provide the version ID or version alias. Example:
+        /// `projects/{project}/locations/{location}/models/{model}@2` or
+        /// `projects/{project}/locations/{location}/models/{model}@golden` If no version ID or alias is specified, the
+        /// "default" version will be returned. The "default" version alias is created for the first version of the
+        /// model, and can be moved to other versions later on. There will be exactly one default version.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("models")]
+        public virtual System.Collections.Generic.IList<string> Models { get; set; }
 
         /// <summary>
         /// Optional. The full name of the Compute Engine [network](/compute/docs/networks-and-firewalls#networks) to
@@ -38885,15 +39589,15 @@ namespace Google.Apis.Aiplatform.v1.Data
     public class GoogleCloudAiplatformV1ExportDataConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Only used for custom training data export use cases. Only applicable to Datasets that have DataItems and
-        /// Annotations. Cloud Storage URI that points to a YAML file describing the annotation schema. The schema is
-        /// defined as an OpenAPI 3.0.2 [Schema
+        /// The Cloud Storage URI that points to a YAML file describing the annotation schema. The schema is defined as
+        /// an OpenAPI 3.0.2 [Schema
         /// Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.2.md#schemaObject). The schema
         /// files that can be used here are found in gs://google-cloud-aiplatform/schema/dataset/annotation/, note that
-        /// the chosen schema must be consistent with metadata of the Dataset specified by dataset_id. Only Annotations
-        /// that both match this schema and belong to DataItems not ignored by the split method are used in respectively
-        /// training, validation or test role, depending on the role of the DataItem they are on. When used in
-        /// conjunction with annotations_filter, the Annotations used for training are filtered by both
+        /// the chosen schema must be consistent with metadata of the Dataset specified by dataset_id. Only used for
+        /// custom training data export use cases. Only applicable to Datasets that have DataItems and Annotations. Only
+        /// Annotations that both match this schema and belong to DataItems not ignored by the split method are used in
+        /// respectively training, validation or test role, depending on the role of the DataItem they are on. When used
+        /// in conjunction with annotations_filter, the Annotations used for training are filtered by both
         /// annotations_filter and annotation_schema_uri.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("annotationSchemaUri")]
@@ -38929,12 +39633,12 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual GoogleCloudAiplatformV1GcsDestination GcsDestination { get; set; }
 
         /// <summary>
-        /// Only used for custom training data export use cases. Only applicable to Datasets that have SavedQueries. The
-        /// ID of a SavedQuery (annotation set) under the Dataset specified by dataset_id used for filtering Annotations
-        /// for training. Only Annotations that are associated with this SavedQuery are used in respectively training.
-        /// When used in conjunction with annotations_filter, the Annotations used for training are filtered by both
-        /// saved_query_id and annotations_filter. Only one of saved_query_id and annotation_schema_uri should be
-        /// specified as both of them represent the same thing: problem type.
+        /// The ID of a SavedQuery (annotation set) under the Dataset specified by dataset_id used for filtering
+        /// Annotations for training. Only used for custom training data export use cases. Only applicable to Datasets
+        /// that have SavedQueries. Only Annotations that are associated with this SavedQuery are used in respectively
+        /// training. When used in conjunction with annotations_filter, the Annotations used for training are filtered
+        /// by both saved_query_id and annotations_filter. Only one of saved_query_id and annotation_schema_uri should
+        /// be specified as both of them represent the same thing: problem type.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("savedQueryId")]
         public virtual string SavedQueryId { get; set; }
@@ -38983,7 +39687,8 @@ namespace Google.Apis.Aiplatform.v1.Data
 
         /// <summary>
         /// All of the files that are exported in this export operation. For custom code training export, only three
-        /// (training, validation and test) GCS paths in wildcard format are populated (e.g., gs://.../training-*).
+        /// (training, validation and test) Cloud Storage paths in wildcard format are populated (for example,
+        /// gs://.../training-*).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exportedFiles")]
         public virtual System.Collections.Generic.IList<string> ExportedFiles { get; set; }
@@ -39554,7 +40259,7 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string ValueType { get; set; }
 
         /// <summary>
-        /// Only applicable for Vertex AI Feature Store. The name of the BigQuery Table/View columnn hosting data for
+        /// Only applicable for Vertex AI Feature Store. The name of the BigQuery Table/View column hosting data for
         /// this version. If no value is provided, will use feature_id.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("versionColumnName")]
@@ -40801,7 +41506,7 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fileUri")]
         public virtual string FileUri { get; set; }
 
-        /// <summary>Required. Mime type of the data.</summary>
+        /// <summary>Required. The IANA standard MIME type of the source data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
         public virtual string MimeType { get; set; }
 
@@ -41009,6 +41714,42 @@ namespace Google.Apis.Aiplatform.v1.Data
     }
 
     /// <summary>
+    /// Structured representation of a function declaration as defined by the [OpenAPI 3.0
+    /// specification](https://spec.openapis.org/oas/v3.0.3). Included in this declaration are the function name and
+    /// parameters. This FunctionDeclaration is a representation of a block of code that can be used as a `Tool` by the
+    /// model and executed by the client.
+    /// </summary>
+    public class GoogleCloudAiplatformV1FunctionDeclaration : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Description and purpose of the function. Model uses it to decide how and whether to call the
+        /// function.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Required. The name of the function to call. Must start with a letter or an underscore. Must be a-z, A-Z,
+        /// 0-9, or contain underscores and dashes, with a maximum length of 64.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Optional. Describes the parameters to this function in JSON Schema Object format. Reflects the Open API 3.03
+        /// Parameter Object. string Key: the name of the parameter. Parameter names are case sensitive. Schema Value:
+        /// the Schema defining the type used for the parameter. For function with no parameters, this can be left
+        /// unset. Example with 1 required and 1 optional parameter: type: OBJECT properties: param1: type: STRING
+        /// param2: type: INTEGER required: - param1
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
+        public virtual GoogleCloudAiplatformV1Schema Parameters { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// The result output from a [FunctionCall] that contains a string representing the [FunctionDeclaration.name] and a
     /// structured JSON object containing any output from the function is used as context to the model. This should
     /// contain the result of a [FunctionCall] made based on model prediction.
@@ -41052,6 +41793,136 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uris")]
         public virtual System.Collections.Generic.IList<string> Uris { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for [PredictionService.GenerateContent].</summary>
+    public class GoogleCloudAiplatformV1GenerateContentRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The content of the current conversation with the model. For single-turn queries, this is a single
+        /// instance. For multi-turn queries, this is a repeated field that contains conversation history + latest
+        /// request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contents")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1Content> Contents { get; set; }
+
+        /// <summary>
+        /// Required. The name of the Endpoint requested to serve the prediction. Format:
+        /// `projects/{project}/locations/{location}/endpoints/{endpoint}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endpoint")]
+        public virtual string Endpoint { get; set; }
+
+        /// <summary>Optional. Generation config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generationConfig")]
+        public virtual GoogleCloudAiplatformV1GenerationConfig GenerationConfig { get; set; }
+
+        /// <summary>
+        /// Optional. Per request settings for blocking unsafe content. Enforced on GenerateContentResponse.candidates.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("safetySettings")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1SafetySetting> SafetySettings { get; set; }
+
+        /// <summary>
+        /// Optional. A list of `Tools` the model may use to generate the next response. A `Tool` is a piece of code
+        /// that enables the system to interact with external systems to perform an action, or set of actions, outside
+        /// of knowledge and scope of the model. The only supported tool is currently `Function`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tools")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1Tool> Tools { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for [PredictionService.GenerateContent].</summary>
+    public class GoogleCloudAiplatformV1GenerateContentResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Generated candidates.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("candidates")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1Candidate> Candidates { get; set; }
+
+        /// <summary>
+        /// Output only. Content filter results for a prompt sent in the request. Note: Sent only in the first stream
+        /// chunk. Only happens when no candidates were generated due to content violations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("promptFeedback")]
+        public virtual GoogleCloudAiplatformV1GenerateContentResponsePromptFeedback PromptFeedback { get; set; }
+
+        /// <summary>Usage metadata about the response(s).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("usageMetadata")]
+        public virtual GoogleCloudAiplatformV1GenerateContentResponseUsageMetadata UsageMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Content filter results for a prompt sent in the request.</summary>
+    public class GoogleCloudAiplatformV1GenerateContentResponsePromptFeedback : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Blocked reason.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blockReason")]
+        public virtual string BlockReason { get; set; }
+
+        /// <summary>Output only. A readable block reason message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blockReasonMessage")]
+        public virtual string BlockReasonMessage { get; set; }
+
+        /// <summary>Output only. Safety ratings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("safetyRatings")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1SafetyRating> SafetyRatings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Usage metadata about response(s).</summary>
+    public class GoogleCloudAiplatformV1GenerateContentResponseUsageMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Number of tokens in the response(s).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("candidatesTokenCount")]
+        public virtual System.Nullable<int> CandidatesTokenCount { get; set; }
+
+        /// <summary>Number of tokens in the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("promptTokenCount")]
+        public virtual System.Nullable<int> PromptTokenCount { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("totalTokenCount")]
+        public virtual System.Nullable<int> TotalTokenCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Generation config.</summary>
+    public class GoogleCloudAiplatformV1GenerationConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Number of candidates to generate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("candidateCount")]
+        public virtual System.Nullable<int> CandidateCount { get; set; }
+
+        /// <summary>Optional. The maximum number of output tokens to generate per message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxOutputTokens")]
+        public virtual System.Nullable<int> MaxOutputTokens { get; set; }
+
+        /// <summary>Optional. Stop sequences.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stopSequences")]
+        public virtual System.Collections.Generic.IList<string> StopSequences { get; set; }
+
+        /// <summary>Optional. Controls the randomness of predictions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("temperature")]
+        public virtual System.Nullable<float> Temperature { get; set; }
+
+        /// <summary>Optional. If specified, top-k sampling will be used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("topK")]
+        public virtual System.Nullable<float> TopK { get; set; }
+
+        /// <summary>Optional. If specified, nucleus sampling will be used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("topP")]
+        public virtual System.Nullable<float> TopP { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -44792,7 +45663,7 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// <summary>
         /// The metadata of the ModelEvaluation. For the ModelEvaluation uploaded from Managed Pipeline, metadata
         /// contains a structured value with keys of "pipeline_job_id", "evaluation_dataset_type",
-        /// "evaluation_dataset_path".
+        /// "evaluation_dataset_path", "row_based_metrics_path".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual object Metadata { get; set; }
@@ -46085,6 +46956,35 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Notebook Reservation Affinity for consuming Zonal reservation.</summary>
+    public class GoogleCloudAiplatformV1NotebookReservationAffinity : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Specifies the type of reservation from which this instance can consume resources: RESERVATION_ANY
+        /// (default), RESERVATION_SPECIFIC, or RESERVATION_NONE. See Consuming reserved instances for examples.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consumeReservationType")]
+        public virtual string ConsumeReservationType { get; set; }
+
+        /// <summary>
+        /// Optional. Corresponds to the label key of a reservation resource. To target a RESERVATION_SPECIFIC by name,
+        /// use compute.googleapis.com/reservation-name as the key and specify the name of your reservation as its
+        /// value.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; }
+
+        /// <summary>
+        /// Optional. Corresponds to the label values of a reservation resource. This must be the full path name of
+        /// Reservation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("values")]
+        public virtual System.Collections.Generic.IList<string> Values { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A runtime is a virtual machine allocated to a particular user for a particular Notebook file on temporary basis
     /// with lifetime limited to 24 hours.
@@ -46187,6 +47087,10 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("healthState")]
         public virtual string HealthState { get; set; }
 
+        /// <summary>Output only. Whether NotebookRuntime is upgradable.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isUpgradable")]
+        public virtual System.Nullable<bool> IsUpgradable { get; set; }
+
         /// <summary>
         /// The labels with user-defined metadata to organize your NotebookRuntime. Label keys and values can be no
         /// longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters,
@@ -46206,6 +47110,13 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>
+        /// Optional. The Compute Engine tags to add to runtime (see [Tagging
+        /// instances](https://cloud.google.com/vpc/docs/add-remove-network-tags)).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkTags")]
+        public virtual System.Collections.Generic.IList<string> NetworkTags { get; set; }
+
         /// <summary>Output only. The pointer to NotebookRuntimeTemplate this NotebookRuntime is created from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notebookRuntimeTemplateRef")]
         public virtual GoogleCloudAiplatformV1NotebookRuntimeTemplateRef NotebookRuntimeTemplateRef { get; set; }
@@ -46217,6 +47128,10 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// <summary>Output only. The proxy endpoint used to access the NotebookRuntime.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("proxyUri")]
         public virtual string ProxyUri { get; set; }
+
+        /// <summary>Output only. Reservation Affinity of the notebook runtime.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reservationAffinity")]
+        public virtual GoogleCloudAiplatformV1NotebookReservationAffinity ReservationAffinity { get; set; }
 
         /// <summary>Output only. The runtime (instance) state of the NotebookRuntime.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("runtimeState")]
@@ -46377,9 +47292,20 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("networkSpec")]
         public virtual GoogleCloudAiplatformV1NetworkSpec NetworkSpec { get; set; }
 
+        /// <summary>
+        /// Optional. The Compute Engine tags to add to runtime (see [Tagging
+        /// instances](https://cloud.google.com/vpc/docs/add-remove-network-tags)).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkTags")]
+        public virtual System.Collections.Generic.IList<string> NetworkTags { get; set; }
+
         /// <summary>Optional. Immutable. The type of the notebook runtime template.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notebookRuntimeType")]
         public virtual string NotebookRuntimeType { get; set; }
+
+        /// <summary>Optional. Reservation Affinity of the notebook runtime template.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reservationAffinity")]
+        public virtual GoogleCloudAiplatformV1NotebookReservationAffinity ReservationAffinity { get; set; }
 
         /// <summary>
         /// The service account that the runtime workload runs as. You can use any service account within the same
@@ -46389,6 +47315,10 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
         public virtual string ServiceAccount { get; set; }
+
+        /// <summary>Optional. Immutable. Runtime Shielded VM spec.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shieldedVmConfig")]
+        public virtual GoogleCloudAiplatformV1ShieldedVmConfig ShieldedVmConfig { get; set; }
 
         private string _updateTimeRaw;
 
@@ -46439,7 +47369,12 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Content part.</summary>
+    /// <summary>
+    /// A datatype containing media that is part of a multi-part `Content` message. A `Part` consists of data which has
+    /// an associated datatype. A `Part` can only contain one of the accepted types in `Part.data`. A `Part` must have a
+    /// fixed IANA MIME type identifying the type and subtype of the media if `inline_data` or `file_data` field is
+    /// filled with raw bytes.
+    /// </summary>
     public class GoogleCloudAiplatformV1Part : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. URI based data.</summary>
@@ -47498,6 +48433,10 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("versionId")]
         public virtual string VersionId { get; set; }
 
+        /// <summary>Optional. Indicates the state of the model version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("versionState")]
+        public virtual string VersionState { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -47587,6 +48526,10 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("modelDisplayName")]
         public virtual string ModelDisplayName { get; set; }
 
+        /// <summary>Optional. The signed URI for ephemeral Cloud Storage access to model artifact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publicArtifactUri")]
+        public virtual string PublicArtifactUri { get; set; }
+
         /// <summary>
         /// The resource name of the shared DeploymentResourcePool to deploy on. Format:
         /// `projects/{project}/locations/{location}/deploymentResourcePools/{deployment_resource_pool}`
@@ -47654,6 +48597,10 @@ namespace Google.Apis.Aiplatform.v1.Data
     /// <summary>Reference to a resource.</summary>
     public class GoogleCloudAiplatformV1PublisherModelResourceReference : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Description of the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
         /// <summary>The resource name of the Google Cloud resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
         public virtual string ResourceName { get; set; }
@@ -47661,6 +48608,10 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// <summary>The URI of the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
+
+        /// <summary>Use case (CUJ) of the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("useCase")]
+        public virtual string UseCase { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -48191,6 +49142,40 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("catchUp")]
         public virtual System.Nullable<bool> CatchUp { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Safety rating corresponding to the generated content.</summary>
+    public class GoogleCloudAiplatformV1SafetyRating : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Indicates whether the content was filtered out because of this rating.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blocked")]
+        public virtual System.Nullable<bool> Blocked { get; set; }
+
+        /// <summary>Output only. Harm category.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("category")]
+        public virtual string Category { get; set; }
+
+        /// <summary>Output only. Harm probability levels in the content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("probability")]
+        public virtual string Probability { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Safety settings.</summary>
+    public class GoogleCloudAiplatformV1SafetySetting : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Harm category.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("category")]
+        public virtual string Category { get; set; }
+
+        /// <summary>Required. The harm block threshold.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("threshold")]
+        public virtual string Threshold { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -48817,6 +49802,12 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual System.Nullable<bool> DisableRetries { get; set; }
 
         /// <summary>
+        /// Optional. This is the maximum time a user will wait in the QRM queue for resources. Default is 1 day
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxWaitDuration")]
+        public virtual object MaxWaitDuration { get; set; }
+
+        /// <summary>
         /// Restarts the entire CustomJob if a worker gets restarted. This feature can be used by distributed training
         /// jobs that are not resilient to workers leaving and joining a job.
         /// </summary>
@@ -48826,6 +49817,58 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// <summary>The maximum job running time. The default is 7 days.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeout")]
         public virtual object Timeout { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Schema is used to define the format of input/output data. Represents a select subset of an [OpenAPI 3.0 schema
+    /// object](https://spec.openapis.org/oas/v3.0.3#schema). More fields may be added in the future as needed.
+    /// </summary>
+    public class GoogleCloudAiplatformV1Schema : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The description of the data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Optional. Possible values of the element of Type.STRING with enum format. For example we can define an Enum
+        /// Direction as : {type:STRING, format:enum, enum:["EAST", NORTH", "SOUTH", "WEST"]}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enum")]
+        public virtual System.Collections.Generic.IList<string> Enum__ { get; set; }
+
+        /// <summary>Optional. Example of the object. Will only populated when the object is the root.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("example")]
+        public virtual object Example { get; set; }
+
+        /// <summary>
+        /// Optional. The format of the data. Supported formats: for NUMBER type: float, double for INTEGER type: int32,
+        /// int64
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("format")]
+        public virtual string Format { get; set; }
+
+        /// <summary>Optional. Schema of the elements of Type.ARRAY.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual GoogleCloudAiplatformV1Schema Items { get; set; }
+
+        /// <summary>Optional. Indicates if the value may be null.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nullable")]
+        public virtual System.Nullable<bool> Nullable { get; set; }
+
+        /// <summary>Optional. Properties of Type.OBJECT.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("properties")]
+        public virtual System.Collections.Generic.IDictionary<string, GoogleCloudAiplatformV1Schema> Properties { get; set; }
+
+        /// <summary>Optional. Required properties of Type.OBJECT.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("required")]
+        public virtual System.Collections.Generic.IList<string> Required { get; set; }
+
+        /// <summary>Optional. The type of the data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -53102,6 +54145,25 @@ namespace Google.Apis.Aiplatform.v1.Data
     }
 
     /// <summary>
+    /// A set of Shielded Instance options. See [Images using supported Shielded VM
+    /// features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
+    /// </summary>
+    public class GoogleCloudAiplatformV1ShieldedVmConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Defines whether the instance has [Secure
+        /// Boot](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#secure-boot) enabled. Secure Boot helps
+        /// ensure that the system only runs authentic software by verifying the digital signature of all boot
+        /// components, and halting the boot process if signature verification fails.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableSecureBoot")]
+        public virtual System.Nullable<bool> EnableSecureBoot { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Config for SmoothGrad approximation of gradients. When enabled, the gradients are approximated by averaging the
     /// gradients from noisy samples in the vicinity of the inputs. Adding noise can help improve the computed
     /// gradients. Refer to this paper for more details: https://arxiv.org/pdf/1706.03825.pdf
@@ -54882,6 +55944,26 @@ namespace Google.Apis.Aiplatform.v1.Data
     }
 
     /// <summary>
+    /// Tool details that the model may use to generate response. A `Tool` is a piece of code that enables the system to
+    /// interact with external systems to perform an action, or set of actions, outside of knowledge and scope of the
+    /// model.
+    /// </summary>
+    public class GoogleCloudAiplatformV1Tool : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. One or more function declarations to be passed to the model along with the current user query.
+        /// Model may decide to call a subset of these functions by populating FunctionCall in the response. User should
+        /// provide a FunctionResponse for each function call in the next turn. Based on the function responses, Model
+        /// will generate the final response back to the user. Maximum 64 function declarations can be provided.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("functionDeclarations")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1FunctionDeclaration> FunctionDeclarations { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// CMLE training config. For every active learning labeling iteration, system will train a machine learning model
     /// on CMLE. The trained model will be used by data sampling algorithm to select DataItems.
     /// </summary>
@@ -55987,9 +57069,25 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that
         /// represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
         /// (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. *
-        /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that
-        /// has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is
-        /// recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. *
+        /// `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+        /// A single identity in a workforce identity pool. *
+        /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All
+        /// workforce identities in a group. *
+        /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+        /// All workforce identities with a specific attribute value. *
+        /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a
+        /// workforce identity pool. *
+        /// `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`:
+        /// A single identity in a workload identity pool. *
+        /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`:
+        /// A workload identity pool group. *
+        /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+        /// All identities in a workload identity pool with a certain attribute. *
+        /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`:
+        /// All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address
+        /// (plus unique identifier) representing a user that has been recently deleted. For example,
+        /// `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to
+        /// `user:{emailid}` and the recovered user retains the role in the binding. *
         /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a
         /// service account that has been recently deleted. For example,
         /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted,
@@ -55997,7 +57095,10 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing
         /// a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`.
         /// If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role
-        /// in the binding.
+        /// in the binding. *
+        /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+        /// Deleted single identity in a workforce identity pool. For example,
+        /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("members")]
         public virtual System.Collections.Generic.IList<string> Members { get; set; }
@@ -56275,6 +57376,35 @@ namespace Google.Apis.Aiplatform.v1.Data
     }
 
     /// <summary>
+    /// Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either
+    /// specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one
+    /// of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year
+    /// (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a
+    /// zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay *
+    /// google.type.DateTime * google.protobuf.Timestamp
+    /// </summary>
+    public class GoogleTypeDate : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a
+        /// year and month where the day isn't significant.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("day")]
+        public virtual System.Nullable<int> Day { get; set; }
+
+        /// <summary>Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("month")]
+        public virtual System.Nullable<int> Month { get; set; }
+
+        /// <summary>Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("year")]
+        public virtual System.Nullable<int> Year { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression
     /// language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example
     /// (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars"
@@ -56430,6 +57560,66 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("units")]
         public virtual System.Nullable<long> Units { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class IntelligenceCloudAutomlXpsMetricEntry : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// For billing metrics that are using legacy sku's, set the legacy billing metric id here. This will be sent to
+        /// Chemist as the "cloudbilling.googleapis.com/argentum_metric_id" label. Otherwise leave empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("argentumMetricId")]
+        public virtual string ArgentumMetricId { get; set; }
+
+        /// <summary>A double value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("doubleValue")]
+        public virtual System.Nullable<double> DoubleValue { get; set; }
+
+        /// <summary>A signed 64-bit integer value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("int64Value")]
+        public virtual System.Nullable<long> Int64Value { get; set; }
+
+        /// <summary>The metric name defined in the service configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metricName")]
+        public virtual string MetricName { get; set; }
+
+        /// <summary>Billing system labels for this (metric, value) pair.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("systemLabels")]
+        public virtual System.Collections.Generic.IList<IntelligenceCloudAutomlXpsMetricEntryLabel> SystemLabels { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class IntelligenceCloudAutomlXpsMetricEntryLabel : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the label.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labelName")]
+        public virtual string LabelName { get; set; }
+
+        /// <summary>The value of the label.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labelValue")]
+        public virtual string LabelValue { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class IntelligenceCloudAutomlXpsReportingMetrics : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The effective time training used. If set, this is used for quota management and billing. Deprecated. AutoML
+        /// BE doesn't use this. Don't set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effectiveTrainingDuration")]
+        public virtual object EffectiveTrainingDuration { get; set; }
+
+        /// <summary>One entry per metric name. The values must be aggregated per metric name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metricEntries")]
+        public virtual System.Collections.Generic.IList<IntelligenceCloudAutomlXpsMetricEntry> MetricEntries { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

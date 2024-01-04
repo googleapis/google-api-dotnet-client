@@ -1,4 +1,4 @@
-// Copyright 2023 Google LLC
+// Copyright 2024 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -2239,7 +2239,7 @@ namespace Google.Apis.CertificateAuthorityService.v1
 
                 /// <summary>
                 /// FetchCaCerts returns the current trust anchor for the CaPool. This will include CA certificate
-                /// chains for all ACTIVE CertificateAuthority resources in the CaPool.
+                /// chains for all Certificate Authorities in the ENABLED, DISABLED, or STAGED states.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="caPool">
@@ -2252,7 +2252,7 @@ namespace Google.Apis.CertificateAuthorityService.v1
 
                 /// <summary>
                 /// FetchCaCerts returns the current trust anchor for the CaPool. This will include CA certificate
-                /// chains for all ACTIVE CertificateAuthority resources in the CaPool.
+                /// chains for all Certificate Authorities in the ENABLED, DISABLED, or STAGED states.
                 /// </summary>
                 public class FetchCaCertsRequest : CertificateAuthorityServiceBaseServiceRequest<Google.Apis.CertificateAuthorityService.v1.Data.FetchCaCertsResponse>
                 {

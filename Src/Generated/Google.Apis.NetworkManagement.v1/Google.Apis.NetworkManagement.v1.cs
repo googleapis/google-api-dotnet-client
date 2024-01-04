@@ -1,4 +1,4 @@
-// Copyright 2023 Google LLC
+// Copyright 2024 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -2114,7 +2114,7 @@ namespace Google.Apis.NetworkManagement.v1.Data
     /// </summary>
     public class FirewallInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Possible values: ALLOW, DENY</summary>
+        /// <summary>Possible values: ALLOW, DENY, APPLY_SECURITY_PROFILE_GROUP</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("action")]
         public virtual string Action { get; set; }
 
@@ -2412,25 +2412,18 @@ namespace Google.Apis.NetworkManagement.v1.Data
     /// <summary>For display only. Metadata associated with the load balancer backend.</summary>
     public class LoadBalancerBackendInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Display name of the backend. For example, it might be an instance name for the instance group backends, or
-        /// an IP address and port for zonal network endpoint group backends.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("backendDisplayName")]
-        public virtual string BackendDisplayName { get; set; }
-
         /// <summary>URI of the backend service this backend belongs to (if applicable).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backendServiceUri")]
         public virtual string BackendServiceUri { get; set; }
 
         /// <summary>
-        /// Output only. Health check configuration state for the backend. This is a result of the static firewall
-        /// analysis (verifying that health check traffic from required IP ranges to the backend is allowed or not). The
-        /// backend might still be unhealthy even if these firewalls are configured. Please refer to the documentation
-        /// for more information: https://cloud.google.com/load-balancing/docs/firewall-rules
+        /// Output only. Health check firewalls configuration state for the backend. This is a result of the static
+        /// firewall analysis (verifying that health check traffic from required IP ranges to the backend is allowed or
+        /// not). The backend might still be unhealthy even if these firewalls are configured. Please refer to the
+        /// documentation for more information: https://cloud.google.com/load-balancing/docs/firewall-rules
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("healthCheckConfigState")]
-        public virtual string HealthCheckConfigState { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("healthCheckFirewallsConfigState")]
+        public virtual string HealthCheckFirewallsConfigState { get; set; }
 
         /// <summary>URI of the health check attached to this backend (if applicable).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("healthCheckUri")]
@@ -2445,6 +2438,13 @@ namespace Google.Apis.NetworkManagement.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceUri")]
         public virtual string InstanceUri { get; set; }
+
+        /// <summary>
+        /// Display name of the backend. For example, it might be an instance name for the instance group backends, or
+        /// an IP address and port for zonal network endpoint group backends.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>URI of the network endpoint group this backend belongs to (if applicable).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkEndpointGroupUri")]

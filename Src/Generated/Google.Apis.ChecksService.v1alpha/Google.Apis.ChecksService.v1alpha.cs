@@ -1,4 +1,4 @@
-// Copyright 2023 Google LLC
+// Copyright 2024 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -1269,6 +1269,13 @@ namespace Google.Apis.ChecksService.v1alpha.Data
     /// <summary>The request message for ReportService.AnalyzeUpload.</summary>
     public class GoogleChecksReportV1alphaAnalyzeUploadRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. The type of the uploaded app binary. If not provided, the server assumes APK file for Android and
+        /// IPA file for iOS.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appBinaryFileType")]
+        public virtual string AppBinaryFileType { get; set; }
+
         /// <summary>Optional. Git commit hash or changelist number associated with the upload.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("codeReferenceId")]
         public virtual string CodeReferenceId { get; set; }

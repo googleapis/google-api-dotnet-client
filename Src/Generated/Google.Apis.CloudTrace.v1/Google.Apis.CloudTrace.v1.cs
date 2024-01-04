@@ -1,4 +1,4 @@
-// Copyright 2023 Google LLC
+// Copyright 2024 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -735,7 +735,7 @@ namespace Google.Apis.CloudTrace.v1.Data
 
         private object _endTime;
 
-        /// <summary>End time of the span in nanoseconds from the UNIX epoch.</summary>
+        /// <summary>End time of the span in seconds and nanoseconds from the UNIX epoch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual string EndTimeRaw
         {
@@ -813,7 +813,7 @@ namespace Google.Apis.CloudTrace.v1.Data
 
         private object _startTime;
 
-        /// <summary>Start time of the span in nanoseconds from the UNIX epoch.</summary>
+        /// <summary>Start time of the span in seconds and nanoseconds from the UNIX epoch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual string StartTimeRaw
         {

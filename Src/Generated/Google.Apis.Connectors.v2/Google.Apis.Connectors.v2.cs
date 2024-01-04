@@ -1,4 +1,4 @@
-// Copyright 2023 Google LLC
+// Copyright 2024 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -1651,6 +1651,83 @@ namespace Google.Apis.Connectors.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Time window specified for daily operations.</summary>
+    public class DailyCycle : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Duration of the time window, set by service producer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("duration")]
+        public virtual object Duration { get; set; }
+
+        /// <summary>Time within the day to start the operations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual TimeOfDay StartTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either
+    /// specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one
+    /// of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year
+    /// (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a
+    /// zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay *
+    /// google.type.DateTime * google.protobuf.Timestamp
+    /// </summary>
+    public class Date : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a
+        /// year and month where the day isn't significant.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("day")]
+        public virtual System.Nullable<int> Day { get; set; }
+
+        /// <summary>Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("month")]
+        public virtual System.Nullable<int> Month { get; set; }
+
+        /// <summary>Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("year")]
+        public virtual System.Nullable<int> Year { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// DenyMaintenancePeriod definition. Maintenance is forbidden within the deny period. The start_date must be less
+    /// than the end_date.
+    /// </summary>
+    public class DenyMaintenancePeriod : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Deny period end date. This can be: * A full date, with non-zero year, month and day values. * A month and
+        /// day value, with a zero year. Allows recurring deny periods each year. Date matching this period will have to
+        /// be before the end.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endDate")]
+        public virtual Date EndDate { get; set; }
+
+        /// <summary>
+        /// Deny period start date. This can be: * A full date, with non-zero year, month and day values. * A month and
+        /// day value, with a zero year. Allows recurring deny periods each year. Date matching this period will have to
+        /// be the same or after the start.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startDate")]
+        public virtual Date StartDate { get; set; }
+
+        /// <summary>
+        /// Time in UTC when the Blackout period starts on start_date and ends on end_date. This can be: * Full time. *
+        /// All zeros for 00:00:00 UTC
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("time")]
+        public virtual TimeOfDay Time { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
@@ -1878,6 +1955,213 @@ namespace Google.Apis.Connectors.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Instance represents the interface for SLM services to actuate the state of control plane resources. Example
+    /// Instance in JSON, where consumer-project-number=123456, producer-project-id=cloud-sql:
+    /// ```
+    /// json Instance: {
+    /// "name": "projects/123456/locations/us-east1/instances/prod-instance", "create_time": { "seconds": 1526406431, },
+    /// "labels": { "env": "prod", "foo": "bar" }, "state": READY, "software_versions": { "software_update":
+    /// "cloud-sql-09-28-2018", }, "maintenance_policy_names": { "UpdatePolicy":
+    /// "projects/123456/locations/us-east1/maintenancePolicies/prod-update-policy", } "tenant_project_id":
+    /// "cloud-sql-test-tenant", "producer_metadata": { "cloud-sql-tier": "basic", "cloud-sql-instance-size": "1G", },
+    /// "provisioned_resources": [ { "resource-type": "compute-instance", "resource-url":
+    /// "https://www.googleapis.com/compute/v1/projects/cloud-sql/zones/us-east1-b/instances/vm-1", } ],
+    /// "maintenance_schedules": { "csa_rollout": { "start_time": { "seconds": 1526406431, }, "end_time": { "seconds":
+    /// 1535406431, }, }, "ncsa_rollout": { "start_time": { "seconds": 1526406431, }, "end_time": { "seconds":
+    /// 1535406431, }, } }, "consumer_defined_name": "my-sql-instance1", }
+    /// ```
+    /// LINT.IfChange
+    /// </summary>
+    public class Instance : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// consumer_defined_name is the name of the instance set by the service consumers. Generally this is different
+        /// from the `name` field which reperesents the system-assigned id of the instance which the service consumers
+        /// do not recognize. This is a required field for tenants onboarding to Maintenance Window notifications
+        /// (go/slm-rollout-maintenance-policies#prerequisites).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consumerDefinedName")]
+        public virtual string ConsumerDefinedName { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Timestamp when the resource was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Optional. The instance_type of this instance of format:
+        /// projects/{project_number}/locations/{location_id}/instanceTypes/{instance_type_id}. Instance Type represents
+        /// a high-level tier or SKU of the service that this instance belong to. When enabled(eg: Maintenance Rollout),
+        /// Rollout uses 'instance_type' along with 'software_versions' to determine whether instance needs an update or
+        /// not.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceType")]
+        public virtual string InstanceType { get; set; }
+
+        /// <summary>
+        /// Optional. Resource labels to represent user provided metadata. Each label is a key-value pair, where both
+        /// the key and the value are arbitrary strings provided by the user.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Optional. The MaintenancePolicies that have been attached to the instance. The key must be of the type name
+        /// of the oneof policy name defined in MaintenancePolicy, and the referenced policy must define the same policy
+        /// type. For details, please refer to go/mr-user-guide. Should not be set if
+        /// maintenance_settings.maintenance_policies is set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maintenancePolicyNames")]
+        public virtual System.Collections.Generic.IDictionary<string, string> MaintenancePolicyNames { get; set; }
+
+        /// <summary>
+        /// The MaintenanceSchedule contains the scheduling information of published maintenance schedule with same key
+        /// as software_versions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maintenanceSchedules")]
+        public virtual System.Collections.Generic.IDictionary<string, MaintenanceSchedule> MaintenanceSchedules { get; set; }
+
+        /// <summary>Optional. The MaintenanceSettings associated with instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maintenanceSettings")]
+        public virtual MaintenanceSettings MaintenanceSettings { get; set; }
+
+        /// <summary>
+        /// Unique name of the resource. It uses the form:
+        /// `projects/{project_number}/locations/{location_id}/instances/{instance_id}` Note: This name is passed,
+        /// stored and logged across the rollout system. So use of consumer project_id or any other consumer PII in the
+        /// name is strongly discouraged for wipeout (go/wipeout) compliance. See
+        /// go/elysium/project_ids#storage-guidance for more details.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Optional. notification_parameter are information that service producers may like to include that is not
+        /// relevant to Rollout. This parameter will only be passed to Gamma and Cloud Logging for notification/logging
+        /// purpose.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notificationParameters")]
+        public virtual System.Collections.Generic.IDictionary<string, NotificationParameter> NotificationParameters { get; set; }
+
+        /// <summary>
+        /// Output only. Custom string attributes used primarily to expose producer-specific information in monitoring
+        /// dashboards. See go/get-instance-metadata.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("producerMetadata")]
+        public virtual System.Collections.Generic.IDictionary<string, string> ProducerMetadata { get; set; }
+
+        /// <summary>
+        /// Output only. The list of data plane resources provisioned for this instance, e.g. compute VMs. See
+        /// go/get-instance-metadata.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("provisionedResources")]
+        public virtual System.Collections.Generic.IList<ProvisionedResource> ProvisionedResources { get; set; }
+
+        /// <summary>
+        /// Link to the SLM instance template. Only populated when updating SLM instances via SSA's Actuation service
+        /// adaptor. Service producers with custom control plane (e.g. Cloud SQL) doesn't need to populate this field.
+        /// Instead they should use software_versions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("slmInstanceTemplate")]
+        public virtual string SlmInstanceTemplate { get; set; }
+
+        /// <summary>
+        /// Output only. SLO metadata for instance classification in the Standardized dataplane SLO platform. See
+        /// go/cloud-ssa-standard-slo for feature description.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sloMetadata")]
+        public virtual SloMetadata SloMetadata { get; set; }
+
+        /// <summary>
+        /// Software versions that are used to deploy this instance. This can be mutated by rollout services.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("softwareVersions")]
+        public virtual System.Collections.Generic.IDictionary<string, string> SoftwareVersions { get; set; }
+
+        /// <summary>
+        /// Output only. Current lifecycle state of the resource (e.g. if it's being created or ready to use).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Output only. ID of the associated GCP tenant project. See go/get-instance-metadata.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tenantProjectId")]
+        public virtual string TenantProjectId { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. Timestamp when the resource was last modified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>JsonSchema representation of schema metadata</summary>
     public class JsonSchema : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1993,6 +2277,382 @@ namespace Google.Apis.Connectors.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>LINT.IfChange Defines policies to service maintenance events.</summary>
+    public class MaintenancePolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time when the resource was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Optional. Description of what this policy is for. Create/Update methods return INVALID_ARGUMENT if the
+        /// length is greater than 512.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Optional. Resource labels to represent user provided metadata. Each label is a key-value pair, where both
+        /// the key and the value are arbitrary strings provided by the user.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Required. MaintenancePolicy name using the form:
+        /// `projects/{project_id}/locations/{location_id}/maintenancePolicies/{maintenance_policy_id}` where
+        /// {project_id} refers to a GCP consumer project ID, {location_id} refers to a GCP region/zone,
+        /// {maintenance_policy_id} must be 1-63 characters long and match the regular expression
+        /// `[a-z0-9]([-a-z0-9]*[a-z0-9])?`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Optional. The state of the policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Maintenance policy applicable to instance update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updatePolicy")]
+        public virtual UpdatePolicy UpdatePolicy { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The time when the resource was updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Maintenance schedule which is exposed to customer and potentially end user, indicating published upcoming future
+    /// maintenance schedule
+    /// </summary>
+    public class MaintenanceSchedule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// This field is deprecated, and will be always set to true since reschedule can happen multiple times now.
+        /// This field should not be removed until all service producers remove this for their customers.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("canReschedule")]
+        public virtual System.Nullable<bool> CanReschedule { get; set; }
+
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>The scheduled end time for the maintenance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// The rollout management policy this maintenance schedule is associated with. When doing reschedule update
+        /// request, the reschedule should be against this given policy.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rolloutManagementPolicy")]
+        public virtual string RolloutManagementPolicy { get; set; }
+
+        private string _scheduleDeadlineTimeRaw;
+
+        private object _scheduleDeadlineTime;
+
+        /// <summary>
+        /// schedule_deadline_time is the time deadline any schedule start time cannot go beyond, including reschedule.
+        /// It's normally the initial schedule start time plus maintenance window length (1 day or 1 week). Maintenance
+        /// cannot be scheduled to start beyond this deadline.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scheduleDeadlineTime")]
+        public virtual string ScheduleDeadlineTimeRaw
+        {
+            get => _scheduleDeadlineTimeRaw;
+            set
+            {
+                _scheduleDeadlineTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _scheduleDeadlineTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ScheduleDeadlineTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ScheduleDeadlineTimeDateTimeOffset instead.")]
+        public virtual object ScheduleDeadlineTime
+        {
+            get => _scheduleDeadlineTime;
+            set
+            {
+                _scheduleDeadlineTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _scheduleDeadlineTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="ScheduleDeadlineTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ScheduleDeadlineTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ScheduleDeadlineTimeRaw);
+            set => ScheduleDeadlineTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _startTimeRaw;
+
+        private object _startTime;
+
+        /// <summary>The scheduled start time for the maintenance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Maintenance settings associated with instance. Allows service producers and end users to assign settings that
+    /// controls maintenance on this instance.
+    /// </summary>
+    public class MaintenanceSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Exclude instance from maintenance. When true, rollout service will not attempt maintenance on the
+        /// instance. Rollout service will include the instance in reported rollout progress as not attempted.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exclude")]
+        public virtual System.Nullable<bool> Exclude { get; set; }
+
+        /// <summary>Optional. If the update call is triggered from rollback, set the value as true.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isRollback")]
+        public virtual System.Nullable<bool> IsRollback { get; set; }
+
+        /// <summary>
+        /// Optional. The MaintenancePolicies that have been attached to the instance. The key must be of the type name
+        /// of the oneof policy name defined in MaintenancePolicy, and the embedded policy must define the same policy
+        /// type. For details, please refer to go/mr-user-guide. Should not be set if maintenance_policy_names is set.
+        /// If only the name is needed, then only populate MaintenancePolicy.name.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maintenancePolicies")]
+        public virtual System.Collections.Generic.IDictionary<string, MaintenancePolicy> MaintenancePolicies { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>MaintenanceWindow definition.</summary>
+    public class MaintenanceWindow : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Daily cycle.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dailyCycle")]
+        public virtual DailyCycle DailyCycle { get; set; }
+
+        /// <summary>Weekly cycle.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("weeklyCycle")]
+        public virtual WeeklyCycle WeeklyCycle { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Node information for custom per-node SLO implementations. SSA does not support per-node SLO, but producers can
+    /// populate per-node information in SloMetadata for custom precomputations. SSA Eligibility Exporter will emit
+    /// per-node metric based on this information.
+    /// </summary>
+    public class NodeSloMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The location of the node, if different from instance location.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
+        /// <summary>The id of the node. This should be equal to SaasInstanceNode.node_id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeId")]
+        public virtual string NodeId { get; set; }
+
+        /// <summary>
+        /// If present, this will override eligibility for the node coming from instance or exclusions for specified
+        /// SLIs.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("perSliEligibility")]
+        public virtual PerSliSloEligibility PerSliEligibility { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains notification related data.</summary>
+    public class NotificationParameter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Array of string values. e.g. instance's replica information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("values")]
+        public virtual System.Collections.Generic.IList<string> Values { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>PerSliSloEligibility is a mapping from an SLI name to eligibility.</summary>
+    public class PerSliSloEligibility : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// An entry in the eligibilities map specifies an eligibility for a particular SLI for the given instance. The
+        /// SLI key in the name must be a valid SLI name specified in the Eligibility Exporter binary flags otherwise an
+        /// error will be emitted by Eligibility Exporter and the oncaller will be alerted. If an SLI has been defined
+        /// in the binary flags but the eligibilities map does not contain it, the corresponding SLI time series will
+        /// not be emitted by the Eligibility Exporter. This ensures a smooth rollout and compatibility between the data
+        /// produced by different versions of the Eligibility Exporters. If eligibilities map contains a key for an SLI
+        /// which has not been declared in the binary flags, there will be an error message emitted in the Eligibility
+        /// Exporter log and the metric for the SLI in question will not be emitted.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eligibilities")]
+        public virtual System.Collections.Generic.IDictionary<string, SloEligibility> Eligibilities { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes provisioned dataplane resources.</summary>
+    public class ProvisionedResource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Type of the resource. This can be either a GCP resource or a custom one (e.g. another cloud provider's VM).
+        /// For GCP compute resources use singular form of the names listed in GCP compute API documentation
+        /// (https://cloud.google.com/compute/docs/reference/rest/v1/), prefixed with 'compute-', for example:
+        /// 'compute-instance', 'compute-disk', 'compute-autoscaler'.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
+        public virtual string ResourceType { get; set; }
+
+        /// <summary>URL identifying the resource, e.g. "https://www.googleapis.com/compute/v1/projects/...)".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceUrl")]
+        public virtual string ResourceUrl { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A wrapper around the SQL query statement. This is needed so that the JSON representation of
     /// ExecuteSqlQueryRequest has the following format: `{"query":"select *"}`.
@@ -2091,12 +2751,143 @@ namespace Google.Apis.Connectors.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configure the schedule.</summary>
+    public class Schedule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Allows to define schedule that runs specified day of the week.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("day")]
+        public virtual string Day { get; set; }
+
+        /// <summary>Output only. Duration of the time window, set by service producer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("duration")]
+        public virtual object Duration { get; set; }
+
+        /// <summary>Time within the window to start the operations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual TimeOfDay StartTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// SloEligibility is a tuple containing eligibility value: true if an instance is eligible for SLO calculation or
+    /// false if it should be excluded from all SLO-related calculations along with a user-defined reason.
+    /// </summary>
+    public class SloEligibility : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether an instance is eligible or ineligible.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eligible")]
+        public virtual System.Nullable<bool> Eligible { get; set; }
+
+        /// <summary>
+        /// User-defined reason for the current value of instance eligibility. Usually, this can be directly mapped to
+        /// the internal state. An empty reason is allowed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reason")]
+        public virtual string Reason { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>SloMetadata contains resources required for proper SLO classification of the instance.</summary>
+    public class SloMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. List of nodes. Some producers need to use per-node metadata to calculate SLO. This field allows
+        /// such producers to publish per-node SLO meta data, which will be consumed by SSA Eligibility Exporter and
+        /// published in the form of per node metric to Monarch.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodes")]
+        public virtual System.Collections.Generic.IList<NodeSloMetadata> Nodes { get; set; }
+
+        /// <summary>Optional. Multiple per-instance SLI eligibilities which apply for individual SLIs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("perSliEligibility")]
+        public virtual PerSliSloEligibility PerSliEligibility { get; set; }
+
+        /// <summary>
+        /// Name of the SLO tier the Instance belongs to. This name will be expected to match the tiers specified in the
+        /// service SLO configuration. Field is mandatory and must not be empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tier")]
+        public virtual string Tier { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API
+    /// may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`.
+    /// </summary>
+    public class TimeOfDay : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for
+        /// scenarios like business closing time.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hours")]
+        public virtual System.Nullable<int> Hours { get; set; }
+
+        /// <summary>Minutes of hour of day. Must be from 0 to 59.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minutes")]
+        public virtual System.Nullable<int> Minutes { get; set; }
+
+        /// <summary>Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nanos")]
+        public virtual System.Nullable<int> Nanos { get; set; }
+
+        /// <summary>
+        /// Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows
+        /// leap-seconds.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("seconds")]
+        public virtual System.Nullable<int> Seconds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for EntityService.UpdateEntitiesWithConditions</summary>
     public class UpdateEntitiesWithConditionsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Response returned by the external system.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
         public virtual System.Collections.Generic.IDictionary<string, object> Response { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Maintenance policy applicable to instance updates.</summary>
+    public class UpdatePolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Relative scheduling channel applied to resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("channel")]
+        public virtual string Channel { get; set; }
+
+        /// <summary>
+        /// Deny Maintenance Period that is applied to resource to indicate when maintenance is forbidden. The protocol
+        /// supports zero-to-many such periods, but the current SLM Rollout implementation only supports zero-to-one.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("denyMaintenancePeriods")]
+        public virtual System.Collections.Generic.IList<DenyMaintenancePeriod> DenyMaintenancePeriods { get; set; }
+
+        /// <summary>Optional. Maintenance window that is applied to resources covered by this policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("window")]
+        public virtual MaintenanceWindow Window { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Time window specified for weekly operations.</summary>
+    public class WeeklyCycle : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>User can specify multiple windows in a week. Minimum of 1 window.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schedule")]
+        public virtual System.Collections.Generic.IList<Schedule> Schedule { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

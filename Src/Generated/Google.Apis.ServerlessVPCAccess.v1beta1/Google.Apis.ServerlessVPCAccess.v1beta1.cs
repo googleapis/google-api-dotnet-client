@@ -1,4 +1,4 @@
-// Copyright 2023 Google LLC
+// Copyright 2024 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -875,9 +875,85 @@ namespace Google.Apis.ServerlessVPCAccess.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("connectedProjects")]
         public virtual System.Collections.Generic.IList<string> ConnectedProjects { get; set; }
 
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The creation time of the connector.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
         /// <summary>The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipCidrRange")]
         public virtual string IpCidrRange { get; set; }
+
+        private string _lastRestartTimeRaw;
+
+        private object _lastRestartTime;
+
+        /// <summary>Output only. The last restart time of the connector.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastRestartTime")]
+        public virtual string LastRestartTimeRaw
+        {
+            get => _lastRestartTimeRaw;
+            set
+            {
+                _lastRestartTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastRestartTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastRestartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastRestartTimeDateTimeOffset instead.")]
+        public virtual object LastRestartTime
+        {
+            get => _lastRestartTime;
+            set
+            {
+                _lastRestartTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastRestartTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastRestartTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastRestartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastRestartTimeRaw);
+            set => LastRestartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>Machine type of VM Instance underlying connector. Default is e2-micro</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("machineType")]

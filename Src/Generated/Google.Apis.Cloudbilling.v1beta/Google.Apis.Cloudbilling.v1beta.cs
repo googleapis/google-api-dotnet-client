@@ -1,4 +1,4 @@
-// Copyright 2023 Google LLC
+// Copyright 2024 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -768,6 +768,7 @@ namespace Google.Apis.Cloudbilling.v1beta
             {
                 this.service = service;
                 Price = new PriceResource(service);
+                Prices = new PricesResource(service);
             }
 
             /// <summary>Gets the Price resource.</summary>
@@ -845,6 +846,122 @@ namespace Google.Apis.Cloudbilling.v1beta
                         RequestParameters.Add("currencyCode", new Google.Apis.Discovery.Parameter
                         {
                             Name = "currencyCode",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the Prices resource.</summary>
+            public virtual PricesResource Prices { get; }
+
+            /// <summary>The "prices" collection of methods.</summary>
+            public class PricesResource
+            {
+                private const string Resource = "prices";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public PricesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Lists the latest prices for SKUs available to your Cloud Billing account.</summary>
+                /// <param name="parent">
+                /// Required. To list all Billing Account SKUs, use `-` as the SKU ID. Format:
+                /// `billingAccounts/{billing_account}/skus/-` Note: Specifying an actual SKU resource id will return a
+                /// collection of one Billing Account Price.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists the latest prices for SKUs available to your Cloud Billing account.</summary>
+                public class ListRequest : CloudbillingBaseServiceRequest<Google.Apis.Cloudbilling.v1beta.Data.GoogleCloudBillingBillingaccountpricesV1betaListBillingAccountPricesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. To list all Billing Account SKUs, use `-` as the SKU ID. Format:
+                    /// `billingAccounts/{billing_account}/skus/-` Note: Specifying an actual SKU resource id will
+                    /// return a collection of one Billing Account Price.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. ISO-4217 currency code for the price. If not specified, currency of billing account
+                    /// will be used.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("currencyCode", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string CurrencyCode { get; set; }
+
+                    /// <summary>
+                    /// Optional. Maximum number of billing account price to return. Results may return fewer than this
+                    /// value. Default value is 50 and maximum value is 5000.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. Page token received from a previous ListBillingAccountPrices call to retrieve the next
+                    /// page of results. If this field is empty, the first page is returned.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta/{+parent}/prices";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^billingAccounts/[^/]+/skus/[^/]+$",
+                        });
+                        RequestParameters.Add("currencyCode", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "currencyCode",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1348,6 +1465,7 @@ namespace Google.Apis.Cloudbilling.v1beta
         {
             this.service = service;
             Price = new PriceResource(service);
+            Prices = new PricesResource(service);
         }
 
         /// <summary>Gets the Price resource.</summary>
@@ -1418,6 +1536,119 @@ namespace Google.Apis.Cloudbilling.v1beta
                     RequestParameters.Add("currencyCode", new Google.Apis.Discovery.Parameter
                     {
                         Name = "currencyCode",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+        }
+
+        /// <summary>Gets the Prices resource.</summary>
+        public virtual PricesResource Prices { get; }
+
+        /// <summary>The "prices" collection of methods.</summary>
+        public class PricesResource
+        {
+            private const string Resource = "prices";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public PricesResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>Lists the latest prices for all SKUs.</summary>
+            /// <param name="parent">
+            /// Required. To list the prices for all SKUs, use `-` as the SKU ID. Format: `skus/-` Specifying a specific
+            /// SKU ID returns a collection with one Price object for the SKU.
+            /// </param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(this.service, parent);
+            }
+
+            /// <summary>Lists the latest prices for all SKUs.</summary>
+            public class ListRequest : CloudbillingBaseServiceRequest<Google.Apis.Cloudbilling.v1beta.Data.GoogleCloudBillingPricesV1betaListPricesResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. To list the prices for all SKUs, use `-` as the SKU ID. Format: `skus/-` Specifying a
+                /// specific SKU ID returns a collection with one Price object for the SKU.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// Optional. ISO-4217 currency code for the price. If not specified, USD will be used.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("currencyCode", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string CurrencyCode { get; set; }
+
+                /// <summary>
+                /// Optional. Maximum number of prices to return. Results may return fewer than this value. Default
+                /// value is 50 and maximum value is 5000.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// Optional. Page token received from a previous ListPrices call to retrieve the next page of results.
+                /// If this field is empty, the first page is returned.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta/{+parent}/prices";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^skus/[^/]+$",
+                    });
+                    RequestParameters.Add("currencyCode", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "currencyCode",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1499,16 +1730,16 @@ namespace Google.Apis.Cloudbilling.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Specifies usage for Cloud CDN egress.</summary>
+    /// <summary>Specifies usage for Cloud CDN Data Transfer.</summary>
     public class CloudCdnEgressWorkload : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The destination for the cache egress charges.</summary>
+        /// <summary>The destination for the cache data transfer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cacheEgressDestination")]
         public virtual string CacheEgressDestination { get; set; }
 
         /// <summary>
-        /// Cache egress usage. The rate of data cache egressed in the destination. For example : units such as "GiBy/s"
-        /// or "TBy/mo".
+        /// Cache data transfer usage. The rate of data cache transferred to the destination. Use units such as GiBy/s
+        /// or TiBy/mo, based on [The Unified Code for Units of Measure](https://ucum.org/ucum.html) standard.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cacheEgressRate")]
         public virtual Usage CacheEgressRate { get; set; }
@@ -1550,22 +1781,23 @@ namespace Google.Apis.Cloudbilling.v1beta.Data
     }
 
     /// <summary>
-    /// The interconnect egress only includes the Interconnect Egress. Please use the standard egress traffic interface
-    /// to specify your standard egress usage.
+    /// Includes the estimate for Interconnect Data Transfer only. To specify usage for data transfer between VMs and
+    /// internet end-points, use the Standard Tier Internet Data Transfer interface.
     /// </summary>
     public class CloudInterconnectEgressWorkload : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Data egress usage. This usage applies when you move or copy data from one Google Cloud service to another
-        /// service. Expected units such as "GiBy/s, By/s, etc."
+        /// Outbound data transfer usage. This usage applies when you move or copy data from one Google Cloud service to
+        /// another service. The units are GiBy/s, By/s, and so on, based on [The Unified Code for Units of
+        /// Measure](https://ucum.org/ucum.html) standard.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("egressRate")]
         public virtual Usage EgressRate { get; set; }
 
         /// <summary>
         /// Locations in the [Interconnect connection location
-        /// table](https://cloud.google.com/vpc/network-pricing#interconnect-pricing). This is the interconnect egress
-        /// charges.
+        /// table](https://cloud.google.com/vpc/network-pricing#interconnect-pricing). These are the Interconnect Data
+        /// Transfer charges.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("interconnectConnectionLocation")]
         public virtual string InterconnectConnectionLocation { get; set; }
@@ -1601,9 +1833,9 @@ namespace Google.Apis.Cloudbilling.v1beta.Data
     }
 
     /// <summary>
-    /// Specification of a network type. Network egress within Google Cloud applies when you move or copy data from one
-    /// Cloud Storage bucket to another or when another Google Cloud service accesses data in your Cloud Storage
-    /// bucket.This includes the network egress within Google Cloud and the general network usage.
+    /// Specification of a network type. Network data transfer within Google Cloud applies when you move or copy data
+    /// from one Cloud Storage bucket to another or when another Google Cloud service accesses data in your Cloud
+    /// Storage bucket.This includes the network data transfer within Google Cloud and the general network usage.
     /// </summary>
     public class CloudStorageEgressWorkload : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1612,9 +1844,10 @@ namespace Google.Apis.Cloudbilling.v1beta.Data
         public virtual string DestinationContinent { get; set; }
 
         /// <summary>
-        /// Egress usage rate. This usage applies when you move or copy data from one Cloud Storage bucket to another or
-        /// when another Google Cloud service accesses data in your Cloud Storage bucket. Expected units such as
-        /// "GiBy/s, By/s, ..."
+        /// Data transfer usage rate. This usage applies when you move or copy data from one Cloud Storage bucket to
+        /// another or when another Google Cloud service accesses data in your Cloud Storage bucket. The expected units
+        /// are GiBy/s, By/s, and so on, based on [The Unified Code for Units of Measure](https://ucum.org/ucum.html)
+        /// standard.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("egressRate")]
         public virtual Usage EgressRate { get; set; }
@@ -1632,13 +1865,14 @@ namespace Google.Apis.Cloudbilling.v1beta.Data
     {
         /// <summary>
         /// Data retrieval usage. A retrieval cost applies when data or metadata is read, copied, or rewritten . For
-        /// example: units such as "GiBy/s" or "By/s".
+        /// example: units such as "GiB/s" or "B/s".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataRetrieval")]
         public virtual Usage DataRetrieval { get; set; }
 
         /// <summary>
-        /// Data storage usage. The amount of data stored in buckets. For example: units such as "GiBy/s" or "TBy/mo".
+        /// Data storage usage. The amount of data stored in buckets. For example: units such as GiBy/s or TiBy/mo,
+        /// based on [The Unified Code for Units of Measure](https://ucum.org/ucum.html) standard.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataStored")]
         public virtual Usage DataStored { get; set; }
@@ -2140,6 +2374,24 @@ namespace Google.Apis.Cloudbilling.v1beta.Data
         /// <summary>SKU group where the floating discount comes from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skuGroup")]
         public virtual string SkuGroup { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for ListBillingAccountPrices.</summary>
+    public class GoogleCloudBillingBillingaccountpricesV1betaListBillingAccountPricesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The returned billing account prices.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("billingAccountPrices")]
+        public virtual System.Collections.Generic.IList<GoogleCloudBillingBillingaccountpricesV1betaBillingAccountPrice> BillingAccountPrices { get; set; }
+
+        /// <summary>
+        /// Token that can be sent as `page_token` in the subsequent request to retrieve the next page. If this field is
+        /// empty, there are no subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2698,6 +2950,24 @@ namespace Google.Apis.Cloudbilling.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for ListPrices.</summary>
+    public class GoogleCloudBillingPricesV1betaListPricesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Token that can be sent as `page_token` in the subsequent request to retrieve the next page. If this field is
+        /// empty, there are no subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The returned publicly listed prices.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("prices")]
+        public virtual System.Collections.Generic.IList<GoogleCloudBillingPricesV1betaPrice> Prices { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Encapsulates the latest price for a SKU.</summary>
     public class GoogleCloudBillingPricesV1betaPrice : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2986,21 +3256,21 @@ namespace Google.Apis.Cloudbilling.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Egress traffic between two regions.</summary>
+    /// <summary>Data transfer between two regions.</summary>
     public class InterRegionEgress : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Which [region](https://cloud.google.com/compute/docs/regions-zones) the egress data goes to.
+        /// Which [region](https://cloud.google.com/compute/docs/regions-zones) the data is transferred to.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationRegion")]
         public virtual string DestinationRegion { get; set; }
 
-        /// <summary>VM to VM egress usage. Expected units such as "GiBy/s, By/s, etc."</summary>
+        /// <summary>VM to VM data transfer usage. The expected units such are GiBy/s, By/s, and so on.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("egressRate")]
         public virtual Usage EgressRate { get; set; }
 
         /// <summary>
-        /// Which [region](https://cloud.google.com/compute/docs/regions-zones) the egress data comes from.
+        /// Which [region](https://cloud.google.com/compute/docs/regions-zones) the data is transferred from.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceRegion")]
         public virtual string SourceRegion { get; set; }
@@ -3010,12 +3280,12 @@ namespace Google.Apis.Cloudbilling.v1beta.Data
     }
 
     /// <summary>
-    /// Egress traffic within the same region. When source region and destination region are in the same zone, using the
-    /// internal IP addresses, there isn't any egress charge.
+    /// Data transfer within the same region. When the source region and destination region are in the same zone, using
+    /// internal IP addresses, there isn't any charge for data transfer.
     /// </summary>
     public class IntraRegionEgress : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>VM to VM egress usage. Expected units such as "GiBy/s, By/s, etc."</summary>
+        /// <summary>VM to VM data transfer usage. The expected are GiBy/s, By/s, and so on.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("egressRate")]
         public virtual Usage EgressRate { get; set; }
 
@@ -3117,20 +3387,21 @@ namespace Google.Apis.Cloudbilling.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Specify Premium Tier Internet egress networking.</summary>
+    /// <summary>Specify a Premium Tier Internet Data Transfer networking workload.</summary>
     public class PremiumTierEgressWorkload : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Where the data is sent to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationContinent")]
         public virtual string DestinationContinent { get; set; }
 
-        /// <summary>Premium Tier egress usage. Expected units such as "GiBy/s, By/s, etc."</summary>
+        /// <summary>
+        /// Premium Tier Data Transfer usage. The expected units are GiBy/s, By/s, and so on, based on [The Unified Code
+        /// for Units of Measure](https://ucum.org/ucum.html) standard.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("egressRate")]
         public virtual Usage EgressRate { get; set; }
 
-        /// <summary>
-        /// Which [region](https://cloud.google.com/compute/docs/regions-zones) the egress data comes from.
-        /// </summary>
+        /// <summary>Which [region](https://cloud.google.com/compute/docs/regions-zones) the data comes from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceRegion")]
         public virtual string SourceRegion { get; set; }
 
@@ -3302,15 +3573,18 @@ namespace Google.Apis.Cloudbilling.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Specify Standard Tier Internet egress networking.</summary>
+    /// <summary>Specify Standard Tier Internet Data Transfer.</summary>
     public class StandardTierEgressWorkload : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Standard tier egress usage. Expected units such as "GiBy/s, By/s, etc."</summary>
+        /// <summary>
+        /// Standard Tier Data Transfer usage. The expected units are GiBy/s, By/s, and so on, based on the [The Unified
+        /// Code for Units of Measure](https://ucum.org/ucum.html) standard.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("egressRate")]
         public virtual Usage EgressRate { get; set; }
 
         /// <summary>
-        /// Which [region](https://cloud.google.com/compute/docs/regions-zones) the egress data comes from.
+        /// Which [region](https://cloud.google.com/compute/docs/regions-zones) the data is transferred from.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceRegion")]
         public virtual string SourceRegion { get; set; }
@@ -3455,7 +3729,7 @@ namespace Google.Apis.Cloudbilling.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Specify VM to VM egress.</summary>
+    /// <summary>Specify VM to VM data transfer.</summary>
     public class VmToVmEgressWorkload : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("interRegionEgress")]
@@ -3475,7 +3749,7 @@ namespace Google.Apis.Cloudbilling.v1beta.Data
     /// </summary>
     public class Workload : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Usage on Google Cloud CDN Egress.</summary>
+        /// <summary>Usage on Google Cloud CDN Data Transfer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudCdnEgressWorkload")]
         public virtual CloudCdnEgressWorkload CloudCdnEgressWorkload { get; set; }
 
@@ -3483,7 +3757,7 @@ namespace Google.Apis.Cloudbilling.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cloudCdnWorkload")]
         public virtual CloudCdnWorkload CloudCdnWorkload { get; set; }
 
-        /// <summary>Usage on Google Cloud Interconnect Egress.</summary>
+        /// <summary>Usage on Google Cloud Interconnect Data Transfer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudInterconnectEgressWorkload")]
         public virtual CloudInterconnectEgressWorkload CloudInterconnectEgressWorkload { get; set; }
 
@@ -3491,7 +3765,7 @@ namespace Google.Apis.Cloudbilling.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cloudInterconnectWorkload")]
         public virtual CloudInterconnectWorkload CloudInterconnectWorkload { get; set; }
 
-        /// <summary>Usage on a cloud storage egress.</summary>
+        /// <summary>Usage on Cloud Storage Data Transfer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudStorageEgressWorkload")]
         public virtual CloudStorageEgressWorkload CloudStorageEgressWorkload { get; set; }
 
@@ -3510,15 +3784,15 @@ namespace Google.Apis.Cloudbilling.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Usage on Premium Tier Internet Egress.</summary>
+        /// <summary>Usage on Premium Tier Internet Data Transfer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("premiumTierEgressWorkload")]
         public virtual PremiumTierEgressWorkload PremiumTierEgressWorkload { get; set; }
 
-        /// <summary>Usage on Standard Tier Internet Egress.</summary>
+        /// <summary>Usage on Standard Tier Internet Data Transfer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("standardTierEgressWorkload")]
         public virtual StandardTierEgressWorkload StandardTierEgressWorkload { get; set; }
 
-        /// <summary>Usage on Vm to Vm Egress.</summary>
+        /// <summary>Usage on VM to VM Data Transfer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vmToVmEgressWorkload")]
         public virtual VmToVmEgressWorkload VmToVmEgressWorkload { get; set; }
 

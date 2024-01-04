@@ -1,4 +1,4 @@
-// Copyright 2023 Google LLC
+// Copyright 2024 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -6461,6 +6461,10 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enableMetrics")]
         public virtual System.Nullable<bool> EnableMetrics { get; set; }
 
+        /// <summary>Enable Relay component</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableRelay")]
+        public virtual System.Nullable<bool> EnableRelay { get; set; }
+
         /// <summary>Method used to make Relay available</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relayMode")]
         public virtual string RelayMode { get; set; }
@@ -6706,6 +6710,16 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Autoscaled rollout policy uses cluster autoscaler during blue-green upgrades to scale both the green and blue
+    /// pools.
+    /// </summary>
+    public class AutoscaledRolloutPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Deprecated.</summary>
     public class AvailableVersion : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6814,6 +6828,10 @@ namespace Google.Apis.Container.v1beta1.Data
     /// <summary>Settings for blue-green upgrade.</summary>
     public class BlueGreenSettings : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Autoscaled policy for cluster autoscaler enabled blue-green upgrade.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoscaledRolloutPolicy")]
+        public virtual AutoscaledRolloutPolicy AutoscaledRolloutPolicy { get; set; }
+
         /// <summary>
         /// Time needed after draining entire blue pool. After this period, blue pool will be cleaned up.
         /// </summary>

@@ -1,4 +1,4 @@
-// Copyright 2023 Google LLC
+// Copyright 2024 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -1952,6 +1952,12 @@ namespace Google.Apis.ChromePolicy.v1.Data
         /// <summary>Output only. URI to related support article for this schema.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("supportUri")]
         public virtual string SupportUri { get; set; }
+
+        /// <summary>
+        /// Output only. List indicates that the policy will only apply to devices/users on these platforms.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("supportedPlatforms")]
+        public virtual System.Collections.Generic.IList<string> SupportedPlatforms { get; set; }
 
         /// <summary>Output only. Information about applicable target resources for the policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validTargetResources")]

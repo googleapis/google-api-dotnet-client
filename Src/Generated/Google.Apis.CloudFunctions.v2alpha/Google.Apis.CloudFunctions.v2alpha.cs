@@ -1,4 +1,4 @@
-// Copyright 2023 Google LLC
+// Copyright 2024 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -2009,6 +2009,10 @@ namespace Google.Apis.CloudFunctions.v2alpha.Data
             set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>The operation type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operationType")]
+        public virtual string OperationType { get; set; }
+
         /// <summary>The original request that started the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestResource")]
         public virtual System.Collections.Generic.IDictionary<string, object> RequestResource { get; set; }
@@ -2190,6 +2194,10 @@ namespace Google.Apis.CloudFunctions.v2alpha.Data
             set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>The operation type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operationType")]
+        public virtual string OperationType { get; set; }
+
         /// <summary>The original request that started the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestResource")]
         public virtual System.Collections.Generic.IDictionary<string, object> RequestResource { get; set; }
@@ -2370,6 +2378,10 @@ namespace Google.Apis.CloudFunctions.v2alpha.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
             set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The operation type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operationType")]
+        public virtual string OperationType { get; set; }
 
         /// <summary>The original request that started the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestResource")]

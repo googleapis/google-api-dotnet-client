@@ -1,4 +1,4 @@
-// Copyright 2023 Google LLC
+// Copyright 2024 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -4511,6 +4511,13 @@ namespace Google.Apis.ServiceManagement.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("protoReferenceDocumentationUri")]
         public virtual string ProtoReferenceDocumentationUri { get; set; }
+
+        /// <summary>
+        /// Optional link to REST reference documentation. Example:
+        /// https://cloud.google.com/pubsub/lite/docs/reference/rest
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("restReferenceDocumentationUri")]
+        public virtual string RestReferenceDocumentationUri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

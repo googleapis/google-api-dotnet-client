@@ -1,4 +1,4 @@
-// Copyright 2023 Google LLC
+// Copyright 2024 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -5059,7 +5059,10 @@ namespace Google.Apis.Vision.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("spoof")]
         public virtual string Spoof { get; set; }
 
-        /// <summary>Likelihood that this image contains violent content.</summary>
+        /// <summary>
+        /// Likelihood that this image contains violent content. Violent content may include death, serious harm, or
+        /// injury to individuals or groups of individuals.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("violence")]
         public virtual string Violence { get; set; }
 
@@ -6313,7 +6316,10 @@ namespace Google.Apis.Vision.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("spoof")]
         public virtual string Spoof { get; set; }
 
-        /// <summary>Likelihood that this image contains violent content.</summary>
+        /// <summary>
+        /// Likelihood that this image contains violent content. Violent content may include death, serious harm, or
+        /// injury to individuals or groups of individuals.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("violence")]
         public virtual string Violence { get; set; }
 
@@ -7711,7 +7717,10 @@ namespace Google.Apis.Vision.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("spoof")]
         public virtual string Spoof { get; set; }
 
-        /// <summary>Likelihood that this image contains violent content.</summary>
+        /// <summary>
+        /// Likelihood that this image contains violent content. Violent content may include death, serious harm, or
+        /// injury to individuals or groups of individuals.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("violence")]
         public virtual string Violence { get; set; }
 
@@ -9176,7 +9185,10 @@ namespace Google.Apis.Vision.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("spoof")]
         public virtual string Spoof { get; set; }
 
-        /// <summary>Likelihood that this image contains violent content.</summary>
+        /// <summary>
+        /// Likelihood that this image contains violent content. Violent content may include death, serious harm, or
+        /// injury to individuals or groups of individuals.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("violence")]
         public virtual string Violence { get; set; }
 
@@ -10533,7 +10545,10 @@ namespace Google.Apis.Vision.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("spoof")]
         public virtual string Spoof { get; set; }
 
-        /// <summary>Likelihood that this image contains violent content.</summary>
+        /// <summary>
+        /// Likelihood that this image contains violent content. Violent content may include death, serious harm, or
+        /// injury to individuals or groups of individuals.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("violence")]
         public virtual string Violence { get; set; }
 

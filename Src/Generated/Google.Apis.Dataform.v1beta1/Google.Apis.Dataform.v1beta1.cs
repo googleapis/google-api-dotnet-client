@@ -1,4 +1,4 @@
-// Copyright 2023 Google LLC
+// Copyright 2024 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -6087,6 +6087,10 @@ namespace Google.Apis.Dataform.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cronSchedule")]
         public virtual string CronSchedule { get; set; }
+
+        /// <summary>Optional. Disables automatic creation of compilation results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
+        public virtual System.Nullable<bool> Disabled { get; set; }
 
         /// <summary>
         /// Required. Git commit/tag/branch name at which the repository should be compiled. Must exist in the remote

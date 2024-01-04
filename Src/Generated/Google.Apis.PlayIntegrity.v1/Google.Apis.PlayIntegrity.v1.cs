@@ -1,4 +1,4 @@
-// Copyright 2023 Google LLC
+// Copyright 2024 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -433,6 +433,10 @@ namespace Google.Apis.PlayIntegrity.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deviceRecognitionVerdict")]
         public virtual System.Collections.Generic.IList<string> DeviceRecognitionVerdict { get; set; }
 
+        /// <summary>Details about the device activity of the device the app is running on.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recentDeviceActivity")]
+        public virtual RecentDeviceActivity RecentDeviceActivity { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -449,6 +453,20 @@ namespace Google.Apis.PlayIntegrity.v1.Data
         /// <summary>The evaluation of Play Protect verdict.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("playProtectVerdict")]
         public virtual string PlayProtectVerdict { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Recent device activity can help developers identify devices that have exhibited hyperactive attestation
+    /// activity, which could be a sign of an attack or token farming.
+    /// </summary>
+    public class RecentDeviceActivity : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Indicates the activity level of the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceActivityLevel")]
+        public virtual string DeviceActivityLevel { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

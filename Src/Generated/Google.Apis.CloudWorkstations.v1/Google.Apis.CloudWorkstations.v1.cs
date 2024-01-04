@@ -1,4 +1,4 @@
-// Copyright 2023 Google LLC
+// Copyright 2024 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -2835,6 +2835,17 @@ namespace Google.Apis.CloudWorkstations.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration options for a custom domain.</summary>
+    public class DomainConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Immutable. Domain used by Workstations for HTTP ingress.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("domain")]
+        public virtual string Domain { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression
     /// language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example
@@ -3860,6 +3871,14 @@ namespace Google.Apis.CloudWorkstations.v1.Data
         public virtual string Host { get; set; }
 
         /// <summary>
+        /// Output only. The name of the Google Cloud KMS encryption key used to encrypt this workstation. The KMS key
+        /// can only be configured in the WorkstationConfig. The expected format is
+        /// `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKey")]
+        public virtual string KmsKey { get; set; }
+
+        /// <summary>
         /// Optional. [Labels](https://cloud.google.com/workstations/docs/label-resources) that are applied to the
         /// workstation and that are also propagated to the underlying Compute Engine resources.
         /// </summary>
@@ -4068,6 +4087,10 @@ namespace Google.Apis.CloudWorkstations.v1.Data
         /// <summary>Optional. Human-readable name for this workstation cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
+
+        /// <summary>Optional. Configuration options for a custom domain.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("domainConfig")]
+        public virtual DomainConfig DomainConfig { get; set; }
 
         /// <summary>
         /// Optional. Checksum computed by the server. May be sent on update and delete requests to make sure that the

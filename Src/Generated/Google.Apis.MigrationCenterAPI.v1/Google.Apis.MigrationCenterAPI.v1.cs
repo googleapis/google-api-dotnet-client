@@ -1,4 +1,4 @@
-// Copyright 2023 Google LLC
+// Copyright 2024 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -5889,6 +5889,10 @@ namespace Google.Apis.MigrationCenterAPI.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(InstallTimeRaw);
             set => InstallTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>License strings associated with the installed application.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("licenses")]
+        public virtual System.Collections.Generic.IList<string> Licenses { get; set; }
 
         /// <summary>Source path.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("path")]

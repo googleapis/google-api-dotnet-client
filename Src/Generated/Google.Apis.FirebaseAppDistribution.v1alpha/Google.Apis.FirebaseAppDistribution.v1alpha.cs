@@ -1,4 +1,4 @@
-// Copyright 2023 Google LLC
+// Copyright 2024 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -593,6 +593,12 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha
                 [Google.Apis.Util.RequestParameterAttribute("mobilesdkAppId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string MobilesdkAppId { get; private set; }
 
+                /// <summary>
+                /// The name of the project, which is the parent of testers Format: `projects/{project_number}`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Project { get; set; }
+
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "getTesterUdids";
 
@@ -611,6 +617,14 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha
                         Name = "mobilesdkAppId",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -906,6 +920,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha
         {
             this.service = service;
             Apps = new AppsResource(service);
+            Testers = new TestersResource(service);
         }
 
         /// <summary>Gets the Apps resource.</summary>
@@ -1284,6 +1299,88 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha
                     RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
                     {
                         Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+        }
+
+        /// <summary>Gets the Testers resource.</summary>
+        public virtual TestersResource Testers { get; }
+
+        /// <summary>The "testers" collection of methods.</summary>
+        public class TestersResource
+        {
+            private const string Resource = "testers";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public TestersResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>Get UDIDs of tester iOS devices in a project</summary>
+            /// <param name="project">
+            /// The name of the project, which is the parent of testers Format: `projects/{project_number}`
+            /// </param>
+            public virtual GetUdidsRequest GetUdids(string project)
+            {
+                return new GetUdidsRequest(this.service, project);
+            }
+
+            /// <summary>Get UDIDs of tester iOS devices in a project</summary>
+            public class GetUdidsRequest : FirebaseAppDistributionBaseServiceRequest<Google.Apis.FirebaseAppDistribution.v1alpha.Data.GoogleFirebaseAppdistroV1alphaGetTesterUdidsResponse>
+            {
+                /// <summary>Constructs a new GetUdids request.</summary>
+                public GetUdidsRequest(Google.Apis.Services.IClientService service, string project) : base(service)
+                {
+                    Project = project;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// The name of the project, which is the parent of testers Format: `projects/{project_number}`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Project { get; private set; }
+
+                /// <summary>
+                /// Unique id for a Firebase app of the format: {version}:{project_number}:{platform}:{hash(bundle_id)}
+                /// Example: 1:581234567376:android:aa0a3c7b135e90289
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("mobilesdkAppId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string MobilesdkAppId { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "getUdids";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+project}/testers:udids";
+
+                /// <summary>Initializes GetUdids parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
+                    RequestParameters.Add("mobilesdkAppId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "mobilesdkAppId",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

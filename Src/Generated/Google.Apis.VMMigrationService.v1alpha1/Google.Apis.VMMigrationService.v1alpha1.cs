@@ -1,4 +1,4 @@
-// Copyright 2023 Google LLC
+// Copyright 2024 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -1711,7 +1711,7 @@ namespace Google.Apis.VMMigrationService.v1alpha1
                         }
 
                         /// <summary>
-                        /// Lists the CloneJobs of a migrating VM. Only the 25 most recent CloneJobs are returned.
+                        /// Lists the CloneJobs of a migrating VM. Only 25 most recent CloneJobs are listed.
                         /// </summary>
                         /// <param name="parent">Required. The parent, which owns this collection of source VMs.</param>
                         public virtual ListRequest List(string parent)
@@ -1720,7 +1720,7 @@ namespace Google.Apis.VMMigrationService.v1alpha1
                         }
 
                         /// <summary>
-                        /// Lists the CloneJobs of a migrating VM. Only the 25 most recent CloneJobs are returned.
+                        /// Lists the CloneJobs of a migrating VM. Only 25 most recent CloneJobs are listed.
                         /// </summary>
                         public class ListRequest : VMMigrationServiceBaseServiceRequest<Google.Apis.VMMigrationService.v1alpha1.Data.ListCloneJobsResponse>
                         {
@@ -2025,7 +2025,7 @@ namespace Google.Apis.VMMigrationService.v1alpha1
                         }
 
                         /// <summary>
-                        /// Lists the CutoverJobs of a migrating VM. Only the 25 most recent CutoverJobs are returned.
+                        /// Lists the CutoverJobs of a migrating VM. Only 25 most recent CutoverJobs are listed.
                         /// </summary>
                         /// <param name="parent">
                         /// Required. The parent, which owns this collection of migrating VMs.
@@ -2036,7 +2036,7 @@ namespace Google.Apis.VMMigrationService.v1alpha1
                         }
 
                         /// <summary>
-                        /// Lists the CutoverJobs of a migrating VM. Only the 25 most recent CutoverJobs are returned.
+                        /// Lists the CutoverJobs of a migrating VM. Only 25 most recent CutoverJobs are listed.
                         /// </summary>
                         public class ListRequest : VMMigrationServiceBaseServiceRequest<Google.Apis.VMMigrationService.v1alpha1.Data.ListCutoverJobsResponse>
                         {

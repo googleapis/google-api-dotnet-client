@@ -143,6 +143,21 @@
     "featureGraphic",
     "tvBanner"
   ],
+  "Google.Apis.AndroidPublisher.v3.InappproductsResource+DeleteRequest.LatencyToleranceEnum": [
+    "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED",
+    "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE",
+    "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
+  ],
+  "Google.Apis.AndroidPublisher.v3.InappproductsResource+PatchRequest.LatencyToleranceEnum": [
+    "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED",
+    "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE",
+    "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
+  ],
+  "Google.Apis.AndroidPublisher.v3.InappproductsResource+UpdateRequest.LatencyToleranceEnum": [
+    "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED",
+    "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE",
+    "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
+  ],
   "Google.Apis.AndroidPublisher.v3.InternalappsharingartifactsResource+UploadapkMediaUpload.AltEnum": [
     "json",
     "media",
@@ -160,5 +175,15 @@
   "Google.Apis.AndroidPublisher.v3.InternalappsharingartifactsResource+UploadbundleMediaUpload.XgafvEnum": [
     "1",
     "2"
+  ],
+  "Google.Apis.AndroidPublisher.v3.MonetizationResource+SubscriptionsResource+BasePlansResource+OffersResource+PatchRequest.LatencyToleranceEnum": [
+    "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED",
+    "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE",
+    "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
+  ],
+  "Google.Apis.AndroidPublisher.v3.MonetizationResource+SubscriptionsResource+PatchRequest.LatencyToleranceEnum": [
+    "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED",
+    "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE",
+    "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
   ]
 }

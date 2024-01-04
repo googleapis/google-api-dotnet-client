@@ -1,4 +1,4 @@
-// Copyright 2023 Google LLC
+// Copyright 2024 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -421,6 +421,20 @@ namespace Google.Apis.ChromeUXReport.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// For enum metrics, provides fraction timeseries which add up to approximately 1.0 per entry (k-th element into
+    /// the repeated fractions field for any k &amp;lt;= len) across fraction_timeseries.
+    /// </summary>
+    public class FractionTimeseries : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Values between 0.0 and 1.0 (inclusive) and NaN.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fractions")]
+        public virtual System.Collections.Generic.IList<System.Nullable<double>> Fractions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Key defines all the dimensions that identify this record as unique.</summary>
     public class HistoryKey : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -555,6 +569,10 @@ namespace Google.Apis.ChromeUXReport.v1.Data
     /// </summary>
     public class MetricTimeseries : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Mapping from labels to timeseries of fractions attributed to this label.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fractionTimeseries")]
+        public virtual System.Collections.Generic.IDictionary<string, FractionTimeseries> FractionTimeseries { get; set; }
+
         /// <summary>
         /// The histogram of user experiences for a metric. The histogram will have at least one bin and the densities
         /// of all bins will add up to ~1, for each timeseries entry.

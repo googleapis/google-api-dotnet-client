@@ -1,4 +1,4 @@
-// Copyright 2023 Google LLC
+// Copyright 2024 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -6041,6 +6041,10 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
     /// <summary>Guest installed application information.</summary>
     public class GuestInstalledApplication : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>License strings associated with the installed application.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("licenses")]
+        public virtual System.Collections.Generic.IList<string> Licenses { get; set; }
+
         /// <summary>Installed application name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }

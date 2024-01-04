@@ -1,4 +1,4 @@
-// Copyright 2023 Google LLC
+// Copyright 2024 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -8226,14 +8226,30 @@ namespace Google.Apis.Dataproc.v1.Data
     public class EncryptionConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. The Cloud KMS key name to use for PD disk encryption for all instances in the cluster.
+        /// Optional. The Cloud KMS key resource name to use for persistent disk encryption for all instances in the
+        /// cluster. See Use CMEK with cluster data
+        /// (https://cloud.google.com//dataproc/docs/concepts/configuring-clusters/customer-managed-encryption#use_cmek_with_cluster_data)
+        /// for more information.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcePdKmsKeyName")]
         public virtual string GcePdKmsKeyName { get; set; }
 
         /// <summary>
-        /// Optional. The Cloud KMS key name to use for encrypting customer core content in spanner and cluster PD disk
-        /// for all instances in the cluster.
+        /// Optional. The Cloud KMS key resource name to use for cluster persistent disk and job argument encryption.
+        /// See Use CMEK with cluster data
+        /// (https://cloud.google.com//dataproc/docs/concepts/configuring-clusters/customer-managed-encryption#use_cmek_with_cluster_data)
+        /// for more information.When this key resource name is provided, the following job arguments of the following
+        /// job types submitted to the cluster are encrypted using CMEK: FlinkJob args
+        /// (https://cloud.google.com/dataproc/docs/reference/rest/v1/FlinkJob) HadoopJob args
+        /// (https://cloud.google.com/dataproc/docs/reference/rest/v1/HadoopJob) SparkJob args
+        /// (https://cloud.google.com/dataproc/docs/reference/rest/v1/SparkJob) SparkRJob args
+        /// (https://cloud.google.com/dataproc/docs/reference/rest/v1/SparkRJob) PySparkJob args
+        /// (https://cloud.google.com/dataproc/docs/reference/rest/v1/PySparkJob) SparkSqlJob
+        /// (https://cloud.google.com/dataproc/docs/reference/rest/v1/SparkSqlJob) scriptVariables and queryList.queries
+        /// HiveJob (https://cloud.google.com/dataproc/docs/reference/rest/v1/HiveJob) scriptVariables and
+        /// queryList.queries PigJob (https://cloud.google.com/dataproc/docs/reference/rest/v1/PigJob) scriptVariables
+        /// and queryList.queries PrestoJob (https://cloud.google.com/dataproc/docs/reference/rest/v1/PrestoJob)
+        /// scriptVariables and queryList.queries
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKey")]
         public virtual string KmsKey { get; set; }
@@ -8771,10 +8787,26 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Encryption settings for the encrypting customer core content. NEXT ID: 2</summary>
+    /// <summary>Encryption settings for encrypting workflow template job arguments.</summary>
     public class GoogleCloudDataprocV1WorkflowTemplateEncryptionConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The Cloud KMS key name to use for encrypting customer core content.</summary>
+        /// <summary>
+        /// Optional. The Cloud KMS key name to use for encrypting workflow template job arguments.When this this key is
+        /// provided, the following workflow template job arguments
+        /// (https://cloud.google.com/dataproc/docs/concepts/workflows/use-workflows#adding_jobs_to_a_template), if
+        /// present, are CMEK encrypted
+        /// (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/customer-managed-encryption#use_cmek_with_workflow_template_data):
+        /// FlinkJob args (https://cloud.google.com/dataproc/docs/reference/rest/v1/FlinkJob) HadoopJob args
+        /// (https://cloud.google.com/dataproc/docs/reference/rest/v1/HadoopJob) SparkJob args
+        /// (https://cloud.google.com/dataproc/docs/reference/rest/v1/SparkJob) SparkRJob args
+        /// (https://cloud.google.com/dataproc/docs/reference/rest/v1/SparkRJob) PySparkJob args
+        /// (https://cloud.google.com/dataproc/docs/reference/rest/v1/PySparkJob) SparkSqlJob
+        /// (https://cloud.google.com/dataproc/docs/reference/rest/v1/SparkSqlJob) scriptVariables and queryList.queries
+        /// HiveJob (https://cloud.google.com/dataproc/docs/reference/rest/v1/HiveJob) scriptVariables and
+        /// queryList.queries PigJob (https://cloud.google.com/dataproc/docs/reference/rest/v1/PigJob) scriptVariables
+        /// and queryList.queries PrestoJob (https://cloud.google.com/dataproc/docs/reference/rest/v1/PrestoJob)
+        /// scriptVariables and queryList.queries
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKey")]
         public virtual string KmsKey { get; set; }
 
@@ -9646,7 +9678,7 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("keystoreUri")]
         public virtual string KeystoreUri { get; set; }
 
-        /// <summary>Optional. The uri of the KMS key used to encrypt various sensitive files.</summary>
+        /// <summary>Optional. The URI of the KMS key used to encrypt sensitive files.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyUri")]
         public virtual string KmsKeyUri { get; set; }
 
@@ -9870,6 +9902,13 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
+        /// <summary>
+        /// Output only. List of Batches that could not be included in the response. Attempting to get one of these
+        /// resources may indicate why it was not included in the list response.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -9907,8 +9946,8 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string NextPageToken { get; set; }
 
         /// <summary>
-        /// Output only. List of jobs that could not be included in the response. Attempting to get one of these
-        /// resources may indicate why it was not included in the list response.
+        /// Output only. List of jobs with kms_key-encrypted parameters that could not be decrypted. A response to a
+        /// jobs.get request may indicate the reason for the decryption failure for a specific job.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
@@ -12473,7 +12512,7 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dagTimeout")]
         public virtual object DagTimeout { get; set; }
 
-        /// <summary>Optional. Encryption settings for the encrypting customer core content.</summary>
+        /// <summary>Optional. Encryption settings for encrypting workflow template job arguments.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encryptionConfig")]
         public virtual GoogleCloudDataprocV1WorkflowTemplateEncryptionConfig EncryptionConfig { get; set; }
 

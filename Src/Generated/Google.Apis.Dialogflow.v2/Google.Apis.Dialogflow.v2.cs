@@ -1,4 +1,4 @@
-// Copyright 2023 Google LLC
+// Copyright 2024 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -25224,9 +25224,9 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual string Agent { get; set; }
 
         /// <summary>
-        /// Optional. Sets Dialogflow CX session life time. By default, a Dialogflow CX session remains active and its
-        /// data is stored for 30 minutes after the last request is sent for the session. This value should be no longer
-        /// than 1 day.
+        /// Optional. Configure lifetime of the Dialogflow session. By default, a Dialogflow CX session remains active
+        /// and its data is stored for 30 minutes after the last request is sent for the session. This value should be
+        /// no longer than 1 day.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sessionTtl")]
         public virtual object SessionTtl { get; set; }
@@ -27411,6 +27411,13 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disableAgentQueryLogging")]
         public virtual System.Nullable<bool> DisableAgentQueryLogging { get; set; }
+
+        /// <summary>
+        /// Optional. Enable including conversation context during query answer generation. Supported features:
+        /// KNOWLEDGE_SEARCH.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableConversationAugmentedQuery")]
+        public virtual System.Nullable<bool> EnableConversationAugmentedQuery { get; set; }
 
         /// <summary>
         /// Automatically iterates all participants and tries to compile suggestions. Supported features:
@@ -29885,6 +29892,10 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("answers")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2SearchKnowledgeAnswer> Answers { get; set; }
+
+        /// <summary>The rewritten query used to search knowledge.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rewrittenQuery")]
+        public virtual string RewrittenQuery { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

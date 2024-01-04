@@ -1,4 +1,4 @@
-// Copyright 2023 Google LLC
+// Copyright 2024 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -11065,12 +11065,16 @@ namespace Google.Apis.DLP.v2.Data
     public class GooglePrivacyDlpV2DataProfileConfigSnapshot : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// A copy of the configuration used to generate this profile. This is deprecated and will be replaced by
-        /// DiscoveryConfig. DataProfileJobConfig will still be written here for Discovery in BigQuery for backwards
-        /// compatibility, but will not be updated with new fields, while DiscoveryConfig will.
+        /// A copy of the configuration used to generate this profile. This is deprecated, and the DiscoveryConfig field
+        /// is preferred moving forward. DataProfileJobConfig will still be written here for Discovery in BigQuery for
+        /// backwards compatibility, but will not be updated with new fields, while DiscoveryConfig will.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataProfileJob")]
         public virtual GooglePrivacyDlpV2DataProfileJobConfig DataProfileJob { get; set; }
+
+        /// <summary>A copy of the configuration used to generate this profile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("discoveryConfig")]
+        public virtual GooglePrivacyDlpV2DiscoveryConfig DiscoveryConfig { get; set; }
 
         /// <summary>
         /// A copy of the inspection config used to generate this profile. This is a copy of the inspect_template

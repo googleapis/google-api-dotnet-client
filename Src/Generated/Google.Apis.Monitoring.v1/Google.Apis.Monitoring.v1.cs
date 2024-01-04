@@ -1,4 +1,4 @@
-// Copyright 2023 Google LLC
+// Copyright 2024 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -2418,6 +2418,97 @@ namespace Google.Apis.Monitoring.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Represents a time interval, encoded as a Timestamp start (inclusive) and a Timestamp end (exclusive).The start
+    /// must be less than or equal to the end. When the start equals the end, the interval is empty (matches no time).
+    /// When both start and end are unspecified, the interval matches any time.
+    /// </summary>
+    public class Interval : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>
+        /// Optional. Exclusive end of the interval.If specified, a Timestamp matching this interval will have to be
+        /// before the end.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _startTimeRaw;
+
+        private object _startTime;
+
+        /// <summary>
+        /// Optional. Inclusive start of the interval.If specified, a Timestamp matching this interval will have to be
+        /// the same or after the start.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The ListDashboards request.</summary>
     public class ListDashboardsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2888,6 +2979,10 @@ namespace Google.Apis.Monitoring.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("direction")]
         public virtual string Direction { get; set; }
 
+        /// <summary>Select the top N streams/time series within this time interval</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("interval")]
+        public virtual Interval Interval { get; set; }
+
         /// <summary>How many time series to allow to pass through the filter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numTimeSeries")]
         public virtual System.Nullable<int> NumTimeSeries { get; set; }
@@ -3199,6 +3294,34 @@ namespace Google.Apis.Monitoring.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("timeSeriesQuery")]
         public virtual TimeSeriesQuery TimeSeriesQuery { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A widget that defines a new section header. Sections populate a table of contents and allow easier navigation of
+    /// long-form content.
+    /// </summary>
+    public class SectionHeader : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether to insert a divider below the section in the table of contents</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dividerBelow")]
+        public virtual System.Nullable<bool> DividerBelow { get; set; }
+
+        /// <summary>The subtitle of the section</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subtitle")]
+        public virtual string Subtitle { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A widget that groups the other widgets by using a dropdown menu. All widgets that are within the area spanned by
+    /// the grouping widget are considered member widgets.
+    /// </summary>
+    public class SingleViewGroup : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -3697,6 +3820,14 @@ namespace Google.Apis.Monitoring.v1.Data
         /// <summary>A scorecard summarizing time series data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scorecard")]
         public virtual Scorecard Scorecard { get; set; }
+
+        /// <summary>A widget that defines a section header for easier navigation of the dashboard.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sectionHeader")]
+        public virtual SectionHeader SectionHeader { get; set; }
+
+        /// <summary>A widget that groups the other widgets by using a dropdown menu.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("singleViewGroup")]
+        public virtual SingleViewGroup SingleViewGroup { get; set; }
 
         /// <summary>A raw string or markdown displaying textual content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
