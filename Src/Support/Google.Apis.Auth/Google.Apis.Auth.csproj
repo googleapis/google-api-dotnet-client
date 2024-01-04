@@ -42,7 +42,11 @@ This package includes auth components like user-credential, authorization code f
     <Reference Include="System.Net.Http" />
     <PackageReference Include="System.Management" Version="7.0.2" />
   </ItemGroup>
-
+  
+  <ItemGroup Condition="'$(TargetFramework)'=='net6.0'">
+    <PackageReference Include="System.Management" Version="7.0.2" />
+  </ItemGroup>
+  
   <ItemGroup>
     <Compile Update="OAuth2/AwsExternalAccountCredential.*.cs">
       <DependentUpon>OAuth2/AwsExternalAccountCredential.cs</DependentUpon>
