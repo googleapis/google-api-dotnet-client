@@ -1,4 +1,4 @@
-// Copyright 2023 Google LLC
+// Copyright 2024 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -6127,6 +6127,14 @@ namespace Google.Apis.Dataflow.v1b3.Data
         public virtual string ShuffleMode { get; set; }
 
         /// <summary>
+        /// Optional. Specifies the Streaming Engine message processing guarantees. Reduces cost and latency but might
+        /// result in duplicate messages committed to storage. Designed to run simple mapping streaming ETL jobs at the
+        /// lowest cost. For example, Change Data Capture (CDC) to BigQuery is a canonical use case.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("streamingMode")]
+        public virtual string StreamingMode { get; set; }
+
+        /// <summary>
         /// The prefix of the resources the system should use for temporary storage. The system will append the suffix
         /// "/temp-{JOBNAME} to this resource prefix, where {JOBNAME} is the value of the job_name field. The resulting
         /// bucket and object prefix is used as the prefix of the resources used to store temporary data needed during
@@ -6136,9 +6144,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("tempStoragePrefix")]
         public virtual string TempStoragePrefix { get; set; }
 
-        /// <summary>
-        /// Output only. Whether the job uses the new streaming engine billing model based on resource usage.
-        /// </summary>
+        /// <summary>Output only. Whether the job uses the Streaming Engine resource-based billing model.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useStreamingEngineResourceBasedBilling")]
         public virtual System.Nullable<bool> UseStreamingEngineResourceBasedBilling { get; set; }
 

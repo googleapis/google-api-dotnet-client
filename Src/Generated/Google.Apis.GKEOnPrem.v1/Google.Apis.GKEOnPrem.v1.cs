@@ -1,4 +1,4 @@
-// Copyright 2023 Google LLC
+// Copyright 2024 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -10517,6 +10517,10 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("resourcePool")]
         public virtual string ResourcePool { get; set; }
 
+        /// <summary>The name of the vCenter storage policy for the user cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storagePolicyName")]
+        public virtual string StoragePolicyName { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -11123,7 +11127,9 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("staticIpConfig")]
         public virtual VmwareStaticIpConfig StaticIpConfig { get; set; }
 
-        /// <summary>vcenter_network specifies vCenter network name. Inherited from the admin cluster.</summary>
+        /// <summary>
+        /// Output only. vcenter_network specifies vCenter network name. Inherited from the admin cluster.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vcenterNetwork")]
         public virtual string VcenterNetwork { get; set; }
 

@@ -1,4 +1,4 @@
-// Copyright 2023 Google LLC
+// Copyright 2024 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -5379,6 +5379,203 @@ namespace Google.Apis.AndroidPublisher.v3
         }
 
         /// <summary>
+        /// Deletes in-app products (managed products or subscriptions). Set the latencyTolerance field on nested
+        /// requests to PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT to achieve maximum update throughput. This
+        /// method should not be used to delete subscriptions. See [this
+        /// article](https://android-developers.googleblog.com/2023/06/changes-to-google-play-developer-api-june-2023.html)
+        /// for more information.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="packageName">Package name of the app.</param>
+        public virtual BatchDeleteRequest BatchDelete(Google.Apis.AndroidPublisher.v3.Data.InappproductsBatchDeleteRequest body, string packageName)
+        {
+            return new BatchDeleteRequest(this.service, body, packageName);
+        }
+
+        /// <summary>
+        /// Deletes in-app products (managed products or subscriptions). Set the latencyTolerance field on nested
+        /// requests to PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT to achieve maximum update throughput. This
+        /// method should not be used to delete subscriptions. See [this
+        /// article](https://android-developers.googleblog.com/2023/06/changes-to-google-play-developer-api-june-2023.html)
+        /// for more information.
+        /// </summary>
+        public class BatchDeleteRequest : AndroidPublisherBaseServiceRequest<string>
+        {
+            /// <summary>Constructs a new BatchDelete request.</summary>
+            public BatchDeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.InappproductsBatchDeleteRequest body, string packageName) : base(service)
+            {
+                PackageName = packageName;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Package name of the app.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string PackageName { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.AndroidPublisher.v3.Data.InappproductsBatchDeleteRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "batchDelete";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "androidpublisher/v3/applications/{packageName}/inappproducts:batchDelete";
+
+            /// <summary>Initializes BatchDelete parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "packageName",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>
+        /// Reads multiple in-app products, which can be managed products or subscriptions. This method should not be
+        /// used to retrieve subscriptions. See [this
+        /// article](https://android-developers.googleblog.com/2023/06/changes-to-google-play-developer-api-june-2023.html)
+        /// for more information.
+        /// </summary>
+        /// <param name="packageName">Package name of the app.</param>
+        public virtual BatchGetRequest BatchGet(string packageName)
+        {
+            return new BatchGetRequest(this.service, packageName);
+        }
+
+        /// <summary>
+        /// Reads multiple in-app products, which can be managed products or subscriptions. This method should not be
+        /// used to retrieve subscriptions. See [this
+        /// article](https://android-developers.googleblog.com/2023/06/changes-to-google-play-developer-api-june-2023.html)
+        /// for more information.
+        /// </summary>
+        public class BatchGetRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.InappproductsBatchGetResponse>
+        {
+            /// <summary>Constructs a new BatchGet request.</summary>
+            public BatchGetRequest(Google.Apis.Services.IClientService service, string packageName) : base(service)
+            {
+                PackageName = packageName;
+                InitParameters();
+            }
+
+            /// <summary>Package name of the app.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string PackageName { get; private set; }
+
+            /// <summary>Unique identifier for the in-app products.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("sku", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<string> Sku { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "batchGet";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "androidpublisher/v3/applications/{packageName}/inappproducts:batchGet";
+
+            /// <summary>Initializes BatchGet parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "packageName",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("sku", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sku",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>
+        /// Updates or inserts one or more in-app products (managed products or subscriptions). Set the latencyTolerance
+        /// field on nested requests to PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT to achieve maximum update
+        /// throughput. This method should no longer be used to update subscriptions. See [this
+        /// article](https://android-developers.googleblog.com/2023/06/changes-to-google-play-developer-api-june-2023.html)
+        /// for more information.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="packageName">Package name of the app.</param>
+        public virtual BatchUpdateRequest BatchUpdate(Google.Apis.AndroidPublisher.v3.Data.InappproductsBatchUpdateRequest body, string packageName)
+        {
+            return new BatchUpdateRequest(this.service, body, packageName);
+        }
+
+        /// <summary>
+        /// Updates or inserts one or more in-app products (managed products or subscriptions). Set the latencyTolerance
+        /// field on nested requests to PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT to achieve maximum update
+        /// throughput. This method should no longer be used to update subscriptions. See [this
+        /// article](https://android-developers.googleblog.com/2023/06/changes-to-google-play-developer-api-june-2023.html)
+        /// for more information.
+        /// </summary>
+        public class BatchUpdateRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.InappproductsBatchUpdateResponse>
+        {
+            /// <summary>Constructs a new BatchUpdate request.</summary>
+            public BatchUpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.InappproductsBatchUpdateRequest body, string packageName) : base(service)
+            {
+                PackageName = packageName;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Package name of the app.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string PackageName { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.AndroidPublisher.v3.Data.InappproductsBatchUpdateRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "batchUpdate";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "androidpublisher/v3/applications/{packageName}/inappproducts:batchUpdate";
+
+            /// <summary>Initializes BatchUpdate parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "packageName",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>
         /// Deletes an in-app product (a managed product or a subscription). This method should no longer be used to
         /// delete subscriptions. See [this
         /// article](https://android-developers.googleblog.com/2023/06/changes-to-google-play-developer-api-june-2023.html)
@@ -5415,6 +5612,38 @@ namespace Google.Apis.AndroidPublisher.v3
             [Google.Apis.Util.RequestParameterAttribute("sku", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Sku { get; private set; }
 
+            /// <summary>
+            /// Optional. The latency tolerance for the propagation of this product update. Defaults to
+            /// latency-sensitive.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("latencyTolerance", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<LatencyToleranceEnum> LatencyTolerance { get; set; }
+
+            /// <summary>
+            /// Optional. The latency tolerance for the propagation of this product update. Defaults to
+            /// latency-sensitive.
+            /// </summary>
+            public enum LatencyToleranceEnum
+            {
+                /// <summary>Defaults to PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE.</summary>
+                [Google.Apis.Util.StringValueAttribute("PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED")]
+                PRODUCTUPDATELATENCYTOLERANCEUNSPECIFIED = 0,
+
+                /// <summary>
+                /// The update will propagate to clients within several minutes on average and up to a few hours in rare
+                /// cases. Throughput is limited to 7,200 updates per app per hour.
+                /// </summary>
+                [Google.Apis.Util.StringValueAttribute("PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE")]
+                PRODUCTUPDATELATENCYTOLERANCELATENCYSENSITIVE = 1,
+
+                /// <summary>
+                /// The update will propagate to clients within 24 hours. Supports high throughput of up to 720,000
+                /// updates per app per hour using batch modification methods.
+                /// </summary>
+                [Google.Apis.Util.StringValueAttribute("PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT")]
+                PRODUCTUPDATELATENCYTOLERANCELATENCYTOLERANT = 2,
+            }
+
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
@@ -5441,6 +5670,14 @@ namespace Google.Apis.AndroidPublisher.v3
                     Name = "sku",
                     IsRequired = true,
                     ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("latencyTolerance", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "latencyTolerance",
+                    IsRequired = false,
+                    ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
                 });
@@ -5737,6 +5974,38 @@ namespace Google.Apis.AndroidPublisher.v3
             [Google.Apis.Util.RequestParameterAttribute("autoConvertMissingPrices", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> AutoConvertMissingPrices { get; set; }
 
+            /// <summary>
+            /// Optional. The latency tolerance for the propagation of this product update. Defaults to
+            /// latency-sensitive.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("latencyTolerance", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<LatencyToleranceEnum> LatencyTolerance { get; set; }
+
+            /// <summary>
+            /// Optional. The latency tolerance for the propagation of this product update. Defaults to
+            /// latency-sensitive.
+            /// </summary>
+            public enum LatencyToleranceEnum
+            {
+                /// <summary>Defaults to PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE.</summary>
+                [Google.Apis.Util.StringValueAttribute("PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED")]
+                PRODUCTUPDATELATENCYTOLERANCEUNSPECIFIED = 0,
+
+                /// <summary>
+                /// The update will propagate to clients within several minutes on average and up to a few hours in rare
+                /// cases. Throughput is limited to 7,200 updates per app per hour.
+                /// </summary>
+                [Google.Apis.Util.StringValueAttribute("PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE")]
+                PRODUCTUPDATELATENCYTOLERANCELATENCYSENSITIVE = 1,
+
+                /// <summary>
+                /// The update will propagate to clients within 24 hours. Supports high throughput of up to 720,000
+                /// updates per app per hour using batch modification methods.
+                /// </summary>
+                [Google.Apis.Util.StringValueAttribute("PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT")]
+                PRODUCTUPDATELATENCYTOLERANCELATENCYTOLERANT = 2,
+            }
+
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.AndroidPublisher.v3.Data.InAppProduct Body { get; set; }
 
@@ -5775,6 +6044,14 @@ namespace Google.Apis.AndroidPublisher.v3
                 RequestParameters.Add("autoConvertMissingPrices", new Google.Apis.Discovery.Parameter
                 {
                     Name = "autoConvertMissingPrices",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("latencyTolerance", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "latencyTolerance",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -5837,6 +6114,38 @@ namespace Google.Apis.AndroidPublisher.v3
             [Google.Apis.Util.RequestParameterAttribute("autoConvertMissingPrices", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> AutoConvertMissingPrices { get; set; }
 
+            /// <summary>
+            /// Optional. The latency tolerance for the propagation of this product update. Defaults to
+            /// latency-sensitive.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("latencyTolerance", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<LatencyToleranceEnum> LatencyTolerance { get; set; }
+
+            /// <summary>
+            /// Optional. The latency tolerance for the propagation of this product update. Defaults to
+            /// latency-sensitive.
+            /// </summary>
+            public enum LatencyToleranceEnum
+            {
+                /// <summary>Defaults to PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE.</summary>
+                [Google.Apis.Util.StringValueAttribute("PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED")]
+                PRODUCTUPDATELATENCYTOLERANCEUNSPECIFIED = 0,
+
+                /// <summary>
+                /// The update will propagate to clients within several minutes on average and up to a few hours in rare
+                /// cases. Throughput is limited to 7,200 updates per app per hour.
+                /// </summary>
+                [Google.Apis.Util.StringValueAttribute("PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE")]
+                PRODUCTUPDATELATENCYTOLERANCELATENCYSENSITIVE = 1,
+
+                /// <summary>
+                /// The update will propagate to clients within 24 hours. Supports high throughput of up to 720,000
+                /// updates per app per hour using batch modification methods.
+                /// </summary>
+                [Google.Apis.Util.StringValueAttribute("PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT")]
+                PRODUCTUPDATELATENCYTOLERANCELATENCYTOLERANT = 2,
+            }
+
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.AndroidPublisher.v3.Data.InAppProduct Body { get; set; }
 
@@ -5883,6 +6192,14 @@ namespace Google.Apis.AndroidPublisher.v3
                 RequestParameters.Add("autoConvertMissingPrices", new Google.Apis.Discovery.Parameter
                 {
                     Name = "autoConvertMissingPrices",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("latencyTolerance", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "latencyTolerance",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -6467,6 +6784,318 @@ namespace Google.Apis.AndroidPublisher.v3
                             RequestParameters.Add("offerId", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "offerId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Reads one or more subscription offers.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="packageName">
+                    /// Required. The parent app (package name) for which the subscriptions should be created or
+                    /// updated. Must be equal to the package_name field on all the requests.
+                    /// </param>
+                    /// <param name="productId">
+                    /// Required. The product ID of the parent subscription, if all updated offers belong to the same
+                    /// subscription. If this request spans multiple subscriptions, set this field to "-". Must be set.
+                    /// </param>
+                    /// <param name="basePlanId">
+                    /// Required. The parent base plan (ID) for which the offers should be read. May be specified as '-'
+                    /// to read offers from multiple base plans.
+                    /// </param>
+                    public virtual BatchGetRequest BatchGet(Google.Apis.AndroidPublisher.v3.Data.BatchGetSubscriptionOffersRequest body, string packageName, string productId, string basePlanId)
+                    {
+                        return new BatchGetRequest(this.service, body, packageName, productId, basePlanId);
+                    }
+
+                    /// <summary>Reads one or more subscription offers.</summary>
+                    public class BatchGetRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.BatchGetSubscriptionOffersResponse>
+                    {
+                        /// <summary>Constructs a new BatchGet request.</summary>
+                        public BatchGetRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.BatchGetSubscriptionOffersRequest body, string packageName, string productId, string basePlanId) : base(service)
+                        {
+                            PackageName = packageName;
+                            ProductId = productId;
+                            BasePlanId = basePlanId;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The parent app (package name) for which the subscriptions should be created or
+                        /// updated. Must be equal to the package_name field on all the requests.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string PackageName { get; private set; }
+
+                        /// <summary>
+                        /// Required. The product ID of the parent subscription, if all updated offers belong to the
+                        /// same subscription. If this request spans multiple subscriptions, set this field to "-". Must
+                        /// be set.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("productId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string ProductId { get; private set; }
+
+                        /// <summary>
+                        /// Required. The parent base plan (ID) for which the offers should be read. May be specified as
+                        /// '-' to read offers from multiple base plans.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("basePlanId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string BasePlanId { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.AndroidPublisher.v3.Data.BatchGetSubscriptionOffersRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "batchGet";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans/{basePlanId}/offers:batchGet";
+
+                        /// <summary>Initializes BatchGet parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "packageName",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("productId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "productId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("basePlanId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "basePlanId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Updates a batch of subscription offers. Set the latencyTolerance field on nested requests to
+                    /// PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT to achieve maximum update throughput.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="packageName">
+                    /// Required. The parent app (package name) of the updated subscription offers. Must be equal to the
+                    /// package_name field on all the updated SubscriptionOffer resources.
+                    /// </param>
+                    /// <param name="productId">
+                    /// Required. The product ID of the parent subscription, if all updated offers belong to the same
+                    /// subscription. If this request spans multiple subscriptions, set this field to "-". Must be set.
+                    /// </param>
+                    /// <param name="basePlanId">
+                    /// Required. The parent base plan (ID) for which the offers should be updated. May be specified as
+                    /// '-' to update offers from multiple base plans.
+                    /// </param>
+                    public virtual BatchUpdateRequest BatchUpdate(Google.Apis.AndroidPublisher.v3.Data.BatchUpdateSubscriptionOffersRequest body, string packageName, string productId, string basePlanId)
+                    {
+                        return new BatchUpdateRequest(this.service, body, packageName, productId, basePlanId);
+                    }
+
+                    /// <summary>
+                    /// Updates a batch of subscription offers. Set the latencyTolerance field on nested requests to
+                    /// PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT to achieve maximum update throughput.
+                    /// </summary>
+                    public class BatchUpdateRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.BatchUpdateSubscriptionOffersResponse>
+                    {
+                        /// <summary>Constructs a new BatchUpdate request.</summary>
+                        public BatchUpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.BatchUpdateSubscriptionOffersRequest body, string packageName, string productId, string basePlanId) : base(service)
+                        {
+                            PackageName = packageName;
+                            ProductId = productId;
+                            BasePlanId = basePlanId;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The parent app (package name) of the updated subscription offers. Must be equal to
+                        /// the package_name field on all the updated SubscriptionOffer resources.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string PackageName { get; private set; }
+
+                        /// <summary>
+                        /// Required. The product ID of the parent subscription, if all updated offers belong to the
+                        /// same subscription. If this request spans multiple subscriptions, set this field to "-". Must
+                        /// be set.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("productId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string ProductId { get; private set; }
+
+                        /// <summary>
+                        /// Required. The parent base plan (ID) for which the offers should be updated. May be specified
+                        /// as '-' to update offers from multiple base plans.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("basePlanId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string BasePlanId { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.AndroidPublisher.v3.Data.BatchUpdateSubscriptionOffersRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "batchUpdate";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans/{basePlanId}/offers:batchUpdate";
+
+                        /// <summary>Initializes BatchUpdate parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "packageName",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("productId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "productId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("basePlanId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "basePlanId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Updates a batch of subscription offer states. Set the latencyTolerance field on nested requests
+                    /// to PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT to achieve maximum update throughput.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="packageName">
+                    /// Required. The parent app (package name) of the updated subscription offers. Must be equal to the
+                    /// package_name field on all the updated SubscriptionOffer resources.
+                    /// </param>
+                    /// <param name="productId">
+                    /// Required. The product ID of the parent subscription, if all updated offers belong to the same
+                    /// subscription. If this request spans multiple subscriptions, set this field to "-". Must be set.
+                    /// </param>
+                    /// <param name="basePlanId">
+                    /// Required. The parent base plan (ID) for which the offers should be updated. May be specified as
+                    /// '-' to update offers from multiple base plans.
+                    /// </param>
+                    public virtual BatchUpdateStatesRequest BatchUpdateStates(Google.Apis.AndroidPublisher.v3.Data.BatchUpdateSubscriptionOfferStatesRequest body, string packageName, string productId, string basePlanId)
+                    {
+                        return new BatchUpdateStatesRequest(this.service, body, packageName, productId, basePlanId);
+                    }
+
+                    /// <summary>
+                    /// Updates a batch of subscription offer states. Set the latencyTolerance field on nested requests
+                    /// to PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT to achieve maximum update throughput.
+                    /// </summary>
+                    public class BatchUpdateStatesRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.BatchUpdateSubscriptionOfferStatesResponse>
+                    {
+                        /// <summary>Constructs a new BatchUpdateStates request.</summary>
+                        public BatchUpdateStatesRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.BatchUpdateSubscriptionOfferStatesRequest body, string packageName, string productId, string basePlanId) : base(service)
+                        {
+                            PackageName = packageName;
+                            ProductId = productId;
+                            BasePlanId = basePlanId;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The parent app (package name) of the updated subscription offers. Must be equal to
+                        /// the package_name field on all the updated SubscriptionOffer resources.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string PackageName { get; private set; }
+
+                        /// <summary>
+                        /// Required. The product ID of the parent subscription, if all updated offers belong to the
+                        /// same subscription. If this request spans multiple subscriptions, set this field to "-". Must
+                        /// be set.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("productId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string ProductId { get; private set; }
+
+                        /// <summary>
+                        /// Required. The parent base plan (ID) for which the offers should be updated. May be specified
+                        /// as '-' to update offers from multiple base plans.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("basePlanId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string BasePlanId { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.AndroidPublisher.v3.Data.BatchUpdateSubscriptionOfferStatesRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "batchUpdateStates";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans/{basePlanId}/offers:batchUpdateStates";
+
+                        /// <summary>Initializes BatchUpdateStates parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "packageName",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("productId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "productId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("basePlanId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "basePlanId",
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
@@ -7083,6 +7712,46 @@ namespace Google.Apis.AndroidPublisher.v3
                         public virtual string OfferId { get; private set; }
 
                         /// <summary>
+                        /// Optional. If set to true, and the subscription offer with the given package_name,
+                        /// product_id, base_plan_id and offer_id doesn't exist, an offer will be created. If a new
+                        /// offer is created, update_mask is ignored.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("allowMissing", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> AllowMissing { get; set; }
+
+                        /// <summary>
+                        /// Optional. The latency tolerance for the propagation of this product update. Defaults to
+                        /// latency-sensitive.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("latencyTolerance", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<LatencyToleranceEnum> LatencyTolerance { get; set; }
+
+                        /// <summary>
+                        /// Optional. The latency tolerance for the propagation of this product update. Defaults to
+                        /// latency-sensitive.
+                        /// </summary>
+                        public enum LatencyToleranceEnum
+                        {
+                            /// <summary>Defaults to PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE.</summary>
+                            [Google.Apis.Util.StringValueAttribute("PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED")]
+                            PRODUCTUPDATELATENCYTOLERANCEUNSPECIFIED = 0,
+
+                            /// <summary>
+                            /// The update will propagate to clients within several minutes on average and up to a few
+                            /// hours in rare cases. Throughput is limited to 7,200 updates per app per hour.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE")]
+                            PRODUCTUPDATELATENCYTOLERANCELATENCYSENSITIVE = 1,
+
+                            /// <summary>
+                            /// The update will propagate to clients within 24 hours. Supports high throughput of up to
+                            /// 720,000 updates per app per hour using batch modification methods.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT")]
+                            PRODUCTUPDATELATENCYTOLERANCELATENCYTOLERANT = 2,
+                        }
+
+                        /// <summary>
                         /// Required. A string representing the version of available regions being used for the
                         /// specified resource. Regional prices for the resource have to be specified according to the
                         /// information published in [this
@@ -7147,6 +7816,22 @@ namespace Google.Apis.AndroidPublisher.v3
                                 Name = "offerId",
                                 IsRequired = true,
                                 ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("allowMissing", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "allowMissing",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("latencyTolerance", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "latencyTolerance",
+                                IsRequired = false,
+                                ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
@@ -7249,6 +7934,174 @@ namespace Google.Apis.AndroidPublisher.v3
                         RequestParameters.Add("basePlanId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "basePlanId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Batch variant of the MigrateBasePlanPrices endpoint. Set the latencyTolerance field on nested
+                /// requests to PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT to achieve maximum update throughput.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="packageName">
+                /// Required. The parent app (package name) for which the subscriptions should be created or updated.
+                /// Must be equal to the package_name field on all the Subscription resources.
+                /// </param>
+                /// <param name="productId">
+                /// Required. The product ID of the parent subscription, if all updated offers belong to the same
+                /// subscription. If this batch update spans multiple subscriptions, set this field to "-". Must be set.
+                /// </param>
+                public virtual BatchMigratePricesRequest BatchMigratePrices(Google.Apis.AndroidPublisher.v3.Data.BatchMigrateBasePlanPricesRequest body, string packageName, string productId)
+                {
+                    return new BatchMigratePricesRequest(this.service, body, packageName, productId);
+                }
+
+                /// <summary>
+                /// Batch variant of the MigrateBasePlanPrices endpoint. Set the latencyTolerance field on nested
+                /// requests to PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT to achieve maximum update throughput.
+                /// </summary>
+                public class BatchMigratePricesRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.BatchMigrateBasePlanPricesResponse>
+                {
+                    /// <summary>Constructs a new BatchMigratePrices request.</summary>
+                    public BatchMigratePricesRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.BatchMigrateBasePlanPricesRequest body, string packageName, string productId) : base(service)
+                    {
+                        PackageName = packageName;
+                        ProductId = productId;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent app (package name) for which the subscriptions should be created or
+                    /// updated. Must be equal to the package_name field on all the Subscription resources.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string PackageName { get; private set; }
+
+                    /// <summary>
+                    /// Required. The product ID of the parent subscription, if all updated offers belong to the same
+                    /// subscription. If this batch update spans multiple subscriptions, set this field to "-". Must be
+                    /// set.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("productId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string ProductId { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.AndroidPublisher.v3.Data.BatchMigrateBasePlanPricesRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "batchMigratePrices";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans:batchMigratePrices";
+
+                    /// <summary>Initializes BatchMigratePrices parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "packageName",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("productId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "productId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Activates or deactivates base plans across one or multiple subscriptions. Set the latencyTolerance
+                /// field on nested requests to PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT to achieve maximum
+                /// update throughput.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="packageName">Required. The parent app (package name) of the updated base plans.</param>
+                /// <param name="productId">
+                /// Required. The product ID of the parent subscription, if all updated base plans belong to the same
+                /// subscription. If this batch update spans multiple subscriptions, set this field to "-". Must be set.
+                /// </param>
+                public virtual BatchUpdateStatesRequest BatchUpdateStates(Google.Apis.AndroidPublisher.v3.Data.BatchUpdateBasePlanStatesRequest body, string packageName, string productId)
+                {
+                    return new BatchUpdateStatesRequest(this.service, body, packageName, productId);
+                }
+
+                /// <summary>
+                /// Activates or deactivates base plans across one or multiple subscriptions. Set the latencyTolerance
+                /// field on nested requests to PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT to achieve maximum
+                /// update throughput.
+                /// </summary>
+                public class BatchUpdateStatesRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.BatchUpdateBasePlanStatesResponse>
+                {
+                    /// <summary>Constructs a new BatchUpdateStates request.</summary>
+                    public BatchUpdateStatesRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.BatchUpdateBasePlanStatesRequest body, string packageName, string productId) : base(service)
+                    {
+                        PackageName = packageName;
+                        ProductId = productId;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The parent app (package name) of the updated base plans.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string PackageName { get; private set; }
+
+                    /// <summary>
+                    /// Required. The product ID of the parent subscription, if all updated base plans belong to the
+                    /// same subscription. If this batch update spans multiple subscriptions, set this field to "-".
+                    /// Must be set.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("productId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string ProductId { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.AndroidPublisher.v3.Data.BatchUpdateBasePlanStatesRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "batchUpdateStates";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans:batchUpdateStates";
+
+                    /// <summary>Initializes BatchUpdateStates parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "packageName",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("productId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "productId",
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
@@ -7602,6 +8455,136 @@ namespace Google.Apis.AndroidPublisher.v3
                     RequestParameters.Add("productId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "productId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Reads one or more subscriptions.</summary>
+            /// <param name="packageName">
+            /// Required. The parent app (package name) for which the subscriptions should be retrieved. Must be equal
+            /// to the package_name field on all the requests.
+            /// </param>
+            public virtual BatchGetRequest BatchGet(string packageName)
+            {
+                return new BatchGetRequest(this.service, packageName);
+            }
+
+            /// <summary>Reads one or more subscriptions.</summary>
+            public class BatchGetRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.BatchGetSubscriptionsResponse>
+            {
+                /// <summary>Constructs a new BatchGet request.</summary>
+                public BatchGetRequest(Google.Apis.Services.IClientService service, string packageName) : base(service)
+                {
+                    PackageName = packageName;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The parent app (package name) for which the subscriptions should be retrieved. Must be
+                /// equal to the package_name field on all the requests.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string PackageName { get; private set; }
+
+                /// <summary>
+                /// Required. A list of up to 100 subscription product IDs to retrieve. All the IDs must be different.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("productIds", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<string> ProductIds { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "batchGet";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "androidpublisher/v3/applications/{packageName}/subscriptions:batchGet";
+
+                /// <summary>Initializes BatchGet parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "packageName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("productIds", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "productIds",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Updates a batch of subscriptions. Set the latencyTolerance field on nested requests to
+            /// PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT to achieve maximum update throughput.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="packageName">
+            /// Required. The parent app (package name) for which the subscriptions should be updated. Must be equal to
+            /// the package_name field on all the Subscription resources.
+            /// </param>
+            public virtual BatchUpdateRequest BatchUpdate(Google.Apis.AndroidPublisher.v3.Data.BatchUpdateSubscriptionsRequest body, string packageName)
+            {
+                return new BatchUpdateRequest(this.service, body, packageName);
+            }
+
+            /// <summary>
+            /// Updates a batch of subscriptions. Set the latencyTolerance field on nested requests to
+            /// PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT to achieve maximum update throughput.
+            /// </summary>
+            public class BatchUpdateRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.BatchUpdateSubscriptionsResponse>
+            {
+                /// <summary>Constructs a new BatchUpdate request.</summary>
+                public BatchUpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.BatchUpdateSubscriptionsRequest body, string packageName) : base(service)
+                {
+                    PackageName = packageName;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The parent app (package name) for which the subscriptions should be updated. Must be equal
+                /// to the package_name field on all the Subscription resources.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string PackageName { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.AndroidPublisher.v3.Data.BatchUpdateSubscriptionsRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "batchUpdate";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "androidpublisher/v3/applications/{packageName}/subscriptions:batchUpdate";
+
+                /// <summary>Initializes BatchUpdate parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "packageName",
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
@@ -7966,6 +8949,45 @@ namespace Google.Apis.AndroidPublisher.v3
                 public virtual string ProductId { get; private set; }
 
                 /// <summary>
+                /// Optional. If set to true, and the subscription with the given package_name and product_id doesn't
+                /// exist, the subscription will be created. If a new subscription is created, update_mask is ignored.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("allowMissing", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> AllowMissing { get; set; }
+
+                /// <summary>
+                /// Optional. The latency tolerance for the propagation of this product update. Defaults to
+                /// latency-sensitive.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("latencyTolerance", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<LatencyToleranceEnum> LatencyTolerance { get; set; }
+
+                /// <summary>
+                /// Optional. The latency tolerance for the propagation of this product update. Defaults to
+                /// latency-sensitive.
+                /// </summary>
+                public enum LatencyToleranceEnum
+                {
+                    /// <summary>Defaults to PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE.</summary>
+                    [Google.Apis.Util.StringValueAttribute("PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED")]
+                    PRODUCTUPDATELATENCYTOLERANCEUNSPECIFIED = 0,
+
+                    /// <summary>
+                    /// The update will propagate to clients within several minutes on average and up to a few hours in
+                    /// rare cases. Throughput is limited to 7,200 updates per app per hour.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE")]
+                    PRODUCTUPDATELATENCYTOLERANCELATENCYSENSITIVE = 1,
+
+                    /// <summary>
+                    /// The update will propagate to clients within 24 hours. Supports high throughput of up to 720,000
+                    /// updates per app per hour using batch modification methods.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT")]
+                    PRODUCTUPDATELATENCYTOLERANCELATENCYTOLERANT = 2,
+                }
+
+                /// <summary>
                 /// Required. A string representing the version of available regions being used for the specified
                 /// resource. Regional prices for the resource have to be specified according to the information
                 /// published in [this
@@ -8014,6 +9036,22 @@ namespace Google.Apis.AndroidPublisher.v3
                         Name = "productId",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("allowMissing", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "allowMissing",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("latencyTolerance", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "latencyTolerance",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -10225,6 +11263,24 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     /// <summary>Request message for ActivateBasePlan.</summary>
     public class ActivateBasePlanRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Required. The unique base plan ID of the base plan to activate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("basePlanId")]
+        public virtual string BasePlanId { get; set; }
+
+        /// <summary>
+        /// Optional. The latency tolerance for the propagation of this product update. Defaults to latency-sensitive.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latencyTolerance")]
+        public virtual string LatencyTolerance { get; set; }
+
+        /// <summary>Required. The parent app (package name) of the base plan to activate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("packageName")]
+        public virtual string PackageName { get; set; }
+
+        /// <summary>Required. The parent subscription (ID) of the base plan to activate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productId")]
+        public virtual string ProductId { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -10232,6 +11288,28 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     /// <summary>Request message for ActivateSubscriptionOffer.</summary>
     public class ActivateSubscriptionOfferRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Required. The parent base plan (ID) of the offer to activate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("basePlanId")]
+        public virtual string BasePlanId { get; set; }
+
+        /// <summary>
+        /// Optional. The latency tolerance for the propagation of this product update. Defaults to latency-sensitive.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latencyTolerance")]
+        public virtual string LatencyTolerance { get; set; }
+
+        /// <summary>Required. The unique offer ID of the offer to activate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("offerId")]
+        public virtual string OfferId { get; set; }
+
+        /// <summary>Required. The parent app (package name) of the offer to activate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("packageName")]
+        public virtual string PackageName { get; set; }
+
+        /// <summary>Required. The parent subscription (ID) of the offer to activate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productId")]
+        public virtual string ProductId { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -10584,6 +11662,163 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for BatchGetSubscriptionOffers endpoint.</summary>
+    public class BatchGetSubscriptionOffersRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. A list of update requests of up to 100 elements. All requests must update different subscriptions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requests")]
+        public virtual System.Collections.Generic.IList<GetSubscriptionOfferRequest> Requests { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for BatchGetSubscriptionOffers endpoint.</summary>
+    public class BatchGetSubscriptionOffersResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("subscriptionOffers")]
+        public virtual System.Collections.Generic.IList<SubscriptionOffer> SubscriptionOffers { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for BatchGetSubscriptions endpoint.</summary>
+    public class BatchGetSubscriptionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of requested subscriptions, in the same order as the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subscriptions")]
+        public virtual System.Collections.Generic.IList<Subscription> Subscriptions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for BatchMigrateBasePlanPrices.</summary>
+    public class BatchMigrateBasePlanPricesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Up to 100 price migration requests. All requests must update different base plans.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requests")]
+        public virtual System.Collections.Generic.IList<MigrateBasePlanPricesRequest> Requests { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for BatchMigrateBasePlanPrices.</summary>
+    public class BatchMigrateBasePlanPricesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Contains one response per requested price migration, in the same order as the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("responses")]
+        public virtual System.Collections.Generic.IList<MigrateBasePlanPricesResponse> Responses { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for BatchUpdateBasePlanStates.</summary>
+    public class BatchUpdateBasePlanStatesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The update request list of up to 100 elements. All requests must update different base plans.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requests")]
+        public virtual System.Collections.Generic.IList<UpdateBasePlanStateRequest> Requests { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for BatchUpdateBasePlanStates.</summary>
+    public class BatchUpdateBasePlanStatesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The list of updated subscriptions. This list will match the requests one to one, in the same order.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subscriptions")]
+        public virtual System.Collections.Generic.IList<Subscription> Subscriptions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for BatchUpdateSubscriptionOfferStates.</summary>
+    public class BatchUpdateSubscriptionOfferStatesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The update request list of up to 100 elements. All requests must update different offers.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requests")]
+        public virtual System.Collections.Generic.IList<UpdateSubscriptionOfferStateRequest> Requests { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for BatchUpdateSubscriptionOfferStates.</summary>
+    public class BatchUpdateSubscriptionOfferStatesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The updated subscription offers list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subscriptionOffers")]
+        public virtual System.Collections.Generic.IList<SubscriptionOffer> SubscriptionOffers { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for BatchUpdateSubscriptionOffers.</summary>
+    public class BatchUpdateSubscriptionOffersRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. A list of update requests of up to 100 elements. All requests must update different subscription
+        /// offers.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requests")]
+        public virtual System.Collections.Generic.IList<UpdateSubscriptionOfferRequest> Requests { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for BatchUpdateSubscriptionOffers.</summary>
+    public class BatchUpdateSubscriptionOffersResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The updated subscription offers list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subscriptionOffers")]
+        public virtual System.Collections.Generic.IList<SubscriptionOffer> SubscriptionOffers { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for BatchUpdateSubscription.</summary>
+    public class BatchUpdateSubscriptionsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. A list of update requests of up to 100 elements. All requests must update different subscriptions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requests")]
+        public virtual System.Collections.Generic.IList<UpdateSubscriptionRequest> Requests { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for BatchUpdateSubscription.</summary>
+    public class BatchUpdateSubscriptionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The updated subscriptions list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subscriptions")]
+        public virtual System.Collections.Generic.IList<Subscription> Subscriptions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Information about an app bundle. The resource for BundlesService.</summary>
     public class Bundle : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10765,6 +12000,24 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     /// <summary>Request message for DeactivateBasePlan.</summary>
     public class DeactivateBasePlanRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Required. The unique base plan ID of the base plan to deactivate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("basePlanId")]
+        public virtual string BasePlanId { get; set; }
+
+        /// <summary>
+        /// Optional. The latency tolerance for the propagation of this product update. Defaults to latency-sensitive.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latencyTolerance")]
+        public virtual string LatencyTolerance { get; set; }
+
+        /// <summary>Required. The parent app (package name) of the base plan to deactivate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("packageName")]
+        public virtual string PackageName { get; set; }
+
+        /// <summary>Required. The parent subscription (ID) of the base plan to deactivate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productId")]
+        public virtual string ProductId { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -10772,6 +12025,28 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     /// <summary>Request message for DeactivateSubscriptionOffer.</summary>
     public class DeactivateSubscriptionOfferRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Required. The parent base plan (ID) of the offer to deactivate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("basePlanId")]
+        public virtual string BasePlanId { get; set; }
+
+        /// <summary>
+        /// Optional. The latency tolerance for the propagation of this product update. Defaults to latency-sensitive.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latencyTolerance")]
+        public virtual string LatencyTolerance { get; set; }
+
+        /// <summary>Required. The unique offer ID of the offer to deactivate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("offerId")]
+        public virtual string OfferId { get; set; }
+
+        /// <summary>Required. The parent app (package name) of the offer to deactivate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("packageName")]
+        public virtual string PackageName { get; set; }
+
+        /// <summary>Required. The parent subscription (ID) of the offer to deactivate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productId")]
+        public virtual string ProductId { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -11560,6 +12835,29 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for GetSubscriptionOffer.</summary>
+    public class GetSubscriptionOfferRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The parent base plan (ID) of the offer to get.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("basePlanId")]
+        public virtual string BasePlanId { get; set; }
+
+        /// <summary>Required. The unique offer ID of the offer to get.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("offerId")]
+        public virtual string OfferId { get; set; }
+
+        /// <summary>Required. The parent app (package name) of the offer to get.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("packageName")]
+        public virtual string PackageName { get; set; }
+
+        /// <summary>Required. The parent subscription (ID) of the offer to get.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productId")]
+        public virtual string ProductId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>An access grant resource.</summary>
     public class Grant : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11736,6 +13034,77 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request to delete multiple in-app products.</summary>
+    public class InappproductsBatchDeleteRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Individual delete requests. At least one request is required. Can contain up to 100 requests. All requests
+        /// must correspond to different in-app products.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requests")]
+        public virtual System.Collections.Generic.IList<InappproductsDeleteRequest> Requests { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for BatchGetSubscriptions endpoint.</summary>
+    public class InappproductsBatchGetResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of requested in-app products, in the same order as the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inappproduct")]
+        public virtual System.Collections.Generic.IList<InAppProduct> Inappproduct { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request to update or insert one or more in-app products.</summary>
+    public class InappproductsBatchUpdateRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Individual update requests. At least one request is required. Can contain up to 100 requests. All
+        /// requests must correspond to different in-app products.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requests")]
+        public virtual System.Collections.Generic.IList<InappproductsUpdateRequest> Requests { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for a batch in-app product update.</summary>
+    public class InappproductsBatchUpdateResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The updated or inserted in-app products.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inappproducts")]
+        public virtual System.Collections.Generic.IList<InAppProduct> Inappproducts { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request to delete an in-app product.</summary>
+    public class InappproductsDeleteRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The latency tolerance for the propagation of this product update. Defaults to latency-sensitive.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latencyTolerance")]
+        public virtual string LatencyTolerance { get; set; }
+
+        /// <summary>Package name of the app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("packageName")]
+        public virtual string PackageName { get; set; }
+
+        /// <summary>Unique identifier for the in-app product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sku")]
+        public virtual string Sku { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response listing all in-app products.</summary>
     public class InappproductsListResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11754,6 +13123,45 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// <summary>Pagination token, to handle a number of products that is over one page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tokenPagination")]
         public virtual TokenPagination TokenPagination { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request to update an in-app product.</summary>
+    public class InappproductsUpdateRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If set to true, and the in-app product with the given package_name and sku doesn't exist, the in-app product
+        /// will be created.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowMissing")]
+        public virtual System.Nullable<bool> AllowMissing { get; set; }
+
+        /// <summary>
+        /// If true the prices for all regions targeted by the parent app that don't have a price specified for this
+        /// in-app product will be auto converted to the target currency based on the default price. Defaults to false.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoConvertMissingPrices")]
+        public virtual System.Nullable<bool> AutoConvertMissingPrices { get; set; }
+
+        /// <summary>The new in-app product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inappproduct")]
+        public virtual InAppProduct Inappproduct { get; set; }
+
+        /// <summary>
+        /// Optional. The latency tolerance for the propagation of this product update. Defaults to latency-sensitive.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latencyTolerance")]
+        public virtual string LatencyTolerance { get; set; }
+
+        /// <summary>Package name of the app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("packageName")]
+        public virtual string PackageName { get; set; }
+
+        /// <summary>Unique identifier for the in-app product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sku")]
+        public virtual string Sku { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11999,6 +13407,30 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     /// <summary>Request message for MigrateBasePlanPrices.</summary>
     public class MigrateBasePlanPricesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Required. The unique base plan ID of the base plan to update prices on.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("basePlanId")]
+        public virtual string BasePlanId { get; set; }
+
+        /// <summary>
+        /// Optional. The latency tolerance for the propagation of this product update. Defaults to latency-sensitive.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latencyTolerance")]
+        public virtual string LatencyTolerance { get; set; }
+
+        /// <summary>
+        /// Required. Package name of the parent app. Must be equal to the package_name field on the Subscription
+        /// resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("packageName")]
+        public virtual string PackageName { get; set; }
+
+        /// <summary>
+        /// Required. The ID of the subscription to update. Must be equal to the product_id field on the Subscription
+        /// resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productId")]
+        public virtual string ProductId { get; set; }
+
         /// <summary>Required. The regional prices to update.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regionalPriceMigrations")]
         public virtual System.Collections.Generic.IList<RegionalPriceMigrationConfig> RegionalPriceMigrations { get; set; }
@@ -14141,6 +15573,106 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// <summary>All tracks (including tracks with no releases).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tracks")]
         public virtual System.Collections.Generic.IList<Track> Tracks { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message to update the state of a subscription base plan.</summary>
+    public class UpdateBasePlanStateRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Activates a base plan. Once activated, base plans will be available to new subscribers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("activateBasePlanRequest")]
+        public virtual ActivateBasePlanRequest ActivateBasePlanRequest { get; set; }
+
+        /// <summary>
+        /// Deactivates a base plan. Once deactivated, the base plan will become unavailable to new subscribers, but
+        /// existing subscribers will maintain their subscription
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deactivateBasePlanRequest")]
+        public virtual DeactivateBasePlanRequest DeactivateBasePlanRequest { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for UpdateSubscriptionOffer.</summary>
+    public class UpdateSubscriptionOfferRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. If set to true, and the subscription offer with the given package_name, product_id, base_plan_id
+        /// and offer_id doesn't exist, an offer will be created. If a new offer is created, update_mask is ignored.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowMissing")]
+        public virtual System.Nullable<bool> AllowMissing { get; set; }
+
+        /// <summary>
+        /// Optional. The latency tolerance for the propagation of this product update. Defaults to latency-sensitive.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latencyTolerance")]
+        public virtual string LatencyTolerance { get; set; }
+
+        /// <summary>Required. The version of the available regions being used for the subscription_offer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionsVersion")]
+        public virtual RegionsVersion RegionsVersion { get; set; }
+
+        /// <summary>Required. The subscription offer to update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subscriptionOffer")]
+        public virtual SubscriptionOffer SubscriptionOffer { get; set; }
+
+        /// <summary>Required. The list of fields to be updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
+        public virtual object UpdateMask { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message to update the state of a subscription offer.</summary>
+    public class UpdateSubscriptionOfferStateRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Activates an offer. Once activated, the offer will be available to new subscribers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("activateSubscriptionOfferRequest")]
+        public virtual ActivateSubscriptionOfferRequest ActivateSubscriptionOfferRequest { get; set; }
+
+        /// <summary>
+        /// Deactivates an offer. Once deactivated, the offer will become unavailable to new subscribers, but existing
+        /// subscribers will maintain their subscription
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deactivateSubscriptionOfferRequest")]
+        public virtual DeactivateSubscriptionOfferRequest DeactivateSubscriptionOfferRequest { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for UpdateSubscription.</summary>
+    public class UpdateSubscriptionRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. If set to true, and the subscription with the given package_name and product_id doesn't exist, the
+        /// subscription will be created. If a new subscription is created, update_mask is ignored.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowMissing")]
+        public virtual System.Nullable<bool> AllowMissing { get; set; }
+
+        /// <summary>
+        /// Optional. The latency tolerance for the propagation of this product update. Defaults to latency-sensitive.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latencyTolerance")]
+        public virtual string LatencyTolerance { get; set; }
+
+        /// <summary>Required. The version of the available regions being used for the subscription.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionsVersion")]
+        public virtual RegionsVersion RegionsVersion { get; set; }
+
+        /// <summary>Required. The subscription to update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subscription")]
+        public virtual Subscription Subscription { get; set; }
+
+        /// <summary>Required. The list of fields to be updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
+        public virtual object UpdateMask { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -1,4 +1,4 @@
-// Copyright 2023 Google LLC
+// Copyright 2024 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -726,6 +726,13 @@ namespace Google.Apis.CloudOSLogin.v1
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ProjectId { get; set; }
 
+            /// <summary>
+            /// Optional. The regions to which to assert that the key was written. If unspecified, defaults to all
+            /// regions. Regions are listed at https://cloud.google.com/about/locations#region.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("regions", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<string> Regions { get; set; }
+
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.CloudOSLogin.v1.Data.SshPublicKey Body { get; set; }
 
@@ -756,6 +763,14 @@ namespace Google.Apis.CloudOSLogin.v1
                 RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "projectId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("regions", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "regions",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,

@@ -1,4 +1,4 @@
-// Copyright 2023 Google LLC
+// Copyright 2024 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -3545,9 +3545,9 @@ namespace Google.Apis.CloudIdentity.v1beta1
             /// [Find your customer ID.] (https://support.google.com/cloudidentity/answer/10070793) * Can contain
             /// optional inclusion operators on `labels` such as `'cloudidentity.googleapis.com/groups.discussion_forum'
             /// in labels`). * Can contain an optional equality operator on `domain_name`. e.g. `domain_name ==
-            /// 'abc.com'` * Can contain optional `startsWith/contains/equality` operators on `group_key`, e.g.
-            /// `group_key.startsWith('dev')`, `group_key.contains('dev'), group_key == 'dev@abc.com'` * Can contain
-            /// optional `startsWith/contains/equality` operators on `display_name`, such as
+            /// 'examplepetstore.com'` * Can contain optional `startsWith/contains/equality` operators on `group_key`,
+            /// e.g. `group_key.startsWith('dev')`, `group_key.contains('dev'), group_key == 'dev@examplepetstore.com'`
+            /// * Can contain optional `startsWith/contains/equality` operators on `display_name`, such as
             /// `display_name.startsWith('dev')` , `display_name.contains('dev')`, `display_name == 'dev'`
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
@@ -5812,7 +5812,7 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
     {
         /// <summary>
         /// Memberships will be the union of all queries. Only one entry with USER resource is currently supported.
-        /// Customers can create up to 100 dynamic groups.
+        /// Customers can create up to 500 dynamic groups.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queries")]
         public virtual System.Collections.Generic.IList<DynamicGroupQuery> Queries { get; set; }

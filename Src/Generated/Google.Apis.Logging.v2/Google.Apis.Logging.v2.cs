@@ -1,4 +1,4 @@
-// Copyright 2023 Google LLC
+// Copyright 2024 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -1485,10 +1485,10 @@ namespace Google.Apis.Logging.v2
                     }
 
                     /// <summary>
-                    /// Updates a view on a log bucket. This method replaces the following fields in the existing view
-                    /// with values from the new view: filter. If an UNAVAILABLE error is returned, this indicates that
-                    /// system is not in a state where it can update the view. If this occurs, please try again in a few
-                    /// minutes.
+                    /// Updates a view on a log bucket. This method replaces the value of the filter field from the
+                    /// existing view with the corresponding value from the new view. If an UNAVAILABLE error is
+                    /// returned, this indicates that system is not in a state where it can update the view. If this
+                    /// occurs, please try again in a few minutes.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
@@ -1502,10 +1502,10 @@ namespace Google.Apis.Logging.v2
                     }
 
                     /// <summary>
-                    /// Updates a view on a log bucket. This method replaces the following fields in the existing view
-                    /// with values from the new view: filter. If an UNAVAILABLE error is returned, this indicates that
-                    /// system is not in a state where it can update the view. If this occurs, please try again in a few
-                    /// minutes.
+                    /// Updates a view on a log bucket. This method replaces the value of the filter field from the
+                    /// existing view with the corresponding value from the new view. If an UNAVAILABLE error is
+                    /// returned, this indicates that system is not in a state where it can update the view. If this
+                    /// occurs, please try again in a few minutes.
                     /// </summary>
                     public class PatchRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogView>
                     {
@@ -2604,8 +2604,8 @@ namespace Google.Apis.Logging.v2
                     /// Optional. The ID to use for the saved query, which will become the final component of the saved
                     /// query's resource name.If the saved_query_id is not provided, the system will generate an
                     /// alphanumeric ID.The saved_query_id is limited to 100 characters and can include only the
-                    /// following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and
-                    /// periods. First character has to be alphanumeric.
+                    /// following characters: upper and lower-case alphanumeric characters, underscores, hyphens,
+                    /// periods.First character has to be alphanumeric.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("savedQueryId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string SavedQueryId { get; set; }
@@ -3454,9 +3454,9 @@ namespace Google.Apis.Logging.v2
             }
 
             /// <summary>
-            /// Updates a sink. This method replaces the following fields in the existing sink with values from the new
-            /// sink: destination, and filter.The updated sink might also have a new writer_identity; see the
-            /// unique_writer_identity field.
+            /// Updates a sink. This method replaces the values of the destination and filter fields of the existing
+            /// sink with the corresponding values from the new sink.The updated sink might also have a new
+            /// writer_identity; see the unique_writer_identity field.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="sinkName">
@@ -3471,9 +3471,9 @@ namespace Google.Apis.Logging.v2
             }
 
             /// <summary>
-            /// Updates a sink. This method replaces the following fields in the existing sink with values from the new
-            /// sink: destination, and filter.The updated sink might also have a new writer_identity; see the
-            /// unique_writer_identity field.
+            /// Updates a sink. This method replaces the values of the destination and filter fields of the existing
+            /// sink with the corresponding values from the new sink.The updated sink might also have a new
+            /// writer_identity; see the unique_writer_identity field.
             /// </summary>
             public class PatchRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogSink>
             {
@@ -3584,9 +3584,9 @@ namespace Google.Apis.Logging.v2
             }
 
             /// <summary>
-            /// Updates a sink. This method replaces the following fields in the existing sink with values from the new
-            /// sink: destination, and filter.The updated sink might also have a new writer_identity; see the
-            /// unique_writer_identity field.
+            /// Updates a sink. This method replaces the values of the destination and filter fields of the existing
+            /// sink with the corresponding values from the new sink.The updated sink might also have a new
+            /// writer_identity; see the unique_writer_identity field.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="sinkName">
@@ -3601,9 +3601,9 @@ namespace Google.Apis.Logging.v2
             }
 
             /// <summary>
-            /// Updates a sink. This method replaces the following fields in the existing sink with values from the new
-            /// sink: destination, and filter.The updated sink might also have a new writer_identity; see the
-            /// unique_writer_identity field.
+            /// Updates a sink. This method replaces the values of the destination and filter fields of the existing
+            /// sink with the corresponding values from the new sink.The updated sink might also have a new
+            /// writer_identity; see the unique_writer_identity field.
             /// </summary>
             public class UpdateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogSink>
             {
@@ -5559,10 +5559,10 @@ namespace Google.Apis.Logging.v2
                     }
 
                     /// <summary>
-                    /// Updates a view on a log bucket. This method replaces the following fields in the existing view
-                    /// with values from the new view: filter. If an UNAVAILABLE error is returned, this indicates that
-                    /// system is not in a state where it can update the view. If this occurs, please try again in a few
-                    /// minutes.
+                    /// Updates a view on a log bucket. This method replaces the value of the filter field from the
+                    /// existing view with the corresponding value from the new view. If an UNAVAILABLE error is
+                    /// returned, this indicates that system is not in a state where it can update the view. If this
+                    /// occurs, please try again in a few minutes.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
@@ -5576,10 +5576,10 @@ namespace Google.Apis.Logging.v2
                     }
 
                     /// <summary>
-                    /// Updates a view on a log bucket. This method replaces the following fields in the existing view
-                    /// with values from the new view: filter. If an UNAVAILABLE error is returned, this indicates that
-                    /// system is not in a state where it can update the view. If this occurs, please try again in a few
-                    /// minutes.
+                    /// Updates a view on a log bucket. This method replaces the value of the filter field from the
+                    /// existing view with the corresponding value from the new view. If an UNAVAILABLE error is
+                    /// returned, this indicates that system is not in a state where it can update the view. If this
+                    /// occurs, please try again in a few minutes.
                     /// </summary>
                     public class PatchRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogView>
                     {
@@ -6678,8 +6678,8 @@ namespace Google.Apis.Logging.v2
                     /// Optional. The ID to use for the saved query, which will become the final component of the saved
                     /// query's resource name.If the saved_query_id is not provided, the system will generate an
                     /// alphanumeric ID.The saved_query_id is limited to 100 characters and can include only the
-                    /// following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and
-                    /// periods. First character has to be alphanumeric.
+                    /// following characters: upper and lower-case alphanumeric characters, underscores, hyphens,
+                    /// periods.First character has to be alphanumeric.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("savedQueryId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string SavedQueryId { get; set; }
@@ -7528,9 +7528,9 @@ namespace Google.Apis.Logging.v2
             }
 
             /// <summary>
-            /// Updates a sink. This method replaces the following fields in the existing sink with values from the new
-            /// sink: destination, and filter.The updated sink might also have a new writer_identity; see the
-            /// unique_writer_identity field.
+            /// Updates a sink. This method replaces the values of the destination and filter fields of the existing
+            /// sink with the corresponding values from the new sink.The updated sink might also have a new
+            /// writer_identity; see the unique_writer_identity field.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="sinkName">
@@ -7545,9 +7545,9 @@ namespace Google.Apis.Logging.v2
             }
 
             /// <summary>
-            /// Updates a sink. This method replaces the following fields in the existing sink with values from the new
-            /// sink: destination, and filter.The updated sink might also have a new writer_identity; see the
-            /// unique_writer_identity field.
+            /// Updates a sink. This method replaces the values of the destination and filter fields of the existing
+            /// sink with the corresponding values from the new sink.The updated sink might also have a new
+            /// writer_identity; see the unique_writer_identity field.
             /// </summary>
             public class PatchRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogSink>
             {
@@ -7658,9 +7658,9 @@ namespace Google.Apis.Logging.v2
             }
 
             /// <summary>
-            /// Updates a sink. This method replaces the following fields in the existing sink with values from the new
-            /// sink: destination, and filter.The updated sink might also have a new writer_identity; see the
-            /// unique_writer_identity field.
+            /// Updates a sink. This method replaces the values of the destination and filter fields of the existing
+            /// sink with the corresponding values from the new sink.The updated sink might also have a new
+            /// writer_identity; see the unique_writer_identity field.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="sinkName">
@@ -7675,9 +7675,9 @@ namespace Google.Apis.Logging.v2
             }
 
             /// <summary>
-            /// Updates a sink. This method replaces the following fields in the existing sink with values from the new
-            /// sink: destination, and filter.The updated sink might also have a new writer_identity; see the
-            /// unique_writer_identity field.
+            /// Updates a sink. This method replaces the values of the destination and filter fields of the existing
+            /// sink with the corresponding values from the new sink.The updated sink might also have a new
+            /// writer_identity; see the unique_writer_identity field.
             /// </summary>
             public class UpdateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogSink>
             {
@@ -7920,12 +7920,12 @@ namespace Google.Apis.Logging.v2
 
         /// <summary>
         /// Updates the settings for the given resource. This method applies to all feature configurations for
-        /// organization and folders.UpdateSettings will fail if 1) kms_key_name is invalid, 2) the associated service
-        /// account does not have the required roles/cloudkms.cryptoKeyEncrypterDecrypter role assigned for the key, 3)
-        /// access to the key is disabled, 4) storage_location is not supported by Logging, 5) storage_location violates
-        /// the location OrgPolicy, or 6) default_sink_config is set but has an unspecified filter write mode.See
-        /// Configure default settings for organizations and folders
-        /// (https://cloud.google.com/logging/docs/default-settings) for more information.
+        /// organization and folders.UpdateSettings fails when any of the following are true: The value of
+        /// storage_location either isn't supported by Logging or violates the location OrgPolicy. The
+        /// default_sink_config field is set, but it has an unspecified filter write mode. The value of kms_key_name is
+        /// invalid. The associated service account doesn't have the required roles/cloudkms.cryptoKeyEncrypterDecrypter
+        /// role assigned for the key. Access to the key is disabled.See Configure default settings for organizations
+        /// and folders (https://cloud.google.com/logging/docs/default-settings) for more information.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">
@@ -7939,12 +7939,12 @@ namespace Google.Apis.Logging.v2
 
         /// <summary>
         /// Updates the settings for the given resource. This method applies to all feature configurations for
-        /// organization and folders.UpdateSettings will fail if 1) kms_key_name is invalid, 2) the associated service
-        /// account does not have the required roles/cloudkms.cryptoKeyEncrypterDecrypter role assigned for the key, 3)
-        /// access to the key is disabled, 4) storage_location is not supported by Logging, 5) storage_location violates
-        /// the location OrgPolicy, or 6) default_sink_config is set but has an unspecified filter write mode.See
-        /// Configure default settings for organizations and folders
-        /// (https://cloud.google.com/logging/docs/default-settings) for more information.
+        /// organization and folders.UpdateSettings fails when any of the following are true: The value of
+        /// storage_location either isn't supported by Logging or violates the location OrgPolicy. The
+        /// default_sink_config field is set, but it has an unspecified filter write mode. The value of kms_key_name is
+        /// invalid. The associated service account doesn't have the required roles/cloudkms.cryptoKeyEncrypterDecrypter
+        /// role assigned for the key. Access to the key is disabled.See Configure default settings for organizations
+        /// and folders (https://cloud.google.com/logging/docs/default-settings) for more information.
         /// </summary>
         public class UpdateSettingsRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Settings>
         {
@@ -8640,9 +8640,10 @@ namespace Google.Apis.Logging.v2
                 }
 
                 /// <summary>
-                /// Updates a view on a log bucket. This method replaces the following fields in the existing view with
-                /// values from the new view: filter. If an UNAVAILABLE error is returned, this indicates that system is
-                /// not in a state where it can update the view. If this occurs, please try again in a few minutes.
+                /// Updates a view on a log bucket. This method replaces the value of the filter field from the existing
+                /// view with the corresponding value from the new view. If an UNAVAILABLE error is returned, this
+                /// indicates that system is not in a state where it can update the view. If this occurs, please try
+                /// again in a few minutes.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
@@ -8656,9 +8657,10 @@ namespace Google.Apis.Logging.v2
                 }
 
                 /// <summary>
-                /// Updates a view on a log bucket. This method replaces the following fields in the existing view with
-                /// values from the new view: filter. If an UNAVAILABLE error is returned, this indicates that system is
-                /// not in a state where it can update the view. If this occurs, please try again in a few minutes.
+                /// Updates a view on a log bucket. This method replaces the value of the filter field from the existing
+                /// view with the corresponding value from the new view. If an UNAVAILABLE error is returned, this
+                /// indicates that system is not in a state where it can update the view. If this occurs, please try
+                /// again in a few minutes.
                 /// </summary>
                 public class PatchRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogView>
                 {
@@ -11139,10 +11141,10 @@ namespace Google.Apis.Logging.v2
                     }
 
                     /// <summary>
-                    /// Updates a view on a log bucket. This method replaces the following fields in the existing view
-                    /// with values from the new view: filter. If an UNAVAILABLE error is returned, this indicates that
-                    /// system is not in a state where it can update the view. If this occurs, please try again in a few
-                    /// minutes.
+                    /// Updates a view on a log bucket. This method replaces the value of the filter field from the
+                    /// existing view with the corresponding value from the new view. If an UNAVAILABLE error is
+                    /// returned, this indicates that system is not in a state where it can update the view. If this
+                    /// occurs, please try again in a few minutes.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
@@ -11156,10 +11158,10 @@ namespace Google.Apis.Logging.v2
                     }
 
                     /// <summary>
-                    /// Updates a view on a log bucket. This method replaces the following fields in the existing view
-                    /// with values from the new view: filter. If an UNAVAILABLE error is returned, this indicates that
-                    /// system is not in a state where it can update the view. If this occurs, please try again in a few
-                    /// minutes.
+                    /// Updates a view on a log bucket. This method replaces the value of the filter field from the
+                    /// existing view with the corresponding value from the new view. If an UNAVAILABLE error is
+                    /// returned, this indicates that system is not in a state where it can update the view. If this
+                    /// occurs, please try again in a few minutes.
                     /// </summary>
                     public class PatchRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogView>
                     {
@@ -12258,8 +12260,8 @@ namespace Google.Apis.Logging.v2
                     /// Optional. The ID to use for the saved query, which will become the final component of the saved
                     /// query's resource name.If the saved_query_id is not provided, the system will generate an
                     /// alphanumeric ID.The saved_query_id is limited to 100 characters and can include only the
-                    /// following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and
-                    /// periods. First character has to be alphanumeric.
+                    /// following characters: upper and lower-case alphanumeric characters, underscores, hyphens,
+                    /// periods.First character has to be alphanumeric.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("savedQueryId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string SavedQueryId { get; set; }
@@ -13108,9 +13110,9 @@ namespace Google.Apis.Logging.v2
             }
 
             /// <summary>
-            /// Updates a sink. This method replaces the following fields in the existing sink with values from the new
-            /// sink: destination, and filter.The updated sink might also have a new writer_identity; see the
-            /// unique_writer_identity field.
+            /// Updates a sink. This method replaces the values of the destination and filter fields of the existing
+            /// sink with the corresponding values from the new sink.The updated sink might also have a new
+            /// writer_identity; see the unique_writer_identity field.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="sinkName">
@@ -13125,9 +13127,9 @@ namespace Google.Apis.Logging.v2
             }
 
             /// <summary>
-            /// Updates a sink. This method replaces the following fields in the existing sink with values from the new
-            /// sink: destination, and filter.The updated sink might also have a new writer_identity; see the
-            /// unique_writer_identity field.
+            /// Updates a sink. This method replaces the values of the destination and filter fields of the existing
+            /// sink with the corresponding values from the new sink.The updated sink might also have a new
+            /// writer_identity; see the unique_writer_identity field.
             /// </summary>
             public class PatchRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogSink>
             {
@@ -13238,9 +13240,9 @@ namespace Google.Apis.Logging.v2
             }
 
             /// <summary>
-            /// Updates a sink. This method replaces the following fields in the existing sink with values from the new
-            /// sink: destination, and filter.The updated sink might also have a new writer_identity; see the
-            /// unique_writer_identity field.
+            /// Updates a sink. This method replaces the values of the destination and filter fields of the existing
+            /// sink with the corresponding values from the new sink.The updated sink might also have a new
+            /// writer_identity; see the unique_writer_identity field.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="sinkName">
@@ -13255,9 +13257,9 @@ namespace Google.Apis.Logging.v2
             }
 
             /// <summary>
-            /// Updates a sink. This method replaces the following fields in the existing sink with values from the new
-            /// sink: destination, and filter.The updated sink might also have a new writer_identity; see the
-            /// unique_writer_identity field.
+            /// Updates a sink. This method replaces the values of the destination and filter fields of the existing
+            /// sink with the corresponding values from the new sink.The updated sink might also have a new
+            /// writer_identity; see the unique_writer_identity field.
             /// </summary>
             public class UpdateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogSink>
             {
@@ -13501,10 +13503,11 @@ namespace Google.Apis.Logging.v2
         /// <summary>
         /// Updates the Log Router CMEK settings for the given resource.Note: CMEK for the Log Router can currently only
         /// be configured for Google Cloud organizations. Once configured, it applies to all projects and folders in the
-        /// Google Cloud organization.UpdateCmekSettings will fail if 1) kms_key_name is invalid, or 2) the associated
-        /// service account does not have the required roles/cloudkms.cryptoKeyEncrypterDecrypter role assigned for the
-        /// key, or 3) access to the key is disabled.See Enabling CMEK for Log Router
-        /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for more information.
+        /// Google Cloud organization.UpdateCmekSettings fails when any of the following are true: The value of
+        /// kms_key_name is invalid. The associated service account doesn't have the required
+        /// roles/cloudkms.cryptoKeyEncrypterDecrypter role assigned for the key. Access to the key is disabled.See
+        /// Enabling CMEK for Log Router (https://cloud.google.com/logging/docs/routing/managed-encryption) for more
+        /// information.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">
@@ -13522,10 +13525,11 @@ namespace Google.Apis.Logging.v2
         /// <summary>
         /// Updates the Log Router CMEK settings for the given resource.Note: CMEK for the Log Router can currently only
         /// be configured for Google Cloud organizations. Once configured, it applies to all projects and folders in the
-        /// Google Cloud organization.UpdateCmekSettings will fail if 1) kms_key_name is invalid, or 2) the associated
-        /// service account does not have the required roles/cloudkms.cryptoKeyEncrypterDecrypter role assigned for the
-        /// key, or 3) access to the key is disabled.See Enabling CMEK for Log Router
-        /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for more information.
+        /// Google Cloud organization.UpdateCmekSettings fails when any of the following are true: The value of
+        /// kms_key_name is invalid. The associated service account doesn't have the required
+        /// roles/cloudkms.cryptoKeyEncrypterDecrypter role assigned for the key. Access to the key is disabled.See
+        /// Enabling CMEK for Log Router (https://cloud.google.com/logging/docs/routing/managed-encryption) for more
+        /// information.
         /// </summary>
         public class UpdateCmekSettingsRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.CmekSettings>
         {
@@ -13595,12 +13599,12 @@ namespace Google.Apis.Logging.v2
 
         /// <summary>
         /// Updates the settings for the given resource. This method applies to all feature configurations for
-        /// organization and folders.UpdateSettings will fail if 1) kms_key_name is invalid, 2) the associated service
-        /// account does not have the required roles/cloudkms.cryptoKeyEncrypterDecrypter role assigned for the key, 3)
-        /// access to the key is disabled, 4) storage_location is not supported by Logging, 5) storage_location violates
-        /// the location OrgPolicy, or 6) default_sink_config is set but has an unspecified filter write mode.See
-        /// Configure default settings for organizations and folders
-        /// (https://cloud.google.com/logging/docs/default-settings) for more information.
+        /// organization and folders.UpdateSettings fails when any of the following are true: The value of
+        /// storage_location either isn't supported by Logging or violates the location OrgPolicy. The
+        /// default_sink_config field is set, but it has an unspecified filter write mode. The value of kms_key_name is
+        /// invalid. The associated service account doesn't have the required roles/cloudkms.cryptoKeyEncrypterDecrypter
+        /// role assigned for the key. Access to the key is disabled.See Configure default settings for organizations
+        /// and folders (https://cloud.google.com/logging/docs/default-settings) for more information.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">
@@ -13614,12 +13618,12 @@ namespace Google.Apis.Logging.v2
 
         /// <summary>
         /// Updates the settings for the given resource. This method applies to all feature configurations for
-        /// organization and folders.UpdateSettings will fail if 1) kms_key_name is invalid, 2) the associated service
-        /// account does not have the required roles/cloudkms.cryptoKeyEncrypterDecrypter role assigned for the key, 3)
-        /// access to the key is disabled, 4) storage_location is not supported by Logging, 5) storage_location violates
-        /// the location OrgPolicy, or 6) default_sink_config is set but has an unspecified filter write mode.See
-        /// Configure default settings for organizations and folders
-        /// (https://cloud.google.com/logging/docs/default-settings) for more information.
+        /// organization and folders.UpdateSettings fails when any of the following are true: The value of
+        /// storage_location either isn't supported by Logging or violates the location OrgPolicy. The
+        /// default_sink_config field is set, but it has an unspecified filter write mode. The value of kms_key_name is
+        /// invalid. The associated service account doesn't have the required roles/cloudkms.cryptoKeyEncrypterDecrypter
+        /// role assigned for the key. Access to the key is disabled.See Configure default settings for organizations
+        /// and folders (https://cloud.google.com/logging/docs/default-settings) for more information.
         /// </summary>
         public class UpdateSettingsRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Settings>
         {
@@ -14843,10 +14847,10 @@ namespace Google.Apis.Logging.v2
                     }
 
                     /// <summary>
-                    /// Updates a view on a log bucket. This method replaces the following fields in the existing view
-                    /// with values from the new view: filter. If an UNAVAILABLE error is returned, this indicates that
-                    /// system is not in a state where it can update the view. If this occurs, please try again in a few
-                    /// minutes.
+                    /// Updates a view on a log bucket. This method replaces the value of the filter field from the
+                    /// existing view with the corresponding value from the new view. If an UNAVAILABLE error is
+                    /// returned, this indicates that system is not in a state where it can update the view. If this
+                    /// occurs, please try again in a few minutes.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
@@ -14860,10 +14864,10 @@ namespace Google.Apis.Logging.v2
                     }
 
                     /// <summary>
-                    /// Updates a view on a log bucket. This method replaces the following fields in the existing view
-                    /// with values from the new view: filter. If an UNAVAILABLE error is returned, this indicates that
-                    /// system is not in a state where it can update the view. If this occurs, please try again in a few
-                    /// minutes.
+                    /// Updates a view on a log bucket. This method replaces the value of the filter field from the
+                    /// existing view with the corresponding value from the new view. If an UNAVAILABLE error is
+                    /// returned, this indicates that system is not in a state where it can update the view. If this
+                    /// occurs, please try again in a few minutes.
                     /// </summary>
                     public class PatchRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogView>
                     {
@@ -15962,8 +15966,8 @@ namespace Google.Apis.Logging.v2
                     /// Optional. The ID to use for the saved query, which will become the final component of the saved
                     /// query's resource name.If the saved_query_id is not provided, the system will generate an
                     /// alphanumeric ID.The saved_query_id is limited to 100 characters and can include only the
-                    /// following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and
-                    /// periods. First character has to be alphanumeric.
+                    /// following characters: upper and lower-case alphanumeric characters, underscores, hyphens,
+                    /// periods.First character has to be alphanumeric.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("savedQueryId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string SavedQueryId { get; set; }
@@ -17129,9 +17133,9 @@ namespace Google.Apis.Logging.v2
             }
 
             /// <summary>
-            /// Updates a sink. This method replaces the following fields in the existing sink with values from the new
-            /// sink: destination, and filter.The updated sink might also have a new writer_identity; see the
-            /// unique_writer_identity field.
+            /// Updates a sink. This method replaces the values of the destination and filter fields of the existing
+            /// sink with the corresponding values from the new sink.The updated sink might also have a new
+            /// writer_identity; see the unique_writer_identity field.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="sinkName">
@@ -17146,9 +17150,9 @@ namespace Google.Apis.Logging.v2
             }
 
             /// <summary>
-            /// Updates a sink. This method replaces the following fields in the existing sink with values from the new
-            /// sink: destination, and filter.The updated sink might also have a new writer_identity; see the
-            /// unique_writer_identity field.
+            /// Updates a sink. This method replaces the values of the destination and filter fields of the existing
+            /// sink with the corresponding values from the new sink.The updated sink might also have a new
+            /// writer_identity; see the unique_writer_identity field.
             /// </summary>
             public class PatchRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogSink>
             {
@@ -17259,9 +17263,9 @@ namespace Google.Apis.Logging.v2
             }
 
             /// <summary>
-            /// Updates a sink. This method replaces the following fields in the existing sink with values from the new
-            /// sink: destination, and filter.The updated sink might also have a new writer_identity; see the
-            /// unique_writer_identity field.
+            /// Updates a sink. This method replaces the values of the destination and filter fields of the existing
+            /// sink with the corresponding values from the new sink.The updated sink might also have a new
+            /// writer_identity; see the unique_writer_identity field.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="sinkName">
@@ -17276,9 +17280,9 @@ namespace Google.Apis.Logging.v2
             }
 
             /// <summary>
-            /// Updates a sink. This method replaces the following fields in the existing sink with values from the new
-            /// sink: destination, and filter.The updated sink might also have a new writer_identity; see the
-            /// unique_writer_identity field.
+            /// Updates a sink. This method replaces the values of the destination and filter fields of the existing
+            /// sink with the corresponding values from the new sink.The updated sink might also have a new
+            /// writer_identity; see the unique_writer_identity field.
             /// </summary>
             public class UpdateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogSink>
             {
@@ -17836,9 +17840,9 @@ namespace Google.Apis.Logging.v2
         }
 
         /// <summary>
-        /// Updates a sink. This method replaces the following fields in the existing sink with values from the new
-        /// sink: destination, and filter.The updated sink might also have a new writer_identity; see the
-        /// unique_writer_identity field.
+        /// Updates a sink. This method replaces the values of the destination and filter fields of the existing sink
+        /// with the corresponding values from the new sink.The updated sink might also have a new writer_identity; see
+        /// the unique_writer_identity field.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="sinkName">
@@ -17853,9 +17857,9 @@ namespace Google.Apis.Logging.v2
         }
 
         /// <summary>
-        /// Updates a sink. This method replaces the following fields in the existing sink with values from the new
-        /// sink: destination, and filter.The updated sink might also have a new writer_identity; see the
-        /// unique_writer_identity field.
+        /// Updates a sink. This method replaces the values of the destination and filter fields of the existing sink
+        /// with the corresponding values from the new sink.The updated sink might also have a new writer_identity; see
+        /// the unique_writer_identity field.
         /// </summary>
         public class UpdateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogSink>
         {
@@ -18111,10 +18115,11 @@ namespace Google.Apis.Logging.v2
         /// <summary>
         /// Updates the Log Router CMEK settings for the given resource.Note: CMEK for the Log Router can currently only
         /// be configured for Google Cloud organizations. Once configured, it applies to all projects and folders in the
-        /// Google Cloud organization.UpdateCmekSettings will fail if 1) kms_key_name is invalid, or 2) the associated
-        /// service account does not have the required roles/cloudkms.cryptoKeyEncrypterDecrypter role assigned for the
-        /// key, or 3) access to the key is disabled.See Enabling CMEK for Log Router
-        /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for more information.
+        /// Google Cloud organization.UpdateCmekSettings fails when any of the following are true: The value of
+        /// kms_key_name is invalid. The associated service account doesn't have the required
+        /// roles/cloudkms.cryptoKeyEncrypterDecrypter role assigned for the key. Access to the key is disabled.See
+        /// Enabling CMEK for Log Router (https://cloud.google.com/logging/docs/routing/managed-encryption) for more
+        /// information.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">
@@ -18132,10 +18137,11 @@ namespace Google.Apis.Logging.v2
         /// <summary>
         /// Updates the Log Router CMEK settings for the given resource.Note: CMEK for the Log Router can currently only
         /// be configured for Google Cloud organizations. Once configured, it applies to all projects and folders in the
-        /// Google Cloud organization.UpdateCmekSettings will fail if 1) kms_key_name is invalid, or 2) the associated
-        /// service account does not have the required roles/cloudkms.cryptoKeyEncrypterDecrypter role assigned for the
-        /// key, or 3) access to the key is disabled.See Enabling CMEK for Log Router
-        /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for more information.
+        /// Google Cloud organization.UpdateCmekSettings fails when any of the following are true: The value of
+        /// kms_key_name is invalid. The associated service account doesn't have the required
+        /// roles/cloudkms.cryptoKeyEncrypterDecrypter role assigned for the key. Access to the key is disabled.See
+        /// Enabling CMEK for Log Router (https://cloud.google.com/logging/docs/routing/managed-encryption) for more
+        /// information.
         /// </summary>
         public class UpdateCmekSettingsRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.CmekSettings>
         {
@@ -18205,12 +18211,12 @@ namespace Google.Apis.Logging.v2
 
         /// <summary>
         /// Updates the settings for the given resource. This method applies to all feature configurations for
-        /// organization and folders.UpdateSettings will fail if 1) kms_key_name is invalid, 2) the associated service
-        /// account does not have the required roles/cloudkms.cryptoKeyEncrypterDecrypter role assigned for the key, 3)
-        /// access to the key is disabled, 4) storage_location is not supported by Logging, 5) storage_location violates
-        /// the location OrgPolicy, or 6) default_sink_config is set but has an unspecified filter write mode.See
-        /// Configure default settings for organizations and folders
-        /// (https://cloud.google.com/logging/docs/default-settings) for more information.
+        /// organization and folders.UpdateSettings fails when any of the following are true: The value of
+        /// storage_location either isn't supported by Logging or violates the location OrgPolicy. The
+        /// default_sink_config field is set, but it has an unspecified filter write mode. The value of kms_key_name is
+        /// invalid. The associated service account doesn't have the required roles/cloudkms.cryptoKeyEncrypterDecrypter
+        /// role assigned for the key. Access to the key is disabled.See Configure default settings for organizations
+        /// and folders (https://cloud.google.com/logging/docs/default-settings) for more information.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">
@@ -18224,12 +18230,12 @@ namespace Google.Apis.Logging.v2
 
         /// <summary>
         /// Updates the settings for the given resource. This method applies to all feature configurations for
-        /// organization and folders.UpdateSettings will fail if 1) kms_key_name is invalid, 2) the associated service
-        /// account does not have the required roles/cloudkms.cryptoKeyEncrypterDecrypter role assigned for the key, 3)
-        /// access to the key is disabled, 4) storage_location is not supported by Logging, 5) storage_location violates
-        /// the location OrgPolicy, or 6) default_sink_config is set but has an unspecified filter write mode.See
-        /// Configure default settings for organizations and folders
-        /// (https://cloud.google.com/logging/docs/default-settings) for more information.
+        /// organization and folders.UpdateSettings fails when any of the following are true: The value of
+        /// storage_location either isn't supported by Logging or violates the location OrgPolicy. The
+        /// default_sink_config field is set, but it has an unspecified filter write mode. The value of kms_key_name is
+        /// invalid. The associated service account doesn't have the required roles/cloudkms.cryptoKeyEncrypterDecrypter
+        /// role assigned for the key. Access to the key is disabled.See Configure default settings for organizations
+        /// and folders (https://cloud.google.com/logging/docs/default-settings) for more information.
         /// </summary>
         public class UpdateSettingsRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Settings>
         {
@@ -18736,9 +18742,9 @@ namespace Google.Apis.Logging.v2.Data
         /// <summary>
         /// Optional. An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-queries). The only
         /// exported log entries are those that are in the resource owning the sink and that match the filter.For
-        /// example:logName="projects/[PROJECT_ID]/logs/[LOG_ID]" AND severity&amp;gt;=ERRORCannot be empty or unset if
-        /// mode == OVERWRITE. In order to match all logs, use the following line as the value of filter and do not use
-        /// exclusions:logName:*
+        /// example:logName="projects/[PROJECT_ID]/logs/[LOG_ID]" AND severity&amp;gt;=ERRORTo match all logs, don't add
+        /// exclusions and use the following line as the value of filter:logName:*Cannot be empty or unset when the
+        /// value of mode is OVERWRITE.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; }
@@ -19995,9 +20001,9 @@ namespace Google.Apis.Logging.v2.Data
     {
         /// <summary>
         /// The id is a unique identifier for a particular error group; it is the last part of the error group resource
-        /// name: /projects//errors/. Example: COShysOX0r_51QE The id is derived from key parts of the error-log content
-        /// and is treated as Service Data. For information about how Service Data is handled, see Google Cloud Privacy
-        /// Notice (https://cloud.google.com/terms/cloud-privacy-notice).
+        /// name: /project/[PROJECT_ID]/errors/[ERROR_GROUP_ID]. Example: COShysOX0r_51QE. The id is derived from key
+        /// parts of the error-log content and is treated as Service Data. For information about how Service Data is
+        /// handled, see Google Cloud Privacy Notice (https://cloud.google.com/terms/cloud-privacy-notice).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
@@ -20370,8 +20376,8 @@ namespace Google.Apis.Logging.v2.Data
     }
 
     /// <summary>
-    /// Describes a sink used to export log entries to one of the following destinations in any project: a Cloud Storage
-    /// bucket, a BigQuery dataset, a Pub/Sub topic or a Cloud Logging log bucket. A logs filter controls which log
+    /// Describes a sink used to export log entries to one of the following destinations: a Cloud Logging log bucket, a
+    /// Cloud Storage bucket, a BigQuery dataset, a Pub/Sub topic, a Cloud project.A logs filter controls which log
     /// entries are exported. The sink must be created within a project, organization, billing account, or folder.
     /// </summary>
     public class LogSink : Google.Apis.Requests.IDirectResponseSchema
@@ -20474,8 +20480,8 @@ namespace Google.Apis.Logging.v2.Data
 
         /// <summary>
         /// Required. The client-assigned sink identifier, unique within the project.For example:
-        /// "my-syslog-errors-to-pubsub". Sink identifiers are limited to 100 characters and can include only the
-        /// following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods. First
+        /// "my-syslog-errors-to-pubsub".Sink identifiers are limited to 100 characters and can include only the
+        /// following characters: upper and lower-case alphanumeric characters, underscores, hyphens, periods.First
         /// character has to be alphanumeric.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -20615,9 +20621,11 @@ namespace Google.Apis.Logging.v2.Data
         public virtual string Description { get; set; }
 
         /// <summary>
-        /// Filter that restricts which log entries in a bucket are visible in this view.Filters are restricted to be a
-        /// logical AND of ==/!= of any of the following: originating project/folder/organization/billing account.
-        /// resource type log idFor example:SOURCE("projects/myproject") AND resource.type = "gce_instance" AND
+        /// Filter that restricts which log entries in a bucket are visible in this view.Filters must be logical
+        /// conjunctions that use the AND operator, and they can use any of the following qualifiers: SOURCE(), which
+        /// specifies a project, folder, organization, or billing account of origin. resource.type, which specifies the
+        /// resource type. LOG_ID(), which identifies the log.They can also use the negations of these qualifiers with
+        /// the NOT operator.For example:SOURCE("projects/myproject") AND resource.type = "gce_instance" AND NOT
         /// LOG_ID("stdout")
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
@@ -21459,10 +21467,10 @@ namespace Google.Apis.Logging.v2.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Optional. The storage location that Cloud Logging will use to create new resources when a location is needed
-        /// but not explicitly provided. The use cases includes: The location of _Default and _Required log bucket for
-        /// newly created projects and folders.Example value: europe-west1.Note: this setting does not affect the
-        /// location of resources where a location is explicitly provided when created, such as custom log buckets.
+        /// Optional. The storage location for the _Default and _Required log buckets of newly created projects and
+        /// folders, unless the storage location is explicitly provided.Example value: europe-west1.Note: this setting
+        /// does not affect the location of resources where a location is explicitly provided when created, such as
+        /// custom log buckets.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storageLocation")]
         public virtual string StorageLocation { get; set; }

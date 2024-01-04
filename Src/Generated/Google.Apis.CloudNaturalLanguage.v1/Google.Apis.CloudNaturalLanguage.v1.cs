@@ -1,4 +1,4 @@
-// Copyright 2023 Google LLC
+// Copyright 2024 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -833,7 +833,9 @@ namespace Google.Apis.CloudNaturalLanguage.v1.Data
     /// <summary>The document classification request message.</summary>
     public class ClassifyTextRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Model options to use for classification. Defaults to v1 options if not specified.</summary>
+        /// <summary>
+        /// Optional. Model options to use for classification. Defaults to v1 options if not specified.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("classificationModelOptions")]
         public virtual ClassificationModelOptions ClassificationModelOptions { get; set; }
 
@@ -993,7 +995,7 @@ namespace Google.Apis.CloudNaturalLanguage.v1.Data
     public class Features : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The model options to use for classification. Defaults to v1 options if not specified. Only used if
+        /// Optional. The model options to use for classification. Defaults to v1 options if not specified. Only used if
         /// `classify_text` is set to true.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("classificationModelOptions")]

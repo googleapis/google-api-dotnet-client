@@ -1,4 +1,4 @@
-// Copyright 2023 Google LLC
+// Copyright 2024 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -437,6 +437,88 @@ namespace Google.Apis.CloudProfiler.v2
             }
 
             /// <summary>
+            /// Lists profiles which have been collected so far and for which the caller has permission to view.
+            /// </summary>
+            /// <param name="parent">
+            /// Required. The parent, which owns this collection of profiles. Format: projects/{user_project_id}
+            /// </param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(this.service, parent);
+            }
+
+            /// <summary>
+            /// Lists profiles which have been collected so far and for which the caller has permission to view.
+            /// </summary>
+            public class ListRequest : CloudProfilerBaseServiceRequest<Google.Apis.CloudProfiler.v2.Data.ListProfilesResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The parent, which owns this collection of profiles. Format: projects/{user_project_id}
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// The maximum number of items to return. Default page_size is 1000. Max limit is 10000.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// The token to continue pagination and get profiles from a particular page. When paginating, all other
+                /// parameters provided to `ListProfiles` must match the call that provided the page token.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v2/{+parent}/profiles";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>
             /// UpdateProfile updates the profile bytes and labels on the profile resource created in the online mode.
             /// Updating the bytes for profiles created in the offline mode is currently not supported: the profile
             /// content must be provided at the time of the profile creation.
@@ -562,6 +644,34 @@ namespace Google.Apis.CloudProfiler.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("target")]
         public virtual string Target { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// ListProfileResponse contains the list of collected profiles for deployments in projects which the user has
+    /// permissions to view.
+    /// </summary>
+    public class ListProfilesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Token to receive the next page of results. This field maybe empty if there are no more profiles to fetch.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>List of profiles fetched.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("profiles")]
+        public virtual System.Collections.Generic.IList<Profile> Profiles { get; set; }
+
+        /// <summary>
+        /// Number of profiles that were skipped in the current page since they were not able to be fetched
+        /// successfully. This should typically be zero. A non-zero value may indicate a transient failure, in which
+        /// case if the number is too high for your use case, the call may be retried.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("skippedProfiles")]
+        public virtual System.Nullable<int> SkippedProfiles { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -1,4 +1,4 @@
-// Copyright 2023 Google LLC
+// Copyright 2024 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -2641,6 +2641,94 @@ namespace Google.Apis.Vault.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The options for Calendar exports.</summary>
+    public class CalendarExportOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The file format for exported text messages.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exportFormat")]
+        public virtual string ExportFormat { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Additional options for Calendar search</summary>
+    public class CalendarOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Matches only those events whose location contains all of the words in the given set. If the string contains
+        /// quoted phrases, this method only matches those events whose location contain the exact phrase. Entries in
+        /// the set are considered in "and". Word splitting example: ["New Zealand"] vs ["New","Zealand"] "New Zealand":
+        /// matched by both "New and better Zealand": only matched by the later
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locationQuery")]
+        public virtual System.Collections.Generic.IList<string> LocationQuery { get; set; }
+
+        /// <summary>
+        /// Matches only those events that do not contain any of the words in the given set in title, description,
+        /// location, or attendees. Entries in the set are considered in "or".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minusWords")]
+        public virtual System.Collections.Generic.IList<string> MinusWords { get; set; }
+
+        /// <summary>
+        /// Matches only those events whose attendees contain all of the words in the given set. Entries in the set are
+        /// considered in "and".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("peopleQuery")]
+        public virtual System.Collections.Generic.IList<string> PeopleQuery { get; set; }
+
+        /// <summary>
+        /// Matches only events for which the custodian gave one of these responses. If the set is empty or contains
+        /// ATTENDEE_RESPONSE_UNSPECIFIED there will be no filtering on responses.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("responseStatuses")]
+        public virtual System.Collections.Generic.IList<string> ResponseStatuses { get; set; }
+
+        private string _versionDateRaw;
+
+        private object _versionDate;
+
+        /// <summary>
+        /// Search the current version of the Calendar event, but export the contents of the last version saved before
+        /// 12:00 AM UTC on the specified date. Enter the date in UTC.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("versionDate")]
+        public virtual string VersionDateRaw
+        {
+            get => _versionDateRaw;
+            set
+            {
+                _versionDate = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _versionDateRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="VersionDateRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use VersionDateDateTimeOffset instead.")]
+        public virtual object VersionDate
+        {
+            get => _versionDate;
+            set
+            {
+                _versionDateRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _versionDate = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="VersionDateRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? VersionDateDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(VersionDateRaw);
+            set => VersionDateRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The request message for Operations.CancelOperation.</summary>
     public class CancelOperationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3017,6 +3105,12 @@ namespace Google.Apis.Vault.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>
+        /// Output only. Identifies the parent export that spawned this child export. This is only set on child exports.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parentExportId")]
+        public virtual string ParentExportId { get; set; }
+
         /// <summary>The query parameters used to create the export.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
         public virtual Query Query { get; set; }
@@ -3040,6 +3134,10 @@ namespace Google.Apis.Vault.v1.Data
     /// <summary>Additional options for exports</summary>
     public class ExportOptions : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Option available for Calendar export.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("calendarOptions")]
+        public virtual CalendarExportOptions CalendarOptions { get; set; }
+
         /// <summary>Options for Drive exports.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("driveOptions")]
         public virtual DriveExportOptions DriveOptions { get; set; }
@@ -3713,6 +3811,10 @@ namespace Google.Apis.Vault.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("exportFormat")]
         public virtual string ExportFormat { get; set; }
 
+        /// <summary>Optional. To enable exporting linked Drive files, set to **true**.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exportLinkedDriveFiles")]
+        public virtual System.Nullable<bool> ExportLinkedDriveFiles { get; set; }
+
         /// <summary>To export confidential mode content, set to **true**.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("showConfidentialModeContent")]
         public virtual System.Nullable<bool> ShowConfidentialModeContent { get; set; }
@@ -3859,6 +3961,10 @@ namespace Google.Apis.Vault.v1.Data
         /// <summary>Required when **SearchMethod** is **ACCOUNT**.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountInfo")]
         public virtual AccountInfo AccountInfo { get; set; }
+
+        /// <summary>Set Calendar search-specific options.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("calendarOptions")]
+        public virtual CalendarOptions CalendarOptions { get; set; }
 
         /// <summary>The Google Workspace service to search.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("corpus")]

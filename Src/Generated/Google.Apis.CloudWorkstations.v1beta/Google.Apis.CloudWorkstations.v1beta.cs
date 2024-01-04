@@ -1,4 +1,4 @@
-// Copyright 2023 Google LLC
+// Copyright 2024 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -3761,6 +3761,14 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("host")]
         public virtual string Host { get; set; }
+
+        /// <summary>
+        /// Output only. The name of the Google Cloud KMS encryption key used to encrypt this workstation. The KMS key
+        /// can only be configured in the WorkstationConfig. The expected format is
+        /// `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKey")]
+        public virtual string KmsKey { get; set; }
 
         /// <summary>
         /// Optional. [Labels](https://cloud.google.com/workstations/docs/label-resources) that are applied to the

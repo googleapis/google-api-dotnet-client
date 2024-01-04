@@ -1,4 +1,4 @@
-// Copyright 2023 Google LLC
+// Copyright 2024 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -9537,6 +9537,17 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         /// <summary>Required. The ID of a BigQuery Dataset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("datasetId")]
         public virtual string DatasetId { get; set; }
+
+        /// <summary>Required. The prefix of exported BigQuery tables.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableIdPrefix")]
+        public virtual string TableIdPrefix { get; set; }
+
+        /// <summary>
+        /// Required. Describes the table type. The following values are supported: * `table`: A BigQuery native table.
+        /// * `view`: A virtual table defined by a SQL query.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableType")]
+        public virtual string TableType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

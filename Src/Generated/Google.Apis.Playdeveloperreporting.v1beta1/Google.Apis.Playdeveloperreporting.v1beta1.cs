@@ -1,4 +1,4 @@
-// Copyright 2023 Google LLC
+// Copyright 2024 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -2244,7 +2244,7 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("metricSet")]
         public virtual string MetricSet { get; set; }
 
-        /// <summary>Name of the anomaly. Format: apps/{app}/anomalies/{anomaly}</summary>
+        /// <summary>Identifier. Name of the anomaly. Format: apps/{app}/anomalies/{anomaly}</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -2306,7 +2306,7 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("freshnessInfo")]
         public virtual GooglePlayDeveloperReportingV1beta1FreshnessInfo FreshnessInfo { get; set; }
 
-        /// <summary>The resource name. Format: apps/{app}/anrRateMetricSet</summary>
+        /// <summary>Identifier. The resource name. Format: apps/{app}/anrRateMetricSet</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -2324,7 +2324,7 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
-        /// <summary>The resource name. Format: apps/{app}</summary>
+        /// <summary>Identifier. The resource name. Format: apps/{app}</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -2399,7 +2399,7 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("freshnessInfo")]
         public virtual GooglePlayDeveloperReportingV1beta1FreshnessInfo FreshnessInfo { get; set; }
 
-        /// <summary>The resource name. Format: apps/{app}/crashRateMetricSet</summary>
+        /// <summary>Identifier. The resource name. Format: apps/{app}/crashRateMetricSet</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -2648,7 +2648,7 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; }
 
-        /// <summary>The resource name of the issue. Format: apps/{app}/errorIssues/{issue}</summary>
+        /// <summary>Identifier. The resource name of the issue. Format: apps/{app}/errorIssues/{issue}</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -2668,6 +2668,10 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1.Data
     /// </summary>
     public class GooglePlayDeveloperReportingV1beta1ErrorReport : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The app version on which an event in this error report occurred on.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appVersion")]
+        public virtual GooglePlayDeveloperReportingV1beta1AppVersion AppVersion { get; set; }
+
         /// <summary>A device model on which an event in this error report occurred on.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceModel")]
         public virtual GooglePlayDeveloperReportingV1beta1DeviceModelSummary DeviceModel { get; set; }
@@ -2791,7 +2795,7 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("freshnessInfo")]
         public virtual GooglePlayDeveloperReportingV1beta1FreshnessInfo FreshnessInfo { get; set; }
 
-        /// <summary>The resource name. Format: apps/{app}/excessiveWakeupRateMetricSet</summary>
+        /// <summary>Identifier. The resource name. Format: apps/{app}/excessiveWakeupRateMetricSet</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -3758,7 +3762,7 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("freshnessInfo")]
         public virtual GooglePlayDeveloperReportingV1beta1FreshnessInfo FreshnessInfo { get; set; }
 
-        /// <summary>The resource name. Format: apps/{app}/slowRenderingRateMetricSet</summary>
+        /// <summary>Identifier. The resource name. Format: apps/{app}/slowRenderingRateMetricSet</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -3808,7 +3812,7 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("freshnessInfo")]
         public virtual GooglePlayDeveloperReportingV1beta1FreshnessInfo FreshnessInfo { get; set; }
 
-        /// <summary>The resource name. Format: apps/{app}/slowStartRateMetricSet</summary>
+        /// <summary>Identifier. The resource name. Format: apps/{app}/slowStartRateMetricSet</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -3859,7 +3863,7 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("freshnessInfo")]
         public virtual GooglePlayDeveloperReportingV1beta1FreshnessInfo FreshnessInfo { get; set; }
 
-        /// <summary>The resource name. Format: apps/{app}/stuckBackgroundWakelockRateMetricSet</summary>
+        /// <summary>Identifier. The resource name. Format: apps/{app}/stuckBackgroundWakelockRateMetricSet</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 

@@ -1,4 +1,4 @@
-// Copyright 2023 Google LLC
+// Copyright 2024 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -12017,7 +12017,8 @@ namespace Google.Apis.CloudDataplex.v1.Data
 
         /// <summary>
         /// Optional. Rows with null values will automatically fail a rule, unless ignore_null is true. In that case,
-        /// such null rows are trivially considered passing.This field is only valid for row-level type rules.
+        /// such null rows are trivially considered passing.This field is only valid for the following type of rules:
+        /// RangeExpectation RegexExpectation SetExpectation UniquenessExpectation
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ignoreNull")]
         public virtual System.Nullable<bool> IgnoreNull { get; set; }

@@ -1,4 +1,4 @@
-// Copyright 2023 Google LLC
+// Copyright 2024 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -8755,6 +8755,27 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     }
 
     /// <summary>
+    /// A singleton resource of DataStore. It's empty when DataStore is created, which defaults to digital parser. The
+    /// first call to DataStoreService.UpdateDocumentProcessingConfig method will initialize the config.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The full resource name of the Document Processing Config. Format:
+        /// `projects/*/locations/*/collections/*/dataStores/*/documentProcessingConfig`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The OCR config. Currently it only applies to PDFs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ocrConfig")]
+        public virtual GoogleCloudDiscoveryengineV1alphaOcrConfig OcrConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Metadata related to the progress of the SiteSearchEngineService.EnableAdvancedSiteSearch operation. This will be
     /// returned by the google.longrunning.Operation.metadata field.
     /// </summary>
@@ -9246,6 +9267,71 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     }
 
     /// <summary>
+    /// Metadata related to the progress of the EstimateDataSize operation. This is returned by the
+    /// google.longrunning.Operation.metadata field.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaEstimateDataSizeMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Operation create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Response of the EstimateDataSize request. If the long running operation was successful, then this message is
+    /// returned by the google.longrunning.Operations.response field if the operation was successful.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaEstimateDataSizeResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Data size in terms of bytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataSizeBytes")]
+        public virtual System.Nullable<long> DataSizeBytes { get; set; }
+
+        /// <summary>Total number of documents.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentCount")]
+        public virtual System.Nullable<long> DocumentCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Configurations for fields of a schema. For example, configuring a field is indexable, or searchable.
     /// </summary>
     public class GoogleCloudDiscoveryengineV1alphaFieldConfig : Google.Apis.Requests.IDirectResponseSchema
@@ -9580,6 +9666,30 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unjoinedEventsCount")]
         public virtual System.Nullable<long> UnjoinedEventsCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The OCR options for parsing documents.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaOcrConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. If OCR is enabled or not. OCR must be enabled for other OcrConfig options to apply.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>
+        /// Apply additional enhanced OCR processing to a list of document elements. Supported values: * `table`:
+        /// advanced table parsing model.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enhancedDocumentElements")]
+        public virtual System.Collections.Generic.IList<string> EnhancedDocumentElements { get; set; }
+
+        /// <summary>If true, will use native text instead of OCR text on pages containing native text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("useNativeText")]
+        public virtual System.Nullable<bool> UseNativeText { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10141,6 +10251,116 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Metadata related to the progress of the TrainCustomModel operation. This is returned by the
+    /// google.longrunning.Operation.metadata field.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaTrainCustomModelMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Operation create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Response of the TrainCustomModelRequest. This message is returned by the google.longrunning.Operations.response
+    /// field.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaTrainCustomModelResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Echoes the destination for the complete errors in the request if set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorConfig")]
+        public virtual GoogleCloudDiscoveryengineV1alphaImportErrorConfig ErrorConfig { get; set; }
+
+        /// <summary>A sample of errors encountered while processing the data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorSamples")]
+        public virtual System.Collections.Generic.IList<GoogleRpcStatus> ErrorSamples { get; set; }
+
+        /// <summary>
+        /// The trained model status. Possible values are: * **bad-data**: The training data quality is bad. *
+        /// **no-improvement**: Tuning didn't improve performance. Won't deploy. * **in-progress**: Model training is in
+        /// progress. * **ready**: The model is ready for serving.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelStatus")]
+        public virtual string ModelStatus { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata associated with a tune operation.</summary>
     public class GoogleCloudDiscoveryengineV1alphaTuneEngineMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10612,6 +10832,19 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conversation")]
         public virtual GoogleCloudDiscoveryengineV1betaConversation Conversation { get; set; }
+
+        /// <summary>
+        /// The filter syntax consists of an expression language for constructing a predicate from one or more fields of
+        /// the documents being filtered. Filter expression is case-sensitive. This will be used to filter search
+        /// results which may affect the summary response. If this field is unrecognizable, an `INVALID_ARGUMENT` is
+        /// returned. Filtering in Vertex AI Search is done by mapping the LHS filter key to a key property defined in
+        /// the Vertex AI Search backend -- this mapping is defined by the customer in their schema. For example a media
+        /// customer might have a field 'name' in their schema. In this case the filter would look like this: filter
+        /// --&amp;gt; name:'ANY("king kong")' For more information about filtering including syntax and filter
+        /// operators, see [Filter](https://cloud.google.com/generative-ai-app-builder/docs/filter-search-metadata)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; }
 
         /// <summary>Required. Current user input.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
@@ -12268,6 +12501,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
         public virtual string LanguageCode { get; set; }
 
+        /// <summary>If specified, the spec will be used to modify the prompt provided to the LLM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelPromptSpec")]
+        public virtual GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSummarySpecModelPromptSpec ModelPromptSpec { get; set; }
+
         /// <summary>
         /// If specified, the spec will be used to modify the model specification provided to the LLM.
         /// </summary>
@@ -12286,10 +12523,23 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Specification of the prompt to use with the model.</summary>
+    public class GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSummarySpecModelPromptSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Text at the beginning of the prompt that instructs the assistant. Examples are available in the user guide.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("preamble")]
+        public virtual string Preamble { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Specification of the model.</summary>
     public class GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSummarySpecModelSpec : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The string format of the model version. e.g. stable, latest, etc.</summary>
+        /// <summary>The string format of the model version. e.g. stable, preview, etc.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
 
@@ -12709,6 +12959,75 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("summaryText")]
         public virtual string SummaryText { get; set; }
 
+        [Newtonsoft.Json.JsonPropertyAttribute("summaryWithMetadata")]
+        public virtual GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadata SummaryWithMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Citation info for a segment.</summary>
+    public class GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>End of the attributed segment, exclusive.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endIndex")]
+        public virtual System.Nullable<long> EndIndex { get; set; }
+
+        /// <summary>Citation sources for the attributed segment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sources")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSource> Sources { get; set; }
+
+        /// <summary>Index indicates the start of the segment, measured in bytes/unicode.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startIndex")]
+        public virtual System.Nullable<long> StartIndex { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Citation metadata.</summary>
+    public class GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Citations for segments.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("citations")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitation> Citations { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Citation source.</summary>
+    public class GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Document reference index from SummaryWithMetadata.references. It is 0-indexed and the value will be zero if
+        /// the reference_index is not set explicitly.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("referenceIndex")]
+        public virtual System.Nullable<long> ReferenceIndex { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Document reference.</summary>
+    public class GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReference : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Document.name of the document. Full resource name of the referenced document, in the format
+        /// `projects/*/locations/*/collections/*/dataStores/*/branches/*/documents/*`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("document")]
+        public virtual string Document { get; set; }
+
+        /// <summary>Title of the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>GCS or HTTP uri for the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -12729,6 +13048,25 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scores")]
         public virtual System.Collections.Generic.IList<System.Nullable<float>> Scores { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Summary with metadata information.</summary>
+    public class GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Citation metadata for given summary.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("citationMetadata")]
+        public virtual GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadata CitationMetadata { get; set; }
+
+        /// <summary>Document References.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("references")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReference> References { get; set; }
+
+        /// <summary>Summary text with no citation information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("summary")]
+        public virtual string Summary { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

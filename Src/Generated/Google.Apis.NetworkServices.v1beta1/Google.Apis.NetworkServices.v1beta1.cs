@@ -1,4 +1,4 @@
-// Copyright 2023 Google LLC
+// Copyright 2024 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -6193,6 +6193,13 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         public virtual string Description { get; set; }
 
         /// <summary>
+        /// Optional. Determines if envoy will insert internal debug headers into upstream requests. Other Envoy headers
+        /// may still be injected. By default, envoy will not insert any debug headers.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("envoyHeaders")]
+        public virtual string EnvoyHeaders { get; set; }
+
+        /// <summary>
         /// Optional. A fully-qualified GatewaySecurityPolicy URL reference. Defines how a server should apply security
         /// policy to inbound (VM to Proxy) initiated connections. For example:
         /// `projects/*/locations/*/gatewaySecurityPolicies/swg-policy`. This policy is specific to gateways of type
@@ -6633,6 +6640,14 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("faultInjectionPolicy")]
         public virtual GrpcRouteFaultInjectionPolicy FaultInjectionPolicy { get; set; }
 
+        /// <summary>
+        /// Optional. Specifies the idle timeout for the selected route. The idle timeout is defined as the period in
+        /// which there are no bytes sent or received on either the upstream or downstream connection. If not set, the
+        /// default idle timeout is 1 hour. If set to 0s, the timeout will be disabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("idleTimeout")]
+        public virtual object IdleTimeout { get; set; }
+
         /// <summary>Optional. Specifies the retry policy associated with this route.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("retryPolicy")]
         public virtual GrpcRouteRetryPolicy RetryPolicy { get; set; }
@@ -6910,6 +6925,22 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
     /// <summary>Specifications of a destination to which the request should be routed to.</summary>
     public class HttpRouteDestination : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. The specification for modifying the headers of a matching request prior to delivery of the request
+        /// to the destination. If HeaderModifiers are set on both the Destination and the RouteAction, they will be
+        /// merged. Conflicts between the two will not be resolved on the configuration.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestHeaderModifier")]
+        public virtual HttpRouteHeaderModifier RequestHeaderModifier { get; set; }
+
+        /// <summary>
+        /// Optional. The specification for modifying the headers of a response prior to sending the response back to
+        /// the client. If HeaderModifiers are set on both the Destination and the RouteAction, they will be merged.
+        /// Conflicts between the two will not be resolved on the configuration.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("responseHeaderModifier")]
+        public virtual HttpRouteHeaderModifier ResponseHeaderModifier { get; set; }
+
         /// <summary>The URL of a BackendService to route traffic to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceName")]
         public virtual string ServiceName { get; set; }
@@ -7072,6 +7103,25 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Static HTTP response object to be returned.</summary>
+    public class HttpRouteHttpDirectResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Response body as bytes. Maximum body size is 4096B.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bytesBody")]
+        public virtual string BytesBody { get; set; }
+
+        /// <summary>Required. Status to return as part of HTTP Response. Must be a positive integer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual System.Nullable<int> Status { get; set; }
+
+        /// <summary>Optional. Response body as a string. Maximum body length is 1024 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stringBody")]
+        public virtual string StringBody { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Specifications to match a query parameter in the request.</summary>
     public class HttpRouteQueryParameterMatch : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7171,6 +7221,10 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("destination")]
         public virtual HttpRouteDestination Destination { get; set; }
 
+        /// <summary>Optional. The percentage of requests to get mirrored to the desired destination.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mirrorPercent")]
+        public virtual System.Nullable<float> MirrorPercent { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -7217,6 +7271,10 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("destinations")]
         public virtual System.Collections.Generic.IList<HttpRouteDestination> Destinations { get; set; }
 
+        /// <summary>Optional. Static HTTP Response object to be returned regardless of the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("directResponse")]
+        public virtual HttpRouteHttpDirectResponse DirectResponse { get; set; }
+
         /// <summary>
         /// The specification for fault injection introduced into traffic to test the resiliency of clients to backend
         /// service failure. As part of fault injection, when clients send requests to a backend service, delays can be
@@ -7226,6 +7284,14 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("faultInjectionPolicy")]
         public virtual HttpRouteFaultInjectionPolicy FaultInjectionPolicy { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies the idle timeout for the selected route. The idle timeout is defined as the period in
+        /// which there are no bytes sent or received on either the upstream or downstream connection. If not set, the
+        /// default idle timeout is 1 hour. If set to 0s, the timeout will be disabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("idleTimeout")]
+        public virtual object IdleTimeout { get; set; }
 
         /// <summary>If set, the request is directed as configured by this field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("redirect")]
@@ -7959,6 +8025,13 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         /// <summary>Optional. A free-text description of the resource. Max length 1024 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Optional. Determines if envoy will insert internal debug headers into upstream requests. Other Envoy headers
+        /// may still be injected. By default, envoy will not insert any debug headers.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("envoyHeaders")]
+        public virtual string EnvoyHeaders { get; set; }
 
         /// <summary>
         /// Optional. If set to a valid TCP port (1-65535), instructs the SIDECAR proxy to listen on the specified port
@@ -8745,6 +8818,14 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         public virtual System.Collections.Generic.IList<TcpRouteRouteDestination> Destinations { get; set; }
 
         /// <summary>
+        /// Optional. Specifies the idle timeout for the selected route. The idle timeout is defined as the period in
+        /// which there are no bytes sent or received on either the upstream or downstream connection. If not set, the
+        /// default idle timeout is 30 seconds. If set to 0s, the timeout will be disabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("idleTimeout")]
+        public virtual object IdleTimeout { get; set; }
+
+        /// <summary>
         /// Optional. If true, Router will use the destination IP and port of the original connection as the destination
         /// of the request. Default is false. Only one of route destinations or original destination can be set.
         /// </summary>
@@ -8979,6 +9060,14 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinations")]
         public virtual System.Collections.Generic.IList<TlsRouteRouteDestination> Destinations { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies the idle timeout for the selected route. The idle timeout is defined as the period in
+        /// which there are no bytes sent or received on either the upstream or downstream connection. If not set, the
+        /// default idle timeout is 1 hour. If set to 0s, the timeout will be disabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("idleTimeout")]
+        public virtual object IdleTimeout { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

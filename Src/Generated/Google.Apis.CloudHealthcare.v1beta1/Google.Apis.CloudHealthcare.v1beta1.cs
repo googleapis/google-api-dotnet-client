@@ -1,4 +1,4 @@
-// Copyright 2023 Google LLC
+// Copyright 2024 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -4561,7 +4561,107 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                                 public InstancesResource(Google.Apis.Services.IClientService service)
                                 {
                                     this.service = service;
+                                    Bulkdata = new BulkdataResource(service);
                                     Frames = new FramesResource(service);
+                                }
+
+                                /// <summary>Gets the Bulkdata resource.</summary>
+                                public virtual BulkdataResource Bulkdata { get; }
+
+                                /// <summary>The "bulkdata" collection of methods.</summary>
+                                public class BulkdataResource
+                                {
+                                    private const string Resource = "bulkdata";
+
+                                    /// <summary>The service which this resource belongs to.</summary>
+                                    private readonly Google.Apis.Services.IClientService service;
+
+                                    /// <summary>Constructs a new resource.</summary>
+                                    public BulkdataResource(Google.Apis.Services.IClientService service)
+                                    {
+                                        this.service = service;
+                                    }
+
+                                    /// <summary>
+                                    /// Returns uncompressed, unencoded bytes representing the referenced bulkdata tag
+                                    /// from an instance. See [Retrieve Transaction]
+                                    /// (http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4){:
+                                    /// .external}.
+                                    /// </summary>
+                                    /// <param name="parent">
+                                    /// Required. The name of the DICOM store that is being accessed. For example,
+                                    /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
+                                    /// </param>
+                                    /// <param name="dicomWebPath">
+                                    /// Required. The path for the `RetrieveBulkdata` DICOMweb request. For example,
+                                    /// `studies/{study_uid}/series/{series_uid}/instances/{instance_uid}/bukdata/{bulkdata_uri}`.
+                                    /// </param>
+                                    public virtual RetrieveBulkdataRequest RetrieveBulkdata(string parent, string dicomWebPath)
+                                    {
+                                        return new RetrieveBulkdataRequest(this.service, parent, dicomWebPath);
+                                    }
+
+                                    /// <summary>
+                                    /// Returns uncompressed, unencoded bytes representing the referenced bulkdata tag
+                                    /// from an instance. See [Retrieve Transaction]
+                                    /// (http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4){:
+                                    /// .external}.
+                                    /// </summary>
+                                    public class RetrieveBulkdataRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.HttpBody>
+                                    {
+                                        /// <summary>Constructs a new RetrieveBulkdata request.</summary>
+                                        public RetrieveBulkdataRequest(Google.Apis.Services.IClientService service, string parent, string dicomWebPath) : base(service)
+                                        {
+                                            Parent = parent;
+                                            DicomWebPath = dicomWebPath;
+                                            InitParameters();
+                                        }
+
+                                        /// <summary>
+                                        /// Required. The name of the DICOM store that is being accessed. For example,
+                                        /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
+                                        /// </summary>
+                                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                                        public virtual string Parent { get; private set; }
+
+                                        /// <summary>
+                                        /// Required. The path for the `RetrieveBulkdata` DICOMweb request. For example,
+                                        /// `studies/{study_uid}/series/{series_uid}/instances/{instance_uid}/bukdata/{bulkdata_uri}`.
+                                        /// </summary>
+                                        [Google.Apis.Util.RequestParameterAttribute("dicomWebPath", Google.Apis.Util.RequestParameterType.Path)]
+                                        public virtual string DicomWebPath { get; private set; }
+
+                                        /// <summary>Gets the method name.</summary>
+                                        public override string MethodName => "retrieveBulkdata";
+
+                                        /// <summary>Gets the HTTP method.</summary>
+                                        public override string HttpMethod => "GET";
+
+                                        /// <summary>Gets the REST path.</summary>
+                                        public override string RestPath => "v1beta1/{+parent}/dicomWeb/{+dicomWebPath}";
+
+                                        /// <summary>Initializes RetrieveBulkdata parameter list.</summary>
+                                        protected override void InitParameters()
+                                        {
+                                            base.InitParameters();
+                                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                            {
+                                                Name = "parent",
+                                                IsRequired = true,
+                                                ParameterType = "path",
+                                                DefaultValue = null,
+                                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$",
+                                            });
+                                            RequestParameters.Add("dicomWebPath", new Google.Apis.Discovery.Parameter
+                                            {
+                                                Name = "dicomWebPath",
+                                                IsRequired = true,
+                                                ParameterType = "path",
+                                                DefaultValue = null,
+                                                Pattern = @"^studies/[^/]+/series/[^/]+/instances/[^/]+/bulkdata/[^/]+/.*$",
+                                            });
+                                        }
+                                    }
                                 }
 
                                 /// <summary>Gets the Frames resource.</summary>
@@ -16044,6 +16144,15 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disableResourceVersioning")]
         public virtual System.Nullable<bool> DisableResourceVersioning { get; set; }
+
+        /// <summary>
+        /// Optional. Whether to allow the [ImportResourcesHistory] and [ExecuteBundle] APIs to accept history bundles,
+        /// and directly insert and overwrite historical resource versions into the FHIR store. Importing resource
+        /// histories creates resource interactions that have occurred in the past that clients might not allow. If set
+        /// to false, using history bundles fail with an error.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableHistoryModifications")]
+        public virtual System.Nullable<bool> EnableHistoryModifications { get; set; }
 
         /// <summary>
         /// Whether this FHIR store has the [updateCreate

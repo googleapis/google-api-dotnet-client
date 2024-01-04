@@ -1,4 +1,4 @@
-// Copyright 2023 Google LLC
+// Copyright 2024 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -2727,10 +2727,6 @@ namespace Google.Apis.DriveLabels.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("integerOptions")]
         public virtual GoogleAppsDriveLabelsV2betaFieldIntegerOptions IntegerOptions { get; set; }
 
-        /// <summary>Update field to Long Text.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("longTextOptions")]
-        public virtual GoogleAppsDriveLabelsV2betaFieldLongTextOptions LongTextOptions { get; set; }
-
         /// <summary>Update field to Selection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selectionOptions")]
         public virtual GoogleAppsDriveLabelsV2betaFieldSelectionOptions SelectionOptions { get; set; }
@@ -3396,21 +3392,6 @@ namespace Google.Apis.DriveLabels.v2beta.Data
         /// <summary>Maximum number of entries permitted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxEntries")]
         public virtual System.Nullable<int> MaxEntries { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Options the Long Text field type.</summary>
-    public class GoogleAppsDriveLabelsV2betaFieldLongTextOptions : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Output only. The maximum valid length of values for the text field.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("maxLength")]
-        public virtual System.Nullable<int> MaxLength { get; set; }
-
-        /// <summary>Output only. The minimum valid length of values for the text field.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("minLength")]
-        public virtual System.Nullable<int> MinLength { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

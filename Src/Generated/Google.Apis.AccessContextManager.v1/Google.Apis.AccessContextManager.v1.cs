@@ -1,4 +1,4 @@
-// Copyright 2023 Google LLC
+// Copyright 2024 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -37,6 +37,7 @@ namespace Google.Apis.AccessContextManager.v1
             AccessPolicies = new AccessPoliciesResource(this);
             Operations = new OperationsResource(this);
             Organizations = new OrganizationsResource(this);
+            Services = new ServicesResource(this);
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -85,6 +86,9 @@ namespace Google.Apis.AccessContextManager.v1
 
         /// <summary>Gets the Organizations resource.</summary>
         public virtual OrganizationsResource Organizations { get; }
+
+        /// <summary>Gets the Services resource.</summary>
+        public virtual ServicesResource Services { get; }
     }
 
     /// <summary>A base abstract class for AccessContextManager requests.</summary>
@@ -2908,6 +2912,129 @@ namespace Google.Apis.AccessContextManager.v1
             }
         }
     }
+
+    /// <summary>The "services" collection of methods.</summary>
+    public class ServicesResource
+    {
+        private const string Resource = "services";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public ServicesResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>Returns a VPC-SC supported service based on the service name.</summary>
+        /// <param name="name">
+        /// The name of the service to get information about. The names must be in the same format as used in defining a
+        /// service perimeter, for example, `storage.googleapis.com`.
+        /// </param>
+        public virtual GetRequest Get(string name)
+        {
+            return new GetRequest(this.service, name);
+        }
+
+        /// <summary>Returns a VPC-SC supported service based on the service name.</summary>
+        public class GetRequest : AccessContextManagerBaseServiceRequest<Google.Apis.AccessContextManager.v1.Data.SupportedService>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// The name of the service to get information about. The names must be in the same format as used in
+            /// defining a service perimeter, for example, `storage.googleapis.com`.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "get";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/services/{name}";
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Lists all VPC-SC supported services.</summary>
+        public virtual ListRequest List()
+        {
+            return new ListRequest(this.service);
+        }
+
+        /// <summary>Lists all VPC-SC supported services.</summary>
+        public class ListRequest : AccessContextManagerBaseServiceRequest<Google.Apis.AccessContextManager.v1.Data.ListSupportedServicesResponse>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service) : base(service)
+            {
+                InitParameters();
+            }
+
+            /// <summary>
+            /// This flag specifies the maximum number of services to return per page. Default is 100.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>Token to start on a later page. Default is the first page.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "list";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/services";
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+    }
 }
 namespace Google.Apis.AccessContextManager.v1.Data
 {
@@ -3169,9 +3296,25 @@ namespace Google.Apis.AccessContextManager.v1.Data
         /// example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that
         /// represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
         /// (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. *
-        /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that
-        /// has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is
-        /// recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. *
+        /// `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+        /// A single identity in a workforce identity pool. *
+        /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All
+        /// workforce identities in a group. *
+        /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+        /// All workforce identities with a specific attribute value. *
+        /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a
+        /// workforce identity pool. *
+        /// `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`:
+        /// A single identity in a workload identity pool. *
+        /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`:
+        /// A workload identity pool group. *
+        /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+        /// All identities in a workload identity pool with a certain attribute. *
+        /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`:
+        /// All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address
+        /// (plus unique identifier) representing a user that has been recently deleted. For example,
+        /// `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to
+        /// `user:{emailid}` and the recovered user retains the role in the binding. *
         /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a
         /// service account that has been recently deleted. For example,
         /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted,
@@ -3179,7 +3322,10 @@ namespace Google.Apis.AccessContextManager.v1.Data
         /// binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing
         /// a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`.
         /// If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role
-        /// in the binding.
+        /// in the binding. *
+        /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+        /// Deleted single identity in a workforce identity pool. For example,
+        /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("members")]
         public virtual System.Collections.Generic.IList<string> Members { get; set; }
@@ -3815,20 +3961,34 @@ namespace Google.Apis.AccessContextManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A response to `ListSupportedServicesRequest`.</summary>
+    public class ListSupportedServicesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The pagination token to retrieve the next page of results. If the value is empty, no further results remain.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>List of services supported by VPC Service Controls instances.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("supportedServices")]
+        public virtual System.Collections.Generic.IList<SupportedService> SupportedServices { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>An allowed method or permission of a service specified in ApiOperation.</summary>
     public class MethodSelector : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Value for `method` should be a valid method name for the corresponding `service_name` in ApiOperation. If
-        /// `*` used as value for `method`, then ALL methods and permissions are allowed.
+        /// A valid method name for the corresponding `service_name` in ApiOperation. If `*` is used as the value for
+        /// the `method`, then ALL methods and permissions are allowed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("method")]
         public virtual string Method { get; set; }
 
-        /// <summary>
-        /// Value for `permission` should be a valid Cloud IAM permission for the corresponding `service_name` in
-        /// ApiOperation.
-        /// </summary>
+        /// <summary>A valid Cloud IAM permission for the corresponding `service_name` in ApiOperation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permission")]
         public virtual string Permission { get; set; }
 
@@ -4223,6 +4383,46 @@ namespace Google.Apis.AccessContextManager.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>`SupportedService` specifies the VPC Service Controls and its properties.</summary>
+    public class SupportedService : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// True if the service is available on the restricted VIP. Services on the restricted VIP typically either
+        /// support VPC Service Controls or are core infrastructure services required for the functioning of Google
+        /// Cloud.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("availableOnRestrictedVip")]
+        public virtual System.Nullable<bool> AvailableOnRestrictedVip { get; set; }
+
+        /// <summary>
+        /// True if the service is supported with some limitations. Check
+        /// [documentation](https://cloud.google.com/vpc-service-controls/docs/supported-products) for details.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("knownLimitations")]
+        public virtual System.Nullable<bool> KnownLimitations { get; set; }
+
+        /// <summary>The service name or address of the supported service, such as `service.googleapis.com`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The support stage of the service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("supportStage")]
+        public virtual string SupportStage { get; set; }
+
+        /// <summary>
+        /// The list of the supported methods. This field exists only in response to GetSupportedService
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("supportedMethods")]
+        public virtual System.Collections.Generic.IList<MethodSelector> SupportedMethods { get; set; }
+
+        /// <summary>The name of the supported product, such as 'Cloud Product API'.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

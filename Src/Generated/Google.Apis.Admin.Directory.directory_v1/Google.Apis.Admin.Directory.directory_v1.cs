@@ -1,4 +1,4 @@
-// Copyright 2023 Google LLC
+// Copyright 2024 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -773,12 +773,14 @@ namespace Google.Apis.Admin.Directory.directory_v1
         }
 
         /// <summary>
-        /// Takes an action that affects a Chrome OS Device. This includes deprovisioning, disabling, and re-enabling
-        /// devices. *Warning:* * Deprovisioning a device will stop device policy syncing and remove device-level
-        /// printers. After a device is deprovisioned, it must be wiped before it can be re-enrolled. * Lost or stolen
-        /// devices should use the disable action. * Re-enabling a disabled device will consume a device license. If you
-        /// do not have sufficient licenses available when completing the re-enable action, you will receive an error.
-        /// For more information about deprovisioning and disabling devices, visit the [help
+        /// Use
+        /// [BatchChangeChromeOsDeviceStatus](/admin-sdk/directory/reference/rest/v1/customer.devices.chromeos/batchChangeStatus)
+        /// instead. Takes an action that affects a Chrome OS Device. This includes deprovisioning, disabling, and
+        /// re-enabling devices. *Warning:* * Deprovisioning a device will stop device policy syncing and remove
+        /// device-level printers. After a device is deprovisioned, it must be wiped before it can be re-enrolled. *
+        /// Lost or stolen devices should use the disable action. * Re-enabling a disabled device will consume a device
+        /// license. If you do not have sufficient licenses available when completing the re-enable action, you will
+        /// receive an error. For more information about deprovisioning and disabling devices, visit the [help
         /// center](https://support.google.com/chrome/a/answer/3523633).
         /// </summary>
         /// <param name="body">The body of the request.</param>
@@ -797,12 +799,14 @@ namespace Google.Apis.Admin.Directory.directory_v1
         }
 
         /// <summary>
-        /// Takes an action that affects a Chrome OS Device. This includes deprovisioning, disabling, and re-enabling
-        /// devices. *Warning:* * Deprovisioning a device will stop device policy syncing and remove device-level
-        /// printers. After a device is deprovisioned, it must be wiped before it can be re-enrolled. * Lost or stolen
-        /// devices should use the disable action. * Re-enabling a disabled device will consume a device license. If you
-        /// do not have sufficient licenses available when completing the re-enable action, you will receive an error.
-        /// For more information about deprovisioning and disabling devices, visit the [help
+        /// Use
+        /// [BatchChangeChromeOsDeviceStatus](/admin-sdk/directory/reference/rest/v1/customer.devices.chromeos/batchChangeStatus)
+        /// instead. Takes an action that affects a Chrome OS Device. This includes deprovisioning, disabling, and
+        /// re-enabling devices. *Warning:* * Deprovisioning a device will stop device policy syncing and remove
+        /// device-level printers. After a device is deprovisioned, it must be wiped before it can be re-enrolled. *
+        /// Lost or stolen devices should use the disable action. * Re-enabling a disabled device will consume a device
+        /// license. If you do not have sufficient licenses available when completing the re-enable action, you will
+        /// receive an error. For more information about deprovisioning and disabling devices, visit the [help
         /// center](https://support.google.com/chrome/a/answer/3523633).
         /// </summary>
         public class ActionRequest : DirectoryBaseServiceRequest<string>
@@ -1635,6 +1639,67 @@ namespace Google.Apis.Admin.Directory.directory_v1
                                 Pattern = null,
                             });
                         }
+                    }
+                }
+
+                /// <summary>
+                /// Changes the status of a batch of ChromeOS devices. For more information about changing a ChromeOS
+                /// device state [Repair, repurpose, or retire ChromeOS
+                /// devices](https://support.google.com/chrome/a/answer/3523633).
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="customerId">Required. Immutable ID of the Google Workspace account.</param>
+                public virtual BatchChangeStatusRequest BatchChangeStatus(Google.Apis.Admin.Directory.directory_v1.Data.BatchChangeChromeOsDeviceStatusRequest body, string customerId)
+                {
+                    return new BatchChangeStatusRequest(this.service, body, customerId);
+                }
+
+                /// <summary>
+                /// Changes the status of a batch of ChromeOS devices. For more information about changing a ChromeOS
+                /// device state [Repair, repurpose, or retire ChromeOS
+                /// devices](https://support.google.com/chrome/a/answer/3523633).
+                /// </summary>
+                public class BatchChangeStatusRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.BatchChangeChromeOsDeviceStatusResponse>
+                {
+                    /// <summary>Constructs a new BatchChangeStatus request.</summary>
+                    public BatchChangeStatusRequest(Google.Apis.Services.IClientService service, Google.Apis.Admin.Directory.directory_v1.Data.BatchChangeChromeOsDeviceStatusRequest body, string customerId) : base(service)
+                    {
+                        CustomerId = customerId;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Immutable ID of the Google Workspace account.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string CustomerId { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Admin.Directory.directory_v1.Data.BatchChangeChromeOsDeviceStatusRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "batchChangeStatus";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "admin/directory/v1/customer/{customerId}/devices/chromeos:batchChangeStatus";
+
+                    /// <summary>Initializes BatchChangeStatus parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("customerId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "customerId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
                 }
 
@@ -10579,6 +10644,39 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A request for changing the status of a batch of ChromeOS devices.</summary>
+    public class BatchChangeChromeOsDeviceStatusRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The action to take on the ChromeOS device in order to change its status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("changeChromeOsDeviceStatusAction")]
+        public virtual string ChangeChromeOsDeviceStatusAction { get; set; }
+
+        /// <summary>
+        /// Optional. The reason behind a device deprovision. Must be provided if 'changeChromeOsDeviceStatusAction' is
+        /// set to 'CHANGE_CHROME_OS_DEVICE_STATUS_ACTION_DEPROVISION'. Otherwise, omit this field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deprovisionReason")]
+        public virtual string DeprovisionReason { get; set; }
+
+        /// <summary>Required. List of the IDs of the ChromeOS devices to change. Maximum 50.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceIds")]
+        public virtual System.Collections.Generic.IList<string> DeviceIds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response of changing the status of a batch of ChromeOS devices.</summary>
+    public class BatchChangeChromeOsDeviceStatusResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The results for each of the ChromeOS devices provided in the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("changeChromeOsDeviceStatusResults")]
+        public virtual System.Collections.Generic.IList<ChangeChromeOsDeviceStatusResult> ChangeChromeOsDeviceStatusResults { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request to add multiple new print servers in a batch.</summary>
     public class BatchCreatePrintServersRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10916,6 +11014,32 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
+    }
+
+    /// <summary>The result of a single ChromeOS device for a Change state operation.</summary>
+    public class ChangeChromeOsDeviceStatusResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The unique ID of the ChromeOS device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceId")]
+        public virtual string DeviceId { get; set; }
+
+        /// <summary>The error result of the operation in case of failure.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual Status Error { get; set; }
+
+        /// <summary>The device could change its status successfully.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("response")]
+        public virtual ChangeChromeOsDeviceStatusSucceeded Response { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for a successful ChromeOS device status change.</summary>
+    public class ChangeChromeOsDeviceStatusSucceeded : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 
     /// <summary>An notification channel used to watch for resource changes.</summary>
@@ -13404,6 +13528,35 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         /// <summary>A list of UserSchema objects.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schemas")]
         public virtual System.Collections.Generic.IList<Schema> SchemasValue { get; set; }
+    }
+
+    /// <summary>
+    /// The `Status` type defines a logical error model that is suitable for different programming environments,
+    /// including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains
+    /// three pieces of data: error code, error message, and error details. You can find out more about this error model
+    /// and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+    /// </summary>
+    public class Status : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual System.Nullable<int> Code { get; set; }
+
+        /// <summary>
+        /// A list of messages that carry the error details. There is a common set of message types for APIs to use.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("details")]
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Details { get; set; }
+
+        /// <summary>
+        /// A developer-facing error message, which should be in English. Any user-facing error message should be
+        /// localized and sent in the google.rpc.Status.details field, or localized by the client.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 
     /// <summary>JSON template for token resource in Directory API.</summary>

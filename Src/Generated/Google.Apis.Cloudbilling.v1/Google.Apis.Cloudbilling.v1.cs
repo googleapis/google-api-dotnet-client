@@ -1,4 +1,4 @@
-// Copyright 2023 Google LLC
+// Copyright 2024 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -435,8 +435,9 @@ namespace Google.Apis.Cloudbilling.v1
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
-            /// Optional. The parent to create a billing account from. Format: - organizations/{organization_id} eg
-            /// organizations/12345678 - billingAccounts/{billing_account_id} eg `billingAccounts/012345-567890-ABCDEF`
+            /// Optional. The parent to create a billing account from. Format: - `organizations/{organization_id}`, for
+            /// example, `organizations/12345678` - `billingAccounts/{billing_account_id}`, for example,
+            /// `billingAccounts/012345-567890-ABCDEF`
             /// </param>
             public virtual CreateRequest Create(Google.Apis.Cloudbilling.v1.Data.BillingAccount body, string parent)
             {
@@ -465,8 +466,8 @@ namespace Google.Apis.Cloudbilling.v1
                 }
 
                 /// <summary>
-                /// Optional. The parent to create a billing account from. Format: - organizations/{organization_id} eg
-                /// organizations/12345678 - billingAccounts/{billing_account_id} eg
+                /// Optional. The parent to create a billing account from. Format: - `organizations/{organization_id}`,
+                /// for example, `organizations/12345678` - `billingAccounts/{billing_account_id}`, for example,
                 /// `billingAccounts/012345-567890-ABCDEF`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -507,9 +508,9 @@ namespace Google.Apis.Cloudbilling.v1
             /// [view](https://cloud.google.com/billing/docs/how-to/billing-access).
             /// </summary>
             /// <param name="parent">
-            /// Optional. The parent resource to list billing accounts from. Format: - organizations/{organization_id}
-            /// eg organizations/12345678 - billingAccounts/{billing_account_id} eg
-            /// `billingAccounts/012345-567890-ABCDEF`
+            /// Optional. The parent resource to list billing accounts from. Format: -
+            /// `organizations/{organization_id}`, for example, `organizations/12345678` -
+            /// `billingAccounts/{billing_account_id}`, for example, `billingAccounts/012345-567890-ABCDEF`
             /// </param>
             public virtual ListRequest List(string parent)
             {
@@ -531,8 +532,8 @@ namespace Google.Apis.Cloudbilling.v1
 
                 /// <summary>
                 /// Optional. The parent resource to list billing accounts from. Format: -
-                /// organizations/{organization_id} eg organizations/12345678 - billingAccounts/{billing_account_id} eg
-                /// `billingAccounts/012345-567890-ABCDEF`
+                /// `organizations/{organization_id}`, for example, `organizations/12345678` -
+                /// `billingAccounts/{billing_account_id}`, for example, `billingAccounts/012345-567890-ABCDEF`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -540,8 +541,8 @@ namespace Google.Apis.Cloudbilling.v1
                 /// <summary>
                 /// Options for how to filter the returned billing accounts. This only supports filtering for
                 /// [subaccounts](https://cloud.google.com/billing/docs/concepts) under a single provided parent billing
-                /// account. (e.g. "master_billing_account=billingAccounts/012345-678901-ABCDEF"). Boolean algebra and
-                /// other fields are not currently supported.
+                /// account. (for example, `master_billing_account=billingAccounts/012345-678901-ABCDEF`). Boolean
+                /// algebra and other fields are not currently supported.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
@@ -644,8 +645,9 @@ namespace Google.Apis.Cloudbilling.v1
             }
 
             /// <summary>
-            /// Optional. The parent to create a billing account from. Format: - organizations/{organization_id} eg
-            /// organizations/12345678 - billingAccounts/{billing_account_id} eg `billingAccounts/012345-567890-ABCDEF`
+            /// Optional. The parent to create a billing account from. Format: - `organizations/{organization_id}`, for
+            /// example, `organizations/12345678` - `billingAccounts/{billing_account_id}`, for example,
+            /// `billingAccounts/012345-567890-ABCDEF`
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Parent { get; set; }
@@ -841,8 +843,8 @@ namespace Google.Apis.Cloudbilling.v1
             /// <summary>
             /// Options for how to filter the returned billing accounts. This only supports filtering for
             /// [subaccounts](https://cloud.google.com/billing/docs/concepts) under a single provided parent billing
-            /// account. (e.g. "master_billing_account=billingAccounts/012345-678901-ABCDEF"). Boolean algebra and other
-            /// fields are not currently supported.
+            /// account. (for example, `master_billing_account=billingAccounts/012345-678901-ABCDEF`). Boolean algebra
+            /// and other fields are not currently supported.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
@@ -859,9 +861,9 @@ namespace Google.Apis.Cloudbilling.v1
             public virtual string PageToken { get; set; }
 
             /// <summary>
-            /// Optional. The parent resource to list billing accounts from. Format: - organizations/{organization_id}
-            /// eg organizations/12345678 - billingAccounts/{billing_account_id} eg
-            /// `billingAccounts/012345-567890-ABCDEF`
+            /// Optional. The parent resource to list billing accounts from. Format: -
+            /// `organizations/{organization_id}`, for example, `organizations/12345678` -
+            /// `billingAccounts/{billing_account_id}`, for example, `billingAccounts/012345-567890-ABCDEF`
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Parent { get; set; }
@@ -1228,8 +1230,9 @@ namespace Google.Apis.Cloudbilling.v1
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
-            /// Optional. The parent to create a billing account from. Format: - organizations/{organization_id} eg
-            /// organizations/12345678 - billingAccounts/{billing_account_id} eg `billingAccounts/012345-567890-ABCDEF`
+            /// Optional. The parent to create a billing account from. Format: - `organizations/{organization_id}`, for
+            /// example, `organizations/12345678` - `billingAccounts/{billing_account_id}`, for example,
+            /// `billingAccounts/012345-567890-ABCDEF`
             /// </param>
             public virtual CreateRequest Create(Google.Apis.Cloudbilling.v1.Data.BillingAccount body, string parent)
             {
@@ -1258,8 +1261,8 @@ namespace Google.Apis.Cloudbilling.v1
                 }
 
                 /// <summary>
-                /// Optional. The parent to create a billing account from. Format: - organizations/{organization_id} eg
-                /// organizations/12345678 - billingAccounts/{billing_account_id} eg
+                /// Optional. The parent to create a billing account from. Format: - `organizations/{organization_id}`,
+                /// for example, `organizations/12345678` - `billingAccounts/{billing_account_id}`, for example,
                 /// `billingAccounts/012345-567890-ABCDEF`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -1300,9 +1303,9 @@ namespace Google.Apis.Cloudbilling.v1
             /// [view](https://cloud.google.com/billing/docs/how-to/billing-access).
             /// </summary>
             /// <param name="parent">
-            /// Optional. The parent resource to list billing accounts from. Format: - organizations/{organization_id}
-            /// eg organizations/12345678 - billingAccounts/{billing_account_id} eg
-            /// `billingAccounts/012345-567890-ABCDEF`
+            /// Optional. The parent resource to list billing accounts from. Format: -
+            /// `organizations/{organization_id}`, for example, `organizations/12345678` -
+            /// `billingAccounts/{billing_account_id}`, for example, `billingAccounts/012345-567890-ABCDEF`
             /// </param>
             public virtual ListRequest List(string parent)
             {
@@ -1324,8 +1327,8 @@ namespace Google.Apis.Cloudbilling.v1
 
                 /// <summary>
                 /// Optional. The parent resource to list billing accounts from. Format: -
-                /// organizations/{organization_id} eg organizations/12345678 - billingAccounts/{billing_account_id} eg
-                /// `billingAccounts/012345-567890-ABCDEF`
+                /// `organizations/{organization_id}`, for example, `organizations/12345678` -
+                /// `billingAccounts/{billing_account_id}`, for example, `billingAccounts/012345-567890-ABCDEF`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -1333,8 +1336,8 @@ namespace Google.Apis.Cloudbilling.v1
                 /// <summary>
                 /// Options for how to filter the returned billing accounts. This only supports filtering for
                 /// [subaccounts](https://cloud.google.com/billing/docs/concepts) under a single provided parent billing
-                /// account. (e.g. "master_billing_account=billingAccounts/012345-678901-ABCDEF"). Boolean algebra and
-                /// other fields are not currently supported.
+                /// account. (for example, `master_billing_account=billingAccounts/012345-678901-ABCDEF`). Boolean
+                /// algebra and other fields are not currently supported.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
@@ -1400,8 +1403,8 @@ namespace Google.Apis.Cloudbilling.v1
 
             /// <summary>Changes which parent organization a billing account belongs to.</summary>
             /// <param name="destinationParent">
-            /// Required. The resource name of the Organization to reparent the billing account under. Must be of the
-            /// form `organizations/{organization_id}`.
+            /// Required. The resource name of the Organization to move the billing account under. Must be of the form
+            /// `organizations/{organization_id}`.
             /// </param>
             /// <param name="name">
             /// Required. The resource name of the billing account to move. Must be of the form
@@ -1425,8 +1428,8 @@ namespace Google.Apis.Cloudbilling.v1
                 }
 
                 /// <summary>
-                /// Required. The resource name of the Organization to reparent the billing account under. Must be of
-                /// the form `organizations/{organization_id}`.
+                /// Required. The resource name of the Organization to move the billing account under. Must be of the
+                /// form `organizations/{organization_id}`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("destinationParent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string DestinationParent { get; private set; }
@@ -2005,16 +2008,16 @@ namespace Google.Apis.Cloudbilling.v1.Data
 
         /// <summary>
         /// Output only. True if the billing account is open, and will therefore be charged for any usage on associated
-        /// projects. False if the billing account is closed, and therefore projects associated with it will be unable
-        /// to use paid services.
+        /// projects. False if the billing account is closed, and therefore projects associated with it are unable to
+        /// use paid services.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("open")]
         public virtual System.Nullable<bool> Open { get; set; }
 
         /// <summary>
         /// Output only. The billing account's parent resource identifier. Use the `MoveBillingAccount` method to update
-        /// the account's parent resource if it is a organization. Format: - organizations/{organization_id}, for
-        /// example: organizations/12345678 - billingAccounts/{billing_account_id}, for example:
+        /// the account's parent resource if it is a organization. Format: - `organizations/{organization_id}`, for
+        /// example, `organizations/12345678` - `billingAccounts/{billing_account_id}`, for example,
         /// `billingAccounts/012345-567890-ABCDEF`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
@@ -2050,9 +2053,25 @@ namespace Google.Apis.Cloudbilling.v1.Data
         /// example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that
         /// represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
         /// (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. *
-        /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that
-        /// has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is
-        /// recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. *
+        /// `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+        /// A single identity in a workforce identity pool. *
+        /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All
+        /// workforce identities in a group. *
+        /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+        /// All workforce identities with a specific attribute value. *
+        /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a
+        /// workforce identity pool. *
+        /// `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`:
+        /// A single identity in a workload identity pool. *
+        /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`:
+        /// A workload identity pool group. *
+        /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+        /// All identities in a workload identity pool with a certain attribute. *
+        /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`:
+        /// All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address
+        /// (plus unique identifier) representing a user that has been recently deleted. For example,
+        /// `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to
+        /// `user:{emailid}` and the recovered user retains the role in the binding. *
         /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a
         /// service account that has been recently deleted. For example,
         /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted,
@@ -2060,7 +2079,10 @@ namespace Google.Apis.Cloudbilling.v1.Data
         /// binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing
         /// a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`.
         /// If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role
-        /// in the binding.
+        /// in the binding. *
+        /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+        /// Deleted single identity in a workforce identity pool. For example,
+        /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("members")]
         public virtual System.Collections.Generic.IList<string> Members { get; set; }
@@ -2271,7 +2293,7 @@ namespace Google.Apis.Cloudbilling.v1.Data
     public class MoveBillingAccountRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. The resource name of the Organization to reparent the billing account under. Must be of the form
+        /// Required. The resource name of the Organization to move the billing account under. Must be of the form
         /// `organizations/{organization_id}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationParent")]

@@ -1,4 +1,4 @@
-// Copyright 2023 Google LLC
+// Copyright 2024 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -12472,6 +12472,13 @@ namespace Google.Apis.Dialogflow.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("businessDescription")]
         public virtual string BusinessDescription { get; set; }
 
+        /// <summary>
+        /// Whether to disable fallback to Data Store search results (in case the LLM couldn't pick a proper answer).
+        /// Per default the feature is enabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disableDataStoreFallback")]
+        public virtual System.Nullable<bool> DisableDataStoreFallback { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -13888,9 +13895,9 @@ namespace Google.Apis.Dialogflow.v3.Data
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3SessionEntityType> SessionEntityTypes { get; set; }
 
         /// <summary>
-        /// Optional. Sets Dialogflow session life time. By default, a Dialogflow session remains active and its data is
-        /// stored for 30 minutes after the last request is sent for the session. This value should be no longer than 1
-        /// day.
+        /// Optional. Configure lifetime of the Dialogflow session. By default, a Dialogflow session remains active and
+        /// its data is stored for 30 minutes after the last request is sent for the session. This value should be no
+        /// longer than 1 day.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sessionTtl")]
         public virtual object SessionTtl { get; set; }

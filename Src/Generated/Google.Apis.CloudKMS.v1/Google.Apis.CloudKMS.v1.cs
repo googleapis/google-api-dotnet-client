@@ -1,4 +1,4 @@
-// Copyright 2023 Google LLC
+// Copyright 2024 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -4371,9 +4371,25 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that
         /// represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
         /// (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. *
-        /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that
-        /// has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is
-        /// recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. *
+        /// `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+        /// A single identity in a workforce identity pool. *
+        /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All
+        /// workforce identities in a group. *
+        /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+        /// All workforce identities with a specific attribute value. *
+        /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a
+        /// workforce identity pool. *
+        /// `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`:
+        /// A single identity in a workload identity pool. *
+        /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`:
+        /// A workload identity pool group. *
+        /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+        /// All identities in a workload identity pool with a certain attribute. *
+        /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`:
+        /// All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address
+        /// (plus unique identifier) representing a user that has been recently deleted. For example,
+        /// `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to
+        /// `user:{emailid}` and the recovered user retains the role in the binding. *
         /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a
         /// service account that has been recently deleted. For example,
         /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted,
@@ -4381,7 +4397,10 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing
         /// a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`.
         /// If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role
-        /// in the binding.
+        /// in the binding. *
+        /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+        /// Deleted single identity in a workforce identity pool. For example,
+        /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("members")]
         public virtual System.Collections.Generic.IList<string> Members { get; set; }
@@ -6170,7 +6189,7 @@ namespace Google.Apis.CloudKMS.v1.Data
         public virtual System.Nullable<int> Version { get; set; }
     }
 
-    /// <summary>The public key for a given CryptoKeyVersion. Obtained via GetPublicKey.</summary>
+    /// <summary>The public keys for a given CryptoKeyVersion. Obtained via GetPublicKey.</summary>
     public class PublicKey : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The Algorithm associated with this key.</summary>
@@ -6184,8 +6203,8 @@ namespace Google.Apis.CloudKMS.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// The public key, encoded in PEM format. For more information, see the [RFC
-        /// 7468](https://tools.ietf.org/html/rfc7468) sections for [General
+        /// A public key encoded in PEM format, populated only when GetPublicKey returns one key. For more information,
+        /// see the [RFC 7468](https://tools.ietf.org/html/rfc7468) sections for [General
         /// Considerations](https://tools.ietf.org/html/rfc7468#section-2) and [Textual Encoding of Subject Public Key
         /// Info] (https://tools.ietf.org/html/rfc7468#section-13).
         /// </summary>
@@ -6193,13 +6212,14 @@ namespace Google.Apis.CloudKMS.v1.Data
         public virtual string Pem { get; set; }
 
         /// <summary>
-        /// Integrity verification field. A CRC32C checksum of the returned PublicKey.pem. An integrity check of
-        /// PublicKey.pem can be performed by computing the CRC32C checksum of PublicKey.pem and comparing your results
-        /// to this field. Discard the response in case of non-matching checksum values, and perform a limited number of
-        /// retries. A persistent mismatch may indicate an issue in your computation of the CRC32C checksum. Note: This
-        /// field is defined as int64 for reasons of compatibility across different languages. However, it is a
-        /// non-negative integer, which will never exceed 2^32-1, and can be safely downconverted to uint32 in languages
-        /// that support this type. NOTE: This field is in Beta.
+        /// Integrity verification field: A CRC32C checksum of the returned PublicKey.pem. It is only populated when
+        /// GetPublicKey returns one key. An integrity check of PublicKey.pem can be performed by computing the CRC32C
+        /// checksum of PublicKey.pem and comparing your results to this field. Discard the response in case of
+        /// non-matching checksum values, and perform a limited number of retries. A persistent mismatch may indicate an
+        /// issue in your computation of the CRC32C checksum. Note: This field is defined as int64 for reasons of
+        /// compatibility across different languages. However, it is a non-negative integer, which will never exceed
+        /// 2^32-1, and can be safely downconverted to uint32 in languages that support this type. NOTE: This field is
+        /// in Beta.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pemCrc32c")]
         public virtual System.Nullable<long> PemCrc32c { get; set; }

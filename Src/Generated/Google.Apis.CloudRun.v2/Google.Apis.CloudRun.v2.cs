@@ -1,4 +1,4 @@
-// Copyright 2023 Google LLC
+// Copyright 2024 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -3464,6 +3464,21 @@ namespace Google.Apis.CloudRun.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Represents a GCS Bucket mounted as a volume.</summary>
+    public class GoogleCloudRunV2GCSVolumeSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>GCS Bucket name</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bucket")]
+        public virtual string Bucket { get; set; }
+
+        /// <summary>If true, mount the GCS bucket as read-only</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("readOnly")]
+        public virtual System.Nullable<bool> ReadOnly__ { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>GRPCAction describes an action involving a GRPC port.</summary>
     public class GoogleCloudRunV2GRPCAction : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3892,6 +3907,25 @@ namespace Google.Apis.CloudRun.v2.Data
         /// <summary>The resulting list of Tasks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tasks")]
         public virtual System.Collections.Generic.IList<GoogleCloudRunV2Task> Tasks { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents an NFS mount.</summary>
+    public class GoogleCloudRunV2NFSVolumeSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Path that is exported by the NFS server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("path")]
+        public virtual string Path { get; set; }
+
+        /// <summary>If true, mount the NFS volume as read only</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("readOnly")]
+        public virtual System.Nullable<bool> ReadOnly__ { get; set; }
+
+        /// <summary>Hostname or IP address of the NFS server</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("server")]
+        public virtual string Server { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5510,9 +5544,17 @@ namespace Google.Apis.CloudRun.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("emptyDir")]
         public virtual GoogleCloudRunV2EmptyDirVolumeSource EmptyDir { get; set; }
 
+        /// <summary>Persistent storage backed by a Google Cloud Storage bucket.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcs")]
+        public virtual GoogleCloudRunV2GCSVolumeSource Gcs { get; set; }
+
         /// <summary>Required. Volume's name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>For NFS Voumes, contains the path to the nfs Volume</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nfs")]
+        public virtual GoogleCloudRunV2NFSVolumeSource Nfs { get; set; }
 
         /// <summary>Secret represents a secret that should populate this volume.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secret")]

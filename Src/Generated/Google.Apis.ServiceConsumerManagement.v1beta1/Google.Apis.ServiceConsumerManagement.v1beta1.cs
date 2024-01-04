@@ -1,4 +1,4 @@
-// Copyright 2023 Google LLC
+// Copyright 2024 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -343,7 +343,6 @@ namespace Google.Apis.ServiceConsumerManagement.v1beta1
         {
             this.service = service;
             ConsumerQuotaMetrics = new ConsumerQuotaMetricsResource(service);
-            Properties = new PropertiesResource(service);
         }
 
         /// <summary>Gets the ConsumerQuotaMetrics resource.</summary>
@@ -1271,89 +1270,6 @@ namespace Google.Apis.ServiceConsumerManagement.v1beta1
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
-                    });
-                }
-            }
-        }
-
-        /// <summary>Gets the Properties resource.</summary>
-        public virtual PropertiesResource Properties { get; }
-
-        /// <summary>The "properties" collection of methods.</summary>
-        public class PropertiesResource
-        {
-            private const string Resource = "properties";
-
-            /// <summary>The service which this resource belongs to.</summary>
-            private readonly Google.Apis.Services.IClientService service;
-
-            /// <summary>Constructs a new resource.</summary>
-            public PropertiesResource(Google.Apis.Services.IClientService service)
-            {
-                this.service = service;
-            }
-
-            /// <summary>
-            /// Creates a consumer property. If the property already exists, this method fails with an ALREADY_EXISTS
-            /// error. For this failure case, the Status details field will contain the existing property's value.
-            /// </summary>
-            /// <param name="body">The body of the request.</param>
-            /// <param name="parent">
-            /// Required. Name of the property to create. An example name would be:
-            /// `services/serviceconsumermanagement.googleapis.com/projects/123`
-            /// </param>
-            public virtual CreateRequest Create(Google.Apis.ServiceConsumerManagement.v1beta1.Data.V1Beta1ConsumerProperty body, string parent)
-            {
-                return new CreateRequest(this.service, body, parent);
-            }
-
-            /// <summary>
-            /// Creates a consumer property. If the property already exists, this method fails with an ALREADY_EXISTS
-            /// error. For this failure case, the Status details field will contain the existing property's value.
-            /// </summary>
-            public class CreateRequest : ServiceConsumerManagementBaseServiceRequest<Google.Apis.ServiceConsumerManagement.v1beta1.Data.V1Beta1ConsumerProperty>
-            {
-                /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.ServiceConsumerManagement.v1beta1.Data.V1Beta1ConsumerProperty body, string parent) : base(service)
-                {
-                    Parent = parent;
-                    Body = body;
-                    InitParameters();
-                }
-
-                /// <summary>
-                /// Required. Name of the property to create. An example name would be:
-                /// `services/serviceconsumermanagement.googleapis.com/projects/123`
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Parent { get; private set; }
-
-                /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.ServiceConsumerManagement.v1beta1.Data.V1Beta1ConsumerProperty Body { get; set; }
-
-                /// <summary>Returns the body of the request.</summary>
-                protected override object GetBody() => Body;
-
-                /// <summary>Gets the method name.</summary>
-                public override string MethodName => "create";
-
-                /// <summary>Gets the HTTP method.</summary>
-                public override string HttpMethod => "POST";
-
-                /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1beta1/{+parent}/properties";
-
-                /// <summary>Initializes Create parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "parent",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^services/[^/]+/[^/]+/[^/]+$",
                     });
                 }
             }
@@ -2994,7 +2910,7 @@ namespace Google.Apis.ServiceConsumerManagement.v1beta1.Data
 
         /// <summary>
         /// Required. The monitored resource type. For example, the type `"cloudsql_database"` represents databases in
-        /// Google Cloud SQL. For a list of types, see [Monitoring resource
+        /// Google Cloud SQL. For a list of types, see [Monitored resource
         /// types](https://cloud.google.com/monitoring/api/resources) and [Logging resource
         /// types](https://cloud.google.com/logging/docs/api/v2/resource-list).
         /// </summary>
@@ -3278,6 +3194,13 @@ namespace Google.Apis.ServiceConsumerManagement.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("protoReferenceDocumentationUri")]
         public virtual string ProtoReferenceDocumentationUri { get; set; }
+
+        /// <summary>
+        /// Optional link to REST reference documentation. Example:
+        /// https://cloud.google.com/pubsub/lite/docs/reference/rest
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("restReferenceDocumentationUri")]
+        public virtual string RestReferenceDocumentationUri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3830,54 +3753,6 @@ namespace Google.Apis.ServiceConsumerManagement.v1beta1.Data
         /// <summary>The overrides that were created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("overrides")]
         public virtual System.Collections.Generic.IList<V1Beta1QuotaOverride> Overrides { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>A property assigned to a consumer of a service.</summary>
-    public class V1Beta1ConsumerProperty : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Output only. The description of the property.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; }
-
-        /// <summary>
-        /// Output only. The resource name of this property. An example name would be:
-        /// `services/serviceconsumermanagement.googleapis.com/projects/123/properties/SERVICE_LEVEL` The resource name
-        /// is intended to be opaque and should not be parsed for its component strings, since its representation could
-        /// change in the future.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>
-        /// Output only. A long-running operation which tracks the propagation of recent changes to this resource to all
-        /// affected backends. If this field is empty, all affected backends have been notified of the change. If this
-        /// field contains an operation in progress, then the most recent change to this resource has not yet been sent
-        /// out to all backends. If this field contains an operation that has failed with an error, the caller should
-        /// retry the change.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("propagation")]
-        public virtual Operation Propagation { get; set; }
-
-        /// <summary>
-        /// Output only. The name of the property as it appears in the service configuration. An example property name
-        /// would be: `SERVICE_LEVEL`
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("propertyKey")]
-        public virtual string PropertyKey { get; set; }
-
-        /// <summary>Output only. The type of this property.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; }
-
-        /// <summary>
-        /// Value of this property for the consumer. This field may be empty if the consumer has not been assigned a
-        /// value.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual object Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

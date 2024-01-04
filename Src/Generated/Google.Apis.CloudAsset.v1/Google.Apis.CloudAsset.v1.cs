@@ -1,4 +1,4 @@
-// Copyright 2023 Google LLC
+// Copyright 2024 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -561,9 +561,9 @@ namespace Google.Apis.CloudAsset.v1
 
             /// <summary>
             /// Required. The names refer to the [full_resource_names]
-            /// (https://cloud.google.com/asset-inventory/docs/resource-name-format) of [searchable asset
-            /// types](https://cloud.google.com/asset-inventory/docs/supported-asset-types). A maximum of 20 resources'
-            /// effective policies can be retrieved in a batch.
+            /// (https://cloud.google.com/asset-inventory/docs/resource-name-format) of the asset types [supported by
+            /// search APIs](https://cloud.google.com/asset-inventory/docs/supported-asset-types). A maximum of 20
+            /// resources' effective policies can be retrieved in a batch.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("names", Google.Apis.Util.RequestParameterType.Query)]
             public virtual Google.Apis.Util.Repeatable<string> Names { get; set; }
@@ -1984,8 +1984,8 @@ namespace Google.Apis.CloudAsset.v1
         /// iam.disableServiceAccountKeyCreation * iam.allowedPolicyMemberDomains * compute.vmExternalIpAccess *
         /// appengine.enforceServiceAccountActAsCheck * gcp.resourceLocations * compute.trustedImageProjects *
         /// compute.skipDefaultNetworkCreation * compute.requireOsLogin * compute.disableNestedVirtualization This RPC
-        /// only returns either resources of types supported by [searchable asset
-        /// types](https://cloud.google.com/asset-inventory/docs/supported-asset-types), or IAM policies.
+        /// only returns either resources of types [supported by search
+        /// APIs](https://cloud.google.com/asset-inventory/docs/supported-asset-types) or IAM policies.
         /// </summary>
         /// <param name="scope">
         /// Required. The organization to scope the request. Only organization policies within the scope will be
@@ -2003,8 +2003,8 @@ namespace Google.Apis.CloudAsset.v1
         /// iam.disableServiceAccountKeyCreation * iam.allowedPolicyMemberDomains * compute.vmExternalIpAccess *
         /// appengine.enforceServiceAccountActAsCheck * gcp.resourceLocations * compute.trustedImageProjects *
         /// compute.skipDefaultNetworkCreation * compute.requireOsLogin * compute.disableNestedVirtualization This RPC
-        /// only returns either resources of types supported by [searchable asset
-        /// types](https://cloud.google.com/asset-inventory/docs/supported-asset-types), or IAM policies.
+        /// only returns either resources of types [supported by search
+        /// APIs](https://cloud.google.com/asset-inventory/docs/supported-asset-types) or IAM policies.
         /// </summary>
         public class AnalyzeOrgPolicyGovernedAssetsRequest : CloudAssetBaseServiceRequest<Google.Apis.CloudAsset.v1.Data.AnalyzeOrgPolicyGovernedAssetsResponse>
         {
@@ -2658,9 +2658,9 @@ namespace Google.Apis.CloudAsset.v1
 
             /// <summary>
             /// Optional. A list of asset types that the IAM policies are attached to. If empty, it will search the IAM
-            /// policies that are attached to all the [searchable asset
-            /// types](https://cloud.google.com/asset-inventory/docs/supported-asset-types). Regular expressions are
-            /// also supported. For example: * "compute.googleapis.com.*" snapshots IAM policies attached to asset type
+            /// policies that are attached to all the asset types [supported by search
+            /// APIs](https://cloud.google.com/asset-inventory/docs/supported-asset-types) Regular expressions are also
+            /// supported. For example: * "compute.googleapis.com.*" snapshots IAM policies attached to asset type
             /// starts with "compute.googleapis.com". * ".*Instance" snapshots IAM policies attached to asset type ends
             /// with "Instance". * ".*Instance.*" snapshots IAM policies attached to asset type contains "Instance". See
             /// [RE2](https://github.com/google/re2/wiki/Syntax) for all supported regular expression syntax. If the
@@ -2833,12 +2833,12 @@ namespace Google.Apis.CloudAsset.v1
             public virtual string Scope { get; private set; }
 
             /// <summary>
-            /// Optional. A list of asset types that this request searches for. If empty, it will search all the
-            /// [searchable asset types](https://cloud.google.com/asset-inventory/docs/supported-asset-types). Regular
-            /// expressions are also supported. For example: * "compute.googleapis.com.*" snapshots resources whose
-            /// asset type starts with "compute.googleapis.com". * ".*Instance" snapshots resources whose asset type
-            /// ends with "Instance". * ".*Instance.*" snapshots resources whose asset type contains "Instance". See
-            /// [RE2](https://github.com/google/re2/wiki/Syntax) for all supported regular expression syntax. If the
+            /// Optional. A list of asset types that this request searches for. If empty, it will search all the asset
+            /// types [supported by search APIs](https://cloud.google.com/asset-inventory/docs/supported-asset-types).
+            /// Regular expressions are also supported. For example: * "compute.googleapis.com.*" snapshots resources
+            /// whose asset type starts with "compute.googleapis.com". * ".*Instance" snapshots resources whose asset
+            /// type ends with "Instance". * ".*Instance.*" snapshots resources whose asset type contains "Instance".
+            /// See [RE2](https://github.com/google/re2/wiki/Syntax) for all supported regular expression syntax. If the
             /// regular expression does not match any supported asset type, an INVALID_ARGUMENT error will be returned.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("assetTypes", Google.Apis.Util.RequestParameterType.Query)]
@@ -3618,9 +3618,25 @@ namespace Google.Apis.CloudAsset.v1.Data
         /// example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that
         /// represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
         /// (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. *
-        /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that
-        /// has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is
-        /// recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. *
+        /// `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+        /// A single identity in a workforce identity pool. *
+        /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All
+        /// workforce identities in a group. *
+        /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+        /// All workforce identities with a specific attribute value. *
+        /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a
+        /// workforce identity pool. *
+        /// `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`:
+        /// A single identity in a workload identity pool. *
+        /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`:
+        /// A workload identity pool group. *
+        /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+        /// All identities in a workload identity pool with a certain attribute. *
+        /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`:
+        /// All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address
+        /// (plus unique identifier) representing a user that has been recently deleted. For example,
+        /// `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to
+        /// `user:{emailid}` and the recovered user retains the role in the binding. *
         /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a
         /// service account that has been recently deleted. For example,
         /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted,
@@ -3628,7 +3644,10 @@ namespace Google.Apis.CloudAsset.v1.Data
         /// binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing
         /// a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`.
         /// If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role
-        /// in the binding.
+        /// in the binding. *
+        /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+        /// Deleted single identity in a workforce identity pool. For example,
+        /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("members")]
         public virtual System.Collections.Generic.IList<string> Members { get; set; }

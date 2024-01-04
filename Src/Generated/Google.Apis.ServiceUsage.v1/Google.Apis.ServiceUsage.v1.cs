@@ -1,4 +1,4 @@
-// Copyright 2023 Google LLC
+// Copyright 2024 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -3543,7 +3543,7 @@ namespace Google.Apis.ServiceUsage.v1.Data
 
         /// <summary>
         /// Required. The monitored resource type. For example, the type `"cloudsql_database"` represents databases in
-        /// Google Cloud SQL. For a list of types, see [Monitoring resource
+        /// Google Cloud SQL. For a list of types, see [Monitored resource
         /// types](https://cloud.google.com/monitoring/api/resources) and [Logging resource
         /// types](https://cloud.google.com/logging/docs/api/v2/resource-list).
         /// </summary>
@@ -3838,6 +3838,13 @@ namespace Google.Apis.ServiceUsage.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("protoReferenceDocumentationUri")]
         public virtual string ProtoReferenceDocumentationUri { get; set; }
+
+        /// <summary>
+        /// Optional link to REST reference documentation. Example:
+        /// https://cloud.google.com/pubsub/lite/docs/reference/rest
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("restReferenceDocumentationUri")]
+        public virtual string RestReferenceDocumentationUri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
