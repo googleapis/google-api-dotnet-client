@@ -28,27 +28,27 @@ namespace Google.Apis.Auth.Tests.OAuth2
 {
     public class AwsExternalAccountCredentialsTests : ExternalAccountCredentialTestsBase
     {
-        private const string Imdsv2Url = "http://169.254.169.254/fake-imds/";
+        private const string FakeImdsv2Url = "http://169.254.169.254/fake-imds/";
         private const string ImdsV2TokenTtlHeaderName = "X-aws-ec2-metadata-token-ttl-seconds";
         private const string ImdsV2TokenTtlSeconds = "3600";
 
-        private const string ImdsV2Token = "fake_imdsv2_token";
+        private const string FakeImdsV2Token = "fake_imdsv2_token";
         private const string ImdsV2TokenHeaderName = "X-aws-ec2-metadata-token";
 
-        private const string RegionUrl = "http://169.254.169.254/fake-region/";
-        private const string MetadateRegion = "us-central-a1";
+        private const string FakeRegionUrl = "http://169.254.169.254/fake-region/";
+        private const string MetadataRegion = "us-central-a1";
         private const string Region = "us-central-a";
 
-        private const string SecurityCredentialsUrl = "http://169.254.169.254/fake-security-credentials/";
-        private const string SecurityCredentialsRole = "fake_role";
+        private const string FakeSecurityCredentialsUrl = "http://169.254.169.254/fake-security-credentials/";
+        private const string FakeSecurityCredentialsRole = "fake_role";
 
-        private const string SecurityCredentialsAccessKeyId = "fake_credentials_key_id";
-        private const string SecurityCredentialsSecretAccessKey = "fake_credentials_secret";
-        private const string SecurityCredentialsToken = "fake_credentials_token";
+        private const string FakeSecurityCredentialsAccessKeyId = "fake_credentials_key_id";
+        private const string FakeSecurityCredentialsSecretAccessKey = "fake_credentials_secret";
+        private const string FakeSecurityCredentialsToken = "fake_credentials_token";
 
-        private const string VerificationUrl = "http://iam.{region}.fakeaws.com/?Action=GetCallerIdentity&Version=2011-06-15";
-        private const string RegionalizedVerificationUrl = "http://iam.us-central-a.fakeaws.com/?Action=GetCallerIdentity&Version=2011-06-15";
-        private const string RegionalizedVerificationHost = "iam.us-central-a.fakeaws.com";
+        private const string FakeVerificationUrl = "http://iam.{region}.fakeaws.com/?Action=GetCallerIdentity&Version=2011-06-15";
+        private const string FakeRegionalizedVerificationUrl = "http://iam.us-central-a.fakeaws.com/?Action=GetCallerIdentity&Version=2011-06-15";
+        private const string FakeRegionalizedVerificationHost = "iam.us-central-a.fakeaws.com";
         private const string ServiceName = "iam";
 
         private static readonly DateTime MockUtcNow = new DateTime(2022, 9, 29, 5, 47, 56, DateTimeKind.Utc);
@@ -57,7 +57,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
         public async Task UniverseDomain_Default()
         {
             var credential = new AwsExternalAccountCredential(new AwsExternalAccountCredential.Initializer(
-                TokenUrl, Audience, SubjectTokenType, VerificationUrl)) as IGoogleCredential;
+                TokenUrl, FakeAudience, FakeSubjectTokenType, FakeVerificationUrl)) as IGoogleCredential;
 
             Assert.Equal(GoogleAuthConsts.DefaultUniverseDomain, credential.GetUniverseDomain());
             Assert.Equal(GoogleAuthConsts.DefaultUniverseDomain, await credential.GetUniverseDomainAsync(default));
@@ -67,22 +67,22 @@ namespace Google.Apis.Auth.Tests.OAuth2
         public async Task UniverseDomain_Custom()
         {
             var credential = new AwsExternalAccountCredential(new AwsExternalAccountCredential.Initializer(
-                TokenUrl, Audience, SubjectTokenType, VerificationUrl)
+                TokenUrl, FakeAudience, FakeSubjectTokenType, FakeVerificationUrl)
             {
-                UniverseDomain = UniverseDomain
+                UniverseDomain = FakeUniverseDomain
             }) as IGoogleCredential;
 
-            Assert.Equal(UniverseDomain, credential.GetUniverseDomain());
-            Assert.Equal(UniverseDomain, await credential.GetUniverseDomainAsync(default));
+            Assert.Equal(FakeUniverseDomain, credential.GetUniverseDomain());
+            Assert.Equal(FakeUniverseDomain, await credential.GetUniverseDomainAsync(default));
         }
 
         [Fact]
         public async Task WithUniverseDomain()
         {
             var credential = new AwsExternalAccountCredential(new AwsExternalAccountCredential.Initializer(
-                TokenUrl, Audience, SubjectTokenType, VerificationUrl)) as IGoogleCredential;
+                TokenUrl, FakeAudience, FakeSubjectTokenType, FakeVerificationUrl)) as IGoogleCredential;
 
-            var newCredential = credential.WithUniverseDomain(UniverseDomain);
+            var newCredential = credential.WithUniverseDomain(FakeUniverseDomain);
 
             Assert.NotSame(credential, newCredential);
             Assert.IsType<AwsExternalAccountCredential>(newCredential);
@@ -90,26 +90,26 @@ namespace Google.Apis.Auth.Tests.OAuth2
             Assert.Equal(GoogleAuthConsts.DefaultUniverseDomain, credential.GetUniverseDomain());
             Assert.Equal(GoogleAuthConsts.DefaultUniverseDomain, await credential.GetUniverseDomainAsync(default));
 
-            Assert.Equal(UniverseDomain, newCredential.GetUniverseDomain());
-            Assert.Equal(UniverseDomain, await newCredential.GetUniverseDomainAsync(default));
+            Assert.Equal(FakeUniverseDomain, newCredential.GetUniverseDomain());
+            Assert.Equal(FakeUniverseDomain, await newCredential.GetUniverseDomainAsync(default));
         }
 
         [Theory]
-        [InlineData("https://dummy-host/", RegionUrl, SecurityCredentialsUrl, "IMDS")]
+        [InlineData("https://dummy-host/", FakeRegionUrl, FakeSecurityCredentialsUrl, "IMDS")]
         [InlineData("https://dummy-host/", null, null, "IMDS")]
-        [InlineData(Imdsv2Url, "https://dummy-host/", SecurityCredentialsUrl, "Region")]
+        [InlineData(FakeImdsv2Url, "https://dummy-host/", FakeSecurityCredentialsUrl, "Region")]
         [InlineData(null, "https://dummy-host/", null, "Region")]
-        [InlineData(Imdsv2Url, RegionUrl, "https://dummy-host/", "Security Credentials")]
+        [InlineData(FakeImdsv2Url, FakeRegionUrl, "https://dummy-host/", "Security Credentials")]
         [InlineData(null, null, "https://dummy-host/", "Security Credentials")]
         public void ValidatesAwsMetadataServerUrls(string imdsV2TokenUrl, string regionUrl, string securityCredentials, string inMessage)
         {
             var exception = Assert.Throws<InvalidOperationException>(() => new AwsExternalAccountCredential(
-                new AwsExternalAccountCredential.Initializer(TokenUrl, Audience, SubjectTokenType, VerificationUrl)
+                new AwsExternalAccountCredential.Initializer(TokenUrl, FakeAudience, FakeSubjectTokenType, FakeVerificationUrl)
                 {
-                    ClientId = ClientId,
-                    ClientSecret = ClientSecret,
-                    Scopes = new string[] { Scope },
-                    QuotaProject = QuotaProject,
+                    ClientId = FakeClientId,
+                    ClientSecret = FakeClientSecret,
+                    Scopes = new string[] { FakeScope },
+                    QuotaProject = FakeQuotaProject,
                     ImdsV2SessionTokenUrl = imdsV2TokenUrl,
                     RegionUrl = regionUrl,
                     SecurityCredentialsUrl = securityCredentials,
@@ -125,19 +125,19 @@ namespace Google.Apis.Auth.Tests.OAuth2
                 ValidateRegionRequest,
                 ValidateRoleRequest,
                 ValidateSecurityCredentialsRequest,
-                request => ValidateAccessTokenRequest(request, Scope, ValidateSubjectToken));
+                request => ValidateAccessTokenRequest(request, FakeScope, ValidateSubjectToken));
 
             var credential = new AwsExternalAccountCredential(
-                new AwsExternalAccountCredential.Initializer(TokenUrl, Audience, SubjectTokenType, VerificationUrl)
+                new AwsExternalAccountCredential.Initializer(TokenUrl, FakeAudience, FakeSubjectTokenType, FakeVerificationUrl)
                 {
                     HttpClientFactory = new MockHttpClientFactory(messageHandler),
-                    ClientId = ClientId,
-                    ClientSecret = ClientSecret,
-                    Scopes = new string[] { Scope },
-                    QuotaProject = QuotaProject,
-                    ImdsV2SessionTokenUrl = Imdsv2Url,
-                    SecurityCredentialsUrl = SecurityCredentialsUrl,
-                    RegionUrl = RegionUrl,
+                    ClientId = FakeClientId,
+                    ClientSecret = FakeClientSecret,
+                    Scopes = new string[] { FakeScope },
+                    QuotaProject = FakeQuotaProject,
+                    ImdsV2SessionTokenUrl = FakeImdsv2Url,
+                    SecurityCredentialsUrl = FakeSecurityCredentialsUrl,
+                    RegionUrl = FakeRegionUrl,
                     Clock = new MockClock(MockUtcNow)
                 });
 
@@ -159,16 +159,16 @@ namespace Google.Apis.Auth.Tests.OAuth2
                 ValidateImpersonatedAccessTokenRequest);
 
             var credential = new AwsExternalAccountCredential(
-                new AwsExternalAccountCredential.Initializer(TokenUrl, Audience, SubjectTokenType, VerificationUrl)
+                new AwsExternalAccountCredential.Initializer(TokenUrl, FakeAudience, FakeSubjectTokenType, FakeVerificationUrl)
                 {
                     HttpClientFactory = new MockHttpClientFactory(messageHandler),
-                    ClientId = ClientId,
-                    ClientSecret = ClientSecret,
-                    Scopes = new string[] { Scope },
-                    QuotaProject = QuotaProject,
-                    ImdsV2SessionTokenUrl = Imdsv2Url,
-                    SecurityCredentialsUrl = SecurityCredentialsUrl,
-                    RegionUrl = RegionUrl,
+                    ClientId = FakeClientId,
+                    ClientSecret = FakeClientSecret,
+                    Scopes = new string[] { FakeScope },
+                    QuotaProject = FakeQuotaProject,
+                    ImdsV2SessionTokenUrl = FakeImdsv2Url,
+                    SecurityCredentialsUrl = FakeSecurityCredentialsUrl,
+                    RegionUrl = FakeRegionUrl,
                     Clock = new MockClock(MockUtcNow),
                     ServiceAccountImpersonationUrl = ImpersonationUrl
                 });
@@ -196,72 +196,72 @@ namespace Google.Apis.Auth.Tests.OAuth2
             var clock = new MockClock(MockUtcNow);
 
             var credential = new AwsExternalAccountCredential(
-                new AwsExternalAccountCredential.Initializer(TokenUrl, Audience, SubjectTokenType, VerificationUrl)
+                new AwsExternalAccountCredential.Initializer(TokenUrl, FakeAudience, FakeSubjectTokenType, FakeVerificationUrl)
                 {
                     HttpClientFactory = new MockHttpClientFactory(messageHandler),
-                    ClientId = ClientId,
-                    ClientSecret = ClientSecret,
-                    Scopes = new string[] { Scope },
-                    QuotaProject = QuotaProject,
-                    ImdsV2SessionTokenUrl = Imdsv2Url,
-                    SecurityCredentialsUrl = SecurityCredentialsUrl,
-                    RegionUrl = RegionUrl,
+                    ClientId = FakeClientId,
+                    ClientSecret = FakeClientSecret,
+                    Scopes = new string[] { FakeScope },
+                    QuotaProject = FakeQuotaProject,
+                    ImdsV2SessionTokenUrl = FakeImdsv2Url,
+                    SecurityCredentialsUrl = FakeSecurityCredentialsUrl,
+                    RegionUrl = FakeRegionUrl,
                     Clock = clock
                 });
 
-            Assert.Equal(AccessToken, await credential.GetAccessTokenForRequestAsync());
+            Assert.Equal(FakeAccessToken, await credential.GetAccessTokenForRequestAsync());
 
             clock.UtcNow = clock.UtcNow.AddDays(2);
 
-            Assert.Equal(RefreshedAccessToken, await credential.GetAccessTokenForRequestAsync());
+            Assert.Equal(FakeRefreshedAccessToken, await credential.GetAccessTokenForRequestAsync());
 
             messageHandler.AssertAllCallsMade();
         }
 
         private static Task<HttpResponseMessage> ValidateImdsV2TokenRequest(HttpRequestMessage imdsV2Request)
         {
-            Assert.Equal(Imdsv2Url, imdsV2Request.RequestUri.ToString());
+            Assert.Equal(FakeImdsv2Url, imdsV2Request.RequestUri.ToString());
             Assert.Equal(HttpMethod.Put, imdsV2Request.Method);
 
             Assert.Contains(imdsV2Request.Headers, header => header.Key == ImdsV2TokenTtlHeaderName && header.Value.Single() == ImdsV2TokenTtlSeconds);
 
-            return BuildStringContentResponse(ImdsV2Token);
+            return BuildStringContentResponse(FakeImdsV2Token);
         }
 
         private static Task<HttpResponseMessage> ValidateRegionRequest(HttpRequestMessage regionRequest)
         {
-            Assert.Equal(RegionUrl, regionRequest.RequestUri.ToString());
+            Assert.Equal(FakeRegionUrl, regionRequest.RequestUri.ToString());
             Assert.Equal(HttpMethod.Get, regionRequest.Method);
 
-            Assert.Contains(regionRequest.Headers, header => header.Key == ImdsV2TokenHeaderName && header.Value.Single() == ImdsV2Token);
+            Assert.Contains(regionRequest.Headers, header => header.Key == ImdsV2TokenHeaderName && header.Value.Single() == FakeImdsV2Token);
 
-            return BuildStringContentResponse(MetadateRegion);
+            return BuildStringContentResponse(MetadataRegion);
         }
 
         private static Task<HttpResponseMessage> ValidateRoleRequest(HttpRequestMessage roleRequest)
         {
-            Assert.Equal(SecurityCredentialsUrl, roleRequest.RequestUri.ToString());
+            Assert.Equal(FakeSecurityCredentialsUrl, roleRequest.RequestUri.ToString());
             Assert.Equal(HttpMethod.Get, roleRequest.Method);
 
-            Assert.Contains(roleRequest.Headers, header => header.Key == ImdsV2TokenHeaderName && header.Value.Single() == ImdsV2Token);
+            Assert.Contains(roleRequest.Headers, header => header.Key == ImdsV2TokenHeaderName && header.Value.Single() == FakeImdsV2Token);
 
-            return BuildStringContentResponse(SecurityCredentialsRole);
+            return BuildStringContentResponse(FakeSecurityCredentialsRole);
         }
 
         private static Task<HttpResponseMessage> ValidateSecurityCredentialsRequest(HttpRequestMessage roleRequest)
         {
-            Assert.Equal($"{SecurityCredentialsUrl}{SecurityCredentialsRole}", roleRequest.RequestUri.ToString());
+            Assert.Equal($"{FakeSecurityCredentialsUrl}{FakeSecurityCredentialsRole}", roleRequest.RequestUri.ToString());
             Assert.Equal(HttpMethod.Get, roleRequest.Method);
 
-            Assert.Contains(roleRequest.Headers, header => header.Key == ImdsV2TokenHeaderName && header.Value.Single() == ImdsV2Token);
+            Assert.Contains(roleRequest.Headers, header => header.Key == ImdsV2TokenHeaderName && header.Value.Single() == FakeImdsV2Token);
 
             return BuildStringContentResponseFromJson(
                 new
                 {
                     Code = "Success",
-                    AccessKeyId = SecurityCredentialsAccessKeyId,
-                    SecretAccessKey = SecurityCredentialsSecretAccessKey,
-                    Token = SecurityCredentialsToken
+                    AccessKeyId = FakeSecurityCredentialsAccessKeyId,
+                    SecretAccessKey = FakeSecurityCredentialsSecretAccessKey,
+                    Token = FakeSecurityCredentialsToken
                 });
         }
 
@@ -272,14 +272,14 @@ namespace Google.Apis.Auth.Tests.OAuth2
             string subjectToken = Uri.UnescapeDataString(accessTokenRequestContent.Substring(start, end - start));
             var deserializedSubjectToken = NewtonsoftJsonSerializer.Instance.Deserialize<AwsSignedSubjectToken>(subjectToken);
 
-            Assert.Equal(RegionalizedVerificationUrl, deserializedSubjectToken.Url);
+            Assert.Equal(FakeRegionalizedVerificationUrl, deserializedSubjectToken.Url);
             Assert.Equal("POST", deserializedSubjectToken.HttpMethod);
             Assert.Equal("", deserializedSubjectToken.Body);
 
-            Assert.Contains(deserializedSubjectToken.Headers, header => header.Key == "x-goog-cloud-target-resource" && header.Value == Audience);
+            Assert.Contains(deserializedSubjectToken.Headers, header => header.Key == "x-goog-cloud-target-resource" && header.Value == FakeAudience);
             Assert.Contains(deserializedSubjectToken.Headers, header => header.Key == "x-amz-date" && header.Value == "20220929T054756Z");
-            Assert.Contains(deserializedSubjectToken.Headers, header => header.Key == "host" && header.Value == RegionalizedVerificationHost);
-            Assert.Contains(deserializedSubjectToken.Headers, header => header.Key == "x-amz-security-token" && header.Value == SecurityCredentialsToken);
+            Assert.Contains(deserializedSubjectToken.Headers, header => header.Key == "host" && header.Value == FakeRegionalizedVerificationHost);
+            Assert.Contains(deserializedSubjectToken.Headers, header => header.Key == "x-amz-security-token" && header.Value == FakeSecurityCredentialsToken);
 
             var authorizationHeaderValue = Assert.Single(deserializedSubjectToken.Headers, header => header.Key == "Authorization").Value;
             Assert.Contains("AWS4-HMAC-SHA256", authorizationHeaderValue);

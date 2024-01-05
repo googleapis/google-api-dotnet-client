@@ -37,7 +37,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
         public async Task UniverseDomain_Default()
         {
             var credential = new FileSourcedExternalAccountCredential(new FileSourcedExternalAccountCredential.Initializer(
-                TokenUrl, Audience, SubjectTokenType, "subjectTokenPath")) as IGoogleCredential;
+                TokenUrl, FakeAudience, FakeSubjectTokenType, "subjectTokenPath")) as IGoogleCredential;
 
             Assert.Equal(GoogleAuthConsts.DefaultUniverseDomain, credential.GetUniverseDomain());
             Assert.Equal(GoogleAuthConsts.DefaultUniverseDomain, await credential.GetUniverseDomainAsync(default));
@@ -47,22 +47,22 @@ namespace Google.Apis.Auth.Tests.OAuth2
         public async Task UniverseDomain_Custom()
         {
             var credential = new FileSourcedExternalAccountCredential(new FileSourcedExternalAccountCredential.Initializer(
-                TokenUrl, Audience, SubjectTokenType, "subjectTokenPath")
+                TokenUrl, FakeAudience, FakeSubjectTokenType, "subjectTokenPath")
             {
-                UniverseDomain = UniverseDomain
+                UniverseDomain = FakeUniverseDomain
             }) as IGoogleCredential;
 
-            Assert.Equal(UniverseDomain, credential.GetUniverseDomain());
-            Assert.Equal(UniverseDomain, await credential.GetUniverseDomainAsync(default));
+            Assert.Equal(FakeUniverseDomain, credential.GetUniverseDomain());
+            Assert.Equal(FakeUniverseDomain, await credential.GetUniverseDomainAsync(default));
         }
 
         [Fact]
         public async Task WithUniverseDomain()
         {
             var credential = new FileSourcedExternalAccountCredential(new FileSourcedExternalAccountCredential.Initializer(
-                TokenUrl, Audience, SubjectTokenType, "subjectTokenPath")) as IGoogleCredential;
+                TokenUrl, FakeAudience, FakeSubjectTokenType, "subjectTokenPath")) as IGoogleCredential;
 
-            var newCredential = credential.WithUniverseDomain(UniverseDomain);
+            var newCredential = credential.WithUniverseDomain(FakeUniverseDomain);
 
             Assert.NotSame(credential, newCredential);
             Assert.IsType<FileSourcedExternalAccountCredential>(newCredential);
@@ -70,24 +70,24 @@ namespace Google.Apis.Auth.Tests.OAuth2
             Assert.Equal(GoogleAuthConsts.DefaultUniverseDomain, credential.GetUniverseDomain());
             Assert.Equal(GoogleAuthConsts.DefaultUniverseDomain, await credential.GetUniverseDomainAsync(default));
 
-            Assert.Equal(UniverseDomain, newCredential.GetUniverseDomain());
-            Assert.Equal(UniverseDomain, await newCredential.GetUniverseDomainAsync(default));
+            Assert.Equal(FakeUniverseDomain, newCredential.GetUniverseDomain());
+            Assert.Equal(FakeUniverseDomain, await newCredential.GetUniverseDomainAsync(default));
         }
 
         [Fact]
         public async Task FetchesAccessToken()
         {
-            var subjectTokenPath = WriteSubjectTokenToTempFile(SubjectTokenText);
-            var messageHandler = new DelegatedMessageHandler(request => ValidateAccessTokenRequest(request, Scope));
+            var subjectTokenPath = WriteSubjectTokenToTempFile(FakeSubjectTokenText);
+            var messageHandler = new DelegatedMessageHandler(request => ValidateAccessTokenRequest(request, FakeScope));
 
             var credential = new FileSourcedExternalAccountCredential(
-                new FileSourcedExternalAccountCredential.Initializer(TokenUrl, Audience, SubjectTokenType, subjectTokenPath)
+                new FileSourcedExternalAccountCredential.Initializer(TokenUrl, FakeAudience, FakeSubjectTokenType, subjectTokenPath)
                 {
                     HttpClientFactory = new MockHttpClientFactory(messageHandler),
-                    ClientId = ClientId,
-                    ClientSecret = ClientSecret,
-                    Scopes = new string[] { Scope },
-                    QuotaProject = QuotaProject
+                    ClientId = FakeClientId,
+                    ClientSecret = FakeClientSecret,
+                    Scopes = new string[] { FakeScope },
+                    QuotaProject = FakeQuotaProject
                 });
 
             var token = await credential.GetAccessTokenWithHeadersForRequestAsync();
@@ -99,19 +99,19 @@ namespace Google.Apis.Auth.Tests.OAuth2
         [Fact]
         public async Task FetchesAccessToken_Impersonated()
         {
-            var subjectTokenPath = WriteSubjectTokenToTempFile(SubjectTokenText);
+            var subjectTokenPath = WriteSubjectTokenToTempFile(FakeSubjectTokenText);
             var messageHandler = new DelegatedMessageHandler(
                 request => ValidateAccessTokenRequest(request, ImpersonationScope),
                 ValidateImpersonatedAccessTokenRequest);
 
             var credential = new FileSourcedExternalAccountCredential(
-                new FileSourcedExternalAccountCredential.Initializer(TokenUrl, Audience, SubjectTokenType, subjectTokenPath)
+                new FileSourcedExternalAccountCredential.Initializer(TokenUrl, FakeAudience, FakeSubjectTokenType, subjectTokenPath)
                 {
                     HttpClientFactory = new MockHttpClientFactory(messageHandler),
-                    ClientId = ClientId,
-                    ClientSecret = ClientSecret,
-                    Scopes = new string[] { Scope },
-                    QuotaProject = QuotaProject,
+                    ClientId = FakeClientId,
+                    ClientSecret = FakeClientSecret,
+                    Scopes = new string[] { FakeScope },
+                    QuotaProject = FakeQuotaProject,
                     ServiceAccountImpersonationUrl = ImpersonationUrl
                 });
 
@@ -124,16 +124,16 @@ namespace Google.Apis.Auth.Tests.OAuth2
         [Fact]
         public async Task FetchesAccessToken_Workforce()
         {
-            var subjectTokenPath = WriteSubjectTokenToTempFile(SubjectTokenText);
-            var messageHandler = new DelegatedMessageHandler(request => ValidateAccessTokenRequest(request, Scope, isWorkforce: true));
+            var subjectTokenPath = WriteSubjectTokenToTempFile(FakeSubjectTokenText);
+            var messageHandler = new DelegatedMessageHandler(request => ValidateAccessTokenRequest(request, FakeScope, isWorkforce: true));
 
             var credential = new FileSourcedExternalAccountCredential(
-                new FileSourcedExternalAccountCredential.Initializer(TokenUrl, Audience, SubjectTokenType, subjectTokenPath)
+                new FileSourcedExternalAccountCredential.Initializer(TokenUrl, FakeAudience, FakeSubjectTokenType, subjectTokenPath)
                 {
                     HttpClientFactory = new MockHttpClientFactory(messageHandler),
-                    WorkforcePoolUserProject = WorkforcePoolUserProject,
-                    Scopes = new string[] { Scope },
-                    QuotaProject = QuotaProject
+                    WorkforcePoolUserProject = FakeWorkforcePoolUserProject,
+                    Scopes = new string[] { FakeScope },
+                    QuotaProject = FakeQuotaProject
                 });
 
             var token = await credential.GetAccessTokenWithHeadersForRequestAsync();
@@ -145,18 +145,18 @@ namespace Google.Apis.Auth.Tests.OAuth2
         [Fact]
         public async Task FetchesAccessToken_ClientIdAndSecret_IgnoresWorkforce()
         {
-            var subjectTokenPath = WriteSubjectTokenToTempFile(SubjectTokenText);
-            var messageHandler = new DelegatedMessageHandler(request => ValidateAccessTokenRequest(request, Scope, isWorkforce: false));
+            var subjectTokenPath = WriteSubjectTokenToTempFile(FakeSubjectTokenText);
+            var messageHandler = new DelegatedMessageHandler(request => ValidateAccessTokenRequest(request, FakeScope, isWorkforce: false));
 
             var credential = new FileSourcedExternalAccountCredential(
-                new FileSourcedExternalAccountCredential.Initializer(TokenUrl, Audience, SubjectTokenType, subjectTokenPath)
+                new FileSourcedExternalAccountCredential.Initializer(TokenUrl, FakeAudience, FakeSubjectTokenType, subjectTokenPath)
                 {
                     HttpClientFactory = new MockHttpClientFactory(messageHandler),
-                    WorkforcePoolUserProject = WorkforcePoolUserProject,
-                    ClientId = ClientId,
-                    ClientSecret = ClientSecret,
-                    Scopes = new string[] { Scope },
-                    QuotaProject = QuotaProject
+                    WorkforcePoolUserProject = FakeWorkforcePoolUserProject,
+                    ClientId = FakeClientId,
+                    ClientSecret = FakeClientSecret,
+                    Scopes = new string[] { FakeScope },
+                    QuotaProject = FakeQuotaProject
                 });
 
             var token = await credential.GetAccessTokenWithHeadersForRequestAsync();
@@ -168,17 +168,17 @@ namespace Google.Apis.Auth.Tests.OAuth2
         [Fact]
         public async Task FetchesAccessToken_JsonSubjectToken()
         {
-            var subjectTokenPath = WriteSubjectTokenToTempFile(SubjectTokenJson);
+            var subjectTokenPath = WriteSubjectTokenToTempFile(FakeSubjectTokenJson);
             var messageHandler = new DelegatedMessageHandler(ValidateAccessTokenFromJsonSubjectTokenRequest);
 
             var credential = new FileSourcedExternalAccountCredential(
-                new FileSourcedExternalAccountCredential.Initializer(TokenUrl, Audience, SubjectTokenType, subjectTokenPath)
+                new FileSourcedExternalAccountCredential.Initializer(TokenUrl, FakeAudience, FakeSubjectTokenType, subjectTokenPath)
                 {
                     HttpClientFactory = new MockHttpClientFactory(messageHandler),
-                    SubjectTokenJsonFieldName = SubjectTokenJsonField
+                    SubjectTokenJsonFieldName = FakeSubjectTokenJsonField
                 });
 
-            Assert.Equal(AccessToken, await credential.GetAccessTokenForRequestAsync());
+            Assert.Equal(FakeAccessToken, await credential.GetAccessTokenForRequestAsync());
 
             messageHandler.AssertAllCallsMade();
         }
@@ -186,22 +186,22 @@ namespace Google.Apis.Auth.Tests.OAuth2
         [Fact]
         public async Task RefreshesAccessToken()
         {
-            var subjectTokenPath = WriteSubjectTokenToTempFile(SubjectTokenText);
+            var subjectTokenPath = WriteSubjectTokenToTempFile(FakeSubjectTokenText);
             var messageHandler = new DelegatedMessageHandler(AccessTokenRequest, RefreshTokenRequest);
             var clock = new MockClock(DateTime.UtcNow);
 
             var credential = new FileSourcedExternalAccountCredential(
-                new FileSourcedExternalAccountCredential.Initializer(TokenUrl, Audience, SubjectTokenType, subjectTokenPath)
+                new FileSourcedExternalAccountCredential.Initializer(TokenUrl, FakeAudience, FakeSubjectTokenType, subjectTokenPath)
                 {
                     HttpClientFactory = new MockHttpClientFactory(messageHandler),
                     Clock = clock
                 });
 
-            Assert.Equal(AccessToken, await credential.GetAccessTokenForRequestAsync());
+            Assert.Equal(FakeAccessToken, await credential.GetAccessTokenForRequestAsync());
 
             clock.UtcNow = clock.UtcNow.AddDays(2);
 
-            Assert.Equal(RefreshedAccessToken, await credential.GetAccessTokenForRequestAsync());
+            Assert.Equal(FakeRefreshedAccessToken, await credential.GetAccessTokenForRequestAsync());
 
             messageHandler.AssertAllCallsMade();
         }
@@ -210,18 +210,18 @@ namespace Google.Apis.Auth.Tests.OAuth2
         {
             get
             {
-                var subjectTokenPath = WriteSubjectTokenToTempFile(SubjectTokenText);
+                var subjectTokenPath = WriteSubjectTokenToTempFile(FakeSubjectTokenText);
 
                 var data = new TheoryData<FileSourcedExternalAccountCredential, Type>
                 {
                     {
                         new FileSourcedExternalAccountCredential(
-                            new FileSourcedExternalAccountCredential.Initializer(TokenUrl, Audience, SubjectTokenType, "unknownPath")),
+                            new FileSourcedExternalAccountCredential.Initializer(TokenUrl, FakeAudience, FakeSubjectTokenType, "unknownPath")),
                         typeof(FileNotFoundException)
                     },
                     {
                         new FileSourcedExternalAccountCredential(
-                            new FileSourcedExternalAccountCredential.Initializer(TokenUrl, Audience, SubjectTokenType, subjectTokenPath)
+                            new FileSourcedExternalAccountCredential.Initializer(TokenUrl, FakeAudience, FakeSubjectTokenType, subjectTokenPath)
                             {
                                 SubjectTokenJsonFieldName = "unknownField"
                             }),
