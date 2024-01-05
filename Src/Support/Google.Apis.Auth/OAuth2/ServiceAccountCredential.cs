@@ -27,10 +27,6 @@ using Google.Apis.Json;
 using Google.Apis.Util;
 using Google.Apis.Http;
 
-// TODO: We could potentially remove this using alias directive; it was primarily
-// to support older frameworks.
-using RsaKey = System.Security.Cryptography.RSA;
-
 namespace Google.Apis.Auth.OAuth2
 {
     /// <summary>
@@ -52,7 +48,6 @@ namespace Google.Apis.Auth.OAuth2
     /// </summary>
     public class ServiceAccountCredential : ServiceCredential, IOidcTokenProvider, IGoogleCredential, IBlobSigner
     {
-        private const string Sha256Oid = "2.16.840.1.101.3.4.2.1";
         private const string ScopedTokenCacheKey = "SCOPED_TOKEN";
         /// <summary>An initializer class for the service account credential. </summary>
         new public class Initializer : ServiceCredential.Initializer
@@ -75,7 +70,7 @@ namespace Google.Apis.Auth.OAuth2
             /// Gets or sets the key which is used to sign the request, as specified in
             /// https://developers.google.com/accounts/docs/OAuth2ServiceAccount#computingsignature.
             /// </summary>
-            public RsaKey Key { get; set; }
+            public RSA Key { get; set; }
 
             /// <summary>
             /// Gets or sets the service account key ID.
@@ -108,7 +103,7 @@ namespace Google.Apis.Auth.OAuth2
             public Initializer FromPrivateKey(string privateKey)
             {
                 RSAParameters rsaParameters = Pkcs8.DecodeRsaParameters(privateKey);
-                Key = (RsaKey)RSA.Create();
+                Key = RSA.Create();
                 Key.ImportParameters(rsaParameters);
                 return this;
             }
@@ -142,7 +137,7 @@ namespace Google.Apis.Auth.OAuth2
         /// Gets the key which is used to sign the request, as specified in
         /// https://developers.google.com/accounts/docs/OAuth2ServiceAccount#computingsignature.
         /// </summary>
-        public RsaKey Key { get; }
+        public RSA Key { get; }
 
         /// <summary>
         /// Gets the key id of the key which is used to sign the request.

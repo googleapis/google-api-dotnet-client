@@ -31,10 +31,8 @@ namespace Google.Apis.Auth
     internal static class SignedTokenVerification
     {
 #if NET462_OR_GREATER
-        // See http://oid-info.com/get/2.16.840.1.101.3.4.2.1
-        private const string Sha256Oid = "2.16.840.1.101.3.4.2.1";
-        // In net45 We don't have the handy ECParameters class so we need to pass the X and Y
-        // in the expected format.
+        // In .NET 4.6.2 we don't have the handy ECParameters struct so we need to pass the X and Y
+        // in the expected format. (It was introduced in .NET 4.7.)
         // See here for the format of the key: https://docs.microsoft.com/en-us/windows/win32/api/bcrypt/ns-bcrypt-bcrypt_ecckey_blob
         // And here for the correct prefix for ECDsa: https://stackoverflow.com/a/44527439/1122643
         private static readonly byte[] s_cngBlobPrefix = { 0x45, 0x43, 0x53, 0x31, 0x20, 0, 0, 0 };
@@ -165,7 +163,7 @@ namespace Google.Apis.Auth
 #elif NET462
             static ECDsa BuildEcdsa(byte[] x, byte[] y)
             {
-                // In .NET 4.6.2 We don't have the handy ECParameters class (introduced in .NET 4.7) so we need to pass the X and Y
+                // In .NET 4.6.2 we don't have the handy ECParameters class (introduced in .NET 4.7) so we need to pass the X and Y
                 // in the expected format.
                 // See here for the format of the key: https://docs.microsoft.com/en-us/windows/win32/api/bcrypt/ns-bcrypt-bcrypt_ecckey_blob
                 // And here for the correct prefix for ECDsa: https://stackoverflow.com/a/44527439/1122643

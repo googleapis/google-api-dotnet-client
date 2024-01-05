@@ -380,7 +380,7 @@ namespace Google.Apis.Auth.OAuth2
             bool IsWindows()
             {
 #if NET462
-                // RuntimeInformation.IsOsPlatform is not available for NET45.
+                // RuntimeInformation.IsOsPlatform is not available for .NET 4.6.2.
                 // We are probably on Windows, unless we are using Mono which means we might be
                 // elsewhere. But we don't have a reliable way to determine that, so let's
                 // return false, always.
@@ -394,7 +394,7 @@ namespace Google.Apis.Auth.OAuth2
             bool IsLinux()
             {
 #if NET462
-                // RuntimeInformation.IsOsPlatform is not available for NET45.
+                // RuntimeInformation.IsOsPlatform is not available for .NET 4.6.2.
                 // There's a chance we are on Linux if we are using Mono.
                 // But we don't have a reliable way to determine that, so let's
                 // return false, always.

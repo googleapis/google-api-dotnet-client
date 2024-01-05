@@ -240,7 +240,7 @@ namespace Google.Apis.Upload
 #pragma warning restore CS0618 // Type or member is obsolete
             }
 
-                public Task<bool> HandleResponseAsync(HandleUnsuccessfulResponseArgs args)
+            public Task<bool> HandleResponseAsync(HandleUnsuccessfulResponseArgs args)
             {
                 var result = false;
                 var statusCode = (int)args.Response.StatusCode;
