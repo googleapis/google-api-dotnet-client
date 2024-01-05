@@ -33,7 +33,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
     /// <summary>Tests for <see cref="Google.Apis.Auth.OAuth2.ComputeCredential"/>.</summary>
     public class ComputeCredentialTests
     {
-        private const string UniverseDomain = "fake.universe.domain.com";
+        private const string FakeUniverseDomain = "fake.universe.domain.com";
 
         [Fact]
         public void IsRunningOnComputeEngine_ResultIsCached()
@@ -48,11 +48,11 @@ namespace Google.Apis.Auth.Tests.OAuth2
         {
             var credential = new ComputeCredential(new ComputeCredential.Initializer
             {
-                UniverseDomain = UniverseDomain
+                UniverseDomain = FakeUniverseDomain
             }) as IGoogleCredential;
 
-            Assert.Equal(UniverseDomain, await credential.GetUniverseDomainAsync(default));
-            Assert.Equal(UniverseDomain, credential.GetUniverseDomain());
+            Assert.Equal(FakeUniverseDomain, await credential.GetUniverseDomainAsync(default));
+            Assert.Equal(FakeUniverseDomain, credential.GetUniverseDomain());
         }
 
         [Fact]
@@ -60,13 +60,13 @@ namespace Google.Apis.Auth.Tests.OAuth2
         {
             var credential = new ComputeCredential() as IGoogleCredential;
 
-            var newCredential = credential.WithUniverseDomain(UniverseDomain);
+            var newCredential = credential.WithUniverseDomain(FakeUniverseDomain);
 
             Assert.NotSame(credential, newCredential);
             Assert.IsType<ComputeCredential>(newCredential);
 
-            Assert.Equal(UniverseDomain, await newCredential.GetUniverseDomainAsync(default));
-            Assert.Equal(UniverseDomain, newCredential.GetUniverseDomain());
+            Assert.Equal(FakeUniverseDomain, await newCredential.GetUniverseDomainAsync(default));
+            Assert.Equal(FakeUniverseDomain, newCredential.GetUniverseDomain());
         }
 
         [Fact]

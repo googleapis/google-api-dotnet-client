@@ -34,7 +34,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
 {
     public class ServiceAccountCredentialTests
     {
-        private const string UniverseDomain = "fake.universe.domain.com";
+        private const string FakeUniverseDomain = "fake.universe.domain.com";
 
         private static readonly Assembly CurrentAssembly = typeof(ServiceAccountCredentialTests).Assembly;
         private static readonly TimeSpan JwtLifetime = TimeSpan.FromMinutes(60);
@@ -429,13 +429,13 @@ ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
             var credential = new ServiceAccountCredential(
                 new ServiceAccountCredential.Initializer("MyId", "MyTokenServerUrl")
                 {
-                    UniverseDomain = UniverseDomain,
+                    UniverseDomain = FakeUniverseDomain,
                     // So that we can set a custom universe domain as only self-signed JWTs are supported in universe domains other than googleapis.com.
                     UseJwtAccessWithScopes = true
                 }.FromPrivateKey(PrivateKey)) as IGoogleCredential;
 
-            Assert.Equal(UniverseDomain, credential.GetUniverseDomain());
-            Assert.Equal(UniverseDomain, await credential.GetUniverseDomainAsync(default));
+            Assert.Equal(FakeUniverseDomain, credential.GetUniverseDomain());
+            Assert.Equal(FakeUniverseDomain, await credential.GetUniverseDomainAsync(default));
         }
 
         [Fact]
@@ -443,7 +443,7 @@ ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
             Assert.Throws<InvalidOperationException>(() => new ServiceAccountCredential(
                 new ServiceAccountCredential.Initializer("MyId", "MyTokenServerUrl")
                 {
-                    UniverseDomain = UniverseDomain,
+                    UniverseDomain = FakeUniverseDomain,
                     // So that we can set a custom universe domain as only self-signed JWTs are supported in universe domains other than googleapis.com.
                     UseJwtAccessWithScopes = true,
                     User = "usert@fake.com"
@@ -454,7 +454,7 @@ ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
             Assert.Throws<InvalidOperationException>(() => new ServiceAccountCredential(
                 new ServiceAccountCredential.Initializer("MyId", "MyTokenServerUrl")
                 {
-                    UniverseDomain = UniverseDomain,
+                    UniverseDomain = FakeUniverseDomain,
                 }.FromPrivateKey(PrivateKey)));
 
         [Fact]
@@ -462,7 +462,7 @@ ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
             Assert.Throws<InvalidOperationException>(() => new ServiceAccountCredential(
                 new ServiceAccountCredential.Initializer("MyId", "MyTokenServerUrl")
                 {
-                    UniverseDomain = UniverseDomain,
+                    UniverseDomain = FakeUniverseDomain,
                     UseJwtAccessWithScopes = false,
                 }.FromPrivateKey(PrivateKey)));
 
@@ -477,7 +477,7 @@ ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
                 }
                 .FromPrivateKey(PrivateKey)) as IGoogleCredential;
 
-            var newCredential = credential.WithUniverseDomain(UniverseDomain);
+            var newCredential = credential.WithUniverseDomain(FakeUniverseDomain);
 
             Assert.NotSame(credential, newCredential);
             Assert.IsType<ServiceAccountCredential>(newCredential);
@@ -485,8 +485,8 @@ ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
             Assert.Equal(GoogleAuthConsts.DefaultUniverseDomain, credential.GetUniverseDomain());
             Assert.Equal(GoogleAuthConsts.DefaultUniverseDomain, await credential.GetUniverseDomainAsync(default));
 
-            Assert.Equal(UniverseDomain, newCredential.GetUniverseDomain());
-            Assert.Equal(UniverseDomain, await newCredential.GetUniverseDomainAsync(default));
+            Assert.Equal(FakeUniverseDomain, newCredential.GetUniverseDomain());
+            Assert.Equal(FakeUniverseDomain, await newCredential.GetUniverseDomainAsync(default));
         }
 
         [Fact]
