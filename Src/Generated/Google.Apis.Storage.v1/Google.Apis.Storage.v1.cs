@@ -1,4 +1,4 @@
-// Copyright 2023 Google LLC
+// Copyright 2024 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -34,7 +34,7 @@ namespace Google.Apis.Storage.v1
         /// <param name="initializer">The service initializer.</param>
         public StorageService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
-            AnywhereCache = new AnywhereCacheResource(this);
+            AnywhereCaches = new AnywhereCachesResource(this);
             BucketAccessControls = new BucketAccessControlsResource(this);
             Buckets = new BucketsResource(this);
             Channels = new ChannelsResource(this);
@@ -103,8 +103,8 @@ namespace Google.Apis.Storage.v1
             public const string DevstorageReadWrite = "https://www.googleapis.com/auth/devstorage.read_write";
         }
 
-        /// <summary>Gets the AnywhereCache resource.</summary>
-        public virtual AnywhereCacheResource AnywhereCache { get; }
+        /// <summary>Gets the AnywhereCaches resource.</summary>
+        public virtual AnywhereCachesResource AnywhereCaches { get; }
 
         /// <summary>Gets the BucketAccessControls resource.</summary>
         public virtual BucketAccessControlsResource BucketAccessControls { get; }
@@ -261,22 +261,22 @@ namespace Google.Apis.Storage.v1
         }
     }
 
-    /// <summary>The "anywhereCache" collection of methods.</summary>
-    public class AnywhereCacheResource
+    /// <summary>The "anywhereCaches" collection of methods.</summary>
+    public class AnywhereCachesResource
     {
-        private const string Resource = "anywhereCache";
+        private const string Resource = "anywhereCaches";
 
         /// <summary>The service which this resource belongs to.</summary>
         private readonly Google.Apis.Services.IClientService service;
 
         /// <summary>Constructs a new resource.</summary>
-        public AnywhereCacheResource(Google.Apis.Services.IClientService service)
+        public AnywhereCachesResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
         }
 
         /// <summary>Disables an Anywhere Cache instance.</summary>
-        /// <param name="bucket">Name of the partent bucket</param>
+        /// <param name="bucket">Name of the parent bucket.</param>
         /// <param name="anywhereCacheId">The ID of requested Anywhere Cache instance.</param>
         public virtual DisableRequest Disable(string bucket, string anywhereCacheId)
         {
@@ -294,7 +294,7 @@ namespace Google.Apis.Storage.v1
                 InitParameters();
             }
 
-            /// <summary>Name of the partent bucket</summary>
+            /// <summary>Name of the parent bucket.</summary>
             [Google.Apis.Util.RequestParameterAttribute("bucket", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Bucket { get; private set; }
 
@@ -335,7 +335,7 @@ namespace Google.Apis.Storage.v1
         }
 
         /// <summary>Returns the metadata of an Anywhere Cache instance.</summary>
-        /// <param name="bucket">Name of the partent bucket</param>
+        /// <param name="bucket">Name of the parent bucket.</param>
         /// <param name="anywhereCacheId">The ID of requested Anywhere Cache instance.</param>
         public virtual GetRequest Get(string bucket, string anywhereCacheId)
         {
@@ -353,7 +353,7 @@ namespace Google.Apis.Storage.v1
                 InitParameters();
             }
 
-            /// <summary>Name of the partent bucket</summary>
+            /// <summary>Name of the parent bucket.</summary>
             [Google.Apis.Util.RequestParameterAttribute("bucket", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Bucket { get; private set; }
 
@@ -395,7 +395,7 @@ namespace Google.Apis.Storage.v1
 
         /// <summary>Creates an Anywhere Cache instance.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="bucket">Name of the partent bucket</param>
+        /// <param name="bucket">Name of the parent bucket.</param>
         public virtual InsertRequest Insert(Google.Apis.Storage.v1.Data.AnywhereCache body, string bucket)
         {
             return new InsertRequest(this.service, body, bucket);
@@ -412,7 +412,7 @@ namespace Google.Apis.Storage.v1
                 InitParameters();
             }
 
-            /// <summary>Name of the partent bucket</summary>
+            /// <summary>Name of the parent bucket.</summary>
             [Google.Apis.Util.RequestParameterAttribute("bucket", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Bucket { get; private set; }
 
@@ -447,7 +447,7 @@ namespace Google.Apis.Storage.v1
         }
 
         /// <summary>Returns a list of Anywhere Cache instances of the bucket matching the criteria.</summary>
-        /// <param name="bucket">Name of the partent bucket</param>
+        /// <param name="bucket">Name of the parent bucket.</param>
         public virtual ListRequest List(string bucket)
         {
             return new ListRequest(this.service, bucket);
@@ -463,7 +463,7 @@ namespace Google.Apis.Storage.v1
                 InitParameters();
             }
 
-            /// <summary>Name of the partent bucket</summary>
+            /// <summary>Name of the parent bucket.</summary>
             [Google.Apis.Util.RequestParameterAttribute("bucket", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Bucket { get; private set; }
 
@@ -518,7 +518,7 @@ namespace Google.Apis.Storage.v1
         }
 
         /// <summary>Pauses an Anywhere Cache instance.</summary>
-        /// <param name="bucket">Name of the partent bucket</param>
+        /// <param name="bucket">Name of the parent bucket.</param>
         /// <param name="anywhereCacheId">The ID of requested Anywhere Cache instance.</param>
         public virtual PauseRequest Pause(string bucket, string anywhereCacheId)
         {
@@ -536,7 +536,7 @@ namespace Google.Apis.Storage.v1
                 InitParameters();
             }
 
-            /// <summary>Name of the partent bucket</summary>
+            /// <summary>Name of the parent bucket.</summary>
             [Google.Apis.Util.RequestParameterAttribute("bucket", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Bucket { get; private set; }
 
@@ -577,7 +577,7 @@ namespace Google.Apis.Storage.v1
         }
 
         /// <summary>Resumes a paused or disabled Anywhere Cache instance.</summary>
-        /// <param name="bucket">Name of the partent bucket</param>
+        /// <param name="bucket">Name of the parent bucket.</param>
         /// <param name="anywhereCacheId">The ID of requested Anywhere Cache instance.</param>
         public virtual ResumeRequest Resume(string bucket, string anywhereCacheId)
         {
@@ -595,7 +595,7 @@ namespace Google.Apis.Storage.v1
                 InitParameters();
             }
 
-            /// <summary>Name of the partent bucket</summary>
+            /// <summary>Name of the parent bucket.</summary>
             [Google.Apis.Util.RequestParameterAttribute("bucket", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Bucket { get; private set; }
 
@@ -637,7 +637,7 @@ namespace Google.Apis.Storage.v1
 
         /// <summary>Updates the config(ttl and admissionPolicy) of an Anywhere Cache instance.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="bucket">Name of the partent bucket</param>
+        /// <param name="bucket">Name of the parent bucket.</param>
         /// <param name="anywhereCacheId">The ID of requested Anywhere Cache instance.</param>
         public virtual UpdateRequest Update(Google.Apis.Storage.v1.Data.AnywhereCache body, string bucket, string anywhereCacheId)
         {
@@ -656,7 +656,7 @@ namespace Google.Apis.Storage.v1
                 InitParameters();
             }
 
-            /// <summary>Name of the partent bucket</summary>
+            /// <summary>Name of the parent bucket.</summary>
             [Google.Apis.Util.RequestParameterAttribute("bucket", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Bucket { get; private set; }
 
@@ -8593,6 +8593,10 @@ namespace Google.Apis.Storage.v1.Data
             get => Google.Apis.Util.Utilities.GetDateTimeFromString(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
         }
+
+        /// <summary>The zone in which the cache instance is running. For example, us-central1-a.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("zone")]
+        public virtual string Zone { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

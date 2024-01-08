@@ -19920,6 +19920,10 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("advancedSettings")]
         public virtual GoogleCloudDialogflowCxV3AdvancedSettings AdvancedSettings { get; set; }
 
+        /// <summary>The description of the page. The maximum length is 500 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
         /// <summary>Required. The human-readable name of the page, unique within the flow.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
@@ -20063,7 +20067,8 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
     /// <summary>
     /// Represents the query input. It can contain one of: 1. A conversational query in the form of text. 2. An intent
     /// query that specifies which intent to trigger. 3. Natural language speech audio to be processed. 4. An event to
-    /// be triggered. 5. DTMF digits to invoke an intent and fill in parameter value.
+    /// be triggered. 5. DTMF digits to invoke an intent and fill in parameter value. 6. The results of a tool executed
+    /// by the client.
     /// </summary>
     public class GoogleCloudDialogflowCxV3QueryInput : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -22504,6 +22509,10 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("advancedSettings")]
         public virtual GoogleCloudDialogflowCxV3beta1AdvancedSettings AdvancedSettings { get; set; }
 
+        /// <summary>The description of the page. The maximum length is 500 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
         /// <summary>Required. The human-readable name of the page, unique within the flow.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
@@ -22647,7 +22656,8 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
     /// <summary>
     /// Represents the query input. It can contain one of: 1. A conversational query in the form of text. 2. An intent
     /// query that specifies which intent to trigger. 3. Natural language speech audio to be processed. 4. An event to
-    /// be triggered. 5. DTMF digits to invoke an intent and fill in parameter value.
+    /// be triggered. 5. DTMF digits to invoke an intent and fill in parameter value. 6. The results of a tool executed
+    /// by the client.
     /// </summary>
     public class GoogleCloudDialogflowCxV3beta1QueryInput : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -26952,8 +26962,8 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
     /// goes first and during which speech detection should not be carried out. * Barge-in phase: which follows the no
     /// barge-in phase and during which the API starts speech detection and may inform the client that an utterance has
     /// been detected. Note that no-speech event is not expected in this phase. The client provides this configuration
-    /// in terms of the durations of those two phases. The durations are measured in terms of the audio length fromt the
-    /// the start of the input audio. The flow goes like below:
+    /// in terms of the durations of those two phases. The durations are measured in terms of the audio length from the
+    /// start of the input audio. The flow goes like below:
     /// ```
     /// --&amp;gt; Time without speech detection | utterance
     /// only | utterance or no-speech event | | +-------------+ | +------------+ | +---------------+ ----------+ no

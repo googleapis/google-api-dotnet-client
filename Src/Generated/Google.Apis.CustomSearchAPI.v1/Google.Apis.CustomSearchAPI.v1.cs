@@ -1,4 +1,4 @@
-// Copyright 2023 Google LLC
+// Copyright 2024 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -633,9 +633,7 @@ namespace Google.Apis.CustomSearchAPI.v1
                 [Google.Apis.Util.RequestParameterAttribute("q", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Q { get; set; }
 
-                /// <summary>
-                /// Specifies that all search results should be pages that are related to the specified URL.
-                /// </summary>
+                /// <summary>Deprecated.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("relatedSite", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string RelatedSite { get; set; }
 
@@ -1377,9 +1375,7 @@ namespace Google.Apis.CustomSearchAPI.v1
             [Google.Apis.Util.RequestParameterAttribute("q", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Q { get; set; }
 
-            /// <summary>
-            /// Specifies that all search results should be pages that are related to the specified URL.
-            /// </summary>
+            /// <summary>Deprecated.</summary>
             [Google.Apis.Util.RequestParameterAttribute("relatedSite", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RelatedSite { get; set; }
 

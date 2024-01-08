@@ -1,4 +1,4 @@
-// Copyright 2023 Google LLC
+// Copyright 2024 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -4185,7 +4185,11 @@ namespace Google.Apis.DisplayVideo.v3
                 this.service = service;
             }
 
-            /// <summary>Creates a new creative. Returns the newly created creative if successful.</summary>
+            /// <summary>
+            /// Creates a new creative. Returns the newly created creative if successful. A ["Standard" user
+            /// role](//support.google.com/displayvideo/answer/2723011) or greater for the parent advertiser or partner
+            /// is required to make this request.
+            /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="advertiserId">Output only. The unique ID of the advertiser the creative belongs to.</param>
             public virtual CreateRequest Create(Google.Apis.DisplayVideo.v3.Data.Creative body, long advertiserId)
@@ -4193,7 +4197,11 @@ namespace Google.Apis.DisplayVideo.v3
                 return new CreateRequest(this.service, body, advertiserId);
             }
 
-            /// <summary>Creates a new creative. Returns the newly created creative if successful.</summary>
+            /// <summary>
+            /// Creates a new creative. Returns the newly created creative if successful. A ["Standard" user
+            /// role](//support.google.com/displayvideo/answer/2723011) or greater for the parent advertiser or partner
+            /// is required to make this request.
+            /// </summary>
             public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.Creative>
             {
                 /// <summary>Constructs a new Create request.</summary>
@@ -4240,7 +4248,9 @@ namespace Google.Apis.DisplayVideo.v3
 
             /// <summary>
             /// Deletes a creative. Returns error code `NOT_FOUND` if the creative does not exist. The creative should
-            /// be archived first, i.e. set entity_status to `ENTITY_STATUS_ARCHIVED`, before it can be deleted.
+            /// be archived first, i.e. set entity_status to `ENTITY_STATUS_ARCHIVED`, before it can be deleted. A
+            /// ["Standard" user role](//support.google.com/displayvideo/answer/2723011) or greater for the parent
+            /// advertiser or partner is required to make this request.
             /// </summary>
             /// <param name="advertiserId">The ID of the advertiser this creative belongs to.</param>
             /// <param name="creativeId">The ID of the creative to be deleted.</param>
@@ -4251,7 +4261,9 @@ namespace Google.Apis.DisplayVideo.v3
 
             /// <summary>
             /// Deletes a creative. Returns error code `NOT_FOUND` if the creative does not exist. The creative should
-            /// be archived first, i.e. set entity_status to `ENTITY_STATUS_ARCHIVED`, before it can be deleted.
+            /// be archived first, i.e. set entity_status to `ENTITY_STATUS_ARCHIVED`, before it can be deleted. A
+            /// ["Standard" user role](//support.google.com/displayvideo/answer/2723011) or greater for the parent
+            /// advertiser or partner is required to make this request.
             /// </summary>
             public class DeleteRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.Empty>
             {
@@ -4502,7 +4514,11 @@ namespace Google.Apis.DisplayVideo.v3
                 }
             }
 
-            /// <summary>Updates an existing creative. Returns the updated creative if successful.</summary>
+            /// <summary>
+            /// Updates an existing creative. Returns the updated creative if successful. A ["Standard" user
+            /// role](//support.google.com/displayvideo/answer/2723011) or greater for the parent advertiser or partner
+            /// is required to make this request.
+            /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="advertiserId">Output only. The unique ID of the advertiser the creative belongs to.</param>
             /// <param name="creativeId">Output only. The unique ID of the creative. Assigned by the system.</param>
@@ -4511,7 +4527,11 @@ namespace Google.Apis.DisplayVideo.v3
                 return new PatchRequest(this.service, body, advertiserId, creativeId);
             }
 
-            /// <summary>Updates an existing creative. Returns the updated creative if successful.</summary>
+            /// <summary>
+            /// Updates an existing creative. Returns the updated creative if successful. A ["Standard" user
+            /// role](//support.google.com/displayvideo/answer/2723011) or greater for the parent advertiser or partner
+            /// is required to make this request.
+            /// </summary>
             public class PatchRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.Creative>
             {
                 /// <summary>Constructs a new Patch request.</summary>
@@ -7101,7 +7121,8 @@ namespace Google.Apis.DisplayVideo.v3
                     /// Assigns a targeting option to a line item. Returns the assigned targeting option if successful.
                     /// Requests to this endpoint cannot be made concurrently with the following requests updating the
                     /// same line item: * lineItems.bulkEditAssignedTargetingOptions * lineItems.bulkUpdate *
-                    /// lineItems.patch * DeleteLineItemAssignedTargetingOption
+                    /// lineItems.patch * DeleteLineItemAssignedTargetingOption YouTube &amp;amp; Partners line items
+                    /// cannot be created or updated using the API.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="advertiserId">Required. The ID of the advertiser the line item belongs to.</param>
@@ -7140,7 +7161,8 @@ namespace Google.Apis.DisplayVideo.v3
                     /// Assigns a targeting option to a line item. Returns the assigned targeting option if successful.
                     /// Requests to this endpoint cannot be made concurrently with the following requests updating the
                     /// same line item: * lineItems.bulkEditAssignedTargetingOptions * lineItems.bulkUpdate *
-                    /// lineItems.patch * DeleteLineItemAssignedTargetingOption
+                    /// lineItems.patch * DeleteLineItemAssignedTargetingOption YouTube &amp;amp; Partners line items
+                    /// cannot be created or updated using the API.
                     /// </summary>
                     public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.AssignedTargetingOption>
                     {
@@ -7515,7 +7537,8 @@ namespace Google.Apis.DisplayVideo.v3
                     /// Deletes an assigned targeting option from a line item. Requests to this endpoint cannot be made
                     /// concurrently with the following requests updating the same line item: *
                     /// lineItems.bulkEditAssignedTargetingOptions * lineItems.bulkUpdate * lineItems.patch *
-                    /// CreateLineItemAssignedTargetingOption
+                    /// CreateLineItemAssignedTargetingOption YouTube &amp;amp; Partners line items cannot be created or
+                    /// updated using the API.
                     /// </summary>
                     /// <param name="advertiserId">Required. The ID of the advertiser the line item belongs to.</param>
                     /// <param name="lineItemId">
@@ -7556,7 +7579,8 @@ namespace Google.Apis.DisplayVideo.v3
                     /// Deletes an assigned targeting option from a line item. Requests to this endpoint cannot be made
                     /// concurrently with the following requests updating the same line item: *
                     /// lineItems.bulkEditAssignedTargetingOptions * lineItems.bulkUpdate * lineItems.patch *
-                    /// CreateLineItemAssignedTargetingOption
+                    /// CreateLineItemAssignedTargetingOption YouTube &amp;amp; Partners line items cannot be created or
+                    /// updated using the API.
                     /// </summary>
                     public class DeleteRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.Empty>
                     {
@@ -8841,7 +8865,8 @@ namespace Google.Apis.DisplayVideo.v3
             /// targeting options provided in BulkEditAssignedTargetingOptionsRequest.create_requests. Requests to this
             /// endpoint cannot be made concurrently with the following requests updating the same line item: *
             /// lineItems.bulkUpdate * lineItems.patch * assignedTargetingOptions.create *
-            /// assignedTargetingOptions.delete
+            /// assignedTargetingOptions.delete YouTube &amp;amp; Partners line items cannot be created or updated using
+            /// the API.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="advertiserId">Required. The ID of the advertiser the line items belong to.</param>
@@ -8856,7 +8881,8 @@ namespace Google.Apis.DisplayVideo.v3
             /// targeting options provided in BulkEditAssignedTargetingOptionsRequest.create_requests. Requests to this
             /// endpoint cannot be made concurrently with the following requests updating the same line item: *
             /// lineItems.bulkUpdate * lineItems.patch * assignedTargetingOptions.create *
-            /// assignedTargetingOptions.delete
+            /// assignedTargetingOptions.delete YouTube &amp;amp; Partners line items cannot be created or updated using
+            /// the API.
             /// </summary>
             public class BulkEditAssignedTargetingOptionsRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.BulkEditAssignedTargetingOptionsResponse>
             {
@@ -9034,7 +9060,8 @@ namespace Google.Apis.DisplayVideo.v3
             /// <summary>
             /// Updates multiple line items. Requests to this endpoint cannot be made concurrently with the following
             /// requests updating the same line item: * BulkEditAssignedTargetingOptions * UpdateLineItem *
-            /// assignedTargetingOptions.create * assignedTargetingOptions.delete
+            /// assignedTargetingOptions.create * assignedTargetingOptions.delete YouTube &amp;amp; Partners line items
+            /// cannot be created or updated using the API.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="advertiserId">Required. The ID of the advertiser this line item belongs to.</param>
@@ -9046,7 +9073,8 @@ namespace Google.Apis.DisplayVideo.v3
             /// <summary>
             /// Updates multiple line items. Requests to this endpoint cannot be made concurrently with the following
             /// requests updating the same line item: * BulkEditAssignedTargetingOptions * UpdateLineItem *
-            /// assignedTargetingOptions.create * assignedTargetingOptions.delete
+            /// assignedTargetingOptions.create * assignedTargetingOptions.delete YouTube &amp;amp; Partners line items
+            /// cannot be created or updated using the API.
             /// </summary>
             public class BulkUpdateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.BulkUpdateLineItemsResponse>
             {
@@ -9092,7 +9120,10 @@ namespace Google.Apis.DisplayVideo.v3
                 }
             }
 
-            /// <summary>Creates a new line item. Returns the newly created line item if successful.</summary>
+            /// <summary>
+            /// Creates a new line item. Returns the newly created line item if successful. YouTube &amp;amp; Partners
+            /// line items cannot be created or updated using the API.
+            /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="advertiserId">
             /// Output only. The unique ID of the advertiser the line item belongs to.
@@ -9102,7 +9133,10 @@ namespace Google.Apis.DisplayVideo.v3
                 return new CreateRequest(this.service, body, advertiserId);
             }
 
-            /// <summary>Creates a new line item. Returns the newly created line item if successful.</summary>
+            /// <summary>
+            /// Creates a new line item. Returns the newly created line item if successful. YouTube &amp;amp; Partners
+            /// line items cannot be created or updated using the API.
+            /// </summary>
             public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.LineItem>
             {
                 /// <summary>Constructs a new Create request.</summary>
@@ -9150,6 +9184,7 @@ namespace Google.Apis.DisplayVideo.v3
             /// <summary>
             /// Deletes a line item. Returns error code `NOT_FOUND` if the line item does not exist. The line item
             /// should be archived first, i.e. set entity_status to `ENTITY_STATUS_ARCHIVED`, to be able to delete it.
+            /// YouTube &amp;amp; Partners line items cannot be created or updated using the API.
             /// </summary>
             /// <param name="advertiserId">The ID of the advertiser this line item belongs to.</param>
             /// <param name="lineItemId">The ID of the line item to delete.</param>
@@ -9161,6 +9196,7 @@ namespace Google.Apis.DisplayVideo.v3
             /// <summary>
             /// Deletes a line item. Returns error code `NOT_FOUND` if the line item does not exist. The line item
             /// should be archived first, i.e. set entity_status to `ENTITY_STATUS_ARCHIVED`, to be able to delete it.
+            /// YouTube &amp;amp; Partners line items cannot be created or updated using the API.
             /// </summary>
             public class DeleteRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.Empty>
             {
@@ -9212,7 +9248,10 @@ namespace Google.Apis.DisplayVideo.v3
                 }
             }
 
-            /// <summary>Duplicates a line item. Returns the ID of the created line item if successful.</summary>
+            /// <summary>
+            /// Duplicates a line item. Returns the ID of the created line item if successful. YouTube &amp;amp;
+            /// Partners line items cannot be created or updated using the API.
+            /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="advertiserId">Required. The ID of the advertiser this line item belongs to.</param>
             /// <param name="lineItemId">Required. The ID of the line item to duplicate.</param>
@@ -9221,7 +9260,10 @@ namespace Google.Apis.DisplayVideo.v3
                 return new DuplicateRequest(this.service, body, advertiserId, lineItemId);
             }
 
-            /// <summary>Duplicates a line item. Returns the ID of the created line item if successful.</summary>
+            /// <summary>
+            /// Duplicates a line item. Returns the ID of the created line item if successful. YouTube &amp;amp;
+            /// Partners line items cannot be created or updated using the API.
+            /// </summary>
             public class DuplicateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.DuplicateLineItemResponse>
             {
                 /// <summary>Constructs a new Duplicate request.</summary>
@@ -9283,7 +9325,8 @@ namespace Google.Apis.DisplayVideo.v3
             /// Creates a new line item with settings (including targeting) inherited from the insertion order and an
             /// `ENTITY_STATUS_DRAFT` entity_status. Returns the newly created line item if successful. There are
             /// default values based on the three fields: * The insertion order's insertion_order_type * The insertion
-            /// order's automation_type * The given line_item_type
+            /// order's automation_type * The given line_item_type YouTube &amp;amp; Partners line items cannot be
+            /// created or updated using the API.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="advertiserId">Required. The ID of the advertiser this line item belongs to.</param>
@@ -9296,7 +9339,8 @@ namespace Google.Apis.DisplayVideo.v3
             /// Creates a new line item with settings (including targeting) inherited from the insertion order and an
             /// `ENTITY_STATUS_DRAFT` entity_status. Returns the newly created line item if successful. There are
             /// default values based on the three fields: * The insertion order's insertion_order_type * The insertion
-            /// order's automation_type * The given line_item_type
+            /// order's automation_type * The given line_item_type YouTube &amp;amp; Partners line items cannot be
+            /// created or updated using the API.
             /// </summary>
             public class GenerateDefaultRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.LineItem>
             {
@@ -9534,7 +9578,8 @@ namespace Google.Apis.DisplayVideo.v3
             /// Updates an existing line item. Returns the updated line item if successful. Requests to this endpoint
             /// cannot be made concurrently with the following requests updating the same line item: *
             /// BulkEditAssignedTargetingOptions * BulkUpdateLineItems * assignedTargetingOptions.create *
-            /// assignedTargetingOptions.delete
+            /// assignedTargetingOptions.delete YouTube &amp;amp; Partners line items cannot be created or updated using
+            /// the API.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="advertiserId">
@@ -9550,7 +9595,8 @@ namespace Google.Apis.DisplayVideo.v3
             /// Updates an existing line item. Returns the updated line item if successful. Requests to this endpoint
             /// cannot be made concurrently with the following requests updating the same line item: *
             /// BulkEditAssignedTargetingOptions * BulkUpdateLineItems * assignedTargetingOptions.create *
-            /// assignedTargetingOptions.delete
+            /// assignedTargetingOptions.delete YouTube &amp;amp; Partners line items cannot be created or updated using
+            /// the API.
             /// </summary>
             public class PatchRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.LineItem>
             {
@@ -29516,11 +29562,13 @@ namespace Google.Apis.DisplayVideo.v3.Data
 
         /// <summary>
         /// Required. The targeting_option_id of a TargetingOption of type `TARGETING_TYPE_POI`. Accepted POI targeting
-        /// option IDs can be retrieved using SearchTargetingOptions. If targeting a specific latitude/longitude
-        /// coordinate removed from an address or POI name, you can generate the necessary targeting option ID by
-        /// rounding the desired coordinate values to the 6th decimal place, removing the decimals, and concatenating
-        /// the string values separated by a semicolon. For example, you can target the latitude/longitude pair of
-        /// 40.7414691, -74.003387 using the targeting option ID "40741469;-74003387".
+        /// option IDs can be retrieved using `targetingTypes.targetingOptions.search`. If targeting a specific
+        /// latitude/longitude coordinate removed from an address or POI name, you can generate the necessary targeting
+        /// option ID by rounding the desired coordinate values to the 6th decimal place, removing the decimals, and
+        /// concatenating the string values separated by a semicolon. For example, you can target the latitude/longitude
+        /// pair of 40.7414691, -74.003387 using the targeting option ID "40741469;-74003387". **Upon** **creation, this
+        /// field value will be updated to append a semicolon and** **alphanumerical hash value if only
+        /// latitude/longitude coordinates are** **provided.**
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetingOptionId")]
         public virtual string TargetingOptionId { get; set; }
@@ -30691,6 +30739,43 @@ namespace Google.Apis.DisplayVideo.v3.Data
         /// <summary>Required. Immutable. The email address used to identify the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("email")]
         public virtual string Email { get; set; }
+
+        private string _lastLoginTimeRaw;
+
+        private object _lastLoginTime;
+
+        /// <summary>Output only. The timestamp when the user last logged in DV360 UI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastLoginTime")]
+        public virtual string LastLoginTimeRaw
+        {
+            get => _lastLoginTimeRaw;
+            set
+            {
+                _lastLoginTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastLoginTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastLoginTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastLoginTimeDateTimeOffset instead.")]
+        public virtual object LastLoginTime
+        {
+            get => _lastLoginTime;
+            set
+            {
+                _lastLoginTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastLoginTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="LastLoginTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastLoginTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastLoginTimeRaw);
+            set => LastLoginTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>Output only. The resource name of the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]

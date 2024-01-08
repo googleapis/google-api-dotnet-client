@@ -3014,6 +3014,13 @@ namespace Google.Apis.Connectors.v1
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
+                        /// <summary>
+                        /// Optional. If set to true, any customConnectorVersion which is a child resource will also be
+                        /// deleted. https://aip.dev/135#cascading-delete
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("force", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> Force { get; set; }
+
                         /// <summary>Gets the method name.</summary>
                         public override string MethodName => "delete";
 
@@ -3034,6 +3041,14 @@ namespace Google.Apis.Connectors.v1
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = @"^projects/[^/]+/locations/global/customConnectors/[^/]+$",
+                            });
+                            RequestParameters.Add("force", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "force",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
                             });
                         }
                     }
@@ -6187,6 +6202,10 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("connectionRatelimitWindowSeconds")]
         public virtual System.Nullable<long> ConnectionRatelimitWindowSeconds { get; set; }
 
+        /// <summary>Optional. Indicates whether connector is deployed on GKE/CloudRun</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deploymentModel")]
+        public virtual string DeploymentModel { get; set; }
+
         /// <summary>Output only. HPA autoscaling config.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hpaConfig")]
         public virtual HPAConfig HpaConfig { get; set; }
@@ -6507,6 +6526,21 @@ namespace Google.Apis.Connectors.v1.Data
         /// <summary>Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("year")]
         public virtual System.Nullable<int> Year { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Dead Letter configuration details provided by the user.</summary>
+    public class DeadLetterConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Project which has the topic given.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
+        public virtual string ProjectId { get; set; }
+
+        /// <summary>Optional. Topic to push events which couldn't be processed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("topic")]
+        public virtual string Topic { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7097,6 +7131,10 @@ namespace Google.Apis.Connectors.v1.Data
         /// <summary>Auth details for the webhook adapter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authConfig")]
         public virtual AuthConfig AuthConfig { get; set; }
+
+        /// <summary>Optional. Dead letter configuration for eventing of a connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deadLetterConfig")]
+        public virtual DeadLetterConfig DeadLetterConfig { get; set; }
 
         /// <summary>Enrichment Enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enrichmentEnabled")]

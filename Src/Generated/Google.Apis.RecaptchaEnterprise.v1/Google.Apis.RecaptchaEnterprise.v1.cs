@@ -1,4 +1,4 @@
-// Copyright 2023 Google LLC
+// Copyright 2024 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -1563,8 +1563,8 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         public virtual string LatestVerificationResult { get; set; }
 
         /// <summary>
-        /// Username of the account that is being verified. Deprecated. Customers should now provide the hashed account
-        /// ID field in Event.
+        /// Username of the account that is being verified. Deprecated. Customers should now provide the `account_id`
+        /// field in `event.user_info`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("username")]
         public virtual string Username { get; set; }

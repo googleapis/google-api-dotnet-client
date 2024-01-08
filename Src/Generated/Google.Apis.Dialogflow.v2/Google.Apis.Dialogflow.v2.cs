@@ -20782,6 +20782,10 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("advancedSettings")]
         public virtual GoogleCloudDialogflowCxV3AdvancedSettings AdvancedSettings { get; set; }
 
+        /// <summary>The description of the page. The maximum length is 500 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
         /// <summary>Required. The human-readable name of the page, unique within the flow.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
@@ -20925,7 +20929,8 @@ namespace Google.Apis.Dialogflow.v2.Data
     /// <summary>
     /// Represents the query input. It can contain one of: 1. A conversational query in the form of text. 2. An intent
     /// query that specifies which intent to trigger. 3. Natural language speech audio to be processed. 4. An event to
-    /// be triggered. 5. DTMF digits to invoke an intent and fill in parameter value.
+    /// be triggered. 5. DTMF digits to invoke an intent and fill in parameter value. 6. The results of a tool executed
+    /// by the client.
     /// </summary>
     public class GoogleCloudDialogflowCxV3QueryInput : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -23366,6 +23371,10 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("advancedSettings")]
         public virtual GoogleCloudDialogflowCxV3beta1AdvancedSettings AdvancedSettings { get; set; }
 
+        /// <summary>The description of the page. The maximum length is 500 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
         /// <summary>Required. The human-readable name of the page, unique within the flow.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
@@ -23509,7 +23518,8 @@ namespace Google.Apis.Dialogflow.v2.Data
     /// <summary>
     /// Represents the query input. It can contain one of: 1. A conversational query in the form of text. 2. An intent
     /// query that specifies which intent to trigger. 3. Natural language speech audio to be processed. 4. An event to
-    /// be triggered. 5. DTMF digits to invoke an intent and fill in parameter value.
+    /// be triggered. 5. DTMF digits to invoke an intent and fill in parameter value. 6. The results of a tool executed
+    /// by the client.
     /// </summary>
     public class GoogleCloudDialogflowCxV3beta1QueryInput : Google.Apis.Requests.IDirectResponseSchema
     {

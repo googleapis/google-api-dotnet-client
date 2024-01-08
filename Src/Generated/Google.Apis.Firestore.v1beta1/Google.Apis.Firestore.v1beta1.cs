@@ -1,4 +1,4 @@
-// Copyright 2023 Google LLC
+// Copyright 2024 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -4068,7 +4068,7 @@ namespace Google.Apis.Firestore.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("direction")]
         public virtual string Direction { get; set; }
 
-        /// <summary>The field to order by.</summary>
+        /// <summary>Order based on the value referenced by this field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("field")]
         public virtual FieldReference Field { get; set; }
 
