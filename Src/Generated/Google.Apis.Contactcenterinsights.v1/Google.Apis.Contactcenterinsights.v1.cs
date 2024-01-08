@@ -1,4 +1,4 @@
-// Copyright 2023 Google LLC
+// Copyright 2024 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -3920,6 +3920,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("obfuscatedUserId")]
         public virtual string ObfuscatedUserId { get; set; }
 
+        /// <summary>Conversation metadata related to quality management.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("qualityMetadata")]
+        public virtual GoogleCloudContactcenterinsightsV1ConversationQualityMetadata QualityMetadata { get; set; }
+
         /// <summary>
         /// Output only. The annotations that were generated during the customer and agent interaction.
         /// </summary>
@@ -4092,6 +4096,52 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// <summary>A user-specified ID representing the participant.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userId")]
         public virtual string UserId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Conversation metadata related to quality management.</summary>
+    public class GoogleCloudContactcenterinsightsV1ConversationQualityMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Information about agents involved in the call.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentInfo")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo> AgentInfo { get; set; }
+
+        /// <summary>An arbitrary integer value indicating the customer's satisfaction rating.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customerSatisfactionRating")]
+        public virtual System.Nullable<int> CustomerSatisfactionRating { get; set; }
+
+        /// <summary>An arbitrary string value specifying the menu path the customer took.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("menuPath")]
+        public virtual string MenuPath { get; set; }
+
+        /// <summary>The amount of time the customer waited to connect with an agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("waitDuration")]
+        public virtual object WaitDuration { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information about an agent involved in the conversation.</summary>
+    public class GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A user-specified string representing the agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentId")]
+        public virtual string AgentId { get; set; }
+
+        /// <summary>The agent's name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>A user-provided string indicating the outcome of the agent's segment of the call.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dispositionCode")]
+        public virtual string DispositionCode { get; set; }
+
+        /// <summary>A user-specified string representing the agent's team.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("team")]
+        public virtual string Team { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7428,6 +7478,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("obfuscatedUserId")]
         public virtual string ObfuscatedUserId { get; set; }
 
+        /// <summary>Conversation metadata related to quality management.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("qualityMetadata")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1ConversationQualityMetadata QualityMetadata { get; set; }
+
         /// <summary>
         /// Output only. The annotations that were generated during the customer and agent interaction.
         /// </summary>
@@ -7600,6 +7654,52 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// <summary>A user-specified ID representing the participant.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userId")]
         public virtual string UserId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Conversation metadata related to quality management.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1ConversationQualityMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Information about agents involved in the call.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentInfo")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1alpha1ConversationQualityMetadataAgentInfo> AgentInfo { get; set; }
+
+        /// <summary>An arbitrary integer value indicating the customer's satisfaction rating.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customerSatisfactionRating")]
+        public virtual System.Nullable<int> CustomerSatisfactionRating { get; set; }
+
+        /// <summary>An arbitrary string value specifying the menu path the customer took.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("menuPath")]
+        public virtual string MenuPath { get; set; }
+
+        /// <summary>The amount of time the customer waited to connect with an agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("waitDuration")]
+        public virtual object WaitDuration { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information about an agent involved in the conversation.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1ConversationQualityMetadataAgentInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A user-specified string representing the agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentId")]
+        public virtual string AgentId { get; set; }
+
+        /// <summary>The agent's name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>A user-provided string indicating the outcome of the agent's segment of the call.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dispositionCode")]
+        public virtual string DispositionCode { get; set; }
+
+        /// <summary>A user-specified string representing the agent's team.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("team")]
+        public virtual string Team { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

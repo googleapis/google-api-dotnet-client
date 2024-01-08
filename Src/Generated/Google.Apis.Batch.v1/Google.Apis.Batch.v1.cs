@@ -1,4 +1,4 @@
-// Copyright 2023 Google LLC
+// Copyright 2024 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -1904,6 +1904,14 @@ namespace Google.Apis.Batch.v1.Data
         /// <summary>Service account that VMs will run as.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
         public virtual ServiceAccount ServiceAccount { get; set; }
+
+        /// <summary>
+        /// Optional. Tags applied to the VM instances. The tags identify valid sources or targets for network
+        /// firewalls. Each tag must be 1-63 characters long, and comply with
+        /// [RFC1035](https://www.ietf.org/rfc/rfc1035.txt).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
+        public virtual System.Collections.Generic.IList<string> Tags { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
