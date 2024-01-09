@@ -1720,16 +1720,13 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
     public class GoogleIdentityAccesscontextmanagerV1MethodSelector : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Value for `method` should be a valid method name for the corresponding `service_name` in ApiOperation. If
-        /// `*` used as value for `method`, then ALL methods and permissions are allowed.
+        /// A valid method name for the corresponding `service_name` in ApiOperation. If `*` is used as the value for
+        /// the `method`, then ALL methods and permissions are allowed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("method")]
         public virtual string Method { get; set; }
 
-        /// <summary>
-        /// Value for `permission` should be a valid Cloud IAM permission for the corresponding `service_name` in
-        /// ApiOperation.
-        /// </summary>
+        /// <summary>A valid Cloud IAM permission for the corresponding `service_name` in ApiOperation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permission")]
         public virtual string Permission { get; set; }
 

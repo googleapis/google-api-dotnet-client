@@ -3,9 +3,9 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.PolicyAnalyzer.v1beta1 Client Library</Title>
-    <Version>1.64.0.2409</Version>
+    <Version>1.65.0.2409</Version>
     <Authors>Google LLC</Authors>
-    <Copyright>Copyright 2023 Google LLC</Copyright>
+    <Copyright>Copyright 2024 Google LLC</Copyright>
     <PackageTags>Google</PackageTags>
     <PackageProjectUrl>https://github.com/google/google-api-dotnet-client</PackageProjectUrl>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
@@ -57,8 +57,8 @@
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.2" PrivateAssets="All" />
     <PackageReference Include="ConfigureAwaitChecker.Analyzer" Version="5.0.0" PrivateAssets="All" />
     <PackageReference Include="SourceLink.Create.CommandLine" Version="2.8.3" PrivateAssets="All" />
-    <PackageReference Include="Google.Apis" Version="1.64.0" />
-    <PackageReference Include="Google.Apis.Auth" Version="1.64.0" />
+    <PackageReference Include="Google.Apis" Version="1.65.0" />
+    <PackageReference Include="Google.Apis.Auth" Version="1.65.0" />
   </ItemGroup>
 
 </Project>

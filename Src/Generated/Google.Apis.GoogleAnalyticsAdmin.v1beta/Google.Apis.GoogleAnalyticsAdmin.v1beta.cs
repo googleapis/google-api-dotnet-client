@@ -807,7 +807,10 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1beta
         /// Searches through all changes to an account or its children given the specified set of filters.
         /// </summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="account">Required. The account resource for which to return change history resources.</param>
+        /// <param name="account">
+        /// Required. The account resource for which to return change history resources. Format: accounts/{account}
+        /// Example: "accounts/100"
+        /// </param>
         public virtual SearchChangeHistoryEventsRequest SearchChangeHistoryEvents(Google.Apis.GoogleAnalyticsAdmin.v1beta.Data.GoogleAnalyticsAdminV1betaSearchChangeHistoryEventsRequest body, string account)
         {
             return new SearchChangeHistoryEventsRequest(this.service, body, account);
@@ -826,7 +829,10 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1beta
                 InitParameters();
             }
 
-            /// <summary>Required. The account resource for which to return change history resources.</summary>
+            /// <summary>
+            /// Required. The account resource for which to return change history resources. Format: accounts/{account}
+            /// Example: "accounts/100"
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("account", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Account { get; private set; }
 
@@ -4366,7 +4372,8 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1beta.Data
     {
         /// <summary>
         /// When a conversion event for this event_name has no set currency, this currency will be applied as the
-        /// default. Must be in ISO 4217 currency code format. See https://en.wikipedia.org/wiki/ISO_4217 for more.
+        /// default. Must be in ISO 4217 currency code format. See https://en.wikipedia.org/wiki/ISO_4217 for more
+        /// information.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currencyCode")]
         public virtual string CurrencyCode { get; set; }
@@ -5634,7 +5641,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1beta.Data
 
         /// <summary>
         /// Optional. Resource name for a child property. If set, only return changes made to this property or its child
-        /// resources.
+        /// resources. Format: properties/{propertyId} Example: "properties/100"
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("property")]
         public virtual string Property { get; set; }

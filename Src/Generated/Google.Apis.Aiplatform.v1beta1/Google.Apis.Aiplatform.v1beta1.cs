@@ -333,6 +333,7 @@ namespace Google.Apis.Aiplatform.v1beta1
                 PersistentResources = new PersistentResourcesResource(service);
                 PipelineJobs = new PipelineJobsResource(service);
                 Publishers = new PublishersResource(service);
+                ReasoningEngines = new ReasoningEnginesResource(service);
                 Schedules = new SchedulesResource(service);
                 Solvers = new SolversResource(service);
                 SpecialistPools = new SpecialistPoolsResource(service);
@@ -18959,6 +18960,7 @@ namespace Google.Apis.Aiplatform.v1beta1
                     Contexts = new ContextsResource(service);
                     Executions = new ExecutionsResource(service);
                     MetadataSchemas = new MetadataSchemasResource(service);
+                    Operations = new OperationsResource(service);
                 }
 
                 /// <summary>Gets the Artifacts resource.</summary>
@@ -18976,6 +18978,354 @@ namespace Google.Apis.Aiplatform.v1beta1
                     public ArtifactsResource(Google.Apis.Services.IClientService service)
                     {
                         this.service = service;
+                        Operations = new OperationsResource(service);
+                    }
+
+                    /// <summary>Gets the Operations resource.</summary>
+                    public virtual OperationsResource Operations { get; }
+
+                    /// <summary>The "operations" collection of methods.</summary>
+                    public class OperationsResource
+                    {
+                        private const string Resource = "operations";
+
+                        /// <summary>The service which this resource belongs to.</summary>
+                        private readonly Google.Apis.Services.IClientService service;
+
+                        /// <summary>Constructs a new resource.</summary>
+                        public OperationsResource(Google.Apis.Services.IClientService service)
+                        {
+                            this.service = service;
+                        }
+
+                        /// <summary>
+                        /// Starts asynchronous cancellation on a long-running operation. The server makes a best effort
+                        /// to cancel the operation, but success is not guaranteed. If the server doesn't support this
+                        /// method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation
+                        /// or other methods to check whether the cancellation succeeded or whether the operation
+                        /// completed despite cancellation. On successful cancellation, the operation is not deleted;
+                        /// instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code
+                        /// of 1, corresponding to `Code.CANCELLED`.
+                        /// </summary>
+                        /// <param name="name">The name of the operation resource to be cancelled.</param>
+                        public virtual CancelRequest Cancel(string name)
+                        {
+                            return new CancelRequest(this.service, name);
+                        }
+
+                        /// <summary>
+                        /// Starts asynchronous cancellation on a long-running operation. The server makes a best effort
+                        /// to cancel the operation, but success is not guaranteed. If the server doesn't support this
+                        /// method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation
+                        /// or other methods to check whether the cancellation succeeded or whether the operation
+                        /// completed despite cancellation. On successful cancellation, the operation is not deleted;
+                        /// instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code
+                        /// of 1, corresponding to `Code.CANCELLED`.
+                        /// </summary>
+                        public class CancelRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1beta1.Data.GoogleProtobufEmpty>
+                        {
+                            /// <summary>Constructs a new Cancel request.</summary>
+                            public CancelRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>The name of the operation resource to be cancelled.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "cancel";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1beta1/{+name}:cancel";
+
+                            /// <summary>Initializes Cancel parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/metadataStores/[^/]+/artifacts/[^/]+/operations/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>
+                        /// Deletes a long-running operation. This method indicates that the client is no longer
+                        /// interested in the operation result. It does not cancel the operation. If the server doesn't
+                        /// support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+                        /// </summary>
+                        /// <param name="name">The name of the operation resource to be deleted.</param>
+                        public virtual DeleteRequest Delete(string name)
+                        {
+                            return new DeleteRequest(this.service, name);
+                        }
+
+                        /// <summary>
+                        /// Deletes a long-running operation. This method indicates that the client is no longer
+                        /// interested in the operation result. It does not cancel the operation. If the server doesn't
+                        /// support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+                        /// </summary>
+                        public class DeleteRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1beta1.Data.GoogleProtobufEmpty>
+                        {
+                            /// <summary>Constructs a new Delete request.</summary>
+                            public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>The name of the operation resource to be deleted.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "delete";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "DELETE";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1beta1/{+name}";
+
+                            /// <summary>Initializes Delete parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/metadataStores/[^/]+/artifacts/[^/]+/operations/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>
+                        /// Gets the latest state of a long-running operation. Clients can use this method to poll the
+                        /// operation result at intervals as recommended by the API service.
+                        /// </summary>
+                        /// <param name="name">The name of the operation resource.</param>
+                        public virtual GetRequest Get(string name)
+                        {
+                            return new GetRequest(this.service, name);
+                        }
+
+                        /// <summary>
+                        /// Gets the latest state of a long-running operation. Clients can use this method to poll the
+                        /// operation result at intervals as recommended by the API service.
+                        /// </summary>
+                        public class GetRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1beta1.Data.GoogleLongrunningOperation>
+                        {
+                            /// <summary>Constructs a new Get request.</summary>
+                            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>The name of the operation resource.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "get";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1beta1/{+name}";
+
+                            /// <summary>Initializes Get parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/metadataStores/[^/]+/artifacts/[^/]+/operations/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>
+                        /// Lists operations that match the specified filter in the request. If the server doesn't
+                        /// support this method, it returns `UNIMPLEMENTED`.
+                        /// </summary>
+                        /// <param name="name">The name of the operation's parent resource.</param>
+                        public virtual ListRequest List(string name)
+                        {
+                            return new ListRequest(this.service, name);
+                        }
+
+                        /// <summary>
+                        /// Lists operations that match the specified filter in the request. If the server doesn't
+                        /// support this method, it returns `UNIMPLEMENTED`.
+                        /// </summary>
+                        public class ListRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1beta1.Data.GoogleLongrunningListOperationsResponse>
+                        {
+                            /// <summary>Constructs a new List request.</summary>
+                            public ListRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>The name of the operation's parent resource.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>The standard list filter.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string Filter { get; set; }
+
+                            /// <summary>The standard list page size.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<int> PageSize { get; set; }
+
+                            /// <summary>The standard list page token.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string PageToken { get; set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "list";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1beta1/{+name}/operations";
+
+                            /// <summary>Initializes List parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/metadataStores/[^/]+/artifacts/[^/]+$",
+                                });
+                                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "filter",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+
+                        /// <summary>
+                        /// Waits until the specified long-running operation is done or reaches at most a specified
+                        /// timeout, returning the latest state. If the operation is already done, the latest state is
+                        /// immediately returned. If the timeout specified is greater than the default HTTP/RPC timeout,
+                        /// the HTTP/RPC timeout is used. If the server does not support this method, it returns
+                        /// `google.rpc.Code.UNIMPLEMENTED`. Note that this method is on a best-effort basis. It may
+                        /// return the latest state before the specified timeout (including immediately), meaning even
+                        /// an immediate response is no guarantee that the operation is done.
+                        /// </summary>
+                        /// <param name="name">The name of the operation resource to wait on.</param>
+                        public virtual WaitRequest Wait(string name)
+                        {
+                            return new WaitRequest(this.service, name);
+                        }
+
+                        /// <summary>
+                        /// Waits until the specified long-running operation is done or reaches at most a specified
+                        /// timeout, returning the latest state. If the operation is already done, the latest state is
+                        /// immediately returned. If the timeout specified is greater than the default HTTP/RPC timeout,
+                        /// the HTTP/RPC timeout is used. If the server does not support this method, it returns
+                        /// `google.rpc.Code.UNIMPLEMENTED`. Note that this method is on a best-effort basis. It may
+                        /// return the latest state before the specified timeout (including immediately), meaning even
+                        /// an immediate response is no guarantee that the operation is done.
+                        /// </summary>
+                        public class WaitRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1beta1.Data.GoogleLongrunningOperation>
+                        {
+                            /// <summary>Constructs a new Wait request.</summary>
+                            public WaitRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>The name of the operation resource to wait on.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>
+                            /// The maximum duration to wait before timing out. If left blank, the wait will be at most
+                            /// the time permitted by the underlying HTTP/RPC protocol. If RPC context deadline is also
+                            /// specified, the shorter one will be used.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("timeout", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual object Timeout { get; set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "wait";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1beta1/{+name}:wait";
+
+                            /// <summary>Initializes Wait parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/metadataStores/[^/]+/artifacts/[^/]+/operations/[^/]+$",
+                                });
+                                RequestParameters.Add("timeout", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "timeout",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
                     }
 
                     /// <summary>Creates an Artifact associated with a MetadataStore.</summary>
@@ -19560,6 +19910,354 @@ namespace Google.Apis.Aiplatform.v1beta1
                     public ContextsResource(Google.Apis.Services.IClientService service)
                     {
                         this.service = service;
+                        Operations = new OperationsResource(service);
+                    }
+
+                    /// <summary>Gets the Operations resource.</summary>
+                    public virtual OperationsResource Operations { get; }
+
+                    /// <summary>The "operations" collection of methods.</summary>
+                    public class OperationsResource
+                    {
+                        private const string Resource = "operations";
+
+                        /// <summary>The service which this resource belongs to.</summary>
+                        private readonly Google.Apis.Services.IClientService service;
+
+                        /// <summary>Constructs a new resource.</summary>
+                        public OperationsResource(Google.Apis.Services.IClientService service)
+                        {
+                            this.service = service;
+                        }
+
+                        /// <summary>
+                        /// Starts asynchronous cancellation on a long-running operation. The server makes a best effort
+                        /// to cancel the operation, but success is not guaranteed. If the server doesn't support this
+                        /// method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation
+                        /// or other methods to check whether the cancellation succeeded or whether the operation
+                        /// completed despite cancellation. On successful cancellation, the operation is not deleted;
+                        /// instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code
+                        /// of 1, corresponding to `Code.CANCELLED`.
+                        /// </summary>
+                        /// <param name="name">The name of the operation resource to be cancelled.</param>
+                        public virtual CancelRequest Cancel(string name)
+                        {
+                            return new CancelRequest(this.service, name);
+                        }
+
+                        /// <summary>
+                        /// Starts asynchronous cancellation on a long-running operation. The server makes a best effort
+                        /// to cancel the operation, but success is not guaranteed. If the server doesn't support this
+                        /// method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation
+                        /// or other methods to check whether the cancellation succeeded or whether the operation
+                        /// completed despite cancellation. On successful cancellation, the operation is not deleted;
+                        /// instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code
+                        /// of 1, corresponding to `Code.CANCELLED`.
+                        /// </summary>
+                        public class CancelRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1beta1.Data.GoogleProtobufEmpty>
+                        {
+                            /// <summary>Constructs a new Cancel request.</summary>
+                            public CancelRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>The name of the operation resource to be cancelled.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "cancel";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1beta1/{+name}:cancel";
+
+                            /// <summary>Initializes Cancel parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/metadataStores/[^/]+/contexts/[^/]+/operations/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>
+                        /// Deletes a long-running operation. This method indicates that the client is no longer
+                        /// interested in the operation result. It does not cancel the operation. If the server doesn't
+                        /// support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+                        /// </summary>
+                        /// <param name="name">The name of the operation resource to be deleted.</param>
+                        public virtual DeleteRequest Delete(string name)
+                        {
+                            return new DeleteRequest(this.service, name);
+                        }
+
+                        /// <summary>
+                        /// Deletes a long-running operation. This method indicates that the client is no longer
+                        /// interested in the operation result. It does not cancel the operation. If the server doesn't
+                        /// support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+                        /// </summary>
+                        public class DeleteRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1beta1.Data.GoogleProtobufEmpty>
+                        {
+                            /// <summary>Constructs a new Delete request.</summary>
+                            public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>The name of the operation resource to be deleted.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "delete";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "DELETE";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1beta1/{+name}";
+
+                            /// <summary>Initializes Delete parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/metadataStores/[^/]+/contexts/[^/]+/operations/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>
+                        /// Gets the latest state of a long-running operation. Clients can use this method to poll the
+                        /// operation result at intervals as recommended by the API service.
+                        /// </summary>
+                        /// <param name="name">The name of the operation resource.</param>
+                        public virtual GetRequest Get(string name)
+                        {
+                            return new GetRequest(this.service, name);
+                        }
+
+                        /// <summary>
+                        /// Gets the latest state of a long-running operation. Clients can use this method to poll the
+                        /// operation result at intervals as recommended by the API service.
+                        /// </summary>
+                        public class GetRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1beta1.Data.GoogleLongrunningOperation>
+                        {
+                            /// <summary>Constructs a new Get request.</summary>
+                            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>The name of the operation resource.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "get";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1beta1/{+name}";
+
+                            /// <summary>Initializes Get parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/metadataStores/[^/]+/contexts/[^/]+/operations/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>
+                        /// Lists operations that match the specified filter in the request. If the server doesn't
+                        /// support this method, it returns `UNIMPLEMENTED`.
+                        /// </summary>
+                        /// <param name="name">The name of the operation's parent resource.</param>
+                        public virtual ListRequest List(string name)
+                        {
+                            return new ListRequest(this.service, name);
+                        }
+
+                        /// <summary>
+                        /// Lists operations that match the specified filter in the request. If the server doesn't
+                        /// support this method, it returns `UNIMPLEMENTED`.
+                        /// </summary>
+                        public class ListRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1beta1.Data.GoogleLongrunningListOperationsResponse>
+                        {
+                            /// <summary>Constructs a new List request.</summary>
+                            public ListRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>The name of the operation's parent resource.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>The standard list filter.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string Filter { get; set; }
+
+                            /// <summary>The standard list page size.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<int> PageSize { get; set; }
+
+                            /// <summary>The standard list page token.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string PageToken { get; set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "list";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1beta1/{+name}/operations";
+
+                            /// <summary>Initializes List parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/metadataStores/[^/]+/contexts/[^/]+$",
+                                });
+                                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "filter",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+
+                        /// <summary>
+                        /// Waits until the specified long-running operation is done or reaches at most a specified
+                        /// timeout, returning the latest state. If the operation is already done, the latest state is
+                        /// immediately returned. If the timeout specified is greater than the default HTTP/RPC timeout,
+                        /// the HTTP/RPC timeout is used. If the server does not support this method, it returns
+                        /// `google.rpc.Code.UNIMPLEMENTED`. Note that this method is on a best-effort basis. It may
+                        /// return the latest state before the specified timeout (including immediately), meaning even
+                        /// an immediate response is no guarantee that the operation is done.
+                        /// </summary>
+                        /// <param name="name">The name of the operation resource to wait on.</param>
+                        public virtual WaitRequest Wait(string name)
+                        {
+                            return new WaitRequest(this.service, name);
+                        }
+
+                        /// <summary>
+                        /// Waits until the specified long-running operation is done or reaches at most a specified
+                        /// timeout, returning the latest state. If the operation is already done, the latest state is
+                        /// immediately returned. If the timeout specified is greater than the default HTTP/RPC timeout,
+                        /// the HTTP/RPC timeout is used. If the server does not support this method, it returns
+                        /// `google.rpc.Code.UNIMPLEMENTED`. Note that this method is on a best-effort basis. It may
+                        /// return the latest state before the specified timeout (including immediately), meaning even
+                        /// an immediate response is no guarantee that the operation is done.
+                        /// </summary>
+                        public class WaitRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1beta1.Data.GoogleLongrunningOperation>
+                        {
+                            /// <summary>Constructs a new Wait request.</summary>
+                            public WaitRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>The name of the operation resource to wait on.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>
+                            /// The maximum duration to wait before timing out. If left blank, the wait will be at most
+                            /// the time permitted by the underlying HTTP/RPC protocol. If RPC context deadline is also
+                            /// specified, the shorter one will be used.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("timeout", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual object Timeout { get; set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "wait";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1beta1/{+name}:wait";
+
+                            /// <summary>Initializes Wait parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/metadataStores/[^/]+/contexts/[^/]+/operations/[^/]+$",
+                                });
+                                RequestParameters.Add("timeout", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "timeout",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
                     }
 
                     /// <summary>
@@ -20319,6 +21017,354 @@ namespace Google.Apis.Aiplatform.v1beta1
                     public ExecutionsResource(Google.Apis.Services.IClientService service)
                     {
                         this.service = service;
+                        Operations = new OperationsResource(service);
+                    }
+
+                    /// <summary>Gets the Operations resource.</summary>
+                    public virtual OperationsResource Operations { get; }
+
+                    /// <summary>The "operations" collection of methods.</summary>
+                    public class OperationsResource
+                    {
+                        private const string Resource = "operations";
+
+                        /// <summary>The service which this resource belongs to.</summary>
+                        private readonly Google.Apis.Services.IClientService service;
+
+                        /// <summary>Constructs a new resource.</summary>
+                        public OperationsResource(Google.Apis.Services.IClientService service)
+                        {
+                            this.service = service;
+                        }
+
+                        /// <summary>
+                        /// Starts asynchronous cancellation on a long-running operation. The server makes a best effort
+                        /// to cancel the operation, but success is not guaranteed. If the server doesn't support this
+                        /// method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation
+                        /// or other methods to check whether the cancellation succeeded or whether the operation
+                        /// completed despite cancellation. On successful cancellation, the operation is not deleted;
+                        /// instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code
+                        /// of 1, corresponding to `Code.CANCELLED`.
+                        /// </summary>
+                        /// <param name="name">The name of the operation resource to be cancelled.</param>
+                        public virtual CancelRequest Cancel(string name)
+                        {
+                            return new CancelRequest(this.service, name);
+                        }
+
+                        /// <summary>
+                        /// Starts asynchronous cancellation on a long-running operation. The server makes a best effort
+                        /// to cancel the operation, but success is not guaranteed. If the server doesn't support this
+                        /// method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation
+                        /// or other methods to check whether the cancellation succeeded or whether the operation
+                        /// completed despite cancellation. On successful cancellation, the operation is not deleted;
+                        /// instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code
+                        /// of 1, corresponding to `Code.CANCELLED`.
+                        /// </summary>
+                        public class CancelRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1beta1.Data.GoogleProtobufEmpty>
+                        {
+                            /// <summary>Constructs a new Cancel request.</summary>
+                            public CancelRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>The name of the operation resource to be cancelled.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "cancel";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1beta1/{+name}:cancel";
+
+                            /// <summary>Initializes Cancel parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/metadataStores/[^/]+/executions/[^/]+/operations/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>
+                        /// Deletes a long-running operation. This method indicates that the client is no longer
+                        /// interested in the operation result. It does not cancel the operation. If the server doesn't
+                        /// support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+                        /// </summary>
+                        /// <param name="name">The name of the operation resource to be deleted.</param>
+                        public virtual DeleteRequest Delete(string name)
+                        {
+                            return new DeleteRequest(this.service, name);
+                        }
+
+                        /// <summary>
+                        /// Deletes a long-running operation. This method indicates that the client is no longer
+                        /// interested in the operation result. It does not cancel the operation. If the server doesn't
+                        /// support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+                        /// </summary>
+                        public class DeleteRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1beta1.Data.GoogleProtobufEmpty>
+                        {
+                            /// <summary>Constructs a new Delete request.</summary>
+                            public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>The name of the operation resource to be deleted.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "delete";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "DELETE";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1beta1/{+name}";
+
+                            /// <summary>Initializes Delete parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/metadataStores/[^/]+/executions/[^/]+/operations/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>
+                        /// Gets the latest state of a long-running operation. Clients can use this method to poll the
+                        /// operation result at intervals as recommended by the API service.
+                        /// </summary>
+                        /// <param name="name">The name of the operation resource.</param>
+                        public virtual GetRequest Get(string name)
+                        {
+                            return new GetRequest(this.service, name);
+                        }
+
+                        /// <summary>
+                        /// Gets the latest state of a long-running operation. Clients can use this method to poll the
+                        /// operation result at intervals as recommended by the API service.
+                        /// </summary>
+                        public class GetRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1beta1.Data.GoogleLongrunningOperation>
+                        {
+                            /// <summary>Constructs a new Get request.</summary>
+                            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>The name of the operation resource.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "get";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1beta1/{+name}";
+
+                            /// <summary>Initializes Get parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/metadataStores/[^/]+/executions/[^/]+/operations/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>
+                        /// Lists operations that match the specified filter in the request. If the server doesn't
+                        /// support this method, it returns `UNIMPLEMENTED`.
+                        /// </summary>
+                        /// <param name="name">The name of the operation's parent resource.</param>
+                        public virtual ListRequest List(string name)
+                        {
+                            return new ListRequest(this.service, name);
+                        }
+
+                        /// <summary>
+                        /// Lists operations that match the specified filter in the request. If the server doesn't
+                        /// support this method, it returns `UNIMPLEMENTED`.
+                        /// </summary>
+                        public class ListRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1beta1.Data.GoogleLongrunningListOperationsResponse>
+                        {
+                            /// <summary>Constructs a new List request.</summary>
+                            public ListRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>The name of the operation's parent resource.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>The standard list filter.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string Filter { get; set; }
+
+                            /// <summary>The standard list page size.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<int> PageSize { get; set; }
+
+                            /// <summary>The standard list page token.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string PageToken { get; set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "list";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1beta1/{+name}/operations";
+
+                            /// <summary>Initializes List parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/metadataStores/[^/]+/executions/[^/]+$",
+                                });
+                                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "filter",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+
+                        /// <summary>
+                        /// Waits until the specified long-running operation is done or reaches at most a specified
+                        /// timeout, returning the latest state. If the operation is already done, the latest state is
+                        /// immediately returned. If the timeout specified is greater than the default HTTP/RPC timeout,
+                        /// the HTTP/RPC timeout is used. If the server does not support this method, it returns
+                        /// `google.rpc.Code.UNIMPLEMENTED`. Note that this method is on a best-effort basis. It may
+                        /// return the latest state before the specified timeout (including immediately), meaning even
+                        /// an immediate response is no guarantee that the operation is done.
+                        /// </summary>
+                        /// <param name="name">The name of the operation resource to wait on.</param>
+                        public virtual WaitRequest Wait(string name)
+                        {
+                            return new WaitRequest(this.service, name);
+                        }
+
+                        /// <summary>
+                        /// Waits until the specified long-running operation is done or reaches at most a specified
+                        /// timeout, returning the latest state. If the operation is already done, the latest state is
+                        /// immediately returned. If the timeout specified is greater than the default HTTP/RPC timeout,
+                        /// the HTTP/RPC timeout is used. If the server does not support this method, it returns
+                        /// `google.rpc.Code.UNIMPLEMENTED`. Note that this method is on a best-effort basis. It may
+                        /// return the latest state before the specified timeout (including immediately), meaning even
+                        /// an immediate response is no guarantee that the operation is done.
+                        /// </summary>
+                        public class WaitRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1beta1.Data.GoogleLongrunningOperation>
+                        {
+                            /// <summary>Constructs a new Wait request.</summary>
+                            public WaitRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>The name of the operation resource to wait on.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>
+                            /// The maximum duration to wait before timing out. If left blank, the wait will be at most
+                            /// the time permitted by the underlying HTTP/RPC protocol. If RPC context deadline is also
+                            /// specified, the shorter one will be used.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("timeout", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual object Timeout { get; set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "wait";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1beta1/{+name}:wait";
+
+                            /// <summary>Initializes Wait parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/metadataStores/[^/]+/executions/[^/]+/operations/[^/]+$",
+                                });
+                                RequestParameters.Add("timeout", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "timeout",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
                     }
 
                     /// <summary>
@@ -21144,6 +22190,353 @@ namespace Google.Apis.Aiplatform.v1beta1
                             RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>Gets the Operations resource.</summary>
+                public virtual OperationsResource Operations { get; }
+
+                /// <summary>The "operations" collection of methods.</summary>
+                public class OperationsResource
+                {
+                    private const string Resource = "operations";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public OperationsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>
+                    /// Starts asynchronous cancellation on a long-running operation. The server makes a best effort to
+                    /// cancel the operation, but success is not guaranteed. If the server doesn't support this method,
+                    /// it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other
+                    /// methods to check whether the cancellation succeeded or whether the operation completed despite
+                    /// cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an
+                    /// operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to
+                    /// `Code.CANCELLED`.
+                    /// </summary>
+                    /// <param name="name">The name of the operation resource to be cancelled.</param>
+                    public virtual CancelRequest Cancel(string name)
+                    {
+                        return new CancelRequest(this.service, name);
+                    }
+
+                    /// <summary>
+                    /// Starts asynchronous cancellation on a long-running operation. The server makes a best effort to
+                    /// cancel the operation, but success is not guaranteed. If the server doesn't support this method,
+                    /// it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other
+                    /// methods to check whether the cancellation succeeded or whether the operation completed despite
+                    /// cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an
+                    /// operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to
+                    /// `Code.CANCELLED`.
+                    /// </summary>
+                    public class CancelRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1beta1.Data.GoogleProtobufEmpty>
+                    {
+                        /// <summary>Constructs a new Cancel request.</summary>
+                        public CancelRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>The name of the operation resource to be cancelled.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "cancel";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+name}:cancel";
+
+                        /// <summary>Initializes Cancel parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/metadataStores/[^/]+/operations/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Deletes a long-running operation. This method indicates that the client is no longer interested
+                    /// in the operation result. It does not cancel the operation. If the server doesn't support this
+                    /// method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+                    /// </summary>
+                    /// <param name="name">The name of the operation resource to be deleted.</param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(this.service, name);
+                    }
+
+                    /// <summary>
+                    /// Deletes a long-running operation. This method indicates that the client is no longer interested
+                    /// in the operation result. It does not cancel the operation. If the server doesn't support this
+                    /// method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+                    /// </summary>
+                    public class DeleteRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1beta1.Data.GoogleProtobufEmpty>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>The name of the operation resource to be deleted.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/metadataStores/[^/]+/operations/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Gets the latest state of a long-running operation. Clients can use this method to poll the
+                    /// operation result at intervals as recommended by the API service.
+                    /// </summary>
+                    /// <param name="name">The name of the operation resource.</param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(this.service, name);
+                    }
+
+                    /// <summary>
+                    /// Gets the latest state of a long-running operation. Clients can use this method to poll the
+                    /// operation result at intervals as recommended by the API service.
+                    /// </summary>
+                    public class GetRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1beta1.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>The name of the operation resource.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/metadataStores/[^/]+/operations/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Lists operations that match the specified filter in the request. If the server doesn't support
+                    /// this method, it returns `UNIMPLEMENTED`.
+                    /// </summary>
+                    /// <param name="name">The name of the operation's parent resource.</param>
+                    public virtual ListRequest List(string name)
+                    {
+                        return new ListRequest(this.service, name);
+                    }
+
+                    /// <summary>
+                    /// Lists operations that match the specified filter in the request. If the server doesn't support
+                    /// this method, it returns `UNIMPLEMENTED`.
+                    /// </summary>
+                    public class ListRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1beta1.Data.GoogleLongrunningListOperationsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>The name of the operation's parent resource.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>The standard list filter.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+                        /// <summary>The standard list page size.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>The standard list page token.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+name}/operations";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/metadataStores/[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Waits until the specified long-running operation is done or reaches at most a specified timeout,
+                    /// returning the latest state. If the operation is already done, the latest state is immediately
+                    /// returned. If the timeout specified is greater than the default HTTP/RPC timeout, the HTTP/RPC
+                    /// timeout is used. If the server does not support this method, it returns
+                    /// `google.rpc.Code.UNIMPLEMENTED`. Note that this method is on a best-effort basis. It may return
+                    /// the latest state before the specified timeout (including immediately), meaning even an immediate
+                    /// response is no guarantee that the operation is done.
+                    /// </summary>
+                    /// <param name="name">The name of the operation resource to wait on.</param>
+                    public virtual WaitRequest Wait(string name)
+                    {
+                        return new WaitRequest(this.service, name);
+                    }
+
+                    /// <summary>
+                    /// Waits until the specified long-running operation is done or reaches at most a specified timeout,
+                    /// returning the latest state. If the operation is already done, the latest state is immediately
+                    /// returned. If the timeout specified is greater than the default HTTP/RPC timeout, the HTTP/RPC
+                    /// timeout is used. If the server does not support this method, it returns
+                    /// `google.rpc.Code.UNIMPLEMENTED`. Note that this method is on a best-effort basis. It may return
+                    /// the latest state before the specified timeout (including immediately), meaning even an immediate
+                    /// response is no guarantee that the operation is done.
+                    /// </summary>
+                    public class WaitRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1beta1.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new Wait request.</summary>
+                        public WaitRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>The name of the operation resource to wait on.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// The maximum duration to wait before timing out. If left blank, the wait will be at most the
+                        /// time permitted by the underlying HTTP/RPC protocol. If RPC context deadline is also
+                        /// specified, the shorter one will be used.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("timeout", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object Timeout { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "wait";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+name}:wait";
+
+                        /// <summary>Initializes Wait parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/metadataStores/[^/]+/operations/[^/]+$",
+                            });
+                            RequestParameters.Add("timeout", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "timeout",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -29573,6 +30966,372 @@ namespace Google.Apis.Aiplatform.v1beta1
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/publishers/[^/]+/models/[^/]+$",
+                            });
+                        }
+                    }
+                }
+            }
+
+            /// <summary>Gets the ReasoningEngines resource.</summary>
+            public virtual ReasoningEnginesResource ReasoningEngines { get; }
+
+            /// <summary>The "reasoningEngines" collection of methods.</summary>
+            public class ReasoningEnginesResource
+            {
+                private const string Resource = "reasoningEngines";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public ReasoningEnginesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    Operations = new OperationsResource(service);
+                }
+
+                /// <summary>Gets the Operations resource.</summary>
+                public virtual OperationsResource Operations { get; }
+
+                /// <summary>The "operations" collection of methods.</summary>
+                public class OperationsResource
+                {
+                    private const string Resource = "operations";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public OperationsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>
+                    /// Starts asynchronous cancellation on a long-running operation. The server makes a best effort to
+                    /// cancel the operation, but success is not guaranteed. If the server doesn't support this method,
+                    /// it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other
+                    /// methods to check whether the cancellation succeeded or whether the operation completed despite
+                    /// cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an
+                    /// operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to
+                    /// `Code.CANCELLED`.
+                    /// </summary>
+                    /// <param name="name">The name of the operation resource to be cancelled.</param>
+                    public virtual CancelRequest Cancel(string name)
+                    {
+                        return new CancelRequest(this.service, name);
+                    }
+
+                    /// <summary>
+                    /// Starts asynchronous cancellation on a long-running operation. The server makes a best effort to
+                    /// cancel the operation, but success is not guaranteed. If the server doesn't support this method,
+                    /// it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other
+                    /// methods to check whether the cancellation succeeded or whether the operation completed despite
+                    /// cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an
+                    /// operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to
+                    /// `Code.CANCELLED`.
+                    /// </summary>
+                    public class CancelRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1beta1.Data.GoogleProtobufEmpty>
+                    {
+                        /// <summary>Constructs a new Cancel request.</summary>
+                        public CancelRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>The name of the operation resource to be cancelled.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "cancel";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+name}:cancel";
+
+                        /// <summary>Initializes Cancel parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/reasoningEngines/[^/]+/operations/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Deletes a long-running operation. This method indicates that the client is no longer interested
+                    /// in the operation result. It does not cancel the operation. If the server doesn't support this
+                    /// method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+                    /// </summary>
+                    /// <param name="name">The name of the operation resource to be deleted.</param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(this.service, name);
+                    }
+
+                    /// <summary>
+                    /// Deletes a long-running operation. This method indicates that the client is no longer interested
+                    /// in the operation result. It does not cancel the operation. If the server doesn't support this
+                    /// method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+                    /// </summary>
+                    public class DeleteRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1beta1.Data.GoogleProtobufEmpty>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>The name of the operation resource to be deleted.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/reasoningEngines/[^/]+/operations/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Gets the latest state of a long-running operation. Clients can use this method to poll the
+                    /// operation result at intervals as recommended by the API service.
+                    /// </summary>
+                    /// <param name="name">The name of the operation resource.</param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(this.service, name);
+                    }
+
+                    /// <summary>
+                    /// Gets the latest state of a long-running operation. Clients can use this method to poll the
+                    /// operation result at intervals as recommended by the API service.
+                    /// </summary>
+                    public class GetRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1beta1.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>The name of the operation resource.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/reasoningEngines/[^/]+/operations/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Lists operations that match the specified filter in the request. If the server doesn't support
+                    /// this method, it returns `UNIMPLEMENTED`.
+                    /// </summary>
+                    /// <param name="name">The name of the operation's parent resource.</param>
+                    public virtual ListRequest List(string name)
+                    {
+                        return new ListRequest(this.service, name);
+                    }
+
+                    /// <summary>
+                    /// Lists operations that match the specified filter in the request. If the server doesn't support
+                    /// this method, it returns `UNIMPLEMENTED`.
+                    /// </summary>
+                    public class ListRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1beta1.Data.GoogleLongrunningListOperationsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>The name of the operation's parent resource.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>The standard list filter.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+                        /// <summary>The standard list page size.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>The standard list page token.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+name}/operations";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/reasoningEngines/[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Waits until the specified long-running operation is done or reaches at most a specified timeout,
+                    /// returning the latest state. If the operation is already done, the latest state is immediately
+                    /// returned. If the timeout specified is greater than the default HTTP/RPC timeout, the HTTP/RPC
+                    /// timeout is used. If the server does not support this method, it returns
+                    /// `google.rpc.Code.UNIMPLEMENTED`. Note that this method is on a best-effort basis. It may return
+                    /// the latest state before the specified timeout (including immediately), meaning even an immediate
+                    /// response is no guarantee that the operation is done.
+                    /// </summary>
+                    /// <param name="name">The name of the operation resource to wait on.</param>
+                    public virtual WaitRequest Wait(string name)
+                    {
+                        return new WaitRequest(this.service, name);
+                    }
+
+                    /// <summary>
+                    /// Waits until the specified long-running operation is done or reaches at most a specified timeout,
+                    /// returning the latest state. If the operation is already done, the latest state is immediately
+                    /// returned. If the timeout specified is greater than the default HTTP/RPC timeout, the HTTP/RPC
+                    /// timeout is used. If the server does not support this method, it returns
+                    /// `google.rpc.Code.UNIMPLEMENTED`. Note that this method is on a best-effort basis. It may return
+                    /// the latest state before the specified timeout (including immediately), meaning even an immediate
+                    /// response is no guarantee that the operation is done.
+                    /// </summary>
+                    public class WaitRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1beta1.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new Wait request.</summary>
+                        public WaitRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>The name of the operation resource to wait on.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// The maximum duration to wait before timing out. If left blank, the wait will be at most the
+                        /// time permitted by the underlying HTTP/RPC protocol. If RPC context deadline is also
+                        /// specified, the shorter one will be used.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("timeout", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object Timeout { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "wait";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+name}:wait";
+
+                        /// <summary>Initializes Wait parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/reasoningEngines/[^/]+/operations/[^/]+$",
+                            });
+                            RequestParameters.Add("timeout", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "timeout",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
                             });
                         }
                     }
@@ -38160,6 +39919,13 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         public virtual System.Collections.Generic.IList<CloudAiNlLlmProtoServiceCandidate> Candidates { get; set; }
 
         /// <summary>
+        /// Debug information containing message metadata. Clients should not consume this field, and this is only
+        /// populated for Flow Runner path.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("debugMetadata")]
+        public virtual CloudAiNlLlmProtoServiceMessageMetadata DebugMetadata { get; set; }
+
+        /// <summary>
         /// Content filter results for a prompt sent in the request. Note: Sent only in the first stream chunk. Only
         /// happens when no candidates were generated due to content violations.
         /// </summary>
@@ -38173,6 +39939,24 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         /// <summary>Usage metadata about the response(s).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("usageMetadata")]
         public virtual CloudAiNlLlmProtoServiceUsageMetadata UsageMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class CloudAiNlLlmProtoServiceMessageMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Filter metadata of the input messages.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inputFilterInfo")]
+        public virtual LearningServingLlmMessageMetadata InputFilterInfo { get; set; }
+
+        /// <summary>This score is generated by the router model to decide which model to use</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelRoutingDecision")]
+        public virtual LearningGenaiRootRoutingDecision ModelRoutingDecision { get; set; }
+
+        /// <summary>Filter metadata of the output messages.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputFilterInfo")]
+        public virtual System.Collections.Generic.IList<LearningServingLlmMessageMetadata> OutputFilterInfo { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -38275,6 +40059,83 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         /// <summary>Safety ratings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("safetyRatings")]
         public virtual System.Collections.Generic.IList<CloudAiNlLlmProtoServiceSafetyRating> SafetyRatings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The RAI results for a given text.</summary>
+    public class CloudAiNlLlmProtoServiceRaiResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Recitation result from Aida recitation checker.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aidaRecitationResult")]
+        public virtual LanguageLabsAidaTrustRecitationProtoRecitationResult AidaRecitationResult { get; set; }
+
+        /// <summary>Use `triggered_blocklist`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blocked")]
+        public virtual System.Nullable<bool> Blocked { get; set; }
+
+        /// <summary>The error codes indicate which RAI filters block the response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorCodes")]
+        public virtual System.Collections.Generic.IList<System.Nullable<int>> ErrorCodes { get; set; }
+
+        /// <summary>
+        /// Whether the text should be filtered and not shown to the end user. This is determined based on a combination
+        /// of `triggered_recitation`, `triggered_blocklist`, `language_filter_result`, and `triggered_safety_filter`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filtered")]
+        public virtual System.Nullable<bool> Filtered { get; set; }
+
+        /// <summary>Language filter result from SAFT LangId.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageFilterResult")]
+        public virtual LearningServingLlmLanguageFilterResult LanguageFilterResult { get; set; }
+
+        /// <summary>The RAI signals for the text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("raiSignals")]
+        public virtual System.Collections.Generic.IList<CloudAiNlLlmProtoServiceRaiSignal> RaiSignals { get; set; }
+
+        /// <summary>Whether the text triggered the blocklist.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("triggeredBlocklist")]
+        public virtual System.Nullable<bool> TriggeredBlocklist { get; set; }
+
+        /// <summary>
+        /// Whether the text should be blocked by the recitation result from Aida recitation checker. It is determined
+        /// from aida_recitation_result.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("triggeredRecitation")]
+        public virtual System.Nullable<bool> TriggeredRecitation { get; set; }
+
+        /// <summary>
+        /// Whether the text triggered the safety filter. Currently, this is due to CSAI triggering or one of four
+        /// categories (derogatory, sexual, toxic, violent) having a score over the filter threshold.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("triggeredSafetyFilter")]
+        public virtual System.Nullable<bool> TriggeredSafetyFilter { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An RAI signal for a single category.</summary>
+    public class CloudAiNlLlmProtoServiceRaiSignal : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The confidence level for the RAI category.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
+        public virtual string Confidence { get; set; }
+
+        /// <summary>
+        /// Whether the category is flagged as being present. Currently, this is set to true if score &amp;gt;= 0.5.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flagged")]
+        public virtual System.Nullable<bool> Flagged { get; set; }
+
+        /// <summary>The RAI category.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("raiCategory")]
+        public virtual string RaiCategory { get; set; }
+
+        /// <summary>The score for the category, in the range [0.0, 1.0].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("score")]
+        public virtual System.Nullable<float> Score { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -44999,14 +46860,16 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
 
     /// <summary>
     /// The dedicated serving endpoint for this FeatureOnlineStore. Only need to set when you choose Optimized storage
-    /// type or enable EmbeddingManagement. Will use public endpoint by default.
+    /// type or enable EmbeddingManagement. Will use public endpoint by default. Note, for EmbeddingManagement use case,
+    /// only [DedicatedServingEndpoint.public_endpoint_domain_name] is available now.
     /// </summary>
     public class GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpoint : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. Private service connect config. If PrivateServiceConnectConfig.enable_private_service_connect set
-        /// to true, customers will use private service connection to send request. Otherwise, the connection will set
-        /// to public endpoint.
+        /// Optional. Private service connect config. The private service connection is available only for Optimized
+        /// storage type, not for embedding management now. If
+        /// PrivateServiceConnectConfig.enable_private_service_connect set to true, customers will use private service
+        /// connection to send request. Otherwise, the connection will set to public endpoint.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privateServiceConnectConfig")]
         public virtual GoogleCloudAiplatformV1beta1PrivateServiceConnectConfig PrivateServiceConnectConfig { get; set; }
@@ -46386,13 +48249,6 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contents")]
         public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1beta1Content> Contents { get; set; }
-
-        /// <summary>
-        /// Required. The name of the Endpoint requested to serve the prediction. Format:
-        /// `projects/{project}/locations/{location}/endpoints/{endpoint}`
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("endpoint")]
-        public virtual string Endpoint { get; set; }
 
         /// <summary>Optional. Generation config.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("generationConfig")]
@@ -53419,6 +55275,10 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("openFineTuningPipeline")]
         public virtual GoogleCloudAiplatformV1beta1PublisherModelCallToActionRegionalResourceReferences OpenFineTuningPipeline { get; set; }
 
+        /// <summary>Optional. Open fine-tuning pipelines of the PublisherModel.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("openFineTuningPipelines")]
+        public virtual GoogleCloudAiplatformV1beta1PublisherModelCallToActionOpenFineTuningPipelines OpenFineTuningPipelines { get; set; }
+
         /// <summary>Optional. Open in Generation AI Studio.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("openGenerationAiStudio")]
         public virtual GoogleCloudAiplatformV1beta1PublisherModelCallToActionRegionalResourceReferences OpenGenerationAiStudio { get; set; }
@@ -53430,6 +55290,10 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         /// <summary>Optional. Open notebook of the PublisherModel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("openNotebook")]
         public virtual GoogleCloudAiplatformV1beta1PublisherModelCallToActionRegionalResourceReferences OpenNotebook { get; set; }
+
+        /// <summary>Optional. Open notebooks of the PublisherModel.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("openNotebooks")]
+        public virtual GoogleCloudAiplatformV1beta1PublisherModelCallToActionOpenNotebooks OpenNotebooks { get; set; }
 
         /// <summary>Optional. Open prompt-tuning pipeline of the PublisherModel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("openPromptTuningPipeline")]
@@ -53504,6 +55368,28 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Open fine tuning pipelines.</summary>
+    public class GoogleCloudAiplatformV1beta1PublisherModelCallToActionOpenFineTuningPipelines : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Regional resource references to fine tuning pipelines.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fineTuningPipelines")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1beta1PublisherModelCallToActionRegionalResourceReferences> FineTuningPipelines { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Open notebooks.</summary>
+    public class GoogleCloudAiplatformV1beta1PublisherModelCallToActionOpenNotebooks : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Regional resource references to notebooks.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notebooks")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1beta1PublisherModelCallToActionRegionalResourceReferences> Notebooks { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// The regional resource name or the URI. Key is region, e.g., us-central1, europe-west2, global, etc..
     /// </summary>
@@ -53513,7 +55399,19 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("references")]
         public virtual System.Collections.Generic.IDictionary<string, GoogleCloudAiplatformV1beta1PublisherModelResourceReference> References { get; set; }
 
-        /// <summary>Required. The title of the regional resource reference.</summary>
+        /// <summary>Optional. Description of the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceDescription")]
+        public virtual string ResourceDescription { get; set; }
+
+        /// <summary>Optional. Title of the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceTitle")]
+        public virtual string ResourceTitle { get; set; }
+
+        /// <summary>Optional. Use case (CUJ) of the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceUseCase")]
+        public virtual string ResourceUseCase { get; set; }
+
+        /// <summary>Required. </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; }
 
@@ -62923,6 +64821,1335 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         /// <summary>One entry per metric name. The values must be aggregated per metric name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metricEntries")]
         public virtual System.Collections.Generic.IList<IntelligenceCloudAutomlXpsMetricEntry> MetricEntries { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The proto defines the attribution information for a document using whatever fields are most applicable for that
+    /// document's datasource. For example, a Wikipedia article's attribution is in the form of its article title, a
+    /// website is in the form of a URL, and a Github repo is in the form of a repo name. Next id:28
+    /// </summary>
+    public class LanguageLabsAidaTrustRecitationProtoDocAttribution : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("amarnaId")]
+        public virtual string AmarnaId { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("arxivId")]
+        public virtual string ArxivId { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("author")]
+        public virtual string Author { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("bibkey")]
+        public virtual string Bibkey { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("bookTitle")]
+        public virtual string BookTitle { get; set; }
+
+        /// <summary>
+        /// The Oceanographers full-view books dataset uses a 'volume id' as the unique ID of a book. There is a
+        /// deterministic function from a volume id to a URL under the books.google.com domain. Marked as 'optional'
+        /// since a volume ID of zero is potentially possible and we want to distinguish that from the volume ID not
+        /// being set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bookVolumeId")]
+        public virtual System.Nullable<long> BookVolumeId { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("category")]
+        public virtual string Category { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationId")]
+        public virtual string ConversationId { get; set; }
+
+        /// <summary>The dataset this document comes from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataset")]
+        public virtual string Dataset { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("filepath")]
+        public virtual string Filepath { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("geminiId")]
+        public virtual string GeminiId { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("gnewsArticleTitle")]
+        public virtual string GnewsArticleTitle { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("goodallExampleId")]
+        public virtual string GoodallExampleId { get; set; }
+
+        /// <summary>Whether the document is opted out.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isOptOut")]
+        public virtual System.Nullable<bool> IsOptOut { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("isPrompt")]
+        public virtual System.Nullable<bool> IsPrompt { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("lamdaExampleId")]
+        public virtual string LamdaExampleId { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("license")]
+        public virtual string License { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("meenaConversationId")]
+        public virtual string MeenaConversationId { get; set; }
+
+        /// <summary>
+        /// Natural (not programming) language of the document. Language code as defined by
+        /// http://www.unicode.org/reports/tr35/#Identifiers and https://tools.ietf.org/html/bcp47. Currently applicable
+        /// to full-view books. Use docinfo-util.h to set &amp;amp; read language fields. See go/iii.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("naturalLanguageCode")]
+        public virtual string NaturalLanguageCode { get; set; }
+
+        /// <summary>
+        /// True if this doc has no attribution information available. We use an explicit field for this instead of just
+        /// implicitly leaving all the DocAttribution fields blank to distinguish a case where a bug/oversight has left
+        /// the attribution information empty vs when we really have no attribution information available.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("noAttribution")]
+        public virtual System.Nullable<bool> NoAttribution { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("podcastUtteranceId")]
+        public virtual string PodcastUtteranceId { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("publicationDate")]
+        public virtual GoogleTypeDate PublicationDate { get; set; }
+
+        /// <summary>
+        /// This field is for opt-out experiment only, MUST never be used during actual production/serving.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("qualityScoreExperimentOnly")]
+        public virtual System.Nullable<double> QualityScoreExperimentOnly { get; set; }
+
+        /// <summary>Github repository</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("repo")]
+        public virtual string Repo { get; set; }
+
+        /// <summary>URL of a webdoc</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("url")]
+        public virtual string Url { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("volumeId")]
+        public virtual string VolumeId { get; set; }
+
+        /// <summary>
+        /// Wikipedia article title. The Wikipedia TFDS dataset includes article titles but not URLs. While a URL is to
+        /// the best of our knowledge a deterministic function of the title, we store the original title to reflect the
+        /// information in the original dataset.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wikipediaArticleTitle")]
+        public virtual string WikipediaArticleTitle { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The recitation result for one input</summary>
+    public class LanguageLabsAidaTrustRecitationProtoRecitationResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("dynamicSegmentResults")]
+        public virtual System.Collections.Generic.IList<LanguageLabsAidaTrustRecitationProtoSegmentResult> DynamicSegmentResults { get; set; }
+
+        /// <summary>
+        /// The recitation action for one given input. When its segments contain different actions, the overall action
+        /// will be returned in the precedence of BLOCK &amp;gt; CITE &amp;gt; NO_ACTION.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recitationAction")]
+        public virtual string RecitationAction { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("trainingSegmentResults")]
+        public virtual System.Collections.Generic.IList<LanguageLabsAidaTrustRecitationProtoSegmentResult> TrainingSegmentResults { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The recitation result for each segment in a given input.</summary>
+    public class LanguageLabsAidaTrustRecitationProtoSegmentResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The dataset the segment came from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attributionDataset")]
+        public virtual string AttributionDataset { get; set; }
+
+        /// <summary>
+        /// human-friendly string that contains information from doc_attribution which could be shown by clients
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayAttributionMessage")]
+        public virtual string DisplayAttributionMessage { get; set; }
+
+        /// <summary>populated when recitation_action == CITE</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("docAttribution")]
+        public virtual LanguageLabsAidaTrustRecitationProtoDocAttribution DocAttribution { get; set; }
+
+        /// <summary>number of documents that contained this segment</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("docOccurrences")]
+        public virtual System.Nullable<int> DocOccurrences { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("endIndex")]
+        public virtual System.Nullable<int> EndIndex { get; set; }
+
+        /// <summary>
+        /// The raw text in the given input that is corresponding to the segment. It will be available only when
+        /// 'return_segment_raw_text' is enabled in the request options.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rawText")]
+        public virtual string RawText { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("segmentRecitationAction")]
+        public virtual string SegmentRecitationAction { get; set; }
+
+        /// <summary>
+        /// The segment boundary start (inclusive) and end index (exclusive) in the given text. In the streaming RPC,
+        /// the indexes always start from the beginning of the first text in the entire stream. The indexes are measured
+        /// in UTF-16 code units.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startIndex")]
+        public virtual System.Nullable<int> StartIndex { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The recitation result for one stream input</summary>
+    public class LanguageLabsAidaTrustRecitationProtoStreamRecitationResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The recitation result against the given dynamic data source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dynamicSegmentResults")]
+        public virtual System.Collections.Generic.IList<LanguageLabsAidaTrustRecitationProtoSegmentResult> DynamicSegmentResults { get; set; }
+
+        /// <summary>
+        /// Last index of input text fully checked for recitation in the entire streaming context. Would return `-1` if
+        /// no Input was checked for recitation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fullyCheckedTextIndex")]
+        public virtual System.Nullable<int> FullyCheckedTextIndex { get; set; }
+
+        /// <summary>
+        /// The recitation action for one given input. When its segments contain different actions, the overall action
+        /// will be returned in the precedence of BLOCK &amp;gt; CITE &amp;gt; NO_ACTION.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recitationAction")]
+        public virtual string RecitationAction { get; set; }
+
+        /// <summary>The recitation result against model training data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trainingSegmentResults")]
+        public virtual System.Collections.Generic.IList<LanguageLabsAidaTrustRecitationProtoSegmentResult> TrainingSegmentResults { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The proto defines the attribution information for a document using whatever fields are most applicable for that
+    /// document's datasource. For example, a Wikipedia article's attribution is in the form of its article title, a
+    /// website is in the form of a URL, and a Github repo is in the form of a repo name. Next id: 28
+    /// </summary>
+    public class LearningGenaiRecitationDocAttribution : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("amarnaId")]
+        public virtual string AmarnaId { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("arxivId")]
+        public virtual string ArxivId { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("author")]
+        public virtual string Author { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("bibkey")]
+        public virtual string Bibkey { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("bookTitle")]
+        public virtual string BookTitle { get; set; }
+
+        /// <summary>
+        /// The Oceanographers full-view books dataset uses a 'volume id' as the unique ID of a book. There is a
+        /// deterministic function from a volume id to a URL under the books.google.com domain. Marked as 'optional'
+        /// since a volume ID of zero is potentially possible and we want to distinguish that from the volume ID not
+        /// being set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bookVolumeId")]
+        public virtual System.Nullable<long> BookVolumeId { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationId")]
+        public virtual string ConversationId { get; set; }
+
+        /// <summary>The dataset this document comes from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataset")]
+        public virtual string Dataset { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("filepath")]
+        public virtual string Filepath { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("geminiId")]
+        public virtual string GeminiId { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("gnewsArticleTitle")]
+        public virtual string GnewsArticleTitle { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("goodallExampleId")]
+        public virtual string GoodallExampleId { get; set; }
+
+        /// <summary>Whether the document is opted out.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isOptOut")]
+        public virtual System.Nullable<bool> IsOptOut { get; set; }
+
+        /// <summary>When true, this attribution came from the user's prompt.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isPrompt")]
+        public virtual System.Nullable<bool> IsPrompt { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("lamdaExampleId")]
+        public virtual string LamdaExampleId { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("license")]
+        public virtual string License { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("meenaConversationId")]
+        public virtual string MeenaConversationId { get; set; }
+
+        /// <summary>
+        /// Natural (not programming) language of the document. Language code as defined by
+        /// http://www.unicode.org/reports/tr35/#Identifiers and https://tools.ietf.org/html/bcp47. Currently applicable
+        /// to full-view books. Use docinfo-util.h to set &amp;amp; read language fields. See go/iii.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("naturalLanguageCode")]
+        public virtual string NaturalLanguageCode { get; set; }
+
+        /// <summary>
+        /// True if this doc has no attribution information available. We use an explicit field for this instead of just
+        /// implicitly leaving all the DocAttribution fields blank to distinguish a case where a bug/oversight has left
+        /// the attribution information empty vs when we really have no attribution information available.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("noAttribution")]
+        public virtual System.Nullable<bool> NoAttribution { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("podcastUtteranceId")]
+        public virtual string PodcastUtteranceId { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("publicationDate")]
+        public virtual GoogleTypeDate PublicationDate { get; set; }
+
+        /// <summary>
+        /// This field is for opt-out experiment only, MUST never be used during actual production/serving.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("qualityScoreExperimentOnly")]
+        public virtual System.Nullable<double> QualityScoreExperimentOnly { get; set; }
+
+        /// <summary>Github repository</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("repo")]
+        public virtual string Repo { get; set; }
+
+        /// <summary>URL of a webdoc</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("url")]
+        public virtual string Url { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("volumeId")]
+        public virtual string VolumeId { get; set; }
+
+        /// <summary>
+        /// Wikipedia article title. The Wikipedia TFDS dataset includes article titles but not URLs. While a URL is to
+        /// the best of our knowledge a deterministic function of the title, we store the original title to reflect the
+        /// information in the original dataset.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wikipediaArticleTitle")]
+        public virtual string WikipediaArticleTitle { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The recitation result for one input</summary>
+    public class LearningGenaiRecitationRecitationResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("dynamicSegmentResults")]
+        public virtual System.Collections.Generic.IList<LearningGenaiRecitationSegmentResult> DynamicSegmentResults { get; set; }
+
+        /// <summary>
+        /// The recitation action for one given input. When its segments contain different actions, the overall action
+        /// will be returned in the precedence of BLOCK &amp;gt; CITE &amp;gt; NO_ACTION.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recitationAction")]
+        public virtual string RecitationAction { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("trainingSegmentResults")]
+        public virtual System.Collections.Generic.IList<LearningGenaiRecitationSegmentResult> TrainingSegmentResults { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The recitation result for each segment in a given input.</summary>
+    public class LearningGenaiRecitationSegmentResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The dataset the segment came from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attributionDataset")]
+        public virtual string AttributionDataset { get; set; }
+
+        /// <summary>
+        /// human-friendly string that contains information from doc_attribution which could be shown by clients
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayAttributionMessage")]
+        public virtual string DisplayAttributionMessage { get; set; }
+
+        /// <summary>populated when recitation_action == CITE</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("docAttribution")]
+        public virtual LearningGenaiRecitationDocAttribution DocAttribution { get; set; }
+
+        /// <summary>number of documents that contained this segment</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("docOccurrences")]
+        public virtual System.Nullable<int> DocOccurrences { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("endIndex")]
+        public virtual System.Nullable<int> EndIndex { get; set; }
+
+        /// <summary>
+        /// The raw text in the given input that is corresponding to the segment. It will be available only when
+        /// 'return_segment_raw_text' is enabled in the request options.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rawText")]
+        public virtual string RawText { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("segmentRecitationAction")]
+        public virtual string SegmentRecitationAction { get; set; }
+
+        /// <summary>
+        /// The segment boundary start (inclusive) and end index (exclusive) in the given text. In the streaming RPC,
+        /// the indexes always start from the beginning of the first text in the entire stream. The indexes are measured
+        /// in UTF-16 code units.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startIndex")]
+        public virtual System.Nullable<int> StartIndex { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The type used for final weights calculation.</summary>
+    public class LearningGenaiRootCalculationType : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("scoreType")]
+        public virtual string ScoreType { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("weights")]
+        public virtual System.Nullable<double> Weights { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class LearningGenaiRootClassifierOutput : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If set, this is the output of the first matching rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ruleOutput")]
+        public virtual LearningGenaiRootRuleOutput RuleOutput { get; set; }
+
+        /// <summary>outputs of all matching rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ruleOutputs")]
+        public virtual System.Collections.Generic.IList<LearningGenaiRootRuleOutput> RuleOutputs { get; set; }
+
+        /// <summary>The results of data_providers and metrics.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual LearningGenaiRootClassifierState State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class LearningGenaiRootClassifierOutputSummary : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
+        public virtual System.Collections.Generic.IList<LearningGenaiRootMetricOutput> Metrics { get; set; }
+
+        /// <summary>Output of the first matching rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ruleOutput")]
+        public virtual LearningGenaiRootRuleOutput RuleOutput { get; set; }
+
+        /// <summary>outputs of all matching rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ruleOutputs")]
+        public virtual System.Collections.Generic.IList<LearningGenaiRootRuleOutput> RuleOutputs { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// DataProviderOutput and MetricOutput can be saved between calls to the Classifier framework. For instance, you
+    /// can run the query classifier, get outputs from those metrics, then use them in a result classifier as well.
+    /// Example rule based on this idea: and_rules { rule { metric_name: 'query_safesearch_v2' ... } rule { metric_name:
+    /// 'response_safesearch_v2' ... } }
+    /// </summary>
+    public class LearningGenaiRootClassifierState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("dataProviderOutput")]
+        public virtual System.Collections.Generic.IList<LearningGenaiRootDataProviderOutput> DataProviderOutput { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("metricOutput")]
+        public virtual System.Collections.Generic.IList<LearningGenaiRootMetricOutput> MetricOutput { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class LearningGenaiRootDataProviderOutput : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>If set, this DataProvider failed and this is the error message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual UtilStatusProto Status { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class LearningGenaiRootFilterMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Filter confidence.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
+        public virtual string Confidence { get; set; }
+
+        /// <summary>Debug info for the message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("debugInfo")]
+        public virtual LearningGenaiRootFilterMetadataFilterDebugInfo DebugInfo { get; set; }
+
+        /// <summary>A fallback message chosen by the applied filter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fallback")]
+        public virtual string Fallback { get; set; }
+
+        /// <summary>Additional info for the filter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("info")]
+        public virtual string Info { get; set; }
+
+        /// <summary>Name of the filter that triggered.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Filter reason.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reason")]
+        public virtual string Reason { get; set; }
+
+        /// <summary>The input query or generated response that is getting filtered.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class LearningGenaiRootFilterMetadataFilterDebugInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("classifierOutput")]
+        public virtual LearningGenaiRootClassifierOutput ClassifierOutput { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultMetadata")]
+        public virtual string DefaultMetadata { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("languageFilterResult")]
+        public virtual LearningServingLlmLanguageFilterResult LanguageFilterResult { get; set; }
+
+        /// <summary>Safety filter output information for LLM Root RAI harm check.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("raiOutput")]
+        public virtual LearningGenaiRootRAIOutput RaiOutput { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("raiResult")]
+        public virtual CloudAiNlLlmProtoServiceRaiResult RaiResult { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("raiSignal")]
+        public virtual CloudAiNlLlmProtoServiceRaiSignal RaiSignal { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("streamRecitationResult")]
+        public virtual LanguageLabsAidaTrustRecitationProtoStreamRecitationResult StreamRecitationResult { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("takedownResult")]
+        public virtual LearningGenaiRootTakedownResult TakedownResult { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("toxicityResult")]
+        public virtual LearningGenaiRootToxicityResult ToxicityResult { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class LearningGenaiRootHarm : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Please do not use, this is still under development.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contextualDangerous")]
+        public virtual System.Nullable<bool> ContextualDangerous { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("csam")]
+        public virtual System.Nullable<bool> Csam { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("fringe")]
+        public virtual System.Nullable<bool> Fringe { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("grailImageHarmType")]
+        public virtual LearningGenaiRootHarmGrailImageHarmType GrailImageHarmType { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("grailTextHarmType")]
+        public virtual LearningGenaiRootHarmGrailTextHarmType GrailTextHarmType { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("imageCsam")]
+        public virtual System.Nullable<bool> ImageCsam { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("imagePedo")]
+        public virtual System.Nullable<bool> ImagePedo { get; set; }
+
+        /// <summary>Image signals</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imagePorn")]
+        public virtual System.Nullable<bool> ImagePorn { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("imageViolence")]
+        public virtual System.Nullable<bool> ImageViolence { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("pqc")]
+        public virtual System.Nullable<bool> Pqc { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("safetycat")]
+        public virtual LearningGenaiRootHarmSafetyCatCategories Safetycat { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("spii")]
+        public virtual LearningGenaiRootHarmSpiiFilter Spii { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("threshold")]
+        public virtual System.Nullable<double> Threshold { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("videoFrameCsam")]
+        public virtual System.Nullable<bool> VideoFrameCsam { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("videoFramePedo")]
+        public virtual System.Nullable<bool> VideoFramePedo { get; set; }
+
+        /// <summary>Video frame signals</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("videoFramePorn")]
+        public virtual System.Nullable<bool> VideoFramePorn { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("videoFrameViolence")]
+        public virtual System.Nullable<bool> VideoFrameViolence { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Harm type for images</summary>
+    public class LearningGenaiRootHarmGrailImageHarmType : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("imageHarmType")]
+        public virtual System.Collections.Generic.IList<string> ImageHarmType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Harm type for text</summary>
+    public class LearningGenaiRootHarmGrailTextHarmType : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("harmType")]
+        public virtual System.Collections.Generic.IList<string> HarmType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class LearningGenaiRootHarmSafetyCatCategories : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("categories")]
+        public virtual System.Collections.Generic.IList<string> Categories { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class LearningGenaiRootHarmSpiiFilter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("usBankRoutingMicr")]
+        public virtual System.Nullable<bool> UsBankRoutingMicr { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("usEmployerIdentificationNumber")]
+        public virtual System.Nullable<bool> UsEmployerIdentificationNumber { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("usSocialSecurityNumber")]
+        public virtual System.Nullable<bool> UsSocialSecurityNumber { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class LearningGenaiRootInternalMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("scoredTokens")]
+        public virtual System.Collections.Generic.IList<LearningGenaiRootScoredToken> ScoredTokens { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class LearningGenaiRootMetricOutput : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("debug")]
+        public virtual string Debug { get; set; }
+
+        /// <summary>Name of the metric.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("numericValue")]
+        public virtual System.Nullable<double> NumericValue { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual UtilStatusProto Status { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("stringValue")]
+        public virtual string StringValue { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>This is per harm.</summary>
+    public class LearningGenaiRootRAIOutput : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("allowed")]
+        public virtual System.Nullable<bool> Allowed { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("harm")]
+        public virtual LearningGenaiRootHarm Harm { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("score")]
+        public virtual System.Nullable<double> Score { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class LearningGenaiRootRegexTakedownResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// False when query or response should be taken down due to match with a blocked regex, true otherwise.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowed")]
+        public virtual System.Nullable<bool> Allowed { get; set; }
+
+        /// <summary>
+        /// Regex used to decide that query or response should be taken down. Empty when query or response is kept.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("takedownRegex")]
+        public virtual string TakedownRegex { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class LearningGenaiRootRequestResponseTakedownResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>False when response has to be taken down per above config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowed")]
+        public virtual System.Nullable<bool> Allowed { get; set; }
+
+        /// <summary>Regex used to match the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestTakedownRegex")]
+        public virtual string RequestTakedownRegex { get; set; }
+
+        /// <summary>Regex used to decide that response should be taken down. Empty when response is kept.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("responseTakedownRegex")]
+        public virtual string ResponseTakedownRegex { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Holds the final routing decision, by storing the model_config_id. And individual scores each model got.
+    /// </summary>
+    public class LearningGenaiRootRoutingDecision : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual LearningGenaiRootRoutingDecisionMetadata Metadata { get; set; }
+
+        /// <summary>The selected model to route traffic to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelConfigId")]
+        public virtual string ModelConfigId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Debug metadata about the routing decision.</summary>
+    public class LearningGenaiRootRoutingDecisionMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("scoreBasedRoutingMetadata")]
+        public virtual LearningGenaiRootRoutingDecisionMetadataScoreBased ScoreBasedRoutingMetadata { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("tokenLengthBasedRoutingMetadata")]
+        public virtual LearningGenaiRootRoutingDecisionMetadataTokenLengthBased TokenLengthBasedRoutingMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// If we are routing using scored based configuration, then the metadata about that is available in this proto.
+    /// </summary>
+    public class LearningGenaiRootRoutingDecisionMetadataScoreBased : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The rule that was matched.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("matchedRule")]
+        public virtual LearningGenaiRootScoreBasedRoutingConfigRule MatchedRule { get; set; }
+
+        /// <summary>The score that was generated by the router i.e. the model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("score")]
+        public virtual LearningGenaiRootScore Score { get; set; }
+
+        /// <summary>No rules were matched &amp; therefore used the default fallback.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("usedDefaultFallback")]
+        public virtual System.Nullable<bool> UsedDefaultFallback { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class LearningGenaiRootRoutingDecisionMetadataTokenLengthBased : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("modelInputTokenMetadata")]
+        public virtual System.Collections.Generic.IList<LearningGenaiRootRoutingDecisionMetadataTokenLengthBasedModelInputTokenMetadata> ModelInputTokenMetadata { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("modelMaxTokenMetadata")]
+        public virtual System.Collections.Generic.IList<LearningGenaiRootRoutingDecisionMetadataTokenLengthBasedModelMaxTokenMetadata> ModelMaxTokenMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class LearningGenaiRootRoutingDecisionMetadataTokenLengthBasedModelInputTokenMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The length computed by backends using the formatter &amp; tokenizer specific to the model</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("computedInputTokenLength")]
+        public virtual System.Nullable<int> ComputedInputTokenLength { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("modelId")]
+        public virtual string ModelId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class LearningGenaiRootRoutingDecisionMetadataTokenLengthBasedModelMaxTokenMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("maxNumInputTokens")]
+        public virtual System.Nullable<int> MaxNumInputTokens { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("maxNumOutputTokens")]
+        public virtual System.Nullable<int> MaxNumOutputTokens { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("modelId")]
+        public virtual string ModelId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class LearningGenaiRootRuleOutput : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("decision")]
+        public virtual string Decision { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class LearningGenaiRootScore : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("calculationType")]
+        public virtual LearningGenaiRootCalculationType CalculationType { get; set; }
+
+        /// <summary>
+        /// The internal_metadata is intended to be used by internal processors and will be cleared before returns.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("internalMetadata")]
+        public virtual LearningGenaiRootInternalMetadata InternalMetadata { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("thresholdType")]
+        public virtual LearningGenaiRootThresholdType ThresholdType { get; set; }
+
+        /// <summary>Top candidate tokens and log probabilities at each decoding step.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tokensAndLogprobPerDecodingStep")]
+        public virtual LearningGenaiRootTokensAndLogProbPerDecodingStep TokensAndLogprobPerDecodingStep { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual System.Nullable<double> Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class LearningGenaiRootScoreBasedRoutingConfigRule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>NOTE: Hardest examples have smaller values in their routing scores.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("equalOrGreaterThan")]
+        public virtual LearningGenaiRootScore EqualOrGreaterThan { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("lessThan")]
+        public virtual LearningGenaiRootScore LessThan { get; set; }
+
+        /// <summary>
+        /// This model_config_id points to ModelConfig::id which allows us to find the ModelConfig to route to. This is
+        /// part of the banks specified in the ModelBankConfig.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelConfigId")]
+        public virtual string ModelConfigId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Proto containing the results from the Universal Sentence Encoder / Other models</summary>
+    public class LearningGenaiRootScoredSimilarityTakedownPhrase : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("phrase")]
+        public virtual LearningGenaiRootSimilarityTakedownPhrase Phrase { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("similarityScore")]
+        public virtual System.Nullable<float> SimilarityScore { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A token with its own score.</summary>
+    public class LearningGenaiRootScoredToken : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Each end_token_score is a logprob for how well the completion would end at a particular token. See
+        /// http://google3/labs/language/aida/config/proto/model_config.proto;l=376;rcl=573039459
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTokenScore")]
+        public virtual System.Nullable<float> EndTokenScore { get; set; }
+
+        /// <summary>Each score is the logprob for the token in model response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("score")]
+        public virtual System.Nullable<float> Score { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("token")]
+        public virtual string Token { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Each SimilarityTakedownPhrase treats a logical group of blocked and allowed phrases together along with a
+    /// corresponding punt If the closest matching response is of the allowed type, we allow the response If the closest
+    /// matching response is of the blocked type, we block the response. eg: Blocked phrase - "All lives matter"
+    /// </summary>
+    public class LearningGenaiRootSimilarityTakedownPhrase : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("blockedPhrase")]
+        public virtual string BlockedPhrase { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class LearningGenaiRootSimilarityTakedownResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// False when query or response should be taken down by any of the takedown rules, true otherwise.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowed")]
+        public virtual System.Nullable<bool> Allowed { get; set; }
+
+        /// <summary>List of similar phrases with score. Set only if allowed=false.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scoredPhrases")]
+        public virtual System.Collections.Generic.IList<LearningGenaiRootScoredSimilarityTakedownPhrase> ScoredPhrases { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class LearningGenaiRootTakedownResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// False when query or response should be taken down by any of the takedown rules, true otherwise.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowed")]
+        public virtual System.Nullable<bool> Allowed { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("regexTakedownResult")]
+        public virtual LearningGenaiRootRegexTakedownResult RegexTakedownResult { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("requestResponseTakedownResult")]
+        public virtual LearningGenaiRootRequestResponseTakedownResult RequestResponseTakedownResult { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("similarityTakedownResult")]
+        public virtual LearningGenaiRootSimilarityTakedownResult SimilarityTakedownResult { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The type of score that bundled with a threshold, and will not be attending the final score calculation. How each
+    /// score type uses the threshold can be implementation details.
+    /// </summary>
+    public class LearningGenaiRootThresholdType : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("scoreType")]
+        public virtual string ScoreType { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("threshold")]
+        public virtual System.Nullable<double> Threshold { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Results of RandomSamplingParams::top_k_logprob_per_decoding_step.</summary>
+    public class LearningGenaiRootTokensAndLogProbPerDecodingStep : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Length = total number of decoding steps. The chosen candidates may or may not be in top_candidates.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chosenCandidates")]
+        public virtual System.Collections.Generic.IList<LearningGenaiRootTokensAndLogProbPerDecodingStepCandidate> ChosenCandidates { get; set; }
+
+        /// <summary>Length = total number of decoding steps.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("topCandidates")]
+        public virtual System.Collections.Generic.IList<LearningGenaiRootTokensAndLogProbPerDecodingStepTopCandidates> TopCandidates { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A candidate at a decoding step.</summary>
+    public class LearningGenaiRootTokensAndLogProbPerDecodingStepCandidate : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The candidate's log probability.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logProbability")]
+        public virtual System.Nullable<float> LogProbability { get; set; }
+
+        /// <summary>The candidate’s token value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("token")]
+        public virtual string Token { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Candidates with top log probabilities at each decoding step.</summary>
+    public class LearningGenaiRootTokensAndLogProbPerDecodingStepTopCandidates : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Sorted by log probability in descending order.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("candidates")]
+        public virtual System.Collections.Generic.IList<LearningGenaiRootTokensAndLogProbPerDecodingStepCandidate> Candidates { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A model can generate multiple signals and this captures all the generated signals for a single message.
+    /// </summary>
+    public class LearningGenaiRootToxicityResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("signals")]
+        public virtual System.Collections.Generic.IList<LearningGenaiRootToxicitySignal> Signals { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Proto to capture a signal generated by the toxicity model.</summary>
+    public class LearningGenaiRootToxicitySignal : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("allowed")]
+        public virtual System.Nullable<bool> Allowed { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("label")]
+        public virtual string Label { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("score")]
+        public virtual System.Nullable<float> Score { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class LearningServingLlmLanguageFilterResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>False when query or response should be filtered out due to unsupported language.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowed")]
+        public virtual System.Nullable<bool> Allowed { get; set; }
+
+        /// <summary>Language of the query or response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detectedLanguage")]
+        public virtual string DetectedLanguage { get; set; }
+
+        /// <summary>Probability of the language predicted as returned by LangID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detectedLanguageProbability")]
+        public virtual System.Nullable<float> DetectedLanguageProbability { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>LINT.IfChange This metadata contains additional information required for debugging.</summary>
+    public class LearningServingLlmMessageMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Summary of classifier output. We attach this to all messages regardless of whether classification rules
+        /// triggered or not.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("classifierSummary")]
+        public virtual LearningGenaiRootClassifierOutputSummary ClassifierSummary { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("currentStreamTextLength")]
+        public virtual System.Nullable<long> CurrentStreamTextLength { get; set; }
+
+        /// <summary>Whether the corresponding message has been deleted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deleted")]
+        public virtual System.Nullable<bool> Deleted { get; set; }
+
+        /// <summary>Metadata for filters that triggered.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filterMeta")]
+        public virtual System.Collections.Generic.IList<LearningGenaiRootFilterMetadata> FilterMeta { get; set; }
+
+        /// <summary>
+        /// This score is finally used for ranking the message. This will be same as the score present in
+        /// `Message.score` field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("finalMessageScore")]
+        public virtual LearningGenaiRootScore FinalMessageScore { get; set; }
+
+        /// <summary>NOT YET IMPLEMENTED.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("finishReason")]
+        public virtual string FinishReason { get; set; }
+
+        /// <summary>
+        /// Applies to Response message only. Indicates whether the message is a fallback and the response would have
+        /// otherwise been empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isFallback")]
+        public virtual System.Nullable<bool> IsFallback { get; set; }
+
+        /// <summary>
+        /// Result from nlp_saft DetectLanguage method. Currently the predicted language code and language probability
+        /// is used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("langidResult")]
+        public virtual NlpSaftLangIdResult LangidResult { get; set; }
+
+        /// <summary>Detected language.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("language")]
+        public virtual string Language { get; set; }
+
+        /// <summary>The LM prefix used to generate this response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lmPrefix")]
+        public virtual string LmPrefix { get; set; }
+
+        /// <summary>The original text generated by LLM. This is the raw output for debugging purposes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("originalText")]
+        public virtual string OriginalText { get; set; }
+
+        /// <summary>
+        /// NOT YET IMPLEMENTED. Applies to streaming only. Number of tokens decoded / emitted by the model as part of
+        /// this stream. This may be different from token_count, which contains number of tokens returned in this
+        /// response after any response rewriting / truncation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("perStreamDecodedTokenCount")]
+        public virtual System.Nullable<int> PerStreamDecodedTokenCount { get; set; }
+
+        /// <summary>
+        /// Results of running RAI on the query or this response candidate. One output per rai_config. It will be
+        /// populated regardless of whether the threshold is exceeded or not.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("raiOutputs")]
+        public virtual System.Collections.Generic.IList<LearningGenaiRootRAIOutput> RaiOutputs { get; set; }
+
+        /// <summary>
+        /// Recitation Results. It will be populated as long as Recitation processing is enabled, regardless of
+        /// recitation outcome.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recitationResult")]
+        public virtual LearningGenaiRecitationRecitationResult RecitationResult { get; set; }
+
+        /// <summary>NOT YET IMPLEMENTED. Number of tokens returned as part of this candidate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("returnTokenCount")]
+        public virtual System.Nullable<int> ReturnTokenCount { get; set; }
+
+        /// <summary>All the different scores for a message are logged here.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scores")]
+        public virtual System.Collections.Generic.IList<LearningGenaiRootScore> Scores { get; set; }
+
+        /// <summary>
+        /// Whether the response is terminated during streaming return. Only used for streaming requests.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("streamTerminated")]
+        public virtual System.Nullable<bool> StreamTerminated { get; set; }
+
+        /// <summary>
+        /// NOT YET IMPLEMENTED. Aggregated number of total tokens decoded so far. For streaming, this is sum of all the
+        /// tokens decoded so far i.e. aggregated count.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalDecodedTokenCount")]
+        public virtual System.Nullable<int> TotalDecodedTokenCount { get; set; }
+
+        /// <summary>
+        /// Translated user-prompt used for RAI post processing. This is for internal processing only. We will translate
+        /// in pre-processor and pass the translated text to the post processor using this field. It will be empty if
+        /// non of the signals requested need translation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("translatedUserPrompts")]
+        public virtual System.Collections.Generic.IList<string> TranslatedUserPrompts { get; set; }
+
+        /// <summary>The metadata from Vertex SafetyCat processors</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vertexRaiResult")]
+        public virtual CloudAiNlLlmProtoServiceRaiResult VertexRaiResult { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class NlpSaftLangIdLocalesResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// List of locales in which the text would be considered acceptable. Sorted in descending order according to
+        /// each locale's respective likelihood. For example, if a Portuguese text is acceptable in both Brazil and
+        /// Portugal, but is more strongly associated with Brazil, then the predictions would be ["pt-BR", "pt-PT"], in
+        /// that order. May be empty, indicating that the model did not predict any acceptable locales.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("predictions")]
+        public virtual System.Collections.Generic.IList<NlpSaftLangIdLocalesResultLocale> Predictions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class NlpSaftLangIdLocalesResultLocale : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A BCP 47 language code that includes region information. For example, "pt-BR" or "pt-PT". This field will
+        /// always be populated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class NlpSaftLangIdResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The version of the model used to create these annotations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelVersion")]
+        public virtual string ModelVersion { get; set; }
+
+        /// <summary>
+        /// This field stores the n-best list of possible BCP 47 language code strings for a given input sorted in
+        /// descending order according to each code's respective probability.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("predictions")]
+        public virtual System.Collections.Generic.IList<NlpSaftLanguageSpan> Predictions { get; set; }
+
+        /// <summary>
+        /// This field stores language predictions of subspans of the input, when available. Each LanguageSpanSequence
+        /// is a sequence of LanguageSpans. A particular sequence of LanguageSpans has an associated probability, and
+        /// need not necessarily cover the entire input. If no language could be predicted for any span, then this field
+        /// may be empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spanPredictions")]
+        public virtual System.Collections.Generic.IList<NlpSaftLanguageSpanSequence> SpanPredictions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class NlpSaftLanguageSpan : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("end")]
+        public virtual System.Nullable<int> End { get; set; }
+
+        /// <summary>A BCP 47 language code for this span.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; }
+
+        /// <summary>
+        /// Optional field containing any information that was predicted about the specific locale(s) of the span.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locales")]
+        public virtual NlpSaftLangIdLocalesResult Locales { get; set; }
+
+        /// <summary>A probability associated with this prediction.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("probability")]
+        public virtual System.Nullable<float> Probability { get; set; }
+
+        /// <summary>
+        /// Start and end byte offsets, inclusive, within the given input string. A value of -1 implies that this field
+        /// is not set. Both fields must either be set with a nonnegative value or both are unset. If both are unset
+        /// then this LanguageSpan applies to the entire input.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("start")]
+        public virtual System.Nullable<int> Start { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class NlpSaftLanguageSpanSequence : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A sequence of LanguageSpan objects, each assigning a language to a subspan of the input.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageSpans")]
+        public virtual System.Collections.Generic.IList<NlpSaftLanguageSpan> LanguageSpans { get; set; }
+
+        /// <summary>The probability of this sequence of LanguageSpans.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("probability")]
+        public virtual System.Nullable<float> Probability { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>This is proto2's version of MessageSet.</summary>
+    public class Proto2BridgeMessageSet : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Wire-format for a Status object</summary>
+    public class UtilStatusProto : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The canonical error code (see codes.proto) that most closely corresponds to this status. This may be
+        /// missing, and in the common case of the generic space, it definitely will be.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("canonicalCode")]
+        public virtual System.Nullable<int> CanonicalCode { get; set; }
+
+        /// <summary>
+        /// Numeric code drawn from the space specified below. Often, this is the canonical error space, and code is
+        /// drawn from google3/util/task/codes.proto
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual System.Nullable<int> Code { get; set; }
+
+        /// <summary>Detail message</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
+
+        /// <summary>message_set associates an arbitrary proto message with the status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("messageSet")]
+        public virtual Proto2BridgeMessageSet MessageSet { get; set; }
+
+        /// <summary>The following are usually only present when code != 0 Space to which this status belongs</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("space")]
+        public virtual string Space { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -466,7 +466,7 @@ namespace Google.Apis.CloudProfiler.v2
                 public virtual string Parent { get; private set; }
 
                 /// <summary>
-                /// The maximum number of items to return. Default page_size is 1000. Max limit is 10000.
+                /// The maximum number of items to return. Default page_size is 1000. Max limit is 1000.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }

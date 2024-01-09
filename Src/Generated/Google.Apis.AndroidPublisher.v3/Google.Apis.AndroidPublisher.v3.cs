@@ -35,6 +35,7 @@ namespace Google.Apis.AndroidPublisher.v3
         public AndroidPublisherService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Applications = new ApplicationsResource(this);
+            Apprecovery = new ApprecoveryResource(this);
             Edits = new EditsResource(this);
             Externaltransactions = new ExternaltransactionsResource(this);
             Generatedapks = new GeneratedapksResource(this);
@@ -83,6 +84,9 @@ namespace Google.Apis.AndroidPublisher.v3
 
         /// <summary>Gets the Applications resource.</summary>
         public virtual ApplicationsResource Applications { get; }
+
+        /// <summary>Gets the Apprecovery resource.</summary>
+        public virtual ApprecoveryResource Apprecovery { get; }
 
         /// <summary>Gets the Edits resource.</summary>
         public virtual EditsResource Edits { get; }
@@ -535,6 +539,368 @@ namespace Google.Apis.AndroidPublisher.v3
                         Pattern = null,
                     });
                 }
+            }
+        }
+    }
+
+    /// <summary>The "apprecovery" collection of methods.</summary>
+    public class ApprecoveryResource
+    {
+        private const string Resource = "apprecovery";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public ApprecoveryResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>
+        /// Incrementally update targeting for a recovery action. Note that only the criteria selected during the
+        /// creation of recovery action can be expanded.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="packageName">
+        /// Required. Package name of the app for which recovery action is to be updated.
+        /// </param>
+        /// <param name="appRecoveryId">Required. ID corresponding to the app recovery action.</param>
+        public virtual AddTargetingRequest AddTargeting(Google.Apis.AndroidPublisher.v3.Data.AddTargetingRequest body, string packageName, long appRecoveryId)
+        {
+            return new AddTargetingRequest(this.service, body, packageName, appRecoveryId);
+        }
+
+        /// <summary>
+        /// Incrementally update targeting for a recovery action. Note that only the criteria selected during the
+        /// creation of recovery action can be expanded.
+        /// </summary>
+        public class AddTargetingRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.AddTargetingResponse>
+        {
+            /// <summary>Constructs a new AddTargeting request.</summary>
+            public AddTargetingRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.AddTargetingRequest body, string packageName, long appRecoveryId) : base(service)
+            {
+                PackageName = packageName;
+                AppRecoveryId = appRecoveryId;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Required. Package name of the app for which recovery action is to be updated.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string PackageName { get; private set; }
+
+            /// <summary>Required. ID corresponding to the app recovery action.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("appRecoveryId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long AppRecoveryId { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.AndroidPublisher.v3.Data.AddTargetingRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "addTargeting";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "androidpublisher/v3/applications/{packageName}/appRecoveries/{appRecoveryId}:addTargeting";
+
+            /// <summary>Initializes AddTargeting parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "packageName",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("appRecoveryId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "appRecoveryId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>
+        /// List all app recovery action resources associated with a particular package name and app version.
+        /// </summary>
+        /// <param name="packageName">
+        /// Required. Package name of the app for which list of recovery actions is requested.
+        /// </param>
+        public virtual AppRecoveriesRequest AppRecoveries(string packageName)
+        {
+            return new AppRecoveriesRequest(this.service, packageName);
+        }
+
+        /// <summary>
+        /// List all app recovery action resources associated with a particular package name and app version.
+        /// </summary>
+        public class AppRecoveriesRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.ListAppRecoveriesResponse>
+        {
+            /// <summary>Constructs a new AppRecoveries request.</summary>
+            public AppRecoveriesRequest(Google.Apis.Services.IClientService service, string packageName) : base(service)
+            {
+                PackageName = packageName;
+                InitParameters();
+            }
+
+            /// <summary>Required. Package name of the app for which list of recovery actions is requested.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string PackageName { get; private set; }
+
+            /// <summary>Required. Version code targeted by the list of recovery actions.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("versionCode", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> VersionCode { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "appRecoveries";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "androidpublisher/v3/applications/{packageName}/appRecoveries";
+
+            /// <summary>Initializes AppRecoveries parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "packageName",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("versionCode", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "versionCode",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>
+        /// Cancel an already executing app recovery action. Note that this action changes status of the recovery action
+        /// to CANCELED.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="packageName">
+        /// Required. Package name of the app for which recovery action cancellation is requested.
+        /// </param>
+        /// <param name="appRecoveryId">Required. ID corresponding to the app recovery action.</param>
+        public virtual CancelRequest Cancel(Google.Apis.AndroidPublisher.v3.Data.CancelAppRecoveryRequest body, string packageName, long appRecoveryId)
+        {
+            return new CancelRequest(this.service, body, packageName, appRecoveryId);
+        }
+
+        /// <summary>
+        /// Cancel an already executing app recovery action. Note that this action changes status of the recovery action
+        /// to CANCELED.
+        /// </summary>
+        public class CancelRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.CancelAppRecoveryResponse>
+        {
+            /// <summary>Constructs a new Cancel request.</summary>
+            public CancelRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.CancelAppRecoveryRequest body, string packageName, long appRecoveryId) : base(service)
+            {
+                PackageName = packageName;
+                AppRecoveryId = appRecoveryId;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. Package name of the app for which recovery action cancellation is requested.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string PackageName { get; private set; }
+
+            /// <summary>Required. ID corresponding to the app recovery action.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("appRecoveryId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long AppRecoveryId { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.AndroidPublisher.v3.Data.CancelAppRecoveryRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "cancel";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "androidpublisher/v3/applications/{packageName}/appRecoveries/{appRecoveryId}:cancel";
+
+            /// <summary>Initializes Cancel parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "packageName",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("appRecoveryId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "appRecoveryId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>
+        /// Create an app recovery action with recovery status as DRAFT. Note that this action does not execute the
+        /// recovery action.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="packageName">Required. Package name of the app on which recovery action is performed.</param>
+        public virtual CreateRequest Create(Google.Apis.AndroidPublisher.v3.Data.CreateDraftAppRecoveryRequest body, string packageName)
+        {
+            return new CreateRequest(this.service, body, packageName);
+        }
+
+        /// <summary>
+        /// Create an app recovery action with recovery status as DRAFT. Note that this action does not execute the
+        /// recovery action.
+        /// </summary>
+        public class CreateRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.AppRecoveryAction>
+        {
+            /// <summary>Constructs a new Create request.</summary>
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.CreateDraftAppRecoveryRequest body, string packageName) : base(service)
+            {
+                PackageName = packageName;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Required. Package name of the app on which recovery action is performed.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string PackageName { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.AndroidPublisher.v3.Data.CreateDraftAppRecoveryRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "create";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "androidpublisher/v3/applications/{packageName}/appRecoveries";
+
+            /// <summary>Initializes Create parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "packageName",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>
+        /// Deploy an already created app recovery action with recovery status DRAFT. Note that this action activates
+        /// the recovery action for all targeted users and changes its status to ACTIVE.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="packageName">Required. Package name of the app for which recovery action is deployed.</param>
+        /// <param name="appRecoveryId">Required. ID corresponding to the app recovery action to deploy.</param>
+        public virtual DeployRequest Deploy(Google.Apis.AndroidPublisher.v3.Data.DeployAppRecoveryRequest body, string packageName, long appRecoveryId)
+        {
+            return new DeployRequest(this.service, body, packageName, appRecoveryId);
+        }
+
+        /// <summary>
+        /// Deploy an already created app recovery action with recovery status DRAFT. Note that this action activates
+        /// the recovery action for all targeted users and changes its status to ACTIVE.
+        /// </summary>
+        public class DeployRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.DeployAppRecoveryResponse>
+        {
+            /// <summary>Constructs a new Deploy request.</summary>
+            public DeployRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.DeployAppRecoveryRequest body, string packageName, long appRecoveryId) : base(service)
+            {
+                PackageName = packageName;
+                AppRecoveryId = appRecoveryId;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Required. Package name of the app for which recovery action is deployed.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string PackageName { get; private set; }
+
+            /// <summary>Required. ID corresponding to the app recovery action to deploy.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("appRecoveryId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long AppRecoveryId { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.AndroidPublisher.v3.Data.DeployAppRecoveryRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "deploy";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "androidpublisher/v3/applications/{packageName}/appRecoveries/{appRecoveryId}:deploy";
+
+            /// <summary>Initializes Deploy parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "packageName",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("appRecoveryId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "appRecoveryId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
         }
     }
@@ -11314,6 +11680,50 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for AddTargeting.</summary>
+    public class AddTargetingRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Specifies targeting updates such as regions, android sdk versions etc.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetingUpdate")]
+        public virtual TargetingUpdate TargetingUpdate { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for AddTargeting.</summary>
+    public class AddTargetingResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Object representation to describe all set of users.</summary>
+    public class AllUsers : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Set to true if all set of users are needed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isAllUsersRequested")]
+        public virtual System.Nullable<bool> IsAllUsersRequested { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Android api level targeting data for app recovery action targeting.</summary>
+    public class AndroidSdks : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Android api levels of devices targeted by recovery action. See
+        /// https://developer.android.com/guide/topics/manifest/uses-sdk-element#ApiLevels for different api levels in
+        /// android.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sdkLevels")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> SdkLevels { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Information about an APK. The resource for ApksService.</summary>
     public class Apk : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11501,6 +11911,223 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// <summary>Output only. Identifier of the edit. Can be used in subsequent API calls.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information about an app recovery action.</summary>
+    public class AppRecoveryAction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>ID corresponding to the app recovery action.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appRecoveryId")]
+        public virtual System.Nullable<long> AppRecoveryId { get; set; }
+
+        private string _cancelTimeRaw;
+
+        private object _cancelTime;
+
+        /// <summary>
+        /// Timestamp of when the app recovery action is canceled by the developer. Only set if the recovery action has
+        /// been canceled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cancelTime")]
+        public virtual string CancelTimeRaw
+        {
+            get => _cancelTimeRaw;
+            set
+            {
+                _cancelTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _cancelTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CancelTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CancelTimeDateTimeOffset instead.")]
+        public virtual object CancelTime
+        {
+            get => _cancelTime;
+            set
+            {
+                _cancelTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _cancelTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CancelTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CancelTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CancelTimeRaw);
+            set => CancelTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>
+        /// Timestamp of when the app recovery action is created by the developer. It is always set after creation of
+        /// the recovery action.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _deployTimeRaw;
+
+        private object _deployTime;
+
+        /// <summary>
+        /// Timestamp of when the app recovery action is deployed to the users. Only set if the recovery action has been
+        /// deployed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deployTime")]
+        public virtual string DeployTimeRaw
+        {
+            get => _deployTimeRaw;
+            set
+            {
+                _deployTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _deployTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="DeployTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use DeployTimeDateTimeOffset instead.")]
+        public virtual object DeployTime
+        {
+            get => _deployTime;
+            set
+            {
+                _deployTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _deployTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="DeployTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? DeployTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DeployTimeRaw);
+            set => DeployTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _lastUpdateTimeRaw;
+
+        private object _lastUpdateTime;
+
+        /// <summary>
+        /// Timestamp of when the developer last updated recovery action. In case the action is cancelled, it
+        /// corresponds to cancellation time. It is always set after creation of the recovery action.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastUpdateTime")]
+        public virtual string LastUpdateTimeRaw
+        {
+            get => _lastUpdateTimeRaw;
+            set
+            {
+                _lastUpdateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastUpdateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastUpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastUpdateTimeDateTimeOffset instead.")]
+        public virtual object LastUpdateTime
+        {
+            get => _lastUpdateTime;
+            set
+            {
+                _lastUpdateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastUpdateTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastUpdateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastUpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastUpdateTimeRaw);
+            set => LastUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Data about the remote in-app update action such as such as recovered user base, recoverable user base etc.
+        /// Set only if the recovery action type is Remote In-App Update.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("remoteInAppUpdateData")]
+        public virtual RemoteInAppUpdateData RemoteInAppUpdateData { get; set; }
+
+        /// <summary>The status of the recovery action.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; }
+
+        /// <summary>
+        /// Specifies targeting criteria for the recovery action such as regions, android sdk versions, app versions
+        /// etc.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targeting")]
+        public virtual Targeting Targeting { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Data format for a list of app versions. Only one app version is supported for now.</summary>
+    public class AppVersionList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of app version codes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("versionCodes")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> VersionCodes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Data format for a continuous range of app versions.</summary>
+    public class AppVersionRange : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Highest app version in the range, inclusive.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("versionCodeEnd")]
+        public virtual System.Nullable<long> VersionCodeEnd { get; set; }
+
+        /// <summary>Lowest app version in the range, inclusive.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("versionCodeStart")]
+        public virtual System.Nullable<long> VersionCodeStart { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11861,6 +12488,20 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for CancelAppRecovery.</summary>
+    public class CancelAppRecoveryRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for CancelAppRecovery.</summary>
+    public class CancelAppRecoveryResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Result of the cancel survey when the subscription was canceled by the user.</summary>
     public class CancelSurveyResult : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11997,6 +12638,27 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for CreateDraftAppRecovery.</summary>
+    public class CreateDraftAppRecoveryRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Action type is remote in-app update. As a consequence of this action, a downloadable recovery module is also
+        /// created for testing purposes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("remoteInAppUpdate")]
+        public virtual RemoteInAppUpdate RemoteInAppUpdate { get; set; }
+
+        /// <summary>
+        /// Specifies targeting criteria for the recovery action such as regions, android sdk versions, app versions
+        /// etc.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targeting")]
+        public virtual Targeting Targeting { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for DeactivateBasePlan.</summary>
     public class DeactivateBasePlanRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -12080,6 +12742,20 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deobfuscationFile")]
         public virtual DeobfuscationFile DeobfuscationFile { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for DeployAppRecovery.</summary>
+    public class DeployAppRecoveryRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for DeployAppRecovery.</summary>
+    public class DeployAppRecoveryResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -12726,6 +13402,14 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("generatedAssetPackSlices")]
         public virtual System.Collections.Generic.IList<GeneratedAssetPackSlice> GeneratedAssetPackSlices { get; set; }
 
+        /// <summary>
+        /// Generated recovery apks for recovery actions signed with a key corresponding to certificate_sha256_hash.
+        /// This includes all generated recovery APKs, also those in draft or cancelled state. This field is not set if
+        /// no recovery actions were created for this signing key.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generatedRecoveryModules")]
+        public virtual System.Collections.Generic.IList<GeneratedRecoveryApk> GeneratedRecoveryModules { get; set; }
+
         /// <summary>List of generated split APKs, signed with a key corresponding to certificate_sha256_hash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("generatedSplitApks")]
         public virtual System.Collections.Generic.IList<GeneratedSplitApk> GeneratedSplitApks { get; set; }
@@ -12772,6 +13456,32 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// <summary>Asset module version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<long> Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Download metadata for an app recovery module.</summary>
+    public class GeneratedRecoveryApk : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Download ID, which uniquely identifies the APK to download. Should be supplied to `generatedapks.download`
+        /// method.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("downloadId")]
+        public virtual string DownloadId { get; set; }
+
+        /// <summary>Name of the module which recovery apk belongs to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("moduleName")]
+        public virtual string ModuleName { get; set; }
+
+        /// <summary>ID of the recovery action.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recoveryId")]
+        public virtual System.Nullable<long> RecoveryId { get; set; }
+
+        /// <summary>The status of the recovery action corresponding to the recovery apk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recoveryStatus")]
+        public virtual string RecoveryStatus { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13238,6 +13948,19 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// <summary>ISO-639: 2 or 3 letter language code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual System.Collections.Generic.IList<string> Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Response message for ListAppRecoveries. -- api-linter: core::0158::response-next-page-token-field=disabled
+    /// </summary>
+    public class ListAppRecoveriesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of recovery actions associated with the requested package name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recoveryActions")]
+        public virtual System.Collections.Generic.IList<AppRecoveryAction> RecoveryActions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14238,6 +14961,21 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Region targeting data for app recovery action targeting.</summary>
+    public class Regions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Regions targeted by the recovery action. Region codes are ISO 3166 Alpha-2 country codes. For example, US
+        /// stands for United States of America. See https://www.iso.org/iso-3166-country-codes.html for the complete
+        /// list of country codes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
+        public virtual System.Collections.Generic.IList<string> RegionCode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The version of the available regions being used for the specified resource.</summary>
     public class RegionsVersion : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -14251,6 +14989,51 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Object representation for Remote in-app update action type.</summary>
+    public class RemoteInAppUpdate : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Set to true if Remote In-App Update action type is needed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isRemoteInAppUpdateRequested")]
+        public virtual System.Nullable<bool> IsRemoteInAppUpdateRequested { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Data related to Remote In-App Update action such as recovered user count, affected user count etc.
+    /// </summary>
+    public class RemoteInAppUpdateData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Data related to the recovery action at bundle level.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("remoteAppUpdateDataPerBundle")]
+        public virtual System.Collections.Generic.IList<RemoteInAppUpdateDataPerBundle> RemoteAppUpdateDataPerBundle { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Data related to the recovery action at bundle level.</summary>
+    public class RemoteInAppUpdateDataPerBundle : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Total number of devices which have been rescued.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recoveredDeviceCount")]
+        public virtual System.Nullable<long> RecoveredDeviceCount { get; set; }
+
+        /// <summary>
+        /// Total number of devices affected by this recovery action associated with bundle of the app.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalDeviceCount")]
+        public virtual System.Nullable<long> TotalDeviceCount { get; set; }
+
+        /// <summary>Version Code corresponding to the target bundle.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("versionCode")]
+        public virtual System.Nullable<long> VersionCode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15303,6 +16086,35 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Targeting details for a recovery action such as regions, android sdk levels, app versions etc.
+    /// </summary>
+    public class Targeting : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>All users are targeted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allUsers")]
+        public virtual AllUsers AllUsers { get; set; }
+
+        /// <summary>Targeting is based on android api levels of devices.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("androidSdks")]
+        public virtual AndroidSdks AndroidSdks { get; set; }
+
+        /// <summary>Targeting is based on the user account region.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regions")]
+        public virtual Regions Regions { get; set; }
+
+        /// <summary>Target version codes as a list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("versionList")]
+        public virtual AppVersionList VersionList { get; set; }
+
+        /// <summary>Target version codes as a range.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("versionRange")]
+        public virtual AppVersionRange VersionRange { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Targeting information about the generated apks.</summary>
     public class TargetingInfo : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -15334,6 +16146,25 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("specificSubscriptionInApp")]
         public virtual string SpecificSubscriptionInApp { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Update type for targeting. Note it is always a subset Targeting.</summary>
+    public class TargetingUpdate : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>All users are targeted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allUsers")]
+        public virtual AllUsers AllUsers { get; set; }
+
+        /// <summary>Additional android sdk levels are targeted by the recovery action.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("androidSdks")]
+        public virtual AndroidSdks AndroidSdks { get; set; }
+
+        /// <summary>Additional regions are targeted by the recovery action.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regions")]
+        public virtual Regions Regions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
