@@ -1,8 +1,8 @@
 {	
   "language": "csharp",	
   "description": "C# libraries for Google APIs.",	
-  "releaseVersion": "1.64.0", "comment1": "Version of generated package.",	
-  "currentSupportVersion": "1.64.0", "comment2": "Version of support library upon which to depend.",	
+  "releaseVersion": "1.65.0", "comment1": "Version of generated package.",	
+  "currentSupportVersion": "1.65.0", "comment2": "Version of support library upon which to depend.",	
 
   "clouds_comment": "Defines the map of Google.Cloud packages that supercede Google.Apis packages",	
   "cloudPackageMap": {	
