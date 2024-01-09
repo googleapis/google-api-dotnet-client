@@ -2122,13 +2122,6 @@ namespace Google.Apis.Script.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("files")]
         public virtual System.Collections.Generic.IList<File> Files { get; set; }
 
-        /// <summary>
-        /// Set to true if called from revert flume to allow deletion of system generated manifest file while validating
-        /// content request. This value is false by default.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("revertFlumeInvoked")]
-        public virtual System.Nullable<bool> RevertFlumeInvoked { get; set; }
-
         /// <summary>The script project's Drive ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scriptId")]
         public virtual string ScriptId { get; set; }

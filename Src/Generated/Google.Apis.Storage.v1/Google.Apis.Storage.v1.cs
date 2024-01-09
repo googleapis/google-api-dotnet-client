@@ -39,6 +39,7 @@ namespace Google.Apis.Storage.v1
             Buckets = new BucketsResource(this);
             Channels = new ChannelsResource(this);
             DefaultObjectAccessControls = new DefaultObjectAccessControlsResource(this);
+            Folders = new FoldersResource(this);
             ManagedFolders = new ManagedFoldersResource(this);
             Notifications = new NotificationsResource(this);
             ObjectAccessControls = new ObjectAccessControlsResource(this);
@@ -117,6 +118,9 @@ namespace Google.Apis.Storage.v1
 
         /// <summary>Gets the DefaultObjectAccessControls resource.</summary>
         public virtual DefaultObjectAccessControlsResource DefaultObjectAccessControls { get; }
+
+        /// <summary>Gets the Folders resource.</summary>
+        public virtual FoldersResource Folders { get; }
 
         /// <summary>Gets the ManagedFolders resource.</summary>
         public virtual ManagedFoldersResource ManagedFolders { get; }
@@ -467,7 +471,7 @@ namespace Google.Apis.Storage.v1
             [Google.Apis.Util.RequestParameterAttribute("bucket", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Bucket { get; private set; }
 
-            /// <summary>Maximum number of items return in a single page of responses. Maximum 1000.</summary>
+            /// <summary>Maximum number of items to return in a single page of responses. Maximum 1000.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -2925,6 +2929,513 @@ namespace Google.Apis.Storage.v1
         }
     }
 
+    /// <summary>The "folders" collection of methods.</summary>
+    public class FoldersResource
+    {
+        private const string Resource = "folders";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public FoldersResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>
+        /// Permanently deletes a folder. Only applicable to buckets with hierarchical namespace enabled.
+        /// </summary>
+        /// <param name="bucket">Name of the bucket in which the folder resides.</param>
+        /// <param name="folder">Name of a folder.</param>
+        public virtual DeleteRequest Delete(string bucket, string folder)
+        {
+            return new DeleteRequest(this.service, bucket, folder);
+        }
+
+        /// <summary>
+        /// Permanently deletes a folder. Only applicable to buckets with hierarchical namespace enabled.
+        /// </summary>
+        public class DeleteRequest : StorageBaseServiceRequest<string>
+        {
+            /// <summary>Constructs a new Delete request.</summary>
+            public DeleteRequest(Google.Apis.Services.IClientService service, string bucket, string folder) : base(service)
+            {
+                Bucket = bucket;
+                Folder = folder;
+                InitParameters();
+            }
+
+            /// <summary>Name of the bucket in which the folder resides.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("bucket", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Bucket { get; private set; }
+
+            /// <summary>Name of a folder.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("folder", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Folder { get; private set; }
+
+            /// <summary>If set, only deletes the folder if its metageneration matches this value.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("ifMetagenerationMatch", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> IfMetagenerationMatch { get; set; }
+
+            /// <summary>If set, only deletes the folder if its metageneration does not match this value.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("ifMetagenerationNotMatch", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> IfMetagenerationNotMatch { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "delete";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "DELETE";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "b/{bucket}/folders/{folder}";
+
+            /// <summary>Initializes Delete parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("bucket", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "bucket",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("folder", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "folder",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ifMetagenerationMatch", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ifMetagenerationMatch",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ifMetagenerationNotMatch", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ifMetagenerationNotMatch",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>
+        /// Returns metadata for the specified folder. Only applicable to buckets with hierarchical namespace enabled.
+        /// </summary>
+        /// <param name="bucket">Name of the bucket in which the folder resides.</param>
+        /// <param name="folder">Name of a folder.</param>
+        public virtual GetRequest Get(string bucket, string folder)
+        {
+            return new GetRequest(this.service, bucket, folder);
+        }
+
+        /// <summary>
+        /// Returns metadata for the specified folder. Only applicable to buckets with hierarchical namespace enabled.
+        /// </summary>
+        public class GetRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.Folder>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string bucket, string folder) : base(service)
+            {
+                Bucket = bucket;
+                Folder = folder;
+                InitParameters();
+            }
+
+            /// <summary>Name of the bucket in which the folder resides.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("bucket", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Bucket { get; private set; }
+
+            /// <summary>Name of a folder.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("folder", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Folder { get; private set; }
+
+            /// <summary>
+            /// Makes the return of the folder metadata conditional on whether the folder's current metageneration
+            /// matches the given value.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("ifMetagenerationMatch", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> IfMetagenerationMatch { get; set; }
+
+            /// <summary>
+            /// Makes the return of the folder metadata conditional on whether the folder's current metageneration does
+            /// not match the given value.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("ifMetagenerationNotMatch", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> IfMetagenerationNotMatch { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "get";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "b/{bucket}/folders/{folder}";
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("bucket", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "bucket",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("folder", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "folder",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ifMetagenerationMatch", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ifMetagenerationMatch",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ifMetagenerationNotMatch", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ifMetagenerationNotMatch",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Creates a new folder. Only applicable to buckets with hierarchical namespace enabled.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="bucket">Name of the bucket in which the folder resides.</param>
+        public virtual InsertRequest Insert(Google.Apis.Storage.v1.Data.Folder body, string bucket)
+        {
+            return new InsertRequest(this.service, body, bucket);
+        }
+
+        /// <summary>Creates a new folder. Only applicable to buckets with hierarchical namespace enabled.</summary>
+        public class InsertRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.Folder>
+        {
+            /// <summary>Constructs a new Insert request.</summary>
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Storage.v1.Data.Folder body, string bucket) : base(service)
+            {
+                Bucket = bucket;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Name of the bucket in which the folder resides.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("bucket", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Bucket { get; private set; }
+
+            /// <summary>If true, any parent folder which doesn’t exist will be created automatically.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("recursive", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> Recursive { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Storage.v1.Data.Folder Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "insert";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "b/{bucket}/folders";
+
+            /// <summary>Initializes Insert parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("bucket", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "bucket",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("recursive", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "recursive",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>
+        /// Retrieves a list of folders matching the criteria. Only applicable to buckets with hierarchical namespace
+        /// enabled.
+        /// </summary>
+        /// <param name="bucket">Name of the bucket in which to look for folders.</param>
+        public virtual ListRequest List(string bucket)
+        {
+            return new ListRequest(this.service, bucket);
+        }
+
+        /// <summary>
+        /// Retrieves a list of folders matching the criteria. Only applicable to buckets with hierarchical namespace
+        /// enabled.
+        /// </summary>
+        public class ListRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.Folders>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service, string bucket) : base(service)
+            {
+                Bucket = bucket;
+                InitParameters();
+            }
+
+            /// <summary>Name of the bucket in which to look for folders.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("bucket", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Bucket { get; private set; }
+
+            /// <summary>
+            /// Returns results in a directory-like mode. The only supported value is '/'. If set, items will only
+            /// contain folders that either exactly match the prefix, or are one level below the prefix.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("delimiter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Delimiter { get; set; }
+
+            /// <summary>
+            /// Filter results to folders whose names are lexicographically before endOffset. If startOffset is also
+            /// set, the folders listed will have names between startOffset (inclusive) and endOffset (exclusive).
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("endOffset", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string EndOffset { get; set; }
+
+            /// <summary>Maximum number of items to return in a single page of responses.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>
+            /// A previously-returned page token representing part of the larger set of results to view.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>
+            /// Filter results to folders whose paths begin with this prefix. If set, the value must either be an empty
+            /// string or end with a '/'.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("prefix", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Prefix { get; set; }
+
+            /// <summary>
+            /// Filter results to folders whose names are lexicographically equal to or after startOffset. If endOffset
+            /// is also set, the folders listed will have names between startOffset (inclusive) and endOffset
+            /// (exclusive).
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("startOffset", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string StartOffset { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "list";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "b/{bucket}/folders";
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("bucket", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "bucket",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("delimiter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "delimiter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("endOffset", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "endOffset",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("prefix", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "prefix",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("startOffset", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "startOffset",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>
+        /// Renames a source folder to a destination folder. Only applicable to buckets with hierarchical namespace
+        /// enabled.
+        /// </summary>
+        /// <param name="bucket">Name of the bucket in which the folders are in.</param>
+        /// <param name="sourceFolder">Name of the source folder.</param>
+        /// <param name="destinationFolder">Name of the destination folder.</param>
+        public virtual RenameRequest Rename(string bucket, string sourceFolder, string destinationFolder)
+        {
+            return new RenameRequest(this.service, bucket, sourceFolder, destinationFolder);
+        }
+
+        /// <summary>
+        /// Renames a source folder to a destination folder. Only applicable to buckets with hierarchical namespace
+        /// enabled.
+        /// </summary>
+        public class RenameRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.GoogleLongrunningOperation>
+        {
+            /// <summary>Constructs a new Rename request.</summary>
+            public RenameRequest(Google.Apis.Services.IClientService service, string bucket, string sourceFolder, string destinationFolder) : base(service)
+            {
+                Bucket = bucket;
+                SourceFolder = sourceFolder;
+                DestinationFolder = destinationFolder;
+                InitParameters();
+            }
+
+            /// <summary>Name of the bucket in which the folders are in.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("bucket", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Bucket { get; private set; }
+
+            /// <summary>Name of the source folder.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("sourceFolder", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string SourceFolder { get; private set; }
+
+            /// <summary>Name of the destination folder.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("destinationFolder", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string DestinationFolder { get; private set; }
+
+            /// <summary>
+            /// Makes the operation conditional on whether the source object's current metageneration matches the given
+            /// value.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("ifSourceMetagenerationMatch", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> IfSourceMetagenerationMatch { get; set; }
+
+            /// <summary>
+            /// Makes the operation conditional on whether the source object's current metageneration does not match the
+            /// given value.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("ifSourceMetagenerationNotMatch", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> IfSourceMetagenerationNotMatch { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "rename";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "b/{bucket}/folders/{sourceFolder}/renameTo/folders/{destinationFolder}";
+
+            /// <summary>Initializes Rename parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("bucket", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "bucket",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("sourceFolder", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sourceFolder",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("destinationFolder", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "destinationFolder",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ifSourceMetagenerationMatch", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ifSourceMetagenerationMatch",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ifSourceMetagenerationNotMatch", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ifSourceMetagenerationNotMatch",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+    }
+
     /// <summary>The "managedFolders" collection of methods.</summary>
     public class ManagedFoldersResource
     {
@@ -3273,7 +3784,7 @@ namespace Google.Apis.Storage.v1
             [Google.Apis.Util.RequestParameterAttribute("bucket", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Bucket { get; private set; }
 
-            /// <summary>Maximum number of items return in a single page of responses.</summary>
+            /// <summary>Maximum number of items to return in a single page of responses.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -8675,6 +9186,10 @@ namespace Google.Apis.Storage.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
 
+        /// <summary>The bucket's hierarchical namespace configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hierarchicalNamespace")]
+        public virtual HierarchicalNamespaceData HierarchicalNamespace { get; set; }
+
         /// <summary>The bucket's IAM configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iamConfiguration")]
         public virtual IamConfigurationData IamConfiguration { get; set; }
@@ -8954,6 +9469,14 @@ namespace Google.Apis.Storage.v1.Data
             /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("defaultKmsKeyName")]
             public virtual string DefaultKmsKeyName { get; set; }
+        }
+
+        /// <summary>The bucket's hierarchical namespace configuration.</summary>
+        public class HierarchicalNamespaceData
+        {
+            /// <summary>When set to true, hierarchical namespace is enabled for this bucket.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+            public virtual System.Nullable<bool> Enabled { get; set; }
         }
 
         /// <summary>The bucket's IAM configuration.</summary>
@@ -9672,6 +10195,125 @@ namespace Google.Apis.Storage.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A folder. Only available in buckets with hierarchical namespace enabled.</summary>
+    public class Folder : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the bucket containing this folder.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bucket")]
+        public virtual string Bucket { get; set; }
+
+        /// <summary>The ID of the folder, including the bucket name, folder name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>The kind of item this is. For folders, this is always storage#folder.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        /// <summary>User-provided metadata, in key/value pairs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Metadata { get; set; }
+
+        /// <summary>
+        /// The version of the metadata for this folder. Used for preconditions and for detecting changes in metadata.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metageneration")]
+        public virtual System.Nullable<long> Metageneration { get; set; }
+
+        /// <summary>The name of the folder. Required if not specified by URL parameter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Only present if the folder is part of an ongoing rename folder operation. Contains information which can be
+        /// used to query the operation status.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pendingRenameInfo")]
+        public virtual PendingRenameInfoData PendingRenameInfo { get; set; }
+
+        /// <summary>The link to this folder.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
+        public virtual string SelfLink { get; set; }
+
+        /// <summary>The creation time of the folder in RFC 3339 format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeCreated")]
+        public virtual string TimeCreatedRaw { get; set; }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="TimeCreatedRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? TimeCreatedDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(TimeCreatedRaw);
+            set => TimeCreatedRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
+        }
+
+        /// <summary><seealso cref="System.DateTime"/> representation of <see cref="TimeCreatedRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use TimeCreatedDateTimeOffset instead.")]
+        public virtual System.DateTime? TimeCreated
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(TimeCreatedRaw);
+            set => TimeCreatedRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+        }
+
+        /// <summary>The modification time of the folder metadata in RFC 3339 format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updated")]
+        public virtual string UpdatedRaw { get; set; }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdatedRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdatedDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(UpdatedRaw);
+            set => UpdatedRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
+        }
+
+        /// <summary><seealso cref="System.DateTime"/> representation of <see cref="UpdatedRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdatedDateTimeOffset instead.")]
+        public virtual System.DateTime? Updated
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(UpdatedRaw);
+            set => UpdatedRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+
+        /// <summary>
+        /// Only present if the folder is part of an ongoing rename folder operation. Contains information which can be
+        /// used to query the operation status.
+        /// </summary>
+        public class PendingRenameInfoData
+        {
+            /// <summary>The ID of the rename folder operation.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("operationId")]
+            public virtual string OperationId { get; set; }
+        }
+    }
+
+    /// <summary>A list of folders.</summary>
+    public class Folders : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of items.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual System.Collections.Generic.IList<Folder> Items { get; set; }
+
+        /// <summary>The kind of item this is. For lists of folders, this is always storage#folders.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        /// <summary>
+        /// The continuation token, used to page through large result sets. Provide this value in a subsequent request
+        /// to return the next page of results.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

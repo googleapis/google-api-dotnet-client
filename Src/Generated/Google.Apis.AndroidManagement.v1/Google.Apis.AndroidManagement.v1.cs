@@ -1,4 +1,4 @@
-// Copyright 2023 Google LLC
+// Copyright 2024 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -4055,6 +4055,10 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// <summary>Controls whether cellular 2G setting can be toggled by the user or not.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cellularTwoGState")]
         public virtual string CellularTwoGState { get; set; }
+
+        /// <summary>The minimum required security level of Wi-Fi networks that the device can connect to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minimumWifiSecurityLevel")]
+        public virtual string MinimumWifiSecurityLevel { get; set; }
 
         /// <summary>
         /// Controls the state of the ultra wideband setting and whether the user can toggle it on or off.

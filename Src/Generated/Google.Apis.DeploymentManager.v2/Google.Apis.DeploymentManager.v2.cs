@@ -2695,7 +2695,8 @@ namespace Google.Apis.DeploymentManager.v2.Data
     /// asynchronous API requests. For more information, read Handling API responses. Operations can be global, regional
     /// or zonal. - For global operations, use the `globalOperations` resource. - For regional operations, use the
     /// `regionOperations` resource. - For zonal operations, use the `zoneOperations` resource. For more information,
-    /// read Global, Regional, and Zonal Resources.
+    /// read Global, Regional, and Zonal Resources. Note that completed Operation resources have a limited retention
+    /// period.
     /// </summary>
     public class Operation : Google.Apis.Requests.IDirectResponseSchema
     {
